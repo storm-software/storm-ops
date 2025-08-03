@@ -366,7 +366,7 @@
               "properties": {
                 "dark": {
                   "description": "The dark background color of the workspace",
-                  "default": "#1d1e22",
+                  "default": "#151718",
                   "type": "string",
                   "minLength": 7,
                   "maxLength": 7,
@@ -374,7 +374,7 @@
                 },
                 "light": {
                   "description": "The light background color of the workspace",
-                  "default": "#f4f4f5",
+                  "default": "#cbd5e1",
                   "type": "string",
                   "minLength": 7,
                   "maxLength": 7,
@@ -404,6 +404,7 @@
                 },
                 "link": {
                   "description": "The color used to display hyperlink text",
+                  "default": "#3fa6ff",
                   "type": "string",
                   "minLength": 7,
                   "maxLength": 7,
@@ -411,7 +412,7 @@
                 },
                 "help": {
                   "description": "The second brand specific color of the workspace",
-                  "default": "#8256D0",
+                  "default": "#818cf8",
                   "type": "string",
                   "minLength": 7,
                   "maxLength": 7,
@@ -419,7 +420,7 @@
                 },
                 "success": {
                   "description": "The success color of the workspace",
-                  "default": "#12B66A",
+                  "default": "#45b27e",
                   "type": "string",
                   "minLength": 7,
                   "maxLength": 7,
@@ -427,7 +428,7 @@
                 },
                 "info": {
                   "description": "The informational color of the workspace",
-                  "default": "#0070E0",
+                  "default": "#38bdf8",
                   "type": "string",
                   "minLength": 7,
                   "maxLength": 7,
@@ -435,7 +436,7 @@
                 },
                 "warning": {
                   "description": "The warning color of the workspace",
-                  "default": "#fcc419",
+                  "default": "#f3d371",
                   "type": "string",
                   "minLength": 7,
                   "maxLength": 7,
@@ -443,7 +444,7 @@
                 },
                 "danger": {
                   "description": "The danger color of the workspace",
-                  "default": "#D8314A",
+                  "default": "#d8314a",
                   "type": "string",
                   "minLength": 7,
                   "maxLength": 7,
@@ -471,12 +472,23 @@
                   "minLength": 7,
                   "maxLength": 7,
                   "pattern": "^#([0-9a-f]{3}){1,2}$"
+                },
+                "gradient": {
+                  "description": "The color stops for the base gradient color pattern used in the workspace",
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "minLength": 7,
+                    "maxLength": 7,
+                    "pattern": "^#([0-9a-f]{3}){1,2}$"
+                  }
                 }
               },
               "required": [
                 "dark",
                 "light",
                 "brand",
+                "link",
                 "help",
                 "success",
                 "info",
@@ -495,7 +507,7 @@
                   "properties": {
                     "foreground": {
                       "description": "The light background color of the workspace",
-                      "default": "#f4f4f5",
+                      "default": "#cbd5e1",
                       "type": "string",
                       "minLength": 7,
                       "maxLength": 7,
@@ -503,7 +515,7 @@
                     },
                     "background": {
                       "description": "The dark background color of the workspace",
-                      "default": "#1d1e22",
+                      "default": "#151718",
                       "type": "string",
                       "minLength": 7,
                       "maxLength": 7,
@@ -533,6 +545,7 @@
                     },
                     "link": {
                       "description": "The color used to display hyperlink text",
+                      "default": "#3fa6ff",
                       "type": "string",
                       "minLength": 7,
                       "maxLength": 7,
@@ -540,7 +553,7 @@
                     },
                     "help": {
                       "description": "The second brand specific color of the workspace",
-                      "default": "#8256D0",
+                      "default": "#818cf8",
                       "type": "string",
                       "minLength": 7,
                       "maxLength": 7,
@@ -548,7 +561,7 @@
                     },
                     "success": {
                       "description": "The success color of the workspace",
-                      "default": "#12B66A",
+                      "default": "#45b27e",
                       "type": "string",
                       "minLength": 7,
                       "maxLength": 7,
@@ -556,7 +569,7 @@
                     },
                     "info": {
                       "description": "The informational color of the workspace",
-                      "default": "#0070E0",
+                      "default": "#38bdf8",
                       "type": "string",
                       "minLength": 7,
                       "maxLength": 7,
@@ -564,7 +577,7 @@
                     },
                     "warning": {
                       "description": "The warning color of the workspace",
-                      "default": "#fcc419",
+                      "default": "#f3d371",
                       "type": "string",
                       "minLength": 7,
                       "maxLength": 7,
@@ -572,7 +585,7 @@
                     },
                     "danger": {
                       "description": "The danger color of the workspace",
-                      "default": "#D8314A",
+                      "default": "#d8314a",
                       "type": "string",
                       "minLength": 7,
                       "maxLength": 7,
@@ -600,12 +613,23 @@
                       "minLength": 7,
                       "maxLength": 7,
                       "pattern": "^#([0-9a-f]{3}){1,2}$"
+                    },
+                    "gradient": {
+                      "description": "The color stops for the base gradient color pattern used in the workspace",
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "minLength": 7,
+                        "maxLength": 7,
+                        "pattern": "^#([0-9a-f]{3}){1,2}$"
+                      }
                     }
                   },
                   "required": [
                     "foreground",
                     "background",
                     "brand",
+                    "link",
                     "help",
                     "success",
                     "info",
@@ -621,7 +645,7 @@
                   "properties": {
                     "foreground": {
                       "description": "The dark background color of the workspace",
-                      "default": "#1d1e22",
+                      "default": "#151718",
                       "type": "string",
                       "minLength": 7,
                       "maxLength": 7,
@@ -629,7 +653,7 @@
                     },
                     "background": {
                       "description": "The light background color of the workspace",
-                      "default": "#f4f4f5",
+                      "default": "#cbd5e1",
                       "type": "string",
                       "minLength": 7,
                       "maxLength": 7,
@@ -659,6 +683,7 @@
                     },
                     "link": {
                       "description": "The color used to display hyperlink text",
+                      "default": "#3fa6ff",
                       "type": "string",
                       "minLength": 7,
                       "maxLength": 7,
@@ -666,7 +691,7 @@
                     },
                     "help": {
                       "description": "The second brand specific color of the workspace",
-                      "default": "#8256D0",
+                      "default": "#818cf8",
                       "type": "string",
                       "minLength": 7,
                       "maxLength": 7,
@@ -674,7 +699,7 @@
                     },
                     "success": {
                       "description": "The success color of the workspace",
-                      "default": "#12B66A",
+                      "default": "#45b27e",
                       "type": "string",
                       "minLength": 7,
                       "maxLength": 7,
@@ -682,7 +707,7 @@
                     },
                     "info": {
                       "description": "The informational color of the workspace",
-                      "default": "#0070E0",
+                      "default": "#38bdf8",
                       "type": "string",
                       "minLength": 7,
                       "maxLength": 7,
@@ -690,7 +715,7 @@
                     },
                     "warning": {
                       "description": "The warning color of the workspace",
-                      "default": "#fcc419",
+                      "default": "#f3d371",
                       "type": "string",
                       "minLength": 7,
                       "maxLength": 7,
@@ -698,7 +723,7 @@
                     },
                     "danger": {
                       "description": "The danger color of the workspace",
-                      "default": "#D8314A",
+                      "default": "#d8314a",
                       "type": "string",
                       "minLength": 7,
                       "maxLength": 7,
@@ -726,12 +751,23 @@
                       "minLength": 7,
                       "maxLength": 7,
                       "pattern": "^#([0-9a-f]{3}){1,2}$"
+                    },
+                    "gradient": {
+                      "description": "The color stops for the base gradient color pattern used in the workspace",
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "minLength": 7,
+                        "maxLength": 7,
+                        "pattern": "^#([0-9a-f]{3}){1,2}$"
+                      }
                     }
                   },
                   "required": [
                     "foreground",
                     "background",
                     "brand",
+                    "link",
                     "help",
                     "success",
                     "info",
@@ -769,7 +805,7 @@
                 "properties": {
                   "dark": {
                     "description": "The dark background color of the workspace",
-                    "default": "#1d1e22",
+                    "default": "#151718",
                     "type": "string",
                     "minLength": 7,
                     "maxLength": 7,
@@ -777,7 +813,7 @@
                   },
                   "light": {
                     "description": "The light background color of the workspace",
-                    "default": "#f4f4f5",
+                    "default": "#cbd5e1",
                     "type": "string",
                     "minLength": 7,
                     "maxLength": 7,
@@ -807,6 +843,7 @@
                   },
                   "link": {
                     "description": "The color used to display hyperlink text",
+                    "default": "#3fa6ff",
                     "type": "string",
                     "minLength": 7,
                     "maxLength": 7,
@@ -814,7 +851,7 @@
                   },
                   "help": {
                     "description": "The second brand specific color of the workspace",
-                    "default": "#8256D0",
+                    "default": "#818cf8",
                     "type": "string",
                     "minLength": 7,
                     "maxLength": 7,
@@ -822,7 +859,7 @@
                   },
                   "success": {
                     "description": "The success color of the workspace",
-                    "default": "#12B66A",
+                    "default": "#45b27e",
                     "type": "string",
                     "minLength": 7,
                     "maxLength": 7,
@@ -830,7 +867,7 @@
                   },
                   "info": {
                     "description": "The informational color of the workspace",
-                    "default": "#0070E0",
+                    "default": "#38bdf8",
                     "type": "string",
                     "minLength": 7,
                     "maxLength": 7,
@@ -838,7 +875,7 @@
                   },
                   "warning": {
                     "description": "The warning color of the workspace",
-                    "default": "#fcc419",
+                    "default": "#f3d371",
                     "type": "string",
                     "minLength": 7,
                     "maxLength": 7,
@@ -846,7 +883,7 @@
                   },
                   "danger": {
                     "description": "The danger color of the workspace",
-                    "default": "#D8314A",
+                    "default": "#d8314a",
                     "type": "string",
                     "minLength": 7,
                     "maxLength": 7,
@@ -874,12 +911,23 @@
                     "minLength": 7,
                     "maxLength": 7,
                     "pattern": "^#([0-9a-f]{3}){1,2}$"
+                  },
+                  "gradient": {
+                    "description": "The color stops for the base gradient color pattern used in the workspace",
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 7,
+                      "maxLength": 7,
+                      "pattern": "^#([0-9a-f]{3}){1,2}$"
+                    }
                   }
                 },
                 "required": [
                   "dark",
                   "light",
                   "brand",
+                  "link",
                   "help",
                   "success",
                   "info",
@@ -898,7 +946,7 @@
                     "properties": {
                       "foreground": {
                         "description": "The light background color of the workspace",
-                        "default": "#f4f4f5",
+                        "default": "#cbd5e1",
                         "type": "string",
                         "minLength": 7,
                         "maxLength": 7,
@@ -906,7 +954,7 @@
                       },
                       "background": {
                         "description": "The dark background color of the workspace",
-                        "default": "#1d1e22",
+                        "default": "#151718",
                         "type": "string",
                         "minLength": 7,
                         "maxLength": 7,
@@ -936,6 +984,7 @@
                       },
                       "link": {
                         "description": "The color used to display hyperlink text",
+                        "default": "#3fa6ff",
                         "type": "string",
                         "minLength": 7,
                         "maxLength": 7,
@@ -943,7 +992,7 @@
                       },
                       "help": {
                         "description": "The second brand specific color of the workspace",
-                        "default": "#8256D0",
+                        "default": "#818cf8",
                         "type": "string",
                         "minLength": 7,
                         "maxLength": 7,
@@ -951,7 +1000,7 @@
                       },
                       "success": {
                         "description": "The success color of the workspace",
-                        "default": "#12B66A",
+                        "default": "#45b27e",
                         "type": "string",
                         "minLength": 7,
                         "maxLength": 7,
@@ -959,7 +1008,7 @@
                       },
                       "info": {
                         "description": "The informational color of the workspace",
-                        "default": "#0070E0",
+                        "default": "#38bdf8",
                         "type": "string",
                         "minLength": 7,
                         "maxLength": 7,
@@ -967,7 +1016,7 @@
                       },
                       "warning": {
                         "description": "The warning color of the workspace",
-                        "default": "#fcc419",
+                        "default": "#f3d371",
                         "type": "string",
                         "minLength": 7,
                         "maxLength": 7,
@@ -975,7 +1024,7 @@
                       },
                       "danger": {
                         "description": "The danger color of the workspace",
-                        "default": "#D8314A",
+                        "default": "#d8314a",
                         "type": "string",
                         "minLength": 7,
                         "maxLength": 7,
@@ -1003,12 +1052,23 @@
                         "minLength": 7,
                         "maxLength": 7,
                         "pattern": "^#([0-9a-f]{3}){1,2}$"
+                      },
+                      "gradient": {
+                        "description": "The color stops for the base gradient color pattern used in the workspace",
+                        "type": "array",
+                        "items": {
+                          "type": "string",
+                          "minLength": 7,
+                          "maxLength": 7,
+                          "pattern": "^#([0-9a-f]{3}){1,2}$"
+                        }
                       }
                     },
                     "required": [
                       "foreground",
                       "background",
                       "brand",
+                      "link",
                       "help",
                       "success",
                       "info",
@@ -1024,7 +1084,7 @@
                     "properties": {
                       "foreground": {
                         "description": "The dark background color of the workspace",
-                        "default": "#1d1e22",
+                        "default": "#151718",
                         "type": "string",
                         "minLength": 7,
                         "maxLength": 7,
@@ -1032,7 +1092,7 @@
                       },
                       "background": {
                         "description": "The light background color of the workspace",
-                        "default": "#f4f4f5",
+                        "default": "#cbd5e1",
                         "type": "string",
                         "minLength": 7,
                         "maxLength": 7,
@@ -1062,6 +1122,7 @@
                       },
                       "link": {
                         "description": "The color used to display hyperlink text",
+                        "default": "#3fa6ff",
                         "type": "string",
                         "minLength": 7,
                         "maxLength": 7,
@@ -1069,7 +1130,7 @@
                       },
                       "help": {
                         "description": "The second brand specific color of the workspace",
-                        "default": "#8256D0",
+                        "default": "#818cf8",
                         "type": "string",
                         "minLength": 7,
                         "maxLength": 7,
@@ -1077,7 +1138,7 @@
                       },
                       "success": {
                         "description": "The success color of the workspace",
-                        "default": "#12B66A",
+                        "default": "#45b27e",
                         "type": "string",
                         "minLength": 7,
                         "maxLength": 7,
@@ -1085,7 +1146,7 @@
                       },
                       "info": {
                         "description": "The informational color of the workspace",
-                        "default": "#0070E0",
+                        "default": "#38bdf8",
                         "type": "string",
                         "minLength": 7,
                         "maxLength": 7,
@@ -1093,7 +1154,7 @@
                       },
                       "warning": {
                         "description": "The warning color of the workspace",
-                        "default": "#fcc419",
+                        "default": "#f3d371",
                         "type": "string",
                         "minLength": 7,
                         "maxLength": 7,
@@ -1101,7 +1162,7 @@
                       },
                       "danger": {
                         "description": "The danger color of the workspace",
-                        "default": "#D8314A",
+                        "default": "#d8314a",
                         "type": "string",
                         "minLength": 7,
                         "maxLength": 7,
@@ -1129,12 +1190,23 @@
                         "minLength": 7,
                         "maxLength": 7,
                         "pattern": "^#([0-9a-f]{3}){1,2}$"
+                      },
+                      "gradient": {
+                        "description": "The color stops for the base gradient color pattern used in the workspace",
+                        "type": "array",
+                        "items": {
+                          "type": "string",
+                          "minLength": 7,
+                          "maxLength": 7,
+                          "pattern": "^#([0-9a-f]{3}){1,2}$"
+                        }
                       }
                     },
                     "required": [
                       "foreground",
                       "background",
                       "brand",
+                      "link",
                       "help",
                       "success",
                       "info",

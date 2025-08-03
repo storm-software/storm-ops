@@ -9,118 +9,61 @@ import {
   STORM_DEFAULT_SOCIAL_TWITTER
 } from "./constants";
 
-const DarkColorSchema = z
+const ColorSchema = z
   .string()
   .trim()
   .toLowerCase()
   .regex(/^#([0-9a-f]{3}){1,2}$/i)
-  .length(7)
-  .default("#1d1e22")
-  .describe("The dark background color of the workspace");
-const LightColorSchema = z
-  .string()
-  .trim()
-  .toLowerCase()
-  .regex(/^#([0-9a-f]{3}){1,2}$/i)
-  .length(7)
-  .default("#f4f4f5")
-  .describe("The light background color of the workspace");
-const BrandColorSchema = z
-  .string()
-  .trim()
-  .toLowerCase()
-  .regex(/^#([0-9a-f]{3}){1,2}$/i)
-  .length(7)
-  .default("#1fb2a6")
-  .describe("The primary brand specific color of the workspace");
-const AlternateColorSchema = z
-  .string()
-  .trim()
-  .toLowerCase()
-  .regex(/^#([0-9a-f]{3}){1,2}$/i)
-  .length(7)
+  .length(7);
+
+const DarkColorSchema = ColorSchema.default("#151718").describe(
+  "The dark background color of the workspace"
+);
+const LightColorSchema = ColorSchema.default("#cbd5e1").describe(
+  "The light background color of the workspace"
+);
+const BrandColorSchema = ColorSchema.default("#1fb2a6").describe(
+  "The primary brand specific color of the workspace"
+);
+const AlternateColorSchema = ColorSchema.optional().describe(
+  "The alternate brand specific color of the workspace"
+);
+const AccentColorSchema = ColorSchema.optional().describe(
+  "The secondary brand specific color of the workspace"
+);
+const LinkColorSchema = ColorSchema.default("#3fa6ff").describe(
+  "The color used to display hyperlink text"
+);
+const HelpColorSchema = ColorSchema.default("#818cf8").describe(
+  "The second brand specific color of the workspace"
+);
+const SuccessColorSchema = ColorSchema.default("#45b27e").describe(
+  "The success color of the workspace"
+);
+const InfoColorSchema = ColorSchema.default("#38bdf8").describe(
+  "The informational color of the workspace"
+);
+const WarningColorSchema = ColorSchema.default("#f3d371").describe(
+  "The warning color of the workspace"
+);
+const DangerColorSchema = ColorSchema.default("#d8314a").describe(
+  "The danger color of the workspace"
+);
+const FatalColorSchema = ColorSchema.optional().describe(
+  "The fatal color of the workspace"
+);
+const PositiveColorSchema = ColorSchema.default("#4ade80").describe(
+  "The positive number color of the workspace"
+);
+const NegativeColorSchema = ColorSchema.default("#ef4444").describe(
+  "The negative number color of the workspace"
+);
+const GradientStopsSchema = z
+  .array(ColorSchema)
   .optional()
-  .describe("The alternate brand specific color of the workspace");
-const AccentColorSchema = z
-  .string()
-  .trim()
-  .toLowerCase()
-  .regex(/^#([0-9a-f]{3}){1,2}$/i)
-  .length(7)
-  .optional()
-  .describe("The secondary brand specific color of the workspace");
-const LinkColorSchema = z
-  .string()
-  .trim()
-  .toLowerCase()
-  .regex(/^#([0-9a-f]{3}){1,2}$/i)
-  .length(7)
-  .optional()
-  .describe("The color used to display hyperlink text");
-const HelpColorSchema = z
-  .string()
-  .trim()
-  .toLowerCase()
-  .regex(/^#([0-9a-f]{3}){1,2}$/i)
-  .length(7)
-  .default("#8256D0")
-  .describe("The second brand specific color of the workspace");
-const SuccessColorSchema = z
-  .string()
-  .trim()
-  .toLowerCase()
-  .regex(/^#([0-9a-f]{3}){1,2}$/i)
-  .length(7)
-  .default("#12B66A")
-  .describe("The success color of the workspace");
-const InfoColorSchema = z
-  .string()
-  .trim()
-  .toLowerCase()
-  .regex(/^#([0-9a-f]{3}){1,2}$/i)
-  .length(7)
-  .default("#0070E0")
-  .describe("The informational color of the workspace");
-const WarningColorSchema = z
-  .string()
-  .trim()
-  .toLowerCase()
-  .regex(/^#([0-9a-f]{3}){1,2}$/i)
-  .length(7)
-  .default("#fcc419")
-  .describe("The warning color of the workspace");
-const DangerColorSchema = z
-  .string()
-  .trim()
-  .toLowerCase()
-  .regex(/^#([0-9a-f]{3}){1,2}$/i)
-  .length(7)
-  .default("#D8314A")
-  .describe("The danger color of the workspace");
-const FatalColorSchema = z
-  .string()
-  .trim()
-  .toLowerCase()
-  .regex(/^#([0-9a-f]{3}){1,2}$/i)
-  .length(7)
-  .optional()
-  .describe("The fatal color of the workspace");
-const PositiveColorSchema = z
-  .string()
-  .trim()
-  .toLowerCase()
-  .regex(/^#([0-9a-f]{3}){1,2}$/i)
-  .length(7)
-  .default("#4ade80")
-  .describe("The positive number color of the workspace");
-const NegativeColorSchema = z
-  .string()
-  .trim()
-  .toLowerCase()
-  .regex(/^#([0-9a-f]{3}){1,2}$/i)
-  .length(7)
-  .default("#ef4444")
-  .describe("The negative number color of the workspace");
+  .describe(
+    "The color stops for the base gradient color pattern used in the workspace"
+  );
 
 export const DarkThemeColorConfigSchema = z.object({
   foreground: LightColorSchema,
@@ -136,7 +79,8 @@ export const DarkThemeColorConfigSchema = z.object({
   danger: DangerColorSchema,
   fatal: FatalColorSchema,
   positive: PositiveColorSchema,
-  negative: NegativeColorSchema
+  negative: NegativeColorSchema,
+  gradient: GradientStopsSchema
 });
 
 export const LightThemeColorConfigSchema = z.object({
@@ -153,7 +97,8 @@ export const LightThemeColorConfigSchema = z.object({
   danger: DangerColorSchema,
   fatal: FatalColorSchema,
   positive: PositiveColorSchema,
-  negative: NegativeColorSchema
+  negative: NegativeColorSchema,
+  gradient: GradientStopsSchema
 });
 
 export const MultiThemeColorConfigSchema = z.object({
@@ -175,7 +120,8 @@ export const SingleThemeColorConfigSchema = z.object({
   danger: DangerColorSchema,
   fatal: FatalColorSchema,
   positive: PositiveColorSchema,
-  negative: NegativeColorSchema
+  negative: NegativeColorSchema,
+  gradient: GradientStopsSchema
 });
 
 export const RegistryUrlConfigSchema = z
