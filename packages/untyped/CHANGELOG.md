@@ -2,6 +2,19 @@
 
 # Changelog for Storm Ops - Untyped
 
+## [0.17.51](https://github.com/storm-software/storm-ops/releases/tag/untyped%400.17.51) (2025-08-03)
+
+### Bug Fixes
+
+- **workspace-tools:** Resolve issue with `name` used as `projects` key in
+  plugins
+  ([c38920eac](https://github.com/storm-software/storm-ops/commit/c38920eac))
+
+### Miscellaneous
+
+- **monorepo:** Update workspace package dependencies
+  ([c6fbbda93](https://github.com/storm-software/storm-ops/commit/c6fbbda93))
+
 ## [0.17.50](https://github.com/storm-software/storm-ops/releases/tag/untyped%400.17.50) (2025-08-02)
 
 ### Bug Fixes

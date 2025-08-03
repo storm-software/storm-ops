@@ -2,6 +2,23 @@
 
 # Changelog for Storm Ops - Config Tools
 
+## [1.176.24](https://github.com/storm-software/storm-ops/releases/tag/config-tools%401.176.24) (2025-08-03)
+
+### Bug Fixes
+
+- **workspace-tools:** Resolve issue with `name` used as `projects` key in
+  plugins
+  ([c38920eac](https://github.com/storm-software/storm-ops/commit/c38920eac))
+
+### Miscellaneous
+
+- **monorepo:** Update workspace package dependencies
+  ([c6fbbda93](https://github.com/storm-software/storm-ops/commit/c6fbbda93))
+
+### Updated Dependencies
+
+- Updated config to 1.125.22
+
 ## [1.176.23](https://github.com/storm-software/storm-ops/releases/tag/config-tools%401.176.23) (2025-08-02)
 
 ### Bug Fixes

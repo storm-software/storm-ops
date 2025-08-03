@@ -2,6 +2,25 @@
 
 # Changelog for Storm Ops - Workspace Tools
 
+## [1.277.35](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.277.35) (2025-08-03)
+
+### Bug Fixes
+
+- **workspace-tools:** Resolve issue with `name` used as `projects` key in
+  plugins
+  ([c38920eac](https://github.com/storm-software/storm-ops/commit/c38920eac))
+
+### Miscellaneous
+
+- **monorepo:** Update workspace package dependencies
+  ([c6fbbda93](https://github.com/storm-software/storm-ops/commit/c6fbbda93))
+
+### Updated Dependencies
+
+- Updated prettier to 0.51.60
+- Updated esbuild to 0.45.48
+- Updated unbuild to 0.49.59
+
 ## [1.277.34](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.277.34) (2025-08-02)
 
 ### Bug Fixes

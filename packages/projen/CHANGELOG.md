@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Projen
 
+## [0.15.52](https://github.com/storm-software/storm-ops/releases/tag/projen%400.15.52) (2025-08-03)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace package dependencies
+  ([c6fbbda93](https://github.com/storm-software/storm-ops/commit/c6fbbda93))
+
 ## [0.15.51](https://github.com/storm-software/storm-ops/releases/tag/projen%400.15.51) (2025-08-02)
 
 ### Bug Fixes
