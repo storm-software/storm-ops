@@ -337,6 +337,10 @@ whitesource
 huskyrc
 lintstagedrc
 commitlintrc
+nxignore
+luxon
+generatorrc
+contentlayer
 
 # Acronyms
 dpdm
@@ -345,14 +349,6 @@ unrs
 rwsdk
 tses
 rxvt
-
-# Nix
-nixos
-nixpkgs
-cachix
-devenv
-nixd
-nixfmt
 
 # TypeScript
 transpiles
@@ -431,6 +427,16 @@ bbenoist
 # TSDoc Tags
 preapproved
 hideconstructor
+
+# Nix
+nixos
+nixpkgs
+cachix
+devenv
+direnv
+envrc
+nixd
+nixfmt
 
 # Nix Packages / Tools
 cword
