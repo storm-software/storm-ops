@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - CSpell
 
+## [0.35.22](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.35.22) (2025-08-03)
+
+### Miscellaneous
+
+- **cspell:** Added additional tool names to the dictionary
+  ([35f99203d](https://github.com/storm-software/storm-ops/commit/35f99203d))
+- **monorepo:** Update workspace package dependencies
+  ([a51e7f3f5](https://github.com/storm-software/storm-ops/commit/a51e7f3f5))
+- **monorepo:** Regenerate README markdown files
+  ([bfce1b325](https://github.com/storm-software/storm-ops/commit/bfce1b325))
+
 ## [0.35.21](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.35.21) (2025-08-03)
 
 ### Miscellaneous

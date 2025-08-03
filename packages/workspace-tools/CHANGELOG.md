@@ -2,6 +2,27 @@
 
 # Changelog for Storm Ops - Workspace Tools
 
+## [1.277.36](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.277.36) (2025-08-03)
+
+### Bug Fixes
+
+- **workspace-tools:** Resolved cache miss issues during tasks and cleaned up
+  the plugin definitions
+  ([8e4fb7977](https://github.com/storm-software/storm-ops/commit/8e4fb7977))
+
+### Miscellaneous
+
+- **monorepo:** Update workspace package dependencies
+  ([a51e7f3f5](https://github.com/storm-software/storm-ops/commit/a51e7f3f5))
+- **monorepo:** Regenerate README markdown files
+  ([bfce1b325](https://github.com/storm-software/storm-ops/commit/bfce1b325))
+
+### Updated Dependencies
+
+- Updated prettier to 0.51.61
+- Updated esbuild to 0.45.49
+- Updated unbuild to 0.49.60
+
 ## [1.277.35](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.277.35) (2025-08-03)
 
 ### Bug Fixes
