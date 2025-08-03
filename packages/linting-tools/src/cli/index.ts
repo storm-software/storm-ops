@@ -64,8 +64,8 @@ export function createProgram(config: StormWorkspaceConfig) {
     .addOption(alexIgnore)
     .action(alexAction);
 
-  const ignoreDeps = new Option(
-    "--ignore-deps <deps>",
+  const ignoreDepsVersion = new Option(
+    "--ignore-deps-version <deps>",
     "One or more dependencies to ignore for the dependency version consistency linting (comma-separated)"
   )
     .argParser(val =>
@@ -75,8 +75,8 @@ export function createProgram(config: StormWorkspaceConfig) {
     )
     .default([]);
 
-  const ignorePackages = new Option(
-    "--ignore-packages <packages>",
+  const ignorePackagesDepsVersion = new Option(
+    "--ignore-packages-deps-version <packages>",
     "One or more packages to ignore for the dependency version consistency linting (comma-separated)"
   )
     .argParser(val =>
@@ -86,8 +86,8 @@ export function createProgram(config: StormWorkspaceConfig) {
     )
     .default([]);
 
-  const ignorePaths = new Option(
-    "--ignore-paths <paths>",
+  const ignorePathsDepsVersion = new Option(
+    "--ignore-paths-deps-version <paths>",
     "One or more paths to ignore for the dependency version consistency linting (comma-separated)"
   )
     .argParser(val =>
@@ -100,9 +100,9 @@ export function createProgram(config: StormWorkspaceConfig) {
   program
     .command("deps-version")
     .description("Run dependency version consistency lint for the workspace.")
-    .addOption(ignoreDeps)
-    .addOption(ignorePackages)
-    .addOption(ignorePaths)
+    .addOption(ignoreDepsVersion)
+    .addOption(ignorePackagesDepsVersion)
+    .addOption(ignorePathsDepsVersion)
     .action(depsVersionAction);
 
   program
@@ -187,6 +187,9 @@ export function createProgram(config: StormWorkspaceConfig) {
     .addOption(cspellConfig)
     .addOption(alexConfig)
     .addOption(alexIgnore)
+    .addOption(ignoreDepsVersion)
+    .addOption(ignorePackagesDepsVersion)
+    .addOption(ignorePathsDepsVersion)
     .addOption(manypkgType)
     .addOption(manypkgArgs)
     .addOption(skipCodeowners)
@@ -204,6 +207,9 @@ async function allAction({
   cspellConfig,
   alexConfig,
   alexIgnore,
+  ignoreDepsVersion,
+  ignorePackagesDepsVersion,
+  ignorePathsDepsVersion,
   manypkgType,
   manypkgArgs
 }: {
@@ -215,6 +221,9 @@ async function allAction({
   cspellConfig: string;
   alexConfig: string;
   alexIgnore: string;
+  ignoreDepsVersion: string[];
+  ignorePackagesDepsVersion: string[];
+  ignorePathsDepsVersion: string[];
   manypkgType: string;
   manypkgArgs: string[];
 }) {
@@ -231,7 +240,13 @@ async function allAction({
     }
 
     if (!skipDepsVersion) {
-      promises.push(depsVersionAction());
+      promises.push(
+        depsVersionAction({
+          ignoreDepsVersion,
+          ignorePackagesDepsVersion,
+          ignorePathsDepsVersion
+        })
+      );
     }
 
     if (!skipCircularDeps) {
@@ -333,13 +348,13 @@ async function alexAction({
 }
 
 async function depsVersionAction({
-  ignoreDeps = [],
-  ignorePackages = [],
-  ignorePaths = []
+  ignoreDepsVersion,
+  ignorePackagesDepsVersion,
+  ignorePathsDepsVersion
 }: {
-  ignoreDeps: string[];
-  ignorePackages: string[];
-  ignorePaths: string[];
+  ignoreDepsVersion: string[];
+  ignorePackagesDepsVersion: string[];
+  ignorePathsDepsVersion: string[];
 }) {
   try {
     writeDebug(
@@ -349,9 +364,9 @@ async function depsVersionAction({
 
     const cdvc = new CDVC(".", {
       fix: true,
-      ignoreDep: ignoreDeps,
-      ignorePackage: ignorePackages,
-      ignorePath: ignorePaths
+      ignoreDep: ignoreDepsVersion,
+      ignorePackage: ignorePackagesDepsVersion,
+      ignorePath: ignorePathsDepsVersion
     });
 
     // Show output for dependencies we fixed.
