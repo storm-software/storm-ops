@@ -2,6 +2,22 @@
 
 # Changelog for Storm Ops - Config Tools
 
+## [1.177.0](https://github.com/storm-software/storm-ops/releases/tag/config-tools%401.177.0) (2025-08-03)
+
+### Features
+
+- **config-tools:** Added support for the `gradient` colors configuration
+  ([72d200ab6](https://github.com/storm-software/storm-ops/commit/72d200ab6))
+
+### Miscellaneous
+
+- **monorepo:** Update workspace dependency links for packages
+  ([e311f77ef](https://github.com/storm-software/storm-ops/commit/e311f77ef))
+
+### Updated Dependencies
+
+- Updated config to 1.126.0
+
 ## [1.176.26](https://github.com/storm-software/storm-ops/releases/tag/config-tools%401.176.26) (2025-08-03)
 
 ### Miscellaneous

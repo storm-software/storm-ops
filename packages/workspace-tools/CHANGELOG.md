@@ -2,6 +2,25 @@
 
 # Changelog for Storm Ops - Workspace Tools
 
+## [1.278.1](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.278.1) (2025-08-03)
+
+### Miscellaneous
+
+- **workspace-tools:** Handle named inputs in the `withNamedInputs` parameters
+  correctly
+  ([191e4607f](https://github.com/storm-software/storm-ops/commit/191e4607f))
+- **workspace-tools:** Sort the returned array in the `withNamedInputs` helper
+  function
+  ([bc44464cb](https://github.com/storm-software/storm-ops/commit/bc44464cb))
+- **monorepo:** Update workspace dependency links for packages
+  ([e311f77ef](https://github.com/storm-software/storm-ops/commit/e311f77ef))
+
+### Updated Dependencies
+
+- Updated prettier to 0.51.63
+- Updated esbuild to 0.45.51
+- Updated unbuild to 0.49.62
+
 ## [1.278.0](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.278.0) (2025-08-03)
 
 ### Features
