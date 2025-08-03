@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Build Tools
 
+## [0.151.36](https://github.com/storm-software/storm-ops/releases/tag/build-tools%400.151.36) (2025-08-03)
+
+### Miscellaneous
+
+- **monorepo:** Update README and package dependency versions
+  ([cf2786e59](https://github.com/storm-software/storm-ops/commit/cf2786e59))
+
 ## [0.151.35](https://github.com/storm-software/storm-ops/releases/tag/build-tools%400.151.35) (2025-08-03)
 
 ### Miscellaneous

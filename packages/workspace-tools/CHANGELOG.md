@@ -2,6 +2,24 @@
 
 # Changelog for Storm Ops - Workspace Tools
 
+## [1.278.0](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.278.0) (2025-08-03)
+
+### Features
+
+- **workspace-tools:** Added the `nx-json` utility module
+  ([be7ebe1a4](https://github.com/storm-software/storm-ops/commit/be7ebe1a4))
+
+### Miscellaneous
+
+- **monorepo:** Update README and package dependency versions
+  ([cf2786e59](https://github.com/storm-software/storm-ops/commit/cf2786e59))
+
+### Updated Dependencies
+
+- Updated prettier to 0.51.62
+- Updated esbuild to 0.45.50
+- Updated unbuild to 0.49.61
+
 ## [1.277.36](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.277.36) (2025-08-03)
 
 ### Bug Fixes
