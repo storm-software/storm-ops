@@ -1,8 +1,10 @@
 import {
   ColorConfig,
   ColorConfigMap,
+  SingleThemeColorConfig,
   StormWorkspaceConfig
 } from "@storm-software/config/types";
+import { MultiThemeColorConfig } from "packages/config/dist";
 
 /**
  * Storm theme config values used for styling various workspace elements
@@ -40,7 +42,7 @@ export const DEFAULT_COLOR_CONFIG = {
     negative: "#dc2626",
     gradient: ["#1fb2a6", "#db2777", "#818cf8"]
   }
-};
+} as MultiThemeColorConfig;
 
 /**
  * Get the color configuration from the Storm workspace configuration.
@@ -119,4 +121,28 @@ export function getColor(
   }
 
   return getColor("brand", config);
+}
+
+/**
+ * Get a specific color from the Storm workspace configuration.
+ *
+ * @param key - The key of the color to retrieve.
+ * @param config - An optional, partial color configuration for the Storm workspace.
+ * @returns The color value for the specified key, or a default value if not defined.
+ */
+export function getGradient(
+  config?: Partial<Pick<StormWorkspaceConfig, "colors">>
+): string[] | undefined {
+  const colors = getColorConfig(config);
+
+  const result =
+    (typeof colors["dark"] === "object"
+      ? colors["dark"].gradient
+      : (colors as SingleThemeColorConfig).gradient) ||
+    DEFAULT_COLOR_CONFIG["dark"].gradient;
+  if (result && Array.isArray(result) && result.length > 0) {
+    return result;
+  }
+
+  return undefined;
 }
