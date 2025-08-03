@@ -332,9 +332,24 @@ export function withNamedInputs(
   return currentInputs
     .concat(namedInputs.flatMap(n => Object.keys(NAMED_INPUTS[n])))
     .reduce((ret, input) => {
+      if (
+        Object.keys(NAMED_INPUTS).includes(input) &&
+        Array.isArray(NAMED_INPUTS[input]) &&
+        NAMED_INPUTS[input].length > 0
+      ) {
+        NAMED_INPUTS[input].forEach(key => {
+          if (!ret.includes(NAMED_INPUTS[key])) {
+            ret.push(NAMED_INPUTS[key]);
+          }
+        });
+
+        return ret;
+      }
+
       if (!ret.includes(input)) {
         ret.push(input);
       }
+
       return ret;
     }, [] as string[])
     .sort((a, b) => {
