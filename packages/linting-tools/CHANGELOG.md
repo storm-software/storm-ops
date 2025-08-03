@@ -2,6 +2,19 @@
 
 # Changelog for Storm Ops - Linting Tools
 
+## [1.126.0](https://github.com/storm-software/storm-ops/releases/tag/linting-tools%401.126.0) (2025-08-03)
+
+### Features
+
+- **linting-tools:** Added the `--ignore-deps`, `--ignore-packages`, and
+  `--ignore-paths` args
+  ([f11445b51](https://github.com/storm-software/storm-ops/commit/f11445b51))
+
+### Miscellaneous
+
+- **monorepo:** Updates to package dependencies
+  ([d3178b9fe](https://github.com/storm-software/storm-ops/commit/d3178b9fe))
+
 ## [1.125.55](https://github.com/storm-software/storm-ops/releases/tag/linting-tools%401.125.55) (2025-08-03)
 
 ### Miscellaneous

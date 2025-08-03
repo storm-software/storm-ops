@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Untyped
 
+## [0.17.56](https://github.com/storm-software/storm-ops/releases/tag/untyped%400.17.56) (2025-08-03)
+
+### Miscellaneous
+
+- **monorepo:** Updates to package dependencies
+  ([d3178b9fe](https://github.com/storm-software/storm-ops/commit/d3178b9fe))
+
 ## [0.17.55](https://github.com/storm-software/storm-ops/releases/tag/untyped%400.17.55) (2025-08-03)
 
 ### Miscellaneous
