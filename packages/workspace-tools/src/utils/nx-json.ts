@@ -1,5 +1,3 @@
-import { NxJsonConfiguration } from "@nx/devkit";
-
 /**
  * The values provided in the `base.json` (this package's shared nx.json configuration) file's {@link NxJsonConfiguration.namedInputs} section.
  */
