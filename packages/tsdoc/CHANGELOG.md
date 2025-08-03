@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Tsdoc
 
+## [0.6.25](https://github.com/storm-software/storm-ops/releases/tag/tsdoc%400.6.25) (2025-08-03)
+
+### Miscellaneous
+
+- **monorepo:** Git hook file updates - triggering release
+  ([326b351e1](https://github.com/storm-software/storm-ops/commit/326b351e1))
+
 ## [0.6.24](https://github.com/storm-software/storm-ops/releases/tag/tsdoc%400.6.24) (2025-08-03)
 
 ### Miscellaneous

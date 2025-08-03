@@ -2,6 +2,19 @@
 
 # Changelog for Storm Ops - Unbuild
 
+## [0.49.67](https://github.com/storm-software/storm-ops/releases/tag/unbuild%400.49.67) (2025-08-03)
+
+### Miscellaneous
+
+- **monorepo:** Git hook file updates - triggering release
+  ([326b351e1](https://github.com/storm-software/storm-ops/commit/326b351e1))
+
+### Updated Dependencies
+
+- Updated config-tools to 1.178.1
+- Updated build-tools to 0.151.42
+- Updated config to 1.126.5
+
 ## [0.49.66](https://github.com/storm-software/storm-ops/releases/tag/unbuild%400.49.66) (2025-08-03)
 
 ### Miscellaneous

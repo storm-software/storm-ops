@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Config Tools
 
+## [1.178.1](https://github.com/storm-software/storm-ops/releases/tag/config-tools%401.178.1) (2025-08-03)
+
+### Miscellaneous
+
+- **monorepo:** Git hook file updates - triggering release
+  ([326b351e1](https://github.com/storm-software/storm-ops/commit/326b351e1))
+
+### Updated Dependencies
+
+- Updated config to 1.126.5
+
 ## [1.178.0](https://github.com/storm-software/storm-ops/releases/tag/config-tools%401.178.0) (2025-08-03)
 
 ### Features

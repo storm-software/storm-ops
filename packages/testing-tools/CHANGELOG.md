@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Testing Tools
 
+## [1.111.15](https://github.com/storm-software/storm-ops/releases/tag/testing-tools%401.111.15) (2025-08-03)
+
+### Miscellaneous
+
+- **monorepo:** Git hook file updates - triggering release
+  ([326b351e1](https://github.com/storm-software/storm-ops/commit/326b351e1))
+
 ## [1.111.14](https://github.com/storm-software/storm-ops/releases/tag/testing-tools%401.111.14) (2025-08-03)
 
 ### Miscellaneous

@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Build Tools
 
+## [0.151.42](https://github.com/storm-software/storm-ops/releases/tag/build-tools%400.151.42) (2025-08-03)
+
+### Miscellaneous
+
+- **monorepo:** Git hook file updates - triggering release
+  ([326b351e1](https://github.com/storm-software/storm-ops/commit/326b351e1))
+
 ## [0.151.41](https://github.com/storm-software/storm-ops/releases/tag/build-tools%400.151.41) (2025-08-03)
 
 ### Miscellaneous

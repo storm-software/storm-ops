@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Cloudflare Tools
 
+## [0.63.64](https://github.com/storm-software/storm-ops/releases/tag/cloudflare-tools%400.63.64) (2025-08-03)
+
+### Miscellaneous
+
+- **monorepo:** Git hook file updates - triggering release
+  ([326b351e1](https://github.com/storm-software/storm-ops/commit/326b351e1))
+
 ## [0.63.63](https://github.com/storm-software/storm-ops/releases/tag/cloudflare-tools%400.63.63) (2025-08-03)
 
 ### Miscellaneous

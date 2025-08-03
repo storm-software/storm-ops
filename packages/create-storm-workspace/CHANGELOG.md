@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Create Storm Workspace
 
+## [1.91.58](https://github.com/storm-software/storm-ops/releases/tag/create-storm-workspace%401.91.58) (2025-08-03)
+
+### Miscellaneous
+
+- **monorepo:** Git hook file updates - triggering release
+  ([326b351e1](https://github.com/storm-software/storm-ops/commit/326b351e1))
+
 ## [1.91.57](https://github.com/storm-software/storm-ops/releases/tag/create-storm-workspace%401.91.57) (2025-08-03)
 
 ### Miscellaneous

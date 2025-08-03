@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - CSpell
 
+## [0.35.29](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.35.29) (2025-08-03)
+
+### Miscellaneous
+
+- **monorepo:** Git hook file updates - triggering release
+  ([326b351e1](https://github.com/storm-software/storm-ops/commit/326b351e1))
+
 ## [0.35.28](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.35.28) (2025-08-03)
 
 ### Miscellaneous

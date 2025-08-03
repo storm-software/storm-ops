@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Projen
 
+## [0.15.60](https://github.com/storm-software/storm-ops/releases/tag/projen%400.15.60) (2025-08-03)
+
+### Miscellaneous
+
+- **monorepo:** Git hook file updates - triggering release
+  ([326b351e1](https://github.com/storm-software/storm-ops/commit/326b351e1))
+
 ## [0.15.59](https://github.com/storm-software/storm-ops/releases/tag/projen%400.15.59) (2025-08-03)
 
 ### Miscellaneous
