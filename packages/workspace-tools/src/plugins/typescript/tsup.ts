@@ -4,12 +4,14 @@ import {
   CreateNodesV2,
   readJsonFile
 } from "@nx/devkit";
+import defu from "defu";
 import { existsSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { readNxJson } from "nx/src/config/nx-json.js";
 import type { ProjectConfiguration } from "nx/src/config/workspace-json-project-json";
 import { readTargetsFromPackageJson } from "nx/src/utils/package-json";
 import type { PackageJson } from "pkg-types";
+import { getRoot } from "../../utils/plugin-helpers";
 import { setDefaultProjectTags } from "../../utils/project-tags";
 
 export const name = "storm-software/typescript/tsup";
@@ -65,14 +67,9 @@ Please add it to your dependencies by running \`pnpm add tsup -D --filter="${pac
               context.workspaceRoot
             );
 
-          let relativeRoot = projectRoot
-            .replaceAll("\\", "/")
-            .replace(context.workspaceRoot.replaceAll("\\", "/"), "");
-          if (relativeRoot.startsWith("/")) {
-            relativeRoot = relativeRoot.slice(1);
-          }
+          const root = getRoot(projectRoot, context);
 
-          let relativeConfig = configFile.replaceAll(relativeRoot, "");
+          let relativeConfig = configFile.replaceAll(root, "");
           while (relativeConfig.startsWith(".")) {
             relativeConfig = relativeConfig.slice(1);
           }
@@ -92,7 +89,7 @@ Please add it to your dependencies by running \`pnpm add tsup -D --filter="${pac
             dependsOn: ["build-untyped", "^build"],
             options: {
               command: `tsup --config="${relativeConfig}"`,
-              cwd: relativeRoot
+              cwd: root
             }
           };
 
@@ -109,9 +106,9 @@ Please add it to your dependencies by running \`pnpm add tsup -D --filter="${pac
             dependsOn: ["build-base", "build-untyped", "^build"],
             options: {
               commands: [
-                `pnpm copyfiles LICENSE dist/${relativeRoot}`,
-                `pnpm copyfiles --up=2 ./${relativeRoot}/*.md ./${relativeRoot}/package.json dist/${relativeRoot}`,
-                `pnpm copyfiles --up=3 "./${relativeRoot}/dist/**/*" dist/${relativeRoot}/dist`
+                `pnpm copyfiles LICENSE dist/${root}`,
+                `pnpm copyfiles --up=2 ./${root}/*.md ./${root}/package.json dist/${root}`,
+                `pnpm copyfiles --up=3 "./${root}/dist/**/*" dist/${root}/dist`
               ]
             }
           };
@@ -125,25 +122,25 @@ Please add it to your dependencies by running \`pnpm add tsup -D --filter="${pac
             ],
             options: {
               commands: [
-                `pnpm exec rimraf dist/${relativeRoot}`,
-                `pnpm exec rimraf ${relativeRoot}/dist`
+                `pnpm exec rimraf dist/${root}`,
+                `pnpm exec rimraf ${root}/dist`
               ]
             }
           };
 
           setDefaultProjectTags(project, name);
 
-          return project?.name
-            ? {
-                projects: {
-                  [project.name]: {
-                    ...project,
-                    root: relativeRoot,
-                    targets
-                  }
-                }
-              }
-            : {};
+          return {
+            projects: {
+              [root]: defu(
+                {
+                  root,
+                  targets
+                },
+                project
+              )
+            }
+          };
         } catch (e) {
           console.error(e);
           return {};

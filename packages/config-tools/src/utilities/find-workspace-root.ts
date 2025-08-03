@@ -3,7 +3,6 @@ import { findFolderUp } from "./find-up";
 
 const rootFiles = [
   "storm-workspace.json",
-  "storm-workspace.json",
   "storm-workspace.yaml",
   "storm-workspace.yml",
   "storm-workspace.js",

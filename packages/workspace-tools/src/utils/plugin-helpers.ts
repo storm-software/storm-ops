@@ -1,14 +1,18 @@
-import { ProjectConfiguration, readJsonFile } from "@nx/devkit";
+import {
+  CreateNodesContext,
+  ProjectConfiguration,
+  readJsonFile
+} from "@nx/devkit";
 import defu from "defu";
 import { existsSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { PackageJson } from "pkg-types";
 import { getProjectTag, ProjectTagConstants } from "./project-tags";
 
-export const getProjectPlatform = (
+export function getProjectPlatform(
   project: ProjectConfiguration,
-  ignoreTags = false,
-): "node" | "neutral" | "browser" | "worker" => {
+  ignoreTags = false
+): "node" | "neutral" | "browser" | "worker" {
   const tsconfigJson = readJsonFile(join(project.root, "tsconfig.json"));
   if (!tsconfigJson) {
     throw new Error(`No tsconfig.json found in project root: ${project.root}`);
@@ -31,9 +35,7 @@ export const getProjectPlatform = (
 
     if (
       platformTag === ProjectTagConstants.Platform.WORKER ||
-      types.some(
-        (type) => type.toLowerCase() === "@cloudflare/workers-types",
-      ) ||
+      types.some(type => type.toLowerCase() === "@cloudflare/workers-types") ||
       packageJson.devDependencies?.["@cloudflare/workers-types"] ||
       packageJson.devDependencies?.["wrangler"]
     ) {
@@ -42,7 +44,7 @@ export const getProjectPlatform = (
 
     if (
       platformTag === ProjectTagConstants.Platform.NODE ||
-      types?.some((type) => type.toLowerCase() === "node") ||
+      types?.some(type => type.toLowerCase() === "node") ||
       packageJson.devDependencies?.["@types/node"]
     ) {
       return "node";
@@ -50,14 +52,14 @@ export const getProjectPlatform = (
 
     if (
       platformTag === ProjectTagConstants.Platform.BROWSER ||
-      types?.some((type) => type.toLowerCase() === "dom") ||
+      types?.some(type => type.toLowerCase() === "dom") ||
       (packageJson.dependencies &&
-        Object.keys(packageJson.dependencies).some((dependency) =>
-          dependency.includes("react"),
+        Object.keys(packageJson.dependencies).some(dependency =>
+          dependency.includes("react")
         )) ||
       (packageJson.devDependencies &&
-        Object.keys(packageJson.devDependencies).some((devDependency) =>
-          devDependency.includes("react"),
+        Object.keys(packageJson.devDependencies).some(devDependency =>
+          devDependency.includes("react")
         ))
     ) {
       return "browser";
@@ -65,19 +67,19 @@ export const getProjectPlatform = (
   }
 
   return "neutral";
-};
+}
 
-export const getProjectConfigFromProjectJsonPath = (
+export function getProjectConfigFromProjectJsonPath(
   projectJsonPath: string,
-  packageJson: PackageJson,
-): ProjectConfiguration => {
+  packageJson: PackageJson
+): ProjectConfiguration {
   return getProjectConfigFromProjectRoot(dirname(projectJsonPath), packageJson);
-};
+}
 
-export const getProjectConfigFromProjectRoot = (
+export function getProjectConfigFromProjectRoot(
   projectRoot: string,
-  packageJson: PackageJson,
-): ProjectConfiguration => {
+  packageJson: PackageJson
+): ProjectConfiguration {
   const { nx, name } = packageJson;
   const projectJson = readJsonFile(join(projectRoot, "project.json"));
 
@@ -85,14 +87,14 @@ export const getProjectConfigFromProjectRoot = (
     targets: {},
     tags: [],
     name,
-    root: projectRoot,
+    root: projectRoot
   }) as ProjectConfiguration;
-};
+}
 
-export const getProjectRoot = (
+export function getProjectRoot(
   configPath: string,
-  workspaceRoot: string,
-): string | null => {
+  workspaceRoot: string
+): string | null {
   try {
     const root = dirname(configPath);
     const projectRoot = join(workspaceRoot, root);
@@ -109,4 +111,15 @@ export const getProjectRoot = (
     console.error(error_);
     return null;
   }
-};
+}
+
+export function getRoot(
+  projectRoot: string,
+  context: CreateNodesContext
+): string {
+  return projectRoot
+    .replaceAll("\\", "/")
+    .replace(context.workspaceRoot.replaceAll("\\", "/"), "")
+    .replace(/^\//g, "")
+    .replace(/\/$/g, "");
+}

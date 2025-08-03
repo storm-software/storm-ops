@@ -3,6 +3,7 @@ import {
   CreateNodesResultV2,
   CreateNodesV2
 } from "@nx/devkit";
+import defu from "defu";
 import { existsSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { readNxJson } from "nx/src/config/nx-json.js";
@@ -12,7 +13,7 @@ import type { PackageJson as NxPackageJson } from "nx/src/utils/package-json";
 import { readTargetsFromPackageJson } from "nx/src/utils/package-json";
 import type { PackageJson } from "pkg-types";
 import { readTSConfig } from "pkg-types";
-import { getProjectPlatform } from "../../utils/plugin-helpers";
+import { getProjectPlatform, getRoot } from "../../utils/plugin-helpers";
 import {
   addProjectTag,
   isEqualProjectTag,
@@ -65,20 +66,20 @@ export const createNodesV2: CreateNodesV2<TypeScriptPluginOptions> = [
     options = { includeApps: true },
     context
   ): Promise<CreateNodesResultV2> => {
-    return await createNodesFromFiles(
+    return createNodesFromFiles(
       async (file, options = { includeApps: true }, context) => {
         try {
           const packageJson = createPackageJson(file, context.workspaceRoot);
           if (!packageJson) {
-            return [];
+            return {};
           }
 
           const tsconfig = await createTsconfig(file, context.workspaceRoot);
           if (!tsconfig) {
-            return [];
+            return {};
           }
 
-          const project = createProjectFromPackageJsonNextToProjectJson(
+          const projectConfig = createProjectFromPackageJsonNextToProjectJson(
             file,
             packageJson
           );
@@ -86,17 +87,12 @@ export const createNodesV2: CreateNodesV2<TypeScriptPluginOptions> = [
           // If the project is an application and we don't want to include apps, skip it
           if (
             options?.includeApps === false &&
-            project.projectType === "application"
+            projectConfig.projectType === "application"
           ) {
-            return [];
+            return {};
           }
 
-          let relativeRoot = project.root
-            .replaceAll("\\", "/")
-            .replace(context.workspaceRoot.replaceAll("\\", "/"), "");
-          if (relativeRoot.startsWith("/")) {
-            relativeRoot = relativeRoot.slice(1);
-          }
+          const root = getRoot(projectConfig.root, context);
 
           // const enableKnip = options?.enableKnip !== false;
           const enableMarkdownlint = options?.enableMarkdownlint !== false;
@@ -107,12 +103,12 @@ export const createNodesV2: CreateNodesV2<TypeScriptPluginOptions> = [
             readTargetsFromPackageJson(
               packageJson as NxPackageJson,
               nxJson,
-              project.root,
+              projectConfig.root,
               context.workspaceRoot
             );
 
           if (
-            join(context.workspaceRoot, project.root).startsWith(
+            join(context.workspaceRoot, projectConfig.root).startsWith(
               join(context.workspaceRoot, "tools")
             ) &&
             options?.lintInternalTools !== true
@@ -177,7 +173,7 @@ export const createNodesV2: CreateNodesV2<TypeScriptPluginOptions> = [
             }
 
             if (!targets.lint && enableEslint) {
-              let eslintConfig = checkEslintConfigAtPath(project.root);
+              let eslintConfig = checkEslintConfigAtPath(projectConfig.root);
               if (!eslintConfig) {
                 eslintConfig = checkEslintConfigAtPath(context.workspaceRoot);
               }
@@ -286,12 +282,12 @@ export const createNodesV2: CreateNodesV2<TypeScriptPluginOptions> = [
               inputs: ["typescript", "default", "^production"],
               outputs: ["{workspaceRoot}/dist/{projectRoot}"],
               options: {
-                command: `pnpm exec nx run ${project.name}:build`
+                command: `pnpm exec nx run ${projectConfig.name}:build`
               }
             };
           }
 
-          if (!targets.test && checkJestConfigAtPath(project.root)) {
+          if (!targets.test && checkJestConfigAtPath(projectConfig.root)) {
             targets.test = {
               cache: true,
               executor: "@nx/jest:jest",
@@ -324,7 +320,7 @@ export const createNodesV2: CreateNodesV2<TypeScriptPluginOptions> = [
           const isPrivate = packageJson.private ?? false;
           if (!isPrivate) {
             addProjectTag(
-              project,
+              projectConfig,
               ProjectTagConstants.Registry.TAG_ID,
               ProjectTagConstants.Registry.NPM,
               { overwrite: true }
@@ -337,14 +333,14 @@ export const createNodesV2: CreateNodesV2<TypeScriptPluginOptions> = [
             };
 
             if (
-              project.projectType === "application" ||
+              projectConfig.projectType === "application" ||
               isEqualProjectTag(
-                project,
+                projectConfig,
                 ProjectTagConstants.ProjectType.TAG_ID,
                 ProjectTagConstants.ProjectType.APPLICATION
               ) ||
               isEqualProjectTag(
-                project,
+                projectConfig,
                 ProjectTagConstants.DistStyle.TAG_ID,
                 ProjectTagConstants.DistStyle.CLEAN
               )
@@ -373,17 +369,17 @@ export const createNodesV2: CreateNodesV2<TypeScriptPluginOptions> = [
           }
 
           addProjectTag(
-            project,
+            projectConfig,
             ProjectTagConstants.Language.TAG_ID,
             ProjectTagConstants.Language.TYPESCRIPT,
             { overwrite: true }
           );
 
-          const platform = getProjectPlatform(project);
+          const platform = getProjectPlatform(projectConfig);
           switch (platform) {
             case "worker":
               addProjectTag(
-                project,
+                projectConfig,
                 ProjectTagConstants.Platform.TAG_ID,
                 ProjectTagConstants.Platform.WORKER,
                 { overwrite: true }
@@ -392,7 +388,7 @@ export const createNodesV2: CreateNodesV2<TypeScriptPluginOptions> = [
 
             case "node":
               addProjectTag(
-                project,
+                projectConfig,
                 ProjectTagConstants.Platform.TAG_ID,
                 ProjectTagConstants.Platform.NODE,
                 { overwrite: true }
@@ -401,7 +397,7 @@ export const createNodesV2: CreateNodesV2<TypeScriptPluginOptions> = [
 
             case "browser":
               addProjectTag(
-                project,
+                projectConfig,
                 ProjectTagConstants.Platform.TAG_ID,
                 ProjectTagConstants.Platform.BROWSER,
                 { overwrite: true }
@@ -410,7 +406,7 @@ export const createNodesV2: CreateNodesV2<TypeScriptPluginOptions> = [
 
             default:
               addProjectTag(
-                project,
+                projectConfig,
                 ProjectTagConstants.Platform.TAG_ID,
                 ProjectTagConstants.Platform.NEUTRAL,
                 { overwrite: true }
@@ -418,31 +414,28 @@ export const createNodesV2: CreateNodesV2<TypeScriptPluginOptions> = [
               break;
           }
 
-          setDefaultProjectTags(project, name);
+          setDefaultProjectTags(projectConfig, name);
 
-          return (
-            project?.name
-              ? {
-                  projects: {
-                    [project.name]: {
-                      ...project,
-                      root: relativeRoot,
-                      targets,
-                      release: {
-                        ...project?.release,
-                        version: {
-                          ...project?.release?.version,
-                          generator:
-                            "@storm-software/workspace-tools:release-version"
-                        }
-                      }
+          return {
+            projects: {
+              [root]: defu(
+                {
+                  root,
+                  targets,
+                  release: {
+                    version: {
+                      generator:
+                        "@storm-software/workspace-tools:release-version"
                     }
                   }
-                }
-              : {}
-          ) as CreateNodesResultV2;
+                },
+                projectConfig
+              )
+            }
+          };
         } catch (e) {
           console.error(e);
+
           return {};
         }
       },

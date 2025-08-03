@@ -4,6 +4,7 @@ import {
   CreateNodesV2,
   readJsonFile
 } from "@nx/devkit";
+import { defu } from "defu";
 import { existsSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { readNxJson } from "nx/src/config/nx-json.js";
@@ -12,6 +13,7 @@ import {
   readTargetsFromPackageJson,
   type PackageJson
 } from "nx/src/utils/package-json";
+import { getRoot } from "../../utils/plugin-helpers";
 import { addProjectTag, ProjectTagConstants } from "../../utils/project-tags";
 
 export const name = "storm-software/typescript/untyped";
@@ -56,7 +58,7 @@ Please add it to your dependencies by running "pnpm add untyped -D --filter="${p
             );
           }
 
-          const project = createProjectFromPackageJsonNextToProjectJson(
+          const projectConfig = createProjectFromPackageJsonNextToProjectJson(
             join(projectRoot, "project.json"),
             packageJson
           );
@@ -66,18 +68,13 @@ Please add it to your dependencies by running "pnpm add untyped -D --filter="${p
             readTargetsFromPackageJson(
               packageJson as PackageJson,
               nxJson,
-              project.root,
+              projectConfig.root,
               context.workspaceRoot
             );
 
-          let relativeRoot = projectRoot
-            .replaceAll("\\", "/")
-            .replace(context.workspaceRoot.replaceAll("\\", "/"), "");
-          if (relativeRoot.startsWith("/")) {
-            relativeRoot = relativeRoot.slice(1);
-          }
+          const root = getRoot(projectRoot, context);
 
-          let relativeConfig = configFile.replaceAll(relativeRoot, "");
+          let relativeConfig = configFile.replaceAll(root, "");
           while (relativeConfig.startsWith(".")) {
             relativeConfig = relativeConfig.slice(1);
           }
@@ -108,21 +105,22 @@ Please add it to your dependencies by running "pnpm add untyped -D --filter="${p
             }
           };
 
-          addProjectTag(project, ProjectTagConstants.Plugin.TAG_ID, name);
+          addProjectTag(projectConfig, ProjectTagConstants.Plugin.TAG_ID, name);
 
-          return project?.name
-            ? {
-                projects: {
-                  [project.name]: {
-                    ...project,
-                    root: relativeRoot,
-                    targets
-                  }
-                }
-              }
-            : {};
+          return {
+            projects: {
+              [root]: defu(
+                {
+                  root,
+                  targets
+                },
+                projectConfig
+              )
+            }
+          };
         } catch (e) {
           console.error(e);
+
           return {};
         }
       },
