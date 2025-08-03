@@ -2,6 +2,15 @@
 
 # Changelog for Storm Ops - Untyped
 
+## [0.17.61](https://github.com/storm-software/storm-ops/releases/tag/untyped%400.17.61) (2025-08-03)
+
+### Miscellaneous
+
+- **monorepo:** Added `bentocache` vocab to dictionary
+  ([0ddb182dd](https://github.com/storm-software/storm-ops/commit/0ddb182dd))
+- **monorepo:** Regenerate README markdown files
+  ([cd88b3e0d](https://github.com/storm-software/storm-ops/commit/cd88b3e0d))
+
 ## [0.17.60](https://github.com/storm-software/storm-ops/releases/tag/untyped%400.17.60) (2025-08-03)
 
 ### Miscellaneous

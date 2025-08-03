@@ -2,6 +2,15 @@
 
 # Changelog for Storm Ops - CSpell
 
+## [0.35.31](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.35.31) (2025-08-03)
+
+### Miscellaneous
+
+- **monorepo:** Added `bentocache` vocab to dictionary
+  ([0ddb182dd](https://github.com/storm-software/storm-ops/commit/0ddb182dd))
+- **monorepo:** Regenerate README markdown files
+  ([cd88b3e0d](https://github.com/storm-software/storm-ops/commit/cd88b3e0d))
+
 ## [0.35.30](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.35.30) (2025-08-03)
 
 ### Miscellaneous

@@ -2,6 +2,20 @@
 
 # Changelog for Storm Ops - Git Tools
 
+## [2.113.34](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.113.34) (2025-08-03)
+
+### Miscellaneous
+
+- **monorepo:** Added `bentocache` vocab to dictionary
+  ([0ddb182dd](https://github.com/storm-software/storm-ops/commit/0ddb182dd))
+- **monorepo:** Regenerate README markdown files
+  ([cd88b3e0d](https://github.com/storm-software/storm-ops/commit/cd88b3e0d))
+
+### Updated Dependencies
+
+- Updated config-tools to 1.178.3
+- Updated config to 1.126.7
+
 ## [2.113.33](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.113.33) (2025-08-03)
 
 ### Miscellaneous

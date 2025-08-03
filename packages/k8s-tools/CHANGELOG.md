@@ -2,6 +2,21 @@
 
 # Changelog for Storm Ops - K8s Tools
 
+## [0.33.69](https://github.com/storm-software/storm-ops/releases/tag/k8s-tools%400.33.69) (2025-08-03)
+
+### Miscellaneous
+
+- **monorepo:** Added `bentocache` vocab to dictionary
+  ([0ddb182dd](https://github.com/storm-software/storm-ops/commit/0ddb182dd))
+- **monorepo:** Regenerate README markdown files
+  ([cd88b3e0d](https://github.com/storm-software/storm-ops/commit/cd88b3e0d))
+
+### Updated Dependencies
+
+- Updated workspace-tools to 1.278.8
+- Updated config-tools to 1.178.3
+- Updated config to 1.126.7
+
 ## [0.33.68](https://github.com/storm-software/storm-ops/releases/tag/k8s-tools%400.33.68) (2025-08-03)
 
 ### Miscellaneous

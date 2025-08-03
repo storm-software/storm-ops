@@ -2,6 +2,15 @@
 
 # Changelog for Storm Ops - Storm Workspace
 
+## [0.13.61](https://github.com/storm-software/storm-ops/releases/tag/storm-workspace%400.13.61) (2025-08-03)
+
+### Miscellaneous
+
+- **monorepo:** Added `bentocache` vocab to dictionary
+  ([0ddb182dd](https://github.com/storm-software/storm-ops/commit/0ddb182dd))
+- **monorepo:** Regenerate README markdown files
+  ([cd88b3e0d](https://github.com/storm-software/storm-ops/commit/cd88b3e0d))
+
 ## [0.13.60](https://github.com/storm-software/storm-ops/releases/tag/storm-workspace%400.13.60) (2025-08-03)
 
 ### Miscellaneous

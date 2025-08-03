@@ -2,6 +2,20 @@
 
 # Changelog for Storm Ops - ESLint
 
+## [0.160.48](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.160.48) (2025-08-03)
+
+### Miscellaneous
+
+- **monorepo:** Added `bentocache` vocab to dictionary
+  ([0ddb182dd](https://github.com/storm-software/storm-ops/commit/0ddb182dd))
+- **monorepo:** Regenerate README markdown files
+  ([cd88b3e0d](https://github.com/storm-software/storm-ops/commit/cd88b3e0d))
+
+### Updated Dependencies
+
+- Updated config-tools to 1.178.3
+- Updated config to 1.126.7
+
 ## [0.160.47](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.160.47) (2025-08-03)
 
 ### Miscellaneous

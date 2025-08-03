@@ -2,6 +2,15 @@
 
 # Changelog for Storm Ops - Prettier
 
+## [0.51.70](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.51.70) (2025-08-03)
+
+### Miscellaneous
+
+- **monorepo:** Added `bentocache` vocab to dictionary
+  ([0ddb182dd](https://github.com/storm-software/storm-ops/commit/0ddb182dd))
+- **monorepo:** Regenerate README markdown files
+  ([cd88b3e0d](https://github.com/storm-software/storm-ops/commit/cd88b3e0d))
+
 ## [0.51.69](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.51.69) (2025-08-03)
 
 ### Miscellaneous

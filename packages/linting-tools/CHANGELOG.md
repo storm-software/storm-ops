@@ -2,6 +2,15 @@
 
 # Changelog for Storm Ops - Linting Tools
 
+## [1.126.5](https://github.com/storm-software/storm-ops/releases/tag/linting-tools%401.126.5) (2025-08-03)
+
+### Miscellaneous
+
+- **monorepo:** Added `bentocache` vocab to dictionary
+  ([0ddb182dd](https://github.com/storm-software/storm-ops/commit/0ddb182dd))
+- **monorepo:** Regenerate README markdown files
+  ([cd88b3e0d](https://github.com/storm-software/storm-ops/commit/cd88b3e0d))
+
 ## [1.126.4](https://github.com/storm-software/storm-ops/releases/tag/linting-tools%401.126.4) (2025-08-03)
 
 ### Miscellaneous

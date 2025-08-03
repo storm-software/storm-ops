@@ -2,6 +2,15 @@
 
 # Changelog for Storm Ops - Storm Config
 
+## [0.19.61](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.19.61) (2025-08-03)
+
+### Miscellaneous
+
+- **monorepo:** Added `bentocache` vocab to dictionary
+  ([0ddb182dd](https://github.com/storm-software/storm-ops/commit/0ddb182dd))
+- **monorepo:** Regenerate README markdown files
+  ([cd88b3e0d](https://github.com/storm-software/storm-ops/commit/cd88b3e0d))
+
 ## [0.19.60](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.19.60) (2025-08-03)
 
 ### Miscellaneous

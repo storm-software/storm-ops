@@ -2,6 +2,21 @@
 
 # Changelog for Storm Ops - Workspace Tools
 
+## [1.278.8](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.278.8) (2025-08-03)
+
+### Miscellaneous
+
+- **monorepo:** Added `bentocache` vocab to dictionary
+  ([0ddb182dd](https://github.com/storm-software/storm-ops/commit/0ddb182dd))
+- **monorepo:** Regenerate README markdown files
+  ([cd88b3e0d](https://github.com/storm-software/storm-ops/commit/cd88b3e0d))
+
+### Updated Dependencies
+
+- Updated prettier to 0.51.70
+- Updated esbuild to 0.45.58
+- Updated unbuild to 0.49.69
+
 ## [1.278.7](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.278.7) (2025-08-03)
 
 ### Miscellaneous

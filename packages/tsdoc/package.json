@@ -1,6 +1,6 @@
 {
   "name": "@storm-software/tsdoc",
-  "version": "0.6.26",
+  "version": "0.6.27",
   "type": "module",
   "description": "This package contains shared TSDoc configurations used in Storm Software projects.",
   "repository": {

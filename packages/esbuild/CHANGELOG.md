@@ -2,6 +2,21 @@
 
 # Changelog for Storm Ops - Esbuild
 
+## [0.45.58](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.45.58) (2025-08-03)
+
+### Miscellaneous
+
+- **monorepo:** Added `bentocache` vocab to dictionary
+  ([0ddb182dd](https://github.com/storm-software/storm-ops/commit/0ddb182dd))
+- **monorepo:** Regenerate README markdown files
+  ([cd88b3e0d](https://github.com/storm-software/storm-ops/commit/cd88b3e0d))
+
+### Updated Dependencies
+
+- Updated config-tools to 1.178.3
+- Updated build-tools to 0.151.44
+- Updated config to 1.126.7
+
 ## [0.45.57](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.45.57) (2025-08-03)
 
 ### Miscellaneous

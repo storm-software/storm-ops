@@ -7616,8 +7616,8 @@ packages:
     resolution: {integrity: sha512-oKnbhFyRIXpUuez8iBMmyEa4nbj4IOQyuhc/wy9kY7/WVPcwIO9VA668Pu8RkO7+0G76SLROeyw9CpQ061i4mA==}
     engines: {node: '>=10'}
 
-  chalk@5.4.1:
-    resolution: {integrity: sha512-zgVZuo2WcZgfUEmsn6eO3kINexW8RAE4maiQ8QNs8CtpPCSyMiYsULR3HQYkm3w8FIA3SberyMJMSldGsW+U3w==}
+  chalk@5.5.0:
+    resolution: {integrity: sha512-1tm8DTaJhPBG3bIkVeZt1iZM9GfSX2lzOeDVZH9R9ffRHpmHvxZ/QhgQH/aDTkswQVt+YHdXAdS/In/30OjCbg==}
     engines: {node: ^12.17.0 || ^14.13 || >=16.0.0}
 
   char-regex@1.0.2:
@@ -17223,7 +17223,7 @@ snapshots:
   '@commitlint/types@19.8.1':
     dependencies:
       '@types/conventional-commits-parser': 5.0.1
-      chalk: 5.4.1
+      chalk: 5.5.0
 
   '@cspell/cspell-bundled-dicts@8.19.4':
     dependencies:
@@ -22418,7 +22418,7 @@ snapshots:
     dependencies:
       ansi-align: 3.0.1
       camelcase: 7.0.1
-      chalk: 5.4.1
+      chalk: 5.5.0
       cli-boxes: 3.0.0
       string-width: 5.1.2
       type-fest: 2.19.0
@@ -22598,14 +22598,14 @@ snapshots:
 
   chalk-template@1.1.0:
     dependencies:
-      chalk: 5.4.1
+      chalk: 5.5.0
 
   chalk@4.1.2:
     dependencies:
       ansi-styles: 4.3.0
       supports-color: 7.2.0
 
-  chalk@5.4.1: {}
+  chalk@5.5.0: {}
 
   char-regex@1.0.2: {}
 
@@ -22628,7 +22628,7 @@ snapshots:
   check-dependency-version-consistency@4.1.0:
     dependencies:
       '@types/js-yaml': 4.0.9
-      chalk: 5.4.1
+      chalk: 5.5.0
       commander: 10.0.1
       edit-json-file: 1.8.1
       globby: 13.2.2
@@ -23068,7 +23068,7 @@ snapshots:
       '@cspell/cspell-types': 8.19.4
       '@cspell/dynamic-import': 8.19.4
       '@cspell/url': 8.19.4
-      chalk: 5.4.1
+      chalk: 5.5.0
       chalk-template: 1.1.0
       commander: 13.1.0
       cspell-dictionary: 8.19.4
@@ -31883,7 +31883,7 @@ snapshots:
   update-notifier@6.0.2:
     dependencies:
       boxen: 7.1.1
-      chalk: 5.4.1
+      chalk: 5.5.0
       configstore: 6.0.0
       has-yarn: 3.0.0
       import-lazy: 4.0.0

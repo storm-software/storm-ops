@@ -2,6 +2,15 @@
 
 # Changelog for Storm Ops - Build Tools
 
+## [0.151.44](https://github.com/storm-software/storm-ops/releases/tag/build-tools%400.151.44) (2025-08-03)
+
+### Miscellaneous
+
+- **monorepo:** Added `bentocache` vocab to dictionary
+  ([0ddb182dd](https://github.com/storm-software/storm-ops/commit/0ddb182dd))
+- **monorepo:** Regenerate README markdown files
+  ([cd88b3e0d](https://github.com/storm-software/storm-ops/commit/cd88b3e0d))
+
 ## [0.151.43](https://github.com/storm-software/storm-ops/releases/tag/build-tools%400.151.43) (2025-08-03)
 
 ### Miscellaneous
