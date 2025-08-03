@@ -319,7 +319,7 @@ export const RELEASE = {
 } as const;
 
 /**
- * Merges the named inputs with the current inputs, ensuring no duplicates.
+ * Looks up the actual input string using the provided {@link namedInputs}, merges with the {@link currentInputs}, ensures no duplicates and sorts the result alphabetically.
  *
  * @param namedInputs - The named inputs to merge.
  * @param currentInputs - The current inputs to merge with.
@@ -336,5 +336,10 @@ export function withNamedInputs(
         ret.push(input);
       }
       return ret;
-    }, [] as string[]);
+    }, [] as string[])
+    .sort((a, b) => {
+      if (a < b) return -1;
+      if (a > b) return 1;
+      return 0;
+    });
 }
