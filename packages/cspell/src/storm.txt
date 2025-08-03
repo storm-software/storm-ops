@@ -342,6 +342,8 @@ luxon
 generatorrc
 contentlayer
 oslojs
+bento
+bentocache
 
 # Acronyms
 dpdm
