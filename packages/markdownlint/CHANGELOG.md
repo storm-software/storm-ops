@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Markdownlint
 
+## [0.24.58](https://github.com/storm-software/storm-ops/releases/tag/markdownlint%400.24.58) (2025-08-03)
+
+### Miscellaneous
+
+- **monorepo:** Updates from git lifecycle hooks
+  ([8662866d8](https://github.com/storm-software/storm-ops/commit/8662866d8))
+
 ## [0.24.57](https://github.com/storm-software/storm-ops/releases/tag/markdownlint%400.24.57) (2025-08-03)
 
 ### Miscellaneous

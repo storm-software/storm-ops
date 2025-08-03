@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Config
 
+## [1.126.4](https://github.com/storm-software/storm-ops/releases/tag/config%401.126.4) (2025-08-03)
+
+### Miscellaneous
+
+- **monorepo:** Updates from git lifecycle hooks
+  ([8662866d8](https://github.com/storm-software/storm-ops/commit/8662866d8))
+
 ## [1.126.3](https://github.com/storm-software/storm-ops/releases/tag/config%401.126.3) (2025-08-03)
 
 ### Miscellaneous

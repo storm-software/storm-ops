@@ -2,6 +2,22 @@
 
 # Changelog for Storm Ops - Config Tools
 
+## [1.178.0](https://github.com/storm-software/storm-ops/releases/tag/config-tools%401.178.0) (2025-08-03)
+
+### Features
+
+- **config-tools:** Added the `getGradient` utility function
+  ([b295ad56f](https://github.com/storm-software/storm-ops/commit/b295ad56f))
+
+### Miscellaneous
+
+- **monorepo:** Updates from git lifecycle hooks
+  ([8662866d8](https://github.com/storm-software/storm-ops/commit/8662866d8))
+
+### Updated Dependencies
+
+- Updated config to 1.126.4
+
 ## [1.177.3](https://github.com/storm-software/storm-ops/releases/tag/config-tools%401.177.3) (2025-08-03)
 
 ### Miscellaneous

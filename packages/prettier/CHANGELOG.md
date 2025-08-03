@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Prettier
 
+## [0.51.67](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.51.67) (2025-08-03)
+
+### Miscellaneous
+
+- **monorepo:** Updates from git lifecycle hooks
+  ([8662866d8](https://github.com/storm-software/storm-ops/commit/8662866d8))
+
 ## [0.51.66](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.51.66) (2025-08-03)
 
 ### Miscellaneous

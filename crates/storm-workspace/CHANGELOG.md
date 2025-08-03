@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Storm Workspace
 
+## [0.13.58](https://github.com/storm-software/storm-ops/releases/tag/storm-workspace%400.13.58) (2025-08-03)
+
+### Miscellaneous
+
+- **monorepo:** Updates from git lifecycle hooks
+  ([8662866d8](https://github.com/storm-software/storm-ops/commit/8662866d8))
+
 ## [0.13.57](https://github.com/storm-software/storm-ops/releases/tag/storm-workspace%400.13.57) (2025-08-03)
 
 ### Miscellaneous

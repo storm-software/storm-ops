@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Git Tools
 
+## [2.113.31](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.113.31) (2025-08-03)
+
+### Miscellaneous
+
+- **monorepo:** Updates from git lifecycle hooks
+  ([8662866d8](https://github.com/storm-software/storm-ops/commit/8662866d8))
+
+### Updated Dependencies
+
+- Updated config-tools to 1.178.0
+- Updated config to 1.126.4
+
 ## [2.113.30](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.113.30) (2025-08-03)
 
 ### Miscellaneous

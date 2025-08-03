@@ -1,6 +1,6 @@
 {
   "name": "@storm-software/pulumi-tools",
-  "version": "0.14.14",
+  "version": "0.14.15",
   "type": "commonjs",
   "description": "Tools for managing Pulumi infrastructure within a Nx workspace.",
   "repository": {
@@ -174,8 +174,8 @@
     "@pulumi/aws": "^6.83.0",
     "@pulumi/awsx": "^2.22.0",
     "@pulumi/pulumi": "^3.187.0",
-    "@storm-software/config": "workspace:*",
-    "@storm-software/config-tools": "workspace:*",
+    "@storm-software/config": "1.126.4",
+    "@storm-software/config-tools": "1.178.0",
     "defu": "catalog:",
     "shelljs": "^0.8.5"
   },

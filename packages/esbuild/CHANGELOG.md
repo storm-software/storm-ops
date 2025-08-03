@@ -2,6 +2,19 @@
 
 # Changelog for Storm Ops - Esbuild
 
+## [0.45.55](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.45.55) (2025-08-03)
+
+### Miscellaneous
+
+- **monorepo:** Updates from git lifecycle hooks
+  ([8662866d8](https://github.com/storm-software/storm-ops/commit/8662866d8))
+
+### Updated Dependencies
+
+- Updated config-tools to 1.178.0
+- Updated build-tools to 0.151.41
+- Updated config to 1.126.4
+
 ## [0.45.54](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.45.54) (2025-08-03)
 
 ### Miscellaneous

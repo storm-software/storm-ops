@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Tsconfig
 
+## [0.41.58](https://github.com/storm-software/storm-ops/releases/tag/tsconfig%400.41.58) (2025-08-03)
+
+### Miscellaneous
+
+- **monorepo:** Updates from git lifecycle hooks
+  ([8662866d8](https://github.com/storm-software/storm-ops/commit/8662866d8))
+
 ## [0.41.57](https://github.com/storm-software/storm-ops/releases/tag/tsconfig%400.41.57) (2025-08-03)
 
 ### Miscellaneous
