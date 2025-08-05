@@ -77,46 +77,74 @@
         "default": "./dist/jest/setup.js"
       }
     },
-    "./jest/config/package": {
+    "./jest/declare-package": {
       "import": {
-        "types": "./dist/jest/config/package.d.ts",
-        "default": "./dist/jest/config/package.js"
+        "types": "./dist/jest/declare-package.d.ts",
+        "default": "./dist/jest/declare-package.js"
       },
       "require": {
-        "types": "./dist/jest/config/package.d.cts",
-        "default": "./dist/jest/config/package.cjs"
+        "types": "./dist/jest/declare-package.d.cts",
+        "default": "./dist/jest/declare-package.cjs"
       },
       "default": {
-        "types": "./dist/jest/config/package.d.ts",
-        "default": "./dist/jest/config/package.js"
+        "types": "./dist/jest/declare-package.d.ts",
+        "default": "./dist/jest/declare-package.js"
       }
     },
-    "./jest/config/preset": {
+    "./jest/declare-workspace": {
       "import": {
-        "types": "./dist/jest/config/preset.d.ts",
-        "default": "./dist/jest/config/preset.js"
+        "types": "./dist/jest/declare-workspace.d.ts",
+        "default": "./dist/jest/declare-workspace.js"
       },
       "require": {
-        "types": "./dist/jest/config/preset.d.cts",
-        "default": "./dist/jest/config/preset.cjs"
+        "types": "./dist/jest/declare-workspace.d.cts",
+        "default": "./dist/jest/declare-workspace.cjs"
       },
       "default": {
-        "types": "./dist/jest/config/preset.d.ts",
-        "default": "./dist/jest/config/preset.js"
+        "types": "./dist/jest/declare-workspace.d.ts",
+        "default": "./dist/jest/declare-workspace.js"
       }
     },
-    "./jest/config/workspace": {
+    "./jest/declare-preset": {
       "import": {
-        "types": "./dist/jest/config/workspace.d.ts",
-        "default": "./dist/jest/config/workspace.js"
+        "types": "./dist/jest/declare-preset.d.ts",
+        "default": "./dist/jest/declare-preset.js"
       },
       "require": {
-        "types": "./dist/jest/config/workspace.d.cts",
-        "default": "./dist/jest/config/workspace.cjs"
+        "types": "./dist/jest/declare-preset.d.cts",
+        "default": "./dist/jest/declare-preset.cjs"
       },
       "default": {
-        "types": "./dist/jest/config/workspace.d.ts",
-        "default": "./dist/jest/config/workspace.js"
+        "types": "./dist/jest/declare-preset.d.ts",
+        "default": "./dist/jest/declare-preset.js"
+      }
+    },
+    "./jest/preset": {
+      "import": {
+        "types": "./dist/jest/preset/index.d.ts",
+        "default": "./dist/jest/preset/index.js"
+      },
+      "require": {
+        "types": "./dist/jest/preset/index.d.cts",
+        "default": "./dist/jest/preset/index.cjs"
+      },
+      "default": {
+        "types": "./dist/jest/preset/index.d.ts",
+        "default": "./dist/jest/preset/index.js"
+      }
+    },
+    "./jest/preset/jest-preset": {
+      "import": {
+        "types": "./dist/jest/preset/jest-preset.d.ts",
+        "default": "./dist/jest/preset/jest-preset.js"
+      },
+      "require": {
+        "types": "./dist/jest/preset/jest-preset.d.cts",
+        "default": "./dist/jest/preset/jest-preset.cjs"
+      },
+      "default": {
+        "types": "./dist/jest/preset/jest-preset.d.ts",
+        "default": "./dist/jest/preset/jest-preset.js"
       }
     }
   },
@@ -135,6 +163,9 @@
   "peerDependencies": {
     "@nx/jest": "catalog:",
     "jest": "catalog:"
+  },
+  "dependencies": {
+    "defu": "catalog:"
   },
   "devDependencies": {
     "@nx/jest": "catalog:",

@@ -4,7 +4,7 @@ export default defineConfig([
   {
     name: "testing-tools",
     target: "node22",
-    entryPoints: ["./src/*.ts", "./src/jest/*.ts", "./src/jest/config/*.ts"],
+    entryPoints: ["./src/*.ts", "./src/jest/*.ts", "./src/jest/preset/*.ts"],
     format: ["cjs", "esm"],
     outDir: "dist/src",
     platform: "node",
