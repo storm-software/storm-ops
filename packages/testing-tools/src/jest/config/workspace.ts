@@ -38,7 +38,7 @@ export default async () => ({
     "\\.spec\\.ts$",
     "\\.test\\.ts$",
     "<rootDir>/dist",
-    "<rootDir>/test",
+    "<rootDir>/tests",
     "<rootDir>/__generated__",
     "<rootDir>/node_modules"
   ],
@@ -55,7 +55,7 @@ export default async () => ({
    */
   coverageReporters: ["lcov", "json"],
 
-  setupFiles: ["@storm-software/testing-tools/jest/setup"],
+  setupFiles: ["./node_modules/@storm-software/testing-tools/jest/setup"],
 
   moduleNameMapper: {
     "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$":
