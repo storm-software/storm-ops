@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Testing Tools
 
+## [1.112.0](https://github.com/storm-software/storm-ops/releases/tag/testing-tools%401.112.0) (2025-08-05)
+
+### Features
+
+- **testing-tools:** Reorganized package and added compiled source
+  ([5943f511f](https://github.com/storm-software/storm-ops/commit/5943f511f))
+
 ## [1.111.17](https://github.com/storm-software/storm-ops/releases/tag/testing-tools%401.111.17) (2025-08-03)
 
 ### Miscellaneous

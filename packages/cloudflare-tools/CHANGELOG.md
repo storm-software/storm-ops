@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Cloudflare Tools
 
+## [0.63.67](https://github.com/storm-software/storm-ops/releases/tag/cloudflare-tools%400.63.67) (2025-08-05)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace package links
+  ([8645cc15f](https://github.com/storm-software/storm-ops/commit/8645cc15f))
+
 ## [0.63.66](https://github.com/storm-software/storm-ops/releases/tag/cloudflare-tools%400.63.66) (2025-08-03)
 
 ### Miscellaneous
