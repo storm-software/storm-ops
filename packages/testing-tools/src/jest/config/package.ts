@@ -20,7 +20,7 @@ export function getJestConfig(
     displayName: displayName
       ? displayName
       : projectDir.replaceAll("\\", "-").replaceAll("/", "-"),
-    preset: "@storm-software/testing-tools/jest/preset",
+    preset: "@storm-software/testing-tools/jest/config/preset",
     testEnvironment: isNode ? "node" : "jsdom",
     transform: {
       "^.+\\.[tj]s$": ["ts-jest", { tsconfig: "<rootDir>/tsconfig.spec.json" }]
