@@ -237,6 +237,20 @@ export const createNodesV2: CreateNodesV2<TypeScriptPluginOptions> = [
             }
           };
 
+          targets["type-check"] ??= {
+            cache: true,
+            inputs: ["typescript", "^production"],
+            outputs: ["{workspaceRoot}/dist/{projectRoot}"],
+            executor: "nx:run-commands",
+            dependsOn: ["^type-check", "^build"],
+            options: {
+              command: `pnpm exec tsc --noEmit --pretty --project ${join(
+                projectConfig.root,
+                "tsconfig.json"
+              )}`
+            }
+          };
+
           targets.clean ??= {
             cache: true,
             executor: "nx:run-commands",

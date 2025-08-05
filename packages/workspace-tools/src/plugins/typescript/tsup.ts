@@ -16,7 +16,9 @@ import { setDefaultProjectTags } from "../../utils/project-tags";
 
 export const name = "storm-software/typescript/tsup";
 
-export type TsupPluginOptions = object;
+export type TsupPluginOptions = {
+  useRootDist?: boolean;
+};
 
 export const createNodesV2: CreateNodesV2<TsupPluginOptions> = [
   "**/tsup.config.ts",
@@ -77,7 +79,7 @@ Please add it to your dependencies by running \`pnpm add tsup -D --filter="${pac
             relativeConfig = relativeConfig.slice(1);
           }
 
-          targets["build-base"] ??= {
+          targets[options?.useRootDist !== false ? "build-base" : "build"] = {
             cache: true,
             inputs: [
               `{workspaceRoot}/${configFile}`,
@@ -86,32 +88,34 @@ Please add it to your dependencies by running \`pnpm add tsup -D --filter="${pac
             ],
             outputs: ["{projectRoot}/dist"],
             executor: "nx:run-commands",
-            dependsOn: ["build-untyped", "^build"],
+            dependsOn: ["build-untyped", "type-check", "^build"],
             options: {
               command: `tsup --config="${relativeConfig}"`,
               cwd: root
             }
           };
 
-          targets.build ??= {
-            cache: true,
-            inputs: [
-              "{workspaceRoot}/LICENSE",
-              "{projectRoot}/dist",
-              "{projectRoot}/*.md",
-              "{projectRoot}/package.json"
-            ],
-            outputs: ["{workspaceRoot}/dist/{projectRoot}"],
-            executor: "nx:run-commands",
-            dependsOn: ["build-base", "build-untyped", "^build"],
-            options: {
-              commands: [
-                `pnpm copyfiles LICENSE dist/${root}`,
-                `pnpm copyfiles --up=2 ./${root}/*.md ./${root}/package.json dist/${root}`,
-                `pnpm copyfiles --up=3 "./${root}/dist/**/*" dist/${root}/dist`
-              ]
-            }
-          };
+          if (options?.useRootDist !== false) {
+            targets.build = {
+              cache: true,
+              inputs: [
+                "{workspaceRoot}/LICENSE",
+                "{projectRoot}/dist",
+                "{projectRoot}/*.md",
+                "{projectRoot}/package.json"
+              ],
+              outputs: ["{workspaceRoot}/dist/{projectRoot}"],
+              executor: "nx:run-commands",
+              dependsOn: ["build-base", "build-untyped", "^build"],
+              options: {
+                commands: [
+                  `pnpm copyfiles LICENSE dist/${root}`,
+                  `pnpm copyfiles --up=2 ./${root}/*.md ./${root}/package.json dist/${root}`,
+                  `pnpm copyfiles --up=3 "./${root}/dist/**/*" dist/${root}/dist`
+                ]
+              }
+            };
+          }
 
           targets.clean = {
             executor: "nx:run-commands",

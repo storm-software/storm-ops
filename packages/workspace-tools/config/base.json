@@ -61,7 +61,6 @@
       "!{projectRoot}/tsconfig.spec.json",
       "!{projectRoot}/src/test-setup.[jt]s",
       "!{projectRoot}/test-setup.[jt]s",
-      "!{projectRoot}/tsconfig.spec.json",
       "!{projectRoot}/.eslintignore",
       "!{projectRoot}/.eslintrc.json",
       "!{projectRoot}/.eslintrc.cjs",
@@ -82,13 +81,16 @@
       "!{projectRoot}/e2e/**/*",
       "!{projectRoot}/tests/**/*",
       "!{projectRoot}/testing/**/*",
-      "!{projectRoot}/**/?(*.)+(spec|test).[jt]s?(x)?(.snap)",
-      "!{projectRoot}/tsconfig.spec.json"
+      "!{projectRoot}/**/?(*.)+(spec|test).[jt]s?(x)?(.snap)"
     ],
     "testing": [
       "sharedGlobals",
       "{workspaceRoot}/jest.config.ts",
+      "{workspaceRoot}/jest.config.mts",
+      "{workspaceRoot}/jest.config.cts",
       "{workspaceRoot}/jest.preset.js",
+      "{workspaceRoot}/jest.preset.mjs",
+      "{workspaceRoot}/jest.preset.cjs",
       "{workspaceRoot}/benches/**/*",
       "{workspaceRoot}/e2e/**/*",
       "{workspaceRoot}/tests/**/*",
@@ -98,23 +100,16 @@
       "{projectRoot}/.env",
       "{projectRoot}/.env.local",
       "{projectRoot}/jest.config.ts",
+      "{projectRoot}/jest.config.mts",
+      "{projectRoot}/jest.config.cts",
       "{projectRoot}/tsconfig.spec.json",
       "{projectRoot}/src/test-setup.[jt]s",
       "{projectRoot}/test-setup.[jt]s",
-      "{projectRoot}/tsconfig.spec.json",
-      "{workspaceRoot}/jest.config.ts",
-      "{workspaceRoot}/jest.preset.js",
-      "{workspaceRoot}/benches/**/*",
-      "{workspaceRoot}/e2e/**/*",
-      "{workspaceRoot}/tests/**/*",
-      "{workspaceRoot}/testing/**/*",
-      "{workspaceRoot}/coverage/**/*",
       "{projectRoot}/benches/**/*",
       "{projectRoot}/e2e/**/*",
       "{projectRoot}/tests/**/*",
       "{projectRoot}/testing/**/*",
-      "{projectRoot}/**/?(*.)+(spec|test).[jt]s?(x)?(.snap)",
-      "{projectRoot}/tsconfig.spec.json"
+      "{projectRoot}/**/?(*.)+(spec|test).[jt]s?(x)?(.snap)"
     ],
     "linting": [
       "sharedGlobals",
@@ -188,7 +183,6 @@
       "{projectRoot}/contentlayer.config.ts",
       "{projectRoot}/.storybook/**/*",
       "{projectRoot}/tsconfig.storybook.json",
-      "{projectRoot}/README.md",
       "{projectRoot}/docs/**/*",
       "{projectRoot}/**/*.stories.@(js|jsx|ts|tsx|mdx)",
       "!{projectRoot}/benches/**/*",
@@ -226,9 +220,6 @@
       "{projectRoot}/src/**/*.yaml",
       "{projectRoot}/src/**/*.yml",
       "{projectRoot}/src/**/*.toml",
-      {
-        "runtime": "node -p '`${process.platform}_${process.arch}`'"
-      },
       "!{projectRoot}/README.md",
       "!{projectRoot}/docs/**/*",
       "!{projectRoot}/benches/**/*",
@@ -331,8 +322,7 @@
   "plugins": [
     "@storm-software/workspace-tools/plugins/typescript",
     "@storm-software/workspace-tools/plugins/typescript/tsup",
-    "@storm-software/workspace-tools/plugins/typescript/untyped",
-    "@storm-software/workspace-tools/plugins/rust"
+    "@storm-software/workspace-tools/plugins/typescript/untyped"
   ],
   "parallel": 3,
   "defaultBase": "main",
