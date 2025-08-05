@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Testing Tools
 
+## [1.112.2](https://github.com/storm-software/storm-ops/releases/tag/testing-tools%401.112.2) (2025-08-05)
+
+### Bug Fixes
+
+- **testing-tools:** Resolved issue with invalid prefix path
+  ([7e0de0558](https://github.com/storm-software/storm-ops/commit/7e0de0558))
+
+### Miscellaneous
+
+- **monorepo:** Updated workspace package links
+  ([ace2eb32c](https://github.com/storm-software/storm-ops/commit/ace2eb32c))
+
 ## [1.112.1](https://github.com/storm-software/storm-ops/releases/tag/testing-tools%401.112.1) (2025-08-05)
 
 ### Bug Fixes
