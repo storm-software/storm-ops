@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Tsdoc
 
+## [0.6.29](https://github.com/storm-software/storm-ops/releases/tag/tsdoc%400.6.29) (2025-08-05)
+
+### Miscellaneous
+
+- **monorepo:** Update package dependency links
+  ([9a2b632e4](https://github.com/storm-software/storm-ops/commit/9a2b632e4))
+
 ## [0.6.28](https://github.com/storm-software/storm-ops/releases/tag/tsdoc%400.6.28) (2025-08-05)
 
 ### Miscellaneous

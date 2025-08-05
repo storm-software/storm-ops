@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Create Storm Workspace
 
+## [1.91.62](https://github.com/storm-software/storm-ops/releases/tag/create-storm-workspace%401.91.62) (2025-08-05)
+
+### Miscellaneous
+
+- **monorepo:** Update package dependency links
+  ([9a2b632e4](https://github.com/storm-software/storm-ops/commit/9a2b632e4))
+
 ## [1.91.61](https://github.com/storm-software/storm-ops/releases/tag/create-storm-workspace%401.91.61) (2025-08-05)
 
 ### Miscellaneous

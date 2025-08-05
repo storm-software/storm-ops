@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Config Tools
 
+## [1.178.5](https://github.com/storm-software/storm-ops/releases/tag/config-tools%401.178.5) (2025-08-05)
+
+### Miscellaneous
+
+- **monorepo:** Update package dependency links
+  ([9a2b632e4](https://github.com/storm-software/storm-ops/commit/9a2b632e4))
+
+### Updated Dependencies
+
+- Updated config to 1.126.9
+
 ## [1.178.4](https://github.com/storm-software/storm-ops/releases/tag/config-tools%401.178.4) (2025-08-05)
 
 ### Miscellaneous
