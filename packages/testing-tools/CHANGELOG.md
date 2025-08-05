@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Testing Tools
 
+## [1.113.0](https://github.com/storm-software/storm-ops/releases/tag/testing-tools%401.113.0) (2025-08-05)
+
+### Features
+
+- **testing-tools:** Added separate configuration helper functions
+  ([8c57e8956](https://github.com/storm-software/storm-ops/commit/8c57e8956))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+  ([21fa7cc54](https://github.com/storm-software/storm-ops/commit/21fa7cc54))
+
 ## [1.112.2](https://github.com/storm-software/storm-ops/releases/tag/testing-tools%401.112.2) (2025-08-05)
 
 ### Bug Fixes
