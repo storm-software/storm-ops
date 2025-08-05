@@ -7,6 +7,7 @@ import {
   addProjectTag,
   ProjectTagConstants
 } from "@storm-software/workspace-tools/utils/project-tags";
+import defu from "defu";
 import { existsSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { readNxJson } from "nx/src/config/nx-json.js";
@@ -106,24 +107,22 @@ export const createNodesV2: CreateNodesV2<CloudflarePluginOptions> = [
             }
           );
 
-          return project?.name
-            ? {
-                projects: {
-                  [project.name]: {
-                    ...project,
-                    targets,
-                    release: {
-                      ...project?.release,
-                      version: {
-                        ...project?.release?.version,
-                        generator:
-                          "@storm-software/workspace-tools:release-version"
-                      }
+          return {
+            projects: {
+              [project.root]: defu(
+                {
+                  targets,
+                  release: {
+                    version: {
+                      generator:
+                        "@storm-software/workspace-tools:release-version"
                     }
                   }
-                }
-              }
-            : {};
+                },
+                project
+              )
+            }
+          };
         } catch (e) {
           console.error(e);
           return {};
