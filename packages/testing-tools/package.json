@@ -1,8 +1,8 @@
 {
   "name": "@storm-software/testing-tools",
   "version": "1.111.17",
-  "type": "commonjs",
-  "description": "⚡ A package containing various testing tools used by Storm workspaces to drive unit and e2e testing.",
+  "type": "module",
+  "description": "A package containing various testing tools used by Storm workspaces to drive unit and e2e testing.",
   "repository": {
     "type": "github",
     "url": "https://github.com/storm-software/storm-ops",
@@ -17,8 +17,113 @@
   },
   "license": "Apache-2.0",
   "private": false,
-  "module": "./index.js",
-  "types": "./declarations.d.ts",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "exports": {
+    "./jest/__mocks__/*.js": "./jest/__mocks__/*.js",
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      },
+      "default": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.cjs"
+      }
+    },
+    "./index": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      },
+      "default": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      }
+    },
+    "./jest/file-transformer": {
+      "import": {
+        "types": "./dist/jest/file-transformer.d.ts",
+        "default": "./dist/jest/file-transformer.js"
+      },
+      "require": {
+        "types": "./dist/jest/file-transformer.d.cts",
+        "default": "./dist/jest/file-transformer.cjs"
+      },
+      "default": {
+        "types": "./dist/jest/file-transformer.d.ts",
+        "default": "./dist/jest/file-transformer.js"
+      }
+    },
+    "./jest/setup": {
+      "import": {
+        "types": "./dist/jest/setup.d.ts",
+        "default": "./dist/jest/setup.js"
+      },
+      "require": {
+        "types": "./dist/jest/setup.d.cts",
+        "default": "./dist/jest/setup.cjs"
+      },
+      "default": {
+        "types": "./dist/jest/setup.d.ts",
+        "default": "./dist/jest/setup.js"
+      }
+    },
+    "./jest/config/package": {
+      "import": {
+        "types": "./dist/jest/config/package.d.ts",
+        "default": "./dist/jest/config/package.js"
+      },
+      "require": {
+        "types": "./dist/jest/config/package.d.cts",
+        "default": "./dist/jest/config/package.cjs"
+      },
+      "default": {
+        "types": "./dist/jest/config/package.d.ts",
+        "default": "./dist/jest/config/package.js"
+      }
+    },
+    "./jest/config/preset": {
+      "import": {
+        "types": "./dist/jest/config/preset.d.ts",
+        "default": "./dist/jest/config/preset.js"
+      },
+      "require": {
+        "types": "./dist/jest/config/preset.d.cts",
+        "default": "./dist/jest/config/preset.cjs"
+      },
+      "default": {
+        "types": "./dist/jest/config/preset.d.ts",
+        "default": "./dist/jest/config/preset.js"
+      }
+    },
+    "./jest/config/workspace": {
+      "import": {
+        "types": "./dist/jest/config/workspace.d.ts",
+        "default": "./dist/jest/config/workspace.js"
+      },
+      "require": {
+        "types": "./dist/jest/config/workspace.d.cts",
+        "default": "./dist/jest/config/workspace.cjs"
+      },
+      "default": {
+        "types": "./dist/jest/config/workspace.d.ts",
+        "default": "./dist/jest/config/workspace.js"
+      }
+    }
+  },
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist/**/*"
+  ],
   "keywords": [
     "monorepo",
     "jest",

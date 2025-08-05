@@ -5,12 +5,12 @@ import { getJestProjectsAsync } from "@nx/jest";
  *
  * https://jestjs.io/docs/configuration#projects-arraystring--projectconfig
  */
-export default {
+export default async () => ({
   /**
    * When the projects configuration is provided with an array of paths or glob patterns, Jest will run tests in all of the specified projects at the same time.
    * This is great for monorepos or when working on multiple projects at the same time.
    */
-  projects: await getJestProjectsAsync(),
+  projects: [...(await getJestProjectsAsync()), "<rootDir>/jest.config.ts"],
 
   /**
    * Indicates whether the coverage information should be collected while executing the test. Because this retrofits all
@@ -55,7 +55,7 @@ export default {
    */
   coverageReporters: ["lcov", "json"],
 
-  setupFiles: ["@storm-software/testing-tools/jest/__mocks__/jest.setup.js"],
+  setupFiles: ["@storm-software/testing-tools/jest/setup"],
 
   moduleNameMapper: {
     "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$":
@@ -63,4 +63,4 @@ export default {
     "\\.(css|less)$":
       "@storm-software/testing-tools/jest/__mocks__/style.mock.js"
   }
-};
+});

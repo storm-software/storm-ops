@@ -4,44 +4,65 @@
   "sourceRoot": "packages/testing-tools/src",
   "projectType": "library",
   "targets": {
-    "build": {
-      "cache": true,
-      "executor": "@nx/esbuild:esbuild",
-      "outputs": ["{options.outputPath}"],
+    // "build": {
+    //   "cache": true,
+    //   "executor": "@nx/esbuild:esbuild",
+    //   "outputs": ["{options.outputPath}"],
+    //   "options": {
+    //     "outputPath": "dist/packages/testing-tools",
+    //     "main": "packages/testing-tools/src/index.ts",
+    //     "tsConfig": "packages/testing-tools/tsconfig.json",
+    //     "project": "packages/testing-tools/package.json",
+    //     "deleteOutputPath": true,
+    //     "bundle": true,
+    //     "sourcemap": false,
+    //     "minify": false,
+    //     "skipTypeCheck": true,
+    //     "thirdParty": true,
+    //     "format": ["esm"],
+    //     "external": ["nx", "@nx/jest", "jest"],
+    //     "assets": [
+    //       {
+    //         "input": "packages/testing-tools",
+    //         "glob": "*.md",
+    //         "output": "."
+    //       },
+    //       {
+    //         "input": "",
+    //         "glob": "LICENSE",
+    //         "output": "."
+    //       },
+    //       {
+    //         "input": "packages/testing-tools/src",
+    //         "glob": "jest/**/*.*",
+    //         "output": "."
+    //       },
+    //       {
+    //         "input": "./packages/testing-tools",
+    //         "glob": "declarations.d.ts",
+    //         "output": "."
+    //       }
+    //     ]
+    //   }
+    // },
+
+    "build-base": {
+      "executor": "nx:run-commands",
+      "dependsOn": ["clean", "^build"],
       "options": {
-        "outputPath": "dist/packages/testing-tools",
-        "main": "packages/testing-tools/src/index.ts",
-        "tsConfig": "packages/testing-tools/tsconfig.json",
-        "project": "packages/testing-tools/package.json",
-        "deleteOutputPath": true,
-        "bundle": true,
-        "sourcemap": false,
-        "minify": false,
-        "skipTypeCheck": true,
-        "thirdParty": true,
-        "format": ["esm"],
-        "external": ["nx", "@nx/jest", "jest"],
-        "assets": [
-          {
-            "input": "packages/testing-tools",
-            "glob": "*.md",
-            "output": "."
-          },
-          {
-            "input": "",
-            "glob": "LICENSE",
-            "output": "."
-          },
-          {
-            "input": "packages/testing-tools/src",
-            "glob": "jest/**/*.*",
-            "output": "."
-          },
-          {
-            "input": "./packages/testing-tools",
-            "glob": "declarations.d.ts",
-            "output": "."
-          }
+        "command": "tsup --config=tsup.config.ts",
+        "cwd": "{projectRoot}"
+      }
+    },
+    "build": {
+      "executor": "nx:run-commands",
+      "dependsOn": ["build-base"],
+      "options": {
+        "commands": [
+          "pnpm copyfiles LICENSE dist/packages/testing-tools",
+          "pnpm copyfiles --up=2 \"./packages/testing-tools/*.md\" ./packages/testing-tools/package.json dist/packages/testing-tools",
+          "pnpm copyfiles --up=5 \"./packages/testing-tools/src/jest/__mocks__/**/*\" dist/packages/testing-tools/dist/jest/__mocks__",
+          "pnpm copyfiles --up=4 \"./packages/testing-tools/dist/src/**/*\" dist/packages/testing-tools/dist"
         ]
       }
     },

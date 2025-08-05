@@ -1,26 +1,26 @@
-const nxPreset = require("@nx/jest/preset").default;
+import nxPreset from "@nx/jest/preset";
 
-module.exports = {
+export default {
   ...nxPreset,
   collectCoverage: true,
   testTimeout: 30000,
   clearMocks: true,
   testMatch: ["**/+(*.)+(spec|test).+(ts|js)?(x)"],
   transform: {
-    "^.+\\.(ts|js|html)$": "ts-jest",
+    "^.+\\.(ts|js|html)$": "ts-jest"
   },
   snapshotFormat: {
-    printBasicPrototype: false,
+    printBasicPrototype: false
   },
   globals: {
     "ts-jest": {
       isolatedModules: true,
       diagnostics: {
-        exclude: ["**"],
-      },
-    },
+        exclude: ["**"]
+      }
+    }
   },
   moduleFileExtensions: ["ts", "js", "html"],
   coverageReporters: ["json", "lcov", "text", "clover", "text-summary", "html"],
-  maxWorkers: 1,
+  maxWorkers: 1
 };
