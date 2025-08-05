@@ -334,6 +334,19 @@ async function syncGithubRelease(
       url: newGhRelease.html_url
     };
   } catch (error) {
+    if (process.env.CI) {
+      console.error(
+        `An error occurred while trying to create a release on GitHub, please report this on https://github.com/storm-software/storm-ops (NOTE: make sure to redact your GitHub token from the error message!): ${typeof error?.message === "string" ? error?.message : `\n\n${error}`}`
+      );
+
+      throw new Error(
+        "`An error occurred while trying to create a release on GitHub in a CI environment",
+        {
+          cause: error
+        }
+      );
+    }
+
     return {
       status: "manual",
       error,
