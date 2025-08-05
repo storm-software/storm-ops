@@ -2,6 +2,24 @@
 
 # Changelog for Storm Ops - Workspace Tools
 
+## [1.280.0](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.280.0) (2025-08-05)
+
+### Features
+
+- **workspace-tools:** Added the `enableTypeCheck` option to the base Nx plugin
+  ([c11a3c96e](https://github.com/storm-software/storm-ops/commit/c11a3c96e))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+  ([cf6bd2d92](https://github.com/storm-software/storm-ops/commit/cf6bd2d92))
+
+### Updated Dependencies
+
+- Updated prettier to 0.52.0
+- Updated esbuild to 0.46.0
+- Updated unbuild to 0.50.0
+
 ## [1.279.3](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.279.3) (2025-08-05)
 
 ### Miscellaneous

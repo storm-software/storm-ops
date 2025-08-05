@@ -2,6 +2,24 @@
 
 # Changelog for Storm Ops - Tsdown
 
+## [0.37.0](https://github.com/storm-software/storm-ops/releases/tag/tsdown%400.37.0) (2025-08-05)
+
+### Features
+
+- **workspace-tools:** Added the `enableTypeCheck` option to the base Nx plugin
+  ([c11a3c96e](https://github.com/storm-software/storm-ops/commit/c11a3c96e))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+  ([cf6bd2d92](https://github.com/storm-software/storm-ops/commit/cf6bd2d92))
+
+### Updated Dependencies
+
+- Updated config-tools to 1.179.0
+- Updated build-tools to 0.152.0
+- Updated config to 1.127.0
+
 ## [0.36.73](https://github.com/storm-software/storm-ops/releases/tag/tsdown%400.36.73) (2025-08-05)
 
 ### Miscellaneous

@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Build Tools
 
+## [0.152.0](https://github.com/storm-software/storm-ops/releases/tag/build-tools%400.152.0) (2025-08-05)
+
+### Features
+
+- **workspace-tools:** Added the `enableTypeCheck` option to the base Nx plugin
+  ([c11a3c96e](https://github.com/storm-software/storm-ops/commit/c11a3c96e))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+  ([cf6bd2d92](https://github.com/storm-software/storm-ops/commit/cf6bd2d92))
+
 ## [0.151.48](https://github.com/storm-software/storm-ops/releases/tag/build-tools%400.151.48) (2025-08-05)
 
 ### Miscellaneous
