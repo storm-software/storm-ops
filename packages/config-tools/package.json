@@ -237,7 +237,7 @@
   ],
   "dependencies": {
     "@ltd/j-toml": "catalog:",
-    "@storm-software/config": "1.128.0",
+    "@storm-software/config": "workspace:*",
     "c12": "catalog:",
     "chalk": "catalog:",
     "commander": "catalog:",
