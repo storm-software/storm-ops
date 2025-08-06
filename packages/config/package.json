@@ -102,11 +102,9 @@
     }
   },
   "types": "./dist/index.d.ts",
-  "dependencies": {
-    "zod": "catalog:"
-  },
   "devDependencies": {
-    "tsup": "catalog:"
+    "tsup": "catalog:",
+    "zod": "catalog:"
   },
   "publishConfig": {
     "access": "public"
