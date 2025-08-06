@@ -23,3 +23,5 @@ If this sounds interesting, and you would like to help us in creating the next g
 `;
 
 export const STORM_DEFAULT_ERROR_CODES_FILE = "tools/errors/codes.json";
+
+export const STORM_DEFAULT_BANNER_ALT = "The workspace's banner image";

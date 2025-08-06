@@ -1,42 +1,37 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "description": "Storm Workspace config values used during various dev-ops processes. This type is a combination of the StormPackageConfig and StormProject types. It represents the config of the entire monorepo.",
   "type": "object",
   "properties": {
     "$schema": {
-      "description": "The URL or file path to the JSON schema file that describes the Storm configuration file",
       "default": "https://public.storm-cdn.com/schemas/storm-workspace.schema.json",
+      "description": "The URL or file path to the JSON schema file that describes the Storm configuration file",
       "type": "string"
     },
     "extends": {
       "description": "The path to a base config file to use as a configuration preset file. Documentation can be found at https://github.com/unjs/c12#extending-configuration.",
       "anyOf": [
         {
-          "description": "The path to a base config file to use as a configuration preset file. Documentation can be found at https://github.com/unjs/c12#extending-configuration.",
           "type": "string"
         },
         {
           "type": "array",
           "items": {
-            "description": "The path to a base config file to use as a configuration preset file. Documentation can be found at https://github.com/unjs/c12#extending-configuration.",
             "type": "string"
           }
         }
       ]
     },
     "name": {
-      "description": "The name of the service/package/scope using this configuration",
-      "type": "string"
+      "type": "string",
+      "description": "The name of the workspace/project/service/package/scope using this configuration"
     },
     "namespace": {
-      "description": "The namespace of the package",
-      "type": "string"
+      "type": "string",
+      "description": "The namespace of the workspace/project/service/package/scope using this configuration"
     },
     "organization": {
-      "description": "The organization of the workspace. This can be a string or an object containing the organization's details",
       "anyOf": [
         {
-          "description": "The workspace's organization details",
           "type": "object",
           "properties": {
             "name": {
@@ -63,22 +58,22 @@
               "format": "uri"
             }
           },
-          "required": ["name"],
-          "additionalProperties": false
+          "additionalProperties": false,
+          "description": "The workspace's organization details"
         },
         {
-          "description": "The organization of the workspace",
           "type": "string"
         }
-      ]
+      ],
+      "description": "The organization of the workspace. This can be a string or an object containing the organization's details"
     },
     "repository": {
-      "description": "The repo URL of the workspace (i.e. GitHub)",
-      "type": "string"
+      "type": "string",
+      "description": "The repo URL of the workspace (i.e. the GitHub repository URL)"
     },
     "license": {
-      "description": "The license type of the package",
       "default": "Apache-2.0",
+      "description": "The license type of the package",
       "type": "string"
     },
     "homepage": {
@@ -112,8 +107,8 @@
       "format": "uri"
     },
     "branch": {
-      "description": "The branch of the workspace",
       "default": "main",
+      "description": "The branch of the workspace",
       "type": "string"
     },
     "preid": {
@@ -122,36 +117,52 @@
     },
     "owner": {
       "description": "The owner of the package",
-      "default": "@storm-software/admin",
       "type": "string"
     },
     "bot": {
-      "description": "The workspace's bot user's config used to automated various operations tasks",
       "type": "object",
       "properties": {
         "name": {
-          "description": "The workspace bot user's name (this is the bot that will be used to perform various tasks)",
-          "default": "stormie-bot",
-          "type": "string"
+          "type": "string",
+          "description": "The workspace bot user's name (this is the bot that will be used to perform various tasks)"
         },
         "email": {
-          "description": "The email of the workspace bot",
-          "default": "bot@stormsoftware.com",
           "type": "string",
-          "format": "email",
-          "pattern": "^(?!\\.)(?!.*\\.\\.)([A-Za-z0-9_'+\\-\\.]*)[A-Za-z0-9_+-]@([A-Za-z0-9][A-Za-z0-9\\-]*\\.)+[A-Za-z]{2,}$"
+          "description": "The email of the workspace bot"
         }
       },
       "required": ["name", "email"],
-      "additionalProperties": false
+      "additionalProperties": false,
+      "description": "The workspace's bot user's config used to automated various operations tasks"
     },
     "release": {
-      "description": "The workspace's release config used during the release process",
       "type": "object",
       "properties": {
         "banner": {
-          "description": "A URL to a banner image used to display the workspace's release",
-          "type": "string"
+          "anyOf": [
+            {
+              "type": "object",
+              "properties": {
+                "url": {
+                  "description": "A URL to a banner image used to display the workspace's release",
+                  "type": "string",
+                  "format": "uri"
+                },
+                "alt": {
+                  "default": "The workspace's banner image",
+                  "description": "The alt text for the workspace's release banner image",
+                  "type": "string"
+                }
+              },
+              "required": ["alt"],
+              "additionalProperties": false,
+              "description": "The workspace's banner image used during the release process"
+            },
+            {
+              "type": "string",
+              "format": "uri"
+            }
+          ]
         },
         "header": {
           "description": "A header message appended to the start of the workspace's release notes",
@@ -162,60 +173,47 @@
           "type": "string"
         }
       },
-      "additionalProperties": false
+      "required": ["banner"],
+      "additionalProperties": false,
+      "description": "The workspace's release config used during the release process"
     },
     "socials": {
-      "description": "The workspace's account config used to store various social media links",
       "type": "object",
       "properties": {
         "twitter": {
           "description": "A Twitter/X account associated with the organization/project",
-          "default": "StormSoftwareHQ",
           "type": "string"
         },
         "discord": {
           "description": "A Discord account associated with the organization/project",
-          "default": "https://discord.gg/MQ6YVzakM5",
           "type": "string"
         },
         "telegram": {
           "description": "A Telegram account associated with the organization/project",
-          "default": "https://t.me/storm_software",
           "type": "string"
         },
         "slack": {
           "description": "A Slack account associated with the organization/project",
-          "default": "https://join.slack.com/t/storm-software/shared_invite/zt-2gsmk04hs-i6yhK_r6urq0dkZYAwq2pA",
           "type": "string"
         },
         "medium": {
           "description": "A Medium account associated with the organization/project",
-          "default": "https://medium.com/storm-software",
           "type": "string"
         },
         "github": {
           "description": "A GitHub account associated with the organization/project",
-          "default": "https://github.com/storm-software",
           "type": "string"
         }
       },
-      "required": [
-        "twitter",
-        "discord",
-        "telegram",
-        "slack",
-        "medium",
-        "github"
-      ],
-      "additionalProperties": false
+      "additionalProperties": false,
+      "description": "The workspace's account config used to store various social media links"
     },
     "error": {
-      "description": "The workspace's error config used during the error process",
       "type": "object",
       "properties": {
         "codesFile": {
-          "description": "The path to the workspace's error codes JSON file",
           "default": "tools/errors/codes.json",
+          "description": "The path to the workspace's error codes JSON file",
           "type": "string"
         },
         "url": {
@@ -225,24 +223,25 @@
         }
       },
       "required": ["codesFile"],
-      "additionalProperties": false
+      "additionalProperties": false,
+      "description": "The workspace's error config used when creating error details during a system error"
     },
     "mode": {
-      "description": "The current runtime environment mode for the package",
       "default": "production",
-      "type": "string"
+      "description": "The current runtime environment mode for the package",
+      "type": "string",
+      "enum": ["development", "staging", "production"]
     },
     "workspaceRoot": {
-      "description": "The root directory of the workspace",
-      "type": "string"
+      "type": "string",
+      "description": "The root directory of the workspace"
     },
     "skipCache": {
-      "description": "Should all known types of workspace caching be skipped?",
       "default": false,
+      "description": "Should all known types of workspace caching be skipped?",
       "type": "boolean"
     },
     "directories": {
-      "description": "Various directories used by the workspace to store data, cache, and configuration files",
       "type": "object",
       "properties": {
         "cache": {
@@ -262,37 +261,38 @@
           "type": "string"
         },
         "log": {
-          "description": "The directory used to store the environment's temp files",
+          "description": "The directory used to store the environment's log files",
           "type": "string"
         },
         "build": {
-          "description": "The directory used to store the workspace's distributable files after a build (relative to the workspace root)",
           "default": "dist",
+          "description": "The directory used to store the workspace's distributable files after a build (relative to the workspace root)",
           "type": "string"
         }
       },
       "required": ["build"],
-      "additionalProperties": false
+      "additionalProperties": false,
+      "description": "Various directories used by the workspace to store data, cache, and configuration files"
     },
     "packageManager": {
-      "description": "The JavaScript/TypeScript package manager used by the repository",
       "default": "npm",
+      "description": "The JavaScript/TypeScript package manager used by the repository",
       "type": "string",
       "enum": ["npm", "yarn", "pnpm", "bun"]
     },
     "timezone": {
-      "description": "The default timezone of the workspace",
       "default": "America/New_York",
+      "description": "The default timezone of the workspace",
       "type": "string"
     },
     "locale": {
-      "description": "The default locale of the workspace",
       "default": "en-US",
+      "description": "The default locale of the workspace",
       "type": "string"
     },
     "logLevel": {
-      "description": "The log level used to filter out lower priority log messages. If not provided, this is defaulted using the `environment` config value (if `environment` is set to `production` then `level` is `error`, else `level` is `debug`).",
       "default": "info",
+      "description": "The log level used to filter out lower priority log messages. If not provided, this is defaulted using the `environment` config value (if `environment` is set to `production` then `level` is `error`, else `level` is `debug`).",
       "type": "string",
       "enum": [
         "silent",
@@ -307,12 +307,13 @@
       ]
     },
     "skipConfigLogging": {
+      "default": true,
       "description": "Should the logging of the current Storm Workspace configuration be skipped?",
       "type": "boolean"
     },
     "registry": {
-      "description": "A list of remote registry URLs used by Storm Software",
       "default": {},
+      "description": "A list of remote registry URLs used by Storm Software",
       "type": "object",
       "properties": {
         "github": {
@@ -344,8 +345,8 @@
       "additionalProperties": false
     },
     "configFile": {
-      "description": "The filepath of the Storm config. When this field is null, no config file was found in the current workspace.",
       "default": null,
+      "description": "The filepath of the Storm config. When this field is null, no config file was found in the current workspace.",
       "anyOf": [
         {
           "type": "string"
@@ -356,33 +357,31 @@
       ]
     },
     "colors": {
-      "description": "Storm theme config values used for styling various package elements",
       "anyOf": [
         {
-          "description": "Colors used for various workspace elements",
           "anyOf": [
             {
               "type": "object",
               "properties": {
                 "dark": {
-                  "description": "The dark background color of the workspace",
                   "default": "#151718",
+                  "description": "The dark background color of the workspace",
                   "type": "string",
                   "minLength": 7,
                   "maxLength": 7,
                   "pattern": "^#([0-9a-f]{3}){1,2}$"
                 },
                 "light": {
-                  "description": "The light background color of the workspace",
                   "default": "#cbd5e1",
+                  "description": "The light background color of the workspace",
                   "type": "string",
                   "minLength": 7,
                   "maxLength": 7,
                   "pattern": "^#([0-9a-f]{3}){1,2}$"
                 },
                 "brand": {
-                  "description": "The primary brand specific color of the workspace",
                   "default": "#1fb2a6",
+                  "description": "The primary brand specific color of the workspace",
                   "type": "string",
                   "minLength": 7,
                   "maxLength": 7,
@@ -403,48 +402,48 @@
                   "pattern": "^#([0-9a-f]{3}){1,2}$"
                 },
                 "link": {
-                  "description": "The color used to display hyperlink text",
                   "default": "#3fa6ff",
+                  "description": "The color used to display hyperlink text",
                   "type": "string",
                   "minLength": 7,
                   "maxLength": 7,
                   "pattern": "^#([0-9a-f]{3}){1,2}$"
                 },
                 "help": {
-                  "description": "The second brand specific color of the workspace",
                   "default": "#818cf8",
+                  "description": "The second brand specific color of the workspace",
                   "type": "string",
                   "minLength": 7,
                   "maxLength": 7,
                   "pattern": "^#([0-9a-f]{3}){1,2}$"
                 },
                 "success": {
-                  "description": "The success color of the workspace",
                   "default": "#45b27e",
+                  "description": "The success color of the workspace",
                   "type": "string",
                   "minLength": 7,
                   "maxLength": 7,
                   "pattern": "^#([0-9a-f]{3}){1,2}$"
                 },
                 "info": {
-                  "description": "The informational color of the workspace",
                   "default": "#38bdf8",
+                  "description": "The informational color of the workspace",
                   "type": "string",
                   "minLength": 7,
                   "maxLength": 7,
                   "pattern": "^#([0-9a-f]{3}){1,2}$"
                 },
                 "warning": {
-                  "description": "The warning color of the workspace",
                   "default": "#f3d371",
+                  "description": "The warning color of the workspace",
                   "type": "string",
                   "minLength": 7,
                   "maxLength": 7,
                   "pattern": "^#([0-9a-f]{3}){1,2}$"
                 },
                 "danger": {
-                  "description": "The danger color of the workspace",
                   "default": "#d8314a",
+                  "description": "The danger color of the workspace",
                   "type": "string",
                   "minLength": 7,
                   "maxLength": 7,
@@ -458,16 +457,16 @@
                   "pattern": "^#([0-9a-f]{3}){1,2}$"
                 },
                 "positive": {
-                  "description": "The positive number color of the workspace",
                   "default": "#4ade80",
+                  "description": "The positive number color of the workspace",
                   "type": "string",
                   "minLength": 7,
                   "maxLength": 7,
                   "pattern": "^#([0-9a-f]{3}){1,2}$"
                 },
                 "negative": {
-                  "description": "The negative number color of the workspace",
                   "default": "#ef4444",
+                  "description": "The negative number color of the workspace",
                   "type": "string",
                   "minLength": 7,
                   "maxLength": 7,
@@ -480,7 +479,8 @@
                     "type": "string",
                     "minLength": 7,
                     "maxLength": 7,
-                    "pattern": "^#([0-9a-f]{3}){1,2}$"
+                    "pattern": "^#([0-9a-f]{3}){1,2}$",
+                    "description": "A base schema for describing the format of colors"
                   }
                 }
               },
@@ -506,24 +506,24 @@
                   "type": "object",
                   "properties": {
                     "foreground": {
-                      "description": "The light background color of the workspace",
                       "default": "#cbd5e1",
+                      "description": "The light background color of the workspace",
                       "type": "string",
                       "minLength": 7,
                       "maxLength": 7,
                       "pattern": "^#([0-9a-f]{3}){1,2}$"
                     },
                     "background": {
-                      "description": "The dark background color of the workspace",
                       "default": "#151718",
+                      "description": "The dark background color of the workspace",
                       "type": "string",
                       "minLength": 7,
                       "maxLength": 7,
                       "pattern": "^#([0-9a-f]{3}){1,2}$"
                     },
                     "brand": {
-                      "description": "The primary brand specific color of the workspace",
                       "default": "#1fb2a6",
+                      "description": "The primary brand specific color of the workspace",
                       "type": "string",
                       "minLength": 7,
                       "maxLength": 7,
@@ -544,48 +544,48 @@
                       "pattern": "^#([0-9a-f]{3}){1,2}$"
                     },
                     "link": {
-                      "description": "The color used to display hyperlink text",
                       "default": "#3fa6ff",
+                      "description": "The color used to display hyperlink text",
                       "type": "string",
                       "minLength": 7,
                       "maxLength": 7,
                       "pattern": "^#([0-9a-f]{3}){1,2}$"
                     },
                     "help": {
-                      "description": "The second brand specific color of the workspace",
                       "default": "#818cf8",
+                      "description": "The second brand specific color of the workspace",
                       "type": "string",
                       "minLength": 7,
                       "maxLength": 7,
                       "pattern": "^#([0-9a-f]{3}){1,2}$"
                     },
                     "success": {
-                      "description": "The success color of the workspace",
                       "default": "#45b27e",
+                      "description": "The success color of the workspace",
                       "type": "string",
                       "minLength": 7,
                       "maxLength": 7,
                       "pattern": "^#([0-9a-f]{3}){1,2}$"
                     },
                     "info": {
-                      "description": "The informational color of the workspace",
                       "default": "#38bdf8",
+                      "description": "The informational color of the workspace",
                       "type": "string",
                       "minLength": 7,
                       "maxLength": 7,
                       "pattern": "^#([0-9a-f]{3}){1,2}$"
                     },
                     "warning": {
-                      "description": "The warning color of the workspace",
                       "default": "#f3d371",
+                      "description": "The warning color of the workspace",
                       "type": "string",
                       "minLength": 7,
                       "maxLength": 7,
                       "pattern": "^#([0-9a-f]{3}){1,2}$"
                     },
                     "danger": {
-                      "description": "The danger color of the workspace",
                       "default": "#d8314a",
+                      "description": "The danger color of the workspace",
                       "type": "string",
                       "minLength": 7,
                       "maxLength": 7,
@@ -599,16 +599,16 @@
                       "pattern": "^#([0-9a-f]{3}){1,2}$"
                     },
                     "positive": {
-                      "description": "The positive number color of the workspace",
                       "default": "#4ade80",
+                      "description": "The positive number color of the workspace",
                       "type": "string",
                       "minLength": 7,
                       "maxLength": 7,
                       "pattern": "^#([0-9a-f]{3}){1,2}$"
                     },
                     "negative": {
-                      "description": "The negative number color of the workspace",
                       "default": "#ef4444",
+                      "description": "The negative number color of the workspace",
                       "type": "string",
                       "minLength": 7,
                       "maxLength": 7,
@@ -621,7 +621,8 @@
                         "type": "string",
                         "minLength": 7,
                         "maxLength": 7,
-                        "pattern": "^#([0-9a-f]{3}){1,2}$"
+                        "pattern": "^#([0-9a-f]{3}){1,2}$",
+                        "description": "A base schema for describing the format of colors"
                       }
                     }
                   },
@@ -644,24 +645,24 @@
                   "type": "object",
                   "properties": {
                     "foreground": {
-                      "description": "The dark background color of the workspace",
                       "default": "#151718",
+                      "description": "The dark background color of the workspace",
                       "type": "string",
                       "minLength": 7,
                       "maxLength": 7,
                       "pattern": "^#([0-9a-f]{3}){1,2}$"
                     },
                     "background": {
-                      "description": "The light background color of the workspace",
                       "default": "#cbd5e1",
+                      "description": "The light background color of the workspace",
                       "type": "string",
                       "minLength": 7,
                       "maxLength": 7,
                       "pattern": "^#([0-9a-f]{3}){1,2}$"
                     },
                     "brand": {
-                      "description": "The primary brand specific color of the workspace",
                       "default": "#1fb2a6",
+                      "description": "The primary brand specific color of the workspace",
                       "type": "string",
                       "minLength": 7,
                       "maxLength": 7,
@@ -682,48 +683,48 @@
                       "pattern": "^#([0-9a-f]{3}){1,2}$"
                     },
                     "link": {
-                      "description": "The color used to display hyperlink text",
                       "default": "#3fa6ff",
+                      "description": "The color used to display hyperlink text",
                       "type": "string",
                       "minLength": 7,
                       "maxLength": 7,
                       "pattern": "^#([0-9a-f]{3}){1,2}$"
                     },
                     "help": {
-                      "description": "The second brand specific color of the workspace",
                       "default": "#818cf8",
+                      "description": "The second brand specific color of the workspace",
                       "type": "string",
                       "minLength": 7,
                       "maxLength": 7,
                       "pattern": "^#([0-9a-f]{3}){1,2}$"
                     },
                     "success": {
-                      "description": "The success color of the workspace",
                       "default": "#45b27e",
+                      "description": "The success color of the workspace",
                       "type": "string",
                       "minLength": 7,
                       "maxLength": 7,
                       "pattern": "^#([0-9a-f]{3}){1,2}$"
                     },
                     "info": {
-                      "description": "The informational color of the workspace",
                       "default": "#38bdf8",
+                      "description": "The informational color of the workspace",
                       "type": "string",
                       "minLength": 7,
                       "maxLength": 7,
                       "pattern": "^#([0-9a-f]{3}){1,2}$"
                     },
                     "warning": {
-                      "description": "The warning color of the workspace",
                       "default": "#f3d371",
+                      "description": "The warning color of the workspace",
                       "type": "string",
                       "minLength": 7,
                       "maxLength": 7,
                       "pattern": "^#([0-9a-f]{3}){1,2}$"
                     },
                     "danger": {
-                      "description": "The danger color of the workspace",
                       "default": "#d8314a",
+                      "description": "The danger color of the workspace",
                       "type": "string",
                       "minLength": 7,
                       "maxLength": 7,
@@ -737,16 +738,16 @@
                       "pattern": "^#([0-9a-f]{3}){1,2}$"
                     },
                     "positive": {
-                      "description": "The positive number color of the workspace",
                       "default": "#4ade80",
+                      "description": "The positive number color of the workspace",
                       "type": "string",
                       "minLength": 7,
                       "maxLength": 7,
                       "pattern": "^#([0-9a-f]{3}){1,2}$"
                     },
                     "negative": {
-                      "description": "The negative number color of the workspace",
                       "default": "#ef4444",
+                      "description": "The negative number color of the workspace",
                       "type": "string",
                       "minLength": 7,
                       "maxLength": 7,
@@ -759,7 +760,8 @@
                         "type": "string",
                         "minLength": 7,
                         "maxLength": 7,
-                        "pattern": "^#([0-9a-f]{3}){1,2}$"
+                        "pattern": "^#([0-9a-f]{3}){1,2}$",
+                        "description": "A base schema for describing the format of colors"
                       }
                     }
                   },
@@ -782,15 +784,23 @@
               "required": ["dark", "light"],
               "additionalProperties": false
             }
-          ]
+          ],
+          "description": "Colors used for various workspace elements"
         },
         {
           "type": "object",
           "propertyNames": {
             "anyOf": [
               {
-                "type": "string",
-                "const": "base"
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "const": "base"
+                  },
+                  {
+                    "type": "string"
+                  }
+                ]
               },
               {
                 "type": "string"
@@ -798,30 +808,29 @@
             ]
           },
           "additionalProperties": {
-            "description": "Colors used for various workspace elements",
             "anyOf": [
               {
                 "type": "object",
                 "properties": {
                   "dark": {
-                    "description": "The dark background color of the workspace",
                     "default": "#151718",
+                    "description": "The dark background color of the workspace",
                     "type": "string",
                     "minLength": 7,
                     "maxLength": 7,
                     "pattern": "^#([0-9a-f]{3}){1,2}$"
                   },
                   "light": {
-                    "description": "The light background color of the workspace",
                     "default": "#cbd5e1",
+                    "description": "The light background color of the workspace",
                     "type": "string",
                     "minLength": 7,
                     "maxLength": 7,
                     "pattern": "^#([0-9a-f]{3}){1,2}$"
                   },
                   "brand": {
-                    "description": "The primary brand specific color of the workspace",
                     "default": "#1fb2a6",
+                    "description": "The primary brand specific color of the workspace",
                     "type": "string",
                     "minLength": 7,
                     "maxLength": 7,
@@ -842,48 +851,48 @@
                     "pattern": "^#([0-9a-f]{3}){1,2}$"
                   },
                   "link": {
-                    "description": "The color used to display hyperlink text",
                     "default": "#3fa6ff",
+                    "description": "The color used to display hyperlink text",
                     "type": "string",
                     "minLength": 7,
                     "maxLength": 7,
                     "pattern": "^#([0-9a-f]{3}){1,2}$"
                   },
                   "help": {
-                    "description": "The second brand specific color of the workspace",
                     "default": "#818cf8",
+                    "description": "The second brand specific color of the workspace",
                     "type": "string",
                     "minLength": 7,
                     "maxLength": 7,
                     "pattern": "^#([0-9a-f]{3}){1,2}$"
                   },
                   "success": {
-                    "description": "The success color of the workspace",
                     "default": "#45b27e",
+                    "description": "The success color of the workspace",
                     "type": "string",
                     "minLength": 7,
                     "maxLength": 7,
                     "pattern": "^#([0-9a-f]{3}){1,2}$"
                   },
                   "info": {
-                    "description": "The informational color of the workspace",
                     "default": "#38bdf8",
+                    "description": "The informational color of the workspace",
                     "type": "string",
                     "minLength": 7,
                     "maxLength": 7,
                     "pattern": "^#([0-9a-f]{3}){1,2}$"
                   },
                   "warning": {
-                    "description": "The warning color of the workspace",
                     "default": "#f3d371",
+                    "description": "The warning color of the workspace",
                     "type": "string",
                     "minLength": 7,
                     "maxLength": 7,
                     "pattern": "^#([0-9a-f]{3}){1,2}$"
                   },
                   "danger": {
-                    "description": "The danger color of the workspace",
                     "default": "#d8314a",
+                    "description": "The danger color of the workspace",
                     "type": "string",
                     "minLength": 7,
                     "maxLength": 7,
@@ -897,16 +906,16 @@
                     "pattern": "^#([0-9a-f]{3}){1,2}$"
                   },
                   "positive": {
-                    "description": "The positive number color of the workspace",
                     "default": "#4ade80",
+                    "description": "The positive number color of the workspace",
                     "type": "string",
                     "minLength": 7,
                     "maxLength": 7,
                     "pattern": "^#([0-9a-f]{3}){1,2}$"
                   },
                   "negative": {
-                    "description": "The negative number color of the workspace",
                     "default": "#ef4444",
+                    "description": "The negative number color of the workspace",
                     "type": "string",
                     "minLength": 7,
                     "maxLength": 7,
@@ -919,7 +928,8 @@
                       "type": "string",
                       "minLength": 7,
                       "maxLength": 7,
-                      "pattern": "^#([0-9a-f]{3}){1,2}$"
+                      "pattern": "^#([0-9a-f]{3}){1,2}$",
+                      "description": "A base schema for describing the format of colors"
                     }
                   }
                 },
@@ -945,24 +955,24 @@
                     "type": "object",
                     "properties": {
                       "foreground": {
-                        "description": "The light background color of the workspace",
                         "default": "#cbd5e1",
+                        "description": "The light background color of the workspace",
                         "type": "string",
                         "minLength": 7,
                         "maxLength": 7,
                         "pattern": "^#([0-9a-f]{3}){1,2}$"
                       },
                       "background": {
-                        "description": "The dark background color of the workspace",
                         "default": "#151718",
+                        "description": "The dark background color of the workspace",
                         "type": "string",
                         "minLength": 7,
                         "maxLength": 7,
                         "pattern": "^#([0-9a-f]{3}){1,2}$"
                       },
                       "brand": {
-                        "description": "The primary brand specific color of the workspace",
                         "default": "#1fb2a6",
+                        "description": "The primary brand specific color of the workspace",
                         "type": "string",
                         "minLength": 7,
                         "maxLength": 7,
@@ -983,48 +993,48 @@
                         "pattern": "^#([0-9a-f]{3}){1,2}$"
                       },
                       "link": {
-                        "description": "The color used to display hyperlink text",
                         "default": "#3fa6ff",
+                        "description": "The color used to display hyperlink text",
                         "type": "string",
                         "minLength": 7,
                         "maxLength": 7,
                         "pattern": "^#([0-9a-f]{3}){1,2}$"
                       },
                       "help": {
-                        "description": "The second brand specific color of the workspace",
                         "default": "#818cf8",
+                        "description": "The second brand specific color of the workspace",
                         "type": "string",
                         "minLength": 7,
                         "maxLength": 7,
                         "pattern": "^#([0-9a-f]{3}){1,2}$"
                       },
                       "success": {
-                        "description": "The success color of the workspace",
                         "default": "#45b27e",
+                        "description": "The success color of the workspace",
                         "type": "string",
                         "minLength": 7,
                         "maxLength": 7,
                         "pattern": "^#([0-9a-f]{3}){1,2}$"
                       },
                       "info": {
-                        "description": "The informational color of the workspace",
                         "default": "#38bdf8",
+                        "description": "The informational color of the workspace",
                         "type": "string",
                         "minLength": 7,
                         "maxLength": 7,
                         "pattern": "^#([0-9a-f]{3}){1,2}$"
                       },
                       "warning": {
-                        "description": "The warning color of the workspace",
                         "default": "#f3d371",
+                        "description": "The warning color of the workspace",
                         "type": "string",
                         "minLength": 7,
                         "maxLength": 7,
                         "pattern": "^#([0-9a-f]{3}){1,2}$"
                       },
                       "danger": {
-                        "description": "The danger color of the workspace",
                         "default": "#d8314a",
+                        "description": "The danger color of the workspace",
                         "type": "string",
                         "minLength": 7,
                         "maxLength": 7,
@@ -1038,16 +1048,16 @@
                         "pattern": "^#([0-9a-f]{3}){1,2}$"
                       },
                       "positive": {
-                        "description": "The positive number color of the workspace",
                         "default": "#4ade80",
+                        "description": "The positive number color of the workspace",
                         "type": "string",
                         "minLength": 7,
                         "maxLength": 7,
                         "pattern": "^#([0-9a-f]{3}){1,2}$"
                       },
                       "negative": {
-                        "description": "The negative number color of the workspace",
                         "default": "#ef4444",
+                        "description": "The negative number color of the workspace",
                         "type": "string",
                         "minLength": 7,
                         "maxLength": 7,
@@ -1060,7 +1070,8 @@
                           "type": "string",
                           "minLength": 7,
                           "maxLength": 7,
-                          "pattern": "^#([0-9a-f]{3}){1,2}$"
+                          "pattern": "^#([0-9a-f]{3}){1,2}$",
+                          "description": "A base schema for describing the format of colors"
                         }
                       }
                     },
@@ -1083,24 +1094,24 @@
                     "type": "object",
                     "properties": {
                       "foreground": {
-                        "description": "The dark background color of the workspace",
                         "default": "#151718",
+                        "description": "The dark background color of the workspace",
                         "type": "string",
                         "minLength": 7,
                         "maxLength": 7,
                         "pattern": "^#([0-9a-f]{3}){1,2}$"
                       },
                       "background": {
-                        "description": "The light background color of the workspace",
                         "default": "#cbd5e1",
+                        "description": "The light background color of the workspace",
                         "type": "string",
                         "minLength": 7,
                         "maxLength": 7,
                         "pattern": "^#([0-9a-f]{3}){1,2}$"
                       },
                       "brand": {
-                        "description": "The primary brand specific color of the workspace",
                         "default": "#1fb2a6",
+                        "description": "The primary brand specific color of the workspace",
                         "type": "string",
                         "minLength": 7,
                         "maxLength": 7,
@@ -1121,48 +1132,48 @@
                         "pattern": "^#([0-9a-f]{3}){1,2}$"
                       },
                       "link": {
-                        "description": "The color used to display hyperlink text",
                         "default": "#3fa6ff",
+                        "description": "The color used to display hyperlink text",
                         "type": "string",
                         "minLength": 7,
                         "maxLength": 7,
                         "pattern": "^#([0-9a-f]{3}){1,2}$"
                       },
                       "help": {
-                        "description": "The second brand specific color of the workspace",
                         "default": "#818cf8",
+                        "description": "The second brand specific color of the workspace",
                         "type": "string",
                         "minLength": 7,
                         "maxLength": 7,
                         "pattern": "^#([0-9a-f]{3}){1,2}$"
                       },
                       "success": {
-                        "description": "The success color of the workspace",
                         "default": "#45b27e",
+                        "description": "The success color of the workspace",
                         "type": "string",
                         "minLength": 7,
                         "maxLength": 7,
                         "pattern": "^#([0-9a-f]{3}){1,2}$"
                       },
                       "info": {
-                        "description": "The informational color of the workspace",
                         "default": "#38bdf8",
+                        "description": "The informational color of the workspace",
                         "type": "string",
                         "minLength": 7,
                         "maxLength": 7,
                         "pattern": "^#([0-9a-f]{3}){1,2}$"
                       },
                       "warning": {
-                        "description": "The warning color of the workspace",
                         "default": "#f3d371",
+                        "description": "The warning color of the workspace",
                         "type": "string",
                         "minLength": 7,
                         "maxLength": 7,
                         "pattern": "^#([0-9a-f]{3}){1,2}$"
                       },
                       "danger": {
-                        "description": "The danger color of the workspace",
                         "default": "#d8314a",
+                        "description": "The danger color of the workspace",
                         "type": "string",
                         "minLength": 7,
                         "maxLength": 7,
@@ -1176,16 +1187,16 @@
                         "pattern": "^#([0-9a-f]{3}){1,2}$"
                       },
                       "positive": {
-                        "description": "The positive number color of the workspace",
                         "default": "#4ade80",
+                        "description": "The positive number color of the workspace",
                         "type": "string",
                         "minLength": 7,
                         "maxLength": 7,
                         "pattern": "^#([0-9a-f]{3}){1,2}$"
                       },
                       "negative": {
-                        "description": "The negative number color of the workspace",
                         "default": "#ef4444",
+                        "description": "The negative number color of the workspace",
                         "type": "string",
                         "minLength": 7,
                         "maxLength": 7,
@@ -1198,7 +1209,8 @@
                           "type": "string",
                           "minLength": 7,
                           "maxLength": 7,
-                          "pattern": "^#([0-9a-f]{3}){1,2}$"
+                          "pattern": "^#([0-9a-f]{3}){1,2}$",
+                          "description": "A base schema for describing the format of colors"
                         }
                       }
                     },
@@ -1221,14 +1233,16 @@
                 "required": ["dark", "light"],
                 "additionalProperties": false
               }
-            ]
-          }
+            ],
+            "description": "Colors used for various workspace elements"
+          },
+          "description": "Storm theme config values used for styling various package elements"
         }
       ]
     },
     "extensions": {
-      "description": "Configuration of each used extension",
       "default": {},
+      "description": "Storm Workspace config values used during various dev-ops processes. This type is a combination of the StormPackageConfig and StormProject types. It represents the config of the entire monorepo.",
       "type": "object",
       "propertyNames": {
         "type": "string"
@@ -1238,9 +1252,12 @@
   },
   "required": [
     "$schema",
+    "name",
+    "namespace",
+    "organization",
+    "repository",
     "license",
     "branch",
-    "owner",
     "bot",
     "release",
     "socials",
@@ -1253,6 +1270,7 @@
     "timezone",
     "locale",
     "logLevel",
+    "skipConfigLogging",
     "registry",
     "configFile",
     "colors",
@@ -1260,5 +1278,6 @@
   ],
   "additionalProperties": false,
   "$id": "https://public.storm-cdn.com/schemas/storm-workspace.schema.json",
-  "title": "Storm Workspace Configuration JSON Schema"
+  "title": "Storm Workspace Configuration JSON Schema",
+  "description": "This JSON Schema defines the structure of the Storm Workspace configuration file (`storm-workspace.json`). It is used to validate the configuration file and ensure that it adheres to the expected format."
 }

@@ -60,7 +60,8 @@ export const getFileBanner = (
       ? typeof workspaceConfig.organization === "string"
         ? workspaceConfig.organization
         : workspaceConfig.organization.name
-      : "storm-software");
+      : undefined) ||
+    "storm-software";
 
   return ` -------------------------------------------------------------------
 

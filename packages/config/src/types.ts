@@ -1,51 +1,39 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import * as z from "zod";
 import type {
-  ColorConfigMapSchema,
-  ColorConfigSchema,
-  DarkThemeColorConfigSchema,
-  LightThemeColorConfigSchema,
-  MultiThemeColorConfigSchema,
-  organizationConfigSchema,
-  SingleThemeColorConfigSchema,
-  stormWorkspaceConfigSchema
+  colorsSchema,
+  darkColorsSchema,
+  lightColorsSchema,
+  multiColorsSchema,
+  organizationSchema,
+  singleColorsSchema,
+  themeColorsSchema,
+  workspaceConfigSchema
 } from "./schema";
 
-export type DarkThemeColorConfig = z.infer<typeof DarkThemeColorConfigSchema>;
-export type DarkThemeColorConfigInput = z.input<
-  typeof DarkThemeColorConfigSchema
->;
+export type DarkThemeColors = z.infer<typeof darkColorsSchema>;
+export type DarkThemeColorsInput = z.input<typeof darkColorsSchema>;
 
-export type LightThemeColorConfig = z.infer<typeof LightThemeColorConfigSchema>;
-export type LightThemeColorConfigInput = z.input<
-  typeof LightThemeColorConfigSchema
->;
+export type LightThemeColors = z.infer<typeof lightColorsSchema>;
+export type LightThemeColorsInput = z.input<typeof lightColorsSchema>;
 
-export type MultiThemeColorConfig = z.infer<typeof MultiThemeColorConfigSchema>;
-export type MultiThemeColorConfigInput = z.input<
-  typeof MultiThemeColorConfigSchema
->;
+export type MultiThemeColors = z.infer<typeof multiColorsSchema>;
+export type MultiThemeColorsInput = z.input<typeof multiColorsSchema>;
 
-export type SingleThemeColorConfig = z.infer<
-  typeof SingleThemeColorConfigSchema
->;
-export type SingleThemeColorConfigInput = z.input<
-  typeof SingleThemeColorConfigSchema
->;
+export type SingleThemeColors = z.infer<typeof singleColorsSchema>;
+export type SingleThemeColorsInput = z.input<typeof singleColorsSchema>;
 
-export type ColorConfig = z.infer<typeof ColorConfigSchema>;
-export type ColorConfigInput = z.input<typeof ColorConfigSchema>;
+export type Colors = z.infer<typeof colorsSchema>;
+export type ColorsInput = z.input<typeof colorsSchema>;
 
-export type ColorConfigMap = z.infer<typeof ColorConfigMapSchema>;
-export type ColorConfigMapInput = z.input<typeof ColorConfigMapSchema>;
+export type ColorsMap = z.infer<typeof themeColorsSchema>;
+export type ColorsMapInput = z.input<typeof themeColorsSchema>;
 
-export type OrganizationConfig = z.infer<typeof organizationConfigSchema>;
-export type OrganizationConfigInput = z.input<typeof organizationConfigSchema>;
+export type OrganizationConfig = z.infer<typeof organizationSchema>;
+export type OrganizationConfigInput = z.input<typeof organizationSchema>;
 
-type TStormWorkspaceConfig = z.infer<typeof stormWorkspaceConfigSchema>;
-export type StormWorkspaceConfigInput = z.input<
-  typeof stormWorkspaceConfigSchema
->;
+type TStormWorkspaceConfig = z.infer<typeof workspaceConfigSchema>;
+export type StormWorkspaceConfigInput = z.input<typeof workspaceConfigSchema>;
 
 /**
  * The Storm workspace's configuration object

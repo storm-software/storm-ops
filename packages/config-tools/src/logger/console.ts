@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import type { ColorConfig, StormWorkspaceConfig } from "@storm-software/config";
+import type { Colors, StormWorkspaceConfig } from "@storm-software/config";
 import { LogLevel, LogLevelLabel } from "../types";
 import { DEFAULT_COLOR_CONFIG } from "../utilities/colors";
 import { getChalk } from "./chalk";
@@ -20,12 +20,12 @@ export const getLogFn = (
   _chalk: ReturnType<typeof getChalk> = getChalk()
 ): ((message?: any) => void) => {
   const colors =
-    !(config.colors as ColorConfig)?.dark &&
+    !(config.colors as Colors)?.dark &&
     !config.colors?.["base"] &&
     !config.colors?.["base"]?.dark
       ? DEFAULT_COLOR_CONFIG
-      : (config.colors as ColorConfig)?.dark &&
-          typeof (config.colors as ColorConfig).dark === "string"
+      : (config.colors as Colors)?.dark &&
+          typeof (config.colors as Colors).dark === "string"
         ? config.colors
         : config.colors?.["base"]?.dark &&
             typeof config.colors["base"].dark === "string"

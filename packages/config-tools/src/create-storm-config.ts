@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 import type { StormWorkspaceConfig } from "@storm-software/config";
-import { stormWorkspaceConfigSchema } from "@storm-software/config/schema";
+import { workspaceConfigSchema } from "@storm-software/config/schema";
 import defu from "defu";
 import * as z from "zod";
 import { getConfigFile } from "./config-file/get-config-file";
@@ -82,7 +82,7 @@ export const createStormWorkspaceConfig = async <
     ) as StormWorkspaceConfig<TExtensionName, TExtensionConfig>;
     try {
       result = applyDefaultConfig(
-        await stormWorkspaceConfigSchema.parseAsync(configInput)
+        await workspaceConfigSchema.parseAsync(configInput)
       ) as StormWorkspaceConfig<TExtensionName, TExtensionConfig>;
       result.workspaceRoot ??= _workspaceRoot;
     } catch (error) {

@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 
 import {
-  MultiThemeColorConfig,
-  SingleThemeColorConfig
+  MultiThemeColors,
+  SingleThemeColors
 } from "@storm-software/config/types";
 import chalk from "chalk";
 import { Command, Option } from "commander";
@@ -63,7 +63,7 @@ export async function viewAction({ dir }: { dir: string }) {
 
 ${formatLogMessage({ ...config, colors: undefined })}
 
-${typeof (config.colors as SingleThemeColorConfig).light === "string" ? formatSingleThemeColors(config.colors as SingleThemeColorConfig) : formatMultiThemeColors(config.colors as MultiThemeColorConfig)}
+${typeof (config.colors as SingleThemeColors).light === "string" ? formatSingleThemeColors(config.colors as SingleThemeColors) : formatMultiThemeColors(config.colors as MultiThemeColors)}
 `,
       { ...config, logLevel: "all" }
     );
@@ -100,26 +100,41 @@ Stack Trace: ${error.stack}`
   }
 })();
 
-const formatSingleThemeColors = (config: SingleThemeColorConfig) => {
+const formatSingleThemeColors = (config: SingleThemeColors) => {
   return `---- Theme Colors ----
   ${Object.entries(config)
-    .filter(([key, value]) => typeof value === "string" && value.length > 0)
-    .map(([key, value]) => chalk.hex(value)(`${key}: ${chalk.bold(value)}`))
+    .filter(
+      ([key, value]) =>
+        key !== "gradient" && typeof value === "string" && value.length > 0
+    )
+    .map(([key, value]) =>
+      chalk.hex(String(value))(`${key}: ${chalk.bold(value)}`)
+    )
     .join(" \n")}
 `;
 };
 
-const formatMultiThemeColors = (config: MultiThemeColorConfig) => {
+const formatMultiThemeColors = (config: MultiThemeColors) => {
   return ` ---- Light Theme Colors ----
 ${Object.entries(config.light)
-  .filter(([key, value]) => typeof value === "string" && value.length > 0)
-  .map(([key, value]) => chalk.hex(value)(`${key}: ${chalk.bold(value)}`))
+  .filter(
+    ([key, value]) =>
+      key !== "gradient" && typeof value === "string" && value.length > 0
+  )
+  .map(([key, value]) =>
+    chalk.hex(String(value))(`${key}: ${chalk.bold(value)}`)
+  )
   .join(" \n")}
 
 ---- Dark Theme Colors ----
 ${Object.entries(config.dark)
-  .filter(([key, value]) => typeof value === "string" && value.length > 0)
-  .map(([key, value]) => chalk.hex(value)(`${key}: ${chalk.bold(value)}`))
+  .filter(
+    ([key, value]) =>
+      key !== "gradient" && typeof value === "string" && value.length > 0
+  )
+  .map(([key, value]) =>
+    chalk.hex(String(value))(`${key}: ${chalk.bold(value)}`)
+  )
   .join(" \n")}
   `;
 };

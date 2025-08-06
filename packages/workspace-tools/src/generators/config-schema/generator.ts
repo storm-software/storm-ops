@@ -1,7 +1,8 @@
 import { formatFiles, type Tree, writeJson } from "@nx/devkit";
 import {
+  schemaRegistry,
   type StormWorkspaceConfig,
-  stormWorkspaceConfigSchema
+  workspaceConfigSchema
 } from "@storm-software/config";
 import {
   findWorkspaceRoot,
@@ -32,8 +33,9 @@ export async function configSchemaGeneratorFn(
     config
   );
 
-  const jsonSchema = z.toJSONSchema(stormWorkspaceConfigSchema, {
-    target: "draft-7"
+  const jsonSchema = z.toJSONSchema(workspaceConfigSchema, {
+    target: "draft-7",
+    metadata: schemaRegistry
   });
 
   jsonSchema.$id ??=

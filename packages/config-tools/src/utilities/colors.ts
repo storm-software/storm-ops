@@ -1,10 +1,10 @@
 import {
-  ColorConfig,
-  ColorConfigMap,
-  SingleThemeColorConfig,
+  Colors,
+  ColorsMap,
+  MultiThemeColors,
+  SingleThemeColors,
   StormWorkspaceConfig
 } from "@storm-software/config/types";
-import { MultiThemeColorConfig } from "packages/config/dist";
 
 /**
  * Storm theme config values used for styling various workspace elements
@@ -42,7 +42,7 @@ export const DEFAULT_COLOR_CONFIG = {
     negative: "#dc2626",
     gradient: ["#1fb2a6", "#db2777", "#818cf8"]
   }
-} as MultiThemeColorConfig;
+} as MultiThemeColors;
 
 /**
  * Get the color configuration from the Storm workspace configuration.
@@ -50,13 +50,13 @@ export const DEFAULT_COLOR_CONFIG = {
  * @param config - An optional, partial color configuration for the Storm workspace.
  * @returns The color configuration, or the default color configuration if not defined.
  */
-export function getColorConfig(
+export function getColors(
   config?: Partial<Pick<StormWorkspaceConfig, "colors">>
-): ColorConfig {
+): Colors {
   if (
     !config?.colors ||
     typeof config.colors !== "object" ||
-    (!(config.colors as ColorConfigMap)["dark"] &&
+    (!(config.colors as ColorsMap)["dark"] &&
       (!config.colors["base"] ||
         typeof config.colors !== "object" ||
         !config.colors["base"]?.["dark"]))
@@ -66,17 +66,17 @@ export function getColorConfig(
 
   if (config.colors["base"]) {
     if (typeof config.colors["base"]["dark"] === "object") {
-      return config.colors["base"]["dark"] as ColorConfig;
+      return config.colors["base"]["dark"] as Colors;
     } else if (config.colors["base"]["dark"] === "string") {
       return config.colors["base"];
     }
   }
 
-  if (typeof (config.colors as ColorConfigMap)["dark"] === "object") {
-    return config.colors["dark"] as ColorConfig;
+  if (typeof (config.colors as ColorsMap)["dark"] === "object") {
+    return config.colors["dark"] as Colors;
   }
 
-  return (config.colors ?? DEFAULT_COLOR_CONFIG) as ColorConfig;
+  return (config.colors ?? DEFAULT_COLOR_CONFIG) as Colors;
 }
 
 /**
@@ -104,7 +104,7 @@ export function getColor(
     | "fatal",
   config?: Partial<Pick<StormWorkspaceConfig, "colors">>
 ): string {
-  const colors = getColorConfig(config);
+  const colors = getColors(config);
 
   const result =
     (typeof colors["dark"] === "object" ? colors["dark"][key] : colors[key]) ||
@@ -133,12 +133,12 @@ export function getColor(
 export function getGradient(
   config?: Partial<Pick<StormWorkspaceConfig, "colors">>
 ): string[] | undefined {
-  const colors = getColorConfig(config);
+  const colors = getColors(config);
 
   const result =
     (typeof colors["dark"] === "object"
       ? colors["dark"].gradient
-      : (colors as SingleThemeColorConfig).gradient) ||
+      : (colors as SingleThemeColors).gradient) ||
     DEFAULT_COLOR_CONFIG["dark"].gradient;
   if (result && Array.isArray(result) && result.length > 0) {
     return result;

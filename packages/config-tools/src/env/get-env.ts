@@ -2,11 +2,11 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 import {
-  type ColorConfigInput,
-  type DarkThemeColorConfigInput,
-  type LightThemeColorConfigInput,
-  type MultiThemeColorConfigInput,
-  type SingleThemeColorConfigInput,
+  type ColorsInput,
+  type DarkThemeColorsInput,
+  type LightThemeColorsInput,
+  type MultiThemeColorsInput,
+  type SingleThemeColorsInput,
   type StormWorkspaceConfig,
   COLOR_KEYS,
   STORM_DEFAULT_DOCS,
@@ -67,7 +67,10 @@ export const getConfigEnv = (): DeepPartial<StormWorkspaceConfig> => {
       email: process.env[`${prefix}BOT_EMAIL`] || undefined
     },
     release: {
-      banner: process.env[`${prefix}RELEASE_BANNER`] || undefined,
+      banner: {
+        url: process.env[`${prefix}RELEASE_BANNER_URL`] || undefined,
+        alt: (process.env[`${prefix}RELEASE_BANNER_ALT`] || undefined) as string
+      },
       header: process.env[`${prefix}RELEASE_HEADER`] || undefined,
       footer: process.env[`${prefix}RELEASE_FOOTER`] || undefined
     },
@@ -230,14 +233,14 @@ export const getConfigEnv = (): DeepPartial<StormWorkspaceConfig> => {
   config.colors =
     themeNames.length > 0
       ? themeNames.reduce(
-          (ret: Record<string, ColorConfigInput>, themeName: string) => {
-            ret[themeName] = getThemeColorConfigEnv(prefix, themeName);
+          (ret: Record<string, ColorsInput>, themeName: string) => {
+            ret[themeName] = getThemeColorsEnv(prefix, themeName);
 
             return ret;
           },
           {}
         )
-      : getThemeColorConfigEnv(prefix);
+      : getThemeColorsEnv(prefix);
 
   if (config.docs === STORM_DEFAULT_DOCS) {
     if (config.homepage === STORM_DEFAULT_HOMEPAGE) {
@@ -285,22 +288,17 @@ export const getConfigEnv = (): DeepPartial<StormWorkspaceConfig> => {
     }, config);*/
 };
 
-const getThemeColorConfigEnv = (
-  prefix: string,
-  theme?: string
-): ColorConfigInput => {
+const getThemeColorsEnv = (prefix: string, theme?: string): ColorsInput => {
   const themeName =
     `COLOR_${theme && theme !== "base" ? `${theme}_` : ""}`.toUpperCase();
 
   return process.env[`${prefix}${themeName}LIGHT_BRAND`] ||
     process.env[`${prefix}${themeName}DARK_BRAND`]
-    ? getMultiThemeColorConfigEnv(prefix + themeName)
-    : getSingleThemeColorConfigEnv(prefix + themeName);
+    ? getMultiThemeColorsEnv(prefix + themeName)
+    : getSingleThemeColorsEnv(prefix + themeName);
 };
 
-const getSingleThemeColorConfigEnv = (
-  prefix: string
-): SingleThemeColorConfigInput => {
+const getSingleThemeColorsEnv = (prefix: string): SingleThemeColorsInput => {
   const gradient = [] as string[];
   if (
     process.env[`${prefix}GRADIENT_START`] &&
@@ -340,25 +338,21 @@ const getSingleThemeColorConfigEnv = (
   };
 };
 
-const getMultiThemeColorConfigEnv = (
-  prefix: string
-): MultiThemeColorConfigInput => {
+const getMultiThemeColorsEnv = (prefix: string): MultiThemeColorsInput => {
   return {
-    light: getBaseThemeColorConfigEnv<"light", typeof prefix>(
-      `${prefix}_LIGHT_`
-    ),
-    dark: getBaseThemeColorConfigEnv<"dark", typeof prefix>(`${prefix}_DARK_`)
+    light: getBaseThemeColorsEnv<"light", typeof prefix>(`${prefix}_LIGHT_`),
+    dark: getBaseThemeColorsEnv<"dark", typeof prefix>(`${prefix}_DARK_`)
   };
 };
 
 type ColorThemeTypes = "dark" | "light";
 
-const getBaseThemeColorConfigEnv = <
+const getBaseThemeColorsEnv = <
   TColorThemeType extends ColorThemeTypes = ColorThemeTypes,
   TExistingPrefix extends string = string,
   TResult = TColorThemeType extends "dark"
-    ? DarkThemeColorConfigInput
-    : LightThemeColorConfigInput
+    ? DarkThemeColorsInput
+    : LightThemeColorsInput
 >(
   prefix: `${TExistingPrefix}_${Uppercase<TColorThemeType>}_`
 ): TResult => {

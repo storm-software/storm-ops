@@ -1,9 +1,9 @@
 import type {
-  ColorConfigMap,
-  DarkThemeColorConfig,
-  LightThemeColorConfig,
-  MultiThemeColorConfig,
-  SingleThemeColorConfig,
+  ColorsMap,
+  DarkThemeColors,
+  LightThemeColors,
+  MultiThemeColors,
+  SingleThemeColors,
   StormWorkspaceConfig
 } from "@storm-software/config";
 import { getLogLevel } from "../logger/get-log-level";
@@ -82,7 +82,16 @@ export const setConfigEnv = (config: StormWorkspaceConfig) => {
     process.env[`${prefix}ERROR_URL`] = config.error.url;
   }
   if (config.release) {
-    process.env[`${prefix}RELEASE_BANNER`] = config.release.banner;
+    if (config.release.banner) {
+      if (typeof config.release.banner === "string") {
+        process.env[`${prefix}RELEASE_BANNER`] = config.release.banner;
+        process.env[`${prefix}RELEASE_BANNER_URL`] = config.release.banner;
+      } else {
+        process.env[`${prefix}RELEASE_BANNER`] = config.release.banner.url;
+        process.env[`${prefix}RELEASE_BANNER_URL`] = config.release.banner.url;
+        process.env[`${prefix}RELEASE_BANNER_ALT`] = config.release.banner.alt;
+      }
+    }
     process.env[`${prefix}RELEASE_HEADER`] = config.release.header;
     process.env[`${prefix}RELEASE_FOOTER`] = config.release.footer;
   }
@@ -244,16 +253,16 @@ export const setConfigEnv = (config: StormWorkspaceConfig) => {
   // Check if the color configuration is set using separate dark and light color
   // palettes or a single multi-theme color palettes
   if (
-    (config.colors as ColorConfigMap)?.base?.light ||
-    (config.colors as ColorConfigMap)?.base?.dark
+    (config.colors as ColorsMap)?.base?.light ||
+    (config.colors as ColorsMap)?.base?.dark
   ) {
-    for (const key of Object.keys(config.colors as ColorConfigMap)) {
-      setThemeColorConfigEnv(`${prefix}COLOR_${key}_`, config.colors[key]);
+    for (const key of Object.keys(config.colors as ColorsMap)) {
+      setThemeColorsEnv(`${prefix}COLOR_${key}_`, config.colors[key]);
     }
   } else {
-    setThemeColorConfigEnv(
+    setThemeColorsEnv(
       `${prefix}COLOR_`,
-      config.colors as MultiThemeColorConfig | SingleThemeColorConfig
+      config.colors as MultiThemeColors | SingleThemeColors
     );
   }
 
@@ -311,22 +320,19 @@ export const setConfigEnv = (config: StormWorkspaceConfig) => {
   }
 };
 
-const setThemeColorConfigEnv = (
+const setThemeColorsEnv = (
   prefix: string,
-  config: MultiThemeColorConfig | SingleThemeColorConfig
+  config: MultiThemeColors | SingleThemeColors
 ) => {
   // Check if the color configuration is set using separate dark and light color
   // palettes or a single multi-theme color palettes
-  return (config as MultiThemeColorConfig)?.light?.brand ||
-    (config as MultiThemeColorConfig)?.dark?.brand
-    ? setMultiThemeColorConfigEnv(prefix, config as MultiThemeColorConfig)
-    : setSingleThemeColorConfigEnv(prefix, config as SingleThemeColorConfig);
+  return (config as MultiThemeColors)?.light?.brand ||
+    (config as MultiThemeColors)?.dark?.brand
+    ? setMultiThemeColorsEnv(prefix, config as MultiThemeColors)
+    : setSingleThemeColorsEnv(prefix, config as SingleThemeColors);
 };
 
-const setSingleThemeColorConfigEnv = (
-  prefix: string,
-  config: SingleThemeColorConfig
-) => {
+const setSingleThemeColorsEnv = (prefix: string, config: SingleThemeColors) => {
   if (config.dark) {
     process.env[`${prefix}DARK`] = config.dark;
   }
@@ -376,19 +382,16 @@ const setSingleThemeColorConfigEnv = (
   }
 };
 
-const setMultiThemeColorConfigEnv = (
-  prefix: string,
-  config: MultiThemeColorConfig
-) => {
+const setMultiThemeColorsEnv = (prefix: string, config: MultiThemeColors) => {
   return {
-    light: setBaseThemeColorConfigEnv(`${prefix}LIGHT_`, config.light),
-    dark: setBaseThemeColorConfigEnv(`${prefix}DARK_`, config.dark)
+    light: setBaseThemeColorsEnv(`${prefix}LIGHT_`, config.light),
+    dark: setBaseThemeColorsEnv(`${prefix}DARK_`, config.dark)
   };
 };
 
-const setBaseThemeColorConfigEnv = (
+const setBaseThemeColorsEnv = (
   prefix: string,
-  config: DarkThemeColorConfig | LightThemeColorConfig
+  config: DarkThemeColors | LightThemeColors
 ) => {
   if (config.foreground) {
     process.env[`${prefix}FOREGROUND`] = config.foreground;

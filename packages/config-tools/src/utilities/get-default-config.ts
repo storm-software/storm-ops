@@ -21,14 +21,9 @@ export async function getPackageJsonConfig(
 ): Promise<
   Pick<
     StormWorkspaceConfig,
-    | "workspaceRoot"
-    | "name"
-    | "namespace"
-    | "repository"
-    | "license"
-    | "homepage"
-    | "support"
-  >
+    "workspaceRoot" | "license" | "homepage" | "support"
+  > &
+    Partial<Pick<StormWorkspaceConfig, "name" | "namespace" | "repository">>
 > {
   let license = STORM_DEFAULT_LICENSE;
   let homepage: string | undefined = undefined;
