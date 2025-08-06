@@ -1,3 +1,25 @@
+![Storm Software]([object Object])
+
+# Changelog for Storm Ops - Workspace Tools
+
+## [1.281.0](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.281.0) (2025-08-06)
+
+### Features
+
+- **config:** Update the configuration schema to use `zod/mini` to reduce size
+  ([1a89aae2e](https://github.com/storm-software/storm-ops/commit/1a89aae2e))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+  ([92d5d61a0](https://github.com/storm-software/storm-ops/commit/92d5d61a0))
+
+### Updated Dependencies
+
+- Updated prettier to 0.53.0
+- Updated esbuild to 0.47.0
+- Updated unbuild to 0.51.0
+
 ![Storm Software](https://public.storm-cdn.com/brand-banner.png)
 
 # Changelog for Storm Ops - Workspace Tools

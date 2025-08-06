@@ -1,3 +1,25 @@
+![Storm Software]([object Object])
+
+# Changelog for Storm Ops - Tsdown
+
+## [0.38.0](https://github.com/storm-software/storm-ops/releases/tag/tsdown%400.38.0) (2025-08-06)
+
+### Features
+
+- **config:** Update the configuration schema to use `zod/mini` to reduce size
+  ([1a89aae2e](https://github.com/storm-software/storm-ops/commit/1a89aae2e))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+  ([92d5d61a0](https://github.com/storm-software/storm-ops/commit/92d5d61a0))
+
+### Updated Dependencies
+
+- Updated config-tools to 1.180.0
+- Updated build-tools to 0.153.0
+- Updated config to 1.128.0
+
 ![Storm Software](https://public.storm-cdn.com/brand-banner.png)
 
 # Changelog for Storm Ops - Tsdown

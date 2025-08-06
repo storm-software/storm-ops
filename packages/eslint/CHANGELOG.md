@@ -1,3 +1,24 @@
+![Storm Software]([object Object])
+
+# Changelog for Storm Ops - ESLint
+
+## [0.162.0](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.162.0) (2025-08-06)
+
+### Features
+
+- **config:** Update the configuration schema to use `zod/mini` to reduce size
+  ([1a89aae2e](https://github.com/storm-software/storm-ops/commit/1a89aae2e))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+  ([92d5d61a0](https://github.com/storm-software/storm-ops/commit/92d5d61a0))
+
+### Updated Dependencies
+
+- Updated config-tools to 1.180.0
+- Updated config to 1.128.0
+
 ![Storm Software](https://public.storm-cdn.com/brand-banner.png)
 
 # Changelog for Storm Ops - ESLint

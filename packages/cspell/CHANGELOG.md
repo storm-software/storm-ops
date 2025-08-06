@@ -1,3 +1,19 @@
+![Storm Software]([object Object])
+
+# Changelog for Storm Ops - CSpell
+
+## [0.37.0](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.37.0) (2025-08-06)
+
+### Features
+
+- **config:** Update the configuration schema to use `zod/mini` to reduce size
+  ([1a89aae2e](https://github.com/storm-software/storm-ops/commit/1a89aae2e))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+  ([92d5d61a0](https://github.com/storm-software/storm-ops/commit/92d5d61a0))
+
 ![Storm Software](https://public.storm-cdn.com/brand-banner.png)
 
 # Changelog for Storm Ops - CSpell
