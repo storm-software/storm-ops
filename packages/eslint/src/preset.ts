@@ -37,6 +37,7 @@ import { prettier } from "./configs/prettier";
 import { reactNative } from "./configs/react-native";
 import { secrets } from "./configs/secrets";
 import { tsdoc } from "./configs/tsdoc";
+import { zod } from "./configs/zod";
 import { RuleOptions } from "./typegen";
 import type {
   Awaitable,
@@ -127,7 +128,8 @@ export function getStormConfig(
     typescript: enableTypeScript = isPackageExists("typescript"),
     unicorn: enableUnicorn = true,
     tsdoc: enableTSDoc = true,
-    unocss: enableUnoCSS = false
+    unocss: enableUnoCSS = false,
+    zod: enableZod = true
   } = options;
 
   let isInEditor = options.isInEditor;
@@ -236,6 +238,14 @@ export function getStormConfig(
         componentExts,
         overrides: getOverrides(options, "typescript"),
         type: options.type
+      })
+    );
+  }
+
+  if (enableZod) {
+    configs.push(
+      zod({
+        overrides: getOverrides(options, "zod")
       })
     );
   }

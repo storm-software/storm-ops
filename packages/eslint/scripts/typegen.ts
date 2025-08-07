@@ -34,6 +34,7 @@ import {
   unocss,
   yaml
 } from "../src/configs";
+import { zod } from "../src/configs/zod";
 import { combine } from "../src/utils/combine";
 
 const configs = await combine(
@@ -72,11 +73,12 @@ const configs = await combine(
   test(),
   tsdoc(),
   toml(),
-  regexp(),
   typescript(),
+  regexp(),
   unicorn(),
   unocss(),
-  yaml()
+  yaml(),
+  zod()
 );
 
 const configNames = configs.map(i => i.name).filter(Boolean) as string[];

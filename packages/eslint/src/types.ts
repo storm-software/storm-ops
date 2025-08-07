@@ -606,6 +606,13 @@ export interface OptionsConfig
   tsdoc?: boolean | OptionsTSDoc;
 
   /**
+   * Enable Zod support.
+   *
+   * @defaultValue true
+   */
+  zod?: boolean | OptionsOverrides;
+
+  /**
    * Enable test support.
    *
    * @defaultValue true
