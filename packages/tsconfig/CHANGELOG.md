@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Tsconfig
 
+## [0.43.1](https://github.com/storm-software/storm-ops/releases/tag/tsconfig%400.43.1) (2025-08-07)
+
+### Miscellaneous
+
+- **monorepo:** Reformat workspace package files
+  ([7b6add0f5](https://github.com/storm-software/storm-ops/commit/7b6add0f5))
+
 ## [0.43.0](https://github.com/storm-software/storm-ops/releases/tag/tsconfig%400.43.0) (2025-08-06)
 
 ### Features

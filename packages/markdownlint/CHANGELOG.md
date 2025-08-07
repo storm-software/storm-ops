@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Markdownlint
 
+## [0.26.1](https://github.com/storm-software/storm-ops/releases/tag/markdownlint%400.26.1) (2025-08-07)
+
+### Miscellaneous
+
+- **monorepo:** Reformat workspace package files
+  ([7b6add0f5](https://github.com/storm-software/storm-ops/commit/7b6add0f5))
+
 ## [0.26.0](https://github.com/storm-software/storm-ops/releases/tag/markdownlint%400.26.0) (2025-08-06)
 
 ### Features

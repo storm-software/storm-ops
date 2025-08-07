@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Build Tools
 
+## [0.153.1](https://github.com/storm-software/storm-ops/releases/tag/build-tools%400.153.1) (2025-08-07)
+
+### Miscellaneous
+
+- **monorepo:** Reformat workspace package files
+  ([7b6add0f5](https://github.com/storm-software/storm-ops/commit/7b6add0f5))
+
 ## [0.153.0](https://github.com/storm-software/storm-ops/releases/tag/build-tools%400.153.0) (2025-08-06)
 
 ### Features

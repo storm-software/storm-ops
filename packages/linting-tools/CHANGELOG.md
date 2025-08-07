@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Linting Tools
 
+## [1.128.1](https://github.com/storm-software/storm-ops/releases/tag/linting-tools%401.128.1) (2025-08-07)
+
+### Miscellaneous
+
+- **monorepo:** Reformat workspace package files
+  ([7b6add0f5](https://github.com/storm-software/storm-ops/commit/7b6add0f5))
+
 ## [1.128.0](https://github.com/storm-software/storm-ops/releases/tag/linting-tools%401.128.0) (2025-08-06)
 
 ### Features
