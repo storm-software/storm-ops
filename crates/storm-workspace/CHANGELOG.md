@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Storm Workspace
 
+## [0.15.2](https://github.com/storm-software/storm-ops/releases/tag/storm-workspace%400.15.2) (2025-08-07)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace package links
+  ([cc1710a99](https://github.com/storm-software/storm-ops/commit/cc1710a99))
+
 ## [0.15.1](https://github.com/storm-software/storm-ops/releases/tag/storm-workspace%400.15.1) (2025-08-07)
 
 ### Miscellaneous

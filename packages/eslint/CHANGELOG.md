@@ -2,6 +2,23 @@
 
 # Changelog for Storm Ops - ESLint
 
+## [0.163.0](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.163.0) (2025-08-07)
+
+### Features
+
+- **eslint:** Added the `eslint-plugin-import-zod` linting rules
+  ([1862f9d06](https://github.com/storm-software/storm-ops/commit/1862f9d06))
+
+### Miscellaneous
+
+- **monorepo:** Update workspace package links
+  ([cc1710a99](https://github.com/storm-software/storm-ops/commit/cc1710a99))
+
+### Updated Dependencies
+
+- Updated config-tools to 1.180.2
+- Updated config to 1.128.2
+
 ## [0.162.1](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.162.1) (2025-08-07)
 
 ### Miscellaneous

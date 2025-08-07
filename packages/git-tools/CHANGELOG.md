@@ -2,6 +2,23 @@
 
 # Changelog for Storm Ops - Git Tools
 
+## [2.115.2](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.115.2) (2025-08-07)
+
+### Bug Fixes
+
+- **git-tools:** Resolve issue with `zod` version in build
+  ([535070385](https://github.com/storm-software/storm-ops/commit/535070385))
+
+### Miscellaneous
+
+- **monorepo:** Update workspace package links
+  ([cc1710a99](https://github.com/storm-software/storm-ops/commit/cc1710a99))
+
+### Updated Dependencies
+
+- Updated config-tools to 1.180.2
+- Updated config to 1.128.2
+
 ## [2.115.1](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.115.1) (2025-08-07)
 
 ### Miscellaneous
