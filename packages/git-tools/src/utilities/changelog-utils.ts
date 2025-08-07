@@ -1,4 +1,7 @@
-import type { StormWorkspaceConfig } from "@storm-software/config";
+import {
+  STORM_DEFAULT_RELEASE_BANNER,
+  type StormWorkspaceConfig
+} from "@storm-software/config";
 import { ReleaseVersion } from "nx/src/command-line/release/utils/shared";
 import { format, resolveConfig } from "prettier";
 import { titleCase } from "./title-case";
@@ -13,14 +16,25 @@ export async function generateChangelogContent(
 ): Promise<string> {
   const formatOptions = (await resolveConfig(filepath)) ?? {};
 
-  const header = await format(
-    `${
-      workspaceConfig?.release.banner
-        ? `![Storm Software](${workspaceConfig?.release.banner})
+  const bannerUrl =
+    typeof workspaceConfig?.release.banner === "string"
+      ? workspaceConfig?.release.banner
+      : workspaceConfig?.release.banner?.url;
 
-`
-        : ""
-    }# Changelog ${project || workspaceConfig?.name ? "for" : ""}${workspaceConfig?.name ? ` ${titleCase(workspaceConfig.name)}` : ""}${project ? `${workspaceConfig?.name ? " -" : ""} ${titleCase(project)}` : ""}
+  const header = await format(
+    `![${
+      (typeof workspaceConfig?.release.banner === "string"
+        ? workspaceConfig.organization
+          ? titleCase(
+              typeof workspaceConfig.organization === "string"
+                ? workspaceConfig.organization
+                : workspaceConfig.organization.name
+            )
+          : undefined
+        : workspaceConfig?.release.banner.alt) || "Branded release banner image"
+    }](${bannerUrl || STORM_DEFAULT_RELEASE_BANNER})
+
+# Changelog ${project || workspaceConfig?.name ? "for" : ""}${workspaceConfig?.name ? ` ${titleCase(workspaceConfig.name)}` : ""}${project ? `${workspaceConfig?.name ? " -" : ""} ${titleCase(project)}` : ""}
 
 `,
     {

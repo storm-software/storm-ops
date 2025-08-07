@@ -1510,14 +1510,20 @@ function formatGithubReleaseNotes(
   }
 
   return `![${
-    workspaceConfig.organization
-      ? titleCase(
-          typeof workspaceConfig.organization === "string"
-            ? workspaceConfig.organization
-            : workspaceConfig.organization.name
-        )
-      : ""
-  }](${workspaceConfig.release.banner})
+    (typeof workspaceConfig.release.banner === "string"
+      ? workspaceConfig.organization
+        ? titleCase(
+            typeof workspaceConfig.organization === "string"
+              ? workspaceConfig.organization
+              : workspaceConfig.organization.name
+          )
+        : undefined
+      : workspaceConfig.release.banner.alt) || "Release banner header"
+  }](${
+    typeof workspaceConfig.release.banner === "string"
+      ? workspaceConfig.release.banner
+      : workspaceConfig.release.banner?.url
+  })
 ${workspaceConfig.release.header || ""}
 
 # ${projectName ? `${titleCase(projectName)} ` : ""}v${releaseVersion.rawVersion}
