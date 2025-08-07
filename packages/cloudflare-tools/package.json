@@ -169,7 +169,7 @@
     "nx": "catalog:",
     "tsup": "catalog:",
     "untyped": "catalog:",
-    "wrangler": "^4.28.0"
+    "wrangler": "^4.28.1"
   },
   "publishConfig": {
     "access": "public"
