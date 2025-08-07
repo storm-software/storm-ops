@@ -1,3 +1,19 @@
+![Storm Software's logo banner](https://public.storm-cdn.com/brand-banner.png)
+
+# Changelog for Storm Ops - ESLint
+
+## [0.163.1](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.163.1) (2025-08-07)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README files and update `wrangler`
+  ([2231aafa7](https://github.com/storm-software/storm-ops/commit/2231aafa7))
+
+### Updated Dependencies
+
+- Updated config-tools to 1.180.3
+- Updated config to 1.128.3
+
 ![Storm Software]([object Object])
 
 # Changelog for Storm Ops - ESLint

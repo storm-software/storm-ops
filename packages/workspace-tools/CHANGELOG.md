@@ -1,3 +1,20 @@
+![Storm Software's logo banner](https://public.storm-cdn.com/brand-banner.png)
+
+# Changelog for Storm Ops - Workspace Tools
+
+## [1.281.3](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.281.3) (2025-08-07)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README files and update `wrangler`
+  ([2231aafa7](https://github.com/storm-software/storm-ops/commit/2231aafa7))
+
+### Updated Dependencies
+
+- Updated prettier to 0.53.3
+- Updated esbuild to 0.47.3
+- Updated unbuild to 0.51.3
+
 ![Storm Software]([object Object])
 
 # Changelog for Storm Ops - Workspace Tools

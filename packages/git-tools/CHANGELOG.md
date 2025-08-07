@@ -1,3 +1,24 @@
+![Storm Software's logo banner](https://public.storm-cdn.com/brand-banner.png)
+
+# Changelog for Storm Ops - Git Tools
+
+## [2.115.3](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.115.3) (2025-08-07)
+
+### Bug Fixes
+
+- **git-tools:** Resolved issues around banner display in release notes
+  ([854f27d21](https://github.com/storm-software/storm-ops/commit/854f27d21))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README files and update `wrangler`
+  ([2231aafa7](https://github.com/storm-software/storm-ops/commit/2231aafa7))
+
+### Updated Dependencies
+
+- Updated config-tools to 1.180.3
+- Updated config to 1.128.3
+
 ![Storm Software]([object Object])
 
 # Changelog for Storm Ops - Git Tools

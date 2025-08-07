@@ -1,3 +1,14 @@
+![Storm Software's logo banner](https://public.storm-cdn.com/brand-banner.png)
+
+# Changelog for Storm Ops - CSpell
+
+## [0.37.3](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.37.3) (2025-08-07)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README files and update `wrangler`
+  ([2231aafa7](https://github.com/storm-software/storm-ops/commit/2231aafa7))
+
 ![Storm Software]([object Object])
 
 # Changelog for Storm Ops - CSpell
