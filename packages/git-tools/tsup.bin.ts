@@ -23,7 +23,7 @@ export default defineConfig([
       "@nx/*",
       "@storm-software/*"
     ],
-    noExternal: ["conventional-commits-parser", "defu"],
+    noExternal: ["conventional-commits-parser", "defu", "zod"],
     skipNodeModulesBundle: true
   }
 ]);
