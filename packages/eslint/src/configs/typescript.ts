@@ -47,7 +47,10 @@ export async function typescript(
   ];
 
   const workspaceRoot = findWorkspaceRoot();
-  const tsconfigPath = getTsConfigPath(options?.tsconfigPath || workspaceRoot);
+  const tsconfigPath = getTsConfigPath(
+    options?.tsconfigPath || workspaceRoot,
+    workspaceRoot
+  );
 
   const typeAwareRules: TypedFlatConfigItem["rules"] = {
     "dot-notation": "off",
