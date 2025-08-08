@@ -2,6 +2,23 @@
 
 # Changelog for Storm Ops - ESLint
 
+## [0.163.2](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.163.2) (2025-08-08)
+
+### Bug Fixes
+
+- **eslint:** Resolve issue with `tsconfig.json` detection in ESLint plugin
+  ([dbd5af253](https://github.com/storm-software/storm-ops/commit/dbd5af253))
+
+### Miscellaneous
+
+- **monorepo:** Update workspace dependencies and README markdown
+  ([67e119b05](https://github.com/storm-software/storm-ops/commit/67e119b05))
+
+### Updated Dependencies
+
+- Updated config-tools to 1.180.4
+- Updated config to 1.128.4
+
 ## [0.163.1](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.163.1) (2025-08-07)
 
 ### Miscellaneous

@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Pulumi Tools
 
+## [0.16.4](https://github.com/storm-software/storm-ops/releases/tag/pulumi-tools%400.16.4) (2025-08-08)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace dependencies and README markdown
+  ([67e119b05](https://github.com/storm-software/storm-ops/commit/67e119b05))
+
+### Updated Dependencies
+
+- Updated config-tools to 1.180.4
+- Updated config to 1.128.4
+
 ## [0.16.3](https://github.com/storm-software/storm-ops/releases/tag/pulumi-tools%400.16.3) (2025-08-07)
 
 ### Miscellaneous

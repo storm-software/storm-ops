@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Tsdoc
 
+## [0.8.4](https://github.com/storm-software/storm-ops/releases/tag/tsdoc%400.8.4) (2025-08-08)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace dependencies and README markdown
+  ([67e119b05](https://github.com/storm-software/storm-ops/commit/67e119b05))
+
 ## [0.8.3](https://github.com/storm-software/storm-ops/releases/tag/tsdoc%400.8.3) (2025-08-07)
 
 ### Miscellaneous
