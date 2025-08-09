@@ -573,17 +573,14 @@ schemaRegistry.add(packageManagerSchema, {
 });
 
 export const timezoneSchema = z._default(
-  z.string().check(z.trim(), z.toLowerCase()),
+  z.string().check(z.trim()),
   "America/New_York"
 );
 schemaRegistry.add(timezoneSchema, {
   description: "The default timezone of the workspace"
 });
 
-export const localeSchema = z._default(
-  z.string().check(z.trim(), z.toLowerCase()),
-  "en-US"
-);
+export const localeSchema = z._default(z.string().check(z.trim()), "en-US");
 schemaRegistry.add(localeSchema, {
   description: "The default locale of the workspace"
 });
