@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Config
 
+## [1.128.5](https://github.com/storm-software/storm-ops/releases/tag/config%401.128.5) (2025-08-09)
+
+### Bug Fixes
+
+- **config:** Resolved issue with case sensitivety in config schema fields
+  ([ee8b77a6e](https://github.com/storm-software/storm-ops/commit/ee8b77a6e))
+
+### Miscellaneous
+
+- **monorepo:** Updated the workspace package dependencies
+  ([fff0b6534](https://github.com/storm-software/storm-ops/commit/fff0b6534))
+
 ## [1.128.4](https://github.com/storm-software/storm-ops/releases/tag/config%401.128.4) (2025-08-08)
 
 ### Miscellaneous
