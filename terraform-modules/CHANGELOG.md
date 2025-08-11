@@ -2,6 +2,15 @@
 
 # Changelog for Storm Ops - Terraform Modules
 
+## [0.53.6](https://github.com/storm-software/storm-ops/releases/tag/terraform-modules%400.53.6) (2025-08-11)
+
+### Miscellaneous
+
+- **monorepo:** Update to TypeScript v5.9.2
+  ([cf34d601f](https://github.com/storm-software/storm-ops/commit/cf34d601f))
+- **monorepo:** Regenerate README markdown files
+  ([5b9ffe718](https://github.com/storm-software/storm-ops/commit/5b9ffe718))
+
 ## [0.53.5](https://github.com/storm-software/storm-ops/releases/tag/terraform-modules%400.53.5) (2025-08-09)
 
 ### Miscellaneous

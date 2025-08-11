@@ -2,6 +2,20 @@
 
 # Changelog for Storm Ops - ESLint
 
+## [0.163.4](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.163.4) (2025-08-11)
+
+### Miscellaneous
+
+- **monorepo:** Update to TypeScript v5.9.2
+  ([cf34d601f](https://github.com/storm-software/storm-ops/commit/cf34d601f))
+- **monorepo:** Regenerate README markdown files
+  ([5b9ffe718](https://github.com/storm-software/storm-ops/commit/5b9ffe718))
+
+### Updated Dependencies
+
+- Updated config-tools to 1.180.6
+- Updated config to 1.128.6
+
 ## [0.163.3](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.163.3) (2025-08-09)
 
 ### Miscellaneous

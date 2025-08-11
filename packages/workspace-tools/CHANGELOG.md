@@ -2,6 +2,21 @@
 
 # Changelog for Storm Ops - Workspace Tools
 
+## [1.281.6](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.281.6) (2025-08-11)
+
+### Miscellaneous
+
+- **monorepo:** Update to TypeScript v5.9.2
+  ([cf34d601f](https://github.com/storm-software/storm-ops/commit/cf34d601f))
+- **monorepo:** Regenerate README markdown files
+  ([5b9ffe718](https://github.com/storm-software/storm-ops/commit/5b9ffe718))
+
+### Updated Dependencies
+
+- Updated prettier to 0.53.6
+- Updated esbuild to 0.47.6
+- Updated unbuild to 0.51.6
+
 ## [1.281.5](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.281.5) (2025-08-09)
 
 ### Miscellaneous

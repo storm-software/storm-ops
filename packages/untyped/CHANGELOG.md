@@ -2,6 +2,15 @@
 
 # Changelog for Storm Ops - Untyped
 
+## [0.19.6](https://github.com/storm-software/storm-ops/releases/tag/untyped%400.19.6) (2025-08-11)
+
+### Miscellaneous
+
+- **monorepo:** Update to TypeScript v5.9.2
+  ([cf34d601f](https://github.com/storm-software/storm-ops/commit/cf34d601f))
+- **monorepo:** Regenerate README markdown files
+  ([5b9ffe718](https://github.com/storm-software/storm-ops/commit/5b9ffe718))
+
 ## [0.19.5](https://github.com/storm-software/storm-ops/releases/tag/untyped%400.19.5) (2025-08-09)
 
 ### Miscellaneous

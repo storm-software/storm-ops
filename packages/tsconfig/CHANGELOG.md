@@ -2,6 +2,15 @@
 
 # Changelog for Storm Ops - Tsconfig
 
+## [0.43.6](https://github.com/storm-software/storm-ops/releases/tag/tsconfig%400.43.6) (2025-08-11)
+
+### Miscellaneous
+
+- **monorepo:** Update to TypeScript v5.9.2
+  ([cf34d601f](https://github.com/storm-software/storm-ops/commit/cf34d601f))
+- **monorepo:** Regenerate README markdown files
+  ([5b9ffe718](https://github.com/storm-software/storm-ops/commit/5b9ffe718))
+
 ## [0.43.5](https://github.com/storm-software/storm-ops/releases/tag/tsconfig%400.43.5) (2025-08-09)
 
 ### Miscellaneous

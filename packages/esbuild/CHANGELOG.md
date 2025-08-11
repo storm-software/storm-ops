@@ -2,6 +2,21 @@
 
 # Changelog for Storm Ops - Esbuild
 
+## [0.47.6](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.47.6) (2025-08-11)
+
+### Miscellaneous
+
+- **monorepo:** Update to TypeScript v5.9.2
+  ([cf34d601f](https://github.com/storm-software/storm-ops/commit/cf34d601f))
+- **monorepo:** Regenerate README markdown files
+  ([5b9ffe718](https://github.com/storm-software/storm-ops/commit/5b9ffe718))
+
+### Updated Dependencies
+
+- Updated config-tools to 1.180.6
+- Updated build-tools to 0.153.6
+- Updated config to 1.128.6
+
 ## [0.47.5](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.47.5) (2025-08-09)
 
 ### Miscellaneous
