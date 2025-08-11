@@ -1,4 +1,4 @@
-export const tsupVersion = "^7.2.0";
+export const tsupVersion = "8.4.0";
 export const prettierPackageJsonVersion = "2.4.6";
 export const prettierPrismaVersion = "5.0.0";
 export const prettierVersion = "^3.0.3";

@@ -164,7 +164,7 @@
     "@nx/devkit": "catalog:",
     "@nx/js": "catalog:",
     "nx": "catalog:",
-    "typescript": "^5.8.3"
+    "typescript": "^5.9.2"
   },
   "peerDependenciesMeta": {
     "@nx/devkit": {
