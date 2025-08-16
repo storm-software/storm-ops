@@ -2,6 +2,19 @@
 
 # Changelog for Storm Ops - Workspace Tools
 
+## [1.281.7](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.281.7) (2025-08-16)
+
+### Bug Fixes
+
+- **config-tools:** Update the .env names to `STORM_WORKSPACE_CONFIG` and
+  `STORM_WORKSPACE_CONFIG_FILE`
+  ([c44a3df36](https://github.com/storm-software/storm-ops/commit/c44a3df36))
+
+### Updated Dependencies
+
+- Updated esbuild to 0.47.7
+- Updated unbuild to 0.51.7
+
 ## [1.281.6](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.281.6) (2025-08-11)
 
 ### Miscellaneous

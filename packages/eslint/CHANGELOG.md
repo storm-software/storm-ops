@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - ESLint
 
+## [0.163.5](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.163.5) (2025-08-16)
+
+### Bug Fixes
+
+- **config-tools:** Update the .env names to `STORM_WORKSPACE_CONFIG` and
+  `STORM_WORKSPACE_CONFIG_FILE`
+  ([c44a3df36](https://github.com/storm-software/storm-ops/commit/c44a3df36))
+
+### Updated Dependencies
+
+- Updated config-tools to 1.180.7
+
 ## [0.163.4](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.163.4) (2025-08-11)
 
 ### Miscellaneous

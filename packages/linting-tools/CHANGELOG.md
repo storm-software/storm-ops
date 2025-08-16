@@ -2,6 +2,14 @@
 
 # Changelog for Storm Ops - Linting Tools
 
+## [1.128.7](https://github.com/storm-software/storm-ops/releases/tag/linting-tools%401.128.7) (2025-08-16)
+
+### Bug Fixes
+
+- **config-tools:** Update the .env names to `STORM_WORKSPACE_CONFIG` and
+  `STORM_WORKSPACE_CONFIG_FILE`
+  ([c44a3df36](https://github.com/storm-software/storm-ops/commit/c44a3df36))
+
 ## [1.128.6](https://github.com/storm-software/storm-ops/releases/tag/linting-tools%401.128.6) (2025-08-11)
 
 ### Miscellaneous

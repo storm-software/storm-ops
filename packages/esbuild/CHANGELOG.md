@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Esbuild
 
+## [0.47.7](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.47.7) (2025-08-16)
+
+### Bug Fixes
+
+- **config-tools:** Update the .env names to `STORM_WORKSPACE_CONFIG` and
+  `STORM_WORKSPACE_CONFIG_FILE`
+  ([c44a3df36](https://github.com/storm-software/storm-ops/commit/c44a3df36))
+
+### Updated Dependencies
+
+- Updated config-tools to 1.180.7
+
 ## [0.47.6](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.47.6) (2025-08-11)
 
 ### Miscellaneous
