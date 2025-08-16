@@ -81,7 +81,7 @@
       "arrowParentheses": "always",
       "quoteProperties": "asNeeded"
     },
-    "globals": ["__STORM_CONFIG", "__STORM_CONTEXT"]
+    "globals": ["__STORM_CONFIG", "$storm"]
   },
   "json": {
     "parser": {

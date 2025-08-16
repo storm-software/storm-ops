@@ -6,13 +6,10 @@ import {
   writeSuccess,
   writeWarning
 } from "@storm-software/config-tools/logger/console";
-import * as esbuild from "esbuild";
-import { globbySync } from "globby";
 import { copyBuildAssets } from "./assets";
 import { cleanDirectories } from "./clean";
 import { resolveContext } from "./context";
 import { generatePackageJson } from "./package-json";
-import { depsCheckPlugin } from "./plugins/deps-check";
 import { executeTsup } from "./tsup";
 import { ESBuildContext, type ESBuildOptions } from "./types";
 
@@ -53,39 +50,39 @@ async function reportResults(context: ESBuildContext) {
 /**
  * A blank esbuild run to do an analysis of our deps
  */
-async function dependencyCheck(options: ESBuildOptions) {
-  // we only check our dependencies for a full build
-  if (process.env.DEV === "true") {
-    return undefined;
-  }
+// async function dependencyCheck(options: ESBuildOptions) {
+//   // we only check our dependencies for a full build
+//   if (process.env.DEV === "true") {
+//     return undefined;
+//   }
 
-  // Only run on test and publish pipelines on Buildkite
-  // Meaning we skip on GitHub Actions
-  // Because it's slow and runs for each job, during setup, making each job slower
-  if (process.env.CI && !process.env.BUILDKITE) {
-    return undefined;
-  }
+//   // Only run on test and publish pipelines on Buildkite
+//   // Meaning we skip on GitHub Actions
+//   // Because it's slow and runs for each job, during setup, making each job slower
+//   if (process.env.CI && !process.env.BUILDKITE) {
+//     return undefined;
+//   }
 
-  // we need to bundle everything to do the analysis
-  const buildPromise = esbuild.build({
-    entryPoints: globbySync("**/*.{j,t}s", {
-      // We don't check dependencies in ecosystem tests because tests are isolated from the build.
-      ignore: ["./src/__tests__/**/*", "./tests/e2e/**/*", "./dist/**/*"],
-      gitignore: true
-    }),
-    logLevel: "silent", // there will be errors
-    bundle: true, // we bundle to get everything
-    write: false, // no need to write for analysis
-    outdir: "out",
-    plugins: [depsCheckPlugin(options.bundle)]
-  });
+//   // we need to bundle everything to do the analysis
+//   const buildPromise = esbuild.build({
+//     entryPoints: globbySync("**/*.{j,t}s", {
+//       // We don't check dependencies in ecosystem tests because tests are isolated from the build.
+//       ignore: ["./src/__tests__/**/*", "./tests/e2e/**/*", "./dist/**/*"],
+//       gitignore: true
+//     }),
+//     logLevel: "silent", // there will be errors
+//     bundle: true, // we bundle to get everything
+//     write: false, // no need to write for analysis
+//     outdir: "out",
+//     plugins: [depsCheckPlugin(options.bundle)]
+//   });
 
-  // we absolutely don't care if it has any errors
-  // eslint-disable-next-line @typescript-eslint/no-empty-function
-  await buildPromise.catch(() => {});
+//   // we absolutely don't care if it has any errors
+//   // eslint-disable-next-line @typescript-eslint/no-empty-function
+//   await buildPromise.catch(() => {});
 
-  return undefined;
-}
+//   return undefined;
+// }
 
 /**
  * Clean the output path
@@ -128,7 +125,7 @@ export async function build(options: ESBuildOptions) {
     await cleanOutputPath(context);
 
     await Promise.all([
-      dependencyCheck(context.options),
+      // dependencyCheck(context.options),
       generatePackageJson(context),
       copyBuildAssets(context),
       executeTsup(context)

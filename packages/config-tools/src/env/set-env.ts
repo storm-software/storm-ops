@@ -188,7 +188,9 @@ export const setConfigEnv = (config: StormWorkspaceConfig) => {
       : "en_US.UTF-8";
   }
   if (config.configFile) {
-    process.env[`${prefix}CONFIG_FILE`] = correctPaths(config.configFile);
+    process.env[`${prefix}WORKSPACE_CONFIG_FILE`] = correctPaths(
+      config.configFile
+    );
   }
   if (config.workspaceRoot) {
     process.env[`${prefix}WORKSPACE_ROOT`] = correctPaths(config.workspaceRoot);
@@ -311,7 +313,7 @@ export const setConfigEnv = (config: StormWorkspaceConfig) => {
     );
   }
 
-  process.env[`${prefix}CONFIG`] = JSON.stringify(config);
+  process.env[`${prefix}WORKSPACE_CONFIG`] = JSON.stringify(config);
 
   for (const key of Object.keys(config.extensions ?? {})) {
     if (config.extensions[key] && Object.keys(config.extensions[key])) {

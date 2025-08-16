@@ -137,8 +137,8 @@ export const getConfigEnv = (): DeepPartial<StormWorkspaceConfig> => {
     support: process.env[`${prefix}SUPPORT`] || undefined,
     timezone: process.env[`${prefix}TIMEZONE`] || process.env.TZ || undefined,
     locale: process.env[`${prefix}LOCALE`] || process.env.LOCALE || undefined,
-    configFile: process.env[`${prefix}CONFIG_FILE`]
-      ? correctPaths(process.env[`${prefix}CONFIG_FILE`])
+    configFile: process.env[`${prefix}WORKSPACE_CONFIG_FILE`]
+      ? correctPaths(process.env[`${prefix}WORKSPACE_CONFIG_FILE`])
       : undefined,
     workspaceRoot: process.env[`${prefix}WORKSPACE_ROOT`]
       ? correctPaths(process.env[`${prefix}WORKSPACE_ROOT`])
@@ -258,7 +258,7 @@ export const getConfigEnv = (): DeepPartial<StormWorkspaceConfig> => {
     }
   }
 
-  const serializedConfig = process.env[`${prefix}CONFIG`];
+  const serializedConfig = process.env[`${prefix}WORKSPACE_CONFIG`];
   if (serializedConfig) {
     const parsed = JSON.parse(serializedConfig);
     config = {
