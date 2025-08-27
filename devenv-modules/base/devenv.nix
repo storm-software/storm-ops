@@ -3,8 +3,6 @@
 let
   pkgs-unstable = import inputs.nixpkgs-unstable { system = pkgs.stdenv.system; };
 in {
-  name = "storm-software/base";
-
   dotenv.enable = true;
   dotenv.filename = [".env" ".env.local"];
   dotenv.disableHint = true;

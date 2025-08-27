@@ -1,7 +1,5 @@
 { pkgs, ... }:
 {
-  name = "storm-software/rust";
-
   # https://devenv.sh/packages/
   packages = [
     pkgs.cargo-deny

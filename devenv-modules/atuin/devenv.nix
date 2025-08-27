@@ -1,7 +1,5 @@
 { pkgs, ... }:
 {
-  name = "storm-software/atuin";
-
  # https://devenv.sh/packages/
   packages = [
     # Shell

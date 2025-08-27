@@ -1,14 +1,18 @@
-# yaml-language-server: $schema=https://devenv.sh/devenv.schema.json
 inputs:
-  nixpkgs:
-    url: github:cachix/devenv-nixpkgs/rolling
-  nixpkgs-unstable:
-    url: github:nixos/nixpkgs/nixpkgs-unstable
   fenix:
     url: github:nix-community/fenix
     inputs:
       nixpkgs:
         follows: nixpkgs
+  nixpkgs:
+    url: github:cachix/devenv-nixpkgs/rolling
+  nixpkgs-unstable:
+    url: github:nixos/nixpkgs/nixpkgs-unstable
+  rust-overlay:
+    url: github:oxalica/rust-overlay
+    inputs:
+      nixpkgs:
+        follows: nixpkgs
 imports:
-  - ./devenv-modules/base
-  - ./devenv-modules/rust
+- ./devenv-modules/base
+- ./devenv-modules/rust
