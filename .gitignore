@@ -10,10 +10,12 @@ tmp
 out
 .nx/workspace-data
 .nx/cache
+.nx/socket
 **/cspell/dict
 **/cspell/checksum.txt
 
-# build
+# local env
+.env.local
 
 # dependencies
 node_modules
