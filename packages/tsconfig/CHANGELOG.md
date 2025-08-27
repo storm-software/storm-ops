@@ -2,6 +2,15 @@
 
 # Changelog for Storm Ops - Tsconfig
 
+## [0.43.7](https://github.com/storm-software/storm-ops/releases/tag/tsconfig%400.43.7) (2025-08-27)
+
+### Miscellaneous
+
+- **monorepo:** Upgrade Nx to v21.4.1
+  ([398bbbb03](https://github.com/storm-software/storm-ops/commit/398bbbb03))
+- **monorepo:** Regenerate README markdown files
+  ([6a176b865](https://github.com/storm-software/storm-ops/commit/6a176b865))
+
 ## [0.43.6](https://github.com/storm-software/storm-ops/releases/tag/tsconfig%400.43.6) (2025-08-11)
 
 ### Miscellaneous

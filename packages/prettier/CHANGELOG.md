@@ -2,6 +2,15 @@
 
 # Changelog for Storm Ops - Prettier
 
+## [0.53.7](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.53.7) (2025-08-27)
+
+### Miscellaneous
+
+- **monorepo:** Upgrade Nx to v21.4.1
+  ([398bbbb03](https://github.com/storm-software/storm-ops/commit/398bbbb03))
+- **monorepo:** Regenerate README markdown files
+  ([6a176b865](https://github.com/storm-software/storm-ops/commit/6a176b865))
+
 ## [0.53.6](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.53.6) (2025-08-11)
 
 ### Miscellaneous

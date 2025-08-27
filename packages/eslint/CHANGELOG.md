@@ -2,6 +2,22 @@
 
 # Changelog for Storm Ops - ESLint
 
+## [0.163.6](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.163.6) (2025-08-27)
+
+### Miscellaneous
+
+- **monorepo:** Repository management configuration file clean up
+  ([f064d80ab](https://github.com/storm-software/storm-ops/commit/f064d80ab))
+- **monorepo:** Upgrade Nx to v21.4.1
+  ([398bbbb03](https://github.com/storm-software/storm-ops/commit/398bbbb03))
+- **monorepo:** Regenerate README markdown files
+  ([6a176b865](https://github.com/storm-software/storm-ops/commit/6a176b865))
+
+### Updated Dependencies
+
+- Updated config-tools to 1.180.8
+- Updated config to 1.128.7
+
 ## [0.163.5](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.163.5) (2025-08-16)
 
 ### Bug Fixes

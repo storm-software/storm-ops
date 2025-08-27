@@ -2,6 +2,21 @@
 
 # Changelog for Storm Ops - Unbuild
 
+## [0.51.8](https://github.com/storm-software/storm-ops/releases/tag/unbuild%400.51.8) (2025-08-27)
+
+### Miscellaneous
+
+- **monorepo:** Upgrade Nx to v21.4.1
+  ([398bbbb03](https://github.com/storm-software/storm-ops/commit/398bbbb03))
+- **monorepo:** Regenerate README markdown files
+  ([6a176b865](https://github.com/storm-software/storm-ops/commit/6a176b865))
+
+### Updated Dependencies
+
+- Updated config-tools to 1.180.8
+- Updated build-tools to 0.153.7
+- Updated config to 1.128.7
+
 ## [0.51.7](https://github.com/storm-software/storm-ops/releases/tag/unbuild%400.51.7) (2025-08-16)
 
 ### Bug Fixes

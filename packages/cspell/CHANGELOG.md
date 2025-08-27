@@ -2,6 +2,15 @@
 
 # Changelog for Storm Ops - CSpell
 
+## [0.37.8](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.37.8) (2025-08-27)
+
+### Miscellaneous
+
+- **monorepo:** Upgrade Nx to v21.4.1
+  ([398bbbb03](https://github.com/storm-software/storm-ops/commit/398bbbb03))
+- **monorepo:** Regenerate README markdown files
+  ([6a176b865](https://github.com/storm-software/storm-ops/commit/6a176b865))
+
 ## [0.37.7](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.37.7) (2025-08-16)
 
 ### Bug Fixes
