@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Markdownlint
 
+## [0.26.12](https://github.com/storm-software/storm-ops/releases/tag/markdownlint%400.26.12) (2025-08-28)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+  ([b25aa8830](https://github.com/storm-software/storm-ops/commit/b25aa8830))
+
 ## [0.26.11](https://github.com/storm-software/storm-ops/releases/tag/markdownlint%400.26.11) (2025-08-28)
 
 ### Miscellaneous

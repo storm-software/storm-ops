@@ -2,6 +2,27 @@
 
 # Changelog for Storm Ops - Git Tools
 
+## [2.115.13](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.115.13) (2025-08-28)
+
+### Bug Fixes
+
+- **git-tools:** Resolve issue with invalid commit tag generation
+  ([9cf9c0694](https://github.com/storm-software/storm-ops/commit/9cf9c0694))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+  ([b25aa8830](https://github.com/storm-software/storm-ops/commit/b25aa8830))
+- **monorepo:** Update workspace package links
+  ([aca1b25fd](https://github.com/storm-software/storm-ops/commit/aca1b25fd))
+- **git-tools:** Ensure we exit with error when no version data
+  ([fd8e02988](https://github.com/storm-software/storm-ops/commit/fd8e02988))
+
+### Updated Dependencies
+
+- Updated config-tools to 1.180.13
+- Updated config to 1.128.12
+
 ## [2.115.12](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.115.12) (2025-08-28)
 
 ### Bug Fixes
