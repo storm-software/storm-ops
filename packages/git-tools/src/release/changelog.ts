@@ -1,6 +1,9 @@
 import { StormWorkspaceConfig } from "@storm-software/config";
 import { getWorkspaceConfig } from "@storm-software/config-tools/get-config";
-import { writeDebug } from "@storm-software/config-tools/logger/console";
+import {
+  writeDebug,
+  writeInfo
+} from "@storm-software/config-tools/logger/console";
 import { prompt } from "enquirer";
 import { readFileSync, rmSync, writeFileSync } from "node:fs";
 import type { DependencyBump } from "nx/release/changelog-renderer";
@@ -262,16 +265,31 @@ export function createAPI(overrideReleaseConfig: NxReleaseConfiguration) {
     const commitMessage: string | undefined =
       args.gitCommitMessage || nxReleaseConfig.changelog?.git?.commitMessage;
 
+    // Filter out any projects without a new version
+    const actualProjectsVersionData = Object.fromEntries(
+      Object.entries(projectsVersionData).filter(
+        ([, data]) => data && valid(data.newVersion)
+      )
+    );
+    writeInfo(
+      `Preparing to release the following projects:
+${Object.entries(actualProjectsVersionData)
+  .map(
+    ([project, versionData]) =>
+      `- ${project}: ${
+        versionData.currentVersion
+          ? `${versionData.currentVersion} -> ${versionData.newVersion}`
+          : versionData.newVersion
+      }`
+  )
+  .join("\n")}`
+    );
+
     const commitMessageValues: string[] = createCommitMessageValues(
       releaseGroups,
       releaseGroupToFilteredProjects,
-      projectsVersionData,
+      actualProjectsVersionData,
       commitMessage!
-    );
-
-    // Filter out any projects without a new version
-    const actualProjectsVersionData = Object.fromEntries(
-      Object.entries(projectsVersionData).filter(([, data]) => data?.newVersion)
     );
 
     // Resolve any git tags as early as possible so that we can hard error in case of any duplicates before reaching the actual git command
