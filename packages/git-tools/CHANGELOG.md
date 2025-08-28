@@ -2,6 +2,25 @@
 
 # Changelog for Storm Ops - Git Tools
 
+## [2.115.12](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.115.12) (2025-08-28)
+
+### Bug Fixes
+
+- **git-tools:** Updated version check filter to include a undefined value check
+  ([e21df6011](https://github.com/storm-software/storm-ops/commit/e21df6011))
+
+### Miscellaneous
+
+- **monorepo:** Update workspace package links
+  ([5c32031c0](https://github.com/storm-software/storm-ops/commit/5c32031c0))
+- **monorepo:** Regenerate README markdown files
+  ([b15066368](https://github.com/storm-software/storm-ops/commit/b15066368))
+
+### Updated Dependencies
+
+- Updated config-tools to 1.180.12
+- Updated config to 1.128.11
+
 ## [2.115.11](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.115.11) (2025-08-28)
 
 ### Miscellaneous
