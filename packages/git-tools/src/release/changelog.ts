@@ -266,11 +266,46 @@ export function createAPI(overrideReleaseConfig: NxReleaseConfiguration) {
       args.gitCommitMessage || nxReleaseConfig.changelog?.git?.commitMessage;
 
     // Filter out any projects without a new version
-    const actualProjectsVersionData = Object.fromEntries(
-      Object.entries(projectsVersionData).filter(
-        ([, data]) => data && valid(data.newVersion)
+    const actualProjectsVersionData = Object.keys(projectsVersionData)
+      .filter(
+        project =>
+          projectsVersionData[project] &&
+          valid(projectsVersionData[project]?.newVersion)
       )
-    );
+      .reduce((ret, project) => {
+        if (projectsVersionData[project]?.newVersion) {
+          ret[project] = projectsVersionData[project];
+        }
+
+        return ret;
+      }, {} as VersionData);
+    if (Object.keys(actualProjectsVersionData).length === 0) {
+      throw new Error(
+        [
+          `No unreleased changes were found in the git history for the selected projects: ${
+            args.projects?.join(", ") ?? "All Projects"
+          }.`,
+          "",
+          `Original list of version data: ${Object.entries(projectsVersionData)
+            .map(
+              ([project, versionData]) =>
+                `${project}: ${
+                  versionData
+                    ? versionData.currentVersion
+                      ? `${versionData.currentVersion} -> ${versionData.newVersion}`
+                      : versionData.newVersion
+                    : "missing version data"
+                }`
+            )
+            .join(", ")}`,
+          "",
+          `If you believe this is incorrect, please check the following:`,
+          `- The selected projects have been configured correctly within a release group which has changelog generation enabled.`,
+          `- The commit history contains valid conventional commits since the last release.`
+        ].join("\n")
+      );
+    }
+
     writeInfo(
       `Preparing to release the following projects:
 ${Object.entries(actualProjectsVersionData)
