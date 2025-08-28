@@ -2,6 +2,15 @@
 
 # Changelog for Storm Ops - CSpell
 
+## [0.37.9](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.37.9) (2025-08-28)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace package links
+  ([6c5a4055c](https://github.com/storm-software/storm-ops/commit/6c5a4055c))
+- **monorepo:** Regenerate README markdown files
+  ([078f35026](https://github.com/storm-software/storm-ops/commit/078f35026))
+
 ## [0.37.8](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.37.8) (2025-08-27)
 
 ### Miscellaneous
