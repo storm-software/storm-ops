@@ -1,5 +1,52 @@
+import { ReleaseGroupWithName } from "nx/src/command-line/release/config/filter-release-groups";
 import { execCommand } from "nx/src/command-line/release/utils/exec-command.js";
 import { gitAdd } from "nx/src/command-line/release/utils/git";
+import { VersionData } from "nx/src/command-line/release/utils/shared";
+import { interpolate } from "nx/src/tasks-runner/utils";
+
+export function createGitTagValues(
+  releaseGroups: ReleaseGroupWithName[],
+  releaseGroupToFilteredProjects: Map<ReleaseGroupWithName, Set<string>>,
+  versionData: VersionData
+): string[] {
+  const tags = [] as string[];
+
+  for (const releaseGroup of releaseGroups) {
+    const releaseGroupProjectNames = Array.from(
+      releaseGroupToFilteredProjects.get(releaseGroup) ?? []
+    );
+    // For independent groups we want one tag per project, not one for the overall group
+    if (releaseGroup.projectsRelationship === "independent") {
+      for (const project of releaseGroupProjectNames) {
+        const projectVersionData = versionData[project];
+        if (projectVersionData?.newVersion) {
+          tags.push(
+            interpolate(releaseGroup.releaseTagPattern, {
+              version: projectVersionData.newVersion,
+              projectName: project
+            })
+          );
+        }
+      }
+      continue;
+    }
+
+    if (releaseGroupProjectNames.length > 0 && releaseGroupProjectNames[0]) {
+      // For fixed groups we want one tag for the overall group
+      const projectVersionData = versionData[releaseGroupProjectNames[0]]; // all at the same version, so we can just pick the first one
+      if (projectVersionData?.newVersion) {
+        tags.push(
+          interpolate(releaseGroup.releaseTagPattern, {
+            version: projectVersionData.newVersion,
+            releaseGroupName: releaseGroup.name
+          })
+        );
+      }
+    }
+  }
+
+  return tags;
+}
 
 /**
  * Create a git tag for the current commit.

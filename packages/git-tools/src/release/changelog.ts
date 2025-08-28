@@ -1,9 +1,6 @@
 import { StormWorkspaceConfig } from "@storm-software/config";
 import { getWorkspaceConfig } from "@storm-software/config-tools/get-config";
-import {
-  writeDebug,
-  writeInfo
-} from "@storm-software/config-tools/logger/console";
+import { writeDebug } from "@storm-software/config-tools/logger/console";
 import { prompt } from "enquirer";
 import { readFileSync, rmSync, writeFileSync } from "node:fs";
 import type { DependencyBump } from "nx/release/changelog-renderer";
@@ -46,7 +43,6 @@ import {
   ReleaseVersion,
   VersionData,
   createCommitMessageValues,
-  createGitTagValues,
   handleDuplicateGitTags,
   noDiffInChangelogMessage
 } from "nx/src/command-line/release/utils/shared";
@@ -78,7 +74,11 @@ import {
   generateChangelogContent,
   generateChangelogTitle
 } from "../utilities/changelog-utils";
-import { commitChanges, gitTag } from "../utilities/git-utils";
+import {
+  commitChanges,
+  createGitTagValues,
+  gitTag
+} from "../utilities/git-utils";
 import { titleCase } from "../utilities/title-case";
 import StormChangelogRenderer from "./changelog-renderer";
 import {
@@ -265,65 +265,10 @@ export function createAPI(overrideReleaseConfig: NxReleaseConfiguration) {
     const commitMessage: string | undefined =
       args.gitCommitMessage || nxReleaseConfig.changelog?.git?.commitMessage;
 
-    // Filter out any projects without a new version
-    const actualProjectsVersionData = Object.keys(projectsVersionData)
-      .filter(
-        project =>
-          projectsVersionData[project] &&
-          valid(projectsVersionData[project]?.newVersion)
-      )
-      .reduce((ret, project) => {
-        if (projectsVersionData[project]?.newVersion) {
-          ret[project] = projectsVersionData[project];
-        }
-
-        return ret;
-      }, {} as VersionData);
-    if (Object.keys(actualProjectsVersionData).length === 0) {
-      throw new Error(
-        [
-          `No unreleased changes were found in the git history for the selected projects: ${
-            args.projects?.join(", ") ?? "All Projects"
-          }.`,
-          "",
-          `Original list of version data: ${Object.entries(projectsVersionData)
-            .map(
-              ([project, versionData]) =>
-                `${project}: ${
-                  versionData
-                    ? versionData.currentVersion
-                      ? `${versionData.currentVersion} -> ${versionData.newVersion}`
-                      : versionData.newVersion
-                    : "missing version data"
-                }`
-            )
-            .join(", ")}`,
-          "",
-          `If you believe this is incorrect, please check the following:`,
-          `- The selected projects have been configured correctly within a release group which has changelog generation enabled.`,
-          `- The commit history contains valid conventional commits since the last release.`
-        ].join("\n")
-      );
-    }
-
-    writeInfo(
-      `Preparing to release the following projects:
-${Object.entries(actualProjectsVersionData)
-  .map(
-    ([project, versionData]) =>
-      `- ${project}: ${
-        versionData.currentVersion
-          ? `${versionData.currentVersion} -> ${versionData.newVersion}`
-          : versionData.newVersion
-      }`
-  )
-  .join("\n")}`
-    );
-
     const commitMessageValues: string[] = createCommitMessageValues(
       releaseGroups,
       releaseGroupToFilteredProjects,
-      actualProjectsVersionData,
+      projectsVersionData,
       commitMessage!
     );
 
@@ -333,7 +278,7 @@ ${Object.entries(actualProjectsVersionData)
         ? createGitTagValues(
             releaseGroups,
             releaseGroupToFilteredProjects,
-            actualProjectsVersionData
+            projectsVersionData
           )
         : [];
     handleDuplicateGitTags(gitTagValues);
@@ -528,17 +473,17 @@ ${Object.entries(actualProjectsVersionData)
 
       for (const project of releaseGroup.projects) {
         // If the project does not have any changes, do not process its dependents
-        if (!actualProjectsVersionData[project]?.newVersion) {
+        if (!projectsVersionData[project]?.newVersion) {
           continue;
         }
 
         const dependentProjects = (
-          actualProjectsVersionData[project].dependentProjects || []
+          projectsVersionData[project].dependentProjects || []
         )
           .map(dep => {
             return {
               dependencyName: dep.source,
-              newVersion: actualProjectsVersionData[dep.source]?.newVersion
+              newVersion: projectsVersionData[dep.source]?.newVersion
             };
           })
           .filter(b => b.newVersion !== null);
@@ -550,7 +495,7 @@ ${Object.entries(actualProjectsVersionData)
               : []) ?? [];
           additionalDependencyBumpsForProject.push({
             dependencyName: project,
-            newVersion: actualProjectsVersionData[project].newVersion
+            newVersion: projectsVersionData[project].newVersion
           });
           projectToAdditionalDependencyBumps.set(
             dependent.dependencyName,
@@ -576,7 +521,7 @@ ${Object.entries(actualProjectsVersionData)
             project => {
               return [
                 project,
-                ...(actualProjectsVersionData[project]?.dependentProjects.map(
+                ...(projectsVersionData[project]?.dependentProjects.map(
                   dep => dep.source
                 ) || [])
               ];
@@ -697,7 +642,7 @@ ${Object.entries(actualProjectsVersionData)
             tree,
             args,
             changes: changes!,
-            projectsVersionData: actualProjectsVersionData,
+            projectsVersionData,
             releaseGroup,
             projects: [project],
             nxReleaseConfig,
@@ -853,7 +798,7 @@ ${Object.entries(actualProjectsVersionData)
           tree,
           args,
           changes,
-          projectsVersionData: actualProjectsVersionData,
+          projectsVersionData,
           releaseGroup,
           projects: projectNodes,
           nxReleaseConfig,
