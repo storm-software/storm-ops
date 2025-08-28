@@ -1,5 +1,6 @@
 import { StormWorkspaceConfig } from "@storm-software/config";
 import { getWorkspaceConfig } from "@storm-software/config-tools/get-config";
+import { writeDebug } from "@storm-software/config-tools/logger/console";
 import { prompt } from "enquirer";
 import { readFileSync, rmSync, writeFileSync } from "node:fs";
 import type { DependencyBump } from "nx/release/changelog-renderer";
@@ -268,13 +269,18 @@ export function createAPI(overrideReleaseConfig: NxReleaseConfiguration) {
       commitMessage!
     );
 
+    // Filter out any projects without a new version
+    const actualProjectsVersionData = Object.fromEntries(
+      Object.entries(projectsVersionData).filter(([, data]) => data.newVersion)
+    );
+
     // Resolve any git tags as early as possible so that we can hard error in case of any duplicates before reaching the actual git command
     const gitTagValues: string[] =
       (args.gitTag ?? nxReleaseConfig.changelog?.git.tag)
         ? createGitTagValues(
             releaseGroups,
             releaseGroupToFilteredProjects,
-            projectsVersionData
+            actualProjectsVersionData
           )
         : [];
     handleDuplicateGitTags(gitTagValues);
@@ -469,17 +475,17 @@ export function createAPI(overrideReleaseConfig: NxReleaseConfiguration) {
 
       for (const project of releaseGroup.projects) {
         // If the project does not have any changes, do not process its dependents
-        if (!projectsVersionData[project]?.newVersion) {
+        if (!actualProjectsVersionData[project]?.newVersion) {
           continue;
         }
 
         const dependentProjects = (
-          projectsVersionData[project].dependentProjects || []
+          actualProjectsVersionData[project].dependentProjects || []
         )
           .map(dep => {
             return {
               dependencyName: dep.source,
-              newVersion: projectsVersionData[dep.source]?.newVersion
+              newVersion: actualProjectsVersionData[dep.source]?.newVersion
             };
           })
           .filter(b => b.newVersion !== null);
@@ -491,7 +497,7 @@ export function createAPI(overrideReleaseConfig: NxReleaseConfiguration) {
               : []) ?? [];
           additionalDependencyBumpsForProject.push({
             dependencyName: project,
-            newVersion: projectsVersionData[project].newVersion
+            newVersion: actualProjectsVersionData[project].newVersion
           });
           projectToAdditionalDependencyBumps.set(
             dependent.dependencyName,
@@ -517,7 +523,7 @@ export function createAPI(overrideReleaseConfig: NxReleaseConfiguration) {
             project => {
               return [
                 project,
-                ...(projectsVersionData[project]?.dependentProjects.map(
+                ...(actualProjectsVersionData[project]?.dependentProjects.map(
                   dep => dep.source
                 ) || [])
               ];
@@ -638,7 +644,7 @@ export function createAPI(overrideReleaseConfig: NxReleaseConfiguration) {
             tree,
             args,
             changes: changes!,
-            projectsVersionData,
+            projectsVersionData: actualProjectsVersionData,
             releaseGroup,
             projects: [project],
             nxReleaseConfig,
@@ -794,7 +800,7 @@ export function createAPI(overrideReleaseConfig: NxReleaseConfiguration) {
           tree,
           args,
           changes,
-          projectsVersionData,
+          projectsVersionData: actualProjectsVersionData,
           releaseGroup,
           projects: projectNodes,
           nxReleaseConfig,
@@ -1014,7 +1020,7 @@ async function applyChangesAndExit(
     (args.stageChanges ?? nxReleaseConfig.changelog?.git.stageChanges) &&
     changes.length
   ) {
-    output.logSingleLine(`Staging changed files with git`);
+    writeDebug(`Staging changed files with git`);
     await gitAdd({
       changedFiles,
       deletedFiles,
@@ -1025,7 +1031,7 @@ async function applyChangesAndExit(
 
   // Generate a one or more git tags for the changes, if configured to do so
   if (args.gitTag ?? nxReleaseConfig.changelog?.git.tag) {
-    output.logSingleLine(`Tagging commit with git`);
+    writeDebug(`Tagging commit with git`);
     for (const tag of gitTagValues) {
       await gitTag({
         tag,
@@ -1040,7 +1046,7 @@ async function applyChangesAndExit(
   }
 
   if (args.gitPush ?? nxReleaseConfig.changelog?.git.push) {
-    output.logSingleLine(`Pushing to git remote "${args.gitRemote}"`);
+    writeDebug(`Pushing to git remote "${args.gitRemote}"`);
     await gitPush({
       gitRemote: args.gitRemote,
       dryRun: args.dryRun,
