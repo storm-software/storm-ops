@@ -271,7 +271,7 @@ export function createAPI(overrideReleaseConfig: NxReleaseConfiguration) {
 
     // Filter out any projects without a new version
     const actualProjectsVersionData = Object.fromEntries(
-      Object.entries(projectsVersionData).filter(([, data]) => data.newVersion)
+      Object.entries(projectsVersionData).filter(([, data]) => data?.newVersion)
     );
 
     // Resolve any git tags as early as possible so that we can hard error in case of any duplicates before reaching the actual git command
