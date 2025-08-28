@@ -2,6 +2,25 @@
 
 # Changelog for Storm Ops - Git Tools
 
+## [2.115.10](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.115.10) (2025-08-28)
+
+### Bug Fixes
+
+- **git-tools:** Resolve issue with empty `projectsVersionData` properties
+  ([e8f03a461](https://github.com/storm-software/storm-ops/commit/e8f03a461))
+
+### Miscellaneous
+
+- **monorepo:** Update workspace package links
+  ([a7115e0ed](https://github.com/storm-software/storm-ops/commit/a7115e0ed))
+- **monorepo:** Regenerate README markdown files
+  ([f15589f1b](https://github.com/storm-software/storm-ops/commit/f15589f1b))
+
+### Updated Dependencies
+
+- Updated config-tools to 1.180.10
+- Updated config to 1.128.9
+
 ## [2.115.9](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.115.9) (2025-08-28)
 
 ### Bug Fixes
