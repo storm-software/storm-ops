@@ -39,10 +39,10 @@
   },
   "license": "Apache-2.0",
   "private": false,
-  "packageManager": "pnpm@10.3.0",
+  "packageManager": "pnpm@10.15.0",
   "engines": {
-    "node": ">=22.4.0",
-    "pnpm": ">=10.3.0"
+    "node": ">=22.18.0",
+    "pnpm": ">=10.15.0"
   },
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
@@ -117,7 +117,7 @@
   ],
   "dependencies": {
     "defu": "catalog:",
-    "markdownlint-cli2": "^0.17.2"
+    "markdownlint-cli2": "^0.18.1"
   },
   "devDependencies": {
     "@types/node": "catalog:",
