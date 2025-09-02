@@ -2,6 +2,24 @@
 
 # Changelog for Storm Ops - Workspace Tools
 
+## [1.281.14](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.281.14) (2025-09-02)
+
+### Bug Fixes
+
+- **workspace-tools:** Ensure the `getProjectRoot` function excludes the
+  `workspaceRoot`
+  ([85068de01](https://github.com/storm-software/storm-ops/commit/85068de01))
+
+### Miscellaneous
+
+- **monorepo:** Update workspace package links
+  ([7751e6fe3](https://github.com/storm-software/storm-ops/commit/7751e6fe3))
+
+### Updated Dependencies
+
+- Updated esbuild to 0.47.14
+- Updated unbuild to 0.51.14
+
 ## [1.281.13](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.281.13) (2025-08-28)
 
 ### Miscellaneous
