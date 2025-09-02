@@ -91,17 +91,25 @@ export function getProjectConfigFromProjectRoot(
   }) as ProjectConfiguration;
 }
 
+/**
+ * Get the project root directory from the config file path.
+ *
+ * @remarks
+ * This path does not include the `workspaceRoot`.
+ *
+ * @param configPath The path to the project config file.
+ * @param workspaceRoot The root directory of the workspace.
+ * @returns The project root directory or null if not found.
+ */
 export function getProjectRoot(
   configPath: string,
   workspaceRoot: string
 ): string | null {
   try {
-    const root = dirname(configPath);
-    const projectRoot = join(workspaceRoot, root);
-
+    const projectRoot = dirname(configPath);
     if (
-      !existsSync(join(projectRoot, "package.json")) &&
-      !existsSync(join(projectRoot, "project.json"))
+      !existsSync(join(workspaceRoot, projectRoot, "package.json")) &&
+      !existsSync(join(workspaceRoot, projectRoot, "project.json"))
     ) {
       return null;
     }
