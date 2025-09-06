@@ -58,5 +58,10 @@ in {
     pnpm install
   '';
 
+  # https://devenv.sh/git-hooks/
+  git-hooks.hooks = {
+    shellcheck.enable = false;
+  };
+
   # See full reference at https://devenv.sh/reference/options/
 }
