@@ -1,8 +1,7 @@
 import { ProjectGraph } from "@nx/devkit";
 import { StormWorkspaceConfig } from "@storm-software/config";
-import { joinPaths, writeInfo } from "@storm-software/config-tools";
+import { joinPaths } from "@storm-software/config-tools";
 import chalkTemplate from "chalk-template";
-import defu from "defu";
 import { execSync } from "node:child_process";
 import { existsSync } from "node:fs";
 import { readFile } from "node:fs/promises";
@@ -11,20 +10,17 @@ import {
   readCachedProjectGraph,
   readProjectsConfigurationFromProjectGraph
 } from "nx/src/project-graph/project-graph";
-import { getScopeEnum, getScopeEnumUtil } from "../commitlint/scope";
+import { getScopeEnum } from "../commitlint/scope";
 import type {
-  CommitConfig,
-  CommitQuestionAnswers,
-  CommitQuestionEnum,
   CommitQuestionProps,
-  CommitResolvedConfig,
   CommitScopeProps,
-  CommitState,
   CommitTypeProps,
   CommitTypesEnum,
-  DefaultCommitQuestionKeys
+  MinimalCommitState,
+  MonorepoCommitQuestionEnum,
+  MonorepoCommitState
 } from "../types";
-import { DEFAULT_COMMIT_CONFIG } from "./config";
+import { resolveCommitConfig } from "./helpers";
 
 export function getGitDir() {
   const devNull = process.platform === "win32" ? " nul" : "/dev/null";
@@ -44,34 +40,24 @@ export function getGitRootDir() {
   return dir;
 }
 
-async function resolveCommitOptions(
-  config: CommitConfig,
-  workspaceConfig: StormWorkspaceConfig
-): Promise<CommitResolvedConfig> {
-  return {
-    utils: { getScopeEnum: getScopeEnumUtil({ config: workspaceConfig }) },
-    parserPreset: "conventional-changelog-conventionalcommits",
-    prompt: {
-      settings: config.settings,
-      messages: config.messages,
-      questions: config.questions as CommitQuestionEnum<
-        DefaultCommitQuestionKeys,
-        CommitQuestionProps
-      >
-    }
-  };
-}
-
-async function resolveDefaultCommitOptions(
-  config: StormWorkspaceConfig
-): Promise<CommitResolvedConfig> {
-  return resolveCommitOptions(DEFAULT_COMMIT_CONFIG, config);
-}
-
-export async function createState(
-  config: StormWorkspaceConfig,
-  commitizenFile = "@storm-software/git-tools/commit/config"
-): Promise<CommitState> {
+/**
+ * Creates the commit state used to run the commit prompt
+ *
+ * @param workspaceConfig - The Storm workspace configuration
+ * @param configPath - The path to the commit configuration file
+ * @returns The commit state
+ */
+export async function createState<
+  TWorkspaceConfig extends StormWorkspaceConfig = StormWorkspaceConfig,
+  TCommitState extends TWorkspaceConfig["variant"] extends "minimal"
+    ? MinimalCommitState
+    : MonorepoCommitState = TWorkspaceConfig["variant"] extends "minimal"
+    ? MinimalCommitState
+    : MonorepoCommitState
+>(
+  workspaceConfig: TWorkspaceConfig,
+  configPath?: string
+): Promise<TCommitState> {
   let root: string;
 
   try {
@@ -82,31 +68,12 @@ export async function createState(
     throw new Error("Could not find Git root folder.");
   }
 
-  let state!: CommitState;
-  if (commitizenFile === "@storm-software/git-tools/commit/config") {
-    state = {
-      config: await resolveDefaultCommitOptions(config),
-      root,
-      answers: {}
-    };
-  } else {
-    writeInfo(`Using custom commit config file: ${commitizenFile}`, config);
-
-    let commitizenConfig = await import(commitizenFile);
-    if (commitizenConfig?.default) {
-      // Handle CommonJS modules that export default as a property
-      commitizenConfig = commitizenConfig?.default;
-    }
-
-    state = {
-      config: await resolveCommitOptions(
-        defu(commitizenConfig ?? {}, DEFAULT_COMMIT_CONFIG),
-        config
-      ),
-      root,
-      answers: {}
-    };
-  }
+  const state = {
+    variant: workspaceConfig.variant,
+    config: await resolveCommitConfig(workspaceConfig, configPath),
+    root,
+    answers: {}
+  };
 
   if (
     state.config.prompt.questions.type &&
@@ -153,16 +120,23 @@ export async function createState(
   }
 
   if (
-    !state.config.prompt.questions.scope ||
-    !state.config.prompt.questions.scope.enum ||
-    Object.keys(state.config.prompt.questions.scope.enum).length === 0
+    workspaceConfig.variant === "monorepo" &&
+    (!(state.config.prompt.questions as MonorepoCommitQuestionEnum)?.scope ||
+      !(state.config.prompt.questions as MonorepoCommitQuestionEnum)?.scope
+        .enum ||
+      Object.keys(
+        (state.config.prompt.questions as MonorepoCommitQuestionEnum)?.scope
+          .enum
+      ).length === 0)
   ) {
     const scopes = await getScopeEnum({
-      config
+      config: workspaceConfig
     });
     for (const scope of scopes) {
       if (scope === "monorepo") {
-        state.config.prompt.questions.scope.enum[scope] = {
+        (
+          state.config.prompt.questions as MonorepoCommitQuestionEnum
+        ).scope.enum[scope] = {
           title: chalkTemplate`{bold monorepo} - workspace root`,
           description: "The base workspace package (workspace root)",
           hidden: false,
@@ -203,7 +177,9 @@ export async function createState(
             description = packageJson.description || description;
           }
 
-          state.config.prompt.questions.scope.enum[scope] = {
+          (
+            state.config.prompt.questions as MonorepoCommitQuestionEnum
+          ).scope.enum[scope] = {
             title: chalkTemplate`{bold ${project.name}} - ${project.root}`,
             description,
             hidden: false,
@@ -220,8 +196,8 @@ export async function createState(
 
       return ret;
     },
-    {} as CommitQuestionAnswers
+    {} as TCommitState["answers"]
   );
 
-  return state;
+  return state as TCommitState;
 }

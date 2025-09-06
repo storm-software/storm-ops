@@ -7,12 +7,12 @@ export default defineConfig([
     entryPoints: [
       "src/index.ts",
       "src/types.ts",
-      "src/commit/config.ts",
-      "src/commitlint/config.ts",
+      "src/commit/config/*.ts",
+      "src/commitlint/config/*.ts",
       "src/release/config.ts"
     ],
     format: ["cjs", "esm"],
-    outDir: "dist/src",
+    outDir: "dist",
     platform: "node",
     splitting: true,
     clean: false,

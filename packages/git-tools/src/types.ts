@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 import type { ProjectGraph, ProjectsConfigurations } from "@nx/devkit";
+import { Variant } from "@storm-software/config/types";
 import {
   NxReleaseChangelogConfiguration,
   NxReleaseConventionalCommitsConfiguration,
@@ -13,6 +14,12 @@ export type DeepPartial<T> = T extends object
       [P in keyof T]?: DeepPartial<T[P]>;
     }
   : T;
+
+export interface CommitLintCLIOptions {
+  config?: string;
+  message?: string;
+  file?: string;
+}
 
 export type CommitEnumItemProps = {
   description: string;
@@ -196,7 +203,7 @@ export type CommitQuestionProps = {
   when?: (answers: Record<string, string>) => boolean;
 };
 
-export const DEFAULT_COMMIT_QUESTIONS = {
+export const DEFAULT_MINIMAL_COMMIT_QUESTIONS = {
   type: {
     type: "select",
     title: "Commit Type",
@@ -213,16 +220,6 @@ export const DEFAULT_COMMIT_QUESTIONS = {
     defaultValue: "chore",
     maxLength: 20,
     minLength: 3
-  },
-  scope: {
-    type: "select",
-    title: "Commit Scope",
-    description:
-      "Select the monorepo project that is primarily impacted by this change",
-    enum: {} as CommitScopesEnum,
-    defaultValue: "monorepo",
-    maxLength: 50,
-    minLength: 1
   },
   subject: {
     type: "input",
@@ -269,14 +266,44 @@ export const DEFAULT_COMMIT_QUESTIONS = {
   }
 } as const;
 
-export type DefaultCommitQuestionKeys = keyof typeof DEFAULT_COMMIT_QUESTIONS;
+export const DEFAULT_MONOREPO_COMMIT_QUESTIONS = {
+  type: DEFAULT_MINIMAL_COMMIT_QUESTIONS.type,
+  scope: {
+    type: "select",
+    title: "Commit Scope",
+    description: "Select the project that's the most impacted by this change",
+    enum: {} as CommitScopesEnum,
+    defaultValue: "monorepo",
+    maxLength: 50,
+    minLength: 1
+  },
+  subject: DEFAULT_MINIMAL_COMMIT_QUESTIONS.subject,
+  body: DEFAULT_MINIMAL_COMMIT_QUESTIONS.body,
+  isBreaking: DEFAULT_MINIMAL_COMMIT_QUESTIONS.isBreaking,
+  breakingBody: DEFAULT_MINIMAL_COMMIT_QUESTIONS.breakingBody,
+  isIssueAffected: DEFAULT_MINIMAL_COMMIT_QUESTIONS.isIssueAffected,
+  issuesBody: DEFAULT_MINIMAL_COMMIT_QUESTIONS.issuesBody
+} as const;
 
-export type CommitQuestionEnum<
+export type DefaultMinimalCommitQuestionKeys =
+  keyof typeof DEFAULT_MINIMAL_COMMIT_QUESTIONS;
+
+export type MinimalCommitQuestionEnum<
   TCommitQuestionKeys extends
-    DefaultCommitQuestionKeys = DefaultCommitQuestionKeys,
+    DefaultMinimalCommitQuestionKeys = DefaultMinimalCommitQuestionKeys,
   TCommitQuestionProps extends CommitQuestionProps = CommitQuestionProps
 > = Record<TCommitQuestionKeys, TCommitQuestionProps> &
-  typeof DEFAULT_COMMIT_QUESTIONS;
+  typeof DEFAULT_MINIMAL_COMMIT_QUESTIONS;
+
+export type DefaultMonorepoCommitQuestionKeys =
+  keyof typeof DEFAULT_MONOREPO_COMMIT_QUESTIONS;
+
+export type MonorepoCommitQuestionEnum<
+  TCommitQuestionKeys extends
+    DefaultMonorepoCommitQuestionKeys = DefaultMonorepoCommitQuestionKeys,
+  TCommitQuestionProps extends CommitQuestionProps = CommitQuestionProps
+> = Record<TCommitQuestionKeys, TCommitQuestionProps> &
+  typeof DEFAULT_MONOREPO_COMMIT_QUESTIONS;
 
 export const DEFAULT_COMMIT_PROMPT_MESSAGES = {
   skip: "press enter to skip",
@@ -297,15 +324,25 @@ export type CommitPromptMessagesEnum<
 > = Record<TCommitPromptMessagesKeys, string> &
   typeof DEFAULT_COMMIT_PROMPT_MESSAGES;
 
-export const DEFAULT_COMMIT_MESSAGE_FORMAT =
-  "{type}({scope}): {emoji}{subject}";
+export const DEFAULT_MINIMAL_COMMIT_MESSAGE_FORMAT = "{type}: {emoji}{subject}";
 
-export const DEFAULT_COMMIT_SETTINGS = {
+export const DEFAULT_MINIMAL_COMMIT_SETTINGS = {
   enableMultipleScopes: false,
   disableEmoji: true,
   breakingChangePrefix: "💣 ",
   closedIssuePrefix: "✅ ",
-  format: DEFAULT_COMMIT_MESSAGE_FORMAT
+  format: DEFAULT_MINIMAL_COMMIT_MESSAGE_FORMAT
+};
+
+export const DEFAULT_MONOREPO_COMMIT_MESSAGE_FORMAT =
+  "{type}({scope}): {emoji}{subject}";
+
+export const DEFAULT_MONOREPO_COMMIT_SETTINGS = {
+  enableMultipleScopes: false,
+  disableEmoji: true,
+  breakingChangePrefix: "💣 ",
+  closedIssuePrefix: "✅ ",
+  format: DEFAULT_MONOREPO_COMMIT_MESSAGE_FORMAT
 };
 
 export type CommitSettingsEnum = Record<string, any> & {
@@ -315,6 +352,19 @@ export type CommitSettingsEnum = Record<string, any> & {
   breakingChangePrefix?: string;
   closedIssuePrefix?: string;
   format: string;
+};
+
+export type CommitState<
+  TCommitAnswers extends Record<string, string | boolean> = Record<
+    string,
+    string | boolean
+  >,
+  TCommitConfig extends Record<string, any> = Record<string, any>
+> = {
+  variant: Variant;
+  answers: TCommitAnswers;
+  config: TCommitConfig;
+  root: string;
 };
 
 export type RuleConfigCondition = "always" | "never";
@@ -349,14 +399,68 @@ export type DefaultCommitRulesEnum = {
   "type-case": [RuleConfigSeverity, RuleConfigCondition, string];
   "type-empty": [RuleConfigSeverity, RuleConfigCondition];
   "type-enum": [RuleConfigSeverity, RuleConfigCondition, string[]];
-  "scope-empty": [RuleConfigSeverity, RuleConfigCondition];
+  "scope-empty":
+    | [RuleConfigSeverity, RuleConfigCondition]
+    | RuleConfigSeverity.Disabled;
+  "scope-case":
+    | [RuleConfigSeverity, RuleConfigCondition, string[]]
+    | RuleConfigSeverity.Disabled;
+  "scope-enum":
+    | [RuleConfigSeverity, RuleConfigCondition, string[]]
+    | RuleConfigSeverity.Disabled;
   "type-max-length": [RuleConfigSeverity, RuleConfigCondition, number];
   "type-min-length": [RuleConfigSeverity, RuleConfigCondition, number];
-  "scope-case": [RuleConfigSeverity, RuleConfigCondition, string[]];
 } & CommitRulesEnum;
 
-export type CommitConfig<
-  TCommitQuestionEnum extends CommitQuestionEnum = CommitQuestionEnum,
+export type DefaultMinimalCommitRulesEnum = {
+  "body-leading-blank": [RuleConfigSeverity, RuleConfigCondition];
+  "body-max-length": [RuleConfigSeverity, RuleConfigCondition, number];
+  "footer-leading-blank": [RuleConfigSeverity, RuleConfigCondition];
+  "footer-max-line-length": [RuleConfigSeverity, RuleConfigCondition, number];
+  "header-max-length": [RuleConfigSeverity, RuleConfigCondition, number];
+  "header-trim": [RuleConfigSeverity, RuleConfigCondition];
+  "subject-case": [RuleConfigSeverity, RuleConfigCondition, string[]];
+  "subject-empty": [RuleConfigSeverity, RuleConfigCondition];
+  "subject-full-stop": [RuleConfigSeverity, RuleConfigCondition, string];
+  "subject-max-length": [RuleConfigSeverity, RuleConfigCondition, number];
+  "subject-min-length": [RuleConfigSeverity, RuleConfigCondition, number];
+  "type-case": [RuleConfigSeverity, RuleConfigCondition, string];
+  "type-empty": [RuleConfigSeverity, RuleConfigCondition];
+  "type-enum": [RuleConfigSeverity, RuleConfigCondition, string[]];
+  "scope-empty": RuleConfigSeverity.Disabled;
+  "scope-case": RuleConfigSeverity.Disabled;
+  "type-max-length": [RuleConfigSeverity, RuleConfigCondition, number];
+  "type-min-length": [RuleConfigSeverity, RuleConfigCondition, number];
+} & CommitRulesEnum;
+
+export const DEFAULT_MINIMAL_COMMIT_RULES: DefaultMinimalCommitRulesEnum = {
+  "body-leading-blank": [RuleConfigSeverity.Warning, "always"],
+  "body-max-length": [RuleConfigSeverity.Error, "always", 600],
+  "footer-leading-blank": [RuleConfigSeverity.Warning, "always"],
+  "footer-max-line-length": [RuleConfigSeverity.Error, "always", 150],
+  "header-max-length": [RuleConfigSeverity.Error, "always", 150],
+  "header-trim": [RuleConfigSeverity.Error, "always"],
+  "subject-case": [RuleConfigSeverity.Error, "always", ["sentence-case"]],
+  "subject-empty": [RuleConfigSeverity.Error, "never"],
+  "subject-full-stop": [RuleConfigSeverity.Error, "never", "."],
+  "subject-max-length": [RuleConfigSeverity.Error, "always", 150],
+  "subject-min-length": [RuleConfigSeverity.Error, "always", 3],
+  "type-case": [RuleConfigSeverity.Error, "always", "kebab-case"],
+  "type-empty": [RuleConfigSeverity.Error, "never"],
+  "type-enum": [
+    RuleConfigSeverity.Error,
+    "always",
+    Object.keys(COMMIT_TYPES)
+  ] as [RuleConfigSeverity, RuleConfigCondition, string[]],
+  "type-max-length": [RuleConfigSeverity.Error, "always", 20],
+  "type-min-length": [RuleConfigSeverity.Error, "always", 3],
+  "scope-case": RuleConfigSeverity.Disabled,
+  "scope-empty": RuleConfigSeverity.Disabled
+};
+
+export type MinimalCommitConfig<
+  TCommitQuestionEnum extends
+    MinimalCommitQuestionEnum = MinimalCommitQuestionEnum,
   TCommitTypesEnum extends CommitTypesEnum = CommitTypesEnum,
   TCommitPromptMessagesEnum extends
     CommitPromptMessagesEnum = CommitPromptMessagesEnum,
@@ -369,17 +473,131 @@ export type CommitConfig<
   questions: TCommitQuestionEnum;
 };
 
-export type DefaultResolvedCommitRulesEnum = DefaultCommitRulesEnum & {
-  "scope-enum": (
-    ctx: any
-  ) => Promise<[RuleConfigSeverity, RuleConfigCondition, string[]]>;
+export type DefaultMinimalResolvedCommitRulesEnum =
+  DefaultMinimalCommitRulesEnum & {
+    "scope-enum": (
+      ctx: any
+    ) => Promise<[RuleConfigSeverity, RuleConfigCondition, string[]]>;
+  };
+
+export type MinimalCommitResolvedConfig<
+  TCommitQuestionEnum extends MinimalCommitQuestionEnum<
+    DefaultMinimalCommitQuestionKeys,
+    CommitQuestionProps
+  > = MinimalCommitQuestionEnum<
+    DefaultMinimalCommitQuestionKeys,
+    CommitQuestionProps
+  >,
+  TCommitPromptMessagesEnum extends
+    CommitPromptMessagesEnum = CommitPromptMessagesEnum,
+  TCommitSettingsEnum extends CommitSettingsEnum = CommitSettingsEnum
+> = {
+  parserPreset: string;
+  prompt: {
+    settings: TCommitSettingsEnum;
+    messages: TCommitPromptMessagesEnum;
+    questions: TCommitQuestionEnum;
+  };
 };
 
-export type CommitResolvedConfig<
-  TCommitQuestionEnum extends CommitQuestionEnum<
-    DefaultCommitQuestionKeys,
+export type MinimalCommitQuestionAnswers<
+  TCommitQuestionEnum extends
+    MinimalCommitQuestionEnum = MinimalCommitQuestionEnum
+> = Record<keyof TCommitQuestionEnum | string, string | boolean>;
+
+export type MinimalCommitState<
+  TCommitQuestionEnum extends
+    MinimalCommitQuestionEnum = MinimalCommitQuestionEnum,
+  TCommitPromptMessagesEnum extends
+    CommitPromptMessagesEnum = CommitPromptMessagesEnum,
+  TCommitSettingsEnum extends CommitSettingsEnum = CommitSettingsEnum
+> = CommitState<
+  MinimalCommitQuestionAnswers<TCommitQuestionEnum>,
+  MinimalCommitResolvedConfig<
+    TCommitQuestionEnum,
+    TCommitPromptMessagesEnum,
+    TCommitSettingsEnum
+  >
+> & {
+  variant: "minimal";
+};
+
+export type DefaultMonorepoCommitRulesEnum = {
+  "body-leading-blank": [RuleConfigSeverity, RuleConfigCondition];
+  "body-max-length": [RuleConfigSeverity, RuleConfigCondition, number];
+  "footer-leading-blank": [RuleConfigSeverity, RuleConfigCondition];
+  "footer-max-line-length": [RuleConfigSeverity, RuleConfigCondition, number];
+  "header-max-length": [RuleConfigSeverity, RuleConfigCondition, number];
+  "header-trim": [RuleConfigSeverity, RuleConfigCondition];
+  "subject-case": [RuleConfigSeverity, RuleConfigCondition, string[]];
+  "subject-empty": [RuleConfigSeverity, RuleConfigCondition];
+  "subject-full-stop": [RuleConfigSeverity, RuleConfigCondition, string];
+  "subject-max-length": [RuleConfigSeverity, RuleConfigCondition, number];
+  "subject-min-length": [RuleConfigSeverity, RuleConfigCondition, number];
+  "type-case": [RuleConfigSeverity, RuleConfigCondition, string];
+  "type-empty": [RuleConfigSeverity, RuleConfigCondition];
+  "type-enum": [RuleConfigSeverity, RuleConfigCondition, string[]];
+  "scope-empty": [RuleConfigSeverity, RuleConfigCondition];
+  "scope-case": [RuleConfigSeverity, RuleConfigCondition, string[]];
+  "type-max-length": [RuleConfigSeverity, RuleConfigCondition, number];
+  "type-min-length": [RuleConfigSeverity, RuleConfigCondition, number];
+} & CommitRulesEnum;
+
+export const DEFAULT_MONOREPO_COMMIT_RULES: DefaultMonorepoCommitRulesEnum = {
+  "body-leading-blank": [RuleConfigSeverity.Warning, "always"],
+  "body-max-length": [RuleConfigSeverity.Error, "always", 600],
+  "footer-leading-blank": [RuleConfigSeverity.Warning, "always"],
+  "footer-max-line-length": [RuleConfigSeverity.Error, "always", 150],
+  "header-max-length": [RuleConfigSeverity.Error, "always", 150],
+  "header-trim": [RuleConfigSeverity.Error, "always"],
+  "subject-case": [RuleConfigSeverity.Error, "always", ["sentence-case"]],
+  "subject-empty": [RuleConfigSeverity.Error, "never"],
+  "subject-full-stop": [RuleConfigSeverity.Error, "never", "."],
+  "subject-max-length": [RuleConfigSeverity.Error, "always", 150],
+  "subject-min-length": [RuleConfigSeverity.Error, "always", 3],
+  "type-case": [RuleConfigSeverity.Error, "always", "kebab-case"],
+  "type-empty": [RuleConfigSeverity.Error, "never"],
+  "type-enum": [
+    RuleConfigSeverity.Error,
+    "always",
+    Object.keys(COMMIT_TYPES)
+  ] as [RuleConfigSeverity, RuleConfigCondition, string[]],
+  "type-max-length": [RuleConfigSeverity.Error, "always", 20],
+  "type-min-length": [RuleConfigSeverity.Error, "always", 3],
+  "scope-case": [RuleConfigSeverity.Error, "always", ["kebab-case"]],
+  "scope-empty": [RuleConfigSeverity.Error, "never"]
+};
+
+export type MonorepoCommitConfig<
+  TCommitQuestionEnum extends
+    MonorepoCommitQuestionEnum = MonorepoCommitQuestionEnum,
+  TCommitTypesEnum extends CommitTypesEnum = CommitTypesEnum,
+  TCommitPromptMessagesEnum extends
+    CommitPromptMessagesEnum = CommitPromptMessagesEnum,
+  TCommitSettingsEnum extends CommitSettingsEnum = CommitSettingsEnum
+> = {
+  extends?: string[];
+  messages: TCommitPromptMessagesEnum;
+  settings: TCommitSettingsEnum;
+  types: TCommitTypesEnum;
+  questions: TCommitQuestionEnum;
+};
+
+export type DefaultMonorepoResolvedCommitRulesEnum =
+  DefaultMonorepoCommitRulesEnum & {
+    "scope-enum": (
+      ctx: any
+    ) => Promise<[RuleConfigSeverity, RuleConfigCondition, string[]]>;
+  };
+
+export type MonorepoCommitResolvedConfig<
+  TCommitQuestionEnum extends MonorepoCommitQuestionEnum<
+    DefaultMonorepoCommitQuestionKeys,
     CommitQuestionProps
-  > = CommitQuestionEnum<DefaultCommitQuestionKeys, CommitQuestionProps>,
+  > = MonorepoCommitQuestionEnum<
+    DefaultMonorepoCommitQuestionKeys,
+    CommitQuestionProps
+  >,
   TCommitPromptMessagesEnum extends
     CommitPromptMessagesEnum = CommitPromptMessagesEnum,
   TCommitSettingsEnum extends CommitSettingsEnum = CommitSettingsEnum
@@ -393,23 +611,26 @@ export type CommitResolvedConfig<
   };
 };
 
-export type CommitQuestionAnswers<
-  TCommitQuestionEnum extends CommitQuestionEnum = CommitQuestionEnum
+export type MonorepoCommitQuestionAnswers<
+  TCommitQuestionEnum extends
+    MonorepoCommitQuestionEnum = MonorepoCommitQuestionEnum
 > = Record<keyof TCommitQuestionEnum | string, string | boolean>;
 
-export type CommitState<
-  TCommitQuestionEnum extends CommitQuestionEnum = CommitQuestionEnum,
+export type MonorepoCommitState<
+  TCommitQuestionEnum extends
+    MonorepoCommitQuestionEnum = MonorepoCommitQuestionEnum,
   TCommitPromptMessagesEnum extends
     CommitPromptMessagesEnum = CommitPromptMessagesEnum,
   TCommitSettingsEnum extends CommitSettingsEnum = CommitSettingsEnum
-> = {
-  answers: CommitQuestionAnswers<TCommitQuestionEnum>;
-  config: CommitResolvedConfig<
+> = CommitState<
+  MonorepoCommitQuestionAnswers<TCommitQuestionEnum>,
+  MonorepoCommitResolvedConfig<
     TCommitQuestionEnum,
     TCommitPromptMessagesEnum,
     TCommitSettingsEnum
-  >;
-  root: string;
+  >
+> & {
+  variant: "monorepo";
 };
 
 export interface CommitLintRuleOutcome {

@@ -1,9 +1,9 @@
 import wrap from "word-wrap";
-import type { CommitState } from "../types";
+import type { MonorepoCommitState } from "../types";
 
 const MAX_LINE_WIDTH = 72;
 
-export const formatCommitMessage = (state: CommitState) => {
+export const formatCommitMessage = (state: MonorepoCommitState) => {
   const { config, answers } = state;
   const wrapOptions = {
     indent: "",

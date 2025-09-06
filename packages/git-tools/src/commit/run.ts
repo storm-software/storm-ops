@@ -1,6 +1,6 @@
 import { confirm, input, select } from "@inquirer/prompts";
 import { joinPaths } from "@storm-software/config-tools";
-import { getConfig } from "@storm-software/config-tools/get-config";
+import { getWorkspaceConfig } from "@storm-software/config-tools/get-config";
 import {
   writeDebug,
   writeInfo
@@ -10,23 +10,16 @@ import shellescape from "any-shell-escape";
 import chalkTemplate from "chalk-template";
 import fs from "node:fs/promises";
 import { runCommitLint } from "../commitlint/run";
-import {
-  CommitQuestionAnswers,
-  CommitQuestionProps,
-  CommitState
-} from "../types";
+import { CommitQuestionProps, CommitState } from "../types";
 import { createState, getGitDir } from "./commit-state";
 import { formatCommitMessage } from "./format-commit-message";
 
-export const runCommit = async (
-  commitizenFile = "@storm-software/git-tools/commit/config",
-  dryRun = false
-) => {
-  const config = await getConfig();
+export async function runCommit(commitizenFile?: string, dryRun = false) {
+  const workspaceConfig = await getWorkspaceConfig();
 
-  const state = await createState(config, commitizenFile);
+  const state = await createState(workspaceConfig, commitizenFile);
   if (dryRun) {
-    writeInfo("Running in dry mode.", config);
+    writeInfo("Running in dry mode.", workspaceConfig);
   }
 
   console.log(chalkTemplate`
@@ -49,7 +42,7 @@ export const runCommit = async (
 
     `);
 
-  await runCommitLint(config, { message });
+  await runCommitLint(workspaceConfig, { message });
 
   const commandItems = ["git", "commit", "-S"];
 
@@ -60,19 +53,19 @@ export const runCommit = async (
     // The full path is replaced with a relative path to make the test pass on every machine
     writeDebug(
       `Skipping execution [dry-run]: ${command.replace(commitMsgFile, ".git/COMMIT_EDITMSG")}`,
-      config
+      workspaceConfig
     );
-    writeDebug(`Message [dry-run]: ${message}`, config);
+    writeDebug(`Message [dry-run]: ${message}`, workspaceConfig);
   } else {
     await fs.writeFile(commitMsgFile, message);
 
-    run(config, command);
+    run(workspaceConfig, command);
   }
-};
+}
 
-const askQuestions = async (
-  state: CommitState
-): Promise<CommitQuestionAnswers> => {
+async function askQuestions<TCommitState extends CommitState = CommitState>(
+  state: TCommitState
+): Promise<TCommitState["answers"]> {
   let index = 0;
   for (const key of Object.keys(state.config.prompt.questions)) {
     if (
@@ -90,12 +83,12 @@ const askQuestions = async (
   }
 
   return state.answers;
-};
+}
 
-export const askQuestion = (
+export async function askQuestion(
   index: number,
   question: CommitQuestionProps
-): Promise<string | boolean> => {
+): Promise<string | boolean> {
   const message = chalkTemplate`{bold ${index + 1}. ${question.title}} - ${question.description}
 `;
 
@@ -152,4 +145,4 @@ export const askQuestion = (
       validate
     });
   }
-};
+}

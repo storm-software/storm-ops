@@ -30,6 +30,7 @@ export async function esbuildExecutorFn(
   await build({
     ...options,
     projectRoot:
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       context.projectsConfigurations.projects?.[context.projectName]!.root,
     name: context.projectName,
     sourceRoot:
@@ -52,10 +53,7 @@ export default withRunExecutor<ESBuildExecutorSchema>(
   {
     skipReadingConfig: false,
     hooks: {
-      applyDefaultOptions: async (
-        options: ESBuildExecutorSchema,
-        config?: StormWorkspaceConfig | undefined
-      ) => {
+      applyDefaultOptions: async (options: ESBuildExecutorSchema) => {
         options.entry ??= ["src/index.ts"];
         options.outputPath ??= "dist/{projectRoot}";
         options.tsconfig ??= "{projectRoot}/tsconfig.json";

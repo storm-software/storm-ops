@@ -4,10 +4,11 @@ import util from "util";
 import {
   CommitLintOutcome,
   CommitLintRuleOutcome,
-  DefaultCommitRulesEnum,
-  RuleConfigSeverity,
+  DefaultMonorepoCommitRulesEnum,
+  RuleConfigSeverity
 } from "../types";
-import { CommitLintOptions, DEFAULT_COMMITLINT_CONFIG } from "./config";
+import { MinimalCommitlintConfig } from "./config/minimal";
+import { MonorepoCommitlintConfig } from "./config/monorepo";
 
 interface CommitMessageData {
   header: string | null;
@@ -18,7 +19,7 @@ interface CommitMessageData {
 const buildCommitMessage = ({
   header,
   body,
-  footer,
+  footer
 }: CommitMessageData): string => {
   let message = header;
 
@@ -30,17 +31,9 @@ const buildCommitMessage = ({
 
 export default async function lint(
   message: string,
-  rawRulesConfig?: DefaultCommitRulesEnum,
-  rawOpts?: {
-    parserOpts?: CommitLintOptions["parserOpts"];
-    helpUrl?: CommitLintOptions["helpUrl"];
-  },
+  commitlintConfig: MinimalCommitlintConfig | MonorepoCommitlintConfig
 ): Promise<CommitLintOutcome> {
-  const rulesConfig = rawRulesConfig || {};
-
-  const parser = new CommitParser(
-    rawOpts?.parserOpts ?? DEFAULT_COMMITLINT_CONFIG.parserOpts,
-  );
+  const parser = new CommitParser(commitlintConfig.parserOpts);
   const parsed = parser.parse(message);
 
   if (
@@ -53,15 +46,15 @@ export default async function lint(
       valid: true,
       errors: [],
       warnings: [],
-      input: message,
+      input: message
     };
   }
 
   const allRules: Map<string, any> = new Map(Object.entries(defaultRules));
 
   // Find invalid rules configs
-  const missing = Object.keys(rulesConfig).filter(
-    (name) => typeof allRules.get(name) !== "function",
+  const missing = Object.keys(commitlintConfig.rules).filter(
+    name => typeof allRules.get(name) !== "function"
   );
 
   if (missing.length > 0) {
@@ -69,18 +62,18 @@ export default async function lint(
     throw new RangeError(
       [
         `Found rules without implementation: ${missing.join(", ")}.`,
-        `Supported rules are: ${names.join(", ")}.`,
-      ].join("\n"),
+        `Supported rules are: ${names.join(", ")}.`
+      ].join("\n")
     );
   }
 
-  const invalid = Object.entries(rulesConfig)
+  const invalid = Object.entries(commitlintConfig.rules)
     .map(([name, config]) => {
       if (!Array.isArray(config)) {
         return new Error(
           `config for rule ${name} must be array, received ${util.inspect(
-            config,
-          )} of type ${typeof config}`,
+            config
+          )} of type ${typeof config}`
         );
       }
 
@@ -95,40 +88,40 @@ export default async function lint(
       if (typeof level !== "number" || isNaN(level)) {
         return new Error(
           `level for rule ${name} must be number, received ${util.inspect(
-            level,
-          )} of type ${typeof level}`,
+            level
+          )} of type ${typeof level}`
         );
       }
 
       if (config.length < 2 || config.length > 3) {
         return new Error(
           `config for rule ${name} must be 2 or 3 items long, received ${util.inspect(
-            config,
-          )} of length ${config.length}`,
+            config
+          )} of length ${config.length}`
         );
       }
 
       if (level < 0 || level > 2) {
         return new RangeError(
           `level for rule ${name} must be between 0 and 2, received ${util.inspect(
-            level,
-          )}`,
+            level
+          )}`
         );
       }
 
       if (typeof when !== "string") {
         return new Error(
           `condition for rule ${name} must be string, received ${util.inspect(
-            when,
-          )} of type ${typeof when}`,
+            when
+          )} of type ${typeof when}`
         );
       }
 
       if (when !== "never" && when !== "always") {
         return new Error(
           `condition for rule ${name} must be "always" or "never", received ${util.inspect(
-            when,
-          )}`,
+            when
+          )}`
         );
       }
 
@@ -137,14 +130,16 @@ export default async function lint(
     .filter((item): item is Error => item instanceof Error);
 
   if (invalid.length > 0) {
-    throw new Error(invalid.map((i) => i.message).join("\n"));
+    throw new Error(invalid.map(i => i.message).join("\n"));
   }
 
   // Validate against all rules
-  const pendingResults = Object.entries(rulesConfig as DefaultCommitRulesEnum)
+  const pendingResults = Object.entries(
+    commitlintConfig.rules as DefaultMonorepoCommitRulesEnum
+  )
     // Level 0 rules are ignored
     .filter(([, config]) => !!config && config.length && config[0] > 0)
-    .map(async (entry) => {
+    .map(async entry => {
       const [name, config] = entry;
       const [level, when, value] = config!; //
 
@@ -161,19 +156,19 @@ export default async function lint(
         level,
         valid,
         name,
-        message,
+        message
       };
     });
 
   const results = (await Promise.all(pendingResults)).filter(
-    (result): result is CommitLintRuleOutcome => result !== null,
+    (result): result is CommitLintRuleOutcome => result !== null
   );
 
   const errors = results.filter(
-    (result) => result.level === RuleConfigSeverity.Error && !result.valid,
+    result => result.level === RuleConfigSeverity.Error && !result.valid
   );
   const warnings = results.filter(
-    (result) => result.level === RuleConfigSeverity.Warning && !result.valid,
+    result => result.level === RuleConfigSeverity.Warning && !result.valid
   );
 
   const valid = errors.length === 0;
@@ -182,6 +177,6 @@ export default async function lint(
     valid,
     errors,
     warnings,
-    input: buildCommitMessage(parsed),
+    input: buildCommitMessage(parsed)
   };
 }

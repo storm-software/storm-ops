@@ -6,37 +6,36 @@ import {
   writeWarning
 } from "@storm-software/config-tools";
 import { StormWorkspaceConfig } from "@storm-software/config/types";
-import defu from "defu";
 import { existsSync } from "fs";
 import { readFile } from "fs/promises";
 import childProcess from "node:child_process";
-import { COMMIT_TYPES } from "../types";
-import { DEFAULT_COMMITLINT_CONFIG } from "./config";
+import {
+  COMMIT_TYPES,
+  CommitLintCLIOptions,
+  RuleConfigSeverity
+} from "../types";
+import { resolveCommitlintConfig } from "./helpers";
 import lint from "./lint";
 import { getNxScopes, getRuleFromScopeEnum } from "./scope";
 
 const COMMIT_EDITMSG_PATH = ".git/COMMIT_EDITMSG";
 
-export const runCommitLint = async (
-  config: StormWorkspaceConfig,
-  params: {
-    config?: string;
-    message?: string;
-    file?: string;
-  }
-) => {
+export async function runCommitLint(
+  workspaceConfig: StormWorkspaceConfig,
+  options: CommitLintCLIOptions
+) {
   writeInfo(
     "📝 Validating git commit message aligns with the Storm Software specification",
-    config
+    workspaceConfig
   );
 
   let commitMessage;
-  if (params.message && params.message !== COMMIT_EDITMSG_PATH) {
-    commitMessage = params.message;
+  if (options.message && options.message !== COMMIT_EDITMSG_PATH) {
+    commitMessage = options.message;
   } else {
     const commitFile = joinPaths(
-      config.workspaceRoot,
-      params.file || params.message || COMMIT_EDITMSG_PATH
+      workspaceConfig.workspaceRoot,
+      options.file || options.message || COMMIT_EDITMSG_PATH
     );
     if (existsSync(commitFile)) {
       commitMessage = (await readFile(commitFile, "utf8"))?.trim();
@@ -51,14 +50,14 @@ export const runCommitLint = async (
       .trim()
       .split("\n");
     const upstreamRemote = gitRemotes.find(remote =>
-      remote.includes(`${config.name}.git`)
+      remote.includes(`${workspaceConfig.name}.git`)
     );
     if (upstreamRemote) {
       const upstreamRemoteIdentifier = upstreamRemote.split("\t")[0]?.trim();
       if (!upstreamRemoteIdentifier) {
         writeWarning(
-          `No upstream remote found for ${config.name}.git. Skipping comparison.`,
-          config
+          `No upstream remote found for ${workspaceConfig.name}.git. Skipping comparison.`,
+          workspaceConfig
         );
         return;
       }
@@ -74,8 +73,8 @@ export const runCommitLint = async (
         gitLogCmd + ` ${currentBranch} ^${upstreamRemoteIdentifier}/main`;
     } else {
       writeWarning(
-        `No upstream remote found for ${config.name}.git. Skipping comparison against upstream main.`,
-        config
+        `No upstream remote found for ${workspaceConfig.name}.git. Skipping comparison against upstream main.`,
+        workspaceConfig
       );
       return;
     }
@@ -84,45 +83,69 @@ export const runCommitLint = async (
     if (!commitMessage) {
       writeWarning(
         "No commits found. Skipping commit message validation.",
-        config
+        workspaceConfig
       );
       return;
     }
   }
 
-  const allowedTypes = Object.keys(COMMIT_TYPES).join("|");
-  const allowedScopes = await getNxScopes({
-    config
-  });
-
-  // eslint-disable-next-line no-useless-escape
-  const commitMsgRegex = `(${allowedTypes})\\((${allowedScopes})\\)!?:\\s(([a-z0-9:\-\s])+)`;
-  const matchCommit = new RegExp(commitMsgRegex, "g").test(commitMessage);
-
-  const commitlintConfig = defu(
-    params.config ?? {},
-    { rules: { "scope-enum": getRuleFromScopeEnum(allowedScopes) } },
-    DEFAULT_COMMITLINT_CONFIG
+  const commitlintConfig = await resolveCommitlintConfig(
+    workspaceConfig,
+    options.config
   );
+  let commitlintRegex: RegExp;
 
-  const report = await lint(commitMessage, commitlintConfig.rules, {
-    parserOpts: commitlintConfig.parserOpts,
-    helpUrl: commitlintConfig.helpUrl
-  });
+  const allowedTypes = commitlintConfig.rules["type-enum"] ?? COMMIT_TYPES;
+  let allowedScopes: string[] = [];
 
-  if (!matchCommit || report.errors.length || report.warnings.length) {
-    writeSuccess(`Commit was processing completed successfully!`, config);
+  if (
+    commitlintConfig.rules["scope-empty"] &&
+    commitlintConfig.rules["scope-empty"][0] !== RuleConfigSeverity.Disabled
+  ) {
+    allowedScopes = await getNxScopes({
+      config: workspaceConfig
+    });
+    commitlintConfig.rules["scope-enum"] = getRuleFromScopeEnum(allowedScopes);
+
+    commitlintRegex = new RegExp(
+      `(${Object.keys(allowedTypes).join("|")})\\((${allowedScopes})\\)!?:\\s([a-z0-9:\\-\\/\\s])+`
+    );
+  } else {
+    commitlintRegex = new RegExp(
+      `(${Object.keys(allowedTypes).join("|")})!?:\\s([a-z0-9:\\-\\/\\s])+`
+    );
+  }
+
+  const report = await lint(commitMessage, commitlintConfig);
+
+  if (
+    !commitlintRegex.test(commitMessage) ||
+    report.errors.length ||
+    report.warnings.length
+  ) {
+    writeSuccess(
+      `Commit was processing completed successfully!`,
+      workspaceConfig
+    );
   } else {
     let errorMessage =
       " Oh no! Your commit message: \n" +
       "-------------------------------------------------------------------\n" +
       commitMessage +
       "\n-------------------------------------------------------------------" +
-      "\n\n Does not follow the commit message convention specified by Storm Software.";
-    errorMessage += "\ntype(scope): subject \n BLANK LINE \n body";
+      `\n\n Does not follow the ${workspaceConfig.variant} commit message convention specified by the ${
+        (typeof workspaceConfig.organization === "string"
+          ? workspaceConfig.organization
+          : workspaceConfig.organization?.name) || "Storm Software"
+      } team.`;
+    errorMessage += allowedScopes.length
+      ? "\ntype(scope): subject \n BLANK LINE \n body"
+      : "\ntype: subject \n BLANK LINE \n body";
     errorMessage += "\n";
     errorMessage += `\nPossible types: ${allowedTypes}`;
-    errorMessage += `\nPossible scopes: ${allowedScopes} (if unsure use "monorepo")`;
+    if (allowedScopes.length) {
+      errorMessage += `\nPossible scopes: ${allowedScopes} (if unsure use "monorepo")`;
+    }
     errorMessage +=
       "\n\nEXAMPLE: \n" +
       "feat(my-lib): add an option to generate lazy-loadable modules\n" +
@@ -136,4 +159,4 @@ export const runCommitLint = async (
   }
 
   return report.input;
-};
+}

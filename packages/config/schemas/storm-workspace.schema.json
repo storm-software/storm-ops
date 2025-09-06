@@ -25,6 +25,12 @@
       "type": "string",
       "description": "The name of the workspace/project/service/package/scope using this configuration"
     },
+    "variant": {
+      "default": "monorepo",
+      "description": "The variant of the workspace. This can be used to enable or disable certain features or configurations.",
+      "type": "string",
+      "enum": ["minimal", "monorepo"]
+    },
     "namespace": {
       "type": "string",
       "description": "The namespace of the workspace/project/service/package/scope using this configuration"
@@ -1253,6 +1259,7 @@
   "required": [
     "$schema",
     "name",
+    "variant",
     "namespace",
     "organization",
     "repository",

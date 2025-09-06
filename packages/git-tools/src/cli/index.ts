@@ -10,7 +10,7 @@ import { runCommit } from "../commit/run";
 import { runCommitLint } from "../commitlint/run";
 import { runReadme } from "../readme/run";
 import { runRelease } from "../release/run";
-import type { ReadMeOptions } from "../types";
+import type { CommitLintCLIOptions, ReadMeOptions } from "../types";
 
 let _config: Partial<StormWorkspaceConfig> = {};
 
@@ -31,7 +31,7 @@ export function createProgram(config: StormWorkspaceConfig) {
   const commitConfig = new Option(
     "--config <file>",
     "The Commitizen config file path"
-  ).default("@storm-software/git-tools/commit/config");
+  ).makeOptionMandatory(false);
 
   const commitDryRun = new Option(
     "--dry-run",
@@ -112,10 +112,15 @@ export function createProgram(config: StormWorkspaceConfig) {
     "The commit message to lint"
   ).makeOptionMandatory(false);
 
+  const commitlintConfig = new Option(
+    "--config <file>",
+    "The CommitLint config file path"
+  ).makeOptionMandatory(false);
+
   program
     .command("commitlint")
     .description("Run commitlint for the workspace's commit message.")
-    .addOption(commitConfig)
+    .addOption(commitlintConfig)
     .addOption(commitMessage)
     .addOption(commitFile)
     .action(commitLintAction);
@@ -124,7 +129,7 @@ export function createProgram(config: StormWorkspaceConfig) {
 }
 
 export async function commitAction({
-  config = "@storm-software/git-tools/commit/config.js",
+  config,
   dryRun = false
 }: {
   config: string;
@@ -216,15 +221,7 @@ export async function releaseAction({
   }
 }
 
-export async function commitLintAction({
-  config,
-  message,
-  file
-}: {
-  config?: string;
-  message?: string;
-  file?: string;
-}) {
+export async function commitLintAction(options: CommitLintCLIOptions) {
   try {
     writeInfo(
       `⚡ Linting the ${
@@ -243,11 +240,7 @@ export async function commitLintAction({
       _config
     );
 
-    await runCommitLint(_config as StormWorkspaceConfig, {
-      config,
-      message,
-      file
-    });
+    await runCommitLint(_config as StormWorkspaceConfig, options);
 
     writeSuccess(
       "Linting the commit messages completed successfully!\n",
