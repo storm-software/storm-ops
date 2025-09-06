@@ -248,7 +248,7 @@
     "@nx/devkit": "catalog:",
     "@nx/js": "catalog:",
     "@storm-software/config": "workspace:*",
-    "@storm-software/config-tools": "1.180.16",
+    "@storm-software/config-tools": "workspace:*",
     "@textlint/ast-node-types": "14.4.2",
     "@textlint/markdown-to-ast": "14.4.2",
     "anchor-markdown-header": "0.7.0",
