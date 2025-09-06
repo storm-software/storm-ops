@@ -5582,6 +5582,11 @@ Backward pagination arguments
    */
   'test/expect-expect'?: Linter.RuleEntry<TestExpectExpect>
   /**
+   * enforce hoisted APIs to be on top of the file
+   * @see https://github.com/vitest-dev/eslint-plugin-vitest/blob/main/docs/rules/hoisted-apis-on-top.md
+   */
+  'test/hoisted-apis-on-top'?: Linter.RuleEntry<[]>
+  /**
    * enforce a maximum number of expect per test
    * @see https://github.com/vitest-dev/eslint-plugin-vitest/blob/main/docs/rules/max-expects.md
    */
@@ -14276,8 +14281,6 @@ type ReactHooksExhaustiveDeps = []|[{
 // ----- react-naming-convention/component-name -----
 type ReactNamingConventionComponentName = []|[(("PascalCase" | "CONSTANT_CASE") | {
   allowAllCaps?: boolean
-  allowLeadingUnderscore?: boolean
-  allowNamespace?: boolean
   excepts?: string[]
   rule?: ("PascalCase" | "CONSTANT_CASE")
 })]
