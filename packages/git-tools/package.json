@@ -120,20 +120,6 @@
         "default": "./dist/types.js"
       }
     },
-    "./commit/config": {
-      "import": {
-        "types": "./dist/commit/config.d.ts",
-        "default": "./dist/commit/config.js"
-      },
-      "require": {
-        "types": "./dist/commit/config.d.cts",
-        "default": "./dist/commit/config.cjs"
-      },
-      "default": {
-        "types": "./dist/commit/config.d.ts",
-        "default": "./dist/commit/config.js"
-      }
-    },
     "./commit/*": {
       "import": {
         "types": "./dist/commit/*.d.ts",
@@ -148,20 +134,6 @@
         "default": "./dist/commit/*.js"
       }
     },
-    "./commitlint/config": {
-      "import": {
-        "types": "./dist/commitlint/config.d.ts",
-        "default": "./dist/commitlint/config.js"
-      },
-      "require": {
-        "types": "./dist/commitlint/config.d.cts",
-        "default": "./dist/commitlint/config.cjs"
-      },
-      "default": {
-        "types": "./dist/commitlint/config.d.ts",
-        "default": "./dist/commitlint/config.js"
-      }
-    },
     "./commitlint/*": {
       "import": {
         "types": "./dist/commitlint/*.d.ts",
@@ -174,20 +146,6 @@
       "default": {
         "types": "./dist/commitlint/*.d.ts",
         "default": "./dist/commitlint/*.js"
-      }
-    },
-    "./release/config": {
-      "import": {
-        "types": "./dist/release/config.d.ts",
-        "default": "./dist/release/config.js"
-      },
-      "require": {
-        "types": "./dist/release/config.d.cts",
-        "default": "./dist/release/config.cjs"
-      },
-      "default": {
-        "types": "./dist/release/config.d.ts",
-        "default": "./dist/release/config.js"
       }
     },
     "./release/*": {

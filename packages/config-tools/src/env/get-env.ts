@@ -11,7 +11,8 @@ import {
   COLOR_KEYS,
   STORM_DEFAULT_DOCS,
   STORM_DEFAULT_HOMEPAGE,
-  STORM_DEFAULT_LICENSING
+  STORM_DEFAULT_LICENSING,
+  VariantInput
 } from "@storm-software/config";
 import { getLogLevelLabel } from "../logger/get-log-level";
 import type { DeepPartial, LogLevelLabel } from "../types";
@@ -60,6 +61,7 @@ export const getConfigEnv = (): DeepPartial<StormWorkspaceConfig> => {
   let config: DeepPartial<StormWorkspaceConfig> = {
     extends: process.env[`${prefix}EXTENDS`] || undefined,
     name: process.env[`${prefix}NAME`] || undefined,
+    variant: (process.env[`${prefix}VARIANT`] as VariantInput) || undefined,
     namespace: process.env[`${prefix}NAMESPACE`] || undefined,
     owner: process.env[`${prefix}OWNER`] || undefined,
     bot: {

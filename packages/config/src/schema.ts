@@ -380,6 +380,15 @@ schemaRegistry.add(workspaceDirectorySchema, {
     "Various directories used by the workspace to store data, cache, and configuration files"
 });
 
+export const variantSchema = z._default(
+  z.enum(["minimal", "monorepo"]),
+  "monorepo"
+);
+schemaRegistry.add(variantSchema, {
+  description:
+    "The variant of the workspace. This can be used to enable or disable certain features or configurations."
+});
+
 export const errorCodesFileSchema = z._default(
   z.string().check(z.trim()),
   STORM_DEFAULT_ERROR_CODES_FILE
@@ -631,6 +640,7 @@ export const workspaceConfigSchema = z.object({
   $schema: schemaNameSchema,
   extends: extendsSchema,
   name: nameSchema,
+  variant: variantSchema,
   namespace: namespaceSchema,
   organization: orgSchema,
   repository: repositorySchema,

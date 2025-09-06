@@ -67,6 +67,9 @@ export const setConfigEnv = (config: StormWorkspaceConfig) => {
   if (config.name) {
     process.env[`${prefix}NAME`] = config.name;
   }
+  if (config.variant) {
+    process.env[`${prefix}VARIANT`] = config.variant;
+  }
   if (config.namespace) {
     process.env[`${prefix}NAMESPACE`] = config.namespace;
   }
