@@ -2,6 +2,20 @@
 
 # Changelog for Storm Ops - Config
 
+## [1.129.0](https://github.com/storm-software/storm-ops/releases/tag/config%401.129.0) (2025-09-06)
+
+### Features
+
+- **git-tools:** Update `commit` and `commitlint` to support custom config
+  ([ef331c1c3](https://github.com/storm-software/storm-ops/commit/ef331c1c3))
+- **config:** Added the `variant` workspace configuration parameter
+  ([dd22a5dce](https://github.com/storm-software/storm-ops/commit/dd22a5dce))
+
+### Miscellaneous
+
+- **monorepo:** Update workspace package links
+  ([0ecd5b833](https://github.com/storm-software/storm-ops/commit/0ecd5b833))
+
 ## [1.128.13](https://github.com/storm-software/storm-ops/releases/tag/config%401.128.13) (2025-09-06)
 
 ### Miscellaneous

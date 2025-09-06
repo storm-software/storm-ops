@@ -2,6 +2,24 @@
 
 # Changelog for Storm Ops - Workspace Tools
 
+## [1.282.0](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.282.0) (2025-09-06)
+
+### Features
+
+- **git-tools:** Update `commit` and `commitlint` to support custom config
+  ([ef331c1c3](https://github.com/storm-software/storm-ops/commit/ef331c1c3))
+
+### Miscellaneous
+
+- **monorepo:** Update workspace package links
+  ([0ecd5b833](https://github.com/storm-software/storm-ops/commit/0ecd5b833))
+
+### Updated Dependencies
+
+- Updated prettier to 0.53.14
+- Updated esbuild to 0.47.17
+- Updated unbuild to 0.51.17
+
 ## [1.281.16](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.281.16) (2025-09-06)
 
 ### Miscellaneous
