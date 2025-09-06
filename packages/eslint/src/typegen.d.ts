@@ -4340,7 +4340,7 @@ Backward pagination arguments
   'react/no-nested-components'?: Linter.RuleEntry<[]>
   /**
    * Disallow nesting lazy component declarations inside other components.
-   * @see https://eslint-react.xyz/docs/rules/no-nested-component-definitions
+   * @see https://eslint-react.xyz/docs/rules/no-nested-lazy-component-declarations
    */
   'react/no-nested-lazy-component-declarations'?: Linter.RuleEntry<[]>
   /**
@@ -5787,6 +5787,11 @@ Backward pagination arguments
    * @see https://github.com/vitest-dev/eslint-plugin-vitest/blob/main/docs/rules/prefer-expect-resolves.md
    */
   'test/prefer-expect-resolves'?: Linter.RuleEntry<[]>
+  /**
+   * enforce using `expectTypeOf` instead of `expect(typeof ...)`
+   * @see https://github.com/vitest-dev/eslint-plugin-vitest/blob/main/docs/rules/prefer-expect-type-of.md
+   */
+  'test/prefer-expect-type-of'?: Linter.RuleEntry<[]>
   /**
    * enforce having hooks in consistent order
    * @see https://github.com/vitest-dev/eslint-plugin-vitest/blob/main/docs/rules/prefer-hooks-in-order.md
