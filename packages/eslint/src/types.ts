@@ -533,6 +533,7 @@ export interface OptionsConfig
    * Passing an object to configure the options.
    *
    * @see https://github.com/antfu/eslint-config-flat-gitignore
+   *
    * @defaultValue true
    */
   gitignore?: boolean | FlatGitignoreOptions;

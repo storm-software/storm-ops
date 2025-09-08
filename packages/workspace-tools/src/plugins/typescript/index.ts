@@ -167,12 +167,12 @@ export const createNodesV2: CreateNodesV2<TypeScriptPluginOptions> = [
             }
 
             if (enableTypeCheck) {
-              targets["lint:tsc"] ??= {
+              targets["lint-tsc"] ??= {
                 cache: true,
                 inputs: ["typescript", "^production"],
                 outputs: ["{workspaceRoot}/dist/{projectRoot}"],
                 executor: "nx:run-commands",
-                dependsOn: ["^lint:tsc"],
+                dependsOn: ["^lint-tsc"],
                 options: {
                   command: `pnpm exec tsc --noEmit --pretty --project ${join(
                     projectConfig.root,
@@ -197,7 +197,7 @@ export const createNodesV2: CreateNodesV2<TypeScriptPluginOptions> = [
                   ],
                   dependsOn: [
                     enableMarkdownlint ? "lint-markdown" : undefined,
-                    enableTypeCheck ? "lint:tsc" : undefined,
+                    enableTypeCheck ? "lint-tsc" : undefined,
                     "^lint"
                   ].filter(Boolean) as (string | TargetDependencyConfig)[],
                   executor: "@nx/eslint:lint",
