@@ -38,32 +38,34 @@ export interface TypeScriptPluginOptions {
   includeApps?: boolean;
 
   /**
-   * Whether to enable Knip, a tool for analyzing TypeScript projects.
-   *
-   * @defaultValue true
-   */
-  enableKnip?: boolean;
-
-  /**
    * Whether to enable Markdownlint for linting Markdown files.
    *
-   * @defaultValue true
+   * @remarks
+   * If set to a string, it will be used as the target name instead of the default "lint-markdown".
+   *
+   * @defaultValue "lint-markdown"
    */
-  enableMarkdownlint?: boolean;
+  enableMarkdownlint?: string | false;
 
   /**
    * Whether to enable ESLint for linting TypeScript and JavaScript files.
    *
-   * @defaultValue true
+   * @remarks
+   * If set to a string, it will be used as the target name instead of the default "lint".
+   *
+   * @defaultValue "lint"
    */
-  enableEslint?: boolean;
+  enableEslint?: string | false;
 
   /**
    * Whether to enable TypeScript type checking via `tsc`.
    *
-   * @defaultValue true
+   * @remarks
+   * If set to a string, it will be used as the target name instead of the default "type-check".
+   *
+   * @defaultValue "type-check"
    */
-  enableTypeCheck?: boolean;
+  enableTypeCheck?: string | false;
 
   /**
    * Whether to skip the linting of internal tools (projects in the `/tools` directory).
@@ -149,7 +151,12 @@ export const createNodesV2: CreateNodesV2<TypeScriptPluginOptions> = [
             };
 
             if (enableMarkdownlint) {
-              targets["lint-markdown"] ??= {
+              targets[
+                options?.enableMarkdownlint &&
+                typeof options?.enableMarkdownlint === "string"
+                  ? options.enableMarkdownlint
+                  : "lint-markdown"
+              ] ??= {
                 cache: true,
                 inputs: [
                   "linting",
@@ -157,7 +164,14 @@ export const createNodesV2: CreateNodesV2<TypeScriptPluginOptions> = [
                   "{projectRoot}/**/*.mdx"
                 ],
                 outputs: ["{projectRoot}/**/*.md", "{projectRoot}/**/*.mdx"],
-                dependsOn: ["^lint-markdown"],
+                dependsOn: [
+                  `^${
+                    options?.enableMarkdownlint &&
+                    typeof options?.enableMarkdownlint === "string"
+                      ? options.enableMarkdownlint
+                      : "lint-markdown"
+                  }`
+                ],
                 executor: "nx:run-commands",
                 options: {
                   command:
@@ -167,12 +181,24 @@ export const createNodesV2: CreateNodesV2<TypeScriptPluginOptions> = [
             }
 
             if (enableTypeCheck) {
-              targets["lint-tsc"] ??= {
+              targets[
+                options?.enableTypeCheck &&
+                typeof options?.enableTypeCheck === "string"
+                  ? options.enableTypeCheck
+                  : "type-check"
+              ] ??= {
                 cache: true,
                 inputs: ["typescript", "^production"],
                 outputs: ["{workspaceRoot}/dist/{projectRoot}"],
                 executor: "nx:run-commands",
-                dependsOn: ["^lint-tsc"],
+                dependsOn: [
+                  `^${
+                    options?.enableTypeCheck &&
+                    typeof options?.enableTypeCheck === "string"
+                      ? options.enableTypeCheck
+                      : "type-check"
+                  }`
+                ],
                 options: {
                   command: `pnpm exec tsc --noEmit --pretty --project ${join(
                     projectConfig.root,
@@ -189,16 +215,36 @@ export const createNodesV2: CreateNodesV2<TypeScriptPluginOptions> = [
               }
 
               if (eslintConfig) {
-                targets.lint ??= {
+                targets[
+                  options?.enableEslint &&
+                  typeof options?.enableEslint === "string"
+                    ? options.enableEslint
+                    : "lint"
+                ] ??= {
                   cache: true,
                   inputs: ["linting", "typescript", "^production"],
                   outputs: [
                     "{projectRoot}/**/*.{ts,tsx,js,jsx,json,md,mdx,yaml,yml,html,css,scss,sass,less,graphql,gql}"
                   ],
                   dependsOn: [
-                    enableMarkdownlint ? "lint-markdown" : undefined,
-                    enableTypeCheck ? "lint-tsc" : undefined,
-                    "^lint"
+                    enableMarkdownlint
+                      ? options?.enableMarkdownlint &&
+                        typeof options?.enableMarkdownlint === "string"
+                        ? options.enableMarkdownlint
+                        : "lint-markdown"
+                      : undefined,
+                    enableTypeCheck
+                      ? options?.enableTypeCheck &&
+                        typeof options?.enableTypeCheck === "string"
+                        ? options.enableTypeCheck
+                        : "type-check"
+                      : undefined,
+                    `^${
+                      options?.enableEslint &&
+                      typeof options?.enableEslint === "string"
+                        ? options.enableEslint
+                        : "lint"
+                    }`
                   ].filter(Boolean) as (string | TargetDependencyConfig)[],
                   executor: "@nx/eslint:lint",
                   options: {
