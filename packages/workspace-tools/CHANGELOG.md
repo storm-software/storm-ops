@@ -2,6 +2,25 @@
 
 # Changelog for Storm Ops - Workspace Tools
 
+## [1.283.0](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.283.0) (2025-09-08)
+
+### Features
+
+- **workspace-tools:** Updated the `typescript` plugin to allow specification of
+  task names in options
+  ([f11af9560](https://github.com/storm-software/storm-ops/commit/f11af9560))
+
+### Miscellaneous
+
+- **monorepo:** Update workspace package links
+  ([08b9b2380](https://github.com/storm-software/storm-ops/commit/08b9b2380))
+
+### Updated Dependencies
+
+- Updated prettier to 0.53.15
+- Updated esbuild to 0.47.19
+- Updated unbuild to 0.51.19
+
 ## [1.282.1](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.282.1) (2025-09-08)
 
 ### Bug Fixes
