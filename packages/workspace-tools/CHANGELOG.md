@@ -2,6 +2,23 @@
 
 # Changelog for Storm Ops - Workspace Tools
 
+## [1.282.1](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.282.1) (2025-09-08)
+
+### Bug Fixes
+
+- **workspace-tools:** Update type check task to `lint-tsc`
+  ([01a7b9d65](https://github.com/storm-software/storm-ops/commit/01a7b9d65))
+
+### Miscellaneous
+
+- **monorepo:** Update workspace package links
+  ([64710d08d](https://github.com/storm-software/storm-ops/commit/64710d08d))
+
+### Updated Dependencies
+
+- Updated esbuild to 0.47.18
+- Updated unbuild to 0.51.18
+
 ## [1.282.0](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.282.0) (2025-09-06)
 
 ### Features
