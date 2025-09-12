@@ -1,7 +1,6 @@
 import type { ExecutorContext, PromiseExecutor } from "@nx/devkit";
 import { createAsyncIterable } from "@nx/devkit/src/utils/async-iterable";
 import { waitForPortOpen } from "@nx/web/src/utils/wait-for-port-open";
-import type { StormWorkspaceConfig } from "@storm-software/config";
 import {
   createCliOptions,
   withRunExecutor
@@ -11,8 +10,7 @@ import { ServeExecutorSchema } from "./schema";
 
 export async function* serveExecutor(
   options: ServeExecutorSchema,
-  context: ExecutorContext,
-  config?: StormWorkspaceConfig
+  context: ExecutorContext
 ) {
   if (
     !context?.projectName ||

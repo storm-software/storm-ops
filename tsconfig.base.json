@@ -36,7 +36,6 @@
       "@storm-software/projen/*": ["packages/projen/src/*"],
       "@storm-software/pulumi-tools": ["packages/pulumi-tools/src/index.ts"],
       "@storm-software/pulumi-tools/*": ["packages/pulumi-tools/src/*"],
-      "@storm-software/terraform-modules": ["terraform-modules/src/index.ts"],
       "@storm-software/terraform-tools": ["packages/terraform-tools/index.ts"],
       "@storm-software/terraform-tools/*": ["packages/terraform-tools/src/*"],
       "@storm-software/testing-tools": ["packages/testing-tools/src/index.ts"],

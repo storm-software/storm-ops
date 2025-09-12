@@ -81,6 +81,7 @@
     "release": "pnpm exec zx tools/scripts/src/release.mjs",
     "start": "nx serve",
     "test": "echo Skipping workspace testing...",
+    "type-check": "pnpm exec zx tools/scripts/src/type-check.mjs",
     "update-storm": "pnpm update --recursive --workspace",
     "view-config": "node ./dist/packages/config-tools/bin/config.cjs"
   },
@@ -106,6 +107,7 @@
     "@types/node": "catalog:",
     "@typescript-eslint/eslint-plugin": "catalog:",
     "@typescript-eslint/parser": "catalog:",
+    "@typescript/native-preview": "7.0.0-dev.20250908.1",
     "c12": "catalog:",
     "chalk": "catalog:",
     "copyfiles": "catalog:",

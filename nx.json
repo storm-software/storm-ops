@@ -93,7 +93,13 @@
     }
   },
   "plugins": [
-    "./dist/plugins/typescript/index.js",
+    {
+      "plugin": "./dist/plugins/typescript/index.js",
+      "options": {
+        "useTsGo": false,
+        "enableTypeCheck": false
+      }
+    },
     "./dist/plugins/cloudflare/index.js",
     "./dist/plugins/rust/index.js",
     {

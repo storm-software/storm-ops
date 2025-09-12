@@ -68,6 +68,16 @@ export interface TypeScriptPluginOptions {
   enableTypeCheck?: string | false;
 
   /**
+   * Whether to use `tsgo` for TypeScript language features in editors that support it.
+   *
+   * @remarks
+   * This requires the `@typescript/native-preview` package to be installed in the workspace.
+   *
+   * @defaultValue false
+   */
+  useTsGo?: boolean;
+
+  /**
    * Whether to skip the linting of internal tools (projects in the `/tools` directory).
    *
    * @defaultValue false
@@ -189,7 +199,7 @@ export const createNodesV2: CreateNodesV2<TypeScriptPluginOptions> = [
               ] ??= {
                 cache: true,
                 inputs: ["typescript", "^production"],
-                outputs: ["{workspaceRoot}/dist/{projectRoot}"],
+                outputs: [`{workspaceRoot}/dist/${root}`],
                 executor: "nx:run-commands",
                 dependsOn: [
                   `^${
@@ -200,7 +210,7 @@ export const createNodesV2: CreateNodesV2<TypeScriptPluginOptions> = [
                   }`
                 ],
                 options: {
-                  command: `pnpm exec tsc --noEmit --pretty --project ${join(
+                  command: `pnpm exec ${options?.useTsGo ? "tsgo" : "tsc"} --noEmit --skipLibCheck --pretty --project ./${join(
                     projectConfig.root,
                     "tsconfig.json"
                   )}`
@@ -322,7 +332,7 @@ export const createNodesV2: CreateNodesV2<TypeScriptPluginOptions> = [
             cache: true,
             executor: "nx:run-commands",
             inputs: ["typescript", "^production"],
-            outputs: ["{workspaceRoot}/dist/{projectRoot}"],
+            outputs: [`{workspaceRoot}/dist/${root}`],
             options: {
               command: "pnpm exec rimraf dist/{projectRoot}",
               color: true,
@@ -335,7 +345,7 @@ export const createNodesV2: CreateNodesV2<TypeScriptPluginOptions> = [
             executor: "nx:run-commands",
             dependsOn: ["clean", "^build"],
             inputs: ["typescript", "^production"],
-            outputs: ["{workspaceRoot}/dist/{projectRoot}"],
+            outputs: [`{workspaceRoot}/dist/${root}`],
             options: {
               command: `pnpm exec nx run ${projectConfig.name}:build`
             }
@@ -346,7 +356,7 @@ export const createNodesV2: CreateNodesV2<TypeScriptPluginOptions> = [
               cache: true,
               executor: "@nx/jest:jest",
               inputs: ["testing", "typescript", "^production"],
-              outputs: ["{workspaceRoot}/coverage/{projectRoot}"],
+              outputs: [`{workspaceRoot}/coverage/${root}`],
               defaultConfiguration: "development",
               options: {
                 jestConfig: "{projectRoot}/jest.config.ts",
@@ -376,7 +386,7 @@ export const createNodesV2: CreateNodesV2<TypeScriptPluginOptions> = [
           targets["size-limit"] ??= {
             cache: true,
             inputs: ["testing", "typescript", "^production"],
-            outputs: ["{workspaceRoot}/dist/{projectRoot}"],
+            outputs: [`{workspaceRoot}/dist/${root}`],
             dependsOn: ["build", "^size-limit"],
             options: {}
           };
@@ -414,8 +424,8 @@ export const createNodesV2: CreateNodesV2<TypeScriptPluginOptions> = [
               targets["clean-package"] ??= {
                 cache: true,
                 dependsOn: ["build"],
-                inputs: ["{workspaceRoot}/dist/{projectRoot}"],
-                outputs: ["{workspaceRoot}/dist/{projectRoot}"],
+                inputs: [`{workspaceRoot}/dist/${root}`],
+                outputs: [`{workspaceRoot}/dist/${root}`],
                 executor: "@storm-software/workspace-tools:clean-package",
                 options: {
                   cleanReadMe: true,

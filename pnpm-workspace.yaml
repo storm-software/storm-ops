@@ -57,6 +57,7 @@ catalog:
   cspell: ^8.17.3
   tsdown: 0.5.3
   untyped: ^1.5.2
+  wrangler: ^4.33.0
   glob: ^11.0.1
   jiti: ^2.4.2
   tsx: ^4.19.2

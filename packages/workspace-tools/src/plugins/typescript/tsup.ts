@@ -104,7 +104,7 @@ Please add it to your dependencies by running \`pnpm add tsup -D --filter="${pac
                 "{projectRoot}/*.md",
                 "{projectRoot}/package.json"
               ],
-              outputs: ["{workspaceRoot}/dist/{projectRoot}"],
+              outputs: [`{workspaceRoot}/dist/${root}`],
               executor: "nx:run-commands",
               dependsOn: ["build-base", "build-untyped", "^build"],
               options: {

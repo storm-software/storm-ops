@@ -354,6 +354,7 @@ tses
 rxvt
 
 # TypeScript
+tsgo
 transpiles
 genaiscript
 genaisrc
