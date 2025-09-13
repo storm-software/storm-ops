@@ -2,6 +2,14 @@
 
 # Changelog for Storm Ops - Pnpm Tools
 
+## [0.1.1](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.1.1) (2025-09-13)
+
+### Bug Fixes
+
+- **pnpm-tools:** Resolve issue with incorrectly tracking `pnpm-workspace` file
+  existance
+  ([20e630d0d](https://github.com/storm-software/storm-ops/commit/20e630d0d))
+
 ## [0.1.0](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.1.0) (2025-09-13)
 
 ### Features
