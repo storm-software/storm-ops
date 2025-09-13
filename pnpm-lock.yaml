@@ -1445,25 +1445,6 @@ importers:
         specifier: 'catalog:'
         version: 30.0.5
 
-  packages/testing-tools/dist:
-    dependencies:
-      defu:
-        specifier: 'catalog:'
-        version: 6.1.4
-    devDependencies:
-      '@nx/jest':
-        specifier: 'catalog:'
-        version: 21.3.10(@babel/traverse@7.28.4)(@swc-node/register@1.10.9(@swc/core@1.7.26(@swc/helpers@0.5.13))(@swc/types@0.1.25)(typescript@5.9.2))(@swc/core@1.7.26(@swc/helpers@0.5.13))(@types/node@22.16.4)(babel-plugin-macros@3.1.0)(nx@21.4.1(@swc-node/register@1.10.9(@swc/core@1.7.26(@swc/helpers@0.5.13))(@swc/types@0.1.25)(typescript@5.9.2))(@swc/core@1.7.26(@swc/helpers@0.5.13)))(ts-node@10.9.2(@swc/core@1.7.26(@swc/helpers@0.5.13))(@swc/wasm@1.6.5)(@types/node@22.16.4)(typescript@5.9.2))(typescript@5.9.2)(verdaccio@6.0.5(encoding@0.1.13)(typanion@3.14.0))
-      '@types/node':
-        specifier: 'catalog:'
-        version: 22.16.4
-      jest:
-        specifier: 'catalog:'
-        version: 30.0.5(@types/node@22.16.4)(babel-plugin-macros@3.1.0)(ts-node@10.9.2(@swc/core@1.7.26(@swc/helpers@0.5.13))(@swc/wasm@1.6.5)(@types/node@22.16.4)(typescript@5.9.2))
-      jest-resolve:
-        specifier: 'catalog:'
-        version: 30.0.5
-
   packages/tsconfig:
     dependencies:
       '@total-typescript/ts-reset':
@@ -19705,7 +19686,7 @@ snapshots:
       proc-log: 4.2.0
       promise-inflight: 1.0.1
       promise-retry: 2.0.1
-      semver: 7.6.2
+      semver: 7.7.2
       which: 4.0.0
     transitivePeerDependencies:
       - bluebird
@@ -27825,7 +27806,7 @@ snapshots:
 
   make-dir@4.0.0:
     dependencies:
-      semver: 7.6.2
+      semver: 7.7.2
 
   make-error@1.3.6: {}
 
@@ -29361,7 +29342,7 @@ snapshots:
       make-fetch-happen: 13.0.1
       nopt: 7.2.1
       proc-log: 4.2.0
-      semver: 7.6.2
+      semver: 7.7.2
       tar: 6.2.1
       which: 4.0.0
     transitivePeerDependencies:
@@ -29388,7 +29369,7 @@ snapshots:
     dependencies:
       hosted-git-info: 4.1.0
       is-core-module: 2.16.1
-      semver: 7.6.2
+      semver: 7.7.2
       validate-npm-package-license: 3.0.4
 
   normalize-package-data@4.0.1:
@@ -29611,7 +29592,7 @@ snapshots:
       open: 8.4.2
       ora: 5.3.0
       resolve.exports: 2.0.3
-      semver: 7.6.2
+      semver: 7.7.2
       string-width: 4.2.3
       tar-stream: 2.2.0
       tmp: 0.2.5
@@ -29874,7 +29855,7 @@ snapshots:
       got: 14.3.0
       registry-auth-token: 5.1.0
       registry-url: 6.0.1
-      semver: 7.6.2
+      semver: 7.7.2
 
   package-manager-detector@0.2.11:
     dependencies:
