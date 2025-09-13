@@ -164,15 +164,15 @@
   "dependencies": {
     "@storm-software/config": "workspace:*",
     "@storm-software/config-tools": "workspace:*",
-    "@storm-software/workspace-tools": "1.286.0",
-    "js-yaml": "^4.1.0"
+    "@storm-software/workspace-tools": "workspace:*",
+    "js-yaml": "catalog:"
   },
   "devDependencies": {
     "@nx-tools/container-metadata": "^6.8.2",
     "@nx-tools/nx-container": "^6.8.2",
     "@nx/devkit": "catalog:",
     "@nx/workspace": "catalog:",
-    "@types/js-yaml": "4.0.9",
+    "@types/js-yaml": "catalog:",
     "@types/node": "catalog:",
     "nx": "catalog:",
     "tsup": "catalog:",

@@ -9,6 +9,11 @@
     "directory": "packages/pnpm-tools"
   },
   "private": false,
+  "bin": {
+    "storm-pnpm": "./bin/storm-pnpm.js",
+    "storm-pnpm-cjs": "./bin/storm-pnpm.cjs",
+    "storm-pnpm-esm": "./bin/storm-pnpm.js"
+  },
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
   "exports": {
