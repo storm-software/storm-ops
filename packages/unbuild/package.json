@@ -1,6 +1,6 @@
 {
   "name": "@storm-software/unbuild",
-  "version": "0.51.19",
+  "version": "0.52.0",
   "type": "module",
   "description": "A package containing `unbuild` utilities for building Storm Software libraries and applications",
   "repository": {
@@ -191,15 +191,15 @@
     }
   },
   "dependencies": {
-    "@storm-software/build-tools": "workspace:*",
-    "@storm-software/config": "workspace:*",
-    "@storm-software/config-tools": "workspace:*",
+    "@storm-software/build-tools": "0.153.16",
+    "@storm-software/config": "1.129.2",
+    "@storm-software/config-tools": "1.182.0",
     "commander": "catalog:",
     "defu": "catalog:",
     "esbuild": "catalog:",
     "glob": "catalog:",
     "jiti": "catalog:",
-    "mkdist": "^2.3.0",
+    "mkdist": "^2.4.1",
     "pkg-types": "catalog:",
     "rollup": "catalog:",
     "rollup-plugin-typescript2": "0.36.0",

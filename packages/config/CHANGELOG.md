@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Config
 
+## [1.129.2](https://github.com/storm-software/storm-ops/releases/tag/config%401.129.2) (2025-09-13)
+
+### Bug Fixes
+
+- **monorepo:** Resolve issues with invalid workspace package
+  ([a5e95d09a](https://github.com/storm-software/storm-ops/commit/a5e95d09a))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+  ([268809036](https://github.com/storm-software/storm-ops/commit/268809036))
+
 ## [1.129.1](https://github.com/storm-software/storm-ops/releases/tag/config%401.129.1) (2025-09-08)
 
 ### Miscellaneous

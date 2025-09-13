@@ -2,6 +2,29 @@
 
 # Changelog for Storm Ops - Workspace Tools
 
+## [1.284.0](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.284.0) (2025-09-13)
+
+### Features
+
+- **workspace-tools:** Added the ability to support the `tsgo` compiler
+  ([86ad08c45](https://github.com/storm-software/storm-ops/commit/86ad08c45))
+
+### Bug Fixes
+
+- **monorepo:** Resolve issues with invalid workspace package
+  ([a5e95d09a](https://github.com/storm-software/storm-ops/commit/a5e95d09a))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+  ([268809036](https://github.com/storm-software/storm-ops/commit/268809036))
+
+### Updated Dependencies
+
+- Updated prettier to 0.53.16
+- Updated esbuild to 0.48.0
+- Updated unbuild to 0.52.0
+
 ## [1.283.0](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.283.0) (2025-09-08)
 
 ### Features

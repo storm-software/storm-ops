@@ -2,6 +2,25 @@
 
 # Changelog for Storm Ops - Terraform Modules
 
+## [0.54.0](https://github.com/storm-software/storm-ops/releases/tag/terraform-modules%400.54.0) (2025-09-13)
+
+### Features
+
+- **workspace-tools:** Added the ability to support the `tsgo` compiler
+  ([86ad08c45](https://github.com/storm-software/storm-ops/commit/86ad08c45))
+
+### Bug Fixes
+
+- **monorepo:** Added back the terraform-modules `package.json` file
+  ([1e4ed2dd2](https://github.com/storm-software/storm-ops/commit/1e4ed2dd2))
+- **monorepo:** Resolve issues with invalid workspace package
+  ([a5e95d09a](https://github.com/storm-software/storm-ops/commit/a5e95d09a))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+  ([268809036](https://github.com/storm-software/storm-ops/commit/268809036))
+
 ## [0.53.15](https://github.com/storm-software/storm-ops/releases/tag/terraform-modules%400.53.15) (2025-09-08)
 
 ### Miscellaneous

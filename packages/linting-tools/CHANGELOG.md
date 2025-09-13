@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Linting Tools
 
+## [1.128.17](https://github.com/storm-software/storm-ops/releases/tag/linting-tools%401.128.17) (2025-09-13)
+
+### Bug Fixes
+
+- **monorepo:** Resolve issues with invalid workspace package
+  ([a5e95d09a](https://github.com/storm-software/storm-ops/commit/a5e95d09a))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+  ([268809036](https://github.com/storm-software/storm-ops/commit/268809036))
+
 ## [1.128.16](https://github.com/storm-software/storm-ops/releases/tag/linting-tools%401.128.16) (2025-09-08)
 
 ### Miscellaneous

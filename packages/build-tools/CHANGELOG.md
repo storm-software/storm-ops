@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Build Tools
 
+## [0.153.16](https://github.com/storm-software/storm-ops/releases/tag/build-tools%400.153.16) (2025-09-13)
+
+### Bug Fixes
+
+- **monorepo:** Resolve issues with invalid workspace package
+  ([a5e95d09a](https://github.com/storm-software/storm-ops/commit/a5e95d09a))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+  ([268809036](https://github.com/storm-software/storm-ops/commit/268809036))
+
 ## [0.153.15](https://github.com/storm-software/storm-ops/releases/tag/build-tools%400.153.15) (2025-09-08)
 
 ### Miscellaneous

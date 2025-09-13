@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Tsconfig
 
+## [0.43.16](https://github.com/storm-software/storm-ops/releases/tag/tsconfig%400.43.16) (2025-09-13)
+
+### Bug Fixes
+
+- **monorepo:** Resolve issues with invalid workspace package
+  ([a5e95d09a](https://github.com/storm-software/storm-ops/commit/a5e95d09a))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+  ([268809036](https://github.com/storm-software/storm-ops/commit/268809036))
+
 ## [0.43.15](https://github.com/storm-software/storm-ops/releases/tag/tsconfig%400.43.15) (2025-09-08)
 
 ### Miscellaneous

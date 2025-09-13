@@ -2,6 +2,25 @@
 
 # Changelog for Storm Ops - CSpell
 
+## [0.39.0](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.39.0) (2025-09-13)
+
+### Features
+
+- **cspell:** Added addiitional items to the `cspell` dictionary
+  ([79aeae1ae](https://github.com/storm-software/storm-ops/commit/79aeae1ae))
+- **workspace-tools:** Added the ability to support the `tsgo` compiler
+  ([86ad08c45](https://github.com/storm-software/storm-ops/commit/86ad08c45))
+
+### Bug Fixes
+
+- **monorepo:** Resolve issues with invalid workspace package
+  ([a5e95d09a](https://github.com/storm-software/storm-ops/commit/a5e95d09a))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+  ([268809036](https://github.com/storm-software/storm-ops/commit/268809036))
+
 ## [0.38.2](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.38.2) (2025-09-08)
 
 ### Miscellaneous

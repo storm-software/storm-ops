@@ -2,6 +2,28 @@
 
 # Changelog for Storm Ops - Git Tools
 
+## [2.117.0](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.117.0) (2025-09-13)
+
+### Features
+
+- **workspace-tools:** Added the ability to support the `tsgo` compiler
+  ([86ad08c45](https://github.com/storm-software/storm-ops/commit/86ad08c45))
+
+### Bug Fixes
+
+- **monorepo:** Resolve issues with invalid workspace package
+  ([a5e95d09a](https://github.com/storm-software/storm-ops/commit/a5e95d09a))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+  ([268809036](https://github.com/storm-software/storm-ops/commit/268809036))
+
+### Updated Dependencies
+
+- Updated config-tools to 1.182.0
+- Updated config to 1.129.2
+
 ## [2.116.2](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.116.2) (2025-09-08)
 
 ### Miscellaneous

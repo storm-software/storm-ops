@@ -2,6 +2,23 @@
 
 # Changelog for Storm Ops - Tsdoc
 
+## [0.9.0](https://github.com/storm-software/storm-ops/releases/tag/tsdoc%400.9.0) (2025-09-13)
+
+### Features
+
+- **workspace-tools:** Added the ability to support the `tsgo` compiler
+  ([86ad08c45](https://github.com/storm-software/storm-ops/commit/86ad08c45))
+
+### Bug Fixes
+
+- **monorepo:** Resolve issues with invalid workspace package
+  ([a5e95d09a](https://github.com/storm-software/storm-ops/commit/a5e95d09a))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+  ([268809036](https://github.com/storm-software/storm-ops/commit/268809036))
+
 ## [0.8.15](https://github.com/storm-software/storm-ops/releases/tag/tsdoc%400.8.15) (2025-09-08)
 
 ### Miscellaneous
