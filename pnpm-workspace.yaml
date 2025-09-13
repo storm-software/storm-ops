@@ -53,7 +53,7 @@ catalog:
   commander: ^12.1.0
   chalk: ^4.1.2
   defu: 6.1.4
-  read-yaml-file: 2.1.0
+  js-yaml: ^4.1.0
   cspell: ^8.17.3
   tsdown: 0.5.3
   untyped: ^1.5.2
@@ -95,6 +95,7 @@ overrides:
   "@storm-software/npm-tools": workspace:*
   "@storm-software/projen": workspace:*
   "@storm-software/prettier": workspace:*
+  "@storm-software/pnpm-tools": workspace:*
   "@storm-software/untyped": workspace:*
   "@storm-software/esbuild": workspace:*
   "@storm-software/tsdown": workspace:*

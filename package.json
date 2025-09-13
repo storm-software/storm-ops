@@ -127,7 +127,6 @@
     "prettier-plugin-pkg": "^0.18.1",
     "prettier-plugin-prisma": "^5.0.0",
     "prettier-plugin-sh": "^0.15.0",
-    "read-yaml-file": "catalog:",
     "rimraf": "catalog:",
     "sherif": "1.2.0",
     "ts-jest": "29.4.0",

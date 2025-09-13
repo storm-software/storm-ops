@@ -1,0 +1,95 @@
+import { findWorkspaceRoot } from "@storm-software/config-tools/utilities/find-workspace-root";
+import { DEFAULT_NPM_TAG } from "@storm-software/npm-tools/constants";
+import { getVersion } from "@storm-software/npm-tools/helpers/get-version";
+import { coerce, gt, valid } from "semver";
+import { readPnpmWorkspaceFile } from "./pnpm-workspace";
+
+/**
+ * Retrieve the pnpm catalog from the workspace's `pnpm-workspace.yaml` file.
+ *
+ * @param workspaceRoot - The root directory of the workspace. Defaults to the result of `findWorkspaceRoot(process.cwd())`.
+ * @returns A promise that resolves to the catalog object if found, or undefined if no catalog exists or the `pnpm-workspace.yaml` file is not found.
+ * @throws Will throw an error if the `pnpm-workspace.yaml` file is found but cannot be read.
+ */
+export async function getCatalog(
+  workspaceRoot = findWorkspaceRoot(process.cwd())
+): Promise<Record<string, string> | undefined> {
+  const pnpmWorkspaceFile = await readPnpmWorkspaceFile(workspaceRoot);
+  if (pnpmWorkspaceFile?.catalog) {
+    return Object.fromEntries(
+      Object.entries(pnpmWorkspaceFile.catalog).map(([key, value]) => {
+        return [key, value.replaceAll(/^"/g, "").replaceAll(/"$/g, "")];
+      })
+    );
+  }
+
+  return;
+}
+
+export interface UpgradeCatalogPackageOptions {
+  /**
+   * The npm tag to use when fetching the latest version of the package.
+   *
+   * @defaultValue `"latest"`
+   */
+  tag?: string;
+
+  /**
+   * The root directory of the workspace.
+   *
+   * @defaultValue The value returned by `findWorkspaceRoot(process.cwd())`
+   */
+  workspaceRoot?: string;
+
+  /**
+   * An indicator of whether to throw an error if the package is not found in the catalog.
+   *
+   * @defaultValue `false`
+   */
+  throwIfMissingInCatalog?: boolean;
+}
+
+/**
+ * Update package.json dependencies currently using `catalog:` or `workspace:*` to use the pnpm catalog dependencies actual versions and the local workspace versions respectively.
+ *
+ * @param packageRoot - The root directory of the package to update. Defaults to the current working directory.
+ * @param workspaceRoot - The root directory of the workspace. Defaults to the result of `findWorkspaceRoot(packageRoot)`.
+ * @returns A promise that resolves when the package.json file has been updated.
+ * @throws Will throw an error if no package.json file is found in the package root, or if a dependency is marked as `catalog:` but no catalog exists.
+ */
+export async function upgradeCatalogPackage(
+  packageName: string,
+  options: UpgradeCatalogPackageOptions = {}
+) {
+  const {
+    tag = DEFAULT_NPM_TAG,
+    throwIfMissingInCatalog = false,
+    workspaceRoot = findWorkspaceRoot()
+  } = options;
+
+  const catalog = await getCatalog(workspaceRoot);
+  if (!catalog) {
+    throw new Error("No catalog found");
+  }
+  if (throwIfMissingInCatalog === true && !catalog[packageName]) {
+    throw new Error(
+      `Package "${packageName}" not found in catalog: ${JSON.stringify(
+        catalog,
+        null,
+        2
+      )}`
+    );
+  }
+
+  const version = await getVersion(packageName, tag);
+  if (
+    !valid(coerce(catalog[packageName])) ||
+    (coerce(catalog[packageName]) &&
+      coerce(version) &&
+      gt(coerce(version)!, coerce(catalog[packageName])!))
+  ) {
+    catalog[packageName] = version;
+  }
+
+  // Update package.json files in the workspace
+}

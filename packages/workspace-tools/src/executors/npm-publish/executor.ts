@@ -8,8 +8,8 @@ import { execSync } from "node:child_process";
 import { readFile, writeFile } from "node:fs/promises";
 import { format } from "prettier";
 import { addPackageJsonGitHead } from "../../utils/package-helpers";
-import { pnpmUpdate } from "../../utils/pnpm-deps-update";
 import type { NpmPublishExecutorSchema } from "./schema.d";
+import { replaceDepsAliases } from "@storm-software/pnpm-tools/helpers/replace-deps-aliases";
 
 export const LARGE_BUFFER = 1024 * 1000000;
 
@@ -115,7 +115,7 @@ export default async function npmPublishExecutorFn(
     return { success: true };
   }
 
-  await pnpmUpdate(packageRoot, context.root);
+  await replaceDepsAliases(packageRoot, context.root);
   await addPackageJsonGitHead(packageRoot);
 
   const npmPublishCommandSegments = [`npm publish --json`];

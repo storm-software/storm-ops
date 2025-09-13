@@ -7,7 +7,6 @@
     "consola": "3.3.3",
     "esbuild": "catalog:",
     "pkg-types": "catalog:",
-    "read-yaml-file": "catalog:",
     "tslib": "catalog:",
     "zx": "catalog:"
   },
