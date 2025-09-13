@@ -2,6 +2,27 @@
 
 # Changelog for Storm Ops - K8s Tools
 
+## [0.37.0](https://github.com/storm-software/storm-ops/releases/tag/k8s-tools%400.37.0) (2025-09-13)
+
+### Features
+
+- **eslint:** Update `eslint-plugin-tsdoc` patch to allow local custom config
+  files
+  ([57257ac47](https://github.com/storm-software/storm-ops/commit/57257ac47))
+
+### Miscellaneous
+
+- **monorepo:** Update workspace package links
+  ([762d49e0e](https://github.com/storm-software/storm-ops/commit/762d49e0e))
+- **monorepo:** Regenerate README markdown files
+  ([5a5124fd7](https://github.com/storm-software/storm-ops/commit/5a5124fd7))
+
+### Updated Dependencies
+
+- Updated workspace-tools to 1.285.0
+- Updated config-tools to 1.183.0
+- Updated config to 1.130.0
+
 ## [0.36.0](https://github.com/storm-software/storm-ops/releases/tag/k8s-tools%400.36.0) (2025-09-13)
 
 ### Features

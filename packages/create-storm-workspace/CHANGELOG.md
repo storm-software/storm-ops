@@ -2,6 +2,19 @@
 
 # Changelog for Storm Ops - Create Storm Workspace
 
+## [1.94.0](https://github.com/storm-software/storm-ops/releases/tag/create-storm-workspace%401.94.0) (2025-09-13)
+
+### Features
+
+- **eslint:** Update `eslint-plugin-tsdoc` patch to allow local custom config
+  files
+  ([57257ac47](https://github.com/storm-software/storm-ops/commit/57257ac47))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+  ([5a5124fd7](https://github.com/storm-software/storm-ops/commit/5a5124fd7))
+
 ## [1.93.16](https://github.com/storm-software/storm-ops/releases/tag/create-storm-workspace%401.93.16) (2025-09-13)
 
 ### Bug Fixes

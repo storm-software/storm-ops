@@ -2,6 +2,26 @@
 
 # Changelog for Storm Ops - ESLint
 
+## [0.165.0](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.165.0) (2025-09-13)
+
+### Features
+
+- **eslint:** Update `eslint-plugin-tsdoc` patch to allow local custom config
+  files
+  ([57257ac47](https://github.com/storm-software/storm-ops/commit/57257ac47))
+
+### Miscellaneous
+
+- **eslint:** Added the `defineConfig` named export
+  ([cc503a55e](https://github.com/storm-software/storm-ops/commit/cc503a55e))
+- **monorepo:** Regenerate README markdown files
+  ([5a5124fd7](https://github.com/storm-software/storm-ops/commit/5a5124fd7))
+
+### Updated Dependencies
+
+- Updated config-tools to 1.183.0
+- Updated config to 1.130.0
+
 ## [0.164.0](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.164.0) (2025-09-13)
 
 ### Features

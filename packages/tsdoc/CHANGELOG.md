@@ -2,6 +2,21 @@
 
 # Changelog for Storm Ops - Tsdoc
 
+## [0.10.0](https://github.com/storm-software/storm-ops/releases/tag/tsdoc%400.10.0) (2025-09-13)
+
+### Features
+
+- **eslint:** Update `eslint-plugin-tsdoc` patch to allow local custom config
+  files
+  ([57257ac47](https://github.com/storm-software/storm-ops/commit/57257ac47))
+
+### Miscellaneous
+
+- **tsdoc:** Rename `@credits` to `@credit` tag
+  ([0c5db2add](https://github.com/storm-software/storm-ops/commit/0c5db2add))
+- **monorepo:** Regenerate README markdown files
+  ([5a5124fd7](https://github.com/storm-software/storm-ops/commit/5a5124fd7))
+
 ## [0.9.0](https://github.com/storm-software/storm-ops/releases/tag/tsdoc%400.9.0) (2025-09-13)
 
 ### Features

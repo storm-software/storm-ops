@@ -2,6 +2,27 @@
 
 # Changelog for Storm Ops - Esbuild
 
+## [0.49.0](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.49.0) (2025-09-13)
+
+### Features
+
+- **eslint:** Update `eslint-plugin-tsdoc` patch to allow local custom config
+  files
+  ([57257ac47](https://github.com/storm-software/storm-ops/commit/57257ac47))
+
+### Miscellaneous
+
+- **monorepo:** Update workspace package links
+  ([762d49e0e](https://github.com/storm-software/storm-ops/commit/762d49e0e))
+- **monorepo:** Regenerate README markdown files
+  ([5a5124fd7](https://github.com/storm-software/storm-ops/commit/5a5124fd7))
+
+### Updated Dependencies
+
+- Updated config-tools to 1.183.0
+- Updated build-tools to 0.154.0
+- Updated config to 1.130.0
+
 ## [0.48.0](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.48.0) (2025-09-13)
 
 ### Features
