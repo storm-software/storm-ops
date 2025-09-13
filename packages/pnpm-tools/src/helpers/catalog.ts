@@ -2,7 +2,10 @@ import { findWorkspaceRoot } from "@storm-software/config-tools/utilities/find-w
 import { DEFAULT_NPM_TAG } from "@storm-software/npm-tools/constants";
 import { getVersion } from "@storm-software/npm-tools/helpers/get-version";
 import { coerce, gt, valid } from "semver";
-import { readPnpmWorkspaceFile } from "./pnpm-workspace";
+import {
+  readPnpmWorkspaceFile,
+  writePnpmWorkspaceFile
+} from "./pnpm-workspace";
 
 /**
  * Retrieve the pnpm catalog from the workspace's `pnpm-workspace.yaml` file.
@@ -24,6 +27,30 @@ export async function getCatalog(
   }
 
   return;
+}
+
+/**
+ * Set the pnpm catalog in the workspace's `pnpm-workspace.yaml` file.
+ *
+ * @param catalog - The catalog object to set in the `pnpm-workspace.yaml` file.
+ * @param workspaceRoot - The root directory of the workspace. Defaults to the result of `findWorkspaceRoot(process.cwd())`.
+ */
+export async function setCatalog(
+  catalog: Record<string, string>,
+  workspaceRoot = findWorkspaceRoot(process.cwd())
+) {
+  const pnpmWorkspaceFile = await readPnpmWorkspaceFile(workspaceRoot);
+  if (!pnpmWorkspaceFile) {
+    throw new Error("No pnpm-workspace.yaml file found");
+  }
+
+  pnpmWorkspaceFile.catalog = Object.fromEntries(
+    Object.entries(catalog).map(([key, value]) => {
+      return [key, `"${value}"`];
+    })
+  );
+
+  await writePnpmWorkspaceFile(pnpmWorkspaceFile, workspaceRoot);
 }
 
 export interface UpgradeCatalogPackageOptions {
@@ -86,10 +113,11 @@ export async function upgradeCatalogPackage(
     !valid(coerce(catalog[packageName])) ||
     (coerce(catalog[packageName]) &&
       coerce(version) &&
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       gt(coerce(version)!, coerce(catalog[packageName])!))
   ) {
     catalog[packageName] = version;
   }
 
-  // Update package.json files in the workspace
+  await setCatalog(catalog, workspaceRoot);
 }

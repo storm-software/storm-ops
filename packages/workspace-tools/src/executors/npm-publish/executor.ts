@@ -4,12 +4,12 @@ import {
   getNpmRegistry,
   getRegistry
 } from "@storm-software/npm-tools/helpers/get-registry";
+import { replaceDepsAliases } from "@storm-software/pnpm-tools/helpers/replace-deps-aliases";
 import { execSync } from "node:child_process";
 import { readFile, writeFile } from "node:fs/promises";
 import { format } from "prettier";
 import { addPackageJsonGitHead } from "../../utils/package-helpers";
 import type { NpmPublishExecutorSchema } from "./schema.d";
-import { replaceDepsAliases } from "@storm-software/pnpm-tools/helpers/replace-deps-aliases";
 
 export const LARGE_BUFFER = 1024 * 1000000;
 

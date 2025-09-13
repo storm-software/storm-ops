@@ -105,6 +105,7 @@
     "@storm-software/config": "workspace:*",
     "@storm-software/config-tools": "workspace:*",
     "@storm-software/npm-tools": "workspace:*",
+    "commander": "catalog:",
     "defu": "catalog:",
     "js-yaml": "catalog:",
     "prettier": "catalog:",
@@ -113,7 +114,7 @@
   },
   "devDependencies": {
     "@pnpm/types": "^1000.8.0",
-    "@types/js-yaml": "4.0.9",
+    "@types/js-yaml": "catalog:",
     "@types/node": "catalog:",
     "tsup": "catalog:"
   },
