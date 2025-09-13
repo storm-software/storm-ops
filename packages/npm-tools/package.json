@@ -1,0 +1,113 @@
+{
+  "name": "@storm-software/npm-tools",
+  "version": "0.0.1",
+  "type": "module",
+  "description": "A set of tools and utilities for managing packages stored in the [npm](https://www.npmjs.com/) registry.",
+  "repository": {
+    "type": "github",
+    "url": "https://github.com/storm-software/storm-ops",
+    "directory": "packages/npm-tools"
+  },
+  "private": false,
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "exports": {
+    "./package.json": "./package.json",
+    "./index": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      },
+      "default": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      }
+    },
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      },
+      "default": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      }
+    },
+    "./types": {
+      "import": {
+        "types": "./dist/types.d.ts",
+        "default": "./dist/types.js"
+      },
+      "require": {
+        "types": "./dist/types.d.cts",
+        "default": "./dist/types.cjs"
+      },
+      "default": {
+        "types": "./dist/types.d.ts",
+        "default": "./dist/types.js"
+      }
+    },
+    "./constants": {
+      "import": {
+        "types": "./dist/constants.d.ts",
+        "default": "./dist/constants.js"
+      },
+      "require": {
+        "types": "./dist/constants.d.cts",
+        "default": "./dist/constants.cjs"
+      },
+      "default": {
+        "types": "./dist/constants.d.ts",
+        "default": "./dist/constants.js"
+      }
+    },
+    "./helpers": {
+      "import": {
+        "types": "./dist/helpers/index.d.ts",
+        "default": "./dist/helpers/index.js"
+      },
+      "require": {
+        "types": "./dist/helpers/index.d.cts",
+        "default": "./dist/helpers/index.cjs"
+      },
+      "default": {
+        "types": "./dist/helpers/index.d.ts",
+        "default": "./dist/helpers/index.js"
+      }
+    },
+    "./helpers/*": {
+      "import": {
+        "types": "./dist/helpers/*.d.ts",
+        "default": "./dist/helpers/*.js"
+      },
+      "require": {
+        "types": "./dist/helpers/*.d.cts",
+        "default": "./dist/helpers/*.cjs"
+      },
+      "default": {
+        "types": "./dist/helpers/*.d.ts",
+        "default": "./dist/helpers/*.js"
+      }
+    }
+  },
+  "types": "./dist/index.d.ts",
+  "dependencies": {
+    "@storm-software/config": "workspace:*",
+    "@storm-software/config-tools": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/node": "catalog:",
+    "tsup": "catalog:"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

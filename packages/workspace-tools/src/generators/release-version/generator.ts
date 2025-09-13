@@ -12,24 +12,33 @@ import {
 } from "@nx/devkit";
 import { resolveLocalPackageDependencies as resolveLocalPackageJsonDependencies } from "@nx/js/src/generators/release-version/utils/resolve-local-package-dependencies";
 import { updateLockFile } from "@nx/js/src/release/utils/update-lock-file";
-import type { StormWorkspaceConfig } from "@storm-software/config";
+import { getConfig } from "@storm-software/config-tools/get-config";
 import {
-  findWorkspaceRoot,
-  getConfig,
   getStopwatch,
-  modifyCargoTable,
-  parseCargoToml,
-  parseCargoTomlWithTree,
-  stringifyCargoToml,
   writeDebug,
   writeError,
   writeFatal,
   writeInfo,
   writeSuccess,
   writeTrace
-} from "@storm-software/config-tools";
-import { DEFAULT_CONVENTIONAL_COMMITS_CONFIG } from "@storm-software/git-tools";
-import { exec, execSync } from "node:child_process";
+} from "@storm-software/config-tools/logger/console";
+import { findWorkspaceRoot } from "@storm-software/config-tools/utilities/find-workspace-root";
+import {
+  modifyCargoTable,
+  parseCargoToml,
+  parseCargoTomlWithTree,
+  stringifyCargoToml
+} from "@storm-software/config-tools/utilities/toml";
+import { StormWorkspaceConfig } from "@storm-software/config/types";
+import { DEFAULT_CONVENTIONAL_COMMITS_CONFIG } from "@storm-software/git-tools/release/config";
+import { DEFAULT_NPM_TAG } from "@storm-software/npm-tools/constants";
+import {
+  getGitHubRegistry,
+  getNpmRegistry,
+  getRegistry
+} from "@storm-software/npm-tools/helpers/get-registry";
+import { getVersion } from "@storm-software/npm-tools/helpers/get-version";
+import { execSync } from "node:child_process";
 import { relative } from "node:path";
 import { IMPLICIT_DEFAULT_RELEASE_GROUP } from "nx/src/command-line/release/config/config";
 import {
@@ -225,11 +234,12 @@ To fix this you will either need to add a package.json or Cargo.toml file at tha
 
       switch (options.currentVersionResolver) {
         case "registry": {
-          const metadata = options.currentVersionResolverMetadata;
-          const npmRegistry = metadata?.registry ?? (await getNpmRegistry());
-          const githubRegistry =
-            metadata?.registry ?? (await getGitHubRegistry());
-          const tag = metadata?.tag ?? "latest";
+          const metadata = options.currentVersionResolverMetadata ?? {};
+          const tag = metadata.tag ?? DEFAULT_NPM_TAG;
+
+          const registry = metadata.registry ?? (await getRegistry());
+          const npmRegistry = await getNpmRegistry();
+          const githubRegistry = await getGitHubRegistry();
 
           /**
            * If the currentVersionResolver is set to registry, and the projects are not independent, we only want to make the request once for the whole batch of projects.
@@ -237,53 +247,32 @@ To fix this you will either need to add a package.json or Cargo.toml file at tha
            */
           if (options.releaseGroup.projectsRelationship === "independent") {
             try {
-              // Must be non-blocking async to allow spinner to render
-              currentVersion = await new Promise<string>((resolve, reject) => {
-                exec(
-                  `npm view ${packageName} version --registry=${npmRegistry} --tag=${tag}`,
-                  (error, stdout, stderr) => {
-                    if (error) {
-                      return reject(error);
-                    }
-                    if (stderr) {
-                      return reject(stderr);
-                    }
-                    return resolve(stdout.trim());
-                  }
-                );
-              });
-
-              // spinner.stop();
+              currentVersion = await getVersion(packageName, tag, { registry });
+              if (!currentVersion) {
+                currentVersion = await getVersion(packageName, tag, {
+                  registry: npmRegistry
+                });
+                if (!currentVersion) {
+                  currentVersion = await getVersion(packageName, tag, {
+                    registry: githubRegistry
+                  });
+                }
+              }
 
               log(
-                `📄 Resolved the current version as ${currentVersion} for tag "${tag}" from registry ${npmRegistry}`
+                `📄 Resolved the current version as ${currentVersion} for tag "${tag}" from registry ${registry}`
               );
-            } catch (_) {
+            } catch {
               try {
                 // Try getting the version from the GitHub registry
-                currentVersion = await new Promise<string>(
-                  (resolve, reject) => {
-                    exec(
-                      `npm view ${packageName} version --registry=${githubRegistry} --tag=${tag}`,
-                      (error, stdout, stderr) => {
-                        if (error) {
-                          return reject(error);
-                        }
-                        if (stderr) {
-                          return reject(stderr);
-                        }
-                        return resolve(stdout.trim());
-                      }
-                    );
-                  }
-                );
-
-                // spinner.stop();
+                currentVersion = await getVersion(packageName, tag, {
+                  registry: githubRegistry
+                });
 
                 log(
                   `📄 Resolved the current version as ${currentVersion} for tag "${tag}" from registry ${githubRegistry}`
                 );
-              } catch (_) {
+              } catch {
                 if (options.fallbackCurrentVersionResolver === "disk") {
                   log(
                     `📄 Unable to resolve the current version from the registry ${npmRegistry}${githubRegistry ? ` or ${githubRegistry}` : ""}. Falling back to the version on disk of ${currentVersionFromDisk}`
@@ -771,34 +760,6 @@ Projects with packageRoot configured: ${Array.from(projectNameToPackageRootMap.k
 }
 
 export default releaseVersionGeneratorFn;
-
-async function getNpmRegistry() {
-  if (process.env.STORM_REGISTRY_NPM) {
-    return process.env.STORM_REGISTRY_NPM;
-  }
-
-  const registry = await new Promise<string>((resolve, reject) => {
-    exec("npm config get registry", (error, stdout, stderr) => {
-      if (error) {
-        return reject(error);
-      }
-      if (stderr) {
-        return reject(stderr);
-      }
-      return resolve(stdout.trim());
-    });
-  });
-
-  return registry ? registry : "https://registry.npmjs.org";
-}
-
-function getGitHubRegistry() {
-  if (process.env.STORM_REGISTRY_GITHUB) {
-    return process.env.STORM_REGISTRY_GITHUB;
-  }
-
-  return "https://npm.pkg.github.com";
-}
 
 function hasGitDiff(filePath: string) {
   try {

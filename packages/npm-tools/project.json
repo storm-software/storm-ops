@@ -1,0 +1,30 @@
+{
+  "name": "npm-tools",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "packages/npm-tools/src",
+  "targets": {
+    "build-base": {
+      "executor": "nx:run-commands",
+      "dependsOn": ["clean", "^build"],
+      "options": {
+        "command": "tsup --config=tsup.config.ts",
+        "cwd": "{projectRoot}"
+      }
+    },
+    "build": {
+      "executor": "nx:run-commands",
+      "dependsOn": ["build-base"],
+      "options": {
+        "commands": [
+          "pnpm copyfiles LICENSE dist/packages/npm-tools",
+          "pnpm copyfiles --up=2 ./packages/npm-tools/*.md ./packages/npm-tools/package.json dist/packages/npm-tools",
+          "pnpm copyfiles --up=3 \"./packages/npm-tools/dist/**/*\" dist/packages/npm-tools/dist"
+        ]
+      }
+    },
+    "nx-release-publish": {
+      "executor": "@storm-software/workspace-tools:npm-publish"
+    }
+  }
+}

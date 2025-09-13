@@ -1,5 +1,9 @@
 import { type ExecutorContext } from "@nx/devkit";
 import { joinPaths } from "@storm-software/config-tools/utilities/correct-paths";
+import {
+  getNpmRegistry,
+  getRegistry
+} from "@storm-software/npm-tools/helpers/get-registry";
 import { execSync } from "node:child_process";
 import { readFile, writeFile } from "node:fs/promises";
 import { format } from "prettier";
@@ -119,20 +123,8 @@ export default async function npmPublishExecutorFn(
     `npm view ${packageName} versions dist-tags --json`
   ];
 
-  const registry = options.registry
-    ? options.registry
-    : execSync("npm config get registry", {
-        cwd: packageRoot,
-        env: {
-          ...process.env,
-          FORCE_COLOR: "true"
-        },
-        maxBuffer: LARGE_BUFFER,
-        killSignal: "SIGTERM"
-      })
-        .toString()
-        .trim();
-
+  const registry =
+    options.registry ?? ((await getRegistry()) || getNpmRegistry());
   if (registry) {
     npmPublishCommandSegments.push(`--registry="${registry}" `);
     npmViewCommandSegments.push(`--registry="${registry}" `);

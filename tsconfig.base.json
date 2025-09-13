@@ -30,6 +30,8 @@
       "@storm-software/linting-tools/*": ["packages/linting-tools/*"],
       "@storm-software/markdownlint": ["packages/markdownlint/src/index.ts"],
       "@storm-software/markdownlint/*": ["packages/markdownlint/src/*"],
+      "@storm-software/npm-tools": ["packages/npm-tools/src/index.ts"],
+      "@storm-software/npm-tools/*": ["packages/npm-tools/src/*"],
       "@storm-software/prettier": ["packages/prettier/src/index.ts"],
       "@storm-software/prettier/*": ["packages/prettier/src/*"],
       "@storm-software/projen": ["packages/projen/src/index.ts"],
