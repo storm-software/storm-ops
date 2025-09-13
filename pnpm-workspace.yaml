@@ -30,11 +30,11 @@ catalog:
   tsup: 8.4.0
   typia: ^7.5.0
   typescript: ^5.9.2
-  jest: "30.0.5"
-  jest-environment-jsdom: "30.0.5"
-  jest-environment-node: "30.0.5"
-  jest-util: "30.0.5"
-  jest-resolve: "30.0.5"
+  jest: 30.0.5
+  jest-environment-jsdom: 30.0.5
+  jest-environment-node: 30.0.5
+  jest-util: 30.0.5
+  jest-resolve: 30.0.5
   esbuild: ^0.25.0
   eslint: ^9.35.0
   copyfiles: 2.4.1
@@ -114,5 +114,5 @@ overrides:
 patchedDependencies:
   eslint-plugin-pnpm@0.3.0: patches/eslint-plugin-pnpm@0.3.0.patch
   tsup@8.4.0: patches/tsup@8.4.0.patch
-  eslint-plugin-tsdoc@0.4.0: patches/eslint-plugin-tsdoc@0.4.0.patch
+  eslint-plugin-tsdoc: patches/eslint-plugin-tsdoc.patch
 preferWorkspacePackages: true

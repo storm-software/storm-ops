@@ -1,0 +1,370 @@
+diff --git a/lib/ConfigCache.js b/lib/ConfigCache.js
+index 55d07a04c611f65e0a27f59b5de9c89c9d393888..91873f4757984e746d5f02df943ac6d844f2a719 100644
+--- a/lib/ConfigCache.js
++++ b/lib/ConfigCache.js
+@@ -29,6 +29,76 @@ exports.ConfigCache = void 0;
+ const tsdoc_config_1 = require("@microsoft/tsdoc-config");
+ const path = __importStar(require("path"));
+ const Debug_1 = require("./Debug");
++
++function _nullishCoalesce(lhs, rhsFn) { if (lhs != null) { return lhs; } else { return rhsFn(); } }
++var _fs = require('fs');
++var _path = require('path');
++var MAX_PATH_SEARCH_DEPTH = 30;
++var depth = 0;
++
++const ROOT_FILES = [
++  "storm-workspace.json",
++  "storm-workspace.json",
++  "storm-workspace.yaml",
++  "storm-workspace.yml",
++  "storm-workspace.js",
++  "storm-workspace.ts",
++  ".storm-workspace.json",
++  ".storm-workspace.yaml",
++  ".storm-workspace.yml",
++  ".storm-workspace.js",
++  ".storm-workspace.ts",
++  "lerna.json",
++  "nx.json",
++  "turbo.json",
++  "npm-workspace.json",
++  "yarn-workspace.json",
++  "pnpm-workspace.json",
++  "npm-workspace.yaml",
++  "yarn-workspace.yaml",
++  "pnpm-workspace.yaml",
++  "npm-workspace.yml",
++  "yarn-workspace.yml",
++  "pnpm-workspace.yml",
++  "npm-lock.json",
++  "yarn-lock.json",
++  "pnpm-lock.json",
++  "npm-lock.yaml",
++  "yarn-lock.yaml",
++  "pnpm-lock.yaml",
++  "npm-lock.yml",
++  "yarn-lock.yml",
++  "pnpm-lock.yml",
++  "bun.lockb"
++];
++const ROOT_DIRECTORIES = [
++  ".storm-workspace",
++  ".nx",
++  ".github",
++  ".vscode",
++  ".verdaccio"
++];
++
++function findWorkspaceRoot(startPath) {
++  const _startPath = _nullishCoalesce(startPath, () => ( process.cwd()));
++  if (ROOT_DIRECTORIES.some(
++    (endDirName) => _fs.existsSync.call(void 0, _path.join.call(void 0, _startPath, endDirName))
++  )) {
++    return _startPath;
++  }
++  if (ROOT_FILES.some(
++    (endFileName) => _fs.existsSync.call(void 0, _path.join.call(void 0, _startPath, endFileName))
++  )) {
++    return _startPath;
++  }
++  if (_startPath !== "/" && depth++ < MAX_PATH_SEARCH_DEPTH) {
++    const parent = _path.join.call(void 0, _startPath, "..");
++    return findWorkspaceRoot(parent);
++  }
++  return void 0;
++}
++
++
+ // How often to check for modified input files.  If a file's modification timestamp has changed, then we will
+ // evict the cache entry immediately.
+ const CACHE_CHECK_INTERVAL_MS = 3 * 1000;
+@@ -103,6 +173,118 @@ class ConfigCache {
+         }
+         return cachedConfig.configFile;
+     }
++    static getStormConfigFile({
++        type = "recommended",
++        configFile,
++      }) {
++        let workspaceRoot = "";
++        if (process.env.STORM_WORKSPACE_ROOT || process.env.NX_WORKSPACE_ROOT_PATH) {
++          workspaceRoot = process.env.STORM_WORKSPACE_ROOT || process.env.NX_WORKSPACE_ROOT_PATH;
++        }
++
++        if (!workspaceRoot) {
++          workspaceRoot = findWorkspaceRoot();
++        }
++
++        let configFilePath = process.env.STORM_TSDOC_CONFIG_FILE
++          ? process.env.STORM_TSDOC_CONFIG_FILE
++          : configFile;
++        if (!configFilePath) {
++          if (path.existsSync(
++              path.join(
++                workspaceRoot,
++                "node_modules",
++                configFile
++              )
++            )
++          ) {
++            configFilePath = path.join(
++              workspaceRoot,
++              "node_modules",
++              configFile
++            );
++          } else if (path.existsSync(
++              path.join(
++                workspaceRoot,
++                configFile
++              )
++            )
++          ) {
++            configFilePath = path.join(
++              workspaceRoot,
++              configFile
++            );
++          } else {
++            configFilePath = path.join(
++              workspaceRoot,
++              "node_modules",
++              "@storm-software",
++              "tsdoc",
++              "config",
++              (process.env.STORM_TSDOC_TYPE
++                    ? process.env.STORM_TSDOC_TYPE
++                    : type).endsWith(".json")
++                ? (process.env.STORM_TSDOC_TYPE
++                      ? process.env.STORM_TSDOC_TYPE
++                      : type)
++                : `${
++                    process.env.STORM_TSDOC_TYPE
++                      ? process.env.STORM_TSDOC_TYPE
++                      : type
++                  }.json`
++            );
++          }
++        }
++
++        const cacheKey = configFilePath;
++        Debug_1.Debug.log(`Storm Software Configuration Cache key: "${cacheKey}"`);
++        const nowMs = ConfigCache._getTimeInMs();
++        let cachedConfig = undefined;
++        // Do we have a cached object?
++        cachedConfig = ConfigCache._cachedConfigs.get(cacheKey);
++        if (cachedConfig) {
++            Debug_1.Debug.log('Cache hit');
++            // Is the cached object still valid?
++            const loadAgeMs = nowMs - cachedConfig.loadTimeMs;
++            const lastCheckAgeMs = nowMs - cachedConfig.lastCheckTimeMs;
++            if (loadAgeMs > CACHE_EXPIRE_MS || loadAgeMs < 0) {
++                Debug_1.Debug.log('Evicting because item is expired');
++                cachedConfig = undefined;
++                ConfigCache._cachedConfigs.delete(cacheKey);
++            }
++            else if (lastCheckAgeMs > CACHE_CHECK_INTERVAL_MS || lastCheckAgeMs < 0) {
++                Debug_1.Debug.log('Checking for modifications');
++                cachedConfig.lastCheckTimeMs = nowMs;
++                if (cachedConfig.configFile.checkForModifiedFiles()) {
++                    // Invalidate the cache because it failed to load completely
++                    Debug_1.Debug.log('Evicting because item was modified');
++                    cachedConfig = undefined;
++                    ConfigCache._cachedConfigs.delete(cacheKey);
++                }
++            }
++        }
++        // Load the object
++        if (!cachedConfig) {
++            if (ConfigCache._cachedConfigs.size > CACHE_MAX_SIZE) {
++                Debug_1.Debug.log('Clearing cache');
++                ConfigCache._cachedConfigs.clear(); // avoid a memory leak
++            }
++            const configFile = tsdoc_config_1.TSDocConfigFile.loadFile(configFilePath);
++            if (configFile.fileNotFound) {
++                Debug_1.Debug.log(`File not found: "${configFilePath}"`);
++            }
++            else {
++                Debug_1.Debug.log(`Loaded: "${configFilePath}"`);
++            }
++            cachedConfig = {
++                configFile,
++                lastCheckTimeMs: nowMs,
++                loadTimeMs: nowMs
++            };
++            ConfigCache._cachedConfigs.set(cacheKey, cachedConfig);
++        }
++        return cachedConfig.configFile;
++    }
+ }
+ exports.ConfigCache = ConfigCache;
+ // findConfigPathForFolder() result --> loaded tsdoc.json configuration
+diff --git a/lib/index.js b/lib/index.js
+index 73c357f96e3c69ac87e19cc3e5d2733073d6aef3..9bc1e0d9607308d36029cb2a65ffad9959f33ec0 100644
+--- a/lib/index.js
++++ b/lib/index.js
+@@ -15,7 +15,7 @@ const plugin = {
+         // from the NPM package name, and then appending this string.
+         syntax: {
+             meta: {
+-                messages: Object.assign({ 'error-loading-config-file': 'Error loading TSDoc config file:\n{{details}}', 'error-applying-config': 'Error applying TSDoc configuration: {{details}}' }, tsdocMessageIds),
++                messages: Object.assign({ 'error-loading-storm-config': 'Error loading Storm Software\'s shared TSDoc config file:\n{{details}} \n\nPlease ensure "@storm-software/tsdoc" is installed in the workspace root.', 'error-loading-config-file': 'Error loading TSDoc config file:\n{{details}}', 'error-applying-storm-config': 'Error applying Storm Software\'s shared TSDoc configuration: {{details}}', 'error-applying-config': 'Error applying TSDoc configuration: {{details}}' }, tsdocMessageIds),
+                 type: 'problem',
+                 docs: {
+                     description: 'Validates that TypeScript documentation comments conform to the TSDoc standard',
+@@ -23,8 +23,32 @@ const plugin = {
+                     // This package is experimental
+                     recommended: false,
+                     url: 'https://tsdoc.org/pages/packages/eslint-plugin-tsdoc'
+-                }
++                },
++                schema: [
++                  {
++                    type: "object",
++                    properties: {
++                      type: {
++                        type: "string",
++                        enum: ["typedoc", "api-extractor", "base", "core", "callouts", "recommended"],
++                        description:
++                          "The TSDoc configuration type to use from '@storm-software/tsdoc'. Defaults to 'recommended' (@storm-software/tsdoc/recommended.json)."
++                      },
++                      configFile: {
++                        type: "string",
++                        description:
++                          "The TSDoc configuration file to use."
++                      }
++                    },
++                    additionalProperties: false
++                  }
++                ],
+             },
++            defaultOptions: [
++              {
++                type: "recommended"
++              }
++            ],
+             create: (context) => {
+                 const sourceFilePath = context.filename;
+                 // If eslint is configured with @typescript-eslint/parser, there is a parser option
+@@ -33,30 +57,76 @@ const plugin = {
+                 Debug_1.Debug.log(`Linting: "${sourceFilePath}"`);
+                 const tsdocConfiguration = new tsdoc_1.TSDocConfiguration();
+                 try {
+-                    const tsdocConfigFile = ConfigCache_1.ConfigCache.getForSourceFile(sourceFilePath, tsConfigDir);
++                  let tsdocConfigFile = {};
++                  try {
++                    tsdocConfigFile = ConfigCache_1.ConfigCache.getStormConfigFile(
++                      context.options && context.options.length > 0
++                        ? context.options[0]
++                        : { type: "core" }
++                    );
+                     if (!tsdocConfigFile.fileNotFound) {
+-                        if (tsdocConfigFile.hasErrors) {
+-                            context.report({
+-                                loc: { line: 1, column: 1 },
+-                                messageId: 'error-loading-config-file',
+-                                data: {
+-                                    details: tsdocConfigFile.getErrorSummary()
+-                                }
+-                            });
+-                        }
+-                        try {
+-                            tsdocConfigFile.configureParser(tsdocConfiguration);
+-                        }
+-                        catch (e) {
+-                            context.report({
+-                                loc: { line: 1, column: 1 },
+-                                messageId: 'error-applying-config',
+-                                data: {
+-                                    details: e.message
+-                                }
+-                            });
+-                        }
++                      if (tsdocConfigFile.hasErrors) {
++                          context.report({
++                              loc: { line: 1, column: 1 },
++                              messageId: 'error-loading-storm-config',
++                              data: {
++                                  details: tsdocConfigFile.getErrorSummary()
++                              }
++                          });
++                      }
++
++                      try {
++                          tsdocConfigFile.configureParser(tsdocConfiguration);
++                      }
++                      catch (e) {
++                          context.report({
++                              loc: { line: 1, column: 1 },
++                              messageId: 'error-applying-storm-config',
++                              data: {
++                                  details: e.message
++                              }
++                          });
++                      }
++                    }
++                  } catch (e) {
++                    context.report({
++                      loc: { line: 1, column: 1 },
++                      messageId: 'error-loading-storm-config',
++                      data: {
++                          details: `Unexpected exception: ${e.message}`
++                      }
++                    });
++                  }
++
++                  if (!tsdocConfigFile || tsdocConfigFile.fileNotFound || tsdocConfigFile.hasErrors) {
++                    // If the Storm Software config was not found, or if it has errors, try to load the config file
++                    tsdocConfigFile = ConfigCache_1.ConfigCache.getForSourceFile(sourceFilePath, tsConfigDir);
++
++                    if (!tsdocConfigFile.fileNotFound) {
++                      if (tsdocConfigFile.hasErrors) {
++                        context.report({
++                            loc: { line: 1, column: 1 },
++                            messageId: 'error-loading-config-file',
++                            data: {
++                                details: tsdocConfigFile.getErrorSummary()
++                            }
++                        });
++                      }
++
++                      try {
++                        tsdocConfigFile.configureParser(tsdocConfiguration);
++                      }
++                      catch (e) {
++                        context.report({
++                            loc: { line: 1, column: 1 },
++                            messageId: 'error-applying-config',
++                            data: {
++                                details: e.message
++                            }
++                        });
++                      }
+                     }
++                  }
+                 }
+                 catch (e) {
+                     context.report({
+diff --git a/package.json b/package.json
+index f616530237bf40b93d931e8fd2f19704e829785b..7ba5a40183030bb79db76229a9b8a372fabf6f7f 100644
+--- a/package.json
++++ b/package.json
+@@ -21,9 +21,18 @@
+   "homepage": "https://tsdoc.org/",
+   "main": "lib/index.js",
+   "typings": "lib/index.d.ts",
++  "peerDependencies": {
++    "@storm-software/tsdoc": "*"
++  },
++  "peerDependenciesMeta": {
++    "@storm-software/tsdoc": {
++      "optional": false
++    }
++  },
+   "dependencies": {
+     "@microsoft/tsdoc": "0.15.1",
+-    "@microsoft/tsdoc-config": "0.17.1"
++    "@microsoft/tsdoc-config": "0.17.1",
++    "@storm-software/config-tools": "latest"
+   },
+   "devDependencies": {
+     "@rushstack/heft-node-rig": "~2.6.11",

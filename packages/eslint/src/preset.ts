@@ -433,4 +433,5 @@ export function getStormConfig(
   return composer;
 }
 
+export const getConfig = getStormConfig;
 export default getStormConfig;

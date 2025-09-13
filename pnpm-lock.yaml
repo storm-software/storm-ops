@@ -199,9 +199,9 @@ patchedDependencies:
   eslint-plugin-pnpm@0.3.0:
     hash: 72dcde755c336eeca3e6170de1106fd85ecb66171e060788f80df45cea29bc9b
     path: patches/eslint-plugin-pnpm@0.3.0.patch
-  eslint-plugin-tsdoc@0.4.0:
-    hash: de009a33a0a628f48c96f1a59298fb264fe3e5f5a0a221b7fda5cc52d4c890de
-    path: patches/eslint-plugin-tsdoc@0.4.0.patch
+  eslint-plugin-tsdoc:
+    hash: c7db1cb91f47551a01d6f78ec9e2a2170f4f73afe2f4fa05161caf67d70e7f8a
+    path: patches/eslint-plugin-tsdoc.patch
   tsup@8.4.0:
     hash: 751a554d775c3572381af4e7e5fa22eeda6dd6856012fb1cf521d6806eb2dc74
     path: patches/tsup@8.4.0.patch
@@ -835,7 +835,7 @@ importers:
         version: 0.12.0(eslint@9.35.0(jiti@2.5.1))
       eslint-plugin-tsdoc:
         specifier: 0.4.0
-        version: 0.4.0(patch_hash=de009a33a0a628f48c96f1a59298fb264fe3e5f5a0a221b7fda5cc52d4c890de)
+        version: 0.4.0(patch_hash=c7db1cb91f47551a01d6f78ec9e2a2170f4f73afe2f4fa05161caf67d70e7f8a)
       eslint-plugin-unicorn:
         specifier: ^57.0.0
         version: 57.0.0(eslint@9.35.0(jiti@2.5.1))
@@ -1360,6 +1360,25 @@ importers:
         version: 1.5.2
 
   packages/testing-tools:
+    dependencies:
+      defu:
+        specifier: 'catalog:'
+        version: 6.1.4
+    devDependencies:
+      '@nx/jest':
+        specifier: 'catalog:'
+        version: 21.3.10(@babel/traverse@7.28.4)(@swc-node/register@1.10.9(@swc/core@1.7.26(@swc/helpers@0.5.13))(@swc/types@0.1.25)(typescript@5.9.2))(@swc/core@1.7.26(@swc/helpers@0.5.13))(@types/node@22.16.4)(babel-plugin-macros@3.1.0)(nx@21.4.1(@swc-node/register@1.10.9(@swc/core@1.7.26(@swc/helpers@0.5.13))(@swc/types@0.1.25)(typescript@5.9.2))(@swc/core@1.7.26(@swc/helpers@0.5.13)))(ts-node@10.9.2(@swc/core@1.7.26(@swc/helpers@0.5.13))(@swc/wasm@1.6.5)(@types/node@22.16.4)(typescript@5.9.2))(typescript@5.9.2)(verdaccio@6.0.5(encoding@0.1.13)(typanion@3.14.0))
+      '@types/node':
+        specifier: 'catalog:'
+        version: 22.16.4
+      jest:
+        specifier: 'catalog:'
+        version: 30.0.5(@types/node@22.16.4)(babel-plugin-macros@3.1.0)(ts-node@10.9.2(@swc/core@1.7.26(@swc/helpers@0.5.13))(@swc/wasm@1.6.5)(@types/node@22.16.4)(typescript@5.9.2))
+      jest-resolve:
+        specifier: 'catalog:'
+        version: 30.0.5
+
+  packages/testing-tools/dist:
     dependencies:
       defu:
         specifier: 'catalog:'
@@ -25075,7 +25094,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  eslint-plugin-tsdoc@0.4.0(patch_hash=de009a33a0a628f48c96f1a59298fb264fe3e5f5a0a221b7fda5cc52d4c890de):
+  eslint-plugin-tsdoc@0.4.0(patch_hash=c7db1cb91f47551a01d6f78ec9e2a2170f4f73afe2f4fa05161caf67d70e7f8a):
     dependencies:
       '@microsoft/tsdoc': 0.15.1
       '@microsoft/tsdoc-config': 0.17.1
