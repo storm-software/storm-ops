@@ -3,7 +3,7 @@
   "extends": ["./base.json", "./api-extractor.json", "./typedoc.json"],
   "tagDefinitions": [
     {
-      "tagName": "@credits",
+      "tagName": "@credit",
       "syntaxKind": "block",
       "allowMultiple": true
     }
