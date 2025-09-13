@@ -36,7 +36,7 @@ catalog:
   jest-util: "30.0.5"
   jest-resolve: "30.0.5"
   esbuild: ^0.25.0
-  eslint: ^9.20.0
+  eslint: ^9.35.0
   copyfiles: 2.4.1
   rimraf: 6.0.1
   c12: ^2.0.0-beta.2
