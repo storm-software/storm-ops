@@ -1,12 +1,12 @@
 #!/usr/bin/env node
 
+import { getConfig } from "@storm-software/config-tools/get-config";
+import { writeSuccess } from "@storm-software/config-tools/logger/console";
 import {
   exitWithError,
   exitWithSuccess,
-  getConfig,
-  handleProcess,
-  writeSuccess
-} from "@storm-software/config-tools";
+  handleProcess
+} from "@storm-software/config-tools/utilities/process-handler";
 import { createProgram } from "../src/cli";
 
 void (async () => {

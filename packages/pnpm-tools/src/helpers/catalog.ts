@@ -26,6 +26,16 @@ export async function getCatalog(
     );
   }
 
+  if (!pnpmWorkspaceFile) {
+    throw new Error("No pnpm-workspace.yaml file found");
+  }
+
+  if (!pnpmWorkspaceFile.catalog) {
+    console.warn(
+      `No catalog found in pnpm-workspace.yaml file located in workspace root: ${workspaceRoot}`
+    );
+  }
+
   return;
 }
 

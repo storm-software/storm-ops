@@ -12,15 +12,14 @@ import { PnpmWorkspaceFile } from "../types";
  * @returns A promise that resolves to the catalog object if found, or undefined if no catalog exists or the `pnpm-workspace.yaml` file is not found.
  * @throws Will throw an error if the `pnpm-workspace.yaml` file is found but cannot be read.
  */
-export async function getPnpmWorkspaceFilePath(
+export function getPnpmWorkspaceFilePath(
   workspaceRoot = findWorkspaceRoot(process.cwd())
-): Promise<string | undefined> {
+): string {
   const pnpmWorkspacePath = joinPaths(workspaceRoot, "pnpm-workspace.yaml");
   if (!existsSync(pnpmWorkspacePath)) {
-    console.warn(
+    throw new Error(
       `No \`pnpm-workspace.yaml\` file found in workspace root (searched in: ${pnpmWorkspacePath}).`
     );
-    return;
   }
 
   return pnpmWorkspacePath;
@@ -36,15 +35,7 @@ export async function getPnpmWorkspaceFilePath(
 export async function readPnpmWorkspaceFile(
   workspaceRoot = findWorkspaceRoot(process.cwd())
 ): Promise<PnpmWorkspaceFile | undefined> {
-  const pnpmWorkspacePath = joinPaths(workspaceRoot, "pnpm-workspace.yaml");
-  if (!existsSync(pnpmWorkspacePath)) {
-    console.warn(
-      `No \`pnpm-workspace.yaml\` file found in workspace root (searched in: ${pnpmWorkspacePath}).`
-    );
-    return;
-  }
-
-  return load(pnpmWorkspacePath) as PnpmWorkspaceFile;
+  return load(getPnpmWorkspaceFilePath(workspaceRoot)) as PnpmWorkspaceFile;
 }
 
 /**
@@ -58,13 +49,8 @@ export async function writePnpmWorkspaceFile(
   pnpmWorkspaceFile: PnpmWorkspaceFile,
   workspaceRoot = findWorkspaceRoot(process.cwd())
 ) {
-  const pnpmWorkspacePath = joinPaths(workspaceRoot, "pnpm-workspace.yaml");
-  if (!existsSync(pnpmWorkspacePath)) {
-    console.warn(
-      `No \`pnpm-workspace.yaml\` file found in workspace root (searched in: ${pnpmWorkspacePath}).`
-    );
-    return;
-  }
-
-  await writeFile(pnpmWorkspacePath, dump(pnpmWorkspaceFile));
+  await writeFile(
+    getPnpmWorkspaceFilePath(workspaceRoot),
+    dump(pnpmWorkspaceFile)
+  );
 }
