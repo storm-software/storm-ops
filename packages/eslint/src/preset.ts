@@ -434,4 +434,6 @@ export function getStormConfig(
 }
 
 export const getConfig = getStormConfig;
+export const defineConfig = getStormConfig;
+
 export default getStormConfig;
