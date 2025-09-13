@@ -367,6 +367,15 @@ httpparser
 fsevent
 tlswrap
 
+# React
+rsc
+ssr
+ssg
+csr
+spa
+mpa
+preinit
+
 # tsconfig.json keywords
 jsxdev
 jsxprod
@@ -454,3 +463,7 @@ ffmpeg
 gpgsign
 allowincompletepush
 shellcheck
+
+# AI / Machine Learning
+llms
+agi
