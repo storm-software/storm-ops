@@ -2,6 +2,19 @@
 
 # Changelog for Storm Ops - Tsconfig
 
+## [0.44.0](https://github.com/storm-software/storm-ops/releases/tag/tsconfig%400.44.0) (2025-09-13)
+
+### Features
+
+- **eslint:** Update `eslint-plugin-tsdoc` patch to allow local custom config
+  files
+  ([57257ac47](https://github.com/storm-software/storm-ops/commit/57257ac47))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+  ([5a5124fd7](https://github.com/storm-software/storm-ops/commit/5a5124fd7))
+
 ## [0.43.16](https://github.com/storm-software/storm-ops/releases/tag/tsconfig%400.43.16) (2025-09-13)
 
 ### Bug Fixes
