@@ -1,5 +1,5 @@
 diff --git a/lib/ConfigCache.js b/lib/ConfigCache.js
-index 55d07a04c611f65e0a27f59b5de9c89c9d393888..1aca88baca9e2ec372dfbfb572145e5ebe188d0c 100644
+index 55d07a04c611f65e0a27f59b5de9c89c9d393888..bdb4ca6134217d0249b8f1dc69552c20a372ec73 100644
 --- a/lib/ConfigCache.js
 +++ b/lib/ConfigCache.js
 @@ -29,6 +29,76 @@ exports.ConfigCache = void 0;
@@ -79,7 +79,7 @@ index 55d07a04c611f65e0a27f59b5de9c89c9d393888..1aca88baca9e2ec372dfbfb572145e5e
  // How often to check for modified input files.  If a file's modification timestamp has changed, then we will
  // evict the cache entry immediately.
  const CACHE_CHECK_INTERVAL_MS = 3 * 1000;
-@@ -103,6 +173,141 @@ class ConfigCache {
+@@ -103,6 +173,145 @@ class ConfigCache {
          }
          return cachedConfig.configFile;
      }
@@ -99,7 +99,31 @@ index 55d07a04c611f65e0a27f59b5de9c89c9d393888..1aca88baca9e2ec372dfbfb572145e5e
 +        let configFilePath = process.env.STORM_TSDOC_CONFIG_FILE
 +          ? process.env.STORM_TSDOC_CONFIG_FILE
 +          : configFile;
-+        if (!configFilePath || !path.existsSync(configFilePath)) {
++        if (!configFilePath) {
++          configFilePath = path.join(
++              workspaceRoot,
++            "node_modules",
++            "@storm-software",
++            "tsdoc",
++            (
++              process.env.STORM_TSDOC_TYPE
++                ? process.env.STORM_TSDOC_TYPE
++                : type
++            ).endsWith(".json")
++              ? (
++                process.env.STORM_TSDOC_TYPE
++                  ? process.env.STORM_TSDOC_TYPE
++                  : type
++              )
++              : `${
++                  process.env.STORM_TSDOC_TYPE
++                    ? process.env.STORM_TSDOC_TYPE
++                    : type
++                }.json`
++          );
++        }
++
++        if (!path.existsSync(configFilePath)) {
 +          if (
 +            path.existsSync(
 +              path.join(
@@ -145,27 +169,7 @@ index 55d07a04c611f65e0a27f59b5de9c89c9d393888..1aca88baca9e2ec372dfbfb572145e5e
 +              configFilePath
 +            );
 +          } else {
-+            configFilePath = path.join(
-+              workspaceRoot,
-+              "node_modules",
-+              "@storm-software",
-+              "tsdoc",
-+              (
-+                process.env.STORM_TSDOC_TYPE
-+                  ? process.env.STORM_TSDOC_TYPE
-+                  : type
-+              ).endsWith(".json")
-+                ? (
-+                  process.env.STORM_TSDOC_TYPE
-+                    ? process.env.STORM_TSDOC_TYPE
-+                    : type
-+                )
-+                : `${
-+                    process.env.STORM_TSDOC_TYPE
-+                      ? process.env.STORM_TSDOC_TYPE
-+                      : type
-+                  }.json`
-+            );
++            configFilePath = undefined;
 +          }
 +        }
 +
@@ -222,19 +226,24 @@ index 55d07a04c611f65e0a27f59b5de9c89c9d393888..1aca88baca9e2ec372dfbfb572145e5e
  exports.ConfigCache = ConfigCache;
  // findConfigPathForFolder() result --> loaded tsdoc.json configuration
 diff --git a/lib/index.js b/lib/index.js
-index 73c357f96e3c69ac87e19cc3e5d2733073d6aef3..9bc1e0d9607308d36029cb2a65ffad9959f33ec0 100644
+index 73c357f96e3c69ac87e19cc3e5d2733073d6aef3..ccf62f1b6cc8ae2e5f5e03fcfb47e6148ba54f74 100644
 --- a/lib/index.js
 +++ b/lib/index.js
-@@ -15,7 +15,7 @@ const plugin = {
+@@ -15,7 +15,12 @@ const plugin = {
          // from the NPM package name, and then appending this string.
          syntax: {
              meta: {
 -                messages: Object.assign({ 'error-loading-config-file': 'Error loading TSDoc config file:\n{{details}}', 'error-applying-config': 'Error applying TSDoc configuration: {{details}}' }, tsdocMessageIds),
-+                messages: Object.assign({ 'error-loading-storm-config': 'Error loading Storm Software\'s shared TSDoc config file:\n{{details}} \n\nPlease ensure "@storm-software/tsdoc" is installed in the workspace root.', 'error-loading-config-file': 'Error loading TSDoc config file:\n{{details}}', 'error-applying-storm-config': 'Error applying Storm Software\'s shared TSDoc configuration: {{details}}', 'error-applying-config': 'Error applying TSDoc configuration: {{details}}' }, tsdocMessageIds),
++                messages: Object.assign({
++                  'error-loading-storm-config': 'Error loading Storm Software\'s shared TSDoc config file:\n{{details}} \n\nPlease ensure "@storm-software/tsdoc" is installed in the workspace root.',
++                  'error-loading-config-file': 'Error loading TSDoc config file:\n{{details}}',
++                  'error-applying-storm-config': 'Error applying Storm Software\'s shared TSDoc configuration: {{details}}',
++                  'error-applying-config': 'Error applying TSDoc configuration: {{details}}'
++                }, tsdocMessageIds),
                  type: 'problem',
                  docs: {
                      description: 'Validates that TypeScript documentation comments conform to the TSDoc standard',
-@@ -23,8 +23,32 @@ const plugin = {
+@@ -23,8 +28,32 @@ const plugin = {
                      // This package is experimental
                      recommended: false,
                      url: 'https://tsdoc.org/pages/packages/eslint-plugin-tsdoc'
@@ -268,7 +277,7 @@ index 73c357f96e3c69ac87e19cc3e5d2733073d6aef3..9bc1e0d9607308d36029cb2a65ffad99
              create: (context) => {
                  const sourceFilePath = context.filename;
                  // If eslint is configured with @typescript-eslint/parser, there is a parser option
-@@ -33,30 +57,76 @@ const plugin = {
+@@ -33,30 +62,76 @@ const plugin = {
                  Debug_1.Debug.log(`Linting: "${sourceFilePath}"`);
                  const tsdocConfiguration = new tsdoc_1.TSDocConfiguration();
                  try {
