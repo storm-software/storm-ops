@@ -1,5 +1,5 @@
 diff --git a/lib/ConfigCache.js b/lib/ConfigCache.js
-index 55d07a04c611f65e0a27f59b5de9c89c9d393888..91873f4757984e746d5f02df943ac6d844f2a719 100644
+index 55d07a04c611f65e0a27f59b5de9c89c9d393888..1aca88baca9e2ec372dfbfb572145e5ebe188d0c 100644
 --- a/lib/ConfigCache.js
 +++ b/lib/ConfigCache.js
 @@ -29,6 +29,76 @@ exports.ConfigCache = void 0;
@@ -79,7 +79,7 @@ index 55d07a04c611f65e0a27f59b5de9c89c9d393888..91873f4757984e746d5f02df943ac6d8
  // How often to check for modified input files.  If a file's modification timestamp has changed, then we will
  // evict the cache entry immediately.
  const CACHE_CHECK_INTERVAL_MS = 3 * 1000;
-@@ -103,6 +173,118 @@ class ConfigCache {
+@@ -103,6 +173,141 @@ class ConfigCache {
          }
          return cachedConfig.configFile;
      }
@@ -99,30 +99,50 @@ index 55d07a04c611f65e0a27f59b5de9c89c9d393888..91873f4757984e746d5f02df943ac6d8
 +        let configFilePath = process.env.STORM_TSDOC_CONFIG_FILE
 +          ? process.env.STORM_TSDOC_CONFIG_FILE
 +          : configFile;
-+        if (!configFilePath) {
-+          if (path.existsSync(
++        if (!configFilePath || !path.existsSync(configFilePath)) {
++          if (
++            path.existsSync(
++              path.join(
++                workspaceRoot,
++                configFilePath
++              )
++            )
++          ) {
++            configFilePath = path.join(
++              workspaceRoot,
++              configFilePath
++            );
++          } else if (
++            path.existsSync(
 +              path.join(
 +                workspaceRoot,
 +                "node_modules",
-+                configFile
++                configFilePath
 +              )
 +            )
 +          ) {
 +            configFilePath = path.join(
 +              workspaceRoot,
 +              "node_modules",
-+              configFile
++              configFilePath
 +            );
-+          } else if (path.existsSync(
++          } else if (
++            path.existsSync(
 +              path.join(
 +                workspaceRoot,
-+                configFile
++                "node_modules",
++                "@storm-software",
++                "tsdoc",
++                configFilePath
 +              )
 +            )
 +          ) {
 +            configFilePath = path.join(
 +              workspaceRoot,
-+              configFile
++              "node_modules",
++              "@storm-software",
++              "tsdoc",
++              configFilePath
 +            );
 +          } else {
 +            configFilePath = path.join(
@@ -130,13 +150,16 @@ index 55d07a04c611f65e0a27f59b5de9c89c9d393888..91873f4757984e746d5f02df943ac6d8
 +              "node_modules",
 +              "@storm-software",
 +              "tsdoc",
-+              "config",
-+              (process.env.STORM_TSDOC_TYPE
++              (
++                process.env.STORM_TSDOC_TYPE
++                  ? process.env.STORM_TSDOC_TYPE
++                  : type
++              ).endsWith(".json")
++                ? (
++                  process.env.STORM_TSDOC_TYPE
 +                    ? process.env.STORM_TSDOC_TYPE
-+                    : type).endsWith(".json")
-+                ? (process.env.STORM_TSDOC_TYPE
-+                      ? process.env.STORM_TSDOC_TYPE
-+                      : type)
++                    : type
++                )
 +                : `${
 +                    process.env.STORM_TSDOC_TYPE
 +                      ? process.env.STORM_TSDOC_TYPE
