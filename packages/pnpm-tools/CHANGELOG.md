@@ -2,6 +2,23 @@
 
 # Changelog for Storm Ops - Pnpm Tools
 
+## [0.1.2](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.1.2) (2025-09-15)
+
+### Bug Fixes
+
+- **pnpm-tools:** Resolve issue returning pnpm catalog entries
+  ([9155e1657](https://github.com/storm-software/storm-ops/commit/9155e1657))
+
+### Miscellaneous
+
+- **monorepo:** Update workspace package links
+  ([dd47cb757](https://github.com/storm-software/storm-ops/commit/dd47cb757))
+
+### Updated Dependencies
+
+- Updated config-tools to 1.183.2
+- Updated npm-tools to 0.1.2
+
 ## [0.1.1](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.1.1) (2025-09-13)
 
 ### Bug Fixes
