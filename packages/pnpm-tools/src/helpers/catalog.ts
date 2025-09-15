@@ -36,7 +36,7 @@ export async function getCatalog(
     );
   }
 
-  return;
+  return pnpmWorkspaceFile.catalog;
 }
 
 /**
