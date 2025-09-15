@@ -1,8 +1,8 @@
 import { joinPaths } from "@storm-software/config-tools/utilities/correct-paths";
 import { findWorkspaceRoot } from "@storm-software/config-tools/utilities/find-workspace-root";
-import { dump, load } from "js-yaml";
 import { existsSync } from "node:fs";
-import { writeFile } from "node:fs/promises";
+import { readFile, writeFile } from "node:fs/promises";
+import { parse, stringify } from "yaml";
 import { PnpmWorkspaceFile } from "../types";
 
 /**
@@ -35,7 +35,15 @@ export function getPnpmWorkspaceFilePath(
 export async function readPnpmWorkspaceFile(
   workspaceRoot = findWorkspaceRoot(process.cwd())
 ): Promise<PnpmWorkspaceFile | undefined> {
-  return load(getPnpmWorkspaceFilePath(workspaceRoot)) as PnpmWorkspaceFile;
+  const result = await readFile(
+    getPnpmWorkspaceFilePath(workspaceRoot),
+    "utf8"
+  );
+  if (!result) {
+    return undefined;
+  }
+
+  return parse(result) as PnpmWorkspaceFile;
 }
 
 /**
@@ -51,6 +59,6 @@ export async function writePnpmWorkspaceFile(
 ) {
   await writeFile(
     getPnpmWorkspaceFilePath(workspaceRoot),
-    dump(pnpmWorkspaceFile)
+    stringify(pnpmWorkspaceFile)
   );
 }

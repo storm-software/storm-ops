@@ -8,7 +8,7 @@ import {
 import { StormWorkspaceConfig } from "@storm-software/config";
 import { writeDebug } from "@storm-software/config-tools";
 import { withRunGenerator } from "@storm-software/workspace-tools/base/base-generator";
-import yaml from "js-yaml";
+import { parse, stringify } from "yaml";
 import type { HelmDependencyGeneratorSchema } from "./schema";
 
 export async function helmDependencyGeneratorFn(
@@ -104,7 +104,7 @@ function updateChartYaml(
       throw new Error("Failed to read Chart.yaml");
     }
 
-    const chartContents = yaml.load(result) as {
+    const chartContents = parse(result) as {
       dependencies: { name: string; version: string; repository: string }[];
     };
 
@@ -126,7 +126,7 @@ function updateChartYaml(
         repository: repository
       });
 
-      tree.write(chartPath, yaml.dump(chartContents));
+      tree.write(chartPath, stringify(chartContents));
     }
   } catch (error) {
     console.error(error);

@@ -8,7 +8,6 @@ packages:
 catalog:
   "@microsoft/api-extractor": ^7.48.1
   "@types/node": ^22.10.2
-  "@types/js-yaml": ^4.0.9
   "@nx/devkit": ^21.4.1
   "@nx/eslint-plugin": ^21.4.1
   "@nx/eslint": ^21.4.1
@@ -54,7 +53,7 @@ catalog:
   commander: ^12.1.0
   chalk: ^4.1.2
   defu: 6.1.4
-  js-yaml: ^4.1.0
+  yaml: ^2.8.1
   cspell: ^8.17.3
   tsdown: 0.5.3
   untyped: ^1.5.2

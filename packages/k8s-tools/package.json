@@ -165,14 +165,13 @@
     "@storm-software/config": "1.130.2",
     "@storm-software/config-tools": "1.183.3",
     "@storm-software/workspace-tools": "1.287.2",
-    "js-yaml": "catalog:"
+    "yaml": "catalog:"
   },
   "devDependencies": {
     "@nx-tools/container-metadata": "^6.8.2",
     "@nx-tools/nx-container": "^6.8.2",
     "@nx/devkit": "catalog:",
     "@nx/workspace": "catalog:",
-    "@types/js-yaml": "catalog:",
     "@types/node": "catalog:",
     "nx": "catalog:",
     "tsup": "catalog:",

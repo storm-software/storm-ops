@@ -215,7 +215,6 @@
     "chalk": "catalog:",
     "chalk-template": "1.1.0",
     "htmlparser2": "10.0.0",
-    "js-yaml": "catalog:",
     "jsonc-parser": "3.2.1",
     "nx": "catalog:",
     "prettier": "catalog:",
@@ -223,6 +222,7 @@
     "underscore": "1.13.7",
     "update-section": "0.3.3",
     "word-wrap": "1.2.5",
+    "yaml": "catalog:",
     "zod": "catalog:"
   },
   "devDependencies": {

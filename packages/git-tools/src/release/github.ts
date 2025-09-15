@@ -10,7 +10,6 @@ import { StormWorkspaceConfig } from "@storm-software/config/types";
 import type { AxiosRequestConfig } from "axios";
 import axios from "axios";
 import { prompt } from "enquirer";
-import { load } from "js-yaml";
 import { execSync } from "node:child_process";
 import { existsSync, promises as fsp } from "node:fs";
 import { homedir } from "node:os";
@@ -24,6 +23,7 @@ import {
   ReleaseVersion
 } from "nx/src/command-line/release/utils/shared";
 import { NxReleaseChangelogConfiguration } from "nx/src/config/nx-json";
+import { parse } from "yaml";
 
 // axios types and values don't seem to match
 
@@ -381,7 +381,7 @@ async function resolveTokenData(
   if (existsSync(ghCLIPath)) {
     const yamlContents = await fsp.readFile(ghCLIPath, "utf8");
 
-    const ghCLIConfig = load(yamlContents) as Record<
+    const ghCLIConfig = parse(yamlContents) as Record<
       string,
       {
         user: string;
