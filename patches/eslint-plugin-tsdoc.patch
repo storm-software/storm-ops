@@ -1,5 +1,5 @@
 diff --git a/lib/ConfigCache.js b/lib/ConfigCache.js
-index 55d07a04c611f65e0a27f59b5de9c89c9d393888..57888d4f6551ef362e99dfe887e8ededc44d9de2 100644
+index 55d07a04c611f65e0a27f59b5de9c89c9d393888..bc2da68017776d55d346e9ce7a352d15383f31f7 100644
 --- a/lib/ConfigCache.js
 +++ b/lib/ConfigCache.js
 @@ -29,6 +29,76 @@ exports.ConfigCache = void 0;
@@ -79,127 +79,27 @@ index 55d07a04c611f65e0a27f59b5de9c89c9d393888..57888d4f6551ef362e99dfe887e8eded
  // How often to check for modified input files.  If a file's modification timestamp has changed, then we will
  // evict the cache entry immediately.
  const CACHE_CHECK_INTERVAL_MS = 3 * 1000;
-@@ -103,6 +173,145 @@ class ConfigCache {
-         }
-         return cachedConfig.configFile;
+@@ -45,6 +115,7 @@ class ConfigCache {
+         const [seconds, nanoseconds] = process.hrtime();
+         return seconds * 1000 + nanoseconds / 1000000;
      }
-+    static getStormConfigFile({
-+        type = "recommended",
-+        configFile,
-+      }) {
-+        let workspaceRoot = "";
-+        if (process.env.STORM_WORKSPACE_ROOT || process.env.NX_WORKSPACE_ROOT_PATH) {
-+          workspaceRoot = process.env.STORM_WORKSPACE_ROOT || process.env.NX_WORKSPACE_ROOT_PATH;
-+        }
 +
-+        if (!workspaceRoot) {
-+          workspaceRoot = findWorkspaceRoot();
-+        }
+     static getForSourceFile(sourceFilePath, tsConfigRootDir) {
+         const sourceFileFolder = path.dirname(path.resolve(sourceFilePath));
+         // First, determine the file to be loaded. If not found, the configFilePath will be an empty string.
+@@ -56,6 +127,7 @@ class ConfigCache {
+         // (instead of an empty string)
+         const cacheKey = configFilePath || sourceFileFolder + '/';
+         Debug_1.Debug.log(`Cache key: "${cacheKey}"`);
 +
-+        let configFilePath = process.env.STORM_TSDOC_CONFIG_FILE
-+          ? process.env.STORM_TSDOC_CONFIG_FILE
-+          : configFile;
-+        if (!configFilePath) {
-+          configFilePath = path.join(
-+              workspaceRoot,
-+            "node_modules",
-+            "@storm-software",
-+            "tsdoc",
-+            (
-+              process.env.STORM_TSDOC_TYPE
-+                ? process.env.STORM_TSDOC_TYPE
-+                : type
-+            ).endsWith(".json")
-+              ? (
-+                process.env.STORM_TSDOC_TYPE
-+                  ? process.env.STORM_TSDOC_TYPE
-+                  : type
-+              )
-+              : `${
-+                  process.env.STORM_TSDOC_TYPE
-+                    ? process.env.STORM_TSDOC_TYPE
-+                    : type
-+                }.json`
-+          );
-+        }
+         const nowMs = ConfigCache._getTimeInMs();
+         let cachedConfig = undefined;
+         // Do we have a cached object?
+@@ -81,12 +153,184 @@ class ConfigCache {
+                 }
+             }
+         }
 +
-+        if (!_fs.existsSync(configFilePath)) {
-+          if (
-+            _fs.existsSync(
-+              path.join(
-+                workspaceRoot,
-+                configFilePath
-+              )
-+            )
-+          ) {
-+            configFilePath = path.join(
-+              workspaceRoot,
-+              configFilePath
-+            );
-+          } else if (
-+            _fs.existsSync(
-+              path.join(
-+                workspaceRoot,
-+                "node_modules",
-+                configFilePath
-+              )
-+            )
-+          ) {
-+            configFilePath = path.join(
-+              workspaceRoot,
-+              "node_modules",
-+              configFilePath
-+            );
-+          } else if (
-+            _fs.existsSync(
-+              path.join(
-+                workspaceRoot,
-+                "node_modules",
-+                "@storm-software",
-+                "tsdoc",
-+                configFilePath
-+              )
-+            )
-+          ) {
-+            configFilePath = path.join(
-+              workspaceRoot,
-+              "node_modules",
-+              "@storm-software",
-+              "tsdoc",
-+              configFilePath
-+            );
-+          } else {
-+            configFilePath = undefined;
-+          }
-+        }
-+
-+        const cacheKey = configFilePath;
-+        Debug_1.Debug.log(`Storm Software Configuration Cache key: "${cacheKey}"`);
-+        const nowMs = ConfigCache._getTimeInMs();
-+        let cachedConfig = undefined;
-+        // Do we have a cached object?
-+        cachedConfig = ConfigCache._cachedConfigs.get(cacheKey);
-+        if (cachedConfig) {
-+            Debug_1.Debug.log('Cache hit');
-+            // Is the cached object still valid?
-+            const loadAgeMs = nowMs - cachedConfig.loadTimeMs;
-+            const lastCheckAgeMs = nowMs - cachedConfig.lastCheckTimeMs;
-+            if (loadAgeMs > CACHE_EXPIRE_MS || loadAgeMs < 0) {
-+                Debug_1.Debug.log('Evicting because item is expired');
-+                cachedConfig = undefined;
-+                ConfigCache._cachedConfigs.delete(cacheKey);
-+            }
-+            else if (lastCheckAgeMs > CACHE_CHECK_INTERVAL_MS || lastCheckAgeMs < 0) {
-+                Debug_1.Debug.log('Checking for modifications');
-+                cachedConfig.lastCheckTimeMs = nowMs;
-+                if (cachedConfig.configFile.checkForModifiedFiles()) {
-+                    // Invalidate the cache because it failed to load completely
-+                    Debug_1.Debug.log('Evicting because item was modified');
-+                    cachedConfig = undefined;
-+                    ConfigCache._cachedConfigs.delete(cacheKey);
-+                }
-+            }
-+        }
 +        // Load the object
 +        if (!cachedConfig) {
 +            if (ConfigCache._cachedConfigs.size > CACHE_MAX_SIZE) {
@@ -213,6 +113,7 @@ index 55d07a04c611f65e0a27f59b5de9c89c9d393888..57888d4f6551ef362e99dfe887e8eded
 +            else {
 +                Debug_1.Debug.log(`Loaded: "${configFilePath}"`);
 +            }
++
 +            cachedConfig = {
 +                configFile,
 +                lastCheckTimeMs: nowMs,
@@ -220,11 +121,181 @@ index 55d07a04c611f65e0a27f59b5de9c89c9d393888..57888d4f6551ef362e99dfe887e8eded
 +            };
 +            ConfigCache._cachedConfigs.set(cacheKey, cachedConfig);
 +        }
++
 +        return cachedConfig.configFile;
 +    }
++
++    static _checkConfigFilePath(workspaceRoot, configFilePath) {
++      const workspaceRootPath = workspaceRoot ? workspaceRoot : "./";
++      if (!configFilePath) {
++        return undefined;
++      }
++
++      if (_fs.existsSync(configFilePath)) {
++        return configFilePath;
++      } else if (
++        _fs.existsSync(
++          path.join(
++            workspaceRootPath,
++            configFilePath
++          )
++        )
++      ) {
++        return path.join(
++          workspaceRootPath,
++          configFilePath
++        );
++      } else if (
++        _fs.existsSync(
++          path.join(
++            workspaceRootPath,
++            "node_modules",
++            configFilePath
++          )
++        )
++      ) {
++        return path.join(
++          workspaceRootPath,
++          "node_modules",
++          configFilePath
++        );
++      } else if (
++        _fs.existsSync(
++          path.join(
++            workspaceRootPath,
++            "node_modules",
++            "@storm-software",
++            "tsdoc",
++            configFilePath
++          )
++        )
++      ) {
++        return path.join(
++          workspaceRootPath,
++          "node_modules",
++          "@storm-software",
++          "tsdoc",
++          configFilePath
++        );
++      } else if (
++        _fs.existsSync(
++          path.join(
++            "@storm-software",
++            "tsdoc",
++            configFilePath
++          )
++        )
++      ) {
++        return path.join(
++          "@storm-software",
++          "tsdoc",
++          configFilePath
++        );
++      }
++
++      return undefined;
++    }
++
++
++    static getStormConfigFile(options) {
++        const type = options.type || "recommended";
++        const configFile = options.configFile;
++
++        let workspaceRoot = "";
++        if (process.env.STORM_WORKSPACE_ROOT || process.env.NX_WORKSPACE_ROOT_PATH) {
++          workspaceRoot = process.env.STORM_WORKSPACE_ROOT || process.env.NX_WORKSPACE_ROOT_PATH;
++        }
++        if (!workspaceRoot) {
++          workspaceRoot = findWorkspaceRoot();
++        }
++
++        let configFilePath = ConfigCache._checkConfigFilePath(
++          workspaceRoot,
++          process.env.STORM_TSDOC_CONFIG_FILE
++            ? process.env.STORM_TSDOC_CONFIG_FILE
++            : configFile
++        );
++        if (!configFilePath) {
++          configFilePath = ConfigCache._checkConfigFilePath(
++            workspaceRoot,
++            `${((
++              process.env.STORM_TSDOC_TYPE
++                ? process.env.STORM_TSDOC_TYPE
++                : type
++            ) || "recommended").replace(/\.jsonc?$/, "")}.json`
++          );
++          if (!configFilePath) {
++            configFilePath = ConfigCache._checkConfigFilePath(
++              workspaceRoot,
++              "recommended.json"
++            );
++            if (!configFilePath) {
++              configFilePath = ConfigCache._checkConfigFilePath(
++                workspaceRoot,
++                "tsdoc.json"
++              );
++            }
++          }
++        }
++
++        const cacheKey = configFilePath || "missing-config-file";
++        Debug_1.Debug.log(`Storm Software Configuration Cache key: "${cacheKey}"`);
++
++        const nowMs = ConfigCache._getTimeInMs();
++        let cachedConfig = undefined;
++
++        // Do we have a cached object?
++        cachedConfig = ConfigCache._cachedConfigs.get(cacheKey);
++        if (cachedConfig) {
++            Debug_1.Debug.log('Cache hit');
++
++            // Is the cached object still valid?
++            const loadAgeMs = nowMs - cachedConfig.loadTimeMs;
++            const lastCheckAgeMs = nowMs - cachedConfig.lastCheckTimeMs;
++            if (loadAgeMs > CACHE_EXPIRE_MS || loadAgeMs < 0) {
++                Debug_1.Debug.log('Evicting because item is expired');
++
++                cachedConfig = undefined;
++                ConfigCache._cachedConfigs.delete(cacheKey);
++            } else if (lastCheckAgeMs > CACHE_CHECK_INTERVAL_MS || lastCheckAgeMs < 0) {
++                Debug_1.Debug.log('Checking for modifications');
++
++                cachedConfig.lastCheckTimeMs = nowMs;
++                if (cachedConfig.configFile.checkForModifiedFiles()) {
++                    // Invalidate the cache because it failed to load completely
++                    Debug_1.Debug.log('Evicting because item was modified');
++                    cachedConfig = undefined;
++                    ConfigCache._cachedConfigs.delete(cacheKey);
++                }
++            }
++        }
++
+         // Load the object
+         if (!cachedConfig) {
+             if (ConfigCache._cachedConfigs.size > CACHE_MAX_SIZE) {
+                 Debug_1.Debug.log('Clearing cache');
+                 ConfigCache._cachedConfigs.clear(); // avoid a memory leak
+             }
++
+             const configFile = tsdoc_config_1.TSDocConfigFile.loadFile(configFilePath);
+             if (configFile.fileNotFound) {
+                 Debug_1.Debug.log(`File not found: "${configFilePath}"`);
+@@ -94,6 +338,7 @@ class ConfigCache {
+             else {
+                 Debug_1.Debug.log(`Loaded: "${configFilePath}"`);
+             }
++
+             cachedConfig = {
+                 configFile,
+                 lastCheckTimeMs: nowMs,
+@@ -101,6 +346,7 @@ class ConfigCache {
+             };
+             ConfigCache._cachedConfigs.set(cacheKey, cachedConfig);
+         }
++
+         return cachedConfig.configFile;
+     }
  }
- exports.ConfigCache = ConfigCache;
- // findConfigPathForFolder() result --> loaded tsdoc.json configuration
 diff --git a/lib/Debug.js b/lib/Debug.js
 index abdc844796e31fa49872c8eed312b0a19299e1ef..7463bad88594dd18a25e1e4a9ae36318eb6bc4d4 100644
 --- a/lib/Debug.js
@@ -242,10 +313,10 @@ index abdc844796e31fa49872c8eed312b0a19299e1ef..7463bad88594dd18a25e1e4a9ae36318
      }
  }
 diff --git a/lib/index.js b/lib/index.js
-index 73c357f96e3c69ac87e19cc3e5d2733073d6aef3..baab793323b53d2300d9666fe5c595ae8d53f68b 100644
+index 73c357f96e3c69ac87e19cc3e5d2733073d6aef3..36e90b80f02414eccbe9f562fe91f5e2136ba809 100644
 --- a/lib/index.js
 +++ b/lib/index.js
-@@ -15,48 +15,131 @@ const plugin = {
+@@ -15,48 +15,132 @@ const plugin = {
          // from the NPM package name, and then appending this string.
          syntax: {
              meta: {
@@ -315,9 +386,10 @@ index 73c357f96e3c69ac87e19cc3e5d2733073d6aef3..baab793323b53d2300d9666fe5c595ae
 +                        : context.options
 +                      : {};
 +
-+                    tsdocConfigFile = ConfigCache_1.ConfigCache.getStormConfigFile(
-+                      { type: "recommended", ...userOptions }
-+                    );
++                    const config = { type: userOptions.type || "recommended", configFile: userOptions.configFile };
++                    Debug_1.Debug.log(`Using eslint-plugin-tsdoc config: ${JSON.stringify(config, undefined, 2)}`);
++
++                    tsdocConfigFile = ConfigCache_1.ConfigCache.getStormConfigFile(config);
                      if (!tsdocConfigFile.fileNotFound) {
 -                        if (tsdocConfigFile.hasErrors) {
 -                            context.report({
