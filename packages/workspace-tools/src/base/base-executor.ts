@@ -28,6 +28,7 @@ export const withRunExecutor =
       config: StormWorkspaceConfig
     ) =>
       | Promise<BaseExecutorResult | null | undefined>
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       | AsyncGenerator<any, BaseExecutorResult | null | undefined>
       | BaseExecutorResult
       | null

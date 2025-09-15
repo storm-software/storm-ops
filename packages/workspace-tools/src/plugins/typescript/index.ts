@@ -202,6 +202,7 @@ export const createNodesV2: CreateNodesV2<TypeScriptPluginOptions> = [
                 outputs: [`{workspaceRoot}/dist/${root}`],
                 executor: "nx:run-commands",
                 dependsOn: [
+                  "build-untyped",
                   `^${
                     options?.enableTypeCheck &&
                     typeof options?.enableTypeCheck === "string"
