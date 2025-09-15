@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Config Tools
 
+## [1.183.8](https://github.com/storm-software/storm-ops/releases/tag/config-tools%401.183.8) (2025-09-15)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace package links
+  ([a729fdbfa](https://github.com/storm-software/storm-ops/commit/a729fdbfa))
+
 ## [1.183.7](https://github.com/storm-software/storm-ops/releases/tag/config-tools%401.183.7) (2025-09-15)
 
 ### Bug Fixes

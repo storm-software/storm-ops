@@ -2,6 +2,25 @@
 
 # Changelog for Storm Ops - Workspace Tools
 
+## [1.287.8](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.287.8) (2025-09-15)
+
+### Bug Fixes
+
+- **eslint:** Resolved issue with reading `eslint-plugin-tsdoc` options
+  ([cb5bdc736](https://github.com/storm-software/storm-ops/commit/cb5bdc736))
+
+### Miscellaneous
+
+- **monorepo:** Update workspace package links
+  ([a729fdbfa](https://github.com/storm-software/storm-ops/commit/a729fdbfa))
+
+### Updated Dependencies
+
+- Updated pnpm-tools to 0.1.9
+- Updated npm-tools to 0.1.9
+- Updated esbuild to 0.49.9
+- Updated unbuild to 0.53.9
+
 ## [1.287.7](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.287.7) (2025-09-15)
 
 ### Bug Fixes
