@@ -1,5 +1,5 @@
 diff --git a/lib/ConfigCache.js b/lib/ConfigCache.js
-index 55d07a04c611f65e0a27f59b5de9c89c9d393888..bc2da68017776d55d346e9ce7a352d15383f31f7 100644
+index 55d07a04c611f65e0a27f59b5de9c89c9d393888..39a6082902d9b6f90586331fcfa8dc27f1625b81 100644
 --- a/lib/ConfigCache.js
 +++ b/lib/ConfigCache.js
 @@ -29,6 +29,76 @@ exports.ConfigCache = void 0;
@@ -95,7 +95,7 @@ index 55d07a04c611f65e0a27f59b5de9c89c9d393888..bc2da68017776d55d346e9ce7a352d15
          const nowMs = ConfigCache._getTimeInMs();
          let cachedConfig = undefined;
          // Do we have a cached object?
-@@ -81,12 +153,184 @@ class ConfigCache {
+@@ -81,12 +153,193 @@ class ConfigCache {
                  }
              }
          }
@@ -196,10 +196,13 @@ index 55d07a04c611f65e0a27f59b5de9c89c9d393888..bc2da68017776d55d346e9ce7a352d15
 +      return undefined;
 +    }
 +
-+
 +    static getStormConfigFile(options) {
-+        const type = options.type || "recommended";
-+        const configFile = options.configFile;
++        const type = options && options.type
++          ? options.type
++          : "recommended";
++        const configFile = options && options.configFile
++          ? options.configFile
++          : undefined;
 +
 +        let workspaceRoot = "";
 +        if (process.env.STORM_WORKSPACE_ROOT || process.env.NX_WORKSPACE_ROOT_PATH) {
@@ -209,20 +212,26 @@ index 55d07a04c611f65e0a27f59b5de9c89c9d393888..bc2da68017776d55d346e9ce7a352d15
 +          workspaceRoot = findWorkspaceRoot();
 +        }
 +
++        let currentConfigFile = process.env.STORM_TSDOC_CONFIG_FILE
++          ? process.env.STORM_TSDOC_CONFIG_FILE
++          : configFile;
++        Debug_1.Debug.log(`Config file from user options: ${currentConfigFile || "(none)"}`);
++
 +        let configFilePath = ConfigCache._checkConfigFilePath(
 +          workspaceRoot,
-+          process.env.STORM_TSDOC_CONFIG_FILE
-+            ? process.env.STORM_TSDOC_CONFIG_FILE
-+            : configFile
++          currentConfigFile
 +        );
 +        if (!configFilePath) {
-+          configFilePath = ConfigCache._checkConfigFilePath(
-+            workspaceRoot,
-+            `${((
++          currentConfigFile = `${((
 +              process.env.STORM_TSDOC_TYPE
 +                ? process.env.STORM_TSDOC_TYPE
 +                : type
-+            ) || "recommended").replace(/\.jsonc?$/, "")}.json`
++            ) || "recommended").replace(/\.jsonc?$/, "")}.json`;
++          Debug_1.Debug.log(`Config file from user options not found, trying: ${currentConfigFile}`);
++
++          configFilePath = ConfigCache._checkConfigFilePath(
++            workspaceRoot,
++            currentConfigFile
 +          );
 +          if (!configFilePath) {
 +            configFilePath = ConfigCache._checkConfigFilePath(
@@ -280,7 +289,7 @@ index 55d07a04c611f65e0a27f59b5de9c89c9d393888..bc2da68017776d55d346e9ce7a352d15
              const configFile = tsdoc_config_1.TSDocConfigFile.loadFile(configFilePath);
              if (configFile.fileNotFound) {
                  Debug_1.Debug.log(`File not found: "${configFilePath}"`);
-@@ -94,6 +338,7 @@ class ConfigCache {
+@@ -94,6 +347,7 @@ class ConfigCache {
              else {
                  Debug_1.Debug.log(`Loaded: "${configFilePath}"`);
              }
@@ -288,7 +297,7 @@ index 55d07a04c611f65e0a27f59b5de9c89c9d393888..bc2da68017776d55d346e9ce7a352d15
              cachedConfig = {
                  configFile,
                  lastCheckTimeMs: nowMs,
-@@ -101,6 +346,7 @@ class ConfigCache {
+@@ -101,6 +355,7 @@ class ConfigCache {
              };
              ConfigCache._cachedConfigs.set(cacheKey, cachedConfig);
          }
