@@ -163,8 +163,8 @@
   },
   "dependencies": {
     "@storm-software/config": "workspace:*",
-    "@storm-software/config-tools": "1.183.8",
-    "@storm-software/workspace-tools": "1.287.8",
+    "@storm-software/config-tools": "workspace:*",
+    "@storm-software/workspace-tools": "workspace:*",
     "yaml": "catalog:"
   },
   "devDependencies": {

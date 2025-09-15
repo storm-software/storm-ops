@@ -175,7 +175,7 @@
     "@pulumi/awsx": "^2.22.0",
     "@pulumi/pulumi": "^3.196.0",
     "@storm-software/config": "workspace:*",
-    "@storm-software/config-tools": "1.183.8",
+    "@storm-software/config-tools": "workspace:*",
     "defu": "catalog:",
     "shelljs": "^0.8.5"
   },
