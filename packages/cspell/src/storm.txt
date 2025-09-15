@@ -441,6 +441,10 @@ bbenoist
 preapproved
 hideconstructor
 
+# Alloy Framework
+refkey
+refkeys
+
 # Nix
 nixos
 nixpkgs
