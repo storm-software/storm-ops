@@ -8,35 +8,54 @@ import {
 } from "./pnpm-workspace";
 
 /**
- * Retrieve the pnpm catalog from the workspace's `pnpm-workspace.yaml` file.
+ * Safely retrieve the pnpm catalog from the workspace's `pnpm-workspace.yaml` file.
  *
  * @param workspaceRoot - The root directory of the workspace. Defaults to the result of `findWorkspaceRoot(process.cwd())`.
  * @returns A promise that resolves to the catalog object if found, or undefined if no catalog exists or the `pnpm-workspace.yaml` file is not found.
- * @throws Will throw an error if the `pnpm-workspace.yaml` file is found but cannot be read.
  */
-export async function getCatalog(
+export async function getCatalogSafe(
   workspaceRoot = findWorkspaceRoot(process.cwd())
 ): Promise<Record<string, string> | undefined> {
   const pnpmWorkspaceFile = await readPnpmWorkspaceFile(workspaceRoot);
+  if (!pnpmWorkspaceFile) {
+    throw new Error("No pnpm-workspace.yaml file found");
+  }
+
   if (pnpmWorkspaceFile?.catalog) {
     return Object.fromEntries(
       Object.entries(pnpmWorkspaceFile.catalog).map(([key, value]) => {
         return [key, value.replaceAll(/^"/g, "").replaceAll(/"$/g, "")];
       })
     );
-  }
-
-  if (!pnpmWorkspaceFile) {
-    throw new Error("No pnpm-workspace.yaml file found");
-  }
-
-  if (!pnpmWorkspaceFile.catalog) {
+  } else {
     console.warn(
-      `No catalog found in pnpm-workspace.yaml file located in workspace root: ${workspaceRoot}`
+      `No catalog found in pnpm-workspace.yaml file located in workspace root: ${workspaceRoot} \nFile content: ${JSON.stringify(
+        pnpmWorkspaceFile,
+        null,
+        2
+      )}`
     );
   }
 
-  return pnpmWorkspaceFile.catalog;
+  return undefined;
+}
+
+/**
+ * Retrieve the pnpm catalog from the workspace's `pnpm-workspace.yaml` file.
+ *
+ * @param workspaceRoot - The root directory of the workspace. Defaults to the result of `findWorkspaceRoot(process.cwd())`.
+ * @returns A promise that resolves to the catalog object if found, or throws an error if no catalog exists or the `pnpm-workspace.yaml` file is not found.
+ * @throws Will throw an error if the `pnpm-workspace.yaml` file is found but cannot be read.
+ */
+export async function getCatalog(
+  workspaceRoot = findWorkspaceRoot(process.cwd())
+): Promise<Record<string, string> | undefined> {
+  const catalog = await getCatalogSafe(workspaceRoot);
+  if (!catalog) {
+    throw new Error("No catalog entries found in pnpm-workspace.yaml file");
+  }
+
+  return catalog;
 }
 
 /**

@@ -10,9 +10,9 @@
   },
   "private": false,
   "bin": {
-    "storm-pnpm": "./bin/storm-pnpm.js",
-    "storm-pnpm-cjs": "./bin/storm-pnpm.cjs",
-    "storm-pnpm-esm": "./bin/storm-pnpm.js"
+    "storm-pnpm": "./bin/pnpm.js",
+    "storm-pnpm-cjs": "./bin/pnpm.cjs",
+    "storm-pnpm-esm": "./bin/pnpm.js"
   },
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
