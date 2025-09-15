@@ -24,7 +24,7 @@
       "options": {
         "commands": [
           "pnpm copyfiles --up=3 packages/tsdoc/dist/* dist/packages/tsdoc/dist",
-          "pnpm copyfiles --up=3 packages/tsdoc/src/*.json dist/packages/tsdoc/config",
+          "pnpm copyfiles --up=3 packages/tsdoc/src/*.json dist/packages/tsdoc",
           "pnpm copyfiles --up=2 packages/tsdoc/README.md packages/tsdoc/CHANGELOG.md packages/tsdoc/package.json dist/packages/tsdoc",
           "pnpm copyfiles LICENSE dist/packages/tsdoc"
         ],

@@ -44,12 +44,12 @@
   "module": "./dist/index.js",
   "exports": {
     "./package.json": "./package.json",
-    "./base.json": "./config/base.json",
-    "./typedoc.json": "./config/typedoc.json",
-    "./api-extractor.json": "./config/api-extractor.json",
-    "./core.json": "./config/core.json",
-    "./callouts.json": "./config/callouts.json",
-    "./recommended.json": "./config/recommended.json",
+    "./base.json": "./base.json",
+    "./typedoc.json": "./typedoc.json",
+    "./api-extractor.json": "./api-extractor.json",
+    "./core.json": "./core.json",
+    "./callouts.json": "./callouts.json",
+    "./recommended.json": "./recommended.json",
     "./index": {
       "import": {
         "types": "./dist/index.d.ts",
@@ -80,10 +80,6 @@
     }
   },
   "types": "./dist/index.d.ts",
-  "files": [
-    "config/**/*",
-    "dist/**/*"
-  ],
   "keywords": [
     "tsdoc",
     "typedoc",
