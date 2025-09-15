@@ -6,7 +6,7 @@ export default defineConfig([
     target: "esnext",
     entryPoints: ["./src/*.ts", "./src/helpers/*.ts"],
     format: ["cjs", "esm"],
-    outDir: "dist",
+    outDir: "dist/build",
     platform: "node",
     splitting: true,
     treeshake: true,
