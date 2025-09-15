@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Esbuild
 
+## [0.49.6](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.49.6) (2025-09-15)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace package links
+  ([6e7c7948a](https://github.com/storm-software/storm-ops/commit/6e7c7948a))
+
+### Updated Dependencies
+
+- Updated config-tools to 1.183.6
+
 ## [0.49.5](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.49.5) (2025-09-15)
 
 ### Miscellaneous
