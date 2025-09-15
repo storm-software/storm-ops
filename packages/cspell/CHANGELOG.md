@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - CSpell
 
+## [0.41.0](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.41.0) (2025-09-15)
+
+### Features
+
+- **cspell:** Added `alloy-js` CSpell words to dictionary
+  ([f7ecc7c70](https://github.com/storm-software/storm-ops/commit/f7ecc7c70))
+
 ## [0.40.6](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.40.6) (2025-09-15)
 
 ### Miscellaneous
