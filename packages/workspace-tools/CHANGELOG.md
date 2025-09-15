@@ -2,6 +2,27 @@
 
 # Changelog for Storm Ops - Workspace Tools
 
+## [1.287.11](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.287.11) (2025-09-15)
+
+### Bug Fixes
+
+- **workspace-tools:** Ensure `build-untyped` is called before `type-check`
+  tasks
+  ([cec510463](https://github.com/storm-software/storm-ops/commit/cec510463))
+
+### Miscellaneous
+
+- **monorepo:** Update workspace package links
+  ([fadac013c](https://github.com/storm-software/storm-ops/commit/fadac013c))
+
+### Updated Dependencies
+
+- Updated pnpm-tools to 0.1.12
+- Updated npm-tools to 0.1.12
+- Updated prettier to 0.54.7
+- Updated esbuild to 0.49.12
+- Updated unbuild to 0.53.12
+
 ## [1.287.10](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.287.10) (2025-09-15)
 
 ### Miscellaneous

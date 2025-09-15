@@ -2,6 +2,19 @@
 
 # Changelog for Storm Ops - Unbuild
 
+## [0.53.12](https://github.com/storm-software/storm-ops/releases/tag/unbuild%400.53.12) (2025-09-15)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace package links
+  ([fadac013c](https://github.com/storm-software/storm-ops/commit/fadac013c))
+
+### Updated Dependencies
+
+- Updated config-tools to 1.183.11
+- Updated build-tools to 0.154.7
+- Updated config to 1.130.7
+
 ## [0.53.11](https://github.com/storm-software/storm-ops/releases/tag/unbuild%400.53.11) (2025-09-15)
 
 ### Miscellaneous

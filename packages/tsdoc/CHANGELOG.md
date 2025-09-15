@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Tsdoc
 
+## [0.10.7](https://github.com/storm-software/storm-ops/releases/tag/tsdoc%400.10.7) (2025-09-15)
+
+### Bug Fixes
+
+- **tsdoc:** Resolve issue with placement of `.json` file assets
+  ([bae51ec0e](https://github.com/storm-software/storm-ops/commit/bae51ec0e))
+
 ## [0.10.6](https://github.com/storm-software/storm-ops/releases/tag/tsdoc%400.10.6) (2025-09-15)
 
 ### Miscellaneous
