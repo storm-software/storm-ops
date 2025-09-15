@@ -225,11 +225,27 @@ index 55d07a04c611f65e0a27f59b5de9c89c9d393888..57888d4f6551ef362e99dfe887e8eded
  }
  exports.ConfigCache = ConfigCache;
  // findConfigPathForFolder() result --> loaded tsdoc.json configuration
+diff --git a/lib/Debug.js b/lib/Debug.js
+index abdc844796e31fa49872c8eed312b0a19299e1ef..7463bad88594dd18a25e1e4a9ae36318eb6bc4d4 100644
+--- a/lib/Debug.js
++++ b/lib/Debug.js
+@@ -6,8 +6,9 @@ exports.Debug = void 0;
+ class Debug {
+     // To debug the plugin, temporarily uncomment the body of this function
+     static log(message) {
+-        // message = require("process").pid + ": " + message;
+-        // console.log(message);
++        message = require("process").pid + ": " + message;
++        console.log(message);
++
+         // require('fs').writeFileSync('C:\\Git\\log.txt', message + '\r\n', { flag: 'as' });
+     }
+ }
 diff --git a/lib/index.js b/lib/index.js
-index 73c357f96e3c69ac87e19cc3e5d2733073d6aef3..ccf62f1b6cc8ae2e5f5e03fcfb47e6148ba54f74 100644
+index 73c357f96e3c69ac87e19cc3e5d2733073d6aef3..baab793323b53d2300d9666fe5c595ae8d53f68b 100644
 --- a/lib/index.js
 +++ b/lib/index.js
-@@ -15,7 +15,12 @@ const plugin = {
+@@ -15,48 +15,131 @@ const plugin = {
          // from the NPM package name, and then appending this string.
          syntax: {
              meta: {
@@ -243,9 +259,10 @@ index 73c357f96e3c69ac87e19cc3e5d2733073d6aef3..ccf62f1b6cc8ae2e5f5e03fcfb47e614
                  type: 'problem',
                  docs: {
                      description: 'Validates that TypeScript documentation comments conform to the TSDoc standard',
-@@ -23,8 +28,32 @@ const plugin = {
-                     // This package is experimental
-                     recommended: false,
+                     category: 'Stylistic Issues',
+-                    // This package is experimental
+-                    recommended: false,
++                    recommended: true,
                      url: 'https://tsdoc.org/pages/packages/eslint-plugin-tsdoc'
 -                }
 +                },
@@ -275,19 +292,31 @@ index 73c357f96e3c69ac87e19cc3e5d2733073d6aef3..ccf62f1b6cc8ae2e5f5e03fcfb47e614
 +              }
 +            ],
              create: (context) => {
-                 const sourceFilePath = context.filename;
+-                const sourceFilePath = context.filename;
++                const tsdocConfiguration = new tsdoc_1.TSDocConfiguration();
++
                  // If eslint is configured with @typescript-eslint/parser, there is a parser option
-@@ -33,30 +62,76 @@ const plugin = {
+                 // to explicitly specify where the tsconfig file is. Use that if available.
+                 const tsConfigDir = context.parserOptions.tsconfigRootDir;
++                const sourceFilePath = context.filename;
++
                  Debug_1.Debug.log(`Linting: "${sourceFilePath}"`);
-                 const tsdocConfiguration = new tsdoc_1.TSDocConfiguration();
+-                const tsdocConfiguration = new tsdoc_1.TSDocConfiguration();
++
                  try {
 -                    const tsdocConfigFile = ConfigCache_1.ConfigCache.getForSourceFile(sourceFilePath, tsConfigDir);
 +                  let tsdocConfigFile = {};
 +                  try {
++                    const userOptions = context.options
++                      ? Array.isArray(context.options)
++                        ? context.options.length > 0
++                          ? context.options[0]
++                          : {}
++                        : context.options
++                      : {};
++
 +                    tsdocConfigFile = ConfigCache_1.ConfigCache.getStormConfigFile(
-+                      context.options && context.options.length > 0
-+                        ? context.options[0]
-+                        : { type: "core" }
++                      { type: "recommended", ...userOptions }
 +                    );
                      if (!tsdocConfigFile.fileNotFound) {
 -                        if (tsdocConfigFile.hasErrors) {
