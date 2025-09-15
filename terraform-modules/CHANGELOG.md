@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - Terraform Modules
 
+## [0.55.2](https://github.com/storm-software/storm-ops/releases/tag/terraform-modules%400.55.2) (2025-09-15)
+
+### Miscellaneous
+
+- **pnpm-tools:** Update script file name and write workspace contents to
+  warning message
+  ([ac72547b3](https://github.com/storm-software/storm-ops/commit/ac72547b3))
+- **monorepo:** Regenerate README markdown files
+  ([beeeb4edc](https://github.com/storm-software/storm-ops/commit/beeeb4edc))
+
 ## [0.55.1](https://github.com/storm-software/storm-ops/releases/tag/terraform-modules%400.55.1) (2025-09-13)
 
 ### Miscellaneous

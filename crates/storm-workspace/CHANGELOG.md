@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - Storm Workspace
 
+## [0.16.2](https://github.com/storm-software/storm-ops/releases/tag/storm-workspace%400.16.2) (2025-09-15)
+
+### Miscellaneous
+
+- **pnpm-tools:** Update script file name and write workspace contents to
+  warning message
+  ([ac72547b3](https://github.com/storm-software/storm-ops/commit/ac72547b3))
+- **monorepo:** Regenerate README markdown files
+  ([beeeb4edc](https://github.com/storm-software/storm-ops/commit/beeeb4edc))
+
 ## [0.16.1](https://github.com/storm-software/storm-ops/releases/tag/storm-workspace%400.16.1) (2025-09-13)
 
 ### Miscellaneous

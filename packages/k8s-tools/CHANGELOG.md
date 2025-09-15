@@ -2,6 +2,24 @@
 
 # Changelog for Storm Ops - K8s Tools
 
+## [0.38.2](https://github.com/storm-software/storm-ops/releases/tag/k8s-tools%400.38.2) (2025-09-15)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace package links
+  ([cc9535d62](https://github.com/storm-software/storm-ops/commit/cc9535d62))
+- **pnpm-tools:** Update script file name and write workspace contents to
+  warning message
+  ([ac72547b3](https://github.com/storm-software/storm-ops/commit/ac72547b3))
+- **monorepo:** Regenerate README markdown files
+  ([beeeb4edc](https://github.com/storm-software/storm-ops/commit/beeeb4edc))
+
+### Updated Dependencies
+
+- Updated workspace-tools to 1.287.2
+- Updated config-tools to 1.183.3
+- Updated config to 1.130.2
+
 ## [0.38.1](https://github.com/storm-software/storm-ops/releases/tag/k8s-tools%400.38.1) (2025-09-15)
 
 ### Miscellaneous
