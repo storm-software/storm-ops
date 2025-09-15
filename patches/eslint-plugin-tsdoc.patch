@@ -1,5 +1,5 @@
 diff --git a/lib/ConfigCache.js b/lib/ConfigCache.js
-index 55d07a04c611f65e0a27f59b5de9c89c9d393888..39a6082902d9b6f90586331fcfa8dc27f1625b81 100644
+index 55d07a04c611f65e0a27f59b5de9c89c9d393888..e15e58724147c0f6eacfd5b01a4ce995d867ddcd 100644
 --- a/lib/ConfigCache.js
 +++ b/lib/ConfigCache.js
 @@ -29,6 +29,76 @@ exports.ConfigCache = void 0;
@@ -95,7 +95,7 @@ index 55d07a04c611f65e0a27f59b5de9c89c9d393888..39a6082902d9b6f90586331fcfa8dc27
          const nowMs = ConfigCache._getTimeInMs();
          let cachedConfig = undefined;
          // Do we have a cached object?
-@@ -81,12 +153,193 @@ class ConfigCache {
+@@ -81,12 +153,219 @@ class ConfigCache {
                  }
              }
          }
@@ -180,15 +180,41 @@ index 55d07a04c611f65e0a27f59b5de9c89c9d393888..39a6082902d9b6f90586331fcfa8dc27
 +      } else if (
 +        _fs.existsSync(
 +          path.join(
++            workspaceRootPath,
++            "node_modules",
 +            "@storm-software",
 +            "tsdoc",
++            "config",
 +            configFilePath
 +          )
 +        )
 +      ) {
 +        return path.join(
++          workspaceRootPath,
++          "node_modules",
 +          "@storm-software",
 +          "tsdoc",
++          "config",
++          configFilePath
++        );
++      } else if (
++        _fs.existsSync(
++          path.join(
++            workspaceRootPath,
++            "node_modules",
++            "@storm-software",
++            "tsdoc",
++            "dist",
++            configFilePath
++          )
++        )
++      ) {
++        return path.join(
++          workspaceRootPath,
++          "node_modules",
++          "@storm-software",
++          "tsdoc",
++          "dist",
 +          configFilePath
 +        );
 +      }
@@ -289,7 +315,7 @@ index 55d07a04c611f65e0a27f59b5de9c89c9d393888..39a6082902d9b6f90586331fcfa8dc27
              const configFile = tsdoc_config_1.TSDocConfigFile.loadFile(configFilePath);
              if (configFile.fileNotFound) {
                  Debug_1.Debug.log(`File not found: "${configFilePath}"`);
-@@ -94,6 +347,7 @@ class ConfigCache {
+@@ -94,6 +373,7 @@ class ConfigCache {
              else {
                  Debug_1.Debug.log(`Loaded: "${configFilePath}"`);
              }
@@ -297,7 +323,7 @@ index 55d07a04c611f65e0a27f59b5de9c89c9d393888..39a6082902d9b6f90586331fcfa8dc27
              cachedConfig = {
                  configFile,
                  lastCheckTimeMs: nowMs,
-@@ -101,6 +355,7 @@ class ConfigCache {
+@@ -101,6 +381,7 @@ class ConfigCache {
              };
              ConfigCache._cachedConfigs.set(cacheKey, cachedConfig);
          }
