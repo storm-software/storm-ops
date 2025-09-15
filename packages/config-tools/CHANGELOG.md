@@ -2,6 +2,22 @@
 
 # Changelog for Storm Ops - Config Tools
 
+## [1.183.7](https://github.com/storm-software/storm-ops/releases/tag/config-tools%401.183.7) (2025-09-15)
+
+### Bug Fixes
+
+- **pnpm-tools:** Resolve issues with the build output directories
+  ([ac41f8497](https://github.com/storm-software/storm-ops/commit/ac41f8497))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+  ([5896194fa](https://github.com/storm-software/storm-ops/commit/5896194fa))
+
+### Updated Dependencies
+
+- Updated config to 1.130.5
+
 ## [1.183.6](https://github.com/storm-software/storm-ops/releases/tag/config-tools%401.183.6) (2025-09-15)
 
 ### Miscellaneous

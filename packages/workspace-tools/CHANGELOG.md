@@ -2,6 +2,26 @@
 
 # Changelog for Storm Ops - Workspace Tools
 
+## [1.287.7](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.287.7) (2025-09-15)
+
+### Bug Fixes
+
+- **pnpm-tools:** Resolve issues with the build output directories
+  ([ac41f8497](https://github.com/storm-software/storm-ops/commit/ac41f8497))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+  ([5896194fa](https://github.com/storm-software/storm-ops/commit/5896194fa))
+
+### Updated Dependencies
+
+- Updated pnpm-tools to 0.1.8
+- Updated npm-tools to 0.1.8
+- Updated prettier to 0.54.5
+- Updated esbuild to 0.49.8
+- Updated unbuild to 0.53.8
+
 ## [1.287.6](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.287.6) (2025-09-15)
 
 ### Miscellaneous
