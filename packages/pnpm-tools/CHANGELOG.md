@@ -2,6 +2,24 @@
 
 # Changelog for Storm Ops - Pnpm Tools
 
+## [0.1.4](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.1.4) (2025-09-15)
+
+### Bug Fixes
+
+- **pnpm-tools:** Resolve issue parsing yaml file contents
+  ([88e84c044](https://github.com/storm-software/storm-ops/commit/88e84c044))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+  ([4db53df30](https://github.com/storm-software/storm-ops/commit/4db53df30))
+
+### Updated Dependencies
+
+- Updated config-tools to 1.183.4
+- Updated npm-tools to 0.1.4
+- Updated config to 1.130.3
+
 ## [0.1.3](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.1.3) (2025-09-15)
 
 ### Miscellaneous

@@ -1,6 +1,6 @@
 {
   "name": "@storm-software/pnpm-tools",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "type": "module",
   "description": "A set of [pnpm](https://pnpm.io/) plugins and utilities for managing workspace packages/dependencies.",
   "repository": {
@@ -107,9 +107,9 @@
   "dependencies": {
     "@pnpm/plugin-better-defaults": "^0.2.1",
     "@pnpm/plugin-esm-node-path": "^0.1.2",
-    "@storm-software/config": "1.130.2",
-    "@storm-software/config-tools": "1.183.3",
-    "@storm-software/npm-tools": "0.1.3",
+    "@storm-software/config": "1.130.3",
+    "@storm-software/config-tools": "1.183.4",
+    "@storm-software/npm-tools": "0.1.4",
     "commander": "catalog:",
     "defu": "catalog:",
     "prettier": "catalog:",

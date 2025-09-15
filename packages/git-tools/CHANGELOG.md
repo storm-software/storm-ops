@@ -2,6 +2,23 @@
 
 # Changelog for Storm Ops - Git Tools
 
+## [2.119.3](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.119.3) (2025-09-15)
+
+### Bug Fixes
+
+- **pnpm-tools:** Resolve issue parsing yaml file contents
+  ([88e84c044](https://github.com/storm-software/storm-ops/commit/88e84c044))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+  ([4db53df30](https://github.com/storm-software/storm-ops/commit/4db53df30))
+
+### Updated Dependencies
+
+- Updated config-tools to 1.183.4
+- Updated config to 1.130.3
+
 ## [2.119.2](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.119.2) (2025-09-15)
 
 ### Miscellaneous
