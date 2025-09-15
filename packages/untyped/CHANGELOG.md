@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Untyped
 
+## [0.20.6](https://github.com/storm-software/storm-ops/releases/tag/untyped%400.20.6) (2025-09-15)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace package links
+  ([c7373c93c](https://github.com/storm-software/storm-ops/commit/c7373c93c))
+
 ## [0.20.5](https://github.com/storm-software/storm-ops/releases/tag/untyped%400.20.5) (2025-09-15)
 
 ### Miscellaneous
