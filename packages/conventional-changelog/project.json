@@ -1,0 +1,40 @@
+{
+  "name": "conventional-changelog",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "packages/conventional-changelog/src",
+  "targets": {
+    "build-base": {
+      "cache": true,
+      "inputs": ["default", "^production"],
+      "outputs": ["{workspaceRoot}/dist/{projectRoot}"],
+      "executor": "nx:run-commands",
+      "dependsOn": ["clean", "^build"],
+      "options": {
+        "command": "tsup-node --config=tsup.config.ts",
+        "cwd": "{projectRoot}"
+      }
+    },
+    "build": {
+      "cache": true,
+      "inputs": ["default", "^production"],
+      "outputs": ["{workspaceRoot}/dist/{projectRoot}"],
+      "executor": "nx:run-commands",
+      "dependsOn": ["build-base"],
+      "options": {
+        "commands": [
+          "pnpm copyfiles --up=3 packages/conventional-changelog/dist/* dist/packages/conventional-changelog/dist",
+          "pnpm copyfiles --up=3 packages/conventional-changelog/src/*.json dist/packages/conventional-changelog",
+          "pnpm copyfiles --up=2 packages/conventional-changelog/README.md packages/conventional-changelog/CHANGELOG.md packages/conventional-changelog/package.json dist/packages/conventional-changelog",
+          "pnpm copyfiles LICENSE dist/packages/conventional-changelog"
+        ],
+        "parallel": false,
+        "color": true
+      }
+    },
+    "nx-release-publish": {
+      "executor": "@storm-software/workspace-tools:npm-publish"
+    }
+  },
+  "tags": ["platform:node"]
+}

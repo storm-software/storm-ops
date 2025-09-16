@@ -5,22 +5,28 @@
   "sourceRoot": "packages/config-tools/src",
   "targets": {
     "build-base": {
-      "executor": "nx:run-commands",
+      "cache": true,
+      "inputs": ["default", "^production"],
+      "outputs": ["{projectRoot}/dist", "{projectRoot}/bin"],
       "dependsOn": ["clean", "^build"],
+      "executor": "nx:run-commands",
       "options": {
         "command": "tsup --config=tsup.config.ts",
         "cwd": "{projectRoot}"
       }
     },
     "build": {
-      "executor": "nx:run-commands",
+      "cache": true,
+      "inputs": ["default", "^production"],
+      "outputs": ["{workspaceRoot}/dist/{projectRoot}"],
       "dependsOn": ["build-base"],
+      "executor": "nx:run-commands",
       "options": {
         "commands": [
           "pnpm copyfiles LICENSE dist/packages/config-tools",
           "pnpm copyfiles --up=2 ./packages/config-tools/*.md ./packages/config-tools/package.json dist/packages/config-tools",
-          "pnpm copyfiles --up=4 \"./packages/config-tools/dist/src/**/*\" dist/packages/config-tools/dist",
-          "pnpm copyfiles --up=4 \"./packages/config-tools/dist/bin/**/*\" dist/packages/config-tools/bin"
+          "pnpm copyfiles --up=3 \"./packages/config-tools/dist/**/*\" dist/packages/config-tools/dist",
+          "pnpm copyfiles --up=3 \"./packages/config-tools/bin/*.js\" \"./packages/config-tools/bin/*.cjs\" dist/packages/config-tools/bin"
         ]
       }
     },

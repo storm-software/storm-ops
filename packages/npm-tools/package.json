@@ -101,7 +101,7 @@
   "types": "./dist/index.d.ts",
   "dependencies": {
     "@storm-software/config": "workspace:*",
-    "@storm-software/config-tools": "1.184.0"
+    "@storm-software/config-tools": "workspace:*"
   },
   "devDependencies": {
     "@types/node": "catalog:",

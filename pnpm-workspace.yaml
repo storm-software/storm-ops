@@ -109,6 +109,7 @@ overrides:
   "@storm-software/tools-scripts": workspace:*
   axios: 1.8.2
   create-storm-workspace: workspace:*
+  conventional-changelog-storm-software: workspace:*
   got: 14.3.0
   load-plugin: 6.0.3
   request: ">=2.88.2"

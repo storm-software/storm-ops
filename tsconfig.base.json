@@ -58,6 +58,12 @@
       "@storm-software/untyped/*": ["packages/untyped/src/*"],
       "@storm-software/workspace-tools": ["packages/workspace-tools/index.ts"],
       "@storm-software/workspace-tools/*": ["packages/workspace-tools/src/*"],
+      "conventional-changelog-storm-software": [
+        "packages/conventional-changelog/src/index.ts"
+      ],
+      "conventional-changelog-storm-software/*": [
+        "packages/conventional-changelog/src/*"
+      ],
       "create-storm-workspace": ["packages/create-storm-workspace/bin/index.ts"]
     }
   },

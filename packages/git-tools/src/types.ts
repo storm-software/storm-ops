@@ -454,8 +454,9 @@ export const DEFAULT_MINIMAL_COMMIT_RULES: DefaultMinimalCommitRulesEnum = {
   ] as [RuleConfigSeverity, RuleConfigCondition, string[]],
   "type-max-length": [RuleConfigSeverity.Error, "always", 20],
   "type-min-length": [RuleConfigSeverity.Error, "always", 3],
+  "scope-empty": RuleConfigSeverity.Disabled,
   "scope-case": RuleConfigSeverity.Disabled,
-  "scope-empty": RuleConfigSeverity.Disabled
+  "scope-enum": RuleConfigSeverity.Disabled
 };
 
 export type MinimalCommitConfig<

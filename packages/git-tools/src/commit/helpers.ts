@@ -22,7 +22,7 @@ function resolveMinimalCommitOptions(
   config: MinimalCommitConfig = DEFAULT_MINIMAL_COMMIT_CONFIG
 ): MinimalCommitResolvedConfig {
   return {
-    parserPreset: "conventional-changelog-conventionalcommits",
+    parserPreset: "conventional-changelog-storm-software",
     prompt: {
       settings: config.settings,
       messages: config.messages,
@@ -40,7 +40,7 @@ function resolveMonorepoCommitOptions(
 ): MonorepoCommitResolvedConfig {
   return {
     utils: { getScopeEnum: getScopeEnumUtil({ config: workspaceConfig }) },
-    parserPreset: "conventional-changelog-conventionalcommits",
+    parserPreset: "conventional-changelog-storm-software",
     prompt: {
       settings: config.settings,
       messages: config.messages,
