@@ -1,5 +1,5 @@
+import { COMMIT_TYPES } from "conventional-changelog-storm-software/commit-types";
 import {
-  COMMIT_TYPES,
   CommitQuestionProps,
   DEFAULT_COMMIT_PROMPT_MESSAGES,
   DEFAULT_MINIMAL_COMMIT_QUESTIONS,

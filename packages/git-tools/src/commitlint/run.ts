@@ -6,14 +6,12 @@ import {
   writeWarning
 } from "@storm-software/config-tools";
 import { StormWorkspaceConfig } from "@storm-software/config/types";
+import { COMMIT_TYPES } from "conventional-changelog-storm-software/commit-types";
+import { createParserOpts } from "conventional-changelog-storm-software/parser";
 import { existsSync } from "fs";
 import { readFile } from "fs/promises";
 import childProcess from "node:child_process";
-import {
-  COMMIT_TYPES,
-  CommitLintCLIOptions,
-  RuleConfigSeverity
-} from "../types";
+import { CommitLintCLIOptions, RuleConfigSeverity } from "../types";
 import { resolveCommitlintConfig } from "./helpers";
 import lint from "./lint";
 import { getNxScopes, getRuleFromScopeEnum } from "./scope";
@@ -116,7 +114,10 @@ export async function runCommitLint(
     );
   }
 
-  const report = await lint(commitMessage, commitlintConfig);
+  const report = await lint(commitMessage, {
+    ...commitlintConfig,
+    parserOpts: createParserOpts(workspaceConfig.variant)
+  });
 
   if (
     !commitlintRegex.test(commitMessage) ||

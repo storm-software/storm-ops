@@ -1,12 +1,13 @@
+import { COMMIT_TYPES } from "./commit-types";
 import { createParserOpts } from "./parser";
 import { PresetConfig } from "./types/config";
 import { StormSoftwarePreset } from "./types/preset";
-import { DEFAULT_COMMIT_TYPES } from "./utilities/constants";
+import { CHANGELOG_COMMITS } from "./utilities/constants";
 import { resolveOptions } from "./utilities/options";
 import { createWhatBump } from "./whatBump";
 import { createWriterOpts } from "./writer";
 
-export { DEFAULT_COMMIT_TYPES };
+export { CHANGELOG_COMMITS as CHANGELOG_COMMIT_TYPES, COMMIT_TYPES };
 
 /**
  * Create a preset configuration for Storm Software changelog conventions.
@@ -24,7 +25,7 @@ export default async function createPreset(
       ignore: config.ignoreCommits,
       merges: false
     },
-    parser: createParserOpts(options),
+    parser: createParserOpts(options.workspace.variant),
     writer: await createWriterOpts(options),
     whatBump: createWhatBump(options)
   };

@@ -1,12 +1,12 @@
 import { ResolvedPresetOptions, WhatBumpFunction } from "./types/config";
-import { COMMIT_ORDER } from "./utilities/constants";
+import { CHANGELOG_COMMIT_ORDER } from "./utilities/constants";
 import { matchScope } from "./utilities/helpers";
 
 export function createWhatBump(
   options: ResolvedPresetOptions
 ): WhatBumpFunction {
   const hiddenTypes = options.bumpStrict
-    ? COMMIT_ORDER.reduce((hiddenTypes, type) => {
+    ? CHANGELOG_COMMIT_ORDER.reduce((hiddenTypes, type) => {
         if (type.hidden) {
           hiddenTypes.push(type.type);
         }

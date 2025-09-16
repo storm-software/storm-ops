@@ -1,6 +1,6 @@
 import { getWorkspaceConfig } from "@storm-software/config-tools/get-config";
 import { PresetConfig, ResolvedPresetOptions } from "../types/config";
-import { DEFAULT_COMMIT_TYPES } from "./constants";
+import { CHANGELOG_COMMITS } from "./constants";
 import { formatDate } from "./helpers";
 
 /**
@@ -17,8 +17,7 @@ export async function resolveOptions(
   const resolvedOptions: ResolvedPresetOptions = {
     workspace: workspaceConfig,
     ignoreCommits: config.ignoreCommits || [],
-    issuePrefixes: config.issuePrefixes || ["#"],
-    types: config.types || DEFAULT_COMMIT_TYPES,
+    types: config.types || CHANGELOG_COMMITS,
     bumpStrict: !!config.bumpStrict,
     scope: workspaceConfig.variant !== "minimal" ? config.scope : undefined,
     issueUrlFormat:
@@ -28,6 +27,7 @@ export async function resolveOptions(
     compareUrlFormat:
       "{{host}}/{{owner}}/{{repository}}/compare/{{previousTag}}...{{currentTag}}",
     userUrlFormat: "{{host}}/{{user}}",
+    issuePrefixes: ["#"],
     preMajor: !!config.preMajor,
     formatDate: config.formatDate || formatDate
   } as const;

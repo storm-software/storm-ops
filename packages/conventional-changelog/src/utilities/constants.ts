@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 
-import { COMMIT_TYPES } from "@storm-software/git-tools/types";
+import { COMMIT_TYPES } from "../commit-types";
 
-export const DEFAULT_COMMIT_TYPES = Object.entries(COMMIT_TYPES).reduce(
+export const CHANGELOG_COMMITS = Object.entries(COMMIT_TYPES).reduce(
   (ret, [key, commitType]) => {
     ret[key] = {
       ...commitType.changelog,
@@ -23,24 +23,50 @@ export const DEFAULT_COMMIT_TYPES = Object.entries(COMMIT_TYPES).reduce(
   >
 );
 
-export const COMMIT_ORDER = [
-  DEFAULT_COMMIT_TYPES.feat!,
-  DEFAULT_COMMIT_TYPES.fix!,
-  DEFAULT_COMMIT_TYPES.chore!,
-  DEFAULT_COMMIT_TYPES.deps!,
-  DEFAULT_COMMIT_TYPES.docs!,
-  DEFAULT_COMMIT_TYPES.style!,
-  DEFAULT_COMMIT_TYPES.refactor!,
-  DEFAULT_COMMIT_TYPES.perf!,
-  DEFAULT_COMMIT_TYPES.build!,
-  DEFAULT_COMMIT_TYPES.ci!,
-  DEFAULT_COMMIT_TYPES.test!
+export const CHANGELOG_COMMIT_ORDER = [
+  CHANGELOG_COMMITS.feat!,
+  CHANGELOG_COMMITS.fix!,
+  CHANGELOG_COMMITS.chore!,
+  CHANGELOG_COMMITS.deps!,
+  CHANGELOG_COMMITS.docs!,
+  CHANGELOG_COMMITS.style!,
+  CHANGELOG_COMMITS.refactor!,
+  CHANGELOG_COMMITS.perf!,
+  CHANGELOG_COMMITS.build!,
+  CHANGELOG_COMMITS.ci!,
+  CHANGELOG_COMMITS.test!
 ] as const;
 
-export const COMMIT_TYPE_ORDER = COMMIT_ORDER.map(entry => entry.type);
-export const COMMIT_TITLE_ORDER = COMMIT_ORDER.map(entry => entry.title);
+export const CHANGELOG_COMMIT_TYPE_ORDER = CHANGELOG_COMMIT_ORDER.map(
+  entry => entry.type
+);
+export const CHANGELOG_COMMIT_TITLE_ORDER = CHANGELOG_COMMIT_ORDER.map(
+  entry => entry.title
+);
 
 export const HASH_SHORT_LENGTH = 7;
 export const HEADER_MAX_LENGTH = 100;
 
 export const DATETIME_LENGTH = 10;
+
+export const MINIMAL_PARSER_DEFAULT_OPTIONS = {
+  headerPattern: /^(\w*): (.*)$/,
+  breakingHeaderPattern: /^(\w*): (.*)$/,
+  headerCorrespondence: ["type", "subject"],
+  noteKeywords: ["BREAKING CHANGE", "BREAKING-CHANGE"],
+  revertPattern:
+    /^(?:Revert|revert:)\s"?([\s\S]+?)"?\s*This reverts commit (\w*)\./i,
+  revertCorrespondence: ["header", "hash"],
+  issuePrefixes: ["#"]
+};
+
+export const MONOREPO_PARSER_DEFAULT_OPTIONS = {
+  headerPattern: /^(\w*)(?:\((.*)\))!?: (.*)$/,
+  breakingHeaderPattern: /^(\w*)(?:\((.*)\))!: (.*)$/,
+  headerCorrespondence: ["type", "scope", "subject"],
+  noteKeywords: ["BREAKING CHANGE", "BREAKING-CHANGE"],
+  revertPattern:
+    /^(?:Revert|revert:)\s"?([\s\S]+?)"?\s*This reverts commit (\w*)\./i,
+  revertCorrespondence: ["header", "hash"],
+  issuePrefixes: ["#"]
+};

@@ -8,11 +8,16 @@ dist
 tmp
 /out-tsc
 out
+
 .nx/workspace-data
 .nx/cache
 .nx/socket
+
 **/cspell/dict
 **/cspell/checksum.txt
+
+packages/config-tools/bin/*.js
+packages/config-tools/bin/*.cjs
 
 # local env
 .env.local

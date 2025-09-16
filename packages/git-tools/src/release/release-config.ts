@@ -1,4 +1,5 @@
 /* eslint-disable no-prototype-builtins */
+
 import { joinPathFragments } from "@nx/devkit";
 import jsonParser from "jsonc-parser";
 import { readFileSync } from "node:fs";

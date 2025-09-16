@@ -2,6 +2,10 @@ import { ProjectGraph } from "@nx/devkit";
 import { StormWorkspaceConfig } from "@storm-software/config";
 import { joinPaths } from "@storm-software/config-tools";
 import chalkTemplate from "chalk-template";
+import {
+  CommitTypeProps,
+  CommitTypesEnum
+} from "conventional-changelog-storm-software/types/commit-types";
 import { execSync } from "node:child_process";
 import { existsSync } from "node:fs";
 import { readFile } from "node:fs/promises";
@@ -14,8 +18,6 @@ import { getScopeEnum } from "../commitlint/scope";
 import type {
   CommitQuestionProps,
   CommitScopeProps,
-  CommitTypeProps,
-  CommitTypesEnum,
   MinimalCommitState,
   MonorepoCommitQuestionEnum,
   MonorepoCommitState

@@ -7,11 +7,11 @@
     "build-base": {
       "cache": true,
       "inputs": ["default", "^production"],
-      "outputs": ["{workspaceRoot}/dist/{projectRoot}"],
+      "outputs": ["{projectRoot}/dist"],
       "executor": "nx:run-commands",
       "dependsOn": ["clean", "^build"],
       "options": {
-        "command": "tsup-node --config=tsup.config.ts",
+        "command": "tsup --config=tsup.config.ts",
         "cwd": "{projectRoot}"
       }
     },
@@ -23,10 +23,10 @@
       "dependsOn": ["build-base"],
       "options": {
         "commands": [
-          "pnpm copyfiles --up=3 packages/conventional-changelog/dist/* dist/packages/conventional-changelog/dist",
-          "pnpm copyfiles --up=3 packages/conventional-changelog/src/*.json dist/packages/conventional-changelog",
-          "pnpm copyfiles --up=2 packages/conventional-changelog/README.md packages/conventional-changelog/CHANGELOG.md packages/conventional-changelog/package.json dist/packages/conventional-changelog",
-          "pnpm copyfiles LICENSE dist/packages/conventional-changelog"
+          "pnpm copyfiles LICENSE dist/packages/conventional-changelog",
+          "pnpm copyfiles --up=2 ./packages/conventional-changelog/*.md ./packages/conventional-changelog/package.json dist/packages/conventional-changelog",
+          "pnpm copyfiles --up=3 \"./packages/conventional-changelog/dist/**/*\" dist/packages/conventional-changelog/dist",
+          "pnpm copyfiles --up=3 \"./packages/conventional-changelog/src/templates/**/*\" dist/packages/conventional-changelog/templates"
         ],
         "parallel": false,
         "color": true
@@ -36,5 +36,6 @@
       "executor": "@storm-software/workspace-tools:npm-publish"
     }
   },
-  "tags": ["platform:node"]
+  "tags": ["platform:node"],
+  "implicitDependencies": ["config-tools"]
 }

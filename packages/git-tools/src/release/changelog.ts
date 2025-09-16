@@ -291,13 +291,13 @@ export function createAPI(overrideReleaseConfig: NxReleaseConfiguration) {
 
     // If there are multiple release groups, we'll just skip the workspace changelog anyway.
     const versionPlansEnabledForWorkspaceChangelog =
-      releaseGroups[0].resolvedVersionPlans;
+      releaseGroups[0]?.resolvedVersionPlans;
     if (versionPlansEnabledForWorkspaceChangelog) {
       if (releaseGroups.length === 1) {
         const releaseGroup = releaseGroups[0];
-        if (releaseGroup.projectsRelationship === "fixed") {
+        if (releaseGroup?.projectsRelationship === "fixed") {
           const versionPlans =
-            releaseGroup.resolvedVersionPlans as GroupVersionPlan[];
+            releaseGroup?.resolvedVersionPlans as GroupVersionPlan[];
           workspaceChangelogChanges = versionPlans
             .flatMap(vp => {
               const releaseType = versionPlanSemverReleaseTypeToChangelogType(
@@ -891,7 +891,7 @@ function resolveChangelogVersions(
       for (const projectName of releaseGroupProjectNames) {
         if (!args.versionData) {
           versionData[projectName] = {
-            newVersion: args.version,
+            newVersion: args.version!,
             currentVersion: "", // not relevant within changelog/commit generation
             dependentProjects: [] // not relevant within changelog/commit generation
           };

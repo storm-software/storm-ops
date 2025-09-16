@@ -1,4 +1,9 @@
-import { ParserConfig, ResolvedPresetOptions } from "./types/config";
+import { Variant } from "@storm-software/config/types";
+import { ParserConfig } from "./types/config";
+import {
+  MINIMAL_PARSER_DEFAULT_OPTIONS,
+  MONOREPO_PARSER_DEFAULT_OPTIONS
+} from "./utilities/constants";
 
 /**
  * Create parser options based on the provided config.
@@ -6,15 +11,8 @@ import { ParserConfig, ResolvedPresetOptions } from "./types/config";
  * @param config The configuration object.
  * @returns The parser options.
  */
-export function createParserOpts(options: ResolvedPresetOptions): ParserConfig {
-  return {
-    headerPattern: /^(\w*)(?:\((.*)\))?!?: (.*)$/,
-    breakingHeaderPattern: /^(\w*)(?:\((.*)\))?!: (.*)$/,
-    headerCorrespondence: ["type", "scope", "subject"],
-    noteKeywords: ["BREAKING CHANGE", "BREAKING-CHANGE"],
-    revertPattern:
-      /^(?:Revert|revert:)\s"?([\s\S]+?)"?\s*This reverts commit (\w*)\./i,
-    revertCorrespondence: ["header", "hash"],
-    issuePrefixes: options.issuePrefixes
-  };
+export function createParserOpts(variant: Variant): ParserConfig {
+  return variant === "minimal"
+    ? MINIMAL_PARSER_DEFAULT_OPTIONS
+    : MONOREPO_PARSER_DEFAULT_OPTIONS;
 }

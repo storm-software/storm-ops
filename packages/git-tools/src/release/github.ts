@@ -1,10 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 
-/**
- * Special thanks to changelogen for the original inspiration for many of these utilities:
- * https://github.com/unjs/changelogen
- */
 import { joinPathFragments, output } from "@nx/devkit";
 import { StormWorkspaceConfig } from "@storm-software/config/types";
 import type { AxiosRequestConfig } from "axios";

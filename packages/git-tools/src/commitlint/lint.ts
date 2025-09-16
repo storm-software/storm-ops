@@ -1,4 +1,5 @@
 import defaultRules from "@commitlint/rules";
+import { ParserConfig } from "conventional-changelog-storm-software/types/config";
 import { CommitParser } from "conventional-commits-parser";
 import util from "util";
 import {
@@ -31,7 +32,9 @@ const buildCommitMessage = ({
 
 export default async function lint(
   message: string,
-  commitlintConfig: MinimalCommitlintConfig | MonorepoCommitlintConfig
+  commitlintConfig: (MinimalCommitlintConfig | MonorepoCommitlintConfig) & {
+    parserOpts: ParserConfig;
+  }
 ): Promise<CommitLintOutcome> {
   const parser = new CommitParser(commitlintConfig.parserOpts);
   const parsed = parser.parse(message);
