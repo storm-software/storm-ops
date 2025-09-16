@@ -2,6 +2,22 @@
 
 # Changelog for Storm Ops - Esbuild
 
+## [0.50.0](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.50.0) (2025-09-16)
+
+### Features
+
+- **cspell:** Added React specific terms to CSpell dictionary
+  ([7bf0f8687](https://github.com/storm-software/storm-ops/commit/7bf0f8687))
+
+### Miscellaneous
+
+- **monorepo:** Update workspace package links
+  ([1494df98f](https://github.com/storm-software/storm-ops/commit/1494df98f))
+
+### Updated Dependencies
+
+- Updated config-tools to 1.184.0
+
 ## [0.49.12](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.49.12) (2025-09-15)
 
 ### Miscellaneous

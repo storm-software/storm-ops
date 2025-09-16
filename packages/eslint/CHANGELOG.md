@@ -2,6 +2,22 @@
 
 # Changelog for Storm Ops - ESLint
 
+## [0.166.0](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.166.0) (2025-09-16)
+
+### Features
+
+- **cspell:** Added React specific terms to CSpell dictionary
+  ([7bf0f8687](https://github.com/storm-software/storm-ops/commit/7bf0f8687))
+
+### Miscellaneous
+
+- **monorepo:** Update workspace package links
+  ([1494df98f](https://github.com/storm-software/storm-ops/commit/1494df98f))
+
+### Updated Dependencies
+
+- Updated config-tools to 1.184.0
+
 ## [0.165.12](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.165.12) (2025-09-15)
 
 ### Miscellaneous

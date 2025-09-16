@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Config Tools
 
+## [1.184.0](https://github.com/storm-software/storm-ops/releases/tag/config-tools%401.184.0) (2025-09-16)
+
+### Features
+
+- **cspell:** Added React specific terms to CSpell dictionary
+  ([7bf0f8687](https://github.com/storm-software/storm-ops/commit/7bf0f8687))
+
+### Miscellaneous
+
+- **monorepo:** Update workspace package links
+  ([1494df98f](https://github.com/storm-software/storm-ops/commit/1494df98f))
+
 ## [1.183.11](https://github.com/storm-software/storm-ops/releases/tag/config-tools%401.183.11) (2025-09-15)
 
 ### Miscellaneous
