@@ -375,6 +375,8 @@ csr
 spa
 mpa
 preinit
+fontkit
+iconify
 
 # tsconfig.json keywords
 jsxdev
