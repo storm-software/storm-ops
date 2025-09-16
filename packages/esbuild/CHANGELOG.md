@@ -2,6 +2,25 @@
 
 # Changelog for Storm Ops - Esbuild
 
+## [0.51.0](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.51.0) (2025-09-16)
+
+### Features
+
+- **conventional-changelog:** Added the Storm Software shared
+  `conventional-changelog` configuration
+  ([9f65827b6](https://github.com/storm-software/storm-ops/commit/9f65827b6))
+
+### Miscellaneous
+
+- **monorepo:** Update workspace package links
+  ([865d707d8](https://github.com/storm-software/storm-ops/commit/865d707d8))
+
+### Updated Dependencies
+
+- Updated config-tools to 1.185.0
+- Updated build-tools to 0.155.0
+- Updated config to 1.131.0
+
 ## [0.50.0](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.50.0) (2025-09-16)
 
 ### Features

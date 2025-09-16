@@ -2,6 +2,19 @@
 
 # Changelog for Storm Ops - Cloudflare Tools
 
+## [0.68.0](https://github.com/storm-software/storm-ops/releases/tag/cloudflare-tools%400.68.0) (2025-09-16)
+
+### Features
+
+- **conventional-changelog:** Added the Storm Software shared
+  `conventional-changelog` configuration
+  ([9f65827b6](https://github.com/storm-software/storm-ops/commit/9f65827b6))
+
+### Miscellaneous
+
+- **monorepo:** Update workspace package links
+  ([865d707d8](https://github.com/storm-software/storm-ops/commit/865d707d8))
+
 ## [0.67.8](https://github.com/storm-software/storm-ops/releases/tag/cloudflare-tools%400.67.8) (2025-09-15)
 
 ### Miscellaneous

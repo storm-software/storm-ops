@@ -2,6 +2,19 @@
 
 # Changelog for Storm Ops - CSpell
 
+## [0.43.0](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.43.0) (2025-09-16)
+
+### Features
+
+- **conventional-changelog:** Added the Storm Software shared
+  `conventional-changelog` configuration
+  ([9f65827b6](https://github.com/storm-software/storm-ops/commit/9f65827b6))
+
+### Miscellaneous
+
+- **monorepo:** Update workspace package links
+  ([865d707d8](https://github.com/storm-software/storm-ops/commit/865d707d8))
+
 ## [0.42.0](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.42.0) (2025-09-16)
 
 ### Features

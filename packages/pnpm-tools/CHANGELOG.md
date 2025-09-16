@@ -2,6 +2,25 @@
 
 # Changelog for Storm Ops - Pnpm Tools
 
+## [0.3.0](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.3.0) (2025-09-16)
+
+### Features
+
+- **conventional-changelog:** Added the Storm Software shared
+  `conventional-changelog` configuration
+  ([9f65827b6](https://github.com/storm-software/storm-ops/commit/9f65827b6))
+
+### Miscellaneous
+
+- **monorepo:** Update workspace package links
+  ([865d707d8](https://github.com/storm-software/storm-ops/commit/865d707d8))
+
+### Updated Dependencies
+
+- Updated config-tools to 1.185.0
+- Updated npm-tools to 0.3.0
+- Updated config to 1.131.0
+
 ## [0.2.0](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.2.0) (2025-09-16)
 
 ### Features

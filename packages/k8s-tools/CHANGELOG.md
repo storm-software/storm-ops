@@ -2,6 +2,25 @@
 
 # Changelog for Storm Ops - K8s Tools
 
+## [0.40.0](https://github.com/storm-software/storm-ops/releases/tag/k8s-tools%400.40.0) (2025-09-16)
+
+### Features
+
+- **conventional-changelog:** Added the Storm Software shared
+  `conventional-changelog` configuration
+  ([9f65827b6](https://github.com/storm-software/storm-ops/commit/9f65827b6))
+
+### Miscellaneous
+
+- **monorepo:** Update workspace package links
+  ([865d707d8](https://github.com/storm-software/storm-ops/commit/865d707d8))
+
+### Updated Dependencies
+
+- Updated workspace-tools to 1.289.0
+- Updated config-tools to 1.185.0
+- Updated config to 1.131.0
+
 ## [0.39.0](https://github.com/storm-software/storm-ops/releases/tag/k8s-tools%400.39.0) (2025-09-16)
 
 ### Features

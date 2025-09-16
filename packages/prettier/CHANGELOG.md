@@ -2,6 +2,19 @@
 
 # Changelog for Storm Ops - Prettier
 
+## [0.55.0](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.55.0) (2025-09-16)
+
+### Features
+
+- **conventional-changelog:** Added the Storm Software shared
+  `conventional-changelog` configuration
+  ([9f65827b6](https://github.com/storm-software/storm-ops/commit/9f65827b6))
+
+### Miscellaneous
+
+- **monorepo:** Update workspace package links
+  ([865d707d8](https://github.com/storm-software/storm-ops/commit/865d707d8))
+
 ## [0.54.7](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.54.7) (2025-09-15)
 
 ### Miscellaneous

@@ -2,6 +2,25 @@
 
 # Changelog for Storm Ops - Git Tools
 
+## [2.121.0](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.121.0) (2025-09-16)
+
+### Features
+
+- **conventional-changelog:** Added the Storm Software shared
+  `conventional-changelog` configuration
+  ([9f65827b6](https://github.com/storm-software/storm-ops/commit/9f65827b6))
+
+### Miscellaneous
+
+- **monorepo:** Update workspace package links
+  ([865d707d8](https://github.com/storm-software/storm-ops/commit/865d707d8))
+
+### Updated Dependencies
+
+- Updated conventional-changelog to 0.1.0
+- Updated config-tools to 1.185.0
+- Updated config to 1.131.0
+
 ## [2.120.0](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.120.0) (2025-09-16)
 
 ### Features
