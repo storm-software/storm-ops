@@ -2,6 +2,22 @@
 
 # Changelog for Storm Ops - Config Tools
 
+## [1.185.3](https://github.com/storm-software/storm-ops/releases/tag/config-tools%401.185.3) (2025-09-18)
+
+### Bug Fixes
+
+- **git-tools:** Resolve undefined object error and added stacktrace logging
+  ([ba0c06f9a](https://github.com/storm-software/storm-ops/commit/ba0c06f9a))
+
+### Miscellaneous
+
+- **monorepo:** Update workspace package links
+  ([5fc0b1cec](https://github.com/storm-software/storm-ops/commit/5fc0b1cec))
+
+### Updated Dependencies
+
+- Updated config to 1.131.3
+
 ## [1.185.2](https://github.com/storm-software/storm-ops/releases/tag/config-tools%401.185.2) (2025-09-18)
 
 ### Miscellaneous
