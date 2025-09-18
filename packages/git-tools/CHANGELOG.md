@@ -2,6 +2,24 @@
 
 # Changelog for Storm Ops - Git Tools
 
+## [2.121.4](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.121.4) (2025-09-18)
+
+### Bug Fixes
+
+- **git-tools:** Resolved issue with missing `commitlint` parser options
+  ([ab26d6e70](https://github.com/storm-software/storm-ops/commit/ab26d6e70))
+
+### Miscellaneous
+
+- **monorepo:** Update workspace package links
+  ([4ecf1952d](https://github.com/storm-software/storm-ops/commit/4ecf1952d))
+
+### Updated Dependencies
+
+- Updated conventional-changelog to 0.1.4
+- Updated config-tools to 1.185.4
+- Updated config to 1.131.4
+
 ## [2.121.3](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.121.3) (2025-09-18)
 
 ### Bug Fixes

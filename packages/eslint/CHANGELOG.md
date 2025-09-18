@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - ESLint
 
+## [0.167.4](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.167.4) (2025-09-18)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace package links
+  ([4ecf1952d](https://github.com/storm-software/storm-ops/commit/4ecf1952d))
+
+### Updated Dependencies
+
+- Updated config-tools to 1.185.4
+- Updated config to 1.131.4
+
 ## [0.167.3](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.167.3) (2025-09-18)
 
 ### Miscellaneous
