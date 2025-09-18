@@ -31,7 +31,7 @@ export async function runCommit(commitizenFile?: string, dryRun = false) {
 
   state.answers = await askQuestions(state);
 
-  const message = formatCommitMessage(state);
+  const message = formatCommitMessage(state, workspaceConfig);
   const commitMsgFile = joinPaths(getGitDir(), "COMMIT_EDITMSG");
 
   console.log(chalkTemplate`

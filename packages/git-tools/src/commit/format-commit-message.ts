@@ -1,9 +1,13 @@
+import { StormWorkspaceConfig } from "@storm-software/config/types";
 import wrap from "word-wrap";
 import type { MonorepoCommitState } from "../types";
 
 const MAX_LINE_WIDTH = 72;
 
-export const formatCommitMessage = (state: MonorepoCommitState) => {
+export const formatCommitMessage = (
+  state: MonorepoCommitState,
+  workspaceConfig: StormWorkspaceConfig
+) => {
   const { config, answers } = state;
   const wrapOptions = {
     indent: "",
@@ -14,22 +18,33 @@ export const formatCommitMessage = (state: MonorepoCommitState) => {
   if (typeof answers.type !== "string") {
     throw new Error("Invalid commit type.");
   }
-  if (typeof answers.scope !== "string") {
-    throw new Error("Invalid commit scope.");
-  }
   if (typeof answers.subject !== "string") {
     throw new Error("Invalid subject type.");
+  }
+  if (
+    workspaceConfig.variant !== "minimal" &&
+    typeof answers.scope !== "string"
+  ) {
+    throw new Error("Invalid commit scope.");
   }
 
   const emoji = answers.type?.[answers.type]?.emoji
     ? answers.type[answers.type].emoji
     : "";
-  const scope = answers.scope ? answers.scope.trim() : "";
+  const scope =
+    workspaceConfig.variant !== "minimal" &&
+    typeof answers.scope === "string" &&
+    answers.scope
+      ? answers.scope.trim()
+      : "";
   const subject = answers.subject?.trim();
   const type = answers.type;
 
   const format =
-    config.prompt.settings.format || "{type}({scope}): {emoji}{subject}";
+    config.prompt.settings.format ||
+    (workspaceConfig.variant !== "minimal"
+      ? "{type}({scope}): {emoji}{subject}"
+      : "{type}: {emoji}{subject}");
 
   // Wrap these lines at MAX_LINE_WIDTH character
   const body =
