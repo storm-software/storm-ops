@@ -1,18 +1,12 @@
 import defaultRules from "@commitlint/rules";
-import { getWorkspaceConfig } from "@storm-software/config-tools/get-config";
-import { createParserOpts } from "conventional-changelog-storm-software/parser";
-import { ParserConfig } from "conventional-changelog-storm-software/types/config";
-import { CommitParser } from "conventional-commits-parser";
-import defu from "defu";
-import util from "util";
 import {
-  CommitLintOutcome,
-  CommitLintRuleOutcome,
-  DefaultMonorepoCommitRulesEnum,
+  CommitlintRulesEnum,
   RuleConfigSeverity
-} from "../types";
-import { MinimalCommitlintConfig } from "./config/minimal";
-import { MonorepoCommitlintConfig } from "./config/monorepo";
+} from "conventional-changelog-storm-software/types/commitlint";
+import { Preset } from "conventional-changelog-storm-software/types/preset";
+import { CommitParser } from "conventional-commits-parser";
+import util from "node:util";
+import { CommitLintOutcome, CommitLintRuleOutcome } from "../types";
 
 interface CommitMessageData {
   header: string | null;
@@ -35,16 +29,9 @@ const buildCommitMessage = ({
 
 export default async function lint(
   message: string,
-  commitlintConfig: (MinimalCommitlintConfig | MonorepoCommitlintConfig) & {
-    parserOpts: ParserConfig;
-  }
+  config: Preset
 ): Promise<CommitLintOutcome> {
-  const workspaceConfig = await getWorkspaceConfig();
-  const parserOpts = await createParserOpts(workspaceConfig.variant);
-
-  const parser = new CommitParser(
-    defu(commitlintConfig.parserOpts, parserOpts)
-  );
+  const parser = new CommitParser(config.parser || {});
   const parsed = parser.parse(message);
 
   if (
@@ -64,7 +51,7 @@ export default async function lint(
   const allRules: Map<string, any> = new Map(Object.entries(defaultRules));
 
   // Find invalid rules configs
-  const missing = Object.keys(commitlintConfig.rules).filter(
+  const missing = Object.keys(config.commitlint.rules).filter(
     name => typeof allRules.get(name) !== "function"
   );
 
@@ -78,7 +65,7 @@ export default async function lint(
     );
   }
 
-  const invalid = Object.entries(commitlintConfig.rules)
+  const invalid = Object.entries(config.commitlint.rules)
     .map(([name, config]) => {
       if (!Array.isArray(config)) {
         return new Error(
@@ -146,7 +133,7 @@ export default async function lint(
 
   // Validate against all rules
   const pendingResults = Object.entries(
-    commitlintConfig.rules as DefaultMonorepoCommitRulesEnum
+    config.commitlint.rules as CommitlintRulesEnum
   )
     // Level 0 rules are ignored
     .filter(([, config]) => !!config && config.length && config[0] > 0)

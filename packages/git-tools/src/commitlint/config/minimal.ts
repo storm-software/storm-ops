@@ -1,8 +1,7 @@
-import { DEFAULT_MINIMAL_COMMIT_RULES } from "../../types";
+import { COMMIT_CONFIGS } from "conventional-changelog-storm-software/configs";
 
 const config = {
-  rules: DEFAULT_MINIMAL_COMMIT_RULES,
-  helpUrl: "https://developer.stormsoftware.com/commitlint/minimal"
+  ...COMMIT_CONFIGS.minimal.commitlint
 };
 
 export type MinimalCommitlintConfig = typeof config;

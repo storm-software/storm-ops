@@ -1,4 +1,4 @@
-import { COMMIT_TYPES } from "../commit-types";
+import { DEFAULT_COMMIT_TYPES } from "../commit-types";
 
 export type CommitEnumItemProps = {
   description: string;
@@ -15,7 +15,7 @@ export type CommitTypeProps = CommitEnumItemProps & {
   };
 };
 
-export type DefaultCommitTypeKeys = keyof typeof COMMIT_TYPES;
+export type DefaultCommitTypeKeys = keyof typeof DEFAULT_COMMIT_TYPES;
 
 export type CommitTypesEnum<
   TCommitTypes extends DefaultCommitTypeKeys = DefaultCommitTypeKeys

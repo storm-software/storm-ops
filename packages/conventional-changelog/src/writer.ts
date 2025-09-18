@@ -13,7 +13,7 @@ import {
   WriteConfig
 } from "./types";
 import {
-  CHANGELOG_COMMIT_TITLE_ORDER,
+  CHANGELOG_COMMIT_SECTION_ORDER,
   HASH_SHORT_LENGTH,
   HEADER_MAX_LENGTH
 } from "./utilities/constants";
@@ -191,8 +191,8 @@ function getWriterOpts(options: ResolvedPresetOptions): Partial<WriteConfig> {
     // the groupings of commit messages, e.g., Features vs., Bug Fixes, are
     // sorted based on their probable importance:
     commitGroupsSort: (a: CommitGroup, b: CommitGroup) => {
-      const gRankA: number = CHANGELOG_COMMIT_TITLE_ORDER.indexOf(a.title);
-      const gRankB: number = CHANGELOG_COMMIT_TITLE_ORDER.indexOf(b.title);
+      const gRankA: number = CHANGELOG_COMMIT_SECTION_ORDER.indexOf(a.title);
+      const gRankB: number = CHANGELOG_COMMIT_SECTION_ORDER.indexOf(b.title);
 
       return gRankA - gRankB;
     },

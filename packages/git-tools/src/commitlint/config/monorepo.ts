@@ -1,8 +1,7 @@
-import { DEFAULT_MONOREPO_COMMIT_RULES } from "../../types";
+import { COMMIT_CONFIGS } from "conventional-changelog-storm-software/configs";
 
 const config = {
-  rules: DEFAULT_MONOREPO_COMMIT_RULES,
-  helpUrl: "https://developer.stormsoftware.com/commitlint/monorepo"
+  ...COMMIT_CONFIGS.monorepo.commitlint
 };
 
 export type MonorepoCommitlintConfig = typeof config;

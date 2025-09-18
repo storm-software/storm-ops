@@ -6,6 +6,7 @@ import {
   CommitTypeProps,
   CommitTypesEnum
 } from "conventional-changelog-storm-software/types/commit-types";
+import { getScopeEnum } from "conventional-changelog-storm-software/utilities/nx-scopes";
 import { execSync } from "node:child_process";
 import { existsSync } from "node:fs";
 import { readFile } from "node:fs/promises";
@@ -14,15 +15,13 @@ import {
   readCachedProjectGraph,
   readProjectsConfigurationFromProjectGraph
 } from "nx/src/project-graph/project-graph";
-import { getScopeEnum } from "../commitlint/scope";
 import type {
   CommitQuestionProps,
   CommitScopeProps,
-  MinimalCommitState,
-  MonorepoCommitQuestionEnum,
-  MonorepoCommitState
+  CommitState
 } from "../types";
-import { resolveCommitConfig } from "./helpers";
+import minimalConfig from "./config/minimal";
+import monorepoConfig from "./config/monorepo";
 
 export function getGitDir() {
   const devNull = process.platform === "win32" ? " nul" : "/dev/null";
@@ -50,16 +49,11 @@ export function getGitRootDir() {
  * @returns The commit state
  */
 export async function createState<
-  TWorkspaceConfig extends StormWorkspaceConfig = StormWorkspaceConfig,
-  TCommitState extends TWorkspaceConfig["variant"] extends "minimal"
-    ? MinimalCommitState
-    : MonorepoCommitState = TWorkspaceConfig["variant"] extends "minimal"
-    ? MinimalCommitState
-    : MonorepoCommitState
+  TWorkspaceConfig extends StormWorkspaceConfig = StormWorkspaceConfig
 >(
   workspaceConfig: TWorkspaceConfig,
   configPath?: string
-): Promise<TCommitState> {
+): Promise<CommitState> {
   let root: string;
 
   try {
@@ -72,63 +66,52 @@ export async function createState<
 
   const state = {
     variant: workspaceConfig.variant,
-    config: await resolveCommitConfig(workspaceConfig, configPath),
+    config:
+      workspaceConfig.variant === "minimal" ? minimalConfig : monorepoConfig,
     root,
     answers: {}
   };
 
-  if (
-    state.config.prompt.questions.type &&
-    state.config.prompt.questions.type.enum
-  ) {
-    (state.config.prompt.questions.type as CommitQuestionProps).enum =
-      Object.keys(state.config.prompt.questions.type.enum).reduce(
-        (ret, key) => {
-          if (state.config.prompt.questions.type.enum) {
-            ret[key] = {
-              ...state.config.prompt.questions.type.enum[key],
-              title: chalkTemplate`${
-                state.config.prompt.questions.type.enum[key]?.emoji
-                  ? `${state.config.prompt.questions.type.enum[key]?.emoji} `
-                  : ""
-              }{bold ${key}} ${
-                state.config.prompt.questions.type.enum[key]?.title &&
-                state.config.prompt.questions.type.enum[key]?.title !== key
-                  ? `- ${state.config.prompt.questions.type.enum[key]?.title}`
-                  : ""
-              }${
-                (
-                  state.config.prompt.questions.type.enum[
-                    key
-                  ] as CommitTypeProps
-                )?.semverBump
-                  ? ` (version bump: ${
-                      (
-                        state.config.prompt.questions.type.enum[
-                          key
-                        ] as CommitTypeProps
-                      )?.semverBump
-                    })`
-                  : ""
-              }`,
-              hidden: false
-            };
-          }
+  if (state.config.questions.type && state.config.questions.type.enum) {
+    (state.config.questions.type as CommitQuestionProps).enum = Object.keys(
+      state.config.questions.type.enum
+    ).reduce((ret, key) => {
+      if (state.config.questions.type.enum) {
+        ret[key] = {
+          ...state.config.questions.type.enum[key],
+          title: chalkTemplate`${
+            state.config.questions.type.enum[key]?.emoji
+              ? `${state.config.questions.type.enum[key]?.emoji} `
+              : ""
+          }{bold ${key}} ${
+            state.config.questions.type.enum[key]?.title &&
+            state.config.questions.type.enum[key]?.title !== key
+              ? `- ${state.config.questions.type.enum[key]?.title}`
+              : ""
+          }${
+            (state.config.questions.type.enum[key] as CommitTypeProps)
+              ?.semverBump
+              ? ` (version bump: ${
+                  (state.config.questions.type.enum[key] as CommitTypeProps)
+                    ?.semverBump
+                })`
+              : ""
+          }`,
+          hidden: false
+        };
+      }
 
-          return ret;
-        },
-        {} as CommitTypesEnum
-      );
+      return ret;
+    }, {} as CommitTypesEnum);
   }
 
   if (
     workspaceConfig.variant === "monorepo" &&
-    (!(state.config.prompt.questions as MonorepoCommitQuestionEnum)?.scope ||
-      !(state.config.prompt.questions as MonorepoCommitQuestionEnum)?.scope
+    (!(state.config.questions as typeof monorepoConfig.questions)?.scope ||
+      !(state.config.questions as typeof monorepoConfig.questions)?.scope
         .enum ||
       Object.keys(
-        (state.config.prompt.questions as MonorepoCommitQuestionEnum)?.scope
-          .enum
+        (state.config.questions as typeof monorepoConfig.questions)?.scope.enum
       ).length === 0)
   ) {
     const scopes = await getScopeEnum({
@@ -136,9 +119,9 @@ export async function createState<
     });
     for (const scope of scopes) {
       if (scope === "monorepo") {
-        (
-          state.config.prompt.questions as MonorepoCommitQuestionEnum
-        ).scope.enum[scope] = {
+        (state.config.questions as typeof monorepoConfig.questions).scope.enum[
+          scope
+        ] = {
           title: chalkTemplate`{bold monorepo} - workspace root`,
           description: "The base workspace package (workspace root)",
           hidden: false,
@@ -180,7 +163,7 @@ export async function createState<
           }
 
           (
-            state.config.prompt.questions as MonorepoCommitQuestionEnum
+            state.config.questions as typeof monorepoConfig.questions
           ).scope.enum[scope] = {
             title: chalkTemplate`{bold ${project.name}} - ${project.root}`,
             description,
@@ -192,14 +175,14 @@ export async function createState<
     }
   }
 
-  state.answers = Object.keys(state.config.prompt.questions).reduce(
+  state.answers = Object.keys(state.config.questions).reduce(
     (ret, key) => {
       ret[key] = "";
 
       return ret;
     },
-    {} as TCommitState["answers"]
+    {} as CommitState["answers"]
   );
 
-  return state as TCommitState;
+  return state as CommitState;
 }

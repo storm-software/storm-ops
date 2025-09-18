@@ -6,15 +6,12 @@ import {
   writeWarning
 } from "@storm-software/config-tools";
 import { StormWorkspaceConfig } from "@storm-software/config/types";
-import { COMMIT_TYPES } from "conventional-changelog-storm-software/commit-types";
-import { createParserOpts } from "conventional-changelog-storm-software/parser";
+import createPreset from "conventional-changelog-storm-software";
 import { existsSync } from "fs";
 import { readFile } from "fs/promises";
 import childProcess from "node:child_process";
-import { CommitLintCLIOptions, RuleConfigSeverity } from "../types";
-import { resolveCommitlintConfig } from "./helpers";
+import { CommitLintCLIOptions } from "../types";
 import lint from "./lint";
-import { getNxScopes, getRuleFromScopeEnum } from "./scope";
 
 const COMMIT_EDITMSG_PATH = ".git/COMMIT_EDITMSG";
 
@@ -87,41 +84,12 @@ export async function runCommitLint(
     }
   }
 
-  const commitlintConfig = await resolveCommitlintConfig(
-    workspaceConfig,
-    options.config
-  );
-  let commitlintRegex: RegExp;
+  const preset = await createPreset(workspaceConfig.variant);
 
-  const allowedTypes = commitlintConfig.rules["type-enum"] ?? COMMIT_TYPES;
-  let allowedScopes: string[] = [];
+  const report = await lint(commitMessage, preset);
 
   if (
-    workspaceConfig.variant !== "minimal" &&
-    commitlintConfig.rules["scope-empty"] &&
-    commitlintConfig.rules["scope-empty"][0] !== RuleConfigSeverity.Disabled
-  ) {
-    allowedScopes = await getNxScopes({
-      config: workspaceConfig
-    });
-    commitlintConfig.rules["scope-enum"] = getRuleFromScopeEnum(allowedScopes);
-
-    commitlintRegex = new RegExp(
-      `(${Object.keys(allowedTypes).join("|")})\\((${allowedScopes})\\)!?:\\s([a-z0-9:\\-\\/\\s])+`
-    );
-  } else {
-    commitlintRegex = new RegExp(
-      `(${Object.keys(allowedTypes).join("|")})!?:\\s([a-z0-9:\\-\\/\\s])+`
-    );
-  }
-
-  const report = await lint(commitMessage, {
-    ...commitlintConfig,
-    parserOpts: createParserOpts(workspaceConfig.variant)
-  });
-
-  if (
-    !commitlintRegex.test(commitMessage) ||
+    !preset.commitlint.regex.test(commitMessage) ||
     report.errors.length ||
     report.warnings.length
   ) {
@@ -135,27 +103,39 @@ export async function runCommitLint(
       "-------------------------------------------------------------------\n" +
       commitMessage +
       "\n-------------------------------------------------------------------" +
-      `\n\n Does not follow the ${workspaceConfig.variant} commit message convention specified by the ${
+      `\n\n Does not follow the \`${workspaceConfig.variant}\` commit message convention specified by the ${
         (typeof workspaceConfig.organization === "string"
           ? workspaceConfig.organization
           : workspaceConfig.organization?.name) || "Storm Software"
       } team.`;
-    errorMessage += allowedScopes.length
+    errorMessage += preset.changelogs.props.scope?.length
       ? "\ntype(scope): subject \n BLANK LINE \n body"
       : "\ntype: subject \n BLANK LINE \n body";
     errorMessage += "\n";
-    errorMessage += `\nPossible types: ${allowedTypes}`;
-    if (allowedScopes.length) {
-      errorMessage += `\nPossible scopes: ${allowedScopes} (if unsure use "monorepo")`;
+    errorMessage += `\nPossible types: ${preset.changelogs.props.types.map(
+      type => `${type.section} (${type.type})`
+    )}`;
+    if (preset.changelogs.props.scope?.length) {
+      errorMessage += `\nPossible scopes: ${preset.changelogs.props.scope} (if unsure use "monorepo")`;
     }
     errorMessage +=
       "\n\nEXAMPLE: \n" +
       "feat(my-lib): add an option to generate lazy-loadable modules\n" +
       "fix(monorepo)!: breaking change should have exclamation mark\n";
-    errorMessage += `\n\nCommitLint Errors: ${report.errors.length ? report.errors.map(error => ` - ${error.message}`).join("\n") : "None"}`;
-    errorMessage += `\nCommitLint Warnings: ${report.warnings.length ? report.warnings.map(warning => ` - ${warning.message}`).join("\n") : "None"}`;
+    errorMessage += `\n\nCommitLint Errors: ${
+      report.errors.length
+        ? report.errors.map(error => ` - ${error.message}`).join("\n")
+        : "None"
+    }`;
+    errorMessage += `\nCommitLint Warnings: ${
+      report.warnings.length
+        ? report.warnings.map(warning => ` - ${warning.message}`).join("\n")
+        : "None"
+    }`;
     errorMessage += "\n\nPlease fix the commit message and rerun storm-commit.";
-    errorMessage += `\n\nMore details about the Storm Software commit message specification can be found at: ${commitlintConfig.helpUrl}`;
+    errorMessage += `\n\nMore details about the Storm Software commit message specification can be found at: ${
+      preset.commitlint.helpUrl
+    }`;
 
     throw new Error(errorMessage);
   }

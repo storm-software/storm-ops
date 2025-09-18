@@ -1,7 +1,7 @@
 /**
  * Commit types available for selection in commit messages.
  */
-export const COMMIT_TYPES = {
+export const DEFAULT_COMMIT_TYPES = {
   /* --- Bumps version when selected --- */
 
   "chore": {

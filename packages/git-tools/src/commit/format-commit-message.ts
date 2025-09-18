@@ -1,11 +1,11 @@
 import { StormWorkspaceConfig } from "@storm-software/config/types";
 import wrap from "word-wrap";
-import type { MonorepoCommitState } from "../types";
+import type { CommitState } from "../types";
 
 const MAX_LINE_WIDTH = 72;
 
 export const formatCommitMessage = (
-  state: MonorepoCommitState,
+  state: CommitState,
   workspaceConfig: StormWorkspaceConfig
 ) => {
   const { config, answers } = state;
@@ -41,7 +41,7 @@ export const formatCommitMessage = (
   const type = answers.type;
 
   const format =
-    config.prompt.settings.format ||
+    config.settings.format ||
     (workspaceConfig.variant !== "minimal"
       ? "{type}({scope}): {emoji}{subject}"
       : "{type}: {emoji}{subject}");
@@ -62,10 +62,7 @@ export const formatCommitMessage = (
 
   // @note(emoji) Add space after emoji (breakingChangePrefix/closedIssueEmoji)
   const head = format
-    .replace(
-      /\{emoji\}/g,
-      config.prompt.settings.disableEmoji ? "" : `${emoji} `
-    )
+    .replace(/\{emoji\}/g, config.settings.disableEmoji ? "" : `${emoji} `)
     .replace(/\{scope\}/g, scope)
     .replace(/\{subject\}/g, subject || "")
     .replace(/\{type\}/g, type || "");
@@ -77,19 +74,19 @@ export const formatCommitMessage = (
   }
 
   if (breaking) {
-    const breakingEmoji = config.prompt.settings.disableEmoji
+    const breakingEmoji = config.settings.disableEmoji
       ? ""
-      : config.prompt.settings.breakingChangePrefix;
+      : config.settings.breakingChangePrefix;
 
     msg += `\n\nBREAKING CHANGE: ${breakingEmoji}${breaking}`;
   }
 
   if (issues) {
-    const closedIssueEmoji = config.prompt.settings.disableEmoji
+    const closedIssueEmoji = config.settings.disableEmoji
       ? ""
-      : config.prompt.settings.closedIssuePrefix;
+      : config.settings.closedIssuePrefix;
 
-    msg += `\n\n${closedIssueEmoji}${config.prompt.settings.closedIssueMessage}${issues}`;
+    msg += `\n\n${closedIssueEmoji}${config.settings.closedIssueMessage}${issues}`;
   }
 
   return msg;

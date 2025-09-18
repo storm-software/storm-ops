@@ -3,7 +3,12 @@ import { defineConfig } from "tsup";
 export default defineConfig([
   {
     name: "conventional-changelog",
-    entryPoints: ["src/*.ts", "src/types/*.ts", "src/utilities/*.ts"],
+    entryPoints: [
+      "src/*.ts",
+      "src/types/*.ts",
+      "src/utilities/*.ts",
+      "src/configs/*.ts"
+    ],
     format: ["cjs", "esm"],
     outDir: "dist",
     platform: "node",
@@ -16,6 +21,7 @@ export default defineConfig([
     tsconfig: "./tsconfig.json",
     shims: true,
     bundle: true,
-    skipNodeModulesBundle: true
+    skipNodeModulesBundle: true,
+    noExternal: ["conventional-changelog-conventionalcommits"]
   }
 ]);

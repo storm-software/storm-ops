@@ -67,16 +67,16 @@ async function askQuestions<TCommitState extends CommitState = CommitState>(
   state: TCommitState
 ): Promise<TCommitState["answers"]> {
   let index = 0;
-  for (const key of Object.keys(state.config.prompt.questions)) {
+  for (const key of Object.keys(state.config.questions)) {
     if (
-      state.config.prompt.questions[key] &&
-      !state.config.prompt.questions[key].hidden &&
-      (!state.config.prompt.questions[key].when ||
-        state.config.prompt.questions[key].when(state.answers))
+      state.config.questions[key] &&
+      !state.config.questions[key].hidden &&
+      (!state.config.questions[key].when ||
+        state.config.questions[key].when(state.answers))
     ) {
       state.answers[key] = await askQuestion(
         index,
-        state.config.prompt.questions[key]
+        state.config.questions[key]
       );
       index++;
     }

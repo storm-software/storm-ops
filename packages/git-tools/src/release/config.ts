@@ -1,9 +1,9 @@
-import { COMMIT_TYPES } from "conventional-changelog-storm-software/commit-types";
-import { DEFAULT_MONOREPO_COMMIT_QUESTIONS } from "../types";
+import { DEFAULT_COMMIT_TYPES } from "conventional-changelog-storm-software/commit-types";
+import { DEFAULT_MONOREPO_COMMIT_QUESTIONS } from "../commit/config/monorepo";
 
 export const DEFAULT_CONVENTIONAL_COMMITS_CONFIG = {
   questions: DEFAULT_MONOREPO_COMMIT_QUESTIONS,
-  types: COMMIT_TYPES
+  types: DEFAULT_COMMIT_TYPES
 };
 
 export const DEFAULT_RELEASE_GROUP_CONFIG = {
