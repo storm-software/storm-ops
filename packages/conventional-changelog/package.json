@@ -184,6 +184,34 @@
         "default": "./dist/utilities/*.js"
       }
     },
+    "./configs": {
+      "import": {
+        "types": "./dist/configs/index.d.ts",
+        "default": "./dist/configs/index.js"
+      },
+      "require": {
+        "types": "./dist/configs/index.d.cts",
+        "default": "./dist/configs/index.cjs"
+      },
+      "default": {
+        "types": "./dist/configs/index.d.ts",
+        "default": "./dist/configs/index.js"
+      }
+    },
+    "./configs/*": {
+      "import": {
+        "types": "./dist/configs/*.d.ts",
+        "default": "./dist/configs/*.js"
+      },
+      "require": {
+        "types": "./dist/configs/*.d.cts",
+        "default": "./dist/configs/*.cjs"
+      },
+      "default": {
+        "types": "./dist/configs/*.d.ts",
+        "default": "./dist/configs/*.js"
+      }
+    },
     "./templates/*": "./dist/templates/*"
   },
   "types": "./dist/index.d.ts",
@@ -200,9 +228,10 @@
     "storm-software"
   ],
   "dependencies": {
-    "@storm-software/config": "1.131.4",
-    "@storm-software/config-tools": "1.185.4",
+    "@storm-software/config": "workspace:*",
+    "@storm-software/config-tools": "workspace:*",
     "compare-func": "^2.0.0",
+    "conventional-changelog-conventionalcommits": "^9.1.0",
     "conventional-changelog-writer": "^8.2.0",
     "defu": "catalog:"
   },

@@ -3503,12 +3503,12 @@ Backward pagination arguments
    */
   'node/no-hide-core-modules'?: Linter.RuleEntry<NodeNoHideCoreModules>
   /**
-   * disallow `import` declarations which import non-existence modules
+   * disallow `import` declarations which import missing modules
    * @see https://github.com/eslint-community/eslint-plugin-n/blob/HEAD/docs/rules/no-missing-import.md
    */
   'node/no-missing-import'?: Linter.RuleEntry<NodeNoMissingImport>
   /**
-   * disallow `require()` expressions which import non-existence modules
+   * disallow `require()` expressions which import missing modules
    * @see https://github.com/eslint-community/eslint-plugin-n/blob/HEAD/docs/rules/no-missing-require.md
    */
   'node/no-missing-require'?: Linter.RuleEntry<NodeNoMissingRequire>
