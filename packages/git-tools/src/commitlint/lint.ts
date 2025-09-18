@@ -1,6 +1,9 @@
 import defaultRules from "@commitlint/rules";
+import { getWorkspaceConfig } from "@storm-software/config-tools/get-config";
+import { createParserOpts } from "conventional-changelog-storm-software/parser";
 import { ParserConfig } from "conventional-changelog-storm-software/types/config";
 import { CommitParser } from "conventional-commits-parser";
+import defu from "defu";
 import util from "util";
 import {
   CommitLintOutcome,
@@ -36,7 +39,12 @@ export default async function lint(
     parserOpts: ParserConfig;
   }
 ): Promise<CommitLintOutcome> {
-  const parser = new CommitParser(commitlintConfig.parserOpts);
+  const workspaceConfig = await getWorkspaceConfig();
+  const parserOpts = await createParserOpts(workspaceConfig.variant);
+
+  const parser = new CommitParser(
+    defu(commitlintConfig.parserOpts, parserOpts)
+  );
   const parsed = parser.parse(message);
 
   if (
