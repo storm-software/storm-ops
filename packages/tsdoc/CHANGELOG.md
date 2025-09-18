@@ -2,6 +2,15 @@
 
 # Changelog for Storm Ops - Tsdoc
 
+## [0.11.1](https://github.com/storm-software/storm-ops/releases/tag/tsdoc%400.11.1) (2025-09-18)
+
+### Miscellaneous
+
+- **cspell:** Added additional tools to CSpell dictionary
+  ([1d91dc573](https://github.com/storm-software/storm-ops/commit/1d91dc573))
+- **monorepo:** Update workspace package links
+  ([dfd8585e8](https://github.com/storm-software/storm-ops/commit/dfd8585e8))
+
 ## [0.11.0](https://github.com/storm-software/storm-ops/releases/tag/tsdoc%400.11.0) (2025-09-16)
 
 ### Features

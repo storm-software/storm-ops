@@ -2,6 +2,23 @@
 
 # Changelog for Storm Ops - Workspace Tools
 
+## [1.289.1](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.289.1) (2025-09-18)
+
+### Miscellaneous
+
+- **cspell:** Added additional tools to CSpell dictionary
+  ([1d91dc573](https://github.com/storm-software/storm-ops/commit/1d91dc573))
+- **monorepo:** Update workspace package links
+  ([dfd8585e8](https://github.com/storm-software/storm-ops/commit/dfd8585e8))
+
+### Updated Dependencies
+
+- Updated pnpm-tools to 0.3.1
+- Updated npm-tools to 0.3.1
+- Updated prettier to 0.55.1
+- Updated esbuild to 0.51.1
+- Updated unbuild to 0.55.1
+
 ## [1.289.0](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.289.0) (2025-09-16)
 
 ### Features

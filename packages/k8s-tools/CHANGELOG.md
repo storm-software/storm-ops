@@ -2,6 +2,21 @@
 
 # Changelog for Storm Ops - K8s Tools
 
+## [0.40.1](https://github.com/storm-software/storm-ops/releases/tag/k8s-tools%400.40.1) (2025-09-18)
+
+### Miscellaneous
+
+- **cspell:** Added additional tools to CSpell dictionary
+  ([1d91dc573](https://github.com/storm-software/storm-ops/commit/1d91dc573))
+- **monorepo:** Update workspace package links
+  ([dfd8585e8](https://github.com/storm-software/storm-ops/commit/dfd8585e8))
+
+### Updated Dependencies
+
+- Updated workspace-tools to 1.289.1
+- Updated config-tools to 1.185.1
+- Updated config to 1.131.1
+
 ## [0.40.0](https://github.com/storm-software/storm-ops/releases/tag/k8s-tools%400.40.0) (2025-09-16)
 
 ### Features

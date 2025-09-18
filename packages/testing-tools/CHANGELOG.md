@@ -2,6 +2,15 @@
 
 # Changelog for Storm Ops - Testing Tools
 
+## [1.117.1](https://github.com/storm-software/storm-ops/releases/tag/testing-tools%401.117.1) (2025-09-18)
+
+### Miscellaneous
+
+- **cspell:** Added additional tools to CSpell dictionary
+  ([1d91dc573](https://github.com/storm-software/storm-ops/commit/1d91dc573))
+- **monorepo:** Update workspace package links
+  ([dfd8585e8](https://github.com/storm-software/storm-ops/commit/dfd8585e8))
+
 ## [1.117.0](https://github.com/storm-software/storm-ops/releases/tag/testing-tools%401.117.0) (2025-09-16)
 
 ### Features
