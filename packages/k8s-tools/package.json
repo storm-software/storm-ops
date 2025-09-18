@@ -1,6 +1,6 @@
 {
   "name": "@storm-software/k8s-tools",
-  "version": "0.40.1",
+  "version": "0.40.2",
   "description": "Tools for managing Kubernetes (k8s) infrastructure within a Nx workspace.",
   "repository": {
     "type": "github",
@@ -162,9 +162,9 @@
     }
   },
   "dependencies": {
-    "@storm-software/config": "workspace:*",
-    "@storm-software/config-tools": "workspace:*",
-    "@storm-software/workspace-tools": "workspace:*",
+    "@storm-software/config": "1.131.2",
+    "@storm-software/config-tools": "1.185.2",
+    "@storm-software/workspace-tools": "1.289.2",
     "yaml": "catalog:"
   },
   "devDependencies": {

@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Config
 
+## [1.131.2](https://github.com/storm-software/storm-ops/releases/tag/config%401.131.2) (2025-09-18)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace package links
+  ([89e2511ad](https://github.com/storm-software/storm-ops/commit/89e2511ad))
+
 ## [1.131.1](https://github.com/storm-software/storm-ops/releases/tag/config%401.131.1) (2025-09-18)
 
 ### Miscellaneous

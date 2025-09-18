@@ -2,6 +2,25 @@
 
 # Changelog for Storm Ops - Git Tools
 
+## [2.121.2](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.121.2) (2025-09-18)
+
+### Bug Fixes
+
+- **git-tools:** Resolved `minimal` repository issues with incorrect commitlint
+  rules
+  ([a26efd983](https://github.com/storm-software/storm-ops/commit/a26efd983))
+
+### Miscellaneous
+
+- **monorepo:** Update workspace package links
+  ([89e2511ad](https://github.com/storm-software/storm-ops/commit/89e2511ad))
+
+### Updated Dependencies
+
+- Updated conventional-changelog to 0.1.2
+- Updated config-tools to 1.185.2
+- Updated config to 1.131.2
+
 ## [2.121.1](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.121.1) (2025-09-18)
 
 ### Miscellaneous

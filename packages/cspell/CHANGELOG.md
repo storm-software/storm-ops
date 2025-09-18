@@ -2,6 +2,15 @@
 
 # Changelog for Storm Ops - CSpell
 
+## [0.43.2](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.43.2) (2025-09-18)
+
+### Miscellaneous
+
+- **cspell:** Added `chacha` encryption name to dictionary
+  ([8d91fd99d](https://github.com/storm-software/storm-ops/commit/8d91fd99d))
+- **monorepo:** Update workspace package links
+  ([89e2511ad](https://github.com/storm-software/storm-ops/commit/89e2511ad))
+
 ## [0.43.1](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.43.1) (2025-09-18)
 
 ### Miscellaneous
