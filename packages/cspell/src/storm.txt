@@ -219,6 +219,7 @@ FEFF
 
 # Tools
 cfont
+chacha
 akka
 alexignore
 alexjs
