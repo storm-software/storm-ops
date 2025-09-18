@@ -2,7 +2,7 @@ import { normalizeWindowsPath } from "./correct-paths";
 
 export const removeExtension = (filePath?: string): string => {
   const result =
-    !filePath || (filePath.match(/./g) || []).length <= 1
+    !filePath || (filePath?.match(/./g) || []).length <= 1
       ? "."
       : filePath.lastIndexOf(".")
         ? filePath.substring(0, filePath.lastIndexOf("."))

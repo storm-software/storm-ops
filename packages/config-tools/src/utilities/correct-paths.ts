@@ -42,7 +42,7 @@ export const correctPaths = function (path?: string) {
   // Normalize windows argument
   path = normalizeWindowsPath(path);
 
-  const isUNCPath = path.match(_UNC_REGEX);
+  const isUNCPath = path?.match(_UNC_REGEX);
   const isPathAbsolute = isAbsolute(path);
   const trailingSeparator = path[path.length - 1] === "/";
 
@@ -66,6 +66,7 @@ export const correctPaths = function (path?: string) {
     if (!isPathAbsolute) {
       return `//./${path}`;
     }
+
     return `//${path}`;
   }
 

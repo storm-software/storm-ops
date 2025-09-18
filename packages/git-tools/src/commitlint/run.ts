@@ -97,6 +97,7 @@ export async function runCommitLint(
   let allowedScopes: string[] = [];
 
   if (
+    workspaceConfig.variant !== "minimal" &&
     commitlintConfig.rules["scope-empty"] &&
     commitlintConfig.rules["scope-empty"][0] !== RuleConfigSeverity.Disabled
   ) {

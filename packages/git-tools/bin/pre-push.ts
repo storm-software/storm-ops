@@ -9,7 +9,7 @@ import {
   writeError,
   writeFatal,
   writeInfo,
-  writeSuccess,
+  writeSuccess
 } from "@storm-software/config-tools";
 import fs from "node:fs";
 import { readFile } from "node:fs/promises";
@@ -30,16 +30,16 @@ void (async () => {
 
     if (
       fs.existsSync(
-        path.join(config.workspaceRoot ?? "./", "package-lock.json"),
+        path.join(config.workspaceRoot ?? "./", "package-lock.json")
       )
     ) {
       errors.push(
-        'Invalid occurrence of "package-lock.json" file. Please remove it and use only "pnpm-lock.yaml"',
+        'Invalid occurrence of "package-lock.json" file. Please remove it and use only "pnpm-lock.yaml"'
       );
     }
     if (fs.existsSync(path.join(config.workspaceRoot ?? "./", "yarn.lock"))) {
       errors.push(
-        'Invalid occurrence of "yarn.lock" file. Please remove it and use only "pnpm-lock.yaml"',
+        'Invalid occurrence of "yarn.lock" file. Please remove it and use only "pnpm-lock.yaml"'
       );
     }
 
@@ -47,17 +47,17 @@ void (async () => {
       const content = await readFile(
         path.join(config.workspaceRoot ?? "./", "pnpm-lock.yaml"),
         {
-          encoding: "utf8",
-        },
+          encoding: "utf8"
+        }
       );
-      if (content.match(/localhost:487/)) {
+      if (content?.match(/localhost:487/)) {
         errors.push(
-          'The "pnpm-lock.yaml" has reference to local repository ("localhost:4873"). Please use ensure you disable local registry before running "pnpm i"',
+          'The "pnpm-lock.yaml" has reference to local repository ("localhost:4873"). Please use ensure you disable local registry before running "pnpm i"'
         );
       }
-      if (content.match(/resolution: \{tarball/)) {
+      if (content?.match(/resolution: \{tarball/)) {
         errors.push(
-          'The "pnpm-lock.yaml" has reference to tarball package. Please use npm registry only',
+          'The "pnpm-lock.yaml" has reference to tarball package. Please use npm registry only'
         );
       }
     } catch {
@@ -83,7 +83,7 @@ void (async () => {
         `This repository is configured for Git LFS but 'git-lfs' was not found on your path. If you no longer wish to use Git LFS, remove this hook by deleting .git/hooks/pre-push.\nError: ${
           (error as Error)?.message
         }`,
-        config,
+        config
       );
       exitWithError(config);
     }
@@ -94,7 +94,7 @@ void (async () => {
   } catch (error) {
     writeFatal(
       `A fatal error occurred while running the program: ${error.message}`,
-      config,
+      config
     );
     exitWithError(config);
     process.exit(1);

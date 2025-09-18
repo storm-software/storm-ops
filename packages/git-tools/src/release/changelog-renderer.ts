@@ -209,8 +209,8 @@ export default class StormChangelogRenderer extends DefaultChangelogRenderer {
           }
 
           for (const email of meta.email) {
-            if (email.endsWith("@users.noreply.github.com")) {
-              const match = email.match(
+            if (email?.endsWith("@users.noreply.github.com")) {
+              const match = email?.match(
                 /^(\d+\+)?([^@]+)@users\.noreply\.github\.com$/
               );
               if (match && match[2]) {

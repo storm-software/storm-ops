@@ -160,9 +160,14 @@ Note: Please run "pnpm push" to upload these changes to the remote ${
     );
   } catch (error) {
     writeFatal(
-      `A fatal error occurred while running commit action: \n\n${error.message}`,
+      `A fatal error occurred while running commit action: \n\n${
+        error.message
+      }${
+        error.stack ? `\n\nStacktrace: ${error.stack}` : ""
+      }\n\nPlease fix any errors and try committing again.`,
       _config
     );
+
     throw new Error(error.message, { cause: error });
   }
 }

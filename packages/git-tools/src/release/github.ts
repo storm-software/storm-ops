@@ -72,7 +72,7 @@ export function getGitHubRepoData(
     const escapedHostname = hostname.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
     const regexString = `${escapedHostname}[/:]([\\w.-]+/[\\w.-]+)(\\.git)?`;
     const regex = new RegExp(regexString);
-    const match = remoteUrl.match(regex);
+    const match = remoteUrl?.match(regex);
 
     if (match && match[1]) {
       return {

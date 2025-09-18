@@ -97,7 +97,9 @@ export function parseChangelogMarkdown(contents: string) {
     "gm"
   );
 
-  const headings = [...contents.matchAll(CHANGELOG_RELEASE_HEAD_RE)];
+  const headings = contents
+    ? [...contents.matchAll(CHANGELOG_RELEASE_HEAD_RE)]
+    : [];
   const releases: { version?: string; body: string }[] = [];
 
   for (let i = 0; i < headings.length; i++) {
