@@ -2,6 +2,27 @@
 
 # Changelog for Storm Ops - Workspace Tools
 
+## [1.290.0](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.290.0) (2025-09-18)
+
+### Features
+
+- **conventional-changelog:** Added `minimal` and `monorepo` configs to the
+  package
+  ([4b4809048](https://github.com/storm-software/storm-ops/commit/4b4809048))
+
+### Miscellaneous
+
+- **monorepo:** Update workspace package links
+  ([18136e9ad](https://github.com/storm-software/storm-ops/commit/18136e9ad))
+
+### Updated Dependencies
+
+- Updated pnpm-tools to 0.4.0
+- Updated npm-tools to 0.4.0
+- Updated prettier to 0.56.0
+- Updated esbuild to 0.52.0
+- Updated unbuild to 0.56.0
+
 ## [1.289.4](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.289.4) (2025-09-18)
 
 ### Miscellaneous

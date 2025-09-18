@@ -2,6 +2,23 @@
 
 # Changelog for Storm Ops - Config Tools
 
+## [1.186.0](https://github.com/storm-software/storm-ops/releases/tag/config-tools%401.186.0) (2025-09-18)
+
+### Features
+
+- **conventional-changelog:** Added `minimal` and `monorepo` configs to the
+  package
+  ([4b4809048](https://github.com/storm-software/storm-ops/commit/4b4809048))
+
+### Miscellaneous
+
+- **monorepo:** Update workspace package links
+  ([18136e9ad](https://github.com/storm-software/storm-ops/commit/18136e9ad))
+
+### Updated Dependencies
+
+- Updated config to 1.132.0
+
 ## [1.185.4](https://github.com/storm-software/storm-ops/releases/tag/config-tools%401.185.4) (2025-09-18)
 
 ### Miscellaneous
