@@ -227,9 +227,17 @@
     "storm-ops",
     "storm-software"
   ],
+  "peerDependencies": {
+    "conventional-changelog-conventionalcommits": "*"
+  },
+  "peerDependenciesMeta": {
+    "conventional-changelog-conventionalcommits": {
+      "optional": false
+    }
+  },
   "dependencies": {
-    "@storm-software/config": "1.132.0",
-    "@storm-software/config-tools": "1.186.0",
+    "@storm-software/config": "workspace:*",
+    "@storm-software/config-tools": "workspace:*",
     "compare-func": "^2.0.0",
     "conventional-changelog-conventionalcommits": "^9.1.0",
     "conventional-changelog-writer": "^8.2.0",
