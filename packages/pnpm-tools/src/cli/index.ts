@@ -30,7 +30,7 @@ export function createProgram(config: StormWorkspaceConfig) {
     .description("Update pnpm catalog dependency package version.")
     .addArgument(
       new Argument(
-        "<package-name>",
+        "<name>",
         "The package name/pattern to update the version for (e.g., @storm-software/config or @storm-software/ for all Storm packages)."
       )
     )
@@ -45,15 +45,15 @@ export function createProgram(config: StormWorkspaceConfig) {
 }
 
 export async function updateAction({
-  packageName,
+  name,
   tag
 }: {
-  packageName: string;
+  name: string;
   tag: string;
 }) {
   try {
     writeInfo(
-      `⚡ Preparing to update the package version for ${packageName}. Please provide the requested details below...`,
+      `⚡ Preparing to update the package version for ${name}. Please provide the requested details below...`,
       _config
     );
 
@@ -65,13 +65,11 @@ export async function updateAction({
     }
 
     const matchedPackages = Object.keys(catalog).filter(pkg =>
-      packageName.endsWith("/")
-        ? pkg.startsWith(packageName)
-        : pkg === packageName
+      name.endsWith("/") ? pkg.startsWith(name) : pkg === name
     );
     if (matchedPackages.length === 0) {
       throw new Error(
-        `No packages found in the catalog matching the name/pattern "${packageName}".`
+        `No packages found in the catalog matching the name/pattern "${name}".`
       );
     }
 
