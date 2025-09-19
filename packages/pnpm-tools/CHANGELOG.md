@@ -2,6 +2,24 @@
 
 # Changelog for Storm Ops - Pnpm Tools
 
+## [0.4.1](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.4.1) (2025-09-19)
+
+### Bug Fixes
+
+- **pnpm-tools:** Resolve issue parsing the `name` command-line argument
+  ([532d37c75](https://github.com/storm-software/storm-ops/commit/532d37c75))
+
+### Miscellaneous
+
+- **monorepo:** Update workspace package links
+  ([8cd386592](https://github.com/storm-software/storm-ops/commit/8cd386592))
+
+### Updated Dependencies
+
+- Updated config-tools to 1.186.1
+- Updated npm-tools to 0.4.1
+- Updated config to 1.132.1
+
 ## [0.4.0](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.4.0) (2025-09-18)
 
 ### Features

@@ -2,6 +2,24 @@
 
 # Changelog for Storm Ops - Conventional Changelog
 
+## [0.2.1](https://github.com/storm-software/storm-ops/releases/tag/conventional-changelog%400.2.1) (2025-09-19)
+
+### Bug Fixes
+
+- **conventional-changelog:** Resolve issue with missing
+  `conventional-changelog-conventionalcommits` peer dependency
+  ([c9671d029](https://github.com/storm-software/storm-ops/commit/c9671d029))
+
+### Miscellaneous
+
+- **monorepo:** Update workspace package links
+  ([8cd386592](https://github.com/storm-software/storm-ops/commit/8cd386592))
+
+### Updated Dependencies
+
+- Updated config-tools to 1.186.1
+- Updated config to 1.132.1
+
 ## [0.2.0](https://github.com/storm-software/storm-ops/releases/tag/conventional-changelog%400.2.0) (2025-09-18)
 
 ### Features
