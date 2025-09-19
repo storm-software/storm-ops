@@ -11,9 +11,15 @@ import { getCatalog, upgradeCatalogPackage } from "../helpers/catalog";
 
 let _config: Partial<StormWorkspaceConfig> = {};
 
+/**
+ * Creates the `storm-pnpm` command-line program.
+ *
+ * @param config The Storm workspace configuration.
+ * @returns The created command-line program.
+ */
 export function createProgram(config: StormWorkspaceConfig) {
   _config = config;
-  writeInfo("⚡  Running Storm pnpm command-line application", config);
+  writeInfo("⚡  Running the `storm-pnpm` command-line application", config);
 
   const root = findWorkspaceRootSafe(process.cwd());
   process.env.STORM_WORKSPACE_ROOT ??= root;
@@ -30,7 +36,7 @@ export function createProgram(config: StormWorkspaceConfig) {
     .description("Update pnpm catalog dependency package version.")
     .addArgument(
       new Argument(
-        "<name>",
+        "<package-name>",
         "The package name/pattern to update the version for (e.g., @storm-software/config or @storm-software/ for all Storm packages)."
       )
     )
@@ -44,16 +50,17 @@ export function createProgram(config: StormWorkspaceConfig) {
   return program;
 }
 
-export async function updateAction({
-  name,
-  tag
-}: {
-  name: string;
-  tag: string;
-}) {
+async function updateAction(
+  packageName: string,
+  {
+    tag
+  }: {
+    tag: string;
+  }
+) {
   try {
     writeInfo(
-      `⚡ Preparing to update the package version for ${name}. Please provide the requested details below...`,
+      `⚡ Preparing to update the package version for ${packageName}. Please provide the requested details below...`,
       _config
     );
 
@@ -65,11 +72,13 @@ export async function updateAction({
     }
 
     const matchedPackages = Object.keys(catalog).filter(pkg =>
-      name.endsWith("/") ? pkg.startsWith(name) : pkg === name
+      packageName.endsWith("/")
+        ? pkg.startsWith(packageName)
+        : pkg === packageName
     );
     if (matchedPackages.length === 0) {
       throw new Error(
-        `No packages found in the catalog matching the name/pattern "${name}".`
+        `No packages found in the catalog matching the name/pattern "${packageName}".`
       );
     }
 
