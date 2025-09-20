@@ -2,6 +2,21 @@
 
 # Changelog for Storm Ops - Pnpm Tools
 
+## [0.4.3](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.4.3) (2025-09-20)
+
+### Miscellaneous
+
+- **pnpm-tools:** Added trace logging to the `storm-pnpm` CLI
+  ([b16581456](https://github.com/storm-software/storm-ops/commit/b16581456))
+- **monorepo:** Update workspace package links
+  ([b5a7b29f8](https://github.com/storm-software/storm-ops/commit/b5a7b29f8))
+
+### Updated Dependencies
+
+- Updated config-tools to 1.186.3
+- Updated npm-tools to 0.4.3
+- Updated config to 1.132.2
+
 ## [0.4.2](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.4.2) (2025-09-19)
 
 ### Bug Fixes

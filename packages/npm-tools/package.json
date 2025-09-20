@@ -1,6 +1,6 @@
 {
   "name": "@storm-software/npm-tools",
-  "version": "0.4.2",
+  "version": "0.4.3",
   "type": "module",
   "description": "A set of tools and utilities for managing packages stored in the [npm](https://www.npmjs.com/) registry.",
   "repository": {
@@ -100,8 +100,8 @@
   },
   "types": "./dist/index.d.ts",
   "dependencies": {
-    "@storm-software/config": "workspace:*",
-    "@storm-software/config-tools": "workspace:*"
+    "@storm-software/config": "1.132.2",
+    "@storm-software/config-tools": "1.186.3"
   },
   "devDependencies": {
     "@types/node": "catalog:",
