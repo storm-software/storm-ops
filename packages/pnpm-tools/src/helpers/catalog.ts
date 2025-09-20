@@ -6,6 +6,7 @@ import {
 import { findWorkspaceRoot } from "@storm-software/config-tools/utilities/find-workspace-root";
 import { DEFAULT_NPM_TAG } from "@storm-software/npm-tools/constants";
 import { getVersion } from "@storm-software/npm-tools/helpers/get-version";
+import { writeWarning } from "packages/config-tools/dist";
 import { coerce, gt, valid } from "semver";
 import {
   readPnpmWorkspaceFile,
@@ -108,6 +109,19 @@ export interface UpgradeCatalogPackageOptions {
    * @defaultValue `false`
    */
   throwIfMissingInCatalog?: boolean;
+
+  /**
+   * The version prefix to use when updating the package (e.g., "^", "~", or "1.2.3"). Defaults to "^".
+   *
+   * - Caret (^): The default prefix. It allows updates to the latest minor or patch version while staying within the same major version. Example: “^1.2.3" allows updates to 1.3.0 or 1.2.4, but not 2.0.0.
+   * - Tilde (~): Allows updates to the latest patch version while staying within the same minor version. Example: “~1.2.3" allows updates to 1.2.4 but not 1.3.0.
+   * - Exact (no prefix): Locks the dependency to a specific version. No updates are allowed. Example: 1.2.3 will only use 1.2.3.
+   * - Greater/Less Than (>, <, >=, <=): Specifies a range of acceptable versions. Example: “>=1.2.3 <2.0.0" allows any version from 1.2.3 to 1.9.x.
+   * - Wildcard (*): Allows the most flexibility by accepting any version. Example: “*2.4.6" allows any version.
+   *
+   * @defaultValue `"^"`
+   */
+  prefix?: "^" | "~" | ">" | "<" | ">=" | "<=" | "*";
 }
 
 /**
@@ -124,6 +138,7 @@ export async function upgradeCatalogPackage(
 ) {
   const {
     tag = DEFAULT_NPM_TAG,
+    prefix = "^",
     throwIfMissingInCatalog = false,
     workspaceRoot = findWorkspaceRoot()
   } = options;
@@ -157,13 +172,22 @@ export async function upgradeCatalogPackage(
       // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       gt(coerce(version)!, coerce(catalog[packageName])!))
   ) {
-    catalog[packageName] = version;
+    catalog[packageName] = `${prefix || ""}${version}`;
+
+    writeDebug(
+      `Writing version ${version} to catalog for "${packageName}" package`,
+      workspaceConfig
+    );
+
+    await setCatalog(catalog, workspaceRoot);
+  } else {
+    writeWarning(
+      `The current version "${catalog[packageName]}" for package "${
+        packageName
+      }" is greater than or equal to the version "${
+        version
+      }" fetched from the npm registry with tag "${tag}". No update performed.`,
+      workspaceConfig
+    );
   }
-
-  writeDebug(
-    `Writing version ${version} to catalog for "${packageName}" package`,
-    workspaceConfig
-  );
-
-  await setCatalog(catalog, workspaceRoot);
 }

@@ -7,8 +7,12 @@ import {
   writeInfo,
   writeTrace
 } from "@storm-software/config-tools";
-import { Argument, Command } from "commander";
-import { getCatalog, upgradeCatalogPackage } from "../helpers/catalog";
+import { Argument, Command, Option } from "commander";
+import {
+  getCatalog,
+  upgradeCatalogPackage,
+  UpgradeCatalogPackageOptions
+} from "../helpers/catalog";
 
 let _config: Partial<StormWorkspaceConfig> = {};
 
@@ -32,36 +36,66 @@ export function createProgram(config: StormWorkspaceConfig) {
   const program = new Command("storm-pnpm");
   program.version("1.0.0", "-v --version", "display CLI version");
 
+  const packageNames = new Argument(
+    "<package-names...>",
+    "The package name/pattern to update the version for (e.g., @storm-software/config or @storm-software/ for all Storm packages)."
+  );
+
+  const prefix = new Option(
+    "-p, --prefix <string>",
+    `The version prefix to use when updating the package (e.g., "^", "~", or "1.2.3"). Defaults to "^".
+- Caret (^): The default prefix. It allows updates to the latest minor or patch version while staying within the same major version. Example: “^1.2.3" allows updates to 1.3.0 or 1.2.4, but not 2.0.0.
+- Tilde (~): Allows updates to the latest patch version while staying within the same minor version. Example: “~1.2.3" allows updates to 1.2.4 but not 1.3.0.
+- Exact (no prefix): Locks the dependency to a specific version. No updates are allowed. Example: 1.2.3 will only use 1.2.3.
+- Greater/Less Than (>, <, >=, <=): Specifies a range of acceptable versions. Example: “>=1.2.3 <2.0.0" allows any version from 1.2.3 to 1.9.x.
+- Wildcard (*): Allows the most flexibility by accepting any version. Example: “*2.4.6" allows any version.`
+  )
+    .choices(["^", "~", ">", "<", ">=", "<=", "*"])
+    .default("^");
+
+  const tag = new Option(
+    "-t, --tag <string>",
+    `The npm tag to use when fetching the latest version of the package (e.g., "latest", "next", etc.). Defaults to "latest".`
+  ).default("latest");
+
+  const install = new Option(
+    "-i, --install",
+    "Whether to install the package after updating the version."
+  ).default(false);
+
   program
     .command("update")
     .description("Update pnpm catalog dependency package version.")
-    .addArgument(
-      new Argument(
-        "<package-name>",
-        "The package name/pattern to update the version for (e.g., @storm-software/config or @storm-software/ for all Storm packages)."
-      )
-    )
-    .option(
-      "--tag <tag>",
-      'The npm tag to use when fetching the latest version of the package (e.g., "latest", "next", etc.). Defaults to "latest".',
-      "latest"
-    )
+    .addArgument(packageNames)
+    .addOption(tag)
+    .addOption(install)
+    .addOption(prefix)
     .action(updateAction);
 
   return program;
 }
 
 async function updateAction(
-  packageName: string,
+  packageNames: string | string[],
   {
-    tag
+    tag,
+    install = false,
+    prefix = "^"
   }: {
     tag: string;
+    install: boolean;
+    prefix: string;
   }
 ) {
   try {
+    const packages = (
+      Array.isArray(packageNames)
+        ? packageNames
+        : [packageNames.split(",")].flat()
+    ).map(p => p.trim().replaceAll("*", ""));
+
     writeInfo(
-      `⚡ Preparing to update the package version for ${packageName}.`,
+      `⚡ Preparing to update the package version for ${packages.join(", ")}.`,
       _config
     );
 
@@ -72,44 +106,45 @@ async function updateAction(
       );
     }
 
-    writeTrace(
-      `Found catalog file with the following details: \n\n${JSON.stringify(
-        catalog
-      )}`,
-      _config
-    );
+    for (const pkg of packages) {
+      const matchedPackages = Object.keys(catalog).filter(p =>
+        pkg.endsWith("/") ? p.startsWith(pkg) : p === pkg
+      );
+      if (matchedPackages.length === 0) {
+        throw new Error(
+          `No packages found in the catalog matching the name/pattern "${pkg}".`
+        );
+      }
 
-    const matchedPackages = Object.keys(catalog).filter(pkg =>
-      packageName.endsWith("/")
-        ? pkg.startsWith(packageName)
-        : pkg === packageName
-    );
-    if (matchedPackages.length === 0) {
-      throw new Error(
-        `No packages found in the catalog matching the name/pattern "${packageName}".`
+      writeDebug(
+        `Found ${matchedPackages.length} matching packages in the catalog file: \n\n- ${matchedPackages
+          .map(p => `${p} (${catalog[p] || "unknown"})`)
+          .join("\n- ")}`,
+        _config
+      );
+
+      await Promise.all(
+        matchedPackages.map(p =>
+          upgradeCatalogPackage(p, {
+            tag,
+            throwIfMissingInCatalog: true,
+            prefix: prefix as UpgradeCatalogPackageOptions["prefix"]
+          })
+        )
       );
     }
 
-    writeDebug(
-      `Found ${matchedPackages.length} matching packages in the catalog file: \n\n- ${matchedPackages.map(pkg => `${pkg} (${catalog[pkg] || "unknown"})`).join("\n- ")}`,
-      _config
-    );
+    if (install) {
+      writeTrace(
+        "Running `pnpm install --no-frozen-lockfile` to update local dependency versions",
+        _config
+      );
 
-    await Promise.all(
-      matchedPackages.map(pkg =>
-        upgradeCatalogPackage(pkg, { tag, throwIfMissingInCatalog: true })
-      )
-    );
-
-    writeTrace(
-      "Running `pnpm dedupe` to update local dependency versions",
-      _config
-    );
-
-    const proc = await runAsync(_config, "pnpm dedupe");
-    proc.stdout?.on("data", data => {
-      console.log(data.toString());
-    });
+      const proc = await runAsync(_config, "pnpm install --no-frozen-lockfile");
+      proc.stdout?.on("data", data => {
+        console.log(data.toString());
+      });
+    }
   } catch (error) {
     writeFatal(
       `A fatal error occurred while running Storm pnpm update: \n\n${JSON.stringify(
