@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-import { getConfig } from "@storm-software/config-tools/get-config";
+import { getWorkspaceConfig } from "@storm-software/config-tools/get-config";
 import { writeSuccess } from "@storm-software/config-tools/logger/console";
 import {
   exitWithError,
@@ -10,7 +10,7 @@ import {
 import { createProgram } from "../src/cli";
 
 void (async () => {
-  const config = await getConfig();
+  const config = await getWorkspaceConfig();
   try {
     handleProcess(config);
 

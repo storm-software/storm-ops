@@ -23,7 +23,7 @@ export function createProgram(config: StormWorkspaceConfig) {
   _config = config;
   writeInfo("⚡  Running the `storm-pnpm` command-line application", config);
 
-  const root = findWorkspaceRootSafe(process.cwd());
+  const root = findWorkspaceRootSafe(_config.workspaceRoot || process.cwd());
   process.env.STORM_WORKSPACE_ROOT ??= root;
   process.env.NX_WORKSPACE_ROOT_PATH ??= root;
   if (root) {

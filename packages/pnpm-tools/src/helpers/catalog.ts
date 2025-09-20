@@ -1,3 +1,4 @@
+import { getWorkspaceConfig } from "@storm-software/config-tools/get-config";
 import {
   writeDebug,
   writeTrace
@@ -5,7 +6,6 @@ import {
 import { findWorkspaceRoot } from "@storm-software/config-tools/utilities/find-workspace-root";
 import { DEFAULT_NPM_TAG } from "@storm-software/npm-tools/constants";
 import { getVersion } from "@storm-software/npm-tools/helpers/get-version";
-import { getWorkspaceConfig } from "packages/config-tools/dist/get-config.cjs";
 import { coerce, gt, valid } from "semver";
 import {
   readPnpmWorkspaceFile,
