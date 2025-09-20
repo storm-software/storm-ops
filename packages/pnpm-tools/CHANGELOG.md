@@ -2,6 +2,23 @@
 
 # Changelog for Storm Ops - Pnpm Tools
 
+## [0.4.6](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.4.6) (2025-09-20)
+
+### Bug Fixes
+
+- **pnpm-tools:** Resolve issue with quotes added to catalog version values
+  ([150d4d63c](https://github.com/storm-software/storm-ops/commit/150d4d63c))
+
+### Miscellaneous
+
+- **monorepo:** Update workspace package links
+  ([4c92c3fff](https://github.com/storm-software/storm-ops/commit/4c92c3fff))
+
+### Updated Dependencies
+
+- Updated config-tools to 1.187.1
+- Updated npm-tools to 0.4.6
+
 ## [0.4.5](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.4.5) (2025-09-20)
 
 ### Bug Fixes

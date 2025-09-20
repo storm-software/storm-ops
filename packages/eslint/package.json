@@ -1,6 +1,6 @@
 {
   "name": "@storm-software/eslint",
-  "version": "0.168.5",
+  "version": "0.168.6",
   "type": "module",
   "description": "A package containing the base ESLint configuration used by Storm Software across many projects.",
   "repository": {
@@ -176,7 +176,7 @@
     "@eslint/markdown": "^6.6.0",
     "@nx/eslint-plugin": "catalog:",
     "@storm-software/config": "workspace:*",
-    "@storm-software/config-tools": "workspace:*",
+    "@storm-software/config-tools": "1.187.1",
     "@stylistic/eslint-plugin": "^4.4.1",
     "@typescript-eslint/eslint-plugin": "catalog:",
     "@typescript-eslint/parser": "catalog:",

@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Unbuild
 
+## [0.56.6](https://github.com/storm-software/storm-ops/releases/tag/unbuild%400.56.6) (2025-09-20)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace package links
+  ([4c92c3fff](https://github.com/storm-software/storm-ops/commit/4c92c3fff))
+
+### Updated Dependencies
+
+- Updated config-tools to 1.187.1
+
 ## [0.56.5](https://github.com/storm-software/storm-ops/releases/tag/unbuild%400.56.5) (2025-09-20)
 
 ### Miscellaneous
