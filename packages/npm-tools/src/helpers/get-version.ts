@@ -29,7 +29,7 @@ export async function getVersion(
   tag: string = DEFAULT_NPM_TAG,
   options: GetVersionOptions = {}
 ): Promise<string> {
-  const { registry = getRegistry() } = options;
+  const { registry = await getRegistry() } = options;
 
   return new Promise<string>((resolve, reject) => {
     exec(

@@ -1,6 +1,11 @@
+import {
+  writeDebug,
+  writeTrace
+} from "@storm-software/config-tools/logger/console";
 import { findWorkspaceRoot } from "@storm-software/config-tools/utilities/find-workspace-root";
 import { DEFAULT_NPM_TAG } from "@storm-software/npm-tools/constants";
 import { getVersion } from "@storm-software/npm-tools/helpers/get-version";
+import { getWorkspaceConfig } from "packages/config-tools/dist/get-config.cjs";
 import { coerce, gt, valid } from "semver";
 import {
   readPnpmWorkspaceFile,
@@ -123,6 +128,8 @@ export async function upgradeCatalogPackage(
     workspaceRoot = findWorkspaceRoot()
   } = options;
 
+  const workspaceConfig = await getWorkspaceConfig(true, { workspaceRoot });
+
   const catalog = await getCatalog(workspaceRoot);
   if (!catalog) {
     throw new Error("No catalog found");
@@ -137,6 +144,11 @@ export async function upgradeCatalogPackage(
     );
   }
 
+  writeTrace(
+    `Upgrading catalog entry for package "${packageName}" with tag "${tag}"`,
+    workspaceConfig
+  );
+
   const version = await getVersion(packageName, tag);
   if (
     !valid(coerce(catalog[packageName])) ||
@@ -147,6 +159,11 @@ export async function upgradeCatalogPackage(
   ) {
     catalog[packageName] = version;
   }
+
+  writeDebug(
+    `Writing version ${version} to catalog for "${packageName}" package`,
+    workspaceConfig
+  );
 
   await setCatalog(catalog, workspaceRoot);
 }

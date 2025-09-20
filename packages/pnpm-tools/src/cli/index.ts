@@ -1,6 +1,7 @@
 import type { StormWorkspaceConfig } from "@storm-software/config";
 import {
   findWorkspaceRootSafe,
+  writeDebug,
   writeFatal,
   writeInfo,
   writeSuccess,
@@ -90,8 +91,8 @@ async function updateAction(
       );
     }
 
-    writeTrace(
-      `Found ${matchedPackages.length} matching packages in the catalog file: \n\n- ${matchedPackages.join("\n- ")}`,
+    writeDebug(
+      `Found ${matchedPackages.length} matching packages in the catalog file: \n\n- ${matchedPackages.map(pkg => `${pkg} (${catalog[pkg] || "unknown"})`).join("\n- ")}`,
       _config
     );
 
