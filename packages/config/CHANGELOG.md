@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Config
 
+## [1.133.0](https://github.com/storm-software/storm-ops/releases/tag/config%401.133.0) (2025-09-20)
+
+### Features
+
+- **config-tools:** Determine the `variant` based on workspace files
+  ([dd68381c2](https://github.com/storm-software/storm-ops/commit/dd68381c2))
+
+### Miscellaneous
+
+- **monorepo:** Update workspace package links
+  ([2eed9fa1f](https://github.com/storm-software/storm-ops/commit/2eed9fa1f))
+
 ## [1.132.2](https://github.com/storm-software/storm-ops/releases/tag/config%401.132.2) (2025-09-20)
 
 ### Miscellaneous

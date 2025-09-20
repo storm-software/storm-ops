@@ -2,6 +2,24 @@
 
 # Changelog for Storm Ops - Pnpm Tools
 
+## [0.4.5](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.4.5) (2025-09-20)
+
+### Bug Fixes
+
+- **pnpm-tools:** Resolve issue with invalid import path
+  ([a28aa7fe5](https://github.com/storm-software/storm-ops/commit/a28aa7fe5))
+
+### Miscellaneous
+
+- **monorepo:** Update workspace package links
+  ([2eed9fa1f](https://github.com/storm-software/storm-ops/commit/2eed9fa1f))
+
+### Updated Dependencies
+
+- Updated config-tools to 1.187.0
+- Updated npm-tools to 0.4.5
+- Updated config to 1.133.0
+
 ## [0.4.4](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.4.4) (2025-09-20)
 
 ### Bug Fixes

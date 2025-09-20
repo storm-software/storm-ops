@@ -2,6 +2,19 @@
 
 # Changelog for Storm Ops - Git Tools
 
+## [2.122.5](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.122.5) (2025-09-20)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace package links
+  ([2eed9fa1f](https://github.com/storm-software/storm-ops/commit/2eed9fa1f))
+
+### Updated Dependencies
+
+- Updated conventional-changelog to 0.2.5
+- Updated config-tools to 1.187.0
+- Updated config to 1.133.0
+
 ## [2.122.4](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.122.4) (2025-09-20)
 
 ### Miscellaneous
