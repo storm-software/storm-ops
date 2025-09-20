@@ -29,7 +29,7 @@ export async function getCatalogSafe(
   if (pnpmWorkspaceFile?.catalog) {
     return Object.fromEntries(
       Object.entries(pnpmWorkspaceFile.catalog).map(([key, value]) => {
-        return [key, value.replaceAll(/^"/g, "").replaceAll(/"$/g, "")];
+        return [key, value.replaceAll('"', "").replaceAll("'", "")];
       })
     );
   } else {
@@ -80,7 +80,7 @@ export async function setCatalog(
 
   pnpmWorkspaceFile.catalog = Object.fromEntries(
     Object.entries(catalog).map(([key, value]) => {
-      return [key, `"${value}"`];
+      return [key, value.replaceAll('"', "").replaceAll("'", "")];
     })
   );
 
