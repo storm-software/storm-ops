@@ -3,7 +3,8 @@ import {
   findWorkspaceRootSafe,
   writeFatal,
   writeInfo,
-  writeSuccess
+  writeSuccess,
+  writeTrace
 } from "@storm-software/config-tools";
 import { Argument, Command } from "commander";
 import { exec } from "node:child_process";
@@ -60,7 +61,7 @@ async function updateAction(
 ) {
   try {
     writeInfo(
-      `⚡ Preparing to update the package version for ${packageName}. Please provide the requested details below...`,
+      `⚡ Preparing to update the package version for ${packageName}.`,
       _config
     );
 
@@ -70,6 +71,13 @@ async function updateAction(
         "No catalog found in the pnpm-workspace.yaml file of the current workspace."
       );
     }
+
+    writeTrace(
+      `Found catalog file with the following details: \n\n${JSON.stringify(
+        catalog
+      )}`,
+      _config
+    );
 
     const matchedPackages = Object.keys(catalog).filter(pkg =>
       packageName.endsWith("/")
@@ -82,10 +90,20 @@ async function updateAction(
       );
     }
 
+    writeTrace(
+      `Found ${matchedPackages.length} matching packages in the catalog file: \n\n- ${matchedPackages.join("\n- ")}`,
+      _config
+    );
+
     await Promise.all(
       matchedPackages.map(pkg =>
         upgradeCatalogPackage(pkg, { tag, throwIfMissingInCatalog: true })
       )
+    );
+
+    writeTrace(
+      "Running `pnpm dedupe` to update local dependency versions",
+      _config
     );
 
     await new Promise<string>((resolve, reject) => {
@@ -106,9 +124,14 @@ async function updateAction(
     );
   } catch (error) {
     writeFatal(
-      `A fatal error occurred while running Storm pnpm update: \n\n${error.message}`,
+      `A fatal error occurred while running Storm pnpm update: \n\n${JSON.stringify(
+        error,
+        null,
+        2
+      )}`,
       _config
     );
+
     throw new Error(error.message, { cause: error });
   }
 }
