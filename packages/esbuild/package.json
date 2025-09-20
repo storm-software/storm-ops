@@ -242,7 +242,7 @@
     "@nx/js": "catalog:",
     "@storm-software/build-tools": "workspace:*",
     "@storm-software/config": "workspace:*",
-    "@storm-software/config-tools": "1.187.1",
+    "@storm-software/config-tools": "workspace:*",
     "chokidar": "^4.0.3",
     "commander": "catalog:",
     "defu": "catalog:",
