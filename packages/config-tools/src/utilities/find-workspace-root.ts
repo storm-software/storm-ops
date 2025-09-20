@@ -39,6 +39,7 @@ const rootFiles = [
 const rootDirectories = [
   ".storm-workspace",
   ".nx",
+  ".git",
   ".github",
   ".vscode",
   ".verdaccio"

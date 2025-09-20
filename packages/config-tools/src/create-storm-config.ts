@@ -3,11 +3,13 @@
 import type { StormWorkspaceConfig } from "@storm-software/config";
 import { workspaceConfigSchema } from "@storm-software/config/schema";
 import defu from "defu";
+import { existsSync } from "node:fs";
 import * as z from "zod";
 import { getConfigFile } from "./config-file/get-config-file";
 import { getConfigEnv, getExtensionEnv } from "./env/get-env";
 import { setConfigEnv } from "./env/set-env";
 import { formatLogMessage, writeTrace, writeWarning } from "./logger/console";
+import { joinPaths } from "./utilities";
 import { findWorkspaceRoot } from "./utilities/find-workspace-root";
 import {
   applyDefaultConfig,
@@ -80,6 +82,16 @@ export const createStormWorkspaceConfig = async <
       configFile,
       defaultConfig
     ) as StormWorkspaceConfig<TExtensionName, TExtensionConfig>;
+    if (!configInput.variant) {
+      configInput.variant =
+        existsSync(joinPaths(_workspaceRoot, "nx.json")) ||
+        existsSync(joinPaths(_workspaceRoot, ".nx")) ||
+        existsSync(joinPaths(_workspaceRoot, "lerna.json")) ||
+        existsSync(joinPaths(_workspaceRoot, "turbo.json"))
+          ? "monorepo"
+          : "minimal";
+    }
+
     try {
       result = applyDefaultConfig(
         await workspaceConfigSchema.parseAsync(configInput)

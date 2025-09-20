@@ -1,6 +1,5 @@
 {
   "$schema": "https://public.storm-cdn.com/schemas/storm-workspace.schema.json",
-  "variant": "monorepo",
   "organization": {
     "name": "storm-software",
     "description": "An open source software development organization and the creator of the Stryke utilities, Storm Stack, Cyclone UI, Acidic, and Storm Cloud.",
