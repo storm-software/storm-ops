@@ -38,7 +38,8 @@ export const run = (
     windowsHide: true,
     stdio,
     maxBuffer: LARGE_BUFFER,
-    killSignal: "SIGTERM"
+    killSignal: "SIGTERM",
+    encoding: "utf8"
   });
 };
 
@@ -70,6 +71,7 @@ export const runAsync = (
     },
     windowsHide: true,
     maxBuffer: LARGE_BUFFER,
-    killSignal: "SIGTERM"
+    killSignal: "SIGTERM",
+    encoding: "utf8"
   });
 };

@@ -1,14 +1,13 @@
 import type { StormWorkspaceConfig } from "@storm-software/config";
 import {
   findWorkspaceRootSafe,
+  runAsync,
   writeDebug,
   writeFatal,
   writeInfo,
-  writeSuccess,
   writeTrace
 } from "@storm-software/config-tools";
 import { Argument, Command } from "commander";
-import { exec } from "node:child_process";
 import { getCatalog, upgradeCatalogPackage } from "../helpers/catalog";
 
 let _config: Partial<StormWorkspaceConfig> = {};
@@ -107,22 +106,10 @@ async function updateAction(
       _config
     );
 
-    await new Promise<string>((resolve, reject) => {
-      exec("pnpm dedupe", (error, stdout, stderr) => {
-        if (error) {
-          return reject(error);
-        }
-        if (stderr) {
-          return reject(stderr);
-        }
-        return resolve(stdout.trim());
-      });
+    const proc = await runAsync(_config, "pnpm dedupe");
+    proc.stdout?.on("data", data => {
+      console.log(data.toString());
     });
-
-    writeSuccess(
-      `🎉 Storm pnpm update processing completed successfully!`,
-      _config
-    );
   } catch (error) {
     writeFatal(
       `A fatal error occurred while running Storm pnpm update: \n\n${JSON.stringify(
