@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Projen
 
+## [0.20.4](https://github.com/storm-software/storm-ops/releases/tag/projen%400.20.4) (2025-09-20)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace package links
+  ([fb19259a0](https://github.com/storm-software/storm-ops/commit/fb19259a0))
+
 ## [0.20.3](https://github.com/storm-software/storm-ops/releases/tag/projen%400.20.3) (2025-09-20)
 
 ### Miscellaneous

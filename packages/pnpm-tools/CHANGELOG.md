@@ -2,6 +2,29 @@
 
 # Changelog for Storm Ops - Pnpm Tools
 
+## [0.5.0](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.5.0) (2025-09-20)
+
+### Features
+
+- **pnpm-tools:** Added `install`, `prefix`, and variadic arguments
+  ([eb53de496](https://github.com/storm-software/storm-ops/commit/eb53de496))
+
+### Bug Fixes
+
+- **pnpm-tools:** Resolve issue with rendering `stdout` from command processing
+  ([4d442d1a7](https://github.com/storm-software/storm-ops/commit/4d442d1a7))
+
+### Miscellaneous
+
+- **monorepo:** Update workspace package links
+  ([fb19259a0](https://github.com/storm-software/storm-ops/commit/fb19259a0))
+
+### Updated Dependencies
+
+- Updated config-tools to 1.187.2
+- Updated npm-tools to 0.4.7
+- Updated config to 1.133.1
+
 ## [0.4.6](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.4.6) (2025-09-20)
 
 ### Bug Fixes
