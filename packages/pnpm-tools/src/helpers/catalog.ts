@@ -1,12 +1,12 @@
 import { getWorkspaceConfig } from "@storm-software/config-tools/get-config";
 import {
   writeDebug,
-  writeTrace
+  writeTrace,
+  writeWarning
 } from "@storm-software/config-tools/logger/console";
 import { findWorkspaceRoot } from "@storm-software/config-tools/utilities/find-workspace-root";
 import { DEFAULT_NPM_TAG } from "@storm-software/npm-tools/constants";
 import { getVersion } from "@storm-software/npm-tools/helpers/get-version";
-import { writeWarning } from "packages/config-tools/dist";
 import { coerce, gt, valid } from "semver";
 import {
   readPnpmWorkspaceFile,
