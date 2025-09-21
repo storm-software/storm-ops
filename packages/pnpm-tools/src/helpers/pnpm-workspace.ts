@@ -1,3 +1,4 @@
+import { getWorkspaceConfig, writeTrace } from "@storm-software/config-tools";
 import { joinPaths } from "@storm-software/config-tools/utilities/correct-paths";
 import { findWorkspaceRoot } from "@storm-software/config-tools/utilities/find-workspace-root";
 import { existsSync } from "node:fs";
@@ -57,8 +58,13 @@ export async function writePnpmWorkspaceFile(
   pnpmWorkspaceFile: PnpmWorkspaceFile,
   workspaceRoot = findWorkspaceRoot(process.cwd())
 ) {
-  await writeFile(
-    getPnpmWorkspaceFilePath(workspaceRoot),
-    stringify(pnpmWorkspaceFile)
+  const config = await getWorkspaceConfig();
+  const stringified = stringify(pnpmWorkspaceFile);
+
+  writeTrace(
+    `Writing updated pnpm-workspace.yaml file to workspace root: ${stringified}`,
+    config
   );
+
+  await writeFile(getPnpmWorkspaceFilePath(workspaceRoot), stringified);
 }

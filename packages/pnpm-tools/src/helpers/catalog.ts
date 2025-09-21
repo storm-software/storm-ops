@@ -164,8 +164,15 @@ export async function upgradeCatalogPackage(
     workspaceConfig
   );
 
-  const version = await getVersion(packageName, tag);
-  if (
+  const origVersion = await getVersion(packageName, tag);
+  const version = `${prefix || ""}${origVersion}`;
+
+  if (version === catalog[packageName]) {
+    writeTrace(
+      `The version for package "${packageName}" is already up to date in the catalog: ${version}`,
+      workspaceConfig
+    );
+  } else if (
     !valid(coerce(catalog[packageName])) ||
     (coerce(catalog[packageName]) &&
       coerce(version) &&
