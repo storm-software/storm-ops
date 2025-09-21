@@ -26,10 +26,9 @@ import {
   addWorkspacePackageJsonFields,
   copyAssets,
   DEFAULT_TARGET,
-  getEntryPoints,
   getEnv
 } from "@storm-software/build-tools";
-import { getConfig } from "@storm-software/config-tools/get-config";
+import { getWorkspaceConfig } from "@storm-software/config-tools/get-config";
 import {
   getStopwatch,
   writeDebug,
@@ -37,36 +36,36 @@ import {
   writeSuccess,
   writeWarning
 } from "@storm-software/config-tools/logger/console";
-import { isVerbose } from "@storm-software/config-tools/logger/get-log-level";
 import { joinPaths } from "@storm-software/config-tools/utilities/correct-paths";
-import defu from "defu";
+import { findWorkspaceRoot } from "@storm-software/config-tools/utilities/find-workspace-root";
 import { existsSync } from "node:fs";
 import hf from "node:fs/promises";
-import { findWorkspaceRoot } from "nx/src/utils/find-workspace-root";
 import { build as tsdown } from "tsdown";
 import { cleanDirectories } from "./clean";
-import { DEFAULT_BUILD_OPTIONS } from "./config";
+import { getDefaultOptions } from "./config";
 import { TSDownResolvedOptions, type TSDownOptions } from "./types";
 
 /**
  * Apply defaults to the original build options
  *
- * @param userOptions - the original build options provided by the user
+ * @param options - the original build options provided by the user
  * @returns the build options with defaults applied
  */
 const resolveOptions = async (
   userOptions: TSDownOptions
 ): Promise<TSDownResolvedOptions> => {
-  const projectRoot = userOptions.projectRoot;
+  const options = getDefaultOptions(userOptions);
 
-  const workspaceRoot = findWorkspaceRoot(projectRoot);
+  const workspaceRoot = findWorkspaceRoot(options.projectRoot);
   if (!workspaceRoot) {
     throw new Error("Cannot find Nx workspace root");
   }
 
-  const config = await getConfig(workspaceRoot.dir);
+  const workspaceConfig = await getWorkspaceConfig(options.debug === true, {
+    workspaceRoot
+  });
 
-  writeDebug("  ⚙️   Resolving build options", config);
+  writeDebug("  ⚙️   Resolving build options", workspaceConfig);
   const stopwatch = getStopwatch("Build options resolution");
 
   const projectGraph = await createProjectGraphAsync({
@@ -74,8 +73,8 @@ const resolveOptions = async (
   });
 
   const projectJsonPath = joinPaths(
-    workspaceRoot.dir,
-    projectRoot,
+    workspaceRoot,
+    options.projectRoot,
     "project.json"
   );
   if (!existsSync(projectJsonPath)) {
@@ -94,12 +93,8 @@ const resolveOptions = async (
     );
   }
 
-  const options = defu(userOptions, DEFAULT_BUILD_OPTIONS);
-  options.name ??= `${projectName}-${options.format}`;
-  options.target ??= DEFAULT_TARGET;
-
   const packageJsonPath = joinPaths(
-    workspaceRoot.dir,
+    workspaceRoot,
     options.projectRoot,
     "package.json"
   );
@@ -107,66 +102,42 @@ const resolveOptions = async (
     throw new Error("Cannot find package.json configuration");
   }
 
-  const env = getEnv("tsdown", options as Parameters<typeof getEnv>[1]);
+  const debug =
+    options.debug ?? (options.mode || workspaceConfig.mode) === "development";
+  const sourceRoot =
+    projectJson.sourceRoot || joinPaths(options.projectRoot, "src");
 
   const result: TSDownResolvedOptions = {
+    name: projectName,
+    mode: "production",
+    target: DEFAULT_TARGET,
+    generatePackageJson: true,
+    outDir: joinPaths("dist", options.projectRoot),
+    minify: !debug,
+    plugins: [],
+    assets: [],
+    sourceRoot,
+    entry: {
+      ["index"]: joinPaths(sourceRoot, "index.ts")
+    },
     ...options,
-    config,
-    ...userOptions,
-    tsconfig: joinPaths(
-      projectRoot,
-      userOptions.tsconfig
-        ? userOptions.tsconfig.replace(projectRoot, "")
-        : "tsconfig.json"
-    ),
-    format: options.format || "cjs",
-    entryPoints: await getEntryPoints(
-      config,
-      projectRoot,
-      projectJson.sourceRoot,
-      userOptions.entry || ["./src/index.ts"],
-      userOptions.emitOnAll
-    ),
-    outdir: userOptions.outputPath || joinPaths("dist", projectRoot),
-    plugins: [] as TSDownResolvedOptions["plugins"],
-    name: userOptions.name || projectName,
-    projectConfigurations,
+    workspaceConfig,
     projectName,
     projectGraph,
-    sourceRoot:
-      userOptions.sourceRoot ||
-      projectJson.sourceRoot ||
-      joinPaths(projectRoot, "src"),
-    minify: userOptions.minify || !userOptions.debug,
-    verbose: userOptions.verbose || isVerbose() || userOptions.debug === true,
-    includeSrc: userOptions.includeSrc === true,
-    metafile: userOptions.metafile !== false,
-    generatePackageJson: userOptions.generatePackageJson !== false,
-    clean: userOptions.clean !== false,
-    emitOnAll: userOptions.emitOnAll === true,
-    dts: userOptions.dts === true ? { transformer: "oxc" } : userOptions.dts,
-    bundleDts: userOptions.dts,
-    assets: userOptions.assets ?? [],
-    shims: userOptions.injectShims !== true,
-    bundle: userOptions.bundle !== false,
-    watch: userOptions.watch === true,
-    define: {
-      STORM_FORMAT: JSON.stringify(options.format || "cjs"),
-      ...(options.format === "cjs" && options.injectShims
-        ? {
-            "import.meta.url": "importMetaUrl"
-          }
-        : {}),
-      ...Object.keys(env || {}).reduce((res, key) => {
-        const value = JSON.stringify(env[key]);
-        return {
-          ...res,
-          [`process.env.${key}`]: value,
-          [`import.meta.env.${key}`]: value
-        };
-      }, {}),
-      ...options.define
-    }
+    projectConfigurations
+  };
+
+  const env = getEnv("tsdown", {} as Parameters<typeof getEnv>[1]);
+  result.define = {
+    ...Object.keys(env || {}).reduce((res, key) => {
+      const value = JSON.stringify(env[key]);
+      return {
+        ...res,
+        [`process.env.${key}`]: value,
+        [`import.meta.env.${key}`]: value
+      };
+    }, {}),
+    ...(options.define ?? {})
   };
 
   stopwatch();
@@ -179,7 +150,7 @@ async function generatePackageJson(options: TSDownResolvedOptions) {
     options.generatePackageJson !== false &&
     existsSync(joinPaths(options.projectRoot, "package.json"))
   ) {
-    writeDebug("  ✍️   Writing package.json file", options.config);
+    writeDebug("  ✍️   Writing package.json file", options.workspaceConfig);
     const stopwatch = getStopwatch("Write package.json file");
 
     const packageJsonPath = joinPaths(options.projectRoot, "project.json");
@@ -189,7 +160,7 @@ async function generatePackageJson(options: TSDownResolvedOptions) {
 
     const packageJsonFile = await hf.readFile(
       joinPaths(
-        options.config.workspaceRoot,
+        options.workspaceConfig.workspaceRoot,
         options.projectRoot,
         "package.json"
       ),
@@ -201,14 +172,14 @@ async function generatePackageJson(options: TSDownResolvedOptions) {
 
     let packageJson = JSON.parse(packageJsonFile);
     packageJson = await addPackageDependencies(
-      options.config.workspaceRoot,
+      options.workspaceConfig.workspaceRoot,
       options.projectRoot,
       options.projectName,
       packageJson
     );
 
     packageJson = await addWorkspacePackageJsonFields(
-      options.config,
+      options.workspaceConfig,
       options.projectRoot,
       options.sourceRoot,
       options.projectName,
@@ -224,19 +195,18 @@ async function generatePackageJson(options: TSDownResolvedOptions) {
       options.sourceRoot
     );
 
-    let entryPoints = [{ in: "./src/index.ts", out: "./src/index.ts" }];
-    if (options.entryPoints) {
-      if (Array.isArray(options.entryPoints)) {
-        entryPoints = (
-          options.entryPoints as (string | { in: string; out: string })[]
-        ).map(entryPoint =>
-          typeof entryPoint === "string"
-            ? { in: entryPoint, out: entryPoint }
-            : entryPoint
+    let entry = [{ in: "./src/index.ts", out: "./src/index.ts" }];
+    if (options.entry) {
+      if (Array.isArray(options.entry)) {
+        entry = (options.entry as (string | { in: string; out: string })[]).map(
+          entryPoint =>
+            typeof entryPoint === "string"
+              ? { in: entryPoint, out: entryPoint }
+              : entryPoint
         );
       }
 
-      for (const entryPoint of entryPoints) {
+      for (const entryPoint of entry) {
         const split = entryPoint.out.split(".");
         split.pop();
         const entry = split.join(".").replaceAll("\\", "/");
@@ -266,7 +236,7 @@ async function generatePackageJson(options: TSDownResolvedOptions) {
       packageJson.exports
     );
 
-    await writeJsonFile(joinPaths(options.outdir, "package.json"), packageJson);
+    await writeJsonFile(joinPaths(options.outDir, "package.json"), packageJson);
 
     stopwatch();
   }
@@ -278,13 +248,12 @@ async function generatePackageJson(options: TSDownResolvedOptions) {
  * Execute tsdown with all the configurations we pass
  */
 async function executeTSDown(options: TSDownResolvedOptions) {
-  writeDebug(`  🚀  Running ${options.name} build`, options.config);
+  writeDebug(`  🚀  Running ${options.name} build`, options.workspaceConfig);
   const stopwatch = getStopwatch(`${options.name} build`);
 
   await tsdown({
     ...options,
-    entry: options.entryPoints,
-    outDir: options.outdir,
+    entry: options.entry,
     config: false
   });
 
@@ -298,15 +267,15 @@ async function executeTSDown(options: TSDownResolvedOptions) {
  */
 async function copyBuildAssets(options: TSDownResolvedOptions) {
   writeDebug(
-    `  📋  Copying asset files to output directory: ${options.outdir}`,
-    options.config
+    `  📋  Copying asset files to output directory: ${options.outDir}`,
+    options.workspaceConfig
   );
   const stopwatch = getStopwatch(`${options.name} asset copy`);
 
   await copyAssets(
-    options.config,
+    options.workspaceConfig,
     options.assets ?? [],
-    options.outdir,
+    options.outDir,
     options.projectRoot,
     options.sourceRoot,
     true,
@@ -324,7 +293,7 @@ async function copyBuildAssets(options: TSDownResolvedOptions) {
 async function reportResults(options: TSDownResolvedOptions) {
   writeSuccess(
     `  📦  The ${options.name} build completed successfully`,
-    options.config
+    options.workspaceConfig
   );
 }
 
@@ -334,14 +303,18 @@ async function reportResults(options: TSDownResolvedOptions) {
  * @param options - the build options
  */
 export async function cleanOutputPath(options: TSDownResolvedOptions) {
-  if (options.clean !== false && options.outdir) {
+  if (options.clean !== false && options.workspaceConfig) {
     writeDebug(
-      ` 🧹  Cleaning ${options.name} output path: ${options.outdir}`,
-      options.config
+      ` 🧹  Cleaning ${options.name} output path: ${options.workspaceConfig}`,
+      options.workspaceConfig
     );
     const stopwatch = getStopwatch(`${options.name} output clean`);
 
-    await cleanDirectories(options.name, options.outdir, options.config);
+    await cleanDirectories(
+      options.name,
+      options.outDir,
+      options.workspaceConfig
+    );
 
     stopwatch();
   }

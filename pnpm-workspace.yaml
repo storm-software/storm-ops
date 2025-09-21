@@ -55,7 +55,7 @@ catalog:
   defu: 6.1.4
   yaml: ^2.8.1
   cspell: ^8.17.3
-  tsdown: 0.5.3
+  tsdown: ^0.15.4
   untyped: ^1.5.2
   wrangler: ^4.33.0
   glob: ^11.0.1

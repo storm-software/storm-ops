@@ -6,7 +6,7 @@ export const getEnv = (
   options: Pick<
     TypeScriptBuildResolvedOptions,
     "name" | "mode" | "orgName" | "platform" | "target" | "format"
-  >,
+  >
 ): TypeScriptBuildEnv => {
   return {
     STORM_BUILD: builder,
@@ -16,6 +16,6 @@ export const getEnv = (
     STORM_PLATFORM: options.platform,
     STORM_FORMAT: JSON.stringify(options.format),
     STORM_TARGET: JSON.stringify(options.target),
-    ...(options as Partial<TypeScriptBuildResolvedOptions>).env,
+    ...(options as Partial<TypeScriptBuildResolvedOptions>).env
   };
 };

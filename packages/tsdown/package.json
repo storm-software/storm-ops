@@ -161,12 +161,9 @@
     "sullivanpj"
   ],
   "peerDependencies": {
-    "@microsoft/api-extractor": "catalog:",
-    "@nx/devkit": "catalog:",
-    "@nx/js": "catalog:",
     "spdx-exceptions": "^2.5.0",
     "spdx-license-ids": "^3.0.20",
-    "tsdown": "catalog:"
+    "tsdown": ">=0.15.4"
   },
   "peerDependenciesMeta": {
     "@microsoft/api-extractor": {

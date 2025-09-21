@@ -34,7 +34,7 @@ export interface TypeScriptBuildOptions extends AdditionalCLIOptions {
   outputPath?: string;
   platform?: "node" | "browser" | "neutral";
   sourcemap?: boolean | "linked" | "inline" | "external" | "both";
-  mode?: "development" | "staging" | "production";
+  mode?: "development" | "test" | "production";
   orgName?: string;
   target?: string | string[];
   watch?: boolean;

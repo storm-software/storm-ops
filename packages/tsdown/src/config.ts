@@ -1,34 +1,20 @@
-import { TSDownResolvedOptions } from "./types";
+import { TSDownOptions } from "./types";
 
-export const DEFAULT_BUILD_OPTIONS: Required<
-  Pick<
-    TSDownResolvedOptions,
-    | "platform"
-    | "target"
-    | "format"
-    | "tsconfig"
-    | "mode"
-    | "unused"
-    | "globalName"
-    | "injectShims"
-    | "watch"
-    | "bundle"
-    | "treeshake"
-    | "clean"
-    | "debug"
-  >
-> = {
-  platform: "node",
-  target: "node22",
-  format: ["esm", "cjs"],
-  tsconfig: "tsconfig.json",
-  mode: "production",
-  globalName: "globalThis",
-  unused: { level: "error" },
-  injectShims: true,
-  watch: false,
-  bundle: true,
-  treeshake: true,
-  clean: true,
-  debug: false,
-};
+export function getDefaultOptions(
+  config: Partial<TSDownOptions> & Pick<TSDownOptions, "projectRoot">
+): TSDownOptions {
+  return {
+    entry: ["./src/*.ts"],
+    platform: "node",
+    target: "esnext",
+    mode: "production",
+    dts: true,
+    unused: {
+      level: "error",
+      ignore: ["typescript"]
+    },
+    publint: true,
+    fixedExtension: true,
+    ...config
+  };
+}

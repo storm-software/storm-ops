@@ -16,61 +16,49 @@
  -------------------------------------------------------------------*/
 
 import { ProjectGraph, ProjectsConfigurations } from "@nx/devkit";
-import {
-  AdditionalCLIOptions,
-  TypeScriptBuildOptions,
-  TypeScriptBuildResolvedOptions
-} from "@storm-software/build-tools";
+import { TypeScriptBuildOptions } from "@storm-software/build-tools";
+import { StormWorkspaceConfig } from "@storm-software/config/types";
 import type { Options } from "tsdown";
 
-type ExternalTSDownOptions = Omit<Options, "config" | "outDir" | "entryPoints">;
+type ExternalTSDownOptions = Omit<Options, "treeshake" | "outDir" | "external">;
 
-export type TSDownOptions = Omit<
-  Omit<ExternalTSDownOptions, "dts" | "bundleDts">,
-  "outbase" | "outfile" | "outExtension" | "banner"
-> &
-  Omit<TypeScriptBuildOptions, "format"> & {
-    dts?: boolean;
-    injectShims?: boolean;
+export type TSDownOptions = ExternalTSDownOptions &
+  Partial<
+    Pick<
+      TypeScriptBuildOptions,
+      | "name"
+      | "mode"
+      | "outputPath"
+      | "assets"
+      | "treeShaking"
+      | "sourceRoot"
+      | "debug"
+      | "generatePackageJson"
+    >
+  > &
+  Required<Pick<TypeScriptBuildOptions, "projectRoot">> & {
+    external?: string | RegExp | Array<string | RegExp>;
+    noExternal?: string | RegExp | Array<string | RegExp>;
+    distDir?: string;
   };
 
-export type TSDownResolvedOptions = Omit<
-  TypeScriptBuildResolvedOptions,
-  "target" | "format" | "sourcemap" | "env"
-> &
-  ExternalTSDownOptions & {
-    injectShims: boolean;
-    outdir: string;
-    projectGraph: ProjectGraph;
-    projectConfigurations: ProjectsConfigurations;
-    entryPoints: string[];
+export type TSDownResolvedOptions = Options &
+  Required<Pick<Options, "entry" | "outDir">> &
+  Required<
+    Pick<
+      TSDownOptions,
+      | "name"
+      | "mode"
+      | "projectRoot"
+      | "sourceRoot"
+      | "assets"
+      | "generatePackageJson"
+    >
+  > & {
+    workspaceConfig: StormWorkspaceConfig;
+    projectName: string;
+    projectGraph?: ProjectGraph;
+    projectConfigurations?: ProjectsConfigurations;
   };
-
-export type TSDownCLIOptions = AdditionalCLIOptions &
-  Pick<
-    TSDownOptions,
-    | "name"
-    | "entry"
-    | "outputPath"
-    | "platform"
-    | "format"
-    | "bundle"
-    | "target"
-    | "watch"
-    | "clean"
-    | "debug"
-    | "banner"
-    | "footer"
-    | "splitting"
-    | "treeShaking"
-    | "generatePackageJson"
-    | "emitOnAll"
-    | "metafile"
-    | "minify"
-    | "includeSrc"
-    | "verbose"
-    | "dts"
-    | "injectShims"
-  >;
 
 export type MaybePromise<T> = T | Promise<T>;
