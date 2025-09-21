@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Build Tools
 
+## [0.156.6](https://github.com/storm-software/storm-ops/releases/tag/build-tools%400.156.6) (2025-09-21)
+
+### Bug Fixes
+
+- **tsdown:** Resolve issue applying options to `tsdown` builder
+  ([b50365186](https://github.com/storm-software/storm-ops/commit/b50365186))
+
 ## [0.156.5](https://github.com/storm-software/storm-ops/releases/tag/build-tools%400.156.5) (2025-09-21)
 
 ### Miscellaneous

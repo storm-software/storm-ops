@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Tsdown
 
+## [0.43.11](https://github.com/storm-software/storm-ops/releases/tag/tsdown%400.43.11) (2025-09-21)
+
+### Bug Fixes
+
+- **tsdown:** Resolve issue applying options to `tsdown` builder
+  ([b50365186](https://github.com/storm-software/storm-ops/commit/b50365186))
+
+### Updated Dependencies
+
+- Updated build-tools to 0.156.6
+
 ## [0.43.10](https://github.com/storm-software/storm-ops/releases/tag/tsdown%400.43.10) (2025-09-21)
 
 ### Miscellaneous
