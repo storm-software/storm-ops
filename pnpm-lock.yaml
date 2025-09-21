@@ -883,8 +883,8 @@ importers:
         specifier: ^16.4.0
         version: 16.4.0
       jsonc-eslint-parser:
-        specifier: ^2.4.0
-        version: 2.4.0
+        specifier: ^2.4.1
+        version: 2.4.1
       local-pkg:
         specifier: ^1.1.2
         version: 1.1.2
@@ -10725,8 +10725,8 @@ packages:
     engines: {node: '>=6'}
     hasBin: true
 
-  jsonc-eslint-parser@2.4.0:
-    resolution: {integrity: sha512-WYDyuc/uFcGp6YtM2H0uKmUwieOuzeE/5YocFJLnLfclZ4inf3mRn8ZVy1s7Hxji7Jxm6Ss8gqpexD/GlKoGgg==}
+  jsonc-eslint-parser@2.4.1:
+    resolution: {integrity: sha512-uuPNLJkKN8NXAlZlQ6kmUF9qO+T6Kyd7oV4+/7yy8Jz6+MZNyhPq8EdLpdfnPVzUC8qSf1b4j1azKaGnFsjmsw==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
 
   jsonc-parser@3.2.0:
@@ -11288,8 +11288,8 @@ packages:
     resolution: {integrity: sha512-UERzLsxzllchadvbPs5aolHh65ISpKpM+ccLbOJ8/vvpBKmAWf+la7dXFy7Mr0ySHbdHrFv5kGFCUHHe6GFEmw==}
     engines: {node: '>= 4.0.0'}
 
-  memfs@4.42.0:
-    resolution: {integrity: sha512-RG+4HMGyIVp6UWDWbFmZ38yKrSzblPnfJu0PyPt0hw52KW4PPlPp+HdV4qZBG0hLDuYVnf8wfQT4NymKXnlQjA==}
+  memfs@4.43.0:
+    resolution: {integrity: sha512-XCdhMy33sgxCwJ4JgjSasLGgOjFm9/i+IEhO03gPHroJeTBhM7ZQ1+v3j7di9nNKtcLGjVvKjHVOkTbVop/R/Q==}
     engines: {node: '>= 4.0.0'}
 
   meow@11.0.0:
@@ -12937,8 +12937,8 @@ packages:
     engines: {node: '>=14'}
     hasBin: true
 
-  pretty-bytes@7.0.1:
-    resolution: {integrity: sha512-285/jRCYIbMGDciDdrw0KPNC4LKEEwz/bwErcYNxSJOi4CpGUuLpb9gQpg3XJP0XYj9ldSRluXxih4lX2YN8Xw==}
+  pretty-bytes@7.1.0:
+    resolution: {integrity: sha512-nODzvTiYVRGRqAOvE84Vk5JDPyyxsVk0/fbA/bq7RqlnhksGpset09XTxbpvLTIjoaF7K8Z8DG8yHtKGTPSYRw==}
     engines: {node: '>=20'}
 
   pretty-format@29.7.0:
@@ -19506,7 +19506,7 @@ snapshots:
       chalk: 4.1.2
       confusing-browser-globals: 1.0.11
       globals: 15.15.0
-      jsonc-eslint-parser: 2.4.0
+      jsonc-eslint-parser: 2.4.1
       semver: 7.7.2
       tslib: 2.8.1
     optionalDependencies:
@@ -23975,11 +23975,11 @@ snapshots:
     optionalDependencies:
       unrs-resolver: 1.11.1
 
-  eslint-json-compat-utils@0.2.1(eslint@9.35.0(jiti@2.5.1))(jsonc-eslint-parser@2.4.0):
+  eslint-json-compat-utils@0.2.1(eslint@9.35.0(jiti@2.5.1))(jsonc-eslint-parser@2.4.1):
     dependencies:
       eslint: 9.35.0(jiti@2.5.1)
       esquery: 1.6.0
-      jsonc-eslint-parser: 2.4.0
+      jsonc-eslint-parser: 2.4.1
 
   eslint-mdx@3.6.2(eslint@9.35.0(jiti@2.5.1)):
     dependencies:
@@ -24087,10 +24087,10 @@ snapshots:
       '@eslint-community/eslint-utils': 4.9.0(eslint@9.35.0(jiti@2.5.1))
       eslint: 9.35.0(jiti@2.5.1)
       eslint-compat-utils: 0.6.5(eslint@9.35.0(jiti@2.5.1))
-      eslint-json-compat-utils: 0.2.1(eslint@9.35.0(jiti@2.5.1))(jsonc-eslint-parser@2.4.0)
+      eslint-json-compat-utils: 0.2.1(eslint@9.35.0(jiti@2.5.1))(jsonc-eslint-parser@2.4.1)
       espree: 10.4.0
       graphemer: 1.4.0
-      jsonc-eslint-parser: 2.4.0
+      jsonc-eslint-parser: 2.4.1
       natural-compare: 1.4.0
       synckit: 0.11.11
     transitivePeerDependencies:
@@ -24184,7 +24184,7 @@ snapshots:
     dependencies:
       eslint: 9.35.0(jiti@2.5.1)
       find-up-simple: 1.0.1
-      jsonc-eslint-parser: 2.4.0
+      jsonc-eslint-parser: 2.4.1
       pathe: 2.0.3
       pnpm-workspace-yaml: 0.3.0
       tinyglobby: 0.2.15
@@ -26700,7 +26700,7 @@ snapshots:
 
   json5@2.2.3: {}
 
-  jsonc-eslint-parser@2.4.0:
+  jsonc-eslint-parser@2.4.1:
     dependencies:
       acorn: 8.15.0
       eslint-visitor-keys: 3.4.3
@@ -27538,7 +27538,7 @@ snapshots:
     dependencies:
       fs-monkey: 1.1.0
 
-  memfs@4.42.0:
+  memfs@4.43.0:
     dependencies:
       '@jsonjoy.com/json-pack': 1.14.0(tslib@2.8.1)
       '@jsonjoy.com/util': 1.9.0(tslib@2.8.1)
@@ -29732,7 +29732,7 @@ snapshots:
 
   prettier@3.6.2: {}
 
-  pretty-bytes@7.0.1: {}
+  pretty-bytes@7.1.0: {}
 
   pretty-format@29.7.0:
     dependencies:
@@ -31738,7 +31738,7 @@ snapshots:
       mlly: 1.8.0
       pathe: 2.0.3
       pkg-types: 2.3.0
-      pretty-bytes: 7.0.1
+      pretty-bytes: 7.1.0
       rollup: 4.50.2
       rollup-plugin-dts: 6.2.3(rollup@4.50.2)(typescript@5.9.2)
       scule: 1.3.0
@@ -32466,7 +32466,7 @@ snapshots:
   webpack-dev-middleware@7.4.3(webpack@5.101.3(@swc/core@1.7.26(@swc/helpers@0.5.13))(esbuild@0.25.10)):
     dependencies:
       colorette: 2.0.20
-      memfs: 4.42.0
+      memfs: 4.43.0
       mime-types: 3.0.1
       on-finished: 2.4.1
       range-parser: 1.2.1
