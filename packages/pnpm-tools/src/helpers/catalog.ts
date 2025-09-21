@@ -165,7 +165,7 @@ export async function upgradeCatalogPackage(
   );
 
   const origVersion = await getVersion(packageName, tag);
-  const version = `${prefix || ""}${origVersion}`;
+  const version = `${prefix || ""}${origVersion.replace(/^[\^~><=*]+/, "")}`;
 
   if (version === catalog[packageName]) {
     writeTrace(
