@@ -165,7 +165,7 @@ export async function upgradeCatalogPackage(
   );
 
   const origVersion = await getVersion(packageName, tag);
-  const version = `${prefix || ""}${origVersion.replace(/^[\^~><=*]+/, "")}`;
+  const version = `${prefix || ""}${origVersion.replace(/^[\^~><=*]+/g, "")}`;
 
   if (version === catalog[packageName]) {
     writeTrace(
@@ -179,10 +179,11 @@ export async function upgradeCatalogPackage(
       // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       gt(coerce(version)!, coerce(catalog[packageName])!))
   ) {
-    catalog[packageName] = `${prefix || ""}${version}`;
+    catalog[packageName] =
+      `${prefix || ""}${version.replace(/^[\^~><=*]+/g, "")}`;
 
     writeDebug(
-      `Writing version ${version} to catalog for "${packageName}" package`,
+      `Writing version ${catalog[packageName]} to catalog for "${packageName}" package`,
       workspaceConfig
     );
 
