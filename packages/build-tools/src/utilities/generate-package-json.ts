@@ -220,7 +220,7 @@ export const addWorkspacePackageJsonFields = async (
 
 export const addPackageJsonExport = (
   file: string,
-  type: "commonjs" | "module" = "module",
+  type: "commonjs" | "module" | "fixed" = "module",
   sourceRoot?: string
 ): Record<string, any> => {
   let entry = file.replaceAll("\\", "/");
@@ -238,8 +238,8 @@ export const addPackageJsonExport = (
       default: `./dist/${entry}.${type === "commonjs" ? "js" : "cjs"}`
     },
     default: {
-      types: `./dist/${entry}.d.ts`,
-      default: `./dist/${entry}.js`
+      types: `./dist/${entry}.d.${type !== "fixed" ? "ts" : "mts"}`,
+      default: `./dist/${entry}.${type !== "fixed" ? "js" : "mjs"}`
     }
   };
 };

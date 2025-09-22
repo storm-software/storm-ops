@@ -38,6 +38,7 @@ import {
 } from "@storm-software/config-tools/logger/console";
 import { joinPaths } from "@storm-software/config-tools/utilities/correct-paths";
 import { findWorkspaceRoot } from "@storm-software/config-tools/utilities/find-workspace-root";
+import defu from "defu";
 import { existsSync } from "node:fs";
 import hf from "node:fs/promises";
 import { build as tsdown } from "tsdown";
@@ -116,11 +117,32 @@ const resolveOptions = async (
     minify: !debug,
     plugins: [],
     assets: [],
+    dts: true,
+    shims: true,
+    silent: !debug,
+    logLevel:
+      workspaceConfig.logLevel === "success" ||
+      workspaceConfig.logLevel === "debug" ||
+      workspaceConfig.logLevel === "trace" ||
+      workspaceConfig.logLevel === "all"
+        ? "info"
+        : workspaceConfig.logLevel === "fatal"
+          ? "error"
+          : workspaceConfig.logLevel,
+    sourcemap: debug ? "inline" : false,
+    clean: false,
+    fixedExtension: true,
+    nodeProtocol: true,
+    tsconfig: joinPaths(options.projectRoot, "tsconfig.json"),
+    debug,
     sourceRoot,
+    cwd: workspaceConfig.workspaceRoot,
     entry: {
       ["index"]: joinPaths(sourceRoot, "index.ts")
     },
+    workspace: true,
     ...options,
+    treeshake: options.treeShaking !== false,
     format: toTSDownFormat(options.format),
     workspaceConfig,
     projectName,
@@ -128,18 +150,10 @@ const resolveOptions = async (
     projectConfigurations
   };
 
-  const env = getEnv("tsdown", {} as Parameters<typeof getEnv>[1]);
-  result.define = {
-    ...Object.keys(env || {}).reduce((res, key) => {
-      const value = JSON.stringify(env[key]);
-      return {
-        ...res,
-        [`process.env.${key}`]: value,
-        [`import.meta.env.${key}`]: value
-      };
-    }, {}),
-    ...(options.define ?? {})
-  };
+  result.env = defu(
+    options.env,
+    getEnv("tsdown", result as Parameters<typeof getEnv>[1])
+  );
 
   stopwatch();
 
@@ -214,17 +228,21 @@ async function generatePackageJson(options: TSDownResolvedOptions) {
 
         packageJson.exports[`./${entry}`] ??= addPackageJsonExport(
           entry,
-          packageJson.type,
+          options.fixedExtension ? "fixed" : packageJson.type,
           options.sourceRoot
         );
       }
     }
 
     packageJson.main =
-      packageJson.type === "commonjs" ? "./dist/index.js" : "./dist/index.cjs";
+      !options.fixedExtension && packageJson.type === "commonjs"
+        ? "./dist/index.js"
+        : "./dist/index.cjs";
     packageJson.module =
-      packageJson.type === "module" ? "./dist/index.js" : "./dist/index.mjs";
-    packageJson.types = "./dist/index.d.ts";
+      !options.fixedExtension && packageJson.type === "module"
+        ? "./dist/index.js"
+        : "./dist/index.mjs";
+    packageJson.types = `./dist/index.d.${!options.fixedExtension ? "ts" : "mts"}`;
 
     packageJson.exports = Object.keys(packageJson.exports).reduce(
       (ret, key) => {
