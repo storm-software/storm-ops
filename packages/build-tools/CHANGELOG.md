@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Build Tools
 
+## [0.157.0](https://github.com/storm-software/storm-ops/releases/tag/build-tools%400.157.0) (2025-09-22)
+
+### Features
+
+- **tsdown:** Added support for recent additions to `Options`
+  ([e6e9913b0](https://github.com/storm-software/storm-ops/commit/e6e9913b0))
+
+### Miscellaneous
+
+- **monorepo:** Update workspace package links
+  ([09ad356e8](https://github.com/storm-software/storm-ops/commit/09ad356e8))
+
 ## [0.156.7](https://github.com/storm-software/storm-ops/releases/tag/build-tools%400.156.7) (2025-09-21)
 
 ### Miscellaneous

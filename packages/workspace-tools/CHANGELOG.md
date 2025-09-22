@@ -2,6 +2,31 @@
 
 # Changelog for Storm Ops - Workspace Tools
 
+## [1.291.0](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.291.0) (2025-09-22)
+
+### Features
+
+- **workspace-tools:** Added the `tsdown` executor and Nx plugin
+  ([17c7c97af](https://github.com/storm-software/storm-ops/commit/17c7c97af))
+
+### Bug Fixes
+
+- **tsdown:** Convert from base format types to `tsdown` formats
+  ([9b6dee325](https://github.com/storm-software/storm-ops/commit/9b6dee325))
+
+### Miscellaneous
+
+- **monorepo:** Update workspace package links
+  ([09ad356e8](https://github.com/storm-software/storm-ops/commit/09ad356e8))
+
+### Updated Dependencies
+
+- Updated pnpm-tools to 0.5.5
+- Updated npm-tools to 0.4.12
+- Updated esbuild to 0.52.12
+- Updated unbuild to 0.56.12
+- Updated tsdown to 0.44.0
+
 ## [1.290.11](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.290.11) (2025-09-21)
 
 ### Miscellaneous

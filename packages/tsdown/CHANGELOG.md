@@ -2,6 +2,28 @@
 
 # Changelog for Storm Ops - Tsdown
 
+## [0.44.0](https://github.com/storm-software/storm-ops/releases/tag/tsdown%400.44.0) (2025-09-22)
+
+### Features
+
+- **tsdown:** Added support for recent additions to `Options`
+  ([e6e9913b0](https://github.com/storm-software/storm-ops/commit/e6e9913b0))
+
+### Bug Fixes
+
+- **tsdown:** Convert from base format types to `tsdown` formats
+  ([9b6dee325](https://github.com/storm-software/storm-ops/commit/9b6dee325))
+
+### Miscellaneous
+
+- **monorepo:** Update workspace package links
+  ([09ad356e8](https://github.com/storm-software/storm-ops/commit/09ad356e8))
+
+### Updated Dependencies
+
+- Updated config-tools to 1.187.7
+- Updated build-tools to 0.157.0
+
 ## [0.43.12](https://github.com/storm-software/storm-ops/releases/tag/tsdown%400.43.12) (2025-09-21)
 
 ### Miscellaneous
