@@ -30,6 +30,7 @@ export type TSDownOptions = ExternalTSDownOptions &
       | "mode"
       | "outputPath"
       | "assets"
+      | "format"
       | "treeShaking"
       | "sourceRoot"
       | "debug"
@@ -43,7 +44,7 @@ export type TSDownOptions = ExternalTSDownOptions &
   };
 
 export type TSDownResolvedOptions = Options &
-  Required<Pick<Options, "entry" | "outDir">> &
+  Required<Pick<Options, "entry" | "outDir" | "format">> &
   Required<
     Pick<
       TSDownOptions,

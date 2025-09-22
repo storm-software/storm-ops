@@ -42,7 +42,7 @@ import { existsSync } from "node:fs";
 import hf from "node:fs/promises";
 import { build as tsdown } from "tsdown";
 import { cleanDirectories } from "./clean";
-import { getDefaultOptions } from "./config";
+import { getDefaultOptions, toTSDownFormat } from "./config";
 import { TSDownResolvedOptions, type TSDownOptions } from "./types";
 
 /**
@@ -121,6 +121,7 @@ const resolveOptions = async (
       ["index"]: joinPaths(sourceRoot, "index.ts")
     },
     ...options,
+    format: toTSDownFormat(options.format),
     workspaceConfig,
     projectName,
     projectGraph,
