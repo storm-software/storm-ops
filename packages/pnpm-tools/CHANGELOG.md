@@ -2,6 +2,24 @@
 
 # Changelog for Storm Ops - Pnpm Tools
 
+## [0.5.6](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.5.6) (2025-09-22)
+
+### Bug Fixes
+
+- **pnpm-tools:** Resolve issue with multiple applied prefixes
+  ([2c081b8bc](https://github.com/storm-software/storm-ops/commit/2c081b8bc))
+
+### Miscellaneous
+
+- **monorepo:** Update workspace package links
+  ([43374a8da](https://github.com/storm-software/storm-ops/commit/43374a8da))
+
+### Updated Dependencies
+
+- Updated config-tools to 1.187.8
+- Updated npm-tools to 0.4.13
+- Updated config to 1.133.4
+
 ## [0.5.5](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.5.5) (2025-09-22)
 
 ### Miscellaneous

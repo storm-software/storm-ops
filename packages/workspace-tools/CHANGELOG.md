@@ -2,6 +2,27 @@
 
 # Changelog for Storm Ops - Workspace Tools
 
+## [1.291.1](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.291.1) (2025-09-22)
+
+### Bug Fixes
+
+- **pnpm-tools:** Resolve issue with multiple applied prefixes
+  ([2c081b8bc](https://github.com/storm-software/storm-ops/commit/2c081b8bc))
+
+### Miscellaneous
+
+- **monorepo:** Update workspace package links
+  ([43374a8da](https://github.com/storm-software/storm-ops/commit/43374a8da))
+
+### Updated Dependencies
+
+- Updated pnpm-tools to 0.5.6
+- Updated npm-tools to 0.4.13
+- Updated prettier to 0.56.7
+- Updated esbuild to 0.52.13
+- Updated unbuild to 0.56.13
+- Updated tsdown to 0.44.1
+
 ## [1.291.0](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.291.0) (2025-09-22)
 
 ### Features

@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Terraform Modules
 
+## [0.57.7](https://github.com/storm-software/storm-ops/releases/tag/terraform-modules%400.57.7) (2025-09-22)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace package links
+  ([43374a8da](https://github.com/storm-software/storm-ops/commit/43374a8da))
+
 ## [0.57.6](https://github.com/storm-software/storm-ops/releases/tag/terraform-modules%400.57.6) (2025-09-21)
 
 ### Miscellaneous

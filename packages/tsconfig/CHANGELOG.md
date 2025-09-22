@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Tsconfig
 
+## [0.46.7](https://github.com/storm-software/storm-ops/releases/tag/tsconfig%400.46.7) (2025-09-22)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace package links
+  ([43374a8da](https://github.com/storm-software/storm-ops/commit/43374a8da))
+
 ## [0.46.6](https://github.com/storm-software/storm-ops/releases/tag/tsconfig%400.46.6) (2025-09-21)
 
 ### Miscellaneous
