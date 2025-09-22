@@ -20,6 +20,7 @@ export default defineConfig([
     sourcemap: false,
     tsconfig: "./tsconfig.json",
     external: ["nx", "@nx/*"],
+    silent: true,
     skipNodeModulesBundle: true
   }
 ]);

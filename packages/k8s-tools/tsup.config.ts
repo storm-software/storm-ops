@@ -1,4 +1,4 @@
-import { defineConfig } from "tsup";
+import { defineConfig, Options } from "tsup";
 
 export default defineConfig([
   {
@@ -10,7 +10,7 @@ export default defineConfig([
       "./src/utils/*.ts",
       "./src/executors/*/executor.ts",
       "./src/generators/*/generator.ts",
-      "./src/plugins/docker/index.ts",
+      "./src/plugins/docker/index.ts"
     ],
     outDir: "dist",
     format: ["cjs", "esm"],
@@ -20,7 +20,8 @@ export default defineConfig([
     dts: true,
     sourcemap: false,
     shims: true,
+    silent: true,
     tsconfig: "./tsconfig.json",
-    external: ["@storm-software/workspace-tools"],
-  },
-]);
+    external: ["@storm-software/workspace-tools"]
+  }
+]) as Options[];

@@ -12,9 +12,10 @@ export default defineConfig([
     clean: true,
     dts: true,
     sourcemap: false,
+    silent: true,
     tsconfig: "./tsconfig.json",
     external: ["tsdown", "nx", "@nx/*"],
-    skipNodeModulesBundle: true,
+    skipNodeModulesBundle: true
   },
   {
     name: "tsdown-bin",
@@ -28,8 +29,9 @@ export default defineConfig([
     clean: true,
     dts: false,
     sourcemap: false,
+    silent: true,
     tsconfig: "./tsconfig.json",
     external: ["oxc-parser", "@oxc-parser/*"],
-    skipNodeModulesBundle: false,
-  },
+    skipNodeModulesBundle: false
+  }
 ]);

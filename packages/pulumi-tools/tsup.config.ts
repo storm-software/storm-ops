@@ -1,4 +1,4 @@
-import { defineConfig } from "tsup";
+import { defineConfig, Options } from "tsup";
 
 export default defineConfig([
   {
@@ -22,4 +22,4 @@ export default defineConfig([
     tsconfig: "./tsconfig.json",
     external: ["@storm-software/workspace-tools"]
   }
-]);
+]) as Options[];

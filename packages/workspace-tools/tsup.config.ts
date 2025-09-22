@@ -31,6 +31,7 @@ export default defineConfig([
     dts: true,
     sourcemap: false,
     shims: true,
+    silent: true,
     tsconfig: "./tsconfig.json"
   }
 ]);

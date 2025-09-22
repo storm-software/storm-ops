@@ -14,6 +14,7 @@ export default defineConfig([
     dts: true,
     sourcemap: false,
     shims: true,
+    silent: true,
     tsconfig: "./tsconfig.json"
   },
   {
@@ -29,6 +30,7 @@ export default defineConfig([
     dts: false,
     sourcemap: false,
     shims: true,
+    silent: true,
     tsconfig: "./tsconfig.json"
   }
 ]);

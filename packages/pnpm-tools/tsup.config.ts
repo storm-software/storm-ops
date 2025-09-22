@@ -17,6 +17,7 @@ export default defineConfig([
     sourcemap: false,
     tsconfig: "./tsconfig.json",
     shims: true,
+    silent: true,
     skipNodeModulesBundle: true
   },
   {
@@ -31,22 +32,7 @@ export default defineConfig([
     clean: false,
     dts: false,
     sourcemap: false,
+    silent: true,
     tsconfig: "./tsconfig.json"
   }
-  // {
-  //   name: "pnpm-plugins",
-  //   target: "esnext",
-  //   entryPoints: ["./src/plugins/*.ts"],
-  //   format: ["cjs"],
-  //   outDir: "dist/plugins",
-  //   platform: "node",
-  //   splitting: false,
-  //   treeshake: true,
-  //   bundle: true,
-  //   minify: false,
-  //   clean: false,
-  //   dts: true,
-  //   tsconfig: "./tsconfig.json",
-  //   shims: true
-  // }
 ]);

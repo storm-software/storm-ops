@@ -11,6 +11,7 @@ export default defineConfig([
     sourcemap: false,
     tsconfig: "./tsconfig.json",
     shims: true,
+    silent: true,
     bundle: true
   }
 ]);

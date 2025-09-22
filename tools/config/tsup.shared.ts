@@ -16,6 +16,7 @@ export const getTsupConfig = (
     sourcemap: false,
     platform: "node",
     tsconfig: "./tsconfig.json",
+    silent: true,
     dts: {
       resolve: true
     },

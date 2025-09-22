@@ -14,6 +14,7 @@ export default defineConfig([
     dts: true,
     sourcemap: false,
     shims: true,
+    silent: true,
     cjsInterop: true,
     requireToImport: true,
     tsconfig: "./packages/esbuild/tsconfig.json",
@@ -33,6 +34,7 @@ export default defineConfig([
     clean: true,
     dts: false,
     sourcemap: false,
+    silent: true,
     tsconfig: "./packages/esbuild/tsconfig.json",
     external: ["typescript"],
     skipNodeModulesBundle: false

@@ -16,6 +16,7 @@ export default defineConfig([
     sourcemap: false,
     tsconfig: "./tsconfig.json",
     shims: true,
+    silent: true,
     external: [
       "oxc-parser",
       "@oxc-parser/*",
