@@ -125,6 +125,68 @@ export interface UpgradeCatalogPackageOptions {
 }
 
 /**
+ * Upgrade a package in the pnpm catalog.
+ *
+ * @param catalog - The pnpm catalog to update.
+ * @param packageName - The name of the package to upgrade.
+ * @param options - Options for upgrading the package.
+ * @returns The updated catalog.
+ */
+export async function upgradeCatalog(
+  catalog: Record<string, string>,
+  packageName: string,
+  options: UpgradeCatalogPackageOptions = {}
+): Promise<Record<string, string>> {
+  const {
+    tag = DEFAULT_NPM_TAG,
+    prefix = "^",
+    workspaceRoot = findWorkspaceRoot()
+  } = options;
+
+  const workspaceConfig = await getWorkspaceConfig(true, { workspaceRoot });
+
+  writeTrace(
+    `Upgrading catalog entry for package "${packageName}" with tag "${tag}"`,
+    workspaceConfig
+  );
+
+  const origVersion = await getVersion(packageName, tag);
+  const version = `${prefix || ""}${origVersion.replace(/^[\^~><=*]+/g, "")}`;
+
+  if (version === catalog[packageName]) {
+    writeTrace(
+      `The version for package "${packageName}" is already up to date in the catalog: ${version}`,
+      workspaceConfig
+    );
+  } else if (
+    !valid(coerce(catalog[packageName])) ||
+    (coerce(catalog[packageName]) &&
+      coerce(version) &&
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+      gt(coerce(version)!, coerce(catalog[packageName])!))
+  ) {
+    catalog[packageName] =
+      `${prefix || ""}${version.replace(/^[\^~><=*]+/g, "")}`;
+
+    writeDebug(
+      `Writing version ${catalog[packageName]} to catalog for "${packageName}" package`,
+      workspaceConfig
+    );
+  } else {
+    writeWarning(
+      `The current version "${catalog[packageName]}" for package "${
+        packageName
+      }" is greater than or equal to the version "${
+        version
+      }" fetched from the npm registry with tag "${tag}". No update performed.`,
+      workspaceConfig
+    );
+  }
+
+  return catalog;
+}
+
+/**
  * Update package.json dependencies currently using `catalog:` or `workspace:*` to use the pnpm catalog dependencies actual versions and the local workspace versions respectively.
  *
  * @param packageRoot - The root directory of the package to update. Defaults to the current working directory.
@@ -132,7 +194,7 @@ export interface UpgradeCatalogPackageOptions {
  * @returns A promise that resolves when the package.json file has been updated.
  * @throws Will throw an error if no package.json file is found in the package root, or if a dependency is marked as `catalog:` but no catalog exists.
  */
-export async function upgradeCatalogPackage(
+export async function saveCatalog(
   packageName: string,
   options: UpgradeCatalogPackageOptions = {}
 ) {

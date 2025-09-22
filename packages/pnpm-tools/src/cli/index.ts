@@ -10,7 +10,8 @@ import {
 import { Argument, Command, Option } from "commander";
 import {
   getCatalog,
-  upgradeCatalogPackage,
+  setCatalog,
+  upgradeCatalog,
   UpgradeCatalogPackageOptions
 } from "../helpers/catalog";
 
@@ -99,7 +100,7 @@ async function updateAction(
       _config
     );
 
-    const catalog = await getCatalog();
+    let catalog = (await getCatalog()) as Record<string, string>;
     if (!catalog) {
       throw new Error(
         "No catalog found in the pnpm-workspace.yaml file of the current workspace."
@@ -116,23 +117,30 @@ async function updateAction(
         );
       }
 
-      writeDebug(
+      writeTrace(
         `Found ${matchedPackages.length} matching packages in the catalog file: \n\n- ${matchedPackages
           .map(p => `${p} (${catalog[p] || "unknown"})`)
           .join("\n- ")}`,
         _config
       );
 
-      await Promise.all(
-        matchedPackages.map(p =>
-          upgradeCatalogPackage(p, {
-            tag,
-            throwIfMissingInCatalog: true,
-            prefix: prefix as UpgradeCatalogPackageOptions["prefix"]
-          })
-        )
-      );
+      for (const matchedPackage of matchedPackages) {
+        writeTrace(`- Upgrading ${matchedPackage}...`, _config);
+
+        catalog = await upgradeCatalog(catalog, matchedPackage, {
+          tag,
+          prefix: prefix as UpgradeCatalogPackageOptions["prefix"],
+          workspaceRoot: _config.workspaceRoot
+        });
+      }
     }
+
+    writeDebug(
+      "Finalizing changes to the pnpm workspace's catalog dependencies",
+      _config
+    );
+
+    await setCatalog(catalog, _config.workspaceRoot);
 
     if (install) {
       writeTrace(
