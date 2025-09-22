@@ -1,0 +1,174 @@
+{
+  "id": "#",
+  "title": "TSDown Executor",
+  "description": "A type definition for an TSDown executor schema",
+  "properties": {
+    "outputPath": {
+      "title": "Output Path",
+      "type": "string",
+      "format": "path",
+      "description": "The output path for the build",
+      "id": "#outputPath",
+      "default": "dist/{projectRoot}"
+    },
+    "entry": {
+      "title": "Entry File(s)",
+      "format": "path",
+      "type": "array",
+      "description": "The entry file or files to build",
+      "items": {
+        "type": "string"
+      },
+      "id": "#entry",
+      "default": [
+        "{sourceRoot}/index.ts"
+      ]
+    },
+    "tsconfig": {
+      "title": "TSConfig Path",
+      "type": "string",
+      "format": "path",
+      "description": "The path to the tsconfig file",
+      "id": "#tsconfig",
+      "default": "{projectRoot}/tsconfig.json"
+    },
+    "bundle": {
+      "title": "Bundle",
+      "type": "boolean",
+      "description": "Bundle the output",
+      "id": "#bundle"
+    },
+    "minify": {
+      "title": "Minify",
+      "type": "boolean",
+      "description": "Minify the output",
+      "id": "#minify"
+    },
+    "debug": {
+      "title": "Debug",
+      "type": "boolean",
+      "description": "Debug the output",
+      "id": "#debug"
+    },
+    "sourcemap": {
+      "title": "Sourcemap",
+      "type": "boolean",
+      "description": "Generate a sourcemap",
+      "id": "#sourcemap"
+    },
+    "silent": {
+      "title": "Silent",
+      "type": "boolean",
+      "description": "Should the build run silently - only report errors back to the user",
+      "id": "#silent",
+      "default": false
+    },
+    "target": {
+      "title": "Target",
+      "type": "string",
+      "description": "The target to build",
+      "enum": [
+        "es3",
+        "es5",
+        "es6",
+        "es2015",
+        "es2016",
+        "es2017",
+        "es2018",
+        "es2019",
+        "es2020",
+        "es2021",
+        "es2022",
+        "es2023",
+        "es2024",
+        "esnext",
+        "node12",
+        "node14",
+        "node16",
+        "node18",
+        "node20",
+        "node22",
+        "browser",
+        "chrome58",
+        "chrome59",
+        "chrome60"
+      ],
+      "id": "#target",
+      "default": "esnext"
+    },
+    "format": {
+      "title": "Format",
+      "type": "array",
+      "description": "The format to build",
+      "items": {
+        "type": "string",
+        "enum": [
+          "cjs",
+          "esm",
+          "iife"
+        ]
+      },
+      "id": "#format",
+      "default": [
+        "cjs",
+        "esm"
+      ]
+    },
+    "platform": {
+      "title": "Platform",
+      "type": "string",
+      "description": "The platform to build",
+      "enum": [
+        "neutral",
+        "node",
+        "browser"
+      ],
+      "id": "#platform",
+      "default": "neutral"
+    },
+    "external": {
+      "title": "External",
+      "type": "array",
+      "description": "The external dependencies",
+      "id": "#external",
+      "default": [],
+      "items": {
+        "type": "any"
+      }
+    },
+    "define": {
+      "title": "Define",
+      "type": "object",
+      "tsType": "Record<string, string>",
+      "description": "The define values",
+      "id": "#define",
+      "default": {}
+    },
+    "env": {
+      "title": "Environment Variables",
+      "type": "object",
+      "tsType": "Record<string, string>",
+      "description": "The environment variable values",
+      "id": "#env",
+      "default": {}
+    }
+  },
+  "type": "object",
+  "default": {
+    "outputPath": "dist/{projectRoot}",
+    "entry": [
+      "{sourceRoot}/index.ts"
+    ],
+    "tsconfig": "{projectRoot}/tsconfig.json",
+    "silent": false,
+    "target": "esnext",
+    "format": [
+      "cjs",
+      "esm"
+    ],
+    "platform": "neutral",
+    "external": [],
+    "define": {},
+    "env": {}
+  }
+}

@@ -17,6 +17,8 @@ export * from "./src/executors/npm-publish/executor";
 export { type NpmPublishExecutorSchema } from "./src/executors/npm-publish/schema.d";
 export * from "./src/executors/size-limit/executor";
 export { type SizeLimitExecutorSchema } from "./src/executors/size-limit/schema.d";
+export * from "./src/executors/tsdown/executor";
+export { type TSDownExecutorSchema } from "./src/executors/tsdown/schema.d";
 export * from "./src/executors/typia/executor";
 export { type TypiaExecutorSchema } from "./src/executors/typia/schema.d";
 export * from "./src/executors/unbuild/executor";

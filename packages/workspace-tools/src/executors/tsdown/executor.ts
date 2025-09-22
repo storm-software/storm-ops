@@ -1,16 +1,16 @@
 import type { ExecutorContext } from "@nx/devkit";
 import type { StormWorkspaceConfig } from "@storm-software/config";
 import { writeInfo } from "@storm-software/config-tools/logger/console";
-import { build, ESBuildOptions } from "@storm-software/esbuild";
+import { build, TSDownOptions } from "@storm-software/tsdown";
 import { withRunExecutor } from "../../base/base-executor";
-import type { ESBuildExecutorSchema } from "./schema.d";
+import type { TSDownExecutorSchema } from "./schema";
 
-export async function esbuildExecutorFn(
-  options: ESBuildExecutorSchema,
+export async function tsdownExecutorFn(
+  options: TSDownExecutorSchema,
   context: ExecutorContext,
   config?: StormWorkspaceConfig
 ) {
-  writeInfo("📦  Running Storm ESBuild executor on the workspace", config);
+  writeInfo("📦  Running Storm TSDown executor on the workspace", config);
 
   // #region Prepare build context variables
 
@@ -36,8 +36,8 @@ export async function esbuildExecutorFn(
     sourceRoot:
       context.projectsConfigurations.projects?.[context.projectName]
         ?.sourceRoot,
-    format: options.format as ESBuildOptions["format"],
-    platform: options.platform as ESBuildOptions["platform"]
+    format: options.format as TSDownOptions["format"],
+    platform: options.platform as TSDownOptions["platform"]
   });
 
   // #endregion Run the build process
@@ -47,13 +47,13 @@ export async function esbuildExecutorFn(
   };
 }
 
-export default withRunExecutor<ESBuildExecutorSchema>(
-  "Storm ESBuild build",
-  esbuildExecutorFn,
+export default withRunExecutor<TSDownExecutorSchema>(
+  "Storm TSDown build",
+  tsdownExecutorFn,
   {
     skipReadingConfig: false,
     hooks: {
-      applyDefaultOptions: async (options: ESBuildExecutorSchema) => {
+      applyDefaultOptions: async (options: TSDownExecutorSchema) => {
         options.entry ??= ["src/index.ts"];
         options.outputPath ??= "dist/{projectRoot}";
         options.tsconfig ??= "{projectRoot}/tsconfig.json";
