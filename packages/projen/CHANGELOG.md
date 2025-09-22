@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Projen
 
+## [0.20.8](https://github.com/storm-software/storm-ops/releases/tag/projen%400.20.8) (2025-09-22)
+
+### Miscellaneous
+
+- **monorepo:** Update package builds to use `silent` option
+  ([8a992e348](https://github.com/storm-software/storm-ops/commit/8a992e348))
+
 ## [0.20.7](https://github.com/storm-software/storm-ops/releases/tag/projen%400.20.7) (2025-09-22)
 
 ### Miscellaneous

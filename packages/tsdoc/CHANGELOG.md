@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Tsdoc
 
+## [0.12.8](https://github.com/storm-software/storm-ops/releases/tag/tsdoc%400.12.8) (2025-09-22)
+
+### Miscellaneous
+
+- **monorepo:** Update package builds to use `silent` option
+  ([8a992e348](https://github.com/storm-software/storm-ops/commit/8a992e348))
+
 ## [0.12.7](https://github.com/storm-software/storm-ops/releases/tag/tsdoc%400.12.7) (2025-09-22)
 
 ### Miscellaneous

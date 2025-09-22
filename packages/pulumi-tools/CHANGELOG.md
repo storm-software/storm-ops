@@ -2,6 +2,19 @@
 
 # Changelog for Storm Ops - Pulumi Tools
 
+## [0.21.14](https://github.com/storm-software/storm-ops/releases/tag/pulumi-tools%400.21.14) (2025-09-22)
+
+### Miscellaneous
+
+- **monorepo:** Update package builds to use `silent` option
+  ([8a992e348](https://github.com/storm-software/storm-ops/commit/8a992e348))
+- **monorepo:** Update workspace package links
+  ([76c1b30a2](https://github.com/storm-software/storm-ops/commit/76c1b30a2))
+
+### Updated Dependencies
+
+- Updated config-tools to 1.187.9
+
 ## [0.21.13](https://github.com/storm-software/storm-ops/releases/tag/pulumi-tools%400.21.13) (2025-09-22)
 
 ### Miscellaneous

@@ -2,6 +2,20 @@
 
 # Changelog for Storm Ops - Git Tools
 
+## [2.122.14](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.122.14) (2025-09-22)
+
+### Miscellaneous
+
+- **monorepo:** Update package builds to use `silent` option
+  ([8a992e348](https://github.com/storm-software/storm-ops/commit/8a992e348))
+- **monorepo:** Update workspace package links
+  ([76c1b30a2](https://github.com/storm-software/storm-ops/commit/76c1b30a2))
+
+### Updated Dependencies
+
+- Updated conventional-changelog to 0.2.14
+- Updated config-tools to 1.187.9
+
 ## [2.122.13](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.122.13) (2025-09-22)
 
 ### Miscellaneous

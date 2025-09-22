@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Linting Tools
 
+## [1.131.8](https://github.com/storm-software/storm-ops/releases/tag/linting-tools%401.131.8) (2025-09-22)
+
+### Miscellaneous
+
+- **monorepo:** Update package builds to use `silent` option
+  ([8a992e348](https://github.com/storm-software/storm-ops/commit/8a992e348))
+
 ## [1.131.7](https://github.com/storm-software/storm-ops/releases/tag/linting-tools%401.131.7) (2025-09-22)
 
 ### Miscellaneous
