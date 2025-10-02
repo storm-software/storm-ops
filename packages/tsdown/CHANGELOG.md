@@ -2,6 +2,20 @@
 
 # Changelog for Storm Ops - Tsdown
 
+## [0.44.2](https://github.com/storm-software/storm-ops/releases/tag/tsdown%400.44.2) (2025-09-22)
+
+### Miscellaneous
+
+- **monorepo:** Update package builds to use `silent` option
+  ([8a992e348](https://github.com/storm-software/storm-ops/commit/8a992e348))
+- **monorepo:** Update workspace package links
+  ([76c1b30a2](https://github.com/storm-software/storm-ops/commit/76c1b30a2))
+
+### Updated Dependencies
+
+- Updated config-tools to 1.187.9
+- Updated build-tools to 0.157.2
+
 ## [0.44.1](https://github.com/storm-software/storm-ops/releases/tag/tsdown%400.44.1) (2025-09-22)
 
 ### Miscellaneous

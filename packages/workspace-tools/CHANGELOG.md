@@ -2,6 +2,23 @@
 
 # Changelog for Storm Ops - Workspace Tools
 
+## [1.291.2](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.291.2) (2025-09-22)
+
+### Miscellaneous
+
+- **monorepo:** Update package builds to use `silent` option
+  ([8a992e348](https://github.com/storm-software/storm-ops/commit/8a992e348))
+- **monorepo:** Update workspace package links
+  ([76c1b30a2](https://github.com/storm-software/storm-ops/commit/76c1b30a2))
+
+### Updated Dependencies
+
+- Updated pnpm-tools to 0.5.7
+- Updated npm-tools to 0.4.14
+- Updated esbuild to 0.52.14
+- Updated unbuild to 0.56.14
+- Updated tsdown to 0.44.2
+
 ## [1.291.1](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.291.1) (2025-09-22)
 
 ### Bug Fixes

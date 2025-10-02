@@ -2,6 +2,19 @@
 
 # Changelog for Storm Ops - Npm Tools
 
+## [0.4.14](https://github.com/storm-software/storm-ops/releases/tag/npm-tools%400.4.14) (2025-09-22)
+
+### Miscellaneous
+
+- **monorepo:** Update package builds to use `silent` option
+  ([8a992e348](https://github.com/storm-software/storm-ops/commit/8a992e348))
+- **monorepo:** Update workspace package links
+  ([76c1b30a2](https://github.com/storm-software/storm-ops/commit/76c1b30a2))
+
+### Updated Dependencies
+
+- Updated config-tools to 1.187.9
+
 ## [0.4.13](https://github.com/storm-software/storm-ops/releases/tag/npm-tools%400.4.13) (2025-09-22)
 
 ### Miscellaneous

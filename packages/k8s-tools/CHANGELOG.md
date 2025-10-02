@@ -2,6 +2,20 @@
 
 # Changelog for Storm Ops - K8s Tools
 
+## [0.41.14](https://github.com/storm-software/storm-ops/releases/tag/k8s-tools%400.41.14) (2025-09-22)
+
+### Miscellaneous
+
+- **monorepo:** Update package builds to use `silent` option
+  ([8a992e348](https://github.com/storm-software/storm-ops/commit/8a992e348))
+- **monorepo:** Update workspace package links
+  ([76c1b30a2](https://github.com/storm-software/storm-ops/commit/76c1b30a2))
+
+### Updated Dependencies
+
+- Updated workspace-tools to 1.291.2
+- Updated config-tools to 1.187.9
+
 ## [0.41.13](https://github.com/storm-software/storm-ops/releases/tag/k8s-tools%400.41.13) (2025-09-22)
 
 ### Miscellaneous

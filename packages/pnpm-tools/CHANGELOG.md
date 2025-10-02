@@ -2,6 +2,25 @@
 
 # Changelog for Storm Ops - Pnpm Tools
 
+## [0.5.7](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.5.7) (2025-09-22)
+
+### Bug Fixes
+
+- **pnpm-tools:** Update `storm-pnpm` CLI to save catalog changes once
+  ([ebc9936df](https://github.com/storm-software/storm-ops/commit/ebc9936df))
+
+### Miscellaneous
+
+- **monorepo:** Update package builds to use `silent` option
+  ([8a992e348](https://github.com/storm-software/storm-ops/commit/8a992e348))
+- **monorepo:** Update workspace package links
+  ([76c1b30a2](https://github.com/storm-software/storm-ops/commit/76c1b30a2))
+
+### Updated Dependencies
+
+- Updated config-tools to 1.187.9
+- Updated npm-tools to 0.4.14
+
 ## [0.5.6](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.5.6) (2025-09-22)
 
 ### Bug Fixes
