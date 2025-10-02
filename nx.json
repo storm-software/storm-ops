@@ -101,14 +101,7 @@
       }
     },
     "./dist/plugins/cloudflare/index.js",
-    "./dist/plugins/rust/index.js",
-    {
-      "plugin": "@nx/eslint/plugin",
-      "options": {
-        "targetName": "lint-eslint",
-        "useFlatConfig": false
-      }
-    }
+    "./dist/plugins/rust/index.js"
   ],
   "neverConnectToCloud": true
 }

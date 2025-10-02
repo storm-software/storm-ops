@@ -175,7 +175,7 @@
     "@types/node": "catalog:",
     "nx": "catalog:",
     "tsup": "catalog:",
-    "typescript": "^5.9.2",
+    "typescript": "^5.9.3",
     "untyped": "catalog:"
   },
   "publishConfig": {
