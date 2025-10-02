@@ -5753,6 +5753,11 @@ Backward pagination arguments
    */
   'test/padding-around-test-blocks'?: Linter.RuleEntry<[]>
   /**
+   * Prefer `toHaveBeenCalledExactlyOnceWith` over `toHaveBeenCalledOnce` and `toHaveBeenCalledWith`
+   * @see https://github.com/vitest-dev/eslint-plugin-vitest/blob/main/docs/rules/prefer-called-exactly-once-with.md
+   */
+  'test/prefer-called-exactly-once-with'?: Linter.RuleEntry<[]>
+  /**
    * enforce using `toBeCalledOnce()` or `toHaveBeenCalledOnce()`
    * @see https://github.com/vitest-dev/eslint-plugin-vitest/blob/main/docs/rules/prefer-called-once.md
    */
@@ -5812,6 +5817,11 @@ Backward pagination arguments
    * @see https://github.com/vitest-dev/eslint-plugin-vitest/blob/main/docs/rules/prefer-hooks-on-top.md
    */
   'test/prefer-hooks-on-top'?: Linter.RuleEntry<[]>
+  /**
+   * prefer dynamic import in mock
+   * @see https://github.com/vitest-dev/eslint-plugin-vitest/blob/main/docs/rules/prefer-import-in-mock.md
+   */
+  'test/prefer-import-in-mock'?: Linter.RuleEntry<[]>
   /**
    * enforce importing Vitest globals
    * @see https://github.com/vitest-dev/eslint-plugin-vitest/blob/main/docs/rules/prefer-importing-vitest-globals.md
