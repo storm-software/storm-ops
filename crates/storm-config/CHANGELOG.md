@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Storm Config
 
+## [0.24.8](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.24.8) (2025-10-03)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace to TypeScript v5.9.3
+  ([3db5c952c](https://github.com/storm-software/storm-ops/commit/3db5c952c))
+
 ## [0.24.7](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.24.7) (2025-09-22)
 
 ### Miscellaneous

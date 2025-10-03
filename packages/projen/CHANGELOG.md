@@ -2,6 +2,15 @@
 
 # Changelog for Storm Ops - Projen
 
+## [0.20.9](https://github.com/storm-software/storm-ops/releases/tag/projen%400.20.9) (2025-10-03)
+
+### Miscellaneous
+
+- **monorepo:** Update devenv flake versions
+  ([86e23e033](https://github.com/storm-software/storm-ops/commit/86e23e033))
+- **monorepo:** Update workspace to TypeScript v5.9.3
+  ([3db5c952c](https://github.com/storm-software/storm-ops/commit/3db5c952c))
+
 ## [0.20.8](https://github.com/storm-software/storm-ops/releases/tag/projen%400.20.8) (2025-09-22)
 
 ### Miscellaneous

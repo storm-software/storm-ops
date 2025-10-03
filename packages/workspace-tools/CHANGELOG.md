@@ -2,6 +2,24 @@
 
 # Changelog for Storm Ops - Workspace Tools
 
+## [1.291.3](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.291.3) (2025-10-03)
+
+### Miscellaneous
+
+- **monorepo:** Update devenv flake versions
+  ([86e23e033](https://github.com/storm-software/storm-ops/commit/86e23e033))
+- **monorepo:** Update workspace to TypeScript v5.9.3
+  ([3db5c952c](https://github.com/storm-software/storm-ops/commit/3db5c952c))
+
+### Updated Dependencies
+
+- Updated pnpm-tools to 0.5.8
+- Updated npm-tools to 0.4.15
+- Updated prettier to 0.56.8
+- Updated esbuild to 0.52.15
+- Updated unbuild to 0.56.15
+- Updated tsdown to 0.44.3
+
 ## [1.291.2](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.291.2) (2025-09-22)
 
 ### Miscellaneous

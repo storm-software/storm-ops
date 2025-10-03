@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - CSpell
 
+## [0.44.8](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.44.8) (2025-10-03)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace to TypeScript v5.9.3
+  ([3db5c952c](https://github.com/storm-software/storm-ops/commit/3db5c952c))
+
 ## [0.44.7](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.44.7) (2025-09-22)
 
 ### Miscellaneous

@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Storm Workspace
 
+## [0.18.8](https://github.com/storm-software/storm-ops/releases/tag/storm-workspace%400.18.8) (2025-10-03)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace to TypeScript v5.9.3
+  ([3db5c952c](https://github.com/storm-software/storm-ops/commit/3db5c952c))
+
 ## [0.18.7](https://github.com/storm-software/storm-ops/releases/tag/storm-workspace%400.18.7) (2025-09-22)
 
 ### Miscellaneous

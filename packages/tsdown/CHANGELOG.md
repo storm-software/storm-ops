@@ -2,6 +2,21 @@
 
 # Changelog for Storm Ops - Tsdown
 
+## [0.44.3](https://github.com/storm-software/storm-ops/releases/tag/tsdown%400.44.3) (2025-10-03)
+
+### Miscellaneous
+
+- **monorepo:** Update devenv flake versions
+  ([86e23e033](https://github.com/storm-software/storm-ops/commit/86e23e033))
+- **monorepo:** Update workspace to TypeScript v5.9.3
+  ([3db5c952c](https://github.com/storm-software/storm-ops/commit/3db5c952c))
+
+### Updated Dependencies
+
+- Updated config-tools to 1.187.10
+- Updated build-tools to 0.157.3
+- Updated config to 1.133.5
+
 ## [0.44.2](https://github.com/storm-software/storm-ops/releases/tag/tsdown%400.44.2) (2025-09-22)
 
 ### Miscellaneous

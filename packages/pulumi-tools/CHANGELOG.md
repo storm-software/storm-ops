@@ -2,6 +2,20 @@
 
 # Changelog for Storm Ops - Pulumi Tools
 
+## [0.21.15](https://github.com/storm-software/storm-ops/releases/tag/pulumi-tools%400.21.15) (2025-10-03)
+
+### Miscellaneous
+
+- **monorepo:** Update devenv flake versions
+  ([86e23e033](https://github.com/storm-software/storm-ops/commit/86e23e033))
+- **monorepo:** Update workspace to TypeScript v5.9.3
+  ([3db5c952c](https://github.com/storm-software/storm-ops/commit/3db5c952c))
+
+### Updated Dependencies
+
+- Updated config-tools to 1.187.10
+- Updated config to 1.133.5
+
 ## [0.21.14](https://github.com/storm-software/storm-ops/releases/tag/pulumi-tools%400.21.14) (2025-09-22)
 
 ### Miscellaneous

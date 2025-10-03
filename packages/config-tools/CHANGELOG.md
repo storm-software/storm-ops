@@ -2,6 +2,19 @@
 
 # Changelog for Storm Ops - Config Tools
 
+## [1.187.10](https://github.com/storm-software/storm-ops/releases/tag/config-tools%401.187.10) (2025-10-03)
+
+### Miscellaneous
+
+- **monorepo:** Update devenv flake versions
+  ([86e23e033](https://github.com/storm-software/storm-ops/commit/86e23e033))
+- **monorepo:** Update workspace to TypeScript v5.9.3
+  ([3db5c952c](https://github.com/storm-software/storm-ops/commit/3db5c952c))
+
+### Updated Dependencies
+
+- Updated config to 1.133.5
+
 ## [1.187.9](https://github.com/storm-software/storm-ops/releases/tag/config-tools%401.187.9) (2025-09-22)
 
 ### Miscellaneous

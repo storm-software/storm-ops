@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Prettier
 
+## [0.56.8](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.56.8) (2025-10-03)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace to TypeScript v5.9.3
+  ([3db5c952c](https://github.com/storm-software/storm-ops/commit/3db5c952c))
+
 ## [0.56.7](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.56.7) (2025-09-22)
 
 ### Miscellaneous
