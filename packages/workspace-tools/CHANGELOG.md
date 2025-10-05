@@ -2,6 +2,27 @@
 
 # Changelog for Storm Ops - Workspace Tools
 
+## [1.291.5](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.291.5) (2025-10-05)
+
+### Bug Fixes
+
+- **config:** Ensure correct `zod` version is used in dependencies
+  ([965458ca9](https://github.com/storm-software/storm-ops/commit/965458ca9))
+
+### Miscellaneous
+
+- **monorepo:** Update workspace package links
+  ([7ca39098e](https://github.com/storm-software/storm-ops/commit/7ca39098e))
+
+### Updated Dependencies
+
+- Updated pnpm-tools to 0.5.10
+- Updated npm-tools to 0.4.17
+- Updated prettier to 0.56.9
+- Updated esbuild to 0.52.17
+- Updated unbuild to 0.56.17
+- Updated tsdown to 0.44.5
+
 ## [1.291.4](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.291.4) (2025-10-05)
 
 ### Miscellaneous

@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Prettier
 
+## [0.56.9](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.56.9) (2025-10-05)
+
+### Bug Fixes
+
+- **config:** Ensure correct `zod` version is used in dependencies
+  ([965458ca9](https://github.com/storm-software/storm-ops/commit/965458ca9))
+
+### Miscellaneous
+
+- **monorepo:** Update workspace package links
+  ([7ca39098e](https://github.com/storm-software/storm-ops/commit/7ca39098e))
+
 ## [0.56.8](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.56.8) (2025-10-03)
 
 ### Miscellaneous

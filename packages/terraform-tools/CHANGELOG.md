@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Terraform Tools
 
+## [0.65.10](https://github.com/storm-software/storm-ops/releases/tag/terraform-tools%400.65.10) (2025-10-05)
+
+### Bug Fixes
+
+- **config:** Ensure correct `zod` version is used in dependencies
+  ([965458ca9](https://github.com/storm-software/storm-ops/commit/965458ca9))
+
+### Miscellaneous
+
+- **monorepo:** Update workspace package links
+  ([7ca39098e](https://github.com/storm-software/storm-ops/commit/7ca39098e))
+
 ## [0.65.9](https://github.com/storm-software/storm-ops/releases/tag/terraform-tools%400.65.9) (2025-10-03)
 
 ### Miscellaneous

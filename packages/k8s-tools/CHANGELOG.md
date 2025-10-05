@@ -2,6 +2,24 @@
 
 # Changelog for Storm Ops - K8s Tools
 
+## [0.41.17](https://github.com/storm-software/storm-ops/releases/tag/k8s-tools%400.41.17) (2025-10-05)
+
+### Bug Fixes
+
+- **config:** Ensure correct `zod` version is used in dependencies
+  ([965458ca9](https://github.com/storm-software/storm-ops/commit/965458ca9))
+
+### Miscellaneous
+
+- **monorepo:** Update workspace package links
+  ([7ca39098e](https://github.com/storm-software/storm-ops/commit/7ca39098e))
+
+### Updated Dependencies
+
+- Updated workspace-tools to 1.291.5
+- Updated config-tools to 1.187.12
+- Updated config to 1.133.7
+
 ## [0.41.16](https://github.com/storm-software/storm-ops/releases/tag/k8s-tools%400.41.16) (2025-10-05)
 
 ### Miscellaneous

@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Tsdoc
 
+## [0.12.10](https://github.com/storm-software/storm-ops/releases/tag/tsdoc%400.12.10) (2025-10-05)
+
+### Bug Fixes
+
+- **config:** Ensure correct `zod` version is used in dependencies
+  ([965458ca9](https://github.com/storm-software/storm-ops/commit/965458ca9))
+
+### Miscellaneous
+
+- **monorepo:** Update workspace package links
+  ([7ca39098e](https://github.com/storm-software/storm-ops/commit/7ca39098e))
+
 ## [0.12.9](https://github.com/storm-software/storm-ops/releases/tag/tsdoc%400.12.9) (2025-10-03)
 
 ### Miscellaneous

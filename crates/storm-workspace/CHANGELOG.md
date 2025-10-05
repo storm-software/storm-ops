@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Storm Workspace
 
+## [0.18.9](https://github.com/storm-software/storm-ops/releases/tag/storm-workspace%400.18.9) (2025-10-05)
+
+### Bug Fixes
+
+- **config:** Ensure correct `zod` version is used in dependencies
+  ([965458ca9](https://github.com/storm-software/storm-ops/commit/965458ca9))
+
+### Miscellaneous
+
+- **monorepo:** Update workspace package links
+  ([7ca39098e](https://github.com/storm-software/storm-ops/commit/7ca39098e))
+
 ## [0.18.8](https://github.com/storm-software/storm-ops/releases/tag/storm-workspace%400.18.8) (2025-10-03)
 
 ### Miscellaneous

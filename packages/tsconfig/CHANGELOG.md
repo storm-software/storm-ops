@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Tsconfig
 
+## [0.46.9](https://github.com/storm-software/storm-ops/releases/tag/tsconfig%400.46.9) (2025-10-05)
+
+### Bug Fixes
+
+- **config:** Ensure correct `zod` version is used in dependencies
+  ([965458ca9](https://github.com/storm-software/storm-ops/commit/965458ca9))
+
+### Miscellaneous
+
+- **monorepo:** Update workspace package links
+  ([7ca39098e](https://github.com/storm-software/storm-ops/commit/7ca39098e))
+
 ## [0.46.8](https://github.com/storm-software/storm-ops/releases/tag/tsconfig%400.46.8) (2025-10-03)
 
 ### Miscellaneous

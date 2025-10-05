@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Config
 
+## [1.133.7](https://github.com/storm-software/storm-ops/releases/tag/config%401.133.7) (2025-10-05)
+
+### Bug Fixes
+
+- **config:** Ensure correct `zod` version is used in dependencies
+  ([965458ca9](https://github.com/storm-software/storm-ops/commit/965458ca9))
+
+### Miscellaneous
+
+- **monorepo:** Update workspace package links
+  ([7ca39098e](https://github.com/storm-software/storm-ops/commit/7ca39098e))
+
 ## [1.133.6](https://github.com/storm-software/storm-ops/releases/tag/config%401.133.6) (2025-10-05)
 
 ### Bug Fixes

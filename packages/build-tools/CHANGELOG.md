@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Build Tools
 
+## [0.157.4](https://github.com/storm-software/storm-ops/releases/tag/build-tools%400.157.4) (2025-10-05)
+
+### Bug Fixes
+
+- **config:** Ensure correct `zod` version is used in dependencies
+  ([965458ca9](https://github.com/storm-software/storm-ops/commit/965458ca9))
+
+### Miscellaneous
+
+- **monorepo:** Update workspace package links
+  ([7ca39098e](https://github.com/storm-software/storm-ops/commit/7ca39098e))
+
 ## [0.157.3](https://github.com/storm-software/storm-ops/releases/tag/build-tools%400.157.3) (2025-10-03)
 
 ### Miscellaneous

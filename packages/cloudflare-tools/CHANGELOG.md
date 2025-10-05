@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Cloudflare Tools
 
+## [0.69.10](https://github.com/storm-software/storm-ops/releases/tag/cloudflare-tools%400.69.10) (2025-10-05)
+
+### Bug Fixes
+
+- **config:** Ensure correct `zod` version is used in dependencies
+  ([965458ca9](https://github.com/storm-software/storm-ops/commit/965458ca9))
+
+### Miscellaneous
+
+- **monorepo:** Update workspace package links
+  ([7ca39098e](https://github.com/storm-software/storm-ops/commit/7ca39098e))
+
 ## [0.69.9](https://github.com/storm-software/storm-ops/releases/tag/cloudflare-tools%400.69.9) (2025-10-05)
 
 ### Miscellaneous
