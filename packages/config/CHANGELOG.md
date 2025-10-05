@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Config
 
+## [1.133.8](https://github.com/storm-software/storm-ops/releases/tag/config%401.133.8) (2025-10-05)
+
+### Bug Fixes
+
+- **config:** Resolve issue with invalid `mode` option
+  ([dd1647db0](https://github.com/storm-software/storm-ops/commit/dd1647db0))
+
+### Miscellaneous
+
+- **monorepo:** Update workspace package links
+  ([125d73a6a](https://github.com/storm-software/storm-ops/commit/125d73a6a))
+
 ## [1.133.7](https://github.com/storm-software/storm-ops/releases/tag/config%401.133.7) (2025-10-05)
 
 ### Bug Fixes

@@ -1,6 +1,6 @@
 {
   "name": "conventional-changelog-storm-software",
-  "version": "0.2.17",
+  "version": "0.2.18",
   "type": "module",
   "description": "This package contains the shared conventional-changelog configuration used in Storm Software projects.",
   "repository": {
@@ -236,8 +236,8 @@
     }
   },
   "dependencies": {
-    "@storm-software/config": "workspace:*",
-    "@storm-software/config-tools": "workspace:*",
+    "@storm-software/config": "1.133.8",
+    "@storm-software/config-tools": "1.187.13",
     "compare-func": "^2.0.0",
     "conventional-changelog-conventionalcommits": "^9.1.0",
     "conventional-changelog-writer": "^8.2.0",
