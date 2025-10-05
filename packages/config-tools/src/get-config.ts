@@ -12,12 +12,12 @@ import { findWorkspaceRoot } from "./utilities/find-workspace-root";
  * @param skipLogs - Skip writing logs to the console
  * @returns The config for the current Storm workspace
  */
-export const getConfig = (
+export function getConfig(
   workspaceRoot?: string,
   skipLogs = false
-): Promise<StormWorkspaceConfig> => {
+): Promise<StormWorkspaceConfig> {
   return loadStormWorkspaceConfig(workspaceRoot, skipLogs);
-};
+}
 
 export type GetWorkspaceConfigOptions = {
   /**
@@ -45,17 +45,17 @@ export type GetWorkspaceConfigOptions = {
  * @param options - Options for getting the workspace config
  * @returns The config for the current Storm workspace, or throws an error if the config file could not be loaded
  */
-export const getWorkspaceConfig = (
+export function getWorkspaceConfig(
   skipLogs = true,
   options: GetWorkspaceConfigOptions = {}
-): Promise<StormWorkspaceConfig> => {
+): Promise<StormWorkspaceConfig> {
   let workspaceRoot = options.workspaceRoot;
   if (!workspaceRoot) {
     workspaceRoot = findWorkspaceRoot(options.cwd);
   }
 
   return getConfig(workspaceRoot, skipLogs);
-};
+}
 
 /**
  * Try to get the config for the current Storm workspace
@@ -64,10 +64,10 @@ export const getWorkspaceConfig = (
  * @param options - Options for getting the workspace config
  * @returns The config for the current Storm workspace, or undefined if the config file could not be loaded
  */
-export const tryGetWorkspaceConfig = async (
+export async function tryGetWorkspaceConfig(
   skipLogs = true,
   options: GetWorkspaceConfigOptions = {}
-): Promise<StormWorkspaceConfig | undefined> => {
+): Promise<StormWorkspaceConfig | undefined> {
   try {
     let workspaceRoot = options.workspaceRoot;
     if (!workspaceRoot) {
@@ -82,4 +82,4 @@ export const tryGetWorkspaceConfig = async (
   } catch {
     return undefined;
   }
-};
+}

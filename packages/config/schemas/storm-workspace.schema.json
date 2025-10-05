@@ -236,7 +236,7 @@
       "default": "production",
       "description": "The current runtime environment mode for the package",
       "type": "string",
-      "enum": ["development", "staging", "production"]
+      "enum": ["development", "test", "production"]
     },
     "workspaceRoot": {
       "type": "string",
