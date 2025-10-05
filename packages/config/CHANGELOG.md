@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Config
 
+## [1.133.6](https://github.com/storm-software/storm-ops/releases/tag/config%401.133.6) (2025-10-05)
+
+### Bug Fixes
+
+- **config:** Update `zod` to no longer reference `zod/mini` module
+  ([3a2fe88ae](https://github.com/storm-software/storm-ops/commit/3a2fe88ae))
+
 ## [1.133.5](https://github.com/storm-software/storm-ops/releases/tag/config%401.133.5) (2025-10-03)
 
 ### Miscellaneous
