@@ -554,7 +554,7 @@ schemaRegistry.add(ownerSchema, {
 
 export const modeSchema = z._default(
   z
-    .enum(["development", "staging", "production"])
+    .enum(["development", "test", "production"])
     .check(z.trim(), z.toLowerCase()),
   "production"
 );
