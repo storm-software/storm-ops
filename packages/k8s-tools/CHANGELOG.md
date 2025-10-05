@@ -2,6 +2,19 @@
 
 # Changelog for Storm Ops - K8s Tools
 
+## [0.41.19](https://github.com/storm-software/storm-ops/releases/tag/k8s-tools%400.41.19) (2025-10-05)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace package links
+  ([5d087ae37](https://github.com/storm-software/storm-ops/commit/5d087ae37))
+
+### Updated Dependencies
+
+- Updated workspace-tools to 1.291.7
+- Updated config-tools to 1.187.14
+- Updated config to 1.133.9
+
 ## [0.41.18](https://github.com/storm-software/storm-ops/releases/tag/k8s-tools%400.41.18) (2025-10-05)
 
 ### Miscellaneous

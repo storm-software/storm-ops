@@ -1,6 +1,6 @@
 {
   "name": "@storm-software/projen",
-  "version": "0.20.11",
+  "version": "0.20.12",
   "type": "commonjs",
   "description": "Tools for managing Projen configuration automation within a Nx workspace.",
   "repository": {

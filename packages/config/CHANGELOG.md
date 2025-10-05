@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Config
 
+## [1.133.9](https://github.com/storm-software/storm-ops/releases/tag/config%401.133.9) (2025-10-05)
+
+### Bug Fixes
+
+- **config:** Ensure schema updates are included in the package
+  ([aa9659a8b](https://github.com/storm-software/storm-ops/commit/aa9659a8b))
+
+### Miscellaneous
+
+- **monorepo:** Update workspace package links
+  ([5d087ae37](https://github.com/storm-software/storm-ops/commit/5d087ae37))
+
 ## [1.133.8](https://github.com/storm-software/storm-ops/releases/tag/config%401.133.8) (2025-10-05)
 
 ### Bug Fixes
