@@ -173,9 +173,9 @@
     "@nx/devkit": "catalog:",
     "@pulumi/aws": "^6.83.0",
     "@pulumi/awsx": "^2.22.0",
-    "@pulumi/pulumi": "^3.199.0",
-    "@storm-software/config": "1.133.5",
-    "@storm-software/config-tools": "1.187.10",
+    "@pulumi/pulumi": "^3.200.0",
+    "@storm-software/config": "workspace:*",
+    "@storm-software/config-tools": "workspace:*",
     "defu": "catalog:",
     "shelljs": "^0.8.5"
   },
