@@ -1,4 +1,4 @@
-import * as z from "zod/mini";
+import * as z from "zod";
 import {
   STORM_DEFAULT_BANNER_ALT,
   STORM_DEFAULT_ERROR_CODES_FILE
