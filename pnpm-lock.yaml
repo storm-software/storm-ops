@@ -468,13 +468,14 @@ importers:
         version: 4.42.0
 
   packages/config:
+    dependencies:
+      zod:
+        specifier: 'catalog:'
+        version: 4.1.11
     devDependencies:
       tsup:
         specifier: 'catalog:'
         version: 8.4.0(patch_hash=751a554d775c3572381af4e7e5fa22eeda6dd6856012fb1cf521d6806eb2dc74)(@microsoft/api-extractor@7.53.0(@types/node@24.6.2))(@swc/core@1.7.26(@swc/helpers@0.5.13))(jiti@2.6.1)(postcss@8.5.6)(tsx@4.20.5)(typescript@5.9.3)(yaml@2.8.1)
-      zod:
-        specifier: 'catalog:'
-        version: 4.1.11
 
   packages/config-tools:
     dependencies:
