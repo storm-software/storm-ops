@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Config
 
+## [1.134.0](https://github.com/storm-software/storm-ops/releases/tag/config%401.134.0) (2025-10-08)
+
+### Features
+
+- **tsup:** Initial check-in of the `tsup` patched package
+  ([e141da012](https://github.com/storm-software/storm-ops/commit/e141da012))
+
+### Miscellaneous
+
+- **monorepo:** Update workspace package links
+  ([8fb2a080f](https://github.com/storm-software/storm-ops/commit/8fb2a080f))
+
 ## [1.133.10](https://github.com/storm-software/storm-ops/releases/tag/config%401.133.10) (2025-10-08)
 
 ### Miscellaneous

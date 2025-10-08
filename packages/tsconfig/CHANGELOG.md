@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Tsconfig
 
+## [0.47.0](https://github.com/storm-software/storm-ops/releases/tag/tsconfig%400.47.0) (2025-10-08)
+
+### Features
+
+- **tsup:** Initial check-in of the `tsup` patched package
+  ([e141da012](https://github.com/storm-software/storm-ops/commit/e141da012))
+
+### Miscellaneous
+
+- **monorepo:** Update workspace package links
+  ([8fb2a080f](https://github.com/storm-software/storm-ops/commit/8fb2a080f))
+
 ## [0.46.12](https://github.com/storm-software/storm-ops/releases/tag/tsconfig%400.46.12) (2025-10-08)
 
 ### Miscellaneous

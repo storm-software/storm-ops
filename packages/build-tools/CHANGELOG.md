@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Build Tools
 
+## [0.158.0](https://github.com/storm-software/storm-ops/releases/tag/build-tools%400.158.0) (2025-10-08)
+
+### Features
+
+- **tsup:** Initial check-in of the `tsup` patched package
+  ([e141da012](https://github.com/storm-software/storm-ops/commit/e141da012))
+
+### Miscellaneous
+
+- **monorepo:** Update workspace package links
+  ([8fb2a080f](https://github.com/storm-software/storm-ops/commit/8fb2a080f))
+
 ## [0.157.7](https://github.com/storm-software/storm-ops/releases/tag/build-tools%400.157.7) (2025-10-08)
 
 ### Miscellaneous

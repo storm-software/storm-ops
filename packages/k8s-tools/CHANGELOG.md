@@ -2,6 +2,24 @@
 
 # Changelog for Storm Ops - K8s Tools
 
+## [0.42.0](https://github.com/storm-software/storm-ops/releases/tag/k8s-tools%400.42.0) (2025-10-08)
+
+### Features
+
+- **tsup:** Initial check-in of the `tsup` patched package
+  ([e141da012](https://github.com/storm-software/storm-ops/commit/e141da012))
+
+### Miscellaneous
+
+- **monorepo:** Update workspace package links
+  ([8fb2a080f](https://github.com/storm-software/storm-ops/commit/8fb2a080f))
+
+### Updated Dependencies
+
+- Updated workspace-tools to 1.292.0
+- Updated config-tools to 1.188.0
+- Updated config to 1.134.0
+
 ## [0.41.20](https://github.com/storm-software/storm-ops/releases/tag/k8s-tools%400.41.20) (2025-10-08)
 
 ### Miscellaneous

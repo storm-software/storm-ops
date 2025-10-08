@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Markdownlint
 
+## [0.30.0](https://github.com/storm-software/storm-ops/releases/tag/markdownlint%400.30.0) (2025-10-08)
+
+### Features
+
+- **tsup:** Initial check-in of the `tsup` patched package
+  ([e141da012](https://github.com/storm-software/storm-ops/commit/e141da012))
+
+### Miscellaneous
+
+- **monorepo:** Update workspace package links
+  ([8fb2a080f](https://github.com/storm-software/storm-ops/commit/8fb2a080f))
+
 ## [0.29.13](https://github.com/storm-software/storm-ops/releases/tag/markdownlint%400.29.13) (2025-10-08)
 
 ### Miscellaneous

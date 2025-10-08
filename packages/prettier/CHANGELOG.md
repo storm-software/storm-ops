@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Prettier
 
+## [0.57.0](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.57.0) (2025-10-08)
+
+### Features
+
+- **tsup:** Initial check-in of the `tsup` patched package
+  ([e141da012](https://github.com/storm-software/storm-ops/commit/e141da012))
+
+### Miscellaneous
+
+- **monorepo:** Update workspace package links
+  ([8fb2a080f](https://github.com/storm-software/storm-ops/commit/8fb2a080f))
+
 ## [0.56.12](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.56.12) (2025-10-08)
 
 ### Bug Fixes

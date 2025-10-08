@@ -2,6 +2,24 @@
 
 # Changelog for Storm Ops - Git Tools
 
+## [2.123.0](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.123.0) (2025-10-08)
+
+### Features
+
+- **tsup:** Initial check-in of the `tsup` patched package
+  ([e141da012](https://github.com/storm-software/storm-ops/commit/e141da012))
+
+### Miscellaneous
+
+- **monorepo:** Update workspace package links
+  ([8fb2a080f](https://github.com/storm-software/storm-ops/commit/8fb2a080f))
+
+### Updated Dependencies
+
+- Updated conventional-changelog to 0.3.0
+- Updated config-tools to 1.188.0
+- Updated config to 1.134.0
+
 ## [2.122.20](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.122.20) (2025-10-08)
 
 ### Bug Fixes

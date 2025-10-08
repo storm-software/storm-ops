@@ -2,6 +2,24 @@
 
 # Changelog for Storm Ops - Pnpm Tools
 
+## [0.6.0](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.6.0) (2025-10-08)
+
+### Features
+
+- **tsup:** Initial check-in of the `tsup` patched package
+  ([e141da012](https://github.com/storm-software/storm-ops/commit/e141da012))
+
+### Miscellaneous
+
+- **monorepo:** Update workspace package links
+  ([8fb2a080f](https://github.com/storm-software/storm-ops/commit/8fb2a080f))
+
+### Updated Dependencies
+
+- Updated config-tools to 1.188.0
+- Updated npm-tools to 0.5.0
+- Updated config to 1.134.0
+
 ## [0.5.13](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.5.13) (2025-10-08)
 
 ### Miscellaneous

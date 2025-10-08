@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Cloudflare Tools
 
+## [0.70.0](https://github.com/storm-software/storm-ops/releases/tag/cloudflare-tools%400.70.0) (2025-10-08)
+
+### Features
+
+- **tsup:** Initial check-in of the `tsup` patched package
+  ([e141da012](https://github.com/storm-software/storm-ops/commit/e141da012))
+
+### Miscellaneous
+
+- **monorepo:** Update workspace package links
+  ([8fb2a080f](https://github.com/storm-software/storm-ops/commit/8fb2a080f))
+
 ## [0.69.13](https://github.com/storm-software/storm-ops/releases/tag/cloudflare-tools%400.69.13) (2025-10-08)
 
 ### Miscellaneous

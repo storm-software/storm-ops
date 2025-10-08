@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Testing Tools
 
+## [1.119.0](https://github.com/storm-software/storm-ops/releases/tag/testing-tools%401.119.0) (2025-10-08)
+
+### Features
+
+- **tsup:** Initial check-in of the `tsup` patched package
+  ([e141da012](https://github.com/storm-software/storm-ops/commit/e141da012))
+
+### Miscellaneous
+
+- **monorepo:** Update workspace package links
+  ([8fb2a080f](https://github.com/storm-software/storm-ops/commit/8fb2a080f))
+
 ## [1.118.13](https://github.com/storm-software/storm-ops/releases/tag/testing-tools%401.118.13) (2025-10-08)
 
 ### Miscellaneous

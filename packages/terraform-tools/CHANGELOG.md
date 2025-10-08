@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Terraform Tools
 
+## [0.66.0](https://github.com/storm-software/storm-ops/releases/tag/terraform-tools%400.66.0) (2025-10-08)
+
+### Features
+
+- **tsup:** Initial check-in of the `tsup` patched package
+  ([e141da012](https://github.com/storm-software/storm-ops/commit/e141da012))
+
+### Miscellaneous
+
+- **monorepo:** Update workspace package links
+  ([8fb2a080f](https://github.com/storm-software/storm-ops/commit/8fb2a080f))
+
 ## [0.65.13](https://github.com/storm-software/storm-ops/releases/tag/terraform-tools%400.65.13) (2025-10-08)
 
 ### Miscellaneous

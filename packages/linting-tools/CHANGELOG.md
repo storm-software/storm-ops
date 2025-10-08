@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Linting Tools
 
+## [1.132.0](https://github.com/storm-software/storm-ops/releases/tag/linting-tools%401.132.0) (2025-10-08)
+
+### Features
+
+- **tsup:** Initial check-in of the `tsup` patched package
+  ([e141da012](https://github.com/storm-software/storm-ops/commit/e141da012))
+
+### Miscellaneous
+
+- **monorepo:** Update workspace package links
+  ([8fb2a080f](https://github.com/storm-software/storm-ops/commit/8fb2a080f))
+
 ## [1.131.13](https://github.com/storm-software/storm-ops/releases/tag/linting-tools%401.131.13) (2025-10-08)
 
 ### Miscellaneous

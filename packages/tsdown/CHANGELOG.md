@@ -2,6 +2,24 @@
 
 # Changelog for Storm Ops - Tsdown
 
+## [0.45.0](https://github.com/storm-software/storm-ops/releases/tag/tsdown%400.45.0) (2025-10-08)
+
+### Features
+
+- **tsup:** Initial check-in of the `tsup` patched package
+  ([e141da012](https://github.com/storm-software/storm-ops/commit/e141da012))
+
+### Miscellaneous
+
+- **monorepo:** Update workspace package links
+  ([8fb2a080f](https://github.com/storm-software/storm-ops/commit/8fb2a080f))
+
+### Updated Dependencies
+
+- Updated config-tools to 1.188.0
+- Updated build-tools to 0.158.0
+- Updated config to 1.134.0
+
 ## [0.44.8](https://github.com/storm-software/storm-ops/releases/tag/tsdown%400.44.8) (2025-10-08)
 
 ### Bug Fixes
