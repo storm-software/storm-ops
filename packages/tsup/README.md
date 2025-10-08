@@ -21,7 +21,7 @@ This package is part of the <b>⚡Storm-Ops</b> monorepo. The Storm-Ops packages
 
 <h3 align="center">💻 Visit <a href="https://stormsoftware.com" target="_blank">stormsoftware.com</a> to stay up to date with this developer</h3><br />
 
-[![Version](https://img.shields.io/badge/version-0.52.19-1fb2a6.svg?style=for-the-badge&color=1fb2a6)](https://prettier.io/)&nbsp;[![Nx](https://img.shields.io/badge/Nx-17.0.2-lightgrey?style=for-the-badge&logo=nx&logoWidth=20&&color=1fb2a6)](http://nx.dev/)&nbsp;[![NextJs](https://img.shields.io/badge/Next.js-14.0.2-lightgrey?style=for-the-badge&logo=nextdotjs&logoWidth=20&color=1fb2a6)](https://nextjs.org/)&nbsp;[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg?style=for-the-badge&logo=commitlint&color=1fb2a6)](http://commitizen.github.io/cz-cli/)&nbsp;![Semantic-Release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg?style=for-the-badge&color=1fb2a6)&nbsp;[![documented with Fumadocs](https://img.shields.io/badge/documented_with-fumadocs-success.svg?style=for-the-badge&logo=readthedocs&color=1fb2a6)](https://fumadocs.vercel.app/)&nbsp;![GitHub Workflow Status (with event)](https://img.shields.io/github/actions/workflow/status/storm-software/storm-ops/cr.yml?style=for-the-badge&logo=github-actions&color=1fb2a6)
+[![Version](https://img.shields.io/badge/version-0.12.12-1fb2a6.svg?style=for-the-badge&color=1fb2a6)](https://prettier.io/)&nbsp;[![Nx](https://img.shields.io/badge/Nx-17.0.2-lightgrey?style=for-the-badge&logo=nx&logoWidth=20&&color=1fb2a6)](http://nx.dev/)&nbsp;[![NextJs](https://img.shields.io/badge/Next.js-14.0.2-lightgrey?style=for-the-badge&logo=nextdotjs&logoWidth=20&color=1fb2a6)](https://nextjs.org/)&nbsp;[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg?style=for-the-badge&logo=commitlint&color=1fb2a6)](http://commitizen.github.io/cz-cli/)&nbsp;![Semantic-Release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg?style=for-the-badge&color=1fb2a6)&nbsp;[![documented with Fumadocs](https://img.shields.io/badge/documented_with-fumadocs-success.svg?style=for-the-badge&logo=readthedocs&color=1fb2a6)](https://fumadocs.vercel.app/)&nbsp;![GitHub Workflow Status (with event)](https://img.shields.io/github/actions/workflow/status/storm-software/storm-ops/cr.yml?style=for-the-badge&logo=github-actions&color=1fb2a6)
 
 <!-- prettier-ignore-start -->
 <!-- markdownlint-disable -->
@@ -43,7 +43,7 @@ This package is part of the <b>⚡Storm-Ops</b> monorepo. The Storm-Ops packages
 
 ## Table of Contents
 
-- [Storm ESBuild Package](#storm-esbuild-package)
+- [Storm tsup build package](#storm-tsup-build-package)
   - [Installing](#installing)
   - [Building](#building)
   - [Running unit tests](#running-unit-tests)
@@ -64,23 +64,26 @@ This package is part of the <b>⚡Storm-Ops</b> monorepo. The Storm-Ops packages
 
 <!-- END header -->
 
-# Storm ESBuild Package
+# Storm tsup build package
 
-This package contains the ESBuild configuration for Storm Software projects.
+This package provides a pre-configured setup for building TypeScript projects
+using `tsup`, a popular bundler for TypeScript. It simplifies the build process
+by offering sensible defaults and configurations, allowing developers to focus
+on writing code rather than managing build configurations.
 
 ## Installing
 
 Using [pnpm](http://pnpm.io):
 
 ```bash
-pnpm add -D @storm-software/esbuild
+pnpm add -D @storm-software/tsup
 ```
 
 <details>
   <summary>Using npm</summary>
 
 ```bash
-npm install -D @storm-software/esbuild
+npm install -D @storm-software/tsup
 ```
 
 </details>
@@ -89,18 +92,18 @@ npm install -D @storm-software/esbuild
   <summary>Using yarn</summary>
 
 ```bash
-yarn add -D @storm-software/esbuild
+yarn add -D @storm-software/tsup
 ```
 
 </details>
 
 ## Building
 
-Run `nx build esbuild` to build the library.
+Run `nx build tsup` to build the library.
 
 ## Running unit tests
 
-Run `nx test esbuild` to execute the unit tests via [Jest](https://jestjs.io).
+Run `nx test tsup` to execute the unit tests via [Jest](https://jestjs.io).
 
 <!-- START footer -->
 <!-- prettier-ignore-start -->

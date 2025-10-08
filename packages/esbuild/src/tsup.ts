@@ -3,7 +3,7 @@ import {
   writeDebug
 } from "@storm-software/config-tools/logger/console";
 import { joinPaths } from "@storm-software/config-tools/utilities/correct-paths";
-import { Options, build as tsup } from "tsup";
+import { Options, build as tsup } from "@storm-software/tsup";
 import { ESBuildContext } from "./types";
 
 /**

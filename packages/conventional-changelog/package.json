@@ -215,10 +215,7 @@
     "./templates/*": "./dist/templates/*"
   },
   "types": "./dist/index.d.ts",
-  "files": [
-    "dist/**/*",
-    "templates/**/*"
-  ],
+  "files": ["dist/**/*", "templates/**/*"],
   "keywords": [
     "conventional-changelog",
     "commitlint",

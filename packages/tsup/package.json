@@ -1,0 +1,94 @@
+{
+  "name": "@storm-software/tsup",
+  "version": "0.0.1",
+  "type": "module",
+  "description": "A package containing bundled patches for tsup.",
+  "repository": {
+    "type": "github",
+    "url": "https://github.com/storm-software/storm-ops.git",
+    "directory": "packages/tsup"
+  },
+  "homepage": "https://stormsoftware.com",
+  "bugs": "https://github.com/storm-software/storm-ops/issues",
+  "author": {
+    "name": "Storm Software",
+    "email": "contact@stormsoftware.com",
+    "url": "https://stormsoftware.com"
+  },
+  "maintainers": [
+    {
+      "name": "Storm Software",
+      "email": "contact@stormsoftware.com",
+      "url": "https://stormsoftware.com"
+    },
+    {
+      "name": "Pat Sullivan",
+      "email": "admin@stormsoftware.com",
+      "url": "https://patsullivan.org"
+    }
+  ],
+  "contributors": [
+    {
+      "name": "Storm Software",
+      "email": "contact@stormsoftware.com",
+      "url": "https://stormsoftware.com"
+    }
+  ],
+  "funding": {
+    "type": "github",
+    "url": "https://github.com/sponsors/storm-software"
+  },
+  "license": "Apache-2.0",
+  "private": false,
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "exports": {
+    "./package.json": "./package.json",
+    "./assets/cjs_shims.js": "./assets/cjs_shims.js",
+    "./assets/esm_shims.js": "./assets/esm_shims.js",
+    "./index": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      },
+      "default": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      }
+    },
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      },
+      "default": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      }
+    },
+    "./*": "./dist/*.cjs"
+  },
+  "types": "./dist/index.d.ts",
+  "files": ["assets/**/*", "dist/**/*"],
+  "keywords": ["tsup", "storm", "storm-ops", "storm-software"],
+  "dependencies": {
+    "@storm-software/config-tools": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/node": "catalog:",
+    "tsup": "catalog:",
+    "typescript": "^5.9.3"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "sideEffects": false
+}

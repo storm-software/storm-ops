@@ -21,3 +21,4 @@ coverage/**
 **/src/generators/**/files/**/*
 packages/eslint/**
 packages/eslint-plugin/**
+packages/tsup/workers/*.cjs

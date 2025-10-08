@@ -98,6 +98,7 @@ overrides:
   "@storm-software/pnpm-tools": workspace:*
   "@storm-software/untyped": workspace:*
   "@storm-software/esbuild": workspace:*
+  "@storm-software/tsup": workspace:*
   "@storm-software/tsdown": workspace:*
   "@storm-software/unbuild": workspace:*
   "@storm-software/terraform-tools": workspace:*

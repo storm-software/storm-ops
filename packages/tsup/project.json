@@ -1,0 +1,39 @@
+{
+  "name": "tsup",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "packages/tsup/src",
+  "targets": {
+    "build-base": {
+      "cache": true,
+      "inputs": ["default", "^production"],
+      "outputs": ["{workspaceRoot}/dist/{projectRoot}"],
+      "executor": "nx:run-commands",
+      "dependsOn": ["clean", "^build"],
+      "options": {
+        "command": "tsup-node --config=tsup.config.ts",
+        "cwd": "{projectRoot}"
+      }
+    },
+    "build": {
+      "cache": true,
+      "inputs": ["default", "^production"],
+      "outputs": ["{workspaceRoot}/dist/{projectRoot}"],
+      "executor": "nx:run-commands",
+      "dependsOn": ["build-base"],
+      "options": {
+        "commands": [
+          "pnpm copyfiles LICENSE dist/packages/tsup",
+          "pnpm copyfiles --up=2 ./packages/tsup/*.md ./packages/tsup/package.json dist/packages/tsup",
+          "pnpm copyfiles --up=3 \"./packages/tsup/dist/**/*\" dist/packages/tsup/dist",
+          "pnpm copyfiles --up=3 ./packages/tsup/workers/*.cjs dist/packages/tsup/dist",
+          "pnpm copyfiles --up=3 ./packages/tsup/assets/cjs_shims.js ./packages/tsup/assets/esm_shims.js dist/packages/tsup/assets"
+        ]
+      }
+    },
+    "nx-release-publish": {
+      "executor": "@storm-software/workspace-tools:npm-publish"
+    }
+  },
+  "tags": ["platform:node"]
+}

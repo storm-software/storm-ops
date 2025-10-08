@@ -1,16 +1,47 @@
-"use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; } function _optionalChain(ops) { let lastAccessLHS = undefined; let value = ops[0]; let i = 1; while (i < ops.length) { const op = ops[i]; const fn = ops[i + 1]; i += 2; if ((op === 'optionalAccess' || op === 'optionalCall') && value == null) { return undefined; } if (op === 'access' || op === 'optionalAccess') { lastAccessLHS = value; value = fn(value); } else if (op === 'call' || op === 'optionalCall') { value = fn((...args) => value.call(lastAccessLHS, ...args)); lastAccessLHS = undefined; } } return value; }
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+function _interopRequireDefault(obj) {
+  return obj && obj.__esModule ? obj : { default: obj };
+}
+function _optionalChain(ops) {
+  let lastAccessLHS = undefined;
+  let value = ops[0];
+  let i = 1;
+  while (i < ops.length) {
+    const op = ops[i];
+    const fn = ops[i + 1];
+    i += 2;
+    if ((op === "optionalAccess" || op === "optionalCall") && value == null) {
+      return undefined;
+    }
+    if (op === "access" || op === "optionalAccess") {
+      lastAccessLHS = value;
+      value = fn(value);
+    } else if (op === "call" || op === "optionalCall") {
+      value = fn((...args) => value.call(lastAccessLHS, ...args));
+      lastAccessLHS = undefined;
+    }
+  }
+  return value;
+}
 
-var _chunkTWFEYLU4js = require('./chunk-TWFEYLU4.cjs');
+var _chunkTWFEYLU4js = require("./chunk-TWFEYLU4.cjs");
 
 // src/load.ts
-var _fs = require('fs'); var _fs2 = _interopRequireDefault(_fs);
-var _path = require('path'); var _path2 = _interopRequireDefault(_path);
-var _joycon = require('joycon'); var _joycon2 = _interopRequireDefault(_joycon);
-var _bundlerequire = require('bundle-require');
+var _fs = require("fs");
+var _fs2 = _interopRequireDefault(_fs);
+var _path = require("path");
+var _path2 = _interopRequireDefault(_path);
+var _joycon = require("joycon");
+var _joycon2 = _interopRequireDefault(_joycon);
+var _bundlerequire = require("bundle-require");
 var joycon = new (0, _joycon2.default)();
 var loadJson = async (filepath, options) => {
   try {
-    return _chunkTWFEYLU4js.jsoncParse.call(void 0, await _fs2.default.promises.readFile(filepath, "utf8"));
+    return _chunkTWFEYLU4js.jsoncParse.call(
+      void 0,
+      await _fs2.default.promises.readFile(filepath, "utf8")
+    );
   } catch (error) {
     if (error instanceof Error) {
       throw new Error(
@@ -31,16 +62,18 @@ joycon.addLoader(jsonLoader);
 async function loadTsupConfig(cwd, configFile) {
   const configJoycon = new (0, _joycon2.default)();
   const configPath = await configJoycon.resolve({
-    files: configFile ? [configFile] : [
-      "tsup.config.ts",
-      "tsup.config.cts",
-      "tsup.config.mts",
-      "tsup.config.js",
-      "tsup.config.cjs",
-      "tsup.config.mjs",
-      "tsup.config.json",
-      "package.json"
-    ],
+    files: configFile
+      ? [configFile]
+      : [
+          "tsup.config.ts",
+          "tsup.config.cts",
+          "tsup.config.mts",
+          "tsup.config.js",
+          "tsup.config.cjs",
+          "tsup.config.mjs",
+          "tsup.config.json",
+          "package.json"
+        ],
     cwd,
     stopDir: _path2.default.parse(cwd).root,
     packageKey: "tsup"
@@ -70,7 +103,11 @@ async function loadPkg(cwd, clearCache = false) {
   if (clearCache) {
     joycon.clearCache();
   }
-  const { data } = await joycon.load(["package.json"], cwd, _path2.default.dirname(cwd));
+  const { data } = await joycon.load(
+    ["package.json"],
+    cwd,
+    _path2.default.dirname(cwd)
+  );
   return data || {};
 }
 async function getProductionDeps(cwd, clearCache = false) {
@@ -93,19 +130,31 @@ async function getAllDepsHash(cwd) {
 }
 
 // src/log.ts
-var _util = require('util'); var _util2 = _interopRequireDefault(_util);
-var _worker_threads = require('worker_threads');
-var _picocolors = require('picocolors'); var _picocolors2 = _interopRequireDefault(_picocolors);
+var _util = require("util");
+var _util2 = _interopRequireDefault(_util);
+var _worker_threads = require("worker_threads");
+var _picocolors = require("picocolors");
+var _picocolors2 = _interopRequireDefault(_picocolors);
 var colorize = (type, data, onlyImportant = false) => {
   if (onlyImportant && (type === "info" || type === "success")) return data;
-  const color = type === "info" ? "blue" : type === "error" ? "red" : type === "warn" ? "yellow" : "green";
+  const color =
+    type === "info"
+      ? "blue"
+      : type === "error"
+        ? "red"
+        : type === "warn"
+          ? "yellow"
+          : "green";
   return _picocolors2.default[color](data);
 };
 var makeLabel = (name, input, type) => {
   return [
-    name && `${_picocolors2.default.dim("[")}${name.toUpperCase()}${_picocolors2.default.dim("]")}`,
+    name &&
+      `${_picocolors2.default.dim("[")}${name.toUpperCase()}${_picocolors2.default.dim("]")}`,
     colorize(type, input.toUpperCase())
-  ].filter(Boolean).join(" ");
+  ]
+    .filter(Boolean)
+    .join(" ");
 };
 var silent = false;
 function setSilent(isSilent) {
@@ -114,7 +163,7 @@ function setSilent(isSilent) {
 function getSilent() {
   return silent;
 }
-var createLogger = (name) => {
+var createLogger = name => {
   return {
     setName(_name) {
       name = _name;
@@ -134,15 +183,22 @@ var createLogger = (name) => {
     log(label, type, ...data) {
       const args = [
         makeLabel(name, label, type),
-        ...data.map((item) => colorize(type, item, true))
+        ...data.map(item => colorize(type, item, true))
       ];
       switch (type) {
         case "error": {
           if (!_worker_threads.isMainThread) {
-            _optionalChain([_worker_threads.parentPort, 'optionalAccess', _ => _.postMessage, 'call', _2 => _2({
-              type: "error",
-              text: _util2.default.format(...args)
-            })]);
+            _optionalChain([
+              _worker_threads.parentPort,
+              "optionalAccess",
+              _ => _.postMessage,
+              "call",
+              _2 =>
+                _2({
+                  type: "error",
+                  text: _util2.default.format(...args)
+                })
+            ]);
             return;
           }
           return console.error(...args);
@@ -150,10 +206,17 @@ var createLogger = (name) => {
         default:
           if (silent) return;
           if (!_worker_threads.isMainThread) {
-            _optionalChain([_worker_threads.parentPort, 'optionalAccess', _3 => _3.postMessage, 'call', _4 => _4({
-              type: "log",
-              text: _util2.default.format(...args)
-            })]);
+            _optionalChain([
+              _worker_threads.parentPort,
+              "optionalAccess",
+              _3 => _3.postMessage,
+              "call",
+              _4 =>
+                _4({
+                  type: "log",
+                  text: _util2.default.format(...args)
+                })
+            ]);
             return;
           }
           console.log(...args);
@@ -164,13 +227,13 @@ var createLogger = (name) => {
 
 // src/lib/report-size.ts
 
-var prettyBytes = (bytes) => {
+var prettyBytes = bytes => {
   if (bytes === 0) return "0 B";
   const unit = ["B", "KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB"];
   const exp = Math.floor(Math.log(bytes) / Math.log(1024));
   return `${(bytes / 1024 ** exp).toFixed(2)} ${unit[exp]}`;
 };
-var getLengthOfLongestString = (strings) => {
+var getLengthOfLongestString = strings => {
   return strings.reduce((max, str) => {
     return Math.max(max, str.length);
   }, 0);
@@ -191,13 +254,11 @@ var reportSize = (logger, format, files) => {
   }
 };
 
-
-
-
-
-
-
-
-
-
-exports.loadTsupConfig = loadTsupConfig; exports.loadPkg = loadPkg; exports.getProductionDeps = getProductionDeps; exports.getAllDepsHash = getAllDepsHash; exports.setSilent = setSilent; exports.getSilent = getSilent; exports.createLogger = createLogger; exports.reportSize = reportSize;
+exports.loadTsupConfig = loadTsupConfig;
+exports.loadPkg = loadPkg;
+exports.getProductionDeps = getProductionDeps;
+exports.getAllDepsHash = getAllDepsHash;
+exports.setSilent = setSilent;
+exports.getSilent = getSilent;
+exports.createLogger = createLogger;
+exports.reportSize = reportSize;

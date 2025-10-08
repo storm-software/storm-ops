@@ -18,9 +18,7 @@ export default defineConfig([
     cjsInterop: true,
     requireToImport: true,
     tsconfig: "./packages/esbuild/tsconfig.json",
-    external: ["nx", "@nx/*", "typescript"],
-    noExternal: ["tsup"],
-    skipNodeModulesBundle: true
+    external: ["nx", "@nx/*", "typescript"]
   },
   {
     name: "esbuild-bin",

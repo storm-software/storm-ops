@@ -31,3 +31,5 @@ bun.lockb
 **/LICENSE.txt
 **/src/generators/**/files/**/*
 **/typegen.d.ts
+
+packages/tsup/workers/*.cjs

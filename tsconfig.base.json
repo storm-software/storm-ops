@@ -52,6 +52,8 @@
       "@storm-software/tsdoc/*": ["packages/tsdoc/src/*"],
       "@storm-software/tsdown": ["packages/tsdown/src/index.ts"],
       "@storm-software/tsdown/*": ["packages/tsdown/src/*"],
+      "@storm-software/tsup": ["packages/tsup/src/index.ts"],
+      "@storm-software/tsup/*": ["packages/tsup/src/*"],
       "@storm-software/unbuild": ["packages/unbuild/src/index.ts"],
       "@storm-software/unbuild/*": ["packages/unbuild/src/*"],
       "@storm-software/untyped": ["packages/untyped/src/index.ts"],
