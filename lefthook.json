@@ -64,12 +64,6 @@
         "run": "pnpm build-dev",
         "stage_fixed": true
       },
-      "validate": {
-        "files": "git diff --name-only HEAD @{push}",
-        "glob": "**/*",
-        "run": "node ./dist/packages/git-tools/bin/pre-push.cjs {files}",
-        "stage_fixed": true
-      },
       "lint-github-actions": {
         "glob": ".github/workflows/*.*",
         "run": "zizmor --offline --config='./tools/config/zizmor.yml' .github/workflows/"

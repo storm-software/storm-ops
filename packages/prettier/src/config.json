@@ -23,17 +23,17 @@
     {
       "files": "**/*.mdx",
       "options": {
+        "parser": "mdx",
         "semi": false,
-        "trailingComma": "none",
-        "parser": "mdx"
+        "trailingComma": "none"
       }
     },
     {
       "files": "**/*.md",
       "options": {
+        "parser": "markdown",
         "semi": false,
-        "trailingComma": "none",
-        "parser": "markdown"
+        "trailingComma": "none"
       }
     },
     {
@@ -59,7 +59,10 @@
         "parser": "html"
       }
     },
-    { "files": "**/*.json", "options": { "trailingComma": "none" } },
+    {
+      "files": "**/*.json",
+      "options": { "parser": "json", "trailingComma": "none" }
+    },
     {
       "files": "**/*.hbs",
       "options": {
