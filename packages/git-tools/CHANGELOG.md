@@ -2,6 +2,24 @@
 
 # Changelog for Storm Ops - Git Tools
 
+## [2.122.20](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.122.20) (2025-10-08)
+
+### Bug Fixes
+
+- **prettier:** Added missing `parser` configuration
+  ([3a3903746](https://github.com/storm-software/storm-ops/commit/3a3903746))
+
+### Miscellaneous
+
+- **monorepo:** Update workspace package links
+  ([ad9d018ff](https://github.com/storm-software/storm-ops/commit/ad9d018ff))
+
+### Updated Dependencies
+
+- Updated conventional-changelog to 0.2.20
+- Updated config-tools to 1.187.15
+- Updated config to 1.133.10
+
 ## [2.122.19](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.122.19) (2025-10-05)
 
 ### Miscellaneous

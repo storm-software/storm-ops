@@ -2,6 +2,22 @@
 
 # Changelog for Storm Ops - Config Tools
 
+## [1.187.15](https://github.com/storm-software/storm-ops/releases/tag/config-tools%401.187.15) (2025-10-08)
+
+### Bug Fixes
+
+- **prettier:** Added missing `parser` configuration
+  ([3a3903746](https://github.com/storm-software/storm-ops/commit/3a3903746))
+
+### Miscellaneous
+
+- **monorepo:** Update workspace package links
+  ([ad9d018ff](https://github.com/storm-software/storm-ops/commit/ad9d018ff))
+
+### Updated Dependencies
+
+- Updated config to 1.133.10
+
 ## [1.187.14](https://github.com/storm-software/storm-ops/releases/tag/config-tools%401.187.14) (2025-10-05)
 
 ### Bug Fixes

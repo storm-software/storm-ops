@@ -1,6 +1,6 @@
 {
   "name": "@storm-software/markdownlint",
-  "version": "0.29.12",
+  "version": "0.29.13",
   "description": "An opinionated collection of markdownlint rules used by Storm Software.",
   "repository": {
     "type": "github",
@@ -99,10 +99,7 @@
     "./config/*": "./config/*"
   },
   "types": "./dist/index.d.ts",
-  "files": [
-    "config/**/*",
-    "dist/**/*"
-  ],
+  "files": ["config/**/*", "dist/**/*"],
   "keywords": [
     "markdownlint",
     "markdownlint-cli",

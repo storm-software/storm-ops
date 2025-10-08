@@ -2,6 +2,24 @@
 
 # Changelog for Storm Ops - Tsdown
 
+## [0.44.8](https://github.com/storm-software/storm-ops/releases/tag/tsdown%400.44.8) (2025-10-08)
+
+### Bug Fixes
+
+- **prettier:** Added missing `parser` configuration
+  ([3a3903746](https://github.com/storm-software/storm-ops/commit/3a3903746))
+
+### Miscellaneous
+
+- **monorepo:** Update workspace package links
+  ([ad9d018ff](https://github.com/storm-software/storm-ops/commit/ad9d018ff))
+
+### Updated Dependencies
+
+- Updated config-tools to 1.187.15
+- Updated build-tools to 0.157.7
+- Updated config to 1.133.10
+
 ## [0.44.7](https://github.com/storm-software/storm-ops/releases/tag/tsdown%400.44.7) (2025-10-05)
 
 ### Miscellaneous

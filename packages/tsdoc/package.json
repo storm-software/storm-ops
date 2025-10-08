@@ -1,6 +1,6 @@
 {
   "name": "@storm-software/tsdoc",
-  "version": "0.12.12",
+  "version": "0.12.13",
   "type": "module",
   "description": "This package contains shared TSDoc configurations used in Storm Software projects.",
   "repository": {
@@ -80,13 +80,7 @@
     }
   },
   "types": "./dist/index.d.ts",
-  "keywords": [
-    "tsdoc",
-    "typedoc",
-    "storm",
-    "storm-ops",
-    "storm-software"
-  ],
+  "keywords": ["tsdoc", "typedoc", "storm", "storm-ops", "storm-software"],
   "peerDependencies": {
     "@microsoft/api-extractor": ">=7.52.0",
     "@microsoft/tsdoc": ">=0.15.0",

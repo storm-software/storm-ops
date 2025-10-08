@@ -2,6 +2,23 @@
 
 # Changelog for Storm Ops - ESLint
 
+## [0.168.20](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.168.20) (2025-10-08)
+
+### Bug Fixes
+
+- **prettier:** Added missing `parser` configuration
+  ([3a3903746](https://github.com/storm-software/storm-ops/commit/3a3903746))
+
+### Miscellaneous
+
+- **monorepo:** Update workspace package links
+  ([ad9d018ff](https://github.com/storm-software/storm-ops/commit/ad9d018ff))
+
+### Updated Dependencies
+
+- Updated config-tools to 1.187.15
+- Updated config to 1.133.10
+
 ## [0.168.19](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.168.19) (2025-10-05)
 
 ### Miscellaneous

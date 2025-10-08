@@ -2,6 +2,24 @@
 
 # Changelog for Storm Ops - Unbuild
 
+## [0.56.20](https://github.com/storm-software/storm-ops/releases/tag/unbuild%400.56.20) (2025-10-08)
+
+### Bug Fixes
+
+- **prettier:** Added missing `parser` configuration
+  ([3a3903746](https://github.com/storm-software/storm-ops/commit/3a3903746))
+
+### Miscellaneous
+
+- **monorepo:** Update workspace package links
+  ([ad9d018ff](https://github.com/storm-software/storm-ops/commit/ad9d018ff))
+
+### Updated Dependencies
+
+- Updated config-tools to 1.187.15
+- Updated build-tools to 0.157.7
+- Updated config to 1.133.10
+
 ## [0.56.19](https://github.com/storm-software/storm-ops/releases/tag/unbuild%400.56.19) (2025-10-05)
 
 ### Miscellaneous

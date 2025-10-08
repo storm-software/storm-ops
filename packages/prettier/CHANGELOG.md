@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Prettier
 
+## [0.56.12](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.56.12) (2025-10-08)
+
+### Bug Fixes
+
+- **prettier:** Added missing `parser` configuration
+  ([3a3903746](https://github.com/storm-software/storm-ops/commit/3a3903746))
+
+### Miscellaneous
+
+- **monorepo:** Update workspace package links
+  ([ad9d018ff](https://github.com/storm-software/storm-ops/commit/ad9d018ff))
+
 ## [0.56.11](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.56.11) (2025-10-05)
 
 ### Miscellaneous
