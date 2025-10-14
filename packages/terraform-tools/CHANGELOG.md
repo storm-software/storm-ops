@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Terraform Tools
 
+## [0.66.2](https://github.com/storm-software/storm-ops/releases/tag/terraform-tools%400.66.2) (2025-10-14)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace package link
+  ([1666003a2](https://github.com/storm-software/storm-ops/commit/1666003a2))
+
 ## [0.66.1](https://github.com/storm-software/storm-ops/releases/tag/terraform-tools%400.66.1) (2025-10-14)
 
 ### Miscellaneous

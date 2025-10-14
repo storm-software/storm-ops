@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Tsup
 
+## [0.2.0](https://github.com/storm-software/storm-ops/releases/tag/tsup%400.2.0) (2025-10-14)
+
+### Features
+
+- **tsup:** Added `constants`, `options`, and `types` modules
+  ([160723834](https://github.com/storm-software/storm-ops/commit/160723834))
+
+### Updated Dependencies
+
+- Updated config-tools to 1.188.2
+- Updated build-tools to 0.158.2
+
 ## [0.1.1](https://github.com/storm-software/storm-ops/releases/tag/tsup%400.1.1) (2025-10-14)
 
 ### Miscellaneous

@@ -2,6 +2,25 @@
 
 # Changelog for Storm Ops - Esbuild
 
+## [0.53.2](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.53.2) (2025-10-14)
+
+### Bug Fixes
+
+- **esbuild:** Resolve issue with invalid type imports
+  ([debd52329](https://github.com/storm-software/storm-ops/commit/debd52329))
+
+### Miscellaneous
+
+- **monorepo:** Update workspace package link
+  ([1666003a2](https://github.com/storm-software/storm-ops/commit/1666003a2))
+
+### Updated Dependencies
+
+- Updated config-tools to 1.188.2
+- Updated build-tools to 0.158.2
+- Updated config to 1.134.2
+- Updated tsup to 0.2.0
+
 ## [0.53.1](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.53.1) (2025-10-14)
 
 ### Miscellaneous
