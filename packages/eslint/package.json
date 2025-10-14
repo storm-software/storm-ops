@@ -134,7 +134,9 @@
     }
   },
   "types": "./dist/index.d.ts",
-  "files": ["dist/**/*"],
+  "files": [
+    "dist/**/*"
+  ],
   "keywords": [
     "eslint",
     "eslint-config",
@@ -173,13 +175,13 @@
     "@eslint/eslintrc": "^3.3.1",
     "@eslint/markdown": "^6.6.0",
     "@nx/eslint-plugin": "catalog:",
-    "@storm-software/config": "1.134.0",
-    "@storm-software/config-tools": "1.188.0",
+    "@storm-software/config": "workspace:*",
+    "@storm-software/config-tools": "workspace:*",
     "@stylistic/eslint-plugin": "^4.4.1",
     "@typescript-eslint/eslint-plugin": "catalog:",
     "@typescript-eslint/parser": "catalog:",
     "@typescript-eslint/utils": "catalog:",
-    "@vitest/eslint-plugin": "^1.3.16",
+    "@vitest/eslint-plugin": "^1.3.18",
     "chalk": "catalog:",
     "defu": "catalog:",
     "eslint-config-flat-gitignore": "^2.1.0",
@@ -221,7 +223,7 @@
     "@eslint-types/typescript-eslint": "^7.5.0",
     "@eslint/config-inspector": "^0.5.6",
     "@graphql-eslint/eslint-plugin": "^4.4.0",
-    "@next/eslint-plugin-next": "^15.5.4",
+    "@next/eslint-plugin-next": "^15.5.5",
     "@nx/eslint": "catalog:",
     "@prettier/plugin-xml": "^3.4.2",
     "@stylistic/eslint-plugin-migrate": "^4.4.1",

@@ -162,14 +162,14 @@
     }
   },
   "dependencies": {
-    "@storm-software/config": "1.134.0",
-    "@storm-software/config-tools": "1.188.0",
-    "@storm-software/workspace-tools": "1.292.0",
+    "@storm-software/config": "workspace:*",
+    "@storm-software/config-tools": "workspace:*",
+    "@storm-software/workspace-tools": "workspace:*",
     "yaml": "catalog:"
   },
   "devDependencies": {
-    "@nx-tools/container-metadata": "^6.8.2",
-    "@nx-tools/nx-container": "^6.8.2",
+    "@nx-tools/container-metadata": "^6.9.1",
+    "@nx-tools/nx-container": "^6.9.1",
     "@nx/devkit": "catalog:",
     "@nx/workspace": "catalog:",
     "@types/node": "catalog:",
