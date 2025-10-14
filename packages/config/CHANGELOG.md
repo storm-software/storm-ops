@@ -2,6 +2,15 @@
 
 # Changelog for Storm Ops - Config
 
+## [1.134.1](https://github.com/storm-software/storm-ops/releases/tag/config%401.134.1) (2025-10-14)
+
+### Miscellaneous
+
+- **cspell:** Added typescript tool phrases to dictionary
+  ([a70b30d9e](https://github.com/storm-software/storm-ops/commit/a70b30d9e))
+- **monorepo:** Update workspace package links
+  ([ef40f7597](https://github.com/storm-software/storm-ops/commit/ef40f7597))
+
 ## [1.134.0](https://github.com/storm-software/storm-ops/releases/tag/config%401.134.0) (2025-10-08)
 
 ### Features

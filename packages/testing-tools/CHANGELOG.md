@@ -2,6 +2,15 @@
 
 # Changelog for Storm Ops - Testing Tools
 
+## [1.119.1](https://github.com/storm-software/storm-ops/releases/tag/testing-tools%401.119.1) (2025-10-14)
+
+### Miscellaneous
+
+- **cspell:** Added typescript tool phrases to dictionary
+  ([a70b30d9e](https://github.com/storm-software/storm-ops/commit/a70b30d9e))
+- **monorepo:** Update workspace package links
+  ([ef40f7597](https://github.com/storm-software/storm-ops/commit/ef40f7597))
+
 ## [1.119.0](https://github.com/storm-software/storm-ops/releases/tag/testing-tools%401.119.0) (2025-10-08)
 
 ### Features

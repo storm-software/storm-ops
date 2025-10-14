@@ -2,6 +2,15 @@
 
 # Changelog for Storm Ops - Untyped
 
+## [0.23.1](https://github.com/storm-software/storm-ops/releases/tag/untyped%400.23.1) (2025-10-14)
+
+### Miscellaneous
+
+- **cspell:** Added typescript tool phrases to dictionary
+  ([a70b30d9e](https://github.com/storm-software/storm-ops/commit/a70b30d9e))
+- **monorepo:** Update workspace package links
+  ([ef40f7597](https://github.com/storm-software/storm-ops/commit/ef40f7597))
+
 ## [0.23.0](https://github.com/storm-software/storm-ops/releases/tag/untyped%400.23.0) (2025-10-08)
 
 ### Features

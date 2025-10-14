@@ -2,6 +2,21 @@
 
 # Changelog for Storm Ops - Git Tools
 
+## [2.123.1](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.123.1) (2025-10-14)
+
+### Miscellaneous
+
+- **cspell:** Added typescript tool phrases to dictionary
+  ([a70b30d9e](https://github.com/storm-software/storm-ops/commit/a70b30d9e))
+- **monorepo:** Update workspace package links
+  ([ef40f7597](https://github.com/storm-software/storm-ops/commit/ef40f7597))
+
+### Updated Dependencies
+
+- Updated conventional-changelog to 0.3.1
+- Updated config-tools to 1.188.1
+- Updated config to 1.134.1
+
 ## [2.123.0](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.123.0) (2025-10-08)
 
 ### Features

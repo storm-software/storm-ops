@@ -1,6 +1,6 @@
 {
   "name": "@storm-software/tsup",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "type": "module",
   "description": "A package containing bundled patches for tsup.",
   "repository": {
@@ -80,7 +80,7 @@
   "files": ["assets/**/*", "dist/**/*"],
   "keywords": ["tsup", "storm", "storm-ops", "storm-software"],
   "dependencies": {
-    "@storm-software/config-tools": "workspace:*"
+    "@storm-software/config-tools": "1.188.1"
   },
   "devDependencies": {
     "@types/node": "catalog:",
