@@ -3,7 +3,7 @@ import {
   writeDebug
 } from "@storm-software/config-tools/logger/console";
 import { joinPaths } from "@storm-software/config-tools/utilities/correct-paths";
-import { Options, build as tsup } from "@storm-software/tsup";
+import { BuildOptions, build as tsup } from "@storm-software/tsup";
 import { ESBuildContext } from "./types";
 
 /**
@@ -25,7 +25,7 @@ export async function executeTsup(context: ESBuildContext) {
       ? joinPaths(context.outputPath, context.options.distDir)
       : context.outputPath,
     workspaceConfig: context.workspaceConfig
-  } as Options);
+  } as BuildOptions);
 
   stopwatch();
 
