@@ -1574,6 +1574,9 @@ importers:
 
   packages/tsup:
     dependencies:
+      '@storm-software/build-tools':
+        specifier: workspace:*
+        version: link:../build-tools
       '@storm-software/config-tools':
         specifier: workspace:*
         version: link:../config-tools
@@ -4765,7 +4768,6 @@ packages:
 
   '@ls-lint/ls-lint@2.2.3':
     resolution: {integrity: sha512-ekM12jNm/7O2I/hsRv9HvYkRdfrHpiV1epVuI2NP+eTIcEgdIdKkKCs9KgQydu/8R5YXTov9aHdOgplmCHLupw==}
-    cpu: [x64, arm64, s390x]
     os: [darwin, linux, win32]
     hasBin: true
 
@@ -11041,8 +11043,8 @@ packages:
   knitwork@1.2.0:
     resolution: {integrity: sha512-xYSH7AvuQ6nXkq42x0v5S8/Iry+cfulBz/DJQzhIyESdLD7425jXsPy4vn5cCXU+HhRN2kVw51Vd1K6/By4BQg==}
 
-  ky@1.11.0:
-    resolution: {integrity: sha512-NEyo0ICpS0cqSuyoJFMCnHOZJILqXsKhIZlHJGDYaH8OB5IFrGzuBpEwyoMZG6gUKMPrazH30Ax5XKaujvD8ag==}
+  ky@1.12.0:
+    resolution: {integrity: sha512-YRLmSUHCwOJRBMArtqMRLOmO7fewn3yOoui6aB8ERkRVXupa0UiaQaKbIXteMt4jUElhbdqTMsLFHs8APxxUoQ==}
     engines: {node: '>=18'}
 
   language-subtag-registry@0.3.23:
@@ -27302,7 +27304,7 @@ snapshots:
 
   knitwork@1.2.0: {}
 
-  ky@1.11.0: {}
+  ky@1.12.0: {}
 
   language-subtag-registry@0.3.23: {}
 
@@ -29508,7 +29510,7 @@ snapshots:
 
   package-json@10.0.1:
     dependencies:
-      ky: 1.11.0
+      ky: 1.12.0
       registry-auth-token: 5.1.0
       registry-url: 6.0.1
       semver: 7.7.3
