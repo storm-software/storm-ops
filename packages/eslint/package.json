@@ -134,9 +134,7 @@
     }
   },
   "types": "./dist/index.d.ts",
-  "files": [
-    "dist/**/*"
-  ],
+  "files": ["dist/**/*"],
   "keywords": [
     "eslint",
     "eslint-config",

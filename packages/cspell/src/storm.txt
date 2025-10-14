@@ -346,6 +346,7 @@ contentlayer
 oslojs
 bento
 bentocache
+farmfe
 
 # Acronyms
 dpdm

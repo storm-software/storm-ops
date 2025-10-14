@@ -224,11 +224,7 @@
     }
   },
   "types": "./dist/index.d.ts",
-  "files": [
-    "assets/**/*",
-    "bin/**/*",
-    "dist/**/*"
-  ],
+  "files": ["assets/**/*", "bin/**/*", "dist/**/*"],
   "keywords": [
     "esbuild",
     "monorepo",

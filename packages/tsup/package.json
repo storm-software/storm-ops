@@ -77,16 +77,8 @@
     "./*": "./dist/*.cjs"
   },
   "types": "./dist/index.d.ts",
-  "files": [
-    "assets/**/*",
-    "dist/**/*"
-  ],
-  "keywords": [
-    "tsup",
-    "storm",
-    "storm-ops",
-    "storm-software"
-  ],
+  "files": ["assets/**/*", "dist/**/*"],
+  "keywords": ["tsup", "storm", "storm-ops", "storm-software"],
   "dependencies": {
     "@storm-software/config-tools": "workspace:*"
   },

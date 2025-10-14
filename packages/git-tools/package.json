@@ -181,10 +181,7 @@
     "./readme/templates/*": "./dist/readme/templates/*"
   },
   "types": "./dist/index.d.ts",
-  "files": [
-    "bin/**/*",
-    "dist/**/*"
-  ],
+  "files": ["bin/**/*", "dist/**/*"],
   "keywords": [
     "storm-software",
     "monorepo",
