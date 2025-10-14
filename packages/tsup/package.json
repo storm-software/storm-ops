@@ -74,13 +74,56 @@
         "default": "./dist/index.js"
       }
     },
+    "./types": {
+      "import": {
+        "types": "./dist/types.d.ts",
+        "default": "./dist/types.js"
+      },
+      "require": {
+        "types": "./dist/types.d.cts",
+        "default": "./dist/types.cjs"
+      },
+      "default": {
+        "types": "./dist/types.d.ts",
+        "default": "./dist/types.js"
+      }
+    },
+    "./constants": {
+      "import": {
+        "types": "./dist/constants.d.ts",
+        "default": "./dist/constants.js"
+      },
+      "require": {
+        "types": "./dist/constants.d.cts",
+        "default": "./dist/constants.cjs"
+      },
+      "default": {
+        "types": "./dist/constants.d.ts",
+        "default": "./dist/constants.js"
+      }
+    },
+    "./options": {
+      "import": {
+        "types": "./dist/options.d.ts",
+        "default": "./dist/options.js"
+      },
+      "require": {
+        "types": "./dist/options.d.cts",
+        "default": "./dist/options.cjs"
+      },
+      "default": {
+        "types": "./dist/options.d.ts",
+        "default": "./dist/options.js"
+      }
+    },
     "./*": "./dist/*.cjs"
   },
   "types": "./dist/index.d.ts",
   "files": ["assets/**/*", "dist/**/*"],
   "keywords": ["tsup", "storm", "storm-ops", "storm-software"],
   "dependencies": {
-    "@storm-software/config-tools": "1.188.1"
+    "@storm-software/build-tools": "workspace:*",
+    "@storm-software/config-tools": "workspace:*"
   },
   "devDependencies": {
     "@types/node": "catalog:",

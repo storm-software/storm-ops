@@ -4,7 +4,9 @@ import {
 } from "@storm-software/config-tools/logger/console";
 import { Options, build as tsup } from "tsup";
 
-export type { Options };
+export * from "./constants";
+export * from "./options";
+export * from "./types";
 
 /**
  * Execute tsup with all the configurations we pass

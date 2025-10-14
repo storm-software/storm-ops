@@ -3,7 +3,7 @@ import { defineConfig } from "tsup";
 export default defineConfig([
   {
     name: "tsup",
-    entryPoints: ["src/index.ts"],
+    entryPoints: ["src/*.ts"],
     format: ["cjs", "esm"],
     outDir: "dist",
     clean: true,
