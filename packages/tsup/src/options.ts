@@ -96,7 +96,6 @@ export async function resolveOptions(
           : joinPaths(workspaceRoot.dir, projectRoot, "tsconfig.json"),
     env,
     define: {
-      STORM_FORMAT: JSON.stringify(options.format),
       ...Object.keys(define)
         .filter(key => define[key] !== undefined)
         .reduce((res, key) => {
