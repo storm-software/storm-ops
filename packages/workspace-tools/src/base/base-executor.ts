@@ -145,15 +145,14 @@ ${formatLogMessage(tokenized)}
             (result?.error as Error)?.name &&
             typeof (result?.error as Error)?.name === "string"))
       ) {
-        writeTrace(
-          `Failure determined by the ${name} executor \n${formatLogMessage(result)}`,
-          config
+        throw new Error(
+          `Failure determined while running the ${name} executor \n${formatLogMessage(
+            result
+          )}`,
+          {
+            cause: result?.error
+          }
         );
-        console.error(result);
-
-        throw new Error(`The ${name} executor failed to run`, {
-          cause: result?.error
-        });
       }
 
       if (executorOptions?.hooks?.postProcess) {
