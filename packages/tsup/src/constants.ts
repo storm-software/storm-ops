@@ -12,6 +12,7 @@ export const DEFAULT_BUILD_OPTIONS: Required<
     | "metafile"
     | "treeshake"
     | "splitting"
+    | "cjsInterop"
     | "shims"
     | "watch"
     | "clean"
@@ -28,6 +29,7 @@ export const DEFAULT_BUILD_OPTIONS: Required<
   metafile: false,
   treeshake: true,
   splitting: true,
+  cjsInterop: true,
   shims: false,
   watch: false,
   bundle: true,
