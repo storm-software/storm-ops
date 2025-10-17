@@ -5567,7 +5567,7 @@ Backward pagination arguments
    */
   'template-tag-spacing'?: Linter.RuleEntry<TemplateTagSpacing>
   /**
-   * require .spec test file pattern
+   * require test file pattern
    * @see https://github.com/vitest-dev/eslint-plugin-vitest/blob/main/docs/rules/consistent-test-filename.md
    */
   'test/consistent-test-filename'?: Linter.RuleEntry<TestConsistentTestFilename>

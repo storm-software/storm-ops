@@ -134,7 +134,9 @@
     }
   },
   "types": "./dist/index.d.ts",
-  "files": ["dist/**/*"],
+  "files": [
+    "dist/**/*"
+  ],
   "keywords": [
     "eslint",
     "eslint-config",
@@ -173,8 +175,8 @@
     "@eslint/eslintrc": "^3.3.1",
     "@eslint/markdown": "^6.6.0",
     "@nx/eslint-plugin": "catalog:",
-    "@storm-software/config": "1.134.3",
-    "@storm-software/config-tools": "1.188.3",
+    "@storm-software/config": "workspace:*",
+    "@storm-software/config-tools": "workspace:*",
     "@stylistic/eslint-plugin": "^4.4.1",
     "@typescript-eslint/eslint-plugin": "catalog:",
     "@typescript-eslint/parser": "catalog:",
