@@ -476,3 +476,6 @@ shellcheck
 # AI / Machine Learning
 llms
 agi
+
+# Algorithm Names
+murmurhash
