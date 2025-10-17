@@ -2,6 +2,23 @@
 
 # Changelog for Storm Ops - Tsup
 
+## [0.2.4](https://github.com/storm-software/storm-ops/releases/tag/tsup%400.2.4) (2025-10-17)
+
+### Bug Fixes
+
+- **tsup:** Ensure nothing is logged when `silent` is passed
+  ([5daae2c32](https://github.com/storm-software/storm-ops/commit/5daae2c32))
+
+### Miscellaneous
+
+- **monorepo:** Update workspace package links
+  ([af97dc773](https://github.com/storm-software/storm-ops/commit/af97dc773))
+
+### Updated Dependencies
+
+- Updated config-tools to 1.188.6
+- Updated build-tools to 0.158.6
+
 ## [0.2.3](https://github.com/storm-software/storm-ops/releases/tag/tsup%400.2.3) (2025-10-17)
 
 ### Miscellaneous

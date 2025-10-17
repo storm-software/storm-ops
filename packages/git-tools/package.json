@@ -1,6 +1,6 @@
 {
   "name": "@storm-software/git-tools",
-  "version": "2.123.5",
+  "version": "2.123.6",
   "type": "module",
   "description": "Tools for managing Git repositories within a Nx workspace.",
   "repository": {
@@ -181,10 +181,7 @@
     "./readme/templates/*": "./dist/readme/templates/*"
   },
   "types": "./dist/index.d.ts",
-  "files": [
-    "bin/**/*",
-    "dist/**/*"
-  ],
+  "files": ["bin/**/*", "dist/**/*"],
   "keywords": [
     "storm-software",
     "monorepo",
@@ -211,8 +208,8 @@
     "@inquirer/prompts": "7.2.1",
     "@nx/devkit": "catalog:",
     "@nx/js": "catalog:",
-    "@storm-software/config": "workspace:*",
-    "@storm-software/config-tools": "workspace:*",
+    "@storm-software/config": "1.134.6",
+    "@storm-software/config-tools": "1.188.6",
     "@textlint/ast-node-types": "14.4.2",
     "@textlint/markdown-to-ast": "14.4.2",
     "anchor-markdown-header": "0.7.0",
@@ -220,7 +217,7 @@
     "axios": "1.8.2",
     "chalk": "catalog:",
     "chalk-template": "1.1.0",
-    "conventional-changelog-storm-software": "workspace:*",
+    "conventional-changelog-storm-software": "0.3.6",
     "htmlparser2": "10.0.0",
     "jsonc-parser": "3.2.1",
     "nx": "catalog:",

@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Build Tools
 
+## [0.158.6](https://github.com/storm-software/storm-ops/releases/tag/build-tools%400.158.6) (2025-10-17)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace package links
+  ([af97dc773](https://github.com/storm-software/storm-ops/commit/af97dc773))
+
 ## [0.158.5](https://github.com/storm-software/storm-ops/releases/tag/build-tools%400.158.5) (2025-10-17)
 
 ### Miscellaneous
