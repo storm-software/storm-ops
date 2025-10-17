@@ -2,6 +2,15 @@
 
 # Changelog for Storm Ops - Untyped
 
+## [0.23.4](https://github.com/storm-software/storm-ops/releases/tag/untyped%400.23.4) (2025-10-17)
+
+### Miscellaneous
+
+- **cspell:** Added `powerlines` to CSpell dictionary
+  ([98f024c7e](https://github.com/storm-software/storm-ops/commit/98f024c7e))
+- **monorepo:** Update workspace package links
+  ([eff879a87](https://github.com/storm-software/storm-ops/commit/eff879a87))
+
 ## [0.23.3](https://github.com/storm-software/storm-ops/releases/tag/untyped%400.23.3) (2025-10-17)
 
 ### Miscellaneous

@@ -2,6 +2,15 @@
 
 # Changelog for Storm Ops - Projen
 
+## [0.21.4](https://github.com/storm-software/storm-ops/releases/tag/projen%400.21.4) (2025-10-17)
+
+### Miscellaneous
+
+- **cspell:** Added `powerlines` to CSpell dictionary
+  ([98f024c7e](https://github.com/storm-software/storm-ops/commit/98f024c7e))
+- **monorepo:** Update workspace package links
+  ([eff879a87](https://github.com/storm-software/storm-ops/commit/eff879a87))
+
 ## [0.21.3](https://github.com/storm-software/storm-ops/releases/tag/projen%400.21.3) (2025-10-17)
 
 ### Miscellaneous

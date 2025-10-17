@@ -2,6 +2,21 @@
 
 # Changelog for Storm Ops - Pnpm Tools
 
+## [0.6.4](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.6.4) (2025-10-17)
+
+### Miscellaneous
+
+- **cspell:** Added `powerlines` to CSpell dictionary
+  ([98f024c7e](https://github.com/storm-software/storm-ops/commit/98f024c7e))
+- **monorepo:** Update workspace package links
+  ([eff879a87](https://github.com/storm-software/storm-ops/commit/eff879a87))
+
+### Updated Dependencies
+
+- Updated config-tools to 1.188.4
+- Updated npm-tools to 0.5.4
+- Updated config to 1.134.4
+
 ## [0.6.3](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.6.3) (2025-10-17)
 
 ### Miscellaneous

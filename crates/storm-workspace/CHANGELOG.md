@@ -2,6 +2,15 @@
 
 # Changelog for Storm Ops - Storm Workspace
 
+## [0.19.4](https://github.com/storm-software/storm-ops/releases/tag/storm-workspace%400.19.4) (2025-10-17)
+
+### Miscellaneous
+
+- **cspell:** Added `powerlines` to CSpell dictionary
+  ([98f024c7e](https://github.com/storm-software/storm-ops/commit/98f024c7e))
+- **monorepo:** Update workspace package links
+  ([eff879a87](https://github.com/storm-software/storm-ops/commit/eff879a87))
+
 ## [0.19.3](https://github.com/storm-software/storm-ops/releases/tag/storm-workspace%400.19.3) (2025-10-17)
 
 ### Miscellaneous

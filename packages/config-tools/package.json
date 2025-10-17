@@ -1,6 +1,6 @@
 {
   "name": "@storm-software/config-tools",
-  "version": "1.188.3",
+  "version": "1.188.4",
   "type": "module",
   "description": "A package containing various utilities to support custom workspace configurations and environment management for Storm Software projects, including configuration file handling, environment variable management, and logging utilities.",
   "repository": {
@@ -235,7 +235,7 @@
   ],
   "dependencies": {
     "@ltd/j-toml": "catalog:",
-    "@storm-software/config": "workspace:*",
+    "@storm-software/config": "1.134.4",
     "c12": "catalog:",
     "chalk": "catalog:",
     "commander": "catalog:",

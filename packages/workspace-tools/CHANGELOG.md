@@ -2,6 +2,24 @@
 
 # Changelog for Storm Ops - Workspace Tools
 
+## [1.292.4](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.292.4) (2025-10-17)
+
+### Miscellaneous
+
+- **cspell:** Added `powerlines` to CSpell dictionary
+  ([98f024c7e](https://github.com/storm-software/storm-ops/commit/98f024c7e))
+- **monorepo:** Update workspace package links
+  ([eff879a87](https://github.com/storm-software/storm-ops/commit/eff879a87))
+
+### Updated Dependencies
+
+- Updated pnpm-tools to 0.6.4
+- Updated npm-tools to 0.5.4
+- Updated prettier to 0.57.4
+- Updated esbuild to 0.53.4
+- Updated unbuild to 0.57.4
+- Updated tsdown to 0.45.4
+
 ## [1.292.3](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.292.3) (2025-10-17)
 
 ### Miscellaneous

@@ -2,6 +2,15 @@
 
 # Changelog for Storm Ops - Config
 
+## [1.134.4](https://github.com/storm-software/storm-ops/releases/tag/config%401.134.4) (2025-10-17)
+
+### Miscellaneous
+
+- **cspell:** Added `powerlines` to CSpell dictionary
+  ([98f024c7e](https://github.com/storm-software/storm-ops/commit/98f024c7e))
+- **monorepo:** Update workspace package links
+  ([eff879a87](https://github.com/storm-software/storm-ops/commit/eff879a87))
+
 ## [1.134.3](https://github.com/storm-software/storm-ops/releases/tag/config%401.134.3) (2025-10-17)
 
 ### Miscellaneous
