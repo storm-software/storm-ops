@@ -147,9 +147,7 @@
     }
   },
   "types": "./dist/index.d.ts",
-  "files": [
-    "dist/**/*"
-  ],
+  "files": ["dist/**/*"],
   "keywords": [
     "acidic",
     "cyclone-ui",
