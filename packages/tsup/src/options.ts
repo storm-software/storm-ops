@@ -37,7 +37,10 @@ export async function resolveOptions(
     workspaceRoot: workspaceRoot.dir
   });
 
-  writeDebug("  ⚙️   Resolving build options", workspaceConfig);
+  if (!userOptions.silent) {
+    writeDebug("  ⚙️   Resolving build options", workspaceConfig);
+  }
+
   const stopwatch = getStopwatch("Build options resolution");
 
   const projectGraph = await createProjectGraphAsync({
@@ -111,13 +114,15 @@ export async function resolveOptions(
     }
   } satisfies ResolvedBuildOptions;
 
-  stopwatch();
+  if (!options.silent) {
+    stopwatch();
 
-  if (options.verbose) {
-    writeDebug(
-      `  ⚙️   Build options resolved: \n\n${formatLogMessage(resolvedOptions)}`,
-      workspaceConfig
-    );
+    if (options.verbose) {
+      writeDebug(
+        `  ⚙️   Build options resolved: \n\n${formatLogMessage(resolvedOptions)}`,
+        workspaceConfig
+      );
+    }
   }
 
   return resolvedOptions;

@@ -15,13 +15,17 @@ export * from "./types";
  * @returns The build context
  */
 export async function build(options: Options) {
-  writeDebug(
-    `  🚀  Running ${options.name || "tsup"} build`,
-    options.workspaceConfig
-  );
+  if (!options.silent) {
+    writeDebug(
+      `  🚀  Running ${options.name || "tsup"} build`,
+      options.workspaceConfig
+    );
+  }
   const stopwatch = getStopwatch(`${options.name || "tsup"} build`);
 
   await tsup(options);
 
-  stopwatch();
+  if (!options.silent) {
+    stopwatch();
+  }
 }
