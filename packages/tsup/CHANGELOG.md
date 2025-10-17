@@ -2,6 +2,20 @@
 
 # Changelog for Storm Ops - Tsup
 
+## [0.2.1](https://github.com/storm-software/storm-ops/releases/tag/tsup%400.2.1) (2025-10-17)
+
+### Miscellaneous
+
+- **tsup:** Added `cjsInterop` to default option values
+  ([b45e49f53](https://github.com/storm-software/storm-ops/commit/b45e49f53))
+- **monorepo:** Update workspace package links
+  ([0f754388d](https://github.com/storm-software/storm-ops/commit/0f754388d))
+
+### Updated Dependencies
+
+- Updated config-tools to 1.188.3
+- Updated build-tools to 0.158.3
+
 ## [0.2.0](https://github.com/storm-software/storm-ops/releases/tag/tsup%400.2.0) (2025-10-14)
 
 ### Features

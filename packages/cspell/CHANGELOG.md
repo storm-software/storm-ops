@@ -2,6 +2,15 @@
 
 # Changelog for Storm Ops - CSpell
 
+## [0.45.3](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.45.3) (2025-10-17)
+
+### Miscellaneous
+
+- **cspell:** Added a section for algorithm names to the CSpell dictionary
+  ([a3cc08108](https://github.com/storm-software/storm-ops/commit/a3cc08108))
+- **monorepo:** Update workspace package links
+  ([0f754388d](https://github.com/storm-software/storm-ops/commit/0f754388d))
+
 ## [0.45.2](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.45.2) (2025-10-14)
 
 ### Miscellaneous

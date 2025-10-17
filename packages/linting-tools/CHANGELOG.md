@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Linting Tools
 
+## [1.132.3](https://github.com/storm-software/storm-ops/releases/tag/linting-tools%401.132.3) (2025-10-17)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace package links
+  ([0f754388d](https://github.com/storm-software/storm-ops/commit/0f754388d))
+
 ## [1.132.2](https://github.com/storm-software/storm-ops/releases/tag/linting-tools%401.132.2) (2025-10-14)
 
 ### Miscellaneous
