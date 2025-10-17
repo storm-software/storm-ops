@@ -2,6 +2,24 @@
 
 # Changelog for Storm Ops - Workspace Tools
 
+## [1.292.5](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.292.5) (2025-10-17)
+
+### Miscellaneous
+
+- **workspace-tools:** Clean up the error display in the base executor
+  ([64e4510e0](https://github.com/storm-software/storm-ops/commit/64e4510e0))
+- **monorepo:** Update workspace package links
+  ([3ec988077](https://github.com/storm-software/storm-ops/commit/3ec988077))
+
+### Updated Dependencies
+
+- Updated pnpm-tools to 0.6.5
+- Updated npm-tools to 0.5.5
+- Updated prettier to 0.57.5
+- Updated esbuild to 0.53.5
+- Updated unbuild to 0.57.5
+- Updated tsdown to 0.45.5
+
 ## [1.292.4](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.292.4) (2025-10-17)
 
 ### Miscellaneous

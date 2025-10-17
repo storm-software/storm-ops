@@ -2,6 +2,20 @@
 
 # Changelog for Storm Ops - Tsup
 
+## [0.2.3](https://github.com/storm-software/storm-ops/releases/tag/tsup%400.2.3) (2025-10-17)
+
+### Miscellaneous
+
+- **tsup:** Remove `STORM_FORMAT` defined options
+  ([a8f6a0cc7](https://github.com/storm-software/storm-ops/commit/a8f6a0cc7))
+- **monorepo:** Update workspace package links
+  ([3ec988077](https://github.com/storm-software/storm-ops/commit/3ec988077))
+
+### Updated Dependencies
+
+- Updated config-tools to 1.188.5
+- Updated build-tools to 0.158.5
+
 ## [0.2.2](https://github.com/storm-software/storm-ops/releases/tag/tsup%400.2.2) (2025-10-17)
 
 ### Miscellaneous
