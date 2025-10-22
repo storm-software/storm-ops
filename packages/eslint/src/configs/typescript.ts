@@ -156,7 +156,7 @@ export async function typescript(
             selector: "interface",
             format: ["PascalCase"],
             custom: {
-              regex: "^(I[A-Z]|UNSAFE_.*$|EXPERIMENTAL_.*)$",
+              regex: "^(I[A-Z]|UNSAFE_|EXPERIMENTAL_)",
               match: false
             },
             filter: {
