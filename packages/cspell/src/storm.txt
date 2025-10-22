@@ -348,6 +348,10 @@ oslojs
 bento
 bentocache
 farmfe
+oxlint
+oxlintrc
+fontkit
+iconify
 
 # Acronyms
 dpdm
@@ -359,6 +363,7 @@ rxvt
 
 # TypeScript
 tsgo
+tsgolint
 transpiles
 genaiscript
 genaisrc
@@ -379,8 +384,6 @@ csr
 spa
 mpa
 preinit
-fontkit
-iconify
 
 # tsconfig.json keywords
 jsxdev
