@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Prettier
 
+## [0.57.9](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.57.9) (2025-10-22)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace package links
+  ([eaf81e39e](https://github.com/storm-software/storm-ops/commit/eaf81e39e))
+
 ## [0.57.8](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.57.8) (2025-10-22)
 
 ### Miscellaneous
