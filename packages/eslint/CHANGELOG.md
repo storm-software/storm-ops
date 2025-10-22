@@ -2,6 +2,24 @@
 
 # Changelog for Storm Ops - ESLint
 
+## [0.169.10](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.169.10) (2025-10-22)
+
+### Bug Fixes
+
+- **eslint:** Update the match statements in `ts/naming-convention` to correctly
+  exlude prerfixes
+  ([1e08f9575](https://github.com/storm-software/storm-ops/commit/1e08f9575))
+
+### Miscellaneous
+
+- **monorepo:** Update workspace package links
+  ([417c239d1](https://github.com/storm-software/storm-ops/commit/417c239d1))
+
+### Updated Dependencies
+
+- Updated config-tools to 1.188.10
+- Updated config to 1.134.10
+
 ## [0.169.9](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.169.9) (2025-10-22)
 
 ### Bug Fixes
