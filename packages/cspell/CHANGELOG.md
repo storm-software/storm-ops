@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - CSpell
 
+## [0.45.7](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.45.7) (2025-10-22)
+
+### Miscellaneous
+
+- **cspell:** Added `oxlint` specific tools to dictionary
+  ([ec7cf50e8](https://github.com/storm-software/storm-ops/commit/ec7cf50e8))
+- **monorepo:** Update workspace README markdown files
+  ([f94cb041a](https://github.com/storm-software/storm-ops/commit/f94cb041a))
+- **monorepo:** Update workspace package dependencies
+  ([d2847cff7](https://github.com/storm-software/storm-ops/commit/d2847cff7))
+
 ## [0.45.6](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.45.6) (2025-10-17)
 
 ### Miscellaneous

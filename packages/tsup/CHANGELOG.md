@@ -2,6 +2,20 @@
 
 # Changelog for Storm Ops - Tsup
 
+## [0.2.5](https://github.com/storm-software/storm-ops/releases/tag/tsup%400.2.5) (2025-10-22)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace package links
+  ([27016fcde](https://github.com/storm-software/storm-ops/commit/27016fcde))
+- **monorepo:** Update workspace README markdown files
+  ([f94cb041a](https://github.com/storm-software/storm-ops/commit/f94cb041a))
+
+### Updated Dependencies
+
+- Updated config-tools to 1.188.7
+- Updated build-tools to 0.158.7
+
 ## [0.2.4](https://github.com/storm-software/storm-ops/releases/tag/tsup%400.2.4) (2025-10-17)
 
 ### Bug Fixes
