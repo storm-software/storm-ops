@@ -181,10 +181,7 @@
     "./readme/templates/*": "./dist/readme/templates/*"
   },
   "types": "./dist/index.d.ts",
-  "files": [
-    "bin/**/*",
-    "dist/**/*"
-  ],
+  "files": ["bin/**/*", "dist/**/*"],
   "keywords": [
     "storm-software",
     "monorepo",
@@ -235,7 +232,7 @@
   "devDependencies": {
     "@types/node": "catalog:",
     "commander": "catalog:",
-    "conventional-commits-parser": "^6.2.0",
+    "conventional-commits-parser": "^6.2.1",
     "defu": "catalog:",
     "semver": "7.6.2",
     "simple-git": "^3.28.0",
