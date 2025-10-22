@@ -2,6 +2,31 @@
 
 # Changelog for Storm Ops - Tsdoc
 
+## [0.13.8](https://github.com/storm-software/storm-ops/releases/tag/tsdoc%400.13.8) (2025-10-22)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace package links
+  ([060f1b5ab](https://github.com/storm-software/storm-ops/commit/060f1b5ab))
+- **monorepo:** Update workspace README markdown files
+  ([f94cb041a](https://github.com/storm-software/storm-ops/commit/f94cb041a))
+- **monorepo:** Update workspace package links
+  ([af97dc773](https://github.com/storm-software/storm-ops/commit/af97dc773))
+- **monorepo:** Update workspace package links
+  ([3ec988077](https://github.com/storm-software/storm-ops/commit/3ec988077))
+- **cspell:** Added `powerlines` to CSpell dictionary
+  ([98f024c7e](https://github.com/storm-software/storm-ops/commit/98f024c7e))
+- **monorepo:** Update workspace package links
+  ([eff879a87](https://github.com/storm-software/storm-ops/commit/eff879a87))
+- **monorepo:** Update workspace package links
+  ([0f754388d](https://github.com/storm-software/storm-ops/commit/0f754388d))
+- **monorepo:** Update workspace package link
+  ([1666003a2](https://github.com/storm-software/storm-ops/commit/1666003a2))
+- **cspell:** Added typescript tool phrases to dictionary
+  ([a70b30d9e](https://github.com/storm-software/storm-ops/commit/a70b30d9e))
+- **monorepo:** Update workspace package links
+  ([ef40f7597](https://github.com/storm-software/storm-ops/commit/ef40f7597))
+
 ## [0.13.7](https://github.com/storm-software/storm-ops/releases/tag/tsdoc%400.13.7) (2025-10-22)
 
 ### Miscellaneous

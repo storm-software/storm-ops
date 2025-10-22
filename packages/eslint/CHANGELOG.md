@@ -2,6 +2,46 @@
 
 # Changelog for Storm Ops - ESLint
 
+## [0.169.8](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.169.8) (2025-10-22)
+
+### Miscellaneous
+
+- **eslint:** Added `UNSAFE_` and `EXPERIMENTAL_` exceptions to
+  `ts/naming-convention` lint rule
+  ([da89fa9d1](https://github.com/storm-software/storm-ops/commit/da89fa9d1))
+- **eslint:** Added `UNSAFE_` and `EXPERIMENTAL_` exceptions to `camelcase` lint
+  rule
+  ([51ea3f2a1](https://github.com/storm-software/storm-ops/commit/51ea3f2a1))
+- **monorepo:** Update workspace package links
+  ([060f1b5ab](https://github.com/storm-software/storm-ops/commit/060f1b5ab))
+- **monorepo:** Update workspace package links
+  ([27016fcde](https://github.com/storm-software/storm-ops/commit/27016fcde))
+- **monorepo:** Update workspace README markdown files
+  ([f94cb041a](https://github.com/storm-software/storm-ops/commit/f94cb041a))
+- **monorepo:** Update workspace package dependencies
+  ([d2847cff7](https://github.com/storm-software/storm-ops/commit/d2847cff7))
+- **monorepo:** Update workspace package links
+  ([af97dc773](https://github.com/storm-software/storm-ops/commit/af97dc773))
+- **monorepo:** Update workspace package links
+  ([3ec988077](https://github.com/storm-software/storm-ops/commit/3ec988077))
+- **cspell:** Added `powerlines` to CSpell dictionary
+  ([98f024c7e](https://github.com/storm-software/storm-ops/commit/98f024c7e))
+- **monorepo:** Update workspace package links
+  ([eff879a87](https://github.com/storm-software/storm-ops/commit/eff879a87))
+- **monorepo:** Update workspace package links
+  ([0f754388d](https://github.com/storm-software/storm-ops/commit/0f754388d))
+- **monorepo:** Update workspace package link
+  ([1666003a2](https://github.com/storm-software/storm-ops/commit/1666003a2))
+- **cspell:** Added typescript tool phrases to dictionary
+  ([a70b30d9e](https://github.com/storm-software/storm-ops/commit/a70b30d9e))
+- **monorepo:** Update workspace package links
+  ([ef40f7597](https://github.com/storm-software/storm-ops/commit/ef40f7597))
+
+### Updated Dependencies
+
+- Updated config-tools to 1.188.8
+- Updated config to 1.134.8
+
 ## [0.169.7](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.169.7) (2025-10-22)
 
 ### Miscellaneous

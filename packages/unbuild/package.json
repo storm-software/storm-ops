@@ -1,6 +1,6 @@
 {
   "name": "@storm-software/unbuild",
-  "version": "0.57.7",
+  "version": "0.57.8",
   "type": "module",
   "description": "A package containing `unbuild` utilities for building Storm Software libraries and applications",
   "repository": {
@@ -149,9 +149,7 @@
     }
   },
   "types": "./dist/index.d.ts",
-  "files": [
-    "dist/**/*"
-  ],
+  "files": ["dist/**/*"],
   "keywords": [
     "acidic",
     "cyclone-ui",
@@ -191,9 +189,9 @@
     }
   },
   "dependencies": {
-    "@storm-software/build-tools": "workspace:*",
-    "@storm-software/config": "workspace:*",
-    "@storm-software/config-tools": "workspace:*",
+    "@storm-software/build-tools": "0.158.8",
+    "@storm-software/config": "1.134.8",
+    "@storm-software/config-tools": "1.188.8",
     "commander": "catalog:",
     "defu": "catalog:",
     "esbuild": "catalog:",
