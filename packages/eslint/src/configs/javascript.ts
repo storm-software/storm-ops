@@ -270,7 +270,11 @@ export async function javascript(
         // require camel case names
         camelcase: [
           "error",
-          { properties: "never", ignoreDestructuring: false }
+          {
+            properties: "never",
+            ignoreDestructuring: false,
+            allow: ["^(UNSAFE_|EXPERIMENTAL_).*$"]
+          }
         ],
 
         // enforce or disallow capitalization of the first letter of a comment
