@@ -122,8 +122,8 @@
   "files": ["assets/**/*", "dist/**/*"],
   "keywords": ["tsup", "storm", "storm-ops", "storm-software"],
   "dependencies": {
-    "@storm-software/build-tools": "0.158.6",
-    "@storm-software/config-tools": "1.188.6"
+    "@storm-software/build-tools": "workspace:*",
+    "@storm-software/config-tools": "workspace:*"
   },
   "devDependencies": {
     "@types/node": "catalog:",
