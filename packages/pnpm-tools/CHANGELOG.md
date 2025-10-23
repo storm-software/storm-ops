@@ -2,6 +2,19 @@
 
 # Changelog for Storm Ops - Pnpm Tools
 
+## [0.6.11](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.6.11) (2025-10-23)
+
+### Miscellaneous
+
+- **eslint:** Remove unused rule filters
+  ([3d3392837](https://github.com/storm-software/storm-ops/commit/3d3392837))
+
+### Updated Dependencies
+
+- Updated config-tools to 1.188.11
+- Updated npm-tools to 0.5.11
+- Updated config to 1.134.11
+
 ## [0.6.10](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.6.10) (2025-10-22)
 
 ### Miscellaneous

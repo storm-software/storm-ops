@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Cloudflare Tools
 
+## [0.70.11](https://github.com/storm-software/storm-ops/releases/tag/cloudflare-tools%400.70.11) (2025-10-23)
+
+### Miscellaneous
+
+- **eslint:** Remove unused rule filters
+  ([3d3392837](https://github.com/storm-software/storm-ops/commit/3d3392837))
+
 ## [0.70.10](https://github.com/storm-software/storm-ops/releases/tag/cloudflare-tools%400.70.10) (2025-10-22)
 
 ### Miscellaneous

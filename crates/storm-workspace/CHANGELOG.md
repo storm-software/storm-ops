@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Storm Workspace
 
+## [0.19.11](https://github.com/storm-software/storm-ops/releases/tag/storm-workspace%400.19.11) (2025-10-23)
+
+### Miscellaneous
+
+- **eslint:** Remove unused rule filters
+  ([3d3392837](https://github.com/storm-software/storm-ops/commit/3d3392837))
+
 ## [0.19.10](https://github.com/storm-software/storm-ops/releases/tag/storm-workspace%400.19.10) (2025-10-22)
 
 ### Miscellaneous

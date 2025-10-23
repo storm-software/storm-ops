@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Prettier
 
+## [0.57.11](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.57.11) (2025-10-23)
+
+### Miscellaneous
+
+- **eslint:** Remove unused rule filters
+  ([3d3392837](https://github.com/storm-software/storm-ops/commit/3d3392837))
+
 ## [0.57.10](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.57.10) (2025-10-22)
 
 ### Miscellaneous

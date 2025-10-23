@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Testing Tools
 
+## [1.119.11](https://github.com/storm-software/storm-ops/releases/tag/testing-tools%401.119.11) (2025-10-23)
+
+### Miscellaneous
+
+- **eslint:** Remove unused rule filters
+  ([3d3392837](https://github.com/storm-software/storm-ops/commit/3d3392837))
+
 ## [1.119.10](https://github.com/storm-software/storm-ops/releases/tag/testing-tools%401.119.10) (2025-10-22)
 
 ### Miscellaneous

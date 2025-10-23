@@ -2,6 +2,19 @@
 
 # Changelog for Storm Ops - K8s Tools
 
+## [0.42.11](https://github.com/storm-software/storm-ops/releases/tag/k8s-tools%400.42.11) (2025-10-23)
+
+### Miscellaneous
+
+- **eslint:** Remove unused rule filters
+  ([3d3392837](https://github.com/storm-software/storm-ops/commit/3d3392837))
+
+### Updated Dependencies
+
+- Updated workspace-tools to 1.292.11
+- Updated config-tools to 1.188.11
+- Updated config to 1.134.11
+
 ## [0.42.10](https://github.com/storm-software/storm-ops/releases/tag/k8s-tools%400.42.10) (2025-10-22)
 
 ### Miscellaneous

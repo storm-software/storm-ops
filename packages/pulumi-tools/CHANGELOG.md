@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Pulumi Tools
 
+## [0.22.11](https://github.com/storm-software/storm-ops/releases/tag/pulumi-tools%400.22.11) (2025-10-23)
+
+### Miscellaneous
+
+- **eslint:** Remove unused rule filters
+  ([3d3392837](https://github.com/storm-software/storm-ops/commit/3d3392837))
+
+### Updated Dependencies
+
+- Updated config-tools to 1.188.11
+- Updated config to 1.134.11
+
 ## [0.22.10](https://github.com/storm-software/storm-ops/releases/tag/pulumi-tools%400.22.10) (2025-10-22)
 
 ### Miscellaneous

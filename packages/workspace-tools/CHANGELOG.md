@@ -2,6 +2,22 @@
 
 # Changelog for Storm Ops - Workspace Tools
 
+## [1.292.11](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.292.11) (2025-10-23)
+
+### Miscellaneous
+
+- **eslint:** Remove unused rule filters
+  ([3d3392837](https://github.com/storm-software/storm-ops/commit/3d3392837))
+
+### Updated Dependencies
+
+- Updated pnpm-tools to 0.6.11
+- Updated npm-tools to 0.5.11
+- Updated prettier to 0.57.11
+- Updated esbuild to 0.53.11
+- Updated unbuild to 0.57.11
+- Updated tsdown to 0.45.11
+
 ## [1.292.10](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.292.10) (2025-10-22)
 
 ### Miscellaneous

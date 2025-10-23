@@ -2,6 +2,19 @@
 
 # Changelog for Storm Ops - Git Tools
 
+## [2.123.11](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.123.11) (2025-10-23)
+
+### Miscellaneous
+
+- **eslint:** Remove unused rule filters
+  ([3d3392837](https://github.com/storm-software/storm-ops/commit/3d3392837))
+
+### Updated Dependencies
+
+- Updated conventional-changelog to 0.3.11
+- Updated config-tools to 1.188.11
+- Updated config to 1.134.11
+
 ## [2.123.10](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.123.10) (2025-10-22)
 
 ### Miscellaneous
