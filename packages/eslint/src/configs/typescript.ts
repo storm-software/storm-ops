@@ -149,7 +149,6 @@ export async function typescript(
           {
             selector: "typeLike",
             format: ["PascalCase"],
-            custom: { regex: "^(UNSAFE_|EXPERIMENTAL_)", match: true },
             filter: { regex: "^(__String|[A-Za-z]+_[A-Za-z]+)$", match: false }
           },
           {
@@ -160,8 +159,7 @@ export async function typescript(
               match: false
             },
             filter: {
-              regex:
-                "^(I(Arguments|TextWriter|O([A-Z][a-z]+[A-Za-z]*)?)|UNSAFE_.*|EXPERIMENTAL_.*)$",
+              regex: "^I(Arguments|TextWriter|O([A-Z][a-z]+[A-Za-z]*)?)$",
               match: false
             }
           },
@@ -169,7 +167,6 @@ export async function typescript(
             selector: "variable",
             format: ["camelCase", "PascalCase", "UPPER_CASE"],
             leadingUnderscore: "allow",
-            custom: { regex: "^(UNSAFE_|EXPERIMENTAL_)", match: true },
             filter: {
               regex: "^(_{1,2}filename|_{1,2}dirname|_+|[A-Za-z]+_[A-Za-z]+)$",
               match: false
@@ -179,7 +176,6 @@ export async function typescript(
             selector: "function",
             format: ["camelCase", "PascalCase"],
             leadingUnderscore: "allow",
-            custom: { regex: "^(UNSAFE_|EXPERIMENTAL_)", match: true },
             filter: { regex: "^[A-Za-z]+_[A-Za-z]+$", match: false }
           },
           {
@@ -192,14 +188,12 @@ export async function typescript(
             selector: "method",
             format: ["camelCase", "PascalCase"],
             leadingUnderscore: "allow",
-            custom: { regex: "^(UNSAFE_|EXPERIMENTAL_)", match: true },
             filter: { regex: "^([0-9]+|[A-Za-z]+_[A-Za-z]+)$", match: false }
           },
           {
             selector: "memberLike",
             format: ["camelCase"],
             leadingUnderscore: "allow",
-            custom: { regex: "^(UNSAFE_|EXPERIMENTAL_)", match: true },
             filter: { regex: "^([0-9]+|[A-Za-z]+_[A-Za-z]+)$", match: false }
           },
           {
