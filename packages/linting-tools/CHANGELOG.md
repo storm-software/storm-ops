@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Linting Tools
 
+## [1.132.13](https://github.com/storm-software/storm-ops/releases/tag/linting-tools%401.132.13) (2025-10-28)
+
+### Bug Fixes
+
+- **linting-tools:** Resolve issue with `commander` option parameters
+  ([699d9265f](https://github.com/storm-software/storm-ops/commit/699d9265f))
+
+### Miscellaneous
+
+- **monorepo:** Update workspace package links
+  ([9796c73b1](https://github.com/storm-software/storm-ops/commit/9796c73b1))
+
 ## [1.132.12](https://github.com/storm-software/storm-ops/releases/tag/linting-tools%401.132.12) (2025-10-28)
 
 ### Bug Fixes
