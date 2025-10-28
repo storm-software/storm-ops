@@ -5,7 +5,7 @@ import {
   writeInfo,
   writeSuccess
 } from "@storm-software/config-tools";
-import { Command, Option } from "commander";
+import { Command } from "commander";
 import { runCommit } from "../commit/run";
 import { runCommitLint } from "../commitlint/run";
 import { runReadme } from "../readme/run";
@@ -28,101 +28,59 @@ export function createProgram(config: StormWorkspaceConfig) {
   const program = new Command("storm-git");
   program.version("1.0.0", "-v --version", "display CLI version");
 
-  const commitConfig = new Option(
-    "--config <file>",
-    "The Commitizen config file path"
-  ).makeOptionMandatory(false);
-
-  const commitDryRun = new Option(
-    "--dry-run",
-    "Should the commit be run in dry-run mode (no updates are made)"
-  );
-
   program
     .command("commit")
     .description("Commit changes to git for the workspace.")
-    .addOption(commitConfig)
-    .addOption(commitDryRun)
+    .option("--config <file>", "The Commitizen config file path")
+    .option(
+      "--dry-run",
+      "Should the commit be run in dry-run mode (no updates are made)"
+    )
     .action(commitAction);
-
-  const readmeTemplatePath = new Option(
-    "--templates <path>",
-    "The templates directory to use when generating the README.md files."
-  ).default("./tools/readme-templates");
-
-  const readmePackageName = new Option(
-    "--project <project>",
-    "The specific project to generate a README.md file for"
-  );
-
-  const readmeOutput = new Option(
-    "--output <path>",
-    "Where to output the generated README.md file"
-  );
-
-  const readmeClean = new Option(
-    "--clean",
-    "Should the output README.md file be cleaned before generation"
-  ).default(true);
-
-  const readmePrettier = new Option(
-    "--prettier",
-    "Should the output README.md file have prettier applied to it"
-  ).default(true);
 
   program
     .command("readme")
     .description("Run the README.md generator using the templates provided.")
-    .addOption(readmeTemplatePath)
-    .addOption(readmePackageName)
-    .addOption(readmeOutput)
-    .addOption(readmeClean)
-    .addOption(readmePrettier)
+    .option(
+      "--templates <path>",
+      "The templates directory to use when generating the README.md files.",
+      "./tools/readme-templates"
+    )
+    .option(
+      "--project <project>",
+      "The specific project to generate a README.md file for"
+    )
+    .option("--output <path>", "Where to output the generated README.md file")
+    .option(
+      "--clean",
+      "Should the output README.md file be cleaned before generation",
+      true
+    )
+    .option(
+      "--prettier",
+      "Should the output README.md file have prettier applied to it",
+      true
+    )
     .action(readmeAction);
-
-  const releasePackageName = new Option(
-    "--project <project>",
-    "The specific project to run release for"
-  );
-
-  const releaseBase = new Option("--base <base>", "Git base tag value");
-  const releaseHead = new Option("--head <head>", "Git head tag value");
-
-  const releaseDryRun = new Option(
-    "--dry-run",
-    "Should the release be run in dry-run mode (no updates are made)"
-  );
 
   program
     .command("release")
     .description("Run release for a project in the workspace.")
-    .addOption(releasePackageName)
-    .addOption(releaseBase)
-    .addOption(releaseHead)
-    .addOption(releaseDryRun)
+    .option("--project <project>", "The specific project to run release for")
+    .option("--base <base>", "Git base tag value")
+    .option("--head <head>", "Git head tag value")
+    .option(
+      "--dry-run",
+      "Should the release be run in dry-run mode (no updates are made)"
+    )
     .action(releaseAction);
-
-  const commitMessage = new Option(
-    "--message <commit-message>",
-    "The commit message to lint"
-  ).makeOptionMandatory(false);
-
-  const commitFile = new Option(
-    "--file <commit-file>",
-    "The commit message to lint"
-  ).makeOptionMandatory(false);
-
-  const commitlintConfig = new Option(
-    "--config <file>",
-    "The CommitLint config file path"
-  ).makeOptionMandatory(false);
 
   program
     .command("commitlint")
     .description("Run commitlint for the workspace's commit message.")
-    .addOption(commitlintConfig)
-    .addOption(commitMessage)
-    .addOption(commitFile)
+    .option("--config <file>", "The CommitLint config file path")
+    .option("--message <commit-message>", "The commit message to lint")
+    .option("--file <commit-file>", "The commit message to lint")
     .action(commitLintAction);
 
   return program;

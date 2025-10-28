@@ -7,7 +7,7 @@ import {
   writeInfo,
   writeTrace
 } from "@storm-software/config-tools";
-import { Argument, Command, Option } from "commander";
+import { Command } from "commander";
 import {
   getCatalog,
   setCatalog,
@@ -37,40 +37,32 @@ export function createProgram(config: StormWorkspaceConfig) {
   const program = new Command("storm-pnpm");
   program.version("1.0.0", "-v --version", "display CLI version");
 
-  const packageNames = new Argument(
-    "<package-names...>",
-    "The package name/pattern to update the version for (e.g., @storm-software/config or @storm-software/ for all Storm packages)."
-  );
-
-  const prefix = new Option(
-    "-p, --prefix <string>",
-    `The version prefix to use when updating the package (e.g., "^", "~", or "1.2.3"). Defaults to "^".
+  program
+    .command("update")
+    .description("Update pnpm catalog dependency package version.")
+    .argument(
+      "<package-names...>",
+      "The package name/pattern to update the version for (e.g., @storm-software/config or @storm-software/ for all Storm packages)."
+    )
+    .option(
+      "-t, --tag <string>",
+      `The npm tag to use when fetching the latest version of the package (e.g., "latest", "next", etc.). Defaults to "latest".`,
+      "latest"
+    )
+    .option(
+      "-i, --install",
+      "Whether to install the package after updating the version."
+    )
+    .option(
+      "-p, --prefix <string>",
+      `The version prefix to use when updating the package (e.g., "^", "~", or "1.2.3"). Defaults to "^".
 - Caret (^): The default prefix. It allows updates to the latest minor or patch version while staying within the same major version. Example: “^1.2.3" allows updates to 1.3.0 or 1.2.4, but not 2.0.0.
 - Tilde (~): Allows updates to the latest patch version while staying within the same minor version. Example: “~1.2.3" allows updates to 1.2.4 but not 1.3.0.
 - Exact (no prefix): Locks the dependency to a specific version. No updates are allowed. Example: 1.2.3 will only use 1.2.3.
 - Greater/Less Than (>, <, >=, <=): Specifies a range of acceptable versions. Example: “>=1.2.3 <2.0.0" allows any version from 1.2.3 to 1.9.x.
-- Wildcard (*): Allows the most flexibility by accepting any version. Example: “*2.4.6" allows any version.`
-  )
-    .choices(["^", "~", ">", "<", ">=", "<=", "*"])
-    .default("^");
-
-  const tag = new Option(
-    "-t, --tag <string>",
-    `The npm tag to use when fetching the latest version of the package (e.g., "latest", "next", etc.). Defaults to "latest".`
-  ).default("latest");
-
-  const install = new Option(
-    "-i, --install",
-    "Whether to install the package after updating the version."
-  ).default(false);
-
-  program
-    .command("update")
-    .description("Update pnpm catalog dependency package version.")
-    .addArgument(packageNames)
-    .addOption(tag)
-    .addOption(install)
-    .addOption(prefix)
+- Wildcard (*): Allows the most flexibility by accepting any version. Example: “*2.4.6" allows any version.`,
+      "^"
+    )
     .action(updateAction);
 
   return program;

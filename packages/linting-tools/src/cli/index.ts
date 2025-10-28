@@ -8,7 +8,7 @@ import {
   writeSuccess
 } from "@storm-software/config-tools";
 import { CDVC } from "check-dependency-version-consistency";
-import { Command, Option } from "commander";
+import { Command } from "commander";
 import { lint } from "cspell";
 import { parseCircular, parseDependencyTree, prettyCircular } from "dpdm";
 import { runAlex } from "../alex";
@@ -36,73 +36,58 @@ export function createProgram(config: StormWorkspaceConfig) {
     .showHelpAfterError()
     .showSuggestionAfterError();
 
-  const cspellConfig = new Option(
-    "--cspell-config <file>",
-    "CSpell config file path"
-  ).default("@storm-software/linting-tools/cspell/config.json");
-
   program
     .command("cspell")
     .description("Run spell-check lint for the workspace.")
-    .addOption(cspellConfig)
+    .option(
+      "--cspell-config <file>",
+      "CSpell config file path",
+      "@storm-software/linting-tools/cspell/config.json"
+    )
     .action(cspellAction);
-
-  const alexConfig = new Option(
-    "--alex-config <file>",
-    "Alex.js config file path"
-  ).default("@storm-software/linting-tools/alex/.alexrc");
-
-  const alexIgnore = new Option(
-    "--alex-ignore <file>",
-    "Alex.js Ignore file path"
-  ).default("@storm-software/linting-tools/alex/.alexignore");
 
   program
     .command("alex")
     .description("Run spell-check lint for the workspace.")
-    .addOption(alexConfig)
-    .addOption(alexIgnore)
+    .option(
+      "--alex-config <file>",
+      "Alex.js config file path",
+      "@storm-software/linting-tools/alex/config.json"
+    )
+    .option(
+      "--alex-ignore <file>",
+      "Alex.js Ignore file path",
+      "@storm-software/linting-tools/alex/.alexignore"
+    )
     .action(alexAction);
-
-  const ignoreDepsVersion = new Option(
-    "--ignore-deps-version <deps>",
-    "One or more dependencies to ignore for the dependency version consistency linting (comma-separated)"
-  )
-    .argParser(val =>
-      !val || !val.replaceAll("", ",")
-        ? []
-        : val.split(",").map(v => v.trim().toLowerCase())
-    )
-    .default([]);
-
-  const ignorePackagesDepsVersion = new Option(
-    "--ignore-packages-deps-version <packages>",
-    "One or more packages to ignore for the dependency version consistency linting (comma-separated)"
-  )
-    .argParser(val =>
-      !val || !val.replaceAll("", ",")
-        ? []
-        : val.split(",").map(v => v.trim().toLowerCase())
-    )
-    .default([]);
-
-  const ignorePathsDepsVersion = new Option(
-    "--ignore-paths-deps-version <paths>",
-    "One or more paths to ignore for the dependency version consistency linting (comma-separated)"
-  )
-    .argParser(val =>
-      !val || !val.replaceAll("", ",")
-        ? []
-        : val.split(",").map(v => v.trim().toLowerCase())
-    )
-    .default([]);
 
   program
     .command("deps-version")
     .description("Run dependency version consistency lint for the workspace.")
-    .addOption(ignoreDepsVersion)
-    .addOption(ignorePackagesDepsVersion)
-    .addOption(ignorePathsDepsVersion)
+    .option(
+      "--ignore-deps-version <deps>",
+      "One or more dependencies to ignore for the dependency version consistency linting (comma-separated)",
+      val =>
+        !val || !val.replaceAll("", ",")
+          ? []
+          : val.split(",").map(v => v.trim().toLowerCase())
+    )
+    .option(
+      "--ignore-packages-deps-version <packages>",
+      "One or more packages to ignore for the dependency version consistency linting (comma-separated)",
+      val =>
+        !val || !val.replaceAll("", ",")
+          ? []
+          : val.split(",").map(v => v.trim().toLowerCase())
+    )
+    .option(
+      "--ignore-paths-deps-version <paths>",
+      "One or more paths to ignore for the dependency version consistency linting (comma-separated)",
+      val =>
+        !val || !val.replaceAll("", ",")
+          ? []
+          : val.split(",").map(v => v.trim().toLowerCase())
+    )
     .action(depsVersionAction);
 
   program
@@ -110,89 +95,106 @@ export function createProgram(config: StormWorkspaceConfig) {
     .description("Run circular dependency lint for the workspace.")
     .action(circularDepsAction);
 
-  const manypkgType = new Option(
-    "--manypkg-type <type>",
-    "The manypkg command to run"
-  )
-    .choices(MANY_PKG_TYPE_OPTIONS)
-    .argParser(val =>
-      !val || !MANY_PKG_TYPE_OPTIONS.includes(val.trim().toLowerCase())
-        ? "fix"
-        : val.trim().toLowerCase()
-    )
-    .default("fix");
-
-  const manypkgArgs = new Option(
-    "--manypkg-args <args>",
-    "The args provided to the manypkg command"
-  )
-    .argParser(val =>
-      !val || !val.replaceAll("", ",")
-        ? []
-        : val.split(",").map(v => v.trim().toLowerCase())
-    )
-    .default([]);
-
   program
     .command("manypkg")
     .description("Run package lint with Manypkg for the workspace.")
-    .addOption(manypkgType)
-    .addOption(manypkgArgs)
+    .option(
+      "--manypkg-type <type>",
+      "The manypkg command to run",
+      val =>
+        !val || !MANY_PKG_TYPE_OPTIONS.includes(val.trim().toLowerCase())
+          ? "fix"
+          : val.trim().toLowerCase(),
+      "fix"
+    )
+    .option(
+      "--manypkg-args <args>",
+      "The args provided to the manypkg command",
+      val =>
+        !val || !val.replaceAll("", ",")
+          ? []
+          : val.split(",").map(v => v.trim().toLowerCase())
+    )
     .action(manypkgAction);
 
   program
     .command("codeowners")
     .description("Run CODEOWNERS linting for the workspace.")
-    .addOption(cspellConfig)
     .action(codeownersAction);
-
-  const skipCspell = new Option(
-    "--skip-cspell",
-    "Should skip CSpell linting"
-  ).default(true);
-
-  const skipAlex = new Option(
-    "--skip-alex",
-    "Should skip Alex language linting"
-  ).default(true);
-
-  const skipDepsVersion = new Option(
-    "--skip-deps-version",
-    "Should skip dependency version consistency linting"
-  ).default(false);
-
-  const skipCircularDeps = new Option(
-    "--skip-circular-deps",
-    "Should skip circular dependency linting"
-  ).default(false);
-
-  const skipManypkg = new Option(
-    "--skip-manypkg",
-    "Should skip Manypkg linting"
-  ).default(false);
-
-  const skipCodeowners = new Option(
-    "--skip-codeowners",
-    "Should skip CODEOWNERS linting"
-  ).default(true);
 
   program
     .command("all")
     .description("Run all linters for the workspace.")
-    .addOption(skipCspell)
-    .addOption(skipAlex)
-    .addOption(skipDepsVersion)
-    .addOption(skipCircularDeps)
-    .addOption(skipManypkg)
-    .addOption(cspellConfig)
-    .addOption(alexConfig)
-    .addOption(alexIgnore)
-    .addOption(ignoreDepsVersion)
-    .addOption(ignorePackagesDepsVersion)
-    .addOption(ignorePathsDepsVersion)
-    .addOption(manypkgType)
-    .addOption(manypkgArgs)
-    .addOption(skipCodeowners)
+    .option("--skip-cspell", "Should skip CSpell linting", true)
+    .option("--skip-alex", "Should skip Alex language linting", true)
+    .option(
+      "--skip-deps-version",
+      "Should skip dependency version consistency linting",
+      false
+    )
+    .option(
+      "--skip-circular-deps",
+      "Should skip circular dependency linting",
+      false
+    )
+    .option("--skip-manypkg", "Should skip Manypkg linting", false)
+    .option(
+      "--cspell-config <file>",
+      "CSpell config file path",
+      "@storm-software/linting-tools/cspell/config.json"
+    )
+    .option(
+      "--alex-config <file>",
+      "Alex.js config file path",
+      "@storm-software/linting-tools/alex/config.json"
+    )
+    .option(
+      "--alex-ignore <file>",
+      "Alex.js Ignore file path",
+      "@storm-software/linting-tools/alex/.alexignore"
+    )
+    .option(
+      "--ignore-deps-version <deps>",
+      "One or more dependencies to ignore for the dependency version consistency linting (comma-separated)",
+      val =>
+        !val || !val.replaceAll("", ",")
+          ? []
+          : val.split(",").map(v => v.trim().toLowerCase())
+    )
+    .option(
+      "--ignore-packages-deps-version <packages>",
+      "One or more packages to ignore for the dependency version consistency linting (comma-separated)",
+      val =>
+        !val || !val.replaceAll("", ",")
+          ? []
+          : val.split(",").map(v => v.trim().toLowerCase())
+    )
+    .option(
+      "--ignore-paths-deps-version <paths>",
+      "One or more paths to ignore for the dependency version consistency linting (comma-separated)",
+      val =>
+        !val || !val.replaceAll("", ",")
+          ? []
+          : val.split(",").map(v => v.trim().toLowerCase())
+    )
+    .option(
+      "--manypkg-type <type>",
+      "The manypkg command to run",
+      val =>
+        !val || !MANY_PKG_TYPE_OPTIONS.includes(val.trim().toLowerCase())
+          ? "fix"
+          : val.trim().toLowerCase(),
+      "fix"
+    )
+    .option(
+      "--manypkg-args <args>",
+      "The args provided to the manypkg command",
+      val =>
+        !val || !val.replaceAll("", ",")
+          ? []
+          : val.split(",").map(v => v.trim().toLowerCase())
+    )
+    .option("--skip-codeowners", "Should skip CODEOWNERS linting", true)
     .action(allAction);
 
   return program;

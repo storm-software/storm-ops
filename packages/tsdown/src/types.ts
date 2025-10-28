@@ -16,7 +16,10 @@
  -------------------------------------------------------------------*/
 
 import { ProjectGraph, ProjectsConfigurations } from "@nx/devkit";
-import { TypeScriptBuildOptions } from "@storm-software/build-tools";
+import {
+  AdditionalCLIOptions,
+  TypeScriptBuildOptions
+} from "@storm-software/build-tools";
 import { StormWorkspaceConfig } from "@storm-software/config/types";
 import type { Options } from "tsdown";
 
@@ -63,3 +66,5 @@ export type TSDownResolvedOptions = Options &
   };
 
 export type MaybePromise<T> = T | Promise<T>;
+
+export type TSDownCLIOptions = AdditionalCLIOptions & TSDownOptions;

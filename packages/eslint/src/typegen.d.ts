@@ -779,6 +779,11 @@ Backward pagination arguments
    */
   'astro/no-set-text-directive'?: Linter.RuleEntry<[]>
   /**
+   * disallow inline `<script>` without `src` to encourage CSP-safe patterns
+   * @see https://ota-meshi.github.io/eslint-plugin-astro/rules/no-unsafe-inline-scripts/
+   */
+  'astro/no-unsafe-inline-scripts'?: Linter.RuleEntry<AstroNoUnsafeInlineScripts>
+  /**
    * disallow selectors defined in `style` tag that don't use in HTML
    * @see https://ota-meshi.github.io/eslint-plugin-astro/rules/no-unused-css-selector/
    */
@@ -8293,6 +8298,13 @@ type AstroJsxA11YScope = []|[{
 // ----- astro/jsx-a11y/tabindex-no-positive -----
 type AstroJsxA11YTabindexNoPositive = []|[{
   [k: string]: unknown | undefined
+}]
+// ----- astro/no-unsafe-inline-scripts -----
+type AstroNoUnsafeInlineScripts = []|[{
+  allowDefineVars?: boolean
+  allowModuleScripts?: boolean
+  allowNonExecutingTypes?: string[]
+  allowNonce?: boolean
 }]
 // ----- astro/prefer-split-class-list -----
 type AstroPreferSplitClassList = []|[{

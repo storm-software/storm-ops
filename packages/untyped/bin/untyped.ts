@@ -14,7 +14,7 @@ import {
   exitWithSuccess,
   handleProcess
 } from "@storm-software/config-tools/utilities/process-handler";
-import { Command, Option } from "commander";
+import { Command } from "commander";
 import { getGenerateAction } from "../src/generate";
 
 async function createProgram(config: StormWorkspaceConfig) {
@@ -36,24 +36,20 @@ async function createProgram(config: StormWorkspaceConfig) {
       .showHelpAfterError(true)
       .showSuggestionAfterError();
 
-    const entryOption = new Option(
-      "-e --entry <path>",
-      "The path to the entry file to generate types for. This can be a file or a directory. Globs are supported."
-    );
-
-    const outputPathOption = new Option(
-      "-o --output-path <path>",
-      "The path of the project's source folder to build"
-    );
-
     program
       .command("generate", { isDefault: true })
       .alias("bundle")
       .description(
         "Run a TypeScript build using Untyped, API-Extractor, and TSC (for type generation)."
       )
-      .addOption(entryOption)
-      .addOption(outputPathOption)
+      .option(
+        "-e --entry <path>",
+        "The path to the entry file to generate types for. This can be a file or a directory. Globs are supported."
+      )
+      .option(
+        "-o --output-path <path>",
+        "The path of the project's source folder to build"
+      )
       .action(getGenerateAction(config));
 
     return program;

@@ -5,7 +5,7 @@ import {
   SingleThemeColors
 } from "@storm-software/config/types";
 import chalk from "chalk";
-import { Command, Option } from "commander";
+import { Command } from "commander";
 import { getConfig } from "../src/get-config";
 import {
   formatLogMessage,
@@ -34,15 +34,14 @@ export function createProgram() {
   const program = new Command("storm-config");
   program.version("1.0.0", "-v --version", "display CLI version");
 
-  const directory = new Option(
-    "-d --dir <path>",
-    "A directory that exists inside the workspace root"
-  ).default(process.cwd());
-
   program
     .command("view", { isDefault: true })
     .description("View the current Storm configuration for the workspace.")
-    .addOption(directory)
+    .option(
+      "-d --dir <path>",
+      "A directory that exists inside the workspace root",
+      process.cwd()
+    )
     .action(viewAction);
 
   return program;
