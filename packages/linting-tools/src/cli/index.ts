@@ -65,28 +65,43 @@ export function createProgram(config: StormWorkspaceConfig) {
     .command("deps-version")
     .description("Run dependency version consistency lint for the workspace.")
     .option(
-      "--ignore-deps-version <deps>",
+      "--ignore-deps-version <deps...>",
       "One or more dependencies to ignore for the dependency version consistency linting (comma-separated)",
-      val =>
-        !val || !val.replaceAll("", ",")
-          ? []
-          : val.split(",").map(v => v.trim().toLowerCase())
+      (value: string, previous: string[]) => {
+        if (previous === undefined) {
+          return value.split(",").map(v => v.trim().toLowerCase());
+        }
+        return [
+          ...previous,
+          ...value.split(",").map(v => v.trim().toLowerCase())
+        ];
+      }
     )
     .option(
-      "--ignore-packages-deps-version <packages>",
+      "--ignore-packages-deps-version <packages...>",
       "One or more packages to ignore for the dependency version consistency linting (comma-separated)",
-      val =>
-        !val || !val.replaceAll("", ",")
-          ? []
-          : val.split(",").map(v => v.trim().toLowerCase())
+      (value: string, previous: string[]) => {
+        if (previous === undefined) {
+          return value.split(",").map(v => v.trim().toLowerCase());
+        }
+        return [
+          ...previous,
+          ...value.split(",").map(v => v.trim().toLowerCase())
+        ];
+      }
     )
     .option(
-      "--ignore-paths-deps-version <paths>",
+      "--ignore-paths-deps-version <paths...>",
       "One or more paths to ignore for the dependency version consistency linting (comma-separated)",
-      val =>
-        !val || !val.replaceAll("", ",")
-          ? []
-          : val.split(",").map(v => v.trim().toLowerCase())
+      (value: string, previous: string[]) => {
+        if (previous === undefined) {
+          return value.split(",").map(v => v.trim().toLowerCase());
+        }
+        return [
+          ...previous,
+          ...value.split(",").map(v => v.trim().toLowerCase())
+        ];
+      }
     )
     .action(depsVersionAction);
 
@@ -108,12 +123,17 @@ export function createProgram(config: StormWorkspaceConfig) {
       "fix"
     )
     .option(
-      "--manypkg-args <args>",
+      "--manypkg-args <args...>",
       "The args provided to the manypkg command",
-      val =>
-        !val || !val.replaceAll("", ",")
-          ? []
-          : val.split(",").map(v => v.trim().toLowerCase())
+      (value: string, previous: string[]) => {
+        if (previous === undefined) {
+          return value.split(",").map(v => v.trim().toLowerCase());
+        }
+        return [
+          ...previous,
+          ...value.split(",").map(v => v.trim().toLowerCase())
+        ];
+      }
     )
     .action(manypkgAction);
 
@@ -154,28 +174,43 @@ export function createProgram(config: StormWorkspaceConfig) {
       "@storm-software/linting-tools/alex/.alexignore"
     )
     .option(
-      "--ignore-deps-version <deps>",
+      "--ignore-deps-version <deps...>",
       "One or more dependencies to ignore for the dependency version consistency linting (comma-separated)",
-      val =>
-        !val || !val.replaceAll("", ",")
-          ? []
-          : val.split(",").map(v => v.trim().toLowerCase())
+      (value: string, previous: string[]) => {
+        if (previous === undefined) {
+          return value.split(",").map(v => v.trim().toLowerCase());
+        }
+        return [
+          ...previous,
+          ...value.split(",").map(v => v.trim().toLowerCase())
+        ];
+      }
     )
     .option(
-      "--ignore-packages-deps-version <packages>",
+      "--ignore-packages-deps-version <packages...>",
       "One or more packages to ignore for the dependency version consistency linting (comma-separated)",
-      val =>
-        !val || !val.replaceAll("", ",")
-          ? []
-          : val.split(",").map(v => v.trim().toLowerCase())
+      (value: string, previous: string[]) => {
+        if (previous === undefined) {
+          return value.split(",").map(v => v.trim().toLowerCase());
+        }
+        return [
+          ...previous,
+          ...value.split(",").map(v => v.trim().toLowerCase())
+        ];
+      }
     )
     .option(
-      "--ignore-paths-deps-version <paths>",
+      "--ignore-paths-deps-version <paths...>",
       "One or more paths to ignore for the dependency version consistency linting (comma-separated)",
-      val =>
-        !val || !val.replaceAll("", ",")
-          ? []
-          : val.split(",").map(v => v.trim().toLowerCase())
+      (value: string, previous: string[]) => {
+        if (previous === undefined) {
+          return value.split(",").map(v => v.trim().toLowerCase());
+        }
+        return [
+          ...previous,
+          ...value.split(",").map(v => v.trim().toLowerCase())
+        ];
+      }
     )
     .option(
       "--manypkg-type <type>",
@@ -187,12 +222,17 @@ export function createProgram(config: StormWorkspaceConfig) {
       "fix"
     )
     .option(
-      "--manypkg-args <args>",
+      "--manypkg-args <args...>",
       "The args provided to the manypkg command",
-      val =>
-        !val || !val.replaceAll("", ",")
-          ? []
-          : val.split(",").map(v => v.trim().toLowerCase())
+      (value: string, previous: string[]) => {
+        if (previous === undefined) {
+          return value.split(",").map(v => v.trim().toLowerCase());
+        }
+        return [
+          ...previous,
+          ...value.split(",").map(v => v.trim().toLowerCase())
+        ];
+      }
     )
     .option("--skip-codeowners", "Should skip CODEOWNERS linting", true)
     .action(allAction);
@@ -209,11 +249,11 @@ async function allAction({
   cspellConfig,
   alexConfig,
   alexIgnore,
-  ignoreDepsVersion,
-  ignorePackagesDepsVersion,
-  ignorePathsDepsVersion,
+  ignoreDepsVersion = [],
+  ignorePackagesDepsVersion = [],
+  ignorePathsDepsVersion = [],
   manypkgType,
-  manypkgArgs
+  manypkgArgs = []
 }: {
   skipCspell: boolean;
   skipAlex: boolean;
@@ -350,9 +390,9 @@ async function alexAction({
 }
 
 async function depsVersionAction({
-  ignoreDepsVersion,
-  ignorePackagesDepsVersion,
-  ignorePathsDepsVersion
+  ignoreDepsVersion = [],
+  ignorePackagesDepsVersion = [],
+  ignorePathsDepsVersion = []
 }: {
   ignoreDepsVersion: string[];
   ignorePackagesDepsVersion: string[];
