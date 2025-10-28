@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Tsup
 
+## [0.2.10](https://github.com/storm-software/storm-ops/releases/tag/tsup%400.2.10) (2025-10-28)
+
+### Bug Fixes
+
+- **monorepo:** Update `commander` CLI implementation across packages
+  ([0aca28a67](https://github.com/storm-software/storm-ops/commit/0aca28a67))
+
+### Updated Dependencies
+
+- Updated config-tools to 1.188.12
+- Updated build-tools to 0.158.12
+
 ## [0.2.9](https://github.com/storm-software/storm-ops/releases/tag/tsup%400.2.9) (2025-10-23)
 
 ### Miscellaneous

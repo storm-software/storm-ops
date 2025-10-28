@@ -2,6 +2,22 @@
 
 # Changelog for Storm Ops - Workspace Tools
 
+## [1.292.12](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.292.12) (2025-10-28)
+
+### Bug Fixes
+
+- **monorepo:** Update `commander` CLI implementation across packages
+  ([0aca28a67](https://github.com/storm-software/storm-ops/commit/0aca28a67))
+
+### Updated Dependencies
+
+- Updated pnpm-tools to 0.6.12
+- Updated npm-tools to 0.5.12
+- Updated prettier to 0.57.12
+- Updated esbuild to 0.53.12
+- Updated unbuild to 0.57.12
+- Updated tsdown to 0.45.12
+
 ## [1.292.11](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.292.11) (2025-10-23)
 
 ### Miscellaneous

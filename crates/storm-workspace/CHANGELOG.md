@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Storm Workspace
 
+## [0.19.12](https://github.com/storm-software/storm-ops/releases/tag/storm-workspace%400.19.12) (2025-10-28)
+
+### Bug Fixes
+
+- **monorepo:** Update `commander` CLI implementation across packages
+  ([0aca28a67](https://github.com/storm-software/storm-ops/commit/0aca28a67))
+
 ## [0.19.11](https://github.com/storm-software/storm-ops/releases/tag/storm-workspace%400.19.11) (2025-10-23)
 
 ### Miscellaneous

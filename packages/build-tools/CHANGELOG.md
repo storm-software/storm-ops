@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Build Tools
 
+## [0.158.12](https://github.com/storm-software/storm-ops/releases/tag/build-tools%400.158.12) (2025-10-28)
+
+### Bug Fixes
+
+- **monorepo:** Update `commander` CLI implementation across packages
+  ([0aca28a67](https://github.com/storm-software/storm-ops/commit/0aca28a67))
+
 ## [0.158.11](https://github.com/storm-software/storm-ops/releases/tag/build-tools%400.158.11) (2025-10-23)
 
 ### Miscellaneous

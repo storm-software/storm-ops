@@ -2,6 +2,19 @@
 
 # Changelog for Storm Ops - K8s Tools
 
+## [0.42.12](https://github.com/storm-software/storm-ops/releases/tag/k8s-tools%400.42.12) (2025-10-28)
+
+### Bug Fixes
+
+- **monorepo:** Update `commander` CLI implementation across packages
+  ([0aca28a67](https://github.com/storm-software/storm-ops/commit/0aca28a67))
+
+### Updated Dependencies
+
+- Updated workspace-tools to 1.292.12
+- Updated config-tools to 1.188.12
+- Updated config to 1.134.12
+
 ## [0.42.11](https://github.com/storm-software/storm-ops/releases/tag/k8s-tools%400.42.11) (2025-10-23)
 
 ### Miscellaneous

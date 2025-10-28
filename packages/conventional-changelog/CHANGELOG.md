@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Conventional Changelog
 
+## [0.3.12](https://github.com/storm-software/storm-ops/releases/tag/conventional-changelog%400.3.12) (2025-10-28)
+
+### Bug Fixes
+
+- **monorepo:** Update `commander` CLI implementation across packages
+  ([0aca28a67](https://github.com/storm-software/storm-ops/commit/0aca28a67))
+
+### Updated Dependencies
+
+- Updated config-tools to 1.188.12
+- Updated config to 1.134.12
+
 ## [0.3.11](https://github.com/storm-software/storm-ops/releases/tag/conventional-changelog%400.3.11) (2025-10-23)
 
 ### Miscellaneous

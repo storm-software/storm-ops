@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Markdownlint
 
+## [0.30.12](https://github.com/storm-software/storm-ops/releases/tag/markdownlint%400.30.12) (2025-10-28)
+
+### Bug Fixes
+
+- **monorepo:** Update `commander` CLI implementation across packages
+  ([0aca28a67](https://github.com/storm-software/storm-ops/commit/0aca28a67))
+
 ## [0.30.11](https://github.com/storm-software/storm-ops/releases/tag/markdownlint%400.30.11) (2025-10-23)
 
 ### Miscellaneous

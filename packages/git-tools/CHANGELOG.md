@@ -2,6 +2,19 @@
 
 # Changelog for Storm Ops - Git Tools
 
+## [2.123.12](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.123.12) (2025-10-28)
+
+### Bug Fixes
+
+- **monorepo:** Update `commander` CLI implementation across packages
+  ([0aca28a67](https://github.com/storm-software/storm-ops/commit/0aca28a67))
+
+### Updated Dependencies
+
+- Updated conventional-changelog to 0.3.12
+- Updated config-tools to 1.188.12
+- Updated config to 1.134.12
+
 ## [2.123.11](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.123.11) (2025-10-23)
 
 ### Miscellaneous

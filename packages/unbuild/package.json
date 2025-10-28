@@ -1,6 +1,6 @@
 {
   "name": "@storm-software/unbuild",
-  "version": "0.57.11",
+  "version": "0.57.12",
   "type": "module",
   "description": "A package containing `unbuild` utilities for building Storm Software libraries and applications",
   "repository": {
@@ -189,9 +189,9 @@
     }
   },
   "dependencies": {
-    "@storm-software/build-tools": "0.158.11",
-    "@storm-software/config": "1.134.11",
-    "@storm-software/config-tools": "1.188.11",
+    "@storm-software/build-tools": "0.158.12",
+    "@storm-software/config": "1.134.12",
+    "@storm-software/config-tools": "1.188.12",
     "commander": "catalog:",
     "defu": "catalog:",
     "esbuild": "catalog:",
