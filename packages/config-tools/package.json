@@ -224,7 +224,9 @@
     }
   },
   "types": "./dist/index.d.ts",
-  "files": ["dist/**/*"],
+  "files": [
+    "dist/**/*"
+  ],
   "keywords": [
     "storm-software",
     "storm",
@@ -235,7 +237,7 @@
   ],
   "dependencies": {
     "@ltd/j-toml": "catalog:",
-    "@storm-software/config": "1.134.13",
+    "@storm-software/config": "workspace:*",
     "c12": "catalog:",
     "chalk": "catalog:",
     "commander": "catalog:",

@@ -163,7 +163,8 @@
     "jest": "catalog:"
   },
   "dependencies": {
-    "defu": "catalog:"
+    "defu": "catalog:",
+    "mlly": "catalog:"
   },
   "devDependencies": {
     "@nx/jest": "catalog:",
