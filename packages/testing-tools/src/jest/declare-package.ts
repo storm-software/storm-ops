@@ -1,4 +1,5 @@
 import type { Config } from "jest";
+import { resolvePathSync } from "mlly";
 import { join } from "node:path";
 
 export type DeclarePackageConfigOptions = Config & {
@@ -20,7 +21,7 @@ export function declarePackage(options: DeclarePackageConfigOptions): Config {
     displayName: options.displayName
       ? options.displayName
       : options.projectRoot.replaceAll("\\", "-").replaceAll("/", "-"),
-    preset: "@storm-software/testing-tools/jest/preset",
+    preset: resolvePathSync("@storm-software/testing-tools/jest/preset"),
     testEnvironment: options.isNode ? "node" : "jsdom",
     transform: {
       "^.+\\.[tj]s$": ["ts-jest", { tsconfig: "<rootDir>/tsconfig.spec.json" }]
