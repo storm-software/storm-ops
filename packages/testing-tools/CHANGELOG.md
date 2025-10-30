@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Testing Tools
 
+## [1.119.14](https://github.com/storm-software/storm-ops/releases/tag/testing-tools%401.119.14) (2025-10-30)
+
+### Bug Fixes
+
+- **testing-tools:** Resolve issue resolving preset path
+  ([8a1f70967](https://github.com/storm-software/storm-ops/commit/8a1f70967))
+
+### Miscellaneous
+
+- **monorepo:** Update workspace package links
+  ([f79e3c6c6](https://github.com/storm-software/storm-ops/commit/f79e3c6c6))
+
 ## [1.119.13](https://github.com/storm-software/storm-ops/releases/tag/testing-tools%401.119.13) (2025-10-28)
 
 ### Miscellaneous
