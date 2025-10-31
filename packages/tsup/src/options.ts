@@ -1,7 +1,3 @@
-import {
-  createProjectGraphAsync,
-  readProjectsConfigurationFromProjectGraph
-} from "@nx/devkit";
 import { getEnv } from "@storm-software/build-tools";
 import { getWorkspaceConfig } from "@storm-software/config-tools/get-config";
 import {
@@ -43,10 +39,6 @@ export async function resolveOptions(
 
   const stopwatch = getStopwatch("Build options resolution");
 
-  const projectGraph = await createProjectGraphAsync({
-    exitOnError: false
-  });
-
   const projectJsonPath = joinPaths(
     workspaceRoot.dir,
     projectRoot,
@@ -59,14 +51,6 @@ export async function resolveOptions(
   const projectJsonFile = await hf.readFile(projectJsonPath, "utf8");
   const projectJson = JSON.parse(projectJsonFile);
   const projectName = projectJson.name || userOptions.name;
-
-  const projectConfigurations =
-    readProjectsConfigurationFromProjectGraph(projectGraph);
-  if (!projectConfigurations?.projects?.[projectName]) {
-    throw new Error(
-      "The Build process failed because the project does not have a valid configuration in the project.json file. Check if the file exists in the root of the project."
-    );
-  }
 
   const options = defu(userOptions, DEFAULT_BUILD_OPTIONS) as BuildOptions;
   options.name ??= projectName;
@@ -81,7 +65,6 @@ export async function resolveOptions(
   }
 
   const env = getEnv("esbuild", options as Parameters<typeof getEnv>[1]);
-  const define = defu(options.define ?? {}, env ?? {});
 
   const resolvedOptions = {
     name: projectName,
@@ -97,21 +80,18 @@ export async function resolveOptions(
         : userOptions.tsconfig
           ? userOptions.tsconfig
           : joinPaths(workspaceRoot.dir, projectRoot, "tsconfig.json"),
-    env: {
-      ...Object.keys(env)
-        .filter(key => env[key] !== undefined)
-        .reduce((res, key) => {
-          const value = JSON.stringify(env[key]);
-          const safeKey = key.replaceAll("(", "").replaceAll(")", "");
+    env: Object.keys(env)
+      .filter(key => env[key] !== undefined)
+      .reduce((ret, key) => {
+        const value = JSON.stringify(env[key]);
+        const safeKey = key.replaceAll("(", "").replaceAll(")", "");
 
-          return {
-            ...res,
-            [`process.env.${safeKey}`]: value,
-            [`import.meta.env.${safeKey}`]: value
-          };
-        }, {})
-    },
-    define
+        return {
+          ...ret,
+          [`process.env.${safeKey}`]: value,
+          [`import.meta.env.${safeKey}`]: value
+        };
+      }, {})
   } satisfies ResolvedBuildOptions;
 
   if (!resolvedOptions.silent) {
@@ -120,7 +100,7 @@ export async function resolveOptions(
     if (resolvedOptions.verbose) {
       writeDebug(
         `  ⚙️   Build options resolved: \n\n${formatLogMessage(resolvedOptions)}`,
-        workspaceConfig
+        { ...workspaceConfig, logLevel: "all" }
       );
     }
   }
