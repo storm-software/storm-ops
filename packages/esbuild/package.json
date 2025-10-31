@@ -224,7 +224,11 @@
     }
   },
   "types": "./dist/index.d.ts",
-  "files": ["assets/**/*", "bin/**/*", "dist/**/*"],
+  "files": [
+    "assets/**/*",
+    "bin/**/*",
+    "dist/**/*"
+  ],
   "keywords": [
     "esbuild",
     "monorepo",
@@ -236,10 +240,10 @@
   "dependencies": {
     "@nx/devkit": "catalog:",
     "@nx/js": "catalog:",
-    "@storm-software/build-tools": "0.158.14",
-    "@storm-software/config": "1.134.14",
-    "@storm-software/config-tools": "1.188.14",
-    "@storm-software/tsup": "0.2.12",
+    "@storm-software/build-tools": "workspace:*",
+    "@storm-software/config": "workspace:*",
+    "@storm-software/config-tools": "workspace:*",
+    "@storm-software/tsup": "workspace:*",
     "chokidar": "^4.0.3",
     "commander": "catalog:",
     "defu": "catalog:",
