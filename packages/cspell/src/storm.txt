@@ -352,6 +352,7 @@ oxlint
 oxlintrc
 fontkit
 iconify
+automd
 
 # Acronyms
 dpdm
