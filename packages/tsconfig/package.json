@@ -1,6 +1,6 @@
 {
   "name": "@storm-software/tsconfig",
-  "version": "0.47.15",
+  "version": "0.47.16",
   "description": "A comprehensive package containing shared TypeScript configuration files for various Storm Software projects.",
   "repository": {
     "type": "github",

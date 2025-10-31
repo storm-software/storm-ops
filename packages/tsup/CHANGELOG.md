@@ -2,6 +2,23 @@
 
 # Changelog for Storm Ops - Tsup
 
+## [0.2.14](https://github.com/storm-software/storm-ops/releases/tag/tsup%400.2.14) (2025-10-31)
+
+### Bug Fixes
+
+- **tsup:** Remove unused Nx graph logic and resolve issue with `define` option
+  ([09eedd514](https://github.com/storm-software/storm-ops/commit/09eedd514))
+
+### Miscellaneous
+
+- **monorepo:** Update workspace package links
+  ([49f67dda6](https://github.com/storm-software/storm-ops/commit/49f67dda6))
+
+### Updated Dependencies
+
+- Updated config-tools to 1.188.16
+- Updated build-tools to 0.158.16
+
 ## [0.2.13](https://github.com/storm-software/storm-ops/releases/tag/tsup%400.2.13) (2025-10-31)
 
 ### Bug Fixes
