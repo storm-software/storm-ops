@@ -44,7 +44,7 @@ export async function resolveOptions(
   const stopwatch = getStopwatch("Build options resolution");
 
   const projectGraph = await createProjectGraphAsync({
-    exitOnError: true
+    exitOnError: false
   });
 
   const projectJsonPath = joinPaths(
@@ -97,12 +97,11 @@ export async function resolveOptions(
         : userOptions.tsconfig
           ? userOptions.tsconfig
           : joinPaths(workspaceRoot.dir, projectRoot, "tsconfig.json"),
-    env,
-    define: {
-      ...Object.keys(define)
-        .filter(key => define[key] !== undefined)
+    env: {
+      ...Object.keys(env)
+        .filter(key => env[key] !== undefined)
         .reduce((res, key) => {
-          const value = JSON.stringify(define[key]);
+          const value = JSON.stringify(env[key]);
           const safeKey = key.replaceAll("(", "").replaceAll(")", "");
 
           return {
@@ -111,13 +110,14 @@ export async function resolveOptions(
             [`import.meta.env.${safeKey}`]: value
           };
         }, {})
-    }
+    },
+    define
   } satisfies ResolvedBuildOptions;
 
-  if (!options.silent) {
+  if (!resolvedOptions.silent) {
     stopwatch();
 
-    if (options.verbose) {
+    if (resolvedOptions.verbose) {
       writeDebug(
         `  ⚙️   Build options resolved: \n\n${formatLogMessage(resolvedOptions)}`,
         workspaceConfig
