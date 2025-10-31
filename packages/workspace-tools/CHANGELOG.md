@@ -2,6 +2,24 @@
 
 # Changelog for Storm Ops - Workspace Tools
 
+## [1.292.15](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.292.15) (2025-10-31)
+
+### Miscellaneous
+
+- **cspell:** Added `automd` to the dictionary
+  ([2b54b1cac](https://github.com/storm-software/storm-ops/commit/2b54b1cac))
+- **monorepo:** Update workspace package links
+  ([6c345f258](https://github.com/storm-software/storm-ops/commit/6c345f258))
+
+### Updated Dependencies
+
+- Updated pnpm-tools to 0.6.15
+- Updated npm-tools to 0.5.15
+- Updated prettier to 0.57.15
+- Updated esbuild to 0.53.15
+- Updated unbuild to 0.57.15
+- Updated tsdown to 0.45.15
+
 ## [1.292.14](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.292.14) (2025-10-30)
 
 ### Miscellaneous

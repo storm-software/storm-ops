@@ -2,6 +2,15 @@
 
 # Changelog for Storm Ops - Prettier
 
+## [0.57.15](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.57.15) (2025-10-31)
+
+### Miscellaneous
+
+- **cspell:** Added `automd` to the dictionary
+  ([2b54b1cac](https://github.com/storm-software/storm-ops/commit/2b54b1cac))
+- **monorepo:** Update workspace package links
+  ([6c345f258](https://github.com/storm-software/storm-ops/commit/6c345f258))
+
 ## [0.57.14](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.57.14) (2025-10-30)
 
 ### Miscellaneous

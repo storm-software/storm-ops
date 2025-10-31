@@ -2,6 +2,21 @@
 
 # Changelog for Storm Ops - Git Tools
 
+## [2.123.15](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.123.15) (2025-10-31)
+
+### Miscellaneous
+
+- **cspell:** Added `automd` to the dictionary
+  ([2b54b1cac](https://github.com/storm-software/storm-ops/commit/2b54b1cac))
+- **monorepo:** Update workspace package links
+  ([6c345f258](https://github.com/storm-software/storm-ops/commit/6c345f258))
+
+### Updated Dependencies
+
+- Updated conventional-changelog to 0.3.15
+- Updated config-tools to 1.188.15
+- Updated config to 1.134.15
+
 ## [2.123.14](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.123.14) (2025-10-30)
 
 ### Miscellaneous

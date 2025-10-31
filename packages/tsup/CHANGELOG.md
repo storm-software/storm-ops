@@ -2,6 +2,25 @@
 
 # Changelog for Storm Ops - Tsup
 
+## [0.2.13](https://github.com/storm-software/storm-ops/releases/tag/tsup%400.2.13) (2025-10-31)
+
+### Bug Fixes
+
+- **tsup:** Resolve issues with applying build options
+  ([26d5077da](https://github.com/storm-software/storm-ops/commit/26d5077da))
+
+### Miscellaneous
+
+- **cspell:** Added `automd` to the dictionary
+  ([2b54b1cac](https://github.com/storm-software/storm-ops/commit/2b54b1cac))
+- **monorepo:** Update workspace package links
+  ([6c345f258](https://github.com/storm-software/storm-ops/commit/6c345f258))
+
+### Updated Dependencies
+
+- Updated config-tools to 1.188.15
+- Updated build-tools to 0.158.15
+
 ## [0.2.12](https://github.com/storm-software/storm-ops/releases/tag/tsup%400.2.12) (2025-10-30)
 
 ### Miscellaneous

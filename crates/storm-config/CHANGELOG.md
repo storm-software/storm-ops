@@ -2,6 +2,15 @@
 
 # Changelog for Storm Ops - Storm Config
 
+## [0.25.15](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.25.15) (2025-10-31)
+
+### Miscellaneous
+
+- **cspell:** Added `automd` to the dictionary
+  ([2b54b1cac](https://github.com/storm-software/storm-ops/commit/2b54b1cac))
+- **monorepo:** Update workspace package links
+  ([6c345f258](https://github.com/storm-software/storm-ops/commit/6c345f258))
+
 ## [0.25.14](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.25.14) (2025-10-30)
 
 ### Miscellaneous

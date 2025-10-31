@@ -2,6 +2,21 @@
 
 # Changelog for Storm Ops - Tsdown
 
+## [0.45.15](https://github.com/storm-software/storm-ops/releases/tag/tsdown%400.45.15) (2025-10-31)
+
+### Miscellaneous
+
+- **cspell:** Added `automd` to the dictionary
+  ([2b54b1cac](https://github.com/storm-software/storm-ops/commit/2b54b1cac))
+- **monorepo:** Update workspace package links
+  ([6c345f258](https://github.com/storm-software/storm-ops/commit/6c345f258))
+
+### Updated Dependencies
+
+- Updated config-tools to 1.188.15
+- Updated build-tools to 0.158.15
+- Updated config to 1.134.15
+
 ## [0.45.14](https://github.com/storm-software/storm-ops/releases/tag/tsdown%400.45.14) (2025-10-30)
 
 ### Miscellaneous

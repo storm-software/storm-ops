@@ -2,6 +2,20 @@
 
 # Changelog for Storm Ops - ESLint
 
+## [0.169.15](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.169.15) (2025-10-31)
+
+### Miscellaneous
+
+- **cspell:** Added `automd` to the dictionary
+  ([2b54b1cac](https://github.com/storm-software/storm-ops/commit/2b54b1cac))
+- **monorepo:** Update workspace package links
+  ([6c345f258](https://github.com/storm-software/storm-ops/commit/6c345f258))
+
+### Updated Dependencies
+
+- Updated config-tools to 1.188.15
+- Updated config to 1.134.15
+
 ## [0.169.14](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.169.14) (2025-10-30)
 
 ### Miscellaneous
