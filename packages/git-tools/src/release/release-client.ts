@@ -49,32 +49,34 @@ export class StormReleaseClient extends ReleaseClient {
     workspaceConfig: StormWorkspaceConfig
   ) {
     const config = defu(
-      Object.fromEntries(
-        Object.entries(
-          releaseConfig.groups || DEFAULT_RELEASE_CONFIG.groups
-        ).map(([name, group]) => [
-          name,
-          defu(
-            {
-              ...omit(DEFAULT_RELEASE_GROUP_CONFIG, ["changelog"]),
-              ...group
-            },
-            {
-              changelog: {
-                ...(DEFAULT_RELEASE_GROUP_CONFIG.changelog as NxReleaseChangelogConfiguration),
-                renderer: StormChangelogRenderer,
-                renderOptions: {
-                  ...(
-                    DEFAULT_RELEASE_GROUP_CONFIG.changelog as NxReleaseChangelogConfiguration
-                  ).renderOptions,
-                  workspaceConfig,
-                  remoteReleaseClient
+      {
+        groups: Object.fromEntries(
+          Object.entries(
+            releaseConfig.groups || DEFAULT_RELEASE_CONFIG.groups
+          ).map(([name, group]) => [
+            name,
+            defu(
+              {
+                ...omit(DEFAULT_RELEASE_GROUP_CONFIG, ["changelog"]),
+                ...group
+              },
+              {
+                changelog: {
+                  ...(DEFAULT_RELEASE_GROUP_CONFIG.changelog as NxReleaseChangelogConfiguration),
+                  renderer: StormChangelogRenderer,
+                  renderOptions: {
+                    ...(
+                      DEFAULT_RELEASE_GROUP_CONFIG.changelog as NxReleaseChangelogConfiguration
+                    ).renderOptions,
+                    workspaceConfig,
+                    remoteReleaseClient
+                  }
                 }
               }
-            }
-          )
-        ])
-      ),
+            )
+          ])
+        )
+      },
       omit(releaseConfig, ["groups"]),
       omit(DEFAULT_RELEASE_CONFIG, ["groups"])
     );
