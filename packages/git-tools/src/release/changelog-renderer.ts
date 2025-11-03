@@ -56,6 +56,12 @@ export default class StormChangelogRenderer extends DefaultChangelogRenderer {
    * @param config - The configuration object for the ChangelogRenderer
    */
   public constructor(config: StormChangelogRenderParams) {
+    if (!config.changelogRenderOptions.remoteReleaseClient) {
+      throw new Error(
+        "The `remoteReleaseClient` option must be provided in the `changelogRenderOptions`."
+      );
+    }
+
     const resolvedConfig = {
       entryWhenNoChanges: false,
       conventionalCommitsConfig: DEFAULT_CONVENTIONAL_COMMITS_CONFIG,

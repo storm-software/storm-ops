@@ -127,6 +127,14 @@ export class StormReleaseClient extends ReleaseClient {
 
     const config = defu(
       {
+        changelog: {
+          renderOptions: {
+            workspaceConfig,
+            remoteReleaseClient
+          }
+        }
+      },
+      {
         groups: getReleaseGroupConfig(
           releaseConfig,
           workspaceConfig,
