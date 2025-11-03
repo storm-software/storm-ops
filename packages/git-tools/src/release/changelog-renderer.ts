@@ -66,7 +66,7 @@ export default class StormChangelogRenderer extends DefaultChangelogRenderer {
     super(resolvedConfig);
 
     this.remoteReleaseClient = resolvedConfig.remoteReleaseClient;
-    this.repoData = this.remoteReleaseClient.getRemoteRepoData();
+    this.repoData = resolvedConfig.remoteReleaseClient.getRemoteRepoData();
     this.workspaceConfig = config.changelogRenderOptions.workspaceConfig;
   }
 
