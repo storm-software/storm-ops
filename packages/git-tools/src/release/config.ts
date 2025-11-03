@@ -44,11 +44,6 @@ export const DEFAULT_RELEASE_GROUP_CONFIG: ReleaseGroupConfig = {
 
 export const DEFAULT_RELEASE_CONFIG: ReleaseConfig = {
   conventionalCommits: DEFAULT_CONVENTIONAL_COMMITS_CONFIG,
-  git: {
-    tag: true,
-    commitArgs: ["--annotate", "--sign"],
-    commitMessage: "release(monorepo): Publish workspace release updates"
-  },
   groups: {
     packages: DEFAULT_RELEASE_GROUP_CONFIG
   },
