@@ -13,7 +13,7 @@ export default defineConfig([
     bundle: true,
     clean: false,
     dts: false,
-    sourcemap: false,
+    sourcemap: true,
     tsconfig: "./tsconfig.json",
     shims: true,
     silent: true,

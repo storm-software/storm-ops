@@ -14,7 +14,6 @@ export const DEFAULT_RELEASE_GROUP_CONFIG: ReleaseGroupConfig = {
     createRelease: "github",
     entryWhenNoChanges: false,
     file: "{projectRoot}/CHANGELOG.md",
-    renderer: "@storm-software/git-tools/changelog-renderer",
     renderOptions: {
       authors: false,
       commitReferences: true,

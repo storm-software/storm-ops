@@ -14,6 +14,7 @@ export default defineConfig([
     format: ["cjs", "esm"],
     outDir: "dist",
     platform: "node",
+    treeshake: true,
     splitting: true,
     clean: false,
     dts: true,
