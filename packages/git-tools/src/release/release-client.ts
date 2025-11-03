@@ -4,7 +4,10 @@ import { writeInfo } from "@storm-software/config-tools/logger/console";
 import defu from "defu";
 import { ReleaseClient } from "nx/release";
 import { GithubRemoteReleaseClient } from "nx/src/command-line/release/utils/remote-release-clients/github";
-import { NxReleaseChangelogConfiguration } from "nx/src/config/nx-json";
+import {
+  NxReleaseChangelogConfiguration,
+  readNxJson
+} from "nx/src/config/nx-json";
 import { ReleaseConfig } from "../types";
 import { omit } from "../utilities/omit";
 import StormChangelogRenderer from "./changelog-renderer";
@@ -16,7 +19,7 @@ import { createGithubRemoteReleaseClient } from "./github";
  */
 export class StormReleaseClient extends ReleaseClient {
   public static async create(
-    releaseConfig: Partial<ReleaseConfig> = DEFAULT_RELEASE_CONFIG,
+    releaseConfig: Partial<ReleaseConfig> = {},
     ignoreNxJsonConfig = false,
     workspaceConfig?: StormWorkspaceConfig
   ) {
@@ -44,11 +47,12 @@ export class StormReleaseClient extends ReleaseClient {
    */
   protected constructor(
     releaseConfig: Partial<ReleaseConfig>,
-    ignoreNxJsonConfig: boolean,
+    ignoreNxJsonConfig = false,
     remoteReleaseClient: GithubRemoteReleaseClient,
     workspaceConfig: StormWorkspaceConfig
   ) {
     const config = defu(
+      ignoreNxJsonConfig ? {} : readNxJson(),
       {
         groups: Object.fromEntries(
           Object.entries(
@@ -79,9 +83,9 @@ export class StormReleaseClient extends ReleaseClient {
       },
       omit(releaseConfig, ["groups"]),
       omit(DEFAULT_RELEASE_CONFIG, ["groups"])
-    );
+    ) as ReleaseConfig;
 
-    super(config, ignoreNxJsonConfig);
+    super(config, true);
 
     writeInfo(
       "Executing release with the following configuration",

@@ -122,10 +122,9 @@ export const runRelease = async (
 
   const { workspaceVersion, projectsVersionData, releaseGraph } =
     await releaseClient.releaseVersion({
-      dryRun: false,
+      dryRun,
       verbose: isVerbose(config.logLevel),
       preid: config.preid,
-      deleteVersionPlans: false,
       stageChanges: true,
       gitCommit: false
     });
@@ -136,7 +135,7 @@ export const runRelease = async (
         ? workspaceVersion
         : undefined,
     versionData: projectsVersionData,
-    dryRun: false,
+    dryRun,
     verbose: isVerbose(config.logLevel),
     to,
     from,
@@ -165,7 +164,7 @@ ${changedProjects.map(changedProject => `  - ${changedProject}`).join("\n")}
       await updatePackageManifests(projectsVersionData, config);
 
       const result = await releaseClient.releasePublish({
-        dryRun: !!dryRun,
+        dryRun,
         verbose: isVerbose(config.logLevel)
       });
 
