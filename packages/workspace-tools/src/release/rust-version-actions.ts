@@ -1,16 +1,48 @@
-import { joinPathFragments, ProjectGraph, Tree } from "@nx/devkit";
 import {
-  modifyCargoTable,
+  joinPathFragments,
+  ProjectGraph,
+  ProjectGraphProjectNode,
+  Tree
+} from "@nx/devkit";
+import { StormWorkspaceConfig } from "@storm-software/config";
+import { getWorkspaceConfig } from "@storm-software/config-tools/get-config";
+import {
   parseCargoToml,
   parseCargoTomlWithTree,
   stringifyCargoToml
 } from "@storm-software/config-tools/utilities/toml";
 import { VersionActions } from "nx/release";
+import { ReleaseGroupWithName } from "nx/src/command-line/release/config/filter-release-groups";
+import { FinalConfigForProject } from "nx/src/command-line/release/utils/release-graph";
 import { NxReleaseVersionConfiguration } from "nx/src/config/nx-json";
 import { getCrateRegistryVersion } from "../utils/registry-helpers";
 
 export default class StormRustVersionActions extends VersionActions {
   validManifestFilenames = ["Cargo.toml"];
+
+  protected workspaceConfig: StormWorkspaceConfig | null = null;
+
+  public constructor(
+    releaseGroup: ReleaseGroupWithName,
+    projectGraphNode: ProjectGraphProjectNode,
+    finalConfigForProject: FinalConfigForProject
+  ) {
+    super(releaseGroup, projectGraphNode, finalConfigForProject);
+  }
+
+  /**
+   * Asynchronous initialization of the version actions and resolution of manifest paths.
+   *
+   * @remarks
+   * This does NOT validate that manifest files exist - that happens later in validate().
+   *
+   * @params tree - The file system tree to read from.
+   */
+  public override async init(tree: Tree): Promise<void> {
+    this.workspaceConfig = await getWorkspaceConfig();
+
+    return super.init(tree);
+  }
 
   public async readCurrentVersionFromSourceManifest(tree: Tree): Promise<{
     currentVersion: string;
@@ -61,7 +93,7 @@ export default class StormRustVersionActions extends VersionActions {
     const registryArg =
       typeof metadata?.registry === "string"
         ? metadata.registry
-        : "https://crates.io";
+        : this.workspaceConfig?.registry?.cargo || "https://crates.io";
     const tagArg = typeof metadata?.tag === "string" ? metadata.tag : "latest";
 
     let currentVersion: string | null = null;
@@ -122,7 +154,11 @@ export default class StormRustVersionActions extends VersionActions {
         cargoToml[depType] &&
         cargoToml[depType][dependencyCargoToml.package.name]
       ) {
-        currentVersion = cargoToml[depType][dependencyCargoToml.package.name];
+        currentVersion =
+          typeof cargoToml[depType][dependencyCargoToml.package.name] ===
+          "string"
+            ? cargoToml[depType][dependencyCargoToml.package.name]
+            : cargoToml[depType][dependencyCargoToml.package.name].version;
         dependencyCollection = depType;
         break;
       }
@@ -210,16 +246,15 @@ export default class StormRustVersionActions extends VersionActions {
               dependencyCargoTomlString
             );
 
-            const dependencyData =
-              cargoToml[depType][dependencyCargoToml.package.name];
-            dependencyData.version = version;
-
-            modifyCargoTable(
-              cargoToml,
-              depType,
-              dependencyCargoToml.package.name,
-              dependencyData
-            );
+            if (
+              typeof cargoToml[depType][dependencyCargoToml.package.name] ===
+              "string"
+            ) {
+              cargoToml[depType][dependencyCargoToml.package.name] = version;
+            } else {
+              cargoToml[depType][dependencyCargoToml.package.name].version =
+                version;
+            }
 
             tree.write(
               manifestToUpdate.manifestPath,
