@@ -1,10 +1,13 @@
 import { StormWorkspaceConfig } from "@storm-software/config";
+import { joinPaths } from "@storm-software/config-tools";
 import { getWorkspaceConfig } from "@storm-software/config-tools/get-config";
 import { writeInfo } from "@storm-software/config-tools/logger/console";
 import defu from "defu";
+import { existsSync } from "node:fs";
 import { ReleaseClient } from "nx/release";
 import { GithubRemoteReleaseClient } from "nx/src/command-line/release/utils/remote-release-clients/github";
 import {
+  NxJsonConfiguration,
   NxReleaseChangelogConfiguration,
   readNxJson
 } from "nx/src/config/nx-json";
@@ -13,6 +16,40 @@ import { omit } from "../utilities/omit";
 import StormChangelogRenderer from "./changelog-renderer";
 import { DEFAULT_RELEASE_CONFIG, DEFAULT_RELEASE_GROUP_CONFIG } from "./config";
 import { createGithubRemoteReleaseClient } from "./github";
+
+function getReleaseGroupConfig(
+  releaseConfig: Partial<ReleaseConfig>,
+  workspaceConfig: StormWorkspaceConfig,
+  remoteReleaseClient: GithubRemoteReleaseClient
+) {
+  return !releaseConfig?.groups ||
+    Object.keys(releaseConfig.groups).length === 0
+    ? {}
+    : Object.fromEntries(
+        Object.entries(releaseConfig.groups).map(([name, group]) => [
+          name,
+          defu(
+            {
+              ...omit(DEFAULT_RELEASE_GROUP_CONFIG, ["changelog"]),
+              ...group
+            },
+            {
+              changelog: {
+                ...(DEFAULT_RELEASE_GROUP_CONFIG.changelog as NxReleaseChangelogConfiguration),
+                renderer: StormChangelogRenderer,
+                renderOptions: {
+                  ...(
+                    DEFAULT_RELEASE_GROUP_CONFIG.changelog as NxReleaseChangelogConfiguration
+                  ).renderOptions,
+                  workspaceConfig,
+                  remoteReleaseClient
+                }
+              }
+            }
+          )
+        ])
+      );
+}
 
 /**
  * Extended {@link ReleaseClient} with Storm Software specific release APIs
@@ -47,41 +84,35 @@ export class StormReleaseClient extends ReleaseClient {
    */
   protected constructor(
     releaseConfig: Partial<ReleaseConfig>,
-    ignoreNxJsonConfig = false,
+    ignoreNxJsonConfig: boolean,
     remoteReleaseClient: GithubRemoteReleaseClient,
     workspaceConfig: StormWorkspaceConfig
   ) {
+    let nxJson = {} as Partial<NxJsonConfiguration>;
+    if (
+      !ignoreNxJsonConfig &&
+      existsSync(joinPaths(workspaceConfig.workspaceRoot, "nx.json"))
+    ) {
+      nxJson = readNxJson();
+    }
+
     const config = defu(
-      ignoreNxJsonConfig ? {} : readNxJson(),
       {
-        groups: Object.fromEntries(
-          Object.entries(
-            releaseConfig.groups || DEFAULT_RELEASE_CONFIG.groups
-          ).map(([name, group]) => [
-            name,
-            defu(
-              {
-                ...omit(DEFAULT_RELEASE_GROUP_CONFIG, ["changelog"]),
-                ...group
-              },
-              {
-                changelog: {
-                  ...(DEFAULT_RELEASE_GROUP_CONFIG.changelog as NxReleaseChangelogConfiguration),
-                  renderer: StormChangelogRenderer,
-                  renderOptions: {
-                    ...(
-                      DEFAULT_RELEASE_GROUP_CONFIG.changelog as NxReleaseChangelogConfiguration
-                    ).renderOptions,
-                    workspaceConfig,
-                    remoteReleaseClient
-                  }
-                }
-              }
-            )
-          ])
+        groups: getReleaseGroupConfig(
+          releaseConfig,
+          workspaceConfig,
+          remoteReleaseClient
+        )
+      },
+      {
+        groups: getReleaseGroupConfig(
+          nxJson.release ?? {},
+          workspaceConfig,
+          remoteReleaseClient
         )
       },
       omit(releaseConfig, ["groups"]),
+      omit(nxJson, ["groups"]),
       omit(DEFAULT_RELEASE_CONFIG, ["groups"])
     ) as ReleaseConfig;
 
