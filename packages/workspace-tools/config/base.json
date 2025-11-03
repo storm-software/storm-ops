@@ -308,11 +308,6 @@
           "groupPreVersionCommand": "pnpm build",
           "currentVersionResolver": "git-tag",
           "specifierSource": "conventional-commits",
-          "versionActions": "@storm-software/workspace-tools/release/js-release-version",
-          "versionActionsOptions": {
-            "currentVersionResolver": "git-tag",
-            "specifierSource": "conventional-commits"
-          },
           "manifestRootsToUpdate": [
             "{projectRoot}",
             {
