@@ -7,8 +7,9 @@ export const DEFAULT_CONVENTIONAL_COMMITS_CONFIG = {
   types: DEFAULT_COMMIT_TYPES
 };
 
-export const DEFAULT_RELEASE_GROUP_CONFIG: ReleaseGroupConfig = {
-  projects: ["packages/*"],
+export const DEFAULT_RELEASE_TAG_PATTERN = "{projectName}@{version}";
+
+export const DEFAULT_RELEASE_GROUP_CONFIG = {
   projectsRelationship: "independent",
   changelog: {
     createRelease: "github",
@@ -23,7 +24,16 @@ export const DEFAULT_RELEASE_GROUP_CONFIG: ReleaseGroupConfig = {
   version: {
     currentVersionResolver: "git-tag",
     specifierSource: "conventional-commits",
-    groupPreVersionCommand: "pnpm build",
+    groupPreVersionCommand: "pnpm build"
+  },
+  releaseTag: { pattern: DEFAULT_RELEASE_TAG_PATTERN }
+} as const;
+
+export const DEFAULT_JS_RELEASE_GROUP_CONFIG: ReleaseGroupConfig = {
+  ...DEFAULT_RELEASE_GROUP_CONFIG,
+  projects: ["packages/*"],
+  version: {
+    ...DEFAULT_RELEASE_GROUP_CONFIG.version,
     versionActions:
       "@storm-software/workspace-tools/release/js-release-version",
     versionActionsOptions: {
@@ -37,14 +47,29 @@ export const DEFAULT_RELEASE_GROUP_CONFIG: ReleaseGroupConfig = {
         preserveLocalDependencyProtocols: false
       }
     ]
-  },
-  releaseTag: { pattern: "{projectName}@{version}" }
+  }
+} as const;
+
+export const DEFAULT_RUST_RELEASE_GROUP_CONFIG: ReleaseGroupConfig = {
+  ...DEFAULT_RELEASE_GROUP_CONFIG,
+  projects: ["crates/*"],
+  version: {
+    ...DEFAULT_RELEASE_GROUP_CONFIG.version,
+    versionActions:
+      "@storm-software/workspace-tools/release/rust-release-version",
+    versionActionsOptions: {
+      currentVersionResolver: "git-tag",
+      specifierSource: "conventional-commits"
+    },
+    manifestRootsToUpdate: ["{projectRoot}"]
+  }
 } as const;
 
 export const DEFAULT_RELEASE_CONFIG: ReleaseConfig = {
   conventionalCommits: DEFAULT_CONVENTIONAL_COMMITS_CONFIG,
   groups: {
-    packages: DEFAULT_RELEASE_GROUP_CONFIG
+    packages: DEFAULT_JS_RELEASE_GROUP_CONFIG,
+    crates: DEFAULT_RUST_RELEASE_GROUP_CONFIG
   },
   changelog: {
     git: {
@@ -57,6 +82,5 @@ export const DEFAULT_RELEASE_CONFIG: ReleaseConfig = {
     workspaceChangelog: false,
     projectChangelogs: true
   },
-  version: DEFAULT_RELEASE_GROUP_CONFIG.version,
-  releaseTag: DEFAULT_RELEASE_GROUP_CONFIG.releaseTag
+  releaseTag: { pattern: DEFAULT_RELEASE_TAG_PATTERN }
 } as const;
