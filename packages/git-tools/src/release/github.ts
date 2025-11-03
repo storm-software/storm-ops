@@ -29,6 +29,9 @@ import { titleCase } from "../utilities/title-case";
  * Extended {@link GithubRemoteReleaseClient} with Storm Software specific release APIs
  */
 export class StormGithubRemoteReleaseClient extends GithubRemoteReleaseClient {
+  #remoteRepoData: RemoteRepoData | null;
+  #workspaceConfig: StormWorkspaceConfig;
+
   /**
    * Creates an instance of {@link StormGithubRemoteReleaseClient}.
    *
@@ -44,9 +47,12 @@ export class StormGithubRemoteReleaseClient extends GithubRemoteReleaseClient {
       token: string;
       headerName: string;
     } | null,
-    protected workspaceConfig: StormWorkspaceConfig
+    workspaceConfig: StormWorkspaceConfig
   ) {
     super(remoteRepoData, createReleaseConfig, tokenData);
+
+    this.#remoteRepoData = remoteRepoData;
+    this.#workspaceConfig = workspaceConfig;
   }
 
   /**
@@ -63,7 +69,7 @@ export class StormGithubRemoteReleaseClient extends GithubRemoteReleaseClient {
     latestCommit: string,
     { dryRun }: { dryRun: boolean }
   ): Promise<void> {
-    if (!this.workspaceConfig) {
+    if (!this.#workspaceConfig) {
       return this.createOrUpdateRelease(
         releaseVersion,
         changelogContents,
@@ -79,67 +85,67 @@ export class StormGithubRemoteReleaseClient extends GithubRemoteReleaseClient {
     return super.createOrUpdateRelease(
       releaseVersion,
       `![${
-        (typeof this.workspaceConfig.release.banner === "string"
-          ? this.workspaceConfig.organization
+        (typeof this.#workspaceConfig.release.banner === "string"
+          ? this.#workspaceConfig.organization
             ? titleCase(
-                typeof this.workspaceConfig.organization === "string"
-                  ? this.workspaceConfig.organization
-                  : this.workspaceConfig.organization.name
+                typeof this.#workspaceConfig.organization === "string"
+                  ? this.#workspaceConfig.organization
+                  : this.#workspaceConfig.organization.name
               )
             : undefined
-          : this.workspaceConfig.release.banner.alt) || "Release banner header"
+          : this.#workspaceConfig.release.banner.alt) || "Release banner header"
       }](${
-        typeof this.workspaceConfig.release.banner === "string"
-          ? this.workspaceConfig.release.banner
-          : this.workspaceConfig.release.banner?.url
+        typeof this.#workspaceConfig.release.banner === "string"
+          ? this.#workspaceConfig.release.banner
+          : this.#workspaceConfig.release.banner?.url
       })
-${this.workspaceConfig.release.header || ""}
+${this.#workspaceConfig.release.header || ""}
 
 # ${name ? `${titleCase(name)} ` : ""}v${releaseVersion.rawVersion}
 
 We at [${
-        this.workspaceConfig.organization
+        this.#workspaceConfig.organization
           ? titleCase(
-              typeof this.workspaceConfig.organization === "string"
-                ? this.workspaceConfig.organization
-                : this.workspaceConfig.organization.name
+              typeof this.#workspaceConfig.organization === "string"
+                ? this.#workspaceConfig.organization
+                : this.#workspaceConfig.organization.name
             )
           : ""
-      }](${this.workspaceConfig.homepage}) are very excited to announce the v${
+      }](${this.#workspaceConfig.homepage}) are very excited to announce the v${
         releaseVersion.rawVersion
       } release of the ${
         name
-          ? this.workspaceConfig.name
-            ? `${titleCase(this.workspaceConfig.name)} - ${titleCase(name)}`
+          ? this.#workspaceConfig.name
+            ? `${titleCase(this.#workspaceConfig.name)} - ${titleCase(name)}`
             : titleCase(name)
-          : this.workspaceConfig.name
-            ? titleCase(this.workspaceConfig.name)
+          : this.#workspaceConfig.name
+            ? titleCase(this.#workspaceConfig.name)
             : "Storm Software"
       } project! 🚀
 
 These changes are released under the ${
-        this.workspaceConfig.license.includes("license")
-          ? this.workspaceConfig.license
-          : `${this.workspaceConfig.license} license`
-      }. You can find more details on [our licensing page](${this.workspaceConfig.licensing}). You can find guides, API references, and other documentation around this release (and much more) on [our documentation site](${
-        this.workspaceConfig.docs
+        this.#workspaceConfig.license.includes("license")
+          ? this.#workspaceConfig.license
+          : `${this.#workspaceConfig.license} license`
+      }. You can find more details on [our licensing page](${this.#workspaceConfig.licensing}). You can find guides, API references, and other documentation around this release (and much more) on [our documentation site](${
+        this.#workspaceConfig.docs
       }).
 
 If you have any questions or comments, feel free to reach out to the team on [Discord](${
-        this.workspaceConfig.socials.discord
-      }) or [our contact page](${this.workspaceConfig.contact}). Please help us spread the word by giving [this repository](https://github.com/${
-        typeof this.workspaceConfig.organization === "string"
-          ? this.workspaceConfig.organization
-          : this.workspaceConfig.organization?.name
-      }/${this.workspaceConfig.name}) a star ⭐ on GitHub or [posting on X (Twitter)](https://x.com/intent/tweet?text=Check%20out%20the%20latest%20@${
-        this.workspaceConfig.socials.twitter
+        this.#workspaceConfig.socials.discord
+      }) or [our contact page](${this.#workspaceConfig.contact}). Please help us spread the word by giving [this repository](https://github.com/${
+        typeof this.#workspaceConfig.organization === "string"
+          ? this.#workspaceConfig.organization
+          : this.#workspaceConfig.organization?.name
+      }/${this.#workspaceConfig.name}) a star ⭐ on GitHub or [posting on X (Twitter)](https://x.com/intent/tweet?text=Check%20out%20the%20latest%20@${
+        this.#workspaceConfig.socials.twitter
       }%20release%20${
         name ? `${titleCase(name)?.replaceAll(" ", "%20")}%20` : ""
       }v${releaseVersion.rawVersion}%20%F0%9F%9A%80%0D%0A%0D%0Ahttps://github.com/${
-        typeof this.workspaceConfig.organization === "string"
-          ? this.workspaceConfig.organization
-          : this.workspaceConfig.organization?.name
-      }/${this.workspaceConfig.name}/releases/tag/${releaseVersion.gitTag}) about this release!
+        typeof this.#workspaceConfig.organization === "string"
+          ? this.#workspaceConfig.organization
+          : this.#workspaceConfig.organization?.name
+      }/${this.#workspaceConfig.name}/releases/tag/${releaseVersion.gitTag}) about this release!
 
 ## Release Notes
 
@@ -148,22 +154,47 @@ ${changelogContents
     `## ${generateChangelogTitle(
       releaseVersion.rawVersion,
       name,
-      this.workspaceConfig
+      this.#workspaceConfig
     )}`,
     ""
   )
   .replaceAll(
-    `# ${generateChangelogTitle(releaseVersion.rawVersion, name, this.workspaceConfig)}`,
+    `# ${generateChangelogTitle(releaseVersion.rawVersion, name, this.#workspaceConfig)}`,
     ""
   )}
 
 ---
 
-${this.workspaceConfig.release.footer}
+${this.#workspaceConfig.release.footer}
 `,
       latestCommit,
       { dryRun }
     );
+  }
+
+  /**
+   * Get remote repository data, attempting to resolve it if not already set.
+   */
+  public override getRemoteRepoData<T extends RemoteRepoData>(): T | null {
+    if (!this.#remoteRepoData) {
+      let githubRepoData = super.getRemoteRepoData<T>();
+      if (!githubRepoData) {
+        githubRepoData = getGitHubRepoData() as T;
+        if (!githubRepoData) {
+          output.error({
+            title: `Unable to create a GitHub release because the GitHub repo slug could not be determined.`,
+            bodyLines: [
+              `Please ensure you have a valid GitHub remote configured. You can run \`git remote -v\` to list your current remotes.`
+            ]
+          });
+          process.exit(1);
+        }
+      }
+
+      this.#remoteRepoData = githubRepoData;
+    }
+
+    return this.#remoteRepoData as T;
   }
 }
 
@@ -188,16 +219,10 @@ interface GithubRelease {
   make_latest?: "legacy" | boolean;
 }
 
-export interface GithubRepoData {
-  hostname: string;
-  slug: RepoSlug;
-  apiBaseUrl: string;
-}
-
 export function getGitHubRepoData(
   remoteName = "origin",
-  createReleaseConfig: NxReleaseChangelogConfiguration["createRelease"]
-): GithubRepoData | undefined {
+  createReleaseConfig: NxReleaseChangelogConfiguration["createRelease"] = "github"
+): RemoteRepoData | undefined {
   try {
     const remoteUrl = execSync(`git remote get-url ${remoteName}`, {
       encoding: "utf8",
