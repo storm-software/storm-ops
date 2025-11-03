@@ -492,11 +492,11 @@ export const createNodesV2: CreateNodesV2<TypeScriptPluginOptions> = [
               [root]: defu(
                 {
                   root,
-                  targets,
                   release: {
+                    targets,
                     version: {
                       versionActions:
-                        "@storm-software/workspace-tools/release/js-release-version"
+                        "@storm-software/workspace-tools/release/js-version-actions"
                     }
                   }
                 },

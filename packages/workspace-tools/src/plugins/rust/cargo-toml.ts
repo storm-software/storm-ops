@@ -9,6 +9,7 @@ import {
   type ProjectConfiguration,
   type RawProjectGraphDependency
 } from "@nx/devkit";
+import defu from "defu";
 import { existsSync } from "node:fs";
 import { dirname } from "node:path";
 import {
@@ -322,17 +323,17 @@ export const createNodesV2: CreateNodesV2<CargoPluginOptions | undefined> = [
               );
               setDefaultProjectTags(project, name);
 
-              projects[root] = {
-                ...project,
-                release: {
-                  ...project.release,
-                  version: {
-                    ...project.release?.version,
-                    versionActions:
-                      "@storm-software/workspace-tools/release/rust-release-version"
+              projects[root] = defu(
+                {
+                  release: {
+                    version: {
+                      versionActions:
+                        "@storm-software/workspace-tools/release/rust-version-actions"
+                    }
                   }
-                }
-              };
+                },
+                project
+              );
             }
 
             for (const dep of cargoPackage.dependencies) {

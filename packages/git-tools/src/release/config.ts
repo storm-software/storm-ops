@@ -35,7 +35,7 @@ export const DEFAULT_JS_RELEASE_GROUP_CONFIG: ReleaseGroupConfig = {
   version: {
     ...DEFAULT_RELEASE_GROUP_CONFIG.version,
     versionActions:
-      "@storm-software/workspace-tools/release/js-release-version",
+      "@storm-software/workspace-tools/release/js-version-actions",
     versionActionsOptions: {
       currentVersionResolver: "git-tag",
       specifierSource: "conventional-commits"
@@ -56,7 +56,7 @@ export const DEFAULT_RUST_RELEASE_GROUP_CONFIG: ReleaseGroupConfig = {
   version: {
     ...DEFAULT_RELEASE_GROUP_CONFIG.version,
     versionActions:
-      "@storm-software/workspace-tools/release/rust-release-version",
+      "@storm-software/workspace-tools/release/rust-version-actions",
     versionActionsOptions: {
       currentVersionResolver: "git-tag",
       specifierSource: "conventional-commits"
