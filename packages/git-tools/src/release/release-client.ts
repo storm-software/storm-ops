@@ -117,7 +117,7 @@ export class StormReleaseClient extends ReleaseClient {
     remoteReleaseClient: GithubRemoteReleaseClient,
     workspaceConfig: StormWorkspaceConfig
   ) {
-    let nxJson = {} as Partial<NxJsonConfiguration>;
+    let nxJson!: Partial<NxJsonConfiguration>;
     if (
       !ignoreNxJsonConfig &&
       existsSync(joinPaths(workspaceConfig.workspaceRoot, "nx.json"))
@@ -141,7 +141,7 @@ export class StormReleaseClient extends ReleaseClient {
         )
       },
       omit(releaseConfig, ["groups"]),
-      omit(nxJson, ["groups"]),
+      nxJson.release ? omit(nxJson.release, ["groups"]) : {},
       omit(DEFAULT_RELEASE_CONFIG, ["groups"])
     ) as ReleaseConfig;
 
