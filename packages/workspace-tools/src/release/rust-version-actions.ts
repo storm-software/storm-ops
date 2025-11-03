@@ -96,10 +96,19 @@ export default class StormRustVersionActions extends VersionActions {
       this.projectGraphNode.name
     );
 
-    // Resolve the package name from the project graph metadata, as it may not match the project name
-    const dependencyPackageName =
-      projectGraph.nodes[dependencyProjectName]?.data.metadata?.js?.packageName;
-    if (!dependencyPackageName) {
+    if (!projectGraph.nodes[dependencyProjectName]?.data?.root) {
+      return {
+        currentVersion: null,
+        dependencyCollection: null
+      };
+    }
+
+    const dependencyCargoToml = parseCargoTomlWithTree(
+      tree,
+      projectGraph.nodes[dependencyProjectName]?.data.root,
+      dependencyProjectName
+    );
+    if (!dependencyCargoToml?.package?.name) {
       return {
         currentVersion: null,
         dependencyCollection: null
@@ -109,8 +118,11 @@ export default class StormRustVersionActions extends VersionActions {
     let currentVersion: string | null = null;
     let dependencyCollection: string | null = null;
     for (const depType of ["dependencies", "dev-dependencies"]) {
-      if (cargoToml[depType] && cargoToml[depType][dependencyPackageName]) {
-        currentVersion = cargoToml[depType][dependencyPackageName];
+      if (
+        cargoToml[depType] &&
+        cargoToml[depType][dependencyCargoToml.package.name]
+      ) {
+        currentVersion = cargoToml[depType][dependencyCargoToml.package.name];
         dependencyCollection = depType;
         break;
       }
@@ -150,10 +162,10 @@ export default class StormRustVersionActions extends VersionActions {
     return logMessages;
   }
 
-  async updateProjectDependencies(
+  public async updateProjectDependencies(
     tree: Tree,
     projectGraph: ProjectGraph,
-    dependenciesToUpdate: Record<string, string>
+    dependenciesToUpdate: Record<string, string> = {}
   ): Promise<string[]> {
     const numDependenciesToUpdate = Object.keys(dependenciesToUpdate).length;
     if (numDependenciesToUpdate === 0) {
