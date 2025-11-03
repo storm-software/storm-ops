@@ -17,9 +17,18 @@ import { FinalConfigForProject } from "nx/src/command-line/release/utils/release
 import { NxReleaseVersionConfiguration } from "nx/src/config/nx-json";
 import { getCrateRegistryVersion } from "../utils/registry-helpers";
 
+/**
+ * Custom Rust version actions for crates inside a Storm workspace.
+ */
 export default class StormRustVersionActions extends VersionActions {
   validManifestFilenames = ["Cargo.toml"];
 
+  /**
+   * The Storm workspace configuration object, which is loaded from the `storm-workspace.json` file.
+   *
+   * @remarks
+   * This member variable is populated during the {@link init} method.
+   */
   protected workspaceConfig: StormWorkspaceConfig | null = null;
 
   public constructor(
@@ -198,6 +207,14 @@ export default class StormRustVersionActions extends VersionActions {
     return logMessages;
   }
 
+  /**
+   * Updates the dependencies of the project in the specified Cargo.toml files.
+   *
+   * @param tree - The file system tree to read from and write to.
+   * @param projectGraph - The project graph to use for resolving dependencies.
+   * @param dependenciesToUpdate - A mapping of dependency names to their new versions.
+   * @returns An array of log messages indicating the results of the updates.
+   */
   public async updateProjectDependencies(
     tree: Tree,
     projectGraph: ProjectGraph,
@@ -224,42 +241,56 @@ export default class StormRustVersionActions extends VersionActions {
       for (const depType of ["dependencies", "dev-dependencies"]) {
         if (cargoToml[depType]) {
           for (const [dep, version] of Object.entries(dependenciesToUpdate)) {
-            const projectRoot = projectGraph.nodes[dep]?.data.root;
-            if (!projectRoot) {
+            try {
+              const projectRoot = projectGraph.nodes[dep]?.data.root;
+              if (!projectRoot) {
+                throw new Error(
+                  `Unable to determine the project root for "${
+                    dep
+                  }" from the project graph metadata, please ensure that the "@storm-software/workspace-tools" plugin is installed and the project graph has been built. If the issue persists, please report this issue on https://github.com/storm-software/storm-ops/issues`
+                );
+              }
+
+              const dependencyCargoTomlString = tree
+                .read(manifestToUpdate.manifestPath)
+                ?.toString();
+              if (!dependencyCargoTomlString) {
+                throw new Error(
+                  `Unable to read Cargo.toml at path: ${manifestToUpdate.manifestPath}`
+                );
+              }
+
+              const dependencyCargoToml = parseCargoToml(
+                dependencyCargoTomlString
+              );
+              const dependencyCrateName = cargoToml[depType][
+                dependencyCargoToml.package.name
+              ]
+                ? dependencyCargoToml.package.name
+                : dep;
+
+              if (typeof cargoToml[depType][dependencyCrateName] === "string") {
+                cargoToml[depType][dependencyCrateName] = version;
+              } else {
+                cargoToml[depType][dependencyCrateName].version = version;
+              }
+
+              tree.write(
+                manifestToUpdate.manifestPath,
+                stringifyCargoToml(cargoToml)
+              );
+            } catch (error) {
               throw new Error(
-                `Unable to determine the project root for "${
-                  dep
-                }" from the project graph metadata, please ensure that the "@storm-software/workspace-tools" plugin is installed and the project graph has been built. If the issue persists, please report this issue on https://github.com/storm-software/storm-ops/issues`
+                `Unable to update ${
+                  depType === "dev-dependencies"
+                    ? "dev-dependency"
+                    : "dependency"
+                } "${dep}" in manifest at path: ${
+                  manifestToUpdate.manifestPath
+                }.`,
+                { cause: error }
               );
             }
-
-            const dependencyCargoTomlString = tree
-              .read(manifestToUpdate.manifestPath)
-              ?.toString();
-            if (!dependencyCargoTomlString) {
-              throw new Error(
-                `Unable to read Cargo.toml at path: ${manifestToUpdate.manifestPath}`
-              );
-            }
-
-            const dependencyCargoToml = parseCargoToml(
-              dependencyCargoTomlString
-            );
-
-            if (
-              typeof cargoToml[depType][dependencyCargoToml.package.name] ===
-              "string"
-            ) {
-              cargoToml[depType][dependencyCargoToml.package.name] = version;
-            } else {
-              cargoToml[depType][dependencyCargoToml.package.name].version =
-                version;
-            }
-
-            tree.write(
-              manifestToUpdate.manifestPath,
-              stringifyCargoToml(cargoToml)
-            );
           }
         }
       }
