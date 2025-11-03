@@ -11,7 +11,7 @@ import {
   NxReleaseChangelogConfiguration,
   readNxJson
 } from "nx/src/config/nx-json";
-import { ReleaseConfig } from "../types";
+import { ReleaseConfig, ReleaseGroupConfig } from "../types";
 import { omit } from "../utilities/omit";
 import StormChangelogRenderer from "./changelog-renderer";
 import { DEFAULT_RELEASE_CONFIG, DEFAULT_RELEASE_GROUP_CONFIG } from "./config";
@@ -26,9 +26,8 @@ function getReleaseGroupConfig(
     Object.keys(releaseConfig.groups).length === 0
     ? {}
     : Object.fromEntries(
-        Object.entries(releaseConfig.groups).map(([name, group]) => [
-          name,
-          defu(
+        Object.entries(releaseConfig.groups).map(([name, group]) => {
+          const config = defu(
             {
               ...omit(DEFAULT_RELEASE_GROUP_CONFIG, ["changelog"]),
               ...group
@@ -46,8 +45,38 @@ function getReleaseGroupConfig(
                 }
               }
             }
-          )
-        ])
+          ) as ReleaseGroupConfig;
+
+          if (workspaceConfig?.workspaceRoot) {
+            if (
+              (config.changelog as NxReleaseChangelogConfiguration)?.renderer &&
+              typeof (config.changelog as NxReleaseChangelogConfiguration)
+                ?.renderer === "string" &&
+              (config.changelog as NxReleaseChangelogConfiguration)?.renderer
+                ?.toString()
+                .startsWith("./")
+            ) {
+              (config.changelog as NxReleaseChangelogConfiguration).renderer =
+                joinPaths(
+                  workspaceConfig.workspaceRoot,
+                  (config.changelog as NxReleaseChangelogConfiguration)
+                    .renderer as string
+                );
+            }
+
+            if (
+              config.version?.versionActions &&
+              config.version.versionActions.startsWith("./")
+            ) {
+              config.version.versionActions = joinPaths(
+                workspaceConfig.workspaceRoot,
+                config.version?.versionActions
+              );
+            }
+          }
+
+          return [name, config];
+        })
       );
 }
 
