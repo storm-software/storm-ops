@@ -72,7 +72,7 @@
   "release": {
     "groups": {
       "packages": {
-        "projects": ["packages/*", "crates/*"],
+        "projects": ["packages/*"],
         "projectsRelationship": "independent",
         "changelog": {
           "createRelease": "github",
