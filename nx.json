@@ -75,7 +75,10 @@
         "projects": ["packages/*", "crates/*"],
         "projectsRelationship": "independent",
         "changelog": {
+          "createRelease": "github",
           "entryWhenNoChanges": false,
+          "file": "{projectRoot}/CHANGELOG.md",
+          "renderer": "./dist/packages/git-tools/changelog-renderer/changelog-renderer.cjs",
           "renderOptions": {
             "authors": false,
             "commitReferences": true,
@@ -85,6 +88,30 @@
         "version": {
           "groupPreVersionCommand": "pnpm build",
           "versionActions": "./dist/packages/workspace-tools/dist/src/release/js-release-version.js",
+          "currentVersionResolver": "git-tag",
+          "specifierSource": "conventional-commits"
+        },
+        "releaseTag": {
+          "pattern": "{projectName}@{version}"
+        }
+      },
+      "crates": {
+        "projects": ["crates/*"],
+        "projectsRelationship": "independent",
+        "changelog": {
+          "createRelease": "github",
+          "entryWhenNoChanges": false,
+          "file": "{projectRoot}/CHANGELOG.md",
+          "renderer": "./dist/packages/git-tools/changelog-renderer/changelog-renderer.cjs",
+          "renderOptions": {
+            "authors": false,
+            "commitReferences": true,
+            "versionTitleDate": true
+          }
+        },
+        "version": {
+          "groupPreVersionCommand": "pnpm build",
+          "versionActions": "./dist/packages/workspace-tools/dist/src/release/rust-release-version.js",
           "currentVersionResolver": "git-tag",
           "specifierSource": "conventional-commits"
         },
