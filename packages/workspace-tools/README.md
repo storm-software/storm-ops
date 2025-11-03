@@ -21,7 +21,7 @@ This package is part of the <b>⚡Storm-Ops</b> monorepo. The Storm-Ops packages
 
 <h3 align="center">💻 Visit <a href="https://stormsoftware.com" target="_blank">stormsoftware.com</a> to stay up to date with this developer</h3><br />
 
-[![Version](https://img.shields.io/badge/version-1.292.15-1fb2a6.svg?style=for-the-badge&color=1fb2a6)](https://prettier.io/)&nbsp;[![Nx](https://img.shields.io/badge/Nx-17.0.2-lightgrey?style=for-the-badge&logo=nx&logoWidth=20&&color=1fb2a6)](http://nx.dev/)&nbsp;[![NextJs](https://img.shields.io/badge/Next.js-14.0.2-lightgrey?style=for-the-badge&logo=nextdotjs&logoWidth=20&color=1fb2a6)](https://nextjs.org/)&nbsp;[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg?style=for-the-badge&logo=commitlint&color=1fb2a6)](http://commitizen.github.io/cz-cli/)&nbsp;![Semantic-Release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg?style=for-the-badge&color=1fb2a6)&nbsp;[![documented with Fumadocs](https://img.shields.io/badge/documented_with-fumadocs-success.svg?style=for-the-badge&logo=readthedocs&color=1fb2a6)](https://fumadocs.vercel.app/)&nbsp;![GitHub Workflow Status (with event)](https://img.shields.io/github/actions/workflow/status/storm-software/storm-ops/cr.yml?style=for-the-badge&logo=github-actions&color=1fb2a6)
+[![Version](https://img.shields.io/badge/version-1.292.16-1fb2a6.svg?style=for-the-badge&color=1fb2a6)](https://prettier.io/)&nbsp;[![Nx](https://img.shields.io/badge/Nx-17.0.2-lightgrey?style=for-the-badge&logo=nx&logoWidth=20&&color=1fb2a6)](http://nx.dev/)&nbsp;[![NextJs](https://img.shields.io/badge/Next.js-14.0.2-lightgrey?style=for-the-badge&logo=nextdotjs&logoWidth=20&color=1fb2a6)](https://nextjs.org/)&nbsp;[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg?style=for-the-badge&logo=commitlint&color=1fb2a6)](http://commitizen.github.io/cz-cli/)&nbsp;![Semantic-Release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg?style=for-the-badge&color=1fb2a6)&nbsp;[![documented with Fumadocs](https://img.shields.io/badge/documented_with-fumadocs-success.svg?style=for-the-badge&logo=readthedocs&color=1fb2a6)](https://fumadocs.vercel.app/)&nbsp;![GitHub Workflow Status (with event)](https://img.shields.io/github/actions/workflow/status/storm-software/storm-ops/cr.yml?style=for-the-badge&logo=github-actions&color=1fb2a6)
 
 <!-- prettier-ignore-start -->
 <!-- markdownlint-disable -->
@@ -94,8 +94,7 @@ This package is part of the <b>⚡Storm-Ops</b> monorepo. The Storm-Ops packages
     - [Options](#options-16)
   - [Browser Library Generator](#browser-library-generator)
     - [Options](#options-17)
-  - [Release Version Generator](#release-version-generator)
-    - [Options](#options-18)
+  - [release-version](#release-version)
   - [Building](#building)
   - [Running unit tests](#running-unit-tests)
   - [Storm Workspaces](#storm-workspaces)
@@ -731,39 +730,9 @@ The following executor options are available:
 
 
 
-## Release Version Generator
+## release-version
 
-A type definition for a release version generator schema
-
-### Options
-
-The following executor options are available:
-
-| Option    | Type   | Description   | Default   | 
-| --------- | ------ | ------------- | --------- | 
-| **projects \***    | `object[]`   | The projects to release     |     | 
- | **releaseGroup \***    | `object`    | The release group     | `[object Object]`     | 
- | **projectGraph \***    | `object`    | The project graph     | `[object Object]`     | 
- | **specifier \***    | `string`    | The specifier     |     | 
- | specifierSource      | `string`    | The specifier source     |     | 
- | preid      | `string`    | The preid     |     | 
- | packageRoot      | `string`    | The package root     |     | 
- | currentVersionResolver      | `string`    | The current version resolver     | "git-tag"     | 
- | currentVersionResolverMetadata      | `object`    | The current version resolver metadata     | `[object Object]`     | 
- | fallbackCurrentVersionResolver      | `string`    | The fallback current version resolver     | "disk"     | 
- | firstRelease      | `boolean`    | Release the first version     |     | 
- | versionPrefix      | "" \| "auto" \| "~" \| "^" \| "="     | The version prefix     |     | 
- | skipLockFileUpdate      | `boolean`    | Skip lock file update     |     | 
- | installArgs      | `string`    | The install arguments     |     | 
- | installIgnoreScripts      | `boolean`    | Ignore scripts     |     | 
- | conventionalCommitsConfig      | `object`    | The conventional commits config     | `[object Object]`     | 
- | deleteVersionPlans      | `boolean`    | Delete version plans     |     | 
- | updateDependents      | `string`    | Update dependents     |     | 
- | logUnchangedProjects      | `boolean`    | Log unchanged projects     |     | 
- | preserveLocalDependencyProtocols      | `boolean`    | Preserve local dependency protocols     |     | 
-
-
-**Please note:** _Option names followed by \* above are required, and must be provided to run the executor._ 
+The release version generator used in Storm Workspaces
 
 
 

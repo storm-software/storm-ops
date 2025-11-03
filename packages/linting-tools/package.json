@@ -134,7 +134,7 @@
   ],
   "dependencies": {
     "@angular-devkit/architect": "0.1900.6",
-    "jiti": "catalog:jitiCjs"
+    "jiti": "catalog:"
   },
   "devDependencies": {
     "@manypkg/cli": "^0.23.0",

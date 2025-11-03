@@ -112,8 +112,8 @@ catalogs:
       specifier: 30.0.5
       version: 30.0.5
     jiti:
-      specifier: ^2.6.0
-      version: 2.6.1
+      specifier: 2.4.2
+      version: 2.4.2
     knip:
       specifier: ^5.66.4
       version: 5.66.4
@@ -165,10 +165,6 @@ catalogs:
     zx:
       specifier: ^8.8.5
       version: 8.8.5
-  jitiCjs:
-    jiti:
-      specifier: 2.4.2
-      version: 2.4.2
 
 overrides:
   '@cypress/request': '>=3.0.0'
@@ -510,7 +506,7 @@ importers:
         version: 1.2.5
       jiti:
         specifier: 'catalog:'
-        version: 2.6.1
+        version: 2.4.2
       sqlite:
         specifier: ^5.1.1
         version: 5.1.1
@@ -523,7 +519,7 @@ importers:
         version: 22.18.13
       tsup:
         specifier: 'catalog:'
-        version: 8.4.0(patch_hash=751a554d775c3572381af4e7e5fa22eeda6dd6856012fb1cf521d6806eb2dc74)(@microsoft/api-extractor@7.53.3(@types/node@22.18.13))(@swc/core@1.7.26(@swc/helpers@0.5.13))(jiti@2.6.1)(postcss@8.5.6)(tsx@4.20.6)(typescript@5.9.3)(yaml@2.8.1)
+        version: 8.4.0(patch_hash=751a554d775c3572381af4e7e5fa22eeda6dd6856012fb1cf521d6806eb2dc74)(@microsoft/api-extractor@7.53.3(@types/node@22.18.13))(@swc/core@1.7.26(@swc/helpers@0.5.13))(jiti@2.4.2)(postcss@8.5.6)(tsx@4.20.6)(typescript@5.9.3)(yaml@2.8.1)
 
   packages/conventional-changelog:
     dependencies:
@@ -1159,7 +1155,7 @@ importers:
         specifier: 0.1900.6
         version: 0.1900.6(chokidar@4.0.3)
       jiti:
-        specifier: catalog:jitiCjs
+        specifier: 'catalog:'
         version: 2.4.2
     devDependencies:
       '@manypkg/cli':
@@ -1635,7 +1631,7 @@ importers:
         version: 11.0.3
       jiti:
         specifier: 'catalog:'
-        version: 2.6.1
+        version: 2.4.2
       mkdist:
         specifier: ^2.4.1
         version: 2.4.1(sass@1.93.3)(typescript@5.9.3)
@@ -1666,7 +1662,7 @@ importers:
         version: 22.0.2(@swc-node/register@1.10.9(@swc/core@1.7.26(@swc/helpers@0.5.13))(@swc/types@0.1.25)(typescript@5.9.3))(@swc/core@1.7.26(@swc/helpers@0.5.13))
       tsup:
         specifier: 'catalog:'
-        version: 8.4.0(patch_hash=751a554d775c3572381af4e7e5fa22eeda6dd6856012fb1cf521d6806eb2dc74)(@microsoft/api-extractor@7.53.3(@types/node@22.18.13))(@swc/core@1.7.26(@swc/helpers@0.5.13))(jiti@2.6.1)(postcss@8.5.6)(tsx@4.20.6)(typescript@5.9.3)(yaml@2.8.1)
+        version: 8.4.0(patch_hash=751a554d775c3572381af4e7e5fa22eeda6dd6856012fb1cf521d6806eb2dc74)(@microsoft/api-extractor@7.53.3(@types/node@22.18.13))(@swc/core@1.7.26(@swc/helpers@0.5.13))(jiti@2.4.2)(postcss@8.5.6)(tsx@4.20.6)(typescript@5.9.3)(yaml@2.8.1)
       typescript:
         specifier: ^5.9.3
         version: 5.9.3
@@ -1680,7 +1676,7 @@ importers:
         specifier: 'catalog:'
         version: 11.0.3
       jiti:
-        specifier: catalog:jitiCjs
+        specifier: 'catalog:'
         version: 2.4.2
       knitwork:
         specifier: ^1.2.0
@@ -1754,7 +1750,7 @@ importers:
         version: 11.0.3
       jiti:
         specifier: 'catalog:'
-        version: 2.6.1
+        version: 2.4.2
       markdownlint-cli2:
         specifier: ^0.17.2
         version: 0.17.2
@@ -1800,7 +1796,7 @@ importers:
         version: 1.3.1
       tsup:
         specifier: 'catalog:'
-        version: 8.4.0(patch_hash=751a554d775c3572381af4e7e5fa22eeda6dd6856012fb1cf521d6806eb2dc74)(@microsoft/api-extractor@7.53.3(@types/node@22.18.13))(@swc/core@1.7.26(@swc/helpers@0.5.13))(jiti@2.6.1)(postcss@8.5.6)(tsx@4.20.6)(typescript@5.9.3)(yaml@2.8.1)
+        version: 8.4.0(patch_hash=751a554d775c3572381af4e7e5fa22eeda6dd6856012fb1cf521d6806eb2dc74)(@microsoft/api-extractor@7.53.3(@types/node@22.18.13))(@swc/core@1.7.26(@swc/helpers@0.5.13))(jiti@2.4.2)(postcss@8.5.6)(tsx@4.20.6)(typescript@5.9.3)(yaml@2.8.1)
       typescript:
         specifier: ^5.9.3
         version: 5.9.3

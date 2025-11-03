@@ -44,7 +44,7 @@ catalog:
   jest-environment-node: 30.0.5
   jest-resolve: 30.0.5
   jest-util: 30.0.5
-  jiti: ^2.6.0
+  jiti: 2.4.2
   knip: ^5.66.4
   mlly: ^1.8.0
   nx: ^22.0.2
@@ -64,10 +64,6 @@ catalog:
   yaml: ^2.8.1
   zod: ^4.1.12
   zx: ^8.8.5
-
-catalogs:
-  jitiCjs:
-    jiti: 2.4.2
 
 linkWorkspacePackages: true
 

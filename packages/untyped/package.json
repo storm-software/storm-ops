@@ -208,9 +208,9 @@
   "dependencies": {
     "commander": "catalog:",
     "glob": "catalog:",
+    "jiti": "catalog:",
     "knitwork": "^1.2.0",
-    "nx": "catalog:",
-    "jiti": "catalog:jitiCjs"
+    "nx": "catalog:"
   },
   "devDependencies": {
     "@nx/devkit": "catalog:",

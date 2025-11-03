@@ -165,8 +165,8 @@
     "@storm-software/config": "workspace:*",
     "@storm-software/config-tools": "workspace:*",
     "@storm-software/workspace-tools": "workspace:*",
-    "yaml": "catalog:",
-    "defu": "catalog:"
+    "defu": "catalog:",
+    "yaml": "catalog:"
   },
   "devDependencies": {
     "@nx-tools/container-metadata": "^6.9.1",
