@@ -495,8 +495,8 @@ export const createNodesV2: CreateNodesV2<TypeScriptPluginOptions> = [
                   targets,
                   release: {
                     version: {
-                      generator:
-                        "@storm-software/workspace-tools:release-version"
+                      versionActions:
+                        "@storm-software/workspace-tools/release/js-release-version"
                     }
                   }
                 },

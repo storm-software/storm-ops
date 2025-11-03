@@ -19,6 +19,7 @@ export default defineConfig([
       "./src/generators/*/generator.ts",
       "./src/generators/*/untyped.ts",
       "./src/generators/init/init.ts",
+      "./src/release/*.ts",
       "./src/plugins/rust/*.ts",
       "./src/plugins/typescript/*.ts"
     ],

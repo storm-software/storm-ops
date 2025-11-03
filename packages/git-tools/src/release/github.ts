@@ -9,19 +9,163 @@ import { prompt } from "enquirer";
 import { execSync } from "node:child_process";
 import { existsSync, promises as fsp } from "node:fs";
 import { homedir } from "node:os";
+import { ResolvedCreateRemoteReleaseProvider } from "nx/src/command-line/release/config/config";
 import { printDiff } from "nx/src/command-line/release/utils/print-changes";
 import {
   defaultCreateReleaseProvider,
   GithubRemoteReleaseClient
 } from "nx/src/command-line/release/utils/remote-release-clients/github";
+import { RemoteRepoData } from "nx/src/command-line/release/utils/remote-release-clients/remote-release-client";
 import {
   noDiffInChangelogMessage,
   ReleaseVersion
 } from "nx/src/command-line/release/utils/shared";
 import { NxReleaseChangelogConfiguration } from "nx/src/config/nx-json";
 import { parse } from "yaml";
+import { generateChangelogTitle } from "../utilities/changelog-utils";
+import { titleCase } from "../utilities/title-case";
 
-// axios types and values don't seem to match
+/**
+ * Extended {@link GithubRemoteReleaseClient} with Storm Software specific release APIs
+ */
+export class StormGithubRemoteReleaseClient extends GithubRemoteReleaseClient {
+  /**
+   * Creates an instance of {@link StormGithubRemoteReleaseClient}.
+   *
+   * @param remoteRepoData - Data about the remote repository
+   * @param createReleaseConfig - Configuration for creating releases
+   * @param tokenData - Token data for authentication
+   * @param workspaceConfig - The Storm workspace configuration object, which is loaded from the storm-workspace.json file.
+   */
+  public constructor(
+    remoteRepoData: RemoteRepoData | null,
+    createReleaseConfig: false | ResolvedCreateRemoteReleaseProvider,
+    tokenData: {
+      token: string;
+      headerName: string;
+    } | null,
+    protected workspaceConfig: StormWorkspaceConfig
+  ) {
+    super(remoteRepoData, createReleaseConfig, tokenData);
+  }
+
+  /**
+   * Creates or updates a GitHub release with Storm Software specific release notes formatting.
+   *
+   * @param releaseVersion - The version information for the release
+   * @param changelogContents - The contents of the changelog for the release
+   * @param latestCommit - The latest commit hash associated with the release
+   * @param dryRun - Whether to perform a dry run without making actual changes
+   */
+  public override createOrUpdateRelease(
+    releaseVersion: ReleaseVersion,
+    changelogContents: string,
+    latestCommit: string,
+    { dryRun }: { dryRun: boolean }
+  ): Promise<void> {
+    if (!this.workspaceConfig) {
+      return this.createOrUpdateRelease(
+        releaseVersion,
+        changelogContents,
+        latestCommit,
+        { dryRun }
+      );
+    }
+
+    const name = releaseVersion.gitTag.includes("@")
+      ? releaseVersion.gitTag.replace(/@.*$/, "")
+      : releaseVersion.gitTag;
+
+    return super.createOrUpdateRelease(
+      releaseVersion,
+      `![${
+        (typeof this.workspaceConfig.release.banner === "string"
+          ? this.workspaceConfig.organization
+            ? titleCase(
+                typeof this.workspaceConfig.organization === "string"
+                  ? this.workspaceConfig.organization
+                  : this.workspaceConfig.organization.name
+              )
+            : undefined
+          : this.workspaceConfig.release.banner.alt) || "Release banner header"
+      }](${
+        typeof this.workspaceConfig.release.banner === "string"
+          ? this.workspaceConfig.release.banner
+          : this.workspaceConfig.release.banner?.url
+      })
+${this.workspaceConfig.release.header || ""}
+
+# ${name ? `${titleCase(name)} ` : ""}v${releaseVersion.rawVersion}
+
+We at [${
+        this.workspaceConfig.organization
+          ? titleCase(
+              typeof this.workspaceConfig.organization === "string"
+                ? this.workspaceConfig.organization
+                : this.workspaceConfig.organization.name
+            )
+          : ""
+      }](${this.workspaceConfig.homepage}) are very excited to announce the v${
+        releaseVersion.rawVersion
+      } release of the ${
+        name
+          ? this.workspaceConfig.name
+            ? `${titleCase(this.workspaceConfig.name)} - ${titleCase(name)}`
+            : titleCase(name)
+          : this.workspaceConfig.name
+            ? titleCase(this.workspaceConfig.name)
+            : "Storm Software"
+      } project! 🚀
+
+These changes are released under the ${
+        this.workspaceConfig.license.includes("license")
+          ? this.workspaceConfig.license
+          : `${this.workspaceConfig.license} license`
+      }. You can find more details on [our licensing page](${this.workspaceConfig.licensing}). You can find guides, API references, and other documentation around this release (and much more) on [our documentation site](${
+        this.workspaceConfig.docs
+      }).
+
+If you have any questions or comments, feel free to reach out to the team on [Discord](${
+        this.workspaceConfig.socials.discord
+      }) or [our contact page](${this.workspaceConfig.contact}). Please help us spread the word by giving [this repository](https://github.com/${
+        typeof this.workspaceConfig.organization === "string"
+          ? this.workspaceConfig.organization
+          : this.workspaceConfig.organization?.name
+      }/${this.workspaceConfig.name}) a star ⭐ on GitHub or [posting on X (Twitter)](https://x.com/intent/tweet?text=Check%20out%20the%20latest%20@${
+        this.workspaceConfig.socials.twitter
+      }%20release%20${
+        name ? `${titleCase(name)?.replaceAll(" ", "%20")}%20` : ""
+      }v${releaseVersion.rawVersion}%20%F0%9F%9A%80%0D%0A%0D%0Ahttps://github.com/${
+        typeof this.workspaceConfig.organization === "string"
+          ? this.workspaceConfig.organization
+          : this.workspaceConfig.organization?.name
+      }/${this.workspaceConfig.name}/releases/tag/${releaseVersion.gitTag}) about this release!
+
+## Release Notes
+
+${changelogContents
+  .replaceAll(
+    `## ${generateChangelogTitle(
+      releaseVersion.rawVersion,
+      name,
+      this.workspaceConfig
+    )}`,
+    ""
+  )
+  .replaceAll(
+    `# ${generateChangelogTitle(releaseVersion.rawVersion, name, this.workspaceConfig)}`,
+    ""
+  )}
+
+---
+
+${this.workspaceConfig.release.footer}
+`,
+      latestCommit,
+      { dryRun }
+    );
+  }
+}
 
 export type RepoSlug = `${string}/${string}`;
 
@@ -488,8 +632,9 @@ function githubNewReleaseURL(
  * Factory function to create a remote release client based on the given configuration
  */
 export async function createGithubRemoteReleaseClient(
+  workspaceConfig: StormWorkspaceConfig,
   remoteName = "origin"
-): Promise<GithubRemoteReleaseClient> {
+): Promise<StormGithubRemoteReleaseClient> {
   const repoData = getGitHubRepoData(remoteName, "github");
   if (!repoData) {
     throw new Error(
@@ -497,14 +642,15 @@ export async function createGithubRemoteReleaseClient(
     );
   }
 
-  return new GithubRemoteReleaseClient(
+  return new StormGithubRemoteReleaseClient(
     repoData,
     {
       provider: "github",
       hostname: repoData.hostname,
       apiBaseUrl: repoData.apiBaseUrl
     },
-    await resolveTokenData(repoData.hostname)
+    await resolveTokenData(repoData.hostname),
+    workspaceConfig
   );
 }
 

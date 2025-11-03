@@ -162,10 +162,11 @@
     }
   },
   "dependencies": {
-    "@storm-software/config": "1.134.16",
-    "@storm-software/config-tools": "1.188.16",
-    "@storm-software/workspace-tools": "1.292.16",
-    "yaml": "catalog:"
+    "@storm-software/config": "workspace:*",
+    "@storm-software/config-tools": "workspace:*",
+    "@storm-software/workspace-tools": "workspace:*",
+    "yaml": "catalog:",
+    "defu": "catalog:"
   },
   "devDependencies": {
     "@nx-tools/container-metadata": "^6.9.1",

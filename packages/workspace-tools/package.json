@@ -155,6 +155,34 @@
         "default": "./dist/src/base/*.js"
       }
     },
+    "./release": {
+      "import": {
+        "types": "./dist/src/release/index.d.mts",
+        "default": "./dist/src/release/index.mjs"
+      },
+      "require": {
+        "types": "./dist/src/release/index.d.ts",
+        "default": "./dist/src/release/index.js"
+      },
+      "default": {
+        "types": "./dist/src/release/index.d.ts",
+        "default": "./dist/src/release/index.js"
+      }
+    },
+    "./release/*": {
+      "import": {
+        "types": "./dist/src/release/*.d.mts",
+        "default": "./dist/src/release/*.mjs"
+      },
+      "require": {
+        "types": "./dist/src/release/*.d.ts",
+        "default": "./dist/src/release/*.js"
+      },
+      "default": {
+        "types": "./dist/src/release/*.d.ts",
+        "default": "./dist/src/release/*.js"
+      }
+    },
     "./executors/*/untyped": {
       "import": {
         "types": "./dist/src/executors/*/untyped.d.mts",
@@ -223,16 +251,17 @@
     "@ltd/j-toml": "catalog:",
     "@microsoft/api-extractor": "catalog:",
     "@nx/devkit": "catalog:",
+    "@nx/js": "catalog:",
     "@samchon/openapi": "^2.5.3",
     "@size-limit/esbuild": "11.1.4",
     "@size-limit/esbuild-why": "11.1.4",
     "@size-limit/file": "11.1.4",
-    "@storm-software/esbuild": "0.53.16",
-    "@storm-software/npm-tools": "0.5.16",
-    "@storm-software/pnpm-tools": "0.6.16",
-    "@storm-software/prettier": "0.57.16",
-    "@storm-software/tsdown": "0.45.16",
-    "@storm-software/unbuild": "0.57.16",
+    "@storm-software/esbuild": "workspace:*",
+    "@storm-software/npm-tools": "workspace:*",
+    "@storm-software/pnpm-tools": "workspace:*",
+    "@storm-software/prettier": "workspace:*",
+    "@storm-software/tsdown": "workspace:*",
+    "@storm-software/unbuild": "workspace:*",
     "fs-extra": "11.2.0",
     "glob": "catalog:",
     "jiti": "catalog:",

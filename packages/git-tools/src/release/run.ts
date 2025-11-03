@@ -16,20 +16,15 @@ import {
   writeTrace,
   writeWarning
 } from "@storm-software/config-tools";
-import defu from "defu";
 import { existsSync } from "node:fs";
 import { readFile, writeFile } from "node:fs/promises";
-import type { ReleaseOptions } from "nx/src/command-line/release/command-object.js";
-import { createAPI as createReleasePublishAPI } from "nx/src/command-line/release/publish.js";
 import type {
   ReleaseVersion,
   VersionData
 } from "nx/src/command-line/release/utils/shared.js";
-import { createAPI as createReleaseVersionAPI } from "nx/src/command-line/release/version.js";
-import { NxReleaseConfiguration, readNxJson } from "nx/src/config/nx-json.js";
-import { createAPI as createReleaseChangelogAPI } from "./changelog";
-import { DEFAULT_RELEASE_CONFIG, DEFAULT_RELEASE_GROUP_CONFIG } from "./config";
+import { ReleaseConfig } from "../types";
 import { isUserAnOrganizationMember } from "./github";
+import { StormReleaseClient } from "./release-client";
 
 export interface NxReleaseChangelogResult {
   workspaceChangelog?: {
@@ -44,16 +39,27 @@ export interface NxReleaseChangelogResult {
   };
 }
 
-export type StormReleaseOptions = ReleaseOptions & {
+export type ReleaseOptions = Partial<ReleaseConfig> & {
   project?: string;
   head?: string;
   base?: string;
   dryRun?: boolean;
+  skipPublish?: boolean;
+  ignoreNxJsonConfig?: boolean;
 };
 
 export const runRelease = async (
   config: StormWorkspaceConfig,
-  options: StormReleaseOptions
+  {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    project,
+    head,
+    base,
+    dryRun = false,
+    skipPublish = false,
+    ignoreNxJsonConfig = false,
+    ...releaseConfig
+  }: ReleaseOptions
 ) => {
   if (!process.env.GITHUB_ACTOR) {
     throw new Error("The `GITHUB_ACTOR` environment variable is not set.");
@@ -91,14 +97,18 @@ export const runRelease = async (
   process.env.NPM_AUTH_TOKEN = process.env.NPM_TOKEN;
   process.env.NPM_CONFIG_PROVENANCE = "true";
 
-  writeDebug("Creating workspace Project Graph data...", config);
+  writeDebug("Creating Storm release client...", config);
 
-  const nxJson = readNxJson();
+  const releaseClient = await StormReleaseClient.create(
+    releaseConfig,
+    ignoreNxJsonConfig,
+    config
+  );
 
   writeDebug("Reading in the workspaces release configuration", config);
 
-  const to = options.head || process.env.NX_HEAD;
-  const from = options.base || process.env.NX_BASE;
+  const to = head || process.env.NX_HEAD;
+  const from = base || process.env.NX_BASE;
 
   writeDebug(
     `Using the following Git SHAs to determine the release content:
@@ -108,62 +118,34 @@ export const runRelease = async (
     config
   );
 
-  if (nxJson.release?.groups) {
-    nxJson.release.groups = Object.keys(nxJson.release.groups).reduce(
-      (ret, groupName) => {
-        const groupConfig = nxJson.release?.groups?.[groupName];
-
-        ret[groupName] = defu(groupConfig, DEFAULT_RELEASE_GROUP_CONFIG);
-        return ret;
-      },
-      {}
-    );
-  }
-
-  const nxReleaseConfig = defu(
-    nxJson.release,
-    DEFAULT_RELEASE_CONFIG
-  ) as NxReleaseConfiguration;
-
-  writeInfo(
-    "Using the following `nx.json` release configuration values",
-    config
-  );
-  writeInfo(nxReleaseConfig, config);
-
-  const releaseVersion = createReleaseVersionAPI(nxReleaseConfig);
-  const releaseChangelog = createReleaseChangelogAPI(nxReleaseConfig);
-  const releasePublish = createReleasePublishAPI(nxReleaseConfig);
-
   writeDebug("Determining the current release versions...", config);
 
-  const { workspaceVersion, projectsVersionData } = await releaseVersion({
-    dryRun: false,
-    verbose: isVerbose(config.logLevel),
-    preid: config.preid,
-    deleteVersionPlans: false,
-    stageChanges: true,
-    gitCommit: false
-  });
+  const { workspaceVersion, projectsVersionData, releaseGraph } =
+    await releaseClient.releaseVersion({
+      dryRun: false,
+      verbose: isVerbose(config.logLevel),
+      preid: config.preid,
+      deleteVersionPlans: false,
+      stageChanges: true,
+      gitCommit: false
+    });
 
-  await releaseChangelog({
-    ...options,
+  await releaseClient.releaseChangelog({
     version:
-      nxReleaseConfig?.projectsRelationship !== "fixed"
-        ? undefined
-        : workspaceVersion,
+      releaseConfig?.projectsRelationship === "fixed"
+        ? workspaceVersion
+        : undefined,
     versionData: projectsVersionData,
     dryRun: false,
     verbose: isVerbose(config.logLevel),
     to,
     from,
-    gitCommit: true,
-    gitCommitMessage: "release(monorepo): Publish workspace release updates"
+    releaseGraph
   });
 
   writeDebug("Tagging commit with git", config);
 
-  if (options.skipPublish) {
+  if (skipPublish) {
     writeWarning(
       "Skipping publishing packages since `skipPublish` was provided as `true` in the release options.",
       config
@@ -182,9 +164,8 @@ ${changedProjects.map(changedProject => `  - ${changedProject}`).join("\n")}
 
       await updatePackageManifests(projectsVersionData, config);
 
-      const result = await releasePublish({
-        ...options,
-        dryRun: !!options.dryRun,
+      const result = await releaseClient.releasePublish({
+        dryRun: !!dryRun,
         verbose: isVerbose(config.logLevel)
       });
 

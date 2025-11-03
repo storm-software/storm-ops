@@ -1,3 +1,5 @@
+import { NxJsonConfiguration } from "@nx/devkit";
+
 /**
  * The values provided in the `base.json` (this package's shared nx.json configuration) file's {@link NxJsonConfiguration.namedInputs} section.
  */
@@ -287,7 +289,7 @@ export const NAMED_INPUTS = {
 /**
  * The values provided in the `base.json` (this package's shared nx.json configuration) file's {@link NxJsonConfiguration.release} section.
  */
-export const RELEASE = {
+export const RELEASE: NxJsonConfiguration["release"] = {
   groups: {
     packages: {
       projects: ["packages/*", "crates/*"],
@@ -303,14 +305,17 @@ export const RELEASE = {
       },
       version: {
         groupPreVersionCommand: "pnpm build",
-        generator: "@storm-software/workspace-tools:release-version",
         currentVersionResolver: "git-tag",
         specifierSource: "conventional-commits",
 
-        generatorOptions: {
+        versionActions: "@storm-software/workspace-tools:release-version",
+        versionActionsOptions: {
           currentVersionResolver: "git-tag",
           specifierSource: "conventional-commits"
         }
+      },
+      releaseTag: {
+        pattern: "{projectName}@{version}"
       }
     }
   }

@@ -74,7 +74,6 @@
       "packages": {
         "projects": ["packages/*", "crates/*", "terraform-modules"],
         "projectsRelationship": "independent",
-        "releaseTagPattern": "{projectName}@{version}",
         "changelog": {
           "entryWhenNoChanges": false,
           "renderOptions": {
@@ -85,9 +84,12 @@
         },
         "version": {
           "groupPreVersionCommand": "pnpm build",
-          "generator": "@storm-software/workspace-tools:release-version",
+          "versionActions": "@storm-software/workspace-tools:release-version",
           "currentVersionResolver": "git-tag",
           "specifierSource": "conventional-commits"
+        },
+        "releaseTag": {
+          "pattern": "{projectName}@{version}"
         }
       }
     }

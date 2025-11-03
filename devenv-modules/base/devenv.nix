@@ -59,6 +59,7 @@ in {
     update-storm.exec = "pnpm update-storm";
     build.exec = "pnpm build";
     build-dev.exec = "pnpm build-dev";
+    clean.exec = "pnpm clean";
     lint.exec = "pnpm lint";
     format.exec = "pnpm format";
     release.exec = "pnpm release --base=$1 --head=$2";
@@ -70,6 +71,8 @@ in {
     git config tag.gpgSign true
     git config lfs.allowincompletepush true
     git config init.defaultBranch main
+
+    npm config set provenance true
 
     pnpm update --recursive --workspace
     pnpm install

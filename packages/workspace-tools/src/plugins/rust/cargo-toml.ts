@@ -328,7 +328,8 @@ export const createNodesV2: CreateNodesV2<CargoPluginOptions | undefined> = [
                   ...project.release,
                   version: {
                     ...project.release?.version,
-                    generator: "@storm-software/workspace-tools:release-version"
+                    versionActions:
+                      "@storm-software/workspace-tools/release/rust-release-version"
                   }
                 }
               };

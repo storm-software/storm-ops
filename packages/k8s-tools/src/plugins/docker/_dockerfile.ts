@@ -17,10 +17,11 @@ import {
   ProjectTagConstants,
   setDefaultProjectTags
 } from "@storm-software/workspace-tools/utils/project-tags";
+import defu from "defu";
 import { existsSync } from "node:fs";
 import type { ExternalContainerExecutorSchema } from "../../executors/container-publish/schema";
 
-export const name = "storm-software/docker";
+export const name = "storm-software/k8s-tools/docker";
 export const description = "Plugin for parsing Dockerfile files";
 
 export interface DockerFilePluginOptions {
@@ -208,16 +209,21 @@ export const createNodesV2: CreateNodesV2<DockerFilePluginOptions> = [
           const projects: Record<string, ProjectConfiguration> = {};
           const externalNodes: Record<string, ProjectGraphExternalNode> = {};
 
-          projects[project.root] = {
-            ...project,
-            release: {
-              ...project.release,
-              version: {
-                ...project.release?.version,
-                generator: "@storm-software/workspace-tools:release-version"
+          projects[project.root] = defu(
+            {
+              release: {
+                docker: {
+                  skipVersionActions: true,
+                  registryUrl: "docker.io"
+                },
+                changelog: true,
+                releaseTag: {
+                  pattern: "release/{projectName}/{version}"
+                }
               }
-            }
-          };
+            },
+            project
+          );
 
           return {
             projects,

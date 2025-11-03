@@ -6,9 +6,10 @@ import { CommitEnumItemProps } from "conventional-changelog-storm-software/types
 import { RuleConfigSeverity } from "conventional-changelog-storm-software/types/commitlint";
 import {
   NxReleaseChangelogConfiguration,
-  NxReleaseConventionalCommitsConfiguration,
-  NxReleaseGitConfiguration,
-  NxReleaseVersionConfiguration
+  NxReleaseConfiguration,
+  NxReleaseDockerConfiguration,
+  NxReleaseVersionConfiguration,
+  NxReleaseVersionPlansConfiguration
 } from "nx/src/config/nx-json";
 
 export type DeepPartial<T> = T extends object
@@ -105,7 +106,7 @@ export interface CommitLintOutcome {
   warnings: CommitLintRuleOutcome[];
 }
 
-export type ReleaseConfig = any & {
+export type ReleaseOptions = any & {
   npm: boolean;
   github: boolean;
   githubOptions?: Record<string, unknown>;
@@ -146,132 +147,260 @@ export interface ReadMeOptions {
   prettier: boolean;
 }
 
-export interface NxReleaseConfig {
+export interface ReleaseGroupConfig {
   /**
-   * Shorthand for amending the projects which will be included in the implicit default release group (all projects by default).
-   * @note Only one of `projects` or `groups` can be specified, the cannot be used together.
-   */
-  projects?: string[] | string;
-  /**
-   * @note When no projects or groups are configured at all (the default), all projects in the workspace are treated as
-   * if they were in a release group together with a fixed relationship.
-   */
-  groups?: Record<
-    string, // group name
-    {
-      /**
-       * Whether to version and release projects within the group independently, or together in lock step ("fixed").
-       * If not set on the group, this will be informed by the projectsRelationship config at the top level.
-       */
-      projectsRelationship?: "fixed" | "independent";
-      /**
-       * Required list of one or more projects to include in the release group. Any single project can
-       * only be used in a maximum of one release group.
-       */
-      projects: string[] | string;
-      /**
-       * Optionally override version configuration for this group.
-       *
-       * NOTE: git configuration is not supported at the group level, only the root/command level
-       */
-      version?: NxReleaseVersionConfiguration;
-      /**
-       * Project changelogs are disabled by default.
-       *
-       * Here you can optionally override project changelog configuration for this group.
-       * Notes about boolean values:
-       *
-       * - true = enable project level changelogs using default configuration
-       * - false = explicitly disable project level changelogs
-       *
-       * NOTE: git configuration is not supported at the group level, only the root/command level
-       */
-      changelog?: NxReleaseChangelogConfiguration | boolean;
-      /**
-       * Optionally override the git/release tag pattern to use for this group.
-       */
-      releaseTagPattern?: string;
-    }
-  >;
-  /**
-   * Configures the default value for all groups that don't explicitly state their own projectsRelationship.
-   *
-   * By default, this is set to "fixed" which means all projects in the workspace will be versioned and
-   * released together in lock step.
+   * Whether to version and release projects within the group independently, or together in lock step ("fixed").
+   * If not set on the group, this will be informed by the projectsRelationship config at the top level.
    */
   projectsRelationship?: "fixed" | "independent";
-  changelog?: {
-    /**
-     * Enable or override configuration for git operations as part of the changelog subcommand
-     */
-    git?: NxReleaseGitConfiguration;
-    /**
-     * Workspace changelog is enabled by default. Notes about boolean values:
-     *
-     * - true = explicitly enable workspace changelog using default configuration
-     * - false = disable workspace changelog
-     */
-    workspaceChangelog?: NxReleaseChangelogConfiguration | boolean;
-    /**
-     * Project changelogs are disabled by default. Notes about boolean values:
-     *
-     * - true = enable project level changelogs using default configuration
-     * - false = explicitly disable project level changelogs
-     */
-    projectChangelogs?: NxReleaseChangelogConfiguration | boolean;
-    /**
-     * Whether or not to automatically look up the first commit for the workspace (or package, if versioning independently)
-     * and use that as the starting point for changelog generation. If this is not enabled, changelog generation will fail
-     * if there is no previous matching git tag to use as a starting point.
-     */
-    automaticFromRef?: boolean;
-  };
+
   /**
-   * If no version config is provided, we will assume that @nx/js:release-version
-   * is the desired generator implementation, allowing for terser config for the common case.
+   * Required list of one or more projects to include in the release group. Any single project can
+   * only be used in a maximum of one release group.
+   */
+  projects: string[] | string;
+
+  /**
+   * Configure options to handle versioning docker projects for this group.
+   * Set to `true` to enable with default settings, or provide a configuration object for custom settings.
+   */
+  docker?:
+    | (NxReleaseDockerConfiguration & {
+        /**
+         * A command to run after validation of nx release configuration, but before docker versioning begins.
+         * Used for preparing docker build artifacts. If --dry-run is passed, the command is still executed, but
+         * with the NX_DRY_RUN environment variable set to 'true'.
+         * It will run in addition to the global `preVersionCommand`
+         */
+        groupPreVersionCommand?: string;
+      })
+    | true;
+
+  /**
+   * Optionally override version configuration for this group.
+   *
+   * NOTE: git configuration is not supported at the group level, only the root/command level
    */
   version?: NxReleaseVersionConfiguration & {
-    /**
-     * Enable or override configuration for git operations as part of the version subcommand
-     */
-    git?: NxReleaseGitConfiguration;
     /**
      * A command to run after validation of nx release configuration, but before versioning begins.
      * Used for preparing build artifacts. If --dry-run is passed, the command is still executed, but
      * with the NX_DRY_RUN environment variable set to 'true'.
+     * It will run in addition to the global `preVersionCommand`
      */
-    preVersionCommand?: string;
+    groupPreVersionCommand?: string;
   };
+
   /**
-   * Optionally override the git/release tag pattern to use. This field is the source of truth
-   * for changelog generation and release tagging, as well as for conventional commits parsing.
+   * Project changelogs are disabled by default.
    *
-   * It supports interpolating the version as {version} and (if releasing independently or forcing
-   * project level version control system releases) the project name as {projectName} within the string.
+   * Here you can optionally override project changelog configuration for this group.
+   * Notes about boolean values:
    *
-   * The default releaseTagPattern for fixed/unified releases is: "v{version}"
-   * The default releaseTagPattern for independent releases at the project level is: "{projectName}@{version}"
+   * - true = enable project level changelogs using default configuration
+   * - false = explicitly disable project level changelogs
+   *
+   * NOTE: git configuration is not supported at the group level, only the root/command level
    */
-  releaseTagPattern?: string;
+  changelog?: NxReleaseChangelogConfiguration | boolean;
+
   /**
-   * Enable and configure automatic git operations as part of the release
+   * Configuration for release tag generation and matching.
    */
-  git?: NxReleaseGitConfiguration;
-  conventionalCommits?: NxReleaseConventionalCommitsConfiguration;
+  releaseTag?: {
+    /**
+     * The pattern to use for release tags. Supports interpolating {version}, {projectName}, and {releaseGroupName}.
+     */
+    pattern?: string;
+
+    /**
+     * By default, we will try and resolve the latest match for the releaseTagPattern from the current branch,
+     * falling back to all branches if no match is found on the current branch.
+     *
+     * - Setting this to true will cause us to ALWAYS check all branches for the latest match.
+     * - Setting it to false will cause us to ONLY check the current branch for the latest match.
+     * - Setting it to an array of strings will cause us to check all branches WHEN the current branch matches one of the strings in the array. Glob patterns are supported.
+     */
+    checkAllBranchesWhen?: boolean | string[];
+
+    /**
+     * By default, we will use semver when searching through the tags to find the latest matching tag.
+     *
+     * - Setting this to true will cause us to use semver to match the version
+     * - Setting this to false will cause us to not use semver to match the version allowing for non-semver versions
+     */
+    requireSemver?: boolean;
+
+    /**
+     * Controls how docker versions are used relative to semver versions when creating git tags and changelog entries.
+     *
+     * - true: Use only the docker version
+     * - false: Use only the semver version
+     * - 'both': Create tags and changelog entries for both docker and semver versions
+     *
+     * By default, this is set to true when docker configuration is present, and false otherwise.
+     */
+    preferDockerVersion?: boolean | "both";
+
+    /**
+     * When set to true and multiple tags match your configured pattern, the git tag matching logic will strictly prefer the tag which contain a semver preid which matches the one
+     * given to the nx release invocation.
+     *
+     * For example, let's say your pattern is "{projectName}@{version}" and you have the following tags for project "my-lib", which uses semver:
+     * - my-lib@1.2.4-beta.1
+     * - my-lib@1.2.4-alpha.1
+     * - my-lib@1.2.3
+     *
+     * If "strictPreid" is set to true and you run:
+     * - `nx release --preid beta`, the git tag "my-lib@1.2.4-beta.1" will be resolved.
+     * - `nx release --preid alpha`, the git tag "my-lib@1.2.4-alpha.1" will be resolved.
+     * - `nx release` (no preid), the git tag "my-lib@1.2.3" will be resolved.
+     *
+     * If "strictPreid" is set to false, the git tag "my-lib@1.2.4-beta.1" will always be resolved as the latest tag that matches the pattern,
+     * regardless of any preid which gets passed to nx release.
+     *
+     * NOTE: This feature was added in a minor version and is therefore set to false by default, but this may change in a future major version.
+     */
+    strictPreid?: boolean;
+  };
+
+  /**
+   * Enables using version plans as a specifier source for versioning and
+   * to determine changes for changelog generation.
+   */
+  versionPlans?: NxReleaseVersionPlansConfiguration | boolean;
 }
 
-export type NxReleaseConventionalCommitsConfig = NonNullable<
-  NxReleaseConfig["conventionalCommits"]
->;
-export type NxReleaseProjectsConfig = NonNullable<NxReleaseConfig["projects"]>;
-export type NxReleaseGroupsConfig = NonNullable<NxReleaseConfig["groups"]>;
-export type NxReleaseVersionConfig = NonNullable<NxReleaseConfig["version"]>;
-export type NxReleaseGitConfig = NonNullable<NxReleaseConfig["git"]>;
-export type NxReleaseChangelogConfig = NonNullable<
-  NxReleaseConfig["changelog"]
->;
+export type ReleaseConfig = Omit<NxReleaseConfiguration, "groups"> & {
+  groups: Record<string, ReleaseGroupConfig>;
+};
 
-export type NxReleaseGroupConfig = NxReleaseGroupsConfig[string];
+// export interface NxReleaseConfig {
+//   /**
+//    * Shorthand for amending the projects which will be included in the implicit default release group (all projects by default).
+//    * @note Only one of `projects` or `groups` can be specified, the cannot be used together.
+//    */
+//   projects?: string[] | string;
+//   /**
+//    * @note When no projects or groups are configured at all (the default), all projects in the workspace are treated as
+//    * if they were in a release group together with a fixed relationship.
+//    */
+//   groups?: Record<
+//     string, // group name
+//     {
+//       /**
+//        * Whether to version and release projects within the group independently, or together in lock step ("fixed").
+//        * If not set on the group, this will be informed by the projectsRelationship config at the top level.
+//        */
+//       projectsRelationship?: "fixed" | "independent";
+//       /**
+//        * Required list of one or more projects to include in the release group. Any single project can
+//        * only be used in a maximum of one release group.
+//        */
+//       projects: string[] | string;
+//       /**
+//        * Optionally override version configuration for this group.
+//        *
+//        * NOTE: git configuration is not supported at the group level, only the root/command level
+//        */
+//       version?: NxReleaseVersionConfiguration;
+//       /**
+//        * Project changelogs are disabled by default.
+//        *
+//        * Here you can optionally override project changelog configuration for this group.
+//        * Notes about boolean values:
+//        *
+//        * - true = enable project level changelogs using default configuration
+//        * - false = explicitly disable project level changelogs
+//        *
+//        * NOTE: git configuration is not supported at the group level, only the root/command level
+//        */
+//       changelog?: NxReleaseChangelogConfiguration | boolean;
+//       /**
+//        * Optionally override the git/release tag pattern to use for this group.
+//        */
+//       releaseTagPattern?: string;
+//     }
+//   >;
+//   /**
+//    * Configures the default value for all groups that don't explicitly state their own projectsRelationship.
+//    *
+//    * By default, this is set to "fixed" which means all projects in the workspace will be versioned and
+//    * released together in lock step.
+//    */
+//   projectsRelationship?: "fixed" | "independent";
+//   changelog?: {
+//     /**
+//      * Enable or override configuration for git operations as part of the changelog subcommand
+//      */
+//     git?: NxReleaseGitConfiguration;
+//     /**
+//      * Workspace changelog is enabled by default. Notes about boolean values:
+//      *
+//      * - true = explicitly enable workspace changelog using default configuration
+//      * - false = disable workspace changelog
+//      */
+//     workspaceChangelog?: NxReleaseChangelogConfiguration | boolean;
+//     /**
+//      * Project changelogs are disabled by default. Notes about boolean values:
+//      *
+//      * - true = enable project level changelogs using default configuration
+//      * - false = explicitly disable project level changelogs
+//      */
+//     projectChangelogs?: NxReleaseChangelogConfiguration | boolean;
+//     /**
+//      * Whether or not to automatically look up the first commit for the workspace (or package, if versioning independently)
+//      * and use that as the starting point for changelog generation. If this is not enabled, changelog generation will fail
+//      * if there is no previous matching git tag to use as a starting point.
+//      */
+//     automaticFromRef?: boolean;
+//   };
+//   /**
+//    * If no version config is provided, we will assume that @nx/js:release-version
+//    * is the desired generator implementation, allowing for terser config for the common case.
+//    */
+//   version?: NxReleaseVersionConfiguration & {
+//     /**
+//      * Enable or override configuration for git operations as part of the version subcommand
+//      */
+//     git?: NxReleaseGitConfiguration;
+//     /**
+//      * A command to run after validation of nx release configuration, but before versioning begins.
+//      * Used for preparing build artifacts. If --dry-run is passed, the command is still executed, but
+//      * with the NX_DRY_RUN environment variable set to 'true'.
+//      */
+//     preVersionCommand?: string;
+//   };
+//   /**
+//    * Optionally override the git/release tag pattern to use. This field is the source of truth
+//    * for changelog generation and release tagging, as well as for conventional commits parsing.
+//    *
+//    * It supports interpolating the version as {version} and (if releasing independently or forcing
+//    * project level version control system releases) the project name as {projectName} within the string.
+//    *
+//    * The default releaseTagPattern for fixed/unified releases is: "v{version}"
+//    * The default releaseTagPattern for independent releases at the project level is: "{projectName}@{version}"
+//    */
+//   releaseTagPattern?: string;
+//   /**
+//    * Enable and configure automatic git operations as part of the release
+//    */
+//   git?: NxReleaseGitConfiguration;
+//   conventionalCommits?: NxReleaseConventionalCommitsConfiguration;
+// }
+
+// export type NxReleaseConventionalCommitsConfig = NonNullable<
+//   NxReleaseConfig["conventionalCommits"]
+// >;
+// export type NxReleaseProjectsConfig = NonNullable<NxReleaseConfig["projects"]>;
+// export type NxReleaseGroupsConfig = NonNullable<NxReleaseConfig["groups"]>;
+// export type NxReleaseVersionConfig = NonNullable<NxReleaseConfig["version"]>;
+// export type NxReleaseGitConfig = NonNullable<NxReleaseConfig["git"]>;
+// export type NxReleaseChangelogConfig = NonNullable<
+//   NxReleaseConfig["changelog"]
+// >;
+
+// export type NxReleaseGroupConfig = NxReleaseGroupsConfig[string];
 
 export type NxReleaseRequiredGitConfig = Required<{
   commit?: boolean | undefined;

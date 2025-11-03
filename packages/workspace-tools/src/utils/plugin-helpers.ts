@@ -1,5 +1,5 @@
 import {
-  CreateNodesContext,
+  CreateNodesContextV2,
   ProjectConfiguration,
   readJsonFile
 } from "@nx/devkit";
@@ -123,7 +123,7 @@ export function getProjectRoot(
 
 export function getRoot(
   projectRoot: string,
-  context: CreateNodesContext
+  context: CreateNodesContextV2
 ): string {
   return projectRoot
     .replaceAll("\\", "/")

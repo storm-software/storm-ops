@@ -1,7 +1,8 @@
 import {
   createNodesFromFiles,
   CreateNodesResultV2,
-  CreateNodesV2
+  CreateNodesV2,
+  ProjectGraphExternalNode
 } from "@nx/devkit";
 import {
   addProjectTag,
@@ -10,20 +11,13 @@ import {
 import defu from "defu";
 import { existsSync } from "node:fs";
 import { dirname, join } from "node:path";
-import { readNxJson } from "nx/src/config/nx-json.js";
 import type { ProjectConfiguration } from "nx/src/config/workspace-json-project-json";
 import { readJsonFile } from "nx/src/utils/fileutils";
-import {
-  type PackageJson,
-  readTargetsFromPackageJson
-} from "nx/src/utils/package-json";
+import { type PackageJson } from "nx/src/utils/package-json";
 
-export const name = "storm-software/cloudflare";
+export const name = "storm-software/cloudflare-tools/cloudflare";
 
-// eslint-disable-next-line @typescript-eslint/no-empty-object-type
-export type CloudflarePluginOptions = {};
-
-export const createNodesV2: CreateNodesV2<CloudflarePluginOptions> = [
+export const createNodesV2: CreateNodesV2 = [
   "{**/wrangler.toml}",
   async (
     configFiles,
@@ -31,7 +25,7 @@ export const createNodesV2: CreateNodesV2<CloudflarePluginOptions> = [
     context
   ): Promise<CreateNodesResultV2> => {
     return await createNodesFromFiles(
-      async (file, options = { includeApps: true }, context) => {
+      async (file, options, context) => {
         try {
           const packageJson = createPackageJson(file, context.workspaceRoot);
           if (!packageJson) {
@@ -42,17 +36,8 @@ export const createNodesV2: CreateNodesV2<CloudflarePluginOptions> = [
             file,
             packageJson
           );
-          const nxJson = readNxJson(context.workspaceRoot);
 
-          const targets: ProjectConfiguration["targets"] =
-            readTargetsFromPackageJson(
-              packageJson as PackageJson,
-              nxJson,
-              project.root,
-              context.workspaceRoot
-            );
-
-          // Apply nx-release-publish target for non-private projects
+          const targets: ProjectConfiguration["targets"] = {};
 
           targets["serve"] = {
             cache: false,
@@ -107,21 +92,25 @@ export const createNodesV2: CreateNodesV2<CloudflarePluginOptions> = [
             }
           );
 
+          const projects: Record<string, ProjectConfiguration> = {};
+          const externalNodes: Record<string, ProjectGraphExternalNode> = {};
+
+          projects[project.root] = defu(
+            {
+              targets,
+              release: {
+                version: {
+                  versionActions:
+                    "@storm-software/workspace-tools/release/js-release-actions"
+                }
+              }
+            },
+            project
+          );
+
           return {
-            projects: {
-              [project.root]: defu(
-                {
-                  targets,
-                  release: {
-                    version: {
-                      generator:
-                        "@storm-software/workspace-tools:release-version"
-                    }
-                  }
-                },
-                project
-              )
-            }
+            projects,
+            externalNodes
           };
         } catch (e) {
           console.error(e);

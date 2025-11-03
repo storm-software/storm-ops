@@ -11,53 +11,71 @@ import DefaultChangelogRenderer, {
 import { ChangelogChange } from "nx/src/command-line/release/changelog";
 import { NxReleaseConfig } from "nx/src/command-line/release/config/config";
 import { DEFAULT_CONVENTIONAL_COMMITS_CONFIG } from "nx/src/command-line/release/config/conventional-commits";
-import { GithubRemoteReleaseClient } from "nx/src/command-line/release/utils/remote-release-clients/github";
+import {
+  RemoteReleaseClient,
+  RemoteRepoData
+} from "nx/src/command-line/release/utils/remote-release-clients/remote-release-client";
 import { major } from "semver";
 import { generateChangelogTitle } from "../utilities/changelog-utils";
-import { GithubRepoData } from "./github";
 
-export interface StormChangelogRenderOptions {
+export interface StormChangelogRenderOptions
+  extends DefaultChangelogRenderOptions {
+  remoteReleaseClient: RemoteReleaseClient<any>;
+  workspaceConfig: StormWorkspaceConfig;
+}
+
+type DefaultChangelogRendererParams = ConstructorParameters<
+  typeof DefaultChangelogRenderer
+>[0];
+
+export interface StormChangelogRenderParams {
   changes: ChangelogChange[];
   changelogEntryVersion: string;
   project: string | null;
-  entryWhenNoChanges: string | false;
+  entryWhenNoChanges?: string | false;
   isVersionPlans: boolean;
-  changelogRenderOptions: DefaultChangelogRenderOptions;
+  changelogRenderOptions: StormChangelogRenderOptions;
   dependencyBumps?: DependencyBump[];
-  repoData: GithubRepoData | null;
-  conventionalCommitsConfig: NxReleaseConfig["conventionalCommits"] | null;
-  remoteReleaseClient: GithubRemoteReleaseClient;
+  conventionalCommitsConfig?: NxReleaseConfig["conventionalCommits"];
 }
 
 export default class StormChangelogRenderer extends DefaultChangelogRenderer {
   /**
    * The Storm workspace configuration object, which is loaded from the storm-workspace.json file.
    */
-  protected workspaceConfig: StormWorkspaceConfig | null = null;
+  protected workspaceConfig?: StormWorkspaceConfig;
 
   /**
    * The configuration object for the ChangelogRenderer, which includes the changes, version, project, and other options.
    */
-  protected config: StormChangelogRenderOptions;
+  protected repoData: RemoteRepoData | null;
 
   /**
    * A ChangelogRenderer class takes in the determined changes and other relevant metadata and returns a string, or a Promise of a string of changelog contents (usually markdown).
    *
    * @param config - The configuration object for the ChangelogRenderer
    */
-  constructor(config: Omit<StormChangelogRenderOptions, "repoData">) {
-    super(config);
-
-    this.config = {
+  public constructor(config: StormChangelogRenderParams) {
+    const resolvedConfig = {
+      entryWhenNoChanges: false,
+      conventionalCommitsConfig: DEFAULT_CONVENTIONAL_COMMITS_CONFIG,
       ...config,
-      repoData: config.remoteReleaseClient.getRemoteRepoData()
-    };
+      remoteReleaseClient: config.changelogRenderOptions.remoteReleaseClient
+    } as DefaultChangelogRendererParams;
+
+    super(resolvedConfig);
+
+    this.remoteReleaseClient = resolvedConfig.remoteReleaseClient;
+    this.repoData = this.remoteReleaseClient.getRemoteRepoData();
+    this.workspaceConfig = config.changelogRenderOptions.workspaceConfig;
   }
 
-  override async render(): Promise<string> {
-    this.workspaceConfig = await getWorkspaceConfig();
+  public override async render(): Promise<string> {
+    if (!this.workspaceConfig) {
+      this.workspaceConfig = await getWorkspaceConfig();
+    }
 
-    return await super.render();
+    return super.render();
   }
 
   protected override preprocessChanges(): void {
@@ -198,7 +216,7 @@ export default class StormChangelogRenderer extends DefaultChangelogRenderer {
     }
 
     if (
-      this.config.repoData &&
+      this.repoData &&
       this.changelogRenderOptions.mapAuthorsToGitHubUsernames
     ) {
       await Promise.all(
@@ -281,7 +299,7 @@ export default class StormChangelogRenderer extends DefaultChangelogRenderer {
         ? `**${change.scope.trim()}:** `
         : "") +
       description;
-    if (this.config.repoData && change.githubReferences) {
+    if (this.repoData && change.githubReferences) {
       changeLine += this.remoteReleaseClient.formatReferences(
         change.githubReferences
       );
