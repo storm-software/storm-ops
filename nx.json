@@ -72,7 +72,7 @@
   "release": {
     "groups": {
       "packages": {
-        "projects": ["packages/*", "crates/*", "terraform-modules"],
+        "projects": ["packages/*", "crates/*"],
         "projectsRelationship": "independent",
         "changelog": {
           "entryWhenNoChanges": false,
@@ -84,7 +84,7 @@
         },
         "version": {
           "groupPreVersionCommand": "pnpm build",
-          "versionActions": "@storm-software/workspace-tools:release-version",
+          "versionActions": "./dist/packages/workspace-tools/dist/src/release/js-release-version.js",
           "currentVersionResolver": "git-tag",
           "specifierSource": "conventional-commits"
         },
