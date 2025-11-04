@@ -1,3 +1,20 @@
+## [0.6.17](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.6.17) (2025-11-04)
+
+### Features
+
+- **monorepo:** Update packages to use Nx v22.0.2 ([8895b7333](https://github.com/storm-software/storm-ops/commit/8895b7333))
+
+### Miscellaneous
+
+- **monorepo:** Resolve sherif linting issues and reformat README markdown files ([2ed668c6a](https://github.com/storm-software/storm-ops/commit/2ed668c6a))
+
+### Updated Dependencies
+
+- Updated testing-tools to 1.119.17
+- Updated config-tools to 1.188.17
+- Updated npm-tools to 0.5.17
+- Updated config to 1.134.17
+
 ![Storm Software's logo banner](https://public.storm-cdn.com/brand-banner.png)
 
 # Changelog for Storm Ops - Pnpm Tools

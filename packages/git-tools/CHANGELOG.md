@@ -1,3 +1,38 @@
+## [2.123.17](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.123.17) (2025-11-04)
+
+### Features
+
+- **monorepo:** Update packages to use Nx v22.0.2 ([8895b7333](https://github.com/storm-software/storm-ops/commit/8895b7333))
+
+### Bug Fixes
+
+- **git-tools:** Resolve issue with invalid `commitArgs` default config ([1d0d5d574](https://github.com/storm-software/storm-ops/commit/1d0d5d574))
+- **git-tools:** Ensure the remoteReleaseClient is overriden correctly ([8fa0b0e96](https://github.com/storm-software/storm-ops/commit/8fa0b0e96))
+- **git-tools:** Resolve issue getting `repoData` variable ([4d8e829e6](https://github.com/storm-software/storm-ops/commit/4d8e829e6))
+- **git-tools:** Add changelog render options to base configuration ([150f5f440](https://github.com/storm-software/storm-ops/commit/150f5f440))
+- **git-tools:** Resolve issue with accessing `this` in constructor ([0e7a4f6e3](https://github.com/storm-software/storm-ops/commit/0e7a4f6e3))
+- **git-tools:** Resolved issue with invalid types used for `getRemoteRepoData` override ([3a9e1d7b6](https://github.com/storm-software/storm-ops/commit/3a9e1d7b6))
+- **workspace-tools:** Resolved issue with invalid version actions path ([f92989790](https://github.com/storm-software/storm-ops/commit/f92989790))
+- **git-tools:** Resolve issue with passing incorrect `nx.json` values to release merge ([c215ca545](https://github.com/storm-software/storm-ops/commit/c215ca545))
+- **git-tools:** Resolve issue with relative `changelog.renderer` and `version.versionActions` config ([44c1d7874](https://github.com/storm-software/storm-ops/commit/44c1d7874))
+- **git-tools:** Resolve issue merging release group configurations ([72853bceb](https://github.com/storm-software/storm-ops/commit/72853bceb))
+- **git-tools:** Resolve issue with merging `nx.json` configurations ([e210104db](https://github.com/storm-software/storm-ops/commit/e210104db))
+- **git-tools:** Resolve issue merging Nx release configuration groups ([216226882](https://github.com/storm-software/storm-ops/commit/216226882))
+- **git-tools:** Remove duplicate `git` release configurations ([c3f728eec](https://github.com/storm-software/storm-ops/commit/c3f728eec))
+
+### Miscellaneous
+
+- **git-tools:** Added separate Nx release groups for Rust crates ([291eb2ff0](https://github.com/storm-software/storm-ops/commit/291eb2ff0))
+- **git-tools:** Allow changelog renderer to default in Storm Release Client logic ([17b2f9488](https://github.com/storm-software/storm-ops/commit/17b2f9488))
+- **monorepo:** Update `changelog` configuration to use local paths ([ff3053a8a](https://github.com/storm-software/storm-ops/commit/ff3053a8a))
+- **monorepo:** Resolve sherif linting issues and reformat README markdown files ([2ed668c6a](https://github.com/storm-software/storm-ops/commit/2ed668c6a))
+
+### Updated Dependencies
+
+- Updated conventional-changelog to 0.3.17
+- Updated config-tools to 1.188.17
+- Updated config to 1.134.17
+
 ![Storm Software's logo banner](https://public.storm-cdn.com/brand-banner.png)
 
 # Changelog for Storm Ops - Git Tools

@@ -1,6 +1,6 @@
 {
   "name": "@storm-software/tsup",
-  "version": "0.2.14",
+  "version": "0.2.15",
   "type": "module",
   "description": "A package containing bundled patches for tsup.",
   "repository": {
@@ -119,16 +119,8 @@
     "./*": "./dist/*.cjs"
   },
   "types": "./dist/index.d.ts",
-  "files": [
-    "assets/**/*",
-    "dist/**/*"
-  ],
-  "keywords": [
-    "tsup",
-    "storm",
-    "storm-ops",
-    "storm-software"
-  ],
+  "files": ["assets/**/*", "dist/**/*"],
+  "keywords": ["tsup", "storm", "storm-ops", "storm-software"],
   "dependencies": {
     "@storm-software/build-tools": "workspace:*",
     "@storm-software/config-tools": "workspace:*"

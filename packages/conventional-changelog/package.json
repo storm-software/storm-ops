@@ -1,6 +1,6 @@
 {
   "name": "conventional-changelog-storm-software",
-  "version": "0.3.16",
+  "version": "0.3.17",
   "type": "module",
   "description": "This package contains the shared conventional-changelog configuration used in Storm Software projects.",
   "repository": {
@@ -215,10 +215,7 @@
     "./templates/*": "./dist/templates/*"
   },
   "types": "./dist/index.d.ts",
-  "files": [
-    "dist/**/*",
-    "templates/**/*"
-  ],
+  "files": ["dist/**/*", "templates/**/*"],
   "keywords": [
     "conventional-changelog",
     "commitlint",
