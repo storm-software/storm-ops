@@ -14,10 +14,10 @@ import { DEFAULT_CONVENTIONAL_COMMITS_CONFIG } from "nx/src/command-line/release
 import { RemoteReleaseClient } from "nx/src/command-line/release/utils/remote-release-clients/remote-release-client";
 import { major } from "semver";
 import { generateChangelogTitle } from "../utilities/changelog-utils";
+import { createGithubRemoteReleaseClient } from "./github";
 
 export interface StormChangelogRenderOptions
   extends DefaultChangelogRenderOptions {
-  remoteReleaseClient: RemoteReleaseClient<any>;
   workspaceConfig: StormWorkspaceConfig;
 }
 
@@ -34,6 +34,7 @@ export interface StormChangelogRenderParams {
   changelogRenderOptions: StormChangelogRenderOptions;
   dependencyBumps?: DependencyBump[];
   conventionalCommitsConfig?: NxReleaseConfig["conventionalCommits"];
+  remoteReleaseClient: RemoteReleaseClient<any>;
 }
 
 export default class StormChangelogRenderer extends DefaultChangelogRenderer {
@@ -48,22 +49,14 @@ export default class StormChangelogRenderer extends DefaultChangelogRenderer {
    * @param config - The configuration object for the ChangelogRenderer
    */
   public constructor(config: StormChangelogRenderParams) {
-    if (!config.changelogRenderOptions.remoteReleaseClient) {
-      throw new Error(
-        "The `remoteReleaseClient` option must be provided in the `changelogRenderOptions`."
-      );
-    }
-
     const resolvedConfig = {
       entryWhenNoChanges: false,
       conventionalCommitsConfig: DEFAULT_CONVENTIONAL_COMMITS_CONFIG,
-      ...config,
-      remoteReleaseClient: config.changelogRenderOptions.remoteReleaseClient
+      ...config
     } as DefaultChangelogRendererParams;
 
     super(resolvedConfig);
 
-    this.remoteReleaseClient = resolvedConfig.remoteReleaseClient;
     this.workspaceConfig = config.changelogRenderOptions.workspaceConfig;
   }
 
@@ -71,6 +64,10 @@ export default class StormChangelogRenderer extends DefaultChangelogRenderer {
     if (!this.workspaceConfig) {
       this.workspaceConfig = await getWorkspaceConfig();
     }
+
+    this.remoteReleaseClient = await createGithubRemoteReleaseClient(
+      this.workspaceConfig
+    );
 
     return super.render();
   }

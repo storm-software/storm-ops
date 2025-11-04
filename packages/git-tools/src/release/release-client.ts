@@ -5,7 +5,6 @@ import { writeInfo } from "@storm-software/config-tools/logger/console";
 import defu from "defu";
 import { existsSync } from "node:fs";
 import { ReleaseClient } from "nx/release";
-import { GithubRemoteReleaseClient } from "nx/src/command-line/release/utils/remote-release-clients/github";
 import {
   NxJsonConfiguration,
   NxReleaseChangelogConfiguration,
@@ -15,12 +14,10 @@ import { ReleaseConfig, ReleaseGroupConfig } from "../types";
 import { omit } from "../utilities/omit";
 import StormChangelogRenderer from "./changelog-renderer";
 import { DEFAULT_RELEASE_CONFIG, DEFAULT_RELEASE_GROUP_CONFIG } from "./config";
-import { createGithubRemoteReleaseClient } from "./github";
 
 function getReleaseGroupConfig(
   releaseConfig: Partial<ReleaseConfig>,
-  workspaceConfig: StormWorkspaceConfig,
-  remoteReleaseClient: GithubRemoteReleaseClient
+  workspaceConfig: StormWorkspaceConfig
 ) {
   return !releaseConfig?.groups ||
     Object.keys(releaseConfig.groups).length === 0
@@ -40,8 +37,7 @@ function getReleaseGroupConfig(
                   ...(
                     DEFAULT_RELEASE_GROUP_CONFIG.changelog as NxReleaseChangelogConfiguration
                   ).renderOptions,
-                  workspaceConfig,
-                  remoteReleaseClient
+                  workspaceConfig
                 }
               }
             }
@@ -93,13 +89,9 @@ export class StormReleaseClient extends ReleaseClient {
       workspaceConfig = await getWorkspaceConfig();
     }
 
-    const remoteReleaseClient =
-      await createGithubRemoteReleaseClient(workspaceConfig);
-
     return new StormReleaseClient(
       releaseConfig,
       ignoreNxJsonConfig,
-      remoteReleaseClient,
       workspaceConfig
     );
   }
@@ -114,7 +106,6 @@ export class StormReleaseClient extends ReleaseClient {
   protected constructor(
     releaseConfig: Partial<ReleaseConfig>,
     ignoreNxJsonConfig: boolean,
-    remoteReleaseClient: GithubRemoteReleaseClient,
     workspaceConfig: StormWorkspaceConfig
   ) {
     let nxJson!: Partial<NxJsonConfiguration>;
@@ -129,24 +120,15 @@ export class StormReleaseClient extends ReleaseClient {
       {
         changelog: {
           renderOptions: {
-            workspaceConfig,
-            remoteReleaseClient
+            workspaceConfig
           }
         }
       },
       {
-        groups: getReleaseGroupConfig(
-          releaseConfig,
-          workspaceConfig,
-          remoteReleaseClient
-        )
+        groups: getReleaseGroupConfig(releaseConfig, workspaceConfig)
       },
       {
-        groups: getReleaseGroupConfig(
-          nxJson.release ?? {},
-          workspaceConfig,
-          remoteReleaseClient
-        )
+        groups: getReleaseGroupConfig(nxJson.release ?? {}, workspaceConfig)
       },
       omit(releaseConfig, ["groups"]),
       nxJson.release ? omit(nxJson.release, ["groups"]) : {},
