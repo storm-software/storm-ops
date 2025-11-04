@@ -297,6 +297,7 @@
         "projects": ["packages/*"],
         "projectsRelationship": "independent",
         "changelog": {
+          "createRelease": "github",
           "entryWhenNoChanges": false
         },
         "version": {

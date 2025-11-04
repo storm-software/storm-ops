@@ -76,8 +76,7 @@
         "projectsRelationship": "independent",
         "changelog": {
           "createRelease": "github",
-          "entryWhenNoChanges": false,
-          "file": "{projectRoot}/CHANGELOG.md"
+          "entryWhenNoChanges": false
         },
         "version": {
           "groupPreVersionCommand": "pnpm build",
@@ -94,8 +93,7 @@
         "projectsRelationship": "independent",
         "changelog": {
           "createRelease": "github",
-          "entryWhenNoChanges": false,
-          "file": "{projectRoot}/CHANGELOG.md"
+          "entryWhenNoChanges": false
         },
         "version": {
           "groupPreVersionCommand": "pnpm build",
