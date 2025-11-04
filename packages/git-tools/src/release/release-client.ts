@@ -1,16 +1,30 @@
+import {
+  createProjectGraphAsync,
+  ProjectGraph,
+  ProjectsConfigurations,
+  readCachedProjectGraph,
+  readProjectsConfigurationFromProjectGraph
+} from "@nx/devkit";
 import { StormWorkspaceConfig } from "@storm-software/config";
 import { joinPaths } from "@storm-software/config-tools";
 import { getWorkspaceConfig } from "@storm-software/config-tools/get-config";
-import { writeInfo } from "@storm-software/config-tools/logger/console";
+import {
+  writeDebug,
+  writeWarning
+} from "@storm-software/config-tools/logger/console";
 import defu from "defu";
 import { existsSync } from "node:fs";
+import { readFile } from "node:fs/promises";
 import { ReleaseClient } from "nx/release";
+import { createAPI as createReleaseChangelogAPI } from "nx/src/command-line/release/changelog";
+import { ChangelogOptions } from "nx/src/command-line/release/command-object";
 import {
   NxJsonConfiguration,
   NxReleaseChangelogConfiguration,
   readNxJson
 } from "nx/src/config/nx-json";
 import { ReleaseConfig, ReleaseGroupConfig } from "../types";
+import { generateChangelogContent } from "../utilities/changelog-utils";
 import { omit } from "../utilities/omit";
 import StormChangelogRenderer from "./changelog-renderer";
 import { DEFAULT_RELEASE_CONFIG, DEFAULT_RELEASE_GROUP_CONFIG } from "./config";
@@ -89,21 +103,62 @@ export class StormReleaseClient extends ReleaseClient {
       workspaceConfig = await getWorkspaceConfig();
     }
 
+    let projectGraph!: ProjectGraph;
+    try {
+      projectGraph = readCachedProjectGraph();
+    } catch {
+      projectGraph = await createProjectGraphAsync({
+        exitOnError: true,
+        resetDaemonClient: true
+      });
+    }
+
+    if (!projectGraph) {
+      throw new Error(
+        "Failed to load the project graph. Please run `nx reset`, then run the `storm-git commit` command again."
+      );
+    }
+
     return new StormReleaseClient(
+      projectGraph,
       releaseConfig,
       ignoreNxJsonConfig,
       workspaceConfig
     );
   }
 
+  #releaseChangelog: ReturnType<typeof createReleaseChangelogAPI>;
+
+  /**
+   * The release configuration used by this release client.
+   */
+  protected config: ReleaseConfig;
+
+  /**
+   * The workspace configuration used by this release client.
+   */
+  protected workspaceConfig: StormWorkspaceConfig;
+
+  /**
+   * The project graph of the workspace.
+   */
+  protected projectGraph: ProjectGraph;
+
+  /**
+   * The project configurations of the workspace.
+   */
+  protected projectConfigurations: ProjectsConfigurations;
+
   /**
    *  Creates an instance of {@link StormReleaseClient}.
    *
+   * @param projectGraph - The project graph of the workspace.
    * @param releaseConfig - Release configuration to use for the current release client. By default, it will be combined with any configuration in `nx.json`, but you can choose to use it as the sole source of truth by setting {@link ignoreNxJsonConfig} to true.
    * @param ignoreNxJsonConfig - Whether to ignore the nx.json configuration and use only the provided {@link releaseConfig}. Default is false.
    * @param workspaceConfig - Optional Storm workspace configuration object for logging purposes.
    */
   protected constructor(
+    projectGraph: ProjectGraph,
     releaseConfig: Partial<ReleaseConfig>,
     ignoreNxJsonConfig: boolean,
     workspaceConfig: StormWorkspaceConfig
@@ -137,10 +192,65 @@ export class StormReleaseClient extends ReleaseClient {
 
     super(config, true);
 
-    writeInfo(
+    writeDebug(
       "Executing release with the following configuration",
       workspaceConfig
     );
-    writeInfo(config, workspaceConfig);
+    writeDebug(config, workspaceConfig);
+
+    this.projectGraph = projectGraph;
+    this.config = config;
+    this.workspaceConfig = workspaceConfig;
+    this.#releaseChangelog = createReleaseChangelogAPI(config, true);
+
+    this.projectConfigurations =
+      readProjectsConfigurationFromProjectGraph(projectGraph);
   }
+
+  public override releaseChangelog = async (options: ChangelogOptions) => {
+    const result = await this.#releaseChangelog(options);
+
+    if (result.projectChangelogs) {
+      await Promise.all(
+        Object.entries(result.projectChangelogs).map(
+          async ([project, changelog]) => {
+            if (!this.projectGraph.nodes[project]?.data.root) {
+              writeWarning(
+                `A changelog was generated for ${
+                  project
+                }, but it could not be found in the project graph. Skipping writing changelog file.`,
+                this.workspaceConfig
+              );
+            } else if (changelog.contents) {
+              const filePath = joinPaths(
+                this.projectGraph.nodes[project].data.root,
+                "CHANGELOG.md"
+              );
+
+              let currentContent: string | undefined;
+              if (existsSync(filePath)) {
+                currentContent = await readFile(filePath, "utf8");
+              }
+
+              writeDebug(
+                `✍️  Writing changelog for project ${project} to ${filePath}`,
+                this.workspaceConfig
+              );
+
+              await generateChangelogContent(
+                changelog.releaseVersion,
+                filePath,
+                changelog.contents,
+                currentContent,
+                project,
+                this.workspaceConfig
+              );
+            }
+          }
+        )
+      );
+    }
+
+    return result;
+  };
 }

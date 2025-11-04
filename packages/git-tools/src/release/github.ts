@@ -2,6 +2,7 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 
 import { joinPathFragments, output } from "@nx/devkit";
+import { getWorkspaceConfig } from "@storm-software/config-tools/get-config";
 import { StormWorkspaceConfig } from "@storm-software/config/types";
 import type { AxiosRequestConfig } from "axios";
 import axios from "axios";
@@ -9,6 +10,7 @@ import { prompt } from "enquirer";
 import { execSync } from "node:child_process";
 import { existsSync, promises as fsp } from "node:fs";
 import { homedir } from "node:os";
+import { PostGitTask } from "nx/src/command-line/release/changelog";
 import { ResolvedCreateRemoteReleaseProvider } from "nx/src/command-line/release/config/config";
 import { printDiff } from "nx/src/command-line/release/utils/print-changes";
 import {
@@ -55,97 +57,89 @@ export class StormGithubRemoteReleaseClient extends GithubRemoteReleaseClient {
     this.#workspaceConfig = workspaceConfig;
   }
 
-  /**
-   * Creates or updates a GitHub release with Storm Software specific release notes formatting.
-   *
-   * @param releaseVersion - The version information for the release
-   * @param changelogContents - The contents of the changelog for the release
-   * @param latestCommit - The latest commit hash associated with the release
-   * @param dryRun - Whether to perform a dry run without making actual changes
-   */
-  public override createOrUpdateRelease(
+  public override createPostGitTask(
     releaseVersion: ReleaseVersion,
     changelogContents: string,
-    latestCommit: string,
-    { dryRun }: { dryRun: boolean }
-  ): Promise<void> {
-    if (!this.#workspaceConfig) {
-      return this.createOrUpdateRelease(
+    dryRun: boolean
+  ): PostGitTask {
+    return async (latestCommit: string) => {
+      if (!this.#workspaceConfig) {
+        this.#workspaceConfig = await getWorkspaceConfig();
+      }
+
+      output.logSingleLine(`Creating GitHub Release`);
+
+      const name = releaseVersion.gitTag.includes("@")
+        ? releaseVersion.gitTag
+            .replace(new RegExp(`^@${this.#workspaceConfig.name}/`), "")
+            .replace(/@.*$/, "")
+        : releaseVersion.gitTag;
+
+      await this.createOrUpdateRelease(
         releaseVersion,
-        changelogContents,
-        latestCommit,
-        { dryRun }
-      );
-    }
-
-    const name = releaseVersion.gitTag.includes("@")
-      ? releaseVersion.gitTag.replace(/@.*$/, "")
-      : releaseVersion.gitTag;
-
-    return super.createOrUpdateRelease(
-      releaseVersion,
-      `![${
-        (typeof this.#workspaceConfig.release.banner === "string"
-          ? this.#workspaceConfig.organization
-            ? titleCase(
-                typeof this.#workspaceConfig.organization === "string"
-                  ? this.#workspaceConfig.organization
-                  : this.#workspaceConfig.organization.name
-              )
-            : undefined
-          : this.#workspaceConfig.release.banner.alt) || "Release banner header"
-      }](${
-        typeof this.#workspaceConfig.release.banner === "string"
-          ? this.#workspaceConfig.release.banner
-          : this.#workspaceConfig.release.banner?.url
-      })
+        `![${
+          (typeof this.#workspaceConfig.release.banner === "string"
+            ? this.#workspaceConfig.organization
+              ? titleCase(
+                  typeof this.#workspaceConfig.organization === "string"
+                    ? this.#workspaceConfig.organization
+                    : this.#workspaceConfig.organization.name
+                )
+              : undefined
+            : this.#workspaceConfig.release.banner.alt) ||
+          "Release banner header"
+        }](${
+          typeof this.#workspaceConfig.release.banner === "string"
+            ? this.#workspaceConfig.release.banner
+            : this.#workspaceConfig.release.banner?.url
+        })
 ${this.#workspaceConfig.release.header || ""}
 
 # ${name ? `${titleCase(name)} ` : ""}v${releaseVersion.rawVersion}
 
 We at [${
-        this.#workspaceConfig.organization
-          ? titleCase(
-              typeof this.#workspaceConfig.organization === "string"
-                ? this.#workspaceConfig.organization
-                : this.#workspaceConfig.organization.name
-            )
-          : ""
-      }](${this.#workspaceConfig.homepage}) are very excited to announce the v${
-        releaseVersion.rawVersion
-      } release of the ${
-        name
-          ? this.#workspaceConfig.name
-            ? `${titleCase(this.#workspaceConfig.name)} - ${titleCase(name)}`
-            : titleCase(name)
-          : this.#workspaceConfig.name
-            ? titleCase(this.#workspaceConfig.name)
-            : "Storm Software"
-      } project! 🚀
+          this.#workspaceConfig.organization
+            ? titleCase(
+                typeof this.#workspaceConfig.organization === "string"
+                  ? this.#workspaceConfig.organization
+                  : this.#workspaceConfig.organization.name
+              )
+            : ""
+        }](${this.#workspaceConfig.homepage}) are very excited to announce the v${
+          releaseVersion.rawVersion
+        } release of the ${
+          name
+            ? this.#workspaceConfig.name
+              ? `${titleCase(this.#workspaceConfig.name)} - ${titleCase(name)}`
+              : titleCase(name)
+            : this.#workspaceConfig.name
+              ? titleCase(this.#workspaceConfig.name)
+              : "Storm Software"
+        } project! 🚀
 
 These changes are released under the ${
-        this.#workspaceConfig.license.includes("license")
-          ? this.#workspaceConfig.license
-          : `${this.#workspaceConfig.license} license`
-      }. You can find more details on [our licensing page](${this.#workspaceConfig.licensing}). You can find guides, API references, and other documentation around this release (and much more) on [our documentation site](${
-        this.#workspaceConfig.docs
-      }).
+          this.#workspaceConfig.license.includes("license")
+            ? this.#workspaceConfig.license
+            : `${this.#workspaceConfig.license} license`
+        }. You can find more details on [our licensing page](${this.#workspaceConfig.licensing}). You can find guides, API references, and other documentation around this release (and much more) on [our documentation site](${
+          this.#workspaceConfig.docs
+        }).
 
 If you have any questions or comments, feel free to reach out to the team on [Discord](${
-        this.#workspaceConfig.socials.discord
-      }) or [our contact page](${this.#workspaceConfig.contact}). Please help us spread the word by giving [this repository](https://github.com/${
-        typeof this.#workspaceConfig.organization === "string"
-          ? this.#workspaceConfig.organization
-          : this.#workspaceConfig.organization?.name
-      }/${this.#workspaceConfig.name}) a star ⭐ on GitHub or [posting on X (Twitter)](https://x.com/intent/tweet?text=Check%20out%20the%20latest%20@${
-        this.#workspaceConfig.socials.twitter
-      }%20release%20${
-        name ? `${titleCase(name)?.replaceAll(" ", "%20")}%20` : ""
-      }v${releaseVersion.rawVersion}%20%F0%9F%9A%80%0D%0A%0D%0Ahttps://github.com/${
-        typeof this.#workspaceConfig.organization === "string"
-          ? this.#workspaceConfig.organization
-          : this.#workspaceConfig.organization?.name
-      }/${this.#workspaceConfig.name}/releases/tag/${releaseVersion.gitTag}) about this release!
+          this.#workspaceConfig.socials.discord
+        }) or [our contact page](${this.#workspaceConfig.contact}). Please help us spread the word by giving [this repository](https://github.com/${
+          typeof this.#workspaceConfig.organization === "string"
+            ? this.#workspaceConfig.organization
+            : this.#workspaceConfig.organization?.name
+        }/${this.#workspaceConfig.name}) a star ⭐ on GitHub or [posting on X (Twitter)](https://x.com/intent/tweet?text=Check%20out%20the%20latest%20@${
+          this.#workspaceConfig.socials.twitter
+        }%20release%20${
+          name ? `${titleCase(name)?.replaceAll(" ", "%20")}%20` : ""
+        }v${releaseVersion.rawVersion}%20%F0%9F%9A%80%0D%0A%0D%0Ahttps://github.com/${
+          typeof this.#workspaceConfig.organization === "string"
+            ? this.#workspaceConfig.organization
+            : this.#workspaceConfig.organization?.name
+        }/${this.#workspaceConfig.name}/releases/tag/${releaseVersion.gitTag}) about this release!
 
 ## Release Notes
 
@@ -167,9 +161,10 @@ ${changelogContents
 
 ${this.#workspaceConfig.release.footer}
 `,
-      latestCommit,
-      { dryRun }
-    );
+        latestCommit,
+        { dryRun }
+      );
+    };
   }
 
   /**

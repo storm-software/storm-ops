@@ -14,7 +14,7 @@ export const DEFAULT_RELEASE_GROUP_CONFIG = {
   changelog: {
     createRelease: "github",
     entryWhenNoChanges: false,
-    file: "{projectRoot}/CHANGELOG.md",
+    file: false,
     renderOptions: {
       authors: false,
       commitReferences: true,
