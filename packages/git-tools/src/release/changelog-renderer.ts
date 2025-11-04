@@ -11,10 +11,7 @@ import DefaultChangelogRenderer, {
 import { ChangelogChange } from "nx/src/command-line/release/changelog";
 import { NxReleaseConfig } from "nx/src/command-line/release/config/config";
 import { DEFAULT_CONVENTIONAL_COMMITS_CONFIG } from "nx/src/command-line/release/config/conventional-commits";
-import {
-  RemoteReleaseClient,
-  RemoteRepoData
-} from "nx/src/command-line/release/utils/remote-release-clients/remote-release-client";
+import { RemoteReleaseClient } from "nx/src/command-line/release/utils/remote-release-clients/remote-release-client";
 import { major } from "semver";
 import { generateChangelogTitle } from "../utilities/changelog-utils";
 
@@ -46,11 +43,6 @@ export default class StormChangelogRenderer extends DefaultChangelogRenderer {
   protected workspaceConfig?: StormWorkspaceConfig;
 
   /**
-   * The configuration object for the ChangelogRenderer, which includes the changes, version, project, and other options.
-   */
-  protected repoData: RemoteRepoData | null;
-
-  /**
    * A ChangelogRenderer class takes in the determined changes and other relevant metadata and returns a string, or a Promise of a string of changelog contents (usually markdown).
    *
    * @param config - The configuration object for the ChangelogRenderer
@@ -72,7 +64,6 @@ export default class StormChangelogRenderer extends DefaultChangelogRenderer {
     super(resolvedConfig);
 
     this.remoteReleaseClient = resolvedConfig.remoteReleaseClient;
-    this.repoData = resolvedConfig.remoteReleaseClient.getRemoteRepoData();
     this.workspaceConfig = config.changelogRenderOptions.workspaceConfig;
   }
 
@@ -221,10 +212,7 @@ export default class StormChangelogRenderer extends DefaultChangelogRenderer {
       }
     }
 
-    if (
-      this.repoData &&
-      this.changelogRenderOptions.mapAuthorsToGitHubUsernames
-    ) {
+    if (this.changelogRenderOptions.mapAuthorsToGitHubUsernames) {
       await Promise.all(
         [..._authors.keys()].map(async authorName => {
           const meta = _authors.get(authorName);
@@ -305,7 +293,7 @@ export default class StormChangelogRenderer extends DefaultChangelogRenderer {
         ? `**${change.scope.trim()}:** `
         : "") +
       description;
-    if (this.repoData && change.githubReferences) {
+    if (change.githubReferences) {
       changeLine += this.remoteReleaseClient.formatReferences(
         change.githubReferences
       );
