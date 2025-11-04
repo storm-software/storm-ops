@@ -75,7 +75,6 @@ export const DEFAULT_RELEASE_CONFIG: ReleaseConfig = {
     git: {
       tag: true,
       commit: true,
-      commitArgs: ["--annotate", "--sign"],
       commitMessage: "release(monorepo): Publish workspace release updates"
     },
     automaticFromRef: true,
