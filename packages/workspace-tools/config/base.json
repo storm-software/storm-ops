@@ -297,12 +297,7 @@
         "projects": ["packages/*"],
         "projectsRelationship": "independent",
         "changelog": {
-          "entryWhenNoChanges": false,
-          "renderOptions": {
-            "authors": false,
-            "commitReferences": true,
-            "versionTitleDate": true
-          }
+          "entryWhenNoChanges": false
         },
         "version": {
           "groupPreVersionCommand": "pnpm build",

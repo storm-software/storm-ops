@@ -4,6 +4,7 @@ import {
   CreateNodesV2,
   joinPathFragments,
   readJsonFile,
+  TargetConfiguration,
   workspaceRoot,
   type CreateDependencies,
   type ProjectConfiguration,
@@ -114,7 +115,7 @@ export const createNodesV2: CreateNodesV2<CargoPluginOptions | undefined> = [
                 continue;
               }
 
-              project.targets = {
+              const targets: Record<string, TargetConfiguration<any>> = {
                 "lint-markdown": {
                   cache: true,
                   outputs: ["{projectRoot}/**/*.md", "{projectRoot}/**/*.mdx"],
@@ -268,7 +269,7 @@ export const createNodesV2: CreateNodesV2<CargoPluginOptions | undefined> = [
               };
 
               if (skipDocs != true) {
-                project.targets.docs = {
+                targets.docs = {
                   cache: true,
                   inputs: ["linting", "documentation", "^production"],
                   dependsOn: ["format-readme", "lint-docs", "^docs"],
@@ -296,7 +297,7 @@ export const createNodesV2: CreateNodesV2<CargoPluginOptions | undefined> = [
                   { overwrite: true }
                 );
 
-                project.targets["nx-release-publish"] = {
+                targets["nx-release-publish"] = {
                   cache: true,
                   inputs: [
                     "linting",
@@ -325,6 +326,7 @@ export const createNodesV2: CreateNodesV2<CargoPluginOptions | undefined> = [
 
               projects[root] = defu(
                 {
+                  targets,
                   release: {
                     version: {
                       versionActions:

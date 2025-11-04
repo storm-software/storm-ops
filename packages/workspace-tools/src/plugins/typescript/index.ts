@@ -107,7 +107,7 @@ export const createNodesV2: CreateNodesV2<TypeScriptPluginOptions> = [
             return {};
           }
 
-          const projectConfig = createProjectFromPackageJsonNextToProjectJson(
+          const project = createProjectFromPackageJsonNextToProjectJson(
             file,
             packageJson
           );
@@ -115,12 +115,12 @@ export const createNodesV2: CreateNodesV2<TypeScriptPluginOptions> = [
           // If the project is an application and we don't want to include apps, skip it
           if (
             options?.includeApps === false &&
-            projectConfig.projectType === "application"
+            project.projectType === "application"
           ) {
             return {};
           }
 
-          const root = getRoot(projectConfig.root, context);
+          const root = getRoot(project.root, context);
 
           const enableMarkdownlint = options?.enableMarkdownlint !== false;
           const enableEslint = options?.enableEslint !== false;
@@ -130,12 +130,12 @@ export const createNodesV2: CreateNodesV2<TypeScriptPluginOptions> = [
             readTargetsFromPackageJson(
               packageJson as NxPackageJson,
               nxJson,
-              projectConfig.root,
+              project.root,
               context.workspaceRoot
             );
 
           if (
-            join(context.workspaceRoot, projectConfig.root).startsWith(
+            join(context.workspaceRoot, project.root).startsWith(
               join(context.workspaceRoot, "tools")
             ) &&
             options?.lintInternalTools !== true
@@ -212,7 +212,7 @@ export const createNodesV2: CreateNodesV2<TypeScriptPluginOptions> = [
                 ],
                 options: {
                   command: `pnpm exec ${options?.useTsGo ? "tsgo" : "tsc"} --noEmit --skipLibCheck --pretty --project ./${join(
-                    projectConfig.root,
+                    project.root,
                     "tsconfig.json"
                   )}`
                 }
@@ -220,7 +220,7 @@ export const createNodesV2: CreateNodesV2<TypeScriptPluginOptions> = [
             }
 
             if (enableEslint) {
-              let eslintConfig = checkEslintConfigAtPath(projectConfig.root);
+              let eslintConfig = checkEslintConfigAtPath(project.root);
               if (!eslintConfig) {
                 eslintConfig = checkEslintConfigAtPath(context.workspaceRoot);
               }
@@ -348,11 +348,11 @@ export const createNodesV2: CreateNodesV2<TypeScriptPluginOptions> = [
             inputs: ["typescript", "^production"],
             outputs: [`{workspaceRoot}/dist/${root}`],
             options: {
-              command: `pnpm exec nx run ${projectConfig.name}:build`
+              command: `pnpm exec nx run ${project.name}:build`
             }
           };
 
-          if (checkJestConfigAtPath(projectConfig.root)) {
+          if (checkJestConfigAtPath(project.root)) {
             targets.test ??= {
               cache: true,
               executor: "@nx/jest:jest",
@@ -396,7 +396,7 @@ export const createNodesV2: CreateNodesV2<TypeScriptPluginOptions> = [
           const isPrivate = packageJson.private ?? false;
           if (!isPrivate) {
             addProjectTag(
-              projectConfig,
+              project,
               ProjectTagConstants.Registry.TAG_ID,
               ProjectTagConstants.Registry.NPM,
               { overwrite: true }
@@ -410,14 +410,14 @@ export const createNodesV2: CreateNodesV2<TypeScriptPluginOptions> = [
             };
 
             if (
-              projectConfig.projectType === "application" ||
+              project.projectType === "application" ||
               isEqualProjectTag(
-                projectConfig,
+                project,
                 ProjectTagConstants.ProjectType.TAG_ID,
                 ProjectTagConstants.ProjectType.APPLICATION
               ) ||
               isEqualProjectTag(
-                projectConfig,
+                project,
                 ProjectTagConstants.DistStyle.TAG_ID,
                 ProjectTagConstants.DistStyle.CLEAN
               )
@@ -440,17 +440,17 @@ export const createNodesV2: CreateNodesV2<TypeScriptPluginOptions> = [
           }
 
           addProjectTag(
-            projectConfig,
+            project,
             ProjectTagConstants.Language.TAG_ID,
             ProjectTagConstants.Language.TYPESCRIPT,
             { overwrite: true }
           );
 
-          const platform = getProjectPlatform(projectConfig);
+          const platform = getProjectPlatform(project);
           switch (platform) {
             case "worker":
               addProjectTag(
-                projectConfig,
+                project,
                 ProjectTagConstants.Platform.TAG_ID,
                 ProjectTagConstants.Platform.WORKER,
                 { overwrite: true }
@@ -459,7 +459,7 @@ export const createNodesV2: CreateNodesV2<TypeScriptPluginOptions> = [
 
             case "node":
               addProjectTag(
-                projectConfig,
+                project,
                 ProjectTagConstants.Platform.TAG_ID,
                 ProjectTagConstants.Platform.NODE,
                 { overwrite: true }
@@ -468,7 +468,7 @@ export const createNodesV2: CreateNodesV2<TypeScriptPluginOptions> = [
 
             case "browser":
               addProjectTag(
-                projectConfig,
+                project,
                 ProjectTagConstants.Platform.TAG_ID,
                 ProjectTagConstants.Platform.BROWSER,
                 { overwrite: true }
@@ -477,7 +477,7 @@ export const createNodesV2: CreateNodesV2<TypeScriptPluginOptions> = [
 
             default:
               addProjectTag(
-                projectConfig,
+                project,
                 ProjectTagConstants.Platform.TAG_ID,
                 ProjectTagConstants.Platform.NEUTRAL,
                 { overwrite: true }
@@ -485,22 +485,22 @@ export const createNodesV2: CreateNodesV2<TypeScriptPluginOptions> = [
               break;
           }
 
-          setDefaultProjectTags(projectConfig, name);
+          setDefaultProjectTags(project, name);
 
           return {
             projects: {
               [root]: defu(
                 {
                   root,
+                  targets,
                   release: {
-                    targets,
                     version: {
                       versionActions:
                         "@storm-software/workspace-tools/release/js-version-actions"
                     }
                   }
                 },
-                projectConfig
+                project
               )
             }
           };
