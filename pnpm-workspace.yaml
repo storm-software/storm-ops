@@ -8,7 +8,7 @@ packages:
 
 catalog:
   '@ltd/j-toml': 1.38.0
-  '@microsoft/api-extractor': ^7.53.3
+  '@microsoft/api-extractor': ^7.54.0
   '@nx/devkit': ^22.0.2
   '@nx/esbuild': ^22.0.2
   '@nx/eslint': ^22.0.2

@@ -73,9 +73,9 @@ export const DEFAULT_RELEASE_CONFIG: ReleaseConfig = {
   },
   changelog: {
     git: {
-      tag: true,
-      commit: true,
-      commitMessage: "release(monorepo): Publish workspace release updates"
+      tag: true
+      // commit: true,
+      // commitMessage: "release(monorepo): Publish workspace release updates"
     },
     automaticFromRef: true,
     workspaceChangelog: false,

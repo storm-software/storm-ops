@@ -3,7 +3,8 @@ import {
   ProjectGraph,
   ProjectsConfigurations,
   readCachedProjectGraph,
-  readProjectsConfigurationFromProjectGraph
+  readProjectsConfigurationFromProjectGraph,
+  Tree
 } from "@nx/devkit";
 import { StormWorkspaceConfig } from "@storm-software/config";
 import { joinPaths } from "@storm-software/config-tools";
@@ -18,11 +19,14 @@ import { readFile } from "node:fs/promises";
 import { ReleaseClient } from "nx/release";
 import { createAPI as createReleaseChangelogAPI } from "nx/src/command-line/release/changelog";
 import { ChangelogOptions } from "nx/src/command-line/release/command-object";
+import { printAndFlushChanges } from "nx/src/command-line/release/utils/print-changes";
+import { noDiffInChangelogMessage } from "nx/src/command-line/release/utils/shared";
 import {
   NxJsonConfiguration,
   NxReleaseChangelogConfiguration,
   readNxJson
 } from "nx/src/config/nx-json";
+import { FsTree } from "nx/src/generators/tree";
 import { ReleaseConfig, ReleaseGroupConfig } from "../types";
 import { generateChangelogContent } from "../utilities/changelog-utils";
 import { omit } from "../utilities/omit";
@@ -150,6 +154,11 @@ export class StormReleaseClient extends ReleaseClient {
   protected projectConfigurations: ProjectsConfigurations;
 
   /**
+   * The file system tree used by this release client.
+   */
+  protected tree: Tree;
+
+  /**
    *  Creates an instance of {@link StormReleaseClient}.
    *
    * @param projectGraph - The project graph of the workspace.
@@ -201,6 +210,8 @@ export class StormReleaseClient extends ReleaseClient {
     this.projectGraph = projectGraph;
     this.config = config;
     this.workspaceConfig = workspaceConfig;
+    this.tree = new FsTree(workspaceConfig.workspaceRoot, false);
+
     this.#releaseChangelog = createReleaseChangelogAPI(config, true);
 
     this.projectConfigurations =
@@ -237,13 +248,25 @@ export class StormReleaseClient extends ReleaseClient {
                 this.workspaceConfig
               );
 
-              await generateChangelogContent(
+              const content = await generateChangelogContent(
                 changelog.releaseVersion,
                 filePath,
                 changelog.contents,
                 currentContent,
                 project,
                 this.workspaceConfig
+              );
+
+              this.tree.write(filePath, content);
+
+              printAndFlushChanges(
+                this.tree,
+                !!options.dryRun,
+                3,
+                false,
+                noDiffInChangelogMessage,
+                // Only print the change for the current changelog file at this point
+                f => f.path === filePath
               );
             }
           }
