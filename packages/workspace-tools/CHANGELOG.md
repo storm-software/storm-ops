@@ -1,22 +1,51 @@
+![Storm Software's logo banner](https://public.storm-cdn.com/brand-banner.png)
+
+# Changelog for Storm Ops - Workspace Tools
+
+## [1.292.19](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.292.19) (11/5/2025)
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.19**
+- Updated **config-tools** to **v1.188.19**
+- Updated **pnpm-tools** to **v0.6.19**
+- Updated **npm-tools** to **v0.5.19**
+- Updated **prettier** to **v0.57.19**
+- Updated **esbuild** to **v0.53.19**
+- Updated **unbuild** to **v0.57.19**
+- Updated **config** to **v1.134.19**
+- Updated **tsdown** to **v0.45.19**
+
 ## [1.292.17](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.292.17) (2025-11-04)
 
 ### Features
 
-- **monorepo:** Update packages to use Nx v22.0.2 ([8895b7333](https://github.com/storm-software/storm-ops/commit/8895b7333))
+- **monorepo:** Update packages to use Nx v22.0.2
+  ([8895b7333](https://github.com/storm-software/storm-ops/commit/8895b7333))
 
 ### Bug Fixes
 
-- **workspace-tools:** Resolve issue updating crate dependencies ([3cafed54b](https://github.com/storm-software/storm-ops/commit/3cafed54b))
-- **workspace-tools:** Added logic to parse cargo registry from config and handle all dependency types ([ae6943916](https://github.com/storm-software/storm-ops/commit/ae6943916))
-- **workspace-tools:** Resolved issue reading the crate dependency versions ([ff52fd3dd](https://github.com/storm-software/storm-ops/commit/ff52fd3dd))
-- **workspace-tools:** Resolved issue with invalid version actions path ([f92989790](https://github.com/storm-software/storm-ops/commit/f92989790))
+- **workspace-tools:** Resolve issue updating crate dependencies
+  ([3cafed54b](https://github.com/storm-software/storm-ops/commit/3cafed54b))
+- **workspace-tools:** Added logic to parse cargo registry from config and
+  handle all dependency types
+  ([ae6943916](https://github.com/storm-software/storm-ops/commit/ae6943916))
+- **workspace-tools:** Resolved issue reading the crate dependency versions
+  ([ff52fd3dd](https://github.com/storm-software/storm-ops/commit/ff52fd3dd))
+- **workspace-tools:** Resolved issue with invalid version actions path
+  ([f92989790](https://github.com/storm-software/storm-ops/commit/f92989790))
 
 ### Miscellaneous
 
-- **workspace-tools:** Remove unused configurations from shared `nx.json` file ([3a6bea34e](https://github.com/storm-software/storm-ops/commit/3a6bea34e))
-- **workspace-tools:** Remove default `versionActions` from base `nx.json` config ([35f143e14](https://github.com/storm-software/storm-ops/commit/35f143e14))
-- **monorepo:** Update `changelog` configuration to use local paths ([ff3053a8a](https://github.com/storm-software/storm-ops/commit/ff3053a8a))
-- **monorepo:** Resolve sherif linting issues and reformat README markdown files ([2ed668c6a](https://github.com/storm-software/storm-ops/commit/2ed668c6a))
+- **workspace-tools:** Remove unused configurations from shared `nx.json` file
+  ([3a6bea34e](https://github.com/storm-software/storm-ops/commit/3a6bea34e))
+- **workspace-tools:** Remove default `versionActions` from base `nx.json`
+  config
+  ([35f143e14](https://github.com/storm-software/storm-ops/commit/35f143e14))
+- **monorepo:** Update `changelog` configuration to use local paths
+  ([ff3053a8a](https://github.com/storm-software/storm-ops/commit/ff3053a8a))
+- **monorepo:** Resolve sherif linting issues and reformat README markdown files
+  ([2ed668c6a](https://github.com/storm-software/storm-ops/commit/2ed668c6a))
 
 ### Updated Dependencies
 
@@ -29,10 +58,6 @@
 - Updated unbuild to 0.57.17
 - Updated config to 1.134.17
 - Updated tsdown to 0.45.17
-
-![Storm Software's logo banner](https://public.storm-cdn.com/brand-banner.png)
-
-# Changelog for Storm Ops - Workspace Tools
 
 ## [1.292.16](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.292.16) (2025-10-31)
 

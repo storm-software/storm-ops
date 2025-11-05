@@ -1,12 +1,27 @@
+![Storm Software's logo banner](https://public.storm-cdn.com/brand-banner.png)
+
+# Changelog for Storm Ops - Esbuild
+
+## [0.53.19](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.53.19) (11/5/2025)
+
+### Updated Dependencies
+
+- Updated **config-tools** to **v1.188.19**
+- Updated **build-tools** to **v0.158.19**
+- Updated **config** to **v1.134.19**
+- Updated **tsup** to **v0.2.17**
+
 ## [0.53.17](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.53.17) (2025-11-04)
 
 ### Features
 
-- **monorepo:** Update packages to use Nx v22.0.2 ([8895b7333](https://github.com/storm-software/storm-ops/commit/8895b7333))
+- **monorepo:** Update packages to use Nx v22.0.2
+  ([8895b7333](https://github.com/storm-software/storm-ops/commit/8895b7333))
 
 ### Miscellaneous
 
-- **monorepo:** Resolve sherif linting issues and reformat README markdown files ([2ed668c6a](https://github.com/storm-software/storm-ops/commit/2ed668c6a))
+- **monorepo:** Resolve sherif linting issues and reformat README markdown files
+  ([2ed668c6a](https://github.com/storm-software/storm-ops/commit/2ed668c6a))
 
 ### Updated Dependencies
 
@@ -14,10 +29,6 @@
 - Updated build-tools to 0.158.17
 - Updated config to 1.134.17
 - Updated tsup to 0.2.15
-
-![Storm Software's logo banner](https://public.storm-cdn.com/brand-banner.png)
-
-# Changelog for Storm Ops - Esbuild
 
 ## [0.53.16](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.53.16) (2025-10-31)
 

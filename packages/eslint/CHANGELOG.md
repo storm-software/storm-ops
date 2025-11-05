@@ -1,22 +1,32 @@
+![Storm Software's logo banner](https://public.storm-cdn.com/brand-banner.png)
+
+# Changelog for Storm Ops - ESLint
+
+## [0.169.19](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.169.19) (11/5/2025)
+
+### Updated Dependencies
+
+- Updated **config-tools** to **v1.188.19**
+- Updated **config** to **v1.134.19**
+- Updated **tsdoc** to **v0.13.19**
+
 ## [0.169.17](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.169.17) (2025-11-04)
 
 ### Features
 
-- **monorepo:** Update packages to use Nx v22.0.2 ([8895b7333](https://github.com/storm-software/storm-ops/commit/8895b7333))
+- **monorepo:** Update packages to use Nx v22.0.2
+  ([8895b7333](https://github.com/storm-software/storm-ops/commit/8895b7333))
 
 ### Miscellaneous
 
-- **monorepo:** Resolve sherif linting issues and reformat README markdown files ([2ed668c6a](https://github.com/storm-software/storm-ops/commit/2ed668c6a))
+- **monorepo:** Resolve sherif linting issues and reformat README markdown files
+  ([2ed668c6a](https://github.com/storm-software/storm-ops/commit/2ed668c6a))
 
 ### Updated Dependencies
 
 - Updated config-tools to 1.188.17
 - Updated config to 1.134.17
 - Updated tsdoc to 0.13.17
-
-![Storm Software's logo banner](https://public.storm-cdn.com/brand-banner.png)
-
-# Changelog for Storm Ops - ESLint
 
 ## [0.169.16](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.169.16) (2025-10-31)
 

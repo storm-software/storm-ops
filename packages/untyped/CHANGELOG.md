@@ -1,21 +1,35 @@
+![Storm Software's logo banner](https://public.storm-cdn.com/brand-banner.png)
+
+# Changelog for Storm Ops - Untyped
+
+## [0.24.0](https://github.com/storm-software/storm-ops/releases/tag/untyped%400.24.0) (11/5/2025)
+
+### Features
+
+- **untyped:** Added the `generatedBy` option
+  ([b35bfc1ce](https://github.com/storm-software/storm-ops/commit/b35bfc1ce))
+
+### Updated Dependencies
+
+- Updated **config-tools** to **v1.188.19**
+- Updated **config** to **v1.134.19**
+
 ## [0.23.17](https://github.com/storm-software/storm-ops/releases/tag/untyped%400.23.17) (2025-11-04)
 
 ### Features
 
-- **monorepo:** Update packages to use Nx v22.0.2 ([8895b7333](https://github.com/storm-software/storm-ops/commit/8895b7333))
+- **monorepo:** Update packages to use Nx v22.0.2
+  ([8895b7333](https://github.com/storm-software/storm-ops/commit/8895b7333))
 
 ### Miscellaneous
 
-- **monorepo:** Resolve sherif linting issues and reformat README markdown files ([2ed668c6a](https://github.com/storm-software/storm-ops/commit/2ed668c6a))
+- **monorepo:** Resolve sherif linting issues and reformat README markdown files
+  ([2ed668c6a](https://github.com/storm-software/storm-ops/commit/2ed668c6a))
 
 ### Updated Dependencies
 
 - Updated config-tools to 1.188.17
 - Updated config to 1.134.17
-
-![Storm Software's logo banner](https://public.storm-cdn.com/brand-banner.png)
-
-# Changelog for Storm Ops - Untyped
 
 ## [0.23.16](https://github.com/storm-software/storm-ops/releases/tag/untyped%400.23.16) (2025-10-31)
 

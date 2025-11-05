@@ -1,20 +1,28 @@
+![Storm Software's logo banner](https://public.storm-cdn.com/brand-banner.png)
+
+# Changelog for Storm Ops - Storm Config
+
+## [0.25.19](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.25.19) (11/5/2025)
+
+### Updated Dependencies
+
+- Updated **storm-workspace** to **v0.19.19**
+
 ## [0.25.17](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.25.17) (2025-11-04)
 
 ### Features
 
-- **monorepo:** Update packages to use Nx v22.0.2 ([8895b7333](https://github.com/storm-software/storm-ops/commit/8895b7333))
+- **monorepo:** Update packages to use Nx v22.0.2
+  ([8895b7333](https://github.com/storm-software/storm-ops/commit/8895b7333))
 
 ### Miscellaneous
 
-- **monorepo:** Resolve sherif linting issues and reformat README markdown files ([2ed668c6a](https://github.com/storm-software/storm-ops/commit/2ed668c6a))
+- **monorepo:** Resolve sherif linting issues and reformat README markdown files
+  ([2ed668c6a](https://github.com/storm-software/storm-ops/commit/2ed668c6a))
 
 ### Updated Dependencies
 
 - Updated storm-workspace to 0.19.17
-
-![Storm Software's logo banner](https://public.storm-cdn.com/brand-banner.png)
-
-# Changelog for Storm Ops - Storm Config
 
 ## [0.25.16](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.25.16) (2025-10-31)
 

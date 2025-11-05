@@ -1,6 +1,6 @@
 {
   "name": "@storm-software/eslint",
-  "version": "0.169.17",
+  "version": "0.169.19",
   "type": "module",
   "description": "A package containing the base ESLint configuration used by Storm Software across many projects.",
   "repository": {
@@ -134,9 +134,7 @@
     }
   },
   "types": "./dist/index.d.ts",
-  "files": [
-    "dist/**/*"
-  ],
+  "files": ["dist/**/*"],
   "keywords": [
     "eslint",
     "eslint-config",
@@ -181,7 +179,7 @@
     "@typescript-eslint/eslint-plugin": "catalog:",
     "@typescript-eslint/parser": "catalog:",
     "@typescript-eslint/utils": "catalog:",
-    "@vitest/eslint-plugin": "^1.4.0",
+    "@vitest/eslint-plugin": "^1.4.1",
     "chalk": "catalog:",
     "defu": "catalog:",
     "eslint-config-flat-gitignore": "^2.1.0",

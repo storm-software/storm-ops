@@ -1,22 +1,32 @@
+![Storm Software's logo banner](https://public.storm-cdn.com/brand-banner.png)
+
+# Changelog for Storm Ops - Pulumi Tools
+
+## [0.22.19](https://github.com/storm-software/storm-ops/releases/tag/pulumi-tools%400.22.19) (11/5/2025)
+
+### Updated Dependencies
+
+- Updated **workspace-tools** to **v1.292.19**
+- Updated **config-tools** to **v1.188.19**
+- Updated **config** to **v1.134.19**
+
 ## [0.22.17](https://github.com/storm-software/storm-ops/releases/tag/pulumi-tools%400.22.17) (2025-11-04)
 
 ### Features
 
-- **monorepo:** Update packages to use Nx v22.0.2 ([8895b7333](https://github.com/storm-software/storm-ops/commit/8895b7333))
+- **monorepo:** Update packages to use Nx v22.0.2
+  ([8895b7333](https://github.com/storm-software/storm-ops/commit/8895b7333))
 
 ### Miscellaneous
 
-- **monorepo:** Resolve sherif linting issues and reformat README markdown files ([2ed668c6a](https://github.com/storm-software/storm-ops/commit/2ed668c6a))
+- **monorepo:** Resolve sherif linting issues and reformat README markdown files
+  ([2ed668c6a](https://github.com/storm-software/storm-ops/commit/2ed668c6a))
 
 ### Updated Dependencies
 
 - Updated workspace-tools to 1.292.17
 - Updated config-tools to 1.188.17
 - Updated config to 1.134.17
-
-![Storm Software's logo banner](https://public.storm-cdn.com/brand-banner.png)
-
-# Changelog for Storm Ops - Pulumi Tools
 
 ## [0.22.16](https://github.com/storm-software/storm-ops/releases/tag/pulumi-tools%400.22.16) (2025-10-31)
 
