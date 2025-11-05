@@ -29,6 +29,7 @@ export const DEFAULT_RELEASE_GROUP_CONFIG = {
   },
   version: {
     currentVersionResolver: "git-tag",
+    fallbackCurrentVersionResolver: "disk",
     specifierSource: "conventional-commits",
     groupPreVersionCommand: "pnpm build"
   },
