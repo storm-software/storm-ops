@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Git Tools
 
+## [2.124.1](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.124.1) (11/05/2025)
+
+### Miscellaneous
+
+- **git-tools:** Ensure the date in the changelog title is formatted correctly
+  ([15038dec8](https://github.com/storm-software/storm-ops/commit/15038dec8))
+
 ## [2.124.0](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.124.0) (11/5/2025)
 
 ### Bug Fixes
