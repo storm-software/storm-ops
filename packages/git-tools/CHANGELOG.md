@@ -2,6 +2,14 @@
 
 # Changelog for Storm Ops - Git Tools
 
+## [2.124.2](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.124.2) (11/05/2025)
+
+### Miscellaneous
+
+- **git-tools:** Added `fallbackCurrentVersionResolver` to default release group
+  config
+  ([d496e89c3](https://github.com/storm-software/storm-ops/commit/d496e89c3))
+
 ## [2.124.1](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.124.1) (11/05/2025)
 
 ### Miscellaneous
