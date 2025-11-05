@@ -34,7 +34,11 @@ import {
 import { interpolate } from "nx/src/tasks-runner/utils";
 import { format, resolveConfig } from "prettier";
 import StormChangelogRenderer from "../release/changelog-renderer";
-import { createGithubRemoteReleaseClient } from "../release/github";
+import {
+  getGitHubRepoData,
+  resolveTokenData,
+  StormGithubRemoteReleaseClient
+} from "../release/github";
 import { ChangelogOptions } from "../release/release-client";
 import { ReleaseConfig } from "../types";
 import { titleCase } from "./title-case";
@@ -212,9 +216,22 @@ export async function generateChangelogForProjects({
 
   const dryRun = !!args.dryRun;
 
-  const remoteReleaseClient = await createGithubRemoteReleaseClient(
-    workspaceConfig,
-    args.gitRemote
+  const repoData = getGitHubRepoData(args.gitRemote, "github");
+  if (!repoData) {
+    throw new Error(
+      `Unable to create a remote release client because the GitHub repo slug could not be determined. Please ensure you have a valid GitHub remote configured.`
+    );
+  }
+
+  const remoteReleaseClient = new StormGithubRemoteReleaseClient(
+    repoData,
+    {
+      provider: "github",
+      hostname: repoData.hostname,
+      apiBaseUrl: repoData.apiBaseUrl
+    },
+    await resolveTokenData(repoData.hostname),
+    workspaceConfig
   );
 
   const projectChangelogs: NxReleaseChangelogResult["projectChangelogs"] = {};

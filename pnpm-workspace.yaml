@@ -7,28 +7,28 @@ packages:
   - docs/**
 
 catalog:
-  "@ltd/j-toml": 1.38.0
-  "@microsoft/api-extractor": ^7.54.0
-  "@nx/devkit": ^22.0.2
-  "@nx/esbuild": ^22.0.2
-  "@nx/eslint": ^22.0.2
-  "@nx/eslint-plugin": ^22.0.2
-  "@nx/jest": ^22.0.2
-  "@nx/js": ^22.0.2
-  "@nx/node": ^22.0.2
-  "@nx/plugin": ^22.0.2
-  "@nx/react": ^22.0.2
-  "@nx/rollup": ^22.0.2
-  "@nx/web": ^22.0.2
-  "@nx/webpack": ^22.0.2
-  "@nx/workspace": ^22.0.2
-  "@swc-node/register": 1.10.9
-  "@swc/core": 1.7.26
-  "@swc/helpers": 0.5.13
-  "@types/node": ^22.19.0
-  "@typescript-eslint/eslint-plugin": ^8.46.3
-  "@typescript-eslint/parser": ^8.46.3
-  "@typescript-eslint/utils": ^8.46.3
+  '@ltd/j-toml': 1.38.0
+  '@microsoft/api-extractor': ^7.54.0
+  '@nx/devkit': ^22.0.2
+  '@nx/esbuild': ^22.0.2
+  '@nx/eslint': ^22.0.2
+  '@nx/eslint-plugin': ^22.0.2
+  '@nx/jest': ^22.0.2
+  '@nx/js': ^22.0.2
+  '@nx/node': ^22.0.2
+  '@nx/plugin': ^22.0.2
+  '@nx/react': ^22.0.2
+  '@nx/rollup': ^22.0.2
+  '@nx/web': ^22.0.2
+  '@nx/webpack': ^22.0.2
+  '@nx/workspace': ^22.0.2
+  '@swc-node/register': 1.10.9
+  '@swc/core': 1.7.26
+  '@swc/helpers': 0.5.13
+  '@types/node': ^22.19.0
+  '@typescript-eslint/eslint-plugin': ^8.46.3
+  '@typescript-eslint/parser': ^8.46.3
+  '@typescript-eslint/utils': ^8.46.3
   c12: ^2.0.4
   chalk: ^4.1.2
   commander: ^12.1.0
@@ -68,10 +68,10 @@ catalog:
 linkWorkspacePackages: true
 
 onlyBuiltDependencies:
-  - "@parcel/watcher"
-  - "@pulumi/docker"
-  - "@pulumi/docker-build"
-  - "@swc/core"
+  - '@parcel/watcher'
+  - '@pulumi/docker'
+  - '@pulumi/docker-build'
+  - '@swc/core'
   - aws-crt
   - bufferutil
   - core-js
@@ -86,39 +86,39 @@ onlyBuiltDependencies:
   - workerd
 
 overrides:
-  "@cypress/request": ">=3.0.0"
-  "@storm-software/build-tools": workspace:*
-  "@storm-software/cloudflare-tools": workspace:*
-  "@storm-software/config": workspace:*
-  "@storm-software/config-tools": workspace:*
-  "@storm-software/cspell": workspace:*
-  "@storm-software/esbuild": workspace:*
-  "@storm-software/eslint": workspace:*
-  "@storm-software/git-tools": workspace:*
-  "@storm-software/k8s-tools": workspace:*
-  "@storm-software/linting-tools": workspace:*
-  "@storm-software/markdownlint": workspace:*
-  "@storm-software/npm-tools": workspace:*
-  "@storm-software/pnpm-tools": workspace:*
-  "@storm-software/prettier": workspace:*
-  "@storm-software/projen": workspace:*
-  "@storm-software/pulumi-tools": workspace:*
-  "@storm-software/terraform-tools": workspace:*
-  "@storm-software/testing-tools": workspace:*
-  "@storm-software/tools-scripts": workspace:*
-  "@storm-software/tsconfig": workspace:*
-  "@storm-software/tsdoc": workspace:*
-  "@storm-software/tsdown": workspace:*
-  "@storm-software/tsup": workspace:*
-  "@storm-software/unbuild": workspace:*
-  "@storm-software/untyped": workspace:*
-  "@storm-software/workspace-tools": workspace:*
+  '@cypress/request': '>=3.0.0'
+  '@storm-software/build-tools': workspace:*
+  '@storm-software/cloudflare-tools': workspace:*
+  '@storm-software/config': workspace:*
+  '@storm-software/config-tools': workspace:*
+  '@storm-software/cspell': workspace:*
+  '@storm-software/esbuild': workspace:*
+  '@storm-software/eslint': workspace:*
+  '@storm-software/git-tools': workspace:*
+  '@storm-software/k8s-tools': workspace:*
+  '@storm-software/linting-tools': workspace:*
+  '@storm-software/markdownlint': workspace:*
+  '@storm-software/npm-tools': workspace:*
+  '@storm-software/pnpm-tools': workspace:*
+  '@storm-software/prettier': workspace:*
+  '@storm-software/projen': workspace:*
+  '@storm-software/pulumi-tools': workspace:*
+  '@storm-software/terraform-tools': workspace:*
+  '@storm-software/testing-tools': workspace:*
+  '@storm-software/tools-scripts': workspace:*
+  '@storm-software/tsconfig': workspace:*
+  '@storm-software/tsdoc': workspace:*
+  '@storm-software/tsdown': workspace:*
+  '@storm-software/tsup': workspace:*
+  '@storm-software/unbuild': workspace:*
+  '@storm-software/untyped': workspace:*
+  '@storm-software/workspace-tools': workspace:*
   axios: 1.8.2
   conventional-changelog-storm-software: workspace:*
   create-storm-workspace: workspace:*
   got: 14.3.0
   load-plugin: 6.0.3
-  request: ">=2.88.2"
+  request: '>=2.88.2'
   tough-cookie: 4.1.4
 
 patchedDependencies:
