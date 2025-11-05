@@ -514,14 +514,11 @@ ${Object.keys(allProjectChangelogs)
     const to = options.to || "HEAD";
     let latestCommit = await getCommitHash(to);
 
-    const gitTagValues: string[] =
-      (options.gitTag ?? this.config.changelog?.git?.tag)
-        ? createGitTagValues(
-            options.releaseGraph.releaseGroups,
-            options.releaseGraph.releaseGroupToFilteredProjects,
-            options.versionData
-          )
-        : [];
+    const gitTagValues: string[] = createGitTagValues(
+      options.releaseGraph.releaseGroups,
+      options.releaseGraph.releaseGroupToFilteredProjects,
+      options.versionData
+    );
     handleDuplicateGitTags(gitTagValues);
 
     const commitMessageValues: string[] = createCommitMessageValues(

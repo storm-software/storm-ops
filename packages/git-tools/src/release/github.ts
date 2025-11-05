@@ -6,7 +6,6 @@ import { getWorkspaceConfig } from "@storm-software/config-tools/get-config";
 import { StormWorkspaceConfig } from "@storm-software/config/types";
 import type { AxiosRequestConfig } from "axios";
 import axios from "axios";
-import { prompt } from "enquirer";
 import { execSync } from "node:child_process";
 import { existsSync, promises as fsp } from "node:fs";
 import { homedir } from "node:os";
@@ -276,35 +275,6 @@ interface GithubReleaseOptions {
   body: string;
   prerelease: boolean;
   commit: string;
-}
-
-async function promptForContinueInGitHub(): Promise<boolean> {
-  try {
-    const reply = await prompt<{ open: "Yes" | "No" }>([
-      {
-        name: "open",
-        message:
-          "Do you want to finish creating the release manually in your browser?",
-        type: "autocomplete",
-        choices: [
-          {
-            name: "Yes",
-            hint: "It will pre-populate the form for you"
-          },
-          {
-            name: "No"
-          }
-        ],
-        initial: 0
-      }
-    ]);
-    return reply.open === "Yes";
-  } catch {
-    // Ensure the cursor is always restored before exiting
-    process.stdout.write("\u001b[?25h");
-    // Handle the case where the user exits the prompt with ctrl+c
-    process.exit(1);
-  }
 }
 
 async function syncGithubRelease(
