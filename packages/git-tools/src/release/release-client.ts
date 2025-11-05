@@ -32,6 +32,7 @@ import {
 } from "nx/src/command-line/release/utils/git";
 import {
   createCommitMessageValues,
+  createGitTagValues,
   handleDuplicateGitTags
 } from "nx/src/command-line/release/utils/shared";
 import { NxJsonConfiguration, readNxJson } from "nx/src/config/nx-json";
@@ -46,7 +47,6 @@ import { createFileToProjectMap } from "../utilities/file-utils";
 import {
   commitChanges,
   commitChangesNonProjectFiles,
-  createGitTagValues,
   extractPreid,
   filterProjectCommits,
   getCommits,
