@@ -1,9 +1,28 @@
+import { output, ProjectGraphProjectNode, Tree } from "@nx/devkit";
 import {
   STORM_DEFAULT_RELEASE_BANNER,
   type StormWorkspaceConfig
 } from "@storm-software/config";
-import { ReleaseVersion } from "nx/src/command-line/release/utils/shared";
+import chalk from "chalk";
+import { DependencyBump } from "nx/release/changelog-renderer";
+import {
+  ChangelogChange,
+  NxReleaseChangelogResult,
+  PostGitTask
+} from "nx/src/command-line/release/changelog";
+import { NxReleaseConfig } from "nx/src/command-line/release/config/config";
+import { ReleaseGroupWithName } from "nx/src/command-line/release/config/filter-release-groups";
+import {
+  ReleaseVersion,
+  shouldPreferDockerVersionForReleaseGroup,
+  VersionData
+} from "nx/src/command-line/release/utils/shared";
+import { interpolate } from "nx/src/tasks-runner/utils";
 import { format, resolveConfig } from "prettier";
+import StormChangelogRenderer from "../release/changelog-renderer";
+import { createGithubRemoteReleaseClient } from "../release/github";
+import { ChangelogOptions } from "../release/release-client";
+import { ReleaseConfig } from "../types";
 import { titleCase } from "./title-case";
 
 export async function generateChangelogContent(
@@ -128,4 +147,140 @@ export function parseChangelogMarkdown(contents: string) {
   return {
     releases
   };
+}
+
+export function filterHiddenChanges(
+  changes: ChangelogChange[],
+  conventionalCommitsConfig: NxReleaseConfig["conventionalCommits"]
+): ChangelogChange[] {
+  return changes.filter(change => {
+    const type = change.type;
+
+    const typeConfig = conventionalCommitsConfig.types[type];
+    if (!typeConfig) {
+      // don't include changes with unknown types
+      return false;
+    }
+    return !typeConfig.changelog.hidden;
+  });
+}
+
+export async function generateChangelogForProjects({
+  args,
+  changes,
+  projectsVersionData,
+  releaseGroup,
+  projects,
+  releaseConfig,
+  projectToAdditionalDependencyBumps,
+  workspaceConfig,
+  ChangelogRendererClass
+}: {
+  tree: Tree;
+  args: ChangelogOptions;
+  changes: ChangelogChange[];
+  projectsVersionData: VersionData;
+  releaseGroup: ReleaseGroupWithName;
+  projects: ProjectGraphProjectNode[];
+  releaseConfig: ReleaseConfig;
+  projectToAdditionalDependencyBumps: Map<string, DependencyBump[]>;
+  workspaceConfig: StormWorkspaceConfig;
+  ChangelogRendererClass: typeof StormChangelogRenderer;
+}): Promise<NxReleaseChangelogResult["projectChangelogs"] | undefined> {
+  const config = releaseGroup.changelog;
+  // The entire feature is disabled at the release group level, exit early
+  if (config === false) {
+    return;
+  }
+
+  const dryRun = !!args.dryRun;
+
+  const remoteReleaseClient = await createGithubRemoteReleaseClient(
+    workspaceConfig,
+    args.gitRemote
+  );
+
+  const projectChangelogs: NxReleaseChangelogResult["projectChangelogs"] = {};
+
+  for (const project of projects) {
+    let interpolatedTreePath = config.file || "";
+    if (interpolatedTreePath) {
+      interpolatedTreePath = interpolate(interpolatedTreePath, {
+        projectName: project.name,
+        projectRoot: project.data.root,
+        workspaceRoot: "" // within the tree, workspaceRoot is the root
+      });
+    }
+
+    /**
+     * newVersion will be null in the case that no changes were detected (e.g. in conventional commits mode),
+     * no changelog entry is relevant in that case.
+     */
+    if (
+      !projectsVersionData[project.name] ||
+      (projectsVersionData[project.name]?.newVersion === null &&
+        !projectsVersionData[project.name]?.dockerVersion)
+    ) {
+      continue;
+    }
+
+    const preferDockerVersion =
+      shouldPreferDockerVersionForReleaseGroup(releaseGroup);
+    const releaseVersion = new ReleaseVersion({
+      version: ((preferDockerVersion === true ||
+        preferDockerVersion === "both") &&
+      projectsVersionData[project.name]?.dockerVersion
+        ? projectsVersionData[project.name]?.dockerVersion
+        : projectsVersionData[project.name]?.newVersion)!,
+      releaseTagPattern: releaseGroup.releaseTag.pattern,
+      projectName: project.name
+    });
+
+    if (interpolatedTreePath) {
+      const prefix = dryRun ? "Previewing" : "Generating";
+      output.log({
+        title: `${prefix} an entry in ${interpolatedTreePath} for ${chalk.white(
+          releaseVersion.gitTag
+        )}`
+      });
+    }
+
+    const changelogRenderer = new ChangelogRendererClass({
+      changes,
+      changelogEntryVersion: releaseVersion.rawVersion,
+      project: project.name,
+      entryWhenNoChanges:
+        typeof config.entryWhenNoChanges === "string"
+          ? interpolate(config.entryWhenNoChanges, {
+              projectName: project.name,
+              projectRoot: project.data.root,
+              workspaceRoot: "" // within the tree, workspaceRoot is the root
+            })
+          : false,
+      changelogRenderOptions: config.renderOptions,
+      isVersionPlans: !!releaseGroup.versionPlans,
+      conventionalCommitsConfig: releaseConfig.conventionalCommits,
+      dependencyBumps: projectToAdditionalDependencyBumps.get(project.name),
+      remoteReleaseClient,
+      workspaceConfig
+    });
+    const contents = await changelogRenderer.render();
+
+    const postGitTask: PostGitTask | null =
+      args.createRelease !== false && config.createRelease
+        ? remoteReleaseClient.createPostGitTask(
+            releaseVersion,
+            contents,
+            dryRun
+          )
+        : null;
+
+    projectChangelogs[project.name] = {
+      releaseVersion,
+      contents,
+      postGitTask
+    };
+  }
+
+  return projectChangelogs;
 }

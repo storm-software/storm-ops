@@ -1,8 +1,81 @@
+import { FileData } from "@nx/devkit";
 import { ReleaseGroupWithName } from "nx/src/command-line/release/config/filter-release-groups";
 import { execCommand } from "nx/src/command-line/release/utils/exec-command.js";
-import { gitAdd } from "nx/src/command-line/release/utils/git";
-import { VersionData } from "nx/src/command-line/release/utils/shared";
+import {
+  getGitDiff,
+  gitAdd,
+  GitCommit,
+  parseCommits
+} from "nx/src/command-line/release/utils/git";
+import {
+  isPrerelease,
+  VersionData
+} from "nx/src/command-line/release/utils/shared";
 import { interpolate } from "nx/src/tasks-runner/utils";
+import { prerelease } from "semver";
+
+export async function getCommits(
+  fromSHA: string,
+  toSHA: string
+): Promise<GitCommit[]> {
+  const rawCommits = await getGitDiff(fromSHA, toSHA);
+  // Parse as conventional commits
+  return parseCommits(rawCommits);
+}
+
+export async function filterProjectCommits({
+  fromSHA,
+  toSHA,
+  projectPath
+}: {
+  fromSHA: string;
+  toSHA: string;
+  projectPath: string;
+}) {
+  const allCommits = await getCommits(fromSHA, toSHA);
+  return allCommits.filter(c =>
+    c.affectedFiles.find(f => f.startsWith(projectPath))
+  );
+}
+
+export function commitChangesNonProjectFiles(
+  commit: GitCommit,
+  nonProjectFiles: FileData[]
+): boolean {
+  return nonProjectFiles.some(fileData =>
+    commit.affectedFiles.includes(fileData.file)
+  );
+}
+
+export function getProjectsAffectedByCommit(
+  commit: GitCommit,
+  fileToProjectMap: Record<string, string>
+): string[] {
+  const affectedProjects = new Set<string>();
+  for (const file of commit.affectedFiles) {
+    affectedProjects.add(fileToProjectMap[file]!);
+  }
+  return Array.from(affectedProjects);
+}
+
+export function extractPreid(version: string): string | undefined {
+  if (!isPrerelease(version)) {
+    return undefined;
+  }
+
+  const preid = prerelease(version)?.[0];
+  if (typeof preid === "string") {
+    if (preid.trim() === "") {
+      return undefined;
+    }
+
+    return preid;
+  }
+  if (typeof preid === "number") {
+    return preid.toString();
+  }
+  return undefined;
+}
 
 export function createGitTagValues(
   releaseGroups: ReleaseGroupWithName[],

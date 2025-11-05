@@ -4,6 +4,7 @@ import type { ProjectGraph, ProjectsConfigurations } from "@nx/devkit";
 import { Variant } from "@storm-software/config/types";
 import { CommitEnumItemProps } from "conventional-changelog-storm-software/types/commit-types";
 import { RuleConfigSeverity } from "conventional-changelog-storm-software/types/commitlint";
+import { NxReleaseConfig } from "nx/src/command-line/release/config/config";
 import {
   NxReleaseChangelogConfiguration,
   NxReleaseConfiguration,
@@ -271,9 +272,13 @@ export interface ReleaseGroupConfig {
   versionPlans?: NxReleaseVersionPlansConfiguration | boolean;
 }
 
-export type ReleaseConfig = Omit<NxReleaseConfiguration, "groups"> & {
-  groups: Record<string, ReleaseGroupConfig>;
-};
+export type ReleaseConfig = Omit<
+  NxReleaseConfiguration,
+  "groups" | "conventionalCommits"
+> &
+  Required<Pick<NxReleaseConfig, "conventionalCommits">> & {
+    groups: Record<string, ReleaseGroupConfig>;
+  };
 
 // export interface NxReleaseConfig {
 //   /**

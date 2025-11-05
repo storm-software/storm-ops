@@ -18,102 +18,55 @@ import defu from "defu";
 import { existsSync } from "node:fs";
 import { readFile } from "node:fs/promises";
 import { ReleaseClient } from "nx/release";
+import { DependencyBump } from "nx/release/changelog-renderer";
 import {
-  createAPI as createReleaseChangelogAPI,
+  ChangelogChange,
   NxReleaseChangelogResult,
   PostGitTask
 } from "nx/src/command-line/release/changelog";
 import { ChangelogOptions as NxChangelogOptions } from "nx/src/command-line/release/command-object";
-import { getCommitHash, gitPush } from "nx/src/command-line/release/utils/git";
+import {
+  getCommitHash,
+  getFirstGitCommit,
+  getLatestGitTagForPattern,
+  GitCommit,
+  gitPush
+} from "nx/src/command-line/release/utils/git";
 import { printAndFlushChanges } from "nx/src/command-line/release/utils/print-changes";
 import {
   createCommitMessageValues,
   handleDuplicateGitTags,
   noDiffInChangelogMessage
 } from "nx/src/command-line/release/utils/shared";
-import {
-  NxJsonConfiguration,
-  NxReleaseChangelogConfiguration,
-  readNxJson
-} from "nx/src/config/nx-json";
+import { NxJsonConfiguration, readNxJson } from "nx/src/config/nx-json";
 import { FsTree } from "nx/src/generators/tree";
-import { ReleaseConfig, ReleaseGroupConfig } from "../types";
-import { generateChangelogContent } from "../utilities/changelog-utils";
+import { createFileMapUsingProjectGraph } from "nx/src/project-graph/file-map-utils";
+import { ReleaseConfig } from "../types";
+import {
+  filterHiddenChanges,
+  generateChangelogContent,
+  generateChangelogForProjects
+} from "../utilities/changelog-utils";
+import { createFileToProjectMap } from "../utilities/file-utils";
 import {
   commitChanges,
+  commitChangesNonProjectFiles,
   createGitTagValues,
+  extractPreid,
+  filterProjectCommits,
+  getCommits,
+  getProjectsAffectedByCommit,
   gitTag
 } from "../utilities/git-utils";
 import { omit } from "../utilities/omit";
 import StormChangelogRenderer from "./changelog-renderer";
-import { DEFAULT_RELEASE_CONFIG, DEFAULT_RELEASE_GROUP_CONFIG } from "./config";
+import { DEFAULT_RELEASE_CONFIG, getReleaseGroupConfig } from "./config";
 
 export type ChangelogOptions = Omit<
   NxChangelogOptions,
   "versionData" | "releaseGraph"
 > &
   Required<Pick<NxChangelogOptions, "versionData" | "releaseGraph">>;
-
-function getReleaseGroupConfig(
-  releaseConfig: Partial<ReleaseConfig>,
-  workspaceConfig: StormWorkspaceConfig
-) {
-  return !releaseConfig?.groups ||
-    Object.keys(releaseConfig.groups).length === 0
-    ? {}
-    : Object.fromEntries(
-        Object.entries(releaseConfig.groups).map(([name, group]) => {
-          const config = defu(
-            {
-              ...omit(DEFAULT_RELEASE_GROUP_CONFIG, ["changelog"]),
-              ...group
-            },
-            {
-              changelog: {
-                ...(DEFAULT_RELEASE_GROUP_CONFIG.changelog as NxReleaseChangelogConfiguration),
-                renderer: StormChangelogRenderer,
-                renderOptions: {
-                  ...(
-                    DEFAULT_RELEASE_GROUP_CONFIG.changelog as NxReleaseChangelogConfiguration
-                  ).renderOptions,
-                  workspaceConfig
-                }
-              }
-            }
-          ) as ReleaseGroupConfig;
-
-          if (workspaceConfig?.workspaceRoot) {
-            if (
-              (config.changelog as NxReleaseChangelogConfiguration)?.renderer &&
-              typeof (config.changelog as NxReleaseChangelogConfiguration)
-                ?.renderer === "string" &&
-              (config.changelog as NxReleaseChangelogConfiguration)?.renderer
-                ?.toString()
-                .startsWith("./")
-            ) {
-              (config.changelog as NxReleaseChangelogConfiguration).renderer =
-                joinPaths(
-                  workspaceConfig.workspaceRoot,
-                  (config.changelog as NxReleaseChangelogConfiguration)
-                    .renderer as string
-                );
-            }
-
-            if (
-              config.version?.versionActions &&
-              config.version.versionActions.startsWith("./")
-            ) {
-              config.version.versionActions = joinPaths(
-                workspaceConfig.workspaceRoot,
-                config.version?.versionActions
-              );
-            }
-          }
-
-          return [name, config];
-        })
-      );
-}
 
 /**
  * Extended {@link ReleaseClient} with Storm Software specific release APIs
@@ -151,8 +104,6 @@ export class StormReleaseClient extends ReleaseClient {
       workspaceConfig
     );
   }
-
-  #releaseChangelog: ReturnType<typeof createReleaseChangelogAPI>;
 
   /**
    * The release configuration used by this release client.
@@ -213,7 +164,10 @@ export class StormReleaseClient extends ReleaseClient {
         groups: getReleaseGroupConfig(releaseConfig, workspaceConfig)
       },
       {
-        groups: getReleaseGroupConfig(nxJson.release ?? {}, workspaceConfig)
+        groups: getReleaseGroupConfig(
+          (nxJson.release ?? {}) as Partial<ReleaseConfig>,
+          workspaceConfig
+        )
       },
       omit(releaseConfig, ["groups"]),
       nxJson.release ? omit(nxJson.release, ["groups"]) : {},
@@ -233,75 +187,361 @@ export class StormReleaseClient extends ReleaseClient {
     this.workspaceConfig = workspaceConfig;
     this.tree = new FsTree(workspaceConfig.workspaceRoot, false);
 
-    this.#releaseChangelog = createReleaseChangelogAPI(config, true);
-
     this.projectConfigurations =
       readProjectsConfigurationFromProjectGraph(projectGraph);
   }
 
   public override releaseChangelog = async (options: ChangelogOptions) => {
-    const result = await this.#releaseChangelog({
-      ...options,
-      gitCommit: false,
-      gitTag: false
-    });
+    const to = options.to || "HEAD";
+    const toSHA = await getCommitHash(to);
 
-    if (result.projectChangelogs) {
-      await Promise.all(
-        Object.entries(result.projectChangelogs).map(
-          async ([project, changelog]) => {
-            if (!this.projectGraph.nodes[project]?.data.root) {
-              writeWarning(
-                `A changelog was generated for ${
-                  project
-                }, but it could not be found in the project graph. Skipping writing changelog file.`,
-                this.workspaceConfig
-              );
-            } else if (changelog.contents) {
-              const filePath = joinPaths(
-                this.projectGraph.nodes[project].data.root,
-                "CHANGELOG.md"
-              );
+    const postGitTasks = [] as PostGitTask[];
+    let projectChangelogs: NxReleaseChangelogResult["projectChangelogs"] = {};
 
-              let currentContent: string | undefined;
-              if (existsSync(filePath)) {
-                currentContent = await readFile(filePath, "utf8");
-              }
+    const projectsPreid: { [projectName: string]: string | undefined } =
+      Object.fromEntries(
+        Object.entries(options.versionData).map(([projectName, v]) => [
+          projectName,
+          v.newVersion ? extractPreid(v.newVersion) : undefined
+        ])
+      );
 
-              writeDebug(
-                `✍️  Writing changelog for project ${project} to ${filePath}`,
-                this.workspaceConfig
-              );
+    /**
+     * Compute any additional dependency bumps up front because there could be cases of circular dependencies,
+     * and figuring them out during the main iteration would be too late.
+     */
+    const projectToAdditionalDependencyBumps = new Map<
+      string,
+      DependencyBump[]
+    >();
+    for (const releaseGroup of options.releaseGraph.releaseGroups) {
+      if (releaseGroup.projectsRelationship !== "independent") {
+        continue;
+      }
+      for (const project of releaseGroup.projects) {
+        // If the project does not have any changes, do not process its dependents
+        if (
+          !options.versionData[project] ||
+          options.versionData[project].newVersion === null
+        ) {
+          continue;
+        }
 
-              const content = await generateChangelogContent(
-                changelog.releaseVersion,
-                filePath,
-                changelog.contents,
-                currentContent,
-                project,
-                this.workspaceConfig
-              );
+        const dependentProjects = (
+          options.versionData[project].dependentProjects || []
+        )
+          .map(dep => {
+            return {
+              dependencyName: dep.source,
+              newVersion: options.versionData[dep.source]?.newVersion ?? null
+            };
+          })
+          .filter(b => b.newVersion !== null);
 
-              this.tree.write(filePath, content);
+        for (const dependent of dependentProjects) {
+          const additionalDependencyBumpsForProject = (
+            projectToAdditionalDependencyBumps.has(dependent.dependencyName)
+              ? projectToAdditionalDependencyBumps.get(dependent.dependencyName)
+              : []
+          ) as DependencyBump[];
+          additionalDependencyBumpsForProject.push({
+            dependencyName: project,
+            newVersion: options.versionData[project].newVersion
+          });
+          projectToAdditionalDependencyBumps.set(
+            dependent.dependencyName,
+            additionalDependencyBumpsForProject
+          );
+        }
+      }
+    }
 
-              printAndFlushChanges(
-                this.tree,
-                !!options.dryRun,
-                3,
-                false,
-                noDiffInChangelogMessage,
-                // Only print the change for the current changelog file at this point
-                f => f.path === filePath
+    const allProjectChangelogs: NxReleaseChangelogResult["projectChangelogs"] =
+      {};
+
+    for (const releaseGroup of options.releaseGraph.releaseGroups) {
+      const config = releaseGroup.changelog;
+      // The entire feature is disabled at the release group level, exit early
+      if (config === false) {
+        continue;
+      }
+
+      if (
+        !options.releaseGraph.releaseGroupToFilteredProjects.has(releaseGroup)
+      ) {
+        throw new Error(
+          `No filtered projects found for release group ${releaseGroup.name}`
+        );
+      }
+
+      const projects = options.projects?.length
+        ? // If the user has passed a list of projects, we need to use the filtered list of projects within the release group, plus any dependents
+          Array.from(
+            // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+            options.releaseGraph.releaseGroupToFilteredProjects.get(
+              releaseGroup
+            )!
+          ).flatMap(project => {
+            return [
+              project,
+              ...(options.versionData[project]?.dependentProjects.map(
+                dep => dep.source
+              ) || [])
+            ];
+          })
+        : // Otherwise, we use the full list of projects within the release group
+          releaseGroup.projects;
+      const projectNodes = projects.map(name => this.projectGraph.nodes[name]);
+
+      if (releaseGroup.projectsRelationship === "independent") {
+        for (const project of projectNodes) {
+          let changes: ChangelogChange[] | null = null;
+
+          let fromRef =
+            options.from ||
+            (
+              await getLatestGitTagForPattern(
+                releaseGroup.releaseTag.pattern,
+                {
+                  projectName: project.name,
+                  releaseGroupName: releaseGroup.name
+                },
+                {
+                  checkAllBranchesWhen:
+                    releaseGroup.releaseTag.checkAllBranchesWhen,
+                  preid: projectsPreid[project.name],
+                  requireSemver: releaseGroup.releaseTag.requireSemver,
+                  strictPreid: releaseGroup.releaseTag.strictPreid
+                }
+              )
+            )?.tag;
+
+          let commits: GitCommit[] | undefined = undefined;
+          if (!fromRef) {
+            const firstCommit = await getFirstGitCommit();
+            commits = await filterProjectCommits({
+              fromSHA: firstCommit,
+              toSHA,
+              projectPath: project.data.root
+            });
+
+            fromRef = commits[0]?.shortHash;
+            if (options.verbose) {
+              console.log(
+                `Determined --from ref for ${project.name} from the first commit in which it exists: ${fromRef}`
               );
             }
           }
-        )
-      );
 
-      this.applyChangesAndExit(options, result);
+          if (!fromRef && !commits) {
+            throw new Error(
+              `Unable to determine the previous git tag. If this is the first release of your workspace, use the --first-release option or set the "release.changelog.automaticFromRef" config property in nx.json to generate a changelog from the first commit. Otherwise, be sure to configure the "release.releaseTag.pattern" property in nx.json to match the structure of your repository's git tags.`
+            );
+          }
+
+          if (!commits) {
+            commits = await filterProjectCommits({
+              fromSHA: fromRef!,
+              toSHA,
+              projectPath: project.data.root
+            });
+          }
+
+          const { fileMap } = await createFileMapUsingProjectGraph(
+            this.projectGraph
+          );
+          const fileToProjectMap = createFileToProjectMap(
+            fileMap.projectFileMap
+          );
+
+          changes = filterHiddenChanges(
+            commits.map(c => ({
+              type: c.type,
+              scope: c.scope,
+              description: c.description,
+              body: c.body,
+              isBreaking: c.isBreaking,
+              githubReferences: c.references,
+              authors: c.authors,
+              shortHash: c.shortHash,
+              revertedHashes: c.revertedHashes,
+              affectedProjects: commitChangesNonProjectFiles(
+                c,
+                fileMap.nonProjectFiles
+              )
+                ? "*"
+                : getProjectsAffectedByCommit(c, fileToProjectMap)
+            })),
+            this.config.conventionalCommits
+          );
+
+          projectChangelogs = await generateChangelogForProjects({
+            tree: this.tree,
+            args: options,
+            changes,
+            projectsVersionData: options.versionData,
+            releaseGroup,
+            projects: [project],
+            releaseConfig: this.config,
+            projectToAdditionalDependencyBumps,
+            workspaceConfig: this.workspaceConfig,
+            ChangelogRendererClass: StormChangelogRenderer
+          });
+
+          if (projectChangelogs) {
+            for (const [projectName, projectChangelog] of Object.entries(
+              projectChangelogs
+            )) {
+              // Add the post git task (e.g. create a remote release) for the project changelog, if applicable
+              if (projectChangelog.postGitTask) {
+                postGitTasks.push(projectChangelog.postGitTask);
+              }
+              allProjectChangelogs[projectName] = projectChangelog;
+            }
+          }
+        }
+      } else {
+        let changes: ChangelogChange[] = [];
+
+        let fromRef =
+          options.from ||
+          (
+            await getLatestGitTagForPattern(
+              releaseGroup.releaseTag.pattern,
+              {},
+              {
+                checkAllBranchesWhen:
+                  releaseGroup.releaseTag.checkAllBranchesWhen,
+                preid: Object.keys(projectsPreid)[0]
+                  ? projectsPreid?.[Object.keys(projectsPreid)[0]!]
+                  : undefined,
+                requireSemver: releaseGroup.releaseTag.requireSemver,
+                strictPreid: releaseGroup.releaseTag.strictPreid
+              }
+            )
+          )?.tag;
+        if (!fromRef) {
+          fromRef = await getFirstGitCommit();
+          if (options.verbose) {
+            console.log(
+              `Determined release group --from ref from the first commit in the workspace: ${fromRef}`
+            );
+          }
+        }
+
+        // Make sure that the fromRef is actually resolvable
+        const fromSHA = await getCommitHash(fromRef);
+
+        const { fileMap } = await createFileMapUsingProjectGraph(
+          this.projectGraph
+        );
+        const fileToProjectMap = createFileToProjectMap(fileMap.projectFileMap);
+
+        changes = filterHiddenChanges(
+          (await getCommits(fromSHA, toSHA)).map(c => ({
+            type: c.type,
+            scope: c.scope,
+            description: c.description,
+            body: c.body,
+            isBreaking: c.isBreaking,
+            githubReferences: c.references,
+            authors: c.authors,
+            shortHash: c.shortHash,
+            revertedHashes: c.revertedHashes,
+            affectedProjects: commitChangesNonProjectFiles(
+              c,
+              fileMap.nonProjectFiles
+            )
+              ? "*"
+              : getProjectsAffectedByCommit(c, fileToProjectMap)
+          })),
+          this.config.conventionalCommits
+        );
+
+        projectChangelogs = await generateChangelogForProjects({
+          tree: this.tree,
+          args: options,
+          changes,
+          projectsVersionData: options.versionData,
+          releaseGroup,
+          projects: projectNodes,
+          releaseConfig: this.config,
+          projectToAdditionalDependencyBumps,
+          workspaceConfig: this.workspaceConfig,
+          ChangelogRendererClass: StormChangelogRenderer
+        });
+
+        if (projectChangelogs) {
+          for (const [projectName, projectChangelog] of Object.entries(
+            projectChangelogs
+          )) {
+            // Add the post git task (e.g. create a remote release) for the project changelog, if applicable
+            if (projectChangelog.postGitTask) {
+              postGitTasks.push(projectChangelog.postGitTask);
+            }
+            allProjectChangelogs[projectName] = projectChangelog;
+          }
+        }
+      }
     }
 
-    return result;
+    if (projectChangelogs) {
+      await Promise.all(
+        Object.entries(projectChangelogs).map(async ([project, changelog]) => {
+          if (!this.projectGraph.nodes[project]?.data.root) {
+            writeWarning(
+              `A changelog was generated for ${
+                project
+              }, but it could not be found in the project graph. Skipping writing changelog file.`,
+              this.workspaceConfig
+            );
+          } else if (changelog.contents) {
+            const filePath = joinPaths(
+              this.projectGraph.nodes[project].data.root,
+              "CHANGELOG.md"
+            );
+
+            let currentContent: string | undefined;
+            if (existsSync(filePath)) {
+              currentContent = await readFile(filePath, "utf8");
+            }
+
+            writeDebug(
+              `✍️  Writing changelog for project ${project} to ${filePath}`,
+              this.workspaceConfig
+            );
+
+            const content = await generateChangelogContent(
+              changelog.releaseVersion,
+              filePath,
+              changelog.contents,
+              currentContent,
+              project,
+              this.workspaceConfig
+            );
+
+            this.tree.write(filePath, content);
+
+            printAndFlushChanges(
+              this.tree,
+              !!options.dryRun,
+              3,
+              false,
+              noDiffInChangelogMessage,
+              // Only print the change for the current changelog file at this point
+              f => f.path === filePath
+            );
+          }
+        })
+      );
+
+      this.applyChangesAndExit(options, postGitTasks);
+    }
+
+    return {
+      workspaceChangelog: undefined,
+      projectChangelogs: allProjectChangelogs
+    };
   };
 
   protected checkChangelogFilesEnabled(): boolean {
@@ -352,12 +592,8 @@ export class StormReleaseClient extends ReleaseClient {
 
   protected applyChangesAndExit = async (
     options: ChangelogOptions,
-    result: NxReleaseChangelogResult
+    postGitTasks: PostGitTask[]
   ) => {
-    const postGitTasks = Object.values(result.projectChangelogs || {})
-      .map(project => project.postGitTask)
-      .filter(Boolean) as PostGitTask[];
-
     const to = options.to || "HEAD";
     let latestCommit = await getCommitHash(to);
 

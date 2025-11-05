@@ -14,12 +14,6 @@ import { DEFAULT_CONVENTIONAL_COMMITS_CONFIG } from "nx/src/command-line/release
 import { RemoteReleaseClient } from "nx/src/command-line/release/utils/remote-release-clients/remote-release-client";
 import { major } from "semver";
 import { generateChangelogTitle } from "../utilities/changelog-utils";
-import { createGithubRemoteReleaseClient } from "./github";
-
-export interface StormChangelogRenderOptions
-  extends DefaultChangelogRenderOptions {
-  workspaceConfig: StormWorkspaceConfig;
-}
 
 type DefaultChangelogRendererParams = ConstructorParameters<
   typeof DefaultChangelogRenderer
@@ -31,10 +25,11 @@ export interface StormChangelogRenderParams {
   project: string | null;
   entryWhenNoChanges?: string | false;
   isVersionPlans: boolean;
-  changelogRenderOptions: StormChangelogRenderOptions;
+  changelogRenderOptions: DefaultChangelogRenderOptions;
   dependencyBumps?: DependencyBump[];
   conventionalCommitsConfig?: NxReleaseConfig["conventionalCommits"];
   remoteReleaseClient: RemoteReleaseClient<any>;
+  workspaceConfig: StormWorkspaceConfig;
 }
 
 export default class StormChangelogRenderer extends DefaultChangelogRenderer {
@@ -57,17 +52,14 @@ export default class StormChangelogRenderer extends DefaultChangelogRenderer {
 
     super(resolvedConfig);
 
-    this.workspaceConfig = config.changelogRenderOptions.workspaceConfig;
+    this.workspaceConfig = config.workspaceConfig;
+    this.remoteReleaseClient = resolvedConfig.remoteReleaseClient;
   }
 
   public override async render(): Promise<string> {
     if (!this.workspaceConfig) {
       this.workspaceConfig = await getWorkspaceConfig();
     }
-
-    this.remoteReleaseClient = await createGithubRemoteReleaseClient(
-      this.workspaceConfig
-    );
 
     return super.render();
   }

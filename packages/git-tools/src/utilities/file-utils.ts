@@ -1,3 +1,4 @@
+import { ProjectFileMap } from "@nx/devkit";
 import Path, { dirname, isAbsolute, join } from "node:path";
 
 export function findFileName(filePath: string): string {
@@ -42,4 +43,16 @@ export function renameFile(filePath: string, newFileName: string): string {
     file.dir,
     newFileName.includes(".") ? newFileName : newFileName + file.ext
   );
+}
+
+export function createFileToProjectMap(
+  projectFileMap: ProjectFileMap
+): Record<string, string> {
+  const fileToProjectMap = {};
+  for (const [projectName, projectFiles] of Object.entries(projectFileMap)) {
+    for (const file of projectFiles) {
+      fileToProjectMap[file.file] = projectName;
+    }
+  }
+  return fileToProjectMap;
 }
