@@ -121,8 +121,14 @@ export function generateChangelogTitle(
       ? workspaceConfig.organization
       : workspaceConfig.organization?.name
   }/${workspaceConfig.name}/releases/tag/${project}%40${version}) (${
-    new Date().getMonth() + 1
-  }/${new Date().getDate()}/${new Date().getFullYear()})`;
+    new Date().getMonth() + 1 < 10
+      ? `0${new Date().getMonth() + 1}`
+      : new Date().getMonth() + 1
+  }/${
+    new Date().getDate() < 10
+      ? `0${new Date().getDate()}`
+      : new Date().getDate()
+  }/${new Date().getFullYear()})`;
 }
 
 export function parseChangelogMarkdown(contents: string) {
