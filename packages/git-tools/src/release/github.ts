@@ -22,7 +22,6 @@ import {
   noDiffInChangelogMessage,
   ReleaseVersion
 } from "nx/src/command-line/release/utils/shared";
-import { NxReleaseChangelogConfiguration } from "nx/src/config/nx-json";
 import { parse } from "yaml";
 import { generateChangelogTitle } from "../utilities/changelog-utils";
 import { titleCase } from "../utilities/title-case";
@@ -31,8 +30,8 @@ import { titleCase } from "../utilities/title-case";
  * Extended {@link GithubRemoteReleaseClient} with Storm Software specific release APIs
  */
 export class StormGithubRemoteReleaseClient extends GithubRemoteReleaseClient {
-  #remoteRepoData: RemoteRepoData | null;
-  #workspaceConfig: StormWorkspaceConfig;
+  protected repoData: RemoteRepoData;
+  protected workspaceConfig: StormWorkspaceConfig;
 
   /**
    * Creates an instance of {@link StormGithubRemoteReleaseClient}.
@@ -43,18 +42,191 @@ export class StormGithubRemoteReleaseClient extends GithubRemoteReleaseClient {
    * @param workspaceConfig - The Storm workspace configuration object, which is loaded from the storm-workspace.json file.
    */
   public constructor(
-    remoteRepoData: RemoteRepoData | null,
+    repoData: RemoteRepoData,
     createReleaseConfig: false | ResolvedCreateRemoteReleaseProvider,
     tokenData: {
       token: string;
       headerName: string;
-    } | null,
+    },
     workspaceConfig: StormWorkspaceConfig
   ) {
-    super(remoteRepoData, createReleaseConfig, tokenData);
+    super(repoData, createReleaseConfig, tokenData);
 
-    this.#remoteRepoData = remoteRepoData;
-    this.#workspaceConfig = workspaceConfig;
+    this.repoData = repoData;
+    this.workspaceConfig = workspaceConfig;
+  }
+
+  public override async createOrUpdateRelease(
+    releaseVersion: ReleaseVersion,
+    changelogContents: string,
+    latestCommit: string,
+    {
+      dryRun
+    }: {
+      dryRun: boolean;
+    }
+  ): Promise<void> {
+    if (this.createReleaseConfig === false) {
+      output.error({
+        title: `Unable to create a GitHub release because the createReleaseConfig is set to false.`,
+        bodyLines: [
+          `Please ensure you have a valid GitHub remote configured. You can run \`git remote -v\` to list your current remotes.`
+        ]
+      });
+      process.exit(1);
+    }
+
+    const githubRepoData = getGitHubRepoData(
+      undefined,
+      this.createReleaseConfig
+    );
+    if (!githubRepoData) {
+      output.error({
+        title: `Unable to create a GitHub release because the GitHub repo slug could not be determined.`,
+        bodyLines: [
+          `Please ensure you have a valid GitHub remote configured. You can run \`git remote -v\` to list your current remotes.`
+        ]
+      });
+      process.exit(1);
+    }
+
+    const githubRequestConfig: GithubRequestConfig = {
+      repo: this.repoData.slug,
+      hostname: this.repoData.hostname,
+      apiBaseUrl: this.repoData.apiBaseUrl,
+      token: this.tokenData?.token || null
+    };
+
+    let existingGithubReleaseForVersion: GithubRelease | undefined;
+    try {
+      existingGithubReleaseForVersion = await getGithubReleaseByTag(
+        githubRequestConfig,
+        releaseVersion.gitTag
+      );
+    } catch (err) {
+      if (err.response?.status === 401) {
+        output.error({
+          title: `Unable to resolve data via the GitHub API. You can use any of the following options to resolve this:`,
+          bodyLines: [
+            "- Set the `GITHUB_TOKEN` or `GH_TOKEN` environment variable to a valid GitHub token with `repo` scope",
+            "- Have an active session via the official gh CLI tool (https://cli.github.com) in your current terminal"
+          ]
+        });
+        process.exit(1);
+      }
+      if (err.response?.status === 404) {
+        // No existing release found, this is fine
+      } else {
+        // Rethrow unknown errors for now
+        throw err;
+      }
+    }
+
+    const logTitle = `https://${githubRepoData.hostname}/${githubRepoData.slug}/releases/tag/${releaseVersion.gitTag}`;
+    if (existingGithubReleaseForVersion) {
+      console.error(`UPDATE ${logTitle}${dryRun ? " [dry-run]" : ""}`);
+    } else {
+      console.error(`CREATE ${logTitle}${dryRun ? " [dry-run]" : ""}`);
+    }
+
+    console.log("");
+    printDiff(
+      existingGithubReleaseForVersion?.body
+        ? existingGithubReleaseForVersion.body
+        : "",
+      changelogContents,
+      3,
+      noDiffInChangelogMessage
+    );
+
+    if (!dryRun) {
+      const result = await syncGithubRelease(
+        githubRequestConfig,
+        {
+          version: releaseVersion.gitTag,
+          prerelease: releaseVersion.isPrerelease,
+          body: changelogContents,
+          commit: latestCommit
+        },
+        existingGithubReleaseForVersion
+      );
+
+      /**
+       * If something went wrong POSTing to Github we can still pre-populate the web form on github.com
+       * to allow the user to manually complete the release if they so choose.
+       */
+      if (result.status === "manual") {
+        if (result.error) {
+          process.exitCode = 1;
+
+          if (result.error.response?.data) {
+            // There's a nicely formatted error from GitHub we can display to the user
+            output.error({
+              title: `A GitHub API Error occurred when creating/updating the release`,
+              bodyLines: [
+                `GitHub Error: ${JSON.stringify(result.error.response.data)}`,
+                `---`,
+                `Request Data:`,
+                `Repo: ${githubRequestConfig.repo}`,
+                `Token: ${githubRequestConfig.token}`,
+                `Body: ${JSON.stringify(result.requestData)}`
+              ]
+            });
+          } else {
+            console.log(result.error);
+            console.error(
+              `An unknown error occurred while trying to create a release on GitHub, please report this on https://github.com/nrwl/nx (NOTE: make sure to redact your GitHub token from the error message!)`
+            );
+          }
+        }
+
+        const shouldContinueInGitHub = await promptForContinueInGitHub();
+        if (!shouldContinueInGitHub) {
+          return;
+        }
+
+        const open = require("open");
+        await open(result.url)
+          .then(() => {
+            console.info(
+              `\nFollow up in the browser to manually create the release:\n\n` +
+                result.url +
+                `\n`
+            );
+          })
+          .catch(() => {
+            console.info(
+              `Open this link to manually create a release: \n` +
+                result.url +
+                "\n"
+            );
+          });
+
+        /**
+         * If something went wrong POSTing to Github we can still pre-populate the web form on github.com
+         * to allow the user to manually complete the release.
+         */
+
+        if (result.error) {
+          console.error(result.error);
+          process.exitCode = 1;
+        }
+
+        await open(result.url)
+          .then(() => {
+            console.info(
+              `Follow up in the browser to manually create the release.`
+            );
+          })
+          .catch(() => {
+            console.info(
+              `Open this link to manually create a release: \n` +
+                result.url +
+                "\n"
+            );
+          });
+      }
+    }
   }
 
   public override createPostGitTask(
@@ -63,83 +235,83 @@ export class StormGithubRemoteReleaseClient extends GithubRemoteReleaseClient {
     dryRun: boolean
   ): PostGitTask {
     return async (latestCommit: string) => {
-      if (!this.#workspaceConfig) {
-        this.#workspaceConfig = await getWorkspaceConfig();
+      if (!this.workspaceConfig) {
+        this.workspaceConfig = await getWorkspaceConfig();
       }
 
       output.logSingleLine(`Creating GitHub Release`);
 
       const name = releaseVersion.gitTag.includes("@")
         ? releaseVersion.gitTag
-            .replace(new RegExp(`^@${this.#workspaceConfig.name}/`), "")
+            .replace(new RegExp(`^@${this.workspaceConfig.name}/`), "")
             .replace(/@.*$/, "")
         : releaseVersion.gitTag;
 
       await this.createOrUpdateRelease(
         releaseVersion,
         `![${
-          (typeof this.#workspaceConfig.release.banner === "string"
-            ? this.#workspaceConfig.organization
+          (typeof this.workspaceConfig.release.banner === "string"
+            ? this.workspaceConfig.organization
               ? titleCase(
-                  typeof this.#workspaceConfig.organization === "string"
-                    ? this.#workspaceConfig.organization
-                    : this.#workspaceConfig.organization.name
+                  typeof this.workspaceConfig.organization === "string"
+                    ? this.workspaceConfig.organization
+                    : this.workspaceConfig.organization.name
                 )
               : undefined
-            : this.#workspaceConfig.release.banner.alt) ||
+            : this.workspaceConfig.release.banner.alt) ||
           "Release banner header"
         }](${
-          typeof this.#workspaceConfig.release.banner === "string"
-            ? this.#workspaceConfig.release.banner
-            : this.#workspaceConfig.release.banner?.url
+          typeof this.workspaceConfig.release.banner === "string"
+            ? this.workspaceConfig.release.banner
+            : this.workspaceConfig.release.banner?.url
         })
-${this.#workspaceConfig.release.header || ""}
+${this.workspaceConfig.release.header || ""}
 
 # ${name ? `${titleCase(name)} ` : ""}v${releaseVersion.rawVersion}
 
 We at [${
-          this.#workspaceConfig.organization
+          this.workspaceConfig.organization
             ? titleCase(
-                typeof this.#workspaceConfig.organization === "string"
-                  ? this.#workspaceConfig.organization
-                  : this.#workspaceConfig.organization.name
+                typeof this.workspaceConfig.organization === "string"
+                  ? this.workspaceConfig.organization
+                  : this.workspaceConfig.organization.name
               )
             : ""
-        }](${this.#workspaceConfig.homepage}) are very excited to announce the v${
+        }](${this.workspaceConfig.homepage}) are very excited to announce the v${
           releaseVersion.rawVersion
         } release of the ${
           name
-            ? this.#workspaceConfig.name
-              ? `${titleCase(this.#workspaceConfig.name)} - ${titleCase(name)}`
+            ? this.workspaceConfig.name
+              ? `${titleCase(this.workspaceConfig.name)} - ${titleCase(name)}`
               : titleCase(name)
-            : this.#workspaceConfig.name
-              ? titleCase(this.#workspaceConfig.name)
+            : this.workspaceConfig.name
+              ? titleCase(this.workspaceConfig.name)
               : "Storm Software"
         } project! 🚀
 
 These changes are released under the ${
-          this.#workspaceConfig.license.includes("license")
-            ? this.#workspaceConfig.license
-            : `${this.#workspaceConfig.license} license`
-        }. You can find more details on [our licensing page](${this.#workspaceConfig.licensing}). You can find guides, API references, and other documentation around this release (and much more) on [our documentation site](${
-          this.#workspaceConfig.docs
+          this.workspaceConfig.license.includes("license")
+            ? this.workspaceConfig.license
+            : `${this.workspaceConfig.license} license`
+        }. You can find more details on [our licensing page](${this.workspaceConfig.licensing}). You can find guides, API references, and other documentation around this release (and much more) on [our documentation site](${
+          this.workspaceConfig.docs
         }).
 
 If you have any questions or comments, feel free to reach out to the team on [Discord](${
-          this.#workspaceConfig.socials.discord
-        }) or [our contact page](${this.#workspaceConfig.contact}). Please help us spread the word by giving [this repository](https://github.com/${
-          typeof this.#workspaceConfig.organization === "string"
-            ? this.#workspaceConfig.organization
-            : this.#workspaceConfig.organization?.name
-        }/${this.#workspaceConfig.name}) a star ⭐ on GitHub or [posting on X (Twitter)](https://x.com/intent/tweet?text=Check%20out%20the%20latest%20@${
-          this.#workspaceConfig.socials.twitter
+          this.workspaceConfig.socials.discord
+        }) or [our contact page](${this.workspaceConfig.contact}). Please help us spread the word by giving [this repository](https://github.com/${
+          typeof this.workspaceConfig.organization === "string"
+            ? this.workspaceConfig.organization
+            : this.workspaceConfig.organization?.name
+        }/${this.workspaceConfig.name}) a star ⭐ on GitHub or [posting on X (Twitter)](https://x.com/intent/tweet?text=Check%20out%20the%20latest%20@${
+          this.workspaceConfig.socials.twitter
         }%20release%20${
           name ? `${titleCase(name)?.replaceAll(" ", "%20")}%20` : ""
         }v${releaseVersion.rawVersion}%20%F0%9F%9A%80%0D%0A%0D%0Ahttps://github.com/${
-          typeof this.#workspaceConfig.organization === "string"
-            ? this.#workspaceConfig.organization
-            : this.#workspaceConfig.organization?.name
-        }/${this.#workspaceConfig.name}/releases/tag/${releaseVersion.gitTag}) about this release!
+          typeof this.workspaceConfig.organization === "string"
+            ? this.workspaceConfig.organization
+            : this.workspaceConfig.organization?.name
+        }/${this.workspaceConfig.name}/releases/tag/${releaseVersion.gitTag}) about this release!
 
 ## Release Notes
 
@@ -148,18 +320,18 @@ ${changelogContents
     `## ${generateChangelogTitle(
       releaseVersion.rawVersion,
       name,
-      this.#workspaceConfig
+      this.workspaceConfig
     )}`,
     ""
   )
   .replaceAll(
-    `# ${generateChangelogTitle(releaseVersion.rawVersion, name, this.#workspaceConfig)}`,
+    `# ${generateChangelogTitle(releaseVersion.rawVersion, name, this.workspaceConfig)}`,
     ""
   )}
 
 ---
 
-${this.#workspaceConfig.release.footer}
+${this.workspaceConfig.release.footer}
 `,
         latestCommit,
         { dryRun }
@@ -171,7 +343,7 @@ ${this.#workspaceConfig.release.footer}
    * Get remote repository data, attempting to resolve it if not already set.
    */
   public override getRemoteRepoData<T extends RemoteRepoData>(): T | null {
-    if (!this.#remoteRepoData) {
+    if (!this.repoData) {
       let githubRepoData = super.getRemoteRepoData<T>();
       if (!githubRepoData) {
         githubRepoData = getGitHubRepoData() as T;
@@ -186,10 +358,10 @@ ${this.#workspaceConfig.release.footer}
         }
       }
 
-      this.#remoteRepoData = githubRepoData;
+      this.repoData = githubRepoData;
     }
 
-    return this.#remoteRepoData as T;
+    return this.repoData as T;
   }
 }
 
@@ -216,7 +388,7 @@ interface GithubRelease {
 
 export function getGitHubRepoData(
   remoteName = "origin",
-  createReleaseConfig: NxReleaseChangelogConfiguration["createRelease"] = "github"
+  createReleaseConfig: ResolvedCreateRemoteReleaseProvider | string = "github"
 ): RemoteRepoData | undefined {
   try {
     const remoteUrl = execSync(`git remote get-url ${remoteName}`, {
@@ -262,177 +434,11 @@ export function getGitHubRepoData(
   }
 }
 
-export async function createOrUpdateGithubRelease(
-  createReleaseConfig: NxReleaseChangelogConfiguration["createRelease"],
-  releaseVersion: ReleaseVersion,
-  changelogContents: string,
-  latestCommit: string,
-  { dryRun }: { dryRun: boolean }
-): Promise<void> {
-  const githubRepoData = getGitHubRepoData(undefined, createReleaseConfig);
-  if (!githubRepoData) {
-    output.error({
-      title: `Unable to create a GitHub release because the GitHub repo slug could not be determined.`,
-      bodyLines: [
-        `Please ensure you have a valid GitHub remote configured. You can run \`git remote -v\` to list your current remotes.`
-      ]
-    });
-    process.exit(1);
-  }
-
-  const tokenData = await resolveTokenData(githubRepoData.hostname);
-  const githubRequestConfig: GithubRequestConfig = {
-    repo: githubRepoData.slug,
-    hostname: githubRepoData.hostname,
-    apiBaseUrl: githubRepoData.apiBaseUrl,
-    token: tokenData?.token || null
-  };
-
-  let existingGithubReleaseForVersion: GithubRelease | undefined;
-  try {
-    existingGithubReleaseForVersion = await getGithubReleaseByTag(
-      githubRequestConfig,
-      releaseVersion.gitTag
-    );
-  } catch (err) {
-    if (err.response?.status === 401) {
-      output.error({
-        title: `Unable to resolve data via the GitHub API. You can use any of the following options to resolve this:`,
-        bodyLines: [
-          "- Set the `GITHUB_TOKEN` or `GH_TOKEN` environment variable to a valid GitHub token with `repo` scope",
-          "- Have an active session via the official gh CLI tool (https://cli.github.com) in your current terminal"
-        ]
-      });
-      process.exit(1);
-    }
-    if (err.response?.status === 404) {
-      // No existing release found, this is fine
-    } else {
-      // Rethrow unknown errors for now
-      throw err;
-    }
-  }
-
-  const logTitle = `https://${githubRepoData.hostname}/${githubRepoData.slug}/releases/tag/${releaseVersion.gitTag}`;
-  if (existingGithubReleaseForVersion) {
-    console.error(`UPDATE ${logTitle}${dryRun ? " [dry-run]" : ""}`);
-  } else {
-    console.error(`CREATE ${logTitle}${dryRun ? " [dry-run]" : ""}`);
-  }
-
-  console.log("");
-  printDiff(
-    existingGithubReleaseForVersion?.body
-      ? existingGithubReleaseForVersion.body
-      : "",
-    changelogContents,
-    3,
-    noDiffInChangelogMessage
-  );
-
-  if (!dryRun) {
-    await createOrUpdateGithubReleaseInternal(
-      githubRequestConfig,
-      {
-        version: releaseVersion.gitTag,
-        prerelease: releaseVersion.isPrerelease,
-        body: changelogContents,
-        commit: latestCommit
-      },
-      existingGithubReleaseForVersion
-    );
-  }
-}
-
 interface GithubReleaseOptions {
   version: string;
   body: string;
   prerelease: boolean;
   commit: string;
-}
-
-async function createOrUpdateGithubReleaseInternal(
-  githubRequestConfig: GithubRequestConfig,
-  release: GithubReleaseOptions,
-  existingGithubReleaseForVersion?: GithubRelease
-) {
-  const result = await syncGithubRelease(
-    githubRequestConfig,
-    release,
-    existingGithubReleaseForVersion
-  );
-
-  /**
-   * If something went wrong POSTing to Github we can still pre-populate the web form on github.com
-   * to allow the user to manually complete the release if they so choose.
-   */
-  if (result.status === "manual") {
-    if (result.error) {
-      process.exitCode = 1;
-
-      if (result.error.response?.data) {
-        // There's a nicely formatted error from GitHub we can display to the user
-        output.error({
-          title: `A GitHub API Error occurred when creating/updating the release`,
-          bodyLines: [
-            `GitHub Error: ${JSON.stringify(result.error.response.data)}`,
-            `---`,
-            `Request Data:`,
-            `Repo: ${githubRequestConfig.repo}`,
-            `Token: ${githubRequestConfig.token}`,
-            `Body: ${JSON.stringify(result.requestData)}`
-          ]
-        });
-      } else {
-        console.log(result.error);
-        console.error(
-          `An unknown error occurred while trying to create a release on GitHub, please report this on https://github.com/nrwl/nx (NOTE: make sure to redact your GitHub token from the error message!)`
-        );
-      }
-    }
-
-    const shouldContinueInGitHub = await promptForContinueInGitHub();
-    if (!shouldContinueInGitHub) {
-      return;
-    }
-
-    const open = require("open");
-    await open(result.url)
-      .then(() => {
-        console.info(
-          `\nFollow up in the browser to manually create the release:\n\n` +
-            result.url +
-            `\n`
-        );
-      })
-      .catch(() => {
-        console.info(
-          `Open this link to manually create a release: \n` + result.url + "\n"
-        );
-      });
-
-    /**
-     * If something went wrong POSTing to Github we can still pre-populate the web form on github.com
-     * to allow the user to manually complete the release.
-     */
-
-    if (result.error) {
-      console.error(result.error);
-      process.exitCode = 1;
-    }
-
-    await open(result.url)
-      .then(() => {
-        console.info(
-          `Follow up in the browser to manually create the release.`
-        );
-      })
-      .catch(() => {
-        console.info(
-          `Open this link to manually create a release: \n` + result.url + "\n"
-        );
-      });
-  }
 }
 
 async function promptForContinueInGitHub(): Promise<boolean> {
@@ -662,6 +668,7 @@ export async function createGithubRemoteReleaseClient(
     );
   }
 
+  const tokenData = await resolveTokenData(repoData.hostname);
   return new StormGithubRemoteReleaseClient(
     repoData,
     {
@@ -669,7 +676,7 @@ export async function createGithubRemoteReleaseClient(
       hostname: repoData.hostname,
       apiBaseUrl: repoData.apiBaseUrl
     },
-    await resolveTokenData(repoData.hostname),
+    tokenData,
     workspaceConfig
   );
 }

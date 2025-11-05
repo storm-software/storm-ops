@@ -1,6 +1,5 @@
 import {
   createProjectGraphAsync,
-  output,
   ProjectGraph,
   ProjectsConfigurations,
   readCachedProjectGraph,
@@ -16,7 +15,6 @@ import {
 } from "@storm-software/config-tools/logger/console";
 import defu from "defu";
 import { existsSync } from "node:fs";
-import { readFile } from "node:fs/promises";
 import { ReleaseClient } from "nx/release";
 import { DependencyBump } from "nx/release/changelog-renderer";
 import {
@@ -32,11 +30,9 @@ import {
   GitCommit,
   gitPush
 } from "nx/src/command-line/release/utils/git";
-import { printAndFlushChanges } from "nx/src/command-line/release/utils/print-changes";
 import {
   createCommitMessageValues,
-  handleDuplicateGitTags,
-  noDiffInChangelogMessage
+  handleDuplicateGitTags
 } from "nx/src/command-line/release/utils/shared";
 import { NxJsonConfiguration, readNxJson } from "nx/src/config/nx-json";
 import { FsTree } from "nx/src/generators/tree";
@@ -44,7 +40,6 @@ import { createFileMapUsingProjectGraph } from "nx/src/project-graph/file-map-ut
 import { ReleaseConfig } from "../types";
 import {
   filterHiddenChanges,
-  generateChangelogContent,
   generateChangelogForProjects
 } from "../utilities/changelog-utils";
 import { createFileToProjectMap } from "../utilities/file-utils";
@@ -375,6 +370,11 @@ export class StormReleaseClient extends ReleaseClient {
             this.config.conventionalCommits
           );
 
+          writeDebug(
+            `Running changelog generation for the ${releaseGroup.name} release group`,
+            this.workspaceConfig
+          );
+
           projectChangelogs = await generateChangelogForProjects({
             tree: this.tree,
             args: options,
@@ -387,7 +387,6 @@ export class StormReleaseClient extends ReleaseClient {
             workspaceConfig: this.workspaceConfig,
             ChangelogRendererClass: StormChangelogRenderer
           });
-
           if (projectChangelogs) {
             for (const [projectName, projectChangelog] of Object.entries(
               projectChangelogs
@@ -396,6 +395,7 @@ export class StormReleaseClient extends ReleaseClient {
               if (projectChangelog.postGitTask) {
                 postGitTasks.push(projectChangelog.postGitTask);
               }
+
               allProjectChangelogs[projectName] = projectChangelog;
             }
           }
@@ -458,6 +458,11 @@ export class StormReleaseClient extends ReleaseClient {
           this.config.conventionalCommits
         );
 
+        writeDebug(
+          `Running changelog generation for the ${releaseGroup.name} release group`,
+          this.workspaceConfig
+        );
+
         projectChangelogs = await generateChangelogForProjects({
           tree: this.tree,
           args: options,
@@ -470,7 +475,6 @@ export class StormReleaseClient extends ReleaseClient {
           workspaceConfig: this.workspaceConfig,
           ChangelogRendererClass: StormChangelogRenderer
         });
-
         if (projectChangelogs) {
           for (const [projectName, projectChangelog] of Object.entries(
             projectChangelogs
@@ -485,109 +489,20 @@ export class StormReleaseClient extends ReleaseClient {
       }
     }
 
-    if (projectChangelogs) {
-      await Promise.all(
-        Object.entries(projectChangelogs).map(async ([project, changelog]) => {
-          if (!this.projectGraph.nodes[project]?.data.root) {
-            writeWarning(
-              `A changelog was generated for ${
-                project
-              }, but it could not be found in the project graph. Skipping writing changelog file.`,
-              this.workspaceConfig
-            );
-          } else if (changelog.contents) {
-            const filePath = joinPaths(
-              this.projectGraph.nodes[project].data.root,
-              "CHANGELOG.md"
-            );
-
-            let currentContent: string | undefined;
-            if (existsSync(filePath)) {
-              currentContent = await readFile(filePath, "utf8");
-            }
-
-            writeDebug(
-              `✍️  Writing changelog for project ${project} to ${filePath}`,
-              this.workspaceConfig
-            );
-
-            const content = await generateChangelogContent(
-              changelog.releaseVersion,
-              filePath,
-              changelog.contents,
-              currentContent,
-              project,
-              this.workspaceConfig
-            );
-
-            this.tree.write(filePath, content);
-
-            printAndFlushChanges(
-              this.tree,
-              !!options.dryRun,
-              3,
-              false,
-              noDiffInChangelogMessage,
-              // Only print the change for the current changelog file at this point
-              f => f.path === filePath
-            );
-          }
-        })
-      );
-
-      this.applyChangesAndExit(options, postGitTasks);
-    }
+    writeDebug(
+      `Generated changelogs for ${Object.keys(allProjectChangelogs).length} projects:
+${Object.keys(allProjectChangelogs)
+  .map(p => `  - ${p}`)
+  .join("\n")}
+`,
+      this.workspaceConfig
+    );
+    await this.applyChangesAndExit(options, postGitTasks);
 
     return {
       workspaceChangelog: undefined,
       projectChangelogs: allProjectChangelogs
     };
-  };
-
-  protected checkChangelogFilesEnabled(): boolean {
-    if (
-      this.config.changelog?.workspaceChangelog &&
-      (this.config.changelog?.workspaceChangelog === true ||
-        this.config.changelog?.workspaceChangelog.file)
-    ) {
-      return true;
-    }
-    for (const releaseGroup of Object.values(this.config.groups)) {
-      if (
-        releaseGroup.changelog &&
-        releaseGroup.changelog !== true &&
-        releaseGroup.changelog.file
-      ) {
-        return true;
-      }
-    }
-    return false;
-  }
-
-  protected isCI = () => {
-    if (process.env.CI === "false") {
-      return false;
-    }
-    return (
-      process.env.CI ||
-      process.env.TF_BUILD === "true" ||
-      process.env.GITHUB_ACTIONS === "true" ||
-      process.env.BUILDKITE === "true" ||
-      process.env.CIRCLECI === "true" ||
-      process.env.CIRRUS_CI === "true" ||
-      process.env.TRAVIS === "true" ||
-      !!process.env["bamboo.buildKey"] ||
-      !!process.env["bamboo_buildKey"] ||
-      !!process.env.CODEBUILD_BUILD_ID ||
-      !!process.env.GITLAB_CI ||
-      !!process.env.HEROKU_TEST_RUN_ID ||
-      !!process.env.BUILD_ID ||
-      !!process.env.BUILD_NUMBER ||
-      !!process.env.BUILD_BUILDID ||
-      !!process.env.TEAMCITY_VERSION ||
-      !!process.env.JENKINS_URL ||
-      !!process.env.HUDSON_URL
-    );
   };
 
   protected applyChangesAndExit = async (
@@ -617,19 +532,11 @@ export class StormReleaseClient extends ReleaseClient {
     );
 
     const changes = this.tree.listChanges();
-
-    /**
-     * In the case where we are expecting changelog file updates, but there is nothing
-     * to flush from the tree, we exit early. This could happen we using conventional
-     * commits, for example.
-     */
-    if (this.checkChangelogFilesEnabled() && !changes.length) {
-      output.warn({
-        title: `No changes detected for changelogs`,
-        bodyLines: [
-          `No changes were detected for any changelog files, so no changelog entries will be generated.`
-        ]
-      });
+    if (!changes.length) {
+      writeWarning(
+        "No changes were detected for any changelog files, so no changelog entries will be generated.",
+        this.workspaceConfig
+      );
 
       if (!postGitTasks.length) {
         // No post git tasks (e.g. remote release creation) to perform so we can just exit
@@ -644,9 +551,6 @@ export class StormReleaseClient extends ReleaseClient {
     }
 
     const changedFiles: string[] = changes.map(f => f.path);
-
-    // Generate a new commit for the changes, if configured to do so
-
     await commitChanges({
       changedFiles,
       deletedFiles: [],
@@ -660,8 +564,11 @@ export class StormReleaseClient extends ReleaseClient {
     // Resolve the commit we just made
     latestCommit = await getCommitHash("HEAD");
 
-    // Generate a one or more git tags for the changes, if configured to do so
-    output.logSingleLine(`Tagging commit with git`);
+    writeDebug(
+      `Creating git tags: ${gitTagValues.join(", ")}`,
+      this.workspaceConfig
+    );
+
     for (const tag of gitTagValues) {
       await gitTag({
         tag,
@@ -675,9 +582,11 @@ export class StormReleaseClient extends ReleaseClient {
     }
 
     if (options.gitPush ?? this.config.changelog?.git?.push) {
-      output.logSingleLine(
-        `Pushing to git remote "${options.gitRemote ?? "origin"}"`
+      writeDebug(
+        `Pushing to git remote "${options.gitRemote ?? "origin"}"`,
+        this.workspaceConfig
       );
+
       await gitPush({
         gitRemote: options.gitRemote,
         dryRun: options.dryRun,

@@ -3,7 +3,14 @@ import {
   STORM_DEFAULT_RELEASE_BANNER,
   type StormWorkspaceConfig
 } from "@storm-software/config";
+import {
+  writeDebug,
+  writeWarning
+} from "@storm-software/config-tools/logger/console";
+import { joinPaths } from "@storm-software/config-tools/utilities/correct-paths";
 import chalk from "chalk";
+import { existsSync } from "node:fs";
+import { readFile } from "node:fs/promises";
 import { DependencyBump } from "nx/release/changelog-renderer";
 import {
   ChangelogChange,
@@ -12,7 +19,9 @@ import {
 } from "nx/src/command-line/release/changelog";
 import { NxReleaseConfig } from "nx/src/command-line/release/config/config";
 import { ReleaseGroupWithName } from "nx/src/command-line/release/config/filter-release-groups";
+import { printAndFlushChanges } from "nx/src/command-line/release/utils/print-changes";
 import {
+  noDiffInChangelogMessage,
   ReleaseVersion,
   shouldPreferDockerVersionForReleaseGroup,
   VersionData
@@ -280,6 +289,55 @@ export async function generateChangelogForProjects({
       contents,
       postGitTask
     };
+  }
+
+  for (const [projectName, projectChangelog] of Object.entries(
+    projectChangelogs
+  )) {
+    if (!this.projectGraph.nodes[projectName]?.data.root) {
+      writeWarning(
+        `A changelog was generated for ${
+          projectName
+        }, but it could not be found in the project graph. Skipping writing changelog file.`,
+        this.workspaceConfig
+      );
+    } else if (projectChangelog.contents) {
+      const filePath = joinPaths(
+        this.projectGraph.nodes[projectName].data.root,
+        "CHANGELOG.md"
+      );
+
+      let currentContent: string | undefined;
+      if (existsSync(filePath)) {
+        currentContent = await readFile(filePath, "utf8");
+      }
+
+      writeDebug(
+        `✍️  Writing changelog for project ${projectName} to ${filePath}`,
+        this.workspaceConfig
+      );
+
+      const content = await generateChangelogContent(
+        projectChangelog.releaseVersion,
+        filePath,
+        projectChangelog.contents,
+        currentContent,
+        projectName,
+        this.workspaceConfig
+      );
+
+      this.tree.write(filePath, content);
+
+      printAndFlushChanges(
+        this.tree,
+        !!args.dryRun,
+        3,
+        false,
+        noDiffInChangelogMessage,
+        // Only print the change for the current changelog file at this point
+        f => f.path === filePath
+      );
+    }
   }
 
   return projectChangelogs;
