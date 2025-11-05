@@ -72,11 +72,6 @@ export const DEFAULT_RELEASE_CONFIG: ReleaseConfig = {
     crates: DEFAULT_RUST_RELEASE_GROUP_CONFIG
   },
   changelog: {
-    git: {
-      tag: true
-      // commit: true,
-      // commitMessage: "release(monorepo): Publish workspace release updates"
-    },
     automaticFromRef: true,
     workspaceChangelog: false,
     projectChangelogs: true

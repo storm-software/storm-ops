@@ -1,5 +1,6 @@
 import {
   createProjectGraphAsync,
+  output,
   ProjectGraph,
   ProjectsConfigurations,
   readCachedProjectGraph,
@@ -17,10 +18,19 @@ import defu from "defu";
 import { existsSync } from "node:fs";
 import { readFile } from "node:fs/promises";
 import { ReleaseClient } from "nx/release";
-import { createAPI as createReleaseChangelogAPI } from "nx/src/command-line/release/changelog";
-import { ChangelogOptions } from "nx/src/command-line/release/command-object";
+import {
+  createAPI as createReleaseChangelogAPI,
+  NxReleaseChangelogResult,
+  PostGitTask
+} from "nx/src/command-line/release/changelog";
+import { ChangelogOptions as NxChangelogOptions } from "nx/src/command-line/release/command-object";
+import { getCommitHash, gitPush } from "nx/src/command-line/release/utils/git";
 import { printAndFlushChanges } from "nx/src/command-line/release/utils/print-changes";
-import { noDiffInChangelogMessage } from "nx/src/command-line/release/utils/shared";
+import {
+  createCommitMessageValues,
+  handleDuplicateGitTags,
+  noDiffInChangelogMessage
+} from "nx/src/command-line/release/utils/shared";
 import {
   NxJsonConfiguration,
   NxReleaseChangelogConfiguration,
@@ -29,9 +39,20 @@ import {
 import { FsTree } from "nx/src/generators/tree";
 import { ReleaseConfig, ReleaseGroupConfig } from "../types";
 import { generateChangelogContent } from "../utilities/changelog-utils";
+import {
+  commitChanges,
+  createGitTagValues,
+  gitTag
+} from "../utilities/git-utils";
 import { omit } from "../utilities/omit";
 import StormChangelogRenderer from "./changelog-renderer";
 import { DEFAULT_RELEASE_CONFIG, DEFAULT_RELEASE_GROUP_CONFIG } from "./config";
+
+export type ChangelogOptions = Omit<
+  NxChangelogOptions,
+  "versionData" | "releaseGraph"
+> &
+  Required<Pick<NxChangelogOptions, "versionData" | "releaseGraph">>;
 
 function getReleaseGroupConfig(
   releaseConfig: Partial<ReleaseConfig>,
@@ -219,7 +240,11 @@ export class StormReleaseClient extends ReleaseClient {
   }
 
   public override releaseChangelog = async (options: ChangelogOptions) => {
-    const result = await this.#releaseChangelog(options);
+    const result = await this.#releaseChangelog({
+      ...options,
+      gitCommit: false,
+      gitTag: false
+    });
 
     if (result.projectChangelogs) {
       await Promise.all(
@@ -272,8 +297,165 @@ export class StormReleaseClient extends ReleaseClient {
           }
         )
       );
+
+      this.applyChangesAndExit(options, result);
     }
 
     return result;
+  };
+
+  protected checkChangelogFilesEnabled(): boolean {
+    if (
+      this.config.changelog?.workspaceChangelog &&
+      (this.config.changelog?.workspaceChangelog === true ||
+        this.config.changelog?.workspaceChangelog.file)
+    ) {
+      return true;
+    }
+    for (const releaseGroup of Object.values(this.config.groups)) {
+      if (
+        releaseGroup.changelog &&
+        releaseGroup.changelog !== true &&
+        releaseGroup.changelog.file
+      ) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  protected isCI = () => {
+    if (process.env.CI === "false") {
+      return false;
+    }
+    return (
+      process.env.CI ||
+      process.env.TF_BUILD === "true" ||
+      process.env.GITHUB_ACTIONS === "true" ||
+      process.env.BUILDKITE === "true" ||
+      process.env.CIRCLECI === "true" ||
+      process.env.CIRRUS_CI === "true" ||
+      process.env.TRAVIS === "true" ||
+      !!process.env["bamboo.buildKey"] ||
+      !!process.env["bamboo_buildKey"] ||
+      !!process.env.CODEBUILD_BUILD_ID ||
+      !!process.env.GITLAB_CI ||
+      !!process.env.HEROKU_TEST_RUN_ID ||
+      !!process.env.BUILD_ID ||
+      !!process.env.BUILD_NUMBER ||
+      !!process.env.BUILD_BUILDID ||
+      !!process.env.TEAMCITY_VERSION ||
+      !!process.env.JENKINS_URL ||
+      !!process.env.HUDSON_URL
+    );
+  };
+
+  protected applyChangesAndExit = async (
+    options: ChangelogOptions,
+    result: NxReleaseChangelogResult
+  ) => {
+    const postGitTasks = Object.values(result.projectChangelogs || {})
+      .map(project => project.postGitTask)
+      .filter(Boolean) as PostGitTask[];
+
+    const to = options.to || "HEAD";
+    let latestCommit = await getCommitHash(to);
+
+    const gitTagValues: string[] =
+      (options.gitTag ?? this.config.changelog?.git?.tag)
+        ? createGitTagValues(
+            options.releaseGraph.releaseGroups,
+            options.releaseGraph.releaseGroupToFilteredProjects,
+            options.versionData
+          )
+        : [];
+    handleDuplicateGitTags(gitTagValues);
+
+    const commitMessageValues: string[] = createCommitMessageValues(
+      options.releaseGraph.releaseGroups,
+      options.releaseGraph.releaseGroupToFilteredProjects,
+      options.versionData,
+      options.gitCommitMessage ||
+        this.config.changelog?.git?.commitMessage ||
+        "release(monorepo): Publish workspace release updates"
+    );
+
+    const changes = this.tree.listChanges();
+
+    /**
+     * In the case where we are expecting changelog file updates, but there is nothing
+     * to flush from the tree, we exit early. This could happen we using conventional
+     * commits, for example.
+     */
+    if (this.checkChangelogFilesEnabled() && !changes.length) {
+      output.warn({
+        title: `No changes detected for changelogs`,
+        bodyLines: [
+          `No changes were detected for any changelog files, so no changelog entries will be generated.`
+        ]
+      });
+
+      if (!postGitTasks.length) {
+        // No post git tasks (e.g. remote release creation) to perform so we can just exit
+        return;
+      }
+
+      for (const postGitTask of postGitTasks) {
+        await postGitTask(latestCommit);
+      }
+
+      return;
+    }
+
+    const changedFiles: string[] = changes.map(f => f.path);
+
+    // Generate a new commit for the changes, if configured to do so
+
+    await commitChanges({
+      changedFiles,
+      deletedFiles: [],
+      isDryRun: !!options.dryRun,
+      isVerbose: !!options.verbose,
+      gitCommitMessages: commitMessageValues,
+      gitCommitArgs:
+        options.gitCommitArgs || this.config.changelog?.git?.commitArgs
+    });
+
+    // Resolve the commit we just made
+    latestCommit = await getCommitHash("HEAD");
+
+    // Generate a one or more git tags for the changes, if configured to do so
+    output.logSingleLine(`Tagging commit with git`);
+    for (const tag of gitTagValues) {
+      await gitTag({
+        tag,
+        message:
+          options.gitTagMessage || this.config.changelog?.git?.tagMessage,
+        additionalArgs:
+          options.gitTagArgs || this.config.changelog?.git?.tagArgs,
+        dryRun: options.dryRun,
+        verbose: options.verbose
+      });
+    }
+
+    if (options.gitPush ?? this.config.changelog?.git?.push) {
+      output.logSingleLine(
+        `Pushing to git remote "${options.gitRemote ?? "origin"}"`
+      );
+      await gitPush({
+        gitRemote: options.gitRemote,
+        dryRun: options.dryRun,
+        verbose: options.verbose,
+        additionalArgs:
+          options.gitPushArgs || this.config.changelog?.git?.pushArgs
+      });
+    }
+
+    // Run any post-git tasks in series
+    for (const postGitTask of postGitTasks) {
+      await postGitTask(latestCommit);
+    }
+
+    return;
   };
 }
