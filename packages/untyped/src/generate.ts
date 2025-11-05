@@ -12,7 +12,11 @@ import { generateMarkdownFile } from "./generators/markdown";
 
 export const getGenerateAction =
   (config: StormWorkspaceConfig) =>
-  async (options: { entry?: string | string[]; outputPath?: string }) => {
+  async (options: {
+    entry?: string | string[];
+    outputPath?: string;
+    generatedBy?: string;
+  }) => {
     writeTrace(
       `Running Storm Untyped with options: ${JSON.stringify(options)}`,
       config
@@ -80,8 +84,12 @@ ${JSON.stringify(schema)}
 
         const promises = [] as Promise<any>[];
 
-        promises.push(generateDeclarationFile(schema, file, config));
-        promises.push(generateMarkdownFile(schema, file, config));
+        promises.push(
+          generateDeclarationFile(schema, file, options.generatedBy, config)
+        );
+        promises.push(
+          generateMarkdownFile(schema, file, options.generatedBy, config)
+        );
         promises.push(generateJsonSchemaFile(schema, file, config));
 
         return Promise.all(promises);

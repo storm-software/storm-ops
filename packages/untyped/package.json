@@ -193,27 +193,13 @@
     "storm-stack",
     "sullivanpj"
   ],
-  "peerDependencies": {
-    "@nx/devkit": "catalog:",
-    "untyped": "catalog:"
-  },
-  "peerDependenciesMeta": {
-    "@nx/devkit": {
-      "optional": false
-    },
-    "untyped": {
-      "optional": false
-    }
-  },
   "dependencies": {
     "commander": "catalog:",
     "glob": "catalog:",
     "jiti": "catalog:",
-    "knitwork": "^1.2.0",
-    "nx": "catalog:"
+    "knitwork": "^1.2.0"
   },
   "devDependencies": {
-    "@nx/devkit": "catalog:",
     "@types/node": "catalog:",
     "tsup": "catalog:",
     "untyped": "catalog:"

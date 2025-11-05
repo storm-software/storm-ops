@@ -1,13 +1,21 @@
-import { StormWorkspaceConfig } from "@storm-software/config";
 import {
   writeError,
   writeTrace
 } from "@storm-software/config-tools/logger/console";
-import { Path } from "glob";
+import type { StormWorkspaceConfig } from "@storm-software/config/types";
+import type { Path } from "glob";
 import { writeFile } from "node:fs/promises";
-import { Schema } from "untyped";
+import type { Schema } from "untyped";
 import { getOutputFile } from "../utilities";
 
+/**
+ * Generate a JSON schema file from a TypeScript schema.
+ *
+ * @param schema The TypeScript schema to convert.
+ * @param file The file to write the JSON schema to.
+ * @param config The workspace configuration.
+ * @returns A promise that resolves when the file has been written.
+ */
 export function generateJsonSchemaFile(
   schema: Schema,
   file: Path,

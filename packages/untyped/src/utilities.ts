@@ -1,5 +1,5 @@
 import { joinPaths } from "@storm-software/config-tools/utilities/correct-paths";
-import { Path } from "glob";
+import type { Path } from "glob";
 
 /**
  * Get the output file for the schema file
