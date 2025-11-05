@@ -580,20 +580,18 @@ ${Object.keys(allProjectChangelogs)
       });
     }
 
-    if (options.gitPush ?? this.config.changelog?.git?.push) {
-      writeDebug(
-        `Pushing to git remote "${options.gitRemote ?? "origin"}"`,
-        this.workspaceConfig
-      );
+    writeDebug(
+      `Pushing to git remote "${options.gitRemote ?? "origin"}"`,
+      this.workspaceConfig
+    );
 
-      await gitPush({
-        gitRemote: options.gitRemote,
-        dryRun: options.dryRun,
-        verbose: options.verbose,
-        additionalArgs:
-          options.gitPushArgs || this.config.changelog?.git?.pushArgs
-      });
-    }
+    await gitPush({
+      gitRemote: options.gitRemote,
+      dryRun: options.dryRun,
+      verbose: options.verbose,
+      additionalArgs:
+        options.gitPushArgs || this.config.changelog?.git?.pushArgs
+    });
 
     // Run any post-git tasks in series
     for (const postGitTask of postGitTasks) {
