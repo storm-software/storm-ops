@@ -1,4 +1,9 @@
-import { output, ProjectGraphProjectNode, Tree } from "@nx/devkit";
+import {
+  output,
+  ProjectGraph,
+  ProjectGraphProjectNode,
+  Tree
+} from "@nx/devkit";
 import {
   STORM_DEFAULT_RELEASE_BANNER,
   type StormWorkspaceConfig
@@ -175,8 +180,10 @@ export function filterHiddenChanges(
 }
 
 export async function generateChangelogForProjects({
+  tree,
   args,
   changes,
+  projectGraph,
   projectsVersionData,
   releaseGroup,
   projects,
@@ -188,6 +195,7 @@ export async function generateChangelogForProjects({
   tree: Tree;
   args: ChangelogOptions;
   changes: ChangelogChange[];
+  projectGraph: ProjectGraph;
   projectsVersionData: VersionData;
   releaseGroup: ReleaseGroupWithName;
   projects: ProjectGraphProjectNode[];
@@ -294,16 +302,16 @@ export async function generateChangelogForProjects({
   for (const [projectName, projectChangelog] of Object.entries(
     projectChangelogs
   )) {
-    if (!this.projectGraph.nodes[projectName]?.data.root) {
+    if (!projectGraph.nodes[projectName]?.data.root) {
       writeWarning(
         `A changelog was generated for ${
           projectName
         }, but it could not be found in the project graph. Skipping writing changelog file.`,
-        this.workspaceConfig
+        workspaceConfig
       );
     } else if (projectChangelog.contents) {
       const filePath = joinPaths(
-        this.projectGraph.nodes[projectName].data.root,
+        projectGraph.nodes[projectName].data.root,
         "CHANGELOG.md"
       );
 
@@ -314,7 +322,7 @@ export async function generateChangelogForProjects({
 
       writeDebug(
         `✍️  Writing changelog for project ${projectName} to ${filePath}`,
-        this.workspaceConfig
+        workspaceConfig
       );
 
       const content = await generateChangelogContent(
@@ -323,13 +331,13 @@ export async function generateChangelogForProjects({
         projectChangelog.contents,
         currentContent,
         projectName,
-        this.workspaceConfig
+        workspaceConfig
       );
 
-      this.tree.write(filePath, content);
+      tree.write(filePath, content);
 
       printAndFlushChanges(
-        this.tree,
+        tree,
         !!args.dryRun,
         3,
         false,
