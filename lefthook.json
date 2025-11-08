@@ -20,9 +20,11 @@
         "glob": "**/{lefthook.yml,lefthook.yaml,lefthook.json,biome.json}",
         "run": "node ./dist/packages/git-tools/bin/prepare.cjs"
       },
-      "lint-toml": {
-        "glob": "**/*.toml",
-        "run": "pnpm exec taplo format --check --config='./packages/linting-tools/src/taplo/config.toml'"
+      "format-toml": {
+        "files": "git diff --name-only HEAD @{push}",
+        "glob": "**/*.{toml}",
+        "run": "pnpm format-toml && git update-index",
+        "stage_fixed": true
       },
       "lint-codeowners": {
         "files": "git diff --name-only HEAD @{push}",
@@ -68,11 +70,9 @@
         "glob": ".github/workflows/*.*",
         "run": "zizmor --offline --config='./tools/config/zizmor.yml' .github/workflows/"
       },
-      "toml": {
-        "files": "git diff --name-only HEAD @{push}",
-        "glob": "**/*.{toml}",
-        "run": "pnpm format-toml && git update-index",
-        "stage_fixed": true
+      "lint-toml": {
+        "glob": "**/*.toml",
+        "run": "pnpm exec taplo format --check --config='./packages/linting-tools/src/taplo/config.toml'"
       },
       "readme": {
         "glob": "**/{README.md,README.*.md,readme/**/*,package.json,executors.json,generators.json}",
