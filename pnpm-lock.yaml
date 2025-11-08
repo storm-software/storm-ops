@@ -377,10 +377,6 @@ importers:
         specifier: 'catalog:'
         version: 8.8.5
 
-  crates/storm-config: {}
-
-  crates/storm-workspace: {}
-
   devenv-modules: {}
 
   docs/api-reports: {}

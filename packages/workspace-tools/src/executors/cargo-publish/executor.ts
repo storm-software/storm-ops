@@ -59,14 +59,14 @@ export default async function runExecutor(
     );
     if (result) {
       console.warn(
-        `Skipped package "${cargoToml.package.name}" from project "${context.projectName}" because v${cargoToml.package.version} already exists in ${registry} with tag "latest"`
+        `Skipped publishing crate ${cargoToml.package.name} v${cargoToml.package.version} - ${result}`
       );
 
       return {
         success: true
       };
     }
-  } catch (_: any) {
+  } catch {
     // Do nothing
   }
 
@@ -104,7 +104,7 @@ export default async function runExecutor(
     return {
       success: true
     };
-  } catch (error: any) {
+  } catch (error) {
     console.error(`Failed to publish to ${registry}`);
     console.error(error);
     console.log("");
@@ -119,21 +119,43 @@ export const getRegistryVersion = (
   name: string,
   version: string,
   registry: string
-): Promise<string> => {
-  return new Promise((resolve: (value: string) => void) =>
+): Promise<string | null> => {
+  const url = `${registry}/api/v1/crates/${encodeURIComponent(name)}/${encodeURIComponent(
+    version
+  )}`;
+  console.log(`Checking for existing version at: ${url}`);
+
+  return new Promise((resolve: (value: string | null) => void) =>
     https
-      .get(
-        `${registry}/api/v1/crates/${encodeURIComponent(name)}/${encodeURIComponent(
-          version
-        )}`,
-        res => {
-          res.on("data", d => {
-            resolve(d);
-          });
-        }
-      )
-      .on("error", e => {
-        throw e;
+      .get(url, res => {
+        res.on("data", d => {
+          if (res.statusCode && res.statusCode >= 200 && res.statusCode < 300) {
+            const response = JSON.parse(d.toString());
+
+            const updatedAt = response.version?.updated_at;
+            const publishedBy = response.version?.published_by?.name;
+
+            resolve(
+              `The ${name} v${version} crate was previously published${
+                publishedBy ? ` by ${publishedBy}` : ""
+              }${
+                updatedAt
+                  ? ` on ${new Date(updatedAt).toLocaleDateString("en-US", {
+                      year: "numeric",
+                      month: "long",
+                      day: "numeric",
+                      weekday: "long"
+                    })}`
+                  : ""
+              }.`
+            );
+          }
+
+          resolve(null);
+        });
+      })
+      .on("error", () => {
+        resolve(null);
       })
   );
 };
