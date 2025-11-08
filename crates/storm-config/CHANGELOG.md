@@ -2,6 +2,22 @@
 
 # Changelog for Storm Ops - Storm Config
 
+## [0.26.1](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.26.1) (11/08/2025)
+
+### Miscellaneous
+
+- **monorepo:** Reformat README markdown files
+  ([3b1e9655c](https://github.com/storm-software/storm-ops/commit/3b1e9655c))
+
+### Bug Fixes
+
+- **storm-config:** Resolved issue preventing crates from being published
+  ([ca7e8b481](https://github.com/storm-software/storm-ops/commit/ca7e8b481))
+
+### Updated Dependencies
+
+- Updated **storm-workspace** to **v0.19.21**
+
 ## [0.26.0](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.26.0) (11/08/2025)
 
 ### Features

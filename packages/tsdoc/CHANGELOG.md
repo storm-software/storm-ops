@@ -1,16 +1,25 @@
+![Storm Software's logo banner](https://public.storm-cdn.com/brand-banner.png)
+
+# Changelog for Storm Ops - Tsdoc
+
+## [0.13.21](https://github.com/storm-software/storm-ops/releases/tag/tsdoc%400.13.21) (11/08/2025)
+
+### Miscellaneous
+
+- **monorepo:** Reformat README markdown files
+  ([3b1e9655c](https://github.com/storm-software/storm-ops/commit/3b1e9655c))
+
 ## [0.13.17](https://github.com/storm-software/storm-ops/releases/tag/tsdoc%400.13.17) (2025-11-04)
 
 ### Features
 
-- **monorepo:** Update packages to use Nx v22.0.2 ([8895b7333](https://github.com/storm-software/storm-ops/commit/8895b7333))
+- **monorepo:** Update packages to use Nx v22.0.2
+  ([8895b7333](https://github.com/storm-software/storm-ops/commit/8895b7333))
 
 ### Miscellaneous
 
-- **monorepo:** Resolve sherif linting issues and reformat README markdown files ([2ed668c6a](https://github.com/storm-software/storm-ops/commit/2ed668c6a))
-
-![Storm Software's logo banner](https://public.storm-cdn.com/brand-banner.png)
-
-# Changelog for Storm Ops - Tsdoc
+- **monorepo:** Resolve sherif linting issues and reformat README markdown files
+  ([2ed668c6a](https://github.com/storm-software/storm-ops/commit/2ed668c6a))
 
 ## [0.13.16](https://github.com/storm-software/storm-ops/releases/tag/tsdoc%400.13.16) (2025-10-31)
 

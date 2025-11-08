@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Storm Workspace
 
+## [0.19.21](https://github.com/storm-software/storm-ops/releases/tag/storm-workspace%400.19.21) (11/08/2025)
+
+### Miscellaneous
+
+- **monorepo:** Reformat README markdown files
+  ([3b1e9655c](https://github.com/storm-software/storm-ops/commit/3b1e9655c))
+
+### Bug Fixes
+
+- **storm-config:** Resolved issue preventing crates from being published
+  ([ca7e8b481](https://github.com/storm-software/storm-ops/commit/ca7e8b481))
+
 ## [0.19.20](https://github.com/storm-software/storm-ops/releases/tag/storm-workspace%400.19.20) (11/08/2025)
 
 ### Bug Fixes

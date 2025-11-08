@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Tsup
 
+## [0.2.19](https://github.com/storm-software/storm-ops/releases/tag/tsup%400.2.19) (11/08/2025)
+
+### Miscellaneous
+
+- **monorepo:** Reformat README markdown files
+  ([3b1e9655c](https://github.com/storm-software/storm-ops/commit/3b1e9655c))
+
+### Updated Dependencies
+
+- Updated **config-tools** to **v1.188.21**
+- Updated **build-tools** to **v0.158.21**
+
 ## [0.2.18](https://github.com/storm-software/storm-ops/releases/tag/tsup%400.2.18) (11/08/2025)
 
 ### Updated Dependencies

@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Config
 
+## [1.134.21](https://github.com/storm-software/storm-ops/releases/tag/config%401.134.21) (11/08/2025)
+
+### Miscellaneous
+
+- **monorepo:** Reformat README markdown files
+  ([3b1e9655c](https://github.com/storm-software/storm-ops/commit/3b1e9655c))
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.21**
+
 ## [1.134.20](https://github.com/storm-software/storm-ops/releases/tag/config%401.134.20) (11/08/2025)
 
 ### Updated Dependencies
