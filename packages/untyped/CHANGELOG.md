@@ -2,6 +2,24 @@
 
 # Changelog for Storm Ops - Untyped
 
+## [0.24.3](https://github.com/storm-software/storm-ops/releases/tag/untyped%400.24.3) (11/08/2025)
+
+### Miscellaneous
+
+- **monorepo:** Reformat README markdown files
+  ([f2ba8ae15](https://github.com/storm-software/storm-ops/commit/f2ba8ae15))
+
+### Features
+
+- **devenv-modules:** Added additional components and `mold` to `rust` devenv
+  config
+  ([9d4c9d358](https://github.com/storm-software/storm-ops/commit/9d4c9d358))
+
+### Updated Dependencies
+
+- Updated **config-tools** to **v1.188.22**
+- Updated **config** to **v1.134.22**
+
 ## [0.24.2](https://github.com/storm-software/storm-ops/releases/tag/untyped%400.24.2) (11/08/2025)
 
 ### Miscellaneous

@@ -2,6 +2,25 @@
 
 # Changelog for Storm Ops - Git Tools
 
+## [2.124.5](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.124.5) (11/08/2025)
+
+### Miscellaneous
+
+- **monorepo:** Reformat README markdown files
+  ([f2ba8ae15](https://github.com/storm-software/storm-ops/commit/f2ba8ae15))
+
+### Features
+
+- **devenv-modules:** Added additional components and `mold` to `rust` devenv
+  config
+  ([9d4c9d358](https://github.com/storm-software/storm-ops/commit/9d4c9d358))
+
+### Updated Dependencies
+
+- Updated **conventional-changelog** to **v0.3.22**
+- Updated **config-tools** to **v1.188.22**
+- Updated **config** to **v1.134.22**
+
 ## [2.124.4](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.124.4) (11/08/2025)
 
 ### Miscellaneous

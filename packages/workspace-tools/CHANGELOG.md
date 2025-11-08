@@ -2,6 +2,36 @@
 
 # Changelog for Storm Ops - Workspace Tools
 
+## [1.292.22](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.292.22) (11/08/2025)
+
+### Miscellaneous
+
+- **monorepo:** Reformat README markdown files
+  ([f2ba8ae15](https://github.com/storm-software/storm-ops/commit/f2ba8ae15))
+
+### Bug Fixes
+
+- **workspace-tools:** Resolved issue publishing crates to registry
+  ([3a3fdf9c2](https://github.com/storm-software/storm-ops/commit/3a3fdf9c2))
+
+### Features
+
+- **devenv-modules:** Added additional components and `mold` to `rust` devenv
+  config
+  ([9d4c9d358](https://github.com/storm-software/storm-ops/commit/9d4c9d358))
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.22**
+- Updated **config-tools** to **v1.188.22**
+- Updated **pnpm-tools** to **v0.6.22**
+- Updated **npm-tools** to **v0.5.22**
+- Updated **prettier** to **v0.57.22**
+- Updated **esbuild** to **v0.53.22**
+- Updated **unbuild** to **v0.57.22**
+- Updated **config** to **v1.134.22**
+- Updated **tsdown** to **v0.45.22**
+
 ## [1.292.21](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.292.21) (11/08/2025)
 
 ### Miscellaneous
