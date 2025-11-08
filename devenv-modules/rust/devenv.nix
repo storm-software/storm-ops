@@ -10,11 +10,18 @@
   # https://devenv.sh/languages/
   languages.rust = {
     enable = true;
+    mold.enable = true;
     channel = "nightly";
+    components = ["rustc" "cargo" "clippy" "rustfmt" "rust-analyzer" "miri"];
   };
 
   # https://devenv.sh/processes/
   processes.cargo-watch.exec = "cargo-watch";
+
+  git-hooks.hooks = {
+    rustfmt.enable = true;
+    clippy.enable = true;
+  };
 
   # See full reference at https://devenv.sh/reference/options/
 }
