@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Storm Config
 
+## [0.26.0](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.26.0) (11/08/2025)
+
+### Features
+
+- **storm-config:** Update `WorkspaceConfig` struct definition to match latest
+  schema
+  ([13c881283](https://github.com/storm-software/storm-ops/commit/13c881283))
+
+### Updated Dependencies
+
+- Updated **storm-workspace** to **v0.19.20**
+
 ## [0.25.19](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.25.19) (11/5/2025)
 
 ### Updated Dependencies

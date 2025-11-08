@@ -2,6 +2,19 @@
 
 # Changelog for Storm Ops - Cloudflare Tools
 
+## [0.70.20](https://github.com/storm-software/storm-ops/releases/tag/cloudflare-tools%400.70.20) (11/08/2025)
+
+### Miscellaneous
+
+- **cloudflare-tools:** Updated `wrangler` depenedency to v4.46.0
+  ([083c43ad3](https://github.com/storm-software/storm-ops/commit/083c43ad3))
+
+### Updated Dependencies
+
+- Updated **workspace-tools** to **v1.292.20**
+- Updated **config-tools** to **v1.188.20**
+- Updated **config** to **v1.134.20**
+
 ## [0.70.19](https://github.com/storm-software/storm-ops/releases/tag/cloudflare-tools%400.70.19) (11/5/2025)
 
 ### Updated Dependencies

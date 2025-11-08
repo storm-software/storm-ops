@@ -1,16 +1,26 @@
+![Storm Software's logo banner](https://public.storm-cdn.com/brand-banner.png)
+
+# Changelog for Storm Ops - Storm Workspace
+
+## [0.19.20](https://github.com/storm-software/storm-ops/releases/tag/storm-workspace%400.19.20) (11/08/2025)
+
+### Bug Fixes
+
+- **storm-workspace:** Update workspace root files list to point to latest file
+  names
+  ([fc6185f52](https://github.com/storm-software/storm-ops/commit/fc6185f52))
+
 ## [0.19.17](https://github.com/storm-software/storm-ops/releases/tag/storm-workspace%400.19.17) (2025-11-04)
 
 ### Features
 
-- **monorepo:** Update packages to use Nx v22.0.2 ([8895b7333](https://github.com/storm-software/storm-ops/commit/8895b7333))
+- **monorepo:** Update packages to use Nx v22.0.2
+  ([8895b7333](https://github.com/storm-software/storm-ops/commit/8895b7333))
 
 ### Miscellaneous
 
-- **monorepo:** Resolve sherif linting issues and reformat README markdown files ([2ed668c6a](https://github.com/storm-software/storm-ops/commit/2ed668c6a))
-
-![Storm Software's logo banner](https://public.storm-cdn.com/brand-banner.png)
-
-# Changelog for Storm Ops - Storm Workspace
+- **monorepo:** Resolve sherif linting issues and reformat README markdown files
+  ([2ed668c6a](https://github.com/storm-software/storm-ops/commit/2ed668c6a))
 
 ## [0.19.16](https://github.com/storm-software/storm-ops/releases/tag/storm-workspace%400.19.16) (2025-10-31)
 
