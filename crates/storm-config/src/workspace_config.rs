@@ -189,14 +189,14 @@ pub struct OrganizationDetails {
 
 #[derive(Serialize, Deserialize, Debug, Clone, PartialEq, Eq)]
 #[serde(untagged)]
-pub enum OrganizationConfig {
+pub enum WorkspaceOrganizationConfig {
   Details(OrganizationDetails),
   Name(String),
 }
 
-impl Default for OrganizationConfig {
+impl Default for WorkspaceOrganizationConfig {
   fn default() -> Self {
-    OrganizationConfig::Name("storm-software".to_string())
+    WorkspaceOrganizationConfig::Name("storm-software".to_string())
   }
 }
 
@@ -364,21 +364,21 @@ pub enum ColorThemeEntry {
 
 #[derive(Serialize, Deserialize, Debug, Clone, PartialEq, Eq)]
 #[serde(untagged)]
-pub enum ColorsConfig {
+pub enum WorkspaceColorsConfig {
   Palette(ColorPaletteConfig),
   Theme(ColorThemeConfig),
   Collection(HashMap<String, ColorThemeEntry>),
 }
 
-impl Default for ColorsConfig {
+impl Default for WorkspaceColorsConfig {
   fn default() -> Self {
-    ColorsConfig::Palette(ColorPaletteConfig::default())
+    WorkspaceColorsConfig::Palette(ColorPaletteConfig::default())
   }
 }
 
 #[derive(Serialize, Deserialize, Debug, Clone, PartialEq, Eq, Default)]
 #[serde(rename_all = "camelCase")]
-pub struct RegistryUrlConfig {
+pub struct WorkspaceRegistryUrlConfig {
   /// A remote registry URL used to publish distributable packages to GitHub
   pub github: Option<String>,
   /// A remote registry URL used to publish distributable packages to npm
@@ -453,7 +453,7 @@ impl Default for WorkspaceReleaseConfig {
 
 #[derive(Serialize, Deserialize, Debug, Clone, PartialEq, Eq, Default)]
 #[serde(rename_all = "camelCase")]
-pub struct SocialsConfig {
+pub struct WorkspaceSocialsConfig {
   /// A Twitter/X account associated with the organization/project
   pub twitter: Option<String>,
   /// A Discord account associated with the organization/project
@@ -506,7 +506,8 @@ impl Default for WorkspaceDirectoriesConfig {
   }
 }
 
-/// Storm Workspace config values used during various dev-ops processes. It represents the config of the entire monorepo.
+/// Storm Workspace config values used during various development processes.
+/// It represents the shared config of the entire monorepo.
 #[derive(Debug, Clone)]
 pub struct WorkspaceConfig {
   /// The JSON schema reference describing the workspace configuration
@@ -526,7 +527,7 @@ pub struct WorkspaceConfig {
   /// The configured workspace variant
   pub variant: WorkspaceVariant,
   /// The organization configuration backing the workspace
-  pub organization: OrganizationConfig,
+  pub organization: WorkspaceOrganizationConfig,
   /// The repo URL of the workspace (i.e. GitHub)
   pub repository: String,
   /// The license used by the package
@@ -554,17 +555,17 @@ pub struct WorkspaceConfig {
   /// The current workspace runtime mode (development/test/production)
   pub mode: WorkspaceMode,
   /// Configured color settings for the workspace
-  pub colors: ColorsConfig,
+  pub colors: WorkspaceColorsConfig,
   /// The workspace release configuration
   pub release: WorkspaceReleaseConfig,
   /// The workspace socials configuration
-  pub socials: SocialsConfig,
+  pub socials: WorkspaceSocialsConfig,
   /// The workspace error configuration
   pub error: WorkspaceErrorConfig,
   /// Should all known types of workspace caching be skipped?
   pub skip_cache: bool,
   /// The registry configuration for the workspace
-  pub registry: RegistryUrlConfig,
+  pub registry: WorkspaceRegistryUrlConfig,
   /// The directories configuration for the workspace
   pub directories: WorkspaceDirectoriesConfig,
   /// The package manager used by the repository
@@ -663,11 +664,11 @@ impl WorkspaceConfig {
         if let Ok(found) = config.get::<WorkspaceVariant>("variant") {
           workspace_config.variant = found;
         }
-        if let Ok(found) = config.get::<OrganizationConfig>("organization") {
+        if let Ok(found) = config.get::<WorkspaceOrganizationConfig>("organization") {
           workspace_config.organization = found;
-        } else if let Ok(found) = config.get::<OrganizationConfig>("org") {
+        } else if let Ok(found) = config.get::<WorkspaceOrganizationConfig>("org") {
           workspace_config.organization = found;
-        } else if let Ok(found) = config.get::<OrganizationConfig>("organization_config") {
+        } else if let Ok(found) = config.get::<WorkspaceOrganizationConfig>("organization_config") {
           workspace_config.organization = found;
         }
         if let Ok(found) = config.get_string("repository") {
@@ -727,7 +728,7 @@ impl WorkspaceConfig {
         if let Ok(found) = config.get::<WorkspaceReleaseConfig>("release") {
           workspace_config.release = found;
         }
-        if let Ok(found) = config.get::<ColorsConfig>("colors") {
+        if let Ok(found) = config.get::<WorkspaceColorsConfig>("colors") {
           workspace_config.colors = found;
         }
         if let Ok(found) = config.get::<WorkspaceBotConfig>("bot") {
@@ -737,17 +738,17 @@ impl WorkspaceConfig {
         } else if let Ok(found) = config.get::<WorkspaceBotConfig>("workspaceBot") {
           workspace_config.bot = found;
         }
-        if let Ok(found) = config.get::<SocialsConfig>("socials") {
+        if let Ok(found) = config.get::<WorkspaceSocialsConfig>("socials") {
           workspace_config.socials = found;
         }
         if let Ok(found) = config.get::<WorkspaceErrorConfig>("error") {
           workspace_config.error = found;
         }
-        if let Ok(found) = config.get::<RegistryUrlConfig>("registry") {
+        if let Ok(found) = config.get::<WorkspaceRegistryUrlConfig>("registry") {
           workspace_config.registry = found;
-        } else if let Ok(found) = config.get::<RegistryUrlConfig>("registry_urls") {
+        } else if let Ok(found) = config.get::<WorkspaceRegistryUrlConfig>("registry_urls") {
           workspace_config.registry = found;
-        } else if let Ok(found) = config.get::<RegistryUrlConfig>("registryUrls") {
+        } else if let Ok(found) = config.get::<WorkspaceRegistryUrlConfig>("registryUrls") {
           workspace_config.registry = found;
         }
         if let Ok(found) = config.get::<WorkspaceDirectoriesConfig>("directories") {
@@ -796,7 +797,7 @@ impl Default for WorkspaceConfig {
       variant: WorkspaceVariant::Monorepo,
       name: "storm-monorepo".to_string(),
       namespace: "storm-software".to_string(),
-      organization: OrganizationConfig::default(),
+      organization: WorkspaceOrganizationConfig::default(),
       repository: "https://github.com/storm-software/storm-monorepo".to_string(),
       license: "Apache-2.0".to_string(),
       homepage: "https://stormsoftware.com".to_string(),
@@ -808,7 +809,7 @@ impl Default for WorkspaceConfig {
       contact: None,
       support: None,
       release: WorkspaceReleaseConfig::default(),
-      socials: SocialsConfig::default(),
+      socials: WorkspaceSocialsConfig::default(),
       error: WorkspaceErrorConfig::default(),
       directories: WorkspaceDirectoriesConfig::default(),
       owner: "@storm-software/admin".to_string(),
@@ -817,10 +818,10 @@ impl Default for WorkspaceConfig {
       skip_config_logging: true,
       skip_cache: false,
       package_manager: PackageManagerType::Npm,
-      registry: RegistryUrlConfig::default(),
+      registry: WorkspaceRegistryUrlConfig::default(),
       timezone: "America/New_York".to_string(),
       locale: "en-US".to_string(),
-      colors: ColorsConfig::default(),
+      colors: WorkspaceColorsConfig::default(),
       extensions: HashMap::new().into(),
     }
   }

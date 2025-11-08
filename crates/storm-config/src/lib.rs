@@ -1,22 +1,34 @@
-//! Config organizes hierarchical or layered configurations for Rust applications.
+//! A crate with helper utilities for managing shared configuration in Storm workspaces.
 //!
-//! Config lets you set a set of default parameters and then extend them via merging in
-//! configuration from a variety of sources:
+//! This crate provides a set of tools for working with configuration files and
+//! environment variables in a consistent way. It supports multiple file formats,
+//! including JSON, YAML, TOML, and XML, and allows for easy merging and overriding
+//! of configuration values from different sources.
 //!
-//!  - Environment variables
-//!  - String literals in well-known formats
-//!  - Another Config instance
-//!  - Files: TOML, JSON, YAML, INI, RON, JSON5 and custom ones defined with Format trait
-//!  - Manual, programmatic override (via a `.set` method on the Config instance)
+//! # Features
+//! - The `WorkspaceConfig` struct representing the universal workspace configuration definition.
+//! - Support for multiple configuration file formats (JSON, YAML, TOML, XML).
+//! - Environment variable overrides.
+//! - Hierarchical configuration with support for nested structures.
+//! - Type-safe access to configuration values.
+//! - Custom configuration sources via the `Source` trait.
 //!
-//! Additionally, Config supports:
+//! # Example
+//! ```rust
+//! use storm_config::{Config, File, FileFormat, FileSourceFile, Format};
 //!
-//!  - Live watching and re-reading of configuration files
-//!  - Deep access into the merged configuration via a path syntax
-//!  - Deserialization via `serde` of the configuration or any subset defined via a path
+//! // Create a new configuration instance
+//! let mut config = Config::default();
 //!
-//! See the [examples](https://github.com/mehcode/config-rs/tree/master/examples) for
-//! general usage information.
+//! // Merge a JSON configuration file
+//! let file = File::new("config.json", FileFormat::Json);
+//! config.merge(file).unwrap();
+//!
+//! // Access a configuration value
+//! let db_host: String = config.get("database.host").unwrap();
+//! println!("Database host: {}", db_host);
+//! ```
+//! For more information, please refer to the [documentation](https://docs.rs/storm-config).
 #![allow(unknown_lints)]
 // #![warn(missing_docs)]
 
