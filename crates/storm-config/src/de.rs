@@ -1,10 +1,12 @@
+use std::collections::VecDeque;
+use std::iter::Enumerate;
+
+use serde::de;
+
 use crate::config::Config;
 use crate::errors::{ConfigError, Result, Unexpected};
 use crate::map::Map;
 use crate::value::{Table, Value, ValueKind};
-use serde::de;
-use std::collections::VecDeque;
-use std::iter::Enumerate;
 
 macro_rules! try_convert_number {
   (signed, $self:expr, $size:literal) => {{

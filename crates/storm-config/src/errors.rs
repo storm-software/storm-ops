@@ -1,8 +1,7 @@
-use serde::de;
-use serde::ser;
 use std::error::Error;
-use std::fmt;
-use std::result;
+use std::{fmt, result};
+
+use serde::{de, ser};
 
 // #[derive(Error, Debug)]
 // pub enum StormConfigError {

@@ -1,7 +1,9 @@
+use std::error::Error;
+
+use ini::Ini;
+
 use crate::map::Map;
 use crate::value::{Value, ValueKind};
-use ini::Ini;
-use std::error::Error;
 
 pub fn parse(
   uri: Option<&String>,

@@ -1,14 +1,14 @@
-use crate::path::Expression;
-use nom::{
-  branch::alt,
-  bytes::complete::{is_a, tag},
-  character::complete::{char, digit1, space0},
-  combinator::{map, map_res, opt, recognize},
-  error::ErrorKind,
-  sequence::{delimited, pair, preceded},
-  Err, IResult,
-};
 use std::str::FromStr;
+
+use nom::branch::alt;
+use nom::bytes::complete::{is_a, tag};
+use nom::character::complete::{char, digit1, space0};
+use nom::combinator::{map, map_res, opt, recognize};
+use nom::error::ErrorKind;
+use nom::sequence::{delimited, pair, preceded};
+use nom::{Err, IResult};
+
+use crate::path::Expression;
 
 fn raw_ident(i: &str) -> IResult<&str, String> {
   map(

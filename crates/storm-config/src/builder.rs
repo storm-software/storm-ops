@@ -1,9 +1,13 @@
+use std::str::FromStr;
+
+use crate::config::Config;
 use crate::errors::Result;
 use crate::map::Map;
+use crate::path::Expression;
 #[cfg(feature = "async")]
 use crate::source::AsyncSource;
-use crate::{config::Config, path::Expression, source::Source, value::Value};
-use std::str::FromStr;
+use crate::source::Source;
+use crate::value::Value;
 
 /// A configuration builder
 ///

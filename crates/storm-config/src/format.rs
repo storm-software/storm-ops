@@ -1,7 +1,8 @@
+use std::error::Error;
+
 use crate::errors::{ConfigError, Unexpected};
 use crate::map::Map;
 use crate::value::{Value, ValueKind};
-use std::error::Error;
 
 /// Describes a format of configuration source data
 ///

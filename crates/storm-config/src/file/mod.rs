@@ -1,17 +1,17 @@
+use std::fmt::Debug;
+use std::path::{Path, PathBuf};
+
+use crate::Format;
 use crate::errors::{ConfigError, Result};
 use crate::map::Map;
 use crate::source::Source;
 use crate::value::Value;
-use crate::Format;
-use std::fmt::Debug;
-use std::path::{Path, PathBuf};
 
 mod format;
 pub mod source;
 
 pub use self::format::FileFormat;
 use self::source::FileSource;
-
 pub use self::source::file::FileSourceFile;
 pub use self::source::string::FileSourceString;
 

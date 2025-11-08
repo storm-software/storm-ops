@@ -1,3 +1,8 @@
+use std::fmt::Debug;
+
+use serde::de::Deserialize;
+use serde::ser::Serialize;
+
 use crate::builder::{ConfigBuilder, DefaultState};
 use crate::errors::{ConfigError, Result};
 use crate::map::Map;
@@ -5,9 +10,6 @@ use crate::path;
 use crate::ser::ConfigSerializer;
 use crate::source::Source;
 use crate::value::{Table, Value};
-use serde::de::Deserialize;
-use serde::ser::Serialize;
-use std::fmt::Debug;
 
 /// A prioritized configuration repository. It maintains a set of
 /// configuration sources, fetches values to populate those, and provides
@@ -196,11 +198,6 @@ impl Config {
     let mut serializer = ConfigSerializer::default();
     from.serialize(&mut serializer)?;
     Ok(serializer.output)
-  }
-
-  #[deprecated(since = "0.7.0", note = "please use 'try_deserialize' instead")]
-  pub fn deserialize<'de, T: Deserialize<'de>>(self) -> Result<T> {
-    self.try_deserialize()
   }
 }
 

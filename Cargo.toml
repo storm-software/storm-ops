@@ -3,9 +3,9 @@
 ## ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 [workspace]
-default-members = ['crates/storm-workspace', 'crates/storm-config']
-members         = ['crates/storm-workspace', 'crates/storm-config']
-resolver        = '2'
+default-members = ['crates/*']
+members         = ['crates/*']
+resolver        = '3'
 
 [workspace.package]
 authors       = ['storm-software']
