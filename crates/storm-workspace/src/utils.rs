@@ -5,18 +5,18 @@ use std::path::PathBuf;
 use crate::errors::StormWorkspaceError;
 
 const WORKSPACE_ROOT_FILES: [&str; 35] = [
-  "storm.json",
-  "storm.toml",
-  "storm.yaml",
-  "storm.yml",
-  "storm.xml",
-  "storm.config.js",
-  "storm.config.ts",
-  ".storm.json",
-  ".storm.yaml",
-  ".storm.yml",
-  ".storm.js",
-  ".storm.ts",
+  "storm-workspace.json",
+  "storm-workspace.toml",
+  "storm-workspace.yaml",
+  "storm-workspace.yml",
+  "storm-workspace.xml",
+  "storm-workspace.config.js",
+  "storm-workspace.config.ts",
+  ".storm-workspace.json",
+  ".storm-workspace.yaml",
+  ".storm-workspace.yml",
+  ".storm-workspace.js",
+  ".storm-workspace.ts",
   "lerna.json",
   "nx.json",
   "turbo.json",
@@ -47,18 +47,18 @@ const WORKSPACE_ROOT_FILES: [&str; 35] = [
 /// This function will return the workspace root directory by checking the current directory and its ancestors for the presence of a workspace root file.
 ///
 /// The file list checked to determine the workspace root directory include:
-/// - storm.json
-/// - storm.toml
-/// - storm.yaml
-/// - storm.yml
-/// - storm.xml
-/// - storm.config.js
-/// - storm.config.ts
-/// - .storm.json
-/// - .storm.yaml
-/// - .storm.yml
-/// - .storm.js
-/// - .storm.ts
+/// - storm-workspace.json
+/// - storm-workspace.toml
+/// - storm-workspace.yaml
+/// - storm-workspace.yml
+/// - storm-workspace.xml
+/// - storm-workspace.config.js
+/// - storm-workspace.config.ts
+/// - .storm-workspace.json
+/// - .storm-workspace.yaml
+/// - .storm-workspace.yml
+/// - .storm-workspace.js
+/// - .storm-workspace.ts
 /// - lerna.json
 /// - nx.json
 /// - turbo.json
@@ -121,7 +121,7 @@ pub fn get_workspace_root() -> Result<PathBuf, StormWorkspaceError> {
           }
 
           Err(_) => {
-            return Err(StormWorkspaceError::ReadDirectoryFailure(p.to_str().unwrap().to_string()))
+            return Err(StormWorkspaceError::ReadDirectoryFailure(p.to_str().unwrap().to_string()));
           }
         }
       }
