@@ -2,6 +2,28 @@
 
 # Changelog for Storm Ops - Storm Config
 
+## [0.26.2](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.26.2) (11/08/2025)
+
+### Miscellaneous
+
+- **monorepo:** Reformat README markdown files
+  ([f2ba8ae15](https://github.com/storm-software/storm-ops/commit/f2ba8ae15))
+
+### Bug Fixes
+
+- **workspace-tools:** Resolved issue publishing crates to registry
+  ([3a3fdf9c2](https://github.com/storm-software/storm-ops/commit/3a3fdf9c2))
+
+### Features
+
+- **devenv-modules:** Added additional components and `mold` to `rust` devenv
+  config
+  ([9d4c9d358](https://github.com/storm-software/storm-ops/commit/9d4c9d358))
+
+### Updated Dependencies
+
+- Updated **storm-workspace** to **v0.19.22**
+
 ## [0.26.1](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.26.1) (11/08/2025)
 
 ### Miscellaneous

@@ -2,6 +2,26 @@
 
 # Changelog for Storm Ops - Pnpm Tools
 
+## [0.6.22](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.6.22) (11/08/2025)
+
+### Miscellaneous
+
+- **monorepo:** Reformat README markdown files
+  ([f2ba8ae15](https://github.com/storm-software/storm-ops/commit/f2ba8ae15))
+
+### Features
+
+- **devenv-modules:** Added additional components and `mold` to `rust` devenv
+  config
+  ([9d4c9d358](https://github.com/storm-software/storm-ops/commit/9d4c9d358))
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.22**
+- Updated **config-tools** to **v1.188.22**
+- Updated **npm-tools** to **v0.5.22**
+- Updated **config** to **v1.134.22**
+
 ## [0.6.21](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.6.21) (11/08/2025)
 
 ### Miscellaneous

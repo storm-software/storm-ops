@@ -2,6 +2,24 @@
 
 # Changelog for Storm Ops - Storm Workspace
 
+## [0.19.22](https://github.com/storm-software/storm-ops/releases/tag/storm-workspace%400.19.22) (11/08/2025)
+
+### Miscellaneous
+
+- **monorepo:** Reformat README markdown files
+  ([f2ba8ae15](https://github.com/storm-software/storm-ops/commit/f2ba8ae15))
+
+### Bug Fixes
+
+- **workspace-tools:** Resolved issue publishing crates to registry
+  ([3a3fdf9c2](https://github.com/storm-software/storm-ops/commit/3a3fdf9c2))
+
+### Features
+
+- **devenv-modules:** Added additional components and `mold` to `rust` devenv
+  config
+  ([9d4c9d358](https://github.com/storm-software/storm-ops/commit/9d4c9d358))
+
 ## [0.19.21](https://github.com/storm-software/storm-ops/releases/tag/storm-workspace%400.19.21) (11/08/2025)
 
 ### Miscellaneous

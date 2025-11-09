@@ -2,6 +2,25 @@
 
 # Changelog for Storm Ops - Pulumi Tools
 
+## [0.22.22](https://github.com/storm-software/storm-ops/releases/tag/pulumi-tools%400.22.22) (11/08/2025)
+
+### Miscellaneous
+
+- **monorepo:** Reformat README markdown files
+  ([f2ba8ae15](https://github.com/storm-software/storm-ops/commit/f2ba8ae15))
+
+### Features
+
+- **devenv-modules:** Added additional components and `mold` to `rust` devenv
+  config
+  ([9d4c9d358](https://github.com/storm-software/storm-ops/commit/9d4c9d358))
+
+### Updated Dependencies
+
+- Updated **workspace-tools** to **v1.292.22**
+- Updated **config-tools** to **v1.188.22**
+- Updated **config** to **v1.134.22**
+
 ## [0.22.21](https://github.com/storm-software/storm-ops/releases/tag/pulumi-tools%400.22.21) (11/08/2025)
 
 ### Miscellaneous
