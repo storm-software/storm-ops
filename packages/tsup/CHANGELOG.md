@@ -2,6 +2,23 @@
 
 # Changelog for Storm Ops - Tsup
 
+## [0.2.22](https://github.com/storm-software/storm-ops/releases/tag/tsup%400.2.22) (11/10/2025)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+  ([5eb9b8129](https://github.com/storm-software/storm-ops/commit/5eb9b8129))
+
+### Features
+
+- **storm-config:** Added the `from` method to `WorkspaceConfig`
+  ([94a5e30f6](https://github.com/storm-software/storm-ops/commit/94a5e30f6))
+
+### Updated Dependencies
+
+- Updated **config-tools** to **v1.188.24**
+- Updated **build-tools** to **v0.158.24**
+
 ## [0.2.21](https://github.com/storm-software/storm-ops/releases/tag/tsup%400.2.21) (11/09/2025)
 
 ### Miscellaneous

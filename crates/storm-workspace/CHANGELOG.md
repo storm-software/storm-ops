@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Storm Workspace
 
+## [0.19.24](https://github.com/storm-software/storm-ops/releases/tag/storm-workspace%400.19.24) (11/10/2025)
+
+### Miscellaneous
+
+- **monorepo:** Update Rust edition to 2024
+  ([6342dd117](https://github.com/storm-software/storm-ops/commit/6342dd117))
+
+### Bug Fixes
+
+- **storm-config:** Updated calls in `WorkspaceConfig` to use `Self`
+  ([13660df7f](https://github.com/storm-software/storm-ops/commit/13660df7f))
+
 ## [0.19.23](https://github.com/storm-software/storm-ops/releases/tag/storm-workspace%400.19.23) (11/09/2025)
 
 ### Miscellaneous

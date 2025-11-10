@@ -2,6 +2,25 @@
 
 # Changelog for Storm Ops - Esbuild
 
+## [0.53.24](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.53.24) (11/10/2025)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+  ([5eb9b8129](https://github.com/storm-software/storm-ops/commit/5eb9b8129))
+
+### Features
+
+- **storm-config:** Added the `from` method to `WorkspaceConfig`
+  ([94a5e30f6](https://github.com/storm-software/storm-ops/commit/94a5e30f6))
+
+### Updated Dependencies
+
+- Updated **config-tools** to **v1.188.24**
+- Updated **build-tools** to **v0.158.24**
+- Updated **config** to **v1.134.24**
+- Updated **tsup** to **v0.2.22**
+
 ## [0.53.23](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.53.23) (11/09/2025)
 
 ### Miscellaneous

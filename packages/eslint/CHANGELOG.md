@@ -2,6 +2,24 @@
 
 # Changelog for Storm Ops - ESLint
 
+## [0.169.24](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.169.24) (11/10/2025)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+  ([5eb9b8129](https://github.com/storm-software/storm-ops/commit/5eb9b8129))
+
+### Features
+
+- **storm-config:** Added the `from` method to `WorkspaceConfig`
+  ([94a5e30f6](https://github.com/storm-software/storm-ops/commit/94a5e30f6))
+
+### Updated Dependencies
+
+- Updated **config-tools** to **v1.188.24**
+- Updated **config** to **v1.134.24**
+- Updated **tsdoc** to **v0.13.24**
+
 ## [0.169.23](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.169.23) (11/09/2025)
 
 ### Miscellaneous

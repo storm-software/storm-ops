@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Tsdoc
 
+## [0.13.24](https://github.com/storm-software/storm-ops/releases/tag/tsdoc%400.13.24) (11/10/2025)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+  ([5eb9b8129](https://github.com/storm-software/storm-ops/commit/5eb9b8129))
+
+### Features
+
+- **storm-config:** Added the `from` method to `WorkspaceConfig`
+  ([94a5e30f6](https://github.com/storm-software/storm-ops/commit/94a5e30f6))
+
 ## [0.13.23](https://github.com/storm-software/storm-ops/releases/tag/tsdoc%400.13.23) (11/09/2025)
 
 ### Miscellaneous

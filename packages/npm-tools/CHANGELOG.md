@@ -2,6 +2,24 @@
 
 # Changelog for Storm Ops - Npm Tools
 
+## [0.5.24](https://github.com/storm-software/storm-ops/releases/tag/npm-tools%400.5.24) (11/10/2025)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+  ([5eb9b8129](https://github.com/storm-software/storm-ops/commit/5eb9b8129))
+
+### Features
+
+- **storm-config:** Added the `from` method to `WorkspaceConfig`
+  ([94a5e30f6](https://github.com/storm-software/storm-ops/commit/94a5e30f6))
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.24**
+- Updated **config-tools** to **v1.188.24**
+- Updated **config** to **v1.134.24**
+
 ## [0.5.23](https://github.com/storm-software/storm-ops/releases/tag/npm-tools%400.5.23) (11/09/2025)
 
 ### Miscellaneous

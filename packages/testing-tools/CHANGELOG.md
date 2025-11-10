@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Testing Tools
 
+## [1.119.24](https://github.com/storm-software/storm-ops/releases/tag/testing-tools%401.119.24) (11/10/2025)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+  ([5eb9b8129](https://github.com/storm-software/storm-ops/commit/5eb9b8129))
+
+### Features
+
+- **storm-config:** Added the `from` method to `WorkspaceConfig`
+  ([94a5e30f6](https://github.com/storm-software/storm-ops/commit/94a5e30f6))
+
 ## [1.119.23](https://github.com/storm-software/storm-ops/releases/tag/testing-tools%401.119.23) (11/09/2025)
 
 ### Miscellaneous

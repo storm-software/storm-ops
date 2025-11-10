@@ -2,6 +2,29 @@
 
 # Changelog for Storm Ops - Storm Config
 
+## [0.27.0](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.27.0) (11/10/2025)
+
+### Miscellaneous
+
+- **monorepo:** Update Rust edition to 2024
+  ([6342dd117](https://github.com/storm-software/storm-ops/commit/6342dd117))
+
+### Bug Fixes
+
+- **storm-config:** Updated calls in `WorkspaceConfig` to use `Self`
+  ([13660df7f](https://github.com/storm-software/storm-ops/commit/13660df7f))
+
+### Features
+
+- **storm-config:** Added the `FromStr` trait to `WorkspaceConfig`
+  ([74a24e111](https://github.com/storm-software/storm-ops/commit/74a24e111))
+- **storm-config:** Added the `from` method to `WorkspaceConfig`
+  ([94a5e30f6](https://github.com/storm-software/storm-ops/commit/94a5e30f6))
+
+### Updated Dependencies
+
+- Updated **storm-workspace** to **v0.19.24**
+
 ## [0.26.3](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.26.3) (11/09/2025)
 
 ### Miscellaneous
