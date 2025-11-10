@@ -584,9 +584,16 @@ pub struct WorkspaceConfig {
 
 impl WorkspaceConfig {
   pub fn new() -> Result<Self, ConfigError> {
-    let mut workspace_config = WorkspaceConfig::default();
-
     let workspace_root = get_workspace_root().expect("No workspace root could be found");
+    let workspace_config = WorkspaceConfig::from(&workspace_root)?;
+
+    Ok(workspace_config)
+  }
+
+  pub fn from(workspace_root: &Path) -> Result<Self, ConfigError> {
+    let mut workspace_config = WorkspaceConfig::default();
+    workspace_config.workspace_root = workspace_root.to_str().unwrap().to_string();
+
     match fs::metadata(format!("{}/package.json", workspace_root.to_string_lossy())) {
       Ok(_) => {
         let package_json_path = format!("{}/package.json", workspace_root.to_string_lossy());
