@@ -2,11 +2,15 @@
 // BUG: ? For some reason this doesn't do anything if I try and function scope this
 #![allow(unused_mut)]
 
-use crate::map::Map;
-use crate::{file::FileStoredFormat, value::Value, Format};
-use lazy_static::lazy_static;
 use std::collections::HashMap;
 use std::error::Error;
+
+use lazy_static::lazy_static;
+
+use crate::Format;
+use crate::file::FileStoredFormat;
+use crate::map::Map;
+use crate::value::Value;
 
 mod json;
 
@@ -52,6 +56,12 @@ pub enum FileFormat {
   /// JSON5 (parsed with json5)
   #[cfg(feature = "json5")]
   Json5,
+}
+
+impl Default for FileFormat {
+  fn default() -> Self {
+    FileFormat::Json
+  }
 }
 
 lazy_static! {

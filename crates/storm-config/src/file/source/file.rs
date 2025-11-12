@@ -1,12 +1,13 @@
-use std::env;
 use std::error::Error;
-use std::fs;
-use std::io;
 use std::path::PathBuf;
+use std::{env, fs, io};
 
-use crate::file::{
-  format::ALL_EXTENSIONS, source::FileSourceResult, FileSource, FileStoredFormat, Format,
-};
+use read_url::*;
+
+use crate::FileFormat;
+use crate::file::format::ALL_EXTENSIONS;
+use crate::file::source::FileSourceResult;
+use crate::file::{FileSource, FileStoredFormat, Format};
 
 /// Describes a file sourced from a file
 #[derive(Clone, Debug)]
@@ -55,6 +56,7 @@ impl FileSourceFile {
         )))
       };
     }
+
     // Adding a dummy extension will make sure we will not override secondary extensions, i.e. "file.local"
     // This will make the following set_extension function calls to append the extension.
     let mut filename = add_dummy_extension(filename);
@@ -98,19 +100,46 @@ where
     &self,
     format_hint: Option<F>,
   ) -> Result<FileSourceResult, Box<dyn Error + Send + Sync>> {
+    if format_hint.is_none() {
+      return Ok(FileSourceResult {
+        uri: None,
+        content: "{}".into(),
+        format: Box::new(FileFormat::default()),
+      });
+    }
+
     // Find file
-    let (filename, format) = self.find_file(format_hint)?;
+    match self.find_file(format_hint) {
+      Ok((filename, format)) => {
+        return Ok(FileSourceResult {
+          uri: Some(
+            env::current_dir()
+              .ok()
+              .and_then(|base| pathdiff::diff_paths(&filename, base))
+              .unwrap_or_else(|| filename.clone())
+              .to_string_lossy()
+              .into_owned(),
+          ),
+          content: fs::read_to_string(filename)?,
+          format,
+        });
+      }
+      Err(e) => {
+        let context = UrlContext::new();
 
-    // Attempt to use a relative path for the URI
-    let uri = env::current_dir()
-      .ok()
-      .and_then(|base| pathdiff::diff_paths(&filename, base))
-      .unwrap_or_else(|| filename.clone());
+        let url = context.url(self.name.to_str().unwrap_or_default())?;
+        let mut reader = url.open()?;
 
-    // Read contents from file
-    let text = fs::read_to_string(filename)?;
+        let mut content = String::default();
+        reader.read_to_string(&mut content)?;
 
-    Ok(FileSourceResult { uri: Some(uri.to_string_lossy().into_owned()), content: text, format })
+        return Ok(FileSourceResult {
+          uri: Some(url.to_string()),
+          content,
+          format: Box::new(find_file_extension(self.name.clone())),
+        });
+      }
+    };
   }
 }
 
@@ -126,5 +155,19 @@ fn add_dummy_extension(mut filename: PathBuf) -> PathBuf {
       filename.set_extension("dummy");
     }
   }
+
   filename
+}
+
+fn find_file_extension(filename: PathBuf) -> FileFormat {
+  if let Some(extension) = filename.extension() {
+    let ext = extension.to_string_lossy();
+    for format in ALL_EXTENSIONS.keys() {
+      if format.extensions().contains(&ext.as_ref()) {
+        return format.clone();
+      }
+    }
+  }
+
+  FileFormat::default()
 }
