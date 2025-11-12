@@ -2,6 +2,29 @@
 
 # Changelog for Storm Ops - Workspace Tools
 
+## [1.292.25](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.292.25) (11/12/2025)
+
+### Miscellaneous
+
+- **workspace-tools:** Improved `rust` Nx plugin logging
+  ([bd839c5a4](https://github.com/storm-software/storm-ops/commit/bd839c5a4))
+- **monorepo:** Update workspace package dependencies
+  ([2f7e4c39e](https://github.com/storm-software/storm-ops/commit/2f7e4c39e))
+- **monorepo:** Update README markdown files
+  ([b8f258457](https://github.com/storm-software/storm-ops/commit/b8f258457))
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.25**
+- Updated **config-tools** to **v1.188.25**
+- Updated **pnpm-tools** to **v0.6.25**
+- Updated **npm-tools** to **v0.5.25**
+- Updated **prettier** to **v0.57.25**
+- Updated **esbuild** to **v0.53.25**
+- Updated **unbuild** to **v0.57.25**
+- Updated **config** to **v1.134.25**
+- Updated **tsdown** to **v0.45.25**
+
 ## [1.292.24](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.292.24) (11/10/2025)
 
 ### Miscellaneous
