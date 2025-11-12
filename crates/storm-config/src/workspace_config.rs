@@ -620,8 +620,22 @@ impl WorkspaceConfig {
               .required(false),
             )
             .add_source(
+              File::with_name(&format!(
+                "{}/storm-workspace.jsonc",
+                workspace_root.to_string_lossy()
+              ))
+              .required(false),
+            )
+            .add_source(
               File::with_name(&format!("{}/.storm/config.json", workspace_root.to_string_lossy()))
                 .required(false),
+            )
+            .add_source(
+              File::with_name(&format!(
+                "{}/.storm-workspace/config.json",
+                workspace_root.to_string_lossy()
+              ))
+              .required(false),
             )
             .add_source(
               File::with_name(&format!(
@@ -636,6 +650,13 @@ impl WorkspaceConfig {
             )
             .add_source(
               File::with_name(&format!(
+                "{}/.storm-workspace/config.toml",
+                workspace_root.to_string_lossy()
+              ))
+              .required(false),
+            )
+            .add_source(
+              File::with_name(&format!(
                 "{}/storm-workspace.yaml",
                 workspace_root.to_string_lossy()
               ))
@@ -644,6 +665,28 @@ impl WorkspaceConfig {
             .add_source(
               File::with_name(&format!("{}/.storm/config.yaml", workspace_root.to_string_lossy()))
                 .required(false),
+            )
+            .add_source(
+              File::with_name(&format!(
+                "{}/.storm-workspace/config.yaml",
+                workspace_root.to_string_lossy()
+              ))
+              .required(false),
+            )
+            .add_source(
+              File::with_name(&format!("{}/storm-workspace.yml", workspace_root.to_string_lossy()))
+                .required(false),
+            )
+            .add_source(
+              File::with_name(&format!("{}/.storm/config.yml", workspace_root.to_string_lossy()))
+                .required(false),
+            )
+            .add_source(
+              File::with_name(&format!(
+                "{}/.storm-workspace/config.yml",
+                workspace_root.to_string_lossy()
+              ))
+              .required(false),
             )
             .add_source(Environment::with_prefix("storm"))
             .build()?,
