@@ -11,7 +11,6 @@
   languages.rust = {
     enable = true;
     mold.enable = true;
-    toolchainFile = ./rust-toolchain.toml;
   };
 
   # https://devenv.sh/processes/
