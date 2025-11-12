@@ -202,7 +202,7 @@ export function runProcess(
 
   return new Promise(resolve => {
     if (process.env.VERCEL) {
-      // Vercel doesnt have support for cargo atm, so auto success builds
+      // Vercel doesn't have support for cargo atm, so auto success builds
       return resolve({ success: true });
     }
 

@@ -37,9 +37,6 @@ export const DefaultCargoPluginProfileMap = {
   production: "prod"
 };
 
-export const DEFAULT_ERROR_MESSAGE =
-  "An error occurred in the Storm Rust Nx plugin.";
-
 export interface CargoPluginOptions {
   includeApps?: boolean;
   skipDocs?: boolean;
@@ -362,10 +359,12 @@ export const createNodesV2: CreateNodesV2<CargoPluginOptions | undefined> = [
             externalNodes
           };
         } catch (e) {
-          console.error(DEFAULT_ERROR_MESSAGE);
+          console.error("An error occurred in the Storm Rust Nx plugin.");
           console.error(e);
 
-          throw new Error(DEFAULT_ERROR_MESSAGE, { cause: e });
+          throw new Error("An error occurred in the Storm Rust Nx plugin.", {
+            cause: e
+          });
         }
       },
       configFiles,
@@ -375,43 +374,66 @@ export const createNodesV2: CreateNodesV2<CargoPluginOptions | undefined> = [
   }
 ];
 
-export const createDependencies: CreateDependencies = (_, context) => {
-  const metadata = cargoMetadata();
-  if (!metadata) {
-    return [];
-  }
+export const createDependencies: CreateDependencies<CargoPluginOptions> = (
+  options,
+  context
+) => {
+  try {
+    console.debug(
+      `[storm-software/rust]: Creating dependencies using cargo metadata.`
+    );
 
-  const { packages: cargoPackages } = metadata;
-  const dependencies: RawProjectGraphDependency[] = [];
+    const metadata = cargoMetadata();
+    if (!metadata?.packages) {
+      console.debug(
+        `[storm-software/rust]: Unable to find cargo metadata. Skipping dependency creation.`
+      );
 
-  for (const pkg of cargoPackages) {
-    if (context.projects[pkg.name]) {
-      for (const deps of pkg.dependencies) {
-        if (!cargoPackages.find(p => p.name === deps.name)) {
-          console.debug(
-            `[storm-software/rust]: Dependency ${deps.name} not found in the cargo metadata.`
-          );
-          continue;
-        }
+      return [];
+    }
 
-        // if the dependency is listed in nx projects, it's not an external dependency
-        if (context.projects[deps.name]) {
-          dependencies.push(
-            createDependency(pkg, deps.name, DependencyType.static)
-          );
-        } else {
-          const externalDepName = `cargo:${deps.name}`;
-          if (externalDepName in (context.externalNodes ?? {})) {
-            dependencies.push(
-              createDependency(pkg, externalDepName, DependencyType.static)
+    const dependencies: RawProjectGraphDependency[] = [];
+    for (const pkg of metadata.packages) {
+      if (context.projects[pkg.name]) {
+        for (const deps of pkg.dependencies) {
+          if (!metadata.packages.find(p => p.name === deps.name)) {
+            console.debug(
+              `[storm-software/rust]: Dependency ${deps.name} not found in the cargo metadata.`
             );
+            continue;
+          }
+
+          // if the dependency is listed in Nx projects, it's not an external dependency
+          if (context.projects[deps.name]) {
+            dependencies.push(
+              createDependency(pkg, deps.name, DependencyType.static)
+            );
+          } else {
+            const externalDepName = `cargo:${deps.name}`;
+            if (externalDepName in (context.externalNodes ?? {})) {
+              dependencies.push(
+                createDependency(pkg, externalDepName, DependencyType.static)
+              );
+            }
           }
         }
       }
     }
-  }
 
-  return dependencies;
+    return dependencies;
+  } catch (e) {
+    console.error(
+      "An error occurred creating dependencies in the Storm Rust Nx plugin."
+    );
+    console.error(e);
+
+    throw new Error(
+      "An error occurred creating dependencies in the Storm Rust Nx plugin.",
+      {
+        cause: e
+      }
+    );
+  }
 };
 
 function createDependency(
