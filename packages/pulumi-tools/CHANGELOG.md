@@ -2,6 +2,19 @@
 
 # Changelog for Storm Ops - Pulumi Tools
 
+## [0.22.27](https://github.com/storm-software/storm-ops/releases/tag/pulumi-tools%400.22.27) (11/12/2025)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+  ([ce28ea33d](https://github.com/storm-software/storm-ops/commit/ce28ea33d))
+
+### Updated Dependencies
+
+- Updated **workspace-tools** to **v1.292.27**
+- Updated **config-tools** to **v1.188.27**
+- Updated **config** to **v1.134.27**
+
 ## [0.22.26](https://github.com/storm-software/storm-ops/releases/tag/pulumi-tools%400.22.26) (11/12/2025)
 
 ### Miscellaneous

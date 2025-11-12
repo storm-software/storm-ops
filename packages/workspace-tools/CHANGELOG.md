@@ -2,6 +2,31 @@
 
 # Changelog for Storm Ops - Workspace Tools
 
+## [1.292.27](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.292.27) (11/12/2025)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+  ([ce28ea33d](https://github.com/storm-software/storm-ops/commit/ce28ea33d))
+
+### Bug Fixes
+
+- **workspace-tools:** Ensure the correct `workspaceRoot` value is used in
+  `cargo` commands
+  ([8addf0cd8](https://github.com/storm-software/storm-ops/commit/8addf0cd8))
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.27**
+- Updated **config-tools** to **v1.188.27**
+- Updated **pnpm-tools** to **v0.6.27**
+- Updated **npm-tools** to **v0.5.27**
+- Updated **prettier** to **v0.57.27**
+- Updated **esbuild** to **v0.53.27**
+- Updated **unbuild** to **v0.57.27**
+- Updated **config** to **v1.134.27**
+- Updated **tsdown** to **v0.45.27**
+
 ## [1.292.26](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.292.26) (11/12/2025)
 
 ### Miscellaneous
