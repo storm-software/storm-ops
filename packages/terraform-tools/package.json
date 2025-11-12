@@ -1,6 +1,6 @@
 {
   "name": "@storm-software/terraform-tools",
-  "version": "0.66.28",
+  "version": "0.66.29",
   "description": "Tools for managing Terraform infrastructure within a Nx workspace.",
   "repository": {
     "type": "github",
@@ -126,9 +126,9 @@
   ],
   "peerDependencies": {
     "@nx/devkit": "catalog:",
-    "@storm-software/config": "1.134.28",
-    "@storm-software/config-tools": "1.188.28",
-    "@storm-software/workspace-tools": "1.292.28",
+    "@storm-software/config": "1.134.29",
+    "@storm-software/config-tools": "1.188.29",
+    "@storm-software/workspace-tools": "1.292.29",
     "tsup": "catalog:",
     "untyped": "1.5.2"
   },

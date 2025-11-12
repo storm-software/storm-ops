@@ -2,6 +2,23 @@
 
 # Changelog for Storm Ops - Storm Config
 
+## [0.28.0](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.28.0) (11/12/2025)
+
+### Features
+
+- **storm-config:** Added support for remote config URLs
+  ([443e54748](https://github.com/storm-software/storm-ops/commit/443e54748))
+- **storm-config:** Added support for extending configuration(s) with the
+  `extends` field
+  ([ace61af4e](https://github.com/storm-software/storm-ops/commit/ace61af4e))
+- **storm-config:** Added new extensions and `.storm-workspace` to default
+  config paths
+  ([c86367863](https://github.com/storm-software/storm-ops/commit/c86367863))
+
+### Updated Dependencies
+
+- Updated **storm-workspace** to **v0.19.29**
+
 ## [0.27.4](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.27.4) (11/12/2025)
 
 ### Updated Dependencies

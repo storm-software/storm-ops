@@ -2,6 +2,25 @@
 
 # Changelog for Storm Ops - Workspace Tools
 
+## [1.292.29](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.292.29) (11/12/2025)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+  ([89dfbdb7f](https://github.com/storm-software/storm-ops/commit/89dfbdb7f))
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.29**
+- Updated **config-tools** to **v1.188.29**
+- Updated **pnpm-tools** to **v0.6.29**
+- Updated **npm-tools** to **v0.5.29**
+- Updated **prettier** to **v0.57.29**
+- Updated **esbuild** to **v0.53.29**
+- Updated **unbuild** to **v0.57.29**
+- Updated **config** to **v1.134.29**
+- Updated **tsdown** to **v0.45.29**
+
 ## [1.292.28](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.292.28) (11/12/2025)
 
 ### Updated Dependencies
