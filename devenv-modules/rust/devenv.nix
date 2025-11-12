@@ -11,8 +11,7 @@
   languages.rust = {
     enable = true;
     mold.enable = true;
-    channel = "nightly";
-    components = ["rustc" "cargo" "clippy" "rustfmt" "rust-analyzer" "miri"];
+    toolchainFile = ./rust-toolchain.toml;
   };
 
   # https://devenv.sh/processes/
