@@ -40,6 +40,7 @@ This package is part of the <b>⚡Storm-Ops</b> monorepo. The Storm-Ops packages
 
 <!-- START doctoc -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
 ## Table of Contents
 
 - [Storm Software - DevEnv Import Modules](#storm-software---devenv-import-modules)
@@ -77,9 +78,14 @@ The following DevEnv modules are included in this package:
   repositories.
 - `storm-ops/devenv-modules/minimal`: Minimal DevEnv module for Storm Software
   repositories.
-- `storm-ops/devenv-modules/rust`: DevEnv module to include rust support.
-- `storm-ops/devenv-modules/atuin`: DevEnv module to include atuin support.
-- `storm-ops/devenv-modules/vhs`: DevEnv module to include vhs support.
+- `storm-ops/devenv-modules/rust`: DevEnv module to support development with
+  [Rust](https://www.rust-lang.org/).
+- `storm-ops/devenv-modules/atuin`: DevEnv module to include
+  [atuin](https://github.com/atuinsh/atuin) support.
+- `storm-ops/devenv-modules/vhs`: DevEnv module to include
+  [vhs](https://github.com/charmbracelet/vhs) support.
+- `storm-ops/devenv-modules/mdbook`: DevEnv module to include
+  [mdbook](https://github.com/rust-lang/mdBook) support.
 
 ## Usage
 
