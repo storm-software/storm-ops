@@ -88,6 +88,12 @@ pub enum ConfigError {
 
   /// Unadorned error from a foreign origin.
   Foreign(Box<dyn Error + Send + Sync>),
+
+  /// Invalid format used in an extend directive.
+  InvalidExtendFormat,
+
+  /// Error occurred while merging configurations.
+  MergeFailure,
 }
 
 impl ConfigError {
@@ -195,6 +201,14 @@ impl fmt::Display for ConfigError {
         }
 
         Ok(())
+      }
+
+      ConfigError::InvalidExtendFormat => {
+        write!(f, "invalid format used in an extend directive")
+      }
+
+      ConfigError::MergeFailure => {
+        write!(f, "error occurred while merging configurations")
       }
     }
   }

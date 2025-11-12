@@ -46,7 +46,6 @@ impl Config {
   }
 
   /// Merge in a configuration property source.
-  #[deprecated(since = "0.12.0", note = "please use 'ConfigBuilder' instead")]
   pub fn merge<T>(&mut self, source: T) -> Result<&mut Self>
   where
     T: 'static,
@@ -59,7 +58,6 @@ impl Config {
   }
 
   /// Merge in a configuration property source.
-  #[deprecated(since = "0.12.0", note = "please use 'ConfigBuilder' instead")]
   pub fn with_merged<T>(mut self, source: T) -> Result<Self>
   where
     T: 'static,
@@ -146,7 +144,7 @@ impl Config {
   }
 
   fn get_value(&self, key: &str) -> Result<Value> {
-    let k = key.to_lowercase();
+    let k: String = key.to_lowercase();
     let key = k.as_str();
     // Parse the key into a path expression
     let expr: path::Expression = key.parse()?;

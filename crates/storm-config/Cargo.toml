@@ -1,17 +1,17 @@
 [package]
-authors       = { workspace = true }
-categories    = { workspace = true }
-description   = 'A crate containing the configuration structure and utilities used by Storm Software monorepos.'
+authors = { workspace = true }
+categories = { workspace = true }
+description = 'A crate containing the configuration structure and utilities used by Storm Software monorepos.'
 documentation = 'https://docs.rs/storm-config'
-edition       = { workspace = true }
-homepage      = { workspace = true }
-keywords      = { workspace = true }
-license       = { workspace = true }
-name          = 'storm-config'
-publish       = true
-readme        = './README.md'
-repository    = { workspace = true }
-version       = '0.27.4'
+edition = { workspace = true }
+homepage = { workspace = true }
+keywords = { workspace = true }
+license = { workspace = true }
+name = 'storm-config'
+publish = true
+readme = './README.md'
+repository = { workspace = true }
+version = '0.27.4'
 
 [features]
 async = ['async-trait']
@@ -23,24 +23,25 @@ preserve_order = [
   'indexmap',
   'toml?/preserve_order',
   'serde_json/preserve_order',
-  'ron?/indexmap'
+  'ron?/indexmap',
 ]
 yaml = ['yaml-rust']
 
 [dependencies]
-async-trait     = { version = '^0.1.80', optional = true }
-convert_case    = { version = '^0.6.0', optional = true }
-indexmap        = { version = '^2.2.6', features = ['serde'], optional = true }
-json5_rs        = { version = '^0.4.1', optional = true, package = 'json5' }
-lazy_static     = '^1.4.0'
-nom             = '^7.1.3'
-pathdiff        = '^0.2.1'
-ron             = { version = '^0.8.1', optional = true }
-rust-ini        = { version = '^0.21.0', optional = true }
-serde           = { version = '^1.0.203', features = ['derive'] }
-serde_derive    = { version = '^1.0.203', optional = true }
-serde_json      = { version = '^1.0.117' }
+async-trait = { version = '^0.1.80', optional = true }
+convert_case = { version = '^0.6.0', optional = true }
+indexmap = { version = '^2.2.6', features = ['serde'], optional = true }
+json5_rs = { version = '^0.4.1', optional = true, package = 'json5' }
+lazy_static = '^1.4.0'
+nom = '^7.1.3'
+pathdiff = '^0.2.1'
+ron = { version = '^0.8.1', optional = true }
+rust-ini = { version = '^0.21.0', optional = true }
+read-url = '^0.0.10'
+serde = { version = '^1.0.203', features = ['derive'] }
+serde_derive = { version = '^1.0.203', optional = true }
+serde_json = { version = '^1.0.117' }
 storm-workspace = { path = '../storm-workspace', version = '^0.19.28' }
-thiserror       = { version = '^2.0.17' }
-toml            = { version = '^0.8.14', optional = true }
-yaml-rust       = { version = '^0.4.5', optional = true }
+thiserror = { version = '^2.0.17' }
+toml = { version = '^0.8.14', optional = true }
+yaml-rust = { version = '^0.4.5', optional = true }

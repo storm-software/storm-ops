@@ -8,6 +8,7 @@ use crate::path::Expression;
 use crate::source::AsyncSource;
 use crate::source::Source;
 use crate::value::Value;
+use crate::{ConfigError, File};
 
 /// A configuration builder
 ///
@@ -306,7 +307,52 @@ impl ConfigBuilder<AsyncState> {
   /// If source collection fails, be it technical reasons or related to inability to read data as `Config` for different reasons,
   /// this method returns error.
   pub async fn build(self) -> Result<Config> {
-    Self::build_internal(self.defaults, self.overrides, &self.state.sources).await
+    // Build once and bind the result
+    let mut config =
+      Self::build_internal(self.defaults, self.overrides, &self.state.sources).await?;
+
+    // Handle single extends string
+    if let Ok(extends) = config.get_string("extends") {
+      let parent_config =
+        Config::builder().add_source(File::with_name(&extends).required(true)).build();
+      match parent_config {
+        Ok(parent_config) => {
+          let result = config.merge(parent_config);
+          if let Err(e) = result {
+            return Err(ConfigError::FileParse { uri: Some(extends).into(), cause: Box::new(e) });
+          }
+
+          return Ok(config);
+        }
+        Err(e) => {
+          return Err(ConfigError::FileParse { uri: Some(extends).into(), cause: Box::new(e) });
+        }
+      }
+    }
+
+    // Handle array of extends; iterate with a for loop (no await in closure)
+    if let Ok(extends) = config.get_array("extends") {
+      for item in extends.iter() {
+        if let Ok(extend_path) = item.clone().into_string() {
+          let parent_config = Config::builder()
+            .add_source(File::with_name(extend_path.as_str()).required(true))
+            .build();
+          if let Err(e) = parent_config {
+            return Err(ConfigError::FileParse {
+              uri: Some(extend_path).into(),
+              cause: Box::new(e),
+            });
+          }
+
+          config = config.with_merged(parent_config.unwrap())?;
+        } else {
+          return Err(ConfigError::InvalidExtendFormat);
+        }
+      }
+    }
+
+    // No extends; return the built config
+    Ok(config)
   }
 
   /// Reads all registered defaults, [`Source`]s, [`AsyncSource`]s and overrides.
