@@ -10,7 +10,6 @@
   # https://devenv.sh/languages/
   languages.rust = {
     enable = true;
-    mold.enable = true;
   };
 
   # https://devenv.sh/processes/
