@@ -5,10 +5,6 @@
   "rust-analyzer.procMacro.ignored": {
     "napi-derive": ["napi"]
   },
-  "rust-analyzer.linkedProjects": [
-    "crates\\storm-workspace\\Cargo.toml",
-    "crates\\storm-config\\Cargo.toml"
-  ],
   "json.schemas": [
     {
       "url": "https://cdn.jsdelivr.net/npm/tsup/schema.json",

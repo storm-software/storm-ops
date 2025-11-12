@@ -1,0 +1,30 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Debug Env Plugin Build Script",
+      "type": "node",
+      "request": "launch",
+      "program": "/nix/store/yyb1rc83q0fw5h3i80ljwdwwakmdqdfp-pnpm-10.18.0/bin/pnpm",
+      "args": ["nx", "run", "plugin-env:build:development"],
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal"
+    },
+    {
+      "name": "Attach",
+      "port": 9229,
+      "request": "attach",
+      "skipFiles": ["<node_internals>/**"],
+      "type": "node"
+    },
+    {
+      "name": "Attach to Language Server",
+      "type": "node",
+      "port": 6009,
+      "request": "attach",
+      "skipFiles": ["<node_internals>/**"],
+      "sourceMaps": true,
+      "outFiles": ["${workspaceFolder}/node_modules/@acidic/language/**/*.js"]
+    }
+  ]
+}
