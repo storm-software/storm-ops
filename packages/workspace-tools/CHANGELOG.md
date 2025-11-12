@@ -2,6 +2,29 @@
 
 # Changelog for Storm Ops - Workspace Tools
 
+## [1.292.26](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.292.26) (11/12/2025)
+
+### Miscellaneous
+
+- **workspace-tools:** Added call to `validateDependency` in `rust` Nx plugin
+  ([e73ceacf1](https://github.com/storm-software/storm-ops/commit/e73ceacf1))
+- **monorepo:** Update workspace `Cargo.lock` file
+  ([cf76a171f](https://github.com/storm-software/storm-ops/commit/cf76a171f))
+- **monorepo:** Regenerate README markdown files
+  ([a27c96498](https://github.com/storm-software/storm-ops/commit/a27c96498))
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.26**
+- Updated **config-tools** to **v1.188.26**
+- Updated **pnpm-tools** to **v0.6.26**
+- Updated **npm-tools** to **v0.5.26**
+- Updated **prettier** to **v0.57.26**
+- Updated **esbuild** to **v0.53.26**
+- Updated **unbuild** to **v0.57.26**
+- Updated **config** to **v1.134.26**
+- Updated **tsdown** to **v0.45.26**
+
 ## [1.292.25](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.292.25) (11/12/2025)
 
 ### Miscellaneous

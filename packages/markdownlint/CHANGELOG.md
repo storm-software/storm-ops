@@ -2,6 +2,19 @@
 
 # Changelog for Storm Ops - Markdownlint
 
+## [0.30.26](https://github.com/storm-software/storm-ops/releases/tag/markdownlint%400.30.26) (11/12/2025)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace `Cargo.lock` file
+  ([cf76a171f](https://github.com/storm-software/storm-ops/commit/cf76a171f))
+- **monorepo:** Regenerate README markdown files
+  ([a27c96498](https://github.com/storm-software/storm-ops/commit/a27c96498))
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.26**
+
 ## [0.30.25](https://github.com/storm-software/storm-ops/releases/tag/markdownlint%400.30.25) (11/12/2025)
 
 ### Miscellaneous

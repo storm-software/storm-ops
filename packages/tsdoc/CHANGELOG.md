@@ -2,6 +2,15 @@
 
 # Changelog for Storm Ops - Tsdoc
 
+## [0.13.26](https://github.com/storm-software/storm-ops/releases/tag/tsdoc%400.13.26) (11/12/2025)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace `Cargo.lock` file
+  ([cf76a171f](https://github.com/storm-software/storm-ops/commit/cf76a171f))
+- **monorepo:** Regenerate README markdown files
+  ([a27c96498](https://github.com/storm-software/storm-ops/commit/a27c96498))
+
 ## [0.13.25](https://github.com/storm-software/storm-ops/releases/tag/tsdoc%400.13.25) (11/12/2025)
 
 ### Miscellaneous

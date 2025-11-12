@@ -1,6 +1,6 @@
 {
   "name": "@storm-software/tsup",
-  "version": "0.2.23",
+  "version": "0.2.24",
   "type": "module",
   "description": "A package containing bundled patches for tsup.",
   "repository": {

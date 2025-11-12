@@ -2,6 +2,20 @@
 
 # Changelog for Storm Ops - Tsup
 
+## [0.2.24](https://github.com/storm-software/storm-ops/releases/tag/tsup%400.2.24) (11/12/2025)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace `Cargo.lock` file
+  ([cf76a171f](https://github.com/storm-software/storm-ops/commit/cf76a171f))
+- **monorepo:** Regenerate README markdown files
+  ([a27c96498](https://github.com/storm-software/storm-ops/commit/a27c96498))
+
+### Updated Dependencies
+
+- Updated **config-tools** to **v1.188.26**
+- Updated **build-tools** to **v0.158.26**
+
 ## [0.2.23](https://github.com/storm-software/storm-ops/releases/tag/tsup%400.2.23) (11/12/2025)
 
 ### Miscellaneous
