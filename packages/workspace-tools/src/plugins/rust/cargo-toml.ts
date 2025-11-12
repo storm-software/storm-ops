@@ -7,7 +7,6 @@ import {
   readJsonFile,
   TargetConfiguration,
   validateDependency,
-  workspaceRoot,
   type CreateDependencies,
   type ProjectConfiguration,
   type RawProjectGraphDependency
@@ -363,10 +362,8 @@ export const createNodesV2: CreateNodesV2<CargoPluginOptions | undefined> = [
                 const externalDepName = `cargo:${dep.name}`;
                 if (!externalNodes?.[externalDepName]) {
                   externalNodes[externalDepName] = {
-                    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                    type: "cargo" as any,
-                    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                    name: externalDepName as any,
+                    type: "cargo",
+                    name: externalDepName,
                     data: {
                       packageName: dep.name,
                       version: cargoPackageMap.get(dep.name)?.version ?? "0.0.0"
@@ -408,67 +405,53 @@ export const createDependencies: CreateDependencies<CargoPluginOptions> = (
   options,
   context
 ) => {
-  try {
+  console.debug(
+    `[storm-software/rust]: Creating dependencies using cargo metadata.`
+  );
+
+  const metadata = cargoMetadata();
+  if (!metadata?.packages) {
     console.debug(
-      `[storm-software/rust]: Creating dependencies using cargo metadata.`
+      `[storm-software/rust]: Unable to find cargo metadata. Skipping dependency creation.`
     );
 
-    const metadata = cargoMetadata();
-    if (!metadata?.packages) {
-      console.debug(
-        `[storm-software/rust]: Unable to find cargo metadata. Skipping dependency creation.`
-      );
+    return [];
+  }
 
-      return [];
-    }
+  const dependencies: RawProjectGraphDependency[] = [];
+  for (const pkg of metadata.packages) {
+    if (context.projects[pkg.name]) {
+      for (const deps of pkg.dependencies) {
+        if (!metadata.packages.find(p => p.name === deps.name)) {
+          console.debug(
+            `[storm-software/rust]: Dependency ${deps.name} not found in the cargo metadata.`
+          );
+          continue;
+        }
 
-    const dependencies: RawProjectGraphDependency[] = [];
-    for (const pkg of metadata.packages) {
-      if (context.projects[pkg.name]) {
-        for (const deps of pkg.dependencies) {
-          if (!metadata.packages.find(p => p.name === deps.name)) {
-            console.debug(
-              `[storm-software/rust]: Dependency ${deps.name} not found in the cargo metadata.`
-            );
-            continue;
-          }
-
-          // if the dependency is listed in Nx projects, it's not an external dependency
-          if (context.projects[deps.name]) {
+        // if the dependency is listed in Nx projects, it's not an external dependency
+        if (context.projects[deps.name]) {
+          dependencies.push(
+            createDependency(context, pkg, deps.name, DependencyType.static)
+          );
+        } else {
+          const externalDepName = `cargo:${deps.name}`;
+          if (externalDepName in (context.externalNodes ?? {})) {
             dependencies.push(
-              createDependency(context, pkg, deps.name, DependencyType.static)
+              createDependency(
+                context,
+                pkg,
+                externalDepName,
+                DependencyType.static
+              )
             );
-          } else {
-            const externalDepName = `cargo:${deps.name}`;
-            if (externalDepName in (context.externalNodes ?? {})) {
-              dependencies.push(
-                createDependency(
-                  context,
-                  pkg,
-                  externalDepName,
-                  DependencyType.static
-                )
-              );
-            }
           }
         }
       }
     }
-
-    return dependencies;
-  } catch (e) {
-    console.error(
-      "An error occurred creating dependencies in the Storm Rust Nx plugin."
-    );
-    console.error(e);
-
-    throw new Error(
-      "An error occurred creating dependencies in the Storm Rust Nx plugin.",
-      {
-        cause: e
-      }
-    );
   }
+
+  return dependencies;
 };
 
 function createDependency(
@@ -483,7 +466,8 @@ function createDependency(
     target: depName,
     sourceFile: pkg.manifest_path
       .replace(/\\/g, "/")
-      .replace(`${workspaceRoot.replace(/\\/g, "/")}/`, "")
+      .replace(context.workspaceRoot.replace(/\\/g, "/"), "")
+      .replace(/^\//, "")
   };
   validateDependency(dependency, context);
 

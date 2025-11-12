@@ -8,7 +8,7 @@ export async function cargoClippyExecutor(
   context: ExecutorContext
 ) {
   const command = buildCargoCommand("clippy", options, context);
-  return await cargoCommand(...command);
+  return await cargoCommand(context.root, ...command);
 }
 
 export default withRunExecutor<CargoClippyExecutorSchema>(

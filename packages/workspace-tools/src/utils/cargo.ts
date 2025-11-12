@@ -1,4 +1,4 @@
-import { ExecutorContext, joinPathFragments, workspaceRoot } from "@nx/devkit";
+import { ExecutorContext, joinPathFragments } from "@nx/devkit";
 import type {
   CargoMetadata,
   Dependency,
@@ -94,12 +94,13 @@ export const buildCargoCommand = (
 };
 
 export async function cargoCommand(
+  workspaceRoot: string,
   ...args: string[]
 ): Promise<{ success: boolean }> {
   console.log(`> cargo ${args.join(" ")}`);
   args.push("--color", "always");
 
-  return await Promise.resolve(runProcess("cargo", ...args));
+  return await Promise.resolve(runProcess(workspaceRoot, "cargo", ...args));
 }
 
 export function cargoRunCommand(
@@ -193,6 +194,7 @@ export function isExternal(
 }
 
 export function runProcess(
+  workspaceRoot: string,
   processCmd: string,
   ...args: string[]
 ): { success: boolean } | PromiseLike<{ success: boolean }> {

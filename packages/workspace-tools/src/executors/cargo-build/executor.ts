@@ -8,7 +8,7 @@ export async function cargoBuildExecutor(
   context: ExecutorContext
 ) {
   const command = buildCargoCommand("build", options, context);
-  return await cargoCommand(...command);
+  return await cargoCommand(context.root, ...command);
 }
 
 export default withRunExecutor<CargoBuildExecutorSchema>(

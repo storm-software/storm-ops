@@ -13,7 +13,7 @@ export async function cargoDocExecutor(
   delete opts.noDeps;
 
   const command = buildCargoCommand("doc", options, context);
-  return await cargoCommand(...command);
+  return await cargoCommand(context.root, ...command);
 }
 
 export default withRunExecutor<CargoDocExecutorSchema>(

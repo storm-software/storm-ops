@@ -8,7 +8,7 @@ export async function cargoFormatExecutor(
   context: ExecutorContext
 ) {
   const command = buildCargoCommand("fmt", options, context);
-  return await cargoCommand(...command);
+  return await cargoCommand(context.root, ...command);
 }
 
 export default withRunExecutor<CargoFormatExecutorSchema>(
