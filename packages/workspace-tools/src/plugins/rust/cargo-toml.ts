@@ -1,10 +1,12 @@
 import {
+  CreateDependenciesContext,
   createNodesFromFiles,
   CreateNodesResultV2,
   CreateNodesV2,
   joinPathFragments,
   readJsonFile,
   TargetConfiguration,
+  validateDependency,
   workspaceRoot,
   type CreateDependencies,
   type ProjectConfiguration,
@@ -37,13 +39,34 @@ export const DefaultCargoPluginProfileMap = {
   production: "prod"
 };
 
+/**
+ * Options for configuring the Storm Rust Nx plugin
+ */
 export interface CargoPluginOptions {
+  /**
+   * Whether to include Rust applications as projects in the workspace
+   */
   includeApps?: boolean;
+
+  /**
+   * Whether to skip generating documentation for the projects
+   */
   skipDocs?: boolean;
+
+  /**
+   * The Rust toolchain to use for executing cargo commands
+   */
   toolchain?: "stable" | "beta" | "nightly";
+
+  /**
+   * Custom profile mappings for cargo build profiles
+   */
   profiles?: CargoPluginProfileMap;
 }
 
+/**
+ * Create nodes for Rust projects based on Cargo.toml files
+ */
 export const createNodesV2: CreateNodesV2<CargoPluginOptions | undefined> = [
   "*/**/Cargo.toml",
   async (configFiles, options, context): Promise<CreateNodesResultV2> => {
@@ -374,6 +397,13 @@ export const createNodesV2: CreateNodesV2<CargoPluginOptions | undefined> = [
   }
 ];
 
+/**
+ * Create dependencies between Rust projects based on Cargo metadata
+ *
+ * @param options - The user provided plugin options
+ * @param context - The plugin context
+ * @returns An array of project graph dependencies
+ */
 export const createDependencies: CreateDependencies<CargoPluginOptions> = (
   options,
   context
@@ -406,13 +436,18 @@ export const createDependencies: CreateDependencies<CargoPluginOptions> = (
           // if the dependency is listed in Nx projects, it's not an external dependency
           if (context.projects[deps.name]) {
             dependencies.push(
-              createDependency(pkg, deps.name, DependencyType.static)
+              createDependency(context, pkg, deps.name, DependencyType.static)
             );
           } else {
             const externalDepName = `cargo:${deps.name}`;
             if (externalDepName in (context.externalNodes ?? {})) {
               dependencies.push(
-                createDependency(pkg, externalDepName, DependencyType.static)
+                createDependency(
+                  context,
+                  pkg,
+                  externalDepName,
+                  DependencyType.static
+                )
               );
             }
           }
@@ -437,16 +472,20 @@ export const createDependencies: CreateDependencies<CargoPluginOptions> = (
 };
 
 function createDependency(
+  context: CreateDependenciesContext,
   pkg: { manifest_path: string; name: string },
   depName: string,
   type: DependencyType
 ): RawProjectGraphDependency {
-  const target = pkg.manifest_path.replace(/\\/g, "/");
-
-  return {
+  const dependency = {
     type,
     source: pkg.name,
     target: depName,
-    sourceFile: target.replace(`${workspaceRoot.replace(/\\/g, "/")}/`, "")
+    sourceFile: pkg.manifest_path
+      .replace(/\\/g, "/")
+      .replace(`${workspaceRoot.replace(/\\/g, "/")}/`, "")
   };
+  validateDependency(dependency, context);
+
+  return dependency;
 }
