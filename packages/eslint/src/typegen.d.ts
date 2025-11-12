@@ -496,12 +496,12 @@ Backward pagination arguments
   '@next/next/no-unwanted-polyfillio'?: Linter.RuleEntry<[]>
   /**
    * Checks dependencies in project's package.json for version mismatches
-   * @see https://github.com/nrwl/nx/blob/22.0.2/docs/generated/packages/eslint-plugin/documents/dependency-checks.md
+   * @see https://github.com/nrwl/nx/blob/22.0.3/docs/generated/packages/eslint-plugin/documents/dependency-checks.md
    */
   '@nx/dependency-checks'?: Linter.RuleEntry<NxDependencyChecks>
   /**
    * Ensure that module boundaries are respected within the monorepo
-   * @see https://github.com/nrwl/nx/blob/22.0.2/docs/generated/packages/eslint-plugin/documents/enforce-module-boundaries.md
+   * @see https://github.com/nrwl/nx/blob/22.0.3/docs/generated/packages/eslint-plugin/documents/enforce-module-boundaries.md
    */
   '@nx/enforce-module-boundaries'?: Linter.RuleEntry<NxEnforceModuleBoundaries>
   /**
