@@ -37,17 +37,17 @@
         "run": "pnpm lint",
         "stage_fixed": true
       },
-      "check": {
-        "files": "git diff --name-only HEAD @{push}",
-        "glob": "**/*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc}",
-        "run": "pnpm exec prettier {staged_files} --check --ignore-unknown --no-error-on-unmatched-pattern --cache"
-      },
       "format": {
         "files": "git diff --name-only HEAD @{push}",
         "glob": "**/*",
         "exclude": "packages/workspace-tools/src/generators/*/files/**/*",
-        "run": "pnpm exec prettier {files} --write --ignore-unknown --no-error-on-unmatched-pattern --cache",
+        "run": "pnpm exec prettier {staged_files} --write --ignore-unknown --no-error-on-unmatched-pattern --cache",
         "stage_fixed": true
+      },
+      "check": {
+        "files": "git diff --name-only HEAD @{push}",
+        "glob": "**/*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc}",
+        "run": "pnpm exec prettier {staged_files} --check --ignore-unknown --no-error-on-unmatched-pattern --cache"
       }
     }
   },
