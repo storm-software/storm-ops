@@ -285,7 +285,8 @@
     "nx": "catalog:",
     "pkg-types": "catalog:",
     "tsup": "catalog:",
-    "typescript": "^5.9.3"
+    "typescript": "^5.9.3",
+    "@napi-rs/cli": "^3.4.1"
   },
   "publishConfig": {
     "access": "public"

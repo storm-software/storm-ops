@@ -96,17 +96,6 @@ export async function napiExecutor(
       );
     }
 
-    if (normalizedOptions.targetDir) {
-      normalizedOptions.targetDir = relative(
-        absoluteProjectRoot,
-        correctPaths(
-          isAbsolute(normalizedOptions.targetDir)
-            ? normalizedOptions.targetDir
-            : joinPaths(config.workspaceRoot, normalizedOptions.targetDir)
-        )
-      );
-    }
-
     if (normalizedOptions.configPath) {
       normalizedOptions.configPath = relative(
         absoluteProjectRoot,

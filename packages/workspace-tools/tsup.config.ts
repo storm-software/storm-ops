@@ -33,6 +33,7 @@ export default defineConfig([
     sourcemap: false,
     shims: true,
     silent: true,
-    tsconfig: "./tsconfig.json"
+    tsconfig: "./tsconfig.json",
+    external: ["@nx/devkit", "jiti", "typescript", "@napi-rs/cli"]
   }
 ]);
