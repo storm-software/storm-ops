@@ -21,7 +21,7 @@ This package is part of the <b>⚡Storm-Ops</b> monorepo. The Storm-Ops packages
 
 <h3 align="center">💻 Visit <a href="https://stormsoftware.com" target="_blank">stormsoftware.com</a> to stay up to date with this developer</h3><br />
 
-[![Version](https://img.shields.io/badge/version-1.292.29-1fb2a6.svg?style=for-the-badge&color=1fb2a6)](https://prettier.io/)&nbsp;[![Nx](https://img.shields.io/badge/Nx-17.0.2-lightgrey?style=for-the-badge&logo=nx&logoWidth=20&&color=1fb2a6)](http://nx.dev/)&nbsp;[![NextJs](https://img.shields.io/badge/Next.js-14.0.2-lightgrey?style=for-the-badge&logo=nextdotjs&logoWidth=20&color=1fb2a6)](https://nextjs.org/)&nbsp;[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg?style=for-the-badge&logo=commitlint&color=1fb2a6)](http://commitizen.github.io/cz-cli/)&nbsp;![Semantic-Release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg?style=for-the-badge&color=1fb2a6)&nbsp;[![documented with Fumadocs](https://img.shields.io/badge/documented_with-fumadocs-success.svg?style=for-the-badge&logo=readthedocs&color=1fb2a6)](https://fumadocs.vercel.app/)&nbsp;![GitHub Workflow Status (with event)](https://img.shields.io/github/actions/workflow/status/storm-software/storm-ops/cr.yml?style=for-the-badge&logo=github-actions&color=1fb2a6)
+[![Version](https://img.shields.io/badge/version-1.293.0-1fb2a6.svg?style=for-the-badge&color=1fb2a6)](https://prettier.io/)&nbsp;[![Nx](https://img.shields.io/badge/Nx-17.0.2-lightgrey?style=for-the-badge&logo=nx&logoWidth=20&&color=1fb2a6)](http://nx.dev/)&nbsp;[![NextJs](https://img.shields.io/badge/Next.js-14.0.2-lightgrey?style=for-the-badge&logo=nextdotjs&logoWidth=20&color=1fb2a6)](https://nextjs.org/)&nbsp;[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg?style=for-the-badge&logo=commitlint&color=1fb2a6)](http://commitizen.github.io/cz-cli/)&nbsp;![Semantic-Release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg?style=for-the-badge&color=1fb2a6)&nbsp;[![documented with Fumadocs](https://img.shields.io/badge/documented_with-fumadocs-success.svg?style=for-the-badge&logo=readthedocs&color=1fb2a6)](https://fumadocs.vercel.app/)&nbsp;![GitHub Workflow Status (with event)](https://img.shields.io/github/actions/workflow/status/storm-software/storm-ops/cr.yml?style=for-the-badge&logo=github-actions&color=1fb2a6)
 
 <!-- prettier-ignore-start -->
 <!-- markdownlint-disable -->
@@ -81,19 +81,22 @@ This package is part of the <b>⚡Storm-Ops</b> monorepo. The Storm-Ops packages
   - [Cargo Doc Executor](#cargo-doc-executor)
     - [Example](#example-11)
     - [Options](#options-11)
+  - [Napi Executor](#napi-executor)
+    - [Example](#example-12)
+    - [Options](#options-12)
   - [Generators](#generators)
   - [Init Generator](#init-generator)
-    - [Options](#options-12)
-  - [Preset Generator](#preset-generator)
     - [Options](#options-13)
-  - [Node Library Generator](#node-library-generator)
+  - [Preset Generator](#preset-generator)
     - [Options](#options-14)
-  - [Config Schema Generator](#config-schema-generator)
+  - [Node Library Generator](#node-library-generator)
     - [Options](#options-15)
-  - [Neutral Library Generator](#neutral-library-generator)
+  - [Config Schema Generator](#config-schema-generator)
     - [Options](#options-16)
-  - [Browser Library Generator](#browser-library-generator)
+  - [Neutral Library Generator](#neutral-library-generator)
     - [Options](#options-17)
+  - [Browser Library Generator](#browser-library-generator)
+    - [Options](#options-18)
   - [release-version](#release-version)
   - [Building](#building)
   - [Running unit tests](#running-unit-tests)
@@ -567,6 +570,64 @@ The following executor options are available:
  | examples      | `boolean`    | Generate documentation for the examples     | `[object Object]`     | 
  | noDeps      | `boolean`    | Do not generate documentation for dependencies     | `[object Object]`     | 
 
+
+
+
+## Napi Executor
+
+A type definition for the Napi - Bindings Build executor schema
+
+### Example 
+
+This executor can be used by executing the following in a command line utility: 
+
+```cmd 
+nx run my-project:napi
+```
+
+**Please note:** _The napi executor should be included in the desired projects's `project.json` file.All required options must be included in the `options` property of the json._ 
+
+### Options
+
+The following executor options are available:
+
+| Option    | Type   | Description   | Default   | 
+| --------- | ------ | ------------- | --------- | 
+| **outputPath \***    | `string`    | The path to the output directory     |     | 
+ | **package \***    | `string`    | Build the specified library or the one at cwd     |     | 
+ | toolchain      | "stable" \| "beta" \| "nightly"     | The type of toolchain to use for the build     | "stable"     | 
+ | target      | `string`    | Build for the target triple, bypassed to \`cargo build --target\`     |     | 
+ | allTargets      | `boolean`    | Build all targets     |     | 
+ | profile      | `string`    | Build artifacts with the specified profile     |     | 
+ | release      | `boolean`    | Build in release mode     |     | 
+ | features      | `string[]`   | List of features to activate     |     | 
+ | allFeatures      | `boolean`    | Activate all available features     |     | 
+ | **jsBinding \***    | `string`    | The path to the output JavaScript file     | "binding.js"     | 
+ | **dts \***    | `string`    | The path to the output TypeScript declaration file     | "binding.d.ts"     | 
+ | **manifestPath \***    | `string`    | The path to the Cargo.toml manifest file     |     | 
+ | cwd      | `string`    | Working directory where napi command will be executed; other paths are relative to this     |     | 
+ | configPath      | `string`    | Path to napi config JSON file     |     | 
+ | packageJsonPath      | `string`    | Path to package.json     |     | 
+ | targetDir      | `string`    | Directory for all crate generated artifacts (cargo build --target-dir)     |     | 
+ | platform      | `boolean`    | Add platform triple to generated Node.js binding file, e.g. [name].linux-x64-gnu.node     | `true`     | 
+ | jsPackageName      | `string`    | Package name in generated JS binding file. Works only with --platform     |     | 
+ | constEnum      | `boolean`    | Whether to generate const enum for TypeScript bindings     |     | 
+ | noJsBinding      | `boolean`    | Disable generation of JS binding file. Works only with --platform     |     | 
+ | dtsHeader      | `string`    | Custom file header for generated type def file (requires typedef feature)     |     | 
+ | noDtsHeader      | `boolean`    | Disable default file header for generated type def file (requires typedef feature)     |     | 
+ | dtsCache      | `boolean`    | Enable the DTS cache     | `true`     | 
+ | esm      | `boolean`    | Emit an ESM JS binding file instead of CJS (works only with --platform)     |     | 
+ | strip      | `boolean`    | Strip the library to minimize file size     |     | 
+ | verbose      | `boolean`    | Verbosely log build command trace     |     | 
+ | bin      | `string`    | Build only the specified binary     |     | 
+ | crossCompile      | `boolean`    | [experimental] Cross-compile for the specified target with cargo-xwin on Windows and cargo-zigbuild on other platforms     |     | 
+ | useCross      | `boolean`    | [experimental] Use cross (https://github.com/cross-rs/cross) instead of cargo     |     | 
+ | useNapiCross      | `boolean`    | [experimental] Use @napi-rs/cross-toolchain to cross-compile Linux arm/arm64/x64 gnu targets     |     | 
+ | watch      | `boolean`    | Watch crate changes and build continuously with cargo-watch     |     | 
+ | noDefaultFeatures      | `boolean`    | Do not activate the default feature     |     | 
+
+
+**Please note:** _Option names followed by \* above are required, and must be provided to run the executor._ 
 
 
 
