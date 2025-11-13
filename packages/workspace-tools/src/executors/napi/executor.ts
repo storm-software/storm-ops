@@ -1,12 +1,12 @@
 import { NapiCli as TNapiCli } from "@napi-rs/cli";
 import { ExecutorContext, PromiseExecutor } from "@nx/devkit";
 import {
+  correctPaths,
   isAbsolute,
   joinPaths,
   relative
 } from "@storm-software/config-tools/utilities/correct-paths";
 import { StormWorkspaceConfig } from "@storm-software/config/types";
-import { normalizePath } from "@storm-software/workspace-tools/utils/path";
 import { createJiti } from "jiti";
 import { fileExists } from "nx/src/utils/fileutils";
 import { withRunExecutor } from "../../base/base-executor";
@@ -66,9 +66,9 @@ export async function napiExecutor(
   normalizedOptions.packageJsonPath = options.packageJsonPath || packageJson;
 
   if (options.cwd) {
-    normalizedOptions.cwd = normalizePath(options.cwd);
+    normalizedOptions.cwd = correctPaths(options.cwd);
   } else {
-    normalizedOptions.cwd = projectRoot;
+    normalizedOptions.cwd = correctPaths(projectRoot);
     const absoluteProjectRoot = joinPaths(
       config.workspaceRoot,
       projectRoot || "."
@@ -77,45 +77,55 @@ export async function napiExecutor(
     if (normalizedOptions.outputDir) {
       normalizedOptions.outputDir = relative(
         absoluteProjectRoot,
-        isAbsolute(normalizedOptions.outputDir)
-          ? normalizedOptions.outputDir
-          : joinPaths(config.workspaceRoot, normalizedOptions.outputDir)
+        correctPaths(
+          isAbsolute(normalizedOptions.outputDir)
+            ? normalizedOptions.outputDir
+            : joinPaths(config.workspaceRoot, normalizedOptions.outputDir)
+        )
       );
     }
 
     if (normalizedOptions.packageJsonPath) {
       normalizedOptions.packageJsonPath = relative(
         absoluteProjectRoot,
-        isAbsolute(normalizedOptions.packageJsonPath)
-          ? normalizedOptions.packageJsonPath
-          : joinPaths(config.workspaceRoot, normalizedOptions.packageJsonPath)
+        correctPaths(
+          isAbsolute(normalizedOptions.packageJsonPath)
+            ? normalizedOptions.packageJsonPath
+            : joinPaths(config.workspaceRoot, normalizedOptions.packageJsonPath)
+        )
       );
     }
 
     if (normalizedOptions.targetDir) {
       normalizedOptions.targetDir = relative(
         absoluteProjectRoot,
-        isAbsolute(normalizedOptions.targetDir)
-          ? normalizedOptions.targetDir
-          : joinPaths(config.workspaceRoot, normalizedOptions.targetDir)
+        correctPaths(
+          isAbsolute(normalizedOptions.targetDir)
+            ? normalizedOptions.targetDir
+            : joinPaths(config.workspaceRoot, normalizedOptions.targetDir)
+        )
       );
     }
 
     if (normalizedOptions.configPath) {
       normalizedOptions.configPath = relative(
         absoluteProjectRoot,
-        isAbsolute(normalizedOptions.configPath)
-          ? normalizedOptions.configPath
-          : joinPaths(config.workspaceRoot, normalizedOptions.configPath)
+        correctPaths(
+          isAbsolute(normalizedOptions.configPath)
+            ? normalizedOptions.configPath
+            : joinPaths(config.workspaceRoot, normalizedOptions.configPath)
+        )
       );
     }
 
     if (normalizedOptions.manifestPath) {
       normalizedOptions.manifestPath = relative(
         absoluteProjectRoot,
-        isAbsolute(normalizedOptions.manifestPath)
-          ? normalizedOptions.manifestPath
-          : joinPaths(config.workspaceRoot, normalizedOptions.manifestPath)
+        correctPaths(
+          isAbsolute(normalizedOptions.manifestPath)
+            ? normalizedOptions.manifestPath
+            : joinPaths(config.workspaceRoot, normalizedOptions.manifestPath)
+        )
       );
     }
   }
