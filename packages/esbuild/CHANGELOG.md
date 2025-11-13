@@ -2,6 +2,27 @@
 
 # Changelog for Storm Ops - Esbuild
 
+## [0.53.30](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.53.30) (11/13/2025)
+
+### Miscellaneous
+
+- **monorepo:** Reformat workspace files
+  ([41b537422](https://github.com/storm-software/storm-ops/commit/41b537422))
+- **monorepo:** Regenerate README markdown files
+  ([0ff6533a0](https://github.com/storm-software/storm-ops/commit/0ff6533a0))
+
+### Features
+
+- **workspace-tools:** Added the `napi` executor to build rust bindings
+  ([5f075ee38](https://github.com/storm-software/storm-ops/commit/5f075ee38))
+
+### Updated Dependencies
+
+- Updated **config-tools** to **v1.188.30**
+- Updated **build-tools** to **v0.158.30**
+- Updated **config** to **v1.134.30**
+- Updated **tsup** to **v0.2.28**
+
 ## [0.53.29](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.53.29) (11/12/2025)
 
 ### Miscellaneous

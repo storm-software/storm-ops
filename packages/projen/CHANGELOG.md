@@ -2,6 +2,26 @@
 
 # Changelog for Storm Ops - Projen
 
+## [0.21.30](https://github.com/storm-software/storm-ops/releases/tag/projen%400.21.30) (11/13/2025)
+
+### Miscellaneous
+
+- **monorepo:** Reformat workspace files
+  ([41b537422](https://github.com/storm-software/storm-ops/commit/41b537422))
+- **monorepo:** Regenerate README markdown files
+  ([0ff6533a0](https://github.com/storm-software/storm-ops/commit/0ff6533a0))
+
+### Features
+
+- **workspace-tools:** Added the `napi` executor to build rust bindings
+  ([5f075ee38](https://github.com/storm-software/storm-ops/commit/5f075ee38))
+
+### Updated Dependencies
+
+- Updated **workspace-tools** to **v1.293.0**
+- Updated **config-tools** to **v1.188.30**
+- Updated **config** to **v1.134.30**
+
 ## [0.21.29](https://github.com/storm-software/storm-ops/releases/tag/projen%400.21.29) (11/12/2025)
 
 ### Miscellaneous

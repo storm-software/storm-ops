@@ -2,6 +2,20 @@
 
 # Changelog for Storm Ops - CSpell
 
+## [0.45.30](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.45.30) (11/13/2025)
+
+### Miscellaneous
+
+- **monorepo:** Reformat workspace files
+  ([41b537422](https://github.com/storm-software/storm-ops/commit/41b537422))
+- **monorepo:** Regenerate README markdown files
+  ([0ff6533a0](https://github.com/storm-software/storm-ops/commit/0ff6533a0))
+
+### Features
+
+- **workspace-tools:** Added the `napi` executor to build rust bindings
+  ([5f075ee38](https://github.com/storm-software/storm-ops/commit/5f075ee38))
+
 ## [0.45.29](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.45.29) (11/12/2025)
 
 ### Miscellaneous
