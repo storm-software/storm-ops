@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Config
 
+## [1.134.36](https://github.com/storm-software/storm-ops/releases/tag/config%401.134.36) (11/13/2025)
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.36**
+
 ## [1.134.35](https://github.com/storm-software/storm-ops/releases/tag/config%401.134.35) (11/13/2025)
 
 ### Miscellaneous
