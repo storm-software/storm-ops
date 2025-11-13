@@ -278,6 +278,7 @@
     "zod": "catalog:"
   },
   "devDependencies": {
+    "@napi-rs/cli": "^3.4.1",
     "@types/micromatch": "^4.0.10",
     "@types/node": "catalog:",
     "@types/semver": "7.5.8",
@@ -285,8 +286,7 @@
     "nx": "catalog:",
     "pkg-types": "catalog:",
     "tsup": "catalog:",
-    "typescript": "^5.9.3",
-    "@napi-rs/cli": "^3.4.1"
+    "typescript": "^5.9.3"
   },
   "publishConfig": {
     "access": "public"
