@@ -175,8 +175,7 @@ export default defineUntypedSchema({
       title: "Verbose",
       type: "boolean",
       description: "Verbosely log build command trace"
-    },
-    $default: false
+    }
   },
   bin: {
     $schema: {
