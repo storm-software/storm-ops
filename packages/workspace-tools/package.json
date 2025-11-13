@@ -232,10 +232,10 @@
     "sullivanpj"
   ],
   "peerDependencies": {
+    "@napi-rs/cli": "^3.4.1",
     "markdownlint-cli2": "^0.17.2",
     "nx": "catalog:",
-    "prettier": "catalog:",
-    "@napi-rs/cli": "^3.4.1"
+    "prettier": "catalog:"
   },
   "peerDependenciesMeta": {
     "markdownlint-cli2": {
