@@ -16,7 +16,8 @@ export default defineUntypedSchema({
       type: "string",
       format: "path",
       description: "The path to the output directory"
-    }
+    },
+    $default: "{sourceRoot}"
   },
   jsBinding: {
     $schema: {

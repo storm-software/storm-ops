@@ -8,6 +8,7 @@ export interface NapiExecutorSchema {
   * 
   * The path to the output directory
   * 
+  * @default "{sourceRoot}"
   * 
   * @format path
  */

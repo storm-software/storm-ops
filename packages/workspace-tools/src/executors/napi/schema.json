@@ -15,7 +15,8 @@
       "type": "string",
       "format": "path",
       "description": "The path to the output directory",
-      "id": "#outputPath"
+      "id": "#outputPath",
+      "default": "{sourceRoot}"
     },
     "package": {
       "title": "Package Name",
@@ -225,6 +226,7 @@
   },
   "type": "object",
   "default": {
+    "outputPath": "{sourceRoot}",
     "toolchain": "stable",
     "jsBinding": "binding.js",
     "dts": "binding.d.ts",

@@ -6,6 +6,7 @@
 
 ## `outputPath`
 - **Type**: `string`
+- **Default**: `"{sourceRoot}"`
 
 > Output Path
 
