@@ -228,7 +228,6 @@ export interface NapiExecutorSchema {
   * 
   * Verbosely log build command trace
   * 
-  * @default false
  */
  verbose?: boolean,
 

@@ -184,8 +184,7 @@
       "title": "Verbose",
       "type": "boolean",
       "description": "Verbosely log build command trace",
-      "id": "#verbose",
-      "default": false
+      "id": "#verbose"
     },
     "bin": {
       "title": "Binary",
@@ -231,7 +230,6 @@
     "jsBinding": "binding.js",
     "dts": "binding.d.ts",
     "platform": true,
-    "dtsCache": true,
-    "verbose": false
+    "dtsCache": true
   }
 }

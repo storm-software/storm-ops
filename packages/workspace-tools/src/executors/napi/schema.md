@@ -237,7 +237,6 @@ Strip the library to minimize file size
 
 ## `verbose`
 - **Type**: `boolean`
-- **Default**: `false`
 
 > Verbose
 
