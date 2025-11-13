@@ -59,6 +59,11 @@
       "implementation": "./dist/src/executors/cargo-doc/executor",
       "schema": "./dist/src/executors/cargo-doc/schema.json",
       "description": "Create docs for a Rust project with Cargo Doc"
+    },
+    "napi": {
+      "implementation": "./dist/src/executors/napi/executor",
+      "schema": "./dist/src/executors/napi/schema.json",
+      "description": "Build Node.js native addons using N-API and Rust via the NAPI-RS framework"
     }
   }
 }
