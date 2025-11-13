@@ -1,0 +1,235 @@
+{
+  "id": "#",
+  "title": "Napi Executor",
+  "description": "A type definition for the Napi - Bindings Build executor schema",
+  "required": [
+    "outputPath",
+    "jsBinding",
+    "dts",
+    "manifestPath",
+    "package"
+  ],
+  "properties": {
+    "outputPath": {
+      "title": "Output Path",
+      "type": "string",
+      "format": "path",
+      "description": "The path to the output directory",
+      "id": "#outputPath"
+    },
+    "package": {
+      "title": "Package Name",
+      "type": "string",
+      "description": "Build the specified library or the one at cwd",
+      "id": "#package"
+    },
+    "toolchain": {
+      "title": "Toolchain",
+      "description": "The type of toolchain to use for the build",
+      "enum": [
+        "stable",
+        "beta",
+        "nightly"
+      ],
+      "default": "stable",
+      "id": "#toolchain",
+      "type": "string"
+    },
+    "target": {
+      "title": "Target Triple",
+      "type": "string",
+      "description": "Build for the target triple, bypassed to `cargo build --target`",
+      "id": "#target"
+    },
+    "allTargets": {
+      "title": "All Targets",
+      "type": "boolean",
+      "description": "Build all targets",
+      "id": "#allTargets"
+    },
+    "profile": {
+      "title": "Cargo Profile",
+      "type": "string",
+      "description": "Build artifacts with the specified profile",
+      "id": "#profile"
+    },
+    "release": {
+      "title": "Release Mode",
+      "type": "boolean",
+      "description": "Build in release mode",
+      "id": "#release"
+    },
+    "features": {
+      "title": "Cargo Features",
+      "type": "array",
+      "description": "List of features to activate",
+      "items": {
+        "type": "string"
+      },
+      "id": "#features"
+    },
+    "allFeatures": {
+      "title": "All Features",
+      "type": "boolean",
+      "description": "Activate all available features",
+      "id": "#allFeatures"
+    },
+    "jsBinding": {
+      "title": "JS Binding File",
+      "type": "string",
+      "description": "The path to the output JavaScript file",
+      "id": "#jsBinding",
+      "default": "binding.js"
+    },
+    "dts": {
+      "title": "DTS Binding File",
+      "type": "string",
+      "description": "The path to the output TypeScript declaration file",
+      "id": "#dts",
+      "default": "binding.d.ts"
+    },
+    "manifestPath": {
+      "title": "Manifest Path",
+      "type": "string",
+      "format": "path",
+      "description": "The path to the Cargo.toml manifest file",
+      "id": "#manifestPath"
+    },
+    "cwd": {
+      "title": "Working Directory",
+      "type": "string",
+      "format": "path",
+      "description": "Working directory where napi command will be executed; other paths are relative to this",
+      "id": "#cwd"
+    },
+    "configPath": {
+      "title": "NAPI Config Path",
+      "type": "string",
+      "format": "path",
+      "description": "Path to napi config JSON file",
+      "id": "#configPath"
+    },
+    "packageJsonPath": {
+      "title": "package.json Path",
+      "type": "string",
+      "format": "path",
+      "description": "Path to package.json",
+      "id": "#packageJsonPath"
+    },
+    "targetDir": {
+      "title": "Cargo Target Dir",
+      "type": "string",
+      "format": "path",
+      "description": "Directory for all crate generated artifacts (cargo build --target-dir)",
+      "id": "#targetDir"
+    },
+    "platform": {
+      "title": "Platform Suffix",
+      "type": "boolean",
+      "description": "Add platform triple to generated Node.js binding file, e.g. [name].linux-x64-gnu.node",
+      "id": "#platform",
+      "default": true
+    },
+    "jsPackageName": {
+      "title": "JS Package Name",
+      "type": "string",
+      "description": "Package name in generated JS binding file. Works only with --platform",
+      "id": "#jsPackageName"
+    },
+    "constEnum": {
+      "title": "Const Enum",
+      "type": "boolean",
+      "description": "Whether to generate const enum for TypeScript bindings",
+      "id": "#constEnum"
+    },
+    "noJsBinding": {
+      "title": "Disable JS Binding",
+      "type": "boolean",
+      "description": "Disable generation of JS binding file. Works only with --platform",
+      "id": "#noJsBinding"
+    },
+    "dtsHeader": {
+      "title": "DTS Header",
+      "type": "string",
+      "description": "Custom file header for generated type def file (requires typedef feature)",
+      "id": "#dtsHeader"
+    },
+    "noDtsHeader": {
+      "title": "Disable Default DTS Header",
+      "type": "boolean",
+      "description": "Disable default file header for generated type def file (requires typedef feature)",
+      "id": "#noDtsHeader"
+    },
+    "dtsCache": {
+      "title": "Enable DTS Cache",
+      "type": "boolean",
+      "description": "Enable the DTS cache",
+      "id": "#dtsCache",
+      "default": true
+    },
+    "esm": {
+      "title": "ESM Output",
+      "type": "boolean",
+      "description": "Emit an ESM JS binding file instead of CJS (works only with --platform)",
+      "id": "#esm"
+    },
+    "strip": {
+      "title": "Strip Binary",
+      "type": "boolean",
+      "description": "Strip the library to minimize file size",
+      "id": "#strip"
+    },
+    "verbose": {
+      "title": "Verbose",
+      "type": "boolean",
+      "description": "Verbosely log build command trace",
+      "id": "#verbose",
+      "default": false
+    },
+    "bin": {
+      "title": "Binary",
+      "type": "string",
+      "description": "Build only the specified binary",
+      "id": "#bin"
+    },
+    "crossCompile": {
+      "title": "Cross Compile",
+      "type": "boolean",
+      "description": "[experimental] Cross-compile for the specified target with cargo-xwin on Windows and cargo-zigbuild on other platforms",
+      "id": "#crossCompile"
+    },
+    "useCross": {
+      "title": "Use cross",
+      "type": "boolean",
+      "description": "[experimental] Use cross (https://github.com/cross-rs/cross) instead of cargo",
+      "id": "#useCross"
+    },
+    "useNapiCross": {
+      "title": "Use @napi-rs/cross-toolchain",
+      "type": "boolean",
+      "description": "[experimental] Use @napi-rs/cross-toolchain to cross-compile Linux arm/arm64/x64 gnu targets",
+      "id": "#useNapiCross"
+    },
+    "watch": {
+      "title": "Watch",
+      "type": "boolean",
+      "description": "Watch crate changes and build continuously with cargo-watch",
+      "id": "#watch"
+    },
+    "noDefaultFeatures": {
+      "title": "No Default Features",
+      "type": "boolean",
+      "description": "Do not activate the default feature",
+      "id": "#noDefaultFeatures"
+    }
+  },
+  "type": "object",
+  "default": {
+    "toolchain": "stable",
+    "jsBinding": "binding.js",
+    "dts": "binding.d.ts",
+    "platform": true,
+    "dtsCache": true,
+    "verbose": false
+  }
+}

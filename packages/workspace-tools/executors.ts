@@ -13,6 +13,8 @@ export { type CargoPublishExecutorSchema } from "./src/executors/cargo-publish/s
 export { type CleanPackageExecutorSchema } from "./src/executors/clean-package/schema.d";
 export * from "./src/executors/esbuild/executor";
 export { type ESBuildExecutorSchema } from "./src/executors/esbuild/schema.d";
+export * from "./src/executors/napi/executor";
+export { type NapiExecutorSchema } from "./src/executors/napi/schema.d";
 export * from "./src/executors/npm-publish/executor";
 export { type NpmPublishExecutorSchema } from "./src/executors/npm-publish/schema.d";
 export * from "./src/executors/size-limit/executor";
