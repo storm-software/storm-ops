@@ -2,6 +2,40 @@
 
 # Changelog for Storm Ops - Workspace Tools
 
+## [1.293.1](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.293.1) (11/13/2025)
+
+### Miscellaneous
+
+- **monorepo:** Reformat workspace package files
+  ([a0fb66d75](https://github.com/storm-software/storm-ops/commit/a0fb66d75))
+- **monorepo:** Reformat workspace files
+  ([41b537422](https://github.com/storm-software/storm-ops/commit/41b537422))
+- **monorepo:** Regenerate README markdown files
+  ([0ff6533a0](https://github.com/storm-software/storm-ops/commit/0ff6533a0))
+
+### Bug Fixes
+
+- **workspace-tools:** Resolve issue with missing `napi` executor in
+  `executors.json` file
+  ([43961d262](https://github.com/storm-software/storm-ops/commit/43961d262))
+
+### Features
+
+- **workspace-tools:** Added the `napi` executor to build rust bindings
+  ([5f075ee38](https://github.com/storm-software/storm-ops/commit/5f075ee38))
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.31**
+- Updated **config-tools** to **v1.188.31**
+- Updated **pnpm-tools** to **v0.6.31**
+- Updated **npm-tools** to **v0.5.31**
+- Updated **prettier** to **v0.57.31**
+- Updated **esbuild** to **v0.53.31**
+- Updated **unbuild** to **v0.57.31**
+- Updated **config** to **v1.134.31**
+- Updated **tsdown** to **v0.45.31**
+
 ## [1.293.0](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.293.0) (11/13/2025)
 
 ### Miscellaneous

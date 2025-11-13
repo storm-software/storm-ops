@@ -2,6 +2,26 @@
 
 # Changelog for Storm Ops - Create Storm Workspace
 
+## [1.97.31](https://github.com/storm-software/storm-ops/releases/tag/create-storm-workspace%401.97.31) (11/13/2025)
+
+### Miscellaneous
+
+- **monorepo:** Reformat workspace package files
+  ([a0fb66d75](https://github.com/storm-software/storm-ops/commit/a0fb66d75))
+- **monorepo:** Reformat workspace files
+  ([41b537422](https://github.com/storm-software/storm-ops/commit/41b537422))
+- **monorepo:** Regenerate README markdown files
+  ([0ff6533a0](https://github.com/storm-software/storm-ops/commit/0ff6533a0))
+
+### Features
+
+- **workspace-tools:** Added the `napi` executor to build rust bindings
+  ([5f075ee38](https://github.com/storm-software/storm-ops/commit/5f075ee38))
+
+### Updated Dependencies
+
+- Updated **config-tools** to **v1.188.31**
+
 ## [1.97.30](https://github.com/storm-software/storm-ops/releases/tag/create-storm-workspace%401.97.30) (11/13/2025)
 
 ### Miscellaneous
