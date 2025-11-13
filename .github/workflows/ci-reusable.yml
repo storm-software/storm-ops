@@ -50,14 +50,24 @@ jobs:
     permissions:
       contents: write
       id-token: write
-    if: startsWith(github.repository, 'storm-software/') && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/canary' || github.ref == 'refs/heads/experimental')
+    if:
+      startsWith(github.repository, 'storm-software/') && (github.ref ==
+      'refs/heads/main' || github.ref == 'refs/heads/canary' || github.ref ==
+      'refs/heads/experimental')
     steps:
       - name: Send notification - Deployment started
         uses: storm-software/action-notify@main
         with:
-          title: "Deployment for ${{ github.repository }} has started (In Progress)"
-          subtitle: "Deployment for ${{ github.repository }} has started - #${{ github.run_number }}"
-          description: "Deployment for ${{ github.repository }} is currently in process - #${{ github.run_number }}. Click here to see the full workflow details: ${{ github.event.pull_request.html_url || github.event.head_commit.url }}."
+          title:
+            "Deployment for ${{ github.repository }} has started (In Progress)"
+          subtitle:
+            "Deployment for ${{ github.repository }} has started - #${{
+            github.run_number }}"
+          description:
+            "Deployment for ${{ github.repository }} is currently in process -
+            #${{ github.run_number }}. Click here to see the full workflow
+            details: ${{ github.event.pull_request.html_url ||
+            github.event.head_commit.url }}."
           color: 2077350
           status: "In Progress"
           slack-token: ${{ secrets.STORM_BOT_SLACK_TOKEN }}
@@ -82,12 +92,12 @@ jobs:
 
       - name: Set appropriate base and head commits for `nx affected` commands
         run: |
-          echo "BASE: ${{ env.NX_BASE }}"
-          echo "HEAD: ${{ env.NX_HEAD }}"
+          echo "BASE: ${NX_BASE}"
+          echo "HEAD: ${NX_HEAD}"
         shell: bash
 
       - name: Release repository updates
-        run: pnpm release --base=${{ env.NX_BASE }} --head=${{ env.NX_HEAD }}
+        run: pnpm release --base=${NX_BASE} --head=${NX_HEAD}
         env:
           GITHUB_ACTOR: ${{ github.actor }}
           GITHUB_TOKEN: ${{ github.token }}
@@ -109,9 +119,16 @@ jobs:
       - name: Send notification - Deployment successful
         uses: storm-software/action-notify@main
         with:
-          title: "Deployment for ${{ github.repository }} has finished (Success)"
-          subtitle: "Deployment for ${{ github.repository }} has finished successfully - #${{ github.run_number }}"
-          description: "Deployment for ${{ github.repository }} has finished successfully - #${{ github.run_number }}. Click here to see the full workflow details: ${{ github.event.pull_request.html_url || github.event.head_commit.url }}."
+          title:
+            "Deployment for ${{ github.repository }} has finished (Success)"
+          subtitle:
+            "Deployment for ${{ github.repository }} has finished successfully -
+            #${{ github.run_number }}"
+          description:
+            "Deployment for ${{ github.repository }} has finished successfully -
+            #${{ github.run_number }}. Click here to see the full workflow
+            details: ${{ github.event.pull_request.html_url ||
+            github.event.head_commit.url }}."
           color: 556891
           status: "Success"
           slack-token: ${{ secrets.STORM_BOT_SLACK_TOKEN }}
@@ -129,9 +146,16 @@ jobs:
       - name: Send notification - Deployment successful
         uses: storm-software/action-notify@main
         with:
-          title: "Deployment for ${{ github.repository }} has finished (Failure)"
-          subtitle: "Deployment for ${{ github.repository }} finished with failures - #${{ github.run_number }}"
-          description: "Deployment for ${{ github.repository }} finished with failures - #${{ github.run_number }}. Click here to see the full workflow details: ${{ github.event.pull_request.html_url || github.event.head_commit.url }}."
+          title:
+            "Deployment for ${{ github.repository }} has finished (Failure)"
+          subtitle:
+            "Deployment for ${{ github.repository }} finished with failures -
+            #${{ github.run_number }}"
+          description:
+            "Deployment for ${{ github.repository }} finished with failures -
+            #${{ github.run_number }}. Click here to see the full workflow
+            details: ${{ github.event.pull_request.html_url ||
+            github.event.head_commit.url }}."
           color: 10027008
           status: "Failure"
           slack-token: ${{ secrets.STORM_BOT_SLACK_TOKEN }}
@@ -149,9 +173,16 @@ jobs:
       - name: Send notification - Deployment cancelled
         uses: storm-software/action-notify@main
         with:
-          title: "Deployment for ${{ github.repository }} has finished (Cancelled)"
-          subtitle: "Deployment for ${{ github.repository }} was cancelled - #${{ github.run_number }}"
-          description: "Deployment for ${{ github.repository }} was stopped before it could complete - #${{ github.run_number }}. Click here to see the full workflow details: ${{ github.event.pull_request.html_url || github.event.head_commit.url }}."
+          title:
+            "Deployment for ${{ github.repository }} has finished (Cancelled)"
+          subtitle:
+            "Deployment for ${{ github.repository }} was cancelled - #${{
+            github.run_number }}"
+          description:
+            "Deployment for ${{ github.repository }} was stopped before it could
+            complete - #${{ github.run_number }}. Click here to see the full
+            workflow details: ${{ github.event.pull_request.html_url ||
+            github.event.head_commit.url }}."
           color: 16565273
           status: "Cancelled"
           slack-token: ${{ secrets.STORM_BOT_SLACK_TOKEN }}

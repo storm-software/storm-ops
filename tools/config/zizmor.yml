@@ -1,7 +1,8 @@
 rules:
-  template-injection:
-    ignore:
-      - ci.yml
+  # template-injection:
+  #   ignore:
+  #     - ci.yml
+  #     - ci-reusable.yml
   dangerous-triggers:
     ignore:
       - greetings.yml:3:1
