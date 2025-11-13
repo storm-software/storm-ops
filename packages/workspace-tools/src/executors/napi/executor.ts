@@ -79,7 +79,7 @@ export async function napiExecutor(
         absoluteProjectRoot,
         isAbsolute(normalizedOptions.outputDir)
           ? normalizedOptions.outputDir
-          : joinPaths(absoluteProjectRoot, normalizedOptions.outputDir)
+          : joinPaths(config.workspaceRoot, normalizedOptions.outputDir)
       );
     }
 
@@ -88,7 +88,7 @@ export async function napiExecutor(
         absoluteProjectRoot,
         isAbsolute(normalizedOptions.packageJsonPath)
           ? normalizedOptions.packageJsonPath
-          : joinPaths(absoluteProjectRoot, normalizedOptions.packageJsonPath)
+          : joinPaths(config.workspaceRoot, normalizedOptions.packageJsonPath)
       );
     }
 
@@ -97,7 +97,7 @@ export async function napiExecutor(
         absoluteProjectRoot,
         isAbsolute(normalizedOptions.targetDir)
           ? normalizedOptions.targetDir
-          : joinPaths(absoluteProjectRoot, normalizedOptions.targetDir)
+          : joinPaths(config.workspaceRoot, normalizedOptions.targetDir)
       );
     }
 
@@ -106,7 +106,7 @@ export async function napiExecutor(
         absoluteProjectRoot,
         isAbsolute(normalizedOptions.configPath)
           ? normalizedOptions.configPath
-          : joinPaths(absoluteProjectRoot, normalizedOptions.configPath)
+          : joinPaths(config.workspaceRoot, normalizedOptions.configPath)
       );
     }
 
@@ -115,7 +115,7 @@ export async function napiExecutor(
         absoluteProjectRoot,
         isAbsolute(normalizedOptions.manifestPath)
           ? normalizedOptions.manifestPath
-          : joinPaths(absoluteProjectRoot, normalizedOptions.manifestPath)
+          : joinPaths(config.workspaceRoot, normalizedOptions.manifestPath)
       );
     }
   }
