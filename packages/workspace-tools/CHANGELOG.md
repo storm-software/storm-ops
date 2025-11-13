@@ -2,6 +2,37 @@
 
 # Changelog for Storm Ops - Workspace Tools
 
+## [1.293.2](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.293.2) (11/13/2025)
+
+### Miscellaneous
+
+- **workspace-tools:** Call `correctPaths` prior to updating `napi` path options
+  ([accfa08ed](https://github.com/storm-software/storm-ops/commit/accfa08ed))
+- **monorepo:** Regenerate README markdown files
+  ([68959f768](https://github.com/storm-software/storm-ops/commit/68959f768))
+
+### Bug Fixes
+
+- **workspace-tools:** Ensure all `napi` paths use `workspaceRoot` as base
+  directory
+  ([c5d7b6732](https://github.com/storm-software/storm-ops/commit/c5d7b6732))
+- **workspace-tools:** Ensure `napi` executor path options are relative to `cwd`
+  ([864e736d9](https://github.com/storm-software/storm-ops/commit/864e736d9))
+- **workspace-tools:** Added logic to normalize `napi-build` options
+  ([ece6e259b](https://github.com/storm-software/storm-ops/commit/ece6e259b))
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.32**
+- Updated **config-tools** to **v1.188.32**
+- Updated **pnpm-tools** to **v0.6.32**
+- Updated **npm-tools** to **v0.5.32**
+- Updated **prettier** to **v0.57.32**
+- Updated **esbuild** to **v0.53.32**
+- Updated **unbuild** to **v0.57.32**
+- Updated **config** to **v1.134.32**
+- Updated **tsdown** to **v0.45.32**
+
 ## [1.293.1](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.293.1) (11/13/2025)
 
 ### Miscellaneous
