@@ -2,6 +2,22 @@
 
 # Changelog for Storm Ops - Conventional Changelog
 
+## [0.3.34](https://github.com/storm-software/storm-ops/releases/tag/conventional-changelog%400.3.34) (11/13/2025)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+  ([e7bd95c1c](https://github.com/storm-software/storm-ops/commit/e7bd95c1c))
+- **monorepo:** Regenerate README markdown files
+  ([d47b551f9](https://github.com/storm-software/storm-ops/commit/d47b551f9))
+- **monorepo:** Regenerate README markdown files
+  ([70c8dba97](https://github.com/storm-software/storm-ops/commit/70c8dba97))
+
+### Updated Dependencies
+
+- Updated **config-tools** to **v1.188.34**
+- Updated **config** to **v1.134.34**
+
 ## [0.3.33](https://github.com/storm-software/storm-ops/releases/tag/conventional-changelog%400.3.33) (11/13/2025)
 
 ### Miscellaneous

@@ -2,6 +2,39 @@
 
 # Changelog for Storm Ops - Workspace Tools
 
+## [1.293.4](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.293.4) (11/13/2025)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+  ([e7bd95c1c](https://github.com/storm-software/storm-ops/commit/e7bd95c1c))
+- **monorepo:** Format `package.json` files
+  ([a425f19cb](https://github.com/storm-software/storm-ops/commit/a425f19cb))
+- **monorepo:** Regenerate README markdown files
+  ([d47b551f9](https://github.com/storm-software/storm-ops/commit/d47b551f9))
+- **monorepo:** Regenerate README markdown files
+  ([70c8dba97](https://github.com/storm-software/storm-ops/commit/70c8dba97))
+- **workspace-tools:** Update `outputPath` to have default value
+  ([5aebeb449](https://github.com/storm-software/storm-ops/commit/5aebeb449))
+
+### Bug Fixes
+
+- **workspace-tools:** Resolve issue with `targetDir` resolution and mark
+  `@napi-rs/cli` as external
+  ([74bce55d5](https://github.com/storm-software/storm-ops/commit/74bce55d5))
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.34**
+- Updated **config-tools** to **v1.188.34**
+- Updated **pnpm-tools** to **v0.6.34**
+- Updated **npm-tools** to **v0.5.34**
+- Updated **prettier** to **v0.57.34**
+- Updated **esbuild** to **v0.53.34**
+- Updated **unbuild** to **v0.57.34**
+- Updated **config** to **v1.134.34**
+- Updated **tsdown** to **v0.45.34**
+
 ## [1.293.3](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.293.3) (11/13/2025)
 
 ### Miscellaneous
