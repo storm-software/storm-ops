@@ -33,3 +33,12 @@ bun.lockb
 **/typegen.d.ts
 
 packages/tsup/workers/*.cjs
+
+# Ignore workspace-tools generated files
+packages/workspace-tools/src/executors/*/schema.d.ts
+packages/workspace-tools/src/executors/*/schema.json
+packages/workspace-tools/src/executors/*/schema.md
+packages/workspace-tools/src/generators/*/files/**/*
+packages/workspace-tools/src/generators/*/schema.d.ts
+packages/workspace-tools/src/generators/*/schema.json
+packages/workspace-tools/src/generators/*/schema.md
