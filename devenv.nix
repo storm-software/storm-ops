@@ -10,10 +10,14 @@
   env.DEFAULT_LOCALE = "en_US";
   env.DEFAULT_TIMEZONE = "America/New_York";
 
+  # https://devenv.sh/packages/
+  packages = [
+    pkgs.cargo-deny
+  ];
+
   # https://devenv.sh/languages/
   languages.rust = {
     enable = true;
-    mold.enable = false;
     toolchainFile = ./rust-toolchain.toml;
   };
 }

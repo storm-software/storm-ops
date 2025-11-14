@@ -24,10 +24,10 @@
         "rust-analyzer-src": "rust-analyzer-src"
       },
       "locked": {
-        "lastModified": 1763016383,
+        "lastModified": 1763150544,
         "owner": "nix-community",
         "repo": "fenix",
-        "rev": "0fad5c0e5c531358e7174cd666af4608f08bc3ba",
+        "rev": "6479b325536a1c87dedbc67d5ee4cb42ce014438",
         "type": "github"
       },
       "original": {

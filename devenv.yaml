@@ -15,4 +15,3 @@ inputs:
         follows: nixpkgs
 imports:
   - ./devenv-modules/base
-  - ./devenv-modules/rust
