@@ -1,4 +1,4 @@
-import { NapiCli as TNapiCli } from "@napi-rs/cli";
+import type { NapiCli as TNapiCli } from "@napi-rs/cli";
 import { ExecutorContext, PromiseExecutor } from "@nx/devkit";
 import {
   correctPaths,
