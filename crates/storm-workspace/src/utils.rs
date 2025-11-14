@@ -92,17 +92,17 @@ const WORKSPACE_ROOT_FILES: [&str; 35] = [
 /// };
 /// ```
 pub fn get_workspace_root() -> Result<PathBuf, StormWorkspaceError> {
-  match env::var("STORM_WORKSPACE_ROOT") {
-    Ok(workspace_root) => {
-      return Ok(PathBuf::from(workspace_root));
-    }
-    Err(_) => {}
+  if let Ok(workspace_root) = env::var("STORM_WORKSPACE_ROOT") {
+    return Ok(PathBuf::from(workspace_root));
   }
-  match env::var("NX_WORKSPACE_ROOT") {
-    Ok(workspace_root) => {
-      return Ok(PathBuf::from(workspace_root));
-    }
-    Err(_) => {}
+  if let Ok(workspace_root) = env::var("NX_WORKSPACE_ROOT") {
+    return Ok(PathBuf::from(workspace_root));
+  }
+  if let Ok(workspace_root) = env::var("WORKSPACE_DIR") {
+    return Ok(PathBuf::from(workspace_root));
+  }
+  if let Ok(workspace_root) = env::var("CARGO_WORKSPACE_DIR") {
+    return Ok(PathBuf::from(workspace_root));
   }
 
   match env::current_dir() {
