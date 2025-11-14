@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Storm Workspace
 
+## [0.19.38](https://github.com/storm-software/storm-ops/releases/tag/storm-workspace%400.19.38) (11/14/2025)
+
+### Miscellaneous
+
+- **monorepo:** Update rust linker/flag config
+  ([9dc7cbf77](https://github.com/storm-software/storm-ops/commit/9dc7cbf77))
+
 ## [0.19.24](https://github.com/storm-software/storm-ops/releases/tag/storm-workspace%400.19.24) (11/10/2025)
 
 ### Miscellaneous

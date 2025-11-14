@@ -2,6 +2,25 @@
 
 # Changelog for Storm Ops - Workspace Tools
 
+## [1.293.8](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.293.8) (11/14/2025)
+
+### Miscellaneous
+
+- **workspace-tools:** Adjust `NapiCli` to type import
+  ([ea0a9da17](https://github.com/storm-software/storm-ops/commit/ea0a9da17))
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.38**
+- Updated **config-tools** to **v1.188.38**
+- Updated **pnpm-tools** to **v0.6.38**
+- Updated **npm-tools** to **v0.5.38**
+- Updated **prettier** to **v0.57.38**
+- Updated **esbuild** to **v0.53.38**
+- Updated **unbuild** to **v0.57.38**
+- Updated **config** to **v1.134.38**
+- Updated **tsdown** to **v0.45.38**
+
 ## [1.293.7](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.293.7) (11/14/2025)
 
 ### Miscellaneous
