@@ -13,7 +13,7 @@
   # https://devenv.sh/languages/
   languages.rust = {
     enable = true;
-    mold.enable = true;
+    mold.enable = false;
     toolchainFile = ./rust-toolchain.toml;
   };
 }

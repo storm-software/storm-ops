@@ -1,16 +1,6 @@
 [toolchain]
 channel = "nightly"
-components = [
-    "rustc",
-    "cargo",
-    "clippy",
-    "rustfmt",
-    "rust-analyzer",
-    "rust-src",
-    "rust-std",
-    "rust-docs",
-    "miri"
-]
+components = ["rustc", "cargo", "clippy", "rustfmt", "rust-analyzer"]
 profile = "default"
 
 # components = ["llvm-tools"]
