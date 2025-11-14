@@ -134,7 +134,9 @@
     }
   },
   "types": "./dist/index.d.ts",
-  "files": ["dist/**/*"],
+  "files": [
+    "dist/**/*"
+  ],
   "keywords": [
     "eslint",
     "eslint-config",
@@ -234,7 +236,7 @@
     "eslint": "catalog:",
     "eslint-plugin-astro": "^1.5.0",
     "eslint-plugin-format": "^1.0.2",
-    "eslint-plugin-import-zod": "^1.2.0",
+    "eslint-plugin-import-zod": "^1.2.1",
     "eslint-plugin-react-compiler": "19.0.0-beta-21e868a-20250216",
     "eslint-plugin-react-hooks": "^5.2.0",
     "eslint-plugin-react-native": "^5.0.0",
