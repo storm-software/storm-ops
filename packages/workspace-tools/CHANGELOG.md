@@ -2,6 +2,34 @@
 
 # Changelog for Storm Ops - Workspace Tools
 
+## [1.293.7](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.293.7) (11/14/2025)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+  ([a0e00b677](https://github.com/storm-software/storm-ops/commit/a0e00b677))
+- **workspace-tools:** Regenerate schema files
+  ([c4b5d505a](https://github.com/storm-software/storm-ops/commit/c4b5d505a))
+- **workspace-tools:** Remove unused default from `verbose` configuration schema
+  ([f9b3aab42](https://github.com/storm-software/storm-ops/commit/f9b3aab42))
+
+### Continuous Integration
+
+- **monorepo:** Resolve `bot-conditions` rule failures during Zizmor scan
+  ([95f3b9623](https://github.com/storm-software/storm-ops/commit/95f3b9623))
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.37**
+- Updated **config-tools** to **v1.188.37**
+- Updated **pnpm-tools** to **v0.6.37**
+- Updated **npm-tools** to **v0.5.37**
+- Updated **prettier** to **v0.57.37**
+- Updated **esbuild** to **v0.53.37**
+- Updated **unbuild** to **v0.57.37**
+- Updated **config** to **v1.134.37**
+- Updated **tsdown** to **v0.45.37**
+
 ## [1.293.6](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.293.6) (11/13/2025)
 
 ### Miscellaneous

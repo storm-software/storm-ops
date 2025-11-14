@@ -1,6 +1,6 @@
 {
   "name": "@storm-software/untyped",
-  "version": "0.24.17",
+  "version": "0.24.18",
   "type": "module",
   "description": "A package containing `untyped` utilities for building Storm Software libraries and applications",
   "repository": {
@@ -182,9 +182,7 @@
     }
   },
   "types": "./dist/index.d.cts",
-  "files": [
-    "dist/**/*"
-  ],
+  "files": ["dist/**/*"],
   "keywords": [
     "acidic",
     "cyclone-ui",
