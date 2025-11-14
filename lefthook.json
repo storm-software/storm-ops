@@ -70,10 +70,6 @@
         "glob": ".github/workflows/*.*",
         "run": "zizmor --offline --config='./tools/config/zizmor.yml' .github/workflows/"
       },
-      "lint-toml": {
-        "glob": "**/*.toml",
-        "run": "pnpm exec taplo format --check --config='./packages/linting-tools/src/taplo/config.toml'"
-      },
       "readme": {
         "glob": "**/{README.md,README.*.md,readme/**/*,package.json,executors.json,generators.json}",
         "run": "pnpm format-readme && git update-index",
