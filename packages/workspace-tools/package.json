@@ -261,6 +261,7 @@
     "@size-limit/esbuild-why": "11.1.4",
     "@size-limit/file": "11.1.4",
     "@storm-software/esbuild": "workspace:*",
+    "@storm-software/config-tools": "workspace:*",
     "@storm-software/npm-tools": "workspace:*",
     "@storm-software/pnpm-tools": "workspace:*",
     "@storm-software/prettier": "workspace:*",

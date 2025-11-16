@@ -1717,6 +1717,9 @@ importers:
       '@size-limit/file':
         specifier: 11.1.4
         version: 11.1.4(size-limit@11.1.4)
+      '@storm-software/config-tools':
+        specifier: workspace:*
+        version: link:../config-tools
       '@storm-software/esbuild':
         specifier: workspace:*
         version: link:../esbuild
@@ -23401,7 +23404,7 @@ snapshots:
     dependencies:
       '@babel/runtime': 7.28.4
       cosmiconfig: 7.1.0
-      resolve: 1.22.11
+      resolve: 1.22.8
 
   babel-plugin-polyfill-corejs2@0.4.14(@babel/core@7.28.5):
     dependencies:

@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import type { Colors, StormWorkspaceConfig } from "@storm-software/config";
-import { formatDistanceToNowStrict } from "date-fns/formatDistanceToNowStrict";
+import { formatDistanceToNow } from "date-fns/formatDistanceToNow";
 import { LogLevel, LogLevelLabel } from "../types";
 import { DEFAULT_COLOR_CONFIG } from "../utilities/colors";
 import { getChalk } from "./chalk";
@@ -232,7 +232,9 @@ export const getStopwatch = (name: string) => {
   return () => {
     console.info(
       `
->  ⏱️  The${name ? ` ${name}` : ""} process took ${formatDistanceToNowStrict(start)} to complete
+>  ⏱️  The${name ? ` ${name}` : ""} process took ${formatDistanceToNow(start, {
+        includeSeconds: true
+      })} to complete
 `
     );
   };
