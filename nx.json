@@ -118,5 +118,7 @@
     "./dist/plugins/cloudflare/index.js",
     "./dist/plugins/rust/index.js"
   ],
+  "parallel": 5,
+  "defaultBase": "main",
   "neverConnectToCloud": true
 }
