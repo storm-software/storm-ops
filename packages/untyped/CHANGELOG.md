@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Untyped
 
+## [0.24.20](https://github.com/storm-software/storm-ops/releases/tag/untyped%400.24.20) (11/16/2025)
+
+### Miscellaneous
+
+- **monorepo:** Update README markdown files
+  ([067cc99ce](https://github.com/storm-software/storm-ops/commit/067cc99ce))
+
+### Updated Dependencies
+
+- Updated **config-tools** to **v1.188.39**
+- Updated **config** to **v1.134.39**
+
 ## [0.24.19](https://github.com/storm-software/storm-ops/releases/tag/untyped%400.24.19) (11/14/2025)
 
 ### Updated Dependencies
