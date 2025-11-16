@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Conventional Changelog
 
+## [0.3.40](https://github.com/storm-software/storm-ops/releases/tag/conventional-changelog%400.3.40) (11/16/2025)
+
+### Miscellaneous
+
+- **monorepo:** Format workspace source files
+  ([974aa3c4c](https://github.com/storm-software/storm-ops/commit/974aa3c4c))
+
+### Updated Dependencies
+
+- Updated **config-tools** to **v1.188.40**
+- Updated **config** to **v1.134.40**
+
 ## [0.3.39](https://github.com/storm-software/storm-ops/releases/tag/conventional-changelog%400.3.39) (11/16/2025)
 
 ### Miscellaneous

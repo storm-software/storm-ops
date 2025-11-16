@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Markdownlint
 
+## [0.30.40](https://github.com/storm-software/storm-ops/releases/tag/markdownlint%400.30.40) (11/16/2025)
+
+### Miscellaneous
+
+- **monorepo:** Format workspace source files
+  ([974aa3c4c](https://github.com/storm-software/storm-ops/commit/974aa3c4c))
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.40**
+
 ## [0.30.39](https://github.com/storm-software/storm-ops/releases/tag/markdownlint%400.30.39) (11/16/2025)
 
 ### Miscellaneous

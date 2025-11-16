@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Config
 
+## [1.134.40](https://github.com/storm-software/storm-ops/releases/tag/config%401.134.40) (11/16/2025)
+
+### Miscellaneous
+
+- **monorepo:** Format workspace source files
+  ([974aa3c4c](https://github.com/storm-software/storm-ops/commit/974aa3c4c))
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.40**
+
 ## [1.134.39](https://github.com/storm-software/storm-ops/releases/tag/config%401.134.39) (11/16/2025)
 
 ### Miscellaneous

@@ -2,6 +2,19 @@
 
 # Changelog for Storm Ops - Git Tools
 
+## [2.124.23](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.124.23) (11/16/2025)
+
+### Miscellaneous
+
+- **monorepo:** Format workspace source files
+  ([974aa3c4c](https://github.com/storm-software/storm-ops/commit/974aa3c4c))
+
+### Updated Dependencies
+
+- Updated **conventional-changelog** to **v0.3.40**
+- Updated **config-tools** to **v1.188.40**
+- Updated **config** to **v1.134.40**
+
 ## [2.124.22](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.124.22) (11/16/2025)
 
 ### Miscellaneous

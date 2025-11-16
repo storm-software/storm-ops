@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Tsup
 
+## [0.2.38](https://github.com/storm-software/storm-ops/releases/tag/tsup%400.2.38) (11/16/2025)
+
+### Miscellaneous
+
+- **monorepo:** Format workspace source files
+  ([974aa3c4c](https://github.com/storm-software/storm-ops/commit/974aa3c4c))
+
+### Updated Dependencies
+
+- Updated **config-tools** to **v1.188.40**
+- Updated **build-tools** to **v0.158.40**
+
 ## [0.2.37](https://github.com/storm-software/storm-ops/releases/tag/tsup%400.2.37) (11/16/2025)
 
 ### Miscellaneous

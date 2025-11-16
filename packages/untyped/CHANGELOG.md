@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Untyped
 
+## [0.24.21](https://github.com/storm-software/storm-ops/releases/tag/untyped%400.24.21) (11/16/2025)
+
+### Miscellaneous
+
+- **monorepo:** Format workspace source files
+  ([974aa3c4c](https://github.com/storm-software/storm-ops/commit/974aa3c4c))
+
+### Updated Dependencies
+
+- Updated **config-tools** to **v1.188.40**
+- Updated **config** to **v1.134.40**
+
 ## [0.24.20](https://github.com/storm-software/storm-ops/releases/tag/untyped%400.24.20) (11/16/2025)
 
 ### Miscellaneous

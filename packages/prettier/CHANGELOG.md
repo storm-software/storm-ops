@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Prettier
 
+## [0.57.40](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.57.40) (11/16/2025)
+
+### Miscellaneous
+
+- **monorepo:** Format workspace source files
+  ([974aa3c4c](https://github.com/storm-software/storm-ops/commit/974aa3c4c))
+
 ## [0.57.39](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.57.39) (11/16/2025)
 
 ### Miscellaneous

@@ -2,6 +2,20 @@
 
 # Changelog for Storm Ops - Config Tools
 
+## [1.188.40](https://github.com/storm-software/storm-ops/releases/tag/config-tools%401.188.40) (11/16/2025)
+
+### Miscellaneous
+
+- **monorepo:** Format workspace source files
+  ([974aa3c4c](https://github.com/storm-software/storm-ops/commit/974aa3c4c))
+- **config-tools:** Update `getStopwatch` to use `formatDistanceToNow` function
+  ([3ddade5f5](https://github.com/storm-software/storm-ops/commit/3ddade5f5))
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.40**
+- Updated **config** to **v1.134.40**
+
 ## [1.188.39](https://github.com/storm-software/storm-ops/releases/tag/config-tools%401.188.39) (11/16/2025)
 
 ### Miscellaneous

@@ -2,6 +2,27 @@
 
 # Changelog for Storm Ops - Workspace Tools
 
+## [1.293.10](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.293.10) (11/16/2025)
+
+### Miscellaneous
+
+- **monorepo:** Format workspace source files
+  ([974aa3c4c](https://github.com/storm-software/storm-ops/commit/974aa3c4c))
+- **config-tools:** Update `getStopwatch` to use `formatDistanceToNow` function
+  ([3ddade5f5](https://github.com/storm-software/storm-ops/commit/3ddade5f5))
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.40**
+- Updated **config-tools** to **v1.188.40**
+- Updated **pnpm-tools** to **v0.6.40**
+- Updated **npm-tools** to **v0.5.40**
+- Updated **prettier** to **v0.57.40**
+- Updated **esbuild** to **v0.53.40**
+- Updated **unbuild** to **v0.57.40**
+- Updated **config** to **v1.134.40**
+- Updated **tsdown** to **v0.45.40**
+
 ## [1.293.9](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.293.9) (11/16/2025)
 
 ### Miscellaneous

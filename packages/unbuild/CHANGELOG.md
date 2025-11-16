@@ -2,6 +2,19 @@
 
 # Changelog for Storm Ops - Unbuild
 
+## [0.57.40](https://github.com/storm-software/storm-ops/releases/tag/unbuild%400.57.40) (11/16/2025)
+
+### Miscellaneous
+
+- **monorepo:** Format workspace source files
+  ([974aa3c4c](https://github.com/storm-software/storm-ops/commit/974aa3c4c))
+
+### Updated Dependencies
+
+- Updated **config-tools** to **v1.188.40**
+- Updated **build-tools** to **v0.158.40**
+- Updated **config** to **v1.134.40**
+
 ## [0.57.39](https://github.com/storm-software/storm-ops/releases/tag/unbuild%400.57.39) (11/16/2025)
 
 ### Miscellaneous
