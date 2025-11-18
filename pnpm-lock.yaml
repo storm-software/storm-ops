@@ -93,9 +93,6 @@ catalogs:
     eslint:
       specifier: ^9.39.1
       version: 9.39.1
-    glob:
-      specifier: ^11.0.3
-      version: 11.0.3
     jest:
       specifier: 30.0.5
       version: 30.0.5
@@ -388,7 +385,7 @@ importers:
         version: 1.7.26(@swc/helpers@0.5.13)
       glob:
         specifier: 'catalog:'
-        version: 11.0.3
+        version: 11.1.0
       resolve:
         specifier: 1.22.8
         version: 1.22.8
@@ -440,7 +437,7 @@ importers:
         version: 6.1.4
       glob:
         specifier: 'catalog:'
-        version: 11.0.3
+        version: 11.1.0
     devDependencies:
       '@nx/devkit':
         specifier: 'catalog:'
@@ -1186,7 +1183,7 @@ importers:
         version: 11.2.0
       glob:
         specifier: 'catalog:'
-        version: 11.0.3
+        version: 11.1.0
       knip:
         specifier: 'catalog:'
         version: 5.69.1(@types/node@22.19.1)(typescript@5.9.3)
@@ -1627,7 +1624,7 @@ importers:
         version: 0.25.12
       glob:
         specifier: 'catalog:'
-        version: 11.0.3
+        version: 11.1.0
       jiti:
         specifier: 'catalog:'
         version: 2.4.2
@@ -1673,7 +1670,7 @@ importers:
         version: 12.1.0
       glob:
         specifier: 'catalog:'
-        version: 11.0.3
+        version: 11.1.0
       jiti:
         specifier: 'catalog:'
         version: 2.4.2
@@ -1743,7 +1740,7 @@ importers:
         version: 11.2.0
       glob:
         specifier: 'catalog:'
-        version: 11.0.3
+        version: 11.1.0
       jiti:
         specifier: 'catalog:'
         version: 2.4.2
@@ -1892,8 +1889,8 @@ packages:
       aws-cdk-lib: ^2.163.1
       constructs: ^10.0.0
 
-  '@aws-cdk/cloud-assembly-schema@48.18.0':
-    resolution: {integrity: sha512-KJHmkji59QboUIytK/imIY/ajt/r7OOXdyvZz25e0jssreyyxx9HUswZpcB0BM/9ZkVI7IdzYlotWe6opXdapg==}
+  '@aws-cdk/cloud-assembly-schema@48.19.0':
+    resolution: {integrity: sha512-jefeDhIphmb/ahwqJ+kSbfUky3EPObDg34YIqmf6LfYMeI1/17I7eh5RopD7JfMyOizkE/H4K28sKGTSYrfiWg==}
     engines: {node: '>= 18.0.0'}
     bundledDependencies:
       - jsonschema
@@ -10101,12 +10098,12 @@ packages:
   glob-to-regexp@0.4.1:
     resolution: {integrity: sha512-lkX1HJXwyMcprw/5YUZc2s7DrpAiHB21/V+E1rHUrVNokkvB6bqMzT0VfV6/86ZNabt1k14YOIaT7nDvOX3Iiw==}
 
-  glob@10.4.5:
-    resolution: {integrity: sha512-7Bv8RF0k6xjo7d4A/PxYLbUCfb6c+Vpd2/mB2yRDlew7Jb5hEXiCD9ibfO7wpk8i4sevK6DFny9h7EYbM3/sHg==}
+  glob@10.5.0:
+    resolution: {integrity: sha512-DfXN8DfhJ7NH3Oe7cFmu3NCu1wKbkReJ8TorzSAFbSKrlNaQSKfIzqYqVY8zlbs2NLBbWpRiU52GX2PbaBVNkg==}
     hasBin: true
 
-  glob@11.0.3:
-    resolution: {integrity: sha512-2Nim7dha1KVkaiF4q6Dj+ngPPMdfvLJEOpZk/jKiUAkqKebpGAWQXAq9z1xu9HKu5lWfqw/FASuccEjyznjPaA==}
+  glob@11.1.0:
+    resolution: {integrity: sha512-vuNwKSaKiqm7g0THUBu2x7ckSs3XJLXE+2ssL7/MfTGPLLcrJQ/4Uq1CjPTtO5cCIiRxqvN6Twy1qOwhL0Xjcw==}
     engines: {node: 20 || >=22}
     hasBin: true
 
@@ -16049,7 +16046,7 @@ snapshots:
       aws-cdk-lib: 2.215.0(constructs@10.4.2)
       constructs: 10.4.2
 
-  '@aws-cdk/cloud-assembly-schema@48.18.0': {}
+  '@aws-cdk/cloud-assembly-schema@48.19.0': {}
 
   '@aws-crypto/crc32@2.0.0':
     dependencies:
@@ -18050,7 +18047,7 @@ snapshots:
       commander: 13.1.0
       cosmiconfig: 9.0.0(typescript@5.9.3)
       cspell-trie-lib: 8.19.4
-      glob: 10.4.5
+      glob: 10.5.0
       hunspell-reader: 8.19.4
       yaml: 2.8.1
     transitivePeerDependencies:
@@ -19472,7 +19469,7 @@ snapshots:
       chalk: 4.1.2
       collect-v8-coverage: 1.0.3
       exit-x: 0.2.2
-      glob: 10.4.5
+      glob: 10.5.0
       graceful-fs: 4.2.11
       istanbul-lib-coverage: 3.2.2
       istanbul-lib-instrument: 6.0.3
@@ -19500,7 +19497,7 @@ snapshots:
       chalk: 4.1.2
       collect-v8-coverage: 1.0.3
       exit-x: 0.2.2
-      glob: 10.4.5
+      glob: 10.5.0
       graceful-fs: 4.2.11
       istanbul-lib-coverage: 3.2.2
       istanbul-lib-instrument: 6.0.3
@@ -20219,7 +20216,7 @@ snapshots:
   '@npmcli/map-workspaces@3.0.6':
     dependencies:
       '@npmcli/name-from-folder': 2.0.0
-      glob: 10.4.5
+      glob: 10.5.0
       minimatch: 9.0.5
       read-package-json-fast: 3.0.2
 
@@ -20241,7 +20238,7 @@ snapshots:
   '@npmcli/package-json@5.2.1':
     dependencies:
       '@npmcli/git': 5.0.8
-      glob: 10.4.5
+      glob: 10.5.0
       hosted-git-info: 7.0.2
       json-parse-even-better-errors: 3.0.2
       normalize-package-data: 6.0.2
@@ -23302,7 +23299,7 @@ snapshots:
     dependencies:
       '@aws-cdk/asset-awscli-v1': 2.2.242
       '@aws-cdk/asset-node-proxy-agent-v6': 2.1.0
-      '@aws-cdk/cloud-assembly-schema': 48.18.0
+      '@aws-cdk/cloud-assembly-schema': 48.19.0
       constructs: 10.4.2
 
   aws-crt@1.27.5:
@@ -23659,7 +23656,7 @@ snapshots:
     dependencies:
       '@npmcli/fs': 3.1.1
       fs-minipass: 3.0.3
-      glob: 10.4.5
+      glob: 10.5.0
       lru-cache: 10.4.3
       minipass: 7.1.2
       minipass-collect: 2.0.1
@@ -24613,7 +24610,7 @@ snapshots:
     dependencies:
       chalk: 4.1.2
       fs-extra: 11.2.0
-      glob: 10.4.5
+      glob: 10.5.0
       ora: 5.4.1
       tslib: 2.8.1
       typescript: 5.9.3
@@ -26036,7 +26033,7 @@ snapshots:
 
   glob-to-regexp@0.4.1: {}
 
-  glob@10.4.5:
+  glob@10.5.0:
     dependencies:
       foreground-child: 3.3.1
       jackspeak: 3.4.3
@@ -26045,7 +26042,7 @@ snapshots:
       package-json-from-dist: 1.0.1
       path-scurry: 1.11.1
 
-  glob@11.0.3:
+  glob@11.1.0:
     dependencies:
       foreground-child: 3.3.1
       jackspeak: 4.1.1
@@ -27091,7 +27088,7 @@ snapshots:
       chalk: 4.1.2
       ci-info: 4.3.1
       deepmerge: 4.3.1
-      glob: 10.4.5
+      glob: 10.5.0
       graceful-fs: 4.2.11
       jest-circus: 30.0.5(babel-plugin-macros@3.1.0)
       jest-docblock: 30.0.1
@@ -27124,7 +27121,7 @@ snapshots:
       chalk: 4.1.2
       ci-info: 4.3.1
       deepmerge: 4.3.1
-      glob: 10.4.5
+      glob: 10.5.0
       graceful-fs: 4.2.11
       jest-circus: 30.2.0(babel-plugin-macros@3.1.0)
       jest-docblock: 30.2.0
@@ -27157,7 +27154,7 @@ snapshots:
       chalk: 4.1.2
       ci-info: 4.3.1
       deepmerge: 4.3.1
-      glob: 10.4.5
+      glob: 10.5.0
       graceful-fs: 4.2.11
       jest-circus: 30.2.0(babel-plugin-macros@3.1.0)
       jest-docblock: 30.2.0
@@ -27454,7 +27451,7 @@ snapshots:
       chalk: 4.1.2
       cjs-module-lexer: 2.1.1
       collect-v8-coverage: 1.0.3
-      glob: 10.4.5
+      glob: 10.5.0
       graceful-fs: 4.2.11
       jest-haste-map: 30.0.5
       jest-message-util: 30.0.5
@@ -27481,7 +27478,7 @@ snapshots:
       chalk: 4.1.2
       cjs-module-lexer: 2.1.1
       collect-v8-coverage: 1.0.3
-      glob: 10.4.5
+      glob: 10.5.0
       graceful-fs: 4.2.11
       jest-haste-map: 30.2.0
       jest-message-util: 30.2.0
@@ -29616,7 +29613,7 @@ snapshots:
     dependencies:
       env-paths: 2.2.1
       exponential-backoff: 3.1.3
-      glob: 10.4.5
+      glob: 10.5.0
       graceful-fs: 4.2.11
       make-fetch-happen: 13.0.1
       nopt: 7.2.1
@@ -31405,7 +31402,7 @@ snapshots:
 
   rimraf@6.0.1:
     dependencies:
-      glob: 11.0.3
+      glob: 11.1.0
       package-json-from-dist: 1.0.1
 
   rolldown-plugin-dts@0.17.7(@typescript/native-preview@7.0.0-dev.20250908.1)(ms@2.1.3)(oxc-resolver@11.13.2)(rolldown@1.0.0-beta.45)(typescript@5.9.3):
@@ -32284,7 +32281,7 @@ snapshots:
     dependencies:
       '@jridgewell/gen-mapping': 0.3.13
       commander: 4.1.1
-      glob: 10.4.5
+      glob: 10.5.0
       lines-and-columns: 1.2.4
       mz: 2.7.0
       pirates: 4.0.7
@@ -32983,7 +32980,7 @@ snapshots:
       concat-stream: 2.0.0
       debug: 4.4.3
       extend: 3.0.2
-      glob: 10.4.5
+      glob: 10.5.0
       ignore: 5.3.2
       is-empty: 1.2.0
       is-plain-obj: 4.1.0
@@ -33010,7 +33007,7 @@ snapshots:
       concat-stream: 2.0.0
       debug: 4.4.3
       extend: 3.0.2
-      glob: 10.4.5
+      glob: 10.5.0
       ignore: 6.0.2
       is-empty: 1.2.0
       is-plain-obj: 4.1.0
