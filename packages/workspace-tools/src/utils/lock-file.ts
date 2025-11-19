@@ -40,7 +40,12 @@ export function getLockFileNodes(
   contents: string,
   lockFileHash: string,
   context: CreateNodesContextV2
-): Record<string, ProjectGraphExternalNode> {
+): {
+  nodes: Record<string, ProjectGraphExternalNode>;
+  keyMap:
+    | Map<string, ProjectGraphExternalNode>
+    | Map<string, Set<ProjectGraphExternalNode>>;
+} {
   try {
     if (packageManager === "yarn") {
       const packageJson = readJsonFile(
@@ -73,17 +78,35 @@ export function getLockFileDependencies(
   packageManager: PackageManager,
   contents: string,
   lockFileHash: string,
-  context: CreateDependenciesContext
+  context: CreateDependenciesContext,
+  keyMap:
+    | Map<string, ProjectGraphExternalNode>
+    | Map<string, Set<ProjectGraphExternalNode>>
 ): RawProjectGraphDependency[] {
   try {
     if (packageManager === "yarn") {
-      return getYarnLockfileDependencies(contents, lockFileHash, context);
+      return getYarnLockfileDependencies(
+        contents,
+        lockFileHash,
+        context,
+        keyMap as Map<string, ProjectGraphExternalNode>
+      );
     }
     if (packageManager === "pnpm") {
-      return getPnpmLockfileDependencies(contents, lockFileHash, context);
+      return getPnpmLockfileDependencies(
+        contents,
+        lockFileHash,
+        context,
+        keyMap as Map<string, Set<ProjectGraphExternalNode>>
+      );
     }
     if (packageManager === "npm") {
-      return getNpmLockfileDependencies(contents, lockFileHash, context);
+      return getNpmLockfileDependencies(
+        contents,
+        lockFileHash,
+        context,
+        keyMap as Map<string, ProjectGraphExternalNode>
+      );
     }
   } catch (e) {
     if (!isPostInstallProcess()) {
