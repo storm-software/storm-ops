@@ -134,7 +134,9 @@
     }
   },
   "types": "./dist/index.d.ts",
-  "files": ["dist/**/*"],
+  "files": [
+    "dist/**/*"
+  ],
   "keywords": [
     "eslint",
     "eslint-config",
@@ -179,7 +181,7 @@
     "@typescript-eslint/eslint-plugin": "catalog:",
     "@typescript-eslint/parser": "catalog:",
     "@typescript-eslint/utils": "catalog:",
-    "@vitest/eslint-plugin": "^1.4.2",
+    "@vitest/eslint-plugin": "^1.4.3",
     "chalk": "catalog:",
     "defu": "catalog:",
     "eslint-config-flat-gitignore": "^2.1.0",

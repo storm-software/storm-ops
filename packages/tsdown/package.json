@@ -147,7 +147,9 @@
     }
   },
   "types": "./dist/index.d.ts",
-  "files": ["dist/**/*"],
+  "files": [
+    "dist/**/*"
+  ],
   "keywords": [
     "acidic",
     "cyclone-ui",
@@ -189,7 +191,7 @@
     "@storm-software/config-tools": "workspace:*",
     "chokidar": "^4.0.3",
     "commander": "catalog:",
-    "es-toolkit": "^1.41.0",
+    "es-toolkit": "^1.42.0",
     "globby": "^14.1.0",
     "nx": "catalog:",
     "rolldown": "1.0.0-beta.1",
