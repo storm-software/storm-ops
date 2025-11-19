@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - CSpell
 
+## [0.45.41](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.45.41) (11/19/2025)
+
+### Miscellaneous
+
+- **monorepo:** Update `pnpm` and workspace packages' dependencies
+  ([c91ace9c6](https://github.com/storm-software/storm-ops/commit/c91ace9c6))
+
 ## [0.45.40](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.45.40) (11/16/2025)
 
 ### Miscellaneous

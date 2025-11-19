@@ -2,6 +2,20 @@
 
 # Changelog for Storm Ops - Esbuild
 
+## [0.53.41](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.53.41) (11/19/2025)
+
+### Miscellaneous
+
+- **monorepo:** Update `pnpm` and workspace packages' dependencies
+  ([c91ace9c6](https://github.com/storm-software/storm-ops/commit/c91ace9c6))
+
+### Updated Dependencies
+
+- Updated **config-tools** to **v1.188.41**
+- Updated **build-tools** to **v0.158.41**
+- Updated **config** to **v1.134.41**
+- Updated **tsup** to **v0.2.39**
+
 ## [0.53.40](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.53.40) (11/16/2025)
 
 ### Miscellaneous

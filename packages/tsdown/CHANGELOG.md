@@ -2,6 +2,19 @@
 
 # Changelog for Storm Ops - Tsdown
 
+## [0.45.41](https://github.com/storm-software/storm-ops/releases/tag/tsdown%400.45.41) (11/19/2025)
+
+### Miscellaneous
+
+- **monorepo:** Update `pnpm` and workspace packages' dependencies
+  ([c91ace9c6](https://github.com/storm-software/storm-ops/commit/c91ace9c6))
+
+### Updated Dependencies
+
+- Updated **config-tools** to **v1.188.41**
+- Updated **build-tools** to **v0.158.41**
+- Updated **config** to **v1.134.41**
+
 ## [0.45.40](https://github.com/storm-software/storm-ops/releases/tag/tsdown%400.45.40) (11/16/2025)
 
 ### Miscellaneous

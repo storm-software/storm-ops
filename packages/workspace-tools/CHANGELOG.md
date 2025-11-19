@@ -2,6 +2,25 @@
 
 # Changelog for Storm Ops - Workspace Tools
 
+## [1.293.11](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.293.11) (11/19/2025)
+
+### Miscellaneous
+
+- **workspace-tools:** Update `type-check` to `typecheck` for consistency
+  ([ee2a489ad](https://github.com/storm-software/storm-ops/commit/ee2a489ad))
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.41**
+- Updated **config-tools** to **v1.188.41**
+- Updated **pnpm-tools** to **v0.6.41**
+- Updated **npm-tools** to **v0.5.41**
+- Updated **prettier** to **v0.57.41**
+- Updated **esbuild** to **v0.53.41**
+- Updated **unbuild** to **v0.57.41**
+- Updated **config** to **v1.134.41**
+- Updated **tsdown** to **v0.45.41**
+
 ## [1.293.10](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.293.10) (11/16/2025)
 
 ### Miscellaneous
