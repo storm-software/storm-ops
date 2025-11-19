@@ -333,24 +333,24 @@ export function withNamedInputs(
   namedInputs: (keyof typeof NAMED_INPUTS)[] = []
 ): string[] {
   return currentInputs
-    .concat(namedInputs.flatMap(n => Object.keys(NAMED_INPUTS[n])))
-    .reduce((ret, input) => {
+    .concat(namedInputs.flatMap(n => NAMED_INPUTS[n] as unknown as string[]))
+    .reduce((ret, inputName) => {
       if (
-        Object.keys(NAMED_INPUTS).includes(input) &&
-        Array.isArray(NAMED_INPUTS[input]) &&
-        NAMED_INPUTS[input].length > 0
+        Object.keys(NAMED_INPUTS).includes(inputName) &&
+        Array.isArray(NAMED_INPUTS[inputName]) &&
+        NAMED_INPUTS[inputName].length > 0
       ) {
-        NAMED_INPUTS[input].forEach(key => {
-          if (!ret.includes(NAMED_INPUTS[key])) {
-            ret.push(NAMED_INPUTS[key]);
+        NAMED_INPUTS[inputName].forEach(input => {
+          if (!ret.includes(input)) {
+            ret.push(input);
           }
         });
 
         return ret;
       }
 
-      if (!ret.includes(input)) {
-        ret.push(input);
+      if (!ret.includes(inputName)) {
+        ret.push(inputName);
       }
 
       return ret;
