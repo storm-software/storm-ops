@@ -40,7 +40,7 @@ export async function nx(
               "@nx/dependency-checks": [
                 depsCheckSeverity,
                 defu(depsCheck, {
-                  buildTargets: ["build-base", "build"],
+                  buildTargets: ["tsc", "build-base", "build"],
                   ignoredDependencies,
                   ignoredFiles,
                   checkMissingDependencies: true,
