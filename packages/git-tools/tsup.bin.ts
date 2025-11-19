@@ -24,7 +24,12 @@ export default defineConfig([
       "@nx/*",
       "@storm-software/*"
     ],
-    noExternal: ["conventional-commits-parser", "defu", "zod"],
+    noExternal: [
+      "conventional-commits-parser",
+      "@inquirer/prompts",
+      "defu",
+      "zod"
+    ],
     skipNodeModulesBundle: true
   }
 ]);
