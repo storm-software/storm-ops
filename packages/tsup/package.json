@@ -127,9 +127,9 @@
   },
   "devDependencies": {
     "@types/node": "catalog:",
+    "esbuild": "catalog:",
     "tsup": "catalog:",
-    "typescript": "^5.9.3",
-    "esbuild": "catalog:"
+    "typescript": "^5.9.3"
   },
   "publishConfig": {
     "access": "public"

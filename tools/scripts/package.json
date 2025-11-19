@@ -8,8 +8,8 @@
     "esbuild": "catalog:",
     "pkg-types": "catalog:",
     "tslib": "catalog:",
-    "zx": "catalog:",
-    "yaml": "catalog:"
+    "yaml": "catalog:",
+    "zx": "catalog:"
   },
   "devDependencies": {
     "@types/node": "catalog:",
