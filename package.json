@@ -29,10 +29,7 @@
   "license": "Apache-2.0",
   "private": true,
   "packageManager": "pnpm@10.22.0",
-  "engines": {
-    "node": ">=22.14.0",
-    "pnpm": ">=10.22.0"
-  },
+  "engines": { "node": ">=22.21.1", "pnpm": ">=10.22.0" },
   "keywords": [
     "acidic",
     "cyclone-ui",
@@ -140,10 +137,7 @@
     "zod": "catalog:",
     "zx": "catalog:"
   },
-  "manypkg": {
-    "defaultBranch": "main",
-    "workspaceProtocol": "require"
-  },
+  "manypkg": { "defaultBranch": "main", "workspaceProtocol": "require" },
   "namespace": "@storm-software",
   "nx": {
     "includedScripts": [
