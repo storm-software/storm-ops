@@ -2,6 +2,27 @@
 
 # Changelog for Storm Ops - Git Tools
 
+## [2.124.25](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.124.25) (11/19/2025)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+  ([7bdb756ec](https://github.com/storm-software/storm-ops/commit/7bdb756ec))
+- **monorepo:** Regenerate README markdown files
+  ([f5d775f57](https://github.com/storm-software/storm-ops/commit/f5d775f57))
+
+### Bug Fixes
+
+- **git-tools:** Resolve issue with missing `@inquirer/prompts` bundled
+  dependency
+  ([9f5b86a3b](https://github.com/storm-software/storm-ops/commit/9f5b86a3b))
+
+### Updated Dependencies
+
+- Updated **conventional-changelog** to **v0.3.42**
+- Updated **config-tools** to **v1.188.42**
+- Updated **config** to **v1.134.42**
+
 ## [2.124.24](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.124.24) (11/19/2025)
 
 ### Updated Dependencies

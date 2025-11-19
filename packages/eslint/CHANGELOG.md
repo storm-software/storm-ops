@@ -2,6 +2,29 @@
 
 # Changelog for Storm Ops - ESLint
 
+## [0.169.42](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.169.42) (11/19/2025)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+  ([7bdb756ec](https://github.com/storm-software/storm-ops/commit/7bdb756ec))
+- **eslint:** Add `tsc` to the `buildTargets` list for `@nx/dependency-checks`
+  rule
+  ([433fc4995](https://github.com/storm-software/storm-ops/commit/433fc4995))
+- **monorepo:** Regenerate README markdown files
+  ([f5d775f57](https://github.com/storm-software/storm-ops/commit/f5d775f57))
+
+### Bug Fixes
+
+- **monorepo:** Repository fixes for `shamefullyHoist` config locally
+  ([7855a7f72](https://github.com/storm-software/storm-ops/commit/7855a7f72))
+
+### Updated Dependencies
+
+- Updated **config-tools** to **v1.188.42**
+- Updated **config** to **v1.134.42**
+- Updated **tsdoc** to **v0.13.42**
+
 ## [0.169.41](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.169.41) (11/19/2025)
 
 ### Miscellaneous

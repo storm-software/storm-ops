@@ -2,6 +2,35 @@
 
 # Changelog for Storm Ops - Workspace Tools
 
+## [1.293.12](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.293.12) (11/19/2025)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+  ([7bdb756ec](https://github.com/storm-software/storm-ops/commit/7bdb756ec))
+- **monorepo:** Regenerate README markdown files
+  ([f5d775f57](https://github.com/storm-software/storm-ops/commit/f5d775f57))
+
+### Bug Fixes
+
+- **workspace-tools:** Resolve issue in `withNamedInputs` when supplying input
+  list
+  ([efab3ed26](https://github.com/storm-software/storm-ops/commit/efab3ed26))
+- **workspace-tools:** Resolve typescript build issue
+  ([0b37029a8](https://github.com/storm-software/storm-ops/commit/0b37029a8))
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.42**
+- Updated **config-tools** to **v1.188.42**
+- Updated **pnpm-tools** to **v0.6.42**
+- Updated **npm-tools** to **v0.5.42**
+- Updated **prettier** to **v0.57.42**
+- Updated **esbuild** to **v0.53.42**
+- Updated **unbuild** to **v0.57.42**
+- Updated **config** to **v1.134.42**
+- Updated **tsdown** to **v0.45.42**
+
 ## [1.293.11](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.293.11) (11/19/2025)
 
 ### Miscellaneous

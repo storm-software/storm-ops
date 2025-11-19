@@ -2,6 +2,21 @@
 
 # Changelog for Storm Ops - Projen
 
+## [0.21.42](https://github.com/storm-software/storm-ops/releases/tag/projen%400.21.42) (11/19/2025)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+  ([7bdb756ec](https://github.com/storm-software/storm-ops/commit/7bdb756ec))
+- **monorepo:** Regenerate README markdown files
+  ([f5d775f57](https://github.com/storm-software/storm-ops/commit/f5d775f57))
+
+### Updated Dependencies
+
+- Updated **workspace-tools** to **v1.293.12**
+- Updated **config-tools** to **v1.188.42**
+- Updated **config** to **v1.134.42**
+
 ## [0.21.41](https://github.com/storm-software/storm-ops/releases/tag/projen%400.21.41) (11/19/2025)
 
 ### Updated Dependencies

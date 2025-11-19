@@ -2,6 +2,25 @@
 
 # Changelog for Storm Ops - Config Tools
 
+## [1.188.42](https://github.com/storm-software/storm-ops/releases/tag/config-tools%401.188.42) (11/19/2025)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+  ([7bdb756ec](https://github.com/storm-software/storm-ops/commit/7bdb756ec))
+- **monorepo:** Regenerate README markdown files
+  ([f5d775f57](https://github.com/storm-software/storm-ops/commit/f5d775f57))
+
+### Bug Fixes
+
+- **monorepo:** Repository fixes for `shamefullyHoist` config locally
+  ([7855a7f72](https://github.com/storm-software/storm-ops/commit/7855a7f72))
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.42**
+- Updated **config** to **v1.134.42**
+
 ## [1.188.41](https://github.com/storm-software/storm-ops/releases/tag/config-tools%401.188.41) (11/19/2025)
 
 ### Updated Dependencies
