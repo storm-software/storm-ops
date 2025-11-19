@@ -84,6 +84,9 @@ catalogs:
     cspell:
       specifier: ^8.19.4
       version: 8.19.4
+    date-fns:
+      specifier: ^4.1.0
+      version: 4.1.0
     defu:
       specifier: 6.1.4
       version: 6.1.4
@@ -495,7 +498,7 @@ importers:
         specifier: 'catalog:'
         version: 12.1.0
       date-fns:
-        specifier: ^4.1.0
+        specifier: 'catalog:'
         version: 4.1.0
       defu:
         specifier: 'catalog:'
@@ -1595,6 +1598,9 @@ importers:
       '@types/node':
         specifier: 'catalog:'
         version: 24.10.1
+      esbuild:
+        specifier: 'catalog:'
+        version: 0.25.12
       tsup:
         specifier: 'catalog:'
         version: 8.4.0(patch_hash=751a554d775c3572381af4e7e5fa22eeda6dd6856012fb1cf521d6806eb2dc74)(@microsoft/api-extractor@7.55.0(@types/node@24.10.1))(@swc/core@1.7.26(@swc/helpers@0.5.13))(jiti@2.6.1)(postcss@8.5.6)(tsx@4.20.6)(typescript@5.9.3)(yaml@2.8.1)
@@ -1816,6 +1822,9 @@ importers:
         specifier: 'catalog:'
         version: 1.3.1
       tslib:
+        specifier: 'catalog:'
+        version: 2.8.1
+      yaml:
         specifier: 'catalog:'
         version: 2.8.1
       zx:

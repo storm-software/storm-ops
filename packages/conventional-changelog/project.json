@@ -15,12 +15,23 @@
         "cwd": "{projectRoot}"
       }
     },
+    "build-template": {
+      "executor": "nx:run-commands",
+      "dependsOn": ["build-base"],
+      "options": {
+        "commands": [
+          "pnpm copyfiles --up=4 \"./packages/conventional-changelog/src/templates/**/*\" packages/conventional-changelog/dist/templates"
+        ],
+        "parallel": false,
+        "color": true
+      }
+    },
     "build": {
       "cache": true,
       "inputs": ["default", "^production"],
       "outputs": ["{workspaceRoot}/dist/{projectRoot}"],
       "executor": "nx:run-commands",
-      "dependsOn": ["build-base"],
+      "dependsOn": ["build-base", "build-template"],
       "options": {
         "commands": [
           "pnpm copyfiles LICENSE dist/packages/conventional-changelog",

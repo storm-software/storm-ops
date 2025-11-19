@@ -239,7 +239,7 @@
     "c12": "catalog:",
     "chalk": "catalog:",
     "commander": "catalog:",
-    "date-fns": "^4.1.0",
+    "date-fns": "catalog:",
     "defu": "catalog:",
     "giget": "^1.2.5",
     "jiti": "catalog:",
