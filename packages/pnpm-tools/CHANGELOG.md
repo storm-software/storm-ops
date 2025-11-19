@@ -2,6 +2,20 @@
 
 # Changelog for Storm Ops - Pnpm Tools
 
+## [0.6.43](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.6.43) (11/19/2025)
+
+### Miscellaneous
+
+- **pnpm-tools:** Update `pnpm` monorepo packages
+  ([3bb0d783f](https://github.com/storm-software/storm-ops/commit/3bb0d783f))
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.43**
+- Updated **config-tools** to **v1.188.43**
+- Updated **npm-tools** to **v0.5.43**
+- Updated **config** to **v1.134.43**
+
 ## [0.6.42](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.6.42) (11/19/2025)
 
 ### Miscellaneous
