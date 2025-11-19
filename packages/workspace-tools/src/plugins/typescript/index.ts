@@ -61,11 +61,11 @@ export interface TypeScriptPluginOptions {
    * Whether to enable TypeScript type checking via `tsc`.
    *
    * @remarks
-   * If set to a string, it will be used as the target name instead of the default "type-check".
+   * If set to a string, it will be used as the target name instead of the default "typecheck".
    *
-   * @defaultValue "type-check"
+   * @defaultValue false
    */
-  enableTypeCheck?: string | false;
+  enableTypecheck?: string | true;
 
   /**
    * Whether to use `tsgo` for TypeScript language features in editors that support it.
@@ -124,7 +124,7 @@ export const createNodesV2: CreateNodesV2<TypeScriptPluginOptions> = [
 
           const enableMarkdownlint = options?.enableMarkdownlint !== false;
           const enableEslint = options?.enableEslint !== false;
-          const enableTypeCheck = options?.enableTypeCheck !== false;
+          const enableTypecheck = !!options?.enableTypecheck;
 
           const targets: ProjectConfiguration["targets"] =
             readTargetsFromPackageJson(
@@ -190,12 +190,12 @@ export const createNodesV2: CreateNodesV2<TypeScriptPluginOptions> = [
               };
             }
 
-            if (enableTypeCheck) {
+            if (enableTypecheck) {
               targets[
-                options?.enableTypeCheck &&
-                typeof options?.enableTypeCheck === "string"
-                  ? options.enableTypeCheck
-                  : "type-check"
+                options?.enableTypecheck &&
+                typeof options?.enableTypecheck === "string"
+                  ? options.enableTypecheck
+                  : "typecheck"
               ] ??= {
                 cache: true,
                 inputs: ["typescript", "^production"],
@@ -204,10 +204,10 @@ export const createNodesV2: CreateNodesV2<TypeScriptPluginOptions> = [
                 dependsOn: [
                   "build-untyped",
                   `^${
-                    options?.enableTypeCheck &&
-                    typeof options?.enableTypeCheck === "string"
-                      ? options.enableTypeCheck
-                      : "type-check"
+                    options?.enableTypecheck &&
+                    typeof options?.enableTypecheck === "string"
+                      ? options.enableTypecheck
+                      : "typecheck"
                   }`
                 ],
                 options: {
@@ -244,11 +244,11 @@ export const createNodesV2: CreateNodesV2<TypeScriptPluginOptions> = [
                         ? options.enableMarkdownlint
                         : "lint-markdown"
                       : undefined,
-                    enableTypeCheck
-                      ? options?.enableTypeCheck &&
-                        typeof options?.enableTypeCheck === "string"
-                        ? options.enableTypeCheck
-                        : "type-check"
+                    enableTypecheck
+                      ? options?.enableTypecheck &&
+                        typeof options?.enableTypecheck === "string"
+                        ? options.enableTypecheck
+                        : "typecheck"
                       : undefined,
                     `^${
                       options?.enableEslint &&

@@ -88,7 +88,7 @@ Please add it to your dependencies by running \`pnpm add tsdown -D --filter="${p
             ],
             outputs: ["{projectRoot}/dist"],
             executor: "nx:run-commands",
-            dependsOn: ["build-untyped", "type-check", "^build"],
+            dependsOn: ["build-untyped", "typecheck", "^build"],
             options: {
               command: `tsdown --config="${relativeConfig}"`,
               cwd: root
