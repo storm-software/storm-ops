@@ -43,7 +43,7 @@ in {
   };
   languages.javascript = {
     enable = true;
-    package = pkgs-unstable.nodejs;
+    package = pkgs-unstable.nodejs_24;
     corepack.enable = true;
     pnpm = {
       enable = true;
