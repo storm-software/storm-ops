@@ -45,6 +45,15 @@ catalogs:
     '@nx/workspace':
       specifier: 22.0.4
       version: 22.0.4
+    '@pnpm/plugin-better-defaults':
+      specifier: ^0.2.1
+      version: 0.2.1
+    '@pnpm/plugin-esm-node-path':
+      specifier: ^0.1.2
+      version: 0.1.2
+    '@pnpm/types':
+      specifier: ^1001.0.0
+      version: 1001.0.0
     '@swc-node/register':
       specifier: 1.10.9
       version: 1.10.9
@@ -1280,10 +1289,10 @@ importers:
   packages/pnpm-tools:
     dependencies:
       '@pnpm/plugin-better-defaults':
-        specifier: ^0.2.1
+        specifier: 'catalog:'
         version: 0.2.1
       '@pnpm/plugin-esm-node-path':
-        specifier: ^0.1.2
+        specifier: 'catalog:'
         version: 0.1.2
       '@storm-software/config':
         specifier: workspace:*
@@ -1314,8 +1323,8 @@ importers:
         version: 2.8.1
     devDependencies:
       '@pnpm/types':
-        specifier: ^1000.9.0
-        version: 1000.9.0
+        specifier: 'catalog:'
+        version: 1001.0.0
       '@types/node':
         specifier: 'catalog:'
         version: 24.10.1
@@ -6047,8 +6056,8 @@ packages:
   '@pnpm/plugin-esm-node-path@0.1.2':
     resolution: {integrity: sha512-KzcFbJpNJHRZ60GpXmc6CoBX/zjy+fKEf/OOYdRbAlxV/Kf/f6pDNUDIVTQU8a5DHt6ODXq5mndwJPlryqMj1A==}
 
-  '@pnpm/types@1000.9.0':
-    resolution: {integrity: sha512-UvDTCxnbyqkTg2X0dBOuZ4IdFJ8g4UFu0Ybv/5/cZAxCWVhNl1hC/Xc9hR4tZrlBL0NRFePLRhO/iw9LmA1lbw==}
+  '@pnpm/types@1001.0.0':
+    resolution: {integrity: sha512-9P7I8Zv8hvAO81+D5KVmwveH4nmxhBNFEEeb77YYPV72bkyqzKTR6I8OGEs7TNZ6gPHufF+lIyBVEqO6SMFpJA==}
     engines: {node: '>=18.12'}
 
   '@poppinss/colors@4.1.5':
@@ -21224,7 +21233,7 @@ snapshots:
 
   '@pnpm/plugin-esm-node-path@0.1.2': {}
 
-  '@pnpm/types@1000.9.0': {}
+  '@pnpm/types@1001.0.0': {}
 
   '@poppinss/colors@4.1.5':
     dependencies:

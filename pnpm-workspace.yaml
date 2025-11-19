@@ -19,6 +19,9 @@ catalog:
   "@nx/web": ^22.0.4
   "@nx/webpack": ^22.0.4
   "@nx/workspace": 22.0.4
+  "@pnpm/plugin-better-defaults": ^0.2.1
+  "@pnpm/plugin-esm-node-path": ^0.1.2
+  "@pnpm/types": ^1001.0.0
   "@swc-node/register": 1.10.9
   "@swc/core": 1.7.26
   "@swc/helpers": 0.5.13

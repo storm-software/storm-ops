@@ -33,6 +33,7 @@ export default defineConfig([
     dts: false,
     sourcemap: false,
     silent: true,
-    tsconfig: "./tsconfig.json"
+    tsconfig: "./tsconfig.json",
+    skipNodeModulesBundle: false
   }
 ]);
