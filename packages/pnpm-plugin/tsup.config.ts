@@ -17,7 +17,6 @@ export default defineConfig([
     tsconfig: "./tsconfig.json",
     shims: true,
     silent: true,
-    cjsInterop: true,
     noExternal: ["@pnpm/plugin-esm-node-path"]
   }
 ]);
