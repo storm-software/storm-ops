@@ -17,7 +17,7 @@ export default defineConfig([
     tsconfig: "./tsconfig.json",
     shims: true,
     silent: true,
-    noExternal: ["@pnpm/plugin-better-defaults", "@pnpm/plugin-esm-node-path"],
-    skipNodeModulesBundle: true
+    cjsInterop: true,
+    noExternal: ["@pnpm/plugin-esm-node-path"]
   }
 ]);

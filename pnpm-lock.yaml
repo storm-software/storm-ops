@@ -45,9 +45,6 @@ catalogs:
     '@nx/workspace':
       specifier: 22.0.4
       version: 22.0.4
-    '@pnpm/plugin-better-defaults':
-      specifier: ^0.2.1
-      version: 0.2.1
     '@pnpm/plugin-esm-node-path':
       specifier: ^0.1.2
       version: 0.1.2
@@ -1293,9 +1290,6 @@ importers:
         specifier: 'catalog:'
         version: 6.1.4
     devDependencies:
-      '@pnpm/plugin-better-defaults':
-        specifier: 'catalog:'
-        version: 0.2.1
       '@pnpm/plugin-esm-node-path':
         specifier: 'catalog:'
         version: 0.1.2
@@ -6148,9 +6142,6 @@ packages:
   '@pnpm/npm-conf@2.3.1':
     resolution: {integrity: sha512-c83qWb22rNRuB0UaVCI0uRPNRr8Z0FWnEIvT47jiHAmOIUHbBOg5XvV7pM5x+rKn9HRpjxquDbXYSXr3fAKFcw==}
     engines: {node: '>=12'}
-
-  '@pnpm/plugin-better-defaults@0.2.1':
-    resolution: {integrity: sha512-3Fmur80S7+vmOKMmTdKS6JofiuvpUaBIdKEpgDyr9571FHo5Z4O2nrRUaSflxvwEakeYxIaFZ5MBaqAUnYHaeg==}
 
   '@pnpm/plugin-esm-node-path@0.1.2':
     resolution: {integrity: sha512-KzcFbJpNJHRZ60GpXmc6CoBX/zjy+fKEf/OOYdRbAlxV/Kf/f6pDNUDIVTQU8a5DHt6ODXq5mndwJPlryqMj1A==}
@@ -21632,8 +21623,6 @@ snapshots:
       '@pnpm/config.env-replace': 1.1.0
       '@pnpm/network.ca-file': 1.0.2
       config-chain: 1.1.13
-
-  '@pnpm/plugin-better-defaults@0.2.1': {}
 
   '@pnpm/plugin-esm-node-path@0.1.2': {}
 

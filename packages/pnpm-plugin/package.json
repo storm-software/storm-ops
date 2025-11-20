@@ -21,7 +21,6 @@
     "defu": "catalog:"
   },
   "devDependencies": {
-    "@pnpm/plugin-better-defaults": "catalog:",
     "@pnpm/plugin-esm-node-path": "catalog:",
     "@pnpm/types": "catalog:",
     "@types/node": "catalog:",

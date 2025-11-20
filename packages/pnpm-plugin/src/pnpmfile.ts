@@ -7,7 +7,6 @@
  * @packageDocumentation
  */
 
-import betterDefaultsPlugin from "@pnpm/plugin-better-defaults";
 import esmNodePathPlugin from "@pnpm/plugin-esm-node-path";
 import defu from "defu";
 
@@ -41,9 +40,7 @@ export default {
         result.hoistPattern = [];
       }
 
-      return esmNodePathPlugin.hooks.updateConfig(
-        betterDefaultsPlugin.hooks.updateConfig(result)
-      );
+      return esmNodePathPlugin.hooks.updateConfig(result);
     },
     readPackage(pkg) {
       for (const [devDepName, devDepRange] of Object.entries(
