@@ -52,7 +52,7 @@ jobs:
       id-token: write
     if:
       startsWith(github.repository, 'storm-software/') && (github.ref ==
-      'refs/heads/main' || github.ref == 'refs/heads/canary' || github.ref ==
+      'refs/heads/main' || github.ref == 'refs/heads/next' || github.ref ==
       'refs/heads/experimental')
     steps:
       - name: Send notification - Deployment started
