@@ -34,7 +34,8 @@ export default {
           "@earthquake/*",
           "earthquake"
         ],
-        trustPolicy: "no-downgrade"
+        trustPolicy: "no-downgrade",
+        trustPolicyExclude: ["semver@6.3.1"]
       });
       if (result.hoistPattern?.length === 1 && result.hoistPattern[0] === "*") {
         result.hoistPattern = [];

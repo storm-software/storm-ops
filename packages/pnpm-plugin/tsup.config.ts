@@ -17,6 +17,6 @@ export default defineConfig([
     tsconfig: "./tsconfig.json",
     shims: true,
     silent: true,
-    noExternal: ["@pnpm/plugin-esm-node-path"]
+    noExternal: ["@pnpm/plugin-esm-node-path", "defu"]
   }
 ]);
