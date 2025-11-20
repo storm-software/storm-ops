@@ -18,11 +18,11 @@
   },
   "files": ["./pnpmfile.cjs", "./allow.json"],
   "dependencies": {
-    "@pnpm/plugin-better-defaults": "catalog:",
-    "@pnpm/plugin-esm-node-path": "catalog:",
     "defu": "catalog:"
   },
   "devDependencies": {
+    "@pnpm/plugin-better-defaults": "catalog:",
+    "@pnpm/plugin-esm-node-path": "catalog:",
     "@pnpm/types": "catalog:",
     "@types/node": "catalog:",
     "tsup": "catalog:"
