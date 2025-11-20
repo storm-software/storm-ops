@@ -369,6 +369,7 @@ transpiles
 genaiscript
 genaisrc
 genai
+pnpmfile
 
 # JavaScript
 domwindow
