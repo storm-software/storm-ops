@@ -2,6 +2,24 @@
 
 # Changelog for Storm Ops - Pnpm Plugin
 
+## [0.1.4](https://github.com/storm-software/storm-ops/releases/tag/pnpm-plugin%400.1.4) (11/20/2025)
+
+### Miscellaneous
+
+- **pnpm-plugin:** Format `package.json` file
+  ([faa70a03a](https://github.com/storm-software/storm-ops/commit/faa70a03a))
+- **pnpm-plugin:** Added `esm_loader.mjs` file to package exports
+  ([9982e093d](https://github.com/storm-software/storm-ops/commit/9982e093d))
+
+### Bug Fixes
+
+- **pnpm-plugin:** Resolve issue with missing esm loader file
+  ([c64e58ef8](https://github.com/storm-software/storm-ops/commit/c64e58ef8))
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.47**
+
 ## [0.1.3](https://github.com/storm-software/storm-ops/releases/tag/pnpm-plugin%400.1.3) (11/20/2025)
 
 ### Bug Fixes
