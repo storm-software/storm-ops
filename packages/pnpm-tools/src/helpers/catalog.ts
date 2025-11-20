@@ -150,7 +150,9 @@ export async function upgradeCatalog(
     workspaceConfig
   );
 
-  const origVersion = await getVersion(packageName, tag);
+  const origVersion = await getVersion(packageName, tag, {
+    executable: "pnpm"
+  });
   const version = `${prefix || ""}${origVersion.replace(/^[\^~><=*]+/g, "")}`;
 
   if (version === catalog[packageName]) {
@@ -169,7 +171,9 @@ export async function upgradeCatalog(
       `${prefix || ""}${version.replace(/^[\^~><=*]+/g, "")}`;
 
     writeDebug(
-      `Writing version ${catalog[packageName]} to catalog for "${packageName}" package`,
+      `Writing version ${catalog[packageName]} to catalog for "${
+        packageName
+      }" package`,
       workspaceConfig
     );
   } else {
@@ -226,7 +230,9 @@ export async function saveCatalog(
     workspaceConfig
   );
 
-  const origVersion = await getVersion(packageName, tag);
+  const origVersion = await getVersion(packageName, tag, {
+    executable: "pnpm"
+  });
   const version = `${prefix || ""}${origVersion.replace(/^[\^~><=*]+/g, "")}`;
 
   if (version === catalog[packageName]) {

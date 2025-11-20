@@ -60,20 +60,6 @@
         "default": "./dist/types.js"
       }
     },
-    "./plugins/*": {
-      "import": {
-        "types": "./dist/plugins/*.d.ts",
-        "default": "./dist/plugins/*.js"
-      },
-      "require": {
-        "types": "./dist/plugins/*.d.cts",
-        "default": "./dist/plugins/*.cjs"
-      },
-      "default": {
-        "types": "./dist/plugins/*.d.ts",
-        "default": "./dist/plugins/*.js"
-      }
-    },
     "./helpers": {
       "import": {
         "types": "./dist/helpers/index.d.ts",
@@ -105,8 +91,6 @@
   },
   "types": "./dist/index.d.ts",
   "dependencies": {
-    "@pnpm/plugin-better-defaults": "catalog:",
-    "@pnpm/plugin-esm-node-path": "catalog:",
     "@storm-software/config": "workspace:*",
     "@storm-software/config-tools": "workspace:*",
     "@storm-software/npm-tools": "workspace:*",
