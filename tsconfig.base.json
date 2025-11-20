@@ -66,7 +66,10 @@
       "conventional-changelog-storm-software/*": [
         "packages/conventional-changelog/src/*"
       ],
-      "create-storm-workspace": ["packages/create-storm-workspace/bin/index.ts"]
+      "create-storm-workspace": [
+        "packages/create-storm-workspace/bin/index.ts"
+      ],
+      "pnpm-plugin-storm-software/*": ["packages/pnpm-plugin/src/*"]
     }
   },
   "include": ["**/*.ts", "**/*.js", "**/*.json"],

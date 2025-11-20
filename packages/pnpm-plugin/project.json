@@ -1,0 +1,30 @@
+{
+  "name": "pnpm-plugin",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "packages/pnpm-plugin/src",
+  "targets": {
+    "build-base": {
+      "executor": "nx:run-commands",
+      "dependsOn": ["clean", "^build"],
+      "options": {
+        "command": "tsup --config=tsup.config.ts",
+        "cwd": "{projectRoot}"
+      }
+    },
+    "build": {
+      "executor": "nx:run-commands",
+      "dependsOn": ["build-base"],
+      "options": {
+        "commands": [
+          "pnpm copyfiles LICENSE dist/packages/pnpm-plugin",
+          "pnpm copyfiles --up=2 ./packages/pnpm-plugin/*.md ./packages/pnpm-plugin/package.json dist/packages/pnpm-plugin",
+          "pnpm copyfiles --up=3 \"./packages/pnpm-plugin/dist/**/*\" dist/packages/pnpm-plugin"
+        ]
+      }
+    },
+    "nx-release-publish": {
+      "executor": "@storm-software/workspace-tools:npm-publish"
+    }
+  }
+}
