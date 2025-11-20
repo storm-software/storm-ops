@@ -2,6 +2,19 @@
 
 # Changelog for Storm Ops - Pnpm Plugin
 
+## [0.1.1](https://github.com/storm-software/storm-ops/releases/tag/pnpm-plugin%400.1.1) (11/19/2025)
+
+### Bug Fixes
+
+- **pnpm-plugin:** Resolve build issues bundling external package
+  ([ddb0a871b](https://github.com/storm-software/storm-ops/commit/ddb0a871b))
+- **pnpm-plugin:** Ensure external pnpm plugins are bundled
+  ([df045579b](https://github.com/storm-software/storm-ops/commit/df045579b))
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.45**
+
 ## [0.1.0](https://github.com/storm-software/storm-ops/releases/tag/pnpm-plugin%400.1.0) (11/19/2025)
 
 ### Miscellaneous

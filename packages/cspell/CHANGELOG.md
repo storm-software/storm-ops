@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - CSpell
 
+## [0.45.45](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.45.45) (11/19/2025)
+
+### Miscellaneous
+
+- **cspell:** Added pnpm related terms to dictionary
+  ([6c9b33b56](https://github.com/storm-software/storm-ops/commit/6c9b33b56))
+
 ## [0.45.44](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.45.44) (11/19/2025)
 
 ### Miscellaneous
