@@ -41,8 +41,6 @@ export const DEFAULT_JS_RELEASE_GROUP_CONFIG: ReleaseGroupConfig = {
   projects: ["packages/*"],
   version: {
     ...DEFAULT_RELEASE_GROUP_CONFIG.version,
-    currentVersionResolver: "git-tag",
-    fallbackCurrentVersionResolver: "disk",
     versionActions:
       "@storm-software/workspace-tools/release/js-version-actions",
     versionActionsOptions: {
@@ -64,8 +62,6 @@ export const DEFAULT_RUST_RELEASE_GROUP_CONFIG: ReleaseGroupConfig = {
   projects: ["crates/*"],
   version: {
     ...DEFAULT_RELEASE_GROUP_CONFIG.version,
-    currentVersionResolver: "git-tag",
-    fallbackCurrentVersionResolver: "disk",
     versionActions:
       "@storm-software/workspace-tools/release/rust-version-actions",
     versionActionsOptions: {
@@ -108,8 +104,13 @@ export function getReleaseGroupConfig(
         Object.entries(releaseConfig.groups).map(([name, group]) => {
           const config = defu(
             {
-              ...omit(DEFAULT_RELEASE_GROUP_CONFIG, ["changelog"]),
+              ...omit(DEFAULT_RELEASE_GROUP_CONFIG, ["changelog", "version"]),
               ...group
+            },
+            {
+              version: {
+                ...(DEFAULT_RELEASE_GROUP_CONFIG.version as NxReleaseChangelogConfiguration)
+              }
             },
             {
               changelog: {
