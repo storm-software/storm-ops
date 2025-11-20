@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Pnpm Plugin
 
+## [0.1.3](https://github.com/storm-software/storm-ops/releases/tag/pnpm-plugin%400.1.3) (11/20/2025)
+
+### Bug Fixes
+
+- **pnpm-plugin:** Resolve issue with missing bundled `defu` dependency
+  ([6f1d0552d](https://github.com/storm-software/storm-ops/commit/6f1d0552d))
+
 ## [0.1.2](https://github.com/storm-software/storm-ops/releases/tag/pnpm-plugin%400.1.2) (11/19/2025)
 
 ### Miscellaneous
