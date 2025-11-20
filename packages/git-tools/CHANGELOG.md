@@ -2,6 +2,29 @@
 
 # Changelog for Storm Ops - Git Tools
 
+## [2.124.27](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.124.27) (11/19/2025)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+  ([6b480779f](https://github.com/storm-software/storm-ops/commit/6b480779f))
+- **monorepo:** Regenerate README markdown files
+  ([3696b59be](https://github.com/storm-software/storm-ops/commit/3696b59be))
+
+### Bug Fixes
+
+- **git-tools:** Resolve issue applying default `version` release config
+  ([8e90d2eca](https://github.com/storm-software/storm-ops/commit/8e90d2eca))
+- **git-tools:** Resolved issue with missing `fallbackCurrentVersionResolver`
+  config
+  ([c2bb48d1c](https://github.com/storm-software/storm-ops/commit/c2bb48d1c))
+
+### Updated Dependencies
+
+- Updated **conventional-changelog** to **v0.3.44**
+- Updated **config-tools** to **v1.188.44**
+- Updated **config** to **v1.134.44**
+
 ## [2.124.26](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.124.26) (11/19/2025)
 
 ### Updated Dependencies

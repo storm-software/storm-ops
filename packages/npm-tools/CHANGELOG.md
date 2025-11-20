@@ -2,6 +2,26 @@
 
 # Changelog for Storm Ops - Npm Tools
 
+## [0.6.0](https://github.com/storm-software/storm-ops/releases/tag/npm-tools%400.6.0) (11/19/2025)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+  ([6b480779f](https://github.com/storm-software/storm-ops/commit/6b480779f))
+- **monorepo:** Regenerate README markdown files
+  ([3696b59be](https://github.com/storm-software/storm-ops/commit/3696b59be))
+
+### Features
+
+- **npm-tools:** Added the `executable` option to npm functions
+  ([64d26faab](https://github.com/storm-software/storm-ops/commit/64d26faab))
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.44**
+- Updated **config-tools** to **v1.188.44**
+- Updated **config** to **v1.134.44**
+
 ## [0.5.43](https://github.com/storm-software/storm-ops/releases/tag/npm-tools%400.5.43) (11/19/2025)
 
 ### Updated Dependencies
