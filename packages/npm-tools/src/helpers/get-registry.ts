@@ -5,11 +5,12 @@ import { DEFAULT_GITHUB_REGISTRY, DEFAULT_NPM_REGISTRY } from "../constants";
 /**
  * Get the registry URL.
  *
+ * @param executable The package manager executable to use (e.g., "npm" or "pnpm").
  * @returns The registry URL.
  */
-export async function getRegistry() {
+export async function getRegistry(executable = "npm"): Promise<string> {
   return new Promise<string>((resolve, reject) => {
-    exec("npm config get registry", (error, stdout, stderr) => {
+    exec(`${executable} config get registry`, (error, stdout, stderr) => {
       if (error) {
         return reject(error);
       }

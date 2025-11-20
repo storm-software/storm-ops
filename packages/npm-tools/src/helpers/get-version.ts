@@ -14,6 +14,13 @@ export interface GetVersionOptions {
    * @defaultValue The value returned by `getRegistry()`
    */
   registry?: string;
+
+  /**
+   * The package manager executable to use.
+   *
+   * @defaultValue `"npm"`
+   */
+  executable?: string;
 }
 
 /**
@@ -29,11 +36,12 @@ export async function getVersion(
   tag: string = DEFAULT_NPM_TAG,
   options: GetVersionOptions = {}
 ): Promise<string> {
-  const { registry = await getRegistry() } = options;
+  const executable = options.executable || "npm";
+  const registry = options.registry || (await getRegistry(executable));
 
   return new Promise<string>((resolve, reject) => {
     exec(
-      `npm view ${packageName} version --registry=${registry} --tag=${tag}`,
+      `${executable} view ${packageName} version --registry=${registry} --tag=${tag}`,
       (error, stdout, stderr) => {
         if (error) {
           return reject(error);
