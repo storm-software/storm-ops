@@ -14,6 +14,7 @@
     "./package.json": "./package.json",
     ".": "./pnpmfile.cjs",
     "./pnpmfile.cjs": "./pnpmfile.cjs",
+    "./esm_loader.mjs": "./esm_loader.mjs",
     "./allow.json": "./allow.json"
   },
   "files": ["./pnpmfile.cjs", "./esm_loader.mjs", "./allow.json"],
