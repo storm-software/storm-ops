@@ -13,9 +13,10 @@
   "exports": {
     "./package.json": "./package.json",
     ".": "./pnpmfile.cjs",
-    "./pnpmfile.cjs": "./pnpmfile.cjs"
+    "./pnpmfile.cjs": "./pnpmfile.cjs",
+    "./allow.json": "./allow.json"
   },
-  "files": ["./pnpmfile.cjs"],
+  "files": ["./pnpmfile.cjs", "./allow.json"],
   "dependencies": {
     "@pnpm/plugin-better-defaults": "catalog:",
     "@pnpm/plugin-esm-node-path": "catalog:",

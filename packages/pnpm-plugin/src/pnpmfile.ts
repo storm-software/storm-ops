@@ -20,7 +20,22 @@ export default {
         ignorePatchFailures: false,
         optimisticRepeatInstall: true,
         resolutionMode: "lowest-direct",
-        verifyDepsBeforeRun: "install"
+        verifyDepsBeforeRun: "install",
+        preferWorkspacePackages: true,
+        shellEmulator: true,
+        catalogMode: "prefer",
+        cleanupUnusedCatalogs: true,
+        linkWorkspacePackages: true,
+        minimumReleaseAge: 1400,
+        minimumReleaseAgeExclude: [
+          "@storm-software/*",
+          "@stryke/*",
+          "@powerlines/*",
+          "powerlines",
+          "@earthquake/*",
+          "earthquake"
+        ],
+        trustPolicy: "no-downgrade"
       });
       if (result.hoistPattern?.length === 1 && result.hoistPattern[0] === "*") {
         result.hoistPattern = [];

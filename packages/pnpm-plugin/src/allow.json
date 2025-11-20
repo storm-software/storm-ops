@@ -1,0 +1,11 @@
+[
+  "@swc/core",
+  "core-js",
+  "esbuild",
+  "lefthook",
+  "nx",
+  "oxc-resolver",
+  "sharp",
+  "unrs-resolver",
+  "workerd"
+]

@@ -19,7 +19,8 @@
         "commands": [
           "pnpm copyfiles LICENSE dist/packages/pnpm-plugin",
           "pnpm copyfiles --up=2 ./packages/pnpm-plugin/*.md ./packages/pnpm-plugin/package.json dist/packages/pnpm-plugin",
-          "pnpm copyfiles --up=3 \"./packages/pnpm-plugin/dist/**/*\" dist/packages/pnpm-plugin"
+          "pnpm copyfiles --up=3 \"./packages/pnpm-plugin/dist/**/*\" dist/packages/pnpm-plugin",
+          "pnpm copyfiles --up=3 ./packages/pnpm-plugin/src/allow.json dist/packages/pnpm-plugin"
         ]
       }
     },
