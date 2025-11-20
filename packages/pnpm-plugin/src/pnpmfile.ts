@@ -7,8 +7,9 @@
  * @packageDocumentation
  */
 
-import esmNodePathPlugin from "@pnpm/plugin-esm-node-path";
 import defu from "defu";
+import path from "node:path";
+import { pathToFileURL } from "node:url";
 
 export default {
   hooks: {
@@ -25,7 +26,7 @@ export default {
         catalogMode: "prefer",
         cleanupUnusedCatalogs: true,
         linkWorkspacePackages: true,
-        minimumReleaseAge: 1400,
+        minimumReleaseAge: 800,
         minimumReleaseAgeExclude: [
           "@storm-software/*",
           "@stryke/*",
@@ -33,15 +34,23 @@ export default {
           "powerlines",
           "@earthquake/*",
           "earthquake"
-        ],
-        trustPolicy: "no-downgrade",
-        trustPolicyExclude: ["semver@6.3.1"]
+        ]
       });
+
       if (result.hoistPattern?.length === 1 && result.hoistPattern[0] === "*") {
         result.hoistPattern = [];
       }
 
-      return esmNodePathPlugin.hooks.updateConfig(result);
+      // From @pnpm/plugin-esm-node-path
+      config.extraEnv.NODE_OPTIONS = `${
+        process.env.NODE_OPTIONS ? `${process.env.NODE_OPTIONS} ` : ""
+      }--import=data:text/javascript,${encodeURIComponent(
+        `import{register}from'node:module';register('${
+          pathToFileURL(path.resolve(__dirname, "esm_loader.mjs")).href
+        }','${pathToFileURL(path.resolve("./")).href}');`
+      )}`;
+
+      return config;
     },
     readPackage(pkg) {
       for (const [devDepName, devDepRange] of Object.entries(

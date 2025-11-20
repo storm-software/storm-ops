@@ -16,12 +16,9 @@
     "./pnpmfile.cjs": "./pnpmfile.cjs",
     "./allow.json": "./allow.json"
   },
-  "files": ["./pnpmfile.cjs", "./allow.json"],
-  "dependencies": {
-    "defu": "catalog:"
-  },
+  "files": ["./pnpmfile.cjs", "./esm_loader.mjs", "./allow.json"],
   "devDependencies": {
-    "@pnpm/plugin-esm-node-path": "catalog:",
+    "defu": "catalog:",
     "@pnpm/types": "catalog:",
     "@types/node": "catalog:",
     "tsup": "catalog:"
