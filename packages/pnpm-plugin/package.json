@@ -19,9 +19,9 @@
   },
   "files": ["./pnpmfile.cjs", "./esm_loader.mjs", "./allow.json"],
   "devDependencies": {
-    "defu": "catalog:",
     "@pnpm/types": "catalog:",
     "@types/node": "catalog:",
+    "defu": "catalog:",
     "tsup": "catalog:"
   },
   "publishConfig": {
