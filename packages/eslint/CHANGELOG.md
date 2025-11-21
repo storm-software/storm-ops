@@ -2,6 +2,22 @@
 
 # Changelog for Storm Ops - ESLint
 
+## [0.169.48](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.169.48) (11/20/2025)
+
+### Miscellaneous
+
+- **eslint:** Update `ts/naming-convention` rule to use `UPPER_CASE` for enum
+  members
+  ([b73ac496e](https://github.com/storm-software/storm-ops/commit/b73ac496e))
+- **monorepo:** Regenerate README markdown files
+  ([f12d8e2f7](https://github.com/storm-software/storm-ops/commit/f12d8e2f7))
+
+### Updated Dependencies
+
+- Updated **config-tools** to **v1.188.48**
+- Updated **config** to **v1.134.48**
+- Updated **tsdoc** to **v0.13.48**
+
 ## [0.169.47](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.169.47) (11/20/2025)
 
 ### Updated Dependencies
