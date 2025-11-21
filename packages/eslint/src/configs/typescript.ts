@@ -198,7 +198,7 @@ export async function typescript(
           },
           {
             selector: "enumMember",
-            format: ["camelCase", "PascalCase"],
+            format: ["UPPER_CASE"],
             leadingUnderscore: "allow",
             filter: { regex: "^[A-Za-z]+_[A-Za-z]+$", match: false }
           },
