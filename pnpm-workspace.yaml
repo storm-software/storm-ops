@@ -7,31 +7,31 @@ packages:
 
 catalog:
   '@ltd/j-toml': 1.38.0
-  '@microsoft/api-extractor': ^7.55.0
+  '@microsoft/api-extractor': ^7.55.1
   '@nx/devkit': 22.0.4
   '@nx/esbuild': 22.0.4
   '@nx/eslint': 22.0.4
   '@nx/eslint-plugin': 22.0.4
   '@nx/jest': 22.0.4
   '@nx/js': 22.0.4
-  '@nx/node': ^22.1.0
+  '@nx/node': ^22.1.1
   '@nx/plugin': 22.0.4
-  '@nx/web': ^22.1.0
-  '@nx/webpack': ^22.1.0
+  '@nx/web': ^22.1.1
+  '@nx/webpack': ^22.1.1
   '@nx/workspace': 22.0.4
-  '@pnpm/types': ^1001.0.0
+  '@pnpm/types': ^1001.0.1
   '@swc-node/register': 1.10.9
   '@swc/core': 1.7.26
   '@swc/helpers': 0.5.13
   '@types/node': ^24.10.1
-  '@typescript-eslint/eslint-plugin': ^8.47.0
-  '@typescript-eslint/parser': ^8.47.0
-  '@typescript-eslint/utils': ^8.47.0
+  '@typescript-eslint/eslint-plugin': ^8.48.0
+  '@typescript-eslint/parser': ^8.48.0
+  '@typescript-eslint/utils': ^8.48.0
   c12: ^2.0.4
   chalk: ^4.1.2
   commander: ^12.1.0
   copyfiles: 2.4.1
-  create-nx-workspace: ^22.1.0
+  create-nx-workspace: ^22.1.1
   cspell: ^8.19.4
   date-fns: ^4.1.0
   defu: 6.1.4
@@ -44,7 +44,7 @@ catalog:
   jest-resolve: 30.0.5
   jest-util: 30.0.5
   jiti: 2.4.2
-  knip: ^5.70.1
+  knip: ^5.70.2
   mlly: ^1.8.0
   nx: 22.0.4
   pkg-types: ^1.3.1
@@ -59,7 +59,7 @@ catalog:
   unbuild: ^3.6.1
   untyped: ^2.0.0
   yaml: ^2.8.1
-  zod: ^4.1.12
+  zod: ^4.1.13
   zx: ^8.8.5
 
 cleanupUnusedCatalogs: true
