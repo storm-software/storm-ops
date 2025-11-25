@@ -386,6 +386,8 @@ csr
 spa
 mpa
 preinit
+prerender
+prerendered
 
 # tsconfig.json keywords
 jsxdev
