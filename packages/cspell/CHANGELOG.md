@@ -2,6 +2,15 @@
 
 # Changelog for Storm Ops - CSpell
 
+## [0.45.49](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.45.49) (11/25/2025)
+
+### Miscellaneous
+
+- **cspell:** Added pre-rendering related words to dictionary
+  ([96a482580](https://github.com/storm-software/storm-ops/commit/96a482580))
+- **monorepo:** Update workspace packages' dependencies
+  ([8ab2d8880](https://github.com/storm-software/storm-ops/commit/8ab2d8880))
+
 ## [0.45.48](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.45.48) (11/20/2025)
 
 ### Miscellaneous
