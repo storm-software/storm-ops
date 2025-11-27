@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Pnpm Plugin
 
+## [0.1.7](https://github.com/storm-software/storm-ops/releases/tag/pnpm-plugin%400.1.7) (11/27/2025)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files and `Cargo.lock`
+  ([5758ea3f0](https://github.com/storm-software/storm-ops/commit/5758ea3f0))
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.50**
+
 ## [0.1.6](https://github.com/storm-software/storm-ops/releases/tag/pnpm-plugin%400.1.6) (11/25/2025)
 
 ### Updated Dependencies

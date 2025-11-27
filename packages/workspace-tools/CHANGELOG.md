@@ -2,6 +2,25 @@
 
 # Changelog for Storm Ops - Workspace Tools
 
+## [1.293.20](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.293.20) (11/27/2025)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files and `Cargo.lock`
+  ([5758ea3f0](https://github.com/storm-software/storm-ops/commit/5758ea3f0))
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.50**
+- Updated **config-tools** to **v1.188.50**
+- Updated **pnpm-tools** to **v0.6.50**
+- Updated **npm-tools** to **v0.6.6**
+- Updated **prettier** to **v0.57.50**
+- Updated **esbuild** to **v0.53.50**
+- Updated **unbuild** to **v0.57.50**
+- Updated **config** to **v1.134.50**
+- Updated **tsdown** to **v0.45.50**
+
 ## [1.293.19](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.293.19) (11/25/2025)
 
 ### Updated Dependencies

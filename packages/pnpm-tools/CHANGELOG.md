@@ -2,6 +2,20 @@
 
 # Changelog for Storm Ops - Pnpm Tools
 
+## [0.6.50](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.6.50) (11/27/2025)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files and `Cargo.lock`
+  ([5758ea3f0](https://github.com/storm-software/storm-ops/commit/5758ea3f0))
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.50**
+- Updated **config-tools** to **v1.188.50**
+- Updated **npm-tools** to **v0.6.6**
+- Updated **config** to **v1.134.50**
+
 ## [0.6.49](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.6.49) (11/25/2025)
 
 ### Updated Dependencies

@@ -2,6 +2,19 @@
 
 # Changelog for Storm Ops - Terraform Tools
 
+## [0.66.50](https://github.com/storm-software/storm-ops/releases/tag/terraform-tools%400.66.50) (11/27/2025)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files and `Cargo.lock`
+  ([5758ea3f0](https://github.com/storm-software/storm-ops/commit/5758ea3f0))
+
+### Updated Dependencies
+
+- Updated **workspace-tools** to **v1.293.20**
+- Updated **config-tools** to **v1.188.50**
+- Updated **config** to **v1.134.50**
+
 ## [0.66.49](https://github.com/storm-software/storm-ops/releases/tag/terraform-tools%400.66.49) (11/25/2025)
 
 ### Updated Dependencies

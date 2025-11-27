@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Prettier
 
+## [0.57.50](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.57.50) (11/27/2025)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files and `Cargo.lock`
+  ([5758ea3f0](https://github.com/storm-software/storm-ops/commit/5758ea3f0))
+
 ## [0.57.48](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.57.48) (11/20/2025)
 
 ### Miscellaneous

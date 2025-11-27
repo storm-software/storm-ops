@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Untyped
 
+## [0.24.31](https://github.com/storm-software/storm-ops/releases/tag/untyped%400.24.31) (11/27/2025)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files and `Cargo.lock`
+  ([5758ea3f0](https://github.com/storm-software/storm-ops/commit/5758ea3f0))
+
+### Updated Dependencies
+
+- Updated **config-tools** to **v1.188.50**
+- Updated **config** to **v1.134.50**
+
 ## [0.24.30](https://github.com/storm-software/storm-ops/releases/tag/untyped%400.24.30) (11/25/2025)
 
 ### Updated Dependencies

@@ -2,6 +2,20 @@
 
 # Changelog for Storm Ops - Tsup
 
+## [0.2.48](https://github.com/storm-software/storm-ops/releases/tag/tsup%400.2.48) (11/27/2025)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files and `Cargo.lock`
+  ([5758ea3f0](https://github.com/storm-software/storm-ops/commit/5758ea3f0))
+- **tsup:** Ensure the `workspaceConfig` parameters are defaulted
+  ([6f78b740b](https://github.com/storm-software/storm-ops/commit/6f78b740b))
+
+### Updated Dependencies
+
+- Updated **config-tools** to **v1.188.50**
+- Updated **build-tools** to **v0.158.50**
+
 ## [0.2.47](https://github.com/storm-software/storm-ops/releases/tag/tsup%400.2.47) (11/25/2025)
 
 ### Updated Dependencies

@@ -2,6 +2,21 @@
 
 # Changelog for Storm Ops - ESLint
 
+## [0.169.50](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.169.50) (11/27/2025)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files and `Cargo.lock`
+  ([5758ea3f0](https://github.com/storm-software/storm-ops/commit/5758ea3f0))
+- **eslint:** Remove `eslint` rule config that checks node_modules
+  ([6f331ffcd](https://github.com/storm-software/storm-ops/commit/6f331ffcd))
+
+### Updated Dependencies
+
+- Updated **config-tools** to **v1.188.50**
+- Updated **config** to **v1.134.50**
+- Updated **tsdoc** to **v0.13.50**
+
 ## [0.169.49](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.169.49) (11/25/2025)
 
 ### Miscellaneous

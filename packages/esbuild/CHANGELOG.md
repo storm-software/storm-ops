@@ -2,6 +2,20 @@
 
 # Changelog for Storm Ops - Esbuild
 
+## [0.53.50](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.53.50) (11/27/2025)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files and `Cargo.lock`
+  ([5758ea3f0](https://github.com/storm-software/storm-ops/commit/5758ea3f0))
+
+### Updated Dependencies
+
+- Updated **config-tools** to **v1.188.50**
+- Updated **build-tools** to **v0.158.50**
+- Updated **config** to **v1.134.50**
+- Updated **tsup** to **v0.2.48**
+
 ## [0.53.49](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.53.49) (11/25/2025)
 
 ### Updated Dependencies
