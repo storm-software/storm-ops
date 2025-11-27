@@ -70,6 +70,7 @@ export async function resolveOptions(
     name: projectName,
     entry: [joinPaths(workspaceRoot.dir, projectRoot, "src/index.ts")],
     clean: true,
+    workspaceConfig,
     ...options,
     outDir:
       options.outputPath ||
