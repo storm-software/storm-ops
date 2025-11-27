@@ -68,7 +68,6 @@ export async function react(
     i => isPackageExists(i)
   );
   const isUsingReactRouter = ReactRouterPackages.some(i => isPackageExists(i));
-  const isUsingNext = NextJsPackages.some(i => isPackageExists(i));
 
   const plugins = pluginReact.configs.all.plugins;
 
@@ -120,27 +119,24 @@ export async function react(
           {
             allowConstantExport: isAllowConstantExport,
             allowExportNames: [
-              ...(isUsingNext
-                ? [
-                    "dynamic",
-                    "dynamicParams",
-                    "revalidate",
-                    "fetchCache",
-                    "runtime",
-                    "preferredRegion",
-                    "maxDuration",
-                    "config",
-                    "generateStaticParams",
-                    "metadata",
-                    "generateMetadata",
-                    "viewport",
-                    "generateViewport"
-                  ]
-                : []),
-              ...(isUsingReactRouter
+              "dynamic",
+              "dynamicParams",
+              "revalidate",
+              "fetchCache",
+              "runtime",
+              "preferredRegion",
+              "maxDuration",
+              "config",
+              "generateStaticParams",
+              "metadata",
+              "generateMetadata",
+              "viewport",
+              "generateViewport"
+            ].concat(
+              isUsingReactRouter
                 ? ["meta", "links", "headers", "loader", "action"]
-                : [])
-            ]
+                : []
+            )
           }
         ],
         // recommended rules from @eslint-react/web-api

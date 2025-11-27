@@ -496,12 +496,12 @@ Backward pagination arguments
   '@next/next/no-unwanted-polyfillio'?: Linter.RuleEntry<[]>
   /**
    * Checks dependencies in project's package.json for version mismatches
-   * @see https://github.com/nrwl/nx/blob/22.1.0/docs/generated/packages/eslint-plugin/documents/dependency-checks.md
+   * @see https://github.com/nrwl/nx/blob/22.0.4/docs/generated/packages/eslint-plugin/documents/dependency-checks.md
    */
   '@nx/dependency-checks'?: Linter.RuleEntry<NxDependencyChecks>
   /**
    * Ensure that module boundaries are respected within the monorepo
-   * @see https://github.com/nrwl/nx/blob/22.1.0/docs/generated/packages/eslint-plugin/documents/enforce-module-boundaries.md
+   * @see https://github.com/nrwl/nx/blob/22.0.4/docs/generated/packages/eslint-plugin/documents/enforce-module-boundaries.md
    */
   '@nx/enforce-module-boundaries'?: Linter.RuleEntry<NxEnforceModuleBoundaries>
   /**
@@ -5572,6 +5572,11 @@ Backward pagination arguments
    */
   'template-tag-spacing'?: Linter.RuleEntry<TemplateTagSpacing>
   /**
+   * enforce using `.each` or `.for` consistently
+   * @see https://github.com/vitest-dev/eslint-plugin-vitest/blob/main/docs/rules/consistent-each-for.md
+   */
+  'test/consistent-each-for'?: Linter.RuleEntry<TestConsistentEachFor>
+  /**
    * require test file pattern
    * @see https://github.com/vitest-dev/eslint-plugin-vitest/blob/main/docs/rules/consistent-test-filename.md
    */
@@ -5793,7 +5798,7 @@ Backward pagination arguments
    */
   'test/prefer-each'?: Linter.RuleEntry<[]>
   /**
-   * enforce using the built-in quality matchers
+   * enforce using the built-in equality matchers
    * @see https://github.com/vitest-dev/eslint-plugin-vitest/blob/main/docs/rules/prefer-equality-matcher.md
    */
   'test/prefer-equality-matcher'?: Linter.RuleEntry<[]>
@@ -5912,6 +5917,11 @@ Backward pagination arguments
    * @see https://github.com/vitest-dev/eslint-plugin-vitest/blob/main/docs/rules/require-hook.md
    */
   'test/require-hook'?: Linter.RuleEntry<TestRequireHook>
+  /**
+   * require usage of import in vi.mock()
+   * @see https://github.com/vitest-dev/eslint-plugin-vitest/blob/main/docs/rules/require-import-vi-mock.md
+   */
+  'test/require-import-vi-mock'?: Linter.RuleEntry<[]>
   /**
    * require local Test Context for concurrent snapshot tests
    * @see https://github.com/vitest-dev/eslint-plugin-vitest/blob/main/docs/rules/require-local-test-context-for-concurrent-snapshots.md
@@ -15762,6 +15772,13 @@ type SwitchColonSpacing = []|[{
 type TemplateCurlySpacing = []|[("always" | "never")]
 // ----- template-tag-spacing -----
 type TemplateTagSpacing = []|[("always" | "never")]
+// ----- test/consistent-each-for -----
+type TestConsistentEachFor = []|[{
+  test?: ("each" | "for")
+  it?: ("each" | "for")
+  describe?: ("each" | "for")
+  suite?: ("each" | "for")
+}]
 // ----- test/consistent-test-filename -----
 type TestConsistentTestFilename = []|[{
   pattern?: string
