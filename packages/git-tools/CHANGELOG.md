@@ -2,6 +2,19 @@
 
 # Changelog for Storm Ops - Git Tools
 
+## [2.124.34](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.124.34) (12/04/2025)
+
+### Miscellaneous
+
+- **monorepo:** Update the `README.md` files' banner images
+  ([fd0a3065d](https://github.com/storm-software/storm-ops/commit/fd0a3065d))
+
+### Updated Dependencies
+
+- Updated **conventional-changelog** to **v0.3.51**
+- Updated **config-tools** to **v1.188.51**
+- Updated **config** to **v1.134.51**
+
 ## [2.124.33](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.124.33) (11/27/2025)
 
 ### Miscellaneous

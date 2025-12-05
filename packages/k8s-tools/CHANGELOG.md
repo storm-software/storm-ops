@@ -2,6 +2,19 @@
 
 # Changelog for Storm Ops - K8s Tools
 
+## [0.42.51](https://github.com/storm-software/storm-ops/releases/tag/k8s-tools%400.42.51) (12/04/2025)
+
+### Miscellaneous
+
+- **monorepo:** Update the `README.md` files' banner images
+  ([fd0a3065d](https://github.com/storm-software/storm-ops/commit/fd0a3065d))
+
+### Updated Dependencies
+
+- Updated **workspace-tools** to **v1.293.21**
+- Updated **config-tools** to **v1.188.51**
+- Updated **config** to **v1.134.51**
+
 ## [0.42.50](https://github.com/storm-software/storm-ops/releases/tag/k8s-tools%400.42.50) (11/27/2025)
 
 ### Miscellaneous

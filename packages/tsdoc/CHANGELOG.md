@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Tsdoc
 
+## [0.13.51](https://github.com/storm-software/storm-ops/releases/tag/tsdoc%400.13.51) (12/04/2025)
+
+### Miscellaneous
+
+- **monorepo:** Update the `README.md` files' banner images
+  ([fd0a3065d](https://github.com/storm-software/storm-ops/commit/fd0a3065d))
+
 ## [0.13.50](https://github.com/storm-software/storm-ops/releases/tag/tsdoc%400.13.50) (11/27/2025)
 
 ### Miscellaneous

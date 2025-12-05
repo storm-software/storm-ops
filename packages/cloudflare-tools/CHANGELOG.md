@@ -2,6 +2,26 @@
 
 # Changelog for Storm Ops - Cloudflare Tools
 
+## [0.71.0](https://github.com/storm-software/storm-ops/releases/tag/cloudflare-tools%400.71.0) (12/04/2025)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace packages' dependencies
+  ([978701226](https://github.com/storm-software/storm-ops/commit/978701226))
+- **monorepo:** Update the `README.md` files' banner images
+  ([fd0a3065d](https://github.com/storm-software/storm-ops/commit/fd0a3065d))
+
+### Features
+
+- **cloudflare-tools:** Completed `r2-upload-publish` executor
+  ([92e9e5064](https://github.com/storm-software/storm-ops/commit/92e9e5064))
+
+### Updated Dependencies
+
+- Updated **workspace-tools** to **v1.293.21**
+- Updated **config-tools** to **v1.188.51**
+- Updated **config** to **v1.134.51**
+
 ## [0.70.50](https://github.com/storm-software/storm-ops/releases/tag/cloudflare-tools%400.70.50) (11/27/2025)
 
 ### Miscellaneous
