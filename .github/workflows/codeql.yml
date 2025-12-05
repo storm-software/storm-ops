@@ -33,8 +33,7 @@ jobs:
     #   - https://gh.io/supported-runners-and-hardware-resources
     #   - https://gh.io/using-larger-runners (GitHub.com only)
     # Consider using larger runners or machines with greater resources for possible analysis time improvements.
-    runs-on:
-      ${{ (matrix.language == 'swift' && 'macos-latest') || 'ubuntu-latest' }}
+    runs-on: ${{ (matrix.language == 'swift' && 'macos-latest') || 'ubuntu-latest' }}
     permissions:
       # required for all workflows
       security-events: write
@@ -74,7 +73,7 @@ jobs:
           gpg-private-key: ${{ secrets.STORM_BOT_GPG_PRIVATE_KEY }}
           gpg-passphrase: ${{ secrets.STORM_BOT_GPG_PASSPHRASE }}
           package-manager: pnpm
-          package-manager-version: 10.22.0
+          package-manager-version: 10.24.0
           storm-bot-github-token: ${{ secrets.STORM_BOT_GITHUB_TOKEN }}
 
       # Initializes the CodeQL tools for scanning.
