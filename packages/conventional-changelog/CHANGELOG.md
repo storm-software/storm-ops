@@ -1,3 +1,14 @@
+![Storm Software's logo banner](https://public.storm-cdn.com/storm-software/banner-1280x320-optimized.gif)
+
+# Changelog for Storm Ops - Conventional Changelog
+
+## [0.3.52](https://github.com/storm-software/storm-ops/releases/tag/conventional-changelog%400.3.52) (12/04/2025)
+
+### Updated Dependencies
+
+- Updated **config-tools** to **v1.188.52**
+- Updated **config** to **v1.134.52**
+
 ![Storm Software's logo banner](https://public.storm-cdn.com/brand-banner.png)
 
 # Changelog for Storm Ops - Conventional Changelog

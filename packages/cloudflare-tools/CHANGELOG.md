@@ -1,3 +1,20 @@
+![Storm Software's logo banner](https://public.storm-cdn.com/storm-software/banner-1280x320-optimized.gif)
+
+# Changelog for Storm Ops - Cloudflare Tools
+
+## [0.71.1](https://github.com/storm-software/storm-ops/releases/tag/cloudflare-tools%400.71.1) (12/04/2025)
+
+### Miscellaneous
+
+- **cloudflare-tools:** Format `untyped` generated files
+  ([e805a71b1](https://github.com/storm-software/storm-ops/commit/e805a71b1))
+
+### Updated Dependencies
+
+- Updated **workspace-tools** to **v1.293.22**
+- Updated **config-tools** to **v1.188.52**
+- Updated **config** to **v1.134.52**
+
 ![Storm Software's logo banner](https://public.storm-cdn.com/brand-banner.png)
 
 # Changelog for Storm Ops - Cloudflare Tools

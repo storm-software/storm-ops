@@ -1,3 +1,13 @@
+![Storm Software's logo banner](https://public.storm-cdn.com/storm-software/banner-1280x320-optimized.gif)
+
+# Changelog for Storm Ops - Storm Config
+
+## [0.28.23](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.28.23) (12/04/2025)
+
+### Updated Dependencies
+
+- Updated **storm-workspace** to **v0.19.52**
+
 ![Storm Software's logo banner](https://public.storm-cdn.com/brand-banner.png)
 
 # Changelog for Storm Ops - Storm Config

@@ -1,3 +1,13 @@
+![Storm Software's logo banner](https://public.storm-cdn.com/storm-software/banner-1280x320-optimized.gif)
+
+# Changelog for Storm Ops - Pnpm Plugin
+
+## [0.1.9](https://github.com/storm-software/storm-ops/releases/tag/pnpm-plugin%400.1.9) (12/04/2025)
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.52**
+
 ![Storm Software's logo banner](https://public.storm-cdn.com/brand-banner.png)
 
 # Changelog for Storm Ops - Pnpm Plugin
