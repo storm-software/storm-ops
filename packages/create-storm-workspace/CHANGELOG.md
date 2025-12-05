@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Create Storm Workspace
 
+## [1.97.54](https://github.com/storm-software/storm-ops/releases/tag/create-storm-workspace%401.97.54) (12/05/2025)
+
+### Miscellaneous
+
+- **monorepo:** Update pnpm to v10.24.0
+  ([05b011cc8](https://github.com/storm-software/storm-ops/commit/05b011cc8))
+
+### Updated Dependencies
+
+- Updated **config-tools** to **v1.188.54**
+
 ## [1.97.53](https://github.com/storm-software/storm-ops/releases/tag/create-storm-workspace%401.97.53) (12/05/2025)
 
 ### Updated Dependencies

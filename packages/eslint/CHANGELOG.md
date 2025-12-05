@@ -2,6 +2,19 @@
 
 # Changelog for Storm Ops - ESLint
 
+## [0.169.55](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.169.55) (12/05/2025)
+
+### Miscellaneous
+
+- **monorepo:** Update pnpm to v10.24.0
+  ([05b011cc8](https://github.com/storm-software/storm-ops/commit/05b011cc8))
+
+### Updated Dependencies
+
+- Updated **config-tools** to **v1.188.54**
+- Updated **config** to **v1.134.54**
+- Updated **tsdoc** to **v0.13.54**
+
 ## [0.169.54](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.169.54) (12/05/2025)
 
 ### Bug Fixes

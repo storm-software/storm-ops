@@ -2,6 +2,19 @@
 
 # Changelog for Storm Ops - Cloudflare Tools
 
+## [0.71.4](https://github.com/storm-software/storm-ops/releases/tag/cloudflare-tools%400.71.4) (12/05/2025)
+
+### Miscellaneous
+
+- **monorepo:** Update pnpm to v10.24.0
+  ([05b011cc8](https://github.com/storm-software/storm-ops/commit/05b011cc8))
+
+### Updated Dependencies
+
+- Updated **workspace-tools** to **v1.293.24**
+- Updated **config-tools** to **v1.188.54**
+- Updated **config** to **v1.134.54**
+
 ## [0.71.3](https://github.com/storm-software/storm-ops/releases/tag/cloudflare-tools%400.71.3) (12/05/2025)
 
 ### Miscellaneous
