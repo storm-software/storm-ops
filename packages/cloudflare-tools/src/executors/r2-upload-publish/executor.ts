@@ -9,14 +9,15 @@ import {
 import {
   getConfig,
   writeDebug,
-  writeInfo,
   writeSuccess,
+  writeTrace,
   writeWarning
 } from "@storm-software/config-tools";
 import { findWorkspaceRoot } from "@storm-software/config-tools/utilities/find-workspace-root";
 import { createCliOptions } from "@storm-software/workspace-tools/utils/create-cli-options";
 import { getPackageInfo } from "@storm-software/workspace-tools/utils/package-helpers";
 import { glob } from "glob";
+import mime from "mime-types";
 import { execSync } from "node:child_process";
 import { readFile } from "node:fs/promises";
 import {
@@ -66,10 +67,12 @@ export default async function runExecutor(
     const projectDetails = getPackageInfo(
       context.projectsConfigurations.projects[context.projectName]!
     );
-    if (!projectDetails?.content) {
-      throw new Error(
-        `Could not find the project details for ${context.projectName}`
-      );
+
+    const bucketId = options.bucketId;
+    const bucketPath = options.bucketPath || "/";
+
+    if (!bucketId) {
+      throw new Error("The executor requires a bucketId.");
     }
 
     const args = createCliOptions({ ...options });
@@ -77,20 +80,29 @@ export default async function runExecutor(
       args.push("--dry-run");
     }
 
-    const cloudflareAccountId = process.env.STORM_BOT_CLOUDFLARE_ACCOUNT;
+    const cloudflareAccountId =
+      process.env.CLOUDFLARE_ACCOUNT_ID ||
+      process.env.STORM_BOT_CLOUDFLARE_ACCOUNT;
     if (!options?.registry && !cloudflareAccountId) {
       throw new Error(
-        "The Storm Registry URL is not set in the Storm config. Please set either the `extensions.cyclone.registry` or `config.extensions.cyclone.accountId` property in the Storm config."
+        "The registry option and `CLOUDFLARE_ACCOUNT_ID` environment variable are not set. Please set one of these values to upload to the Cloudflare R2 bucket."
       );
     }
 
-    if (!process.env.AWS_ACCESS_KEY_ID || !process.env.AWS_SECRET_ACCESS_KEY) {
+    if (
+      (!process.env.ACCESS_KEY_ID &&
+        !process.env.CLOUDFLARE_ACCESS_KEY_ID &&
+        !process.env.AWS_ACCESS_KEY_ID) ||
+      (!process.env.SECRET_ACCESS_KEY &&
+        !process.env.CLOUDFLARE_SECRET_ACCESS_KEY &&
+        !process.env.AWS_SECRET_ACCESS_KEY)
+    ) {
       throw new Error(
-        "The AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY environment variables are not set. Please set these environment variables to upload to the Cyclone Registry."
+        "The `ACCESS_KEY_ID` and `SECRET_ACCESS_KEY` environment variables are not set. Please set these environment variables to upload to the Cloudflare R2 bucket."
       );
     }
 
-    const endpoint = options?.registry
+    const registry = options?.registry
       ? options.registry
       : `https://${cloudflareAccountId}.r2.cloudflarestorage.com`;
 
@@ -108,26 +120,34 @@ export default async function runExecutor(
       );
     }
 
-    writeInfo(
-      `Publishing ${context.projectName} to the Storm Registry at ${endpoint}`
+    writeDebug(
+      `Publishing ${context.projectName} to the ${bucketId} R2 Bucket (at ${registry})`
     );
 
-    const s3Client = new S3({
+    const client = new S3({
       region: "auto",
-      endpoint,
+      endpoint: registry,
       credentials: {
-        accessKeyId: process.env.AWS_ACCESS_KEY_ID,
-        secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY
+        accessKeyId: (process.env.ACCESS_KEY_ID ||
+          process.env.CLOUDFLARE_ACCESS_KEY_ID ||
+          process.env.AWS_ACCESS_KEY_ID)!,
+        secretAccessKey: (process.env.SECRET_ACCESS_KEY ||
+          process.env.CLOUDFLARE_SECRET_ACCESS_KEY ||
+          process.env.AWS_SECRET_ACCESS_KEY)!
       }
     });
 
-    const version = projectDetails.content?.version;
-    writeInfo(`Generated component version: ${version}`);
+    const version = projectDetails?.content?.version;
+    if (version) {
+      writeDebug(`Starting upload version ${version}`);
+    }
 
-    const files = await glob(joinPathFragments(sourceRoot, "**/*"), {
-      ignore: "**/{*.stories.tsx,*.stories.ts,*.spec.tsx,*.spec.ts}"
-    });
-    const projectPath = `registry/${context.projectName}`;
+    const files = await glob(
+      joinPathFragments(options.path || sourceRoot, "**/*"),
+      {
+        ignore: "**/{*.stories.tsx,*.stories.ts,*.spec.tsx,*.spec.ts}"
+      }
+    );
 
     const internalDependencies = await getInternalDependencies(
       context.projectName,
@@ -146,114 +166,124 @@ export default async function runExecutor(
         }
 
         return ret;
-      }, projectDetails.content.dependencies ?? {});
+      }, projectDetails?.content.dependencies ?? {});
 
     const release =
       options.tag ?? execSync("npm config get tag").toString().trim();
 
-    writeInfo(`Clearing out existing items in ${projectPath}`);
+    if (options.clean === true) {
+      writeDebug(`Clearing out existing items in ${bucketPath}`);
 
-    if (!isDryRun) {
-      const response = await s3Client.listObjects({
-        Bucket: options.bucketId,
-        Prefix: projectPath
-      });
+      if (!isDryRun) {
+        const response = await client.listObjects({
+          Bucket: bucketId,
+          Prefix: bucketPath
+        });
 
-      if (response?.Contents && response.Contents.length > 0) {
-        writeDebug(
-          `Deleting the following existing items from the component registry: ${response.Contents.map(item => item.Key).join(", ")}`
-        );
+        if (response?.Contents && response.Contents.length > 0) {
+          writeTrace(
+            `Deleting the following existing items from the R2 bucket path ${
+              bucketPath
+            }: ${response.Contents.map(item => item.Key).join(", ")}`
+          );
 
-        await Promise.all(
-          response.Contents.map(item =>
-            s3Client.deleteObjects({
-              Bucket: options.bucketId,
-              Delete: {
-                Objects: [
-                  {
-                    Key: item.Key
-                  }
-                ],
-                Quiet: false
-              }
-            })
-          )
-        );
+          await Promise.all(
+            response.Contents.map(item =>
+              client.deleteObjects({
+                Bucket: bucketId,
+                Delete: {
+                  Objects: [
+                    {
+                      Key: item.Key
+                    }
+                  ],
+                  Quiet: false
+                }
+              })
+            )
+          );
+        } else {
+          writeDebug(
+            `No existing items to delete in the R2 bucket path ${bucketPath}`
+          );
+        }
       } else {
-        writeDebug(
-          `No existing items to delete in the component registry path ${projectPath}`
-        );
+        writeWarning("[Dry run]: Skipping R2 bucket clean.");
       }
-    } else {
-      writeWarning("[Dry run]: skipping upload to the Cyclone Registry.");
     }
 
-    const meta = {
-      name: context.projectName,
-      version,
-      release,
-      description: projectDetails.content.description,
-      tags: projectDetails.content.keywords,
-      dependencies,
-      devDependencies: null,
-      internalDependencies: internalDependencies
-        .filter(
-          projectNode =>
-            projectNode.data.tags &&
-            projectNode.data.tags.some(tag => tag.toLowerCase() === "component")
-        )
-        .map(dep => dep.name)
-    };
-    if (projectDetails.type === "package.json") {
-      meta.devDependencies = projectDetails.content.devDependencies;
+    if (options.writeMetaJson === true) {
+      const meta = {
+        name: context.projectName,
+        version,
+        release,
+        description: projectDetails?.content?.description,
+        tags: projectDetails?.content?.keywords,
+        dependencies,
+        devDependencies: null,
+        internalDependencies: internalDependencies
+          .filter(
+            projectNode =>
+              projectNode.data.tags &&
+              projectNode.data.tags.some(
+                tag => tag.toLowerCase() === "component"
+              )
+          )
+          .map(dep => dep.name)
+      };
+      if (projectDetails?.type === "package.json") {
+        meta.devDependencies = projectDetails?.content?.devDependencies;
+      }
+
+      const metaJson = JSON.stringify(meta);
+      writeTrace(`Generating meta.json file: \n${metaJson}`);
+
+      await r2UploadFile(
+        client,
+        bucketId,
+        bucketPath,
+        "meta.json",
+        version,
+        metaJson,
+        "application/json",
+        isDryRun
+      );
     }
-
-    const metaJson = JSON.stringify(meta);
-
-    writeInfo(`Generating meta.json file: \n${metaJson}`);
-
-    await r2UploadFile(
-      s3Client,
-      options.bucketId,
-      projectPath,
-      "meta.json",
-      version,
-      metaJson,
-      "application/json",
-      isDryRun
-    );
 
     await Promise.all(
-      files.map(file => {
-        const fileName = file
+      files.map(async file => {
+        const name = file
           .replaceAll("\\", "/")
           .replace(sourceRoot.replaceAll("\\", "/"), "");
+        const type = mime.lookup(name) || "application/octet-stream";
 
-        return readFile(file, { encoding: "utf8" }).then(fileContent =>
-          r2UploadFile(
-            s3Client,
-            options.bucketId,
-            projectPath,
-            fileName,
-            version,
-            fileContent,
-            "text/plain",
-            isDryRun
-          )
+        writeTrace(`Uploading file: ${name} (content-type: ${type})`);
+
+        await r2UploadFile(
+          client,
+          bucketId,
+          bucketPath,
+          name,
+          version,
+          await readFile(file, { encoding: "utf8" }),
+          type,
+          isDryRun
         );
       })
     );
 
     writeSuccess(
-      `Successfully uploaded the ${projectName} component to the Cyclone Registry`,
+      `Successfully uploaded the ${
+        projectName
+      } project to the Cloudflare R2 bucket.`,
       config
     );
 
     return {
       success: true
     };
-  } catch (error: any) {
-    console.error("Failed to publish to Cloudflare Workers Registry");
+  } catch (error) {
+    console.error("Failed to publish to Cloudflare R2 bucket");
     console.error(error);
     console.log("");
 
