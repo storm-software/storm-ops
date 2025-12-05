@@ -4,9 +4,9 @@
 
 export interface R2UploadPublishExecutorSchema {
  /**
-  * Upload Files path
+  * Local Uploads File Path
   * 
-  * The path to the files to upload
+  * The base path to the files that will be uploaded to the R2 bucket
   * 
   * 
   * @format path

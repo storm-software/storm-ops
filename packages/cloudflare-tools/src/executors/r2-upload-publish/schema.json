@@ -9,10 +9,10 @@
   ],
   "properties": {
     "path": {
-      "title": "Upload Files path",
+      "title": "Local Uploads File Path",
       "type": "string",
       "format": "path",
-      "description": "The path to the files to upload",
+      "description": "The base path to the files that will be uploaded to the R2 bucket",
       "id": "#path"
     },
     "registry": {

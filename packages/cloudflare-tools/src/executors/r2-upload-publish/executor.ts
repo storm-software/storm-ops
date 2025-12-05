@@ -1,13 +1,14 @@
 import { S3 } from "@aws-sdk/client-s3";
 import {
   createProjectGraphAsync,
-  joinPathFragments,
   ProjectGraph,
   readCachedProjectGraph,
   type ExecutorContext
 } from "@nx/devkit";
 import {
+  correctPaths,
   getConfig,
+  joinPaths,
   writeDebug,
   writeSuccess,
   writeTrace,
@@ -142,12 +143,10 @@ export default async function runExecutor(
       writeDebug(`Starting upload version ${version}`);
     }
 
-    const files = await glob(
-      joinPathFragments(options.path || sourceRoot, "**/*"),
-      {
-        ignore: "**/{*.stories.tsx,*.stories.ts,*.spec.tsx,*.spec.ts}"
-      }
-    );
+    const basePath = options.path || sourceRoot;
+    const files = await glob(joinPaths(basePath, "**/*"), {
+      ignore: "**/{*.stories.tsx,*.stories.ts,*.spec.tsx,*.spec.ts}"
+    });
 
     const internalDependencies = await getInternalDependencies(
       context.projectName,
@@ -252,9 +251,7 @@ export default async function runExecutor(
 
     await Promise.all(
       files.map(async file => {
-        const name = file
-          .replaceAll("\\", "/")
-          .replace(sourceRoot.replaceAll("\\", "/"), "");
+        const name = correctPaths(file).replace(correctPaths(basePath), "");
         const type = mime.lookup(name) || "application/octet-stream";
 
         writeTrace(`Uploading file: ${name} (content-type: ${type})`);

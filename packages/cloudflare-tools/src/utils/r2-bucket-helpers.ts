@@ -8,42 +8,60 @@ import {
   writeDebug,
   writeWarning
 } from "@storm-software/config-tools/logger/console";
+import { joinPaths } from "@storm-software/config-tools/utilities/correct-paths";
 import { createHash } from "node:crypto";
 
-export const r2UploadFile = async (
+/**
+ * Upload a file to a Cloudflare R2 bucket
+ *
+ * @param client - The S3 client configured for Cloudflare R2
+ * @param bucketName - The name of the R2 bucket
+ * @param bucketPath - The path within the R2 bucket where the file will be uploaded
+ * @param fileName - The name of the file to upload
+ * @param version - The version metadata to associate with the file
+ * @param fileContent - The content of the file to upload
+ * @param contentType - The MIME type of the file content
+ * @param isDryRun - Whether to perform a dry run without actual upload
+ */
+export async function r2UploadFile(
   client: S3,
   bucketName: string,
-  projectPath: string,
+  bucketPath: string,
   fileName: string,
   version: string,
   fileContent: string,
-  contentType = "text/plain",
+  contentType = "application/octet-stream",
   isDryRun = false
-) => {
-  const checksum = createHash("sha256").update(fileContent).digest("base64");
-  const fileKey = `${projectPath}/${fileName.startsWith("/") ? fileName.substring(1) : fileName}`;
-  writeDebug(`Uploading file: ${fileKey}`);
+) {
+  writeDebug(`Uploading file: ${joinPaths(bucketPath, fileName)}`);
 
   if (!isDryRun) {
     await client.putObject({
       Bucket: bucketName,
-      Key: fileKey,
-      Body: fileContent.replaceAll(' from "@cyclone-ui/', ' from "../'),
+      Key: joinPaths(bucketPath, fileName),
+      Body: fileContent,
       ContentType: contentType,
       Metadata: {
         version,
-        checksum
+        checksum: createHash("sha256").update(fileContent).digest("base64")
       }
     });
   } else {
-    writeWarning("[Dry run]: skipping upload to the Cyclone Registry.");
+    writeWarning("[Dry run]: Skipping upload to the R2 bucket.");
   }
-};
+}
 
-export const getInternalDependencies = (
+/**
+ * Get internal dependencies of a project from the project graph
+ *
+ * @param projectName - The name of the project
+ * @param graph - The project graph
+ * @returns An array of internal project nodes that are dependencies of the specified project
+ */
+export function getInternalDependencies(
   projectName: string,
   graph: ProjectGraph
-): ProjectGraphProjectNode[] => {
+): ProjectGraphProjectNode[] {
   const allDeps = graph.dependencies[projectName] ?? [];
 
   return Array.from(
@@ -56,4 +74,4 @@ export const getInternalDependencies = (
       []
     )
   );
-};
+}
