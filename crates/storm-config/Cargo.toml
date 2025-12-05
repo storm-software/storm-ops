@@ -11,7 +11,7 @@ name          = 'storm-config'
 publish       = true
 readme        = './README.md'
 repository    = { workspace = true }
-version       = '0.28.23'
+version       = '0.28.24'
 
 [features]
 async = ['async-trait']
@@ -41,7 +41,7 @@ rust-ini        = { version = '^0.21.0', optional = true }
 serde           = { version = '^1.0.203', features = ['derive'] }
 serde_derive    = { version = '^1.0.203', optional = true }
 serde_json      = { version = '^1.0.117' }
-storm-workspace = { path = '../storm-workspace', version = '^0.19.52' }
+storm-workspace = { path = '../storm-workspace', version = '^0.19.53' }
 thiserror       = { version = '^2.0.17' }
 toml            = { version = '^0.8.14', optional = true }
 yaml-rust       = { version = '^0.4.5', optional = true }
