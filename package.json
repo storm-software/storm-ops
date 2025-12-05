@@ -86,7 +86,7 @@
     "view-config": "node ./dist/packages/config-tools/bin/config.cjs"
   },
   "devDependencies": {
-    "@eslint/eslintrc": "^3.3.1",
+    "@eslint/eslintrc": "^3.3.3",
     "@eslint/js": "9.4.0",
     "@ls-lint/ls-lint": "2.2.3",
     "@ltd/j-toml": "catalog:",
@@ -135,7 +135,7 @@
     "tsup": "catalog:",
     "tsx": "catalog:",
     "typescript": "^5.9.3",
-    "typescript-eslint": "^8.48.0",
+    "typescript-eslint": "^8.48.1",
     "verdaccio": "6.0.5",
     "zod": "catalog:",
     "zx": "catalog:"

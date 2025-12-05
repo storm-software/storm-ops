@@ -1,42 +1,79 @@
 {
-  "$schema": "https://json-schema.org/schema",
-  "version": 2,
-  "$id": "r2-upload-publish",
-  "title": "Cloudflare R2 Bucket Upload Publish",
-  "description": "Publish files in a package by uploading the contents to a Cloudflare R2 bucket",
-  "type": "object",
+  "id": "#",
+  "title": "R2 Upload Publish Executor",
+  "description": "A type definition for the R2 Upload Publish executor schema",
+  "requires": ["path", "bucketId", "bucketPath"],
   "properties": {
-    "registry": {
+    "path": {
+      "title": "Upload Files path",
       "type": "string",
-      "description": "The URL of the R2 bucket to publish the package to.",
-      "format": "uri"
+      "format": "path",
+      "description": "The path to the files to upload",
+      "id": "#path"
+    },
+    "registry": {
+      "title": "Registry",
+      "type": "string",
+      "description": "The registry URL to publish to",
+      "id": "#registry"
     },
     "bucketId": {
+      "title": "Bucket ID",
       "type": "string",
-      "description": "The ID of the R2 Bucket in Cloudflare."
+      "description": "The ID of the R2 bucket",
+      "id": "#bucketId"
     },
-    "packageRoot": {
+    "bucketPath": {
+      "title": "Bucket Path",
       "type": "string",
-      "description": "The root directory of the directory (containing a manifest file at its root) to publish. Defaults to the project root."
+      "format": "path",
+      "description": "The path in the R2 bucket to upload files to",
+      "id": "#bucketPath",
+      "default": "/"
     },
-    "tsConfig": {
+    "tag": {
+      "title": "Tag",
       "type": "string",
-      "description": "The path to the `tsconfig.json` file.",
-      "x-completion-type": "file",
-      "x-completion-glob": "tsconfig*.json",
-      "x-priority": "important",
-      "default": "{projectRoot}/tsconfig.json"
+      "description": "The tag to publish with",
+      "id": "#tag",
+      "default": "latest"
     },
-    "dryRun": {
+    "writeMetaJson": {
+      "title": "Write Meta JSON",
       "type": "boolean",
-      "description": "Whether to run the command without actually publishing the package to the registry.",
+      "description": "Write a `meta.json` file to the upload bucket",
+      "id": "#writeMetaJson",
+      "default": false
+    },
+    "clean": {
+      "title": "Clean",
+      "type": "boolean",
+      "description": "Clean the bucket before uploading files",
+      "id": "#clean",
       "default": false
     },
     "verbose": {
+      "title": "Verbose",
       "type": "boolean",
-      "description": "Should write extra log outputs with details from the executor.",
+      "description": "Enable verbose logging",
+      "id": "#verbose",
+      "default": false
+    },
+    "dryRun": {
+      "title": "Dry Run",
+      "type": "boolean",
+      "description": "Perform a dry run",
+      "id": "#dryRun",
       "default": false
     }
   },
-  "required": ["tsConfig", "registry"]
+  "type": "object",
+  "default": {
+    "bucketPath": "/",
+    "tag": "latest",
+    "writeMetaJson": false,
+    "clean": false,
+    "verbose": false,
+    "dryRun": false
+  }
 }
