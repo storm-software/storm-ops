@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - ESLint
 
+## [0.169.54](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.169.54) (12/05/2025)
+
+### Bug Fixes
+
+- **cloudflare-tools:** Resolve issue with usage of invalid bucket path
+  ([722dfa6df](https://github.com/storm-software/storm-ops/commit/722dfa6df))
+
 ## [0.169.53](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.169.53) (12/05/2025)
 
 ### Updated Dependencies

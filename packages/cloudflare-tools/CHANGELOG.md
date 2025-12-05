@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Cloudflare Tools
 
+## [0.71.3](https://github.com/storm-software/storm-ops/releases/tag/cloudflare-tools%400.71.3) (12/05/2025)
+
+### Miscellaneous
+
+- **monorepo:** Update Nx packages to v22.1.3
+  ([3d5e53580](https://github.com/storm-software/storm-ops/commit/3d5e53580))
+
+### Bug Fixes
+
+- **cloudflare-tools:** Resolve issue with usage of invalid bucket path
+  ([722dfa6df](https://github.com/storm-software/storm-ops/commit/722dfa6df))
+
 ## [0.71.2](https://github.com/storm-software/storm-ops/releases/tag/cloudflare-tools%400.71.2) (12/05/2025)
 
 ### Miscellaneous
