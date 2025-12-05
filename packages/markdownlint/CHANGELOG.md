@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Markdownlint
 
+## [0.30.55](https://github.com/storm-software/storm-ops/releases/tag/markdownlint%400.30.55) (12/05/2025)
+
+### Miscellaneous
+
+- **monorepo:** Update the banner image used in markdown files
+  ([fc48aee3c](https://github.com/storm-software/storm-ops/commit/fc48aee3c))
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.55**
+
 ## [0.30.54](https://github.com/storm-software/storm-ops/releases/tag/markdownlint%400.30.54) (12/05/2025)
 
 ### Miscellaneous

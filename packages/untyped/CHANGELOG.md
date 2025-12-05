@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Untyped
 
+## [0.24.36](https://github.com/storm-software/storm-ops/releases/tag/untyped%400.24.36) (12/05/2025)
+
+### Miscellaneous
+
+- **monorepo:** Update the banner image used in markdown files
+  ([fc48aee3c](https://github.com/storm-software/storm-ops/commit/fc48aee3c))
+
+### Updated Dependencies
+
+- Updated **config-tools** to **v1.188.55**
+- Updated **config** to **v1.134.55**
+
 ## [0.24.35](https://github.com/storm-software/storm-ops/releases/tag/untyped%400.24.35) (12/05/2025)
 
 ### Miscellaneous

@@ -2,6 +2,19 @@
 
 # Changelog for Storm Ops - Projen
 
+## [0.21.55](https://github.com/storm-software/storm-ops/releases/tag/projen%400.21.55) (12/05/2025)
+
+### Miscellaneous
+
+- **monorepo:** Update the banner image used in markdown files
+  ([fc48aee3c](https://github.com/storm-software/storm-ops/commit/fc48aee3c))
+
+### Updated Dependencies
+
+- Updated **workspace-tools** to **v1.293.25**
+- Updated **config-tools** to **v1.188.55**
+- Updated **config** to **v1.134.55**
+
 ## [0.21.54](https://github.com/storm-software/storm-ops/releases/tag/projen%400.21.54) (12/05/2025)
 
 ### Miscellaneous

@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Storm Config
 
+## [0.28.27](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.28.27) (12/05/2025)
+
+### Miscellaneous
+
+- **monorepo:** Update the banner image used in markdown files
+  ([fc48aee3c](https://github.com/storm-software/storm-ops/commit/fc48aee3c))
+
+### Updated Dependencies
+
+- Updated **storm-workspace** to **v0.19.56**
+
 ## [0.28.26](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.28.26) (12/05/2025)
 
 ### Miscellaneous

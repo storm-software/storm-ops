@@ -2,6 +2,20 @@
 
 # Changelog for Storm Ops - Esbuild
 
+## [0.53.55](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.53.55) (12/05/2025)
+
+### Miscellaneous
+
+- **monorepo:** Update the banner image used in markdown files
+  ([fc48aee3c](https://github.com/storm-software/storm-ops/commit/fc48aee3c))
+
+### Updated Dependencies
+
+- Updated **config-tools** to **v1.188.55**
+- Updated **build-tools** to **v0.158.55**
+- Updated **config** to **v1.134.55**
+- Updated **tsup** to **v0.2.53**
+
 ## [0.53.54](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.53.54) (12/05/2025)
 
 ### Miscellaneous

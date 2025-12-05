@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Tsup
 
+## [0.2.53](https://github.com/storm-software/storm-ops/releases/tag/tsup%400.2.53) (12/05/2025)
+
+### Miscellaneous
+
+- **monorepo:** Update the banner image used in markdown files
+  ([fc48aee3c](https://github.com/storm-software/storm-ops/commit/fc48aee3c))
+
+### Updated Dependencies
+
+- Updated **config-tools** to **v1.188.55**
+- Updated **build-tools** to **v0.158.55**
+
 ## [0.2.52](https://github.com/storm-software/storm-ops/releases/tag/tsup%400.2.52) (12/05/2025)
 
 ### Miscellaneous

@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Storm Workspace
 
+## [0.19.56](https://github.com/storm-software/storm-ops/releases/tag/storm-workspace%400.19.56) (12/05/2025)
+
+### Miscellaneous
+
+- **monorepo:** Update the banner image used in markdown files
+  ([fc48aee3c](https://github.com/storm-software/storm-ops/commit/fc48aee3c))
+
 ## [0.19.55](https://github.com/storm-software/storm-ops/releases/tag/storm-workspace%400.19.55) (12/05/2025)
 
 ### Miscellaneous

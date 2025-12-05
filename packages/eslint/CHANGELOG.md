@@ -2,6 +2,19 @@
 
 # Changelog for Storm Ops - ESLint
 
+## [0.169.56](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.169.56) (12/05/2025)
+
+### Miscellaneous
+
+- **monorepo:** Update the banner image used in markdown files
+  ([fc48aee3c](https://github.com/storm-software/storm-ops/commit/fc48aee3c))
+
+### Updated Dependencies
+
+- Updated **config-tools** to **v1.188.55**
+- Updated **config** to **v1.134.55**
+- Updated **tsdoc** to **v0.13.55**
+
 ## [0.169.55](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.169.55) (12/05/2025)
 
 ### Miscellaneous

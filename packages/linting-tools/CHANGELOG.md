@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Linting Tools
 
+## [1.132.55](https://github.com/storm-software/storm-ops/releases/tag/linting-tools%401.132.55) (12/05/2025)
+
+### Miscellaneous
+
+- **monorepo:** Update the banner image used in markdown files
+  ([fc48aee3c](https://github.com/storm-software/storm-ops/commit/fc48aee3c))
+
+### Updated Dependencies
+
+- Updated **config-tools** to **v1.188.55**
+- Updated **config** to **v1.134.55**
+
 ## [1.132.54](https://github.com/storm-software/storm-ops/releases/tag/linting-tools%401.132.54) (12/05/2025)
 
 ### Miscellaneous

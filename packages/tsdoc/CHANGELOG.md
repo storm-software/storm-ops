@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Tsdoc
 
+## [0.13.55](https://github.com/storm-software/storm-ops/releases/tag/tsdoc%400.13.55) (12/05/2025)
+
+### Miscellaneous
+
+- **monorepo:** Update the banner image used in markdown files
+  ([fc48aee3c](https://github.com/storm-software/storm-ops/commit/fc48aee3c))
+
 ## [0.13.54](https://github.com/storm-software/storm-ops/releases/tag/tsdoc%400.13.54) (12/05/2025)
 
 ### Miscellaneous

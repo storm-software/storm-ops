@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Create Storm Workspace
 
+## [1.97.55](https://github.com/storm-software/storm-ops/releases/tag/create-storm-workspace%401.97.55) (12/05/2025)
+
+### Miscellaneous
+
+- **monorepo:** Update the banner image used in markdown files
+  ([fc48aee3c](https://github.com/storm-software/storm-ops/commit/fc48aee3c))
+
+### Updated Dependencies
+
+- Updated **config-tools** to **v1.188.55**
+
 ## [1.97.54](https://github.com/storm-software/storm-ops/releases/tag/create-storm-workspace%401.97.54) (12/05/2025)
 
 ### Miscellaneous

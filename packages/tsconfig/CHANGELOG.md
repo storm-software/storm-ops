@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Tsconfig
 
+## [0.47.55](https://github.com/storm-software/storm-ops/releases/tag/tsconfig%400.47.55) (12/05/2025)
+
+### Miscellaneous
+
+- **monorepo:** Update the banner image used in markdown files
+  ([fc48aee3c](https://github.com/storm-software/storm-ops/commit/fc48aee3c))
+
 ## [0.47.54](https://github.com/storm-software/storm-ops/releases/tag/tsconfig%400.47.54) (12/05/2025)
 
 ### Miscellaneous

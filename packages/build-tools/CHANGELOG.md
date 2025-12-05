@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Build Tools
 
+## [0.158.55](https://github.com/storm-software/storm-ops/releases/tag/build-tools%400.158.55) (12/05/2025)
+
+### Miscellaneous
+
+- **monorepo:** Update the banner image used in markdown files
+  ([fc48aee3c](https://github.com/storm-software/storm-ops/commit/fc48aee3c))
+
+### Updated Dependencies
+
+- Updated **config-tools** to **v1.188.55**
+- Updated **config** to **v1.134.55**
+
 ## [0.158.54](https://github.com/storm-software/storm-ops/releases/tag/build-tools%400.158.54) (12/05/2025)
 
 ### Miscellaneous

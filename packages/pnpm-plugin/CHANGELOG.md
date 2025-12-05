@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Pnpm Plugin
 
+## [0.1.12](https://github.com/storm-software/storm-ops/releases/tag/pnpm-plugin%400.1.12) (12/05/2025)
+
+### Miscellaneous
+
+- **monorepo:** Update the banner image used in markdown files
+  ([fc48aee3c](https://github.com/storm-software/storm-ops/commit/fc48aee3c))
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.55**
+
 ## [0.1.11](https://github.com/storm-software/storm-ops/releases/tag/pnpm-plugin%400.1.11) (12/05/2025)
 
 ### Miscellaneous

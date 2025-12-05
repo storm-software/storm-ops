@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Testing Tools
 
+## [1.119.55](https://github.com/storm-software/storm-ops/releases/tag/testing-tools%401.119.55) (12/05/2025)
+
+### Miscellaneous
+
+- **monorepo:** Update the banner image used in markdown files
+  ([fc48aee3c](https://github.com/storm-software/storm-ops/commit/fc48aee3c))
+
 ## [1.119.54](https://github.com/storm-software/storm-ops/releases/tag/testing-tools%401.119.54) (12/05/2025)
 
 ### Miscellaneous
