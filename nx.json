@@ -112,7 +112,8 @@
       "plugin": "./dist/plugins/typescript/index.js",
       "options": {
         "useTsGo": false,
-        "enableTypeCheck": false
+        "enableTypeCheck": false,
+        "projectLinks": "alias"
       }
     },
     "./dist/plugins/cloudflare/index.js",

@@ -11,14 +11,20 @@ import { readNxJson } from "nx/src/config/nx-json.js";
 import type { ProjectConfiguration } from "nx/src/config/workspace-json-project-json";
 import { readTargetsFromPackageJson } from "nx/src/utils/package-json";
 import type { PackageJson } from "pkg-types";
+import {
+  BaseTypescriptPluginOptions,
+  TypescriptProjectLinkingType
+} from "../../types";
 import { getRoot } from "../../utils/plugin-helpers";
-import { setDefaultProjectTags } from "../../utils/project-tags";
+import {
+  addProjectTag,
+  ProjectTagConstants,
+  setDefaultProjectTags
+} from "../../utils/project-tags";
 
 export const name = "storm-software/typescript/tsup";
 
-export type TsupPluginOptions = {
-  useRootDist?: boolean;
-};
+export type TsupPluginOptions = BaseTypescriptPluginOptions;
 
 export const createNodesV2: CreateNodesV2<TsupPluginOptions> = [
   "**/tsup.config.ts",
@@ -45,16 +51,6 @@ export const createNodesV2: CreateNodesV2<TsupPluginOptions> = [
             return {};
           }
 
-          if (
-            !packageJson.devDependencies?.tsup &&
-            !packageJson.dependencies?.tsup
-          ) {
-            console.warn(
-              `[storm-software/typescript/tsup]: No "tsup" dependency or devDependency found in package.json: ${configFile}
-Please add it to your dependencies by running \`pnpm add tsup -D --filter="${packageJson.name}"\``
-            );
-          }
-
           const project = createProjectFromPackageJsonNextToProjectJson(
             join(projectRoot, "project.json"),
             packageJson
@@ -79,7 +75,11 @@ Please add it to your dependencies by running \`pnpm add tsup -D --filter="${pac
             relativeConfig = relativeConfig.slice(1);
           }
 
-          targets[options?.useRootDist !== false ? "build-base" : "build"] = {
+          targets[
+            options?.projectLinks === TypescriptProjectLinkingType.ALIAS
+              ? "build-base"
+              : "build"
+          ] = {
             cache: true,
             inputs: [
               `{workspaceRoot}/${configFile}`,
@@ -95,7 +95,7 @@ Please add it to your dependencies by running \`pnpm add tsup -D --filter="${pac
             }
           };
 
-          if (options?.useRootDist !== false) {
+          if (options?.projectLinks === TypescriptProjectLinkingType.ALIAS) {
             targets.build = {
               cache: true,
               inputs: [
@@ -110,8 +110,12 @@ Please add it to your dependencies by running \`pnpm add tsup -D --filter="${pac
               options: {
                 commands: [
                   `pnpm copyfiles LICENSE dist/${root}`,
-                  `pnpm copyfiles --up=2 ./${root}/*.md ./${root}/package.json dist/${root}`,
-                  `pnpm copyfiles --up=3 "./${root}/dist/**/*" dist/${root}/dist`
+                  `pnpm copyfiles --up=2 ./${root}/*.md ./${
+                    root
+                  }/package.json dist/${root}`,
+                  `pnpm copyfiles --up=3 "./${root}/dist/**/*" dist/${
+                    root
+                  }/dist`
                 ]
               }
             };
@@ -133,6 +137,21 @@ Please add it to your dependencies by running \`pnpm add tsup -D --filter="${pac
           };
 
           setDefaultProjectTags(project, name);
+
+          addProjectTag(
+            project,
+            ProjectTagConstants.ProjectLinking.TAG_ID,
+            options?.projectLinks === TypescriptProjectLinkingType.ALIAS
+              ? ProjectTagConstants.ProjectLinking.ALIAS
+              : ProjectTagConstants.ProjectLinking.REFERENCE,
+            { overwrite: true }
+          );
+          addProjectTag(
+            project,
+            ProjectTagConstants.Builder.TAG_ID,
+            ProjectTagConstants.Builder.TSUP,
+            { overwrite: true }
+          );
 
           return {
             projects: {

@@ -3,6 +3,23 @@ import type { Options } from "tsup";
 import { BaseExecutorSchema } from "./base/base-executor.schema.d";
 import { BaseGeneratorSchema } from "./base/base-generator.schema.d";
 
+export enum TypescriptProjectLinkingType {
+  ALIAS = "alias",
+  REFERENCE = "reference"
+}
+
+export interface BaseTypescriptPluginOptions {
+  /**
+   * The project linking type to use for TypeScript projects.
+   *
+   * @see https://nx.dev/docs/concepts/typescript-project-linking
+   * @see https://nx.dev/docs/technologies/typescript/guides/switch-to-workspaces-project-references
+   *
+   * @defaultValue "reference"
+   */
+  projectLinks?: TypescriptProjectLinkingType;
+}
+
 export interface TsupContext {
   projectRoot: string;
   sourceRoot: string;

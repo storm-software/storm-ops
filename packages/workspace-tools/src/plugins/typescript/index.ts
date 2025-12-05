@@ -16,6 +16,10 @@ import type { PackageJson as NxPackageJson } from "nx/src/utils/package-json";
 import { readTargetsFromPackageJson } from "nx/src/utils/package-json";
 import type { PackageJson } from "pkg-types";
 import { readTSConfig } from "pkg-types";
+import {
+  BaseTypescriptPluginOptions,
+  TypescriptProjectLinkingType
+} from "../../types";
 import { getProjectPlatform, getRoot } from "../../utils/plugin-helpers";
 import {
   addProjectTag,
@@ -29,7 +33,7 @@ export const name = "storm-software/typescript";
 /**
  * Options for configuring the TypeScript plugin.
  */
-export interface TypeScriptPluginOptions {
+export interface TypeScriptPluginOptions extends BaseTypescriptPluginOptions {
   /**
    * Whether to include applications in the TypeScript project configuration.
    *
@@ -443,6 +447,14 @@ export const createNodesV2: CreateNodesV2<TypeScriptPluginOptions> = [
             project,
             ProjectTagConstants.Language.TAG_ID,
             ProjectTagConstants.Language.TYPESCRIPT,
+            { overwrite: true }
+          );
+          addProjectTag(
+            project,
+            ProjectTagConstants.ProjectLinking.TAG_ID,
+            options?.projectLinks === TypescriptProjectLinkingType.ALIAS
+              ? ProjectTagConstants.ProjectLinking.ALIAS
+              : ProjectTagConstants.ProjectLinking.REFERENCE,
             { overwrite: true }
           );
 

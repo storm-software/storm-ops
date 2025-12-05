@@ -5,7 +5,7 @@ import {
   ProjectTagPlatformValue,
   ProjectTagRegistryValue,
   ProjectTagTypeValue,
-  ProjectTagVariant,
+  ProjectTagVariant
 } from "../types";
 
 export const ProjectTagConstants = {
@@ -13,22 +13,28 @@ export const ProjectTagConstants = {
     TAG_ID: "language" as ProjectTagVariant,
 
     TYPESCRIPT: "typescript" as ProjectTagLanguageValue,
-    RUST: "rust" as ProjectTagLanguageValue,
+    RUST: "rust" as ProjectTagLanguageValue
   },
   ProjectType: {
     TAG_ID: "type" as ProjectTagVariant,
 
     LIBRARY: "library" as ProjectTagTypeValue,
-    APPLICATION: "application" as ProjectTagTypeValue,
+    APPLICATION: "application" as ProjectTagTypeValue
+  },
+  ProjectLinking: {
+    TAG_ID: "project-linking" as ProjectTagVariant,
+
+    REFERENCE: "reference" as string,
+    ALIAS: "alias" as string
   },
   DistStyle: {
     TAG_ID: "dist-style" as ProjectTagVariant,
 
     NORMAL: "normal" as ProjectTagDistStyleValue,
-    CLEAN: "clean" as ProjectTagDistStyleValue,
+    CLEAN: "clean" as ProjectTagDistStyleValue
   },
   Provider: {
-    TAG_ID: "provider" as ProjectTagVariant,
+    TAG_ID: "provider" as ProjectTagVariant
   },
   Platform: {
     TAG_ID: "platform" as ProjectTagVariant,
@@ -36,7 +42,7 @@ export const ProjectTagConstants = {
     NODE: "node" as ProjectTagPlatformValue,
     BROWSER: "browser" as ProjectTagPlatformValue,
     NEUTRAL: "neutral" as ProjectTagPlatformValue,
-    WORKER: "worker" as ProjectTagPlatformValue,
+    WORKER: "worker" as ProjectTagPlatformValue
   },
   Registry: {
     TAG_ID: "registry" as ProjectTagVariant,
@@ -44,11 +50,20 @@ export const ProjectTagConstants = {
     CARGO: "cargo" as ProjectTagRegistryValue,
     NPM: "npm" as ProjectTagRegistryValue,
     CONTAINER: "container" as ProjectTagRegistryValue,
-    CYCLONE: "cyclone" as ProjectTagRegistryValue,
+    CYCLONE: "cyclone" as ProjectTagRegistryValue
   },
   Plugin: {
-    TAG_ID: "plugin" as ProjectTagVariant,
+    TAG_ID: "plugin" as ProjectTagVariant
   },
+  Builder: {
+    TAG_ID: "builder" as ProjectTagVariant,
+
+    TSC: "tsc" as ProjectTagLanguageValue,
+    TSUP: "tsup" as ProjectTagLanguageValue,
+    TSDOWN: "tsdown" as ProjectTagLanguageValue,
+    VITE: "vite" as ProjectTagLanguageValue,
+    ROLLDOWN: "rolldown" as ProjectTagLanguageValue
+  }
 } as const;
 
 export const formatProjectTag = (variant: ProjectTagVariant, value: string) => {
@@ -57,19 +72,19 @@ export const formatProjectTag = (variant: ProjectTagVariant, value: string) => {
 
 export const hasProjectTag = (
   project: ProjectConfiguration,
-  variant: ProjectTagVariant,
+  variant: ProjectTagVariant
 ) => {
   project.tags = project.tags ?? [];
 
   const prefix = formatProjectTag(variant, "");
   return project.tags.some(
-    (tag) => tag.startsWith(prefix) && tag.length > prefix.length,
+    tag => tag.startsWith(prefix) && tag.length > prefix.length
   );
 };
 
 export const getProjectTag = (
   project: ProjectConfiguration,
-  variant: ProjectTagVariant,
+  variant: ProjectTagVariant
 ): string | undefined => {
   if (!hasProjectTag(project, variant)) {
     return undefined;
@@ -77,7 +92,7 @@ export const getProjectTag = (
 
   project.tags = project.tags ?? [];
   const prefix = formatProjectTag(variant, "");
-  const tag = project.tags.find((tag) => tag.startsWith(prefix));
+  const tag = project.tags.find(tag => tag.startsWith(prefix));
 
   return tag?.replace(prefix, "");
 };
@@ -85,7 +100,7 @@ export const getProjectTag = (
 export const isEqualProjectTag = (
   project: ProjectConfiguration,
   variant: ProjectTagVariant,
-  value: string,
+  value: string
 ): boolean => {
   const tag = getProjectTag(project, variant);
 
@@ -99,13 +114,13 @@ export const addProjectTag = (
   options: {
     overwrite?: boolean;
   } = {
-    overwrite: false,
-  },
+    overwrite: false
+  }
 ) => {
   project.tags = project.tags ?? [];
   if (options.overwrite || !hasProjectTag(project, variant)) {
     project.tags = project.tags.filter(
-      (tag) => !tag.startsWith(formatProjectTag(variant, "")),
+      tag => !tag.startsWith(formatProjectTag(variant, ""))
     );
     project.tags.push(formatProjectTag(variant, value));
   }
@@ -113,17 +128,17 @@ export const addProjectTag = (
 
 export const addPluginProjectTag = (
   project: ProjectConfiguration,
-  plugin: string,
+  plugin: string
 ) => {
   project.tags = project.tags ?? [];
   project.tags.push(
-    formatProjectTag(ProjectTagConstants.Plugin.TAG_ID, plugin),
+    formatProjectTag(ProjectTagConstants.Plugin.TAG_ID, plugin)
   );
 };
 
 export const setDefaultProjectTags = (
   project: ProjectConfiguration,
-  plugin?: string,
+  plugin?: string
 ) => {
   project.tags = project.tags ?? [];
 
@@ -133,7 +148,7 @@ export const setDefaultProjectTags = (
     project.projectType === "application"
       ? ProjectTagConstants.ProjectType.APPLICATION
       : ProjectTagConstants.ProjectType.LIBRARY,
-    { overwrite: true },
+    { overwrite: true }
   );
   addProjectTag(
     project,
@@ -141,7 +156,7 @@ export const setDefaultProjectTags = (
     project.targets && Object.keys(project.targets).includes("clean-package")
       ? ProjectTagConstants.DistStyle.CLEAN
       : ProjectTagConstants.DistStyle.NORMAL,
-    { overwrite: true },
+    { overwrite: true }
   );
   addProjectTag(
     project,
@@ -153,7 +168,7 @@ export const setDefaultProjectTags = (
         : project.targets?.build?.options.platform === "browser"
           ? ProjectTagConstants.Platform.BROWSER
           : ProjectTagConstants.Platform.NEUTRAL,
-    { overwrite: false },
+    { overwrite: false }
   );
 
   if (plugin) {
