@@ -2,7 +2,11 @@
   "id": "#",
   "title": "R2 Upload Publish Executor",
   "description": "A type definition for the R2 Upload Publish executor schema",
-  "requires": ["path", "bucketId", "bucketPath"],
+  "requires": [
+    "path",
+    "bucketId",
+    "bucketPath"
+  ],
   "properties": {
     "path": {
       "title": "Upload Files path",
