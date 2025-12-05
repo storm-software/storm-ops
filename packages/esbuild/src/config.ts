@@ -1,4 +1,7 @@
-import { DEFAULT_COMPILED_BANNER } from "@storm-software/build-tools";
+import {
+  DEFAULT_CSS_BANNER,
+  DEFAULT_JS_BANNER
+} from "@storm-software/build-tools";
 import { ESBuildOptions } from "./types";
 
 export const DEFAULT_BUILD_OPTIONS: Required<
@@ -58,7 +61,7 @@ export const DEFAULT_BUILD_OPTIONS: Required<
     ".woff2": "file"
   },
   banner: {
-    js: DEFAULT_COMPILED_BANNER,
-    css: DEFAULT_COMPILED_BANNER
+    js: DEFAULT_JS_BANNER,
+    css: DEFAULT_CSS_BANNER
   }
 };
