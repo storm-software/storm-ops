@@ -20,7 +20,7 @@
 - Updated **npm-tools** to **v0.6.8**
 - Updated **config** to **v1.134.52**
 
-![Storm Software's logo banner](https://public.storm-cdn.com/brand-banner.png)
+![Storm Software's logo banner](https://public.storm-cdn.com/storm-software/banner-1280x320-dark-optimized.gif)
 
 # Changelog for Storm Ops - Pnpm Tools
 

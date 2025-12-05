@@ -25,7 +25,7 @@
 - Updated **config** to **v1.134.52**
 - Updated **tsdoc** to **v0.13.52**
 
-![Storm Software's logo banner](https://public.storm-cdn.com/brand-banner.png)
+![Storm Software's logo banner](https://public.storm-cdn.com/storm-software/banner-1280x320-dark-optimized.gif)
 
 # Changelog for Storm Ops - ESLint
 

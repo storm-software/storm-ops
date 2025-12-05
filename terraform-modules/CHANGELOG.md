@@ -1,4 +1,4 @@
-![Storm Software's logo banner](https://public.storm-cdn.com/brand-banner.png)
+![Storm Software's logo banner](https://public.storm-cdn.com/storm-software/banner-1280x320-dark-optimized.gif)
 
 # Changelog for Storm Ops - Terraform Modules
 
