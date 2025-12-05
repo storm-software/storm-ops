@@ -1,4 +1,13 @@
-![Storm Software's logo banner](https://public.storm-cdn.com/storm-software/banner-1280x320-dark-optimized.gif)
+![Storm Software's logo banner](https://public.storm-cdn.com/storm-software/banner-1280x320-optimized.gif)
+
+# Changelog for Storm Ops - Testing Tools
+
+## [1.119.54](https://github.com/storm-software/storm-ops/releases/tag/testing-tools%401.119.54) (12/05/2025)
+
+### Miscellaneous
+
+- **monorepo:** Update pnpm to v10.24.0
+  ([05b011cc8](https://github.com/storm-software/storm-ops/commit/05b011cc8))
 
 # Changelog for Storm Ops - Testing Tools
 

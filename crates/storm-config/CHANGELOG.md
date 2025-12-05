@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Storm Config
 
+## [0.28.26](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.28.26) (12/05/2025)
+
+### Miscellaneous
+
+- **monorepo:** Update pnpm to v10.24.0
+  ([05b011cc8](https://github.com/storm-software/storm-ops/commit/05b011cc8))
+
+### Updated Dependencies
+
+- Updated **storm-workspace** to **v0.19.55**
+
 ## [0.28.25](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.28.25) (12/05/2025)
 
 ### Updated Dependencies

@@ -1,6 +1,13 @@
-![Storm Software's logo banner](https://public.storm-cdn.com/storm-software/banner-1280x320-dark-optimized.gif)
+![Storm Software's logo banner](https://public.storm-cdn.com/storm-software/banner-1280x320-optimized.gif)
 
 # Changelog for Storm Ops - Storm Workspace
+
+## [0.19.55](https://github.com/storm-software/storm-ops/releases/tag/storm-workspace%400.19.55) (12/05/2025)
+
+### Miscellaneous
+
+- **monorepo:** Update pnpm to v10.24.0
+  ([05b011cc8](https://github.com/storm-software/storm-ops/commit/05b011cc8))
 
 ## [0.19.51](https://github.com/storm-software/storm-ops/releases/tag/storm-workspace%400.19.51) (12/04/2025)
 
