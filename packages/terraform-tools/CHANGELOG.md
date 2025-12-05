@@ -2,6 +2,19 @@
 
 # Changelog for Storm Ops - Terraform Tools
 
+## [0.66.56](https://github.com/storm-software/storm-ops/releases/tag/terraform-tools%400.66.56) (12/05/2025)
+
+### Miscellaneous
+
+- **monorepo:** Reformat README markdown files
+  ([67f5cb4ca](https://github.com/storm-software/storm-ops/commit/67f5cb4ca))
+
+### Updated Dependencies
+
+- Updated **workspace-tools** to **v1.294.0**
+- Updated **config-tools** to **v1.188.56**
+- Updated **config** to **v1.134.56**
+
 ## [0.66.55](https://github.com/storm-software/storm-ops/releases/tag/terraform-tools%400.66.55) (12/05/2025)
 
 ### Miscellaneous

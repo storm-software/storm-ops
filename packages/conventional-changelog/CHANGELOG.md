@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Conventional Changelog
 
+## [0.3.56](https://github.com/storm-software/storm-ops/releases/tag/conventional-changelog%400.3.56) (12/05/2025)
+
+### Miscellaneous
+
+- **monorepo:** Reformat README markdown files
+  ([67f5cb4ca](https://github.com/storm-software/storm-ops/commit/67f5cb4ca))
+
+### Updated Dependencies
+
+- Updated **config-tools** to **v1.188.56**
+- Updated **config** to **v1.134.56**
+
 ## [0.3.55](https://github.com/storm-software/storm-ops/releases/tag/conventional-changelog%400.3.55) (12/05/2025)
 
 ### Miscellaneous

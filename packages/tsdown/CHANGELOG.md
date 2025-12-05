@@ -2,6 +2,19 @@
 
 # Changelog for Storm Ops - Tsdown
 
+## [0.45.56](https://github.com/storm-software/storm-ops/releases/tag/tsdown%400.45.56) (12/05/2025)
+
+### Miscellaneous
+
+- **monorepo:** Reformat README markdown files
+  ([67f5cb4ca](https://github.com/storm-software/storm-ops/commit/67f5cb4ca))
+
+### Updated Dependencies
+
+- Updated **config-tools** to **v1.188.56**
+- Updated **build-tools** to **v0.158.56**
+- Updated **config** to **v1.134.56**
+
 ## [0.45.55](https://github.com/storm-software/storm-ops/releases/tag/tsdown%400.45.55) (12/05/2025)
 
 ### Miscellaneous

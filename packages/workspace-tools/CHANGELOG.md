@@ -2,6 +2,30 @@
 
 # Changelog for Storm Ops - Workspace Tools
 
+## [1.294.0](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.294.0) (12/05/2025)
+
+### Miscellaneous
+
+- **monorepo:** Reformat README markdown files
+  ([67f5cb4ca](https://github.com/storm-software/storm-ops/commit/67f5cb4ca))
+
+### Features
+
+- **workspace-tools:** Added `projectLinks` option to Typescript plugins
+  ([bb99b8531](https://github.com/storm-software/storm-ops/commit/bb99b8531))
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.56**
+- Updated **config-tools** to **v1.188.56**
+- Updated **pnpm-tools** to **v0.6.56**
+- Updated **npm-tools** to **v0.6.12**
+- Updated **prettier** to **v0.57.56**
+- Updated **esbuild** to **v0.53.56**
+- Updated **unbuild** to **v0.57.56**
+- Updated **config** to **v1.134.56**
+- Updated **tsdown** to **v0.45.56**
+
 ## [1.293.25](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.293.25) (12/05/2025)
 
 ### Miscellaneous

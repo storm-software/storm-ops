@@ -2,6 +2,19 @@
 
 # Changelog for Storm Ops - Npm Tools
 
+## [0.6.12](https://github.com/storm-software/storm-ops/releases/tag/npm-tools%400.6.12) (12/05/2025)
+
+### Miscellaneous
+
+- **monorepo:** Reformat README markdown files
+  ([67f5cb4ca](https://github.com/storm-software/storm-ops/commit/67f5cb4ca))
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.56**
+- Updated **config-tools** to **v1.188.56**
+- Updated **config** to **v1.134.56**
+
 ## [0.6.11](https://github.com/storm-software/storm-ops/releases/tag/npm-tools%400.6.11) (12/05/2025)
 
 ### Miscellaneous

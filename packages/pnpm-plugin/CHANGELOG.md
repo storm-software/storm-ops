@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Pnpm Plugin
 
+## [0.1.13](https://github.com/storm-software/storm-ops/releases/tag/pnpm-plugin%400.1.13) (12/05/2025)
+
+### Miscellaneous
+
+- **monorepo:** Reformat README markdown files
+  ([67f5cb4ca](https://github.com/storm-software/storm-ops/commit/67f5cb4ca))
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.56**
+
 ## [0.1.12](https://github.com/storm-software/storm-ops/releases/tag/pnpm-plugin%400.1.12) (12/05/2025)
 
 ### Miscellaneous
