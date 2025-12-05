@@ -2,6 +2,20 @@
 
 # Changelog for Storm Ops - Build Tools
 
+## [0.158.51](https://github.com/storm-software/storm-ops/releases/tag/build-tools%400.158.51) (12/04/2025)
+
+### Miscellaneous
+
+- **build-tools:** Update the default built file banners
+  ([b0382264c](https://github.com/storm-software/storm-ops/commit/b0382264c))
+- **monorepo:** Update the `README.md` files' banner images
+  ([fd0a3065d](https://github.com/storm-software/storm-ops/commit/fd0a3065d))
+
+### Updated Dependencies
+
+- Updated **config-tools** to **v1.188.51**
+- Updated **config** to **v1.134.51**
+
 ## [0.158.50](https://github.com/storm-software/storm-ops/releases/tag/build-tools%400.158.50) (11/27/2025)
 
 ### Miscellaneous

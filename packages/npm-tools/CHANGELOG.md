@@ -2,6 +2,19 @@
 
 # Changelog for Storm Ops - Npm Tools
 
+## [0.6.7](https://github.com/storm-software/storm-ops/releases/tag/npm-tools%400.6.7) (12/04/2025)
+
+### Miscellaneous
+
+- **monorepo:** Update the `README.md` files' banner images
+  ([fd0a3065d](https://github.com/storm-software/storm-ops/commit/fd0a3065d))
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.51**
+- Updated **config-tools** to **v1.188.51**
+- Updated **config** to **v1.134.51**
+
 ## [0.6.6](https://github.com/storm-software/storm-ops/releases/tag/npm-tools%400.6.6) (11/27/2025)
 
 ### Miscellaneous

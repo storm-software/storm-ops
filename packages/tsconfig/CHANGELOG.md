@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Tsconfig
 
+## [0.47.51](https://github.com/storm-software/storm-ops/releases/tag/tsconfig%400.47.51) (12/04/2025)
+
+### Miscellaneous
+
+- **monorepo:** Update the `README.md` files' banner images
+  ([fd0a3065d](https://github.com/storm-software/storm-ops/commit/fd0a3065d))
+
 ## [0.47.50](https://github.com/storm-software/storm-ops/releases/tag/tsconfig%400.47.50) (11/27/2025)
 
 ### Miscellaneous

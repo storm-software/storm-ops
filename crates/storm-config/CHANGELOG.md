@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Storm Config
 
+## [0.28.22](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.28.22) (12/04/2025)
+
+### Miscellaneous
+
+- **monorepo:** Update the `README.md` files' banner images
+  ([fd0a3065d](https://github.com/storm-software/storm-ops/commit/fd0a3065d))
+
+### Updated Dependencies
+
+- Updated **storm-workspace** to **v0.19.51**
+
 ## [0.28.21](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.28.21) (11/27/2025)
 
 ### Updated Dependencies

@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Storm Workspace
 
+## [0.19.51](https://github.com/storm-software/storm-ops/releases/tag/storm-workspace%400.19.51) (12/04/2025)
+
+### Miscellaneous
+
+- **monorepo:** Update the `README.md` files' banner images
+  ([fd0a3065d](https://github.com/storm-software/storm-ops/commit/fd0a3065d))
+
 ## [0.19.38](https://github.com/storm-software/storm-ops/releases/tag/storm-workspace%400.19.38) (11/14/2025)
 
 ### Miscellaneous

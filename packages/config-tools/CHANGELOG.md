@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Config Tools
 
+## [1.188.51](https://github.com/storm-software/storm-ops/releases/tag/config-tools%401.188.51) (12/04/2025)
+
+### Miscellaneous
+
+- **monorepo:** Update the `README.md` files' banner images
+  ([fd0a3065d](https://github.com/storm-software/storm-ops/commit/fd0a3065d))
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.51**
+- Updated **config** to **v1.134.51**
+
 ## [1.188.50](https://github.com/storm-software/storm-ops/releases/tag/config-tools%401.188.50) (11/27/2025)
 
 ### Miscellaneous

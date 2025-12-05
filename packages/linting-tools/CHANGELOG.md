@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Linting Tools
 
+## [1.132.51](https://github.com/storm-software/storm-ops/releases/tag/linting-tools%401.132.51) (12/04/2025)
+
+### Miscellaneous
+
+- **monorepo:** Update the `README.md` files' banner images
+  ([fd0a3065d](https://github.com/storm-software/storm-ops/commit/fd0a3065d))
+
+### Updated Dependencies
+
+- Updated **config-tools** to **v1.188.51**
+- Updated **config** to **v1.134.51**
+
 ## [1.132.50](https://github.com/storm-software/storm-ops/releases/tag/linting-tools%401.132.50) (11/27/2025)
 
 ### Miscellaneous

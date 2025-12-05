@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Pnpm Plugin
 
+## [0.1.8](https://github.com/storm-software/storm-ops/releases/tag/pnpm-plugin%400.1.8) (12/04/2025)
+
+### Miscellaneous
+
+- **monorepo:** Update the `README.md` files' banner images
+  ([fd0a3065d](https://github.com/storm-software/storm-ops/commit/fd0a3065d))
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.51**
+
 ## [0.1.7](https://github.com/storm-software/storm-ops/releases/tag/pnpm-plugin%400.1.7) (11/27/2025)
 
 ### Miscellaneous

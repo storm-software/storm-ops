@@ -2,6 +2,22 @@
 
 # Changelog for Storm Ops - Esbuild
 
+## [0.53.51](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.53.51) (12/04/2025)
+
+### Miscellaneous
+
+- **build-tools:** Update the default built file banners
+  ([b0382264c](https://github.com/storm-software/storm-ops/commit/b0382264c))
+- **monorepo:** Update the `README.md` files' banner images
+  ([fd0a3065d](https://github.com/storm-software/storm-ops/commit/fd0a3065d))
+
+### Updated Dependencies
+
+- Updated **config-tools** to **v1.188.51**
+- Updated **build-tools** to **v0.158.51**
+- Updated **config** to **v1.134.51**
+- Updated **tsup** to **v0.2.49**
+
 ## [0.53.50](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.53.50) (11/27/2025)
 
 ### Miscellaneous

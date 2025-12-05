@@ -2,6 +2,20 @@
 
 # Changelog for Storm Ops - Tsup
 
+## [0.2.49](https://github.com/storm-software/storm-ops/releases/tag/tsup%400.2.49) (12/04/2025)
+
+### Miscellaneous
+
+- **build-tools:** Update the default built file banners
+  ([b0382264c](https://github.com/storm-software/storm-ops/commit/b0382264c))
+- **monorepo:** Update the `README.md` files' banner images
+  ([fd0a3065d](https://github.com/storm-software/storm-ops/commit/fd0a3065d))
+
+### Updated Dependencies
+
+- Updated **config-tools** to **v1.188.51**
+- Updated **build-tools** to **v0.158.51**
+
 ## [0.2.48](https://github.com/storm-software/storm-ops/releases/tag/tsup%400.2.48) (11/27/2025)
 
 ### Miscellaneous
