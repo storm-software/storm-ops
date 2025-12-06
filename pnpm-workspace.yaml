@@ -20,9 +20,9 @@ catalog:
   '@nx/webpack': ^22.1.3
   '@nx/workspace': ^22.1.3
   '@pnpm/types': ^1001.0.1
-  '@swc-node/register': 1.10.9
-  '@swc/core': 1.7.26
-  '@swc/helpers': 0.5.13
+  '@swc-node/register': 1.11.1
+  '@swc/core': 1.15.3
+  '@swc/helpers': 0.5.17
   '@types/node': ^24.10.1
   '@typescript-eslint/eslint-plugin': ^8.48.1
   '@typescript-eslint/parser': ^8.48.1
@@ -35,23 +35,23 @@ catalog:
   cspell: ^8.19.4
   date-fns: ^4.1.0
   defu: 6.1.4
-  esbuild: ^0.25.12
+  esbuild: ^0.27.1
   eslint: ^9.39.1
   glob: ^11.1.0
-  jest: 30.0.5
-  jest-environment-jsdom: 30.0.5
-  jest-environment-node: 30.0.5
-  jest-resolve: 30.0.5
-  jest-util: 30.0.5
-  jiti: 2.4.2
+  jest: 30.2.0
+  jest-environment-jsdom: 30.2.0
+  jest-environment-node: 30.2.0
+  jest-resolve: 30.2.0
+  jest-util: 30.2.0
+  jiti: 2.6.1
   knip: ^5.71.0
   mlly: ^1.8.0
   nx: ^22.1.3
   pkg-types: ^1.3.1
   prettier: ^3.7.4
-  rimraf: 6.0.1
+  rimraf: 6.1.2
   rollup: ^4.53.3
-  tsdown: ^0.15.12
+  tsdown: ^0.17.0
   tslib: ^2.8.1
   tsup: 8.4.0
   tsx: ^4.21.0
