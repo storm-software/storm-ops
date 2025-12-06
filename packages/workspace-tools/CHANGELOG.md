@@ -2,6 +2,33 @@
 
 # Changelog for Storm Ops - Workspace Tools
 
+## [1.294.3](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.294.3) (12/06/2025)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+  ([65dcadce7](https://github.com/storm-software/storm-ops/commit/65dcadce7))
+
+### Bug Fixes
+
+- **workspace-tools:** Resolve issue with project root path in `tsdown` build
+  plugin
+  ([ae26759bd](https://github.com/storm-software/storm-ops/commit/ae26759bd))
+- **workspace-tools:** Resolve issue with null pointer reference in plugin
+  ([c48d19705](https://github.com/storm-software/storm-ops/commit/c48d19705))
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.59**
+- Updated **config-tools** to **v1.188.59**
+- Updated **pnpm-tools** to **v0.6.59**
+- Updated **npm-tools** to **v0.6.15**
+- Updated **prettier** to **v0.57.59**
+- Updated **esbuild** to **v0.53.59**
+- Updated **unbuild** to **v0.57.59**
+- Updated **config** to **v1.134.59**
+- Updated **tsdown** to **v0.45.59**
+
 ## [1.294.2](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.294.2) (12/06/2025)
 
 ### Bug Fixes
