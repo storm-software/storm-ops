@@ -2,6 +2,25 @@
 
 # Changelog for Storm Ops - Workspace Tools
 
+## [1.294.2](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.294.2) (12/06/2025)
+
+### Bug Fixes
+
+- **workspace-tools:** Resolve issue with null pointer reference in plugin
+  ([c48d19705](https://github.com/storm-software/storm-ops/commit/c48d19705))
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.58**
+- Updated **config-tools** to **v1.188.58**
+- Updated **pnpm-tools** to **v0.6.58**
+- Updated **npm-tools** to **v0.6.14**
+- Updated **prettier** to **v0.57.58**
+- Updated **esbuild** to **v0.53.58**
+- Updated **unbuild** to **v0.57.58**
+- Updated **config** to **v1.134.58**
+- Updated **tsdown** to **v0.45.58**
+
 ## [1.294.1](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.294.1) (12/06/2025)
 
 ### Updated Dependencies
