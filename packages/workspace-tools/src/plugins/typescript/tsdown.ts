@@ -27,7 +27,7 @@ export const name = "storm-software/typescript/tsdown";
 export type TSDownPluginOptions = BaseTypescriptPluginOptions;
 
 export const createNodesV2: CreateNodesV2<TSDownPluginOptions> = [
-  "**/tsdown.config.ts",
+  "**/tsdown.*.{ts,mts,cts,js,mjs,cjs,json}",
   async (configFiles, options, context): Promise<CreateNodesResultV2> => {
     return await createNodesFromFiles(
       (configFile, options, context) => {
@@ -90,7 +90,7 @@ export const createNodesV2: CreateNodesV2<TSDownPluginOptions> = [
             executor: "nx:run-commands",
             dependsOn: ["build-untyped", "typecheck", "^build"],
             options: {
-              command: `tsdown --config="${relativeConfig}"`,
+              command: `tsdown --config "${relativeConfig}" --config-loader unrun --cwd "${root}"`,
               cwd: root
             }
           };
