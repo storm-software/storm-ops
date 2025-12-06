@@ -97,7 +97,7 @@ jobs:
         uses: nrwl/nx-set-shas@v4
         with:
           main-branch-name: main
-          workflow-id: ci.yml
+          workflow-id: release.yml
           set-environment-variables-for-job: true
           error-on-no-successful-workflow: true
 

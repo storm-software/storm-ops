@@ -10,18 +10,15 @@ updates:
   # Maintain dependencies for npm
   - package-ecosystem: "npm"
     assignees:
-      - "@sullivanpj"
-      - "@storm-software/operations"
-    reviewers:
-      - "@sullivanpj"
-      - "@storm-software/operations"
+      - "stormie-bot"
     commit-message:
       prefix: "deps(monorepo):"
     directory: "/"
     schedule:
-      interval: "monthly"
+      dependency-type: "all"
+      interval: "weekly"
     ignore:
-      - dependency-name: "{@storm-software/*,@storm-stack/*,@cyclone-ui/*,@acidic/*,@nx/*,nx}"
+      - dependency-name: "{@storm-software/*,@stryke/*,@cyclone-ui/*,@acidic/*,@powerlines/*,@earthquake/*,@nx/*,nx}"
     open-pull-requests-limit: 1
     labels:
       - dependencies
@@ -31,16 +28,13 @@ updates:
   # Maintain dependencies for GitHub Actions
   - package-ecosystem: "github-actions"
     assignees:
-      - "@sullivanpj"
-      - "@storm-software/operations"
-    reviewers:
-      - "@sullivanpj"
-      - "@storm-software/operations"
+      - "stormie-bot"
     commit-message:
       prefix: "deps(monorepo):"
     directory: "/"
     schedule:
-      interval: "monthly"
+      dependency-type: "all"
+      interval: "weekly"
     open-pull-requests-limit: 1
     labels:
       - dependencies
@@ -50,16 +44,45 @@ updates:
   # Maintain dependencies for bundler
   - package-ecosystem: "bundler"
     assignees:
-      - "@sullivanpj"
-      - "@storm-software/operations"
-    reviewers:
-      - "@sullivanpj"
-      - "@storm-software/operations"
+      - "stormie-bot"
     commit-message:
       prefix: "deps(monorepo):"
     directory: "/"
     schedule:
-      interval: "monthly"
+      dependency-type: "all"
+      interval: "weekly"
+    open-pull-requests-limit: 1
+    labels:
+      - dependencies
+      - dependabot
+    target-branch: dependabot
+
+  # Maintain dependencies for cargo
+  - package-ecosystem: "cargo"
+    assignees:
+      - "stormie-bot"
+    commit-message:
+      prefix: "deps(monorepo):"
+    directory: "/"
+    schedule:
+      dependency-type: "all"
+      interval: "weekly"
+    open-pull-requests-limit: 1
+    labels:
+      - dependencies
+      - dependabot
+    target-branch: dependabot
+
+  # Maintain dependencies for rust-toolchain
+  - package-ecosystem: "rust-toolchain"
+    assignees:
+      - "stormie-bot"
+    commit-message:
+      prefix: "deps(monorepo):"
+    directory: "/"
+    schedule:
+      dependency-type: "all"
+      interval: "weekly"
     open-pull-requests-limit: 1
     labels:
       - dependencies
