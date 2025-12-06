@@ -79,7 +79,7 @@ export const createNodesV2: CreateNodesV2<TSDownPluginOptions> = [
             options?.projectLinks === TypescriptProjectLinkingType.ALIAS
               ? "build-base"
               : "build"
-          ] = {
+          ] ??= {
             cache: true,
             inputs: [
               `{workspaceRoot}/${configFile}`,
@@ -90,13 +90,15 @@ export const createNodesV2: CreateNodesV2<TSDownPluginOptions> = [
             executor: "nx:run-commands",
             dependsOn: ["build-untyped", "typecheck", "^build"],
             options: {
-              command: `tsdown --config "${relativeConfig}" --config-loader unrun --cwd "${root}"`,
-              cwd: root
+              command: `tsdown --config "${relativeConfig}" --cwd "${
+                projectRoot
+              }"`,
+              cwd: projectRoot
             }
           };
 
           if (options?.projectLinks === TypescriptProjectLinkingType.ALIAS) {
-            targets.build = {
+            targets.build ??= {
               cache: true,
               inputs: [
                 "{workspaceRoot}/LICENSE",
@@ -121,7 +123,7 @@ export const createNodesV2: CreateNodesV2<TSDownPluginOptions> = [
             };
           }
 
-          targets.clean = {
+          targets.clean ??= {
             executor: "nx:run-commands",
             inputs: [
               `{workspaceRoot}/${configFile}`,
