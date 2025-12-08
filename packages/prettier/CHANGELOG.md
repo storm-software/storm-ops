@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Prettier
 
+## [0.57.60](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.57.60) (12/08/2025)
+
+### Continuous Integration
+
+- **monorepo:** Resolved linting issues with `zizmor` scan
+  ([4c1d72e15](https://github.com/storm-software/storm-ops/commit/4c1d72e15))
+
 ## [0.57.59](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.57.59) (12/06/2025)
 
 ### Miscellaneous

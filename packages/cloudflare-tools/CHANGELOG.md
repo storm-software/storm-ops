@@ -2,6 +2,24 @@
 
 # Changelog for Storm Ops - Cloudflare Tools
 
+## [0.71.10](https://github.com/storm-software/storm-ops/releases/tag/cloudflare-tools%400.71.10) (12/08/2025)
+
+### Miscellaneous
+
+- **cloudflare-tools:** Changed env names to align with standards
+  ([0cacf1cb7](https://github.com/storm-software/storm-ops/commit/0cacf1cb7))
+- **cloudflare-tools:** Update `r2-upload-publish` executor envs
+  ([bc0baabca](https://github.com/storm-software/storm-ops/commit/bc0baabca))
+- **cloudflare-tools:** Added `STORM_BOT` env usage to `r2-upload-publish`
+  executor
+  ([8f073abdc](https://github.com/storm-software/storm-ops/commit/8f073abdc))
+
+### Updated Dependencies
+
+- Updated **workspace-tools** to **v1.294.4**
+- Updated **config-tools** to **v1.188.60**
+- Updated **config** to **v1.134.60**
+
 ## [0.71.9](https://github.com/storm-software/storm-ops/releases/tag/cloudflare-tools%400.71.9) (12/06/2025)
 
 ### Miscellaneous

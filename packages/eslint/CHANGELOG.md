@@ -2,6 +2,19 @@
 
 # Changelog for Storm Ops - ESLint
 
+## [0.169.61](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.169.61) (12/08/2025)
+
+### Continuous Integration
+
+- **monorepo:** Resolved linting issues with `zizmor` scan
+  ([4c1d72e15](https://github.com/storm-software/storm-ops/commit/4c1d72e15))
+
+### Updated Dependencies
+
+- Updated **config-tools** to **v1.188.60**
+- Updated **config** to **v1.134.60**
+- Updated **tsdoc** to **v0.13.60**
+
 ## [0.169.60](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.169.60) (12/06/2025)
 
 ### Miscellaneous
