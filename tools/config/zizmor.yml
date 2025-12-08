@@ -12,7 +12,7 @@ rules:
       # - pypi.yml:12:10
   unpinned-uses:
     ignore:
-      - ci.yml
+      - release.yml
       - ci-reusable.yml
       - zizmor.yml
       - sync-labels.yml
