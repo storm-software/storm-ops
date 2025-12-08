@@ -2,6 +2,14 @@
 
 # Changelog for Storm Ops - Cloudflare Tools
 
+## [0.71.11](https://github.com/storm-software/storm-ops/releases/tag/cloudflare-tools%400.71.11) (12/08/2025)
+
+### Bug Fixes
+
+- **cloudflare-tools:** Resolve issue with invalid defaulting in
+  `r2-upload-publish` executor
+  ([ff000acd4](https://github.com/storm-software/storm-ops/commit/ff000acd4))
+
 ## [0.71.10](https://github.com/storm-software/storm-ops/releases/tag/cloudflare-tools%400.71.10) (12/08/2025)
 
 ### Miscellaneous
