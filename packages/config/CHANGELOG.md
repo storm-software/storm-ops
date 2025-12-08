@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Config
 
+## [1.134.61](https://github.com/storm-software/storm-ops/releases/tag/config%401.134.61) (12/08/2025)
+
+### Miscellaneous
+
+- **config:** Update the color schemes in the `storm-software.json` preset
+  ([4ac44f21e](https://github.com/storm-software/storm-ops/commit/4ac44f21e))
+
 ## [1.134.60](https://github.com/storm-software/storm-ops/releases/tag/config%401.134.60) (12/08/2025)
 
 ### Updated Dependencies
