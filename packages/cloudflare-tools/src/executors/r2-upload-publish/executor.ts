@@ -5,6 +5,7 @@ import {
   readCachedProjectGraph,
   type ExecutorContext
 } from "@nx/devkit";
+import { createHttpHandler } from "@storm-software/cloudflare-tools/utils/http-handler";
 import {
   correctPaths,
   getConfig,
@@ -24,7 +25,7 @@ import { statSync } from "node:fs";
 import { readFile } from "node:fs/promises";
 import {
   getInternalDependencies,
-  r2UploadFile
+  uploadFile
 } from "../../utils/r2-bucket-helpers";
 import type { R2UploadPublishExecutorSchema } from "./schema";
 
@@ -143,7 +144,8 @@ export default async function runExecutor(
           process.env.CLOUDFLARE_SECRET_ACCESS_KEY ||
           process.env.AWS_SECRET_ACCESS_KEY ||
           process.env.SECRET_ACCESS_KEY)!
-      }
+      },
+      requestHandler: createHttpHandler()
     });
 
     const version = projectDetails?.content?.version;
@@ -245,7 +247,7 @@ export default async function runExecutor(
       const metaJson = JSON.stringify(meta);
       writeTrace(`Generating meta.json file: \n${metaJson}`);
 
-      await r2UploadFile(
+      await uploadFile(
         client,
         bucketId,
         bucketPath,
@@ -269,7 +271,7 @@ export default async function runExecutor(
 
           writeTrace(`Uploading file: ${name} (content-type: ${type})`);
 
-          await r2UploadFile(
+          await uploadFile(
             client,
             bucketId,
             bucketPath,

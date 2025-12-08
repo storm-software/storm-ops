@@ -23,7 +23,7 @@ import { createHash } from "node:crypto";
  * @param contentType - The MIME type of the file content
  * @param isDryRun - Whether to perform a dry run without actual upload
  */
-export async function r2UploadFile(
+export async function uploadFile(
   client: S3,
   bucketName: string,
   bucketPath: string,
