@@ -2,6 +2,20 @@
 
 # Changelog for Storm Ops - Cloudflare Tools
 
+## [0.71.15](https://github.com/storm-software/storm-ops/releases/tag/cloudflare-tools%400.71.15) (12/08/2025)
+
+### Bug Fixes
+
+- **cloudflare-tools:** Increase `sessionTimeout` parameter to avoid timeout
+  error
+  ([bb919ac8d](https://github.com/storm-software/storm-ops/commit/bb919ac8d))
+
+### Updated Dependencies
+
+- Updated **workspace-tools** to **v1.294.8**
+- Updated **config-tools** to **v1.188.64**
+- Updated **config** to **v1.134.64**
+
 ## [0.71.14](https://github.com/storm-software/storm-ops/releases/tag/cloudflare-tools%400.71.14) (12/08/2025)
 
 ### Bug Fixes
