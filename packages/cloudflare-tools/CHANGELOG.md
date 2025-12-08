@@ -2,6 +2,24 @@
 
 # Changelog for Storm Ops - Cloudflare Tools
 
+## [0.71.16](https://github.com/storm-software/storm-ops/releases/tag/cloudflare-tools%400.71.16) (12/08/2025)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace packages' dependencies
+  ([ead0df9f4](https://github.com/storm-software/storm-ops/commit/ead0df9f4))
+
+### Bug Fixes
+
+- **cloudflare-tools:** Resolve issue with uploading invalid bucket paths
+  ([665243769](https://github.com/storm-software/storm-ops/commit/665243769))
+
+### Updated Dependencies
+
+- Updated **workspace-tools** to **v1.294.9**
+- Updated **config-tools** to **v1.188.65**
+- Updated **config** to **v1.134.65**
+
 ## [0.71.15](https://github.com/storm-software/storm-ops/releases/tag/cloudflare-tools%400.71.15) (12/08/2025)
 
 ### Bug Fixes
