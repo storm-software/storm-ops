@@ -2,6 +2,20 @@
 
 # Changelog for Storm Ops - Cloudflare Tools
 
+## [0.71.13](https://github.com/storm-software/storm-ops/releases/tag/cloudflare-tools%400.71.13) (12/08/2025)
+
+### Bug Fixes
+
+- **cloudflare-tools:** Resovled scenario where directories were attempted to
+  upload
+  ([d1c6e83bc](https://github.com/storm-software/storm-ops/commit/d1c6e83bc))
+
+### Updated Dependencies
+
+- Updated **workspace-tools** to **v1.294.6**
+- Updated **config-tools** to **v1.188.62**
+- Updated **config** to **v1.134.62**
+
 ## [0.71.12](https://github.com/storm-software/storm-ops/releases/tag/cloudflare-tools%400.71.12) (12/08/2025)
 
 ### Updated Dependencies
