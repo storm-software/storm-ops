@@ -20,6 +20,7 @@ import { getPackageInfo } from "@storm-software/workspace-tools/utils/package-he
 import { glob } from "glob";
 import mime from "mime-types";
 import { execSync } from "node:child_process";
+import { statSync } from "node:fs";
 import { readFile } from "node:fs/promises";
 import {
   getInternalDependencies,
@@ -258,21 +259,27 @@ export default async function runExecutor(
 
     await Promise.all(
       files.map(async file => {
-        const name = correctPaths(file).replace(correctPaths(basePath), "");
-        const type = mime.lookup(name) || "application/octet-stream";
+        if (
+          statSync(file, {
+            throwIfNoEntry: false
+          })?.isFile()
+        ) {
+          const name = correctPaths(file).replace(correctPaths(basePath), "");
+          const type = mime.lookup(name) || "application/octet-stream";
 
-        writeTrace(`Uploading file: ${name} (content-type: ${type})`);
+          writeTrace(`Uploading file: ${name} (content-type: ${type})`);
 
-        await r2UploadFile(
-          client,
-          bucketId,
-          bucketPath,
-          name,
-          version,
-          await readFile(file, { encoding: "utf8" }),
-          type,
-          isDryRun
-        );
+          await r2UploadFile(
+            client,
+            bucketId,
+            bucketPath,
+            name,
+            version,
+            await readFile(file, { encoding: "utf8" }),
+            type,
+            isDryRun
+          );
+        }
       })
     );
 
