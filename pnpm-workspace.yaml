@@ -8,30 +8,30 @@ packages:
 catalog:
   '@ltd/j-toml': 1.38.0
   '@microsoft/api-extractor': ^7.55.2
-  '@nx/devkit': ^22.1.3
-  '@nx/esbuild': ^22.1.3
-  '@nx/eslint': ^22.1.3
-  '@nx/eslint-plugin': ^22.1.3
-  '@nx/jest': ^22.1.3
-  '@nx/js': ^22.1.3
-  '@nx/node': ^22.1.3
-  '@nx/plugin': ^22.1.3
-  '@nx/web': ^22.1.3
-  '@nx/webpack': ^22.1.3
-  '@nx/workspace': ^22.1.3
-  '@pnpm/types': ^1001.0.1
+  '@nx/devkit': ^22.2.0
+  '@nx/esbuild': ^22.2.0
+  '@nx/eslint': ^22.2.0
+  '@nx/eslint-plugin': ^22.2.0
+  '@nx/jest': ^22.2.0
+  '@nx/js': ^22.2.0
+  '@nx/node': ^22.2.0
+  '@nx/plugin': ^22.2.0
+  '@nx/web': ^22.2.0
+  '@nx/webpack': ^22.2.0
+  '@nx/workspace': ^22.2.0
+  '@pnpm/types': ^1001.1.0
   '@swc-node/register': 1.10.9
   '@swc/core': 1.7.26
   '@swc/helpers': 0.5.13
-  '@types/node': ^24.10.1
-  '@typescript-eslint/eslint-plugin': ^8.48.1
-  '@typescript-eslint/parser': ^8.48.1
-  '@typescript-eslint/utils': ^8.48.1
+  '@types/node': ^24.10.2
+  '@typescript-eslint/eslint-plugin': ^8.49.0
+  '@typescript-eslint/parser': ^8.49.0
+  '@typescript-eslint/utils': ^8.49.0
   c12: ^2.0.4
   chalk: ^4.1.2
   commander: ^12.1.0
   copyfiles: 2.4.1
-  create-nx-workspace: ^22.1.3
+  create-nx-workspace: ^22.2.0
   cspell: ^8.19.4
   date-fns: ^4.1.0
   defu: 6.1.4
@@ -44,9 +44,9 @@ catalog:
   jest-resolve: 30.0.5
   jest-util: 30.0.5
   jiti: 2.4.2
-  knip: ^5.71.0
+  knip: ^5.72.0
   mlly: ^1.8.0
-  nx: ^22.1.3
+  nx: ^22.2.0
   pkg-types: ^1.3.1
   prettier: ^3.7.4
   rimraf: 6.0.1
