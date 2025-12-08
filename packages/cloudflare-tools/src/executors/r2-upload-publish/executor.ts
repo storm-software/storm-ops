@@ -41,6 +41,10 @@ export default async function runExecutor(
     throw new Error("The executor requires a projectName.");
   }
 
+  if (!options.path) {
+    throw new Error("The executor requires the `path` option to upload.");
+  }
+
   console.info(
     `🚀  Running Storm Cloudflare Publish executor on the ${context.projectName} worker`
   );
@@ -58,9 +62,6 @@ export default async function runExecutor(
     const workspaceRoot = findWorkspaceRoot();
     const config = await getConfig(workspaceRoot);
 
-    const sourceRoot =
-      context.projectsConfigurations.projects[context.projectName]
-        ?.sourceRoot ?? workspaceRoot;
     const projectName =
       context.projectsConfigurations.projects[context.projectName]?.name ??
       context.projectName;
@@ -86,7 +87,7 @@ export default async function runExecutor(
       process.env.STORM_BOT_CLOUDFLARE_ACCOUNT;
     if (!options?.registry && !cloudflareAccountId) {
       throw new Error(
-        "The registry option and `CLOUDFLARE_ACCOUNT_ID` environment variable are not set. Please set one of these values to upload to the Cloudflare R2 bucket."
+        "The registry option and `CLOUDFLARE_ACCOUNT_ID` (or `STORM_BOT_CLOUDFLARE_ACCOUNT`) environment variable are not set. Please set one of these values to upload to the Cloudflare R2 bucket."
       );
     }
 
@@ -101,7 +102,7 @@ export default async function runExecutor(
         !process.env.AWS_SECRET_ACCESS_KEY)
     ) {
       throw new Error(
-        "The `ACCESS_KEY_ID` and `SECRET_ACCESS_KEY` environment variables are not set. Please set these environment variables to upload to the Cloudflare R2 bucket."
+        "The `ACCESS_KEY_ID` (or `STORM_BOT_ACCESS_KEY_ID`) and `SECRET_ACCESS_KEY` (or `STORM_BOT_SECRET_ACCESS_KEY`) environment variables are not set. Please set these environment variables to upload to the Cloudflare R2 bucket."
       );
     }
 
@@ -149,7 +150,7 @@ export default async function runExecutor(
       writeDebug(`Starting upload version ${version}`);
     }
 
-    const basePath = options.path || sourceRoot;
+    const basePath = options.path;
     const files = await glob(joinPaths(basePath, "**/*"), {
       ignore: "**/{*.stories.tsx,*.stories.ts,*.spec.tsx,*.spec.ts}"
     });
