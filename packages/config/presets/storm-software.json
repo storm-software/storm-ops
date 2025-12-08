@@ -70,7 +70,7 @@
     "dark": {
       "background": "#151718",
       "foreground": "#cbd5e1",
-      "brand": "#1fb2a6",
+      "brand": "#3be4be",
       "alternate": "#db2777",
       "help": "#818cf8",
       "success": "#45b27e",
@@ -81,7 +81,7 @@
       "link": "#3fa6ff",
       "positive": "#22c55e",
       "negative": "#dc2626",
-      "gradient": ["#1fb2a6", "#db2777", "#818cf8"]
+      "gradient": ["#3be4be", "#db2777", "#818cf8"]
     }
   }
 }
