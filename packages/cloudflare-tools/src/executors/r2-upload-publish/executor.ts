@@ -91,17 +91,17 @@ export default async function runExecutor(
     }
 
     if (
-      (!process.env.STORM_BOT_AWS_ACCESS_KEY_ID &&
+      (!process.env.STORM_BOT_ACCESS_KEY_ID &&
         !process.env.ACCESS_KEY_ID &&
         !process.env.CLOUDFLARE_ACCESS_KEY_ID &&
         !process.env.AWS_ACCESS_KEY_ID) ||
-      (!process.env.STORM_BOT_AWS_SECRET_ACCESS_KEY &&
-        !process.env.CLOUDFLARE_SECRET_ACCESS_KEY &&
-        !process.env.SECRET_ACCESS_KEY &&
-        !process.env.AWS_SECRET_ACCESS_KEY)
+      (!process.env.STORM_BOT_ACCESS_KEY_SECRET &&
+        !process.env.CLOUDFLARE_ACCESS_KEY_SECRET &&
+        !process.env.ACCESS_KEY_SECRET &&
+        !process.env.AWS_ACCESS_KEY_SECRET)
     ) {
       throw new Error(
-        "The `ACCESS_KEY_ID` and `SECRET_ACCESS_KEY` environment variables are not set. Please set these environment variables to upload to the Cloudflare R2 bucket."
+        "The `ACCESS_KEY_ID` and `ACCESS_KEY_SECRET` environment variables are not set. Please set these environment variables to upload to the Cloudflare R2 bucket."
       );
     }
 
@@ -132,15 +132,15 @@ export default async function runExecutor(
       endpoint: registry,
       credentials: {
         // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-        accessKeyId: (process.env.STORM_BOT_AWS_ACCESS_KEY_ID ||
+        accessKeyId: (process.env.STORM_BOT_ACCESS_KEY_ID ||
           process.env.CLOUDFLARE_ACCESS_KEY_ID ||
           process.env.AWS_ACCESS_KEY_ID ||
           process.env.ACCESS_KEY_ID)!,
         // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-        secretAccessKey: (process.env.STORM_BOT_AWS_SECRET_ACCESS_KEY ||
-          process.env.CLOUDFLARE_SECRET_ACCESS_KEY ||
-          process.env.AWS_SECRET_ACCESS_KEY ||
-          process.env.SECRET_ACCESS_KEY)!
+        secretAccessKey: (process.env.STORM_BOT_ACCESS_KEY_SECRET ||
+          process.env.CLOUDFLARE_ACCESS_KEY_SECRET ||
+          process.env.AWS_ACCESS_KEY_SECRET ||
+          process.env.ACCESS_KEY_SECRET)!
       }
     });
 
