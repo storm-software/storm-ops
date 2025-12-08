@@ -91,11 +91,13 @@ export default async function runExecutor(
     }
 
     if (
-      (!process.env.ACCESS_KEY_ID &&
+      (!process.env.STORM_BOT_AWS_ACCESS_KEY_ID &&
+        !process.env.ACCESS_KEY_ID &&
         !process.env.CLOUDFLARE_ACCESS_KEY_ID &&
         !process.env.AWS_ACCESS_KEY_ID) ||
-      (!process.env.SECRET_ACCESS_KEY &&
+      (!process.env.STORM_BOT_AWS_SECRET_ACCESS_KEY &&
         !process.env.CLOUDFLARE_SECRET_ACCESS_KEY &&
+        !process.env.SECRET_ACCESS_KEY &&
         !process.env.AWS_SECRET_ACCESS_KEY)
     ) {
       throw new Error(
@@ -129,12 +131,16 @@ export default async function runExecutor(
       region: "auto",
       endpoint: registry,
       credentials: {
-        accessKeyId: (process.env.ACCESS_KEY_ID ||
+        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+        accessKeyId: (process.env.STORM_BOT_AWS_ACCESS_KEY_ID ||
           process.env.CLOUDFLARE_ACCESS_KEY_ID ||
-          process.env.AWS_ACCESS_KEY_ID)!,
-        secretAccessKey: (process.env.SECRET_ACCESS_KEY ||
+          process.env.AWS_ACCESS_KEY_ID ||
+          process.env.ACCESS_KEY_ID)!,
+        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+        secretAccessKey: (process.env.STORM_BOT_AWS_SECRET_ACCESS_KEY ||
           process.env.CLOUDFLARE_SECRET_ACCESS_KEY ||
-          process.env.AWS_SECRET_ACCESS_KEY)!
+          process.env.AWS_SECRET_ACCESS_KEY ||
+          process.env.SECRET_ACCESS_KEY)!
       }
     });
 
