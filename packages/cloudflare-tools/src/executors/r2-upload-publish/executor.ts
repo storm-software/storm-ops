@@ -186,7 +186,7 @@ export default async function runExecutor(
       if (!isDryRun) {
         const response = await client.listObjects({
           Bucket: bucketId,
-          Prefix: bucketPath
+          Prefix: !bucketPath || bucketPath === "/" ? undefined : bucketPath
         });
 
         if (response?.Contents && response.Contents.length > 0) {
@@ -196,21 +196,15 @@ export default async function runExecutor(
             }: ${response.Contents.map(item => item.Key).join(", ")}`
           );
 
-          await Promise.all(
-            response.Contents.map(item =>
-              client.deleteObjects({
-                Bucket: bucketId,
-                Delete: {
-                  Objects: [
-                    {
-                      Key: item.Key
-                    }
-                  ],
-                  Quiet: false
-                }
-              })
-            )
-          );
+          await client.deleteObjects({
+            Bucket: bucketId,
+            Delete: {
+              Objects: response.Contents.map(item => ({
+                Key: item.Key
+              })),
+              Quiet: false
+            }
+          });
         } else {
           writeDebug(
             `No existing items to delete in the R2 bucket path ${bucketPath}`
@@ -244,16 +238,13 @@ export default async function runExecutor(
         meta.devDependencies = projectDetails?.content?.devDependencies;
       }
 
-      const metaJson = JSON.stringify(meta);
-      writeTrace(`Generating meta.json file: \n${metaJson}`);
-
       await uploadFile(
         client,
         bucketId,
         bucketPath,
         "meta.json",
         version,
-        metaJson,
+        JSON.stringify(meta),
         "application/json",
         isDryRun
       );
@@ -268,8 +259,6 @@ export default async function runExecutor(
         ) {
           const name = correctPaths(file).replace(correctPaths(basePath), "");
           const type = mime.lookup(name) || "application/octet-stream";
-
-          writeTrace(`Uploading file: ${name} (content-type: ${type})`);
 
           await uploadFile(
             client,

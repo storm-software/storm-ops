@@ -26,19 +26,27 @@ import { createHash } from "node:crypto";
 export async function uploadFile(
   client: S3,
   bucketName: string,
-  bucketPath: string,
+  bucketPath: string | undefined,
   fileName: string,
   version: string,
   fileContent: string,
   contentType = "application/octet-stream",
   isDryRun = false
 ) {
-  writeDebug(`Uploading file: ${joinPaths(bucketPath, fileName)}`);
+  const key =
+    (!bucketPath?.trim() || bucketPath?.trim() === "/"
+      ? fileName
+      : joinPaths(bucketPath.trim(), fileName)
+    )?.replace(/^\/+/g, "") || "";
+
+  writeDebug(
+    `Uploading ${key} (content-type: ${contentType}) to the ${bucketName} R2 bucket`
+  );
 
   if (!isDryRun) {
     await client.putObject({
       Bucket: bucketName,
-      Key: joinPaths(bucketPath, fileName),
+      Key: key,
       Body: fileContent,
       ContentType: contentType,
       Metadata: {
