@@ -2,6 +2,19 @@
 
 # Changelog for Storm Ops - Cloudflare Tools
 
+## [0.71.14](https://github.com/storm-software/storm-ops/releases/tag/cloudflare-tools%400.71.14) (12/08/2025)
+
+### Bug Fixes
+
+- **cloudflare-tools:** Resolve timeout issue in S3 client's request handler
+  ([7288ec611](https://github.com/storm-software/storm-ops/commit/7288ec611))
+
+### Updated Dependencies
+
+- Updated **workspace-tools** to **v1.294.7**
+- Updated **config-tools** to **v1.188.63**
+- Updated **config** to **v1.134.63**
+
 ## [0.71.13](https://github.com/storm-software/storm-ops/releases/tag/cloudflare-tools%400.71.13) (12/08/2025)
 
 ### Bug Fixes
