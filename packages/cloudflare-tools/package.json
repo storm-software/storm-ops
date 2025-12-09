@@ -157,7 +157,7 @@
     }
   },
   "dependencies": {
-    "@aws-sdk/client-s3": "^3.947.0",
+    "@aws-sdk/client-s3": "^3.948.0",
     "@smithy/node-http-handler": "^4.4.5",
     "defu": "catalog:",
     "glob": "catalog:",
