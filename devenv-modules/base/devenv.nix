@@ -66,18 +66,23 @@ in {
     nuke.exec = "pnpm nuke";
   };
 
-  enterShell = ''
-    git config commit.gpgsign true
-    git config tag.gpgSign true
-    git config lfs.allowincompletepush true
-    git config init.defaultBranch main
+  tasks = {
+    "storm:init" = {
+      exec = ''
+        git config commit.gpgsign true
+        git config tag.gpgSign true
+        git config lfs.allowincompletepush true
+        git config init.defaultBranch main
 
-    npm config set provenance true
+        npm config set provenance true
 
-    pnpm update --recursive --workspace
-    pnpm install
-    bootstrap
-  '';
+        pnpm update --recursive --workspace
+        pnpm install
+        bootstrap
+      '';
+      before = [ "devenv:enterShell" "devenv:enterTest" ];
+    };
+  };
 
   # https://devenv.sh/git-hooks/
   git-hooks.hooks = {

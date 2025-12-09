@@ -40,7 +40,7 @@ in {
   };
   languages.javascript = {
     enable = true;
-    package = pkgs-unstable.nodejs;
+    package = pkgs-unstable.nodejs_24;
     corepack.enable = true;
     pnpm = {
       enable = true;
@@ -49,14 +49,19 @@ in {
     };
   };
 
-  enterShell = ''
-    git config commit.gpgsign true
-    git config tag.gpgSign true
-    git config lfs.allowincompletepush true
-    git config init.defaultBranch main
+  tasks = {
+    "storm:init" = {
+      exec = ''
+        git config commit.gpgsign true
+        git config tag.gpgSign true
+        git config lfs.allowincompletepush true
+        git config init.defaultBranch main
 
-    pnpm install
-  '';
+        pnpm install
+      '';
+      before = [ "devenv:enterShell" "devenv:enterTest" ];
+    };
+  };
 
   # https://devenv.sh/git-hooks/
   git-hooks.hooks = {
