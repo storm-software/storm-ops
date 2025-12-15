@@ -1,0 +1,31 @@
+{
+  "name": "vite",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/vite/src",
+  "projectType": "library",
+  "targets": {
+    "build-base": {
+      "executor": "nx:run-commands",
+      "dependsOn": ["clean", "^build"],
+      "options": {
+        "command": "tsup --config=tsup.config.ts",
+        "cwd": "{projectRoot}"
+      }
+    },
+    "build": {
+      "executor": "nx:run-commands",
+      "dependsOn": ["build-base"],
+      "options": {
+        "commands": [
+          "pnpm copyfiles LICENSE dist/packages/vite",
+          "pnpm copyfiles --up=2 ./packages/vite/README.md ./packages/vite/package.json dist/packages/vite",
+          "pnpm copyfiles --up=2 ./packages/vite/assets/* dist/packages/vite/assets",
+          "pnpm copyfiles --up=4 \"./packages/vite/dist/src/**/*\" dist/packages/vite/dist"
+        ]
+      }
+    },
+    "nx-release-publish": {
+      "executor": "@storm-software/workspace-tools:npm-publish"
+    }
+  }
+}
