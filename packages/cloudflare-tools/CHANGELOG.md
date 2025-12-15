@@ -2,6 +2,26 @@
 
 # Changelog for Storm Ops - Cloudflare Tools
 
+## [0.71.18](https://github.com/storm-software/storm-ops/releases/tag/cloudflare-tools%400.71.18) (12/15/2025)
+
+### Miscellaneous
+
+- **monorepo:** Format repository source files
+  ([6415008e9](https://github.com/storm-software/storm-ops/commit/6415008e9))
+- **monorepo:** Format workspace source files
+  ([b957f4850](https://github.com/storm-software/storm-ops/commit/b957f4850))
+
+### Bug Fixes
+
+- **cloudflare-tools:** Increase the HTTP handlers timeout
+  ([7195a7dc6](https://github.com/storm-software/storm-ops/commit/7195a7dc6))
+
+### Updated Dependencies
+
+- Updated **workspace-tools** to **v1.294.11**
+- Updated **config-tools** to **v1.188.67**
+- Updated **config** to **v1.134.67**
+
 ## [0.71.17](https://github.com/storm-software/storm-ops/releases/tag/cloudflare-tools%400.71.17) (12/15/2025)
 
 ### Miscellaneous

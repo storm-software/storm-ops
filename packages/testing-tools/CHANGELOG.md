@@ -2,6 +2,15 @@
 
 # Changelog for Storm Ops - Testing Tools
 
+## [1.119.66](https://github.com/storm-software/storm-ops/releases/tag/testing-tools%401.119.66) (12/15/2025)
+
+### Miscellaneous
+
+- **monorepo:** Format repository source files
+  ([6415008e9](https://github.com/storm-software/storm-ops/commit/6415008e9))
+- **monorepo:** Format workspace source files
+  ([b957f4850](https://github.com/storm-software/storm-ops/commit/b957f4850))
+
 ## [1.119.65](https://github.com/storm-software/storm-ops/releases/tag/testing-tools%401.119.65) (12/15/2025)
 
 ### Miscellaneous

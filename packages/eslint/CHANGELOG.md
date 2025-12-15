@@ -2,6 +2,23 @@
 
 # Changelog for Storm Ops - ESLint
 
+## [0.169.68](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.169.68) (12/15/2025)
+
+### Miscellaneous
+
+- **monorepo:** Format repository source files
+  ([6415008e9](https://github.com/storm-software/storm-ops/commit/6415008e9))
+- **monorepo:** Format workspace source files
+  ([b957f4850](https://github.com/storm-software/storm-ops/commit/b957f4850))
+- **eslint:** Regenerate linting rules `typegen` file
+  ([26bf09ef3](https://github.com/storm-software/storm-ops/commit/26bf09ef3))
+
+### Updated Dependencies
+
+- Updated **config-tools** to **v1.188.67**
+- Updated **config** to **v1.134.67**
+- Updated **tsdoc** to **v0.13.66**
+
 ## [0.169.67](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.169.67) (12/15/2025)
 
 ### Miscellaneous

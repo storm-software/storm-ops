@@ -2,6 +2,21 @@
 
 # Changelog for Storm Ops - Git Tools
 
+## [2.124.50](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.124.50) (12/15/2025)
+
+### Miscellaneous
+
+- **monorepo:** Format repository source files
+  ([6415008e9](https://github.com/storm-software/storm-ops/commit/6415008e9))
+- **monorepo:** Format workspace source files
+  ([b957f4850](https://github.com/storm-software/storm-ops/commit/b957f4850))
+
+### Updated Dependencies
+
+- Updated **conventional-changelog** to **v0.3.67**
+- Updated **config-tools** to **v1.188.67**
+- Updated **config** to **v1.134.67**
+
 ## [2.124.49](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.124.49) (12/15/2025)
 
 ### Miscellaneous

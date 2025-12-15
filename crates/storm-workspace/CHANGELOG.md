@@ -2,6 +2,15 @@
 
 # Changelog for Storm Ops - Storm Workspace
 
+## [0.19.69](https://github.com/storm-software/storm-ops/releases/tag/storm-workspace%400.19.69) (12/15/2025)
+
+### Miscellaneous
+
+- **monorepo:** Format repository source files
+  ([6415008e9](https://github.com/storm-software/storm-ops/commit/6415008e9))
+- **monorepo:** Format workspace source files
+  ([b957f4850](https://github.com/storm-software/storm-ops/commit/b957f4850))
+
 ## [0.19.60](https://github.com/storm-software/storm-ops/releases/tag/storm-workspace%400.19.60) (12/06/2025)
 
 ### Miscellaneous
