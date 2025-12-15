@@ -23,4 +23,25 @@
     enable = true;
     toolchainFile = ./rust-toolchain.toml;
   };
+
+  git-hooks = {
+    enable = true;
+    hooks = {
+      taplo = {
+        enable = true;
+        args = [
+          "--config=packages/linting-tools/src/taplo/config.toml"
+          "--cache-path=tmp/taplo"
+        ];
+      };
+      zizmor = {
+        enable = true;
+        args = [
+          "--offline"
+          "--config=tools/config/zizmor.yml"
+        ];
+        files = "^\\.github/workflows/*";
+      };
+    };
+  };
 }

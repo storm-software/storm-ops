@@ -10,9 +10,9 @@ level = "medium"
 skip-rules = ["accurics.kubernetes.IAM.107"]
 
 [k8s-admission-control]
+dashboard         = true
 denied-categories = ["Network Ports Security"]
-denied-severity = "high"
-dashboard = true
+denied-severity   = "high"
 
 # [policy]
 # environment = "<environment_url>"

@@ -1,11 +1,11 @@
 # Get help on options with `rustfmt --help=config`
 # Please keep these in alphabetical order.
-edition = "2024"
-group_imports = "StdExternalCrate"
+edition             = "2024"
+group_imports       = "StdExternalCrate"
 imports_granularity = "Module"
-merge_derives = false
-tab_spaces = 2
-version = "Two"
+merge_derives       = false
+tab_spaces          = 2
+version             = "Two"
 
 # This is also the setting used by [rustc](https://github.com/rust-lang/rust/blob/master/rustfmt.toml)
 use_small_heuristics = "Max"

@@ -20,12 +20,6 @@
         "glob": "**/{lefthook.yml,lefthook.yaml,lefthook.json,biome.json}",
         "run": "node ./dist/packages/git-tools/bin/prepare.cjs"
       },
-      "format-toml": {
-        "files": "git diff --name-only HEAD @{push}",
-        "glob": "**/*.{toml}",
-        "run": "pnpm format-toml && git update-index",
-        "stage_fixed": true
-      },
       "lint-codeowners": {
         "files": "git diff --name-only HEAD @{push}",
         "glob": "**/CODEOWNERS",

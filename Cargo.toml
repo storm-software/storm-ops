@@ -4,20 +4,20 @@
 
 [workspace]
 default-members = ['crates/*']
-members = ['crates/*']
-resolver = '3'
+members         = ['crates/*']
+resolver        = '3'
 
 [workspace.package]
-authors = ['storm-software']
-categories = ['config', 'development-tools']
-description = '⚙️ The Storm-Ops monorepo contains utility applications, tools, and various libraries to create modern and scalable web applications.'
+authors       = ['storm-software']
+categories    = ['config', 'development-tools']
+description   = '⚙️ The Storm-Ops monorepo contains utility applications, tools, and various libraries to create modern and scalable web applications.'
 documentation = 'https://stormsoftware.com/docs'
-edition = '2024'
-homepage = 'https://stormsoftware.com'
-keywords = ['storm', 'storm-ops', 'storm-software', 'build-tools', 'monorepo']
-license = 'Apache-2.0'
-repository = 'https://github.com/storm-software/storm-ops'
-version = '0.0.1'
+edition       = '2024'
+homepage      = 'https://stormsoftware.com'
+keywords      = ['storm', 'storm-ops', 'storm-software', 'build-tools', 'monorepo']
+license       = 'Apache-2.0'
+repository    = 'https://github.com/storm-software/storm-ops'
+version       = '0.0.1'
 
 # [workspace.metadata.release]
 # pre-release-commit-message = 'Release Storm-Ops workspace crates v{{version}}'
@@ -27,21 +27,21 @@ version = '0.0.1'
 
 [workspace.lints.rust]
 missing-debug-implementations = "warn"
-missing-docs = "warn"
-rust-2018-idioms = "deny"
-unnameable-types = "warn"
-unreachable-pub = "warn"
-unused-must-use = "deny"
+missing-docs                  = "warn"
+rust-2018-idioms              = "deny"
+unnameable-types              = "warn"
+unreachable-pub               = "warn"
+unused-must-use               = "deny"
 
 [workspace.lints.rustdoc]
 all = "warn"
 
 [workspace.lints.clippy]
-all = { level = "warn", priority = -1 }
+all                  = { level = "warn", priority = -1 }
 missing-const-for-fn = "warn"
-option-if-let-else = "warn"
-redundant-clone = "warn"
-use-self = "warn"
+option-if-let-else   = "warn"
+redundant-clone      = "warn"
+use-self             = "warn"
 
 [workspace.metadata.docs.rs]
 all-features = true
@@ -51,7 +51,7 @@ rustdoc-args = ["--cfg", "docsrs"]
 # ref: https://doc.rust-lang.org/cargo/reference/specifying-dependencies.html#inheriting-a-dependency-from-a-workspace
 [workspace.dependencies]
 # Storm-Ops
-storm-config = { path = "./crates/storm-config" }
+storm-config    = { path = "./crates/storm-config" }
 storm-workspace = { path = "./crates/storm-workspace" }
 
 ## ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -59,31 +59,31 @@ storm-workspace = { path = "./crates/storm-workspace" }
 ## ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 [profile.dev]
-debug = "line-tables-only"
+debug       = "line-tables-only"
 incremental = true
 
 [profile.release]
 codegen-units = 1
-debug = false
-lto = "fat"
-opt-level = 3
-strip = "symbols"
-panic = "abort"   # Let it crash and force ourselves to write safe Rust.
+debug         = false
+lto           = "fat"
+opt-level     = 3
+panic         = "abort"   # Let it crash and force ourselves to write safe Rust.
+strip         = "symbols"
 
 [profile.release-debug]
-debug = true
+debug    = true
 inherits = "release"
 
 [profile.release-debug-fast]
-debug = true
+debug    = true
 inherits = "release"
-strip = "none"
+strip    = "none"
 
 [profile.prod]
-debug = "line-tables-only"
+debug    = "line-tables-only"
 inherits = "release"
-lto = "thin"
-strip = false
+lto      = "thin"
+strip    = false
 
 # Make insta run faster by compiling with release mode optimizations
 # https://docs.rs/insta/latest/insta/#optional-faster-runs

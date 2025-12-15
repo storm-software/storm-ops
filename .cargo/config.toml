@@ -1,7 +1,7 @@
 # reference: https://github.com/rust-lang/cargo/issues/3946
 [env]
-WORKSPACE_DIR = { value = "", relative = true }
 CARGO_WORKSPACE_DIR = { value = "", relative = true }
+WORKSPACE_DIR       = { value = "", relative = true }
 
 [build]
 target-dir = "dist/target"
@@ -17,13 +17,13 @@ rustflags = ["-C", "target-feature=+crt-static"]
 
 [target.'cfg(target_os = "windows")']
 rustflags = [
-  # Disables linking against the default Universal C Runtime (libucrt.lib). This prevents conflicts if another CRT library is linked manually.
-  "-C",
-  "link-args=/NODEFAULTLIB:libucrt.lib",
-  # Manually adds ucrt.lib (the Universal CRT) as a default library to link against, replacing the one you just excluded above.
-  # This ensures consistent linking when multiple CRTs might be available.
-  "-C",
-  "link-args=/DEFAULTLIB:ucrt.lib",
+    # Disables linking against the default Universal C Runtime (libucrt.lib). This prevents conflicts if another CRT library is linked manually.
+    "-C",
+    "link-args=/NODEFAULTLIB:libucrt.lib",
+    # Manually adds ucrt.lib (the Universal CRT) as a default library to link against, replacing the one you just excluded above.
+    # This ensures consistent linking when multiple CRTs might be available.
+    "-C",
+    "link-args=/DEFAULTLIB:ucrt.lib"
 ]
 
 # LLD linker is currently broken for us, opt out.

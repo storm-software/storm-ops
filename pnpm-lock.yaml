@@ -46,8 +46,8 @@ catalogs:
       specifier: ^22.2.3
       version: 22.2.3
     '@pnpm/types':
-      specifier: ^1001.1.0
-      version: 1001.1.0
+      specifier: ^1001.2.0
+      version: 1001.2.0
     '@swc-node/register':
       specifier: 1.10.9
       version: 1.10.9
@@ -276,9 +276,6 @@ importers:
       '@swc/wasm':
         specifier: 1.6.5
         version: 1.6.5
-      '@taplo/cli':
-        specifier: 0.7.0
-        version: 0.7.0
       '@types/node':
         specifier: 'catalog:'
         version: 24.10.4
@@ -1295,7 +1292,7 @@ importers:
     devDependencies:
       '@pnpm/types':
         specifier: 'catalog:'
-        version: 1001.1.0
+        version: 1001.2.0
       '@types/node':
         specifier: 'catalog:'
         version: 24.10.4
@@ -1338,7 +1335,7 @@ importers:
     devDependencies:
       '@pnpm/types':
         specifier: 'catalog:'
-        version: 1001.1.0
+        version: 1001.2.0
       '@types/node':
         specifier: 'catalog:'
         version: 24.10.4
@@ -6090,8 +6087,8 @@ packages:
     resolution: {integrity: sha512-c83qWb22rNRuB0UaVCI0uRPNRr8Z0FWnEIvT47jiHAmOIUHbBOg5XvV7pM5x+rKn9HRpjxquDbXYSXr3fAKFcw==}
     engines: {node: '>=12'}
 
-  '@pnpm/types@1001.1.0':
-    resolution: {integrity: sha512-HaGoB+TIJ3aWLM1lLUKQmh1K4bjz16VJ9+mJcp3nf1RQm/lZFhkyjGW2D44Zf3M8c1tlyTsczIDQR4K2OSvaaQ==}
+  '@pnpm/types@1001.2.0':
+    resolution: {integrity: sha512-UIju+OadUVS0q5q/MbRAzMS5M9HZcZyT6evyrgPUH0DV9przkcW7/LH1Sj33Q2MpJO9Nzqw4b4w72x8mvtUAew==}
     engines: {node: '>=18.12'}
 
   '@poppinss/colors@4.1.6':
@@ -7009,10 +7006,6 @@ packages:
   '@szmarczak/http-timer@5.0.1':
     resolution: {integrity: sha512-+PmQX0PiAYPMeVYe237LJAYvOMYW1j2rH5YROyS3b4CTVJum34HfRvKvAzozHAQG0TnHNdUfY9nCeUyRAs//cw==}
     engines: {node: '>=14.16'}
-
-  '@taplo/cli@0.7.0':
-    resolution: {integrity: sha512-Ck3zFhQhIhi02Hl6T4ZmJsXdnJE+wXcJz5f8klxd4keRYgenMnip3JDPMGDRLbnC/2iGd8P0sBIQqI3KxfVjBg==}
-    hasBin: true
 
   '@taplo/core@0.2.0':
     resolution: {integrity: sha512-r8bl54Zj1In3QLkiW/ex694bVzpPJ9EhwqT9xkcUVODnVUGirdB1JTsmiIv0o1uwqZiwhi8xNnTOQBRQCpizrQ==}
@@ -21355,7 +21348,7 @@ snapshots:
       '@pnpm/network.ca-file': 1.0.2
       config-chain: 1.1.13
 
-  '@pnpm/types@1001.1.0': {}
+  '@pnpm/types@1001.2.0': {}
 
   '@poppinss/colors@4.1.6':
     dependencies:
@@ -22348,8 +22341,6 @@ snapshots:
   '@szmarczak/http-timer@5.0.1':
     dependencies:
       defer-to-connect: 2.0.1
-
-  '@taplo/cli@0.7.0': {}
 
   '@taplo/core@0.2.0': {}
 
