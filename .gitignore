@@ -35,15 +35,6 @@ node_modules
 *.sublime-workspace
 Heap.*
 
-# IDE - VSCode
-.vscode/*
-!.vscode/README.md
-!.vscode/settings.json
-!.vscode/tasks.json
-!.vscode/launch.json
-!.vscode/extensions.json
-!.vscode/cspell.json
-
 # misc
 /.sass-cache
 /connect.lock

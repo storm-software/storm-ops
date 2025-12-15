@@ -50,6 +50,8 @@
   "prettier.configPath": "./packages/prettier/src/config.json",
   "prettier.ignorePath": "./packages/prettier/src/.prettierignore",
   "prettier.enableDebugLogs": true,
+  "evenBetterToml.taplo.configFile.enabled": true,
+  "evenBetterToml.taplo.configFile.path": "./packages/linting-tools/src/taplo/config.toml",
   "markdownlint.config": {
     "extends": "./packages/markdownlint/src/config/base.markdownlint-cli2.jsonc"
   },
