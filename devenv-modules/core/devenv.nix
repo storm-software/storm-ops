@@ -53,7 +53,7 @@ in
           cache = true;
           cache-location = "${config.env.DEVENV_ROOT}/node_modules/.cache/prettier/.prettier-cache";
           configPath = "${config.env.DEVENV_ROOT}/node_modules/@storm-software/prettier/config.json";
-          ignore-path = "${config.env.DEVENV_ROOT}/node_modules/@storm-software/prettier/.prettierignore";
+          ignore-path = [ "${config.env.DEVENV_ROOT}/node_modules/@storm-software/prettier/.prettierignore" ];
         };
       };
       taplo = {
