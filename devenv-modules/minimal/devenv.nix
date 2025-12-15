@@ -1,5 +1,8 @@
-{ pkgs, inputs, ... }:
-
+{
+  pkgs,
+  inputs,
+  ...
+}:
 let
   pkgs-unstable = import inputs.nixpkgs-unstable { system = pkgs.stdenv.system; };
 in
@@ -63,8 +66,11 @@ in
   };
 
   # https://devenv.sh/git-hooks/
-  git-hooks.hooks = {
-    shellcheck.enable = false;
+  git-hooks = {
+    enable = true;
+    hooks = {
+      shellcheck.enable = true;
+    };
   };
 
   # See full reference at https://devenv.sh/reference/options/

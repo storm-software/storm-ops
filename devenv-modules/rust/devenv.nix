@@ -15,10 +15,19 @@
   # https://devenv.sh/processes/
   processes.cargo-watch.exec = "cargo-watch";
 
-  git-hooks.hooks = {
-    rustfmt.enable = true;
-    clippy.enable = true;
+  # https://devenv.sh/git-hooks/
+  git-hooks = {
+    enable = true;
+    hooks = {
+      shellcheck.enable = true;
+      prettier.enable = true;
+      cargo-check.enable = true;
+      rustfmt.enable = true;
+      clippy.enable = true;
+      detect-private-keys.enable = true;
+      flake-checker.enable = true;
+      taplo.enable = true;
+      terraform-format.enable = true;
+    };
   };
-
-  # See full reference at https://devenv.sh/reference/options/
 }

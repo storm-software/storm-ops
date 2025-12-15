@@ -1,5 +1,8 @@
-{ pkgs, inputs, ... }:
-
+{
+  pkgs,
+  inputs,
+  ...
+}:
 let
   pkgs-unstable = import inputs.nixpkgs-unstable { system = pkgs.stdenv.system; };
 in
@@ -84,8 +87,16 @@ in
   };
 
   # https://devenv.sh/git-hooks/
-  git-hooks.hooks = {
-    shellcheck.enable = true;
+  git-hooks = {
+    enable = true;
+    hooks = {
+      shellcheck.enable = true;
+      prettier.enable = true;
+      detect-private-keys.enable = true;
+      flake-checker.enable = true;
+      taplo.enable = true;
+      terraform-format.enable = true;
+    };
   };
 
   # See full reference at https://devenv.sh/reference/options/
