@@ -14,6 +14,8 @@ in
   ];
   dotenv.disableHint = true;
 
+  delta.enable = true;
+
   # https://devenv.sh/basics/
   env.DEFAULT_LOCALE = "en_US";
   env.DEFAULT_TIMEZONE = "America/New_York";

@@ -34,6 +34,7 @@
           "--config=${config.env.DEVENV_ROOT}/packages/linting-tools/src/taplo/config.toml"
           "--cache-path=${config.env.DEVENV_ROOT}/node_modules/.cache/taplo"
         ];
+        excludes = [ "Cargo\\.toml$" ];
       };
       zizmor = {
         enable = true;

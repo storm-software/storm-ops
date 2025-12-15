@@ -52,8 +52,8 @@ in
           write = true;
           cache = true;
           cache-location = "${config.env.DEVENV_ROOT}/node_modules/.cache/prettier/.prettier-cache";
-          configPath = "${config.env.DEVENV_ROOT}node_modules/@storm-software/prettier/config.json";
-          ignore-path = "${config.env.DEVENV_ROOT}node_modules/@storm-software/prettier/.prettierignore";
+          configPath = "${config.env.DEVENV_ROOT}/node_modules/@storm-software/prettier/config.json";
+          ignore-path = "${config.env.DEVENV_ROOT}/node_modules/@storm-software/prettier/.prettierignore";
         };
       };
       taplo = {
@@ -63,6 +63,7 @@ in
           "--cache-path=node_modules/.cache/taplo"
         ];
         files = "\\.toml$";
+        excludes = [ "Cargo\\.toml$" ];
       };
       yamllint = {
         enable = true;
