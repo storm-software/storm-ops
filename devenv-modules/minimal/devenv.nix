@@ -2,9 +2,13 @@
 
 let
   pkgs-unstable = import inputs.nixpkgs-unstable { system = pkgs.stdenv.system; };
-in {
+in
+{
   dotenv.enable = true;
-  dotenv.filename = [".env" ".env.local"];
+  dotenv.filename = [
+    ".env"
+    ".env.local"
+  ];
   dotenv.disableHint = true;
 
   # https://devenv.sh/basics/
@@ -13,18 +17,10 @@ in {
 
   # https://devenv.sh/packages/
   packages = [
-  # Shell
-    pkgs.zsh
-    pkgs.zsh-autosuggestions
-    pkgs.zsh-completions
-    pkgs.zsh-syntax-highlighting
-
     # Source Control
     pkgs.gnupg
-    pkgs.git
     pkgs.git-lfs
     pkgs.git-crypt
-    pkgs.gh
 
     # Linting
     pkgs.typos
@@ -59,7 +55,10 @@ in {
 
         pnpm install
       '';
-      before = [ "devenv:enterShell" "devenv:enterTest" ];
+      before = [
+        "devenv:enterShell"
+        "devenv:enterTest"
+      ];
     };
   };
 

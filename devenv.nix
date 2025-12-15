@@ -3,7 +3,10 @@
   name = "storm-software/storm-ops";
 
   dotenv.enable = true;
-  dotenv.filename = [".env" ".env.local"];
+  dotenv.filename = [
+    ".env"
+    ".env.local"
+  ];
   dotenv.disableHint = true;
 
   # https://devenv.sh/basics/
@@ -21,4 +24,3 @@
     toolchainFile = ./rust-toolchain.toml;
   };
 }
-
