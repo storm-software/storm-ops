@@ -4,7 +4,7 @@ import {
   exitWithError,
   getConfig,
   handleProcess,
-  writeFatal,
+  writeFatal
 } from "@storm-software/config-tools";
 import { checkPackageVersion } from "../src/utilities/check-package-version";
 
@@ -17,7 +17,7 @@ void (async () => {
   } catch (error) {
     writeFatal(
       `A fatal error occurred while running the program: ${error.message}`,
-      config,
+      config
     );
     exitWithError(config);
     process.exit(1);

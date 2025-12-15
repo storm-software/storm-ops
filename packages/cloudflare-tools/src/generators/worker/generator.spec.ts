@@ -1,5 +1,5 @@
-import { createTreeWithEmptyWorkspace } from "@nx/devkit/testing";
 import { Tree, readProjectConfiguration } from "@nx/devkit";
+import { createTreeWithEmptyWorkspace } from "@nx/devkit/testing";
 
 import { workerGenerator } from "./generator";
 import { WorkerGeneratorSchema } from "./schema";

@@ -35,7 +35,8 @@ jobs:
       - name: Create issue
         uses: peter-evans/create-issue-from-file@v5
         with:
-          title: Thank you Storm-Ops contributors (${{ env.START_DATE }}..${{
+          title:
+            Thank you Storm-Ops contributors (${{ env.START_DATE }}..${{
             env.END_DATE }})
           token: ${{ secrets.STORM_BOT_GITHUB_TOKEN }}
           content-filepath: ./contributors.md

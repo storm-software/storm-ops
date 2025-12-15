@@ -5,8 +5,8 @@
 
 variable "name" {
   description = "The name of the topic/event types."
-  type = string
-  nullable = false
+  type        = string
+  nullable    = false
 }
 
 # ----------------------------------------------------------------------------------------------------
@@ -15,19 +15,19 @@ variable "name" {
 
 variable "region" {
   description = "The AWS region to deploy the resources into."
-  type = string
-  default = "us-east-1"
+  type        = string
+  default     = "us-east-1"
 }
 
 variable "environment" {
   description = "The name of the environment being deployed."
-  type = string
-  default = "prod"
+  type        = string
+  default     = "prod"
 }
 
 variable "full_name" {
   description = "The name to use when adding resources (generally includes enviroment and region)."
-  type = string
-  nullable = true
-  default = null
+  type        = string
+  nullable    = true
+  default     = null
 }

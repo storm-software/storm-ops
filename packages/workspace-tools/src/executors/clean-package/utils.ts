@@ -10,7 +10,7 @@ export function isObject(object) {
 export function filterObjectByKey(
   object: Record<string, any>,
   filterByKey = (key?: string) => true,
-  deep = false,
+  deep = false
 ) {
   const result = {};
   let changed = false;
@@ -36,7 +36,7 @@ export function filterObjectByKey(
 
 export function createIgnoreMatcher(ignorePattern: string | RegExp = "**/*") {
   if (ignorePattern instanceof RegExp) {
-    return (filename) => !ignorePattern.test(filename);
+    return filename => !ignorePattern.test(filename);
   }
 
   if (hasMagic(ignorePattern, { magicalBraces: true })) {
@@ -45,7 +45,7 @@ export function createIgnoreMatcher(ignorePattern: string | RegExp = "**/*") {
     return (_filename, path) => !isMatch(path);
   }
 
-  return (filename) => filename !== ignorePattern;
+  return filename => filename !== ignorePattern;
 }
 
 export async function createFilesFilter(ignoreFiles = "", cwd: string) {
@@ -63,7 +63,7 @@ export async function createFilesFilter(ignoreFiles = "", cwd: string) {
   const filter = ignorePatterns.reduce(
     (
       next: null | ((filename: string, path: string) => void),
-      ignorePattern,
+      ignorePattern
     ) => {
       const ignoreMatcher = createIgnoreMatcher(ignorePattern);
 
@@ -74,10 +74,10 @@ export async function createFilesFilter(ignoreFiles = "", cwd: string) {
       return (filename: string, path: string) =>
         ignoreMatcher(filename, path) && next && next(filename, path);
     },
-    null,
+    null
   );
 
-  return (path) => {
+  return path => {
     const filename = basename(path);
 
     return filter?.(filename, path);

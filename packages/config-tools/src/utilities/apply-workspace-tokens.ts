@@ -2,10 +2,10 @@ import { BaseTokenizerOptions, ProjectTokenizerOptions } from "../types";
 import { findWorkspaceRoot } from "./find-workspace-root";
 
 export const applyWorkspaceBaseTokens = async <
-  TTokenizerOptions extends BaseTokenizerOptions = BaseTokenizerOptions,
+  TTokenizerOptions extends BaseTokenizerOptions = BaseTokenizerOptions
 >(
   option: string,
-  tokenParams: TTokenizerOptions,
+  tokenParams: TTokenizerOptions
 ): Promise<string> => {
   let result = option;
   if (!result) {
@@ -14,12 +14,12 @@ export const applyWorkspaceBaseTokens = async <
 
   if (tokenParams) {
     const optionKeys = Object.keys(tokenParams);
-    if (optionKeys.some((optionKey) => result.includes(`{${optionKey}}`))) {
+    if (optionKeys.some(optionKey => result.includes(`{${optionKey}}`))) {
       for (const optionKey of optionKeys) {
         if (result.includes(`{${optionKey}}`)) {
           result = result.replaceAll(
             `{${optionKey}}`,
-            tokenParams?.[optionKey] || "",
+            tokenParams?.[optionKey] || ""
           );
         }
       }
@@ -28,12 +28,12 @@ export const applyWorkspaceBaseTokens = async <
 
   if (tokenParams.config) {
     const configKeys = Object.keys(tokenParams.config);
-    if (configKeys.some((configKey) => result.includes(`{${configKey}}`))) {
+    if (configKeys.some(configKey => result.includes(`{${configKey}}`))) {
       for (const configKey of configKeys) {
         if (result.includes(`{${configKey}}`)) {
           result = result.replaceAll(
             `{${configKey}}`,
-            tokenParams.config[configKey] || "",
+            tokenParams.config[configKey] || ""
           );
         }
       }
@@ -45,7 +45,7 @@ export const applyWorkspaceBaseTokens = async <
       "{workspaceRoot}",
       tokenParams.workspaceRoot ??
         tokenParams.config?.workspaceRoot ??
-        findWorkspaceRoot(),
+        findWorkspaceRoot()
     );
   }
 
@@ -53,23 +53,23 @@ export const applyWorkspaceBaseTokens = async <
 };
 
 export const applyWorkspaceProjectTokens = <
-  TTokenizerOptions extends ProjectTokenizerOptions = ProjectTokenizerOptions,
+  TTokenizerOptions extends ProjectTokenizerOptions = ProjectTokenizerOptions
 >(
   option: string,
-  tokenParams: TTokenizerOptions,
+  tokenParams: TTokenizerOptions
 ): Promise<string> => {
   return applyWorkspaceBaseTokens(option, tokenParams);
 };
 
 export const applyWorkspaceTokens = async <
-  TTokenizerOptions extends BaseTokenizerOptions = BaseTokenizerOptions,
+  TTokenizerOptions extends BaseTokenizerOptions = BaseTokenizerOptions
 >(
   options: Record<string, any>,
   tokenParams: TTokenizerOptions,
   tokenizerFn: (
     option: string,
-    tokenParams: TTokenizerOptions,
-  ) => string | Promise<string>,
+    tokenParams: TTokenizerOptions
+  ) => string | Promise<string>
 ): Promise<Record<string, any>> => {
   if (!options) {
     return {};
@@ -80,21 +80,21 @@ export const applyWorkspaceTokens = async <
   for (const option of Object.keys(options)) {
     if (typeof options[option] === "string") {
       result[option] = await Promise.resolve(
-        tokenizerFn(options[option], tokenParams),
+        tokenizerFn(options[option], tokenParams)
       );
     } else if (Array.isArray(options[option])) {
       result[option] = await Promise.all(
         options[option].map(async (item: any) =>
           typeof item === "string"
             ? await Promise.resolve(tokenizerFn(item, tokenParams))
-            : item,
-        ),
+            : item
+        )
       );
     } else if (typeof options[option] === "object") {
       result[option] = await applyWorkspaceTokens(
         options[option],
         tokenParams,
-        tokenizerFn,
+        tokenizerFn
       );
     } else {
       result[option] = options[option];

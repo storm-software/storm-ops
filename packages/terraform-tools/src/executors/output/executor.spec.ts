@@ -7,7 +7,7 @@ const options: FmtExecutorSchema = {};
 const context: ExecutorContext = {
   root: "",
   cwd: process.cwd(),
-  isVerbose: false,
+  isVerbose: false
 };
 
 describe("Fmt Executor", () => {

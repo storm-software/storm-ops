@@ -2,19 +2,19 @@ module.exports = {
   names: ["SSW03", "no-empty-alt-text"],
   description: "Please provide an alternative text for the image.",
   information: new URL(
-    "https://github.com/github/markdownlint-github/blob/main/docs/rules/GH003-no-empty-alt-text.md",
+    "https://github.com/github/markdownlint-github/blob/main/docs/rules/GH003-no-empty-alt-text.md"
   ),
   tags: ["accessibility", "images"],
   function: function SS003(params, onError) {
     const htmlTagsWithImages = params.parsers.markdownit.tokens.filter(
-      (token) => {
+      token => {
         return (
           (token.type === "html_block" && token.content.includes("<img")) ||
           (token.type === "inline" &&
             token.content.includes("<img") &&
-            token.children.some((child) => child.type === "html_inline"))
+            token.children.some(child => child.type === "html_inline"))
         );
-      },
+      }
     );
 
     const ImageRegex = new RegExp(/<img(.*?)>/, "gid");
@@ -31,18 +31,18 @@ module.exports = {
           const imageTagIndex = imageTag.indices[0][0];
 
           const emptyAltMatches = [
-            ...imageTag[0].matchAll(htmlEmptyAltRegex),
+            ...imageTag[0].matchAll(htmlEmptyAltRegex)
           ][0];
           if (emptyAltMatches) {
             const matchingContent = emptyAltMatches[0];
             const startIndex = emptyAltMatches.indices[0][0];
             onError({
               lineNumber: lineNumber + i,
-              range: [imageTagIndex + startIndex + 1, matchingContent.length],
+              range: [imageTagIndex + startIndex + 1, matchingContent.length]
             });
           }
         }
       }
     }
-  },
+  }
 };

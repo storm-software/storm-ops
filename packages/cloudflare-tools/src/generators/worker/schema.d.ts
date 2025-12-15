@@ -1,6 +1,6 @@
 import type {
   TypeScriptLibraryGeneratorNormalizedSchema,
-  TypeScriptLibraryGeneratorSchema,
+  TypeScriptLibraryGeneratorSchema
 } from "@storm-software/workspace-tools";
 
 export type WorkerGeneratorSchema = TypeScriptLibraryGeneratorSchema & {

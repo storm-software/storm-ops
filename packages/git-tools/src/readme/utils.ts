@@ -3,7 +3,7 @@ import { findFileName } from "../utilities/file-utils";
 
 export const formatReadMe = (
   templatePath: string,
-  readMeContent: string,
+  readMeContent: string
 ): string => {
   const templateContent = readFileSync(templatePath, "utf8");
 
@@ -18,7 +18,7 @@ export const formatReadMeFromSectionName = (
   sectionName: string,
   templateContent: string,
   readMeContent: string,
-  skipLint = true,
+  skipLint = true
 ): string => {
   const { regex, start, end } = createRegExp(sectionName);
   if (!regex.test(readMeContent)) {
@@ -27,7 +27,7 @@ export const formatReadMeFromSectionName = (
 Start: "${start}"
 End: "${end}"
 Regex: "${regex}"
-Content: "${readMeContent}"`,
+Content: "${readMeContent}"`
     );
     return readMeContent;
   }
@@ -40,7 +40,7 @@ ${skipLint ? "<!-- prettier-ignore-start -->\n" + "<!-- markdownlint-disable -->
 ${templateContent}
 
 ${skipLint ? "<!-- markdownlint-restore -->\n" + "<!-- prettier-ignore-end -->\n" : ""}
-${end}`,
+${end}`
   );
 };
 

@@ -7,7 +7,7 @@ import {
   handleProcess,
   run,
   writeFatal,
-  writeInfo,
+  writeInfo
 } from "@storm-software/config-tools";
 
 void (async () => {
@@ -28,7 +28,7 @@ void (async () => {
   } catch (error) {
     writeFatal(
       `A fatal error occurred while running the program: ${error.message}`,
-      config,
+      config
     );
     exitWithError(config);
     process.exit(1);

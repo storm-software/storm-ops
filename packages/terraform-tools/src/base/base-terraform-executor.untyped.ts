@@ -4,87 +4,87 @@ import { defineUntypedSchema } from "untyped";
 export default defineUntypedSchema({
   $schema: {
     title: "Base Terraform Executor",
-    description: "A base type definition for a Terraform executor schema",
+    description: "A base type definition for a Terraform executor schema"
   },
   backendConfig: {
     $schema: {
       title: "Backend Config",
       type: "array",
-      description: "The backend configuration",
+      description: "The backend configuration"
     },
-    $default: [],
+    $default: []
   },
   autoApproval: {
     $schema: {
       title: "Auto Approval",
       type: "boolean",
-      description: "Whether to auto-approve the plan",
+      description: "Whether to auto-approve the plan"
     },
-    $default: false,
+    $default: false
   },
   planFile: {
     $schema: {
       title: "Plan File",
       format: "path",
       description: "The plan file",
-      type: "string",
+      type: "string"
     },
-    $default: "plan.out",
+    $default: "plan.out"
   },
   formatWrite: {
     $schema: {
       title: "Format Write",
       type: "boolean",
-      description: "Whether to format the files before writing",
+      description: "Whether to format the files before writing"
     },
-    $default: false,
+    $default: false
   },
   upgrade: {
     $schema: {
       title: "Upgrade",
       type: "boolean",
-      description: "Whether to upgrade the modules",
+      description: "Whether to upgrade the modules"
     },
-    $default: false,
+    $default: false
   },
   migrateState: {
     $schema: {
       title: "Migrate State",
       type: "boolean",
-      description: "Whether to migrate the state",
+      description: "Whether to migrate the state"
     },
-    $default: false,
+    $default: false
   },
   lock: {
     $schema: {
       title: "Lock",
       type: "boolean",
-      description: "Whether to lock the state",
+      description: "Whether to lock the state"
     },
-    $default: false,
+    $default: false
   },
   varFile: {
     $schema: {
       title: "Var File",
       format: "path",
       type: "string",
-      description: "The variable file",
+      description: "The variable file"
     },
-    $default: "variables.tf",
+    $default: "variables.tf"
   },
   varString: {
     $schema: {
       title: "Var String",
       type: "string",
-      description: "The variable string",
-    },
+      description: "The variable string"
+    }
   },
   reconfigure: {
     $schema: {
       title: "Reconfigure",
       type: "boolean",
-      description: "Whether to reconfigure the state",
+      description: "Whether to reconfigure the state"
     },
-    $default: false,
-  },
+    $default: false
+  }
 });

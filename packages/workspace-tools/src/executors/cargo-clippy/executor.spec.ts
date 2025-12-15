@@ -7,7 +7,7 @@ const options: CargoCheckExecutorSchema = {};
 const context: ExecutorContext = {
   root: "",
   cwd: process.cwd(),
-  isVerbose: false,
+  isVerbose: false
 };
 
 describe("CargoCheck Executor", () => {

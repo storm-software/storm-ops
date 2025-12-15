@@ -9,7 +9,7 @@ declare module "doctoc/lib/transform" {
     noTitle?: boolean,
     entryPrefix?: string,
     processAll?: boolean,
-    updateOnly?: boolean,
+    updateOnly?: boolean
   ): any;
 }
 

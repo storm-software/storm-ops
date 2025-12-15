@@ -40,7 +40,8 @@
   description: "Issue is currently being resolved by a developer."
 - name: "stale"
   color: fef2c0
-  description: "There has not been activity on this issue or PR for quite some time."
+  description:
+    "There has not been activity on this issue or PR for quite some time."
 - name: "no-stale"
   color: fef2c0
   description: "This issue or PR is exempted from the stable bot."
@@ -60,10 +61,12 @@
 
 - name: "beginner-friendly"
   color: 0e8a16
-  description: "Good first issue for people wanting to contribute to the project."
+  description:
+    "Good first issue for people wanting to contribute to the project."
 - name: "help-wanted"
   color: 0e8a16
-  description: "We need some extra helping hands or expertise in order to resolve this."
+  description:
+    "We need some extra helping hands or expertise in order to resolve this."
 
 - name: "priority-critical"
   color: ee0701

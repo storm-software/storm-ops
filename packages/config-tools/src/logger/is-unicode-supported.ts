@@ -1,4 +1,3 @@
-
 export function isUnicodeSupported() {
   if (process.platform !== "win32") {
     return process.env.TERM !== "linux"; // Linux console (kernel)

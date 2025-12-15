@@ -13,9 +13,9 @@ resource "aws_vpc" "vpc" {
   cidr_block = "10.0.0.0/16"
 
   tags = tomap({
-    Environment = var.environment
-    Region = var.region
-    Name = var.name
+    Environment                                = var.environment
+    Region                                     = var.region
+    Name                                       = var.name
     "kubernetes.io/cluster/${local.full_name}" = "shared",
   })
 }
@@ -29,9 +29,9 @@ resource "aws_subnet" "subnet" {
   vpc_id                  = aws_vpc.vpc.id
 
   tags = tomap({
-    Environment = var.environment
-    Region = var.region
-    Name = var.name
+    Environment                                = var.environment
+    Region                                     = var.region
+    Name                                       = var.name
     "kubernetes.io/cluster/${local.full_name}" = "shared",
   })
 }
@@ -41,8 +41,8 @@ resource "aws_internet_gateway" "internet_gateway" {
 
   tags = {
     Environment = var.environment
-    Region = var.region
-    Name = var.name
+    Region      = var.region
+    Name        = var.name
   }
 }
 

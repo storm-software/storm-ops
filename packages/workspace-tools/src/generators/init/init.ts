@@ -1,7 +1,7 @@
 import {
   addDependenciesToPackageJson,
   formatFiles,
-  type Tree,
+  type Tree
 } from "@nx/devkit";
 import type { InitGeneratorSchema } from "./schema.d";
 
@@ -17,9 +17,9 @@ export async function initGenerator(tree: Tree, schema: InitGeneratorSchema) {
       "@storm-software/config-tools": "latest",
       "@storm-software/testing-tools": "latest",
       "@storm-software/git-tools": "latest",
-      "@storm-software/linting-tools": "latest",
+      "@storm-software/linting-tools": "latest"
     },
-    {},
+    {}
   );
 
   if (!schema.skipFormat) {

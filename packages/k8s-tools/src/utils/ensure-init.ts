@@ -11,7 +11,7 @@ import { Initializable } from "../types";
 export const ensureInitialized = (
   target: any,
   propertyKey: string,
-  descriptor: PropertyDescriptor,
+  descriptor: PropertyDescriptor
 ): PropertyDescriptor => {
   const originalMethod = descriptor.value;
   descriptor.value = async function (...arguments_: any[]) {
@@ -22,7 +22,7 @@ export const ensureInitialized = (
       typeof self.initialize !== "function"
     ) {
       throw new TypeError(
-        `The ensureInitialized decorator can only be applied in classes with an 'initialized' property and 'initialize' method.`,
+        `The ensureInitialized decorator can only be applied in classes with an 'initialized' property and 'initialize' method.`
       );
     }
 

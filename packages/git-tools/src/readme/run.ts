@@ -3,12 +3,12 @@ import {
   readFileSync,
   readdirSync,
   rmSync,
-  writeFileSync,
+  writeFileSync
 } from "node:fs";
 import { join } from "node:path";
 import {
   createProjectGraphAsync,
-  readProjectsConfigurationFromProjectGraph,
+  readProjectsConfigurationFromProjectGraph
 } from "nx/src/project-graph/project-graph.js";
 import type { ReadMeOptions } from "../types";
 import { findFileName, findFilePath } from "../utilities/file-utils";
@@ -21,10 +21,10 @@ export const runReadme = async ({
   project,
   output,
   clean = true,
-  prettier = true,
+  prettier = true
 }: ReadMeOptions) => {
   const projectGraph = await createProjectGraphAsync({
-    exitOnError: true,
+    exitOnError: true
   });
   const projectConfigs =
     readProjectsConfigurationFromProjectGraph(projectGraph);
@@ -34,7 +34,7 @@ export const runReadme = async ({
       templates,
       output,
       clean,
-      prettier,
+      prettier
     });
   } else {
     for (const projectName of Object.keys(projectConfigs.projects)) {
@@ -42,7 +42,7 @@ export const runReadme = async ({
         templates,
         output,
         clean,
-        prettier,
+        prettier
       });
     }
   }
@@ -50,10 +50,10 @@ export const runReadme = async ({
 
 export const runProjectReadme = async (
   projectName: string,
-  { templates, output, clean = true, prettier = true }: ReadMeOptions,
+  { templates, output, clean = true, prettier = true }: ReadMeOptions
 ) => {
   const projectGraph = await createProjectGraphAsync({
-    exitOnError: true,
+    exitOnError: true
   });
   const projectConfigs =
     readProjectsConfigurationFromProjectGraph(projectGraph);
@@ -73,11 +73,11 @@ export const runProjectReadme = async (
     if (clean && existsSync(outputFilePath)) {
       if (outputFilePath === inputFile) {
         console.warn(
-          "Skipping cleaning since output directory + file name is the same as input directory + file name.",
+          "Skipping cleaning since output directory + file name is the same as input directory + file name."
         );
       } else {
         console.info(
-          "Cleaning output directory (set `clean` parameter to false to skip)...",
+          "Cleaning output directory (set `clean` parameter to false to skip)..."
         );
         rmSync(outputFilePath);
       }
@@ -97,20 +97,20 @@ export const runProjectReadme = async (
 
         return formatReadMeFromSectionName(section, templateContent, ret);
       },
-      readFileSync(inputFile, "utf8"),
+      readFileSync(inputFile, "utf8")
     );
 
     let packageName = projectName;
     const packageJsonPath = join(findFilePath(inputFile), "package.json");
     if (existsSync(packageJsonPath)) {
       const packageJson = JSON.parse(
-        readFileSync(packageJsonPath, "utf8") ?? "{}",
+        readFileSync(packageJsonPath, "utf8") ?? "{}"
       );
       if (packageJson?.version) {
         console.info("Adding version...");
         newContent = newContent.replace(
           "<!-- VERSION -->",
-          packageJson.version,
+          packageJson.version
         );
       }
       if (packageJson?.name) {
@@ -122,7 +122,7 @@ export const runProjectReadme = async (
       const executorsJsonPath = join(findFilePath(inputFile), "executors.json");
       if (existsSync(executorsJsonPath)) {
         const executorsJson = JSON.parse(
-          readFileSync(executorsJsonPath, "utf8") ?? "{}",
+          readFileSync(executorsJsonPath, "utf8") ?? "{}"
         );
         if (executorsJson?.executors) {
           console.info("Adding executors...");
@@ -130,7 +130,7 @@ export const runProjectReadme = async (
           newContent = formatReadMeFromSectionName(
             "executors",
             getExecutorMarkdown(packageName, executorsJsonPath, executorsJson),
-            newContent,
+            newContent
           );
         }
       }
@@ -139,11 +139,11 @@ export const runProjectReadme = async (
     if (newContent.includes("<!-- START generators -->")) {
       const generatorsJsonPath = join(
         findFilePath(inputFile),
-        "generators.json",
+        "generators.json"
       );
       if (existsSync(generatorsJsonPath)) {
         const generatorsJson = JSON.parse(
-          readFileSync(generatorsJsonPath, "utf8") ?? "{}",
+          readFileSync(generatorsJsonPath, "utf8") ?? "{}"
         );
         if (generatorsJson?.generators) {
           console.info("Adding generators...");
@@ -153,9 +153,9 @@ export const runProjectReadme = async (
             getGeneratorMarkdown(
               packageName,
               generatorsJsonPath,
-              generatorsJson,
+              generatorsJson
             ),
-            newContent,
+            newContent
           );
         }
       }
@@ -177,7 +177,7 @@ export const runProjectReadme = async (
         printWidth: 80,
         bracketSpacing: true,
         arrowParens: "avoid",
-        endOfLine: "lf",
+        endOfLine: "lf"
       });
     }
 
@@ -192,7 +192,7 @@ export const runProjectReadme = async (
         doctoc(outputFilePath);
       } else {
         console.warn(
-          `Contents do not contain start/end comments for section "doctoc", skipping  table of contents generation...`,
+          `Contents do not contain start/end comments for section "doctoc", skipping  table of contents generation...`
         );
       }
     } catch (e) {

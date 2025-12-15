@@ -1,5 +1,5 @@
 locals {
-  azs      = slice(data.aws_availability_zones.available.names, 0, 3)
+  azs = slice(data.aws_availability_zones.available.names, 0, 3)
 
   account_id = data.aws_caller_identity.current.account_id
   partition  = data.aws_partition.current.partition
@@ -20,11 +20,11 @@ locals {
   } : k => v if var.node_iam_role_attach_cni_policy && var.cluster_ip_family == "ipv6" }
 
   enable_spot_termination = var.create && var.enable_spot_termination
-  queue_name = coalesce(var.queue_name, "Karpenter-${var.cluster_name}")
+  queue_name              = coalesce(var.queue_name, "Karpenter-${var.cluster_name}")
 
   tags = {
-      Environment = var.environment
-      Region = var.region
-      Name = var.cluster_name
+    Environment = var.environment
+    Region      = var.region
+    Name        = var.cluster_name
   }
 }

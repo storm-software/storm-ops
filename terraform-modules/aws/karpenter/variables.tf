@@ -1,13 +1,13 @@
 variable "region" {
   description = "The AWS region to deploy the resources into."
-  type = string
-  default = "us-east-1"
+  type        = string
+  default     = "us-east-1"
 }
 
 variable "environment" {
   description = "The name of the environment being deployed."
-  type = string
-  default = "prod"
+  type        = string
+  default     = "prod"
 }
 
 variable "create" {
@@ -294,7 +294,7 @@ variable "node_iam_role_attach_cni_policy" {
 variable "node_iam_role_additional_policies" {
   description = "Additional policies to be added to the IAM role"
   type        = map(string)
-  default     = {
+  default = {
     AmazonSSMManagedInstanceCore = "arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore"
   }
 }

@@ -10,22 +10,20 @@ let depth = 0;
 export function findFolderUp(
   startPath: string,
   endFileNames: string[] = [],
-  endDirectoryNames: string[] = [],
+  endDirectoryNames: string[] = []
 ): string | undefined {
   const _startPath = startPath ?? process.cwd();
 
   if (
-    endDirectoryNames.some((endDirName) =>
-      existsSync(join(_startPath, endDirName)),
+    endDirectoryNames.some(endDirName =>
+      existsSync(join(_startPath, endDirName))
     )
   ) {
     return _startPath;
   }
 
   if (
-    endFileNames.some((endFileName) =>
-      existsSync(join(_startPath, endFileName)),
-    )
+    endFileNames.some(endFileName => existsSync(join(_startPath, endFileName)))
   ) {
     return _startPath;
   }

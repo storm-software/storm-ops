@@ -3,16 +3,16 @@ export const config = {
   customTypes: {
     engines: {
       strategy: "versionsByName",
-      path: "engines",
+      path: "engines"
     },
     packageManager: {
       strategy: "name@version",
-      path: "packageManager",
+      path: "packageManager"
     },
     nodeEngine: {
       strategy: "version",
-      path: "engines.node",
-    },
+      path: "engines.node"
+    }
   },
   dependencyTypes: ["**"],
   formatBugs: true,
@@ -27,7 +27,7 @@ export const config = {
     "keywords",
     "peerDependencies",
     "resolutions",
-    "scripts",
+    "scripts"
   ],
   sortExports: [
     "types",
@@ -38,7 +38,7 @@ export const config = {
     "require",
     "development",
     "production",
-    "default",
+    "default"
   ],
   sortFirst: ["name", "description", "version", "author"],
   sortPackages: true,
@@ -48,14 +48,14 @@ export const config = {
       label: "@types packages should only be under devDependencies",
       dependencies: ["@types/**"],
       dependencyTypes: ["!dev"],
-      isBanned: true,
+      isBanned: true
     },
     {
       label:
         "Ensure semver ranges for locally developed packages satisfy the local version",
       dependencies: ["$LOCAL"],
       dependencyTypes: ["dev"],
-      pinVersion: ["workspace-protocol"],
-    },
-  ],
+      pinVersion: ["workspace-protocol"]
+    }
+  ]
 };

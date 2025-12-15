@@ -8,7 +8,7 @@ import {
   run,
   writeError,
   writeFatal,
-  writeInfo,
+  writeInfo
 } from "@storm-software/config-tools";
 import { checkPackageVersion } from "../src/utilities/check-package-version";
 
@@ -27,7 +27,7 @@ void (async () => {
         `This repository is configured for Git LFS but 'git-lfs' was not found on your path. If you no longer wish to use Git LFS, remove this hook by deleting .git/hooks/post-checkout.\nError: ${
           (error as Error)?.message
         }`,
-        config,
+        config
       );
       exitWithError(config);
     }
@@ -38,7 +38,7 @@ void (async () => {
   } catch (error) {
     writeFatal(
       `A fatal error occurred while running the program: ${error.message}`,
-      config,
+      config
     );
     exitWithError(config);
     process.exit(1);

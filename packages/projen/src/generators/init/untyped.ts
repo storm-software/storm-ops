@@ -6,20 +6,20 @@ export default defineUntypedSchema({
   $schema: {
     id: "InitGeneratorSchema",
     title: "Init Generator",
-    description: "A type definition for the Projen init generator schema",
+    description: "A type definition for the Projen init generator schema"
   },
   directory: {
     $schema: {
       title: "Directory",
       type: "string",
-      description: "The directory to initialize the workspace in",
-    },
+      description: "The directory to initialize the workspace in"
+    }
   },
   skipFormat: {
     $schema: {
       title: "Skip Format",
       type: "boolean",
-      description: "Skip formatting the generated files",
-    },
-  },
+      description: "Skip formatting the generated files"
+    }
+  }
 });

@@ -106,7 +106,7 @@ export function transform(
   notitle,
   entryPrefix,
   processAll,
-  updateOnly,
+  updateOnly
 ): any {
   if (content.indexOf(skipTag) !== -1) return { transformed: false };
 
@@ -132,7 +132,7 @@ export function transform(
     linesToToc = getLinesToToc(lines, currentToc, info, processAll);
 
   const headers = getMarkdownHeaders(linesToToc, maxHeaderLevel).concat(
-    getHtmlHeaders(linesToToc, maxHeaderLevelHtml),
+    getHtmlHeaders(linesToToc, maxHeaderLevelHtml)
   );
 
   headers.sort((a, b) => {
@@ -166,7 +166,7 @@ export function transform(
       .map(function (x) {
         const indent = _(_.range(x.rank - lowestRank)).reduce(function (
           acc,
-          x,
+          x
         ) {
           return acc + indentation;
         }, "");
@@ -185,7 +185,7 @@ export function transform(
     wrappedToc,
     matchesStart,
     matchesEnd,
-    true,
+    true
   );
   return { transformed: true, data: data, toc: toc, wrappedToc: wrappedToc };
 }
@@ -262,9 +262,9 @@ export function getHtmlHeaders(lines, maxHeaderLevel) {
           headers.push({ text: text, tag: tag });
           text = [];
         }
-      },
+      }
     },
-    { decodeEntities: true },
+    { decodeEntities: true }
   );
 
   parser.write(source);
