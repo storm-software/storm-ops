@@ -14,8 +14,9 @@
   env.DEFAULT_TIMEZONE = "America/New_York";
 
   # https://devenv.sh/packages/
-  packages = [
-    pkgs.cargo-deny
+  packages = with pkgs; [
+    cargo-deny
+    openssl
   ];
 
   # https://devenv.sh/languages/
