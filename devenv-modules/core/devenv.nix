@@ -1,6 +1,7 @@
 {
   pkgs,
   inputs,
+  config,
   ...
 }:
 let
@@ -50,9 +51,9 @@ in
           color = true;
           write = true;
           cache = true;
-          cache-location = "node_modules/.cache/prettier/.prettier-cache";
-          configPath = "node_modules/@storm-software/prettier/config.json";
-          ignore-path = "node_modules/@storm-software/prettier/.prettierignore";
+          cache-location = "${config.env.DEVENV_ROOT}/node_modules/.cache/prettier/.prettier-cache";
+          configPath = "${config.env.DEVENV_ROOT}node_modules/@storm-software/prettier/config.json";
+          ignore-path = "${config.env.DEVENV_ROOT}node_modules/@storm-software/prettier/.prettierignore";
         };
       };
       taplo = {
@@ -76,7 +77,7 @@ in
           "--offline"
           "--config=tools/config/zizmor.yml"
         ];
-        files = "^\\.github/workflows/*";
+        files = "^\\.github/workflows/.*\\.(yml|yaml)$";
       };
     };
   };

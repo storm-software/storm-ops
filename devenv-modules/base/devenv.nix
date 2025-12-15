@@ -74,7 +74,7 @@ in
   # https://devenv.sh/git-hooks/
   git-hooks = {
     enable = true;
-    gitPackage = pkgs.git;
+    gitPackage = pkgs.gitFull;
     hooks = {
       shellcheck.enable = true;
       detect-private-keys.enable = true;

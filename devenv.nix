@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 {
   name = "storm-software/storm-ops";
 
@@ -31,17 +31,17 @@
       taplo = {
         enable = true;
         args = [
-          "--config=packages/linting-tools/src/taplo/config.toml"
-          "--cache-path=tmp/taplo"
+          "--config=${config.env.DEVENV_ROOT}/packages/linting-tools/src/taplo/config.toml"
+          "--cache-path=${config.env.DEVENV_ROOT}/node_modules/.cache/taplo"
         ];
       };
       zizmor = {
         enable = true;
         args = [
           "--offline"
-          "--config=tools/config/zizmor.yml"
+          "--config=${config.env.DEVENV_ROOT}/tools/config/zizmor.yml"
         ];
-        files = "^\\.github/workflows/*";
+        files = "^\\.github/workflows/.*\\.(yml|yaml)$";
       };
     };
   };
