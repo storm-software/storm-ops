@@ -7,7 +7,7 @@ import { NodeHttp2Handler } from "@smithy/node-http-handler";
  */
 export function createHttpHandler() {
   return new NodeHttp2Handler({
-    requestTimeout: 5 * 60 * 1000,
-    sessionTimeout: 5 * 60 * 1000
+    requestTimeout: 15 * 60 * 1000,
+    sessionTimeout: 15 * 60 * 1000
   });
 }
