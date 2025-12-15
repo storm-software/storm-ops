@@ -2,6 +2,20 @@
 
 # Changelog for Storm Ops - Conventional Changelog
 
+## [0.3.66](https://github.com/storm-software/storm-ops/releases/tag/conventional-changelog%400.3.66) (12/15/2025)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace packages' dependencies
+  ([eddfd4596](https://github.com/storm-software/storm-ops/commit/eddfd4596))
+- **monorepo:** Update workspace packages' dependencies
+  ([104422be0](https://github.com/storm-software/storm-ops/commit/104422be0))
+
+### Updated Dependencies
+
+- Updated **config-tools** to **v1.188.66**
+- Updated **config** to **v1.134.66**
+
 ## [0.3.65](https://github.com/storm-software/storm-ops/releases/tag/conventional-changelog%400.3.65) (12/08/2025)
 
 ### Updated Dependencies

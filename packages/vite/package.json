@@ -1,6 +1,6 @@
 {
   "name": "@storm-software/vite",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "type": "module",
   "description": "A package containing a shared `vite` configuration and utilities for building Storm Software libraries and applications",
   "repository": {
@@ -99,20 +99,6 @@
         "types": "./dist/config.d.ts",
         "default": "./dist/config.js"
       }
-    },
-    "./types": {
-      "import": {
-        "types": "./dist/types.d.ts",
-        "default": "./dist/types.js"
-      },
-      "require": {
-        "types": "./dist/types.d.cts",
-        "default": "./dist/types.cjs"
-      },
-      "default": {
-        "types": "./dist/types.d.ts",
-        "default": "./dist/types.js"
-      }
     }
   },
   "types": "./dist/index.d.ts",
@@ -134,7 +120,7 @@
   },
   "devDependencies": {
     "@types/node": "catalog:",
-    "vite": "^8.0.0-beta.2"
+    "vite": "8.0.0-beta.2"
   },
   "publishConfig": {
     "access": "public"
