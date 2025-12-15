@@ -20,18 +20,7 @@ in
 
   # https://devenv.sh/packages/
   packages = [
-    # Source Control
-    pkgs.gnupg
-    pkgs.git-lfs
-    pkgs.git-crypt
-
-    # Linting
-    pkgs.zizmor
-    pkgs.taplo
-    pkgs.typos
-
     # Tools
-    pkgs.capnproto
     pkgs.nixd
   ];
 
@@ -66,7 +55,7 @@ in
   };
 
   tasks = {
-    "storm:init" = {
+    "storm:enterBase" = {
       exec = ''
         git config commit.gpgsign true
         git config tag.gpgSign true
@@ -74,10 +63,6 @@ in
         git config init.defaultBranch main
 
         npm config set provenance true
-
-        pnpm update --recursive --workspace
-        pnpm install
-        bootstrap
       '';
       before = [
         "devenv:enterShell"
@@ -89,15 +74,12 @@ in
   # https://devenv.sh/git-hooks/
   git-hooks = {
     enable = true;
+    gitPackage = pkgs.git;
     hooks = {
       shellcheck.enable = true;
-      prettier.enable = true;
       detect-private-keys.enable = true;
-      flake-checker.enable = true;
-      taplo.enable = true;
+      nixfmt.enable = true;
       terraform-format.enable = true;
     };
   };
-
-  # See full reference at https://devenv.sh/reference/options/
 }
