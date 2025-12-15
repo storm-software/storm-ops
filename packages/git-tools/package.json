@@ -194,13 +194,7 @@
     "lint-staged"
   ],
   "peerDependencies": {
-    "conventional-changelog-storm-software": "*",
     "zod": ">=4.0.0"
-  },
-  "peerDependenciesMeta": {
-    "conventional-changelog-storm-software": {
-      "optional": false
-    }
   },
   "dependencies": {
     "@commitlint/ensure": "^19.8.1",
@@ -217,6 +211,7 @@
     "axios": "1.8.2",
     "chalk": "catalog:",
     "chalk-template": "1.1.0",
+    "conventional-changelog-conventionalcommits": "^9.1.0",
     "conventional-changelog-storm-software": "workspace:*",
     "htmlparser2": "10.0.0",
     "jsonc-parser": "3.2.1",

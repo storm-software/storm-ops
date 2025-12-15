@@ -224,7 +224,11 @@
     }
   },
   "types": "./dist/index.d.ts",
-  "files": ["assets/**/*", "bin/**/*", "dist/**/*"],
+  "files": [
+    "assets/**/*",
+    "bin/**/*",
+    "dist/**/*"
+  ],
   "keywords": [
     "esbuild",
     "monorepo",
@@ -243,7 +247,7 @@
     "chokidar": "^4.0.3",
     "commander": "catalog:",
     "defu": "catalog:",
-    "es-toolkit": "^1.42.0",
+    "es-toolkit": "^1.43.0",
     "esbuild": "catalog:",
     "globby": "^14.1.0"
   },

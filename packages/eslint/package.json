@@ -134,7 +134,9 @@
     }
   },
   "types": "./dist/index.d.ts",
-  "files": ["dist/**/*"],
+  "files": [
+    "dist/**/*"
+  ],
   "keywords": [
     "eslint",
     "eslint-config",
@@ -206,7 +208,7 @@
     "eslint-plugin-tsdoc": "0.4.0",
     "eslint-plugin-unicorn": "^57.0.0",
     "eslint-plugin-unused-imports": "^4.3.0",
-    "eslint-plugin-yml": "^1.19.0",
+    "eslint-plugin-yml": "^1.19.1",
     "globals": "^16.5.0",
     "jsonc-eslint-parser": "^2.4.2",
     "local-pkg": "^1.1.2",
@@ -238,7 +240,7 @@
     "eslint-plugin-react-compiler": "19.0.0-beta-21e868a-20250216",
     "eslint-plugin-react-hooks": "^5.2.0",
     "eslint-plugin-react-native": "^5.0.0",
-    "eslint-plugin-react-refresh": "^0.4.24",
+    "eslint-plugin-react-refresh": "^0.4.25",
     "eslint-plugin-relay": "^1.8.3",
     "eslint-plugin-storybook": "^0.11.6",
     "eslint-typegen": "^1.0.0",

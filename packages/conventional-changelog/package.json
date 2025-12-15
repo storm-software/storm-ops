@@ -224,14 +224,6 @@
     "storm-ops",
     "storm-software"
   ],
-  "peerDependencies": {
-    "conventional-changelog-conventionalcommits": "*"
-  },
-  "peerDependenciesMeta": {
-    "conventional-changelog-conventionalcommits": {
-      "optional": false
-    }
-  },
   "dependencies": {
     "@storm-software/config": "workspace:*",
     "@storm-software/config-tools": "workspace:*",
