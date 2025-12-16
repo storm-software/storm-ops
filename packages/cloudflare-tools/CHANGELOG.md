@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Cloudflare Tools
 
+## [0.71.19](https://github.com/storm-software/storm-ops/releases/tag/cloudflare-tools%400.71.19) (12/15/2025)
+
+### Miscellaneous
+
+- **cloudflare-tools:** Increase timeout limits on Http2 handlers
+  ([448f9fc4f](https://github.com/storm-software/storm-ops/commit/448f9fc4f))
+
 ## [0.71.18](https://github.com/storm-software/storm-ops/releases/tag/cloudflare-tools%400.71.18) (12/15/2025)
 
 ### Miscellaneous
