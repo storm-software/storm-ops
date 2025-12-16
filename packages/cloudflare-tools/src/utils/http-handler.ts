@@ -3,11 +3,11 @@ import { NodeHttp2Handler } from "@smithy/node-http-handler";
 /**
  * Create a HTTP handler with a 5-minute timeout
  *
- * @returns A NodeHttp2Handler instance with a 5-minute request timeout
+ * @returns A NodeHttp2Handler instance with custom request and session timeouts
  */
 export function createHttpHandler() {
   return new NodeHttp2Handler({
-    requestTimeout: 15 * 60 * 1000,
-    sessionTimeout: 15 * 60 * 1000
+    requestTimeout: 20 * 60 * 1000, // 20 minutes
+    sessionTimeout: 30 * 60 * 1000 // 30 minutes
   });
 }
