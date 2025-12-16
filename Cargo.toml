@@ -65,10 +65,13 @@ incremental = true
 [profile.release]
 codegen-units = 1
 debug         = false
-lto           = "fat"
+lto           = "thin"
 opt-level     = 3
 panic         = "abort"   # Let it crash and force ourselves to write safe Rust.
 strip         = "symbols"
+
+[profile.prod]
+inherits = "release"
 
 [profile.release-debug]
 debug    = true
@@ -79,7 +82,7 @@ debug    = true
 inherits = "release"
 strip    = "none"
 
-[profile.prod]
+[profile.release-prod]
 debug    = "line-tables-only"
 inherits = "release"
 lto      = "thin"

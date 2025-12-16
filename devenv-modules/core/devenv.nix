@@ -59,8 +59,8 @@ in
       taplo = {
         enable = true;
         args = [
-          "--config=node_modules/@storm-software/linting-tools/taplo/config.toml"
-          "--cache-path=node_modules/.cache/taplo"
+          "--config=${config.env.DEVENV_ROOT}/node_modules/@storm-software/linting-tools/taplo/config.toml"
+          "--cache-path=${config.env.DEVENV_ROOT}/node_modules/.cache/taplo"
         ];
         files = "\\.toml$";
         excludes = [ "Cargo\\.toml$" ];
@@ -68,15 +68,19 @@ in
       yamllint = {
         enable = true;
         settings = {
-          configPath = "--config=node_modules/@storm-software/linting-tools/yamllint/config.yml";
+          configPath = "${config.env.DEVENV_ROOT}/node_modules/@storm-software/linting-tools/yamllint/config.yml";
         };
         files = "\\.(yaml|yml)$";
+        excludes = [
+          "pnpm-lock.yaml"
+          ".pre-commit-config.yaml"
+        ];
       };
       zizmor = {
         enable = true;
         args = [
           "--offline"
-          "--config=tools/config/zizmor.yml"
+          "--config=${config.env.DEVENV_ROOT}/tools/config/zizmor.yml"
         ];
         files = "^\\.github/workflows/.*\\.(yml|yaml)$";
       };
