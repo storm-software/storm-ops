@@ -171,7 +171,8 @@
     "nx": "catalog:",
     "tsup": "catalog:",
     "untyped": "catalog:",
-    "wrangler": "^4.54.0"
+    "wrangler": "^4.54.0",
+    "@smithy/protocol-http": "^5.3.6"
   },
   "publishConfig": {
     "access": "public"
