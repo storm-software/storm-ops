@@ -65,13 +65,14 @@ incremental = true
 [profile.release]
 codegen-units = 1
 debug         = false
-lto           = "thin"
+lto           = "fat"
 opt-level     = 3
 panic         = "abort"   # Let it crash and force ourselves to write safe Rust.
 strip         = "symbols"
 
 [profile.prod]
 inherits = "release"
+lto      = "thin"
 
 [profile.release-debug]
 debug    = true
@@ -84,8 +85,7 @@ strip    = "none"
 
 [profile.release-prod]
 debug    = "line-tables-only"
-inherits = "release"
-lto      = "thin"
+inherits = "prod"
 strip    = false
 
 # Make insta run faster by compiling with release mode optimizations
