@@ -168,11 +168,11 @@
     "@nx/node": "catalog:",
     "@nx/web": "catalog:",
     "@nx/webpack": "catalog:",
+    "@smithy/protocol-http": "^5.3.6",
     "nx": "catalog:",
     "tsup": "catalog:",
     "untyped": "catalog:",
-    "wrangler": "^4.54.0",
-    "@smithy/protocol-http": "^5.3.6"
+    "wrangler": "^4.54.0"
   },
   "publishConfig": {
     "access": "public"
