@@ -2,6 +2,27 @@
 
 # Changelog for Storm Ops - Cloudflare Tools
 
+## [0.71.20](https://github.com/storm-software/storm-ops/releases/tag/cloudflare-tools%400.71.20) (12/16/2025)
+
+### Miscellaneous
+
+- **cloudflare-tools:** Format `package.json` file with sherif
+  ([dd2f29a7f](https://github.com/storm-software/storm-ops/commit/dd2f29a7f))
+- **cloudflare-tools:** Add limit to stream concurrency when uploading to R2
+  buckets
+  ([5273afce3](https://github.com/storm-software/storm-ops/commit/5273afce3))
+
+### Bug Fixes
+
+- **cloudflare-tools:** Resolve typescript build issue
+  ([4d68a405e](https://github.com/storm-software/storm-ops/commit/4d68a405e))
+
+### Updated Dependencies
+
+- Updated **workspace-tools** to **v1.294.12**
+- Updated **config-tools** to **v1.188.68**
+- Updated **config** to **v1.134.68**
+
 ## [0.71.19](https://github.com/storm-software/storm-ops/releases/tag/cloudflare-tools%400.71.19) (12/15/2025)
 
 ### Miscellaneous

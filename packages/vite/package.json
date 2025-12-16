@@ -1,6 +1,6 @@
 {
   "name": "@storm-software/vite",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "type": "module",
   "description": "A package containing a shared `vite` configuration and utilities for building Storm Software libraries and applications",
   "repository": {
