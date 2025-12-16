@@ -54,6 +54,13 @@ in
           cache-location = "${config.env.DEVENV_ROOT}/node_modules/.cache/prettier/.prettier-cache";
           configPath = "${config.env.DEVENV_ROOT}/node_modules/@storm-software/prettier/config.json";
           ignore-path = [ "${config.env.DEVENV_ROOT}/node_modules/@storm-software/prettier/.prettierignore" ];
+          excludes = [
+            "Cargo.toml"
+            "pnpm-lock.yaml"
+            "package.json"
+            "CHANGELOG.md"
+            "README.md"
+          ];
         };
       };
       taplo = {
