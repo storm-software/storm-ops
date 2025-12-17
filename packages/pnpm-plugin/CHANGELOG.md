@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Pnpm Plugin
 
+## [0.1.25](https://github.com/storm-software/storm-ops/releases/tag/pnpm-plugin%400.1.25) (12/17/2025)
+
+### Miscellaneous
+
+- **pnpm-plugin:** Remove deprecated pnpm options from plugin
+  ([f98e15547](https://github.com/storm-software/storm-ops/commit/f98e15547))
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.68**
+
 ## [0.1.24](https://github.com/storm-software/storm-ops/releases/tag/pnpm-plugin%400.1.24) (12/16/2025)
 
 ### Updated Dependencies

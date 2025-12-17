@@ -2,6 +2,15 @@
 
 # Changelog for Storm Ops - Prettier
 
+## [0.57.68](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.57.68) (12/17/2025)
+
+### Miscellaneous
+
+- **prettier:** Added generated files with different names to ignore list
+  ([76aa9afbb](https://github.com/storm-software/storm-ops/commit/76aa9afbb))
+- **prettier:** Added generated schema files to prettier ignore list
+  ([97eff0cd2](https://github.com/storm-software/storm-ops/commit/97eff0cd2))
+
 ## [0.57.66](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.57.66) (12/15/2025)
 
 ### Miscellaneous
