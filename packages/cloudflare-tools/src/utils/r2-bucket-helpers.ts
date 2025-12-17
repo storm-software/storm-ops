@@ -1,4 +1,4 @@
-import { PutObjectCommand, S3Client } from "@aws-sdk/client-s3";
+import { S3 } from "@aws-sdk/client-s3";
 import {
   ProjectGraph,
   ProjectGraphDependency,
@@ -24,7 +24,7 @@ import { createHash } from "node:crypto";
  * @param isDryRun - Whether to perform a dry run without actual upload
  */
 export async function uploadFile(
-  client: S3Client,
+  client: S3,
   bucketName: string,
   bucketPath: string | undefined,
   fileName: string,
@@ -44,8 +44,8 @@ export async function uploadFile(
   );
 
   if (!isDryRun) {
-    await client.send(
-      new PutObjectCommand({
+    await client.putObject(
+      {
         Bucket: bucketName,
         Key: key,
         Body: fileContent,
@@ -54,7 +54,7 @@ export async function uploadFile(
           version,
           checksum: createHash("sha256").update(fileContent).digest("base64")
         }
-      }),
+      },
       {
         requestTimeout: 15 * 60 * 1000 // 15 minutes
       }
