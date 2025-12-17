@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - Cloudflare Tools
 
+## [0.71.25](https://github.com/storm-software/storm-ops/releases/tag/cloudflare-tools%400.71.25) (12/17/2025)
+
+### Bug Fixes
+
+- **cloudflare-tools:** Resolve build issue
+  ([b17dc1586](https://github.com/storm-software/storm-ops/commit/b17dc1586))
+- **cloudflare-tools:** Resolve upload issue by splitting requests by uploaded
+  file
+  ([70019abd7](https://github.com/storm-software/storm-ops/commit/70019abd7))
+
 ## [0.71.24](https://github.com/storm-software/storm-ops/releases/tag/cloudflare-tools%400.71.24) (12/17/2025)
 
 ### Miscellaneous
