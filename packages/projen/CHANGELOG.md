@@ -2,6 +2,19 @@
 
 # Changelog for Storm Ops - Projen
 
+## [0.21.72](https://github.com/storm-software/storm-ops/releases/tag/projen%400.21.72) (12/17/2025)
+
+### Miscellaneous
+
+- **monorepo:** Update asset paths in workspace references
+  ([b6e71c5d4](https://github.com/storm-software/storm-ops/commit/b6e71c5d4))
+
+### Updated Dependencies
+
+- Updated **workspace-tools** to **v1.294.16**
+- Updated **config-tools** to **v1.188.70**
+- Updated **config** to **v1.134.70**
+
 ## [0.21.71](https://github.com/storm-software/storm-ops/releases/tag/projen%400.21.71) (12/17/2025)
 
 ### Miscellaneous

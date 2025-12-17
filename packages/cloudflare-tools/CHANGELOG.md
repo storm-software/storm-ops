@@ -2,6 +2,24 @@
 
 # Changelog for Storm Ops - Cloudflare Tools
 
+## [0.71.26](https://github.com/storm-software/storm-ops/releases/tag/cloudflare-tools%400.71.26) (12/17/2025)
+
+### Miscellaneous
+
+- **monorepo:** Update asset paths in workspace references
+  ([b6e71c5d4](https://github.com/storm-software/storm-ops/commit/b6e71c5d4))
+
+### Bug Fixes
+
+- **cloudflare-tools:** Extended request timeout on upload requests
+  ([c66367a9c](https://github.com/storm-software/storm-ops/commit/c66367a9c))
+
+### Updated Dependencies
+
+- Updated **workspace-tools** to **v1.294.16**
+- Updated **config-tools** to **v1.188.70**
+- Updated **config** to **v1.134.70**
+
 ## [0.71.25](https://github.com/storm-software/storm-ops/releases/tag/cloudflare-tools%400.71.25) (12/17/2025)
 
 ### Bug Fixes

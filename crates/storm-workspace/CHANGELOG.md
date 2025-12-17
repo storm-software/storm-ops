@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Storm Workspace
 
+## [0.19.77](https://github.com/storm-software/storm-ops/releases/tag/storm-workspace%400.19.77) (12/17/2025)
+
+### Miscellaneous
+
+- **monorepo:** Update asset paths in workspace references
+  ([b6e71c5d4](https://github.com/storm-software/storm-ops/commit/b6e71c5d4))
+
 ## [0.19.69](https://github.com/storm-software/storm-ops/releases/tag/storm-workspace%400.19.69) (12/15/2025)
 
 ### Miscellaneous

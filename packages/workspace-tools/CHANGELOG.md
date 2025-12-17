@@ -2,6 +2,25 @@
 
 # Changelog for Storm Ops - Workspace Tools
 
+## [1.294.16](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.294.16) (12/17/2025)
+
+### Miscellaneous
+
+- **monorepo:** Update asset paths in workspace references
+  ([b6e71c5d4](https://github.com/storm-software/storm-ops/commit/b6e71c5d4))
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.69**
+- Updated **config-tools** to **v1.188.70**
+- Updated **pnpm-tools** to **v0.6.72**
+- Updated **npm-tools** to **v0.6.27**
+- Updated **prettier** to **v0.57.69**
+- Updated **esbuild** to **v0.53.70**
+- Updated **unbuild** to **v0.57.70**
+- Updated **config** to **v1.134.70**
+- Updated **tsdown** to **v0.45.70**
+
 ## [1.294.15](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.294.15) (12/17/2025)
 
 ### Miscellaneous

@@ -2,6 +2,19 @@
 
 # Changelog for Storm Ops - Npm Tools
 
+## [0.6.27](https://github.com/storm-software/storm-ops/releases/tag/npm-tools%400.6.27) (12/17/2025)
+
+### Miscellaneous
+
+- **monorepo:** Update asset paths in workspace references
+  ([b6e71c5d4](https://github.com/storm-software/storm-ops/commit/b6e71c5d4))
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.69**
+- Updated **config-tools** to **v1.188.70**
+- Updated **config** to **v1.134.70**
+
 ## [0.6.26](https://github.com/storm-software/storm-ops/releases/tag/npm-tools%400.6.26) (12/17/2025)
 
 ### Bug Fixes

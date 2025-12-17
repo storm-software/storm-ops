@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Tsdoc
 
+## [0.13.69](https://github.com/storm-software/storm-ops/releases/tag/tsdoc%400.13.69) (12/17/2025)
+
+### Miscellaneous
+
+- **monorepo:** Update asset paths in workspace references
+  ([b6e71c5d4](https://github.com/storm-software/storm-ops/commit/b6e71c5d4))
+
 ## [0.13.66](https://github.com/storm-software/storm-ops/releases/tag/tsdoc%400.13.66) (12/15/2025)
 
 ### Miscellaneous

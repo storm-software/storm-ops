@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Create Storm Workspace
 
+## [1.97.70](https://github.com/storm-software/storm-ops/releases/tag/create-storm-workspace%401.97.70) (12/17/2025)
+
+### Miscellaneous
+
+- **monorepo:** Update asset paths in workspace references
+  ([b6e71c5d4](https://github.com/storm-software/storm-ops/commit/b6e71c5d4))
+
+### Updated Dependencies
+
+- Updated **config-tools** to **v1.188.70**
+
 ## [1.97.69](https://github.com/storm-software/storm-ops/releases/tag/create-storm-workspace%401.97.69) (12/17/2025)
 
 ### Updated Dependencies

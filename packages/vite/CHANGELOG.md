@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Vite
 
+## [0.1.4](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.4) (12/17/2025)
+
+### Miscellaneous
+
+- **monorepo:** Update asset paths in workspace references
+  ([b6e71c5d4](https://github.com/storm-software/storm-ops/commit/b6e71c5d4))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.70**
+
 ## [0.1.3](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.3) (12/17/2025)
 
 ### Updated Dependencies

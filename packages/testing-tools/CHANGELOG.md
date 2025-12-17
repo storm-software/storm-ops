@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Testing Tools
 
+## [1.119.69](https://github.com/storm-software/storm-ops/releases/tag/testing-tools%401.119.69) (12/17/2025)
+
+### Miscellaneous
+
+- **monorepo:** Update asset paths in workspace references
+  ([b6e71c5d4](https://github.com/storm-software/storm-ops/commit/b6e71c5d4))
+
 ## [1.119.66](https://github.com/storm-software/storm-ops/releases/tag/testing-tools%401.119.66) (12/15/2025)
 
 ### Miscellaneous

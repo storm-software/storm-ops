@@ -2,6 +2,20 @@
 
 # Changelog for Storm Ops - Pnpm Tools
 
+## [0.6.72](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.6.72) (12/17/2025)
+
+### Miscellaneous
+
+- **monorepo:** Update asset paths in workspace references
+  ([b6e71c5d4](https://github.com/storm-software/storm-ops/commit/b6e71c5d4))
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.69**
+- Updated **config-tools** to **v1.188.70**
+- Updated **npm-tools** to **v0.6.27**
+- Updated **config** to **v1.134.70**
+
 ## [0.6.71](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.6.71) (12/17/2025)
 
 ### Bug Fixes

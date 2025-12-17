@@ -2,6 +2,20 @@
 
 # Changelog for Storm Ops - Esbuild
 
+## [0.53.70](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.53.70) (12/17/2025)
+
+### Miscellaneous
+
+- **monorepo:** Update asset paths in workspace references
+  ([b6e71c5d4](https://github.com/storm-software/storm-ops/commit/b6e71c5d4))
+
+### Updated Dependencies
+
+- Updated **config-tools** to **v1.188.70**
+- Updated **build-tools** to **v0.158.70**
+- Updated **config** to **v1.134.70**
+- Updated **tsup** to **v0.2.68**
+
 ## [0.53.69](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.53.69) (12/17/2025)
 
 ### Updated Dependencies

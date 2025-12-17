@@ -2,6 +2,19 @@
 
 # Changelog for Storm Ops - Tsdown
 
+## [0.45.70](https://github.com/storm-software/storm-ops/releases/tag/tsdown%400.45.70) (12/17/2025)
+
+### Miscellaneous
+
+- **monorepo:** Update asset paths in workspace references
+  ([b6e71c5d4](https://github.com/storm-software/storm-ops/commit/b6e71c5d4))
+
+### Updated Dependencies
+
+- Updated **config-tools** to **v1.188.70**
+- Updated **build-tools** to **v0.158.70**
+- Updated **config** to **v1.134.70**
+
 ## [0.45.69](https://github.com/storm-software/storm-ops/releases/tag/tsdown%400.45.69) (12/17/2025)
 
 ### Updated Dependencies

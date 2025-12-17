@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Config Tools
 
+## [1.188.70](https://github.com/storm-software/storm-ops/releases/tag/config-tools%401.188.70) (12/17/2025)
+
+### Miscellaneous
+
+- **monorepo:** Update asset paths in workspace references
+  ([b6e71c5d4](https://github.com/storm-software/storm-ops/commit/b6e71c5d4))
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.69**
+- Updated **config** to **v1.134.70**
+
 ## [1.188.69](https://github.com/storm-software/storm-ops/releases/tag/config-tools%401.188.69) (12/17/2025)
 
 ### Updated Dependencies

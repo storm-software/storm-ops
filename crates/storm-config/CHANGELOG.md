@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Storm Config
 
+## [0.28.48](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.28.48) (12/17/2025)
+
+### Miscellaneous
+
+- **monorepo:** Update asset paths in workspace references
+  ([b6e71c5d4](https://github.com/storm-software/storm-ops/commit/b6e71c5d4))
+
+### Updated Dependencies
+
+- Updated **storm-workspace** to **v0.19.77**
+
 ## [0.28.47](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.28.47) (12/17/2025)
 
 ### Updated Dependencies

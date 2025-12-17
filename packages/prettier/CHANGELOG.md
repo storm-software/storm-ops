@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Prettier
 
+## [0.57.69](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.57.69) (12/17/2025)
+
+### Miscellaneous
+
+- **monorepo:** Update asset paths in workspace references
+  ([b6e71c5d4](https://github.com/storm-software/storm-ops/commit/b6e71c5d4))
+
 ## [0.57.68](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.57.68) (12/17/2025)
 
 ### Miscellaneous

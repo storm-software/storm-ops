@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Tsconfig
 
+## [0.47.69](https://github.com/storm-software/storm-ops/releases/tag/tsconfig%400.47.69) (12/17/2025)
+
+### Miscellaneous
+
+- **monorepo:** Update asset paths in workspace references
+  ([b6e71c5d4](https://github.com/storm-software/storm-ops/commit/b6e71c5d4))
+
 ## [0.47.66](https://github.com/storm-software/storm-ops/releases/tag/tsconfig%400.47.66) (12/15/2025)
 
 ### Miscellaneous
