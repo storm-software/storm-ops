@@ -57,6 +57,7 @@ in
         };
         excludes = [
           "Cargo.toml"
+          "pnpm-workspace.yaml"
           "pnpm-lock.yaml"
           "package.json"
           "CHANGELOG.md"
@@ -80,6 +81,7 @@ in
         files = "\\.(yaml|yml)$";
         excludes = [
           "pnpm-lock.yaml"
+          "pnpm-workspace.yaml"
           ".pre-commit-config.yaml"
         ];
       };
