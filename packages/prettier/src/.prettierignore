@@ -40,7 +40,9 @@ bun.lockb
 packages/*/src/executors/*/schema.d.ts
 packages/*/src/executors/*/schema.json
 packages/*/src/executors/*/schema.md
+packages/*/src/executors/*/*.schema.*
 packages/*/src/generators/*/files/**/*
 packages/*/src/generators/*/schema.d.ts
 packages/*/src/generators/*/schema.json
 packages/*/src/generators/*/schema.md
+packages/*/src/generators/*/*.schema.*

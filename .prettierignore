@@ -46,3 +46,6 @@ packages/*/src/generators/*/files/**/*
 packages/*/src/generators/*/schema.d.ts
 packages/*/src/generators/*/schema.json
 packages/*/src/generators/*/schema.md
+
+packages/workspace-tools/src/executors/*/*.schema.*
+packages/workspace-tools/src/generators/*/*.schema.*
