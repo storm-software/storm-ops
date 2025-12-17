@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Cloudflare Tools
 
+## [0.71.21](https://github.com/storm-software/storm-ops/releases/tag/cloudflare-tools%400.71.21) (12/16/2025)
+
+### Bug Fixes
+
+- **cloudflare-tools:** Update to http handler from http2
+  ([6fd02ad1d](https://github.com/storm-software/storm-ops/commit/6fd02ad1d))
+
 ## [0.71.20](https://github.com/storm-software/storm-ops/releases/tag/cloudflare-tools%400.71.20) (12/16/2025)
 
 ### Miscellaneous
