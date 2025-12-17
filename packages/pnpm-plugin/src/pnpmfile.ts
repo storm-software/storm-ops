@@ -20,7 +20,6 @@ export default {
         ignorePatchFailures: false,
         optimisticRepeatInstall: true,
         resolutionMode: "lowest-direct",
-        verifyDepsBeforeRun: "install",
         preferWorkspacePackages: true,
         shellEmulator: true,
         catalogMode: "prefer",
