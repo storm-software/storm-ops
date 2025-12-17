@@ -2,6 +2,14 @@
 
 # Changelog for Storm Ops - Npm Tools
 
+## [0.6.26](https://github.com/storm-software/storm-ops/releases/tag/npm-tools%400.6.26) (12/17/2025)
+
+### Bug Fixes
+
+- **npm-tools:** Resolve issue causing errors when npm warnings were returned by
+  CLI
+  ([a75e19e6a](https://github.com/storm-software/storm-ops/commit/a75e19e6a))
+
 ## [0.6.25](https://github.com/storm-software/storm-ops/releases/tag/npm-tools%400.6.25) (12/17/2025)
 
 ### Updated Dependencies
