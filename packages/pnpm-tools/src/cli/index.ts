@@ -5,7 +5,8 @@ import {
   writeDebug,
   writeFatal,
   writeInfo,
-  writeTrace
+  writeTrace,
+  writeWarning
 } from "@storm-software/config-tools";
 import { Command } from "commander";
 import {
@@ -99,32 +100,44 @@ async function updateAction(
       );
     }
 
+    let packagesFound = false;
     for (const pkg of packages) {
       const matchedPackages = Object.keys(catalog).filter(p =>
         pkg.endsWith("/") ? p.startsWith(pkg) : p === pkg
       );
       if (matchedPackages.length === 0) {
-        throw new Error(
-          `No packages found in the catalog matching the name/pattern "${pkg}".`
+        writeInfo(
+          `No packages found in the catalog matching the name/pattern "${pkg}".`,
+          _config
         );
-      }
+      } else {
+        writeTrace(
+          `Found ${matchedPackages.length} matching packages in the catalog file: \n\n- ${matchedPackages
+            .map(p => `${p} (${catalog[p] || "unknown"})`)
+            .join("\n- ")}`,
+          _config
+        );
 
-      writeTrace(
-        `Found ${matchedPackages.length} matching packages in the catalog file: \n\n- ${matchedPackages
-          .map(p => `${p} (${catalog[p] || "unknown"})`)
-          .join("\n- ")}`,
+        packagesFound = true;
+
+        for (const matchedPackage of matchedPackages) {
+          writeTrace(`- Upgrading ${matchedPackage}...`, _config);
+
+          catalog = await upgradeCatalog(catalog, matchedPackage, {
+            tag,
+            prefix: prefix as UpgradeCatalogPackageOptions["prefix"],
+            workspaceRoot: _config.workspaceRoot
+          });
+        }
+      }
+    }
+
+    if (!packagesFound) {
+      writeWarning(
+        `No packages were updated since no matching packages were found in the catalog.`,
         _config
       );
-
-      for (const matchedPackage of matchedPackages) {
-        writeTrace(`- Upgrading ${matchedPackage}...`, _config);
-
-        catalog = await upgradeCatalog(catalog, matchedPackage, {
-          tag,
-          prefix: prefix as UpgradeCatalogPackageOptions["prefix"],
-          workspaceRoot: _config.workspaceRoot
-        });
-      }
+      return;
     }
 
     writeDebug(
