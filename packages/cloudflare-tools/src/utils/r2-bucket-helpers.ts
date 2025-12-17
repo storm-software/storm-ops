@@ -1,4 +1,4 @@
-import { S3 } from "@aws-sdk/client-s3";
+import { PutObjectCommand, S3Client } from "@aws-sdk/client-s3";
 import {
   ProjectGraph,
   ProjectGraphDependency,
@@ -24,7 +24,7 @@ import { createHash } from "node:crypto";
  * @param isDryRun - Whether to perform a dry run without actual upload
  */
 export async function uploadFile(
-  client: S3,
+  client: S3Client,
   bucketName: string,
   bucketPath: string | undefined,
   fileName: string,
@@ -44,16 +44,18 @@ export async function uploadFile(
   );
 
   if (!isDryRun) {
-    await client.putObject({
-      Bucket: bucketName,
-      Key: key,
-      Body: fileContent,
-      ContentType: contentType,
-      Metadata: {
-        version,
-        checksum: createHash("sha256").update(fileContent).digest("base64")
-      }
-    });
+    await client.send(
+      new PutObjectCommand({
+        Bucket: bucketName,
+        Key: key,
+        Body: fileContent,
+        ContentType: contentType,
+        Metadata: {
+          version,
+          checksum: createHash("sha256").update(fileContent).digest("base64")
+        }
+      })
+    );
   } else {
     writeWarning("[Dry run]: Skipping upload to the R2 bucket.");
   }

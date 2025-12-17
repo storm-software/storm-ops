@@ -1,4 +1,4 @@
-import { S3 } from "@aws-sdk/client-s3";
+import { S3Client } from "@aws-sdk/client-s3";
 import {
   createProjectGraphAsync,
   ProjectGraph,
@@ -130,7 +130,7 @@ export default async function runExecutor(
       `Publishing ${context.projectName} to the ${bucketId} R2 Bucket (at ${registry})`
     );
 
-    const client = new S3({
+    const client = new S3Client({
       region: "auto",
       endpoint: registry,
       credentials: {
