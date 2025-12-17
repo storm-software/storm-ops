@@ -11,12 +11,13 @@ import { DEFAULT_GITHUB_REGISTRY, DEFAULT_NPM_REGISTRY } from "../constants";
 export async function getRegistry(executable = "npm"): Promise<string> {
   return new Promise<string>((resolve, reject) => {
     exec(`${executable} config get registry`, (error, stdout, stderr) => {
-      if (error) {
+      if (error && !error.message.toLowerCase().trim().startsWith("npm warn")) {
         return reject(error);
       }
-      if (stderr) {
+      if (stderr && !stderr.toLowerCase().trim().startsWith("npm warn")) {
         return reject(stderr);
       }
+
       return resolve(stdout.trim());
     });
   });

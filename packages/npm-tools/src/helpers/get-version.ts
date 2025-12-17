@@ -43,12 +43,16 @@ export async function getVersion(
     exec(
       `${executable} view ${packageName} version --registry=${registry} --tag=${tag}`,
       (error, stdout, stderr) => {
-        if (error) {
+        if (
+          error &&
+          !error.message.toLowerCase().trim().startsWith("npm warn")
+        ) {
           return reject(error);
         }
-        if (stderr) {
+        if (stderr && !stderr.toLowerCase().trim().startsWith("npm warn")) {
           return reject(stderr);
         }
+
         return resolve(stdout.trim());
       }
     );
