@@ -39,10 +39,10 @@ bun.lockb
 packages/tsup/workers/*.cjs
 
 # Ignore workspace-tools generated files
-packages/workspace-tools/src/executors/*/schema.d.ts
-packages/workspace-tools/src/executors/*/schema.json
-packages/workspace-tools/src/executors/*/schema.md
-packages/workspace-tools/src/generators/*/files/**/*
-packages/workspace-tools/src/generators/*/schema.d.ts
-packages/workspace-tools/src/generators/*/schema.json
-packages/workspace-tools/src/generators/*/schema.md
+packages/*/src/executors/*/schema.d.ts
+packages/*/src/executors/*/schema.json
+packages/*/src/executors/*/schema.md
+packages/*/src/generators/*/files/**/*
+packages/*/src/generators/*/schema.d.ts
+packages/*/src/generators/*/schema.json
+packages/*/src/generators/*/schema.md

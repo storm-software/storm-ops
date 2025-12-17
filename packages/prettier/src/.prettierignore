@@ -35,3 +35,12 @@ bun.lockb
 **/LICENSE.txt
 **/src/generators/**/files/**/*
 **/typegen.d.ts
+
+# Ignore Nx plugin generated files
+packages/*/src/executors/*/schema.d.ts
+packages/*/src/executors/*/schema.json
+packages/*/src/executors/*/schema.md
+packages/*/src/generators/*/files/**/*
+packages/*/src/generators/*/schema.d.ts
+packages/*/src/generators/*/schema.json
+packages/*/src/generators/*/schema.md
