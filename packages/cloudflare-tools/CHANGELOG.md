@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Cloudflare Tools
 
+## [0.71.27](https://github.com/storm-software/storm-ops/releases/tag/cloudflare-tools%400.71.27) (12/17/2025)
+
+### Bug Fixes
+
+- **cloudflare-tools:** Resolve issue with uploaded R2 bucket content
+  ([b374e0356](https://github.com/storm-software/storm-ops/commit/b374e0356))
+
 ## [0.71.26](https://github.com/storm-software/storm-ops/releases/tag/cloudflare-tools%400.71.26) (12/17/2025)
 
 ### Miscellaneous
