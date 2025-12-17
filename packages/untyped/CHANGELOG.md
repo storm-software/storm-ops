@@ -1,4 +1,4 @@
-![Storm Software's logo banner](https://public.storm-cdn.com/storm-software/banner-1280x320-optimized.gif)
+![Storm Software's logo banner](https://public.storm-cdn.com/storm-software/optimized/banner-1280x320.gif)
 
 # Changelog for Storm Ops - Untyped
 
@@ -159,10 +159,6 @@
 
 - Updated **config-tools** to **v1.188.52**
 - Updated **config** to **v1.134.52**
-
-![Storm Software's logo banner](https://public.storm-cdn.com/storm-software/banner-1280x320-dark-optimized.gif)
-
-# Changelog for Storm Ops - Untyped
 
 ## [0.24.32](https://github.com/storm-software/storm-ops/releases/tag/untyped%400.24.32) (12/04/2025)
 

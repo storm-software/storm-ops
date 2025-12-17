@@ -1,4 +1,4 @@
-![Storm Software's logo banner](https://public.storm-cdn.com/storm-software/banner-1280x320-optimized.gif)
+![Storm Software's logo banner](https://public.storm-cdn.com/storm-software/optimized/banner-1280x320.gif)
 
 # Changelog for Storm Ops - Pnpm Tools
 
@@ -207,10 +207,6 @@
 - Updated **config-tools** to **v1.188.52**
 - Updated **npm-tools** to **v0.6.8**
 - Updated **config** to **v1.134.52**
-
-![Storm Software's logo banner](https://public.storm-cdn.com/storm-software/banner-1280x320-dark-optimized.gif)
-
-# Changelog for Storm Ops - Pnpm Tools
 
 ## [0.6.51](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.6.51) (12/04/2025)
 

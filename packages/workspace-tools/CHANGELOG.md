@@ -1,4 +1,4 @@
-![Storm Software's logo banner](https://public.storm-cdn.com/storm-software/banner-1280x320-optimized.gif)
+![Storm Software's logo banner](https://public.storm-cdn.com/storm-software/optimized/banner-1280x320.gif)
 
 # Changelog for Storm Ops - Workspace Tools
 
@@ -319,10 +319,6 @@
 - Updated **unbuild** to **v0.57.52**
 - Updated **config** to **v1.134.52**
 - Updated **tsdown** to **v0.45.52**
-
-![Storm Software's logo banner](https://public.storm-cdn.com/storm-software/banner-1280x320-dark-optimized.gif)
-
-# Changelog for Storm Ops - Workspace Tools
 
 ## [1.293.21](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.293.21) (12/04/2025)
 

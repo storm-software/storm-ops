@@ -1,4 +1,4 @@
-![Storm Software's logo banner](https://public.storm-cdn.com/storm-software/banner-1280x320-optimized.gif)
+![Storm Software's logo banner](https://public.storm-cdn.com/storm-software/optimized/banner-1280x320.gif)
 
 # Changelog for Storm Ops - Create Storm Workspace
 
@@ -141,10 +141,6 @@
 ### Updated Dependencies
 
 - Updated **config-tools** to **v1.188.52**
-
-![Storm Software's logo banner](https://public.storm-cdn.com/storm-software/banner-1280x320-dark-optimized.gif)
-
-# Changelog for Storm Ops - Create Storm Workspace
 
 ## [1.97.51](https://github.com/storm-software/storm-ops/releases/tag/create-storm-workspace%401.97.51) (12/04/2025)
 
