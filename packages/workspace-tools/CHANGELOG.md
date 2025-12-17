@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Workspace Tools
 
+## [1.294.15](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.294.15) (12/17/2025)
+
+### Miscellaneous
+
+- **monorepo:** Format generated schema files for Nx plugins
+  ([828fdbc29](https://github.com/storm-software/storm-ops/commit/828fdbc29))
+
+### Updated Dependencies
+
+- Updated **pnpm-tools** to **v0.6.71**
+
 ## [1.294.14](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.294.14) (12/17/2025)
 
 ### Updated Dependencies

@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Pnpm Tools
 
+## [0.6.71](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.6.71) (12/17/2025)
+
+### Bug Fixes
+
+- **pnpm-tools:** Correctly handle scenario where no packages are found
+  ([3f8981d3f](https://github.com/storm-software/storm-ops/commit/3f8981d3f))
+
 ## [0.6.70](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.6.70) (12/17/2025)
 
 ### Updated Dependencies

@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Projen
 
+## [0.21.71](https://github.com/storm-software/storm-ops/releases/tag/projen%400.21.71) (12/17/2025)
+
+### Miscellaneous
+
+- **monorepo:** Format generated schema files for Nx plugins
+  ([828fdbc29](https://github.com/storm-software/storm-ops/commit/828fdbc29))
+
+### Updated Dependencies
+
+- Updated **workspace-tools** to **v1.294.15**
+
 ## [0.21.70](https://github.com/storm-software/storm-ops/releases/tag/projen%400.21.70) (12/17/2025)
 
 ### Updated Dependencies

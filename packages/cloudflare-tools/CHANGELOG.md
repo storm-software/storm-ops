@@ -2,6 +2,19 @@
 
 # Changelog for Storm Ops - Cloudflare Tools
 
+## [0.71.24](https://github.com/storm-software/storm-ops/releases/tag/cloudflare-tools%400.71.24) (12/17/2025)
+
+### Miscellaneous
+
+- **cloudflare-tools:** Increase timeout on upload to 45 minutes
+  ([0ee87295f](https://github.com/storm-software/storm-ops/commit/0ee87295f))
+- **monorepo:** Format generated schema files for Nx plugins
+  ([828fdbc29](https://github.com/storm-software/storm-ops/commit/828fdbc29))
+
+### Updated Dependencies
+
+- Updated **workspace-tools** to **v1.294.15**
+
 ## [0.71.23](https://github.com/storm-software/storm-ops/releases/tag/cloudflare-tools%400.71.23) (12/17/2025)
 
 ### Updated Dependencies
