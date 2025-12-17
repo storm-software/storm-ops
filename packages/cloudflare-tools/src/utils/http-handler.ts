@@ -8,7 +8,7 @@ import { HttpHandler } from "@smithy/protocol-http";
  */
 export function createHttpHandler(): HttpHandler<any> | NodeHttpHandler {
   return NodeHttpHandler.create({
-    connectionTimeout: 5 * 60 * 1000, // 5 minutes
-    requestTimeout: 5 * 60 * 1000 // 5 minutes
+    connectionTimeout: 15 * 60 * 1000, // 15 minutes
+    requestTimeout: 15 * 60 * 1000 // 15 minutes
   });
 }

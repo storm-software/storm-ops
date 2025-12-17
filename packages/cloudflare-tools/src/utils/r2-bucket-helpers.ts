@@ -54,7 +54,10 @@ export async function uploadFile(
           version,
           checksum: createHash("sha256").update(fileContent).digest("base64")
         }
-      })
+      }),
+      {
+        requestTimeout: 15 * 60 * 1000 // 15 minutes
+      }
     );
   } else {
     writeWarning("[Dry run]: Skipping upload to the R2 bucket.");
