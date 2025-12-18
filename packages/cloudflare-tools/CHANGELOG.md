@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Cloudflare Tools
 
+## [0.71.32](https://github.com/storm-software/storm-ops/releases/tag/cloudflare-tools%400.71.32) (12/18/2025)
+
+### Bug Fixes
+
+- **cloudflare-tools:** Ensure the correct encoding type is used during upload
+  ([427e3a4db](https://github.com/storm-software/storm-ops/commit/427e3a4db))
+
 ## [0.71.31](https://github.com/storm-software/storm-ops/releases/tag/cloudflare-tools%400.71.31) (12/18/2025)
 
 ### Bug Fixes
