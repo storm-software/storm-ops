@@ -158,10 +158,12 @@
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.948.0",
+    "@aws-sdk/lib-storage": "^3.954.0",
     "@smithy/node-http-handler": "^4.4.5",
     "defu": "catalog:",
     "glob": "catalog:",
-    "mime-types": "^3.0.2"
+    "mime-types": "^3.0.2",
+    "pretty-bytes": "^7.1.0"
   },
   "devDependencies": {
     "@nx/devkit": "catalog:",

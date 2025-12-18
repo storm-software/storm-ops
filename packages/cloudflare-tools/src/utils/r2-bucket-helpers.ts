@@ -1,4 +1,5 @@
-import { S3 } from "@aws-sdk/client-s3";
+import { S3Client } from "@aws-sdk/client-s3";
+import { Upload } from "@aws-sdk/lib-storage";
 import {
   ProjectGraph,
   ProjectGraphDependency,
@@ -6,10 +7,12 @@ import {
 } from "@nx/devkit";
 import {
   writeDebug,
+  writeError,
   writeWarning
 } from "@storm-software/config-tools/logger/console";
 import { joinPaths } from "@storm-software/config-tools/utilities/correct-paths";
 import { createHash } from "node:crypto";
+import prettyBytes from "pretty-bytes";
 
 /**
  * Upload a file to a Cloudflare R2 bucket
@@ -24,7 +27,7 @@ import { createHash } from "node:crypto";
  * @param isDryRun - Whether to perform a dry run without actual upload
  */
 export async function uploadFile(
-  client: S3,
+  client: S3Client,
   bucketName: string,
   bucketPath: string | undefined,
   fileName: string,
@@ -40,27 +43,34 @@ export async function uploadFile(
     )?.replace(/^\/+/g, "") || "";
 
   writeDebug(
-    `Uploading ${key} (content-type: ${contentType}) to the ${bucketName} R2 bucket`
+    `Uploading ${key} (content-type: ${contentType}, size: ${prettyBytes(
+      Buffer.byteLength(fileContent, "utf8")
+    )}) to the ${bucketName} R2 bucket`
   );
 
-  if (!isDryRun) {
-    await client.putObject(
-      {
-        Bucket: bucketName,
-        Key: key,
-        Body: fileContent,
-        ContentType: contentType,
-        Metadata: {
-          version,
-          checksum: createHash("sha256").update(fileContent).digest("base64")
+  try {
+    if (!isDryRun) {
+      const upload = new Upload({
+        client,
+        params: {
+          Bucket: bucketName,
+          Key: key,
+          Body: Buffer.from(fileContent, "utf8"),
+          ContentType: contentType,
+          Metadata: {
+            version,
+            checksum: createHash("sha256").update(fileContent).digest("base64")
+          }
         }
-      },
-      {
-        requestTimeout: 15 * 60 * 1000 // 15 minutes
-      }
-    );
-  } else {
-    writeWarning("[Dry run]: Skipping upload to the R2 bucket.");
+      });
+
+      await upload.done();
+    } else {
+      writeWarning("[Dry run]: Skipping upload to the R2 bucket.");
+    }
+  } catch (error) {
+    writeError(`Failed to upload ${key} to the ${bucketName} R2 bucket.`);
+    throw error;
   }
 }
 

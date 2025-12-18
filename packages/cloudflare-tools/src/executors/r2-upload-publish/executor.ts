@@ -1,4 +1,8 @@
-import { S3 } from "@aws-sdk/client-s3";
+import {
+  DeleteObjectsCommand,
+  ListObjectsCommand,
+  S3Client
+} from "@aws-sdk/client-s3";
 import {
   createProjectGraphAsync,
   ProjectGraph,
@@ -130,7 +134,7 @@ export default async function runExecutor(
       `Publishing ${context.projectName} to the ${bucketId} R2 Bucket (at ${registry})`
     );
 
-    const client = new S3({
+    const client = new S3Client({
       region: "auto",
       endpoint: registry,
       credentials: {
@@ -184,10 +188,12 @@ export default async function runExecutor(
       writeDebug(`Clearing out existing items in ${bucketPath}`);
 
       if (!isDryRun) {
-        const response = await client.listObjects({
-          Bucket: bucketId,
-          Prefix: !bucketPath || bucketPath === "/" ? undefined : bucketPath
-        });
+        const response = await client.send(
+          new ListObjectsCommand({
+            Bucket: bucketId,
+            Prefix: !bucketPath || bucketPath === "/" ? undefined : bucketPath
+          })
+        );
 
         if (response?.Contents && response.Contents.length > 0) {
           writeTrace(
@@ -196,15 +202,17 @@ export default async function runExecutor(
             }: ${response.Contents.map(item => item.Key).join(", ")}`
           );
 
-          await client.deleteObjects({
-            Bucket: bucketId,
-            Delete: {
-              Objects: response.Contents.map(item => ({
-                Key: item.Key
-              })),
-              Quiet: false
-            }
-          });
+          await client.send(
+            new DeleteObjectsCommand({
+              Bucket: bucketId,
+              Delete: {
+                Objects: response.Contents.map(item => ({
+                  Key: item.Key
+                })),
+                Quiet: false
+              }
+            })
+          );
         } else {
           writeDebug(
             `No existing items to delete in the R2 bucket path ${bucketPath}`
@@ -266,12 +274,7 @@ export default async function runExecutor(
             bucketPath,
             name,
             version,
-            type === "application/json" || type.includes("text")
-              ? await readFile(file, "utf8")
-              : `data:${type};base64,${Buffer.from(
-                  await readFile(file, "binary"),
-                  "binary"
-                ).toString("base64")}`,
+            await readFile(file, "utf8"),
             type,
             isDryRun
           );
