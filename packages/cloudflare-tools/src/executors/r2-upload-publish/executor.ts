@@ -28,6 +28,7 @@ import { execSync } from "node:child_process";
 import { statSync } from "node:fs";
 import { readFile } from "node:fs/promises";
 import {
+  getEncoding,
   getInternalDependencies,
   uploadFile
 } from "../../utils/r2-bucket-helpers";
@@ -274,7 +275,7 @@ export default async function runExecutor(
             bucketPath,
             name,
             version,
-            await readFile(file, "utf8"),
+            await readFile(file, getEncoding(type)),
             type,
             isDryRun
           );

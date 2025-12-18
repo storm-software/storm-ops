@@ -44,7 +44,7 @@ export async function uploadFile(
 
   writeDebug(
     `Uploading ${key} (content-type: ${contentType}, size: ${prettyBytes(
-      Buffer.byteLength(fileContent, "utf8")
+      Buffer.byteLength(fileContent, getEncoding(contentType))
     )}) to the ${bucketName} R2 bucket`
   );
 
@@ -55,7 +55,7 @@ export async function uploadFile(
         params: {
           Bucket: bucketName,
           Key: key,
-          Body: Buffer.from(fileContent, "utf8"),
+          Body: Buffer.from(fileContent, getEncoding(contentType)),
           ContentType: contentType,
           Metadata: {
             version,
@@ -97,4 +97,33 @@ export function getInternalDependencies(
       []
     )
   );
+}
+
+/**
+ * Determine if a MIME type represents a text file
+ *
+ * @param mimeType - The MIME type to check
+ * @returns True if the MIME type represents a text file, false otherwise
+ */
+export function isTextFile(mimeType: string): boolean {
+  return (
+    mimeType.startsWith("text/") ||
+    mimeType === "application/json" ||
+    mimeType === "application/javascript" ||
+    mimeType === "application/xml" ||
+    mimeType === "application/x-yaml" ||
+    mimeType === "application/xhtml+xml" ||
+    mimeType === "application/x-httpd-php" ||
+    mimeType === "image/svg+xml"
+  );
+}
+
+/**
+ * Get the appropriate encoding for a given MIME type
+ *
+ * @param mimeType - The MIME type to evaluate
+ * @returns The encoding string ("utf8" for text files, "binary" for others)
+ */
+export function getEncoding(mimeType: string): BufferEncoding {
+  return isTextFile(mimeType) ? "utf8" : "binary";
 }
