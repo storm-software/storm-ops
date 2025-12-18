@@ -2,6 +2,14 @@
 
 # Changelog for Storm Ops - ESLint
 
+## [0.169.72](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.169.72) (12/18/2025)
+
+### Updated Dependencies
+
+- Updated **config-tools** to **v1.188.71**
+- Updated **config** to **v1.134.71**
+- Updated **tsdoc** to **v0.13.70**
+
 ## [0.169.71](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.169.71) (12/17/2025)
 
 ### Miscellaneous

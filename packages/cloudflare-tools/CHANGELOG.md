@@ -2,6 +2,20 @@
 
 # Changelog for Storm Ops - Cloudflare Tools
 
+## [0.71.31](https://github.com/storm-software/storm-ops/releases/tag/cloudflare-tools%400.71.31) (12/18/2025)
+
+### Bug Fixes
+
+- **cloudflare-tools:** Use `Upload` object to ensure data is successfully sent
+  to R2 bucket
+  ([6ba6f17bb](https://github.com/storm-software/storm-ops/commit/6ba6f17bb))
+
+### Updated Dependencies
+
+- Updated **workspace-tools** to **v1.294.17**
+- Updated **config-tools** to **v1.188.71**
+- Updated **config** to **v1.134.71**
+
 ## [0.71.30](https://github.com/storm-software/storm-ops/releases/tag/cloudflare-tools%400.71.30) (12/18/2025)
 
 ### Bug Fixes
