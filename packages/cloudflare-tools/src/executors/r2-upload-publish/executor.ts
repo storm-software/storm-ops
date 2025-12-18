@@ -268,10 +268,9 @@ export default async function runExecutor(
             version,
             type === "application/json" || type.includes("text")
               ? await readFile(file, "utf8")
-              : await readFile(file, "binary"),
-            // Buffer.from(await readFile(file, "binary"), "binary").toString(
-            //   "base64"
-            // ),
+              : Buffer.from(await readFile(file, "binary"), "binary").toString(
+                  "base64"
+                ),
             type,
             isDryRun
           );
