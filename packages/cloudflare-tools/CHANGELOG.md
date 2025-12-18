@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Cloudflare Tools
 
+## [0.71.30](https://github.com/storm-software/storm-ops/releases/tag/cloudflare-tools%400.71.30) (12/18/2025)
+
+### Bug Fixes
+
+- **cloudflare-tools:** Ensure data is uploaded as a data URL
+  ([b992fc806](https://github.com/storm-software/storm-ops/commit/b992fc806))
+
 ## [0.71.29](https://github.com/storm-software/storm-ops/releases/tag/cloudflare-tools%400.71.29) (12/18/2025)
 
 ### Bug Fixes
