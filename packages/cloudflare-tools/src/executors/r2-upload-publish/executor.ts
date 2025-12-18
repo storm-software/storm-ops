@@ -266,7 +266,12 @@ export default async function runExecutor(
             bucketPath,
             name,
             version,
-            await readFile(file, { encoding: "utf8" }),
+            type === "application/json" || type.includes("text")
+              ? await readFile(file, "utf8")
+              : await readFile(file, "binary"),
+            // Buffer.from(await readFile(file, "binary"), "binary").toString(
+            //   "base64"
+            // ),
             type,
             isDryRun
           );
