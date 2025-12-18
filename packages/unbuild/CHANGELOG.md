@@ -2,6 +2,19 @@
 
 # Changelog for Storm Ops - Unbuild
 
+## [0.57.72](https://github.com/storm-software/storm-ops/releases/tag/unbuild%400.57.72) (12/18/2025)
+
+### Miscellaneous
+
+- **monorepo:** Update CDN URLs for banner assets
+  ([affd8096b](https://github.com/storm-software/storm-ops/commit/affd8096b))
+
+### Updated Dependencies
+
+- Updated **config-tools** to **v1.188.72**
+- Updated **build-tools** to **v0.158.72**
+- Updated **config** to **v1.134.72**
+
 ## [0.57.71](https://github.com/storm-software/storm-ops/releases/tag/unbuild%400.57.71) (12/18/2025)
 
 ### Updated Dependencies

@@ -2,6 +2,19 @@
 
 # Changelog for Storm Ops - Projen
 
+## [0.21.74](https://github.com/storm-software/storm-ops/releases/tag/projen%400.21.74) (12/18/2025)
+
+### Miscellaneous
+
+- **monorepo:** Update CDN URLs for banner assets
+  ([affd8096b](https://github.com/storm-software/storm-ops/commit/affd8096b))
+
+### Updated Dependencies
+
+- Updated **workspace-tools** to **v1.294.18**
+- Updated **config-tools** to **v1.188.72**
+- Updated **config** to **v1.134.72**
+
 ## [0.21.73](https://github.com/storm-software/storm-ops/releases/tag/projen%400.21.73) (12/18/2025)
 
 ### Updated Dependencies

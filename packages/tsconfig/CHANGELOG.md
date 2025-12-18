@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Tsconfig
 
+## [0.47.71](https://github.com/storm-software/storm-ops/releases/tag/tsconfig%400.47.71) (12/18/2025)
+
+### Miscellaneous
+
+- **monorepo:** Update CDN URLs for banner assets
+  ([affd8096b](https://github.com/storm-software/storm-ops/commit/affd8096b))
+
 ## [0.47.69](https://github.com/storm-software/storm-ops/releases/tag/tsconfig%400.47.69) (12/17/2025)
 
 ### Miscellaneous

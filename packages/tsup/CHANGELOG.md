@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Tsup
 
+## [0.2.70](https://github.com/storm-software/storm-ops/releases/tag/tsup%400.2.70) (12/18/2025)
+
+### Miscellaneous
+
+- **monorepo:** Update CDN URLs for banner assets
+  ([affd8096b](https://github.com/storm-software/storm-ops/commit/affd8096b))
+
+### Updated Dependencies
+
+- Updated **config-tools** to **v1.188.72**
+- Updated **build-tools** to **v0.158.72**
+
 ## [0.2.69](https://github.com/storm-software/storm-ops/releases/tag/tsup%400.2.69) (12/18/2025)
 
 ### Updated Dependencies

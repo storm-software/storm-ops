@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Create Storm Workspace
 
+## [1.97.72](https://github.com/storm-software/storm-ops/releases/tag/create-storm-workspace%401.97.72) (12/18/2025)
+
+### Miscellaneous
+
+- **monorepo:** Update CDN URLs for banner assets
+  ([affd8096b](https://github.com/storm-software/storm-ops/commit/affd8096b))
+
+### Updated Dependencies
+
+- Updated **config-tools** to **v1.188.72**
+
 ## [1.97.71](https://github.com/storm-software/storm-ops/releases/tag/create-storm-workspace%401.97.71) (12/18/2025)
 
 ### Updated Dependencies

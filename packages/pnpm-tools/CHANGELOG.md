@@ -2,6 +2,20 @@
 
 # Changelog for Storm Ops - Pnpm Tools
 
+## [0.6.74](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.6.74) (12/18/2025)
+
+### Miscellaneous
+
+- **monorepo:** Update CDN URLs for banner assets
+  ([affd8096b](https://github.com/storm-software/storm-ops/commit/affd8096b))
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.71**
+- Updated **config-tools** to **v1.188.72**
+- Updated **npm-tools** to **v0.6.29**
+- Updated **config** to **v1.134.72**
+
 ## [0.6.73](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.6.73) (12/18/2025)
 
 ### Updated Dependencies

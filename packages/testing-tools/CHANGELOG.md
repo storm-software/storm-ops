@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Testing Tools
 
+## [1.119.71](https://github.com/storm-software/storm-ops/releases/tag/testing-tools%401.119.71) (12/18/2025)
+
+### Miscellaneous
+
+- **monorepo:** Update CDN URLs for banner assets
+  ([affd8096b](https://github.com/storm-software/storm-ops/commit/affd8096b))
+
 ## [1.119.69](https://github.com/storm-software/storm-ops/releases/tag/testing-tools%401.119.69) (12/17/2025)
 
 ### Miscellaneous

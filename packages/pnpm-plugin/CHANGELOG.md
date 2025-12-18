@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Pnpm Plugin
 
+## [0.1.28](https://github.com/storm-software/storm-ops/releases/tag/pnpm-plugin%400.1.28) (12/18/2025)
+
+### Miscellaneous
+
+- **monorepo:** Update CDN URLs for banner assets
+  ([affd8096b](https://github.com/storm-software/storm-ops/commit/affd8096b))
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.71**
+
 ## [0.1.27](https://github.com/storm-software/storm-ops/releases/tag/pnpm-plugin%400.1.27) (12/18/2025)
 
 ### Updated Dependencies

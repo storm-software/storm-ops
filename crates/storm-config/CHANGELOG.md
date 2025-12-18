@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Storm Config
 
+## [0.28.52](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.28.52) (12/18/2025)
+
+### Miscellaneous
+
+- **monorepo:** Update CDN URLs for banner assets
+  ([affd8096b](https://github.com/storm-software/storm-ops/commit/affd8096b))
+
+### Updated Dependencies
+
+- Updated **storm-workspace** to **v0.19.81**
+
 ## [0.28.51](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.28.51) (12/18/2025)
 
 ### Updated Dependencies

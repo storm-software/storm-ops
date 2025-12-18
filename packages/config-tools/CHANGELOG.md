@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Config Tools
 
+## [1.188.72](https://github.com/storm-software/storm-ops/releases/tag/config-tools%401.188.72) (12/18/2025)
+
+### Miscellaneous
+
+- **monorepo:** Update CDN URLs for banner assets
+  ([affd8096b](https://github.com/storm-software/storm-ops/commit/affd8096b))
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.71**
+- Updated **config** to **v1.134.72**
+
 ## [1.188.71](https://github.com/storm-software/storm-ops/releases/tag/config-tools%401.188.71) (12/18/2025)
 
 ### Updated Dependencies

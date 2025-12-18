@@ -2,6 +2,19 @@
 
 # Changelog for Storm Ops - ESLint
 
+## [0.169.73](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.169.73) (12/18/2025)
+
+### Miscellaneous
+
+- **monorepo:** Update CDN URLs for banner assets
+  ([affd8096b](https://github.com/storm-software/storm-ops/commit/affd8096b))
+
+### Updated Dependencies
+
+- Updated **config-tools** to **v1.188.72**
+- Updated **config** to **v1.134.72**
+- Updated **tsdoc** to **v0.13.71**
+
 ## [0.169.72](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.169.72) (12/18/2025)
 
 ### Updated Dependencies

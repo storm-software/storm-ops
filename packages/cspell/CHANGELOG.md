@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - CSpell
 
+## [0.45.71](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.45.71) (12/18/2025)
+
+### Miscellaneous
+
+- **monorepo:** Update CDN URLs for banner assets
+  ([affd8096b](https://github.com/storm-software/storm-ops/commit/affd8096b))
+
 ## [0.45.69](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.45.69) (12/17/2025)
 
 ### Miscellaneous

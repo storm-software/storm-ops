@@ -2,6 +2,25 @@
 
 # Changelog for Storm Ops - Workspace Tools
 
+## [1.294.18](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.294.18) (12/18/2025)
+
+### Miscellaneous
+
+- **monorepo:** Update CDN URLs for banner assets
+  ([affd8096b](https://github.com/storm-software/storm-ops/commit/affd8096b))
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.71**
+- Updated **config-tools** to **v1.188.72**
+- Updated **pnpm-tools** to **v0.6.74**
+- Updated **npm-tools** to **v0.6.29**
+- Updated **prettier** to **v0.57.71**
+- Updated **esbuild** to **v0.53.72**
+- Updated **unbuild** to **v0.57.72**
+- Updated **config** to **v1.134.72**
+- Updated **tsdown** to **v0.45.72**
+
 ## [1.294.17](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.294.17) (12/18/2025)
 
 ### Updated Dependencies
