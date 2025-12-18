@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Cloudflare Tools
 
+## [0.71.29](https://github.com/storm-software/storm-ops/releases/tag/cloudflare-tools%400.71.29) (12/18/2025)
+
+### Bug Fixes
+
+- **cloudflare-tools:** Ensure data is encoded in base64 prior to upload
+  ([cb7de3b06](https://github.com/storm-software/storm-ops/commit/cb7de3b06))
+
 ## [0.71.28](https://github.com/storm-software/storm-ops/releases/tag/cloudflare-tools%400.71.28) (12/17/2025)
 
 ### Bug Fixes
