@@ -2,6 +2,14 @@
 
 # Changelog for Storm Ops - Cloudflare Tools
 
+## [0.71.34](https://github.com/storm-software/storm-ops/releases/tag/cloudflare-tools%400.71.34) (12/18/2025)
+
+### Updated Dependencies
+
+- Updated **workspace-tools** to **v1.294.19**
+- Updated **config-tools** to **v1.188.73**
+- Updated **config** to **v1.134.73**
+
 ## [0.71.33](https://github.com/storm-software/storm-ops/releases/tag/cloudflare-tools%400.71.33) (12/18/2025)
 
 ### Miscellaneous

@@ -2,6 +2,23 @@
 
 # Changelog for Storm Ops - Untyped
 
+## [0.24.54](https://github.com/storm-software/storm-ops/releases/tag/untyped%400.24.54) (12/18/2025)
+
+### Miscellaneous
+
+- **monorepo:** Run sherif formatter on `package.json` files
+  ([3cdb213a6](https://github.com/storm-software/storm-ops/commit/3cdb213a6))
+
+### Bug Fixes
+
+- **untyped:** Ensure logging packages are not bundled in output
+  ([84f5eb931](https://github.com/storm-software/storm-ops/commit/84f5eb931))
+
+### Updated Dependencies
+
+- Updated **config-tools** to **v1.188.73**
+- Updated **config** to **v1.134.73**
+
 ## [0.24.53](https://github.com/storm-software/storm-ops/releases/tag/untyped%400.24.53) (12/18/2025)
 
 ### Miscellaneous
