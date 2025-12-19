@@ -197,7 +197,8 @@
     "commander": "catalog:",
     "glob": "catalog:",
     "jiti": "catalog:",
-    "knitwork": "^1.3.0"
+    "knitwork": "^1.3.0",
+    "@storm-software/config-tools": "workspace:*"
   },
   "devDependencies": {
     "@types/node": "catalog:",

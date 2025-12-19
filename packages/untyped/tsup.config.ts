@@ -4,6 +4,7 @@ export default defineConfig([
   {
     name: "untyped-lib",
     target: "node22",
+    tsconfig: "./tsconfig.json",
     entryPoints: ["./src/*.ts", "./src/generators/*.ts"],
     format: ["cjs", "esm"],
     outDir: "dist/src",
@@ -12,13 +13,16 @@ export default defineConfig([
     clean: true,
     dts: true,
     sourcemap: false,
-    tsconfig: "./tsconfig.json",
     shims: true,
-    silent: true
+    silent: true,
+    skipNodeModulesBundle: true,
+    external: ["@storm-software/config-tools", "chalk"],
+    noExternal: ["untyped"]
   },
   {
     name: "untyped-bin",
     target: "node22",
+    tsconfig: "./tsconfig.json",
     entryPoints: ["./bin/untyped.ts"],
     outDir: "dist/bin",
     format: ["cjs", "esm"],
@@ -29,7 +33,6 @@ export default defineConfig([
     dts: false,
     sourcemap: false,
     shims: true,
-    silent: true,
-    tsconfig: "./tsconfig.json"
+    silent: true
   }
 ]);
