@@ -496,12 +496,12 @@ Backward pagination arguments
   '@next/next/no-unwanted-polyfillio'?: Linter.RuleEntry<[]>
   /**
    * Checks dependencies in project's package.json for version mismatches
-   * @see https://github.com/nrwl/nx/blob/22.2.3/docs/generated/packages/eslint-plugin/documents/dependency-checks.md
+   * @see https://github.com/nrwl/nx/blob/22.3.3/docs/generated/packages/eslint-plugin/documents/dependency-checks.md
    */
   '@nx/dependency-checks'?: Linter.RuleEntry<NxDependencyChecks>
   /**
    * Ensure that module boundaries are respected within the monorepo
-   * @see https://github.com/nrwl/nx/blob/22.2.3/docs/generated/packages/eslint-plugin/documents/enforce-module-boundaries.md
+   * @see https://github.com/nrwl/nx/blob/22.3.3/docs/generated/packages/eslint-plugin/documents/enforce-module-boundaries.md
    */
   '@nx/enforce-module-boundaries'?: Linter.RuleEntry<NxEnforceModuleBoundaries>
   /**
@@ -5723,6 +5723,11 @@ Backward pagination arguments
    */
   'test/no-test-return-statement'?: Linter.RuleEntry<[]>
   /**
+   * Disallow unnecessary async function wrapper for expected promises
+   * @see https://github.com/vitest-dev/eslint-plugin-vitest/blob/main/docs/rules/no-unneeded-async-expect-function.md
+   */
+  'test/no-unneeded-async-expect-function'?: Linter.RuleEntry<[]>
+  /**
    * Enforce padding around `afterAll` blocks
    * @see https://github.com/vitest-dev/eslint-plugin-vitest/blob/main/docs/rules/padding-around-after-all-blocks.md
    */
@@ -5831,7 +5836,7 @@ Backward pagination arguments
    * prefer dynamic import in mock
    * @see https://github.com/vitest-dev/eslint-plugin-vitest/blob/main/docs/rules/prefer-import-in-mock.md
    */
-  'test/prefer-import-in-mock'?: Linter.RuleEntry<[]>
+  'test/prefer-import-in-mock'?: Linter.RuleEntry<TestPreferImportInMock>
   /**
    * enforce importing Vitest globals
    * @see https://github.com/vitest-dev/eslint-plugin-vitest/blob/main/docs/rules/prefer-importing-vitest-globals.md
@@ -5893,6 +5898,11 @@ Backward pagination arguments
    */
   'test/prefer-to-contain'?: Linter.RuleEntry<[]>
   /**
+   * Suggest using `toHaveBeenCalledTimes()`
+   * @see https://github.com/vitest-dev/eslint-plugin-vitest/blob/main/docs/rules/prefer-to-have-been-called-times.md
+   */
+  'test/prefer-to-have-been-called-times'?: Linter.RuleEntry<[]>
+  /**
    * enforce using toHaveLength()
    * @see https://github.com/vitest-dev/eslint-plugin-vitest/blob/main/docs/rules/prefer-to-have-length.md
    */
@@ -5917,11 +5927,6 @@ Backward pagination arguments
    * @see https://github.com/vitest-dev/eslint-plugin-vitest/blob/main/docs/rules/require-hook.md
    */
   'test/require-hook'?: Linter.RuleEntry<TestRequireHook>
-  /**
-   * require usage of import in vi.mock()
-   * @see https://github.com/vitest-dev/eslint-plugin-vitest/blob/main/docs/rules/require-import-vi-mock.md
-   */
-  'test/require-import-vi-mock'?: Linter.RuleEntry<[]>
   /**
    * require local Test Context for concurrent snapshot tests
    * @see https://github.com/vitest-dev/eslint-plugin-vitest/blob/main/docs/rules/require-local-test-context-for-concurrent-snapshots.md
@@ -6541,6 +6546,11 @@ Backward pagination arguments
    * @see https://typescript-eslint.io/rules/no-useless-constructor
    */
   'ts/no-useless-constructor'?: Linter.RuleEntry<[]>
+  /**
+   * Disallow default values that will never be used
+   * @see https://typescript-eslint.io/rules/no-useless-default-assignment
+   */
+  'ts/no-useless-default-assignment'?: Linter.RuleEntry<[]>
   /**
    * Disallow empty exports that don't change anything in a module file
    * @see https://typescript-eslint.io/rules/no-useless-empty-export
@@ -15847,6 +15857,10 @@ type TestPreferExpectAssertions = []|[{
   onlyFunctionsWithAsyncKeyword?: boolean
   onlyFunctionsWithExpectInLoop?: boolean
   onlyFunctionsWithExpectInCallback?: boolean
+}]
+// ----- test/prefer-import-in-mock -----
+type TestPreferImportInMock = []|[{
+  fixable?: boolean
 }]
 // ----- test/prefer-lowercase-title -----
 type TestPreferLowercaseTitle = []|[{
