@@ -2,6 +2,26 @@
 
 # Changelog for Storm Ops - ESLint
 
+## [0.169.75](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.169.75) (12/23/2025)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace packages' dependencies
+  ([5b0a35e68](https://github.com/storm-software/storm-ops/commit/5b0a35e68))
+
+### Bug Fixes
+
+- **vite:** Resolve issue with missing build dependencies
+  ([e1ad7a56e](https://github.com/storm-software/storm-ops/commit/e1ad7a56e))
+- **eslint:** Update `spaced-comments` linting rule to allow region comments
+  ([727fcd446](https://github.com/storm-software/storm-ops/commit/727fcd446))
+
+### Updated Dependencies
+
+- Updated **config-tools** to **v1.188.74**
+- Updated **config** to **v1.134.74**
+- Updated **tsdoc** to **v0.13.73**
+
 ## [0.169.74](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.169.74) (12/18/2025)
 
 ### Updated Dependencies

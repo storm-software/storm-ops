@@ -2,6 +2,22 @@
 
 # Changelog for Storm Ops - Vite
 
+## [0.1.8](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.8) (12/23/2025)
+
+### Miscellaneous
+
+- **vite:** Run sherif formatting on `package.json` file
+  ([655e0a535](https://github.com/storm-software/storm-ops/commit/655e0a535))
+
+### Bug Fixes
+
+- **vite:** Resolve issue with missing build dependencies
+  ([e1ad7a56e](https://github.com/storm-software/storm-ops/commit/e1ad7a56e))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.74**
+
 ## [0.1.7](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.7) (12/18/2025)
 
 ### Updated Dependencies
