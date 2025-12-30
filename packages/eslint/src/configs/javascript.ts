@@ -893,8 +893,8 @@ export async function javascript(
           "always",
           {
             line: {
-              exceptions: ["-", "+", "#region", "#endregion"],
-              markers: ["=", "!", "/"] // space here to support sprockets directives, slash for TS /// comments
+              exceptions: ["-", "+"],
+              markers: ["=", "!", "/", "#region", "#endregion"] // space here to support sprockets directives, slash for TS /// comments
             },
             block: {
               exceptions: ["-", "+"],
