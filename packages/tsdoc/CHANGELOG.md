@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Tsdoc
 
+## [0.13.74](https://github.com/storm-software/storm-ops/releases/tag/tsdoc%400.13.74) (12/30/2025)
+
+### Miscellaneous
+
+- **monorepo:** Update `README.md` markdown files
+  ([eea67b18e](https://github.com/storm-software/storm-ops/commit/eea67b18e))
+
 ## [0.13.71](https://github.com/storm-software/storm-ops/releases/tag/tsdoc%400.13.71) (12/18/2025)
 
 ### Miscellaneous

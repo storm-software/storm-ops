@@ -2,6 +2,24 @@
 
 # Changelog for Storm Ops - ESLint
 
+## [0.169.76](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.169.76) (12/30/2025)
+
+### Miscellaneous
+
+- **monorepo:** Update `README.md` markdown files
+  ([eea67b18e](https://github.com/storm-software/storm-ops/commit/eea67b18e))
+
+### Bug Fixes
+
+- **eslint:** Resolve issue applying region exceptions for `spaced-comment` rule
+  ([16acbd7ec](https://github.com/storm-software/storm-ops/commit/16acbd7ec))
+
+### Updated Dependencies
+
+- Updated **config-tools** to **v1.188.75**
+- Updated **config** to **v1.134.75**
+- Updated **tsdoc** to **v0.13.74**
+
 ## [0.169.75](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.169.75) (12/23/2025)
 
 ### Miscellaneous

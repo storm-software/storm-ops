@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Config
 
+## [1.134.75](https://github.com/storm-software/storm-ops/releases/tag/config%401.134.75) (12/30/2025)
+
+### Miscellaneous
+
+- **monorepo:** Update `README.md` markdown files
+  ([eea67b18e](https://github.com/storm-software/storm-ops/commit/eea67b18e))
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.74**
+
 ## [1.134.74](https://github.com/storm-software/storm-ops/releases/tag/config%401.134.74) (12/23/2025)
 
 ### Updated Dependencies
