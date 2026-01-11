@@ -20,13 +20,13 @@ catalog:
   '@nx/webpack': ^22.3.3
   '@nx/workspace': ^22.3.3
   '@pnpm/types': ^1001.2.0
-  '@swc-node/register': 1.10.9
-  '@swc/core': 1.7.26
-  '@swc/helpers': 0.5.13
-  '@types/node': ^24.10.4
-  '@typescript-eslint/eslint-plugin': ^8.50.1
-  '@typescript-eslint/parser': ^8.50.1
-  '@typescript-eslint/utils': ^8.50.1
+  '@swc-node/register': 1.11.1
+  '@swc/core': 1.15.8
+  '@swc/helpers': 0.5.18
+  '@types/node': ^24.10.7
+  '@typescript-eslint/eslint-plugin': ^8.52.0
+  '@typescript-eslint/parser': ^8.52.0
+  '@typescript-eslint/utils': ^8.52.0
   c12: ^2.0.4
   chalk: ^4.1.2
   commander: ^12.1.0
@@ -35,23 +35,23 @@ catalog:
   cspell: ^8.19.4
   date-fns: ^4.1.0
   defu: 6.1.4
-  esbuild: ^0.25.12
+  esbuild: ^0.27.2
   eslint: ^9.39.2
   glob: ^11.1.0
-  jest: 30.0.5
-  jest-environment-jsdom: 30.0.5
-  jest-environment-node: 30.0.5
-  jest-resolve: 30.0.5
-  jest-util: 30.0.5
-  jiti: 2.4.2
-  knip: ^5.76.3
+  jest: 30.2.0
+  jest-environment-jsdom: 30.2.0
+  jest-environment-node: 30.2.0
+  jest-resolve: 30.2.0
+  jest-util: 30.2.0
+  jiti: 2.6.1
+  knip: ^5.80.2
   mlly: ^1.8.0
   nx: ^22.3.3
   pkg-types: ^1.3.1
   prettier: ^3.7.4
-  rimraf: 6.0.1
-  rollup: ^4.54.0
-  tsdown: ^0.15.12
+  rimraf: 6.1.2
+  rollup: ^4.55.1
+  tsdown: ^0.19.0
   tslib: ^2.8.1
   tsup: 8.4.0
   tsx: ^4.21.0
@@ -59,7 +59,7 @@ catalog:
   unbuild: ^3.6.1
   untyped: ^2.0.0
   yaml: ^2.8.2
-  zod: ^4.2.1
+  zod: ^4.3.5
   zx: ^8.8.5
 
 cleanupUnusedCatalogs: true

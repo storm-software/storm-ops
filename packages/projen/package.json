@@ -130,7 +130,7 @@
     "@storm-software/config": "1.134.75",
     "@storm-software/config-tools": "1.188.75",
     "@storm-software/workspace-tools": "1.294.21",
-    "projen": "^0.91.6",
+    "projen": "^0.99.1",
     "tsup": "catalog:",
     "untyped": "1.5.2"
   },
@@ -146,9 +146,9 @@
     }
   },
   "dependencies": {
-    "@aws/pdk": "^0.25.17",
+    "@aws/pdk": "^0.26.15",
     "@nx/devkit": "catalog:",
-    "projen": "0.91.20"
+    "projen": "0.99.1"
   },
   "devDependencies": {
     "@nx/devkit": "catalog:",
