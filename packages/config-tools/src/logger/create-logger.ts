@@ -18,7 +18,7 @@ export async function createLogger(
   const writeInfo = getLogFn(LogLevel.INFO, config, chalk);
   const writeSuccess = getLogFn(LogLevel.SUCCESS, config, chalk);
   const writeDebug = getLogFn(LogLevel.DEBUG, config, chalk);
-  const writeTrace = getLogFn(LogLevel.DEBUG, config, chalk);
+  const writeTrace = getLogFn(LogLevel.TRACE, config, chalk);
 
   return {
     fatal: writeFatal,

@@ -18,6 +18,7 @@ export const DEFAULT_COLOR_CONFIG = {
     help: "#5C4EE5",
     success: "#087f5b",
     info: "#0550ae",
+    debug: "#8AFAFC",
     warning: "#e3b341",
     danger: "#D8314A",
     fatal: "#51070f",
@@ -34,6 +35,7 @@ export const DEFAULT_COLOR_CONFIG = {
     help: "#818cf8",
     success: "#10b981",
     info: "#58a6ff",
+    debug: "#8AFAFC",
     warning: "#f3d371",
     danger: "#D8314A",
     fatal: "#a40e26",
@@ -94,6 +96,7 @@ export function getColor(
     | "help"
     | "success"
     | "info"
+    | "debug"
     | "warning"
     | "danger"
     | "positive"
@@ -114,7 +117,7 @@ export function getColor(
     return result;
   }
 
-  if (key === "link") {
+  if (key === "link" || key === "debug") {
     return getColor("info", config);
   } else if (key === "fatal") {
     return getColor("danger", config);

@@ -108,7 +108,7 @@ ${_chalk.gray(formatTimestamp())} ${_chalk.hex(colors.info ?? DEFAULT_COLOR_CONF
     return (message?: any) => {
       console.debug(
         `
-${_chalk.gray(formatTimestamp())} ${_chalk.hex(colors.info ?? DEFAULT_COLOR_CONFIG.dark.info)(`[${CONSOLE_ICONS[LogLevelLabel.DEBUG]} Debug] `)}${_chalk.bold.whiteBright(formatLogMessage(message))}
+${_chalk.gray(formatTimestamp())} ${_chalk.hex(colors.debug ?? DEFAULT_COLOR_CONFIG.dark.info)(`[${CONSOLE_ICONS[LogLevelLabel.DEBUG]} Debug] `)}${_chalk.bold.whiteBright(formatLogMessage(message))}
 `
       );
     };
@@ -118,7 +118,7 @@ ${_chalk.gray(formatTimestamp())} ${_chalk.hex(colors.info ?? DEFAULT_COLOR_CONF
     return (message?: any) => {
       console.debug(
         `
-${_chalk.gray(formatTimestamp())} ${_chalk.hex(colors.info ?? DEFAULT_COLOR_CONFIG.dark.info)(`[${CONSOLE_ICONS[LogLevelLabel.TRACE]} Trace] `)}${_chalk.bold.whiteBright(formatLogMessage(message))}
+${_chalk.gray(formatTimestamp())} ${_chalk.hex(colors.debug ?? DEFAULT_COLOR_CONFIG.dark.debug)(`[${CONSOLE_ICONS[LogLevelLabel.TRACE]} Trace] `)}${_chalk.bold.whiteBright(formatLogMessage(message))}
 `
       );
     };

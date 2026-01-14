@@ -365,6 +365,9 @@ const setSingleThemeColorsEnv = (prefix: string, config: SingleThemeColors) => {
   if (config.info) {
     process.env[`${prefix}INFO`] = config.info;
   }
+  if (config.debug) {
+    process.env[`${prefix}DEBUG`] = config.debug;
+  }
   if (config.warning) {
     process.env[`${prefix}WARNING`] = config.warning;
   }
@@ -424,6 +427,9 @@ const setBaseThemeColorsEnv = (
   }
   if (config.info) {
     process.env[`${prefix}INFO`] = config.info;
+  }
+  if (config.debug) {
+    process.env[`${prefix}DEBUG`] = config.debug;
   }
   if (config.warning) {
     process.env[`${prefix}WARNING`] = config.warning;
