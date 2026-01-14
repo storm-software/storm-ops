@@ -62,6 +62,12 @@ export const infoColorSchema = z._default(colorSchema, "#38bdf8");
 schemaRegistry.add(infoColorSchema, {
   description: "The informational color of the workspace"
 });
+
+export const debugColorSchema = z._default(colorSchema, "#1871b4");
+schemaRegistry.add(debugColorSchema, {
+  description: "The debug color of the workspace"
+});
+
 export const warningColorSchema = z._default(colorSchema, "#f3d371");
 schemaRegistry.add(warningColorSchema, {
   description: "The warning color of the workspace"
@@ -103,6 +109,7 @@ export const darkColorsSchema = z.object({
   help: helpColorSchema,
   success: successColorSchema,
   info: infoColorSchema,
+  debug: debugColorSchema,
   warning: warningColorSchema,
   danger: dangerColorSchema,
   fatal: fatalColorSchema,
@@ -121,6 +128,7 @@ export const lightColorsSchema = z.object({
   help: helpColorSchema,
   success: successColorSchema,
   info: infoColorSchema,
+  debug: debugColorSchema,
   warning: warningColorSchema,
   danger: dangerColorSchema,
   fatal: fatalColorSchema,
@@ -144,6 +152,7 @@ export const singleColorsSchema = z.object({
   help: helpColorSchema,
   success: successColorSchema,
   info: infoColorSchema,
+  debug: debugColorSchema,
   warning: warningColorSchema,
   danger: dangerColorSchema,
   fatal: fatalColorSchema,
