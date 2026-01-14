@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Config Tools
 
+## [1.188.77](https://github.com/storm-software/storm-ops/releases/tag/config-tools%401.188.77) (01/14/2026)
+
+### Miscellaneous
+
+- **config-tools:** Update `trace` messages to use a constant color
+  ([ffd9be12b](https://github.com/storm-software/storm-ops/commit/ffd9be12b))
+
 ## [1.188.76](https://github.com/storm-software/storm-ops/releases/tag/config-tools%401.188.76) (01/14/2026)
 
 ### Miscellaneous
