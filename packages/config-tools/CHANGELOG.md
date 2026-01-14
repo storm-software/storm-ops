@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Config Tools
 
+## [1.188.80](https://github.com/storm-software/storm-ops/releases/tag/config-tools%401.188.80) (01/14/2026)
+
+### Miscellaneous
+
+- **config-tools:** Update `fatal` console log icon
+  ([35d68febd](https://github.com/storm-software/storm-ops/commit/35d68febd))
+
 ## [1.188.79](https://github.com/storm-software/storm-ops/releases/tag/config-tools%401.188.79) (01/14/2026)
 
 ### Miscellaneous
