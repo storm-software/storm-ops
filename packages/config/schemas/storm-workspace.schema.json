@@ -440,7 +440,7 @@
                   "pattern": "^#([0-9a-f]{3}){1,2}$"
                 },
                 "debug": {
-                  "default": "#1871b4",
+                  "default": "#8afafc",
                   "description": "The debug color of the workspace",
                   "type": "string",
                   "minLength": 7,
@@ -591,7 +591,7 @@
                       "pattern": "^#([0-9a-f]{3}){1,2}$"
                     },
                     "debug": {
-                      "default": "#1871b4",
+                      "default": "#8afafc",
                       "description": "The debug color of the workspace",
                       "type": "string",
                       "minLength": 7,
@@ -739,7 +739,7 @@
                       "pattern": "^#([0-9a-f]{3}){1,2}$"
                     },
                     "debug": {
-                      "default": "#1871b4",
+                      "default": "#8afafc",
                       "description": "The debug color of the workspace",
                       "type": "string",
                       "minLength": 7,
@@ -916,7 +916,7 @@
                     "pattern": "^#([0-9a-f]{3}){1,2}$"
                   },
                   "debug": {
-                    "default": "#1871b4",
+                    "default": "#8afafc",
                     "description": "The debug color of the workspace",
                     "type": "string",
                     "minLength": 7,
@@ -1067,7 +1067,7 @@
                         "pattern": "^#([0-9a-f]{3}){1,2}$"
                       },
                       "debug": {
-                        "default": "#1871b4",
+                        "default": "#8afafc",
                         "description": "The debug color of the workspace",
                         "type": "string",
                         "minLength": 7,
@@ -1215,7 +1215,7 @@
                         "pattern": "^#([0-9a-f]{3}){1,2}$"
                       },
                       "debug": {
-                        "default": "#1871b4",
+                        "default": "#8afafc",
                         "description": "The debug color of the workspace",
                         "type": "string",
                         "minLength": 7,
