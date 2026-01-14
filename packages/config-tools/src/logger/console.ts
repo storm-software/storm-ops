@@ -58,7 +58,11 @@ export const getLogFn = (
     return (message?: any) => {
       console.error(
         `
-${_chalk.gray(formatTimestamp())} ${_chalk.hex(colors.fatal ?? DEFAULT_COLOR_CONFIG.dark.fatal)(`[${CONSOLE_ICONS[LogLevelLabel.FATAL]} Fatal] `)}${_chalk.bold.whiteBright(formatLogMessage(message))}
+${_chalk.gray(formatTimestamp())} ${_chalk.hex(
+          colors.fatal ?? DEFAULT_COLOR_CONFIG.dark.fatal
+        )(
+          `[${CONSOLE_ICONS[LogLevelLabel.FATAL]} Fatal] `
+        )}${_chalk.bold.whiteBright(formatLogMessage(message))}
 `
       );
     };
@@ -68,7 +72,11 @@ ${_chalk.gray(formatTimestamp())} ${_chalk.hex(colors.fatal ?? DEFAULT_COLOR_CON
     return (message?: any) => {
       console.error(
         `
-${_chalk.gray(formatTimestamp())} ${_chalk.hex(colors.danger ?? DEFAULT_COLOR_CONFIG.dark.danger)(`[${CONSOLE_ICONS[LogLevelLabel.ERROR]} Error] `)}${_chalk.bold.whiteBright(formatLogMessage(message))}
+${_chalk.gray(formatTimestamp())} ${_chalk.hex(
+          colors.danger ?? DEFAULT_COLOR_CONFIG.dark.danger
+        )(
+          `[${CONSOLE_ICONS[LogLevelLabel.ERROR]} Error] `
+        )}${_chalk.bold.whiteBright(formatLogMessage(message))}
 `
       );
     };
@@ -78,7 +86,11 @@ ${_chalk.gray(formatTimestamp())} ${_chalk.hex(colors.danger ?? DEFAULT_COLOR_CO
     return (message?: any) => {
       console.warn(
         `
-${_chalk.gray(formatTimestamp())} ${_chalk.hex(colors.warning ?? DEFAULT_COLOR_CONFIG.dark.warning)(`[${CONSOLE_ICONS[LogLevelLabel.WARN]} Warn] `)}${_chalk.bold.whiteBright(formatLogMessage(message))}
+${_chalk.gray(formatTimestamp())} ${_chalk.hex(
+          colors.warning ?? DEFAULT_COLOR_CONFIG.dark.warning
+        )(
+          `[${CONSOLE_ICONS[LogLevelLabel.WARN]} Warn] `
+        )}${_chalk.bold.whiteBright(formatLogMessage(message))}
 `
       );
     };
@@ -88,7 +100,11 @@ ${_chalk.gray(formatTimestamp())} ${_chalk.hex(colors.warning ?? DEFAULT_COLOR_C
     return (message?: any) => {
       console.info(
         `
-${_chalk.gray(formatTimestamp())} ${_chalk.hex(colors.success ?? DEFAULT_COLOR_CONFIG.dark.success)(`[${CONSOLE_ICONS[LogLevelLabel.SUCCESS]} Success] `)}${_chalk.bold.whiteBright(formatLogMessage(message))}
+${_chalk.gray(formatTimestamp())} ${_chalk.hex(
+          colors.success ?? DEFAULT_COLOR_CONFIG.dark.success
+        )(
+          `[${CONSOLE_ICONS[LogLevelLabel.SUCCESS]} Success] `
+        )}${_chalk.bold.whiteBright(formatLogMessage(message))}
 `
       );
     };
@@ -98,7 +114,11 @@ ${_chalk.gray(formatTimestamp())} ${_chalk.hex(colors.success ?? DEFAULT_COLOR_C
     return (message?: any) => {
       console.info(
         `
-${_chalk.gray(formatTimestamp())} ${_chalk.hex(colors.info ?? DEFAULT_COLOR_CONFIG.dark.info)(`[${CONSOLE_ICONS[LogLevelLabel.INFO]} Info] `)}${_chalk.bold.whiteBright(formatLogMessage(message))}
+${_chalk.gray(formatTimestamp())} ${_chalk.hex(
+          colors.info ?? DEFAULT_COLOR_CONFIG.dark.info
+        )(
+          `[${CONSOLE_ICONS[LogLevelLabel.INFO]} Info] `
+        )}${_chalk.bold.whiteBright(formatLogMessage(message))}
 `
       );
     };
@@ -108,7 +128,11 @@ ${_chalk.gray(formatTimestamp())} ${_chalk.hex(colors.info ?? DEFAULT_COLOR_CONF
     return (message?: any) => {
       console.debug(
         `
-${_chalk.gray(formatTimestamp())} ${_chalk.hex(colors.debug ?? DEFAULT_COLOR_CONFIG.dark.debug)(`[${CONSOLE_ICONS[LogLevelLabel.DEBUG]} Debug] `)}${_chalk.bold.whiteBright(formatLogMessage(message))}
+${_chalk.gray(formatTimestamp())} ${_chalk.hex(
+          colors.debug ?? DEFAULT_COLOR_CONFIG.dark.debug
+        )(
+          `[${CONSOLE_ICONS[LogLevelLabel.DEBUG]} Debug] `
+        )}${_chalk.bold.whiteBright(formatLogMessage(message))}
 `
       );
     };
@@ -118,7 +142,9 @@ ${_chalk.gray(formatTimestamp())} ${_chalk.hex(colors.debug ?? DEFAULT_COLOR_CON
     return (message?: any) => {
       console.debug(
         `
-${_chalk.gray(formatTimestamp())} ${_chalk.hex("#bbbbbb")(`[${CONSOLE_ICONS[LogLevelLabel.TRACE]} Trace] `)}${_chalk.bold.whiteBright(formatLogMessage(message))}
+${_chalk.gray(formatTimestamp())} ${_chalk.hex("#bbbbbb")(
+          `[${CONSOLE_ICONS[LogLevelLabel.TRACE]} Trace] `
+        )}${_chalk.bold.whiteBright(formatLogMessage(message))}
 `
       );
     };
@@ -127,7 +153,11 @@ ${_chalk.gray(formatTimestamp())} ${_chalk.hex("#bbbbbb")(`[${CONSOLE_ICONS[LogL
   return (message?: any) => {
     console.log(
       `
-${_chalk.gray(formatTimestamp())} ${_chalk.hex(colors.brand ?? DEFAULT_COLOR_CONFIG.dark.brand)(`[${CONSOLE_ICONS[LogLevelLabel.ALL]} System] `)}${_chalk.bold.whiteBright(formatLogMessage(message))}
+${_chalk.gray(formatTimestamp())} ${_chalk.hex(
+        colors.brand ?? DEFAULT_COLOR_CONFIG.dark.brand
+      )(
+        `[${CONSOLE_ICONS[LogLevelLabel.ALL]} System] `
+      )}${_chalk.bold.whiteBright(formatLogMessage(message))}
 `
     );
   };
@@ -240,7 +270,7 @@ export const getStopwatch = (name: string) => {
   };
 };
 
-const MAX_DEPTH = 4;
+const MAX_DEPTH = 6;
 
 export type FormatLogMessageOptions = {
   prefix?: string;
