@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Config Tools
 
+## [1.188.79](https://github.com/storm-software/storm-ops/releases/tag/config-tools%401.188.79) (01/14/2026)
+
+### Miscellaneous
+
+- **config-tools:** Update console icons and increase max object log depth
+  ([ef27a4e0d](https://github.com/storm-software/storm-ops/commit/ef27a4e0d))
+
 ## [1.188.78](https://github.com/storm-software/storm-ops/releases/tag/config-tools%401.188.78) (01/14/2026)
 
 ### Miscellaneous
