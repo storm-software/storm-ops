@@ -63,7 +63,7 @@ schemaRegistry.add(infoColorSchema, {
   description: "The informational color of the workspace"
 });
 
-export const debugColorSchema = z._default(colorSchema, "#1871b4");
+export const debugColorSchema = z._default(colorSchema, "#8afafc");
 schemaRegistry.add(debugColorSchema, {
   description: "The debug color of the workspace"
 });
