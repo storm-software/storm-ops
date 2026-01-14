@@ -2,6 +2,22 @@
 
 # Changelog for Storm Ops - Config
 
+## [1.135.0](https://github.com/storm-software/storm-ops/releases/tag/config%401.135.0) (01/14/2026)
+
+### Miscellaneous
+
+- **config:** Include recent updates to color defaults in JSON schema
+  ([a91674dca](https://github.com/storm-software/storm-ops/commit/a91674dca))
+- **config:** Update the `debug` color default for consistency
+  ([81aaa7392](https://github.com/storm-software/storm-ops/commit/81aaa7392))
+- **config:** Included updates to JSON schema file
+  ([dbc988eda](https://github.com/storm-software/storm-ops/commit/dbc988eda))
+
+### Features
+
+- **config:** Added the `debug` color to schema
+  ([8e896d8d2](https://github.com/storm-software/storm-ops/commit/8e896d8d2))
+
 ## [1.134.75](https://github.com/storm-software/storm-ops/releases/tag/config%401.134.75) (12/30/2025)
 
 ### Miscellaneous

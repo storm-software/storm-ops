@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Tsup
 
+## [0.2.74](https://github.com/storm-software/storm-ops/releases/tag/tsup%400.2.74) (01/14/2026)
+
+### Updated Dependencies
+
+- Updated **config-tools** to **v1.188.76**
+- Updated **build-tools** to **v0.158.76**
+
 ## [0.2.73](https://github.com/storm-software/storm-ops/releases/tag/tsup%400.2.73) (12/30/2025)
 
 ### Miscellaneous

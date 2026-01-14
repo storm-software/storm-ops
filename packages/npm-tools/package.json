@@ -1,6 +1,6 @@
 {
   "name": "@storm-software/npm-tools",
-  "version": "0.6.32",
+  "version": "0.6.33",
   "type": "module",
   "description": "A set of tools and utilities for managing packages stored in the [npm](https://www.npmjs.com/) registry.",
   "repository": {
