@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Vite
 
+## [0.1.12](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.12) (01/14/2026)
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.78**
+
 ## [0.1.11](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.11) (01/14/2026)
 
 ### Updated Dependencies

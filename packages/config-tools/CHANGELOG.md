@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Config Tools
 
+## [1.188.78](https://github.com/storm-software/storm-ops/releases/tag/config-tools%401.188.78) (01/14/2026)
+
+### Miscellaneous
+
+- **config-tools:** Updates to unicode icons used in console logs
+  ([b52a14d48](https://github.com/storm-software/storm-ops/commit/b52a14d48))
+
 ## [1.188.77](https://github.com/storm-software/storm-ops/releases/tag/config-tools%401.188.77) (01/14/2026)
 
 ### Miscellaneous
