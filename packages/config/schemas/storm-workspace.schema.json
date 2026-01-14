@@ -439,6 +439,14 @@
                   "maxLength": 7,
                   "pattern": "^#([0-9a-f]{3}){1,2}$"
                 },
+                "debug": {
+                  "default": "#1871b4",
+                  "description": "The debug color of the workspace",
+                  "type": "string",
+                  "minLength": 7,
+                  "maxLength": 7,
+                  "pattern": "^#([0-9a-f]{3}){1,2}$"
+                },
                 "warning": {
                   "default": "#f3d371",
                   "description": "The warning color of the workspace",
@@ -498,6 +506,7 @@
                 "help",
                 "success",
                 "info",
+                "debug",
                 "warning",
                 "danger",
                 "positive",
@@ -581,6 +590,14 @@
                       "maxLength": 7,
                       "pattern": "^#([0-9a-f]{3}){1,2}$"
                     },
+                    "debug": {
+                      "default": "#1871b4",
+                      "description": "The debug color of the workspace",
+                      "type": "string",
+                      "minLength": 7,
+                      "maxLength": 7,
+                      "pattern": "^#([0-9a-f]{3}){1,2}$"
+                    },
                     "warning": {
                       "default": "#f3d371",
                       "description": "The warning color of the workspace",
@@ -640,6 +657,7 @@
                     "help",
                     "success",
                     "info",
+                    "debug",
                     "warning",
                     "danger",
                     "positive",
@@ -720,6 +738,14 @@
                       "maxLength": 7,
                       "pattern": "^#([0-9a-f]{3}){1,2}$"
                     },
+                    "debug": {
+                      "default": "#1871b4",
+                      "description": "The debug color of the workspace",
+                      "type": "string",
+                      "minLength": 7,
+                      "maxLength": 7,
+                      "pattern": "^#([0-9a-f]{3}){1,2}$"
+                    },
                     "warning": {
                       "default": "#f3d371",
                       "description": "The warning color of the workspace",
@@ -779,6 +805,7 @@
                     "help",
                     "success",
                     "info",
+                    "debug",
                     "warning",
                     "danger",
                     "positive",
@@ -888,6 +915,14 @@
                     "maxLength": 7,
                     "pattern": "^#([0-9a-f]{3}){1,2}$"
                   },
+                  "debug": {
+                    "default": "#1871b4",
+                    "description": "The debug color of the workspace",
+                    "type": "string",
+                    "minLength": 7,
+                    "maxLength": 7,
+                    "pattern": "^#([0-9a-f]{3}){1,2}$"
+                  },
                   "warning": {
                     "default": "#f3d371",
                     "description": "The warning color of the workspace",
@@ -947,6 +982,7 @@
                   "help",
                   "success",
                   "info",
+                  "debug",
                   "warning",
                   "danger",
                   "positive",
@@ -1030,6 +1066,14 @@
                         "maxLength": 7,
                         "pattern": "^#([0-9a-f]{3}){1,2}$"
                       },
+                      "debug": {
+                        "default": "#1871b4",
+                        "description": "The debug color of the workspace",
+                        "type": "string",
+                        "minLength": 7,
+                        "maxLength": 7,
+                        "pattern": "^#([0-9a-f]{3}){1,2}$"
+                      },
                       "warning": {
                         "default": "#f3d371",
                         "description": "The warning color of the workspace",
@@ -1089,6 +1133,7 @@
                       "help",
                       "success",
                       "info",
+                      "debug",
                       "warning",
                       "danger",
                       "positive",
@@ -1169,6 +1214,14 @@
                         "maxLength": 7,
                         "pattern": "^#([0-9a-f]{3}){1,2}$"
                       },
+                      "debug": {
+                        "default": "#1871b4",
+                        "description": "The debug color of the workspace",
+                        "type": "string",
+                        "minLength": 7,
+                        "maxLength": 7,
+                        "pattern": "^#([0-9a-f]{3}){1,2}$"
+                      },
                       "warning": {
                         "default": "#f3d371",
                         "description": "The warning color of the workspace",
@@ -1228,6 +1281,7 @@
                       "help",
                       "success",
                       "info",
+                      "debug",
                       "warning",
                       "danger",
                       "positive",
