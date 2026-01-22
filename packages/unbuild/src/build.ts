@@ -30,6 +30,7 @@ import {
 } from "@storm-software/build-tools";
 import { getConfig } from "@storm-software/config-tools/get-config";
 import {
+  brandIcon,
   formatLogMessage,
   getStopwatch,
   writeDebug,
@@ -637,7 +638,7 @@ export async function build(options: UnbuildOptions) {
 
   const config = await getConfig(workspaceRoot.dir);
 
-  writeDebug(` ⚡  Executing Storm Unbuild pipeline`, config);
+  writeDebug(` ${brandIcon(config)}  Executing Storm Unbuild pipeline`, config);
   const stopwatch = getStopwatch("Unbuild pipeline");
 
   try {

@@ -30,6 +30,7 @@ import {
 } from "@storm-software/build-tools";
 import { getWorkspaceConfig } from "@storm-software/config-tools/get-config";
 import {
+  brandIcon,
   getStopwatch,
   writeDebug,
   writeFatal,
@@ -348,7 +349,7 @@ export async function cleanOutputPath(options: TSDownResolvedOptions) {
  * @returns the build result
  */
 export async function build(options: TSDownOptions | TSDownOptions[]) {
-  writeDebug(`  ⚡   Executing Storm TSDown pipeline`);
+  writeDebug(`  ${brandIcon()}   Executing Storm TSDown pipeline`);
   const stopwatch = getStopwatch("TSDown pipeline");
 
   try {

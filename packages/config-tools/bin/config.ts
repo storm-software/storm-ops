@@ -8,6 +8,7 @@ import chalk from "chalk";
 import { Command } from "commander";
 import { getConfig } from "../src/get-config";
 import {
+  brandIcon,
   formatLogMessage,
   writeError,
   writeFatal,
@@ -22,7 +23,9 @@ import {
 } from "../src/utilities";
 
 export function createProgram() {
-  writeInfo("⚡ Running Storm Configuration Tools", { logLevel: "all" });
+  writeInfo(`${brandIcon()} Running Storm Configuration Tools`, {
+    logLevel: "all"
+  });
 
   const root = findWorkspaceRootSafe(process.cwd());
   process.env.STORM_WORKSPACE_ROOT ??= root;

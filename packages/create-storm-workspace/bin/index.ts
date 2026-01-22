@@ -3,6 +3,7 @@
 import { getNpmPackageVersion } from "@nx/workspace/src/generators/utils/get-npm-package-version";
 import { getConfig } from "@storm-software/config-tools";
 import {
+  brandIcon,
   getStopwatch,
   writeFatal,
   writeInfo,
@@ -15,7 +16,10 @@ async function main() {
   const stopwatch = getStopwatch("create-storm-workspace");
   const config = await getConfig();
   try {
-    writeInfo("⚡ Preparing to create the Storm Workspace", config);
+    writeInfo(
+      `${brandIcon(config)}  Preparing to create the Storm Workspace`,
+      config
+    );
 
     ["SIGTERM", "SIGINT", "SIGUSR2"].map(type => {
       process.once(type, () => {
@@ -100,7 +104,7 @@ async function main() {
         name: "description",
         message:
           "Provide a description of the workspace to use in the package.json and README.md files.",
-        initial: `⚡ The ${
+        initial: `${brandIcon(config)}  The ${
           namespace ? namespace : name
         } monorepo contains utility applications, tools, and various libraries to create modern and scalable web applications.`
       });
@@ -133,7 +137,10 @@ async function main() {
     //   nxCloud = response.nxCloud;
     // }
 
-    writeInfo(`⚡ Creating the Storm Workspace: ${name}`, config);
+    writeInfo(
+      `${brandIcon(config)}  Creating the Storm Workspace: ${name}`,
+      config
+    );
 
     const version = getNpmPackageVersion("@storm-software/workspace-tools");
     const { directory } = await createWorkspace(
@@ -158,7 +165,7 @@ async function main() {
     );
 
     writeSuccess(
-      `⚡ Successfully created the workspace: ${directory}.`,
+      `${brandIcon(config)}  Successfully created the workspace: ${directory}.`,
       config
     );
   } catch (error) {

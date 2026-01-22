@@ -2,7 +2,7 @@
 import type { Colors, StormWorkspaceConfig } from "@storm-software/config";
 import { formatDistanceToNow } from "date-fns/formatDistanceToNow";
 import { LogLevel, LogLevelLabel } from "../types";
-import { DEFAULT_COLOR_CONFIG } from "../utilities/colors";
+import { DEFAULT_COLOR_CONFIG, getColor } from "../utilities/colors";
 import { getChalk } from "./chalk";
 import { CONSOLE_ICONS } from "./console-icons";
 import { formatTimestamp } from "./format-timestamp";
@@ -331,3 +331,15 @@ const _isFunction = (
     return false;
   }
 };
+
+/**
+ * Get the brand icon for the console
+ *
+ * @param config - The Storm configuration
+ * @param _chalk - The chalk instance
+ * @returns The brand icon
+ */
+export const brandIcon = (
+  config: Partial<StormWorkspaceConfig> = {},
+  _chalk: ReturnType<typeof getChalk> = getChalk()
+) => _chalk.hex(getColor("brand", config))("🗲");

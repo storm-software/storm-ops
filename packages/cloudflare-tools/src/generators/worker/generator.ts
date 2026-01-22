@@ -17,6 +17,7 @@ import { applicationGenerator as nodeApplicationGenerator } from "@nx/node";
 import { nxVersion } from "@nx/node/src/utils/versions";
 import { StormWorkspaceConfig } from "@storm-software/config";
 import {
+  brandIcon,
   getConfig,
   getStopwatch,
   writeDebug,
@@ -41,9 +42,13 @@ export async function applicationGenerator(
 
   let config: StormWorkspaceConfig | undefined;
   try {
-    writeInfo(`⚡ Running the Storm Worker generator...\n\n`, config);
-
     const workspaceRoot = findWorkspaceRoot();
+
+    config = await getConfig(workspaceRoot);
+    writeInfo(
+      `${brandIcon(config)}  Running the Storm Worker generator...\n\n`,
+      config
+    );
 
     writeDebug(
       `Loading the Storm Config from environment variables and storm.json file...
@@ -51,7 +56,6 @@ export async function applicationGenerator(
       config
     );
 
-    config = await getConfig(workspaceRoot);
     writeTrace(
       `Loaded Storm config into env: \n${Object.keys(process.env)
         .map(key => ` - ${key}=${JSON.stringify(process.env[key])}`)

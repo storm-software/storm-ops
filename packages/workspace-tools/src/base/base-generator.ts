@@ -3,6 +3,7 @@ import type { StormWorkspaceConfig } from "@storm-software/config";
 import {
   applyWorkspaceBaseTokens,
   applyWorkspaceTokens,
+  brandIcon,
   findWorkspaceRoot,
   getConfig,
   getStopwatch,
@@ -41,7 +42,10 @@ export const withRunGenerator =
 
     let config: StormWorkspaceConfig | undefined;
     try {
-      writeInfo(`⚡ Running the ${name} generator...\n\n`, config);
+      writeInfo(
+        `${brandIcon(config)}  Running the ${name} generator...\n\n`,
+        config
+      );
 
       const workspaceRoot = findWorkspaceRoot();
       if (!generatorOptions.skipReadingConfig) {

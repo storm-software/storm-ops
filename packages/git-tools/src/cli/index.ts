@@ -1,5 +1,6 @@
 import type { StormWorkspaceConfig } from "@storm-software/config";
 import {
+  brandIcon,
   findWorkspaceRootSafe,
   writeFatal,
   writeInfo,
@@ -16,7 +17,7 @@ let _config: Partial<StormWorkspaceConfig> = {};
 
 export function createProgram(config: StormWorkspaceConfig) {
   _config = config;
-  writeInfo("⚡ Running Storm Git Tools", config);
+  writeInfo(`${brandIcon(_config)}  Running Storm Git Tools`, config);
 
   const root = findWorkspaceRootSafe(process.cwd());
   process.env.STORM_WORKSPACE_ROOT ??= root;
@@ -95,7 +96,7 @@ export async function commitAction({
 }) {
   try {
     writeInfo(
-      `⚡ Preparing to commit your changes. Please provide the requested details below...`,
+      `${brandIcon(config)}  Preparing to commit your changes. Please provide the requested details below...`,
       _config
     );
 
@@ -132,7 +133,10 @@ Note: Please run "pnpm push" to upload these changes to the remote ${
 
 export async function readmeAction(options: ReadMeOptions) {
   try {
-    writeInfo("⚡ Formatting the workspace's README.md files", _config);
+    writeInfo(
+      `${brandIcon(_config)}  Formatting the workspace's README.md files`,
+      _config
+    );
 
     await runReadme(options);
 
@@ -161,7 +165,7 @@ export async function releaseAction({
 }) {
   try {
     writeInfo(
-      "⚡ Running the Storm Release and Publish process on the workspace",
+      `${brandIcon(_config)}  Running the Storm Release and Publish process on the workspace`,
       _config
     );
 
@@ -187,7 +191,7 @@ export async function releaseAction({
 export async function commitLintAction(options: CommitLintCLIOptions) {
   try {
     writeInfo(
-      `⚡ Linting the ${
+      `${brandIcon(_config)} Linting the ${
         _config.repository
           ? _config.repository
           : _config.namespace

@@ -3,6 +3,7 @@ import type { StormWorkspaceConfig } from "@storm-software/config";
 import {
   applyWorkspaceProjectTokens,
   applyWorkspaceTokens,
+  brandIcon,
   findWorkspaceRoot,
   formatLogMessage,
   getConfig,
@@ -66,7 +67,10 @@ export const withRunExecutor =
       const projectName = context.projectName;
       config.workspaceRoot = workspaceRoot;
 
-      writeInfo(`⚡ Running the ${name} executor for ${projectName} `, config);
+      writeInfo(
+        `${brandIcon(config)}  Running the ${name} executor for ${projectName} `,
+        config
+      );
 
       if (!executorOptions.skipReadingConfig) {
         writeTrace(

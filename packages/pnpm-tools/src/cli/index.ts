@@ -1,5 +1,6 @@
 import type { StormWorkspaceConfig } from "@storm-software/config";
 import {
+  brandIcon,
   findWorkspaceRootSafe,
   runAsync,
   writeDebug,
@@ -26,7 +27,10 @@ let _config: Partial<StormWorkspaceConfig> = {};
  */
 export function createProgram(config: StormWorkspaceConfig) {
   _config = config;
-  writeInfo("⚡  Running the `storm-pnpm` command-line application", config);
+  writeInfo(
+    `${brandIcon(_config)}  Running the \`storm-pnpm\` command-line application`,
+    config
+  );
 
   const root = findWorkspaceRootSafe(_config.workspaceRoot || process.cwd());
   process.env.STORM_WORKSPACE_ROOT ??= root;
@@ -89,7 +93,7 @@ async function updateAction(
     ).map(p => p.trim().replaceAll("*", ""));
 
     writeInfo(
-      `⚡ Preparing to update the package version for ${packages.join(", ")}.`,
+      `${brandIcon(_config)}  Preparing to update the package version for ${packages.join(", ")}.`,
       _config
     );
 
@@ -112,7 +116,7 @@ async function updateAction(
         );
       } else {
         writeTrace(
-          `Found ${matchedPackages.length} matching packages in the catalog file: \n\n- ${matchedPackages
+          `${brandIcon(_config)}  Found ${matchedPackages.length} matching packages in the catalog file: \n\n- ${matchedPackages
             .map(p => `${p} (${catalog[p] || "unknown"})`)
             .join("\n- ")}`,
           _config

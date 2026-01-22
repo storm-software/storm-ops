@@ -2,6 +2,7 @@ import { confirm, input, select } from "@inquirer/prompts";
 import { joinPaths } from "@storm-software/config-tools";
 import { getWorkspaceConfig } from "@storm-software/config-tools/get-config";
 import {
+  brandIcon,
   writeDebug,
   writeInfo
 } from "@storm-software/config-tools/logger/console";
@@ -25,7 +26,7 @@ export async function runCommit(commitizenFile?: string, dryRun = false) {
   console.log(chalkTemplate`
 {bold.#999999 ----------------------------------------}
 
-{bold.#FFFFFF ⚡ Storm Software Git-Tools - Commit}
+{bold.#FFFFFF ${brandIcon(workspaceConfig)}  Storm Software Git-Tools - Commit}
 {#CCCCCC Please provide the requested details below...}
 `);
 

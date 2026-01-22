@@ -1,4 +1,5 @@
 import {
+  brandIcon,
   getStopwatch,
   writeDebug,
   writeError,
@@ -112,7 +113,7 @@ async function cleanOutputPath(context: ESBuildContext) {
  * @returns the build result
  */
 export async function build(options: ESBuildOptions) {
-  writeDebug(`  ⚡   Executing Storm ESBuild pipeline`);
+  writeDebug(`  ${brandIcon()}   Executing Storm ESBuild pipeline`);
   const stopwatch = getStopwatch("ESBuild pipeline");
 
   try {

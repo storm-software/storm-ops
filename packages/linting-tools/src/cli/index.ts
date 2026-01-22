@@ -1,5 +1,6 @@
 import type { StormWorkspaceConfig } from "@storm-software/config";
 import {
+  brandIcon,
   findWorkspaceRootSafe,
   writeDebug,
   writeError,
@@ -19,7 +20,7 @@ let _config: Partial<StormWorkspaceConfig> = {};
 
 export function createProgram(config: StormWorkspaceConfig) {
   _config = config;
-  writeInfo("⚡  Running Storm Linting Tools", config);
+  writeInfo(`${brandIcon(config)}   Running Storm Linting Tools`, config);
 
   const root = findWorkspaceRootSafe();
   process.env.STORM_WORKSPACE_ROOT ??= root;
@@ -32,7 +33,7 @@ export function createProgram(config: StormWorkspaceConfig) {
   program.version("1.0.0", "-v --version", "display CLI version");
 
   program
-    .description("⚡  Lint the Storm Workspace")
+    .description("Lint the Storm Workspace")
     .showHelpAfterError()
     .showSuggestionAfterError();
 
@@ -270,7 +271,7 @@ async function allAction({
   manypkgArgs: string[];
 }) {
   try {
-    writeDebug("⚡  Linting the Storm Workspace", _config);
+    writeDebug(`${brandIcon(_config)}  Linting the Storm Workspace`, _config);
 
     const promises = [] as Promise<any>[];
     if (!skipCspell) {
@@ -316,7 +317,7 @@ async function cspellAction({
   cspellConfig: string;
 }) {
   try {
-    writeInfo("⚡  Linting the workspace spelling");
+    writeInfo(`${brandIcon(_config)}  Linting the workspace spelling`, _config);
     const result = await lint(["**/*.{txt,js,jsx,ts,tsx,md,mdx}"], {
       cache: true,
       summary: true,
@@ -348,7 +349,10 @@ async function cspellAction({
 
 async function codeownersAction() {
   try {
-    writeInfo("⚡  Linting the workspace CODEOWNERS file");
+    writeInfo(
+      `${brandIcon(_config)}  Linting the workspace CODEOWNERS file`,
+      _config
+    );
 
     await runCodeowners();
 
@@ -371,7 +375,10 @@ async function alexAction({
   alexIgnore: string;
 }) {
   try {
-    writeDebug("⚡  Linting the workspace language with alexjs.com", _config);
+    writeDebug(
+      `${brandIcon(_config)}  Linting the workspace language with alexjs.com`,
+      _config
+    );
 
     const result = await runAlex(alexConfig, alexIgnore);
     if (result) {
@@ -400,7 +407,7 @@ async function depsVersionAction({
 }) {
   try {
     writeDebug(
-      "⚡  Linting the workspace dependency version consistency",
+      `${brandIcon(_config)}  Linting the workspace dependency version consistency`,
       _config
     );
 
@@ -437,7 +444,10 @@ async function depsVersionAction({
 
 async function circularDepsAction() {
   try {
-    writeDebug("⚡  Linting the workspace circular dependency", _config);
+    writeDebug(
+      `${brandIcon(_config)}  Linting the workspace circular dependency`,
+      _config
+    );
 
     const circulars = parseCircular(
       await parseDependencyTree(["**/*"], {
@@ -482,7 +492,10 @@ async function manypkgAction({
   manypkgArgs: string[];
 }) {
   try {
-    writeDebug("⚡  Linting the workspace's packages with Manypkg", _config);
+    writeDebug(
+      `${brandIcon(_config)}  Linting the workspace's packages with Manypkg`,
+      _config
+    );
 
     await runManypkg(_config, manypkgType, manypkgArgs);
 

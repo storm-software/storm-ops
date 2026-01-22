@@ -3,6 +3,7 @@
 import type { StormWorkspaceConfig } from "@storm-software/config";
 import { getConfig } from "@storm-software/config-tools/get-config";
 import {
+  brandIcon,
   getStopwatch,
   writeFatal,
   writeInfo,
@@ -21,7 +22,7 @@ import { TSDownCLIOptions } from "../src/types";
 
 async function createProgram(config: StormWorkspaceConfig) {
   try {
-    writeInfo("⚡ Running Storm TSDown pipeline", config);
+    writeInfo(`${brandIcon(config)}  Running Storm TSDown pipeline`, config);
 
     const root = findWorkspaceRootSafe();
     process.env.STORM_WORKSPACE_ROOT ??= root;
@@ -34,7 +35,7 @@ async function createProgram(config: StormWorkspaceConfig) {
     program.version("1.0.0", "-v --version", "display CLI version");
 
     program
-      .description("⚡ Run the Storm TSDown pipeline")
+      .description("Run the Storm TSDown pipeline")
       .showHelpAfterError()
       .showSuggestionAfterError();
 
