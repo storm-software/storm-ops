@@ -2,6 +2,25 @@
 
 # Changelog for Storm Ops - Workspace Tools
 
+## [1.294.27](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.294.27) (01/22/2026)
+
+### Features
+
+- **config-tools:** Added the `brandIcon` helper function
+  ([9c21c782f](https://github.com/storm-software/storm-ops/commit/9c21c782f))
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.75**
+- Updated **config-tools** to **v1.189.0**
+- Updated **pnpm-tools** to **v0.6.83**
+- Updated **npm-tools** to **v0.6.38**
+- Updated **prettier** to **v0.57.75**
+- Updated **esbuild** to **v0.53.81**
+- Updated **unbuild** to **v0.57.81**
+- Updated **config** to **v1.135.1**
+- Updated **tsdown** to **v0.45.81**
+
 ## [1.294.26](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.294.26) (01/14/2026)
 
 ### Updated Dependencies

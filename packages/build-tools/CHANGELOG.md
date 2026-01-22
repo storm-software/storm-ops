@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Build Tools
 
+## [0.158.81](https://github.com/storm-software/storm-ops/releases/tag/build-tools%400.158.81) (01/22/2026)
+
+### Features
+
+- **config-tools:** Added the `brandIcon` helper function
+  ([9c21c782f](https://github.com/storm-software/storm-ops/commit/9c21c782f))
+
+### Updated Dependencies
+
+- Updated **config-tools** to **v1.189.0**
+- Updated **config** to **v1.135.1**
+
 ## [0.158.80](https://github.com/storm-software/storm-ops/releases/tag/build-tools%400.158.80) (01/14/2026)
 
 ### Updated Dependencies

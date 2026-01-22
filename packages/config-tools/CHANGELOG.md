@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Config Tools
 
+## [1.189.0](https://github.com/storm-software/storm-ops/releases/tag/config-tools%401.189.0) (01/22/2026)
+
+### Features
+
+- **config-tools:** Added the `brandIcon` helper function
+  ([9c21c782f](https://github.com/storm-software/storm-ops/commit/9c21c782f))
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.75**
+- Updated **config** to **v1.135.1**
+
 ## [1.188.80](https://github.com/storm-software/storm-ops/releases/tag/config-tools%401.188.80) (01/14/2026)
 
 ### Miscellaneous

@@ -2,6 +2,19 @@
 
 # Changelog for Storm Ops - Git Tools
 
+## [2.124.64](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.124.64) (01/22/2026)
+
+### Features
+
+- **config-tools:** Added the `brandIcon` helper function
+  ([9c21c782f](https://github.com/storm-software/storm-ops/commit/9c21c782f))
+
+### Updated Dependencies
+
+- Updated **conventional-changelog** to **v0.3.81**
+- Updated **config-tools** to **v1.189.0**
+- Updated **config** to **v1.135.1**
+
 ## [2.124.63](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.124.63) (01/14/2026)
 
 ### Updated Dependencies

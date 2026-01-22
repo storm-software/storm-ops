@@ -2,6 +2,19 @@
 
 # Changelog for Storm Ops - Cloudflare Tools
 
+## [0.71.42](https://github.com/storm-software/storm-ops/releases/tag/cloudflare-tools%400.71.42) (01/22/2026)
+
+### Features
+
+- **config-tools:** Added the `brandIcon` helper function
+  ([9c21c782f](https://github.com/storm-software/storm-ops/commit/9c21c782f))
+
+### Updated Dependencies
+
+- Updated **workspace-tools** to **v1.294.27**
+- Updated **config-tools** to **v1.189.0**
+- Updated **config** to **v1.135.1**
+
 ## [0.71.41](https://github.com/storm-software/storm-ops/releases/tag/cloudflare-tools%400.71.41) (01/14/2026)
 
 ### Updated Dependencies

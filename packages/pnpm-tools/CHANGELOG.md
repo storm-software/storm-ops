@@ -2,6 +2,20 @@
 
 # Changelog for Storm Ops - Pnpm Tools
 
+## [0.6.83](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.6.83) (01/22/2026)
+
+### Features
+
+- **config-tools:** Added the `brandIcon` helper function
+  ([9c21c782f](https://github.com/storm-software/storm-ops/commit/9c21c782f))
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.75**
+- Updated **config-tools** to **v1.189.0**
+- Updated **npm-tools** to **v0.6.38**
+- Updated **config** to **v1.135.1**
+
 ## [0.6.82](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.6.82) (01/14/2026)
 
 ### Updated Dependencies

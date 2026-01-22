@@ -2,6 +2,20 @@
 
 # Changelog for Storm Ops - Esbuild
 
+## [0.53.81](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.53.81) (01/22/2026)
+
+### Features
+
+- **config-tools:** Added the `brandIcon` helper function
+  ([9c21c782f](https://github.com/storm-software/storm-ops/commit/9c21c782f))
+
+### Updated Dependencies
+
+- Updated **config-tools** to **v1.189.0**
+- Updated **build-tools** to **v0.158.81**
+- Updated **config** to **v1.135.1**
+- Updated **tsup** to **v0.2.79**
+
 ## [0.53.80](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.53.80) (01/14/2026)
 
 ### Updated Dependencies

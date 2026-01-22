@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Untyped
 
+## [0.24.62](https://github.com/storm-software/storm-ops/releases/tag/untyped%400.24.62) (01/22/2026)
+
+### Features
+
+- **config-tools:** Added the `brandIcon` helper function
+  ([9c21c782f](https://github.com/storm-software/storm-ops/commit/9c21c782f))
+
+### Updated Dependencies
+
+- Updated **config-tools** to **v1.189.0**
+- Updated **config** to **v1.135.1**
+
 ## [0.24.61](https://github.com/storm-software/storm-ops/releases/tag/untyped%400.24.61) (01/14/2026)
 
 ### Updated Dependencies

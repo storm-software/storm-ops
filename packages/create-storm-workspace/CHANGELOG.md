@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Create Storm Workspace
 
+## [1.97.81](https://github.com/storm-software/storm-ops/releases/tag/create-storm-workspace%401.97.81) (01/22/2026)
+
+### Features
+
+- **config-tools:** Added the `brandIcon` helper function
+  ([9c21c782f](https://github.com/storm-software/storm-ops/commit/9c21c782f))
+
+### Updated Dependencies
+
+- Updated **config-tools** to **v1.189.0**
+
 ## [1.97.80](https://github.com/storm-software/storm-ops/releases/tag/create-storm-workspace%401.97.80) (01/14/2026)
 
 ### Updated Dependencies
