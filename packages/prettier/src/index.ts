@@ -1,10 +1,10 @@
 module.exports = {
-  proseWrap: "always",
+  proseWrap: "preserve",
   trailingComma: "none",
   tabWidth: 2,
   semi: true,
   singleQuote: false,
-  quoteProps: "preserve",
+  quoteProps: "as-needed",
   insertPragma: false,
   bracketSameLine: true,
   printWidth: 80,
@@ -61,7 +61,11 @@ module.exports = {
     },
     {
       files: "**/*.{json,jsonc,json5}",
-      options: { parser: "json", trailingComma: "none", printWidth: 40 }
+      options: {
+        parser: "json",
+        trailingComma: "none",
+        objectWrap: "preserve"
+      }
     },
     {
       files: "**/*.hbs",
