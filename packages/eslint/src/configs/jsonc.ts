@@ -13,7 +13,7 @@ export async function jsonc(
   const {
     files = [GLOB_JSON, GLOB_JSON5, GLOB_JSONC],
     overrides = {},
-    stylistic = true
+    stylistic = false
   } = options;
 
   const { indent = 2 } = typeof stylistic === "boolean" ? {} : stylistic;
