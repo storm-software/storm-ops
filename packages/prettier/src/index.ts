@@ -59,7 +59,10 @@ module.exports = {
         parser: "html"
       }
     },
-    { files: "**/*.json", options: { parser: "json", trailingComma: "none" } },
+    {
+      files: "**/*.{json,jsonc,json5}",
+      options: { parser: "json", trailingComma: "none", printWidth: 40 }
+    },
     {
       files: "**/*.hbs",
       options: {
