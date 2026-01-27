@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Prettier
 
+## [0.57.78](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.57.78) (01/27/2026)
+
+### Miscellaneous
+
+- **prettier:** Clean up `json` prettier config ([988aeced3](https://github.com/storm-software/storm-ops/commit/988aeced3))
+
 ## [0.57.77](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.57.77) (01/27/2026)
 
 ### Miscellaneous

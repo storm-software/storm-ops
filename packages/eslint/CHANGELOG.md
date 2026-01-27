@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - ESLint
 
+## [0.169.83](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.169.83) (01/27/2026)
+
+### Miscellaneous
+
+- **eslint:** Disable `stylistic` by default for `jsonc` linter rules ([0980314b6](https://github.com/storm-software/storm-ops/commit/0980314b6))
+
 ## [0.169.82](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.169.82) (01/22/2026)
 
 ### Updated Dependencies
