@@ -68,7 +68,11 @@
     },
     {
       "files": "**/*.{json,jsonc,json5}",
-      "options": { "parser": "json", "trailingComma": "none", "printWidth": 40 }
+      "options": {
+        "parser": "json",
+        "trailingComma": "none",
+        "printWidth": 8
+      }
     },
     {
       "files": "**/*.hbs",
