@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Prettier
 
+## [0.57.77](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.57.77) (01/27/2026)
+
+### Miscellaneous
+
+- **prettier:** Reduce the `printWidth` of the json configuration
+  ([2fc787622](https://github.com/storm-software/storm-ops/commit/2fc787622))
+
 ## [0.57.76](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.57.76) (01/27/2026)
 
 ### Miscellaneous
