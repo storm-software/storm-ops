@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Prettier
 
+## [0.57.76](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.57.76) (01/27/2026)
+
+### Miscellaneous
+
+- **prettier:** Update `json` file width and listed extensions
+  ([7e1cb0801](https://github.com/storm-software/storm-ops/commit/7e1cb0801))
+
 ## [0.57.74](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.57.74) (12/30/2025)
 
 ### Miscellaneous
