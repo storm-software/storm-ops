@@ -64,8 +64,7 @@
       "options": {
         "parser": "json",
         "trailingComma": "none",
-        "objectWrap": "preserve",
-        "printWidth": 120
+        "objectWrap": "preserve"
       }
     },
     {

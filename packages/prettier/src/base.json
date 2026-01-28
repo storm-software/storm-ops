@@ -47,8 +47,7 @@
       "options": {
         "parser": "json",
         "trailingComma": "none",
-        "objectWrap": "preserve",
-        "printWidth": 120
+        "objectWrap": "preserve"
       }
     },
     {
@@ -58,10 +57,6 @@
       }
     }
   ],
-  "plugins": [
-    "prettier-plugin-sh",
-    "prettier-plugin-pkg",
-    "prettier-plugin-organize-imports"
-  ],
+  "plugins": ["prettier-plugin-sh", "prettier-plugin-pkg", "prettier-plugin-organize-imports"],
   "organizeImportsSkipDestructiveCodeActions": false
 }
