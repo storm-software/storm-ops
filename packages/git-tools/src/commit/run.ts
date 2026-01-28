@@ -26,7 +26,7 @@ export async function runCommit(commitizenFile?: string, dryRun = false) {
   console.log(chalkTemplate`
 {bold.#999999 ----------------------------------------}
 
-{bold.#FFFFFF ${brandIcon(workspaceConfig)}  Storm Software Git-Tools - Commit}
+{bold.#FFFFFF   ${brandIcon(workspaceConfig)}  Storm Software Git-Tools - Commit}
 {#CCCCCC Please provide the requested details below...}
 `);
 
