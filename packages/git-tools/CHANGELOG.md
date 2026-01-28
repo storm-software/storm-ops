@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Git Tools
 
+## [2.124.65](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.124.65) (01/28/2026)
+
+### Miscellaneous
+
+- **git-tools:** Clean up banner display for CLI ([c9addb9aa](https://github.com/storm-software/storm-ops/commit/c9addb9aa))
+
 ## [2.124.64](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.124.64) (01/22/2026)
 
 ### Features

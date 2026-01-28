@@ -1,6 +1,6 @@
 {
   "name": "@storm-software/prettier",
-  "version": "0.57.79",
+  "version": "0.57.80",
   "type": "commonjs",
   "description": "⚡ A package containing the base Prettier configuration used by Storm Software across many projects.",
   "repository": {
@@ -30,7 +30,14 @@
     "./tailwindcss.json": "./tailwindcss.json",
     "./package.json": "./package.json"
   },
-  "keywords": ["monorepo", "prettier", "prettier-config", "storm", "storm-ops", "sullivanpj"],
+  "keywords": [
+    "monorepo",
+    "prettier",
+    "prettier-config",
+    "storm",
+    "storm-ops",
+    "sullivanpj"
+  ],
   "peerDependencies": {
     "prettier": "catalog:",
     "prettier-plugin-astro": "^0.14.1",

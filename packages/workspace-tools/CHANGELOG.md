@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Workspace Tools
 
+## [1.294.32](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.294.32) (01/28/2026)
+
+### Updated Dependencies
+
+- Updated **prettier** to **v0.57.80**
+
 ## [1.294.31](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.294.31) (01/28/2026)
 
 ### Updated Dependencies

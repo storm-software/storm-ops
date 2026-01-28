@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Prettier
 
+## [0.57.80](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.57.80) (01/28/2026)
+
+### Bug Fixes
+
+- **prettier:** Remove json specific print width ([186d95249](https://github.com/storm-software/storm-ops/commit/186d95249))
+
 ## [0.57.79](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.57.79) (01/28/2026)
 
 ### Bug Fixes

@@ -1,6 +1,6 @@
 {
   "name": "@storm-software/workspace-tools",
-  "version": "1.294.31",
+  "version": "1.294.32",
   "description": "Tools for managing a Storm workspace, including various Nx generators and executors for common development tasks.",
   "repository": {
     "type": "github",
@@ -223,7 +223,14 @@
     "./plugins/typescript/untyped-schema": "./dist/src/plugins/typescript/untyped-schema.js"
   },
   "typings": "dist/index.d.ts",
-  "keywords": ["monorepo", "nx", "storm-software", "storm-ops", "storm", "sullivanpj"],
+  "keywords": [
+    "monorepo",
+    "nx",
+    "storm-software",
+    "storm-ops",
+    "storm",
+    "sullivanpj"
+  ],
   "peerDependencies": {
     "@napi-rs/cli": "^3.4.1",
     "markdownlint-cli2": "^0.17.2",
