@@ -1,6 +1,6 @@
 {
   "name": "@storm-software/pulumi-tools",
-  "version": "0.22.86",
+  "version": "0.22.87",
   "type": "commonjs",
   "description": "Tools for managing Pulumi infrastructure within a Nx workspace.",
   "repository": {
@@ -143,16 +143,7 @@
     "./generators/*/generators.js": "./dist/src/generators/*/generator.js"
   },
   "typings": "dist/index.d.ts",
-  "keywords": [
-    "iac",
-    "infrastructure",
-    "monorepo",
-    "pulumi",
-    "storm",
-    "storm-ops",
-    "storm-stack",
-    "sullivanpj"
-  ],
+  "keywords": ["iac", "infrastructure", "monorepo", "pulumi", "storm", "storm-ops", "storm-stack", "sullivanpj"],
   "peerDependencies": {
     "@nx/devkit": "catalog:",
     "@storm-software/workspace-tools": ">=1.267.0",

@@ -1,6 +1,6 @@
 {
   "name": "@storm-software/k8s-tools",
-  "version": "0.42.86",
+  "version": "0.42.87",
   "description": "Tools for managing Kubernetes (k8s) infrastructure within a Nx workspace.",
   "repository": {
     "type": "github",
@@ -129,16 +129,7 @@
     "./plugins/docker": "./dist/src/plugins/docker/index.js"
   },
   "typings": "dist/index.d.ts",
-  "keywords": [
-    "helm",
-    "k8s",
-    "kubernetes",
-    "monorepo",
-    "storm",
-    "storm-ops",
-    "storm-stack",
-    "sullivanpj"
-  ],
+  "keywords": ["helm", "k8s", "kubernetes", "monorepo", "storm", "storm-ops", "storm-stack", "sullivanpj"],
   "peerDependencies": {
     "@nx/devkit": "catalog:",
     "prettier": "catalog:",

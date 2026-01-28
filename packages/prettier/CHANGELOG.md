@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Prettier
 
+## [0.57.79](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.57.79) (01/28/2026)
+
+### Bug Fixes
+
+- **prettier:** Increase `printWidth` for JSON files to prevent reformatting ([b12ad89d9](https://github.com/storm-software/storm-ops/commit/b12ad89d9))
+
 ## [0.57.78](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.57.78) (01/27/2026)
 
 ### Miscellaneous
