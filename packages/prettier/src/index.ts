@@ -64,7 +64,8 @@ module.exports = {
       options: {
         parser: "json",
         trailingComma: "none",
-        objectWrap: "preserve"
+        objectWrap: "preserve",
+        printWidth: 120
       }
     },
     {
