@@ -21,6 +21,8 @@ export default defineConfig([
     sourcemap: false,
     tsconfig: "./tsconfig.json",
     external: ["nx", "@nx/*"],
+    noExternal: ["zod", "zod/mini"],
+    bundle: true,
     silent: true,
     skipNodeModulesBundle: true
   }

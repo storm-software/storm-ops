@@ -17,6 +17,7 @@ export default defineConfig([
     sourcemap: true,
     silent: true,
     tsconfig: "./tsconfig.json",
-    external: ["nx", "@nx/*"]
+    external: ["nx", "@nx/*"],
+    noExternal: ["zod", "zod/mini"]
   }
 ]);

@@ -28,7 +28,8 @@ export default defineConfig([
       "conventional-commits-parser",
       "@inquirer/prompts",
       "defu",
-      "zod"
+      "zod",
+      "zod/mini"
     ],
     skipNodeModulesBundle: true
   }
