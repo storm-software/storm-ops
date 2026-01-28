@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Git Tools
 
+## [2.124.66](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.124.66) (01/28/2026)
+
+### Bug Fixes
+
+- **git-tools:** Ensure the `zod/mini` package is bundled with the CLI ([09dce6820](https://github.com/storm-software/storm-ops/commit/09dce6820))
+
 ## [2.124.65](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.124.65) (01/28/2026)
 
 ### Miscellaneous
