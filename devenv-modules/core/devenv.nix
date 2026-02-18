@@ -22,7 +22,7 @@ in
 
     # Tools
     pkgs.capnproto
-    prek
+    pkgs.prek
   ];
 
   tasks = {
