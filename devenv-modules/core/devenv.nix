@@ -54,7 +54,7 @@ in
           write = true;
           cache = true;
           cache-location = "${config.env.DEVENV_ROOT}/node_modules/.cache/prettier/.prettier-cache";
-          config-precedence = "prefer-file";
+          config-precedence = "file-override";
           configPath = "${config.env.DEVENV_ROOT}/node_modules/@storm-software/prettier/config.json";
           ignore-path = [ "${config.env.DEVENV_ROOT}/node_modules/@storm-software/prettier/.prettierignore" ];
           log-level = "debug";
