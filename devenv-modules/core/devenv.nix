@@ -22,6 +22,7 @@ in
 
     # Tools
     pkgs.capnproto
+    prek
   ];
 
   tasks = {
@@ -47,13 +48,16 @@ in
     hooks = {
       prettier = {
         enable = true;
+        description = "Prettier with @storm-software/prettier config";
         settings = {
           color = true;
           write = true;
           cache = true;
           cache-location = "${config.env.DEVENV_ROOT}/node_modules/.cache/prettier/.prettier-cache";
+          config-precedence = "prefer-file";
           configPath = "${config.env.DEVENV_ROOT}/node_modules/@storm-software/prettier/config.json";
           ignore-path = [ "${config.env.DEVENV_ROOT}/node_modules/@storm-software/prettier/.prettierignore" ];
+          log-level = "debug";
         };
         excludes = [
           "Cargo.toml"
@@ -66,6 +70,7 @@ in
       };
       taplo = {
         enable = true;
+        description = "Taplo with @storm-software/linting-tools config";
         args = [
           "--config=${config.env.DEVENV_ROOT}/node_modules/@storm-software/linting-tools/taplo/config.toml"
           "--cache-path=${config.env.DEVENV_ROOT}/node_modules/.cache/taplo"
@@ -75,6 +80,7 @@ in
       };
       yamllint = {
         enable = true;
+        description = "Yamllint with @storm-software/linting-tools config";
         settings = {
           configPath = "${config.env.DEVENV_ROOT}/node_modules/@storm-software/linting-tools/yamllint/config.yml";
         };
@@ -87,6 +93,7 @@ in
       };
       zizmor = {
         enable = true;
+        description = "Zizmor with @storm-software/linting-tools config";
         args = [
           "--offline"
           "--config=${config.env.DEVENV_ROOT}/tools/config/zizmor.yml"
