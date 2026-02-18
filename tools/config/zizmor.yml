@@ -21,6 +21,7 @@ rules:
       - security-reusable.yml
       - dependabot-update.yml
       - clean-owners.yml
+      - greetings.yml
   excessive-permissions:
     ignore:
       - zizmor.yml
