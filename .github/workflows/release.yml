@@ -32,18 +32,15 @@ jobs:
     permissions:
       contents: write
       id-token: write
-    if:
-      github.repository == 'storm-software/storm-ops' && (github.ref ==
+    if: github.repository == 'storm-software/storm-ops' && (github.ref ==
       'refs/heads/main' || github.ref == 'refs/heads/next' || github.ref ==
       'refs/heads/experimental')
     steps:
       - name: Send notification - Deployment started
         uses: storm-software/action-notify@main
         with:
-          title:
-            "Deployment for ${{ github.repository }} has started (In Progress)"
-          subtitle:
-            "Deployment for ${{ github.repository }} has started - #${{
+          title: "Deployment for ${{ github.repository }} has started (In Progress)"
+          subtitle: "Deployment for ${{ github.repository }} has started - #${{
             github.run_number }}"
           description:
             "Deployment for ${{ github.repository }} is currently in process -
@@ -59,8 +56,7 @@ jobs:
 
   process:
     name: "Continuous Integration"
-    if:
-      always() && !cancelled() && !contains(needs.*.result, 'failure') &&
+    if: always() && !cancelled() && !contains(needs.*.result, 'failure') &&
       github.event.pull_request.draft == false
     runs-on: ubuntu-latest
     permissions:
@@ -96,8 +92,7 @@ jobs:
       - name: Remove cache to free up space for build/release
         run: rm -rf /opt/hostedtoolcache
 
-      - name:
-          Derive appropriate SHAs for base and head for `nx affected` commands
+      - name: Derive appropriate SHAs for base and head for `nx affected` commands
         id: setSHAs
         uses: nrwl/nx-set-shas@v4
         with:
@@ -107,8 +102,7 @@ jobs:
           error-on-no-successful-workflow: true
 
       - name: Release repository updates
-        run:
-          devenv shell release ${STEPS_SETSHAS_OUTPUTS_BASE}
+        run: devenv shell release ${STEPS_SETSHAS_OUTPUTS_BASE}
           ${STEPS_SETSHAS_OUTPUTS_HEAD}
         env:
           NX_BASE: ${{ steps.setSHAs.outputs.base }}
@@ -137,8 +131,7 @@ jobs:
       - name: Send notification - Deployment successful
         uses: storm-software/action-notify@main
         with:
-          title:
-            "Deployment for ${{ github.repository }} has finished (Success)"
+          title: "Deployment for ${{ github.repository }} has finished (Success)"
           subtitle:
             "Deployment for ${{ github.repository }} has finished successfully -
             #${{ github.run_number }}"
@@ -164,8 +157,7 @@ jobs:
       - name: Send notification - Deployment successful
         uses: storm-software/action-notify@main
         with:
-          title:
-            "Deployment for ${{ github.repository }} has finished (Failure)"
+          title: "Deployment for ${{ github.repository }} has finished (Failure)"
           subtitle:
             "Deployment for ${{ github.repository }} finished with failures -
             #${{ github.run_number }}"
@@ -191,8 +183,7 @@ jobs:
       - name: Send notification - Deployment cancelled
         uses: storm-software/action-notify@main
         with:
-          title:
-            "Deployment for ${{ github.repository }} has finished (Cancelled)"
+          title: "Deployment for ${{ github.repository }} has finished (Cancelled)"
           subtitle:
             "Deployment for ${{ github.repository }} was cancelled - #${{
             github.run_number }}"
