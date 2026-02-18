@@ -4,16 +4,27 @@
   "sourceRoot": "packages/prettier/src",
   "projectType": "library",
   "targets": {
+    "build-base": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": [
+          "pnpm copyfiles packages/prettier/src/recommended.json tmp",
+          "mv tmp/packages/prettier/src/recommended.json packages/prettier/src/config.json"
+        ],
+        "parallel": false
+      }
+    },
     "build": {
       "cache": true,
       "executor": "@nx/esbuild:esbuild",
       "outputs": ["{options.outputPath}"],
+      "dependsOn": ["build-base"],
       "options": {
         "outputPath": "dist/packages/prettier",
         "tsConfig": "packages/prettier/tsconfig.json",
         "project": "packages/prettier/package.json",
         "main": "packages/prettier/src/index.ts",
-        "format": ["cjs"],
+        "format": ["cjs", "esm"],
         "platform": "node",
         "deleteOutputPath": true,
         "bundle": true,

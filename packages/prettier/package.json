@@ -18,11 +18,20 @@
   "license": "Apache-2.0",
   "private": false,
   "exports": {
-    ".": "./index.cjs",
-    "./index": "./index.cjs",
+    ".": {
+      "import": "./index.js",
+      "require": "./index.cjs",
+      "default": "./index.js"
+    },
+    "./index": {
+      "import": "./index.js",
+      "require": "./index.cjs",
+      "default": "./index.js"
+    },
     "./.prettierignore": "./.prettierignore",
     "./all.json": "./all.json",
     "./base.json": "./base.json",
+    "./recommended.json": "./recommended.json",
     "./config.json": "./config.json",
     "./jsdoc.json": "./jsdoc.json",
     "./prisma.json": "./prisma.json",
@@ -30,6 +39,20 @@
     "./tailwindcss.json": "./tailwindcss.json",
     "./package.json": "./package.json"
   },
+  "files": [
+    "./.prettierignore",
+    "./all.json",
+    "./base.json",
+    "./config.json",
+    "./index.cjs",
+    "./index.js",
+    "./jsdoc.json",
+    "./package.json",
+    "./prisma.json",
+    "./recommended.json",
+    "./solidity.json",
+    "./tailwindcss.json"
+  ],
   "keywords": [
     "monorepo",
     "prettier",

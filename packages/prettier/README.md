@@ -2,7 +2,6 @@
 <!-- prettier-ignore-start -->
 <!-- markdownlint-disable -->
 
-
 <div align="center">
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="https://public.storm-cdn.com/storm-software/banner-1280x640-dark.gif">
