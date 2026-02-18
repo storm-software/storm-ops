@@ -9,15 +9,15 @@ permissions:
   contents: read
 
 jobs:
-  cleanowners:
-    name: cleanowners
+  clean-owners:
+    name: clean-owners
     runs-on: ubuntu-latest
     permissions:
       issues: write
 
     steps:
-      - name: Run cleanowners action
-        uses: github/cleanowners@v1
+      - name: Run clean-owners action
+        uses: github/clean-owners@v1
         env:
           GH_TOKEN: ${{ secrets.STORM_BOT_GITHUB_TOKEN }}
           ORGANIZATION: storm-software

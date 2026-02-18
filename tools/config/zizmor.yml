@@ -6,14 +6,11 @@ rules:
   dangerous-triggers:
     ignore:
       - greetings.yml:3:1
-  use-trusted-publishing:
-    ignore:
-      # ignore line 12, column 10 on pypi.yml
-      # - pypi.yml:12:10
   unpinned-uses:
     ignore:
       - release.yml
       - ci-reusable.yml
+      - schedule-stale.yml
       - zizmor.yml
       - sync-labels.yml
       - lock.yml
@@ -23,6 +20,7 @@ rules:
       - security.yml
       - security-reusable.yml
       - dependabot-update.yml
+      - clean-owners.yml
   excessive-permissions:
     ignore:
       - zizmor.yml
