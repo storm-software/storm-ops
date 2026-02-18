@@ -30,6 +30,7 @@
     hooks = {
       taplo = {
         enable = true;
+        description = "Taplo with @storm-software/linting-tools config";
         args = [
           "--config=${config.env.DEVENV_ROOT}/packages/linting-tools/src/taplo/config.toml"
           "--cache-path=${config.env.DEVENV_ROOT}/node_modules/.cache/taplo"
@@ -38,6 +39,7 @@
       };
       zizmor = {
         enable = true;
+        description = "Zizmor with @storm-software/linting-tools config";
         args = [
           "--offline"
           "--config=${config.env.DEVENV_ROOT}/tools/config/zizmor.yml"
