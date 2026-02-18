@@ -46,8 +46,101 @@ in
   git-hooks = {
     enable = true;
     hooks = {
-      prettier = {
+      eslint = {
         enable = true;
+        name = "Storm Software - ESLint";
+        description = "ESLint formatting with Storm Software config";
+        entry = "pnpm eslint --fix --color --cache --cache-location \"${config.env.DEVENV_ROOT}/node_modules/.cache/eslint/.eslint-cache\" --config \"${config.env.DEVENV_ROOT}/eslint.config.mjs\" ";
+        types = [
+          "astro"
+          "avsc"
+          "bazel"
+          "cjs"
+          "css"
+          "graphql"
+          "hbs"
+          "htm"
+          "html"
+          "json"
+          "json5"
+          "jsonc"
+          "jsx"
+          "less"
+          "make"
+          "markdown"
+          "md"
+          "mdx"
+          "mjs"
+          "pem"
+          "plantuml"
+          "scss"
+          "shell"
+          "svelte"
+          "text"
+          "toml"
+          "ts"
+          "tsx"
+          "vue"
+          "yaml"
+          "yml"
+          "zsh"
+        ];
+        excludes = [
+          ".*\/src\/executors\/.*\/\.schema\\.*"
+          ".*\/src\/executors\/.*\/schema\\.d\\.ts"
+          ".*\/src\/executors\/.*\/schema\\.json"
+          ".*\/src\/executors\/.*\/schema\\.md"
+          ".*\/src\/generators\/.*\/.*\\.schema\\.*"
+          ".*\/src\/generators\/.*\/files"
+          ".*\/src\/generators\/.*\/files\/.*\/.*"
+          ".*\/src\/generators\/.*\/schema\\.d\\.ts"
+          ".*\/src\/generators\/.*\/schema\\.json"
+          ".*\/src\/generators\/.*\/schema\\.md"
+          "\\.alexignore"
+          "\\.docusaurus"
+          "\\.git"
+          "\\.hbs"
+          "\\.lock"
+          "\\.lockb"
+          "\\.next"
+          "\\.nx/cache"
+          "\\.nx/workspace-data"
+          "\\.prettierignore"
+          "\\.toml"
+          "__snapshots__"
+          "Cargo\\.toml"
+          "catalog-package"
+          "CHANGELOG\\.md"
+          "CODE_OF_CONDUCT\\.md"
+          "CONTRIBUTING\\.md"
+          "dist"
+          "dotnet"
+          "LICENSE"
+          "LICENSE\\.md"
+          "LICENSE\\.txt"
+          "node_modules"
+          "npm-lock\\.json"
+          "npm-lock\\.yaml"
+          "npm-lock\\.yml"
+          "package\\.json"
+          "pnpm-lock\\.json"
+          "pnpm-lock\\.yaml"
+          "pnpm-lock\\.yaml"
+          "pnpm-lock\\.yml"
+          "pnpm-workspace\\.yaml"
+          "pnpm-workspace\\.yaml"
+          "README\\.md"
+          "tools\/docker"
+          "typegen\\.d\\.ts"
+          "yarn\\.lock\\.json"
+          "yarn\\.lock\\.yaml"
+          "yarn\\.lock\\.yml"
+        ];
+        language = "system";
+        pass_filenames = true;
+      };
+      prettier = {
+        enable = false;
         description = "Prettier with @storm-software/prettier config";
         settings = {
           color = true;
