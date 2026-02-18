@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Build Tools
 
+## [0.158.82](https://github.com/storm-software/storm-ops/releases/tag/build-tools%400.158.82) (02/18/2026)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate `README.md` markdown files ([b29a804ae](https://github.com/storm-software/storm-ops/commit/b29a804ae))
+
+### Updated Dependencies
+
+- Updated **config-tools** to **v1.189.1**
+- Updated **config** to **v1.135.2**
+
 ## [0.158.81](https://github.com/storm-software/storm-ops/releases/tag/build-tools%400.158.81) (01/22/2026)
 
 ### Features

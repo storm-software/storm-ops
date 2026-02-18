@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Terraform Tools
 
+## [0.66.89](https://github.com/storm-software/storm-ops/releases/tag/terraform-tools%400.66.89) (02/18/2026)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate `README.md` markdown files ([b29a804ae](https://github.com/storm-software/storm-ops/commit/b29a804ae))
+
+### Updated Dependencies
+
+- Updated **workspace-tools** to **v1.294.33**
+- Updated **config-tools** to **v1.189.1**
+- Updated **config** to **v1.135.2**
+
 ## [0.66.88](https://github.com/storm-software/storm-ops/releases/tag/terraform-tools%400.66.88) (01/28/2026)
 
 ### Updated Dependencies

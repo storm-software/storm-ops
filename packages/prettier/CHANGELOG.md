@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Prettier
 
+## [0.58.0](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.58.0) (02/18/2026)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate `README.md` markdown files ([b29a804ae](https://github.com/storm-software/storm-ops/commit/b29a804ae))
+
+### Features
+
+- **prettier:** Reduce duplicate configuration by exporting json values ([a9aca88de](https://github.com/storm-software/storm-ops/commit/a9aca88de))
+- **prettier:** Added a separate `recommended.json` output file ([753634f5c](https://github.com/storm-software/storm-ops/commit/753634f5c))
+
 ## [0.57.80](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.57.80) (01/28/2026)
 
 ### Bug Fixes

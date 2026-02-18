@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - ESLint
 
+## [0.169.84](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.169.84) (02/18/2026)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate `README.md` markdown files ([b29a804ae](https://github.com/storm-software/storm-ops/commit/b29a804ae))
+
+### Updated Dependencies
+
+- Updated **config-tools** to **v1.189.1**
+- Updated **config** to **v1.135.2**
+- Updated **tsdoc** to **v0.13.76**
+
 ## [0.169.83](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.169.83) (01/27/2026)
 
 ### Miscellaneous
