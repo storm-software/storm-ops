@@ -208,7 +208,7 @@
     "@textlint/markdown-to-ast": "14.4.2",
     "anchor-markdown-header": "0.7.0",
     "any-shell-escape": "0.1.1",
-    "axios": "1.8.2",
+    "axios": "1.13.5",
     "chalk": "catalog:",
     "chalk-template": "1.1.0",
     "conventional-changelog-conventionalcommits": "^9.1.0",
