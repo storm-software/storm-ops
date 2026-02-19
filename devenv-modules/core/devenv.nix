@@ -48,13 +48,9 @@ in
     hooks = {
       eslint = {
         enable = true;
-        name = "Storm Software - ESLint";
+        name = "eslint";
         description = "ESLint formatting with Storm Software config";
         entry = "pnpm eslint --fix --color --concurrency 5 --cache --cache-location \"${config.env.DEVENV_ROOT}/node_modules/.cache/eslint\" --config \"${config.env.DEVENV_ROOT}/eslint.config.mjs\" ";
-        types = [
-          "file"
-          "text"
-        ];
         excludes = [
           ".*\/src\/executors\/.*\/\.schema\\.*"
           ".*\/src\/executors\/.*\/schema\\.d\\.ts"
