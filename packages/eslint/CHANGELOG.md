@@ -2,6 +2,23 @@
 
 # Changelog for Storm Ops - ESLint
 
+## [0.169.88](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.169.88) (02/18/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update `README.md` files ([3755247b8](https://github.com/storm-software/storm-ops/commit/3755247b8))
+- **monorepo:** Update workspace's `README.md` files ([b31df09bc](https://github.com/storm-software/storm-ops/commit/b31df09bc))
+
+### Bug Fixes
+
+- **eslint:** Resolve prettier configuration to use `flat` export ([7014616da](https://github.com/storm-software/storm-ops/commit/7014616da))
+
+### Updated Dependencies
+
+- Updated **config-tools** to **v1.189.5**
+- Updated **config** to **v1.135.6**
+- Updated **tsdoc** to **v0.13.80**
+
 ## [0.169.87](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.169.87) (02/18/2026)
 
 ### Miscellaneous
