@@ -132,7 +132,7 @@
     "tsup": "catalog:",
     "tsx": "catalog:",
     "typescript": "^5.9.3",
-    "typescript-eslint": "^8.50.1",
+    "typescript-eslint": "^8.56.0",
     "verdaccio": "6.0.5",
     "zod": "catalog:",
     "zx": "catalog:"
