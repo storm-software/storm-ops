@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - ESLint
 
+## [0.169.90](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.169.90) (02/19/2026)
+
+### Bug Fixes
+
+- **eslint:** Resolved issue applying prettier eslint plugin ([a8692bac2](https://github.com/storm-software/storm-ops/commit/a8692bac2))
+
 ## [0.169.89](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.169.89) (02/18/2026)
 
 ### Bug Fixes
