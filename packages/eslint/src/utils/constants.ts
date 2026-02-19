@@ -160,5 +160,16 @@ export const GLOB_EXCLUDE = [
   "**/__snapshots__",
   "**/auto-import?(s).d.ts",
   "**/components.d.ts",
-  "**/vite.config.*.timestamp-*"
+  "**/vite.config.*.timestamp-*",
+  "**/webpack.config.*.timestamp-*",
+  "**/rollup.config.*.timestamp-*",
+  "**/src/executors/*/*.schema.*",
+  "**/src/executors/*/schema.d.ts",
+  "**/src/executors/*/schema.json",
+  "**/src/executors/*/schema.md",
+  "**/src/generators/*/files/**",
+  "**/src/generators/*/*.schema.*",
+  "**/src/generators/*/schema.d.ts",
+  "**/src/generators/*/schema.json",
+  "**/src/generators/*/schema.md"
 ];
