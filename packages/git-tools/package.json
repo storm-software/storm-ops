@@ -1,6 +1,6 @@
 {
   "name": "@storm-software/git-tools",
-  "version": "2.124.68",
+  "version": "2.124.69",
   "type": "module",
   "description": "Tools for managing Git repositories within a Nx workspace.",
   "repository": {
@@ -181,10 +181,7 @@
     "./readme/templates/*": "./dist/readme/templates/*"
   },
   "types": "./dist/index.d.ts",
-  "files": [
-    "bin/**/*",
-    "dist/**/*"
-  ],
+  "files": ["bin/**/*", "dist/**/*"],
   "keywords": [
     "storm-software",
     "monorepo",

@@ -2,6 +2,21 @@
 
 # Changelog for Storm Ops - ESLint
 
+## [0.169.86](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.169.86) (02/18/2026)
+
+### Miscellaneous
+
+- **eslint:** Added github convention files to `ignores` list ([acceb0f35](https://github.com/storm-software/storm-ops/commit/acceb0f35))
+- **eslint:** Regenerate `typegen.d.ts` file ([8837de2cf](https://github.com/storm-software/storm-ops/commit/8837de2cf))
+- **eslint:** Added generated schema files to `ignores` list ([39e138b4a](https://github.com/storm-software/storm-ops/commit/39e138b4a))
+- **monorepo:** Update workspace package dependencies ([202e71607](https://github.com/storm-software/storm-ops/commit/202e71607))
+
+### Updated Dependencies
+
+- Updated **config-tools** to **v1.189.3**
+- Updated **config** to **v1.135.4**
+- Updated **tsdoc** to **v0.13.78**
+
 ## [0.169.85](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.169.85) (02/18/2026)
 
 ### Updated Dependencies

@@ -2,6 +2,22 @@
 
 # Changelog for Storm Ops - Git Tools
 
+## [2.124.69](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.124.69) (02/18/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace package dependencies ([202e71607](https://github.com/storm-software/storm-ops/commit/202e71607))
+
+### Bug Fixes
+
+- **git-tools:** Update conventional commit to use `useCommitScope` config ([2e844d674](https://github.com/storm-software/storm-ops/commit/2e844d674))
+
+### Updated Dependencies
+
+- Updated **conventional-changelog** to **v0.3.84**
+- Updated **config-tools** to **v1.189.3**
+- Updated **config** to **v1.135.4**
+
 ## [2.124.68](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.124.68) (02/18/2026)
 
 ### Updated Dependencies
