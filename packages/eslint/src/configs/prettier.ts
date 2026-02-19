@@ -1,5 +1,4 @@
-import config from "eslint-config-prettier";
-import { pluginPrettier } from "../plugins";
+import config from "eslint-config-prettier/flat";
 import type { TypedFlatConfigItem } from "../types";
 
 /**
@@ -7,15 +6,10 @@ import type { TypedFlatConfigItem } from "../types";
  */
 export async function prettier(): Promise<TypedFlatConfigItem[]> {
   return [
+    config,
     {
-      ...config,
       name: "storm/prettier/rules",
-      plugins: {
-        ...config.plugins,
-        prettier: pluginPrettier
-      },
       rules: {
-        ...config.rules,
         "prettier/prettier": "error",
         "arrow-body-style": "off",
         "prefer-arrow-callback": "off"
