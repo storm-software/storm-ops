@@ -1,5 +1,6 @@
 import defu from "defu";
-import config from "eslint-config-prettier/flat";
+import config from "eslint-plugin-prettier/recommended";
+import { pluginPrettier } from "../plugins";
 import type { TypedFlatConfigItem } from "../types";
 
 /**
@@ -10,6 +11,9 @@ export async function prettier(): Promise<TypedFlatConfigItem[]> {
     defu(
       {
         name: "storm/prettier",
+        plugins: {
+          prettier: pluginPrettier
+        },
         rules: {
           "prettier/prettier": "error",
           "arrow-body-style": "off",
