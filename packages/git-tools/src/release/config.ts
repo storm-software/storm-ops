@@ -9,6 +9,7 @@ import { omit } from "../utilities/omit";
 import StormChangelogRenderer from "./changelog-renderer";
 
 export const DEFAULT_CONVENTIONAL_COMMITS_CONFIG = {
+  useCommitScope: true,
   questions: DEFAULT_MONOREPO_COMMIT_QUESTIONS,
   types: DEFAULT_COMMIT_TYPES
 };

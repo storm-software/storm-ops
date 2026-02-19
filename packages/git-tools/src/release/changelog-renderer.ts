@@ -89,6 +89,7 @@ export default class StormChangelogRenderer extends DefaultChangelogRenderer {
 
     if (this.isVersionPlans) {
       this.conventionalCommitsConfig = {
+        useCommitScope: this.workspaceConfig?.variant === "monorepo",
         types: {
           feat: DEFAULT_CONVENTIONAL_COMMITS_CONFIG.types.feat,
           fix: DEFAULT_CONVENTIONAL_COMMITS_CONFIG.types.fix
