@@ -50,7 +50,7 @@ in
         enable = true;
         name = "Storm Software - ESLint";
         description = "ESLint formatting with Storm Software config";
-        entry = "pnpm eslint --fix --color --cache --cache-location \"${config.env.DEVENV_ROOT}/node_modules/.cache/eslint/.eslint-cache\" --config \"${config.env.DEVENV_ROOT}/eslint.config.mjs\" ";
+        entry = "pnpm eslint --fix --color --concurrency 5 --cache --cache-location \"${config.env.DEVENV_ROOT}/node_modules/.cache/eslint\" --config \"${config.env.DEVENV_ROOT}/eslint.config.mjs\" ";
         types = [
           "astro"
           "avsc"
