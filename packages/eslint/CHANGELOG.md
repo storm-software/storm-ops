@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - ESLint
 
+## [0.169.89](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.169.89) (02/18/2026)
+
+### Bug Fixes
+
+- **eslint:** Resolve issue with prettier configuration ([cabf3350d](https://github.com/storm-software/storm-ops/commit/cabf3350d))
+
 ## [0.169.88](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.169.88) (02/18/2026)
 
 ### Miscellaneous
