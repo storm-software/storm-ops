@@ -3928,10 +3928,6 @@ Backward pagination arguments
    */
   'preserve-caught-error'?: Linter.RuleEntry<PreserveCaughtError>
   /**
-   * @see https://github.com/prettier/eslint-plugin-prettier#options
-   */
-  'prettier/prettier'?: Linter.RuleEntry<PrettierPrettier>
-  /**
    * Require quotes around object literal property names
    * @see https://eslint.org/docs/latest/rules/quote-props
    * @deprecated
@@ -14352,17 +14348,6 @@ type PreserveCaughtError = []|[{
   
   requireCatchParameter?: boolean
 }]
-// ----- prettier/prettier -----
-type PrettierPrettier = []|[{
-  [k: string]: unknown | undefined
-}]|[{
-  [k: string]: unknown | undefined
-}, {
-  usePrettierrc?: boolean
-  fileInfoOptions?: {
-    [k: string]: unknown | undefined
-  }
-}]
 // ----- quote-props -----
 type QuoteProps = ([]|[("always" | "as-needed" | "consistent" | "consistent-as-needed")] | []|[("always" | "as-needed" | "consistent" | "consistent-as-needed")]|[("always" | "as-needed" | "consistent" | "consistent-as-needed"), {
   keywords?: boolean
@@ -17989,4 +17974,4 @@ type Yoda = []|[("always" | "never")]|[("always" | "never"), {
   onlyEquality?: boolean
 }]
 // Names of all the configs
-export type ConfigNames = 'storm/cspell/rules' | 'storm/astro/setup' | 'storm/astro/rules' | 'storm/formatter/setup' | 'storm/imports/rules' | 'storm/graphql/setup' | 'storm/graphql/rules' | 'storm/graphql/relay' | 'storm/javascript/setup' | 'storm/javascript/banner' | 'storm/javascript/rules' | 'storm/jsx/rules' | 'storm/jsdoc/rules' | 'storm/jsonc/setup' | 'storm/jsonc/rules' | 'storm/markdown/setup' | 'storm/markdown/processor' | 'storm/markdown/parser' | 'storm/mdx/setup' | 'storm/node/rules' | 'storm/nx/setup' | 'storm/nx/schema' | 'storm/nx/dependency-check' | 'storm/nx/module-boundaries' | 'storm/next/rules' | 'storm/prettier/rules' | 'storm/perfectionist/rules' | 'storm/pnpm/setup' | 'storm/pnpm/package-json' | 'storm/pnpm/pnpm-workspace-yaml' | 'storm/react/setup' | 'storm/react/rules' | 'storm/react-native/rules' | 'storm/sort/package-json' | 'storm/stylistic/rules' | 'storm/secrets/rules' | 'storm/storybook/setup' | 'storm/storybook/rules' | 'storm/storybook/main' | 'storm/test/setup' | 'storm/test/rules' | 'storm/tsdoc/rules' | 'storm/toml/setup' | 'storm/toml/rules' | 'storm/typescript/setup' | 'storm/typescript/parser' | 'storm/typescript/type-aware-parser' | 'storm/typescript/rules' | 'storm/typescript/rules-type-aware' | 'storm/regexp/rules' | 'storm/unicorn/rules' | 'storm/unocss' | 'storm/yaml/setup' | 'storm/yaml/rules' | 'storm/zod/rules'
+export type ConfigNames = 'storm/cspell/rules' | 'storm/astro/setup' | 'storm/astro/rules' | 'storm/formatter/setup' | 'storm/imports/rules' | 'storm/graphql/setup' | 'storm/graphql/rules' | 'storm/graphql/relay' | 'storm/javascript/setup' | 'storm/javascript/banner' | 'storm/javascript/rules' | 'storm/jsx/rules' | 'storm/jsdoc/rules' | 'storm/jsonc/setup' | 'storm/jsonc/rules' | 'storm/markdown/setup' | 'storm/markdown/processor' | 'storm/markdown/parser' | 'storm/mdx/setup' | 'storm/node/rules' | 'storm/nx/setup' | 'storm/nx/schema' | 'storm/nx/dependency-check' | 'storm/nx/module-boundaries' | 'storm/next/rules' | 'storm/prettier' | 'storm/perfectionist/rules' | 'storm/pnpm/setup' | 'storm/pnpm/package-json' | 'storm/pnpm/pnpm-workspace-yaml' | 'storm/react/setup' | 'storm/react/rules' | 'storm/react-native/rules' | 'storm/sort/package-json' | 'storm/stylistic/rules' | 'storm/secrets/rules' | 'storm/storybook/setup' | 'storm/storybook/rules' | 'storm/storybook/main' | 'storm/test/setup' | 'storm/test/rules' | 'storm/tsdoc/rules' | 'storm/toml/setup' | 'storm/toml/rules' | 'storm/typescript/setup' | 'storm/typescript/parser' | 'storm/typescript/type-aware-parser' | 'storm/typescript/rules' | 'storm/typescript/rules-type-aware' | 'storm/regexp/rules' | 'storm/unicorn/rules' | 'storm/unocss' | 'storm/yaml/setup' | 'storm/yaml/rules' | 'storm/zod/rules'

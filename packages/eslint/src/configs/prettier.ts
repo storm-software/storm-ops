@@ -1,3 +1,4 @@
+import defu from "defu";
 import config from "eslint-config-prettier/flat";
 import type { TypedFlatConfigItem } from "../types";
 
@@ -6,14 +7,16 @@ import type { TypedFlatConfigItem } from "../types";
  */
 export async function prettier(): Promise<TypedFlatConfigItem[]> {
   return [
-    config,
-    {
-      name: "storm/prettier/rules",
-      rules: {
-        "prettier/prettier": "error",
-        "arrow-body-style": "off",
-        "prefer-arrow-callback": "off"
-      }
-    }
+    defu(
+      {
+        name: "storm/prettier",
+        rules: {
+          "prettier/prettier": "error",
+          "arrow-body-style": "off",
+          "prefer-arrow-callback": "off"
+        }
+      },
+      config
+    )
   ];
 }
