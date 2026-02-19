@@ -134,7 +134,7 @@
     "@storm-software/workspace-tools": "1.294.34",
     "nx": "catalog:",
     "tsup": "catalog:",
-    "wrangler": ">=3.58.0"
+    "wrangler": ">=4.59.1"
   },
   "peerDependenciesMeta": {
     "@nx/devkit": {
