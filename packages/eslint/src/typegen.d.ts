@@ -496,12 +496,12 @@ Backward pagination arguments
   '@next/next/no-unwanted-polyfillio'?: Linter.RuleEntry<[]>
   /**
    * Checks dependencies in project's package.json for version mismatches
-   * @see https://github.com/nrwl/nx/blob/22.3.3/docs/generated/packages/eslint-plugin/documents/dependency-checks.md
+   * @see https://github.com/nrwl/nx/blob/22.5.1/docs/generated/packages/eslint-plugin/documents/dependency-checks.md
    */
   '@nx/dependency-checks'?: Linter.RuleEntry<NxDependencyChecks>
   /**
    * Ensure that module boundaries are respected within the monorepo
-   * @see https://github.com/nrwl/nx/blob/22.3.3/docs/generated/packages/eslint-plugin/documents/enforce-module-boundaries.md
+   * @see https://github.com/nrwl/nx/blob/22.5.1/docs/generated/packages/eslint-plugin/documents/enforce-module-boundaries.md
    */
   '@nx/enforce-module-boundaries'?: Linter.RuleEntry<NxEnforceModuleBoundaries>
   /**
@@ -3603,6 +3603,11 @@ Backward pagination arguments
    */
   'node/prefer-global/console'?: Linter.RuleEntry<NodePreferGlobalConsole>
   /**
+   * enforce either `crypto` or `require("crypto").webcrypto`
+   * @see https://github.com/eslint-community/eslint-plugin-n/blob/HEAD/docs/rules/prefer-global/crypto.md
+   */
+  'node/prefer-global/crypto'?: Linter.RuleEntry<NodePreferGlobalCrypto>
+  /**
    * enforce either `process` or `require("process")`
    * @see https://github.com/eslint-community/eslint-plugin-n/blob/HEAD/docs/rules/prefer-global/process.md
    */
@@ -3617,6 +3622,11 @@ Backward pagination arguments
    * @see https://github.com/eslint-community/eslint-plugin-n/blob/HEAD/docs/rules/prefer-global/text-encoder.md
    */
   'node/prefer-global/text-encoder'?: Linter.RuleEntry<NodePreferGlobalTextEncoder>
+  /**
+   * enforce either global timer functions or `require("timers")`
+   * @see https://github.com/eslint-community/eslint-plugin-n/blob/HEAD/docs/rules/prefer-global/timers.md
+   */
+  'node/prefer-global/timers'?: Linter.RuleEntry<NodePreferGlobalTimers>
   /**
    * enforce either `URL` or `require("url").URL`
    * @see https://github.com/eslint-community/eslint-plugin-n/blob/HEAD/docs/rules/prefer-global/url.md
@@ -5625,7 +5635,7 @@ Backward pagination arguments
    * disallow conditional expects
    * @see https://github.com/vitest-dev/eslint-plugin-vitest/blob/main/docs/rules/no-conditional-expect.md
    */
-  'test/no-conditional-expect'?: Linter.RuleEntry<[]>
+  'test/no-conditional-expect'?: Linter.RuleEntry<TestNoConditionalExpect>
   /**
    * disallow conditional tests
    * @see https://github.com/vitest-dev/eslint-plugin-vitest/blob/main/docs/rules/no-conditional-in-test.md
@@ -5853,6 +5863,11 @@ Backward pagination arguments
    */
   'test/prefer-mock-promise-shorthand'?: Linter.RuleEntry<[]>
   /**
+   * Prefer mock return shorthands
+   * @see https://github.com/vitest-dev/eslint-plugin-vitest/blob/main/docs/rules/prefer-mock-return-shorthand.md
+   */
+  'test/prefer-mock-return-shorthand'?: Linter.RuleEntry<[]>
+  /**
    * enforce including a hint with external snapshots
    * @see https://github.com/vitest-dev/eslint-plugin-vitest/blob/main/docs/rules/prefer-snapshot-hint.md
    */
@@ -5937,6 +5952,11 @@ Backward pagination arguments
    * @see https://github.com/vitest-dev/eslint-plugin-vitest/blob/main/docs/rules/require-mock-type-parameters.md
    */
   'test/require-mock-type-parameters'?: Linter.RuleEntry<TestRequireMockTypeParameters>
+  /**
+   * require tests to declare a timeout
+   * @see https://github.com/vitest-dev/eslint-plugin-vitest/blob/main/docs/rules/require-test-timeout.md
+   */
+  'test/require-test-timeout'?: Linter.RuleEntry<[]>
   /**
    * require toThrow() to be called with an error message
    * @see https://github.com/vitest-dev/eslint-plugin-vitest/blob/main/docs/rules/require-to-throw-message.md
@@ -6550,7 +6570,7 @@ Backward pagination arguments
    * Disallow default values that will never be used
    * @see https://typescript-eslint.io/rules/no-useless-default-assignment
    */
-  'ts/no-useless-default-assignment'?: Linter.RuleEntry<[]>
+  'ts/no-useless-default-assignment'?: Linter.RuleEntry<TsNoUselessDefaultAssignment>
   /**
    * Disallow empty exports that don't change anything in a module file
    * @see https://typescript-eslint.io/rules/no-useless-empty-export
@@ -6724,6 +6744,11 @@ Backward pagination arguments
    * @see https://typescript-eslint.io/rules/strict-boolean-expressions
    */
   'ts/strict-boolean-expressions'?: Linter.RuleEntry<TsStrictBooleanExpressions>
+  /**
+   * Disallow passing a value-returning function in a position accepting a void function
+   * @see https://typescript-eslint.io/rules/strict-void-return
+   */
+  'ts/strict-void-return'?: Linter.RuleEntry<TsStrictVoidReturn>
   /**
    * Require switch-case statements to be exhaustive
    * @see https://typescript-eslint.io/rules/switch-exhaustiveness-check
@@ -8050,6 +8075,8 @@ type NxDependencyChecks = []|[{
   includeTransitiveDependencies?: boolean
   useLocalPathsForWorkspaceDependencies?: boolean
   runtimeHelpers?: string[]
+  
+  peerDepsVersionStrategy?: ("installed" | "workspace")
 }]
 // ----- @nx/enforce-module-boundaries -----
 type NxEnforceModuleBoundaries = []|[{
@@ -8469,11 +8496,12 @@ type FormatDprint = []|[{
   languageOptions?: {
     [k: string]: unknown | undefined
   }
+  plugins?: unknown[]
   [k: string]: unknown | undefined
 }]
 // ----- format/prettier -----
 type FormatPrettier = []|[{
-  parser?: string
+  parser: string
   [k: string]: unknown | undefined
 }]
 // ----- func-call-spacing -----
@@ -11239,12 +11267,16 @@ type NodeNoUnsupportedFeaturesNodeBuiltins = []|[{
 type NodePreferGlobalBuffer = []|[("always" | "never")]
 // ----- node/prefer-global/console -----
 type NodePreferGlobalConsole = []|[("always" | "never")]
+// ----- node/prefer-global/crypto -----
+type NodePreferGlobalCrypto = []|[("always" | "never")]
 // ----- node/prefer-global/process -----
 type NodePreferGlobalProcess = []|[("always" | "never")]
 // ----- node/prefer-global/text-decoder -----
 type NodePreferGlobalTextDecoder = []|[("always" | "never")]
 // ----- node/prefer-global/text-encoder -----
 type NodePreferGlobalTextEncoder = []|[("always" | "never")]
+// ----- node/prefer-global/timers -----
+type NodePreferGlobalTimers = []|[("always" | "never")]
 // ----- node/prefer-global/url -----
 type NodePreferGlobalUrl = []|[("always" | "never")]
 // ----- node/prefer-global/url-search-params -----
@@ -15816,6 +15848,11 @@ type TestMaxExpects = []|[{
 type TestMaxNestedDescribe = []|[{
   max?: number
 }]
+// ----- test/no-conditional-expect -----
+type TestNoConditionalExpect = []|[{
+  
+  expectAssertions?: boolean
+}]
 // ----- test/no-focused-tests -----
 type TestNoFocusedTests = []|[{
   fixable?: boolean
@@ -16883,6 +16920,11 @@ type TsNoUnusedVars = []|[(("all" | "local") | {
   
   destructuredArrayIgnorePattern?: string
   
+  enableAutofixRemoval?: {
+    
+    imports?: boolean
+  }
+  
   ignoreClassWithStaticInitBlock?: boolean
   
   ignoreRestSiblings?: boolean
@@ -16912,6 +16954,11 @@ type TsNoUseBeforeDefine = []|[("nofunc" | {
   
   variables?: boolean
 })]
+// ----- ts/no-useless-default-assignment -----
+type TsNoUselessDefaultAssignment = []|[{
+  
+  allowRuleToRunWithoutStrictNullChecksIKnowWhatIAmDoing?: boolean
+}]
 // ----- ts/no-var-requires -----
 type TsNoVarRequires = []|[{
   
@@ -17166,6 +17213,11 @@ type TsStrictBooleanExpressions = []|[{
   allowRuleToRunWithoutStrictNullChecksIKnowWhatIAmDoing?: boolean
   
   allowString?: boolean
+}]
+// ----- ts/strict-void-return -----
+type TsStrictVoidReturn = []|[{
+  
+  allowReturnAny?: boolean
 }]
 // ----- ts/switch-exhaustiveness-check -----
 type TsSwitchExhaustivenessCheck = []|[{
@@ -17450,6 +17502,11 @@ type UnusedImportsNoUnusedImports = []|[(("all" | "local") | {
   
   destructuredArrayIgnorePattern?: string
   
+  enableAutofixRemoval?: {
+    
+    imports?: boolean
+  }
+  
   ignoreClassWithStaticInitBlock?: boolean
   
   ignoreRestSiblings?: boolean
@@ -17474,6 +17531,11 @@ type UnusedImportsNoUnusedVars = []|[(("all" | "local") | {
   caughtErrorsIgnorePattern?: string
   
   destructuredArrayIgnorePattern?: string
+  
+  enableAutofixRemoval?: {
+    
+    imports?: boolean
+  }
   
   ignoreClassWithStaticInitBlock?: boolean
   
