@@ -353,6 +353,7 @@ oxlintrc
 fontkit
 iconify
 automd
+didyoumean
 
 # Acronyms
 dpdm
