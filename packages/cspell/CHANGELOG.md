@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - CSpell
 
+## [0.45.81](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.45.81) (02/20/2026)
+
+### Miscellaneous
+
+- **cspell:** Added "didyoumean" to the dictionary ([a1988dfcf](https://github.com/storm-software/storm-ops/commit/a1988dfcf))
+
 ## [0.45.80](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.45.80) (02/18/2026)
 
 ### Miscellaneous
