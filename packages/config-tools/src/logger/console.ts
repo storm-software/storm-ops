@@ -261,11 +261,12 @@ export const getStopwatch = (name: string) => {
   const start = new Date();
   return () => {
     console.info(
-      `
->  ⏱️  The${name ? ` ${name}` : ""} process took ${formatDistanceToNow(start, {
-        includeSeconds: true
-      })} to complete
-`
+      `> ⏱ The${name ? ` ${name}` : ""} process took ${formatDistanceToNow(
+        start,
+        {
+          includeSeconds: true
+        }
+      )} to complete`
     );
   };
 };
