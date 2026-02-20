@@ -18,7 +18,7 @@ void (async () => {
     await program.parseAsync(process.argv);
 
     writeSuccess(
-      `✔  Git ${process.argv && process.argv.length >= 3 && process.argv[2] ? process.argv[2] : "tool"} processing completed successfully!`,
+      `✔ Git ${process.argv && process.argv.length >= 3 && process.argv[2] ? process.argv[2] : "tool"} processing completed successfully!`,
       config
     );
     exitWithSuccess(config);
