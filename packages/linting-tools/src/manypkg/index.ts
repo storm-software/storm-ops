@@ -179,15 +179,15 @@ export async function runManypkg(
     }
 
     if (hasErrored) {
-      console.log("🎉 Fixed workspace packages!");
+      console.log("✔ Fixed workspace packages!");
     } else {
-      console.log("🎉 Workspace packages are valid!");
+      console.log("✔ Workspace packages are valid!");
     }
   } else if (hasErrored) {
     console.info(
       "⚠️ The above errors may be fixable if the --manypkg-fix flag is used"
     );
   } else {
-    console.log("🎉 Workspace packages are valid!");
+    console.log("✔ Workspace packages are valid!");
   }
 }

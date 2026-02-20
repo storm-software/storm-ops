@@ -77,7 +77,7 @@ void (async () => {
     await program.parseAsync(process.argv);
 
     writeSuccess(
-      `🎉  Storm Untyped executable has completed successfully!`,
+      `✔  Storm Untyped executable has completed successfully!`,
       config
     );
     exitWithSuccess(config);

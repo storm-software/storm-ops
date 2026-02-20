@@ -22,7 +22,7 @@ void (async () => {
 
     await program.parseAsync(process.argv);
 
-    writeSuccess("🎉  Code linting and fixing completed successfully!", config);
+    writeSuccess("✔  Code linting and fixing completed successfully!", config);
     exitWithSuccess(config);
   } catch (error) {
     writeFatal(

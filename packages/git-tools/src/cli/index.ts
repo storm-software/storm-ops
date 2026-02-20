@@ -103,7 +103,7 @@ export async function commitAction({
     await runCommit(config, dryRun);
 
     writeSuccess(
-      `🎉 Storm Commit processing completed successfully!
+      `✔ Storm Commit processing completed successfully!
 
 Note: Please run "pnpm push" to upload these changes to the remote ${
         _config.name

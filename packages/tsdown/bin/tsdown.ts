@@ -196,7 +196,7 @@ void (async () => {
     await program.parseAsync(process.argv);
 
     writeSuccess(
-      `🎉  Storm TSDown executable has completed successfully!`,
+      `✔  Storm TSDown executable has completed successfully!`,
       config
     );
     exitWithSuccess(config);

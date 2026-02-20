@@ -198,7 +198,7 @@ void (async () => {
     await program.parseAsync(process.argv);
 
     writeSuccess(
-      `🎉  Storm ESBuild executable has completed successfully!`,
+      `✔  Storm ESBuild executable has completed successfully!`,
       config
     );
     exitWithSuccess(config);
