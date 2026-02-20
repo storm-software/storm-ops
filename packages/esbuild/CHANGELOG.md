@@ -2,6 +2,19 @@
 
 # Changelog for Storm Ops - Esbuild
 
+## [0.53.87](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.53.87) (02/20/2026)
+
+### Miscellaneous
+
+- **config-tools:** Use different success icon across packages ([85d343d51](https://github.com/storm-software/storm-ops/commit/85d343d51))
+
+### Updated Dependencies
+
+- Updated **config-tools** to **v1.189.6**
+- Updated **build-tools** to **v0.158.87**
+- Updated **config** to **v1.135.7**
+- Updated **tsup** to **v0.2.85**
+
 ## [0.53.86](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.53.86) (02/18/2026)
 
 ### Miscellaneous

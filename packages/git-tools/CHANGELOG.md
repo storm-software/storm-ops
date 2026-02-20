@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Git Tools
 
+## [2.124.72](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.124.72) (02/20/2026)
+
+### Miscellaneous
+
+- **config-tools:** Use different success icon across packages ([85d343d51](https://github.com/storm-software/storm-ops/commit/85d343d51))
+
+### Updated Dependencies
+
+- Updated **conventional-changelog** to **v0.3.87**
+- Updated **config-tools** to **v1.189.6**
+- Updated **config** to **v1.135.7**
+
 ## [2.124.71](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.124.71) (02/18/2026)
 
 ### Miscellaneous

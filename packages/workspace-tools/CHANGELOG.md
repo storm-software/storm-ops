@@ -2,6 +2,24 @@
 
 # Changelog for Storm Ops - Workspace Tools
 
+## [1.294.38](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.294.38) (02/20/2026)
+
+### Bug Fixes
+
+- **prettier:** Ensure consistency when formatting package.json files ([2a81896c5](https://github.com/storm-software/storm-ops/commit/2a81896c5))
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.81**
+- Updated **config-tools** to **v1.189.6**
+- Updated **pnpm-tools** to **v0.6.89**
+- Updated **npm-tools** to **v0.6.44**
+- Updated **prettier** to **v0.58.5**
+- Updated **esbuild** to **v0.53.87**
+- Updated **unbuild** to **v0.57.87**
+- Updated **config** to **v1.135.7**
+- Updated **tsdown** to **v0.45.87**
+
 ## [1.294.37](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.294.37) (02/18/2026)
 
 ### Miscellaneous

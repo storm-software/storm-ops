@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Config Tools
 
+## [1.189.6](https://github.com/storm-software/storm-ops/releases/tag/config-tools%401.189.6) (02/20/2026)
+
+### Miscellaneous
+
+- **config-tools:** Try difference stopwatch icon for performance timer logging ([7b37b85e9](https://github.com/storm-software/storm-ops/commit/7b37b85e9))
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.81**
+- Updated **config** to **v1.135.7**
+
 ## [1.189.5](https://github.com/storm-software/storm-ops/releases/tag/config-tools%401.189.5) (02/18/2026)
 
 ### Miscellaneous

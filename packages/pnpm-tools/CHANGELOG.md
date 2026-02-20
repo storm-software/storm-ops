@@ -2,6 +2,23 @@
 
 # Changelog for Storm Ops - Pnpm Tools
 
+## [0.6.89](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.6.89) (02/20/2026)
+
+### Miscellaneous
+
+- **config-tools:** Use different success icon across packages ([85d343d51](https://github.com/storm-software/storm-ops/commit/85d343d51))
+
+### Bug Fixes
+
+- **prettier:** Ensure consistency when formatting package.json files ([2a81896c5](https://github.com/storm-software/storm-ops/commit/2a81896c5))
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.81**
+- Updated **config-tools** to **v1.189.6**
+- Updated **npm-tools** to **v0.6.44**
+- Updated **config** to **v1.135.7**
+
 ## [0.6.88](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.6.88) (02/18/2026)
 
 ### Miscellaneous

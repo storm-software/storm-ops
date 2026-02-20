@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Prettier
 
+## [0.58.5](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.58.5) (02/20/2026)
+
+### Bug Fixes
+
+- **prettier:** Ensure consistency when formatting package.json files ([2a81896c5](https://github.com/storm-software/storm-ops/commit/2a81896c5))
+
 ## [0.58.4](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.58.4) (02/18/2026)
 
 ### Miscellaneous

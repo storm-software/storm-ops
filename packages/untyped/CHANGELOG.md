@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Untyped
 
+## [0.24.68](https://github.com/storm-software/storm-ops/releases/tag/untyped%400.24.68) (02/20/2026)
+
+### Miscellaneous
+
+- **config-tools:** Use different success icon across packages ([85d343d51](https://github.com/storm-software/storm-ops/commit/85d343d51))
+
+### Updated Dependencies
+
+- Updated **config-tools** to **v1.189.6**
+- Updated **config** to **v1.135.7**
+
 ## [0.24.67](https://github.com/storm-software/storm-ops/releases/tag/untyped%400.24.67) (02/18/2026)
 
 ### Miscellaneous

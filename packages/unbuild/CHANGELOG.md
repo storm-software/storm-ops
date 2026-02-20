@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Unbuild
 
+## [0.57.87](https://github.com/storm-software/storm-ops/releases/tag/unbuild%400.57.87) (02/20/2026)
+
+### Miscellaneous
+
+- **config-tools:** Use different success icon across packages ([85d343d51](https://github.com/storm-software/storm-ops/commit/85d343d51))
+
+### Updated Dependencies
+
+- Updated **config-tools** to **v1.189.6**
+- Updated **build-tools** to **v0.158.87**
+- Updated **config** to **v1.135.7**
+
 ## [0.57.86](https://github.com/storm-software/storm-ops/releases/tag/unbuild%400.57.86) (02/18/2026)
 
 ### Miscellaneous
