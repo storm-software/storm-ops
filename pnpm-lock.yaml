@@ -135,6 +135,9 @@ catalogs:
     prettier:
       specifier: ^3.8.1
       version: 3.8.1
+    prettier-plugin-packagejson:
+      specifier: ^3.0.0
+      version: 3.0.0
     rimraf:
       specifier: 6.0.1
       version: 6.0.1
@@ -336,9 +339,9 @@ importers:
       prettier-plugin-organize-imports:
         specifier: ^4.3.0
         version: 4.3.0(prettier@3.8.1)(typescript@5.9.3)
-      prettier-plugin-pkg:
-        specifier: ^0.18.1
-        version: 0.18.1(prettier@3.8.1)
+      prettier-plugin-packagejson:
+        specifier: 'catalog:'
+        version: 3.0.0(prettier@3.8.1)
       prettier-plugin-prisma:
         specifier: ^5.0.0
         version: 5.0.0(prettier@3.8.1)
@@ -1332,9 +1335,9 @@ importers:
       prettier:
         specifier: 'catalog:'
         version: 3.8.1
-      prettier-plugin-pkg:
-        specifier: ^0.18.1
-        version: 0.18.1(prettier@3.8.1)
+      prettier-plugin-packagejson:
+        specifier: 'catalog:'
+        version: 3.0.0(prettier@3.8.1)
       semver:
         specifier: 7.6.2
         version: 7.6.2
@@ -1360,9 +1363,9 @@ importers:
       prettier-plugin-organize-imports:
         specifier: ^4.3.0
         version: 4.3.0(prettier@3.8.1)(typescript@5.9.3)
-      prettier-plugin-pkg:
-        specifier: ^0.18.1
-        version: 0.18.1(prettier@3.8.1)
+      prettier-plugin-packagejson:
+        specifier: 'catalog:'
+        version: 3.0.0(prettier@3.8.1)
       prettier-plugin-sh:
         specifier: ^0.15.0
         version: 0.15.0(prettier@3.8.1)
@@ -9254,6 +9257,10 @@ packages:
     resolution: {integrity: sha512-reYkTUJAZb9gUuZ2RvVCNhVHdg62RHnJ7WJl8ftMi4diZ6NWlciOzQN88pUhSELEwflJht4oQDv0F0BMlwaYtA==}
     engines: {node: '>=8'}
 
+  detect-indent@7.0.2:
+    resolution: {integrity: sha512-y+8xyqdGLL+6sh0tVeHcfP/QDd8gUgbasolJJpY7NgeQGSZ739bDtSiaiDgtoicy+mtYB81dKLxO9xRhCyIB3A==}
+    engines: {node: '>=12.20'}
+
   detect-libc@2.1.2:
     resolution: {integrity: sha512-Btj2BOOO83o3WyH59e8MgXsxEQVcarkUOpEYrubB0urwnN10yQ364rsiByU11nZlqWYZm05i/of7io4mzihBtQ==}
     engines: {node: '>=8'}
@@ -9261,6 +9268,10 @@ packages:
   detect-newline@3.1.0:
     resolution: {integrity: sha512-TLz+x/vEXm/Y7P7wn1EJFNLxYpUD4TgMosxY6fAVJUnJMbupHBOncxyWUG9OpTaH9EBD7uFI5LfEgmMOc54DsA==}
     engines: {node: '>=8'}
+
+  detect-newline@4.0.1:
+    resolution: {integrity: sha512-qE3Veg1YXzGHQhlA6jzebZN2qVf6NX+A7m7qlhCGG30dJixrAQhYOsJjsnBjJkCSmuOPpCk30145fr8FV0bzog==}
+    engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
 
   detect-node@2.1.0:
     resolution: {integrity: sha512-T0NIuQpnTvFDATNuHN5roPwSBG83rFsuO+MXXH9/3N1eFbn4wcPjttvjMLEPWJ0RGUYgQE7cGgS3tNxbqCGM7g==}
@@ -10388,6 +10399,9 @@ packages:
 
   git-diff-tree@1.1.0:
     resolution: {integrity: sha512-PdNkH2snpXsKIzho6OWMZKEl+KZG6Zm+1ghQIDi0tEq1sz/S1tDjvNuYrX2ZpomalHAB89OUQim8O6vN+jesNQ==}
+
+  git-hooks-list@4.2.1:
+    resolution: {integrity: sha512-WNvqJjOxxs/8ZP9+DWdwWJ7cDsd60NHf39XnD82pDVrKO5q7xfPqpkK6hwEAmBa/ZSEE4IOoR75EzbbIuwGlMw==}
 
   git-spawned-stream@1.0.1:
     resolution: {integrity: sha512-W2Zo3sCiq5Hqv1/FLsNmGomkXdyimmkHncGzqjBHh7nWx+CbH5dkWGb6CiFdknooL7wfeZJ3gz14KrXl/gotCw==}
@@ -13867,11 +13881,13 @@ packages:
       vue-tsc:
         optional: true
 
-  prettier-plugin-pkg@0.18.1:
-    resolution: {integrity: sha512-FuUxvsYZR/8rsLH8s/jbPQmgYvv0yxW8LoIHCy6+Q7p4FBjjdP3DNKx8fMTOsc0SlEB1skB4o1LcahRceIh87A==}
-    engines: {node: ^14.18.0 || >=16.0.0}
+  prettier-plugin-packagejson@3.0.0:
+    resolution: {integrity: sha512-z8/QmPSqx/ANvvQMWJSkSq1+ihBXeuwDEYdjX3ZjRJ5Ty1k7vGbFQfhzk2eDe0rwS/TNyRjWK/qnjJEStAOtDw==}
     peerDependencies:
-      prettier: ^3.0.3
+      prettier: ^3
+    peerDependenciesMeta:
+      prettier:
+        optional: true
 
   prettier-plugin-prisma@5.0.0:
     resolution: {integrity: sha512-jTJV04D9+yF7ziOOMs7CJe4ijgAH7DEGjt0SAWAToGNRy1H6BEhvcKA2UQH6gC6KVW5zeeOSAvsoiDDTt9oKXg==}
@@ -14995,6 +15011,14 @@ packages:
 
   sonic-boom@4.2.1:
     resolution: {integrity: sha512-w6AxtubXa2wTXAUsZMMWERrsIRAdrK0Sc+FUytWvYAhBJLyuI4llrMIC1DtlNSdI99EI86KZum2MMq3EAZlF9Q==}
+
+  sort-object-keys@2.1.0:
+    resolution: {integrity: sha512-SOiEnthkJKPv2L6ec6HMwhUcN0/lppkeYuN1x63PbyPRrgSPIuBJCiYxYyvWRTtjMlOi14vQUCGUJqS6PLVm8g==}
+
+  sort-package-json@3.6.0:
+    resolution: {integrity: sha512-fyJsPLhWvY7u2KsKPZn1PixbXp+1m7V8NWqU8CvgFRbMEX41Ffw1kD8n0CfJiGoaSfoAvbrqRRl/DcHO8omQOQ==}
+    engines: {node: '>=20'}
+    hasBin: true
 
   source-map-js@1.2.1:
     resolution: {integrity: sha512-UXWMKhLOwVKb728IUtQPXxfYU+usdybtUrK/8uGE8CQMvrhOpwvzDBwj0QhSL7MQc7vIsISBG8VQ8+IDQxpfQA==}
@@ -20500,7 +20524,7 @@ snapshots:
       proc-log: 4.2.0
       promise-inflight: 1.0.1
       promise-retry: 2.0.1
-      semver: 7.7.4
+      semver: 7.6.2
       which: 4.0.0
     transitivePeerDependencies:
       - bluebird
@@ -20513,7 +20537,7 @@ snapshots:
       npm-pick-manifest: 11.0.3
       proc-log: 6.1.0
       promise-retry: 2.0.1
-      semver: 7.7.4
+      semver: 7.6.2
       which: 6.0.1
 
   '@npmcli/installed-package-contents@4.0.0':
@@ -20559,7 +20583,7 @@ snapshots:
       json-parse-even-better-errors: 3.0.2
       normalize-package-data: 6.0.2
       proc-log: 4.2.0
-      semver: 7.7.4
+      semver: 7.6.2
     transitivePeerDependencies:
       - bluebird
 
@@ -25146,9 +25170,13 @@ snapshots:
 
   detect-indent@6.1.0: {}
 
+  detect-indent@7.0.2: {}
+
   detect-libc@2.1.2: {}
 
   detect-newline@3.1.0: {}
+
+  detect-newline@4.0.1: {}
 
   detect-node@2.1.0: {}
 
@@ -26681,6 +26709,8 @@ snapshots:
       through2: 2.0.0
     transitivePeerDependencies:
       - supports-color
+
+  git-hooks-list@4.2.1: {}
 
   git-spawned-stream@1.0.1:
     dependencies:
@@ -30377,7 +30407,7 @@ snapshots:
       make-fetch-happen: 15.0.3
       nopt: 9.0.0
       proc-log: 6.1.0
-      semver: 7.7.4
+      semver: 7.6.2
       tar: 7.5.9
       tinyglobby: 0.2.15
       which: 6.0.1
@@ -30409,7 +30439,7 @@ snapshots:
     dependencies:
       hosted-git-info: 4.1.0
       is-core-module: 2.16.1
-      semver: 7.7.4
+      semver: 7.6.2
       validate-npm-package-license: 3.0.4
 
   normalize-package-data@4.0.1:
@@ -30439,7 +30469,7 @@ snapshots:
 
   npm-install-checks@6.3.0:
     dependencies:
-      semver: 7.7.4
+      semver: 7.6.2
 
   npm-install-checks@8.0.0:
     dependencies:
@@ -30453,7 +30483,7 @@ snapshots:
     dependencies:
       hosted-git-info: 7.0.2
       proc-log: 4.2.0
-      semver: 7.7.4
+      semver: 7.6.2
       validate-npm-package-name: 5.0.1
 
   npm-package-arg@13.0.2:
@@ -30480,7 +30510,7 @@ snapshots:
       npm-install-checks: 6.3.0
       npm-normalize-package-bin: 3.0.1
       npm-package-arg: 11.0.3
-      semver: 7.7.4
+      semver: 7.6.2
 
   npm-registry-fetch@19.1.1:
     dependencies:
@@ -30846,7 +30876,7 @@ snapshots:
       got: 14.3.0
       registry-auth-token: 5.1.1
       registry-url: 6.0.1
-      semver: 7.7.4
+      semver: 7.6.2
 
   package-manager-detector@0.2.11:
     dependencies:
@@ -31528,8 +31558,10 @@ snapshots:
       prettier: 3.8.1
       typescript: 5.9.3
 
-  prettier-plugin-pkg@0.18.1(prettier@3.8.1):
+  prettier-plugin-packagejson@3.0.0(prettier@3.8.1):
     dependencies:
+      sort-package-json: 3.6.0
+    optionalDependencies:
       prettier: 3.8.1
 
   prettier-plugin-prisma@5.0.0(prettier@3.8.1):
@@ -32865,6 +32897,18 @@ snapshots:
   sonic-boom@4.2.1:
     dependencies:
       atomic-sleep: 1.0.0
+
+  sort-object-keys@2.1.0: {}
+
+  sort-package-json@3.6.0:
+    dependencies:
+      detect-indent: 7.0.2
+      detect-newline: 4.0.1
+      git-hooks-list: 4.2.1
+      is-plain-obj: 4.1.0
+      semver: 7.7.4
+      sort-object-keys: 2.1.0
+      tinyglobby: 0.2.15
 
   source-map-js@1.2.1: {}
 

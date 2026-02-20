@@ -121,7 +121,7 @@
     "pkg-types": "catalog:",
     "prettier": "catalog:",
     "prettier-plugin-organize-imports": "^4.3.0",
-    "prettier-plugin-pkg": "^0.18.1",
+    "prettier-plugin-packagejson": "catalog:",
     "prettier-plugin-prisma": "^5.0.0",
     "prettier-plugin-sh": "^0.15.0",
     "rimraf": "catalog:",

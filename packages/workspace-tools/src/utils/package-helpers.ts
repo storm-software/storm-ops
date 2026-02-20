@@ -93,7 +93,7 @@ export async function addPackageJsonGitHead(packageRoot: string) {
     packageJsonPath,
     await format(JSON.stringify(packageJsonValue), {
       parser: "json",
-      proseWrap: "always",
+      proseWrap: "preserve",
       trailingComma: "none",
       tabWidth: 2,
       semi: true,
@@ -105,7 +105,7 @@ export async function addPackageJsonGitHead(packageRoot: string) {
       bracketSpacing: true,
       arrowParens: "avoid",
       endOfLine: "lf",
-      plugins: ["prettier-plugin-pkg"]
+      plugins: ["prettier-plugin-packagejson"]
     })
   );
 }

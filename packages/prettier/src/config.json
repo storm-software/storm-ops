@@ -95,7 +95,7 @@
   ],
   "plugins": [
     "prettier-plugin-sh",
-    "prettier-plugin-pkg",
+    "prettier-plugin-packagejson",
     "prettier-plugin-toml",
     "prettier-plugin-jsdoc",
     "prettier-plugin-organize-imports",

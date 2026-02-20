@@ -57,6 +57,10 @@
       }
     }
   ],
-  "plugins": ["prettier-plugin-sh", "prettier-plugin-pkg", "prettier-plugin-organize-imports"],
+  "plugins": [
+    "prettier-plugin-sh",
+    "prettier-plugin-packagejson",
+    "prettier-plugin-organize-imports"
+  ],
   "organizeImportsSkipDestructiveCodeActions": false
 }

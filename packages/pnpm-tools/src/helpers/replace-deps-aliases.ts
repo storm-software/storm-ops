@@ -143,7 +143,7 @@ export async function replaceDepsAliases(
     packageJsonPath,
     await format(JSON.stringify(packageJson), {
       parser: "json",
-      proseWrap: "always",
+      proseWrap: "preserve",
       trailingComma: "none",
       tabWidth: 2,
       semi: true,
@@ -155,7 +155,7 @@ export async function replaceDepsAliases(
       bracketSpacing: true,
       arrowParens: "avoid",
       endOfLine: "lf",
-      plugins: ["prettier-plugin-pkg"]
+      plugins: ["prettier-plugin-packagejson"]
     })
   );
 }

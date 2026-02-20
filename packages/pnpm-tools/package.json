@@ -97,7 +97,7 @@
     "commander": "catalog:",
     "defu": "catalog:",
     "prettier": "catalog:",
-    "prettier-plugin-pkg": "^0.18.1",
+    "prettier-plugin-packagejson": "catalog:",
     "semver": "7.6.2",
     "yaml": "catalog:"
   },
