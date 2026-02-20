@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Esbuild
 
+## [0.53.88](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.53.88) (02/20/2026)
+
+### Miscellaneous
+
+- **monorepo:** Removed extra spacing after checkmark icon ([143ed5241](https://github.com/storm-software/storm-ops/commit/143ed5241))
+
 ## [0.53.87](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.53.87) (02/20/2026)
 
 ### Miscellaneous

@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Git Tools
 
+## [2.124.73](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.124.73) (02/20/2026)
+
+### Miscellaneous
+
+- **monorepo:** Removed extra spacing after checkmark icon ([143ed5241](https://github.com/storm-software/storm-ops/commit/143ed5241))
+
 ## [2.124.72](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.124.72) (02/20/2026)
 
 ### Miscellaneous

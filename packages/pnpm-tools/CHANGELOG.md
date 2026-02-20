@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Pnpm Tools
 
+## [0.6.90](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.6.90) (02/20/2026)
+
+### Miscellaneous
+
+- **monorepo:** Removed extra spacing after checkmark icon ([143ed5241](https://github.com/storm-software/storm-ops/commit/143ed5241))
+
 ## [0.6.89](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.6.89) (02/20/2026)
 
 ### Miscellaneous

@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Untyped
 
+## [0.24.69](https://github.com/storm-software/storm-ops/releases/tag/untyped%400.24.69) (02/20/2026)
+
+### Miscellaneous
+
+- **monorepo:** Removed extra spacing after checkmark icon ([143ed5241](https://github.com/storm-software/storm-ops/commit/143ed5241))
+
 ## [0.24.68](https://github.com/storm-software/storm-ops/releases/tag/untyped%400.24.68) (02/20/2026)
 
 ### Miscellaneous

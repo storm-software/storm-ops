@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Linting Tools
 
+## [1.132.89](https://github.com/storm-software/storm-ops/releases/tag/linting-tools%401.132.89) (02/20/2026)
+
+### Miscellaneous
+
+- **monorepo:** Removed extra spacing after checkmark icon ([143ed5241](https://github.com/storm-software/storm-ops/commit/143ed5241))
+
 ## [1.132.88](https://github.com/storm-software/storm-ops/releases/tag/linting-tools%401.132.88) (02/20/2026)
 
 ### Miscellaneous

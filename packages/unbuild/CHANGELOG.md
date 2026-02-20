@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Unbuild
 
+## [0.57.88](https://github.com/storm-software/storm-ops/releases/tag/unbuild%400.57.88) (02/20/2026)
+
+### Miscellaneous
+
+- **monorepo:** Removed extra spacing after checkmark icon ([143ed5241](https://github.com/storm-software/storm-ops/commit/143ed5241))
+
 ## [0.57.87](https://github.com/storm-software/storm-ops/releases/tag/unbuild%400.57.87) (02/20/2026)
 
 ### Miscellaneous
