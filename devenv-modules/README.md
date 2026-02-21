@@ -80,17 +80,22 @@ in the [DevEnv documentation](https://devenv.sh/composing-using-imports/).
 The following DevEnv modules are included in this package:
 
 - `storm-ops/devenv-modules/base`: Base DevEnv module for Storm Software
-  repositories.
+  repositories. This module includes many tools and infrastructure used in all Storm Software repositories.
+- `storm-ops/devenv-modules/core`: Core DevEnv module for Storm Software
+  repositories. This module builds off the `storm-ops/devenv-modules/base` module to include additional tools and infrastructure.
 - `storm-ops/devenv-modules/minimal`: Minimal DevEnv module for Storm Software
-  repositories.
+  repositories. This module should be used in Storm Software's repositories with the `variant` type of `minimal`.
 - `storm-ops/devenv-modules/rust`: DevEnv module to support development with
   [Rust](https://www.rust-lang.org/).
+- `storm-ops/devenv-modules/python`: DevEnv module to support development with
+  [Python](https://www.python.org/).
 - `storm-ops/devenv-modules/atuin`: DevEnv module to include
   [atuin](https://github.com/atuinsh/atuin) support.
 - `storm-ops/devenv-modules/vhs`: DevEnv module to include
   [vhs](https://github.com/charmbracelet/vhs) support.
 - `storm-ops/devenv-modules/mdbook`: DevEnv module to include
   [mdbook](https://github.com/rust-lang/mdBook) support.
+  
 
 ## Usage
 
@@ -110,6 +115,7 @@ inputs:
     url: github:nixos/nixpkgs/nixpkgs-unstable
 imports:
   - storm-ops/devenv-modules/base
+  - storm-ops/devenv-modules/core
 ```
 
 <!-- START footer -->
