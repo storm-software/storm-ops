@@ -3189,7 +3189,7 @@ checksum = "a2eb9349b6444b326872e140eb1cf5e7c522154d69e7a0ffb0fb81c06b37543f"
 
 [[package]]
 name = "storm-config"
-version = "0.28.73"
+version = "0.28.74"
 dependencies = [
  "async-trait",
  "convert_case",
@@ -3212,7 +3212,7 @@ dependencies = [
 
 [[package]]
 name = "storm-workspace"
-version = "0.19.102"
+version = "0.19.103"
 dependencies = [
  "thiserror 2.0.17",
 ]
