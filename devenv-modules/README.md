@@ -89,6 +89,8 @@ The following DevEnv modules are included in this package:
   [Rust](https://www.rust-lang.org/).
 - `storm-ops/devenv-modules/python`: DevEnv module to support development with
   [Python](https://www.python.org/).
+- `storm-ops/devenv-modules/cpp`: DevEnv module to support development with
+  [C++](https://cplusplus.com/).
 - `storm-ops/devenv-modules/atuin`: DevEnv module to include
   [atuin](https://github.com/atuinsh/atuin) support.
 - `storm-ops/devenv-modules/vhs`: DevEnv module to include
