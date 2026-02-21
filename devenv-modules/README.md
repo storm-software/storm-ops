@@ -95,7 +95,6 @@ The following DevEnv modules are included in this package:
   [vhs](https://github.com/charmbracelet/vhs) support.
 - `storm-ops/devenv-modules/mdbook`: DevEnv module to include
   [mdbook](https://github.com/rust-lang/mdBook) support.
-  
 
 ## Usage
 
