@@ -1,10 +1,28 @@
 {
   "name": "@storm-software/storm-ops",
   "version": "0.0.1",
+  "private": true,
   "description": "⚙️ The Storm-Ops monorepo contains utility applications, tools, and various libraries to create modern and scalable web applications.",
-  "repository": "storm-software/storm-ops.git",
+  "keywords": [
+    "acidic",
+    "cyclone-ui",
+    "graphql",
+    "monorepo",
+    "nextjs",
+    "open-system",
+    "storm",
+    "storm-ops",
+    "storm-stack",
+    "sullivanpj"
+  ],
   "homepage": "https://stormsoftware.com",
   "bugs": "https://github.com/storm-software/storm-ops/issues",
+  "repository": "storm-software/storm-ops.git",
+  "funding": {
+    "type": "github",
+    "url": "https://github.com/sponsors/storm-software"
+  },
+  "license": "Apache-2.0",
   "author": {
     "name": "Storm Software",
     "email": "contact@stormsoftware.com",
@@ -21,29 +39,6 @@
       "email": "admin@stormsoftware.com",
       "url": "https://patsullivan.org"
     }
-  ],
-  "funding": {
-    "type": "github",
-    "url": "https://github.com/sponsors/storm-software"
-  },
-  "license": "Apache-2.0",
-  "private": true,
-  "packageManager": "pnpm@10.24.0",
-  "engines": {
-    "node": ">=22.21.1",
-    "pnpm": ">=10.24.0"
-  },
-  "keywords": [
-    "acidic",
-    "cyclone-ui",
-    "graphql",
-    "monorepo",
-    "nextjs",
-    "open-system",
-    "storm",
-    "storm-ops",
-    "storm-stack",
-    "sullivanpj"
   ],
   "scripts": {
     "adr": "pnpm log4brains adr new",
@@ -83,6 +78,7 @@
     "update-storm": "pnpm update --recursive --workspace",
     "view-config": "node ./dist/packages/config-tools/bin/config.cjs"
   },
+  "prettier": "./packages/prettier/src/config.json",
   "devDependencies": {
     "@eslint/eslintrc": "^3.3.3",
     "@eslint/js": "9.4.0",
@@ -137,6 +133,11 @@
     "zod": "catalog:",
     "zx": "catalog:"
   },
+  "packageManager": "pnpm@10.30.0",
+  "engines": {
+    "node": ">=25.5.0",
+    "pnpm": ">=10.30.0"
+  },
   "manypkg": {
     "defaultBranch": "main",
     "workspaceProtocol": "require"
@@ -157,6 +158,5 @@
       "release"
     ]
   },
-  "prettier": "./packages/prettier/src/config.json",
   "triggerEmptyDevReleaseByIncrementingThisNumber": 0
 }

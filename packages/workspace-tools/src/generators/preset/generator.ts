@@ -249,7 +249,7 @@ export async function presetGeneratorFn(
     "@storm-software/cspell": "latest",
     "@storm-software/prettier": "latest",
     "@taplo/cli": "0.7.0",
-    "@types/node": "^20.14.10",
+    "@types/node": "^25.3.0",
     copyfiles: "2.4.1",
     eslint: "9.5.0",
     jest: "29.7.0",

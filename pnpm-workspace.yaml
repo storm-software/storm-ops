@@ -23,7 +23,7 @@ catalog:
   "@swc-node/register": 1.10.9
   "@swc/core": 1.7.26
   "@swc/helpers": 0.5.13
-  "@types/node": ^24.10.13
+  "@types/node": ^25.3.0
   "@typescript-eslint/eslint-plugin": ^8.56.0
   "@typescript-eslint/parser": ^8.56.0
   "@typescript-eslint/utils": ^8.56.0
@@ -137,6 +137,6 @@ shellEmulator: true
 supportedArchitectures:
   cpu: [current]
 
-useNodeVersion: 24.11.1
+useNodeVersion: 25.5.0
 
 verifyDepsBeforeRun: install
