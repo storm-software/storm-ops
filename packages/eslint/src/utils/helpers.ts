@@ -5,7 +5,7 @@ import process from "node:process";
 import { fileURLToPath } from "node:url";
 
 const scopeUrl = fileURLToPath(new URL(".", import.meta.url));
-const isCwdInScope = isPackageExists("@storm-stack/eslint");
+const isCwdInScope = isPackageExists("@storm-software/eslint");
 
 export const parserPlain = {
   meta: {
@@ -80,7 +80,11 @@ export async function ensurePackages(
 
   const p = await import("@clack/prompts");
   const result = await p.confirm({
-    message: `${nonExistingPackages.length === 1 ? "Package is" : "Packages are"} required for this config: ${nonExistingPackages.join(", ")}. Do you want to install them?`
+    message: `${
+      nonExistingPackages.length === 1 ? "Package is" : "Packages are"
+    } required for this config: ${nonExistingPackages.join(
+      ", "
+    )}. Do you want to install them?`
   });
   if (result)
     await import("@antfu/install-pkg").then(i =>

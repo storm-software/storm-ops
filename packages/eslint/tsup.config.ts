@@ -9,15 +9,17 @@ export default defineConfig([
       "src/rules/*.ts",
       "src/utils/*.ts"
     ],
-    format: ["esm"],
+    format: ["esm", "cjs"],
     outDir: "dist",
     clean: true,
     dts: true,
+    treeshake: true,
     sourcemap: false,
     tsconfig: "./tsconfig.json",
     shims: true,
     silent: true,
     bundle: true,
-    noExternal: ["eslint-plugin-pnpm", "eslint-plugin-tsdoc", "zod"]
+    skipNodeModulesBundle: true,
+    noExternal: ["eslint-plugin-pnpm", "eslint-plugin-tsdoc", "zod", "date-fns"]
   }
 ]);

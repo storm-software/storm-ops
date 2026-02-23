@@ -1,15 +1,29 @@
 {
   "name": "@storm-software/eslint",
   "version": "0.169.93",
-  "type": "module",
+  "private": false,
   "description": "A package containing the base ESLint configuration used by Storm Software across many projects.",
+  "keywords": [
+    "eslint",
+    "eslint-config",
+    "eslintconfig",
+    "monorepo",
+    "storm",
+    "storm-ops",
+    "sullivanpj"
+  ],
+  "homepage": "https://stormsoftware.com",
+  "bugs": "https://github.com/storm-software/storm-ops/issues",
   "repository": {
     "type": "github",
     "url": "https://github.com/storm-software/storm-ops",
     "directory": "packages/eslint"
   },
-  "homepage": "https://stormsoftware.com",
-  "bugs": "https://github.com/storm-software/storm-ops/issues",
+  "funding": {
+    "type": "github",
+    "url": "https://github.com/sponsors/storm-software"
+  },
+  "license": "Apache-2.0",
   "author": {
     "name": "Storm Software",
     "email": "contact@stormsoftware.com",
@@ -34,18 +48,8 @@
       "url": "https://stormsoftware.com"
     }
   ],
-  "funding": {
-    "type": "github",
-    "url": "https://github.com/sponsors/storm-software"
-  },
-  "license": "Apache-2.0",
-  "private": false,
-  "packageManager": "pnpm@10.3.0",
-  "engines": {
-    "node": ">=22.4.0",
-    "pnpm": ">=10.3.0"
-  },
-  "main": "./dist/index.js",
+  "sideEffects": false,
+  "type": "module",
   "exports": {
     "./package.json": "./package.json",
     ".": {
@@ -133,39 +137,11 @@
       }
     }
   },
+  "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
-  "files": ["dist/**/*"],
-  "keywords": [
-    "eslint",
-    "eslint-config",
-    "eslintconfig",
-    "monorepo",
-    "storm",
-    "storm-ops",
-    "sullivanpj"
+  "files": [
+    "dist/**/*"
   ],
-  "peerDependencies": {
-    "@eslint-react/eslint-plugin": "^1.19.0",
-    "@graphql-eslint/eslint-plugin": "^4.3.0",
-    "@next/eslint-plugin-next": "^15.2.0-canary.67",
-    "@nx/eslint": "catalog:",
-    "@prettier/plugin-xml": "^3.4.1",
-    "@storm-software/tsdoc": "*",
-    "@unocss/eslint-plugin": ">=0.50.0",
-    "astro-eslint-parser": "^1.0.2",
-    "eslint": "catalog:",
-    "eslint-plugin-astro": "^1.2.0",
-    "eslint-plugin-format": ">=0.1.0",
-    "eslint-plugin-import-zod": "^1.2.0",
-    "eslint-plugin-react-compiler": "19.0.0-beta-21e868a-20250216",
-    "eslint-plugin-react-hooks": "^5.0.0",
-    "eslint-plugin-react-native": "^5.0.0",
-    "eslint-plugin-react-refresh": "^0.4.4",
-    "eslint-plugin-relay": "^1.8.3",
-    "eslint-plugin-storybook": "^0.11.0",
-    "graphql": "^14.0.0 || ^15.0.0 || ^16.0.0",
-    "prettier-plugin-astro": "^0.14.0"
-  },
   "dependencies": {
     "@antfu/install-pkg": "^1.1.0",
     "@clack/prompts": "^0.10.1",
@@ -248,8 +224,29 @@
     "tsx": "catalog:",
     "typescript": "^5.9.3"
   },
+  "peerDependencies": {
+    "@eslint-react/eslint-plugin": "^1.19.0",
+    "@graphql-eslint/eslint-plugin": "^4.3.0",
+    "@next/eslint-plugin-next": "^15.2.0-canary.67",
+    "@nx/eslint": "catalog:",
+    "@prettier/plugin-xml": "^3.4.1",
+    "@storm-software/tsdoc": "*",
+    "@unocss/eslint-plugin": ">=0.50.0",
+    "astro-eslint-parser": "^1.0.2",
+    "eslint": "catalog:",
+    "eslint-plugin-astro": "^1.2.0",
+    "eslint-plugin-format": ">=0.1.0",
+    "eslint-plugin-import-zod": "^1.2.0",
+    "eslint-plugin-react-compiler": "19.0.0-beta-21e868a-20250216",
+    "eslint-plugin-react-hooks": "^5.0.0",
+    "eslint-plugin-react-native": "^5.0.0",
+    "eslint-plugin-react-refresh": "^0.4.4",
+    "eslint-plugin-relay": "^1.8.3",
+    "eslint-plugin-storybook": "^0.11.0",
+    "graphql": "^14.0.0 || ^15.0.0 || ^16.0.0",
+    "prettier-plugin-astro": "^0.14.0"
+  },
   "publishConfig": {
     "access": "public"
-  },
-  "sideEffects": false
+  }
 }
