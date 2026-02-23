@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - ESLint
 
+## [0.169.94](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.169.94) (02/23/2026)
+
+### Bug Fixes
+
+- **eslint:** Resolve issue bundling external packages ([b3c35f624](https://github.com/storm-software/storm-ops/commit/b3c35f624))
+
 ## [0.169.93](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.169.93) (02/23/2026)
 
 ### Miscellaneous
