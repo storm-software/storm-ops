@@ -14,7 +14,8 @@ export default defineConfig([
     dts: true,
     sourcemap: false,
     tsconfig: "./tsconfig.json",
-    shims: true
+    shims: true,
+    noExternal: ["date-fns"]
   },
   {
     name: "config-tools-bin",
@@ -28,6 +29,7 @@ export default defineConfig([
     clean: false,
     dts: false,
     sourcemap: false,
-    tsconfig: "./tsconfig.json"
+    tsconfig: "./tsconfig.json",
+    noExternal: ["date-fns"]
   }
 ]);
