@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Cloudflare Tools
 
+## [0.71.56](https://github.com/storm-software/storm-ops/releases/tag/cloudflare-tools%400.71.56) (02/23/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update `README.md` files in repository ([e4da3c176](https://github.com/storm-software/storm-ops/commit/e4da3c176))
+
+### Updated Dependencies
+
+- Updated **workspace-tools** to **v1.294.41**
+- Updated **config-tools** to **v1.189.8**
+- Updated **config** to **v1.135.9**
+
 ## [0.71.55](https://github.com/storm-software/storm-ops/releases/tag/cloudflare-tools%400.71.55) (02/21/2026)
 
 ### Miscellaneous

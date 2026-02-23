@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Testing Tools
 
+## [1.119.83](https://github.com/storm-software/storm-ops/releases/tag/testing-tools%401.119.83) (02/23/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update `README.md` files in repository ([e4da3c176](https://github.com/storm-software/storm-ops/commit/e4da3c176))
+
 ## [1.119.82](https://github.com/storm-software/storm-ops/releases/tag/testing-tools%401.119.82) (02/21/2026)
 
 ### Miscellaneous
