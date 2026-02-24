@@ -362,6 +362,7 @@ unrs
 rwsdk
 tses
 rxvt
+rpid
 
 # TypeScript
 tsgo
