@@ -104,6 +104,8 @@ in
           "yarn\\.lock\\.yaml"
           "yarn\\.lock\\.yml"
           "types\/.*\\.d\\.ts"
+          "playwright\\.config\\.ts"
+          "playwright\\.config\\.js"
         ];
         language = "system";
         pass_filenames = true;
