@@ -67,8 +67,6 @@ in
           "\\.docusaurus"
           "\\.git"
           "\\.hbs"
-          "\\.yml"
-          "\\.yaml"
           "\\.lock"
           "\\.lockb"
           "\\.next"
@@ -141,7 +139,7 @@ in
         excludes = [ "Cargo\\.toml$" ];
       };
       yamllint = {
-        enable = true;
+        enable = false;
         description = "Yamllint with @storm-software/linting-tools config";
         settings = {
           configPath = "${config.env.DEVENV_ROOT}/node_modules/@storm-software/linting-tools/yamllint/config.yml";
