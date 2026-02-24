@@ -450,6 +450,7 @@ ambar
 davidanson
 mikestead
 bbenoist
+justinvdm
 
 # TSDoc Tags
 preapproved
