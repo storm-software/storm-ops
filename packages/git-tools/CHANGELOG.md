@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Git Tools
 
+## [2.124.76](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.124.76) (02/23/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace's `README.md` files ([18c7d0d2d](https://github.com/storm-software/storm-ops/commit/18c7d0d2d))
+
+### Updated Dependencies
+
+- Updated **conventional-changelog** to **v0.3.90**
+- Updated **config-tools** to **v1.189.9**
+- Updated **config** to **v1.135.10**
+
 ## [2.124.75](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.124.75) (02/23/2026)
 
 ### Miscellaneous

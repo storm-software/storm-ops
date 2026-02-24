@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - CSpell
 
+## [0.45.85](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.45.85) (02/23/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace's `README.md` files ([18c7d0d2d](https://github.com/storm-software/storm-ops/commit/18c7d0d2d))
+- **cspell:** Added "justinvdm" developer name to dictionary ([5a103aeb1](https://github.com/storm-software/storm-ops/commit/5a103aeb1))
+
 ## [0.45.84](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.45.84) (02/23/2026)
 
 ### Miscellaneous
