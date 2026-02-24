@@ -50,7 +50,7 @@ in
         enable = true;
         name = "eslint";
         description = "ESLint formatting with Storm Software config";
-        entry = "pnpm eslint --fix --color --concurrency 5 --no-warn-ignored --cache --cache-location \"${config.env.DEVENV_ROOT}/node_modules/.cache/storm/eslint-cache\" --config \"${config.env.DEVENV_ROOT}/eslint.config.mjs\" ";
+        entry = "pnpm eslint --fix --color --concurrency 3 --cache --cache-location \"${config.env.DEVENV_ROOT}/node_modules/.cache/storm/eslint-cache\" --config \"${config.env.DEVENV_ROOT}/eslint.config.mjs\" ";
         files = "";
         excludes = [
           ".*\/src\/executors\/.*\/\.schema\\.*"
