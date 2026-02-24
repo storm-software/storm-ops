@@ -67,6 +67,8 @@ in
           "\\.docusaurus"
           "\\.git"
           "\\.hbs"
+          "\\.yml"
+          "\\.yaml"
           "\\.lock"
           "\\.lockb"
           "\\.next"
