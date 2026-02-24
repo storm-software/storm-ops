@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - CSpell
 
+## [0.45.86](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.45.86) (02/24/2026)
+
+### Miscellaneous
+
+- **cspell:** Added "rpid` acronym to dictionary ([33c528a81](https://github.com/storm-software/storm-ops/commit/33c528a81))
+
 ## [0.45.85](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.45.85) (02/23/2026)
 
 ### Miscellaneous
