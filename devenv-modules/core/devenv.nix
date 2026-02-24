@@ -74,6 +74,7 @@ in
           "\\.nx/workspace-data"
           "\\.prettierignore"
           "\\.toml"
+          "\\.patch"
           "__snapshots__"
           "Cargo\\.toml"
           "catalog-package"
@@ -102,6 +103,7 @@ in
           "yarn\\.lock\\.json"
           "yarn\\.lock\\.yaml"
           "yarn\\.lock\\.yml"
+          "types\/.*\\.d\\.ts"
         ];
         language = "system";
         pass_filenames = true;
