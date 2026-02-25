@@ -40,10 +40,10 @@
   },
   "license": "Apache-2.0",
   "private": false,
-  "packageManager": "pnpm@10.3.0",
+  "packageManager": "pnpm@10.30.2",
   "engines": {
-    "node": ">=22.4.0",
-    "pnpm": ">=10.3.0"
+    "node": ">=22.22.0",
+    "pnpm": ">=10.30.2"
   },
   "bin": {
     "storm-lint": "./bin/lint.cjs",
@@ -133,37 +133,37 @@
     "zizmor"
   ],
   "dependencies": {
-    "@angular-devkit/architect": "0.1900.6",
+    "@angular-devkit/architect": "0.2101.5",
     "jiti": "catalog:"
   },
   "devDependencies": {
-    "@manypkg/cli": "^0.23.0",
+    "@manypkg/cli": "^0.25.1",
     "@manypkg/get-packages": "^2.2.2",
     "@types/node": "catalog:",
     "alex": "^11.0.1",
-    "check-dependency-version-consistency": "4.1.0",
+    "check-dependency-version-consistency": "4.1.1",
     "commander": "catalog:",
     "cspell": "catalog:",
-    "dpdm": "3.14.0",
-    "fs-extra": "11.2.0",
+    "dpdm": "3.15.1",
+    "fs-extra": "11.3.3",
     "glob": "catalog:",
     "knip": "catalog:",
-    "octokit": "4.0.2",
+    "octokit": "4.1.4",
     "p-limit": "5.0.0",
-    "rehype-parse": "9.0.0",
+    "rehype-parse": "9.0.1",
     "rehype-retext": "4.0.0",
     "remark-frontmatter": "5.0.0",
-    "remark-gfm": "4.0.0",
-    "remark-mdx": "3.0.1",
+    "remark-gfm": "4.0.1",
+    "remark-mdx": "3.1.1",
     "remark-parse": "11.0.0",
-    "remark-retext": "6.0.0",
+    "remark-retext": "6.0.1",
     "retext-english": "5.0.0",
     "retext-equality": "7.1.0",
     "retext-profanities": "8.0.0",
     "spawndamnit": "2.0.0",
     "tsup": "catalog:",
     "unified": "11.0.5",
-    "unified-engine": "11.2.1",
+    "unified-engine": "11.2.2",
     "vfile-reporter": "8.1.1"
   },
   "publishConfig": {

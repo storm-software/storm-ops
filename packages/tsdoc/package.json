@@ -82,9 +82,9 @@
   "types": "./dist/index.d.ts",
   "keywords": ["tsdoc", "typedoc", "storm", "storm-ops", "storm-software"],
   "peerDependencies": {
-    "@microsoft/api-extractor": ">=7.52.0",
-    "@microsoft/tsdoc": ">=0.15.0",
-    "@microsoft/tsdoc-config": ">=0.17.0"
+    "@microsoft/api-extractor": ">=7.57.5",
+    "@microsoft/tsdoc": ">=0.16.0",
+    "@microsoft/tsdoc-config": ">=0.18.1"
   },
   "peerDependenciesMeta": {
     "@microsoft/api-extractor": {

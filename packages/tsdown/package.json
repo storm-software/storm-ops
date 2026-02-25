@@ -160,8 +160,8 @@
   ],
   "peerDependencies": {
     "spdx-exceptions": "^2.5.0",
-    "spdx-license-ids": "^3.0.20",
-    "tsdown": ">=0.15.4"
+    "spdx-license-ids": "^3.0.23",
+    "tsdown": ">=0.20.3"
   },
   "peerDependenciesMeta": {
     "@microsoft/api-extractor": {
@@ -192,8 +192,8 @@
     "es-toolkit": "^1.44.0",
     "globby": "^14.1.0",
     "nx": "catalog:",
-    "rolldown": "1.0.0-beta.1",
-    "source-map": "0.7.4",
+    "rolldown": "1.0.0-rc.5",
+    "source-map": "0.7.6",
     "tsup": "catalog:"
   },
   "devDependencies": {
@@ -204,7 +204,7 @@
     "defu": "catalog:",
     "rollup": "catalog:",
     "spdx-exceptions": "^2.5.0",
-    "spdx-license-ids": "^3.0.22",
+    "spdx-license-ids": "^3.0.23",
     "tsdown": "catalog:"
   },
   "publishConfig": {

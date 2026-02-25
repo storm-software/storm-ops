@@ -64,13 +64,13 @@
   "peerDependencies": {
     "prettier": "catalog:",
     "prettier-plugin-astro": "^0.14.1",
-    "prettier-plugin-organize-imports": "^4.0.0",
+    "prettier-plugin-organize-imports": "^4.3.0",
     "prettier-plugin-packagejson": "^3.0.0",
     "prettier-plugin-prisma": "^5.0.0",
-    "prettier-plugin-sh": "^0.15.0",
-    "prettier-plugin-solidity": "1.3.1",
-    "prettier-plugin-tailwindcss": "0.6.5",
-    "prettier-plugin-toml": "^2.0.4"
+    "prettier-plugin-sh": "^0.18.0",
+    "prettier-plugin-solidity": "1.4.3",
+    "prettier-plugin-tailwindcss": "0.7.2",
+    "prettier-plugin-toml": "^2.0.6"
   },
   "peerDependenciesMeta": {
     "prettier": {
@@ -105,7 +105,7 @@
     "prettier-plugin-jsdoc": "^1.8.0",
     "prettier-plugin-organize-imports": "^4.3.0",
     "prettier-plugin-packagejson": "catalog:",
-    "prettier-plugin-sh": "^0.15.0",
+    "prettier-plugin-sh": "^0.18.0",
     "prettier-plugin-toml": "^2.0.6"
   },
   "devDependencies": {
@@ -114,7 +114,7 @@
     "prettier-plugin-astro": "^0.14.1",
     "prettier-plugin-prisma": "^5.0.0",
     "prettier-plugin-solidity": "^1.4.3",
-    "prettier-plugin-tailwindcss": "^0.6.14"
+    "prettier-plugin-tailwindcss": "^0.7.2"
   },
   "publishConfig": {
     "access": "public"
