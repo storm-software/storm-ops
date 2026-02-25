@@ -354,6 +354,7 @@ fontkit
 iconify
 automd
 didyoumean
+techdocs
 
 # Acronyms
 dpdm
@@ -490,3 +491,9 @@ agi
 
 # Algorithm Names
 murmurhash
+
+# Misc
+testuser
+sslmode
+pgsslmode
+scaffolder
