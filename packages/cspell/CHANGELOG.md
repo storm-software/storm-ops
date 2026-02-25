@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - CSpell
 
+## [0.45.87](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.45.87) (02/25/2026)
+
+### Miscellaneous
+
+- **cspell:** Added new words from `backstage` to dictionary ([8b82926a7](https://github.com/storm-software/storm-ops/commit/8b82926a7))
+
 ## [0.45.86](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.45.86) (02/24/2026)
 
 ### Miscellaneous
