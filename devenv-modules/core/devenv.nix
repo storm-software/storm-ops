@@ -53,16 +53,11 @@ in
         entry = "pnpm eslint --fix --color --concurrency 3 --no-warn-ignored --cache --cache-location \"${config.env.DEVENV_ROOT}/node_modules/.cache/storm/eslint-cache\" --config \"${config.env.DEVENV_ROOT}/eslint.config.mjs\" ";
         files = "";
         excludes = [
-          ".*\/src\/executors\/.*\/\.schema\\.*"
-          ".*\/src\/executors\/.*\/schema\\.d\\.ts"
-          ".*\/src\/executors\/.*\/schema\\.json"
-          ".*\/src\/executors\/.*\/schema\\.md"
-          ".*\/src\/generators\/.*\/.*\\.schema\\.*"
-          ".*\/src\/generators\/.*\/files"
-          ".*\/src\/generators\/.*\/files\/.*\/.*"
-          ".*\/src\/generators\/.*\/schema\\.d\\.ts"
-          ".*\/src\/generators\/.*\/schema\\.json"
-          ".*\/src\/generators\/.*\/schema\\.md"
+          "\\.schema\\.d\\.ts"
+          "\\.schema\\.json"
+          "\\.schema\\.md"
+          "\\/files"
+          "\\/files\\/.*\\/.*"
           "\\.env.*"
           "\\.prisma"
           "\\.md"
