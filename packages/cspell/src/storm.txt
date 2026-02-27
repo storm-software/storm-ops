@@ -373,6 +373,7 @@ genaiscript
 genaisrc
 genai
 pnpmfile
+jsnext
 
 # JavaScript
 domwindow
