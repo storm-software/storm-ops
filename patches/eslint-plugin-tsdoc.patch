@@ -1,5 +1,5 @@
 diff --git a/lib/ConfigCache.js b/lib/ConfigCache.js
-index 55d07a04c611f65e0a27f59b5de9c89c9d393888..e15e58724147c0f6eacfd5b01a4ce995d867ddcd 100644
+index 55d07a04c611f65e0a27f59b5de9c89c9d393888..44295ecce15d7d3b696070c32b2b63533a2c2d0c 100644
 --- a/lib/ConfigCache.js
 +++ b/lib/ConfigCache.js
 @@ -29,6 +29,76 @@ exports.ConfigCache = void 0;
@@ -332,23 +332,19 @@ index 55d07a04c611f65e0a27f59b5de9c89c9d393888..e15e58724147c0f6eacfd5b01a4ce995
      }
  }
 diff --git a/lib/Debug.js b/lib/Debug.js
-index abdc844796e31fa49872c8eed312b0a19299e1ef..7463bad88594dd18a25e1e4a9ae36318eb6bc4d4 100644
+index abdc844796e31fa49872c8eed312b0a19299e1ef..e3b3d696b707ab7bea3699333f1437b1d4b8e10d 100644
 --- a/lib/Debug.js
 +++ b/lib/Debug.js
-@@ -6,8 +6,9 @@ exports.Debug = void 0;
- class Debug {
-     // To debug the plugin, temporarily uncomment the body of this function
+@@ -8,6 +8,7 @@ class Debug {
      static log(message) {
--        // message = require("process").pid + ": " + message;
--        // console.log(message);
-+        message = require("process").pid + ": " + message;
-+        console.log(message);
+         // message = require("process").pid + ": " + message;
+         // console.log(message);
 +
          // require('fs').writeFileSync('C:\\Git\\log.txt', message + '\r\n', { flag: 'as' });
      }
  }
 diff --git a/lib/index.js b/lib/index.js
-index 73c357f96e3c69ac87e19cc3e5d2733073d6aef3..36e90b80f02414eccbe9f562fe91f5e2136ba809 100644
+index 73c357f96e3c69ac87e19cc3e5d2733073d6aef3..8db601f574495874fcdab1a202de8c413d897753 100644
 --- a/lib/index.js
 +++ b/lib/index.js
 @@ -15,48 +15,132 @@ const plugin = {

@@ -218,7 +218,7 @@ patchedDependencies:
     hash: 72dcde755c336eeca3e6170de1106fd85ecb66171e060788f80df45cea29bc9b
     path: patches/eslint-plugin-pnpm@0.3.0.patch
   eslint-plugin-tsdoc:
-    hash: 611157f561b00eed9e1354e07e3bfbeab0dc230489afaec6fbae0c6be3bf2f43
+    hash: 11b9fbe0e91a2ce3492e80b89a7502a9ff364683b23b9bdfc2c979d988e1682b
     path: patches/eslint-plugin-tsdoc.patch
   tsup@8.4.0:
     hash: 751a554d775c3572381af4e7e5fa22eeda6dd6856012fb1cf521d6806eb2dc74
@@ -896,7 +896,7 @@ importers:
         version: 0.12.0(eslint@9.39.2(jiti@2.6.1))
       eslint-plugin-tsdoc:
         specifier: 0.4.0
-        version: 0.4.0(patch_hash=611157f561b00eed9e1354e07e3bfbeab0dc230489afaec6fbae0c6be3bf2f43)
+        version: 0.4.0(patch_hash=11b9fbe0e91a2ce3492e80b89a7502a9ff364683b23b9bdfc2c979d988e1682b)
       eslint-plugin-unicorn:
         specifier: ^57.0.0
         version: 57.0.0(eslint@9.39.2(jiti@2.6.1))
@@ -26061,7 +26061,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  eslint-plugin-tsdoc@0.4.0(patch_hash=611157f561b00eed9e1354e07e3bfbeab0dc230489afaec6fbae0c6be3bf2f43):
+  eslint-plugin-tsdoc@0.4.0(patch_hash=11b9fbe0e91a2ce3492e80b89a7502a9ff364683b23b9bdfc2c979d988e1682b):
     dependencies:
       '@microsoft/tsdoc': 0.15.1
       '@microsoft/tsdoc-config': 0.17.1
