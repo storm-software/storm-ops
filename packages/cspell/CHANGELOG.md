@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - CSpell
 
+## [0.45.90](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.45.90) (02/27/2026)
+
+### Miscellaneous
+
+- **cspell:** Added more common phrases to dictionary ([41f21f58d](https://github.com/storm-software/storm-ops/commit/41f21f58d))
+
 ## [0.45.89](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.45.89) (02/27/2026)
 
 ### Miscellaneous
