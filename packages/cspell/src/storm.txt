@@ -355,6 +355,7 @@ iconify
 automd
 didyoumean
 techdocs
+rdjson
 
 # Acronyms
 dpdm
