@@ -98,7 +98,7 @@
     "defu": "catalog:",
     "prettier": "catalog:",
     "prettier-plugin-packagejson": "catalog:",
-    "semver": "7.6.2",
+    "semver": "7.7.4",
     "yaml": "catalog:"
   },
   "devDependencies": {

@@ -22,7 +22,7 @@ jobs:
           persist-credentials: false
 
       - name: GitGuardian scan
-        uses: GitGuardian/ggshield/actions/secret@v1.39.0
+        uses: GitGuardian/ggshield/actions/secret@v1.48.0
         with:
           args: "--exclude pnpm-lock.yaml --exclude tools/config/verdaccio.yml
             --exclude nx.json"

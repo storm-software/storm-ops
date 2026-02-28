@@ -40,10 +40,10 @@
   },
   "license": "Apache-2.0",
   "private": false,
-  "packageManager": "pnpm@10.3.0",
+  "packageManager": "pnpm@10.30.2",
   "engines": {
-    "node": ">=22.4.0",
-    "pnpm": ">=10.3.0"
+    "node": ">=22.22.0",
+    "pnpm": ">=10.30.2"
   },
   "bin": {
     "storm-git": "./bin/git.cjs",
@@ -194,31 +194,31 @@
     "lint-staged"
   ],
   "peerDependencies": {
-    "zod": ">=4.0.0"
+    "zod": ">=4.3.6"
   },
   "dependencies": {
     "@commitlint/ensure": "^19.8.1",
     "@commitlint/rules": "^19.8.1",
-    "@inquirer/prompts": "7.2.1",
+    "@inquirer/prompts": "7.10.1",
     "@nx/devkit": "catalog:",
     "@nx/js": "catalog:",
     "@storm-software/config": "workspace:*",
     "@storm-software/config-tools": "workspace:*",
-    "@textlint/ast-node-types": "14.4.2",
-    "@textlint/markdown-to-ast": "14.4.2",
-    "anchor-markdown-header": "0.7.0",
+    "@textlint/ast-node-types": "14.8.4",
+    "@textlint/markdown-to-ast": "14.8.4",
+    "anchor-markdown-header": "0.8.2",
     "any-shell-escape": "0.1.1",
     "axios": "1.8.2",
     "chalk": "catalog:",
-    "chalk-template": "1.1.0",
+    "chalk-template": "1.1.2",
     "conventional-changelog-conventionalcommits": "^9.1.0",
     "conventional-changelog-storm-software": "workspace:*",
-    "htmlparser2": "10.0.0",
-    "jsonc-parser": "3.2.1",
+    "htmlparser2": "10.1.0",
+    "jsonc-parser": "3.3.1",
     "nx": "catalog:",
     "prettier": "catalog:",
     "tsconfig-paths": "4.2.0",
-    "underscore": "1.13.7",
+    "underscore": "1.13.8",
     "update-section": "0.3.3",
     "word-wrap": "1.2.5",
     "yaml": "catalog:",
@@ -229,8 +229,8 @@
     "commander": "catalog:",
     "conventional-commits-parser": "^6.2.1",
     "defu": "catalog:",
-    "semver": "7.6.2",
-    "simple-git": "^3.31.1",
+    "semver": "7.7.4",
+    "simple-git": "^3.32.2",
     "tsup": "catalog:"
   },
   "publishConfig": {
