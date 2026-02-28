@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - CSpell
 
+## [0.45.89](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.45.89) (02/27/2026)
+
+### Miscellaneous
+
+- **cspell:** Added "rdjson" to dictionary ([d1ed96ffd](https://github.com/storm-software/storm-ops/commit/d1ed96ffd))
+
 ## [0.45.88](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.45.88) (02/27/2026)
 
 ### Miscellaneous
