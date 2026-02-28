@@ -356,6 +356,8 @@ automd
 didyoumean
 techdocs
 rdjson
+polyfilling
+xchacha
 
 # Acronyms
 dpdm
