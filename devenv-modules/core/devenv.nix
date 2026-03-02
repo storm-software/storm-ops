@@ -118,7 +118,7 @@ in
         pass_filenames = true;
       };
       prettier = {
-        enable = true;
+        enable = false;
         description = "Prettier with @storm-software/prettier config";
         settings = {
           color = true;
