@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Prettier
 
+## [0.58.10](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.58.10) (03/02/2026)
+
+### Bug Fixes
+
+- **devenv-modules:** Added missing items to prettier's ignore list ([6d3597cd7](https://github.com/storm-software/storm-ops/commit/6d3597cd7))
+
 ## [0.58.8](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.58.8) (02/23/2026)
 
 ### Miscellaneous
