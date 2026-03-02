@@ -22,7 +22,7 @@ in
 
     # Tools
     pkgs.capnproto
-    pkgs.prek
+    pkgs-unstable.prek
   ];
 
   tasks = {
@@ -53,11 +53,6 @@ in
         entry = "pnpm eslint --fix --color --no-warn-ignored --cache --cache-location \"${config.env.DEVENV_ROOT}/node_modules/.cache/storm/eslint-cache\" --config \"${config.env.DEVENV_ROOT}/eslint.config.mjs\" ";
         files = "";
         excludes = [
-          "\\.schema\\.d\\.ts"
-          "\\.schema\\.json"
-          "\\.schema\\.md"
-          "\\/files"
-          "\\/files\\/.*\\/.*"
           "\\.env.*"
           "\\.prisma"
           "\\.md"
@@ -81,6 +76,9 @@ in
           "\\.earthquake"
           "\\.aftershock"
           "__snapshots__"
+          "__test__"
+          "__mocks__"
+          "__generated__"
           "Cargo\\.toml"
           "catalog-package"
           "CHANGELOG\\.md"
@@ -103,12 +101,16 @@ in
           "pnpm-workspace\\.yaml"
           "pnpm-workspace\\.yaml"
           "README\\.md"
-          "tools\/docker"
           "typegen\\.d\\.ts"
           "yarn\\.lock\\.json"
           "yarn\\.lock\\.yaml"
           "yarn\\.lock\\.yml"
-          "types\/.*\\.d\\.ts"
+          "tools/docker"
+          "nx/.*\\.?schema\\.d\\.ts"
+          "nx/.*\\.?schema\\.json"
+          "nx/.*\\.?schema\\.md"
+          "nx/.*/files/.*"
+          "types/.*\\.d\\.ts"
           "playwright\\.config\\.ts"
           "playwright\\.config\\.js"
         ];
@@ -116,7 +118,7 @@ in
         pass_filenames = true;
       };
       prettier = {
-        enable = false;
+        enable = true;
         description = "Prettier with @storm-software/prettier config";
         settings = {
           color = true;

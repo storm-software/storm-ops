@@ -8,6 +8,8 @@ inputs:
     url: github:cachix/devenv-nixpkgs/rolling
   nixpkgs-unstable:
     url: github:nixos/nixpkgs/nixpkgs-unstable
+  git-hooks:
+    url: github:cachix/git-hooks.nix
   rust-overlay:
     url: github:oxalica/rust-overlay
     inputs:
