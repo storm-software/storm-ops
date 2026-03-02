@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - ESLint
 
+## [0.169.99](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.169.99) (03/02/2026)
+
+### Bug Fixes
+
+- **eslint:** Resolve issue excluding `untyped` generated files from linting ([2e3fabf14](https://github.com/storm-software/storm-ops/commit/2e3fabf14))
+
 ## [0.169.98](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.169.98) (03/02/2026)
 
 ### Miscellaneous
