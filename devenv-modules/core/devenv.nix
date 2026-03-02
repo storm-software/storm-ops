@@ -128,7 +128,7 @@ in
           config-precedence = "file-override";
           configPath = "${config.env.DEVENV_ROOT}/node_modules/@storm-software/prettier/config.json";
           ignore-path = [ "${config.env.DEVENV_ROOT}/node_modules/@storm-software/prettier/.prettierignore" ];
-          log-level = "debug";
+          log-level = "error";
         };
         excludes = [
           "Cargo.toml"
