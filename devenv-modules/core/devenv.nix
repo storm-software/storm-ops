@@ -63,6 +63,7 @@ in
           "\\.alexignore"
           "\\.docusaurus"
           "\\.git"
+          "\\.vscode"
           "\\.hbs"
           "\\.lock"
           "\\.lockb"
