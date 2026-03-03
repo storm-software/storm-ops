@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - CSpell
 
+## [0.46.0](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.46.0) (03/03/2026)
+
+### Bug Fixes
+
+- **cspell:** Resolved issue with comments in `.json` file ([b8408e5c7](https://github.com/storm-software/storm-ops/commit/b8408e5c7))
+
+### Features
+
+- **cspell:** Cleaned up the CSpell shared configurations ([7abd498bd](https://github.com/storm-software/storm-ops/commit/7abd498bd))
+
 ## [0.45.90](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.45.90) (02/27/2026)
 
 ### Miscellaneous
