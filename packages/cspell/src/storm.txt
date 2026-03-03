@@ -504,3 +504,12 @@ scaffolder
 
 # Python
 pipfile
+
+# Phrases
+deburred
+
+# Terminals
+codeship
+truecolor
+pathext
+colorterm
