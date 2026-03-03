@@ -68,7 +68,7 @@
     }
   ],
   "import": [
-    "./cspell-recommended.json",
+    "./cspell-extra.json",
     "@cspell/dict-ada/cspell-ext.json",
     "@cspell/dict-bash/cspell-ext.json",
     "@cspell/dict-companies/cspell-ext.json",

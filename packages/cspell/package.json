@@ -1,15 +1,30 @@
 {
   "name": "@storm-software/cspell",
   "version": "0.45.91",
-  "type": "module",
+  "private": false,
   "description": "A package containing CSpell keyword dictionaries and shared configurations for Storm Software.",
+  "keywords": [
+    "storm-software",
+    "monorepo",
+    "storm-ops",
+    "sullivanpj",
+    "cspell",
+    "cspell-ext",
+    "dictionary",
+    "spelling"
+  ],
+  "homepage": "https://stormsoftware.com",
+  "bugs": "https://github.com/storm-software/storm-ops/issues",
   "repository": {
     "type": "github",
     "url": "https://github.com/storm-software/storm-ops",
     "directory": "packages/cspell"
   },
-  "homepage": "https://stormsoftware.com",
-  "bugs": "https://github.com/storm-software/storm-ops/issues",
+  "funding": {
+    "type": "github",
+    "url": "https://github.com/sponsors/storm-software"
+  },
+  "license": "Apache-2.0",
   "author": {
     "name": "Storm Software",
     "email": "contact@stormsoftware.com",
@@ -34,19 +49,7 @@
       "url": "https://stormsoftware.com"
     }
   ],
-  "funding": {
-    "type": "github",
-    "url": "https://github.com/sponsors/storm-software"
-  },
-  "license": "Apache-2.0",
-  "private": false,
-  "packageManager": "pnpm@10.3.0",
-  "engines": {
-    "node": ">=22.4.0",
-    "pnpm": ">=10.3.0"
-  },
-  "main": "./dist/index.cjs",
-  "module": "./dist/index.js",
+  "type": "module",
   "exports": {
     "./package.json": "./package.json",
     ".": {
@@ -80,15 +83,17 @@
     "./cspell.json": "./cspell-ext.json",
     "./cspell-ext.json": "./cspell-ext.json",
     "./cspell-minimal.json": "./cspell-minimal.json",
-    "./cspell-base.json": "./cspell-base.json",
     "./cspell-recommended.json": "./cspell-recommended.json",
+    "./cspell-extra.json": "./cspell-extra.json",
     "./cspell-all.json": "./cspell-all.json",
     "./ext": "./cspell-ext.json",
     "./minimal": "./cspell-minimal.json",
-    "./base": "./cspell-base.json",
     "./recommended": "./cspell-recommended.json",
+    "./extra": "./cspell-extra.json",
     "./all": "./cspell-all.json"
   },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "files": [
     "*.d.ts",
@@ -101,24 +106,6 @@
     "dict/storm.txt",
     "dist/**/*"
   ],
-  "keywords": [
-    "storm-software",
-    "monorepo",
-    "storm-ops",
-    "sullivanpj",
-    "cspell",
-    "cspell-ext",
-    "dictionary",
-    "spelling"
-  ],
-  "peerDependencies": {
-    "cspell": "catalog:"
-  },
-  "peerDependenciesMeta": {
-    "cspell": {
-      "optional": false
-    }
-  },
   "dependencies": {
     "cspell": "catalog:"
   },
@@ -165,6 +152,19 @@
     "@cspell/dict-typescript": "^3.2.3",
     "@cspell/dict-vue": "^3.0.5",
     "tsup": "catalog:"
+  },
+  "peerDependencies": {
+    "cspell": "catalog:"
+  },
+  "peerDependenciesMeta": {
+    "cspell": {
+      "optional": false
+    }
+  },
+  "packageManager": "pnpm@10.3.0",
+  "engines": {
+    "node": ">=22.4.0",
+    "pnpm": ">=10.3.0"
   },
   "publishConfig": {
     "access": "public"

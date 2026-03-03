@@ -1,0 +1,116 @@
+{
+  "$schema": "https://raw.githubusercontent.com/streetsidesoftware/cspell/main/cspell.schema.json",
+  "version": "0.2",
+  "enabledLanguageIds": [
+    "handlebars",
+    "dockerfile",
+    "terraform",
+    "tfvars",
+    "commit-msg",
+    "css",
+    "html",
+    "markdown"
+  ],
+  "dictionaries": [
+    "cryptocurrencies",
+    "docker",
+    "k8s",
+    "aws",
+    "terraform",
+    "makefile",
+    "css",
+    "html",
+    "html-symbol-entities"
+  ],
+  "patterns": [
+    {
+      "name": "Html symbol entity",
+      "description": "Matches on HTML symbols like `&clubs;`",
+      "pattern": "/&[a-z]+;/g"
+    },
+    {
+      "name": "Html Tags",
+      "pattern": "<[^>]*>",
+      "description": "Reference: https://stackoverflow.com/questions/11229831/regular-expression-to-remove-html-tags-from-a-string"
+    }
+  ],
+
+  "languageSettings": [
+    {
+      "languageId": "javascriptreact,typescriptreact,mdx",
+      "dictionaries": [
+        "storm",
+        "html",
+        "html-symbol-entities",
+        "css",
+        "fonts",
+        "softwareTerms"
+      ]
+    },
+    {
+      "languageId": "markdown,asciidoc",
+      "dictionaries": [
+        "storm",
+        "npm",
+        "html",
+        "html-symbol-entities",
+        "softwareTerms"
+      ]
+    },
+    {
+      "languageId": "html",
+      "dictionaries": [
+        "storm",
+        "html",
+        "fonts",
+        "typescript",
+        "css",
+        "npm",
+        "html-symbol-entities"
+      ]
+    },
+    {
+      "languageId": "css,less,scss",
+      "dictionaries": ["storm", "fonts", "css"]
+    },
+    {
+      "languageId": "markdown,html,mdx",
+      "ignoreRegExpList": ["Html symbol entity", "public-licenses"]
+    },
+    {
+      "languageId": "html",
+      "ignoreRegExpList": ["href"]
+    },
+    {
+      "languageId": "markdown",
+      "ignoreRegExpList": [
+        "Markdown link reference",
+        "Markdown link footer",
+        "Markdown link",
+        "Markdown anchor",
+        "Markdown code blocks",
+        "Inline code blocks",
+        "Link contents",
+        "Snippet references",
+        "Snippet references 2",
+        "Multi-line code blocks",
+        "Html Tags"
+      ]
+    }
+  ],
+  "import": [
+    "./cspell-recommended.json",
+    "@cspell/dict-aws/cspell-ext.json",
+    "@cspell/dict-cryptocurrencies/cspell-ext.json",
+    "@cspell/dict-docker/cspell-ext.json",
+    "@cspell/dict-en-common-misspellings/cspell-ext.json",
+    "@cspell/dict-k8s/cspell-ext.json",
+    "@cspell/dict-makefile/cspell-ext.json",
+    "@cspell/dict-terraform/cspell-ext.json",
+    "@cspell/dict-tfvars/cspell-ext.json",
+    "@cspell/dict-commit-msg/cspell-ext.json",
+    "@cspell/dict-html-symbol-entities/cspell-ext.json",
+    "@cspell/dict-html/cspell-ext.json",
+    "@cspell/dict-css/cspell-ext.json"
+  ]
+}
