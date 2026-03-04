@@ -61,7 +61,8 @@
     "./script.json": "./script.json"
   },
   "files": [
-    "./*.json"
+    "./*.json",
+    "./reset.d.ts"
   ],
   "dependencies": {
     "@total-typescript/ts-reset": "^0.5.1"

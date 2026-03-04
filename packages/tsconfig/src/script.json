@@ -1,5 +1,5 @@
 {
-  "extends": "./base.json",
+  "extends": "@storm-software/tsconfig/base.json",
   "$schema": "https://json.schemastore.org/tsconfig",
   "display": "Storm Software - Script TypeScript Config",
   "compileOnSave": false,

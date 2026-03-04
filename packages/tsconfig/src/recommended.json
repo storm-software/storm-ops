@@ -1,7 +1,7 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig",
   "display": "Storm Software - Recommended TypeScript Config",
-  "extends": "./base.json",
+  "extends": "@storm-software/tsconfig/base.json",
   "compilerOptions": {
     /* Base Options: */
     "allowJs": true,
@@ -17,5 +17,5 @@
     /* AND if you're building for a library in a monorepo: */
     "declarationMap": true
   },
-  "include": ["./reset.d.ts"]
+  "include": ["@storm-software/tsconfig/reset.d.ts"]
 }
