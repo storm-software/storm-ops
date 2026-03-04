@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Tsconfig
 
+## [0.48.1](https://github.com/storm-software/storm-ops/releases/tag/tsconfig%400.48.1) (03/04/2026)
+
+### Bug Fixes
+
+- **tsconfig:** Resolve issue with invalid tsconfig `include` value ([a9ba17f49](https://github.com/storm-software/storm-ops/commit/a9ba17f49))
+
 ## [0.48.0](https://github.com/storm-software/storm-ops/releases/tag/tsconfig%400.48.0) (03/04/2026)
 
 ### Bug Fixes
