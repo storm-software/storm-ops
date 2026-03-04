@@ -1525,7 +1525,7 @@ importers:
   packages/tsconfig:
     dependencies:
       '@total-typescript/ts-reset':
-        specifier: 0.5.1
+        specifier: ^0.5.1
         version: 0.5.1
     devDependencies:
       '@types/node':

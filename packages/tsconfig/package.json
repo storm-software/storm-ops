@@ -1,32 +1,70 @@
 {
   "name": "@storm-software/tsconfig",
   "version": "0.47.86",
-  "description": "A comprehensive package containing shared TypeScript configuration files for various Storm Software projects.",
+  "private": false,
+  "description": "A package containing shared TypeScript configuration files (tsconfig.json) used in Storm Software projects.",
+  "keywords": [
+    "storm-ops",
+    "storm-software",
+    "typescript",
+    "tsconfig"
+  ],
+  "homepage": "https://stormsoftware.com",
+  "bugs": {
+    "url": "https://stormsoftware.com/support",
+    "email": "support@stormsoftware.com"
+  },
   "repository": {
     "type": "github",
-    "url": "https://github.com/storm-software/storm-ops",
+    "url": "https://github.com/storm-software/storm-ops.git",
     "directory": "packages/tsconfig"
   },
-  "homepage": "https://stormsoftware.com",
-  "bugs": "https://github.com/storm-software/storm-ops/issues",
+  "funding": {
+    "type": "github",
+    "url": "https://github.com/sponsors/storm-software"
+  },
+  "license": "Apache-2.0",
   "author": {
     "name": "Storm Software",
     "email": "contact@stormsoftware.com",
     "url": "https://stormsoftware.com"
   },
-  "license": "Apache-2.0",
-  "private": false,
-  "keywords": [
-    "monorepo",
-    "open-system",
-    "storm",
-    "storm-ops",
-    "storm-stack",
-    "stormstack",
-    "sullivanpj"
+  "maintainers": [
+    {
+      "name": "Storm Software",
+      "email": "contact@stormsoftware.com",
+      "url": "https://stormsoftware.com"
+    }
+  ],
+  "contributors": [
+    {
+      "name": "Storm Software",
+      "email": "contact@stormsoftware.com",
+      "url": "https://stormsoftware.com"
+    }
+  ],
+  "sideEffects": false,
+  "type": "module",
+  "exports": {
+    "./package.json": "./package.json",
+    "./reset.d.ts": "./reset.d.ts",
+    "./base.json": "./base.json",
+    "./recommended.json": "./recommended.json",
+    "./bun.json": "./bun.json",
+    "./app.json": "./app.json",
+    "./library.json": "./library.json",
+    "./dom-app.json": "./dom-app.json",
+    "./dom-library.json": "./dom-library.json",
+    "./next.json": "./next.json",
+    "./react-native.json": "./react-native.json",
+    "./react.json": "./react.json",
+    "./script.json": "./script.json"
+  },
+  "files": [
+    "./*.json"
   ],
   "dependencies": {
-    "@total-typescript/ts-reset": "0.5.1"
+    "@total-typescript/ts-reset": "^0.5.1"
   },
   "devDependencies": {
     "@types/node": "catalog:"

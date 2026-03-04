@@ -5,42 +5,18 @@
   "projectType": "library",
   "targets": {
     "build": {
-      "cache": true,
-      "executor": "@nx/esbuild:esbuild",
-      "outputs": ["{options.outputPath}"],
+      "executor": "nx:run-commands",
       "options": {
-        "outputPath": "dist/packages/tsconfig",
-        "tsConfig": "packages/tsconfig/tsconfig.json",
-        "project": "packages/tsconfig/package.json",
-        "main": "packages/tsconfig/src/index.ts",
-        "platform": "node",
-        "deleteOutputPath": true,
-        "bundle": true,
-        "thirdParty": true,
-        "skipTypeCheck": false,
-        "metafile": true,
-        "minify": false,
-        "assets": [
-          {
-            "input": "./packages/tsconfig",
-            "glob": "*.md",
-            "output": "/"
-          },
-          {
-            "input": "",
-            "glob": "LICENSE",
-            "output": "/"
-          },
-          {
-            "input": "./packages/tsconfig/src",
-            "glob": "{*.json,*.ts}",
-            "output": "."
-          }
+        "commands": [
+          "pnpm copyfiles LICENSE dist/packages/tsconfig",
+          "pnpm copyfiles --up=2 ./packages/tsconfig/*.md ./packages/tsconfig/package.json dist/packages/tsconfig",
+          "pnpm copyfiles --up=3 ./packages/tsconfig/src/*.json ./packages/tsconfig/src/*.d.ts dist/packages/tsconfig"
         ]
       }
     },
     "nx-release-publish": {
       "executor": "@storm-software/workspace-tools:npm-publish"
     }
-  }
+  },
+  "tags": ["platform:neutral"]
 }
