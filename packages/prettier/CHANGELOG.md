@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Prettier
 
+## [0.58.11](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.58.11) (03/04/2026)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate the workspace's `README.md` files ([bba44b811](https://github.com/storm-software/storm-ops/commit/bba44b811))
+
 ## [0.58.10](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.58.10) (03/02/2026)
 
 ### Bug Fixes

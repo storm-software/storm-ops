@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - Tsconfig
 
+## [0.48.0](https://github.com/storm-software/storm-ops/releases/tag/tsconfig%400.48.0) (03/04/2026)
+
+### Bug Fixes
+
+- **tsconfig:** Update references to other tsconfig.json files to use npm scope ([1ec548f22](https://github.com/storm-software/storm-ops/commit/1ec548f22))
+
+### Features
+
+- **tsconfig:** Added the `recommended` typescript configuration file ([f77b58bd9](https://github.com/storm-software/storm-ops/commit/f77b58bd9))
+
 ## [0.47.84](https://github.com/storm-software/storm-ops/releases/tag/tsconfig%400.47.84) (02/23/2026)
 
 ### Miscellaneous
