@@ -14,7 +14,7 @@ in
   ];
   dotenv.disableHint = true;
 
-  # delta.enable = true;
+  delta.enable = true;
 
   # https://devenv.sh/basics/
   env.DEFAULT_LOCALE = "en_US";

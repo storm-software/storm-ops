@@ -32,8 +32,8 @@
         enable = true;
         description = "Taplo with @storm-software/linting-tools config";
         args = [
-          "--config=${config.env.DEVENV_ROOT}/packages/linting-tools/src/taplo/config.toml"
-          "--cache-path=${config.env.DEVENV_ROOT}/node_modules/.cache/taplo"
+          "--config=${config.git.root}/packages/linting-tools/src/taplo/config.toml"
+          "--cache-path=${config.git.root}/node_modules/.cache/taplo"
         ];
         excludes = [ "Cargo\\.toml$" ];
       };
@@ -42,7 +42,7 @@
         description = "Zizmor with @storm-software/linting-tools config";
         args = [
           "--offline"
-          "--config=${config.env.DEVENV_ROOT}/tools/config/zizmor.yml"
+          "--config=${config.git.root}/tools/config/zizmor.yml"
         ];
         files = "^\\.github/workflows/.*\\.(yml|yaml)$";
       };

@@ -50,7 +50,7 @@ in
         enable = true;
         name = "eslint";
         description = "ESLint formatting with Storm Software config";
-        entry = "pnpm eslint --fix --color --no-warn-ignored --cache --cache-location \"${config.env.DEVENV_ROOT}/node_modules/.cache/storm/eslint-cache\" --config \"${config.env.DEVENV_ROOT}/eslint.config.mjs\" ";
+        entry = "pnpm eslint --fix --color --no-warn-ignored --cache --cache-location \"${config.git.root}/node_modules/.cache/storm/eslint-cache\" --config \"${config.git.root}/eslint.config.mjs\" ";
         files = "";
         excludes = [
           "\\.env.*"
@@ -125,10 +125,10 @@ in
           color = true;
           write = true;
           cache = true;
-          cache-location = "${config.env.DEVENV_ROOT}/node_modules/.cache/prettier/.prettier-cache";
+          cache-location = "${config.git.root}/node_modules/.cache/prettier/.prettier-cache";
           config-precedence = "file-override";
-          configPath = "${config.env.DEVENV_ROOT}/node_modules/@storm-software/prettier/config.json";
-          ignore-path = [ "${config.env.DEVENV_ROOT}/node_modules/@storm-software/prettier/.prettierignore" ];
+          configPath = "${config.git.root}/node_modules/@storm-software/prettier/config.json";
+          ignore-path = [ "${config.git.root}/node_modules/@storm-software/prettier/.prettierignore" ];
           log-level = "error";
         };
         excludes = [
@@ -144,8 +144,8 @@ in
         enable = true;
         description = "Taplo with @storm-software/linting-tools config";
         args = [
-          "--config=${config.env.DEVENV_ROOT}/node_modules/@storm-software/linting-tools/taplo/config.toml"
-          "--cache-path=${config.env.DEVENV_ROOT}/node_modules/.cache/taplo"
+          "--config=${config.git.root}/node_modules/@storm-software/linting-tools/taplo/config.toml"
+          "--cache-path=${config.git.root}/node_modules/.cache/taplo"
         ];
         files = "\\.toml$";
         excludes = [ "Cargo\\.toml$" ];
@@ -154,7 +154,7 @@ in
         enable = false;
         description = "Yamllint with @storm-software/linting-tools config";
         settings = {
-          configPath = "${config.env.DEVENV_ROOT}/node_modules/@storm-software/linting-tools/yamllint/config.yml";
+          configPath = "${config.git.root}/node_modules/@storm-software/linting-tools/yamllint/config.yml";
         };
         files = "\\.(yaml|yml)$";
         excludes = [
@@ -168,7 +168,7 @@ in
         description = "Zizmor with @storm-software/linting-tools config";
         args = [
           "--offline"
-          "--config=${config.env.DEVENV_ROOT}/tools/config/zizmor.yml"
+          "--config=${config.git.root}/tools/config/zizmor.yml"
         ];
         files = "^\\.github/workflows/.*\\.(yml|yaml)$";
       };
