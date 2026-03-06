@@ -962,6 +962,10 @@ Backward pagination arguments
    */
   'format/dprint'?: Linter.RuleEntry<FormatDprint>
   /**
+   * Use oxfmt to format code
+   */
+  'format/oxfmt'?: Linter.RuleEntry<FormatOxfmt>
+  /**
    * Use Prettier to format code
    */
   'format/prettier'?: Linter.RuleEntry<FormatPrettier>
@@ -3196,11 +3200,11 @@ Backward pagination arguments
   /**
    * An eslint rule that does pattern matching against an entire file
    */
-  'no-secrets/no-pattern-match'?: Linter.RuleEntry<[]>
+  'no-secrets/no-pattern-match'?: Linter.RuleEntry<NoSecretsNoPatternMatch>
   /**
    * An eslint rule that looks for possible leftover secrets in code
    */
-  'no-secrets/no-secrets'?: Linter.RuleEntry<[]>
+  'no-secrets/no-secrets'?: Linter.RuleEntry<NoSecretsNoSecrets>
   /**
    * Disallow assignments where both sides are exactly the same
    * @see https://eslint.org/docs/latest/rules/no-self-assign
@@ -8499,6 +8503,10 @@ type FormatDprint = []|[{
   plugins?: unknown[]
   [k: string]: unknown | undefined
 }]
+// ----- format/oxfmt -----
+type FormatOxfmt = []|[{
+  [k: string]: unknown | undefined
+}]
 // ----- format/prettier -----
 type FormatPrettier = []|[{
   parser: string
@@ -10875,6 +10883,34 @@ type NoRestrictedSyntax = (string | {
 })[]
 // ----- no-return-assign -----
 type NoReturnAssign = []|[("except-parens" | "always")]
+// ----- no-secrets/no-pattern-match -----
+type NoSecretsNoPatternMatch = {
+  
+  patterns: {
+    
+    [k: string]: (string | {}) | undefined
+  }
+}[]
+// ----- no-secrets/no-secrets -----
+type NoSecretsNoSecrets = {
+  
+  tolerance: number
+  
+  ignoreModules: boolean
+  
+  ignoreCase: boolean
+  
+  ignoreContent: ((string | {}) | (string | {})[])
+  
+  ignoreIdentifiers: ((string | {}) | (string | {})[])
+  
+  additionalDelimiters: ((string | {}) | (string | {})[])
+  
+  additionalRegexes: {
+    
+    [k: string]: (string | {}) | undefined
+  }
+}[]
 // ----- no-self-assign -----
 type NoSelfAssign = []|[{
   props?: boolean
