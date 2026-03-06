@@ -45,12 +45,7 @@ export async function typescript(
     `${GLOB_MARKDOWN}/**`,
     GLOB_ASTRO_TS
   ];
-
-  const workspaceRoot = findWorkspaceRoot();
-  const tsconfigPath = getTsConfigPath(
-    options?.tsconfigPath || workspaceRoot,
-    workspaceRoot
-  );
+  const tsconfigPath = getTsConfigPath(options?.tsconfigPath, type);
 
   const typeAwareRules: TypedFlatConfigItem["rules"] = {
     "dot-notation": "off",
@@ -101,7 +96,7 @@ export async function typescript(
                   allowDefaultProject: ["./*.js", "./*.ts"],
                   defaultProject: tsconfigPath
                 },
-                tsconfigRootDir: workspaceRoot
+                tsconfigRootDir: findWorkspaceRoot()
               }
             : {}),
           ...(parserOptions as any)

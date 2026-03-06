@@ -46,7 +46,6 @@ import type {
   TypedFlatConfigItem
 } from "./types";
 import { interopDefault, isInEditorEnv } from "./utils/helpers";
-import { getTsConfigPath } from "./utils/tsconfig-path";
 
 const flatConfigProps = [
   "name",
@@ -175,13 +174,6 @@ export function getStormConfig(
   }
 
   const typescriptOptions = resolveSubOptions(options, "typescript");
-  let tsconfigPath =
-    "tsconfigPath" in typescriptOptions
-      ? typescriptOptions.tsconfigPath
-      : undefined;
-  if (!tsconfigPath) {
-    tsconfigPath = getTsConfigPath();
-  }
 
   // Base configs
   configs.push(
@@ -282,7 +274,10 @@ export function getStormConfig(
       react({
         ...typescriptOptions,
         overrides: getOverrides(options, "react"),
-        tsconfigPath
+        tsconfigPath:
+          "tsconfigPath" in typescriptOptions
+            ? typescriptOptions.tsconfigPath
+            : undefined
       })
     );
   }
