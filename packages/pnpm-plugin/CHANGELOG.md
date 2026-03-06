@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Pnpm Plugin
 
+## [0.1.47](https://github.com/storm-software/storm-ops/releases/tag/pnpm-plugin%400.1.47) (03/06/2026)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate `README.md` files for repository ([41b2c8304](https://github.com/storm-software/storm-ops/commit/41b2c8304))
+- **monorepo:** Update workspace's `README.md` files ([567e7d04e](https://github.com/storm-software/storm-ops/commit/567e7d04e))
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.90**
+
 ## [0.1.46](https://github.com/storm-software/storm-ops/releases/tag/pnpm-plugin%400.1.46) (03/06/2026)
 
 ### Updated Dependencies
