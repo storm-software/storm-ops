@@ -1,6 +1,6 @@
 {
   "name": "@storm-software/pnpm-tools",
-  "version": "0.6.100",
+  "version": "0.6.101",
   "type": "module",
   "description": "A set of [pnpm](https://pnpm.io/) plugins and utilities for managing workspace packages/dependencies.",
   "repository": {
