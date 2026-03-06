@@ -55,22 +55,22 @@ in
     nuke.exec = "pnpm nuke";
   };
 
-  tasks = {
-    "storm:enterBase" = {
-      exec = ''
-        git config commit.gpgsign true
-        git config tag.gpgSign true
-        git config lfs.allowincompletepush true
-        git config init.defaultBranch main
+  # tasks = {
+  #   "storm:enterBase" = {
+  #     exec = ''
+  #       git config commit.gpgsign true
+  #       git config tag.gpgSign true
+  #       git config lfs.allowincompletepush true
+  #       git config init.defaultBranch main
 
-        npm config set provenance true
-      '';
-      before = [
-        "devenv:enterShell"
-        "devenv:enterTest"
-      ];
-    };
-  };
+  #       npm config set provenance true
+  #     '';
+  #     before = [
+  #       "devenv:enterShell"
+  #       "devenv:enterTest"
+  #     ];
+  #   };
+  # };
 
   # https://devenv.sh/git-hooks/
   git-hooks = {
