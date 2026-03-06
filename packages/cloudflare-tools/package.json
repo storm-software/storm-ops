@@ -157,9 +157,9 @@
     }
   },
   "dependencies": {
-    "@aws-sdk/client-s3": "^3.993.0",
-    "@aws-sdk/lib-storage": "^3.993.0",
-    "@smithy/node-http-handler": "^4.4.10",
+    "@aws-sdk/client-s3": "^3.1003.0",
+    "@aws-sdk/lib-storage": "^3.1003.0",
+    "@smithy/node-http-handler": "^4.4.14",
     "defu": "catalog:",
     "glob": "catalog:",
     "mime-types": "^3.0.2",
@@ -170,11 +170,11 @@
     "@nx/node": "catalog:",
     "@nx/web": "catalog:",
     "@nx/webpack": "catalog:",
-    "@smithy/protocol-http": "^5.3.8",
+    "@smithy/protocol-http": "^5.3.11",
     "nx": "catalog:",
     "tsup": "catalog:",
     "untyped": "catalog:",
-    "wrangler": "^4.66.0"
+    "wrangler": "^4.71.0"
   },
   "publishConfig": {
     "access": "public"

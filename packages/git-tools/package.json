@@ -181,7 +181,10 @@
     "./readme/templates/*": "./dist/readme/templates/*"
   },
   "types": "./dist/index.d.ts",
-  "files": ["bin/**/*", "dist/**/*"],
+  "files": [
+    "bin/**/*",
+    "dist/**/*"
+  ],
   "keywords": [
     "storm-software",
     "monorepo",
@@ -211,7 +214,7 @@
     "axios": "1.8.2",
     "chalk": "catalog:",
     "chalk-template": "1.1.0",
-    "conventional-changelog-conventionalcommits": "^9.1.0",
+    "conventional-changelog-conventionalcommits": "^9.3.0",
     "conventional-changelog-storm-software": "workspace:*",
     "htmlparser2": "10.0.0",
     "jsonc-parser": "3.2.1",
@@ -227,10 +230,10 @@
   "devDependencies": {
     "@types/node": "catalog:",
     "commander": "catalog:",
-    "conventional-commits-parser": "^6.2.1",
+    "conventional-commits-parser": "^6.3.0",
     "defu": "catalog:",
     "semver": "7.6.2",
-    "simple-git": "^3.31.1",
+    "simple-git": "^3.32.3",
     "tsup": "catalog:"
   },
   "publishConfig": {
