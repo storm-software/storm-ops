@@ -73,24 +73,8 @@ jobs:
           gpg-passphrase: ${{ secrets.STORM_BOT_GPG_PASSPHRASE }}
           storm-bot-github-token: ${{ secrets.STORM_BOT_GITHUB_TOKEN }}
 
-      # - name: Run Terrascan
-      #   id: terrascan
-      #   uses: tenable/terrascan-action@main
-      #   with:
-      #     iac_type: "terraform"
-      #     iac_version: "v14"
-      #     policy_type: "aws"
-      #     only_warn: true
-      #     sarif_upload: true
-      #     iac_dir: "./terraform-modules"
-      #     config_path: "./packages/linting-tools/src/terrascan/config.yml"
-      # - name: Upload SARIF file
-      #   uses: github/codeql-action/upload-sarif@v3
-      #   with:
-      #     sarif_file: terrascan.sarif
-
-      - name: Remove cache to free up space for build/release
-        run: rm -rf /opt/hostedtoolcache
+      # - name: Remove cache to free up space for build/release
+      #   run: rm -rf /opt/hostedtoolcache
 
       - name: Derive appropriate SHAs for base and head for `nx affected` commands
         id: setSHAs
