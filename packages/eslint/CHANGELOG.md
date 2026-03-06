@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - ESLint
 
+## [0.169.102](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.169.102) (03/06/2026)
+
+### Bug Fixes
+
+- **eslint:** Resolve issue finding tsconfig in eslinter ([dd3a0cf60](https://github.com/storm-software/storm-ops/commit/dd3a0cf60))
+
+### Updated Dependencies
+
+- Updated **config-tools** to **v1.189.14**
+- Updated **config** to **v1.135.15**
+- Updated **tsdoc** to **v0.13.89**
+
 ## [0.169.101](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.169.101) (03/04/2026)
 
 ### Updated Dependencies
