@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Build Tools
 
+## [0.158.102](https://github.com/storm-software/storm-ops/releases/tag/build-tools%400.158.102) (03/07/2026)
+
+### Updated Dependencies
+
+- Updated **config-tools** to **v1.189.21**
+- Updated **config** to **v1.135.22**
+
 ## [0.158.101](https://github.com/storm-software/storm-ops/releases/tag/build-tools%400.158.101) (03/07/2026)
 
 ### Miscellaneous
