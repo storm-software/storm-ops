@@ -9,6 +9,15 @@ import {
 import { Command } from "commander";
 import { runCommit } from "../commit/run";
 import { runCommitLint } from "../commitlint/run";
+import {
+  postCheckoutHook,
+  postCommitHook,
+  postMergeHook,
+  preCommitHook,
+  preInstallHook,
+  prepareHook,
+  prePushHook
+} from "../hooks";
 import { runReadme } from "../readme/run";
 import { runRelease } from "../release/run";
 import type { CommitLintCLIOptions, ReadMeOptions } from "../types";
@@ -84,6 +93,35 @@ export function createProgram(config: StormWorkspaceConfig) {
     .option("--file <commit-file>", "The commit message to lint")
     .action(commitLintAction);
 
+  program
+    .command("post-checkout")
+    .description("Run post-checkout git hook for the workspace.")
+    .action(postCheckoutAction);
+  program
+    .command("post-commit")
+    .description("Run post-commit git hook for the workspace.")
+    .action(postCommitAction);
+  program
+    .command("post-merge")
+    .description("Run post-merge git hook for the workspace.")
+    .action(postMergeAction);
+  program
+    .command("pre-commit")
+    .description("Run pre-commit git hook for the workspace.")
+    .action(preCommitAction);
+  program
+    .command("pre-push")
+    .description("Run pre-push git hook for the workspace.")
+    .action(prePushAction);
+  program
+    .command("pre-install")
+    .description("Run pre-install git hook for the workspace.")
+    .action(preInstallAction);
+  program
+    .command("prepare")
+    .description("Run prepare git hook for the workspace.")
+    .action(prepareAction);
+
   return program;
 }
 
@@ -96,14 +134,14 @@ export async function commitAction({
 }) {
   try {
     writeInfo(
-      `${brandIcon(config)}  Preparing to commit your changes. Please provide the requested details below...`,
+      `${brandIcon(typeof config === "string" ? {} : config)}  Preparing to commit your changes. Please provide the requested details below...`,
       _config
     );
 
     await runCommit(config, dryRun);
 
     writeSuccess(
-      `✔ Storm Commit processing completed successfully!
+      ` ✔ Storm Commit processing completed successfully!
 
 Note: Please run "pnpm push" to upload these changes to the remote ${
         _config.name
@@ -141,7 +179,7 @@ export async function readmeAction(options: ReadMeOptions) {
     await runReadme(options);
 
     writeSuccess(
-      "Formatting of the workspace's README.md files is complete\n",
+      " ✔ Formatting of the workspace's README.md files is complete\n",
       _config
     );
   } catch (error) {
@@ -176,7 +214,7 @@ export async function releaseAction({
       head
     });
 
-    writeSuccess("Release completed successfully!\n", _config);
+    writeSuccess(" ✔ Release completed successfully!\n", _config);
   } catch (error) {
     writeFatal(
       `A fatal error occurred while running release action: \n\n${error.message} ${error.stack ? `\n\nStacktrace: ${error.stack}` : ""}`,
@@ -210,12 +248,145 @@ export async function commitLintAction(options: CommitLintCLIOptions) {
     await runCommitLint(_config as StormWorkspaceConfig, options);
 
     writeSuccess(
-      "Linting the commit messages completed successfully!\n",
+      " ✔ Linting the commit messages completed successfully!\n",
       _config
     );
   } catch (error) {
     writeFatal(
       `A fatal error occurred while linting the commit messages: \n\n${error.message}`,
+      _config
+    );
+    throw new Error(error.message, { cause: error });
+  }
+}
+
+export async function postCheckoutAction() {
+  try {
+    writeInfo(
+      `${brandIcon(_config)}  Running the Storm post-checkout git hook for the workspace...`,
+      _config
+    );
+
+    await postCheckoutHook(_config as StormWorkspaceConfig);
+
+    writeSuccess(" ✔ Post-checkout hook completed successfully!\n", _config);
+  } catch (error) {
+    writeFatal(
+      `A fatal error occurred while running the post-checkout hook: \n\n${error.message}`,
+      _config
+    );
+    throw new Error(error.message, { cause: error });
+  }
+}
+
+export async function postCommitAction() {
+  try {
+    writeInfo(
+      `${brandIcon(_config)}  Running the Storm post-commit git hook for the workspace...`,
+      _config
+    );
+
+    await postCommitHook(_config as StormWorkspaceConfig);
+
+    writeSuccess(" ✔ Post-commit hook completed successfully!\n", _config);
+  } catch (error) {
+    writeFatal(
+      `A fatal error occurred while running the post-commit hook: \n\n${error.message}`,
+      _config
+    );
+    throw new Error(error.message, { cause: error });
+  }
+}
+
+export async function postMergeAction() {
+  try {
+    writeInfo(
+      `${brandIcon(_config)}  Running the Storm post-merge git hook for the workspace...`,
+      _config
+    );
+
+    await postMergeHook(_config as StormWorkspaceConfig);
+
+    writeSuccess(" ✔ Post-merge hook completed successfully!\n", _config);
+  } catch (error) {
+    writeFatal(
+      `A fatal error occurred while running the post-merge hook: \n\n${error.message}`,
+      _config
+    );
+    throw new Error(error.message, { cause: error });
+  }
+}
+
+export async function preCommitAction() {
+  try {
+    writeInfo(
+      `${brandIcon(_config)}  Running the Storm pre-commit git hook for the workspace...`,
+      _config
+    );
+
+    await preCommitHook(_config as StormWorkspaceConfig);
+
+    writeSuccess(" ✔ Pre-commit hook completed successfully!\n", _config);
+  } catch (error) {
+    writeFatal(
+      `A fatal error occurred while running the pre-commit hook: \n\n${error.message}`,
+      _config
+    );
+    throw new Error(error.message, { cause: error });
+  }
+}
+
+export async function prePushAction() {
+  try {
+    writeInfo(
+      `${brandIcon(_config)}  Running the Storm pre-push git hook for the workspace...`,
+      _config
+    );
+
+    await prePushHook(_config as StormWorkspaceConfig);
+
+    writeSuccess(" ✔ Pre-push hook completed successfully!\n", _config);
+  } catch (error) {
+    writeFatal(
+      `A fatal error occurred while running the pre-push hook: \n\n${error.message}`,
+      _config
+    );
+    throw new Error(error.message, { cause: error });
+  }
+}
+
+export async function preInstallAction() {
+  try {
+    writeInfo(
+      `${brandIcon(_config)}  Running the Storm pre-install git hook for the workspace...`,
+      _config
+    );
+
+    await preInstallHook(_config as StormWorkspaceConfig);
+
+    writeSuccess(" ✔ Pre-install hook completed successfully!\n", _config);
+  } catch (error) {
+    writeFatal(
+      `A fatal error occurred while running the pre-install hook: \n\n${error.message}`,
+      _config
+    );
+    throw new Error(error.message, { cause: error });
+  }
+}
+
+export async function prepareAction() {
+  try {
+    writeInfo(
+      `${brandIcon(_config)}  Running the Storm prepare git hook for the workspace...`,
+      _config
+    );
+
+    await prepareHook(_config as StormWorkspaceConfig);
+
+    writeSuccess(" ✔ Prepare hook completed successfully!\n", _config);
+  } catch (error) {
+    writeFatal(
+      `A fatal error occurred while running the prepare hook: \n\n${error.message}`,
       _config
     );
     throw new Error(error.message, { cause: error });

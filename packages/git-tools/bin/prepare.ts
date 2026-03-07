@@ -1,25 +1,17 @@
 #!/usr/bin/env node
 
+import { getConfig } from "@storm-software/config-tools/get-config";
+import { writeFatal } from "@storm-software/config-tools/logger/console";
 import {
   exitWithError,
-  exitWithSuccess,
-  getConfig,
-  handleProcess,
-  run,
-  writeFatal,
-  writeInfo
-} from "@storm-software/config-tools";
+  exitWithSuccess
+} from "@storm-software/config-tools/utilities/process-handler";
+import { prepareHook } from "../src/hooks/prepare";
 
 void (async () => {
   const config = await getConfig();
   try {
-    handleProcess(config);
-
-    writeInfo("Running prepare hook...", config);
-
-    if (!process.env.CI && !process.env.STORM_CI) {
-      run(config, "lefthook install");
-    }
+    await prepareHook(config);
 
     exitWithSuccess(config);
   } catch (error) {

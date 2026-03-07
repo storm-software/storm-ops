@@ -1,34 +1,17 @@
 #!/usr/bin/env node
 
+import { getConfig } from "@storm-software/config-tools/get-config";
+import { writeFatal } from "@storm-software/config-tools/logger/console";
 import {
   exitWithError,
-  exitWithSuccess,
-  getConfig,
-  handleProcess,
-  writeError,
-  writeFatal,
-  writeInfo
-} from "@storm-software/config-tools";
-import {
-  checkPackageVersion,
-  isPackageVersionChanged
-} from "../src/utilities/check-package-version";
+  exitWithSuccess
+} from "@storm-software/config-tools/utilities/process-handler";
+import { preCommitHook } from "../src/hooks/pre-commit";
 
 void (async () => {
   const config = await getConfig();
   try {
-    handleProcess(config);
-
-    writeInfo("Running pre-commit hook...", config);
-
-    checkPackageVersion(process.argv.slice(1));
-    if (isPackageVersionChanged(process.argv?.slice(1))) {
-      writeError(
-        "Please regenerate the package lock file before committing...",
-        config
-      );
-      exitWithError(config);
-    }
+    await preCommitHook(config);
 
     exitWithSuccess(config);
   } catch (error) {

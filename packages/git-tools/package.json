@@ -1,15 +1,31 @@
 {
   "name": "@storm-software/git-tools",
   "version": "2.124.86",
-  "type": "module",
+  "private": false,
   "description": "Tools for managing Git repositories within a Nx workspace.",
+  "keywords": [
+    "storm-software",
+    "monorepo",
+    "storm-ops",
+    "sullivanpj",
+    "commitlint",
+    "commitizen",
+    "semantic-release",
+    "lefthook",
+    "lint-staged"
+  ],
+  "homepage": "https://stormsoftware.com",
+  "bugs": "https://github.com/storm-software/storm-ops/issues",
   "repository": {
     "type": "github",
     "url": "https://github.com/storm-software/storm-ops",
     "directory": "packages/git-tools"
   },
-  "homepage": "https://stormsoftware.com",
-  "bugs": "https://github.com/storm-software/storm-ops/issues",
+  "funding": {
+    "type": "github",
+    "url": "https://github.com/sponsors/storm-software"
+  },
+  "license": "Apache-2.0",
   "author": {
     "name": "Storm Software",
     "email": "contact@stormsoftware.com",
@@ -34,48 +50,7 @@
       "url": "https://stormsoftware.com"
     }
   ],
-  "funding": {
-    "type": "github",
-    "url": "https://github.com/sponsors/storm-software"
-  },
-  "license": "Apache-2.0",
-  "private": false,
-  "packageManager": "pnpm@10.3.0",
-  "engines": {
-    "node": ">=22.4.0",
-    "pnpm": ">=10.3.0"
-  },
-  "bin": {
-    "storm-git": "./bin/git.cjs",
-    "storm-git-esm": "./bin/git.js",
-    "storm-git-cjs": "./bin/git.cjs",
-    "storm-post-checkout": "./bin/post-checkout.cjs",
-    "storm-post-checkout-esm": "./bin/post-checkout.js",
-    "storm-post-checkout-cjs": "./bin/post-checkout.cjs",
-    "storm-post-commit": "./bin/post-commit.cjs",
-    "storm-post-commit-esm": "./bin/post-commit.js",
-    "storm-post-commit-cjs": "./bin/post-commit.cjs",
-    "storm-post-merge": "./bin/post-merge.cjs",
-    "storm-post-merge-esm": "./bin/post-merge.js",
-    "storm-post-merge-cjs": "./bin/post-merge.cjs",
-    "storm-pre-commit": "./bin/pre-commit.cjs",
-    "storm-pre-commit-esm": "./bin/pre-commit.js",
-    "storm-pre-commit-cjs": "./bin/pre-commit.cjs",
-    "storm-pre-install": "./bin/pre-install.cjs",
-    "storm-pre-install-esm": "./bin/pre-install.js",
-    "storm-pre-install-cjs": "./bin/pre-install.cjs",
-    "storm-pre-push": "./bin/pre-push.cjs",
-    "storm-pre-push-esm": "./bin/pre-push.js",
-    "storm-pre-push-cjs": "./bin/pre-push.cjs",
-    "storm-prepare": "./bin/prepare.cjs",
-    "storm-prepare-esm": "./bin/prepare.js",
-    "storm-prepare-cjs": "./bin/prepare.cjs",
-    "storm-version-warning": "./bin/version-warning.cjs",
-    "storm-version-warning-esm": "./bin/version-warning.js",
-    "storm-version-warning-cjs": "./bin/version-warning.cjs"
-  },
-  "main": "./dist/index.cjs",
-  "module": "./dist/index.js",
+  "type": "module",
   "exports": {
     "./package.json": "./package.json",
     ".": {
@@ -148,6 +123,20 @@
         "default": "./dist/commitlint/*.js"
       }
     },
+    "./hooks/*": {
+      "import": {
+        "types": "./dist/hooks/*.d.ts",
+        "default": "./dist/hooks/*.js"
+      },
+      "require": {
+        "types": "./dist/hooks/*.d.cts",
+        "default": "./dist/hooks/*.cjs"
+      },
+      "default": {
+        "types": "./dist/hooks/*.d.ts",
+        "default": "./dist/hooks/*.js"
+      }
+    },
     "./release/*": {
       "import": {
         "types": "./dist/release/*.d.ts",
@@ -164,38 +153,55 @@
     },
     "./changelog-renderer": {
       "import": {
-        "types": "./changelog-renderer/changelog-renderer.d.ts",
+        "types": "./dist/changelog-renderer/changelog-renderer.d.ts",
         "default": "./dist/changelog-renderer/changelog-renderer.js"
       },
       "require": {
-        "types": "./changelog-renderer/changelog-renderer.d.cts",
-        "default": "./changelog-renderer/changelog-renderer.cjs"
+        "types": "./dist/changelog-renderer/changelog-renderer.d.cts",
+        "default": "./dist/changelog-renderer/changelog-renderer.cjs"
       },
       "default": {
-        "types": "./changelog-renderer/changelog-renderer.d.ts",
-        "default": "./changelog-renderer/changelog-renderer.js"
+        "types": "./dist/changelog-renderer/changelog-renderer.d.ts",
+        "default": "./dist/changelog-renderer/changelog-renderer.js"
       }
     },
     "./lefthook/*": "./dist/lefthook/*",
     "./lint-staged/*": "./dist/lint-staged/*",
     "./readme/templates/*": "./dist/readme/templates/*"
   },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
-  "files": ["bin/**/*", "dist/**/*"],
-  "keywords": [
-    "storm-software",
-    "monorepo",
-    "storm-ops",
-    "sullivanpj",
-    "commitlint",
-    "commitizen",
-    "semantic-release",
-    "lefthook",
-    "lint-staged"
-  ],
-  "peerDependencies": {
-    "zod": ">=4.0.0"
+  "bin": {
+    "storm-git": "./bin/git.cjs",
+    "storm-git-cjs": "./bin/git.cjs",
+    "storm-git-esm": "./bin/git.js",
+    "storm-post-checkout": "./bin/post-checkout.cjs",
+    "storm-post-checkout-cjs": "./bin/post-checkout.cjs",
+    "storm-post-checkout-esm": "./bin/post-checkout.js",
+    "storm-post-commit": "./bin/post-commit.cjs",
+    "storm-post-commit-cjs": "./bin/post-commit.cjs",
+    "storm-post-commit-esm": "./bin/post-commit.js",
+    "storm-post-merge": "./bin/post-merge.cjs",
+    "storm-post-merge-cjs": "./bin/post-merge.cjs",
+    "storm-post-merge-esm": "./bin/post-merge.js",
+    "storm-pre-commit": "./bin/pre-commit.cjs",
+    "storm-pre-commit-cjs": "./bin/pre-commit.cjs",
+    "storm-pre-commit-esm": "./bin/pre-commit.js",
+    "storm-pre-install": "./bin/pre-install.cjs",
+    "storm-pre-install-cjs": "./bin/pre-install.cjs",
+    "storm-pre-install-esm": "./bin/pre-install.js",
+    "storm-pre-push": "./bin/pre-push.cjs",
+    "storm-pre-push-cjs": "./bin/pre-push.cjs",
+    "storm-pre-push-esm": "./bin/pre-push.js",
+    "storm-prepare": "./bin/prepare.cjs",
+    "storm-prepare-cjs": "./bin/prepare.cjs",
+    "storm-prepare-esm": "./bin/prepare.js",
+    "storm-version-warning": "./bin/version-warning.cjs",
+    "storm-version-warning-cjs": "./bin/version-warning.cjs",
+    "storm-version-warning-esm": "./bin/version-warning.js"
   },
+  "files": ["bin/**/*", "dist/**/*"],
   "dependencies": {
     "@commitlint/ensure": "^19.8.1",
     "@commitlint/rules": "^19.8.1",
@@ -232,6 +238,14 @@
     "semver": "7.6.2",
     "simple-git": "^3.32.3",
     "tsup": "catalog:"
+  },
+  "peerDependencies": {
+    "zod": ">=4.0.0"
+  },
+  "packageManager": "pnpm@10.3.0",
+  "engines": {
+    "node": ">=22.4.0",
+    "pnpm": ">=10.3.0"
   },
   "publishConfig": {
     "access": "public"

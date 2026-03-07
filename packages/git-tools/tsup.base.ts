@@ -9,6 +9,7 @@ export default defineConfig([
       "src/types.ts",
       "src/commit/config/*.ts",
       "src/commitlint/config/*.ts",
+      "src/hooks/*.ts",
       "src/release/config.ts"
     ],
     format: ["cjs", "esm"],

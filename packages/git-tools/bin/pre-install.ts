@@ -1,28 +1,17 @@
 #!/usr/bin/env node
 
+import { getConfig } from "@storm-software/config-tools/get-config";
+import { writeFatal } from "@storm-software/config-tools/logger/console";
 import {
   exitWithError,
-  exitWithSuccess,
-  getConfig,
-  handleProcess,
-  run,
-  writeFatal,
-  writeInfo
-} from "@storm-software/config-tools";
+  exitWithSuccess
+} from "@storm-software/config-tools/utilities/process-handler";
+import { preInstallHook } from "../src/hooks/pre-install";
 
 void (async () => {
   const config = await getConfig();
   try {
-    handleProcess(config);
-
-    writeInfo("Running pre-install hook...", config);
-
-    if (Boolean(process.env.CI) || Boolean(process.env.STORM_CI)) {
-      writeInfo("Skipping pre-install for CI process...", config);
-      exitWithSuccess(config);
-    }
-
-    run(config, "npx -y only-allow pnpm");
+    await preInstallHook(config);
 
     exitWithSuccess(config);
   } catch (error) {
