@@ -1,0 +1,57 @@
+# Refer for explanation to following link:
+# https://github.com/evilmartians/lefthook/blob/master/docs/configuration.md
+
+$schema: https://raw.githubusercontent.com/evilmartians/lefthook/refs/heads/master/schema.json
+assert_lefthook_installed: true
+colors: true
+no_tty: false
+min_version: "1.5.0"
+extends:
+  - ./minimal.yml
+
+pre-commit:
+  commands:
+    install:
+      glob: "{pnpm-lock.yaml,lefthook.yml,lefthook.yaml,lefthook.json}"
+      run: pnpm install && pnpm lefthook install && git update-index
+      stage_fixed: true
+    lint:
+      files: git diff --name-only HEAD @{push}
+      glob:
+        - "*.js"
+        - "*.ts"
+        - "*.cjs"
+        - "*.mjs"
+        - "*.d.cts"
+        - "*.d.mts"
+        - "*.jsx"
+        - "*.tsx"
+        - "*.json"
+        - "*.jsonc"
+        - "*.yaml"
+        - "*.yml"
+        - "*.md"
+        - "*.mdx"
+        - "*.markdown"
+        - "*.css"
+        - "*.scss"
+        - "*.sass"
+        - "*.less"
+        - "*.stylus"
+        - "*.graphql"
+        - "*.gql"
+        - "*.xml"
+        - "*.svg"
+        - "*.env"
+        - ".env.{local,development,test,production,staging}"
+      run: pnpm lint {files}
+      stage_fixed: true
+
+pre-push:
+  piped: true
+  commands:
+    format:
+      files: git diff --name-only HEAD @{push}
+      glob: "**/*"
+      run: pnpm format {files}
+      stage_fixed: true

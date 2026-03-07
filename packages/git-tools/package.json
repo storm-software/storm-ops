@@ -165,7 +165,7 @@
         "default": "./dist/changelog-renderer/changelog-renderer.js"
       }
     },
-    "./lefthook/*": "./dist/lefthook/*",
+    "./lefthook/*.yml": "./dist/lefthook/*.yml",
     "./lint-staged/*": "./dist/lint-staged/*",
     "./readme/templates/*": "./dist/readme/templates/*"
   },

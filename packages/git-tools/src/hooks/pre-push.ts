@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 import { StormWorkspaceConfig } from "@storm-software/config";
-import { run, writeInfo, writeSuccess } from "@storm-software/config-tools";
+import { writeInfo, writeSuccess } from "@storm-software/config-tools";
 import fs from "node:fs";
 import { readFile } from "node:fs/promises";
 import path from "node:path";
@@ -57,19 +57,19 @@ export async function prePushHook(
     );
   }
 
-  writeSuccess("Lock file is valid ✅", config);
+  writeSuccess(" ✔ Lock file is valid for push", config);
 
-  run(config, "git lfs pre-push origin");
+  // run(config, "git lfs pre-push origin");
 
-  try {
-    run(config, "git-lfs version");
-  } catch (error) {
-    throw new Error(
-      `This repository is configured for Git LFS but 'git-lfs' was not found on your path. If you no longer wish to use Git LFS, remove this hook by deleting .git/hooks/pre-push.\nError: ${
-        (error as Error)?.message
-      }`
-    );
-  }
+  // try {
+  //   run(config, "git-lfs version");
+  // } catch (error) {
+  //   throw new Error(
+  //     `This repository is configured for Git LFS but 'git-lfs' was not found on your path. If you no longer wish to use Git LFS, remove this hook by deleting .git/hooks/pre-push.\nError: ${
+  //       (error as Error)?.message
+  //     }`
+  //   );
+  // }
 
-  run(config, "git lfs pre-push origin");
+  // run(config, "git lfs pre-push origin");
 }

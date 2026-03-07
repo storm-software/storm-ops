@@ -1,0 +1,29 @@
+# Refer for explanation to following link:
+# https://github.com/evilmartians/lefthook/blob/master/docs/configuration.md
+
+$schema: https://raw.githubusercontent.com/evilmartians/lefthook/refs/heads/master/schema.json
+assert_lefthook_installed: true
+colors: true
+no_tty: false
+min_version: "1.5.0"
+extends:
+  - ./minimal.yml
+  - ./recommended.yml
+
+pre-push:
+  piped: true
+  commands:
+    readme:
+      glob: "**/{README.md,README.*.md,readme/**/*,package.json,executors.json,generators.json}"
+      run: pnpm format-readme && git update-index
+      stage_fixed: true
+    prettier:
+      files: git diff --name-only HEAD @{push}
+      glob: "!**/generators/*/files/**/*"
+      run: "pnpm exec prettier {files} --write --ignore-unknown --no-error-on-unmatched-pattern --cache && git update-index"
+      stage_fixed: true
+    sherif:
+      files: git diff --name-only HEAD @{push}
+      glob: "**/*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc}"
+      run: pnpm exec sherif -i typescript react react-dom --files {files} --cache
+      stage_fixed: true

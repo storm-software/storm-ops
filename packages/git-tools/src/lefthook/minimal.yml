@@ -1,0 +1,66 @@
+# Refer for explanation to following link:
+# https://github.com/evilmartians/lefthook/blob/master/docs/configuration.md
+
+$schema: https://raw.githubusercontent.com/evilmartians/lefthook/refs/heads/master/schema.json
+assert_lefthook_installed: true
+colors: true
+no_tty: false
+min_version: "1.5.0"
+
+pre-commit:
+  commands:
+    install:
+      glob: "{pnpm-lock.yaml,lefthook.yml,lefthook.yaml,lefthook.json}"
+      run: pnpm install && pnpm lefthook install && git update-index
+      stage_fixed: true
+    prepare:
+      files: git diff --name-only HEAD @{push}
+      glob: "**/*"
+      run: pnpm exec storm-git prepare --files {files}
+      stage_fixed: true
+    pre-commit:
+      files: git diff --name-only HEAD @{push}
+      glob: "**/*"
+      run: pnpm exec storm-git pre-commit --files {files}
+      stage_fixed: true
+    codeowners:
+      files: git diff --name-only HEAD @{push}
+      glob: "**/CODEOWNERS"
+      run: pnpm exec storm-lint codeowners
+
+commit-msg:
+  commands:
+    validate:
+      run: pnpm exec storm-git commitlint --message {1}
+
+pre-push:
+  piped: true
+  commands:
+    build:
+      glob: "**/*"
+      run: pnpm build-dev
+      stage_fixed: true
+    lint-github-actions:
+      glob: .github/workflows/*.*
+      run: "zizmor --offline --config='./tools/config/zizmor.yml' .github/workflows/"
+    pre-push:
+      files: git diff --name-only HEAD @{push}
+      glob: "**/*"
+      run: pnpm exec storm-git pre-push --files {files}
+      stage_fixed: true
+
+post-merge:
+  commands:
+    validate:
+      files: git diff --name-only HEAD @{push}
+      glob: "**/*"
+      run: pnpm exec storm-git post-merge --files {files}
+      stage_fixed: true
+
+post-commit:
+  commands:
+    validate:
+      files: git diff --name-only HEAD @{push}
+      glob: "**/*"
+      run: pnpm exec storm-git post-commit --files {files}
+      stage_fixed: true
