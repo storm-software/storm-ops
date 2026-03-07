@@ -62,6 +62,16 @@ in
     nuke.exec = "pnpm nuke";
   };
 
+  tasks = {
+    "storm:bootstrap" = {
+      exec = "bootstrap";
+      before = [
+        "devenv:enterShell"
+        "devenv:enterTest"
+      ];
+    };
+  };
+
   # https://devenv.sh/git-hooks/
   git-hooks = {
     enable = true;
@@ -108,16 +118,6 @@ in
             "devenv:enterTest"
           ];
         };
-        "storm:bootstrap" = {
-          exec = "bootstrap";
-          before = [
-            "devenv:enterShell"
-            "devenv:enterTest"
-          ];
-          after = [
-            "storm:initialize"
-          ];
-        };
       };
     };
 
@@ -126,18 +126,6 @@ in
       env.NODE_ENV = "production";
       env.DEBUG = false;
       env.CI = true;
-
-      tasks = {
-        tasks = {
-          "storm:bootstrap" = {
-            exec = "bootstrap";
-            before = [
-              "devenv:enterShell"
-              "devenv:enterTest"
-            ];
-          };
-        };
-      };
     };
   };
 }
