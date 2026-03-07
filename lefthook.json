@@ -18,7 +18,14 @@
       },
       "prepare": {
         "glob": "**/{lefthook.yml,lefthook.yaml,lefthook.json,biome.json}",
-        "run": "node ./dist/packages/git-tools/bin/prepare.cjs"
+        "run": "pnpm node ./dist/packages/git-tools/bin/git.cjs prepare {files}",
+        "stage_fixed": true
+      },
+      "pre-commit": {
+        "files": "git diff --name-only HEAD @{push}",
+        "glob": "**/*",
+        "run": "pnpm node ./dist/packages/git-tools/bin/git.cjs pre-commit {files}",
+        "stage_fixed": true
       },
       "lint-codeowners": {
         "files": "git diff --name-only HEAD @{push}",
@@ -75,6 +82,12 @@
         "run": "pnpm exec prettier {files} --write --ignore-unknown --no-error-on-unmatched-pattern --cache --config='./packages/prettier/src/config.json' && git update-index",
         "stage_fixed": true
       },
+      "pre-push": {
+        "files": "git diff --name-only HEAD @{push}",
+        "glob": "**/*",
+        "run": "pnpm node ./dist/packages/git-tools/bin/git.cjs pre-push {files}",
+        "stage_fixed": true
+      },
       "sherif": {
         "files": "git diff --name-only HEAD @{push}",
         "glob": "**/*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc}",
@@ -94,7 +107,7 @@
       "validate": {
         "files": "git diff --name-only HEAD @{push}",
         "glob": "**/*",
-        "run": "node ./dist/packages/git-tools/bin/post-merge.cjs {files}",
+        "run": "pnpm node ./dist/packages/git-tools/bin/git.cjs post-merge {files}",
         "stage_fixed": true
       }
     }
@@ -104,7 +117,8 @@
       "validate": {
         "files": "git diff --name-only HEAD @{push}",
         "glob": "**/*",
-        "run": "node ./dist/packages/git-tools/bin/post-commit.cjs {files}"
+        "run": "pnpm node ./dist/packages/git-tools/bin/git.cjs post-commit {files}",
+        "stage_fixed": true
       }
     }
   }
