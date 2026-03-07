@@ -1,6 +1,6 @@
 {
   "name": "@storm-software/untyped",
-  "version": "0.24.80",
+  "version": "0.24.81",
   "type": "module",
   "description": "A package containing `untyped` utilities for building Storm Software libraries and applications",
   "repository": {
