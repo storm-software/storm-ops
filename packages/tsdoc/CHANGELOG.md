@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Tsdoc
 
+## [0.13.95](https://github.com/storm-software/storm-ops/releases/tag/tsdoc%400.13.95) (03/07/2026)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate `README.md` markdown files ([7b2503045](https://github.com/storm-software/storm-ops/commit/7b2503045))
+
 ## [0.13.94](https://github.com/storm-software/storm-ops/releases/tag/tsdoc%400.13.94) (03/07/2026)
 
 ### Miscellaneous

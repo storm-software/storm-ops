@@ -2,6 +2,28 @@
 
 # Changelog for Storm Ops - Git Tools
 
+## [2.125.0](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.125.0) (03/07/2026)
+
+### Miscellaneous
+
+- **git-tools:** Added headers to `lefthook` presets ([dae8bdae4](https://github.com/storm-software/storm-ops/commit/dae8bdae4))
+- **monorepo:** Regenerate `README.md` markdown files ([7b2503045](https://github.com/storm-software/storm-ops/commit/7b2503045))
+
+### Bug Fixes
+
+- **git-tools:** Update git hooks to include separate `files` option ([292553f77](https://github.com/storm-software/storm-ops/commit/292553f77))
+
+### Features
+
+- **git-tools:** Added `minimal`, `recommended`, and `strict` lefthook configs ([51dcaa166](https://github.com/storm-software/storm-ops/commit/51dcaa166))
+- **git-tools:** Added hook commands to `storm-git` CLI ([56ed787a9](https://github.com/storm-software/storm-ops/commit/56ed787a9))
+
+### Updated Dependencies
+
+- Updated **conventional-changelog** to **v0.3.101**
+- Updated **config-tools** to **v1.189.20**
+- Updated **config** to **v1.135.21**
+
 ## [2.124.86](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.124.86) (03/07/2026)
 
 ### Miscellaneous

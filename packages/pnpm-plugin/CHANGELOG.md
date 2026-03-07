@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - Pnpm Plugin
 
+## [0.1.52](https://github.com/storm-software/storm-ops/releases/tag/pnpm-plugin%400.1.52) (03/07/2026)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate `README.md` markdown files ([7b2503045](https://github.com/storm-software/storm-ops/commit/7b2503045))
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.95**
+
 ## [0.1.51](https://github.com/storm-software/storm-ops/releases/tag/pnpm-plugin%400.1.51) (03/07/2026)
 
 ### Miscellaneous

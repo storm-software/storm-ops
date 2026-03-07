@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Projen
 
+## [0.21.109](https://github.com/storm-software/storm-ops/releases/tag/projen%400.21.109) (03/07/2026)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate `README.md` markdown files ([7b2503045](https://github.com/storm-software/storm-ops/commit/7b2503045))
+
+### Updated Dependencies
+
+- Updated **workspace-tools** to **v1.294.53**
+- Updated **config-tools** to **v1.189.20**
+- Updated **config** to **v1.135.21**
+
 ## [0.21.108](https://github.com/storm-software/storm-ops/releases/tag/projen%400.21.108) (03/07/2026)
 
 ### Miscellaneous
