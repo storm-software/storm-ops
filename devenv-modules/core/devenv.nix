@@ -25,23 +25,6 @@ in
     pkgs-unstable.prek
   ];
 
-  tasks = {
-    "storm:enterCore" = {
-      exec = ''
-        pnpm update --recursive --workspace
-        pnpm install
-        bootstrap
-      '';
-      before = [
-        "devenv:enterShell"
-        "devenv:enterTest"
-      ];
-      # after = [
-      #   "storm:enterBase"
-      # ];
-    };
-  };
-
   # https://devenv.sh/git-hooks/
   git-hooks = {
     enable = true;
@@ -171,6 +154,27 @@ in
           "--config=${config.git.root}/tools/config/zizmor.yml"
         ];
         files = "^\\.github/workflows/.*\\.(yml|yaml)$";
+      };
+    };
+  };
+
+  profiles = {
+    development.module = {
+      tasks = {
+        "storm:enterCore" = {
+          exec = ''
+            pnpm update --recursive --workspace
+            pnpm install
+            bootstrap
+          '';
+          before = [
+            "devenv:enterShell"
+            "devenv:enterTest"
+          ];
+          after = [
+            "storm:enterBase"
+          ];
+        };
       };
     };
   };

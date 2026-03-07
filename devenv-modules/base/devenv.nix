@@ -21,9 +21,10 @@ in
   env.DEFAULT_TIMEZONE = "America/New_York";
 
   # https://devenv.sh/packages/
-  packages = [
+  packages = with pkgs; [
     # Tools
-    pkgs.nixd
+    nixd
+    prek
   ];
 
   # https://devenv.sh/languages/
@@ -55,23 +56,6 @@ in
     nuke.exec = "pnpm nuke";
   };
 
-  # tasks = {
-  #   "storm:enterBase" = {
-  #     exec = ''
-  #       git config commit.gpgsign true
-  #       git config tag.gpgSign true
-  #       git config lfs.allowincompletepush true
-  #       git config init.defaultBranch main
-
-  #       npm config set provenance true
-  #     '';
-  #     before = [
-  #       "devenv:enterShell"
-  #       "devenv:enterTest"
-  #     ];
-  #   };
-  # };
-
   # https://devenv.sh/git-hooks/
   git-hooks = {
     enable = true;
@@ -81,6 +65,39 @@ in
       detect-private-keys.enable = true;
       nixfmt.enable = true;
       terraform-format.enable = true;
+    };
+  };
+
+  profiles = {
+    development.module = {
+      env.ENVIRONMENT = "development";
+      env.NODE_ENV = "development";
+      env.DEBUG = true;
+      env.CI = false;
+
+      tasks = {
+        "storm:enterBase" = {
+          exec = ''
+            git config commit.gpgsign true
+            git config tag.gpgSign true
+            git config lfs.allowincompletepush true
+            git config init.defaultBranch main
+
+            npm config set provenance true
+          '';
+          before = [
+            "devenv:enterShell"
+            "devenv:enterTest"
+          ];
+        };
+      };
+    };
+
+    release.module = {
+      env.ENVIRONMENT = "production";
+      env.NODE_ENV = "production";
+      env.DEBUG = false;
+      env.CI = true;
     };
   };
 }
