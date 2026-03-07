@@ -36,28 +36,11 @@ in
         npm config set provenance true
       '';
       before = [
-        "storm:setup:install"
         "storm:setup:updates"
         "devenv:enterShell"
         "devenv:enterTest"
       ];
       after = [
-        "devenv:files"
-        "devenv:files:cleanup"
-      ];
-    };
-    "storm:setup:install" = {
-      exec = ''
-        pnpm install
-        bootstrap
-      '';
-      before = [
-        "storm:setup:updates"
-        "devenv:enterShell"
-        "devenv:enterTest"
-      ];
-      after = [
-        "storm:setup:git"
         "devenv:files"
         "devenv:files:cleanup"
       ];
@@ -75,7 +58,6 @@ in
         "storm:setup:git"
         "devenv:files"
         "devenv:files:cleanup"
-        "storm:setup:install"
         "devenv:git-hooks:install"
       ];
     };
