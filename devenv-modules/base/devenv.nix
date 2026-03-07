@@ -54,7 +54,7 @@ in
   };
 
   tasks = {
-    "storm:config" = {
+    "storm:setup:git" = {
       exec = ''
         git config commit.gpgsign true
         git config tag.gpgSign true
@@ -64,26 +64,33 @@ in
         npm config set provenance true
       '';
       before = [
-        "storm:bootstrap"
+        "storm:setup:install"
         "devenv:enterShell"
         "devenv:enterTest"
       ];
+      after = [
+        "devenv:files"
+        "devenv:files:cleanup"
+      ];
     };
-    "storm:bootstrap" = {
+    "storm:setup:install" = {
       exec = ''
         pnpm install
         bootstrap
       '';
       before = [
-        "storm:initialize"
+        "storm:setup:updates"
         "devenv:enterShell"
         "devenv:enterTest"
       ];
       after = [
-        "storm:config"
+        "devenv:files"
+        "devenv:files:cleanup"
+        "devenv:git-hooks:install"
+        "storm:setup:git"
       ];
     };
-    "storm:initialize" = {
+    "storm:setup:updates" = {
       exec = ''
         pnpm update --recursive --workspace
         update-storm
@@ -93,8 +100,11 @@ in
         "devenv:enterTest"
       ];
       after = [
-        "storm:config"
-        "storm:bootstrap"
+        "storm:setup:install"
+        "devenv:files"
+        "devenv:files:cleanup"
+        "devenv:git-hooks:install"
+        "storm:setup:git"
       ];
     };
   };
