@@ -45,8 +45,14 @@ in
 
   # https://devenv.sh/scripts/
   scripts = {
-    bootstrap.exec = "pnpm bootstrap";
-    update-storm.exec = "pnpm update-storm";
+    bootstrap.exec = ''
+      pnpm install
+      pnpm bootstrap
+    '';
+    prepare.exec = ''
+      pnpm update --recursive --workspace
+      pnpm update-storm
+    '';
     build.exec = "pnpm build";
     build-dev.exec = "pnpm build-dev";
     clean.exec = "pnpm clean";
@@ -54,6 +60,19 @@ in
     format.exec = "pnpm format";
     release.exec = "pnpm release --base=$1 --head=$2";
     nuke.exec = "pnpm nuke";
+  };
+
+  tasks = {
+    "storm:bootstrap" = {
+      exec = "bootstrap";
+      before = [
+        "devenv:enterShell"
+        "devenv:enterTest"
+      ];
+      after = [
+        "storm:prepare"
+      ];
+    };
   };
 
   # https://devenv.sh/git-hooks/
@@ -76,7 +95,7 @@ in
       env.CI = false;
 
       tasks = {
-        "storm:enterBase" = {
+        "storm:configure" = {
           exec = ''
             git config commit.gpgsign true
             git config tag.gpgSign true
@@ -85,6 +104,18 @@ in
 
             npm config set provenance true
           '';
+          before = [
+            "storm:bootstrap"
+            "devenv:enterShell"
+            "devenv:enterTest"
+          ];
+        };
+        "storm:prepare" = {
+          exec = "prepare";
+          after = [
+            "storm:configure"
+            "storm:bootstrap"
+          ];
           before = [
             "devenv:enterShell"
             "devenv:enterTest"

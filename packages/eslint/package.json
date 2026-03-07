@@ -139,12 +139,14 @@
   },
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
-  "files": ["dist/**/*"],
+  "files": [
+    "dist/**/*"
+  ],
   "dependencies": {
     "@antfu/install-pkg": "^1.1.0",
     "@clack/prompts": "^0.10.1",
     "@cspell/eslint-plugin": "^8.19.4",
-    "@eslint/eslintrc": "^3.3.4",
+    "@eslint/eslintrc": "^3.3.5",
     "@eslint/markdown": "^6.6.0",
     "@nx/eslint-plugin": "catalog:",
     "@storm-software/config": "workspace:*",

@@ -157,25 +157,4 @@ in
       };
     };
   };
-
-  profiles = {
-    development.module = {
-      tasks = {
-        "storm:enterCore" = {
-          exec = ''
-            pnpm update --recursive --workspace
-            pnpm install
-            bootstrap
-          '';
-          before = [
-            "devenv:enterShell"
-            "devenv:enterTest"
-          ];
-          after = [
-            "storm:enterBase"
-          ];
-        };
-      };
-    };
-  };
 }
