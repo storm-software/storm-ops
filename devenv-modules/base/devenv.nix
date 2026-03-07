@@ -134,6 +134,7 @@ in
       env.NODE_ENV = "production";
       env.DEBUG = false;
       env.CI = true;
+      env.DEVENV_TUI = false;
     };
   };
 }

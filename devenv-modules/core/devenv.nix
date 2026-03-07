@@ -157,4 +157,59 @@ in
       };
     };
   };
+
+  profiles = {
+    development.module = {
+      env.ENVIRONMENT = "development";
+      env.NODE_ENV = "development";
+      env.DEBUG = true;
+      env.CI = false;
+      env.FORCE_COLOR = true;
+
+      "storm:setup:install" = {
+        exec = ''
+          pnpm install --no-frozen-lockfile
+          bootstrap
+
+          pnpm exec git-tools pre-install
+          pnpm exec git-tools prepare
+        '';
+        before = [
+          "storm:setup:updates"
+          "devenv:enterShell"
+          "devenv:enterTest"
+        ];
+        after = [
+          "devenv:files"
+          "devenv:files:cleanup"
+          "storm:setup:git"
+        ];
+      };
+    };
+
+    release.module = {
+      env.ENVIRONMENT = "production";
+      env.NODE_ENV = "production";
+      env.DEBUG = false;
+      env.CI = true;
+      env.DEVENV_TUI = false;
+
+      "storm:setup:install" = {
+        exec = ''
+          pnpm install --frozen-lockfile
+          bootstrap
+        '';
+        before = [
+          "storm:setup:updates"
+          "devenv:enterShell"
+          "devenv:enterTest"
+        ];
+        after = [
+          "devenv:files"
+          "devenv:files:cleanup"
+          "storm:setup:git"
+        ];
+      };
+    };
+  };
 }
