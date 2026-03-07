@@ -25,6 +25,62 @@ in
     pkgs.prek
   ];
 
+  tasks = {
+    "storm:setup:git" = {
+      exec = ''
+        git config commit.gpgsign true
+        git config tag.gpgSign true
+        git config lfs.allowincompletepush true
+        git config init.defaultBranch main
+
+        npm config set provenance true
+      '';
+      before = [
+        "storm:setup:install"
+        "storm:setup:updates"
+        "devenv:enterShell"
+        "devenv:enterTest"
+      ];
+      after = [
+        "devenv:files"
+        "devenv:files:cleanup"
+      ];
+    };
+    "storm:setup:install" = {
+      exec = ''
+        pnpm install
+        bootstrap
+      '';
+      before = [
+        "storm:setup:updates"
+        "devenv:enterShell"
+        "devenv:enterTest"
+      ];
+      after = [
+        "storm:setup:git"
+        "devenv:files"
+        "devenv:files:cleanup"
+      ];
+    };
+    "storm:setup:updates" = {
+      exec = ''
+        pnpm update --recursive --workspace
+        update-storm
+      '';
+      before = [
+        "devenv:enterShell"
+        "devenv:enterTest"
+      ];
+      after = [
+        "storm:setup:git"
+        "devenv:files"
+        "devenv:files:cleanup"
+        "storm:setup:install"
+        "devenv:git-hooks:install"
+      ];
+    };
+  };
+
   # https://devenv.sh/git-hooks/
   git-hooks = {
     enable = true;
@@ -209,7 +265,6 @@ in
           "devenv:files"
           "devenv:files:cleanup"
           "storm:setup:git"
-          "devenv:git-hooks:install"
         ];
       };
     };
