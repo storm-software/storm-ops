@@ -16,18 +16,16 @@ in
 
   delta.enable = true;
 
-  # https://devenv.sh/basics/
   env.DEFAULT_LOCALE = "en_US";
   env.DEFAULT_TIMEZONE = "America/New_York";
+  env.FORCE_COLOR = true;
 
-  # https://devenv.sh/packages/
   packages = with pkgs; [
     # Tools
     nixd
     prek
   ];
 
-  # https://devenv.sh/languages/
   languages.nix = {
     enable = true;
     lsp.package = pkgs.nixd;
@@ -43,16 +41,9 @@ in
   };
   languages.typescript.enable = true;
 
-  # https://devenv.sh/scripts/
   scripts = {
-    bootstrap.exec = ''
-      pnpm install
-      pnpm bootstrap
-    '';
-    initialize.exec = ''
-      pnpm update --recursive --workspace
-      pnpm update-storm
-    '';
+    bootstrap.exec = "pnpm bootstrap";
+    update-storm.exec = "pnpm update-storm";
     build.exec = "pnpm build";
     build-dev.exec = "pnpm build-dev";
     clean.exec = "pnpm clean";
@@ -63,16 +54,51 @@ in
   };
 
   tasks = {
-    "storm:bootstrap" = {
-      exec = "bootstrap";
+    "storm:config" = {
+      exec = ''
+        git config commit.gpgsign true
+        git config tag.gpgSign true
+        git config lfs.allowincompletepush true
+        git config init.defaultBranch main
+
+        npm config set provenance true
+      '';
       before = [
+        "storm:bootstrap"
         "devenv:enterShell"
         "devenv:enterTest"
       ];
     };
+    "storm:bootstrap" = {
+      exec = ''
+        pnpm install
+        bootstrap
+      '';
+      before = [
+        "storm:initialize"
+        "devenv:enterShell"
+        "devenv:enterTest"
+      ];
+      after = [
+        "storm:config"
+      ];
+    };
+    "storm:initialize" = {
+      exec = ''
+        pnpm update --recursive --workspace
+        update-storm
+      '';
+      before = [
+        "devenv:enterShell"
+        "devenv:enterTest"
+      ];
+      after = [
+        "storm:config"
+        "storm:bootstrap"
+      ];
+    };
   };
 
-  # https://devenv.sh/git-hooks/
   git-hooks = {
     enable = true;
     gitPackage = pkgs.gitFull;
@@ -80,7 +106,7 @@ in
       shellcheck.enable = true;
       detect-private-keys.enable = true;
       nixfmt.enable = true;
-      terraform-format.enable = true;
+      terraform-format.enable = false;
     };
   };
 
@@ -90,35 +116,7 @@ in
       env.NODE_ENV = "development";
       env.DEBUG = true;
       env.CI = false;
-
-      tasks = {
-        "storm:configure" = {
-          exec = ''
-            git config commit.gpgsign true
-            git config tag.gpgSign true
-            git config lfs.allowincompletepush true
-            git config init.defaultBranch main
-
-            npm config set provenance true
-          '';
-          before = [
-            "storm:bootstrap"
-            "devenv:enterShell"
-            "devenv:enterTest"
-          ];
-        };
-        "storm:initialize" = {
-          exec = "initialize";
-          after = [
-            "storm:configure"
-            "storm:bootstrap"
-          ];
-          before = [
-            "devenv:enterShell"
-            "devenv:enterTest"
-          ];
-        };
-      };
+      env.FORCE_COLOR = true;
     };
 
     release.module = {

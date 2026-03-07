@@ -22,7 +22,7 @@ in
 
     # Tools
     pkgs.capnproto
-    pkgs-unstable.prek
+    pkgs.prek
   ];
 
   # https://devenv.sh/git-hooks/
