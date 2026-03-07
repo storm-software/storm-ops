@@ -166,24 +166,27 @@ in
       env.CI = false;
       env.FORCE_COLOR = true;
 
-      "storm:setup:install" = {
-        exec = ''
-          pnpm install --no-frozen-lockfile
-          bootstrap
+      tasks = {
+        "storm:setup:install" = {
+          exec = ''
+            pnpm install --no-frozen-lockfile
+            bootstrap
 
-          pnpm exec git-tools pre-install
-          pnpm exec git-tools prepare
-        '';
-        before = [
-          "storm:setup:updates"
-          "devenv:enterShell"
-          "devenv:enterTest"
-        ];
-        after = [
-          "devenv:files"
-          "devenv:files:cleanup"
-          "storm:setup:git"
-        ];
+            pnpm exec storm-git pre-install
+            pnpm exec storm-git prepare
+          '';
+          before = [
+            "storm:setup:updates"
+            "devenv:enterShell"
+            "devenv:enterTest"
+          ];
+          after = [
+            "devenv:files"
+            "devenv:files:cleanup"
+            "storm:setup:git"
+            "devenv:git-hooks:install"
+          ];
+        };
       };
     };
 
@@ -194,21 +197,23 @@ in
       env.CI = true;
       env.DEVENV_TUI = false;
 
-      "storm:setup:install" = {
-        exec = ''
-          pnpm install --frozen-lockfile
-          bootstrap
-        '';
-        before = [
-          "storm:setup:updates"
-          "devenv:enterShell"
-          "devenv:enterTest"
-        ];
-        after = [
-          "devenv:files"
-          "devenv:files:cleanup"
-          "storm:setup:git"
-        ];
+      tasks = {
+        "storm:setup:install" = {
+          exec = ''
+            pnpm install --frozen-lockfile
+            bootstrap
+          '';
+          before = [
+            "storm:setup:updates"
+            "devenv:enterShell"
+            "devenv:enterTest"
+          ];
+          after = [
+            "devenv:files"
+            "devenv:files:cleanup"
+            "storm:setup:git"
+          ];
+        };
       };
     };
   };
