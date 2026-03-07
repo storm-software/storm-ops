@@ -1,5 +1,8 @@
-# Refer for explanation to following link:
-# https://github.com/evilmartians/lefthook/blob/master/docs/configuration.md
+#                                                                                #
+#                          Lefthook configuration file:                          #
+#   This file is used to configure Lefthook, a tool for managing Git hooks.      #
+#                                                                                #
+#   https://github.com/evilmartians/lefthook/blob/master/docs/configuration.md   #
 
 $schema: https://raw.githubusercontent.com/evilmartians/lefthook/refs/heads/master/schema.json
 assert_lefthook_installed: true
