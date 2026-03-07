@@ -85,9 +85,9 @@ in
         "devenv:enterTest"
       ];
       after = [
+        "storm:setup:git"
         "devenv:files"
         "devenv:files:cleanup"
-        "storm:setup:git"
       ];
     };
     "storm:setup:updates" = {

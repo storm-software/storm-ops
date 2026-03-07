@@ -166,27 +166,25 @@ in
       env.CI = false;
       env.FORCE_COLOR = true;
 
-      tasks = {
-        "storm:setup:install" = {
-          exec = ''
-            pnpm install --no-frozen-lockfile
-            bootstrap
+      tasks."storm:setup:install" = {
+        exec = ''
+          pnpm install --no-frozen-lockfile
+          bootstrap
 
-            pnpm exec storm-git pre-install
-            pnpm exec storm-git prepare
-          '';
-          before = [
-            "storm:setup:updates"
-            "devenv:enterShell"
-            "devenv:enterTest"
-          ];
-          after = [
-            "devenv:files"
-            "devenv:files:cleanup"
-            "storm:setup:git"
-            "devenv:git-hooks:install"
-          ];
-        };
+          pnpm exec storm-git pre-install
+          pnpm exec storm-git prepare
+        '';
+        before = [
+          "storm:setup:updates"
+          "devenv:enterShell"
+          "devenv:enterTest"
+        ];
+        after = [
+          "devenv:files"
+          "devenv:files:cleanup"
+          "storm:setup:git"
+          "devenv:git-hooks:install"
+        ];
       };
     };
 
@@ -197,23 +195,22 @@ in
       env.CI = true;
       env.DEVENV_TUI = false;
 
-      tasks = {
-        "storm:setup:install" = {
-          exec = ''
-            pnpm install --frozen-lockfile
-            bootstrap
-          '';
-          before = [
-            "storm:setup:updates"
-            "devenv:enterShell"
-            "devenv:enterTest"
-          ];
-          after = [
-            "devenv:files"
-            "devenv:files:cleanup"
-            "storm:setup:git"
-          ];
-        };
+      tasks."storm:setup:install" = {
+        exec = ''
+          pnpm install --frozen-lockfile
+          bootstrap
+        '';
+        before = [
+          "storm:setup:updates"
+          "devenv:enterShell"
+          "devenv:enterTest"
+        ];
+        after = [
+          "devenv:files"
+          "devenv:files:cleanup"
+          "storm:setup:git"
+          "devenv:git-hooks:install"
+        ];
       };
     };
   };
