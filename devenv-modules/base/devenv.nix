@@ -65,6 +65,7 @@ in
       '';
       before = [
         "storm:setup:install"
+        "storm:setup:updates"
         "devenv:enterShell"
         "devenv:enterTest"
       ];
@@ -86,7 +87,6 @@ in
       after = [
         "devenv:files"
         "devenv:files:cleanup"
-        "devenv:git-hooks:install"
         "storm:setup:git"
       ];
     };
@@ -100,11 +100,11 @@ in
         "devenv:enterTest"
       ];
       after = [
-        "storm:setup:install"
+        "storm:setup:git"
         "devenv:files"
         "devenv:files:cleanup"
+        "storm:setup:install"
         "devenv:git-hooks:install"
-        "storm:setup:git"
       ];
     };
   };
