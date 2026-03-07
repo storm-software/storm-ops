@@ -7,9 +7,12 @@ import { readFile } from "node:fs/promises";
 import path from "node:path";
 import { checkPackageVersion } from "../utilities/check-package-version";
 
-export async function prePushHook(config: StormWorkspaceConfig) {
+export async function prePushHook(
+  config: StormWorkspaceConfig,
+  files: string[]
+) {
   writeInfo("Running pre-push hook...", config);
-  checkPackageVersion(process.argv?.slice(1));
+  checkPackageVersion(files);
 
   writeInfo("🔒🔒🔒 Validating lock files 🔒🔒🔒\n", config);
 

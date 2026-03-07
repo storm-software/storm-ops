@@ -4,9 +4,12 @@ import { StormWorkspaceConfig } from "@storm-software/config";
 import { run, writeInfo } from "@storm-software/config-tools";
 import { checkPackageVersion } from "../utilities/check-package-version";
 
-export async function postMergeHook(config: StormWorkspaceConfig) {
+export async function postMergeHook(
+  config: StormWorkspaceConfig,
+  files: string[]
+) {
   writeInfo("Running post-merge hook...", config);
-  checkPackageVersion(process.argv?.slice(1));
+  checkPackageVersion(files);
 
   try {
     run(config, "git-lfs version");

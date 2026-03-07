@@ -11,7 +11,7 @@ import { postMergeHook } from "../src/hooks/post-merge";
 void (async () => {
   const config = await getConfig();
   try {
-    await postMergeHook(config);
+    await postMergeHook(config, process.argv.slice(2));
 
     exitWithSuccess(config);
   } catch (error) {

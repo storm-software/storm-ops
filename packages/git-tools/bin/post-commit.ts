@@ -11,7 +11,7 @@ import { postCommitHook } from "../src/hooks/post-commit";
 void (async () => {
   const config = await getConfig();
   try {
-    await postCommitHook(config);
+    await postCommitHook(config, process.argv.slice(2));
 
     exitWithSuccess(config);
   } catch (error) {

@@ -11,7 +11,7 @@ import { postCheckoutHook } from "../src/hooks/post-checkout";
 void (async () => {
   const config = await getConfig();
   try {
-    await postCheckoutHook(config);
+    await postCheckoutHook(config, process.argv.slice(2));
 
     exitWithSuccess(config);
   } catch (error) {

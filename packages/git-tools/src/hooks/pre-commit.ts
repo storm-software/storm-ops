@@ -7,11 +7,14 @@ import {
   isPackageVersionChanged
 } from "../utilities/check-package-version";
 
-export async function preCommitHook(config: StormWorkspaceConfig) {
+export async function preCommitHook(
+  config: StormWorkspaceConfig,
+  files: string[]
+) {
   writeInfo("Running pre-commit hook...", config);
 
-  checkPackageVersion(process.argv.slice(1));
-  if (isPackageVersionChanged(process.argv?.slice(1))) {
+  checkPackageVersion(files);
+  if (isPackageVersionChanged(files)) {
     throw new Error(
       "Please regenerate the package lock file before committing..."
     );

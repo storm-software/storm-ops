@@ -11,7 +11,7 @@ import { prePushHook } from "../src/hooks/pre-push";
 void (async () => {
   const config = await getConfig();
   try {
-    await prePushHook(config);
+    await prePushHook(config, process.argv.slice(2));
 
     exitWithSuccess(config);
   } catch (error) {

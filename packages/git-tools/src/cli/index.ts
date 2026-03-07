@@ -96,27 +96,32 @@ export function createProgram(config: StormWorkspaceConfig) {
   program
     .command("post-checkout")
     .description("Run post-checkout git hook for the workspace.")
+    .option("--files <files...>", "The files changed in the commit or checkout")
     .action(postCheckoutAction);
   program
     .command("post-commit")
     .description("Run post-commit git hook for the workspace.")
+    .option("--files <files...>", "The files changed in the commit or checkout")
     .action(postCommitAction);
   program
     .command("post-merge")
     .description("Run post-merge git hook for the workspace.")
+    .option("--files <files...>", "The files changed in the merge")
     .action(postMergeAction);
   program
     .command("pre-commit")
     .description("Run pre-commit git hook for the workspace.")
+    .option("--files <files...>", "The files changed in the commit or checkout")
     .action(preCommitAction);
   program
     .command("pre-push")
     .description("Run pre-push git hook for the workspace.")
+    .option("--files <files...>", "The files changed in the push")
     .action(prePushAction);
   program
     .command("pre-install")
     .description("Run pre-install git hook for the workspace.")
-    .action(preInstallAction);
+    .option("--files <files...>", "The files changed in the install");
   program
     .command("prepare")
     .description("Run prepare git hook for the workspace.")
@@ -260,14 +265,16 @@ export async function commitLintAction(options: CommitLintCLIOptions) {
   }
 }
 
-export async function postCheckoutAction() {
+export async function postCheckoutAction({ files }: { files: string[] }) {
   try {
     writeInfo(
-      `${brandIcon(_config)}  Running the Storm post-checkout git hook for the workspace...`,
+      `${brandIcon(_config)}  Running the Storm post-checkout git hook for ${
+        files.length
+      } files in the workspace...`,
       _config
     );
 
-    await postCheckoutHook(_config as StormWorkspaceConfig);
+    await postCheckoutHook(_config as StormWorkspaceConfig, files);
 
     writeSuccess(" ✔ Post-checkout hook completed successfully!\n", _config);
   } catch (error) {
@@ -279,14 +286,16 @@ export async function postCheckoutAction() {
   }
 }
 
-export async function postCommitAction() {
+export async function postCommitAction({ files }: { files: string[] }) {
   try {
     writeInfo(
-      `${brandIcon(_config)}  Running the Storm post-commit git hook for the workspace...`,
+      `${brandIcon(_config)}  Running the Storm post-commit git hook for ${
+        files.length
+      } files in the workspace...`,
       _config
     );
 
-    await postCommitHook(_config as StormWorkspaceConfig);
+    await postCommitHook(_config as StormWorkspaceConfig, files);
 
     writeSuccess(" ✔ Post-commit hook completed successfully!\n", _config);
   } catch (error) {
@@ -298,14 +307,16 @@ export async function postCommitAction() {
   }
 }
 
-export async function postMergeAction() {
+export async function postMergeAction({ files }: { files: string[] }) {
   try {
     writeInfo(
-      `${brandIcon(_config)}  Running the Storm post-merge git hook for the workspace...`,
+      `${brandIcon(_config)}  Running the Storm post-merge git hook for ${
+        files.length
+      } files in the workspace...`,
       _config
     );
 
-    await postMergeHook(_config as StormWorkspaceConfig);
+    await postMergeHook(_config as StormWorkspaceConfig, files);
 
     writeSuccess(" ✔ Post-merge hook completed successfully!\n", _config);
   } catch (error) {
@@ -317,14 +328,16 @@ export async function postMergeAction() {
   }
 }
 
-export async function preCommitAction() {
+export async function preCommitAction({ files }: { files: string[] }) {
   try {
     writeInfo(
-      `${brandIcon(_config)}  Running the Storm pre-commit git hook for the workspace...`,
+      `${brandIcon(_config)}  Running the Storm pre-commit git hook for ${
+        files.length
+      } files in the workspace...`,
       _config
     );
 
-    await preCommitHook(_config as StormWorkspaceConfig);
+    await preCommitHook(_config as StormWorkspaceConfig, files);
 
     writeSuccess(" ✔ Pre-commit hook completed successfully!\n", _config);
   } catch (error) {
@@ -336,14 +349,16 @@ export async function preCommitAction() {
   }
 }
 
-export async function prePushAction() {
+export async function prePushAction({ files }: { files: string[] }) {
   try {
     writeInfo(
-      `${brandIcon(_config)}  Running the Storm pre-push git hook for the workspace...`,
+      `${brandIcon(_config)}  Running the Storm pre-push git hook for ${
+        files.length
+      } files in the workspace...`,
       _config
     );
 
-    await prePushHook(_config as StormWorkspaceConfig);
+    await prePushHook(_config as StormWorkspaceConfig, files);
 
     writeSuccess(" ✔ Pre-push hook completed successfully!\n", _config);
   } catch (error) {

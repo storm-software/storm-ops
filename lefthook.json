@@ -18,13 +18,13 @@
       },
       "prepare": {
         "glob": "**/{lefthook.yml,lefthook.yaml,lefthook.json,biome.json}",
-        "run": "pnpm node ./dist/packages/git-tools/bin/git.cjs prepare {files}",
+        "run": "pnpm node ./dist/packages/git-tools/bin/git.cjs prepare --files {files}",
         "stage_fixed": true
       },
       "pre-commit": {
         "files": "git diff --name-only HEAD @{push}",
         "glob": "**/*",
-        "run": "pnpm node ./dist/packages/git-tools/bin/git.cjs pre-commit {files}",
+        "run": "pnpm node ./dist/packages/git-tools/bin/git.cjs pre-commit --files {files}",
         "stage_fixed": true
       },
       "lint-codeowners": {
@@ -85,7 +85,7 @@
       "pre-push": {
         "files": "git diff --name-only HEAD @{push}",
         "glob": "**/*",
-        "run": "pnpm node ./dist/packages/git-tools/bin/git.cjs pre-push {files}",
+        "run": "pnpm node ./dist/packages/git-tools/bin/git.cjs pre-push --files {files}",
         "stage_fixed": true
       },
       "sherif": {
@@ -107,7 +107,7 @@
       "validate": {
         "files": "git diff --name-only HEAD @{push}",
         "glob": "**/*",
-        "run": "pnpm node ./dist/packages/git-tools/bin/git.cjs post-merge {files}",
+        "run": "pnpm node ./dist/packages/git-tools/bin/git.cjs post-merge --files {files}",
         "stage_fixed": true
       }
     }
@@ -117,7 +117,7 @@
       "validate": {
         "files": "git diff --name-only HEAD @{push}",
         "glob": "**/*",
-        "run": "pnpm node ./dist/packages/git-tools/bin/git.cjs post-commit {files}",
+        "run": "pnpm node ./dist/packages/git-tools/bin/git.cjs post-commit --files {files}",
         "stage_fixed": true
       }
     }

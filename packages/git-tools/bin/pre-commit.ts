@@ -11,7 +11,7 @@ import { preCommitHook } from "../src/hooks/pre-commit";
 void (async () => {
   const config = await getConfig();
   try {
-    await preCommitHook(config);
+    await preCommitHook(config, process.argv.slice(2));
 
     exitWithSuccess(config);
   } catch (error) {
