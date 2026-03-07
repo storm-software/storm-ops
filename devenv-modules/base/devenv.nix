@@ -49,7 +49,7 @@ in
       pnpm install
       pnpm bootstrap
     '';
-    prepare.exec = ''
+    initialize.exec = ''
       pnpm update --recursive --workspace
       pnpm update-storm
     '';
@@ -60,19 +60,6 @@ in
     format.exec = "pnpm format";
     release.exec = "pnpm release --base=$1 --head=$2";
     nuke.exec = "pnpm nuke";
-  };
-
-  tasks = {
-    "storm:bootstrap" = {
-      exec = "bootstrap";
-      before = [
-        "devenv:enterShell"
-        "devenv:enterTest"
-      ];
-      after = [
-        "storm:prepare"
-      ];
-    };
   };
 
   # https://devenv.sh/git-hooks/
@@ -110,8 +97,8 @@ in
             "devenv:enterTest"
           ];
         };
-        "storm:prepare" = {
-          exec = "prepare";
+        "storm:initialize" = {
+          exec = "initialize";
           after = [
             "storm:configure"
             "storm:bootstrap"
@@ -119,6 +106,16 @@ in
           before = [
             "devenv:enterShell"
             "devenv:enterTest"
+          ];
+        };
+        "storm:bootstrap" = {
+          exec = "bootstrap";
+          before = [
+            "devenv:enterShell"
+            "devenv:enterTest"
+          ];
+          after = [
+            "storm:initialize"
           ];
         };
       };
@@ -129,6 +126,18 @@ in
       env.NODE_ENV = "production";
       env.DEBUG = false;
       env.CI = true;
+
+      tasks = {
+        tasks = {
+          "storm:bootstrap" = {
+            exec = "bootstrap";
+            before = [
+              "devenv:enterShell"
+              "devenv:enterTest"
+            ];
+          };
+        };
+      };
     };
   };
 }
