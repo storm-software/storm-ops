@@ -61,5 +61,5 @@ pre-commit:
     prettier:
       files: git diff --name-only HEAD @{push}
       glob: "**/*"
-      run: pnpm exec prettier --write --ignore-unknown --no-error-on-unmatched-pattern --config="node_modules/@storm-software/prettier/exclude-packagejson.json" --ignore-path="node_modules/@storm-software/prettier/.prettierignore-exclude-packagejson" --cache --cache-location="node_modules/.cache/prettier" {files} && git update-index
+      run: pnpm exec prettier --write --ignore-unknown --no-error-on-unmatched-pattern --config="node_modules/@storm-software/prettier/exclude-packagejson.json" --ignore-path="node_modules/@storm-software/prettier/.prettierignore-exclude-packagejson" --cache --cache-location="node_modules/.cache/prettier/workspace.cache" {files} && git update-index
       stage_fixed: true
