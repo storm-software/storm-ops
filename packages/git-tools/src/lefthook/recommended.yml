@@ -68,5 +68,5 @@ pre-push:
     format:
       files: git diff --name-only HEAD @{push}
       glob: "**/*"
-      run: pnpm format {files}
+      run: pnpm format --files {files}
       stage_fixed: true
