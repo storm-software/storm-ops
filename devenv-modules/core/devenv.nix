@@ -198,12 +198,6 @@ in
 
   profiles = {
     development.module = {
-      env.ENVIRONMENT = "development";
-      env.NODE_ENV = "development";
-      env.DEBUG = true;
-      env.CI = false;
-      env.FORCE_COLOR = true;
-
       tasks."storm:setup:install" = {
         exec = ''
           pnpm install --no-frozen-lockfile
@@ -227,12 +221,6 @@ in
     };
 
     release.module = {
-      env.ENVIRONMENT = "production";
-      env.NODE_ENV = "production";
-      env.DEBUG = false;
-      env.CI = true;
-      env.DEVENV_TUI = false;
-
       tasks."storm:setup:install" = {
         exec = ''
           pnpm install --frozen-lockfile
