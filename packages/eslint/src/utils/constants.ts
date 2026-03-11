@@ -112,6 +112,7 @@ export const GLOB_EXCLUDE = [
   "**/__mocks__",
   "**/__generated__",
   "**/.wrangler",
+  "**/.rolldown",
   "**/.docusaurus",
   "**/.tamagui",
   "**/tamagui.css",
