@@ -1,4 +1,5 @@
 {
+  lib,
   pkgs,
   inputs,
   config,
@@ -8,12 +9,117 @@ let
   pkgs-unstable = import inputs.nixpkgs-unstable { system = pkgs.stdenv.system; };
 in
 {
-  env.ENVIRONMENT = "development";
-  env.NODE_ENV = "development";
-  env.DEBUG = true;
-  env.CI = false;
+  options.modes.development.enable = lib.mkEnableOption "Enable Development environment";
+  options.modes.production.enable = lib.mkEnableOption "Enable Production environment";
 
-  # https://devenv.sh/packages/
+  config = {
+    env.ENVIRONMENT = lib.mkIf config.modes.development.enable "development";
+    env.NODE_ENV = lib.mkIf config.modes.development.enable "development";
+    env.DEBUG = lib.mkIf config.modes.development.enable true;
+    env.CI = lib.mkIf config.modes.development.enable false;
+    tasks = lib.mkIf config.modes.development.enable {
+      "storm:setup:git" = {
+        exec = ''
+          git config commit.gpgsign true
+          git config tag.gpgSign true
+          git config lfs.allowincompletepush true
+          git config init.defaultBranch main
+
+          npm config set provenance true
+        '';
+        before = [
+          "storm:setup:updates"
+          "devenv:enterShell"
+          "devenv:enterTest"
+        ];
+        after = [
+          "devenv:files"
+          "devenv:files:cleanup"
+        ];
+      };
+      "storm:setup:install" = {
+        exec = ''
+          pnpm install --no-frozen-lockfile
+          bootstrap
+
+          pnpm exec storm-git pre-install
+          pnpm exec storm-git prepare
+        '';
+        before = [
+          "storm:setup:updates"
+          "devenv:enterShell"
+          "devenv:enterTest"
+        ];
+        after = [
+          "devenv:files"
+          "devenv:files:cleanup"
+          "storm:setup:git"
+          "devenv:git-hooks:install"
+        ];
+      };
+      "storm:setup:updates" = {
+        exec = ''
+          pnpm update --recursive --workspace
+          update-storm
+        '';
+        before = [
+          "devenv:enterShell"
+          "devenv:enterTest"
+        ];
+        after = [
+          "storm:setup:git"
+          "devenv:files"
+          "devenv:files:cleanup"
+          "devenv:git-hooks:install"
+        ];
+
+      };
+    };
+
+    env.ENVIRONMENT = lib.mkIf config.modes.production.enable "production";
+    env.NODE_ENV = lib.mkIf config.modes.production.enable "production";
+    env.DEBUG = lib.mkIf config.modes.production.enable false;
+    env.CI = lib.mkIf config.modes.production.enable true;
+    env.DEVENV_TUI = lib.mkIf config.modes.production.enable false;
+    tasks = lib.mkIf config.modes.production.enable {
+      "storm:setup:git" = {
+        exec = ''
+          git config commit.gpgsign true
+          git config tag.gpgSign true
+          git config lfs.allowincompletepush true
+          git config init.defaultBranch main
+
+          npm config set provenance true
+        '';
+        before = [
+          "devenv:enterShell"
+          "devenv:enterTest"
+          "storm:setup:install"
+        ];
+        after = [
+          "devenv:files"
+          "devenv:files:cleanup"
+        ];
+      };
+      "storm:setup:install" = {
+        exec = ''
+          pnpm install --frozen-lockfile
+          bootstrap
+        '';
+        before = [
+          "devenv:enterShell"
+          "devenv:enterTest"
+        ];
+        after = [
+          "devenv:files"
+          "devenv:files:cleanup"
+          "storm:setup:git"
+          "devenv:git-hooks:install"
+        ];
+      };
+    };
+  };
+
   packages = [
     # Source Control
     pkgs.gnupg
@@ -29,64 +135,6 @@ in
     pkgs.capnproto
     pkgs.prek
   ];
-
-  tasks = {
-    "storm:setup:git" = {
-      exec = ''
-        git config commit.gpgsign true
-        git config tag.gpgSign true
-        git config lfs.allowincompletepush true
-        git config init.defaultBranch main
-
-        npm config set provenance true
-      '';
-      before = [
-        "storm:setup:updates"
-        "devenv:enterShell"
-        "devenv:enterTest"
-      ];
-      after = [
-        "devenv:files"
-        "devenv:files:cleanup"
-      ];
-    };
-    "storm:setup:install" = {
-      exec = ''
-        pnpm install --no-frozen-lockfile
-        bootstrap
-
-        pnpm exec storm-git pre-install
-        pnpm exec storm-git prepare
-      '';
-      before = [
-        "storm:setup:updates"
-        "devenv:enterShell"
-        "devenv:enterTest"
-      ];
-      after = [
-        "devenv:files"
-        "devenv:files:cleanup"
-        "storm:setup:git"
-        "devenv:git-hooks:install"
-      ];
-    };
-    "storm:setup:updates" = {
-      exec = ''
-        pnpm update --recursive --workspace
-        update-storm
-      '';
-      before = [
-        "devenv:enterShell"
-        "devenv:enterTest"
-      ];
-      after = [
-        "storm:setup:git"
-        "devenv:files"
-        "devenv:files:cleanup"
-        "devenv:git-hooks:install"
-      ];
-    };
-  };
 
   # https://devenv.sh/git-hooks/
   git-hooks = {
