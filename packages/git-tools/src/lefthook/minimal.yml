@@ -19,7 +19,7 @@ pre-commit:
     prepare:
       files: git diff --name-only HEAD @{push}
       glob: "**/*"
-      run: pnpm exec storm-git prepare --files {files}
+      run: pnpm exec storm-git prepare
       stage_fixed: true
     pre-commit:
       files: git diff --name-only HEAD @{push}
