@@ -1,6 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { readFileSync, readdirSync, statSync, writeFileSync } from "node:fs";
+import { readdirSync, readFileSync, statSync } from "node:fs";
+import { writeFile } from "node:fs/promises";
 import { extname, join } from "node:path";
+import { format, resolveConfig } from "prettier";
 import { transform } from "./transform";
 
 async function transformAndSave(
@@ -25,34 +27,43 @@ async function transformAndSave(
     );
   }
 
-  console.log("\n==================\n");
-  const transformed = files.map(x => {
-    const result = transform(
-      readFileSync(x.path, "utf8"),
-      mode,
-      maxHeaderLevel,
-      title,
-      noTitle,
-      entryPrefix,
-      processAll,
-      updateOnly
-    );
-    result.path = x.path;
-    return result;
-  });
+  return Promise.all(
+    files
+      .map(x => {
+        const result = transform(
+          readFileSync(x.path, "utf8"),
+          mode,
+          maxHeaderLevel,
+          title,
+          noTitle,
+          entryPrefix,
+          processAll,
+          updateOnly
+        );
+        result.path = x.path;
+        return result;
+      })
+      .filter(file => file.transformed)
+      .map(async file => {
+        console.log('Writting changes to "%s"', file.path);
 
-  const changed = transformed.filter(x => x.transformed);
-  const unchanged = transformed.filter(x => {
-    return !x.transformed;
-  });
+        const prettierConfig = await resolveConfig(file.path, {
+          useCache: true,
+          editorconfig: true
+        });
 
-  for (const x of unchanged) {
-    console.log('"%s" is up to date', x.path);
-  }
-  for (const x of changed) {
-    console.log('"%s" will be updated', x.path);
-    writeFileSync(x.path, x.data, "utf8");
-  }
+        return writeFile(
+          file.path,
+          await format(
+            file.data,
+            prettierConfig
+              ? { ...prettierConfig, parser: "markdown" }
+              : { parser: "markdown" }
+          ),
+          "utf8"
+        );
+      })
+  );
 }
 
 export const doctoc = (
@@ -70,13 +81,17 @@ export const doctoc = (
   const stat = statSync(directory);
   if (stat.isDirectory()) {
     console.log(
-      '\nDocToccing "%s" and its sub directories for %s.',
+      '\nCreating Table of Contents for "%s" and its sub directories for %s.',
       directory,
       mode
     );
     files = findMarkdownFiles(directory);
   } else {
-    console.log('\nDocToccing single file "%s" for %s.', directory, mode);
+    console.log(
+      '\nCreating Table of Contents for single file "%s" for %s.',
+      directory,
+      mode
+    );
     files = [{ path: directory }];
   }
 
@@ -91,7 +106,10 @@ export const doctoc = (
     updateOnly
   );
 
-  console.log("\nEverything is OK.");
+  console.log(
+    "\nCompleted generating Table of Contents for %s file(s).",
+    files.length
+  );
 };
 
 const markdownExts = [".md", ".markdown"];

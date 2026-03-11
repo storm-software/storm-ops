@@ -187,6 +187,7 @@ export function transform(
     matchesEnd,
     true
   );
+
   return { transformed: true, data: data, toc: toc, wrappedToc: wrappedToc };
 }
 
