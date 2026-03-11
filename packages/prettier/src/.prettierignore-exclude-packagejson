@@ -1,7 +1,4 @@
 **/package.json
-
-// From .prettierignore:
-
 .alexignore
 .prettierignore
 npm-lock.json
