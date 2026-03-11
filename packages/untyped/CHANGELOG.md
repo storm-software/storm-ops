@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Untyped
 
+## [0.24.90](https://github.com/storm-software/storm-ops/releases/tag/untyped%400.24.90) (03/11/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace's `README.md` files ([b38023362](https://github.com/storm-software/storm-ops/commit/b38023362))
+
+### Updated Dependencies
+
+- Updated **config-tools** to **v1.189.27**
+- Updated **config** to **v1.135.28**
+
 ## [0.24.89](https://github.com/storm-software/storm-ops/releases/tag/untyped%400.24.89) (03/11/2026)
 
 ### Miscellaneous
