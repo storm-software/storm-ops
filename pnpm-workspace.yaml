@@ -7,7 +7,7 @@ packages:
 
 catalog:
   '@ltd/j-toml': 1.38.0
-  '@microsoft/api-extractor': ^7.57.6
+  '@microsoft/api-extractor': ^7.57.7
   '@nx/devkit': ^22.5.4
   '@nx/esbuild': 22.5.1
   '@nx/eslint': 22.5.1
@@ -23,10 +23,10 @@ catalog:
   '@swc-node/register': 1.10.9
   '@swc/core': 1.7.26
   '@swc/helpers': 0.5.13
-  '@types/node': ^25.3.5
-  '@typescript-eslint/eslint-plugin': ^8.56.1
-  '@typescript-eslint/parser': ^8.56.1
-  '@typescript-eslint/utils': ^8.56.1
+  '@types/node': ^25.4.0
+  '@typescript-eslint/eslint-plugin': ^8.57.0
+  '@typescript-eslint/parser': ^8.57.0
+  '@typescript-eslint/utils': ^8.57.0
   c12: ^2.0.4
   chalk: ^4.1.2
   commander: ^12.1.0
@@ -44,7 +44,7 @@ catalog:
   jest-resolve: 30.0.5
   jest-util: 30.0.5
   jiti: 2.4.2
-  knip: ^5.85.0
+  knip: ^5.86.0
   mlly: ^1.8.1
   nx: 22.5.1
   pkg-types: ^1.3.1
