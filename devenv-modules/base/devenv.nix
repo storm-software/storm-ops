@@ -18,7 +18,7 @@ in
 
   env.DEFAULT_LOCALE = "en_US";
   env.DEFAULT_TIMEZONE = "America/New_York";
-  env.FORCE_COLOR = 1;
+  env.FORCE_COLOR = 3;
   env.CLICOLOR = 1;
 
   packages = with pkgs; [
