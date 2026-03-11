@@ -234,7 +234,7 @@ export async function releaseAction({
 export async function commitLintAction(options: CommitLintCLIOptions) {
   try {
     writeInfo(
-      `${brandIcon(_config)} Linting the ${
+      `${brandIcon(_config)}  Linting the ${
         _config.repository
           ? _config.repository
           : _config.namespace
