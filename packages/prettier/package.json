@@ -1,22 +1,30 @@
 {
   "name": "@storm-software/prettier",
   "version": "0.58.25",
-  "type": "commonjs",
+  "private": false,
   "description": "⚡ A package containing the base Prettier configuration used by Storm Software across many projects.",
+  "keywords": [
+    "monorepo",
+    "prettier",
+    "prettier-config",
+    "storm",
+    "storm-ops",
+    "sullivanpj"
+  ],
+  "homepage": "https://stormsoftware.com",
+  "bugs": "https://github.com/storm-software/storm-ops/issues",
   "repository": {
     "type": "github",
     "url": "https://github.com/storm-software/storm-ops",
     "directory": "packages/prettier"
   },
-  "homepage": "https://stormsoftware.com",
-  "bugs": "https://github.com/storm-software/storm-ops/issues",
+  "license": "Apache-2.0",
   "author": {
     "name": "Storm Software",
     "email": "contact@stormsoftware.com",
     "url": "https://stormsoftware.com"
   },
-  "license": "Apache-2.0",
-  "private": false,
+  "type": "commonjs",
   "exports": {
     ".": {
       "import": "./index.js",
@@ -29,9 +37,11 @@
       "default": "./index.js"
     },
     "./.prettierignore": "./.prettierignore",
+    "./.prettierignore-exclude-packagejson": "./.prettierignore-exclude-packagejson",
     "./all.json": "./all.json",
     "./base.json": "./base.json",
     "./recommended.json": "./recommended.json",
+    "./exclude-packagejson.json": "./exclude-packagejson.json",
     "./config.json": "./config.json",
     "./jsdoc.json": "./jsdoc.json",
     "./prisma.json": "./prisma.json",
@@ -41,6 +51,7 @@
   },
   "files": [
     "./.prettierignore",
+    "./.prettierignore-exclude-packagejson",
     "./all.json",
     "./base.json",
     "./config.json",
@@ -50,17 +61,25 @@
     "./package.json",
     "./prisma.json",
     "./recommended.json",
+    "./exclude-package-json.json",
     "./solidity.json",
     "./tailwindcss.json"
   ],
-  "keywords": [
-    "monorepo",
-    "prettier",
-    "prettier-config",
-    "storm",
-    "storm-ops",
-    "sullivanpj"
-  ],
+  "dependencies": {
+    "prettier-plugin-jsdoc": "^1.8.0",
+    "prettier-plugin-organize-imports": "^4.3.0",
+    "prettier-plugin-packagejson": "catalog:",
+    "prettier-plugin-sh": "^0.15.0",
+    "prettier-plugin-toml": "^2.0.6"
+  },
+  "devDependencies": {
+    "@types/node": "catalog:",
+    "prettier": "catalog:",
+    "prettier-plugin-astro": "^0.14.1",
+    "prettier-plugin-prisma": "^5.0.0",
+    "prettier-plugin-solidity": "^1.4.3",
+    "prettier-plugin-tailwindcss": "^0.6.14"
+  },
   "peerDependencies": {
     "prettier": "catalog:",
     "prettier-plugin-astro": "^0.14.1",
@@ -100,21 +119,6 @@
     "prettier-plugin-toml": {
       "optional": false
     }
-  },
-  "dependencies": {
-    "prettier-plugin-jsdoc": "^1.8.0",
-    "prettier-plugin-organize-imports": "^4.3.0",
-    "prettier-plugin-packagejson": "catalog:",
-    "prettier-plugin-sh": "^0.15.0",
-    "prettier-plugin-toml": "^2.0.6"
-  },
-  "devDependencies": {
-    "@types/node": "catalog:",
-    "prettier": "catalog:",
-    "prettier-plugin-astro": "^0.14.1",
-    "prettier-plugin-prisma": "^5.0.0",
-    "prettier-plugin-solidity": "^1.4.3",
-    "prettier-plugin-tailwindcss": "^0.6.14"
   },
   "publishConfig": {
     "access": "public"

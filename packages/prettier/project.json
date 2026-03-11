@@ -45,7 +45,7 @@
           },
           {
             "input": "./packages/prettier/src",
-            "glob": "{*.json,.prettierignore}",
+            "glob": "{*.json,.prettierignore,.prettierignore-exclude-packagejson}",
             "output": "."
           }
         ]
