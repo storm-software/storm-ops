@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Git Tools
 
+## [2.125.5](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.125.5) (03/11/2026)
+
+### Bug Fixes
+
+- **git-tools:** Resolve issue providing files list to `format` hook ([a57c85230](https://github.com/storm-software/storm-ops/commit/a57c85230))
+
 ## [2.125.4](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.125.4) (03/11/2026)
 
 ### Miscellaneous

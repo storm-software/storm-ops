@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - ESLint
 
+## [0.169.113](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.169.113) (03/11/2026)
+
+### Miscellaneous
+
+- **eslint:** Added `.rolldown` to eslint exclude list ([099cb2c16](https://github.com/storm-software/storm-ops/commit/099cb2c16))
+
 ## [0.169.112](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.169.112) (03/11/2026)
 
 ### Miscellaneous

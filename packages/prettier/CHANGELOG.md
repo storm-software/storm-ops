@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Prettier
 
+## [0.58.24](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.58.24) (03/11/2026)
+
+### Miscellaneous
+
+- **prettier:** Added `.rolldown` to .prettierignore file ([3db70c7ec](https://github.com/storm-software/storm-ops/commit/3db70c7ec))
+
 ## [0.58.19](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.58.19) (03/07/2026)
 
 ### Miscellaneous
