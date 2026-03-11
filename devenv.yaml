@@ -17,5 +17,3 @@ inputs:
         follows: nixpkgs
 imports:
   - ./devenv-modules/base
-
-profile: development

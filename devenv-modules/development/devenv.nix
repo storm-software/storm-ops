@@ -8,6 +8,11 @@ let
   pkgs-unstable = import inputs.nixpkgs-unstable { system = pkgs.stdenv.system; };
 in
 {
+  env.ENVIRONMENT = "development";
+  env.NODE_ENV = "development";
+  env.DEBUG = true;
+  env.CI = false;
+
   # https://devenv.sh/packages/
   packages = [
     # Source Control
@@ -43,6 +48,26 @@ in
       after = [
         "devenv:files"
         "devenv:files:cleanup"
+      ];
+    };
+    "storm:setup:install" = {
+      exec = ''
+        pnpm install --no-frozen-lockfile
+        bootstrap
+
+        pnpm exec storm-git pre-install
+        pnpm exec storm-git prepare
+      '';
+      before = [
+        "storm:setup:updates"
+        "devenv:enterShell"
+        "devenv:enterTest"
+      ];
+      after = [
+        "devenv:files"
+        "devenv:files:cleanup"
+        "storm:setup:git"
+        "devenv:git-hooks:install"
       ];
     };
     "storm:setup:updates" = {
@@ -193,50 +218,6 @@ in
           "--config=${config.git.root}/tools/config/zizmor.yml"
         ];
         files = "^\\.github/workflows/.*\\.(yml|yaml)$";
-      };
-    };
-  };
-
-  profiles = {
-    development.module = {
-      tasks."storm:setup:install" = {
-        exec = ''
-          pnpm install --no-frozen-lockfile
-          bootstrap
-
-          pnpm exec storm-git pre-install
-          pnpm exec storm-git prepare
-        '';
-        before = [
-          "storm:setup:updates"
-          "devenv:enterShell"
-          "devenv:enterTest"
-        ];
-        after = [
-          "devenv:files"
-          "devenv:files:cleanup"
-          "storm:setup:git"
-          "devenv:git-hooks:install"
-        ];
-      };
-    };
-
-    release.module = {
-      tasks."storm:setup:install" = {
-        exec = ''
-          pnpm install --frozen-lockfile
-          bootstrap
-        '';
-        before = [
-          "storm:setup:updates"
-          "devenv:enterShell"
-          "devenv:enterTest"
-        ];
-        after = [
-          "devenv:files"
-          "devenv:files:cleanup"
-          "storm:setup:git"
-        ];
       };
     };
   };

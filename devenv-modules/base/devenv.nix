@@ -61,24 +61,6 @@ in
       shellcheck.enable = true;
       detect-private-keys.enable = true;
       nixfmt.enable = true;
-      terraform-format.enable = false;
-    };
-  };
-
-  profiles = {
-    development.module = {
-      env.ENVIRONMENT = "development";
-      env.NODE_ENV = "development";
-      env.DEBUG = true;
-      env.CI = false;
-    };
-
-    release.module = {
-      env.ENVIRONMENT = "production";
-      env.NODE_ENV = "production";
-      env.DEBUG = false;
-      env.CI = true;
-      env.DEVENV_TUI = false;
     };
   };
 }
