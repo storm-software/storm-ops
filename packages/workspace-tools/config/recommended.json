@@ -318,6 +318,10 @@
       }
     }
   },
+  "plugins": [
+    "@storm-software/workspace-tools/plugins/typescript",
+    "@storm-software/workspace-tools/plugins/typescript/untyped"
+  ],
   "parallel": 3,
   "defaultBase": "main",
   "useDaemonProcess": true,

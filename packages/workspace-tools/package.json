@@ -2,25 +2,31 @@
   "name": "@storm-software/workspace-tools",
   "version": "1.294.58",
   "description": "Tools for managing a Storm workspace, including various Nx generators and executors for common development tasks.",
+  "keywords": [
+    "monorepo",
+    "nx",
+    "storm-software",
+    "storm-ops",
+    "storm",
+    "sullivanpj"
+  ],
+  "homepage": "https://stormsoftware.com",
+  "bugs": "https://github.com/storm-software/storm-ops/issues",
   "repository": {
     "type": "github",
     "url": "https://github.com/storm-software/storm-ops",
     "directory": "packages/workspace-tools"
   },
-  "homepage": "https://stormsoftware.com",
-  "bugs": "https://github.com/storm-software/storm-ops/issues",
+  "license": "Apache-2.0",
   "author": {
     "name": "Storm Software",
     "email": "contact@stormsoftware.com",
     "url": "https://stormsoftware.com"
   },
-  "license": "Apache-2.0",
-  "private": false,
-  "main": "dist/index.js",
-  "module": "dist/index.mjs",
   "exports": {
     "./package.json": "./package.json",
     "./config/base.json": "./config/base.json",
+    "./config/recommended.json": "./config/recommended.json",
     "./assets/cjs_shims": "./assets/cjs_shims.js",
     "./assets/esm_shims": "./assets/esm_shims.js",
     "./docs/*": "./docs/*",
@@ -222,35 +228,9 @@
     "./plugins/typescript/untyped": "./dist/src/plugins/typescript/untyped-schema.js",
     "./plugins/typescript/untyped-schema": "./dist/src/plugins/typescript/untyped-schema.js"
   },
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
   "typings": "dist/index.d.ts",
-  "keywords": [
-    "monorepo",
-    "nx",
-    "storm-software",
-    "storm-ops",
-    "storm",
-    "sullivanpj"
-  ],
-  "peerDependencies": {
-    "@napi-rs/cli": "^3.4.1",
-    "markdownlint-cli2": "^0.17.2",
-    "nx": "catalog:",
-    "prettier": "catalog:"
-  },
-  "peerDependenciesMeta": {
-    "markdownlint-cli2": {
-      "optional": false
-    },
-    "nx": {
-      "optional": false
-    },
-    "prettier": {
-      "optional": false
-    },
-    "@napi-rs/cli": {
-      "optional": true
-    }
-  },
   "dependencies": {
     "@ltd/j-toml": "catalog:",
     "@microsoft/api-extractor": "catalog:",
@@ -288,6 +268,26 @@
     "pkg-types": "catalog:",
     "tsup": "catalog:",
     "typescript": "^5.9.3"
+  },
+  "peerDependencies": {
+    "@napi-rs/cli": "^3.4.1",
+    "markdownlint-cli2": "^0.17.2",
+    "nx": "catalog:",
+    "prettier": "catalog:"
+  },
+  "peerDependenciesMeta": {
+    "@napi-rs/cli": {
+      "optional": true
+    },
+    "markdownlint-cli2": {
+      "optional": false
+    },
+    "nx": {
+      "optional": false
+    },
+    "prettier": {
+      "optional": false
+    }
   },
   "publishConfig": {
     "access": "public"
