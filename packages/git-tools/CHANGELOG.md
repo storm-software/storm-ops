@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Git Tools
 
+## [2.127.3](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.127.3) (03/11/2026)
+
+### Bug Fixes
+
+- **git-tools:** Resolve issue with prettier cache path ([ddbc65791](https://github.com/storm-software/storm-ops/commit/ddbc65791))
+
 ## [2.127.2](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.127.2) (03/11/2026)
 
 ### Miscellaneous
