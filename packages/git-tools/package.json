@@ -1,6 +1,6 @@
 {
   "name": "@storm-software/git-tools",
-  "version": "2.125.1",
+  "version": "2.125.2",
   "private": false,
   "description": "Tools for managing Git repositories within a Nx workspace.",
   "keywords": [
@@ -236,7 +236,7 @@
     "conventional-commits-parser": "^6.3.0",
     "defu": "catalog:",
     "semver": "7.6.2",
-    "simple-git": "^3.32.3",
+    "simple-git": "^3.33.0",
     "tsup": "catalog:"
   },
   "peerDependencies": {

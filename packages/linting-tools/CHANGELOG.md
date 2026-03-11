@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Linting Tools
 
+## [1.132.111](https://github.com/storm-software/storm-ops/releases/tag/linting-tools%401.132.111) (03/11/2026)
+
+### Updated Dependencies
+
+- Updated **config-tools** to **v1.189.22**
+- Updated **config** to **v1.135.23**
+
 ## [1.132.110](https://github.com/storm-software/storm-ops/releases/tag/linting-tools%401.132.110) (03/07/2026)
 
 ### Updated Dependencies
