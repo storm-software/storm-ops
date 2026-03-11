@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Prettier
 
+## [0.59.0](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.59.0) (03/11/2026)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate `README.md` files for workspace ([af1101e07](https://github.com/storm-software/storm-ops/commit/af1101e07))
+- **monorepo:** Regenerate README markdown files ([7ca6fcfe6](https://github.com/storm-software/storm-ops/commit/7ca6fcfe6))
+
+### Features
+
+- **prettier:** Added `exclude-packagejson` configuration ([c8f8a7eac](https://github.com/storm-software/storm-ops/commit/c8f8a7eac))
+
 ## [0.58.24](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.58.24) (03/11/2026)
 
 ### Miscellaneous

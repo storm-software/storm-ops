@@ -2,6 +2,19 @@
 
 # Changelog for Storm Ops - Tsdown
 
+## [0.45.108](https://github.com/storm-software/storm-ops/releases/tag/tsdown%400.45.108) (03/11/2026)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate `README.md` files for workspace ([af1101e07](https://github.com/storm-software/storm-ops/commit/af1101e07))
+- **monorepo:** Regenerate README markdown files ([7ca6fcfe6](https://github.com/storm-software/storm-ops/commit/7ca6fcfe6))
+
+### Updated Dependencies
+
+- Updated **config-tools** to **v1.189.26**
+- Updated **build-tools** to **v0.158.107**
+- Updated **config** to **v1.135.27**
+
 ## [0.45.107](https://github.com/storm-software/storm-ops/releases/tag/tsdown%400.45.107) (03/11/2026)
 
 ### Updated Dependencies

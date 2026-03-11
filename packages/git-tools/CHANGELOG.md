@@ -2,6 +2,23 @@
 
 # Changelog for Storm Ops - Git Tools
 
+## [2.127.0](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.127.0) (03/11/2026)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate `README.md` files for workspace ([af1101e07](https://github.com/storm-software/storm-ops/commit/af1101e07))
+- **monorepo:** Regenerate README markdown files ([7ca6fcfe6](https://github.com/storm-software/storm-ops/commit/7ca6fcfe6))
+
+### Features
+
+- **git-tools:** Added `prettier` formatting to `readme` command-line interface ([722674eb9](https://github.com/storm-software/storm-ops/commit/722674eb9))
+
+### Updated Dependencies
+
+- Updated **conventional-changelog** to **v0.3.107**
+- Updated **config-tools** to **v1.189.26**
+- Updated **config** to **v1.135.27**
+
 ## [2.126.0](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.126.0) (03/11/2026)
 
 ### Features

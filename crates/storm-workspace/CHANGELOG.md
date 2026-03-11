@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Storm Workspace
 
+## [0.19.137](https://github.com/storm-software/storm-ops/releases/tag/storm-workspace%400.19.137) (03/11/2026)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate `README.md` files for workspace ([af1101e07](https://github.com/storm-software/storm-ops/commit/af1101e07))
+
 ## [0.19.84](https://github.com/storm-software/storm-ops/releases/tag/storm-workspace%400.19.84) (12/30/2025)
 
 ### Miscellaneous
