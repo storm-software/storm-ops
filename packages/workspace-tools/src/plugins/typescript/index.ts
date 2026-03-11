@@ -312,7 +312,7 @@ export const createNodesV2: CreateNodesV2<TypeScriptPluginOptions> = [
             executor: "nx:run-commands",
             options: {
               command:
-                'pnpm exec prettier "{projectRoot}/**/*" --write --ignore-unknown --no-error-on-unmatched-pattern --config="node_modules/@storm-software/prettier/config.json" --ignore-path="node_modules/@storm-software/prettier/.prettierignore" --cache --cache-location="node_modules/.cache/prettier/{projectRoot}" '
+                'pnpm exec prettier "{projectRoot}/**/*" --write --ignore-unknown --no-error-on-unmatched-pattern --config="node_modules/@storm-software/prettier/exclude-packagejson.json" --ignore-path="node_modules/@storm-software/prettier/.prettierignore-exclude-packagejson" --cache --cache-location="node_modules/.cache/prettier/{projectRoot}" '
             }
           };
 
