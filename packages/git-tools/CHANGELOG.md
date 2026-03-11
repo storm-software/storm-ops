@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Git Tools
 
+## [2.126.0](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.126.0) (03/11/2026)
+
+### Features
+
+- **git-tools:** Added `workspace` flag to `storm-git readme` command-line interface ([f797f3aac](https://github.com/storm-software/storm-ops/commit/f797f3aac))
+
+### Updated Dependencies
+
+- Updated **conventional-changelog** to **v0.3.106**
+- Updated **config-tools** to **v1.189.25**
+- Updated **config** to **v1.135.26**
+
 ## [2.125.5](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.125.5) (03/11/2026)
 
 ### Bug Fixes

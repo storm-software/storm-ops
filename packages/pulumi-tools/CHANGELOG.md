@@ -2,6 +2,14 @@
 
 # Changelog for Storm Ops - Pulumi Tools
 
+## [0.22.115](https://github.com/storm-software/storm-ops/releases/tag/pulumi-tools%400.22.115) (03/11/2026)
+
+### Updated Dependencies
+
+- Updated **workspace-tools** to **v1.295.0**
+- Updated **config-tools** to **v1.189.25**
+- Updated **config** to **v1.135.26**
+
 ## [0.22.114](https://github.com/storm-software/storm-ops/releases/tag/pulumi-tools%400.22.114) (03/11/2026)
 
 ### Updated Dependencies
