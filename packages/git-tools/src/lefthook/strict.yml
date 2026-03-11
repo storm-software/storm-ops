@@ -13,13 +13,43 @@ extends:
   - ./minimal.yml
   - ./recommended.yml
 
+pre-commit:
+  commands:
+    lint:
+      files: git diff --name-only HEAD @{push}
+      glob:
+        - "*.js"
+        - "*.ts"
+        - "*.cjs"
+        - "*.mjs"
+        - "*.d.cts"
+        - "*.d.mts"
+        - "*.jsx"
+        - "*.tsx"
+        - "*.json"
+        - "*.jsonc"
+        - "*.yaml"
+        - "*.yml"
+        - "*.md"
+        - "*.mdx"
+        - "*.markdown"
+        - "*.css"
+        - "*.scss"
+        - "*.sass"
+        - "*.less"
+        - "*.stylus"
+        - "*.graphql"
+        - "*.gql"
+        - "*.xml"
+        - "*.svg"
+        - "*.env"
+        - ".env.{local,development,test,production,staging}"
+      run: pnpm lint {files}
+      stage_fixed: true
+
 pre-push:
   piped: true
   commands:
-    readme:
-      glob: "**/{README.md,README.*.md,readme/**/*,package.json,executors.json,generators.json}"
-      run: pnpm format-readme && git update-index
-      stage_fixed: true
     prettier:
       files: git diff --name-only HEAD @{push}
       glob: "!**/generators/*/files/**/*"

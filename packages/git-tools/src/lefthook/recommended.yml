@@ -18,6 +18,10 @@ pre-commit:
       glob: "{pnpm-lock.yaml,lefthook.yml,lefthook.yaml,lefthook.json}"
       run: pnpm install && pnpm lefthook install && git update-index
       stage_fixed: true
+    pnpm-workspace:
+      glob: "**/*"
+      run: "pnpm update --recursive --workspace"
+      stage_fixed: true
     lint:
       files: git diff --name-only HEAD @{push}
       glob:
@@ -47,12 +51,20 @@ pre-commit:
         - "*.svg"
         - "*.env"
         - ".env.{local,development,test,production,staging}"
-      run: pnpm lint {files}
+      run: pnpm exec storm-lint all --skip-cspell --skip-circular-deps
       stage_fixed: true
 
 pre-push:
   piped: true
   commands:
+    packages-readme:
+      glob: "**/{README.md,README.*.md,readme/**/*,package.json,executors.json,generators.json}"
+      run: pnpm format-readme && git update-index
+      stage_fixed: true
+    workspace-readme:
+      glob: "**/*"
+      run: pnpm exec storm-git readme --templates="tools/readme-templates" --project="@stryke/monorepo"
+      stage_fixed: true
     format:
       files: git diff --name-only HEAD @{push}
       glob: "**/*"
