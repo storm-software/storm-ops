@@ -97,6 +97,7 @@ in
           "\\.shell-shock"
           "\\.earthquake"
           "\\.aftershock"
+          "\\.rolldown"
           "__snapshots__"
           "__test__"
           "__mocks__"
