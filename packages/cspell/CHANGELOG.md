@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - CSpell
 
+## [0.46.18](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.46.18) (03/11/2026)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate `README.md` files ([be5201d27](https://github.com/storm-software/storm-ops/commit/be5201d27))
+
 ## [0.46.17](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.46.17) (03/11/2026)
 
 ### Miscellaneous

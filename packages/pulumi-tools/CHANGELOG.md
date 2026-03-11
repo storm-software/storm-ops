@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Pulumi Tools
 
+## [0.22.118](https://github.com/storm-software/storm-ops/releases/tag/pulumi-tools%400.22.118) (03/11/2026)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate `README.md` files ([be5201d27](https://github.com/storm-software/storm-ops/commit/be5201d27))
+
+### Updated Dependencies
+
+- Updated **workspace-tools** to **v1.295.3**
+- Updated **config-tools** to **v1.189.28**
+- Updated **config** to **v1.135.29**
+
 ## [0.22.117](https://github.com/storm-software/storm-ops/releases/tag/pulumi-tools%400.22.117) (03/11/2026)
 
 ### Miscellaneous

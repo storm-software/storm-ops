@@ -2,6 +2,14 @@
 
 # Changelog for Storm Ops - Prettier
 
+## [0.59.2](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.59.2) (03/11/2026)
+
+### Miscellaneous
+
+- **prettier:** Removed comment from prettier ignore file ([9075350bb](https://github.com/storm-software/storm-ops/commit/9075350bb))
+- **monorepo:** Regenerate `README.md` files ([be5201d27](https://github.com/storm-software/storm-ops/commit/be5201d27))
+- **prettier:** Added `untyped` generated files to prettier ignore list ([b0627fcd5](https://github.com/storm-software/storm-ops/commit/b0627fcd5))
+
 ## [0.59.1](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.59.1) (03/11/2026)
 
 ### Miscellaneous

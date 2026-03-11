@@ -2,6 +2,19 @@
 
 # Changelog for Storm Ops - Git Tools
 
+## [2.127.2](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.127.2) (03/11/2026)
+
+### Miscellaneous
+
+- **git-tools:** Moved formatting to `pre-commit` hooks for auto-staging ([b00eb7e2b](https://github.com/storm-software/storm-ops/commit/b00eb7e2b))
+- **monorepo:** Regenerate `README.md` files ([be5201d27](https://github.com/storm-software/storm-ops/commit/be5201d27))
+
+### Updated Dependencies
+
+- Updated **conventional-changelog** to **v0.3.109**
+- Updated **config-tools** to **v1.189.28**
+- Updated **config** to **v1.135.29**
+
 ## [2.127.1](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.127.1) (03/11/2026)
 
 ### Miscellaneous

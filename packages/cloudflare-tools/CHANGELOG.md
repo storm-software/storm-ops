@@ -2,6 +2,22 @@
 
 # Changelog for Storm Ops - Cloudflare Tools
 
+## [0.71.77](https://github.com/storm-software/storm-ops/releases/tag/cloudflare-tools%400.71.77) (03/11/2026)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate `README.md` files ([be5201d27](https://github.com/storm-software/storm-ops/commit/be5201d27))
+
+### Features
+
+- **devenv-modules:** Added separate `development` and `production` devenv modules ([ba4ffcd5a](https://github.com/storm-software/storm-ops/commit/ba4ffcd5a))
+
+### Updated Dependencies
+
+- Updated **workspace-tools** to **v1.295.3**
+- Updated **config-tools** to **v1.189.28**
+- Updated **config** to **v1.135.29**
+
 ## [0.71.76](https://github.com/storm-software/storm-ops/releases/tag/cloudflare-tools%400.71.76) (03/11/2026)
 
 ### Miscellaneous
