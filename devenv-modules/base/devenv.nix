@@ -18,8 +18,8 @@ in
 
   env.DEFAULT_LOCALE = "en_US";
   env.DEFAULT_TIMEZONE = "America/New_York";
-  env.FORCE_COLOR = true;
-  env.CLICOLOR = true;
+  env.FORCE_COLOR = 1;
+  env.CLICOLOR = 1;
 
   packages = with pkgs; [
     # Tools
@@ -71,8 +71,6 @@ in
       env.NODE_ENV = "development";
       env.DEBUG = true;
       env.CI = false;
-      env.FORCE_COLOR = true;
-      env.CLICOLOR = true;
     };
 
     release.module = {
