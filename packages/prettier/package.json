@@ -61,7 +61,7 @@
     "./package.json",
     "./prisma.json",
     "./recommended.json",
-    "./exclude-package-json.json",
+    "./exclude-packagejson.json",
     "./solidity.json",
     "./tailwindcss.json"
   ],
