@@ -50,6 +50,7 @@ bun.lockb
 **/.vite-inspect
 **/.vitepress/cache
 **/.wrangler
+**/.rolldown
 **/.yarn
 **/__generated__
 **/__mocks__
