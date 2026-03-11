@@ -53,16 +53,13 @@ pre-commit:
         - ".env.{local,development,test,production,staging}"
       run: pnpm exec storm-lint all --skip-cspell --skip-circular-deps
       stage_fixed: true
-
-pre-push:
-  piped: true
-  commands:
     readme:
-      glob: "**/*"
-      run: pnpm exec storm-git readme --templates="tools/readme-templates" --workspace && git update-index
+      files: git diff --name-only HEAD @{push}
+      glob: "**/{README.md,README.*.md,readme/**/*,package.json,executors.json,generators.json}"
+      run: pnpm exec storm-git readme --templates="tools/readme-templates" && git update-index
       stage_fixed: true
-    format:
+    prettier:
       files: git diff --name-only HEAD @{push}
       glob: "**/*"
-      run: pnpm format --files {files}
+      run: pnpm exec prettier --write --ignore-unknown --no-error-on-unmatched-pattern --config="node_modules/@storm-software/prettier/exclude-packagejson.json" --ignore-path="node_modules/@storm-software/prettier/.prettierignore-exclude-packagejson" --cache --cache-location="node_modules/.cache/prettier" {files} && git update-index
       stage_fixed: true
