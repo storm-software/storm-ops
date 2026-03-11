@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - ESLint
 
+## [0.169.112](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.169.112) (03/11/2026)
+
+### Miscellaneous
+
+- **git-tools:** Update `lefthook` shared configurations ([3e01dc8d4](https://github.com/storm-software/storm-ops/commit/3e01dc8d4))
+
+### Updated Dependencies
+
+- Updated **config-tools** to **v1.189.24**
+- Updated **config** to **v1.135.25**
+- Updated **tsdoc** to **v0.13.99**
+
 ## [0.169.111](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.169.111) (03/11/2026)
 
 ### Updated Dependencies

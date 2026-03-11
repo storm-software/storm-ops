@@ -2,6 +2,22 @@
 
 # Changelog for Storm Ops - Git Tools
 
+## [2.125.4](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.125.4) (03/11/2026)
+
+### Miscellaneous
+
+- **git-tools:** Update `lefthook` shared configurations ([3e01dc8d4](https://github.com/storm-software/storm-ops/commit/3e01dc8d4))
+
+### Bug Fixes
+
+- **git-tools:** Remove the invalid command-line args ([ecf1f19bf](https://github.com/storm-software/storm-ops/commit/ecf1f19bf))
+
+### Updated Dependencies
+
+- Updated **conventional-changelog** to **v0.3.105**
+- Updated **config-tools** to **v1.189.24**
+- Updated **config** to **v1.135.25**
+
 ## [2.125.3](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.125.3) (03/11/2026)
 
 ### Miscellaneous
