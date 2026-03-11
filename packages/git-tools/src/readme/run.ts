@@ -1,3 +1,4 @@
+import { findWorkspaceRootSafe } from "@storm-software/config-tools/utilities/find-workspace-root";
 import {
   existsSync,
   readFileSync,
@@ -21,7 +22,8 @@ export const runReadme = async ({
   project,
   output,
   clean = true,
-  prettier = true
+  prettier = true,
+  workspace = false
 }: ReadMeOptions) => {
   const projectGraph = await createProjectGraphAsync({
     exitOnError: true
@@ -29,8 +31,37 @@ export const runReadme = async ({
   const projectConfigs =
     readProjectsConfigurationFromProjectGraph(projectGraph);
 
-  if (project) {
-    await runProjectReadme(project, {
+  const workspaceRoot = findWorkspaceRootSafe(process.cwd());
+  if (!workspaceRoot) {
+    throw new Error(
+      "Unable to find the workspace root. Please ensure you are running this command from within a workspace."
+    );
+  }
+
+  let resolvedProject = project;
+  if (workspace) {
+    if (!existsSync(join(workspaceRoot, "project.json"))) {
+      throw new Error(
+        `The \`workspace\` flag was provided to the \`storm-git readme\` command-line interface, but a project.json file could not be found at the workspace root (${
+          workspaceRoot
+        }). Please ensure you are running this command from the root of your workspace.`
+      );
+    }
+
+    const projectJson = JSON.parse(
+      readFileSync(join(workspaceRoot, "project.json"), "utf8") ?? "{}"
+    );
+    if (!projectJson?.name) {
+      throw new Error(
+        `The \`workspace\` flag was provided to the \`storm-git readme\` command-line interface, but a name field could not be found in the project.json file at the workspace root (${workspaceRoot}). Please ensure the project.json file at the workspace root contains a name field.`
+      );
+    }
+
+    resolvedProject = projectJson.name;
+  }
+
+  if (resolvedProject) {
+    await runProjectReadme(resolvedProject, {
       templates,
       output,
       clean,

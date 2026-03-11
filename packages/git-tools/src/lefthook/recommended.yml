@@ -57,13 +57,9 @@ pre-commit:
 pre-push:
   piped: true
   commands:
-    packages-readme:
-      glob: "**/{README.md,README.*.md,readme/**/*,package.json,executors.json,generators.json}"
-      run: pnpm format-readme && git update-index
-      stage_fixed: true
-    workspace-readme:
+    readme:
       glob: "**/*"
-      run: pnpm exec storm-git readme --templates="tools/readme-templates" --project="@stryke/monorepo"
+      run: pnpm exec storm-git readme --templates="tools/readme-templates" --workspace && git update-index
       stage_fixed: true
     format:
       files: git diff --name-only HEAD @{push}

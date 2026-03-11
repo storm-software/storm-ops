@@ -58,8 +58,9 @@ export function createProgram(config: StormWorkspaceConfig) {
     )
     .option(
       "--project <project>",
-      "The specific project to generate a README.md file for"
+      "The specific project to generate a README.md file for. Defaults to the workspace root README.md if not provided."
     )
+    .option("--workspace", "Run for the workspace root's README.md file")
     .option("--output <path>", "Where to output the generated README.md file")
     .option(
       "--clean",

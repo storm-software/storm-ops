@@ -58,8 +58,8 @@ export type DefaultCommitPromptMessagesKeys =
   keyof typeof DEFAULT_COMMIT_PROMPT_MESSAGES;
 
 export type CommitPromptMessagesEnum<
-  TCommitPromptMessagesKeys extends
-    DefaultCommitPromptMessagesKeys = DefaultCommitPromptMessagesKeys
+  TCommitPromptMessagesKeys extends DefaultCommitPromptMessagesKeys =
+    DefaultCommitPromptMessagesKeys
 > = Record<TCommitPromptMessagesKeys, string> &
   typeof DEFAULT_COMMIT_PROMPT_MESSAGES;
 
@@ -143,6 +143,7 @@ export type ReleaseContext = ReleaseConfig & {
 export interface ReadMeOptions {
   templates: string;
   project?: string;
+  workspace?: boolean;
   output?: string;
   clean: boolean;
   prettier: boolean;
