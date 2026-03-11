@@ -81,9 +81,12 @@ bun.lockb
 **/next-env.d.ts
 **/node_modules
 **/npm-lock.*
-**/nx/**/?(.)schema.d.ts
-**/nx/**/?(.)schema.json
-**/nx/**/?(.)schema.md
+**/nx/**/schema.d.ts
+**/nx/**/*.schema.d.ts
+**/nx/**/schema.json
+**/nx/**/*.schema.json
+**/nx/**/schema.md
+**/nx/**/*.schema.md
 **/nx/**/generators/**/files
 **/output
 **/package-lock.*
@@ -99,3 +102,4 @@ bun.lockb
 **/workbox*.js
 **/yarn.lock
 **/yarn.lock.*
+**/capnp
