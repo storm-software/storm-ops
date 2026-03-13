@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Git Tools
 
+## [2.127.4](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.127.4) (03/12/2026)
+
+### Miscellaneous
+
+- **git-tools:** Remove `pnpm-workspace` step from lefthook config ([7749a6783](https://github.com/storm-software/storm-ops/commit/7749a6783))
+
 ## [2.127.3](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.127.3) (03/11/2026)
 
 ### Bug Fixes
