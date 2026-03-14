@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Pnpm Tools
 
+## [0.6.113](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.6.113) (03/14/2026)
+
+### Miscellaneous
+
+- **pnpm-tools:** Improve logging and processing times for update tool ([bd55e0544](https://github.com/storm-software/storm-ops/commit/bd55e0544))
+
 ## [0.6.112](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.6.112) (03/11/2026)
 
 ### Miscellaneous
