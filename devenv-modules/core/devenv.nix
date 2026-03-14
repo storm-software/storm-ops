@@ -40,8 +40,6 @@ in
             pnpm exec storm-git pre-install
             pnpm install --no-frozen-lockfile
             bootstrap
-
-            pnpm exec storm-git prepare
           '';
           before = [
             "storm:setup:updates"
@@ -70,7 +68,14 @@ in
             "devenv:files:cleanup"
             "devenv:git-hooks:install"
           ];
-
+        };
+        "storm:setup:prepare" = {
+          exec = ''
+            pnpm exec storm-git prepare
+          '';
+          after = [
+            "devenv:enterTest"
+          ];
         };
       };
     };
