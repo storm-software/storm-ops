@@ -139,7 +139,9 @@
   },
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
-  "files": ["dist/**/*"],
+  "files": [
+    "dist/**/*"
+  ],
   "dependencies": {
     "@antfu/install-pkg": "^1.1.0",
     "@clack/prompts": "^0.10.1",
@@ -153,14 +155,14 @@
     "@typescript-eslint/eslint-plugin": "catalog:",
     "@typescript-eslint/parser": "catalog:",
     "@typescript-eslint/utils": "catalog:",
-    "@vitest/eslint-plugin": "^1.6.10",
+    "@vitest/eslint-plugin": "^1.6.12",
     "chalk": "catalog:",
     "defu": "catalog:",
     "eslint-config-flat-gitignore": "^2.2.1",
     "eslint-config-prettier": "^10.1.8",
     "eslint-flat-config-utils": "^2.1.4",
     "eslint-merge-processors": "^2.0.0",
-    "eslint-plugin-import-x": "^4.16.1",
+    "eslint-plugin-import-x": "^4.16.2",
     "eslint-plugin-jsdoc": "^50.8.0",
     "eslint-plugin-json": "^4.0.1",
     "eslint-plugin-jsonc": "^2.21.1",
