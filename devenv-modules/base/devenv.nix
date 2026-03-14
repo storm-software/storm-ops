@@ -33,7 +33,7 @@ in
   };
   languages.javascript = {
     enable = true;
-    package = pkgs-unstable.nodejs_25;
+    package = pkgs.nodejs_25;
     pnpm = {
       enable = true;
       install.enable = true;

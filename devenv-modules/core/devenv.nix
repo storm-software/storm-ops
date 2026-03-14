@@ -37,10 +37,10 @@ in
         };
         "storm:setup:install" = {
           exec = ''
+            pnpm exec storm-git pre-install
             pnpm install --no-frozen-lockfile
             bootstrap
 
-            pnpm exec storm-git pre-install
             pnpm exec storm-git prepare
           '';
           before = [
