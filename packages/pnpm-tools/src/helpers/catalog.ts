@@ -124,6 +124,11 @@ export interface UpgradeCatalogPackageOptions {
   prefix?: "^" | "~" | ">" | "<" | ">=" | "<=" | "*";
 }
 
+export interface UpgradeCatalogResult {
+  catalog: Record<string, string>;
+  updated: boolean;
+}
+
 /**
  * Upgrade a package in the pnpm catalog.
  *
@@ -136,7 +141,7 @@ export async function upgradeCatalog(
   catalog: Record<string, string>,
   packageName: string,
   options: UpgradeCatalogPackageOptions = {}
-): Promise<Record<string, string>> {
+): Promise<UpgradeCatalogResult> {
   const {
     tag = DEFAULT_NPM_TAG,
     prefix = "^",
@@ -155,12 +160,8 @@ export async function upgradeCatalog(
   });
   const version = `${prefix || ""}${origVersion.replace(/^[\^~><=*]+/g, "")}`;
 
-  if (version === catalog[packageName]) {
-    writeTrace(
-      `The version for package "${packageName}" is already up to date in the catalog: ${version}`,
-      workspaceConfig
-    );
-  } else if (
+  let updated = false;
+  if (
     !valid(coerce(catalog[packageName])) ||
     (coerce(catalog[packageName]) &&
       coerce(version) &&
@@ -171,23 +172,25 @@ export async function upgradeCatalog(
       `${prefix || ""}${version.replace(/^[\^~><=*]+/g, "")}`;
 
     writeDebug(
-      `Writing version ${catalog[packageName]} to catalog for "${
+      `Writing version v${catalog[packageName]} to catalog for "${
         packageName
       }" package`,
       workspaceConfig
     );
+
+    updated = true;
   } else {
-    writeWarning(
-      `The current version "${catalog[packageName]}" for package "${
+    writeDebug(
+      `The current version v${catalog[packageName]} for package "${
         packageName
-      }" is greater than or equal to the version "${
+      }" is greater than or equal to the version v${
         version
-      }" fetched from the npm registry with tag "${tag}". No update performed.`,
+      } fetched from the npm registry with tag "${tag}". No update performed.`,
       workspaceConfig
     );
   }
 
-  return catalog;
+  return { catalog, updated };
 }
 
 /**

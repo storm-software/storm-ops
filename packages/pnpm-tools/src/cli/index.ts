@@ -105,6 +105,7 @@ async function updateAction(
     }
 
     let packagesFound = false;
+    let packagesUpdated = false;
     for (const pkg of packages) {
       const matchedPackages = Object.keys(catalog).filter(p =>
         pkg.endsWith("/") ? p.startsWith(pkg) : p === pkg
@@ -115,8 +116,8 @@ async function updateAction(
           _config
         );
       } else {
-        writeTrace(
-          `${brandIcon(_config)}  Found ${matchedPackages.length} matching packages in the catalog file: \n\n- ${matchedPackages
+        writeDebug(
+          `${brandIcon(_config)}  Found ${matchedPackages.length} packages matching "${pkg}" in the pnpm catalog file: \n\n- ${matchedPackages
             .map(p => `${p} (${catalog[p] || "unknown"})`)
             .join("\n- ")}`,
           _config
@@ -127,11 +128,15 @@ async function updateAction(
         for (const matchedPackage of matchedPackages) {
           writeTrace(`- Upgrading ${matchedPackage}...`, _config);
 
-          catalog = await upgradeCatalog(catalog, matchedPackage, {
+          const result = await upgradeCatalog(catalog, matchedPackage, {
             tag,
             prefix: prefix as UpgradeCatalogPackageOptions["prefix"],
             workspaceRoot: _config.workspaceRoot
           });
+          if (result.updated) {
+            catalog = result.catalog;
+            packagesUpdated = true;
+          }
         }
       }
     }
@@ -149,10 +154,18 @@ async function updateAction(
       _config
     );
 
+    if (!packagesUpdated) {
+      writeDebug(
+        "No packages were updated since all matching packages are already up to date in the catalog.",
+        _config
+      );
+      return;
+    }
+
     await setCatalog(catalog, _config.workspaceRoot);
 
     if (install) {
-      writeTrace(
+      writeDebug(
         "Running `pnpm install --no-frozen-lockfile` to update local dependency versions",
         _config
       );
