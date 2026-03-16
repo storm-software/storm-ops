@@ -59,3 +59,23 @@ pre-commit:
       glob: "**/*"
       run: pnpm exec prettier --write --ignore-unknown --no-error-on-unmatched-pattern --config="node_modules/@storm-software/prettier/exclude-packagejson.json" --ignore-path="node_modules/@storm-software/prettier/.prettierignore-exclude-packagejson" --cache --cache-location="node_modules/.cache/prettier/workspace.cache" {files} && git update-index
       stage_fixed: true
+    treefmt:
+      files: git diff --name-only HEAD @{push}
+      glob: "**/*"
+      run: treefmt {files} --config-file node_modules/@storm-software/linting-tools/treefmt/config.toml --allow-missing-formatter && git update-index
+      stage_fixed: true
+    taplo:
+      files: git diff --name-only HEAD @{push}
+      glob: "**/*.toml"
+      run: taplo format --config node_modules/@storm-software/linting-tools/taplo/config.toml --force --cache-path node_modules/.cache/taplo {files} && git update-index
+      stage_fixed: true
+    yamllint:
+      files: git diff --name-only HEAD @{push}
+      glob: "**/*.{yml,yaml}"
+      run: yamllint format --config node_modules/@storm-software/linting-tools/yamllint/config.yaml {files} && git update-index
+      stage_fixed: true
+    ls-lint:
+      files: git diff --name-only HEAD @{push}
+      glob: "**/*.{ts,js,d.ts,rs}"
+      run: ls-lint --config node_modules/@storm-software/linting-tools/ls-lint/config.yml {files} && git update-index
+      stage_fixed: true

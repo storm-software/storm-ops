@@ -101,6 +101,10 @@
     "./editorconfig-checker/*": "./editorconfig-checker/*",
     "./taplo.toml": "./taplo/config.toml",
     "./taplo/*": "./taplo/*",
+    "./treefmt.toml": "./treefmt/config.toml",
+    "./treefmt/*": "./treefmt/*",
+    "./rustfmt.toml": "./rustfmt/config.toml",
+    "./rustfmt/*": "./rustfmt/*",
     "./zizmor/*": "./zizmor/*",
     "./dependency-cruiser/*": "./dependency-cruiser/*"
   },

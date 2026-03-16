@@ -17,6 +17,7 @@
   packages = with pkgs; [
     cargo-deny
     openssl
+    yamllint
   ];
 
   # https://devenv.sh/languages/

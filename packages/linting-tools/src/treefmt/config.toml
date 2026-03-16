@@ -1,0 +1,13 @@
+[formatter.nix]
+command  = "nixpkgs-fmt"
+includes = ["*.nix"]
+
+[formatter.rust]
+command = "rustfmt"
+includes = ["*.rs"]
+options = [
+    "--edition",
+    "2024",
+    "--config-path",
+    "node_modules/@storm-software/linting-tools/rustfmt/config.toml"
+]

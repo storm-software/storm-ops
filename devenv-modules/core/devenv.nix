@@ -120,18 +120,23 @@ in
   env.FORCE_COLOR = 3;
   env.CLICOLOR = 1;
 
-  packages = [
+  packages = with pkgs; [
     # Source Control
-    pkgs.gnupg
-    pkgs.git-lfs
-    pkgs.git-crypt
+    gnupg
+    git-lfs
+    git-crypt
 
     # Linting
-    pkgs.zizmor
-    pkgs.taplo
-    pkgs.typos
+    zizmor
+    taplo
+    typos
+    treefmt
+    rustfmt
+    nixpkgs-fmt
+    yamllint
+    ls-lint
 
     # Tools
-    pkgs.capnproto
+    capnproto
   ];
 }
