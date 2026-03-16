@@ -172,7 +172,7 @@ export async function upgradeCatalog(
       `${prefix || ""}${version.replace(/^[\^~><=*]+/g, "")}`;
 
     writeDebug(
-      `Writing version v${catalog[packageName]} to catalog for "${
+      `Writing version ${catalog[packageName]} to catalog for "${
         packageName
       }" package`,
       workspaceConfig
@@ -181,9 +181,9 @@ export async function upgradeCatalog(
     updated = true;
   } else {
     writeDebug(
-      `The current version v${catalog[packageName]} for package "${
+      `The current version ${catalog[packageName]} for package "${
         packageName
-      }" is greater than or equal to the version v${
+      }" is greater than or equal to the version ${
         version
       } fetched from the npm registry with tag "${tag}". No update performed.`,
       workspaceConfig
