@@ -1,15 +1,34 @@
 {
   "name": "@storm-software/linting-tools",
   "version": "1.132.123",
-  "type": "module",
+  "private": false,
   "description": "⚡ A package containing various linting tools used to validate syntax, enforce design standards, and format code in a Storm workspace.",
+  "keywords": [
+    "storm-software",
+    "monorepo",
+    "storm-ops",
+    "sullivanpj",
+    "manypkg",
+    "ls-lint",
+    "cspell",
+    "biome",
+    "alex",
+    "taplo",
+    "syncpack",
+    "zizmor"
+  ],
+  "homepage": "https://stormsoftware.com",
+  "bugs": "https://github.com/storm-software/storm-ops/issues",
   "repository": {
     "type": "github",
     "url": "https://github.com/storm-software/storm-ops",
     "directory": "packages/linting-tools"
   },
-  "homepage": "https://stormsoftware.com",
-  "bugs": "https://github.com/storm-software/storm-ops/issues",
+  "funding": {
+    "type": "github",
+    "url": "https://github.com/sponsors/storm-software"
+  },
+  "license": "Apache-2.0",
   "author": {
     "name": "Storm Software",
     "email": "contact@stormsoftware.com",
@@ -34,24 +53,7 @@
       "url": "https://stormsoftware.com"
     }
   ],
-  "funding": {
-    "type": "github",
-    "url": "https://github.com/sponsors/storm-software"
-  },
-  "license": "Apache-2.0",
-  "private": false,
-  "packageManager": "pnpm@10.3.0",
-  "engines": {
-    "node": ">=22.4.0",
-    "pnpm": ">=10.3.0"
-  },
-  "bin": {
-    "storm-lint": "./bin/lint.cjs",
-    "storm-lint-esm": "./bin/lint.js",
-    "storm-lint-cjs": "./bin/lint.cjs"
-  },
-  "main": "./dist/index.cjs",
-  "module": "./dist/index.js",
+  "type": "module",
   "exports": {
     "./package.json": "./package.json",
     ".": {
@@ -82,7 +84,9 @@
         "default": "./dist/index.js"
       }
     },
+    "./biome.json": "./biome/config.json",
     "./biome/*": "./biome/*",
+    "./ls-lint.yml": "./ls-lint/config.yml",
     "./ls-lint/*": "./ls-lint/*",
     "./knip/*": "./knip/*",
     "./mega-linter/*": "./mega-linter/*",
@@ -90,15 +94,24 @@
     "./tflint/*": "./tflint/*",
     "./syncpack/*": "./syncpack/*",
     "./cspell/*": "./cspell/*",
+    "./alex.json": "./alex/config.json",
     "./alex/*": "./alex/*",
     "./yamllint/*": "./yamllint/*",
     "./cloudformation-lint/*": "./cloudformation-lint/*",
     "./editorconfig-checker/*": "./editorconfig-checker/*",
+    "./taplo.toml": "./taplo/config.toml",
     "./taplo/*": "./taplo/*",
     "./zizmor/*": "./zizmor/*",
     "./dependency-cruiser/*": "./dependency-cruiser/*"
   },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
+  "bin": {
+    "storm-lint": "./bin/lint.cjs",
+    "storm-lint-cjs": "./bin/lint.cjs",
+    "storm-lint-esm": "./bin/lint.js"
+  },
   "files": [
     "alex/**/*",
     "bin/**/*",
@@ -117,20 +130,6 @@
     "tflint/**/*",
     "yamllint/**/*",
     "zizmor/**/*"
-  ],
-  "keywords": [
-    "storm-software",
-    "monorepo",
-    "storm-ops",
-    "sullivanpj",
-    "manypkg",
-    "ls-lint",
-    "cspell",
-    "biome",
-    "alex",
-    "taplo",
-    "syncpack",
-    "zizmor"
   ],
   "dependencies": {
     "@angular-devkit/architect": "0.1900.6",
@@ -165,6 +164,11 @@
     "unified": "11.0.5",
     "unified-engine": "11.2.1",
     "vfile-reporter": "8.1.1"
+  },
+  "packageManager": "pnpm@10.3.0",
+  "engines": {
+    "node": ">=22.4.0",
+    "pnpm": ">=10.3.0"
   },
   "publishConfig": {
     "access": "public"

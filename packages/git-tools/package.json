@@ -201,11 +201,14 @@
     "storm-version-warning-cjs": "./bin/version-warning.cjs",
     "storm-version-warning-esm": "./bin/version-warning.js"
   },
-  "files": ["bin/**/*", "dist/**/*"],
+  "files": [
+    "bin/**/*",
+    "dist/**/*"
+  ],
   "dependencies": {
     "@commitlint/ensure": "^19.8.1",
     "@commitlint/rules": "^19.8.1",
-    "@inquirer/prompts": "7.2.1",
+    "@inquirer/prompts": "^8.3.2",
     "@nx/devkit": "catalog:",
     "@nx/js": "catalog:",
     "@storm-software/config": "workspace:*",
