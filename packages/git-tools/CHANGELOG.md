@@ -2,6 +2,22 @@
 
 # Changelog for Storm Ops - Git Tools
 
+## [2.128.0](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.128.0) (03/16/2026)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate workspace `README.md` files ([b9461807e](https://github.com/storm-software/storm-ops/commit/b9461807e))
+
+### Features
+
+- **git-tools:** Moved linting tools over from `pre-commit` to `lefthook` ([de7f9404e](https://github.com/storm-software/storm-ops/commit/de7f9404e))
+
+### Updated Dependencies
+
+- Updated **conventional-changelog** to **v0.3.114**
+- Updated **config-tools** to **v1.189.33**
+- Updated **config** to **v1.135.34**
+
 ## [2.127.8](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.127.8) (03/15/2026)
 
 ### Miscellaneous
