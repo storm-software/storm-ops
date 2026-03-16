@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - Config
 
+## [1.135.39](https://github.com/storm-software/storm-ops/releases/tag/config%401.135.39) (03/16/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace package source files ([1cd10beef](https://github.com/storm-software/storm-ops/commit/1cd10beef))
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.113**
+
 ## [1.135.38](https://github.com/storm-software/storm-ops/releases/tag/config%401.135.38) (03/16/2026)
 
 ### Miscellaneous

@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Untyped
 
+## [0.24.101](https://github.com/storm-software/storm-ops/releases/tag/untyped%400.24.101) (03/16/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace package source files ([1cd10beef](https://github.com/storm-software/storm-ops/commit/1cd10beef))
+
+### Updated Dependencies
+
+- Updated **config-tools** to **v1.189.38**
+- Updated **config** to **v1.135.39**
+
 ## [0.24.100](https://github.com/storm-software/storm-ops/releases/tag/untyped%400.24.100) (03/16/2026)
 
 ### Miscellaneous

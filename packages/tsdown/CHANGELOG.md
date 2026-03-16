@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Tsdown
 
+## [0.45.120](https://github.com/storm-software/storm-ops/releases/tag/tsdown%400.45.120) (03/16/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace package source files ([1cd10beef](https://github.com/storm-software/storm-ops/commit/1cd10beef))
+
+### Updated Dependencies
+
+- Updated **config-tools** to **v1.189.38**
+- Updated **build-tools** to **v0.158.119**
+- Updated **config** to **v1.135.39**
+
 ## [0.45.119](https://github.com/storm-software/storm-ops/releases/tag/tsdown%400.45.119) (03/16/2026)
 
 ### Miscellaneous

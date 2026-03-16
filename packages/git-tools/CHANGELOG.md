@@ -2,6 +2,22 @@
 
 # Changelog for Storm Ops - Git Tools
 
+## [2.129.2](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.129.2) (03/16/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace package source files ([1cd10beef](https://github.com/storm-software/storm-ops/commit/1cd10beef))
+
+### Bug Fixes
+
+- **git-tools:** Remove `ls-lint` commit hook ([2beaec284](https://github.com/storm-software/storm-ops/commit/2beaec284))
+
+### Updated Dependencies
+
+- Updated **conventional-changelog** to **v0.3.119**
+- Updated **config-tools** to **v1.189.38**
+- Updated **config** to **v1.135.39**
+
 ## [2.129.1](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.129.1) (03/16/2026)
 
 ### Miscellaneous

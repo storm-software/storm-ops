@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Tsdoc
 
+## [0.13.113](https://github.com/storm-software/storm-ops/releases/tag/tsdoc%400.13.113) (03/16/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace package source files ([1cd10beef](https://github.com/storm-software/storm-ops/commit/1cd10beef))
+
 ## [0.13.112](https://github.com/storm-software/storm-ops/releases/tag/tsdoc%400.13.112) (03/16/2026)
 
 ### Miscellaneous
