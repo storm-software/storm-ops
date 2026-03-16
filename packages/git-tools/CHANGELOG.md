@@ -2,6 +2,22 @@
 
 # Changelog for Storm Ops - Git Tools
 
+## [2.129.1](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.129.1) (03/16/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace package dependencies and `README.md` files ([ada55343f](https://github.com/storm-software/storm-ops/commit/ada55343f))
+
+### Bug Fixes
+
+- **git-tools:** Resolve issues with duplicate `lefthook` extensions ([b4c733549](https://github.com/storm-software/storm-ops/commit/b4c733549))
+
+### Updated Dependencies
+
+- Updated **conventional-changelog** to **v0.3.118**
+- Updated **config-tools** to **v1.189.37**
+- Updated **config** to **v1.135.38**
+
 ## [2.129.0](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.129.0) (03/16/2026)
 
 ### Miscellaneous

@@ -1,6 +1,6 @@
 {
   "name": "@storm-software/cloudflare-tools",
-  "version": "0.71.86",
+  "version": "0.71.87",
   "description": "A Nx plugin package that contains various executors, generators, and utilities that assist in managing Cloudflare services.",
   "repository": {
     "type": "github",
@@ -129,9 +129,9 @@
     "@nx/js": "catalog:",
     "@nx/node": "catalog:",
     "@nx/web": "catalog:",
-    "@storm-software/config": "1.135.37",
-    "@storm-software/config-tools": "1.189.36",
-    "@storm-software/workspace-tools": "1.295.12",
+    "@storm-software/config": "1.135.38",
+    "@storm-software/config-tools": "1.189.37",
+    "@storm-software/workspace-tools": "1.295.13",
     "nx": "catalog:",
     "tsup": "catalog:",
     "wrangler": ">=3.58.0"

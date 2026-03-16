@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Conventional Changelog
 
+## [0.3.118](https://github.com/storm-software/storm-ops/releases/tag/conventional-changelog%400.3.118) (03/16/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace package dependencies and `README.md` files ([ada55343f](https://github.com/storm-software/storm-ops/commit/ada55343f))
+
+### Updated Dependencies
+
+- Updated **config-tools** to **v1.189.37**
+- Updated **config** to **v1.135.38**
+
 ## [0.3.117](https://github.com/storm-software/storm-ops/releases/tag/conventional-changelog%400.3.117) (03/16/2026)
 
 ### Miscellaneous
