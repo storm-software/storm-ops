@@ -111,7 +111,6 @@ in
             "devenv:files"
             "devenv:files:cleanup"
             "storm:setup:git"
-            "devenv:git-hooks:install"
           ];
         };
       };

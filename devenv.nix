@@ -76,7 +76,6 @@
         "devenv:files"
         "devenv:files:cleanup"
         "storm:setup:install"
-        "devenv:git-hooks:install"
       ];
     };
   };
