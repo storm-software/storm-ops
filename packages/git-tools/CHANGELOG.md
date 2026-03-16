@@ -2,6 +2,22 @@
 
 # Changelog for Storm Ops - Git Tools
 
+## [2.129.0](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.129.0) (03/16/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace `README.md` files ([771b728df](https://github.com/storm-software/storm-ops/commit/771b728df))
+
+### Features
+
+- **git-tools:** Added various file specific linters to `lefthook` config ([18f048eaa](https://github.com/storm-software/storm-ops/commit/18f048eaa))
+
+### Updated Dependencies
+
+- Updated **conventional-changelog** to **v0.3.117**
+- Updated **config-tools** to **v1.189.36**
+- Updated **config** to **v1.135.37**
+
 ## [2.128.2](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.128.2) (03/16/2026)
 
 ### Miscellaneous

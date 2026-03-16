@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Projen
 
+## [0.21.127](https://github.com/storm-software/storm-ops/releases/tag/projen%400.21.127) (03/16/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace `README.md` files ([771b728df](https://github.com/storm-software/storm-ops/commit/771b728df))
+
+### Updated Dependencies
+
+- Updated **workspace-tools** to **v1.295.12**
+- Updated **config-tools** to **v1.189.36**
+- Updated **config** to **v1.135.37**
+
 ## [0.21.126](https://github.com/storm-software/storm-ops/releases/tag/projen%400.21.126) (03/16/2026)
 
 ### Miscellaneous

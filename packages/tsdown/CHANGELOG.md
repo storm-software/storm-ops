@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Tsdown
 
+## [0.45.118](https://github.com/storm-software/storm-ops/releases/tag/tsdown%400.45.118) (03/16/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace `README.md` files ([771b728df](https://github.com/storm-software/storm-ops/commit/771b728df))
+
+### Updated Dependencies
+
+- Updated **config-tools** to **v1.189.36**
+- Updated **build-tools** to **v0.158.117**
+- Updated **config** to **v1.135.37**
+
 ## [0.45.117](https://github.com/storm-software/storm-ops/releases/tag/tsdown%400.45.117) (03/16/2026)
 
 ### Miscellaneous
