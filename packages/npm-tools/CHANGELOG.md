@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Npm Tools
 
+## [0.6.77](https://github.com/storm-software/storm-ops/releases/tag/npm-tools%400.6.77) (03/16/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace's `README.md` files ([60eba9234](https://github.com/storm-software/storm-ops/commit/60eba9234))
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.114**
+- Updated **config-tools** to **v1.189.39**
+- Updated **config** to **v1.135.40**
+
 ## [0.6.76](https://github.com/storm-software/storm-ops/releases/tag/npm-tools%400.6.76) (03/16/2026)
 
 ### Miscellaneous

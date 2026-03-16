@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Build Tools
 
+## [0.158.120](https://github.com/storm-software/storm-ops/releases/tag/build-tools%400.158.120) (03/16/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace's `README.md` files ([60eba9234](https://github.com/storm-software/storm-ops/commit/60eba9234))
+
+### Updated Dependencies
+
+- Updated **config-tools** to **v1.189.39**
+- Updated **config** to **v1.135.40**
+
 ## [0.158.119](https://github.com/storm-software/storm-ops/releases/tag/build-tools%400.158.119) (03/16/2026)
 
 ### Miscellaneous
