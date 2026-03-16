@@ -52,7 +52,6 @@ in
             "devenv:files"
             "devenv:files:cleanup"
             "storm:setup:git"
-            "devenv:git-hooks:install"
           ];
         };
         "storm:setup:updates" = {
@@ -68,7 +67,6 @@ in
             "storm:setup:git"
             "devenv:files"
             "devenv:files:cleanup"
-            "devenv:git-hooks:install"
           ];
         };
       };
