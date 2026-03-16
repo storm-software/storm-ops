@@ -52,14 +52,4 @@ in
     release.exec = "pnpm release --base=$1 --head=$2";
     nuke.exec = "pnpm nuke";
   };
-
-  git-hooks = {
-    enable = true;
-    gitPackage = pkgs.gitFull;
-    hooks = {
-      shellcheck.enable = true;
-      detect-private-keys.enable = true;
-      nixfmt.enable = true;
-    };
-  };
 }
