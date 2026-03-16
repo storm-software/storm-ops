@@ -24,7 +24,6 @@ in
   packages = with pkgs; [
     # Tools
     nixd
-    prek
   ];
 
   languages.nix = {

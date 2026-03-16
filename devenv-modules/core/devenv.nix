@@ -142,7 +142,6 @@ in
 
     # Tools
     pkgs.capnproto
-    pkgs.prek
   ];
 
   # https://devenv.sh/git-hooks/
