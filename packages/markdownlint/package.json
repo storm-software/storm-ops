@@ -1,14 +1,32 @@
 {
   "name": "@storm-software/markdownlint",
   "version": "0.30.109",
+  "private": false,
   "description": "An opinionated collection of markdownlint rules used by Storm Software.",
+  "keywords": [
+    "markdownlint",
+    "markdownlint-cli",
+    "markdownlint-cli2",
+    "monorepo",
+    "open-system",
+    "storm",
+    "storm-ops",
+    "storm-stack",
+    "stormstack",
+    "sullivanpj"
+  ],
+  "homepage": "https://stormsoftware.com",
+  "bugs": "https://github.com/storm-software/storm-ops/issues",
   "repository": {
     "type": "github",
     "url": "https://github.com/storm-software/storm-ops.git",
     "directory": "packages/markdownlint"
   },
-  "homepage": "https://stormsoftware.com",
-  "bugs": "https://github.com/storm-software/storm-ops/issues",
+  "funding": {
+    "type": "github",
+    "url": "https://github.com/sponsors/storm-software"
+  },
+  "license": "Apache-2.0",
   "author": {
     "name": "Storm Software",
     "email": "contact@stormsoftware.com",
@@ -33,19 +51,6 @@
       "url": "https://stormsoftware.com"
     }
   ],
-  "funding": {
-    "type": "github",
-    "url": "https://github.com/sponsors/storm-software"
-  },
-  "license": "Apache-2.0",
-  "private": false,
-  "packageManager": "pnpm@10.3.0",
-  "engines": {
-    "node": ">=22.4.0",
-    "pnpm": ">=10.3.0"
-  },
-  "main": "./dist/index.cjs",
-  "module": "./dist/index.js",
   "exports": {
     "./package.json": "./package.json",
     ".": {
@@ -90,27 +95,20 @@
         "default": "./dist/rules/*.js"
       }
     },
-    "./.markdownlint.jsonc": "./config/base.markdownlint.jsonc",
-    "./base.markdownlint.jsonc": "./config/base.markdownlint.jsonc",
-    "./.markdownlint-cli2.jsonc": "./config/base.markdownlint-cli2.jsonc",
-    "./base.markdownlint-cli2.jsonc": "./config/base.markdownlint-cli2.jsonc",
+    "./markdownlint.jsonc": "./config/recommended.markdownlint.jsonc",
+    "./recommended.markdownlint.jsonc": "./config/recommended.markdownlint.jsonc",
+    "./markdownlint-cli2.jsonc": "./config/recommended.markdownlint-cli2.jsonc",
+    "./recommended.markdownlint-cli2.jsonc": "./config/recommended.markdownlint-cli2.jsonc",
     "./markdown-link-check.json": "./config/link-check.json",
     "./link-check.json": "./config/link-check.json",
     "./config/*": "./config/*"
   },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
-  "files": ["config/**/*", "dist/**/*"],
-  "keywords": [
-    "markdownlint",
-    "markdownlint-cli",
-    "markdownlint-cli2",
-    "monorepo",
-    "open-system",
-    "storm",
-    "storm-ops",
-    "storm-stack",
-    "stormstack",
-    "sullivanpj"
+  "files": [
+    "config/**/*",
+    "dist/**/*"
   ],
   "dependencies": {
     "defu": "catalog:",
@@ -119,6 +117,11 @@
   "devDependencies": {
     "@types/node": "catalog:",
     "tsup": "catalog:"
+  },
+  "packageManager": "pnpm@10.3.0",
+  "engines": {
+    "node": ">=22.4.0",
+    "pnpm": ">=10.3.0"
   },
   "publishConfig": {
     "access": "public"
