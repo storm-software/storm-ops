@@ -40,8 +40,6 @@ in
             pnpm exec storm-git pre-install
             pnpm install --no-frozen-lockfile
             bootstrap
-
-            pnpm exec storm-git prepare
           '';
           before = [
             "storm:setup:updates"
