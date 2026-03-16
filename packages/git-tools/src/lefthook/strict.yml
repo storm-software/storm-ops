@@ -10,7 +10,6 @@ colors: true
 no_tty: false
 min_version: "1.5.0"
 extends:
-  - ./minimal.yml
   - ./recommended.yml
 
 pre-commit:
