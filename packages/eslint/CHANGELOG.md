@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - ESLint
 
+## [0.169.124](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.169.124) (03/16/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace packages' dependencies ([a90cc61b8](https://github.com/storm-software/storm-ops/commit/a90cc61b8))
+
+### Updated Dependencies
+
+- Updated **config-tools** to **v1.189.35**
+- Updated **config** to **v1.135.36**
+- Updated **tsdoc** to **v0.13.110**
+
 ## [0.169.123](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.169.123) (03/16/2026)
 
 ### Miscellaneous

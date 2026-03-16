@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Markdownlint
 
+## [0.30.110](https://github.com/storm-software/storm-ops/releases/tag/markdownlint%400.30.110) (03/16/2026)
+
+### Miscellaneous
+
+- **monorepo:** Rename markdownlint config to `recommended` ([4457dce28](https://github.com/storm-software/storm-ops/commit/4457dce28))
+- **monorepo:** Update workspace packages' dependencies ([a90cc61b8](https://github.com/storm-software/storm-ops/commit/a90cc61b8))
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.110**
+
 ## [0.30.109](https://github.com/storm-software/storm-ops/releases/tag/markdownlint%400.30.109) (03/16/2026)
 
 ### Miscellaneous

@@ -2,6 +2,22 @@
 
 # Changelog for Storm Ops - Git Tools
 
+## [2.128.2](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.128.2) (03/16/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace packages' dependencies ([a90cc61b8](https://github.com/storm-software/storm-ops/commit/a90cc61b8))
+
+### Bug Fixes
+
+- **git-tools:** Resolve issue with `inquirer` package version ([10ca0ea1c](https://github.com/storm-software/storm-ops/commit/10ca0ea1c))
+
+### Updated Dependencies
+
+- Updated **conventional-changelog** to **v0.3.116**
+- Updated **config-tools** to **v1.189.35**
+- Updated **config** to **v1.135.36**
+
 ## [2.128.1](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.128.1) (03/16/2026)
 
 ### Miscellaneous
