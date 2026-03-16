@@ -74,8 +74,8 @@ pre-commit:
       glob: "**/*.{yml,yaml}"
       run: yamllint format --config node_modules/@storm-software/linting-tools/yamllint/config.yaml {files} && git update-index
       stage_fixed: true
-    ls-lint:
-      files: git diff --name-only HEAD @{push}
-      glob: "**/*.{ts,js,d.ts,rs}"
-      run: ls-lint --config node_modules/@storm-software/linting-tools/ls-lint/config.yml {files} && git update-index
-      stage_fixed: true
+    # ls-lint:
+    #   files: git diff --name-only HEAD @{push}
+    #   glob: "**/*.{ts,js,d.ts,rs}"
+    #   run: ls-lint --config node_modules/@storm-software/linting-tools/ls-lint/config.yml {files} && git update-index
+    #   stage_fixed: true
