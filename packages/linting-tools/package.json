@@ -132,6 +132,8 @@
     "taplo/**/*",
     "terrascan/**/*",
     "tflint/**/*",
+    "treefmt/**/*",
+    "rustfmt/**/*",
     "yamllint/**/*",
     "zizmor/**/*"
   ],
