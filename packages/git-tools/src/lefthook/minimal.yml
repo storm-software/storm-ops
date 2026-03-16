@@ -30,6 +30,10 @@ pre-commit:
       files: git diff --name-only HEAD @{push}
       glob: "**/CODEOWNERS"
       run: pnpm exec storm-lint codeowners
+    zizmor:
+      glob: .github/workflows/*.{yml,yaml}
+      run: "zizmor --offline --config='./tools/config/zizmor.yml' .github/workflows/"
+      stage_fixed: true
 
 commit-msg:
   commands:
@@ -37,15 +41,11 @@ commit-msg:
       run: pnpm exec storm-git commitlint --message {1}
 
 pre-push:
-  piped: true
   commands:
     build:
       glob: "**/*"
       run: pnpm build-dev
       stage_fixed: true
-    lint-github-actions:
-      glob: .github/workflows/*.*
-      run: "zizmor --offline --config='./tools/config/zizmor.yml' .github/workflows/"
     pre-push:
       files: git diff --name-only HEAD @{push}
       glob: "**/*"

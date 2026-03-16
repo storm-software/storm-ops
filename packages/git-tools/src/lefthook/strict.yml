@@ -46,6 +46,37 @@ pre-commit:
         - ".env.{local,development,test,production,staging}"
       run: pnpm lint {files}
       stage_fixed: true
+    eslint:
+      files: git diff --name-only HEAD @{push}
+      glob:
+        - "*.js"
+        - "*.ts"
+        - "*.cjs"
+        - "*.mjs"
+        - "*.d.cts"
+        - "*.d.mts"
+        - "*.jsx"
+        - "*.tsx"
+        - "*.json"
+        - "*.jsonc"
+        - "*.yaml"
+        - "*.yml"
+        - "*.md"
+        - "*.mdx"
+        - "*.markdown"
+        - "*.css"
+        - "*.scss"
+        - "*.sass"
+        - "*.less"
+        - "*.stylus"
+        - "*.graphql"
+        - "*.gql"
+        - "*.xml"
+        - "*.svg"
+        - "*.env"
+        - ".env.{local,development,test,production,staging}"
+      run: 'pnpm exec eslint --fix --color --no-warn-ignored --cache --cache-location "./node_modules/.cache/storm/eslint-cache" --config "./eslint.config.mjs" {files} && git update-index'
+      stage_fixed: true
 
 pre-push:
   piped: true
@@ -53,7 +84,7 @@ pre-push:
     prettier:
       files: git diff --name-only HEAD @{push}
       glob: "!**/generators/*/files/**/*"
-      run: "pnpm exec prettier {files} --write --ignore-unknown --no-error-on-unmatched-pattern --cache && git update-index"
+      run: "pnpm exec prettier {files} --check --ignore-unknown --no-error-on-unmatched-pattern --cache && git update-index"
       stage_fixed: true
     sherif:
       files: git diff --name-only HEAD @{push}

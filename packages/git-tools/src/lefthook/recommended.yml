@@ -18,10 +18,6 @@ pre-commit:
       glob: "{pnpm-lock.yaml,lefthook.yml,lefthook.yaml,lefthook.json}"
       run: pnpm install && pnpm lefthook install && git update-index
       stage_fixed: true
-    # pnpm-workspace:
-    #   glob: "**/*"
-    #   run: "pnpm update --recursive --workspace"
-    #   stage_fixed: true
     lint:
       files: git diff --name-only HEAD @{push}
       glob:
