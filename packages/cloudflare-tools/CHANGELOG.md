@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Cloudflare Tools
 
+## [0.71.90](https://github.com/storm-software/storm-ops/releases/tag/cloudflare-tools%400.71.90) (03/18/2026)
+
+### Miscellaneous
+
+- **devenv-modules:** Update tasks for devenv modules ([7e9677f2e](https://github.com/storm-software/storm-ops/commit/7e9677f2e))
+
+### Updated Dependencies
+
+- Updated **workspace-tools** to **v1.295.16**
+- Updated **config-tools** to **v1.189.40**
+- Updated **config** to **v1.135.41**
+
 ## [0.71.89](https://github.com/storm-software/storm-ops/releases/tag/cloudflare-tools%400.71.89) (03/16/2026)
 
 ### Miscellaneous

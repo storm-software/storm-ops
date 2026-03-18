@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Untyped
 
+## [0.24.103](https://github.com/storm-software/storm-ops/releases/tag/untyped%400.24.103) (03/18/2026)
+
+### Miscellaneous
+
+- **devenv-modules:** Update tasks for devenv modules ([7e9677f2e](https://github.com/storm-software/storm-ops/commit/7e9677f2e))
+
+### Updated Dependencies
+
+- Updated **config-tools** to **v1.189.40**
+- Updated **config** to **v1.135.41**
+
 ## [0.24.102](https://github.com/storm-software/storm-ops/releases/tag/untyped%400.24.102) (03/16/2026)
 
 ### Miscellaneous

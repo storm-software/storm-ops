@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Prettier
 
+## [0.59.14](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.59.14) (03/18/2026)
+
+### Miscellaneous
+
+- **devenv-modules:** Update tasks for devenv modules ([7e9677f2e](https://github.com/storm-software/storm-ops/commit/7e9677f2e))
+
 ## [0.59.13](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.59.13) (03/16/2026)
 
 ### Miscellaneous

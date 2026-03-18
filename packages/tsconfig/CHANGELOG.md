@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Tsconfig
 
+## [0.48.29](https://github.com/storm-software/storm-ops/releases/tag/tsconfig%400.48.29) (03/18/2026)
+
+### Miscellaneous
+
+- **devenv-modules:** Update tasks for devenv modules ([7e9677f2e](https://github.com/storm-software/storm-ops/commit/7e9677f2e))
+
 ## [0.48.28](https://github.com/storm-software/storm-ops/releases/tag/tsconfig%400.48.28) (03/16/2026)
 
 ### Miscellaneous

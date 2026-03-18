@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - Vite
 
+## [0.1.55](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.55) (03/18/2026)
+
+### Miscellaneous
+
+- **devenv-modules:** Update tasks for devenv modules ([7e9677f2e](https://github.com/storm-software/storm-ops/commit/7e9677f2e))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.121**
+
 ## [0.1.54](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.54) (03/16/2026)
 
 ### Miscellaneous

@@ -2,6 +2,19 @@
 
 # Changelog for Storm Ops - Esbuild
 
+## [0.53.122](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.53.122) (03/18/2026)
+
+### Miscellaneous
+
+- **devenv-modules:** Update tasks for devenv modules ([7e9677f2e](https://github.com/storm-software/storm-ops/commit/7e9677f2e))
+
+### Updated Dependencies
+
+- Updated **config-tools** to **v1.189.40**
+- Updated **build-tools** to **v0.158.121**
+- Updated **config** to **v1.135.41**
+- Updated **tsup** to **v0.2.119**
+
 ## [0.53.121](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.53.121) (03/16/2026)
 
 ### Miscellaneous

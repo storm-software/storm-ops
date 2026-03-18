@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - ESLint
 
+## [0.169.129](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.169.129) (03/18/2026)
+
+### Miscellaneous
+
+- **devenv-modules:** Update tasks for devenv modules ([7e9677f2e](https://github.com/storm-software/storm-ops/commit/7e9677f2e))
+
+### Updated Dependencies
+
+- Updated **config-tools** to **v1.189.40**
+- Updated **config** to **v1.135.41**
+- Updated **tsdoc** to **v0.13.115**
+
 ## [0.169.128](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.169.128) (03/16/2026)
 
 ### Miscellaneous
