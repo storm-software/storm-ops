@@ -26,7 +26,7 @@ in
             npm config set provenance true
           '';
           before = [
-            "storm:setup:updates"
+            # "storm:setup:updates"
             "devenv:enterShell"
             "devenv:enterTest"
           ];
@@ -39,12 +39,13 @@ in
           exec = ''
             pnpm exec storm-git pre-install
             pnpm install --no-frozen-lockfile
+            update-storm
             bootstrap
 
             pnpm exec storm-git prepare
           '';
           before = [
-            "storm:setup:updates"
+            # "storm:setup:updates"
             "devenv:enterShell"
             "devenv:enterTest"
           ];
@@ -54,21 +55,25 @@ in
             "storm:setup:git"
           ];
         };
-        "storm:setup:updates" = {
-          exec = ''
-            pnpm update --recursive --workspace
-            update-storm
-          '';
-          before = [
-            "devenv:enterShell"
-            "devenv:enterTest"
-          ];
-          after = [
-            "storm:setup:git"
-            "devenv:files"
-            "devenv:files:cleanup"
-          ];
-        };
+        # "storm:setup:updates" = {
+        #   exec = ''
+        #     pnpm update --recursive --workspace
+        #     update-storm
+        #   '';
+        #   before = [
+        #     "devenv:enterShell"
+        #     "devenv:enterTest"
+        #   ];
+        #   after = [
+        #     "storm:setup:git"
+        #     "devenv:files"
+        #     "devenv:files:cleanup"
+        #   ];
+        #   execIfModified = [
+        #     "pnpm-workspace.yaml"
+
+        #   ];
+        # };
       };
     };
 

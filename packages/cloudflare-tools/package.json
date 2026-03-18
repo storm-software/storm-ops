@@ -1,23 +1,30 @@
 {
   "name": "@storm-software/cloudflare-tools",
   "version": "0.71.89",
+  "private": false,
   "description": "A Nx plugin package that contains various executors, generators, and utilities that assist in managing Cloudflare services.",
+  "keywords": [
+    "monorepo",
+    "open-system",
+    "storm",
+    "storm-ops",
+    "storm-stack",
+    "stormstack",
+    "sullivanpj"
+  ],
+  "homepage": "https://stormsoftware.com",
+  "bugs": "https://github.com/storm-software/storm-ops/issues",
   "repository": {
     "type": "github",
     "url": "https://github.com/storm-software/storm-ops",
     "directory": "packages/cloudflare-tools"
   },
-  "homepage": "https://stormsoftware.com",
-  "bugs": "https://github.com/storm-software/storm-ops/issues",
+  "license": "Apache-2.0",
   "author": {
     "name": "Storm Software",
     "email": "contact@stormsoftware.com",
     "url": "https://stormsoftware.com"
   },
-  "license": "Apache-2.0",
-  "private": false,
-  "main": "dist/index.js",
-  "module": "dist/index.mjs",
   "exports": {
     "./package.json": "./package.json",
     "./docs/*": "./docs/*",
@@ -114,16 +121,29 @@
     "./generators/*/generator.js": "./dist/src/generators/*/generator.js",
     "./plugin": "./dist/src/plugins/index.js"
   },
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
   "typings": "dist/index.d.ts",
-  "keywords": [
-    "monorepo",
-    "open-system",
-    "storm",
-    "storm-ops",
-    "storm-stack",
-    "stormstack",
-    "sullivanpj"
-  ],
+  "dependencies": {
+    "@aws-sdk/client-s3": "^3.1012.0",
+    "@aws-sdk/lib-storage": "^3.1012.0",
+    "@smithy/node-http-handler": "^4.5.0",
+    "defu": "catalog:",
+    "glob": "catalog:",
+    "mime-types": "^3.0.2",
+    "pretty-bytes": "^7.1.0"
+  },
+  "devDependencies": {
+    "@nx/devkit": "catalog:",
+    "@nx/node": "catalog:",
+    "@nx/web": "catalog:",
+    "@nx/webpack": "catalog:",
+    "@smithy/protocol-http": "^5.3.12",
+    "nx": "catalog:",
+    "tsup": "catalog:",
+    "untyped": "catalog:",
+    "wrangler": "^4.75.0"
+  },
   "peerDependencies": {
     "@nx/devkit": "catalog:",
     "@nx/js": "catalog:",
@@ -155,26 +175,6 @@
     "wrangler": {
       "optional": false
     }
-  },
-  "dependencies": {
-    "@aws-sdk/client-s3": "^3.1010.0",
-    "@aws-sdk/lib-storage": "^3.1010.0",
-    "@smithy/node-http-handler": "^4.5.0",
-    "defu": "catalog:",
-    "glob": "catalog:",
-    "mime-types": "^3.0.2",
-    "pretty-bytes": "^7.1.0"
-  },
-  "devDependencies": {
-    "@nx/devkit": "catalog:",
-    "@nx/node": "catalog:",
-    "@nx/web": "catalog:",
-    "@nx/webpack": "catalog:",
-    "@smithy/protocol-http": "^5.3.12",
-    "nx": "catalog:",
-    "tsup": "catalog:",
-    "untyped": "catalog:",
-    "wrangler": "^4.74.0"
   },
   "publishConfig": {
     "access": "public"
