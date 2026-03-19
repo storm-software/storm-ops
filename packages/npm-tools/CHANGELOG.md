@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Npm Tools
 
+## [0.6.81](https://github.com/storm-software/storm-ops/releases/tag/npm-tools%400.6.81) (03/19/2026)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate workspace files ([b665496e6](https://github.com/storm-software/storm-ops/commit/b665496e6))
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.118**
+- Updated **config-tools** to **v1.189.43**
+- Updated **config** to **v1.136.2**
+
 ## [0.6.80](https://github.com/storm-software/storm-ops/releases/tag/npm-tools%400.6.80) (03/19/2026)
 
 ### Miscellaneous

@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Git Tools
 
+## [2.130.1](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.130.1) (03/19/2026)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate workspace files ([b665496e6](https://github.com/storm-software/storm-ops/commit/b665496e6))
+
+### Updated Dependencies
+
+- Updated **conventional-changelog** to **v0.3.124**
+- Updated **config-tools** to **v1.189.43**
+- Updated **config** to **v1.136.2**
+
 ## [2.130.0](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.130.0) (03/19/2026)
 
 ### Miscellaneous

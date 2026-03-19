@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - Markdownlint
 
+## [0.30.118](https://github.com/storm-software/storm-ops/releases/tag/markdownlint%400.30.118) (03/19/2026)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate workspace files ([b665496e6](https://github.com/storm-software/storm-ops/commit/b665496e6))
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.118**
+
 ## [0.30.117](https://github.com/storm-software/storm-ops/releases/tag/markdownlint%400.30.117) (03/19/2026)
 
 ### Miscellaneous

@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Projen
 
+## [0.21.134](https://github.com/storm-software/storm-ops/releases/tag/projen%400.21.134) (03/19/2026)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate workspace files ([b665496e6](https://github.com/storm-software/storm-ops/commit/b665496e6))
+
+### Updated Dependencies
+
+- Updated **workspace-tools** to **v1.295.19**
+- Updated **config-tools** to **v1.189.43**
+- Updated **config** to **v1.136.2**
+
 ## [0.21.133](https://github.com/storm-software/storm-ops/releases/tag/projen%400.21.133) (03/19/2026)
 
 ### Miscellaneous

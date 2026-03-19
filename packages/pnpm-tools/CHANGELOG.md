@@ -2,6 +2,19 @@
 
 # Changelog for Storm Ops - Pnpm Tools
 
+## [0.6.128](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.6.128) (03/19/2026)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate workspace files ([b665496e6](https://github.com/storm-software/storm-ops/commit/b665496e6))
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.118**
+- Updated **config-tools** to **v1.189.43**
+- Updated **npm-tools** to **v0.6.81**
+- Updated **config** to **v1.136.2**
+
 ## [0.6.127](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.6.127) (03/19/2026)
 
 ### Miscellaneous

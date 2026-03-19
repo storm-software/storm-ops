@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Build Tools
 
+## [0.158.124](https://github.com/storm-software/storm-ops/releases/tag/build-tools%400.158.124) (03/19/2026)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate workspace files ([b665496e6](https://github.com/storm-software/storm-ops/commit/b665496e6))
+
+### Updated Dependencies
+
+- Updated **config-tools** to **v1.189.43**
+- Updated **config** to **v1.136.2**
+
 ## [0.158.123](https://github.com/storm-software/storm-ops/releases/tag/build-tools%400.158.123) (03/19/2026)
 
 ### Miscellaneous

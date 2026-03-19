@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Testing Tools
 
+## [1.119.118](https://github.com/storm-software/storm-ops/releases/tag/testing-tools%401.119.118) (03/19/2026)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate workspace files ([b665496e6](https://github.com/storm-software/storm-ops/commit/b665496e6))
+
 ## [1.119.117](https://github.com/storm-software/storm-ops/releases/tag/testing-tools%401.119.117) (03/19/2026)
 
 ### Miscellaneous

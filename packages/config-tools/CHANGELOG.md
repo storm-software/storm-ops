@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Config Tools
 
+## [1.189.43](https://github.com/storm-software/storm-ops/releases/tag/config-tools%401.189.43) (03/19/2026)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate workspace files ([b665496e6](https://github.com/storm-software/storm-ops/commit/b665496e6))
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.118**
+- Updated **config** to **v1.136.2**
+
 ## [1.189.42](https://github.com/storm-software/storm-ops/releases/tag/config-tools%401.189.42) (03/19/2026)
 
 ### Miscellaneous

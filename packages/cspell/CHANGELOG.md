@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - CSpell
 
+## [0.46.33](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.46.33) (03/19/2026)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate workspace files ([b665496e6](https://github.com/storm-software/storm-ops/commit/b665496e6))
+
 ## [0.46.32](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.46.32) (03/19/2026)
 
 ### Miscellaneous

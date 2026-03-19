@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Pulumi Tools
 
+## [0.22.134](https://github.com/storm-software/storm-ops/releases/tag/pulumi-tools%400.22.134) (03/19/2026)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate workspace files ([b665496e6](https://github.com/storm-software/storm-ops/commit/b665496e6))
+
+### Updated Dependencies
+
+- Updated **workspace-tools** to **v1.295.19**
+- Updated **config-tools** to **v1.189.43**
+- Updated **config** to **v1.136.2**
+
 ## [0.22.133](https://github.com/storm-software/storm-ops/releases/tag/pulumi-tools%400.22.133) (03/19/2026)
 
 ### Miscellaneous
