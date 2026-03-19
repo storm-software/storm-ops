@@ -147,7 +147,7 @@ export const createNodesV2: CreateNodesV2<CargoPluginOptions | undefined> = [
                   executor: "nx:run-commands",
                   options: {
                     command:
-                      'pnpm exec markdownlint-cli2 "{projectRoot}/*.{md,mdx}" "{projectRoot}/**/*.{md,mdx}" --config "node_modules/@storm-software/markdownlint/config/base.markdownlint-cli2.jsonc" --fix'
+                      'pnpm exec markdownlint-cli2 "{projectRoot}/*.{md,mdx}" "{projectRoot}/**/*.{md,mdx}" --config "node_modules/@storm-software/markdownlint/config/recommended.markdownlint-cli2.jsonc" --fix'
                   }
                 },
                 "lint-ls": {

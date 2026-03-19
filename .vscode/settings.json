@@ -53,7 +53,7 @@
   "evenBetterToml.taplo.configFile.enabled": true,
   "evenBetterToml.taplo.configFile.path": "./packages/linting-tools/src/taplo/config.toml",
   "markdownlint.config": {
-    "extends": "./packages/markdownlint/src/config/base.markdownlint-cli2.jsonc"
+    "extends": "./packages/markdownlint/src/config/recommended.markdownlint-cli2.jsonc"
   },
   "editor.formatOnSave": false,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
