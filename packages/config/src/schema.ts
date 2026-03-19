@@ -83,6 +83,11 @@ schemaRegistry.add(fatalColorSchema, {
   description: "The fatal color of the workspace"
 });
 
+export const performanceColorSchema = z._default(colorSchema, "#00ff00");
+schemaRegistry.add(performanceColorSchema, {
+  description: "The performance color of the workspace"
+});
+
 export const positiveColorSchema = z._default(colorSchema, "#4ade80");
 schemaRegistry.add(positiveColorSchema, {
   description: "The positive number color of the workspace"
@@ -113,6 +118,7 @@ export const darkColorsSchema = z.object({
   warning: warningColorSchema,
   danger: dangerColorSchema,
   fatal: fatalColorSchema,
+  performance: performanceColorSchema,
   positive: positiveColorSchema,
   negative: negativeColorSchema,
   gradient: gradientStopsSchema
@@ -132,6 +138,7 @@ export const lightColorsSchema = z.object({
   warning: warningColorSchema,
   danger: dangerColorSchema,
   fatal: fatalColorSchema,
+  performance: performanceColorSchema,
   positive: positiveColorSchema,
   negative: negativeColorSchema,
   gradient: gradientStopsSchema
@@ -156,6 +163,7 @@ export const singleColorsSchema = z.object({
   warning: warningColorSchema,
   danger: dangerColorSchema,
   fatal: fatalColorSchema,
+  performance: performanceColorSchema,
   positive: positiveColorSchema,
   negative: negativeColorSchema,
   gradient: gradientStopsSchema
@@ -611,6 +619,7 @@ export const logLevelSchema = z._default(
     "warn",
     "success",
     "info",
+    "performance",
     "debug",
     "trace",
     "all"

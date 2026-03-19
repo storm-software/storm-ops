@@ -49,10 +49,10 @@ export type StormWorkspaceConfigInput = z.input<typeof workspaceConfigSchema>;
  * This type is deprecated and will be removed in the next major version. Use {@link StormWorkspaceConfig} instead.
  */
 export type StormConfig<
-  TExtensionName extends
-    keyof TStormWorkspaceConfig["extensions"] = keyof TStormWorkspaceConfig["extensions"],
-  TExtensionConfig extends
-    TStormWorkspaceConfig["extensions"][TExtensionName] = TStormWorkspaceConfig["extensions"][TExtensionName]
+  TExtensionName extends keyof TStormWorkspaceConfig["extensions"] =
+    keyof TStormWorkspaceConfig["extensions"],
+  TExtensionConfig extends TStormWorkspaceConfig["extensions"][TExtensionName] =
+    TStormWorkspaceConfig["extensions"][TExtensionName]
 > = TStormWorkspaceConfig & {
   extensions:
     | (TStormWorkspaceConfig["extensions"] & {
@@ -68,10 +68,10 @@ export type StormConfig<
  * This type is used to define the configuration object for the entire Storm workspace/monorepo. The value is extracted from the `storm-workspace.json` file in the workspace root and the currently configuration environment variables. The value can be obtained by calling `getWorkspaceConfig()` in `@storm-software/config-tools`.
  */
 export type StormWorkspaceConfig<
-  TExtensionName extends
-    keyof TStormWorkspaceConfig["extensions"] = keyof TStormWorkspaceConfig["extensions"],
-  TExtensionConfig extends
-    TStormWorkspaceConfig["extensions"][TExtensionName] = TStormWorkspaceConfig["extensions"][TExtensionName]
+  TExtensionName extends keyof TStormWorkspaceConfig["extensions"] =
+    keyof TStormWorkspaceConfig["extensions"],
+  TExtensionConfig extends TStormWorkspaceConfig["extensions"][TExtensionName] =
+    TStormWorkspaceConfig["extensions"][TExtensionName]
 > = StormConfig<TExtensionName, TExtensionConfig>;
 
 export const COLOR_KEYS = [
@@ -88,6 +88,7 @@ export const COLOR_KEYS = [
   "warning",
   "danger",
   "fatal",
+  "performance",
   "positive",
   "negative"
 ];

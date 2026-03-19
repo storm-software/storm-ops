@@ -123,6 +123,7 @@ const resolveOptions = async (
     silent: !debug,
     logLevel:
       workspaceConfig.logLevel === "success" ||
+      workspaceConfig.logLevel === "performance" ||
       workspaceConfig.logLevel === "debug" ||
       workspaceConfig.logLevel === "trace" ||
       workspaceConfig.logLevel === "all"

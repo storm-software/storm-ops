@@ -18,6 +18,7 @@ export async function createLogger(
   const writeInfo = getLogFn(LogLevel.INFO, config, chalk);
   const writeSuccess = getLogFn(LogLevel.SUCCESS, config, chalk);
   const writeDebug = getLogFn(LogLevel.DEBUG, config, chalk);
+  const writePerformance = getLogFn(LogLevel.PERFORMANCE, config, chalk);
   const writeTrace = getLogFn(LogLevel.TRACE, config, chalk);
 
   return {
@@ -26,6 +27,7 @@ export async function createLogger(
     warning: writeWarning,
     info: writeInfo,
     success: writeSuccess,
+    performance: writePerformance,
     debug: writeDebug,
     trace: writeTrace,
     getStopwatch

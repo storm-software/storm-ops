@@ -9,6 +9,7 @@ export const CONSOLE_ICONS: { [k in LogLevelLabel]?: string } = {
   [LogLevelLabel.FATAL]: useIcon("🕱", "×"),
   [LogLevelLabel.WARN]: useIcon("⚠", "‼"),
   [LogLevelLabel.INFO]: useIcon("ℹ", "i"),
+  [LogLevelLabel.PERFORMANCE]: useIcon("⏱", "⏱"),
   [LogLevelLabel.SUCCESS]: useIcon("✔", "√"),
   [LogLevelLabel.DEBUG]: useIcon("🛠", "D"),
   [LogLevelLabel.TRACE]: useIcon("⚙", "T"),

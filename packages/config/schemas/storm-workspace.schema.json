@@ -307,6 +307,7 @@
         "warn",
         "success",
         "info",
+        "performance",
         "debug",
         "trace",
         "all"
@@ -470,6 +471,14 @@
                   "maxLength": 7,
                   "pattern": "^#([0-9a-f]{3}){1,2}$"
                 },
+                "performance": {
+                  "default": "#00ff00",
+                  "description": "The performance color of the workspace",
+                  "type": "string",
+                  "minLength": 7,
+                  "maxLength": 7,
+                  "pattern": "^#([0-9a-f]{3}){1,2}$"
+                },
                 "positive": {
                   "default": "#4ade80",
                   "description": "The positive number color of the workspace",
@@ -509,6 +518,7 @@
                 "debug",
                 "warning",
                 "danger",
+                "performance",
                 "positive",
                 "negative"
               ],
@@ -621,6 +631,14 @@
                       "maxLength": 7,
                       "pattern": "^#([0-9a-f]{3}){1,2}$"
                     },
+                    "performance": {
+                      "default": "#00ff00",
+                      "description": "The performance color of the workspace",
+                      "type": "string",
+                      "minLength": 7,
+                      "maxLength": 7,
+                      "pattern": "^#([0-9a-f]{3}){1,2}$"
+                    },
                     "positive": {
                       "default": "#4ade80",
                       "description": "The positive number color of the workspace",
@@ -660,6 +678,7 @@
                     "debug",
                     "warning",
                     "danger",
+                    "performance",
                     "positive",
                     "negative"
                   ],
@@ -769,6 +788,14 @@
                       "maxLength": 7,
                       "pattern": "^#([0-9a-f]{3}){1,2}$"
                     },
+                    "performance": {
+                      "default": "#00ff00",
+                      "description": "The performance color of the workspace",
+                      "type": "string",
+                      "minLength": 7,
+                      "maxLength": 7,
+                      "pattern": "^#([0-9a-f]{3}){1,2}$"
+                    },
                     "positive": {
                       "default": "#4ade80",
                       "description": "The positive number color of the workspace",
@@ -808,6 +835,7 @@
                     "debug",
                     "warning",
                     "danger",
+                    "performance",
                     "positive",
                     "negative"
                   ],
@@ -946,6 +974,14 @@
                     "maxLength": 7,
                     "pattern": "^#([0-9a-f]{3}){1,2}$"
                   },
+                  "performance": {
+                    "default": "#00ff00",
+                    "description": "The performance color of the workspace",
+                    "type": "string",
+                    "minLength": 7,
+                    "maxLength": 7,
+                    "pattern": "^#([0-9a-f]{3}){1,2}$"
+                  },
                   "positive": {
                     "default": "#4ade80",
                     "description": "The positive number color of the workspace",
@@ -985,6 +1021,7 @@
                   "debug",
                   "warning",
                   "danger",
+                  "performance",
                   "positive",
                   "negative"
                 ],
@@ -1097,6 +1134,14 @@
                         "maxLength": 7,
                         "pattern": "^#([0-9a-f]{3}){1,2}$"
                       },
+                      "performance": {
+                        "default": "#00ff00",
+                        "description": "The performance color of the workspace",
+                        "type": "string",
+                        "minLength": 7,
+                        "maxLength": 7,
+                        "pattern": "^#([0-9a-f]{3}){1,2}$"
+                      },
                       "positive": {
                         "default": "#4ade80",
                         "description": "The positive number color of the workspace",
@@ -1136,6 +1181,7 @@
                       "debug",
                       "warning",
                       "danger",
+                      "performance",
                       "positive",
                       "negative"
                     ],
@@ -1245,6 +1291,14 @@
                         "maxLength": 7,
                         "pattern": "^#([0-9a-f]{3}){1,2}$"
                       },
+                      "performance": {
+                        "default": "#00ff00",
+                        "description": "The performance color of the workspace",
+                        "type": "string",
+                        "minLength": 7,
+                        "maxLength": 7,
+                        "pattern": "^#([0-9a-f]{3}){1,2}$"
+                      },
                       "positive": {
                         "default": "#4ade80",
                         "description": "The positive number color of the workspace",
@@ -1284,6 +1338,7 @@
                       "debug",
                       "warning",
                       "danger",
+                      "performance",
                       "positive",
                       "negative"
                     ],

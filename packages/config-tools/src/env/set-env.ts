@@ -377,6 +377,9 @@ const setSingleThemeColorsEnv = (prefix: string, config: SingleThemeColors) => {
   if (config.fatal) {
     process.env[`${prefix}FATAL`] = config.fatal;
   }
+  if (config.performance) {
+    process.env[`${prefix}PERFORMANCE`] = config.performance;
+  }
   if (config.positive) {
     process.env[`${prefix}POSITIVE`] = config.positive;
   }
@@ -439,6 +442,9 @@ const setBaseThemeColorsEnv = (
   }
   if (config.fatal) {
     process.env[`${prefix}FATAL`] = config.fatal;
+  }
+  if (config.performance) {
+    process.env[`${prefix}PERFORMANCE`] = config.performance;
   }
   if (config.positive) {
     process.env[`${prefix}POSITIVE`] = config.positive;

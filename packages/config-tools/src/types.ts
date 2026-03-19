@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import type { StormWorkspaceConfig } from "@storm-software/config";
 
-export type LogLevel = 0 | 10 | 20 | 30 | 35 | 40 | 60 | 70 | 100;
+export type LogLevel = 0 | 10 | 20 | 30 | 35 | 40 | 50 | 60 | 70 | 100;
 export const LogLevel = {
   SILENT: 0 as LogLevel,
   FATAL: 10 as LogLevel,
@@ -9,6 +9,7 @@ export const LogLevel = {
   WARN: 30 as LogLevel,
   SUCCESS: 35 as LogLevel,
   INFO: 40 as LogLevel,
+  PERFORMANCE: 50 as LogLevel,
   DEBUG: 60 as LogLevel,
   TRACE: 70 as LogLevel,
   ALL: 100 as LogLevel
@@ -21,6 +22,7 @@ export type LogLevelLabel =
   | "warn"
   | "success"
   | "info"
+  | "performance"
   | "debug"
   | "trace"
   | "all";
@@ -31,6 +33,7 @@ export const LogLevelLabel = {
   WARN: "warn" as LogLevelLabel,
   SUCCESS: "success" as LogLevelLabel,
   INFO: "info" as LogLevelLabel,
+  PERFORMANCE: "performance" as LogLevelLabel,
   DEBUG: "debug" as LogLevelLabel,
   TRACE: "trace" as LogLevelLabel,
   ALL: "all" as LogLevelLabel
@@ -42,6 +45,7 @@ export type Logger = {
   warning: (message?: any) => void;
   info: (message?: any) => void;
   success: (message?: any) => void;
+  performance: (message?: any) => void;
   debug: (message?: any) => void;
   trace: (message?: any) => void;
   getStopwatch: (name: string) => () => void;

@@ -30,6 +30,7 @@
       "info": "#0550ae",
       "warning": "#e3b341",
       "danger": "#a40e26",
+      "performance": "#83ff83",
       "positive": "#22c55e",
       "negative": "#dc2626"
     },
@@ -43,6 +44,7 @@
       "info": "#0070E0",
       "warning": "#f3d371",
       "danger": "#D8314A",
+      "performance": "#00ff00",
       "positive": "#22c55e",
       "negative": "#dc2626"
     }

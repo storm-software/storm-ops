@@ -124,6 +124,20 @@ ${_chalk.gray(formatTimestamp())} ${_chalk.hex(
     };
   }
 
+  if (typeof logLevel === "number" && LogLevel.PERFORMANCE >= logLevel) {
+    return (message?: any) => {
+      console.debug(
+        `
+${_chalk.gray(formatTimestamp())} ${_chalk.hex(
+          colors.performance ?? DEFAULT_COLOR_CONFIG.dark.performance
+        )(
+          `[${CONSOLE_ICONS[LogLevelLabel.PERFORMANCE]} Performance] `
+        )}${_chalk.bold.whiteBright(formatLogMessage(message))}
+`
+      );
+    };
+  }
+
   if (typeof logLevel === "number" && LogLevel.DEBUG >= logLevel) {
     return (message?: any) => {
       console.debug(
@@ -219,6 +233,17 @@ export const writeSuccess = (
 ) => getLogFn(LogLevel.SUCCESS, config)(message);
 
 /**
+ * Write a message to the console at the `performance` log level
+ *
+ * @param message - The message to write
+ * @param config - The Storm configuration
+ */
+export const writePerformance = (
+  message?: any,
+  config?: Partial<StormWorkspaceConfig>
+) => getLogFn(LogLevel.PERFORMANCE, config)(message);
+
+/**
  * Write a message to the console at the `debug` log level
  *
  * @param message - The message to write
@@ -260,13 +285,10 @@ export const writeSystem = (
 export const getStopwatch = (name: string) => {
   const start = new Date();
   return () => {
-    console.info(
-      `> ⏱ The${name ? ` ${name}` : ""} process took ${formatDistanceToNow(
-        start,
-        {
-          includeSeconds: true
-        }
-      )} to complete`
+    writePerformance(
+      `The${name ? ` ${name}` : ""} process took ${formatDistanceToNow(start, {
+        includeSeconds: true
+      })} to complete`
     );
   };
 };

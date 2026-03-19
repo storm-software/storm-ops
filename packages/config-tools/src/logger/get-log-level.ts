@@ -14,6 +14,8 @@ export const getLogLevel = (label?: string): LogLevel => {
       return LogLevel.TRACE;
     case "debug":
       return LogLevel.DEBUG;
+    case "performance":
+      return LogLevel.PERFORMANCE;
     case "info":
       return LogLevel.INFO;
     case "warn":
@@ -46,6 +48,9 @@ export const getLogLevelLabel = (
   }
   if (logLevel >= LogLevel.DEBUG) {
     return LogLevelLabel.DEBUG;
+  }
+  if (logLevel >= LogLevel.PERFORMANCE) {
+    return LogLevelLabel.PERFORMANCE;
   }
   if (logLevel >= LogLevel.INFO) {
     return LogLevelLabel.INFO;

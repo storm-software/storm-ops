@@ -335,6 +335,7 @@ const getSingleThemeColorsEnv = (prefix: string): SingleThemeColorsInput => {
     warning: process.env[`${prefix}WARNING`],
     danger: process.env[`${prefix}DANGER`],
     fatal: process.env[`${prefix}FATAL`],
+    performance: process.env[`${prefix}PERFORMANCE`],
     positive: process.env[`${prefix}POSITIVE`],
     negative: process.env[`${prefix}NEGATIVE`],
     gradient
@@ -393,6 +394,7 @@ const getBaseThemeColorsEnv = <
     warning: process.env[`${prefix}WARNING`],
     danger: process.env[`${prefix}DANGER`],
     fatal: process.env[`${prefix}FATAL`],
+    performance: process.env[`${prefix}PERFORMANCE`],
     positive: process.env[`${prefix}POSITIVE`],
     negative: process.env[`${prefix}NEGATIVE`],
     gradient
