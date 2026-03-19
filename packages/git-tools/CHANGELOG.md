@@ -2,6 +2,22 @@
 
 # Changelog for Storm Ops - Git Tools
 
+## [2.130.0](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.130.0) (03/19/2026)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate `README.md` files ([17e5b35e3](https://github.com/storm-software/storm-ops/commit/17e5b35e3))
+
+### Features
+
+- **git-tools:** Added `lint` project target to `lefthook` config ([47a91163c](https://github.com/storm-software/storm-ops/commit/47a91163c))
+
+### Updated Dependencies
+
+- Updated **conventional-changelog** to **v0.3.123**
+- Updated **config-tools** to **v1.189.42**
+- Updated **config** to **v1.136.1**
+
 ## [2.129.5](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.129.5) (03/18/2026)
 
 ### Features
