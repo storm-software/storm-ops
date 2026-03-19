@@ -121,5 +121,6 @@
   ],
   "parallel": 5,
   "defaultBase": "main",
-  "neverConnectToCloud": true
+  "neverConnectToCloud": true,
+  "analytics": false
 }
