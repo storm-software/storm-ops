@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - Vite
 
+## [0.1.60](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.60) (03/19/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update `README.md` files ([46aa73215](https://github.com/storm-software/storm-ops/commit/46aa73215))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.126**
+
 ## [0.1.59](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.59) (03/19/2026)
 
 ### Miscellaneous
