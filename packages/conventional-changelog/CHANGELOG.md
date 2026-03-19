@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Conventional Changelog
 
+## [0.3.122](https://github.com/storm-software/storm-ops/releases/tag/conventional-changelog%400.3.122) (03/18/2026)
+
+### Features
+
+- **config:** Added the `performance` color configuration and logLevel ([02e67c64e](https://github.com/storm-software/storm-ops/commit/02e67c64e))
+
+### Updated Dependencies
+
+- Updated **config-tools** to **v1.189.41**
+- Updated **config** to **v1.136.0**
+
 ## [0.3.121](https://github.com/storm-software/storm-ops/releases/tag/conventional-changelog%400.3.121) (03/18/2026)
 
 ### Miscellaneous

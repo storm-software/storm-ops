@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Tsup
 
+## [0.2.120](https://github.com/storm-software/storm-ops/releases/tag/tsup%400.2.120) (03/18/2026)
+
+### Features
+
+- **config:** Added the `performance` color configuration and logLevel ([02e67c64e](https://github.com/storm-software/storm-ops/commit/02e67c64e))
+
+### Updated Dependencies
+
+- Updated **config-tools** to **v1.189.41**
+- Updated **build-tools** to **v0.158.122**
+
 ## [0.2.119](https://github.com/storm-software/storm-ops/releases/tag/tsup%400.2.119) (03/18/2026)
 
 ### Miscellaneous

@@ -2,6 +2,24 @@
 
 # Changelog for Storm Ops - Workspace Tools
 
+## [1.295.17](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.295.17) (03/18/2026)
+
+### Features
+
+- **config:** Added the `performance` color configuration and logLevel ([02e67c64e](https://github.com/storm-software/storm-ops/commit/02e67c64e))
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.116**
+- Updated **config-tools** to **v1.189.41**
+- Updated **pnpm-tools** to **v0.6.126**
+- Updated **npm-tools** to **v0.6.79**
+- Updated **prettier** to **v0.59.15**
+- Updated **esbuild** to **v0.53.123**
+- Updated **unbuild** to **v0.57.123**
+- Updated **config** to **v1.136.0**
+- Updated **tsdown** to **v0.45.123**
+
 ## [1.295.16](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.295.16) (03/18/2026)
 
 ### Miscellaneous

@@ -2,6 +2,19 @@
 
 # Changelog for Storm Ops - Esbuild
 
+## [0.53.123](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.53.123) (03/18/2026)
+
+### Features
+
+- **config:** Added the `performance` color configuration and logLevel ([02e67c64e](https://github.com/storm-software/storm-ops/commit/02e67c64e))
+
+### Updated Dependencies
+
+- Updated **config-tools** to **v1.189.41**
+- Updated **build-tools** to **v0.158.122**
+- Updated **config** to **v1.136.0**
+- Updated **tsup** to **v0.2.120**
+
 ## [0.53.122](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.53.122) (03/18/2026)
 
 ### Miscellaneous

@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Untyped
 
+## [0.24.104](https://github.com/storm-software/storm-ops/releases/tag/untyped%400.24.104) (03/18/2026)
+
+### Features
+
+- **config:** Added the `performance` color configuration and logLevel ([02e67c64e](https://github.com/storm-software/storm-ops/commit/02e67c64e))
+
+### Updated Dependencies
+
+- Updated **config-tools** to **v1.189.41**
+- Updated **config** to **v1.136.0**
+
 ## [0.24.103](https://github.com/storm-software/storm-ops/releases/tag/untyped%400.24.103) (03/18/2026)
 
 ### Miscellaneous

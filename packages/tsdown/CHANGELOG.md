@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Tsdown
 
+## [0.45.123](https://github.com/storm-software/storm-ops/releases/tag/tsdown%400.45.123) (03/18/2026)
+
+### Features
+
+- **config:** Added the `performance` color configuration and logLevel ([02e67c64e](https://github.com/storm-software/storm-ops/commit/02e67c64e))
+
+### Updated Dependencies
+
+- Updated **config-tools** to **v1.189.41**
+- Updated **build-tools** to **v0.158.122**
+- Updated **config** to **v1.136.0**
+
 ## [0.45.122](https://github.com/storm-software/storm-ops/releases/tag/tsdown%400.45.122) (03/18/2026)
 
 ### Miscellaneous

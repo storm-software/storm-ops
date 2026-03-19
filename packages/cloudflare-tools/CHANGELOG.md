@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Cloudflare Tools
 
+## [0.71.91](https://github.com/storm-software/storm-ops/releases/tag/cloudflare-tools%400.71.91) (03/18/2026)
+
+### Features
+
+- **config:** Added the `performance` color configuration and logLevel ([02e67c64e](https://github.com/storm-software/storm-ops/commit/02e67c64e))
+
+### Updated Dependencies
+
+- Updated **workspace-tools** to **v1.295.17**
+- Updated **config-tools** to **v1.189.41**
+- Updated **config** to **v1.136.0**
+
 ## [0.71.90](https://github.com/storm-software/storm-ops/releases/tag/cloudflare-tools%400.71.90) (03/18/2026)
 
 ### Miscellaneous

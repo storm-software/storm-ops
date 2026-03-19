@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Testing Tools
 
+## [1.119.116](https://github.com/storm-software/storm-ops/releases/tag/testing-tools%401.119.116) (03/18/2026)
+
+### Features
+
+- **config:** Added the `performance` color configuration and logLevel ([02e67c64e](https://github.com/storm-software/storm-ops/commit/02e67c64e))
+
 ## [1.119.115](https://github.com/storm-software/storm-ops/releases/tag/testing-tools%401.119.115) (03/18/2026)
 
 ### Miscellaneous

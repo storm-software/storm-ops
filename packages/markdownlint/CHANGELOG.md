@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - Markdownlint
 
+## [0.30.116](https://github.com/storm-software/storm-ops/releases/tag/markdownlint%400.30.116) (03/18/2026)
+
+### Features
+
+- **config:** Added the `performance` color configuration and logLevel ([02e67c64e](https://github.com/storm-software/storm-ops/commit/02e67c64e))
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.116**
+
 ## [0.30.115](https://github.com/storm-software/storm-ops/releases/tag/markdownlint%400.30.115) (03/18/2026)
 
 ### Miscellaneous

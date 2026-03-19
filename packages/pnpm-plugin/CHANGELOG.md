@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - Pnpm Plugin
 
+## [0.1.73](https://github.com/storm-software/storm-ops/releases/tag/pnpm-plugin%400.1.73) (03/18/2026)
+
+### Features
+
+- **config:** Added the `performance` color configuration and logLevel ([02e67c64e](https://github.com/storm-software/storm-ops/commit/02e67c64e))
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.116**
+
 ## [0.1.72](https://github.com/storm-software/storm-ops/releases/tag/pnpm-plugin%400.1.72) (03/18/2026)
 
 ### Miscellaneous

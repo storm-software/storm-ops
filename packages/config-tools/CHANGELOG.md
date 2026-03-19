@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Config Tools
 
+## [1.189.41](https://github.com/storm-software/storm-ops/releases/tag/config-tools%401.189.41) (03/18/2026)
+
+### Features
+
+- **config:** Added the `performance` color configuration and logLevel ([02e67c64e](https://github.com/storm-software/storm-ops/commit/02e67c64e))
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.116**
+- Updated **config** to **v1.136.0**
+
 ## [1.189.40](https://github.com/storm-software/storm-ops/releases/tag/config-tools%401.189.40) (03/18/2026)
 
 ### Miscellaneous

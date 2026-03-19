@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - Vite
 
+## [0.1.56](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.56) (03/18/2026)
+
+### Features
+
+- **config:** Added the `performance` color configuration and logLevel ([02e67c64e](https://github.com/storm-software/storm-ops/commit/02e67c64e))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.122**
+
 ## [0.1.55](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.55) (03/18/2026)
 
 ### Miscellaneous

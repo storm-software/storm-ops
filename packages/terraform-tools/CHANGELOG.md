@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Terraform Tools
 
+## [0.66.132](https://github.com/storm-software/storm-ops/releases/tag/terraform-tools%400.66.132) (03/18/2026)
+
+### Features
+
+- **config:** Added the `performance` color configuration and logLevel ([02e67c64e](https://github.com/storm-software/storm-ops/commit/02e67c64e))
+
+### Updated Dependencies
+
+- Updated **workspace-tools** to **v1.295.17**
+- Updated **config-tools** to **v1.189.41**
+- Updated **config** to **v1.136.0**
+
 ## [0.66.131](https://github.com/storm-software/storm-ops/releases/tag/terraform-tools%400.66.131) (03/18/2026)
 
 ### Miscellaneous

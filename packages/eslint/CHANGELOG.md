@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - ESLint
 
+## [0.169.130](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.169.130) (03/18/2026)
+
+### Features
+
+- **config:** Added the `performance` color configuration and logLevel ([02e67c64e](https://github.com/storm-software/storm-ops/commit/02e67c64e))
+
+### Updated Dependencies
+
+- Updated **config-tools** to **v1.189.41**
+- Updated **config** to **v1.136.0**
+- Updated **tsdoc** to **v0.13.116**
+
 ## [0.169.129](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.169.129) (03/18/2026)
 
 ### Miscellaneous
