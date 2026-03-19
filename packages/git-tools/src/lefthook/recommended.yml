@@ -77,7 +77,7 @@ pre-commit:
     lint:
       files: git diff --name-only HEAD @{push}
       glob: "**/*"
-      run: pnpm nx affected --target=lint --files={files} --outputStyle=dynamic-legacy --parallel=3 && git update-index
+      run: pnpm nx affected --target=lint --files={files} --exclude=monorepo --outputStyle=dynamic-legacy --parallel=3 && git update-index
       stage_fixed: true
 
     # ls-lint:
