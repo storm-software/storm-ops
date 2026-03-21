@@ -2,6 +2,24 @@
 
 # Changelog for Storm Ops - Workspace Tools
 
+## [1.295.22](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.295.22) (03/21/2026)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate workspace source files ([7303e3452](https://github.com/storm-software/storm-ops/commit/7303e3452))
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.121**
+- Updated **config-tools** to **v1.189.46**
+- Updated **pnpm-tools** to **v0.6.131**
+- Updated **npm-tools** to **v0.6.84**
+- Updated **prettier** to **v0.59.20**
+- Updated **esbuild** to **v0.53.128**
+- Updated **unbuild** to **v0.57.128**
+- Updated **config** to **v1.137.0**
+- Updated **tsdown** to **v0.45.128**
+
 ## [1.295.21](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.295.21) (03/19/2026)
 
 ### Miscellaneous

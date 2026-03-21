@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Prettier
 
+## [0.59.20](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.59.20) (03/21/2026)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate workspace source files ([7303e3452](https://github.com/storm-software/storm-ops/commit/7303e3452))
+
 ## [0.59.19](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.59.19) (03/19/2026)
 
 ### Miscellaneous

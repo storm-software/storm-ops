@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - Vite
 
+## [0.1.61](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.61) (03/21/2026)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate workspace source files ([7303e3452](https://github.com/storm-software/storm-ops/commit/7303e3452))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.127**
+
 ## [0.1.60](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.60) (03/19/2026)
 
 ### Miscellaneous

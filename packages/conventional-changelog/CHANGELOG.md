@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Conventional Changelog
 
+## [0.3.127](https://github.com/storm-software/storm-ops/releases/tag/conventional-changelog%400.3.127) (03/21/2026)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate workspace source files ([7303e3452](https://github.com/storm-software/storm-ops/commit/7303e3452))
+
+### Updated Dependencies
+
+- Updated **config-tools** to **v1.189.46**
+- Updated **config** to **v1.137.0**
+
 ## [0.3.126](https://github.com/storm-software/storm-ops/releases/tag/conventional-changelog%400.3.126) (03/19/2026)
 
 ### Miscellaneous

@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Untyped
 
+## [0.24.109](https://github.com/storm-software/storm-ops/releases/tag/untyped%400.24.109) (03/21/2026)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate workspace source files ([7303e3452](https://github.com/storm-software/storm-ops/commit/7303e3452))
+
+### Updated Dependencies
+
+- Updated **config-tools** to **v1.189.46**
+- Updated **config** to **v1.137.0**
+
 ## [0.24.108](https://github.com/storm-software/storm-ops/releases/tag/untyped%400.24.108) (03/19/2026)
 
 ### Miscellaneous

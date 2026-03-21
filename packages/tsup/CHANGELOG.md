@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Tsup
 
+## [0.2.125](https://github.com/storm-software/storm-ops/releases/tag/tsup%400.2.125) (03/21/2026)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate workspace source files ([7303e3452](https://github.com/storm-software/storm-ops/commit/7303e3452))
+
+### Updated Dependencies
+
+- Updated **config-tools** to **v1.189.46**
+- Updated **build-tools** to **v0.158.127**
+
 ## [0.2.124](https://github.com/storm-software/storm-ops/releases/tag/tsup%400.2.124) (03/19/2026)
 
 ### Miscellaneous

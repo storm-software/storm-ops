@@ -2,6 +2,20 @@
 
 # Changelog for Storm Ops - Config
 
+## [1.137.0](https://github.com/storm-software/storm-ops/releases/tag/config%401.137.0) (03/21/2026)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate workspace source files ([7303e3452](https://github.com/storm-software/storm-ops/commit/7303e3452))
+
+### Features
+
+- **config:** Update the light and dark `performance` colors ([5ed5f449c](https://github.com/storm-software/storm-ops/commit/5ed5f449c))
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.121**
+
 ## [1.136.4](https://github.com/storm-software/storm-ops/releases/tag/config%401.136.4) (03/19/2026)
 
 ### Miscellaneous
