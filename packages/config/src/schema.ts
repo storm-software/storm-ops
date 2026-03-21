@@ -83,7 +83,7 @@ schemaRegistry.add(fatalColorSchema, {
   description: "The fatal color of the workspace"
 });
 
-export const performanceColorSchema = z._default(colorSchema, "#00ff00");
+export const performanceColorSchema = z._default(colorSchema, "#80fd74");
 schemaRegistry.add(performanceColorSchema, {
   description: "The performance color of the workspace"
 });
