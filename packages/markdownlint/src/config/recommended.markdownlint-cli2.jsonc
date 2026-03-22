@@ -38,6 +38,9 @@
     ".git/**/*",
     ".husky/**/*",
     ".yarn/**/*",
-    ".pnp/**/*"
+    ".pnp/**/*",
+    "**/nx/**/schema.md",
+    "**/nx/**/*.schema.md",
+    "**/nx/**/generators/**/files"
   ]
 }
