@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Markdownlint
 
+## [0.30.123](https://github.com/storm-software/storm-ops/releases/tag/markdownlint%400.30.123) (03/21/2026)
+
+### Bug Fixes
+
+- **markdownlint:** Resolve issue with missing `markdownlint` extension file ([05b30543d](https://github.com/storm-software/storm-ops/commit/05b30543d))
+
 ## [0.30.122](https://github.com/storm-software/storm-ops/releases/tag/markdownlint%400.30.122) (03/21/2026)
 
 ### Bug Fixes
