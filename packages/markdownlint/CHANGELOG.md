@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Markdownlint
 
+## [0.30.124](https://github.com/storm-software/storm-ops/releases/tag/markdownlint%400.30.124) (03/21/2026)
+
+### Miscellaneous
+
+- **markdownlint:** Update exclude list to include `untyped` generated files ([3dafb72dc](https://github.com/storm-software/storm-ops/commit/3dafb72dc))
+
 ## [0.30.123](https://github.com/storm-software/storm-ops/releases/tag/markdownlint%400.30.123) (03/21/2026)
 
 ### Bug Fixes
