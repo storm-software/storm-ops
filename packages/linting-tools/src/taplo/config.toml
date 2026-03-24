@@ -8,6 +8,30 @@ include = [
     "apps/**/*.toml"
 ]
 
+exclude = [
+    "node_modules/**/*",
+    "dist/**/*",
+    "build/**/*",
+    "target/**/*",
+    "out/**/*",
+    "coverage/**/*",
+    "**/target/**/*",
+    "**/dist/**/*",
+    "**/build/**/*",
+    "**/out/**/*",
+    "**/coverage/**/*",
+    ".agents/**/*",
+    "**/.agents/**/*",
+    ".claude/**/*",
+    "**/.claude/**/*",
+    ".cursor/**/*",
+    "**/.cursor/**/*",
+    ".opencode/**/*",
+    "**/.opencode/**/*",
+    ".nx/**/*",
+    "**/.nx/**/*"
+]
+
 [formatting]
 # Align consecutive entries vertically.
 align_entries = true
