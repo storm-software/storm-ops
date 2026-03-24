@@ -177,5 +177,15 @@ export const GLOB_EXCLUDE = [
   "**/nx/**/*.schema.d.ts",
   "**/nx/**/*.schema.json",
   "**/nx/**/*.schema.md",
-  "**/nx/**/generators/**/files"
+  "**/nx/**/generators/**/files",
+  ".agents/**/*",
+  "**/.agents/**/*",
+  ".claude/**/*",
+  "**/.claude/**/*",
+  ".cursor/**/*",
+  "**/.cursor/**/*",
+  ".opencode/**/*",
+  "**/.opencode/**/*",
+  ".nx/**/*",
+  "**/.nx/**/*"
 ];
