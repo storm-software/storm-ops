@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Cloudflare Tools
 
+## [0.71.98](https://github.com/storm-software/storm-ops/releases/tag/cloudflare-tools%400.71.98) (03/24/2026)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate workspace files ([a31a7d08b](https://github.com/storm-software/storm-ops/commit/a31a7d08b))
+
+### Updated Dependencies
+
+- Updated **workspace-tools** to **v1.295.24**
+- Updated **config-tools** to **v1.189.48**
+- Updated **config** to **v1.137.2**
+
 ## [0.71.97](https://github.com/storm-software/storm-ops/releases/tag/cloudflare-tools%400.71.97) (03/24/2026)
 
 ### Miscellaneous

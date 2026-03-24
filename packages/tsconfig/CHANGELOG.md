@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Tsconfig
 
+## [0.48.37](https://github.com/storm-software/storm-ops/releases/tag/tsconfig%400.48.37) (03/24/2026)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate workspace files ([a31a7d08b](https://github.com/storm-software/storm-ops/commit/a31a7d08b))
+
 ## [0.48.35](https://github.com/storm-software/storm-ops/releases/tag/tsconfig%400.48.35) (03/21/2026)
 
 ### Miscellaneous

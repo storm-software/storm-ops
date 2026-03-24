@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Tsdoc
 
+## [0.13.123](https://github.com/storm-software/storm-ops/releases/tag/tsdoc%400.13.123) (03/24/2026)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate workspace files ([a31a7d08b](https://github.com/storm-software/storm-ops/commit/a31a7d08b))
+
 ## [0.13.121](https://github.com/storm-software/storm-ops/releases/tag/tsdoc%400.13.121) (03/21/2026)
 
 ### Miscellaneous
