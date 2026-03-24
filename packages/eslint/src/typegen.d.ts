@@ -5972,6 +5972,11 @@ Backward pagination arguments
    */
   'test/require-top-level-describe'?: Linter.RuleEntry<TestRequireTopLevelDescribe>
   /**
+   * enforce unbound methods are called with their expected scope
+   * @see https://github.com/vitest-dev/eslint-plugin-vitest/blob/main/docs/rules/unbound-method.md
+   */
+  'test/unbound-method'?: Linter.RuleEntry<TestUnboundMethod>
+  /**
    * enforce valid describe callback
    * @see https://github.com/vitest-dev/eslint-plugin-vitest/blob/main/docs/rules/valid-describe-callback.md
    */
@@ -16007,6 +16012,11 @@ type TestRequireMockTypeParameters = []|[{
 type TestRequireTopLevelDescribe = []|[{
   
   maxNumberOfTopLevelDescribes?: number
+}]
+// ----- test/unbound-method -----
+type TestUnboundMethod = []|[{
+  
+  ignoreStatic?: boolean
 }]
 // ----- test/valid-expect -----
 type TestValidExpect = []|[{
