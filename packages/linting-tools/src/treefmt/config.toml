@@ -86,11 +86,15 @@ exclude = [
     "**/.claude/**/*",
     ".cursor/**/*",
     "**/.cursor/**/*",
+    ".codex/**/*",
+    "**/.codex/**/*",
     ".opencode/**/*",
     "**/.opencode/**/*",
     ".nx/**/*",
     "**/.nx/**/*"
 ]
+
+tree-root-file = "storm-workspace.json"
 
 [formatter.nix]
 command  = "nixpkgs-fmt"

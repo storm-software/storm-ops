@@ -182,6 +182,8 @@ export const GLOB_EXCLUDE = [
   "**/.agents/**/*",
   ".claude/**/*",
   "**/.claude/**/*",
+  ".codex/**/*",
+  "**/.codex/**/*",
   ".cursor/**/*",
   "**/.cursor/**/*",
   ".opencode/**/*",

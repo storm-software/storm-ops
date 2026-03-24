@@ -144,4 +144,9 @@ in
     # Tools
     capnproto
   ];
+
+  treefmt = {
+    enable = true;
+    config.build.configFile = "${config.git.root}/node_modules/@storm-software/linting-tools/src/treefmt/config.toml";
+  };
 }
