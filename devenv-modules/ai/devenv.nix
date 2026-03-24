@@ -1,6 +1,7 @@
 {
   pkgs,
   inputs,
+  config,
   ...
 }:
 let
@@ -16,6 +17,25 @@ in
 
   claude.code = {
     enable = true;
+    hooks = {
+      # Protect sensitive files (PreToolUse hook)
+      protect-secrets = {
+        enable = true;
+        name = "Protect sensitive files";
+        hookType = "PreToolUse";
+        matcher = "^(Edit|MultiEdit|Write)$";
+        command = ''
+          # Read the JSON input from stdin
+          json=$(cat)
+          file_path=$(echo "$json" | jq -r '.file_path // empty')
+
+          if [[ "$file_path" =~ \.(env|secret)$ ]]; then
+            echo "Error: Cannot edit sensitive files"
+            exit 1
+          fi
+        '';
+      };
+    };
     mcpServers = {
       devenv = {
         type = "stdio";
