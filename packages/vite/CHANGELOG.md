@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - Vite
 
+## [0.1.64](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.64) (03/24/2026)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate `README.md` files ([b48a850b3](https://github.com/storm-software/storm-ops/commit/b48a850b3))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.130**
+
 ## [0.1.63](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.63) (03/24/2026)
 
 ### Miscellaneous

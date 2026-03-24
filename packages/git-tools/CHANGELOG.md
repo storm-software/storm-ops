@@ -2,6 +2,22 @@
 
 # Changelog for Storm Ops - Git Tools
 
+## [2.130.7](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.130.7) (03/24/2026)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate `README.md` files ([b48a850b3](https://github.com/storm-software/storm-ops/commit/b48a850b3))
+
+### Features
+
+- **linting-tools:** Added new formatters to `treefmt` configuration ([438ba8069](https://github.com/storm-software/storm-ops/commit/438ba8069))
+
+### Updated Dependencies
+
+- Updated **conventional-changelog** to **v0.3.130**
+- Updated **config-tools** to **v1.189.49**
+- Updated **config** to **v1.137.3**
+
 ## [2.130.6](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.130.6) (03/24/2026)
 
 ### Miscellaneous

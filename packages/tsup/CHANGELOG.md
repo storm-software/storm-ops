@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Tsup
 
+## [0.2.128](https://github.com/storm-software/storm-ops/releases/tag/tsup%400.2.128) (03/24/2026)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate `README.md` files ([b48a850b3](https://github.com/storm-software/storm-ops/commit/b48a850b3))
+
+### Updated Dependencies
+
+- Updated **config-tools** to **v1.189.49**
+- Updated **build-tools** to **v0.158.130**
+
 ## [0.2.127](https://github.com/storm-software/storm-ops/releases/tag/tsup%400.2.127) (03/24/2026)
 
 ### Miscellaneous
