@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Linting Tools
 
+## [1.133.2](https://github.com/storm-software/storm-ops/releases/tag/linting-tools%401.133.2) (03/24/2026)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate `README.md` files ([81b1d3c62](https://github.com/storm-software/storm-ops/commit/81b1d3c62))
+- **monorepo:** Added additional setup configuration for `treefmt` ([16916a050](https://github.com/storm-software/storm-ops/commit/16916a050))
+
+### Updated Dependencies
+
+- Updated **config-tools** to **v1.189.51**
+- Updated **config** to **v1.137.5**
+
 ## [1.133.1](https://github.com/storm-software/storm-ops/releases/tag/linting-tools%401.133.1) (03/24/2026)
 
 ### Miscellaneous

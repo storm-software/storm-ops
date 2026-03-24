@@ -2,6 +2,19 @@
 
 # Changelog for Storm Ops - ESLint
 
+## [0.169.140](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.169.140) (03/24/2026)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate `README.md` files ([81b1d3c62](https://github.com/storm-software/storm-ops/commit/81b1d3c62))
+- **monorepo:** Added additional setup configuration for `treefmt` ([16916a050](https://github.com/storm-software/storm-ops/commit/16916a050))
+
+### Updated Dependencies
+
+- Updated **config-tools** to **v1.189.51**
+- Updated **config** to **v1.137.5**
+- Updated **tsdoc** to **v0.13.126**
+
 ## [0.169.139](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.169.139) (03/24/2026)
 
 ### Miscellaneous
