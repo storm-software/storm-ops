@@ -49,7 +49,7 @@ This package is part of the <b>⚡Storm-Ops</b> monorepo. The Storm-Ops packages
 
 ## Table of Contents
 
-- [Storm Software - DevEnv Import Modules](#storm-software---devenv-import-modules)
+- [Storm Software - Devenv Import Modules](#storm-software---devenv-import-modules)
   - [Modules](#modules)
   - [Usage](#usage)
   - [Storm Workspaces](#storm-workspaces)
@@ -69,34 +69,38 @@ This package is part of the <b>⚡Storm-Ops</b> monorepo. The Storm-Ops packages
 
 <!-- END header -->
 
-# Storm Software - DevEnv Import Modules
+# Storm Software - Devenv Import Modules
 
-This package combines various base [DevEnv](https://devenv.sh/) modules that are
+This package combines various base [Devenv](https://devenv.sh/) modules that are
 used by Storm Software repositories. They can be combined with local
 configuration via imports. More details around this functionality can be found
-in the [DevEnv documentation](https://devenv.sh/composing-using-imports/).
+in the [Devenv documentation](https://devenv.sh/composing-using-imports/).
 
 ## Modules
 
-The following DevEnv modules are included in this package:
+The following Devenv modules are included in this package:
 
-- `storm-ops/devenv-modules/base`: Base DevEnv module for Storm Software
+- `storm-ops/devenv-modules/base`: Base Devenv module for Storm Software
   repositories. This module includes many tools and infrastructure used in all Storm Software repositories.
-- `storm-ops/devenv-modules/core`: Core DevEnv module for Storm Software
+- `storm-ops/devenv-modules/core`: Core Devenv module for Storm Software
   repositories. This module builds off the `storm-ops/devenv-modules/base` module to include additional tools and infrastructure.
-- `storm-ops/devenv-modules/minimal`: Minimal DevEnv module for Storm Software
+- `storm-ops/devenv-modules/minimal`: Minimal Devenv module for Storm Software
   repositories. This module should be used in Storm Software's repositories with the `variant` type of `minimal`.
-- `storm-ops/devenv-modules/rust`: DevEnv module to support development with
+- `storm-ops/devenv-modules/ai`: Devenv module to support development with AI tools, such as:
+  - [OpenAI's GPT models](https://openai.com/api/).
+  - [Claude](https://claude.ai/).
+  - [Cursor](https://www.cursor.so/).
+- `storm-ops/devenv-modules/rust`: Devenv module to support development with
   [Rust](https://www.rust-lang.org/).
-- `storm-ops/devenv-modules/python`: DevEnv module to support development with
+- `storm-ops/devenv-modules/python`: Devenv module to support development with
   [Python](https://www.python.org/).
-- `storm-ops/devenv-modules/cpp`: DevEnv module to support development with
+- `storm-ops/devenv-modules/cpp`: Devenv module to support development with
   [C++](https://cplusplus.com/).
-- `storm-ops/devenv-modules/atuin`: DevEnv module to include
+- `storm-ops/devenv-modules/atuin`: Devenv module to include
   [atuin](https://github.com/atuinsh/atuin) support.
-- `storm-ops/devenv-modules/vhs`: DevEnv module to include
+- `storm-ops/devenv-modules/vhs`: Devenv module to include
   [vhs](https://github.com/charmbracelet/vhs) support.
-- `storm-ops/devenv-modules/mdbook`: DevEnv module to include
+- `storm-ops/devenv-modules/mdbook`: Devenv module to include
   [mdbook](https://github.com/rust-lang/mdBook) support.
 
 ## Usage
