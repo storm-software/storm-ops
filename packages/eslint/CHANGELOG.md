@@ -2,6 +2,19 @@
 
 # Changelog for Storm Ops - ESLint
 
+## [0.169.139](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.169.139) (03/24/2026)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate `README.md` files ([7af6c4caf](https://github.com/storm-software/storm-ops/commit/7af6c4caf))
+- **eslint:** Add `ai` configuration files to exclude glob ([eda5f7fdc](https://github.com/storm-software/storm-ops/commit/eda5f7fdc))
+
+### Updated Dependencies
+
+- Updated **config-tools** to **v1.189.50**
+- Updated **config** to **v1.137.4**
+- Updated **tsdoc** to **v0.13.125**
+
 ## [0.169.138](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.169.138) (03/24/2026)
 
 ### Miscellaneous

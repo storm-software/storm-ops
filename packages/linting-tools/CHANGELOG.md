@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Linting Tools
 
+## [1.133.1](https://github.com/storm-software/storm-ops/releases/tag/linting-tools%401.133.1) (03/24/2026)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate `README.md` files ([7af6c4caf](https://github.com/storm-software/storm-ops/commit/7af6c4caf))
+- **linting-tools:** Added `ai` files to excludes list ([f36a7523f](https://github.com/storm-software/storm-ops/commit/f36a7523f))
+
+### Updated Dependencies
+
+- Updated **config-tools** to **v1.189.50**
+- Updated **config** to **v1.137.4**
+
 ## [1.133.0](https://github.com/storm-software/storm-ops/releases/tag/linting-tools%401.133.0) (03/24/2026)
 
 ### Miscellaneous

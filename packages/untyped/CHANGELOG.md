@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Untyped
 
+## [0.24.113](https://github.com/storm-software/storm-ops/releases/tag/untyped%400.24.113) (03/24/2026)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate `README.md` files ([7af6c4caf](https://github.com/storm-software/storm-ops/commit/7af6c4caf))
+
+### Updated Dependencies
+
+- Updated **config-tools** to **v1.189.50**
+- Updated **config** to **v1.137.4**
+
 ## [0.24.112](https://github.com/storm-software/storm-ops/releases/tag/untyped%400.24.112) (03/24/2026)
 
 ### Miscellaneous
