@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - Markdownlint
 
+## [0.30.125](https://github.com/storm-software/storm-ops/releases/tag/markdownlint%400.30.125) (03/24/2026)
+
+### Miscellaneous
+
+- **markdownlint:** Added AI related files to `ignores` option ([6c261044d](https://github.com/storm-software/storm-ops/commit/6c261044d))
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.122**
+
 ## [0.30.124](https://github.com/storm-software/storm-ops/releases/tag/markdownlint%400.30.124) (03/21/2026)
 
 ### Miscellaneous

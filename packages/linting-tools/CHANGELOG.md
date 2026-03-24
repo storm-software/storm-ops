@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Linting Tools
 
+## [1.132.136](https://github.com/storm-software/storm-ops/releases/tag/linting-tools%401.132.136) (03/24/2026)
+
+### Miscellaneous
+
+- **linting-tools:** Added `exclude` options for taplo linting ([a7c02bfbf](https://github.com/storm-software/storm-ops/commit/a7c02bfbf))
+
+### Updated Dependencies
+
+- Updated **config-tools** to **v1.189.47**
+- Updated **config** to **v1.137.1**
+
 ## [1.132.135](https://github.com/storm-software/storm-ops/releases/tag/linting-tools%401.132.135) (03/21/2026)
 
 ### Miscellaneous
