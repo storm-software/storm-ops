@@ -1,6 +1,40 @@
+# The formatter multiplexer - https://github.com/numtide/treefmt
+# This file configures the formatters that treefmt will use to format files in this project.
+# More info: https://treefmt.com/latest/getting-started/configure/#config-file
+
+exclude = [
+    "node_modules/**/*",
+    "dist/**/*",
+    "build/**/*",
+    "target/**/*",
+    "out/**/*",
+    "coverage/**/*",
+    "**/target/**/*",
+    "**/dist/**/*",
+    "**/build/**/*",
+    "**/out/**/*",
+    "**/coverage/**/*",
+    ".agents/**/*",
+    "**/.agents/**/*",
+    ".claude/**/*",
+    "**/.claude/**/*",
+    ".cursor/**/*",
+    "**/.cursor/**/*",
+    ".opencode/**/*",
+    "**/.opencode/**/*",
+    ".nx/**/*",
+    "**/.nx/**/*"
+]
+
 [formatter.nix]
 command  = "nixpkgs-fmt"
 includes = ["*.nix"]
+
+[formatter.nixfmt]
+command  = "nixfmt"
+excludes = []
+includes = ["*.nix"]
+options  = []
 
 [formatter.rust]
 command = "rustfmt"
@@ -10,4 +44,71 @@ options = [
     "2024",
     "--config-path",
     "node_modules/@storm-software/linting-tools/rustfmt/config.toml"
+]
+
+[formatter.buf]
+command  = "buf-wrapper"
+excludes = []
+includes = ["*.proto"]
+options  = []
+
+[formatter.gofmt]
+command  = "gofmt"
+excludes = ["vendor/*"]
+includes = ["*.go"]
+options  = ["-w"]
+
+[formatter.prettier]
+command = "prettier"
+excludes = []
+includes = [
+    "*.cjs",
+    "*.css",
+    "*.html",
+    "*.js",
+    "*.json",
+    "*.json5",
+    "*.jsx",
+    "*.md",
+    "*.mdx",
+    "*.mjs",
+    "*.scss",
+    "*.ts",
+    "*.tsx",
+    "*.vue",
+    "*.yaml",
+    "*.yml"
+]
+options = [
+    "--write",
+    "--ignore-unknown",
+    "--no-error-on-unmatched-pattern",
+    "--config=node_modules/@storm-software/prettier/exclude-packagejson.json",
+    "--ignore-path=node_modules/@storm-software/prettier/.prettierignore-exclude-packagejson",
+    "--cache",
+    "--cache-location=node_modules/.cache/prettier/workspace.cache"
+]
+
+[formatter.taplo]
+command = "taplo"
+excludes = []
+includes = ["*.toml"]
+options = [
+    "format",
+    "--write-mode=overwrite",
+    "--config",
+    "node_modules/@storm-software/linting-tools/taplo/config.toml",
+    "--force",
+    "--cache-path",
+    "node_modules/.cache/taplo"
+]
+
+[formatter.yamllint]
+command = "yamllint"
+excludes = []
+includes = ["*.yaml", "*.yml"]
+options = [
+    "format",
+    "--config",
+    "node_modules/@storm-software/linting-tools/yamllint/config.yaml"
 ]
