@@ -183,5 +183,8 @@
     "enable": true
   },
   "eslint.useFlatConfig": false,
-  "nxConsole.generateAiAgentRules": true
+  "nxConsole.generateAiAgentRules": true,
+  "[nix]": {
+    "editor.defaultFormatter": "brettm12345.nixfmt-vscode"
+  }
 }
