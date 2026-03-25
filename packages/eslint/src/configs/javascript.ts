@@ -273,7 +273,7 @@ export async function javascript(
           {
             properties: "never",
             ignoreDestructuring: false,
-            allow: ["^(UNSAFE_|EXPERIMENTAL_).*$"]
+            allow: ["^(unstable_|experimental_).*$"]
           }
         ],
 
@@ -1049,7 +1049,7 @@ export async function javascript(
           }
         ],
         "vars-on-top": "error",
-        "yoda": ["error", "never"],
+        yoda: ["error", "never"],
 
         ...overrides
       }
