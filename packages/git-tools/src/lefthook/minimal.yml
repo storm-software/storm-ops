@@ -6,30 +6,25 @@
 
 $schema: https://raw.githubusercontent.com/evilmartians/lefthook/refs/heads/master/schema.json
 assert_lefthook_installed: true
-colors: true
 no_tty: false
+no_auto_install: false
 min_version: "1.5.0"
 
 pre-commit:
+  parallel: true
   commands:
-    install:
-      glob: "{pnpm-lock.yaml,lefthook.yml,lefthook.yaml,lefthook.json}"
-      run: pnpm install && pnpm lefthook install && git update-index
-      stage_fixed: true
     prepare:
-      files: git diff --name-only HEAD @{push}
       glob: "**/*"
       run: pnpm exec storm-git prepare
       stage_fixed: true
     pre-commit:
-      files: git diff --name-only HEAD @{push}
       glob: "**/*"
-      run: pnpm exec storm-git pre-commit --files {files}
+      run: pnpm exec storm-git pre-commit --files {staged_files}
       stage_fixed: true
     codeowners:
-      files: git diff --name-only HEAD @{push}
       glob: "**/CODEOWNERS"
       run: pnpm exec storm-lint codeowners
+      stage_fixed: true
     zizmor:
       glob: .github/workflows/*.{yml,yaml}
       run: "zizmor --offline --config='./tools/config/zizmor.yml' .github/workflows/"
@@ -41,6 +36,7 @@ commit-msg:
       run: pnpm exec storm-git commitlint --message {1}
 
 pre-push:
+  parallel: true
   commands:
     build:
       glob: "**/*"

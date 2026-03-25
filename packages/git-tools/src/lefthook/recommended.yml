@@ -6,20 +6,15 @@
 
 $schema: https://raw.githubusercontent.com/evilmartians/lefthook/refs/heads/master/schema.json
 assert_lefthook_installed: true
-colors: true
 no_tty: false
+no_auto_install: false
 min_version: "1.5.0"
 extends:
   - ./minimal.yml
 
 pre-commit:
   commands:
-    install:
-      glob: "{pnpm-lock.yaml,lefthook.yml,lefthook.yaml,lefthook.json}"
-      run: pnpm install && pnpm lefthook install && git update-index
-      stage_fixed: true
     storm-lint:
-      files: git diff --name-only HEAD @{push}
       glob:
         - "*.js"
         - "*.ts"
@@ -50,24 +45,20 @@ pre-commit:
       run: pnpm exec storm-lint all --skip-cspell --skip-circular-deps
       stage_fixed: true
     readme:
-      files: git diff --name-only HEAD @{push}
       glob: "**/{README.md,README.*.md,readme/**/*,package.json,executors.json,generators.json}"
       run: pnpm exec storm-git readme --templates="tools/readme-templates" && git update-index
       stage_fixed: true
     prettier:
-      files: git diff --name-only HEAD @{push}
       glob: "**/*"
-      run: pnpm exec prettier --write --ignore-unknown --no-error-on-unmatched-pattern --config="node_modules/@storm-software/prettier/exclude-packagejson.json" --ignore-path="node_modules/@storm-software/prettier/.prettierignore-exclude-packagejson" --cache --cache-location="node_modules/.cache/prettier/workspace.cache" {files} && git update-index
+      run: pnpm exec prettier --write --ignore-unknown --no-error-on-unmatched-pattern --config="node_modules/@storm-software/prettier/exclude-packagejson.json" --ignore-path="node_modules/@storm-software/prettier/.prettierignore-exclude-packagejson" --cache --cache-location="node_modules/.cache/prettier/workspace.cache" {staged_files} && git update-index
       stage_fixed: true
     treefmt:
-      files: git diff --name-only HEAD @{push}
       glob: "**/*"
-      run: treefmt {files} && git update-index
+      run: treefmt {staged_files} && git update-index
       stage_fixed: true
     lint:
-      files: git diff --name-only HEAD @{push}
       glob: "**/*"
-      run: pnpm nx affected --target=lint --files={files} --exclude=monorepo --outputStyle=dynamic-legacy --parallel=3 && git update-index
+      run: pnpm nx affected --target=lint --files="{staged_files}" --exclude=monorepo --outputStyle=dynamic-legacy --parallel=3 && git update-index
       stage_fixed: true
 
     # ls-lint:

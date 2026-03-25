@@ -6,8 +6,8 @@
 
 $schema: https://raw.githubusercontent.com/evilmartians/lefthook/refs/heads/master/schema.json
 assert_lefthook_installed: true
-colors: true
 no_tty: false
+no_auto_install: false
 min_version: "1.5.0"
 extends:
   - ./recommended.yml
@@ -15,7 +15,6 @@ extends:
 pre-commit:
   commands:
     lint:
-      files: git diff --name-only HEAD @{push}
       glob:
         - "*.js"
         - "*.ts"
@@ -43,10 +42,9 @@ pre-commit:
         - "*.svg"
         - "*.env"
         - ".env.{local,development,test,production,staging}"
-      run: pnpm lint {files}
+      run: pnpm lint {staged_files}
       stage_fixed: true
     eslint:
-      files: git diff --name-only HEAD @{push}
       glob:
         - "*.js"
         - "*.ts"
@@ -74,11 +72,10 @@ pre-commit:
         - "*.svg"
         - "*.env"
         - ".env.{local,development,test,production,staging}"
-      run: 'pnpm exec eslint --fix --color --no-warn-ignored --cache --cache-location "./node_modules/.cache/storm/eslint-cache" --config "./eslint.config.mjs" {files} && git update-index'
+      run: 'pnpm exec eslint --fix --color --no-warn-ignored --cache --cache-location "./node_modules/.cache/storm/eslint-cache" --config "./eslint.config.mjs" {staged_files} && git update-index'
       stage_fixed: true
 
 pre-push:
-  piped: true
   commands:
     prettier:
       files: git diff --name-only HEAD @{push}
