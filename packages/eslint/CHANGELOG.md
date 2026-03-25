@@ -2,6 +2,22 @@
 
 # Changelog for Storm Ops - ESLint
 
+## [0.170.0](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.170.0) (03/25/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update `README.md` files ([6b62c3e64](https://github.com/storm-software/storm-ops/commit/6b62c3e64))
+
+### Features
+
+- **eslint:** Rename `UNSAFE` to `unstable` and `EXPERIMENTAL` to `experimental` ([8c46bc911](https://github.com/storm-software/storm-ops/commit/8c46bc911))
+
+### Updated Dependencies
+
+- Updated **config-tools** to **v1.189.58**
+- Updated **config** to **v1.137.12**
+- Updated **tsdoc** to **v0.13.133**
+
 ## [0.169.146](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.169.146) (03/25/2026)
 
 ### Miscellaneous
