@@ -147,6 +147,149 @@ in
 
   treefmt = {
     enable = true;
-    config.build.configFile = "${config.git.root}/node_modules/@storm-software/linting-tools/src/treefmt/config.toml";
+    config = {
+      enableDefaultExcludes = true;
+      projectRootFile = "storm-workspace.json";
+      programs = {
+        nixfmt = {
+          enable = true;
+          indent = 2;
+          width = 80;
+        };
+
+        nixpkgs-fmt.enable = true;
+
+        rustfmt = {
+          enable = true;
+          edition = "2024";
+        };
+
+        taplo = {
+          enable = true;
+          settings = {
+            include = [
+              "*.toml"
+              "**/Cargo.toml"
+              "**/.config/**/*.toml"
+              "crates/**/*.toml"
+              "apps/**/*.toml"
+            ];
+            exclude = [
+              "node_modules/**/*"
+              "dist/**/*"
+              "build/**/*"
+              "target/**/*"
+              "out/**/*"
+              "coverage/**/*"
+              "**/target/**/*"
+              "**/dist/**/*"
+              "**/build/**/*"
+              "**/out/**/*"
+              "**/coverage/**/*"
+              ".agents/**/*"
+              "**/.agents/**/*"
+              ".claude/**/*"
+              "**/.claude/**/*"
+              ".cursor/**/*"
+              "**/.cursor/**/*"
+              ".opencode/**/*"
+              "**/.opencode/**/*"
+              ".nx/**/*"
+              "**/.nx/**/*"
+            ];
+            formatting = {
+              # Align consecutive entries vertically.
+              align_entries = true;
+              # Append trailing commas for multi-line arrays.
+              array_trailing_comma = false;
+              # Expand arrays to multiple lines that exceed the maximum column width.
+              array_auto_expand = true;
+              # Collapse arrays that don't exceed the maximum column width and don't contain comments.
+              array_auto_collapse = false;
+              # Omit white space padding from single-line arrays
+              compact_arrays = true;
+              # Omit white space padding from the start and end of inline tables.
+              compact_inline_tables = false;
+              # Maximum column width in characters, affects array expansion and collapse, this doesn't take whitespace into account.
+              # Note that this is not set in stone, and works on a best-effort basis.
+              column_width = 80;
+              # Indent based on tables and arrays of tables and their subtables, subtables out of order are not indented.
+              indent_tables = false;
+              # The substring that is used for indentation, should be tabs or spaces (but technically can be anything).
+              indent_string = "    ";
+              # Add trailing newline at the end of the file if not present.
+              trailing_newline = true;
+              # Alphabetically reorder keys that are not separated by empty lines.
+              reorder_keys = true;
+              # Maximum amount of allowed consecutive blank lines. This does not affect the whitespace at the end of the document, as it is always stripped.
+              allowed_blank_lines = 1;
+              # Use CRLF for line endings.
+              crlf = false;
+              # Use tabs for indentation.
+              object_trailing_comma = false;
+            };
+            rule = [
+              {
+                formatting = {
+                  reorder_keys = true;
+                };
+                keys = [
+                  "dependencies"
+                  "dev-dependencies"
+                  "build-dependencies"
+                  "workspace.dependencies"
+                  "patch.crates-io"
+                ];
+              }
+            ];
+          };
+        };
+
+        yamllint = {
+          enable = true;
+          settings = {
+            include = [
+              "*.yaml"
+              "*.yml"
+              "**/.github/**/*.yaml"
+              "**/.github/**/*.yml"
+              "**/.config/**/*.yaml"
+              "**/.config/**/*.yml"
+              "apps/**/*.yaml"
+              "apps/**/*.yml"
+              "crates/**/*.yaml"
+              "crates/**/*.yml"
+            ];
+            exclude = [
+              "node_modules/**/*"
+              "dist/**/*"
+              "build/**/*"
+              "target/**/*"
+              "out/**/*"
+              "coverage/**/*"
+              "**/target/**/*"
+              "**/dist/**/*"
+              "**/build/**/*"
+              "**/out/**/*"
+              "**/coverage/**/*"
+              ".agents/**/*"
+              "**/.agents/**/*"
+              ".claude/**/*"
+              "**/.claude/**/*"
+              ".cursor/**/*"
+              "**/.cursor/**/*"
+              ".opencode/**/*"
+              "**/.opencode/**/*"
+              ".nx/**/*"
+              "**/.nx/**/*"
+            ];
+            formatting = {
+              # Maximum line length in characters, this is used as a reference for deciding whether to break a line or not, but is not set in stone.
+              line_length = 80;
+            };
+          };
+        };
+      };
+    };
   };
 }
