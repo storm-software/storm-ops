@@ -2,6 +2,22 @@
 
 # Changelog for Storm Ops - Git Tools
 
+## [2.130.13](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.130.13) (03/25/2026)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate `README.md` files ([78b56eef5](https://github.com/storm-software/storm-ops/commit/78b56eef5))
+
+### Bug Fixes
+
+- **git-tools:** Resolve issue with invalid `lefthook` files parameters ([5ee554181](https://github.com/storm-software/storm-ops/commit/5ee554181))
+
+### Updated Dependencies
+
+- Updated **conventional-changelog** to **v0.3.136**
+- Updated **config-tools** to **v1.189.55**
+- Updated **config** to **v1.137.9**
+
 ## [2.130.12](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.130.12) (03/25/2026)
 
 ### Updated Dependencies
