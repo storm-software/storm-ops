@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Pulumi Tools
 
+## [0.22.145](https://github.com/storm-software/storm-ops/releases/tag/pulumi-tools%400.22.145) (03/25/2026)
+
+### Bug Fixes
+
+- **devenv-modules:** Update devenv `treefmt` configuration ([ec50262bd](https://github.com/storm-software/storm-ops/commit/ec50262bd))
+
+### Updated Dependencies
+
+- Updated **workspace-tools** to **v1.295.30**
+- Updated **config-tools** to **v1.189.54**
+- Updated **config** to **v1.137.8**
+
 ## [0.22.144](https://github.com/storm-software/storm-ops/releases/tag/pulumi-tools%400.22.144) (03/25/2026)
 
 ### Updated Dependencies
