@@ -197,6 +197,8 @@ in
         "**/jest.setup.ts"
         "**/jest.config.json"
         "**/jest.setup.json"
+        "**/*.spec.{ts,tsx}"
+        "**/*.test.{ts,tsx}"
         "**/output"
         "**/temp"
         "**/.temp"
