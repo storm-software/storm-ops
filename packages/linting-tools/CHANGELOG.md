@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Linting Tools
 
+## [1.133.3](https://github.com/storm-software/storm-ops/releases/tag/linting-tools%401.133.3) (03/24/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update `README.md` files ([984a88d82](https://github.com/storm-software/storm-ops/commit/984a88d82))
+
+### Updated Dependencies
+
+- Updated **config-tools** to **v1.189.52**
+- Updated **config** to **v1.137.6**
+
 ## [1.133.2](https://github.com/storm-software/storm-ops/releases/tag/linting-tools%401.133.2) (03/24/2026)
 
 ### Miscellaneous

@@ -2,6 +2,22 @@
 
 # Changelog for Storm Ops - Git Tools
 
+## [2.130.10](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.130.10) (03/24/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update `README.md` files ([984a88d82](https://github.com/storm-software/storm-ops/commit/984a88d82))
+
+### Bug Fixes
+
+- **devenv-modules:** Resolve issue with `treefmt` configuration ([28d40532e](https://github.com/storm-software/storm-ops/commit/28d40532e))
+
+### Updated Dependencies
+
+- Updated **conventional-changelog** to **v0.3.133**
+- Updated **config-tools** to **v1.189.52**
+- Updated **config** to **v1.137.6**
+
 ## [2.130.9](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.130.9) (03/24/2026)
 
 ### Miscellaneous
