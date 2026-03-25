@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Tsconfig
 
+## [0.48.45](https://github.com/storm-software/storm-ops/releases/tag/tsconfig%400.48.45) (03/25/2026)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate `README.md` files ([d996db6d0](https://github.com/storm-software/storm-ops/commit/d996db6d0))
+
 ## [0.48.44](https://github.com/storm-software/storm-ops/releases/tag/tsconfig%400.48.44) (03/25/2026)
 
 ### Miscellaneous
