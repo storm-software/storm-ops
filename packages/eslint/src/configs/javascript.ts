@@ -273,7 +273,7 @@ export async function javascript(
           {
             properties: "never",
             ignoreDestructuring: false,
-            allow: ["^(unstable_|experimental_).*$"]
+            allow: ["^(unstable_|Unstable_|experimental_|Experimental_).*$"]
           }
         ],
 
