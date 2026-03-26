@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Npm Tools
 
+## [0.6.97](https://github.com/storm-software/storm-ops/releases/tag/npm-tools%400.6.97) (03/26/2026)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate `README.md` files ([8134a0ef5](https://github.com/storm-software/storm-ops/commit/8134a0ef5))
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.134**
+- Updated **config-tools** to **v1.189.59**
+- Updated **config** to **v1.137.13**
+
 ## [0.6.96](https://github.com/storm-software/storm-ops/releases/tag/npm-tools%400.6.96) (03/25/2026)
 
 ### Miscellaneous

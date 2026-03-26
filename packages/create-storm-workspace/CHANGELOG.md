@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - Create Storm Workspace
 
+## [1.97.140](https://github.com/storm-software/storm-ops/releases/tag/create-storm-workspace%401.97.140) (03/26/2026)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate `README.md` files ([8134a0ef5](https://github.com/storm-software/storm-ops/commit/8134a0ef5))
+
+### Updated Dependencies
+
+- Updated **config-tools** to **v1.189.59**
+
 ## [1.97.139](https://github.com/storm-software/storm-ops/releases/tag/create-storm-workspace%401.97.139) (03/25/2026)
 
 ### Miscellaneous
