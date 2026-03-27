@@ -2,6 +2,20 @@
 
 # Changelog for Storm Ops - ESLint
 
+## [0.170.2](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.170.2) (03/26/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update generated files ([14f587693](https://github.com/storm-software/storm-ops/commit/14f587693))
+- **monorepo:** Regenerate `README.md` files ([8134a0ef5](https://github.com/storm-software/storm-ops/commit/8134a0ef5))
+- **eslint:** Added type variants for `Unstable` and `Experimental` ([841384310](https://github.com/storm-software/storm-ops/commit/841384310))
+
+### Updated Dependencies
+
+- Updated **config-tools** to **v1.189.60**
+- Updated **config** to **v1.137.14**
+- Updated **tsdoc** to **v0.13.135**
+
 ## [0.170.1](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.170.1) (03/26/2026)
 
 ### Miscellaneous

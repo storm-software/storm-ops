@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Prettier
 
+## [0.59.34](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.59.34) (03/26/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update generated files ([14f587693](https://github.com/storm-software/storm-ops/commit/14f587693))
+- **monorepo:** Regenerate `README.md` files ([8134a0ef5](https://github.com/storm-software/storm-ops/commit/8134a0ef5))
+
 ## [0.59.33](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.59.33) (03/26/2026)
 
 ### Miscellaneous
