@@ -42,7 +42,7 @@ pre-commit:
         - "*.svg"
         - "*.env"
         - ".env.{local,development,test,production,staging}"
-      run: pnpm lint {staged_files}
+      run: pnpm lint --files {staged_files}
       stage_fixed: true
     eslint:
       glob:
@@ -72,7 +72,9 @@ pre-commit:
         - "*.svg"
         - "*.env"
         - ".env.{local,development,test,production,staging}"
-      run: 'pnpm exec eslint --fix --color --no-warn-ignored --cache --cache-location "./node_modules/.cache/storm/eslint-cache" --config "./eslint.config.mjs" {staged_files} && git update-index'
+      run: "pnpm exec eslint --fix --color --no-warn-ignored --cache --cache-location
+        \"./node_modules/.cache/storm/eslint-cache\" --config
+        \"./eslint.config.mjs\" {staged_files} && git update-index"
       stage_fixed: true
 
 pre-push:
@@ -80,7 +82,8 @@ pre-push:
     prettier:
       files: git diff --name-only HEAD @{push}
       glob: "!**/generators/*/files/**/*"
-      run: "pnpm exec prettier {files} --check --ignore-unknown --no-error-on-unmatched-pattern --cache && git update-index"
+      run: "pnpm exec prettier {files} --check --ignore-unknown
+        --no-error-on-unmatched-pattern --cache && git update-index"
       stage_fixed: true
     sherif:
       files: git diff --name-only HEAD @{push}
