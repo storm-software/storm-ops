@@ -7,6 +7,7 @@
  * @packageDocumentation
  */
 
+import { INTERNAL_PACKAGES } from "@storm-software/build-tools/constants/internal-packages";
 import defu from "defu";
 import path from "node:path";
 import { pathToFileURL } from "node:url";
@@ -26,14 +27,7 @@ export default {
         cleanupUnusedCatalogs: true,
         linkWorkspacePackages: true,
         minimumReleaseAge: 800,
-        minimumReleaseAgeExclude: [
-          "@storm-software/*",
-          "@stryke/*",
-          "@powerlines/*",
-          "powerlines",
-          "@earthquake/*",
-          "earthquake"
-        ]
+        minimumReleaseAgeExclude: INTERNAL_PACKAGES
       });
 
       if (result.hoistPattern?.length === 1 && result.hoistPattern[0] === "*") {

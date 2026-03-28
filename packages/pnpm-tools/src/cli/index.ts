@@ -1,3 +1,4 @@
+import { INTERNAL_PACKAGES } from "@storm-software/build-tools/constants/internal-packages";
 import type { StormWorkspaceConfig } from "@storm-software/config";
 import {
   brandIcon,
@@ -46,8 +47,8 @@ export function createProgram(config: StormWorkspaceConfig) {
     .command("update")
     .description("Update pnpm catalog dependency package version.")
     .argument(
-      "<package-names...>",
-      "The package name/pattern to update the version for (e.g., @storm-software/config or @storm-software/ for all Storm packages)."
+      "<packages...>",
+      "The package name/pattern to update the version for (e.g., @storm-software/config or @storm-software/ or @storm-software/*)."
     )
     .option(
       "-t, --tag <string>",
@@ -58,6 +59,7 @@ export function createProgram(config: StormWorkspaceConfig) {
       "-i, --install",
       "Whether to install the package after updating the version."
     )
+    .option("--all", "Whether to update all Storm Software packages.")
     .option(
       "-p, --prefix <string>",
       `The version prefix to use when updating the package (e.g., "^", "~", or "1.2.3"). Defaults to "^".
@@ -74,26 +76,28 @@ export function createProgram(config: StormWorkspaceConfig) {
 }
 
 async function updateAction(
-  packageNames: string | string[],
+  packages: string | string[],
   {
     tag,
     install = false,
+    all = false,
     prefix = "^"
   }: {
     tag: string;
     install: boolean;
+    all: boolean;
     prefix: string;
   }
 ) {
   try {
-    const packages = (
-      Array.isArray(packageNames)
-        ? packageNames
-        : [packageNames.split(",")].flat()
-    ).map(p => p.trim().replaceAll("*", ""));
+    const pkgs = (
+      Array.isArray(packages) ? packages : [packages.split(",")].flat()
+    )
+      .map(pkg => pkg.trim().replaceAll("*", ""))
+      .concat(all ? INTERNAL_PACKAGES : []);
 
     writeInfo(
-      `${brandIcon(_config)}  Preparing to update the package version for ${packages.join(", ")}.`,
+      `${brandIcon(_config)}  Preparing to update the package version for ${pkgs.join(", ")}.`,
       _config
     );
 
@@ -106,7 +110,7 @@ async function updateAction(
 
     let packagesFound = false;
     let packagesUpdated = false;
-    for (const pkg of packages) {
+    for (const pkg of pkgs) {
       const matchedPackages = Object.keys(catalog).filter(p =>
         pkg.endsWith("/") ? p.startsWith(pkg) : p === pkg
       );

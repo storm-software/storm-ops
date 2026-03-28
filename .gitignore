@@ -9,9 +9,8 @@ tmp
 /out-tsc
 out
 
-.nx/workspace-data
-.nx/cache
-.nx/socket
+.nx
+!.nx/workflows
 
 **/cspell/dict
 **/cspell/checksum.txt

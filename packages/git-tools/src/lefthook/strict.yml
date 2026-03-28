@@ -74,7 +74,7 @@ pre-commit:
         - ".env.{local,development,test,production,staging}"
       run: "pnpm exec eslint --fix --color --no-warn-ignored --cache --cache-location
         \"./node_modules/.cache/storm/eslint-cache\" --config
-        \"./eslint.config.mjs\" {staged_files} && git update-index"
+        \"./eslint.config.mjs\" {staged_files}"
       stage_fixed: true
 
 pre-push:
@@ -84,9 +84,7 @@ pre-push:
       glob: "!**/generators/*/files/**/*"
       run: "pnpm exec prettier {files} --check --ignore-unknown
         --no-error-on-unmatched-pattern --cache && git update-index"
-      stage_fixed: true
     sherif:
       files: git diff --name-only HEAD @{push}
       glob: "**/*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc}"
       run: pnpm exec sherif -i typescript react react-dom --files {files} --cache
-      stage_fixed: true

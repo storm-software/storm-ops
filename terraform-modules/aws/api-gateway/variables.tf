@@ -38,7 +38,7 @@ variable "environment" {
 }
 
 variable "full_name" {
-  description = "The name to use when adding resources (generally includes enviroment and region)."
+  description = "The name to use when adding resources (generally includes environment and region)."
   type        = string
   nullable    = true
   default     = null

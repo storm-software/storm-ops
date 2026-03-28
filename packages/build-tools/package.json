@@ -1,17 +1,32 @@
 {
   "name": "@storm-software/build-tools",
   "version": "0.158.141",
+  "private": false,
   "description": "A comprehensive set of tools for building and managing projects within a Storm workspace. Includes builders such as rollup, rolldown, tsup, and unbuild, along with various utilities.",
-  "repository": {
-    "type": "github",
-    "url": "https://github.com/storm-software/storm-ops",
-    "directory": "packages/build-tools"
-  },
+  "keywords": [
+    "monorepo",
+    "open-system",
+    "storm",
+    "storm-ops",
+    "storm-stack",
+    "stormstack",
+    "sullivanpj"
+  ],
   "homepage": "https://stormsoftware.com",
   "bugs": {
     "url": "https://stormsoftware.com/support",
     "email": "support@stormsoftware.com"
   },
+  "repository": {
+    "type": "github",
+    "url": "https://github.com/storm-software/storm-ops",
+    "directory": "packages/build-tools"
+  },
+  "funding": {
+    "type": "github",
+    "url": "https://github.com/sponsors/storm-software"
+  },
+  "license": "Apache-2.0",
   "author": {
     "name": "Storm Software",
     "email": "contact@stormsoftware.com",
@@ -24,14 +39,6 @@
       "url": "https://stormsoftware.com"
     }
   ],
-  "funding": {
-    "type": "github",
-    "url": "https://github.com/sponsors/storm-software"
-  },
-  "license": "Apache-2.0",
-  "private": false,
-  "main": "./dist/index.js",
-  "module": "./dist/index.mjs",
   "exports": {
     "./package.json": "./package.json",
     "./types": {
@@ -88,6 +95,34 @@
       "default": {
         "types": "./dist/config.d.ts",
         "default": "./dist/config.js"
+      }
+    },
+    "./constants": {
+      "import": {
+        "types": "./dist/constants/index.d.mts",
+        "default": "./dist/constants/index.mjs"
+      },
+      "require": {
+        "types": "./dist/constants/index.d.ts",
+        "default": "./dist/constants/index.js"
+      },
+      "default": {
+        "types": "./dist/constants/index.d.ts",
+        "default": "./dist/constants/index.js"
+      }
+    },
+    "./constants/*": {
+      "import": {
+        "types": "./dist/constants/*.d.mts",
+        "default": "./dist/constants/*.mjs"
+      },
+      "require": {
+        "types": "./dist/constants/*.d.ts",
+        "default": "./dist/constants/*.js"
+      },
+      "default": {
+        "types": "./dist/constants/*.d.ts",
+        "default": "./dist/constants/*.js"
       }
     },
     "./plugins": {
@@ -147,17 +182,27 @@
       }
     }
   },
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
-  "files": ["dist/**/*"],
-  "keywords": [
-    "monorepo",
-    "open-system",
-    "storm",
-    "storm-ops",
-    "storm-stack",
-    "stormstack",
-    "sullivanpj"
+  "files": [
+    "dist/**/*"
   ],
+  "dependencies": {
+    "@swc/core": "catalog:",
+    "glob": "catalog:",
+    "resolve": "1.22.8",
+    "resolve-from": "5.0.0",
+    "rollup": "catalog:"
+  },
+  "devDependencies": {
+    "@nx/devkit": "catalog:",
+    "@nx/js": "catalog:",
+    "@types/node": "catalog:",
+    "nx": "catalog:",
+    "tsup": "catalog:",
+    "typescript": "^5.9.3"
+  },
   "peerDependencies": {
     "@nx/devkit": "catalog:",
     "@nx/js": "catalog:",
@@ -177,21 +222,6 @@
     "typescript": {
       "optional": false
     }
-  },
-  "dependencies": {
-    "@swc/core": "catalog:",
-    "glob": "catalog:",
-    "resolve": "1.22.8",
-    "resolve-from": "5.0.0",
-    "rollup": "catalog:"
-  },
-  "devDependencies": {
-    "@nx/devkit": "catalog:",
-    "@nx/js": "catalog:",
-    "@types/node": "catalog:",
-    "nx": "catalog:",
-    "tsup": "catalog:",
-    "typescript": "^5.9.3"
   },
   "publishConfig": {
     "access": "public"

@@ -47,8 +47,7 @@ pre-commit:
     readme:
       glob: "**/{README.md,README.*.md,readme/**/*,package.json,executors.json,genera\
         tors.json}"
-      run: pnpm exec storm-git readme --templates="tools/readme-templates" && git
-        update-index
+      run: pnpm exec storm-git readme --templates="tools/readme-templates" --workspace
       stage_fixed: true
     prettier:
       glob: "**/*"
@@ -56,19 +55,14 @@ pre-commit:
         --config="node_modules/@storm-software/prettier/exclude-packagejson.json"
         --ignore-path="node_modules/@storm-software/prettier/.prettierignore-exclude-packagejson"
         --cache --cache-location="node_modules/.cache/prettier/workspace.cache"
-        {staged_files} && git update-index
+        {staged_files}
       stage_fixed: true
     treefmt:
       glob: "**/*"
-      run: treefmt {staged_files} && git update-index
+      run: treefmt {staged_files}
       stage_fixed: true
     lint:
       glob: "**/*"
       run: pnpm nx affected --target=lint --files="{staged_files}" --exclude=monorepo
-        --outputStyle=dynamic-legacy --parallel=3 && git update-index
+        --outputStyle=dynamic-legacy --parallel=3
       stage_fixed: true
-    # ls-lint:
-    #   files: git diff --name-only HEAD @{push}
-    #   glob: "**/*.{ts,js,d.ts,rs}"
-    #   run: ls-lint --config node_modules/@storm-software/linting-tools/ls-lint/config.yml {files} && git update-index
-    #   stage_fixed: true

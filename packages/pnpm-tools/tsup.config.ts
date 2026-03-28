@@ -34,6 +34,6 @@ export default defineConfig([
     sourcemap: false,
     silent: true,
     tsconfig: "./tsconfig.json",
-    skipNodeModulesBundle: false
+    skipNodeModulesBundle: true
   }
 ]);

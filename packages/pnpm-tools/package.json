@@ -1,21 +1,14 @@
 {
   "name": "@storm-software/pnpm-tools",
   "version": "0.6.145",
-  "type": "module",
+  "private": false,
   "description": "A set of [pnpm](https://pnpm.io/) plugins and utilities for managing workspace packages/dependencies.",
   "repository": {
     "type": "github",
     "url": "https://github.com/storm-software/storm-ops",
     "directory": "packages/pnpm-tools"
   },
-  "private": false,
-  "bin": {
-    "storm-pnpm": "./bin/pnpm.js",
-    "storm-pnpm-cjs": "./bin/pnpm.cjs",
-    "storm-pnpm-esm": "./bin/pnpm.js"
-  },
-  "main": "./dist/index.cjs",
-  "module": "./dist/index.js",
+  "type": "module",
   "exports": {
     "./package.json": "./package.json",
     "./index": {
@@ -89,7 +82,14 @@
       }
     }
   },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
+  "bin": {
+    "storm-pnpm": "./bin/pnpm.js",
+    "storm-pnpm-cjs": "./bin/pnpm.cjs",
+    "storm-pnpm-esm": "./bin/pnpm.js"
+  },
   "dependencies": {
     "@storm-software/config": "workspace:*",
     "@storm-software/config-tools": "workspace:*",
@@ -103,6 +103,7 @@
   },
   "devDependencies": {
     "@pnpm/types": "catalog:",
+    "@storm-software/build-tools": "workspace:*",
     "@types/node": "catalog:",
     "tsup": "catalog:"
   },
