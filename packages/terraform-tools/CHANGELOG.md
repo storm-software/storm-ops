@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Terraform Tools
 
+## [0.66.152](https://github.com/storm-software/storm-ops/releases/tag/terraform-tools%400.66.152) (03/28/2026)
+
+### Miscellaneous
+
+- **build-tools:** Added `INTERNAL_PACKAGES` centralized list of organization packages ([f87d57141](https://github.com/storm-software/storm-ops/commit/f87d57141))
+
+### Updated Dependencies
+
+- Updated **workspace-tools** to **v1.295.37**
+- Updated **config-tools** to **v1.189.61**
+- Updated **config** to **v1.137.15**
+
 ## [0.66.151](https://github.com/storm-software/storm-ops/releases/tag/terraform-tools%400.66.151) (03/26/2026)
 
 ### Miscellaneous

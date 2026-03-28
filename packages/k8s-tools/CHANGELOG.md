@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - K8s Tools
 
+## [0.42.152](https://github.com/storm-software/storm-ops/releases/tag/k8s-tools%400.42.152) (03/28/2026)
+
+### Miscellaneous
+
+- **build-tools:** Added `INTERNAL_PACKAGES` centralized list of organization packages ([f87d57141](https://github.com/storm-software/storm-ops/commit/f87d57141))
+
+### Updated Dependencies
+
+- Updated **workspace-tools** to **v1.295.37**
+- Updated **config-tools** to **v1.189.61**
+- Updated **config** to **v1.137.15**
+
 ## [0.42.151](https://github.com/storm-software/storm-ops/releases/tag/k8s-tools%400.42.151) (03/26/2026)
 
 ### Miscellaneous

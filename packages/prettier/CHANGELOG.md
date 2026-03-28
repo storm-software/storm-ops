@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Prettier
 
+## [0.59.35](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.59.35) (03/28/2026)
+
+### Miscellaneous
+
+- **build-tools:** Added `INTERNAL_PACKAGES` centralized list of organization packages ([f87d57141](https://github.com/storm-software/storm-ops/commit/f87d57141))
+
 ## [0.59.34](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.59.34) (03/26/2026)
 
 ### Miscellaneous

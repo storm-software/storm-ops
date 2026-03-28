@@ -2,6 +2,19 @@
 
 # Changelog for Storm Ops - Git Tools
 
+## [2.130.19](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.130.19) (03/28/2026)
+
+### Miscellaneous
+
+- **build-tools:** Added `INTERNAL_PACKAGES` centralized list of organization packages ([f87d57141](https://github.com/storm-software/storm-ops/commit/f87d57141))
+- **git-tools:** Ensure files are passed to `lint` script ([39cbbf4bd](https://github.com/storm-software/storm-ops/commit/39cbbf4bd))
+
+### Updated Dependencies
+
+- Updated **conventional-changelog** to **v0.3.142**
+- Updated **config-tools** to **v1.189.61**
+- Updated **config** to **v1.137.15**
+
 ## [2.130.18](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.130.18) (03/26/2026)
 
 ### Miscellaneous

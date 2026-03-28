@@ -2,6 +2,19 @@
 
 # Changelog for Storm Ops - Esbuild
 
+## [0.53.143](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.53.143) (03/28/2026)
+
+### Miscellaneous
+
+- **build-tools:** Added `INTERNAL_PACKAGES` centralized list of organization packages ([f87d57141](https://github.com/storm-software/storm-ops/commit/f87d57141))
+
+### Updated Dependencies
+
+- Updated **config-tools** to **v1.189.61**
+- Updated **build-tools** to **v0.158.142**
+- Updated **config** to **v1.137.15**
+- Updated **tsup** to **v0.2.140**
+
 ## [0.53.142](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.53.142) (03/26/2026)
 
 ### Miscellaneous

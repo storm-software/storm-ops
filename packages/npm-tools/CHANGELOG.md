@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Npm Tools
 
+## [0.6.99](https://github.com/storm-software/storm-ops/releases/tag/npm-tools%400.6.99) (03/28/2026)
+
+### Miscellaneous
+
+- **build-tools:** Added `INTERNAL_PACKAGES` centralized list of organization packages ([f87d57141](https://github.com/storm-software/storm-ops/commit/f87d57141))
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.136**
+- Updated **config-tools** to **v1.189.61**
+- Updated **config** to **v1.137.15**
+
 ## [0.6.98](https://github.com/storm-software/storm-ops/releases/tag/npm-tools%400.6.98) (03/26/2026)
 
 ### Miscellaneous

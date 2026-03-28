@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - ESLint
 
+## [0.170.3](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.170.3) (03/28/2026)
+
+### Miscellaneous
+
+- **build-tools:** Added `INTERNAL_PACKAGES` centralized list of organization packages ([f87d57141](https://github.com/storm-software/storm-ops/commit/f87d57141))
+
+### Updated Dependencies
+
+- Updated **config-tools** to **v1.189.61**
+- Updated **config** to **v1.137.15**
+- Updated **tsdoc** to **v0.13.136**
+
 ## [0.170.2](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.170.2) (03/26/2026)
 
 ### Miscellaneous

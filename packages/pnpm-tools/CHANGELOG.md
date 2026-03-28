@@ -2,6 +2,20 @@
 
 # Changelog for Storm Ops - Pnpm Tools
 
+## [0.6.146](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.6.146) (03/28/2026)
+
+### Miscellaneous
+
+- **build-tools:** Added `INTERNAL_PACKAGES` centralized list of organization packages ([f87d57141](https://github.com/storm-software/storm-ops/commit/f87d57141))
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.136**
+- Updated **config-tools** to **v1.189.61**
+- Updated **build-tools** to **v0.158.142**
+- Updated **npm-tools** to **v0.6.99**
+- Updated **config** to **v1.137.15**
+
 ## [0.6.145](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.6.145) (03/26/2026)
 
 ### Miscellaneous

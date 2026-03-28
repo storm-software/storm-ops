@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - Vite
 
+## [0.1.76](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.76) (03/28/2026)
+
+### Miscellaneous
+
+- **build-tools:** Added `INTERNAL_PACKAGES` centralized list of organization packages ([f87d57141](https://github.com/storm-software/storm-ops/commit/f87d57141))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.142**
+
 ## [0.1.75](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.75) (03/26/2026)
 
 ### Miscellaneous

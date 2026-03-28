@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Linting Tools
 
+## [1.133.12](https://github.com/storm-software/storm-ops/releases/tag/linting-tools%401.133.12) (03/28/2026)
+
+### Miscellaneous
+
+- **build-tools:** Added `INTERNAL_PACKAGES` centralized list of organization packages ([f87d57141](https://github.com/storm-software/storm-ops/commit/f87d57141))
+
+### Updated Dependencies
+
+- Updated **config-tools** to **v1.189.61**
+- Updated **config** to **v1.137.15**
+
 ## [1.133.11](https://github.com/storm-software/storm-ops/releases/tag/linting-tools%401.133.11) (03/26/2026)
 
 ### Miscellaneous

@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Tsconfig
 
+## [0.48.50](https://github.com/storm-software/storm-ops/releases/tag/tsconfig%400.48.50) (03/28/2026)
+
+### Miscellaneous
+
+- **build-tools:** Added `INTERNAL_PACKAGES` centralized list of organization packages ([f87d57141](https://github.com/storm-software/storm-ops/commit/f87d57141))
+
 ## [0.48.49](https://github.com/storm-software/storm-ops/releases/tag/tsconfig%400.48.49) (03/26/2026)
 
 ### Miscellaneous

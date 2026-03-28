@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - CSpell
 
+## [0.46.51](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.46.51) (03/28/2026)
+
+### Miscellaneous
+
+- **build-tools:** Added `INTERNAL_PACKAGES` centralized list of organization packages ([f87d57141](https://github.com/storm-software/storm-ops/commit/f87d57141))
+
 ## [0.46.50](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.46.50) (03/26/2026)
 
 ### Miscellaneous

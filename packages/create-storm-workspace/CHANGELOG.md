@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - Create Storm Workspace
 
+## [1.97.142](https://github.com/storm-software/storm-ops/releases/tag/create-storm-workspace%401.97.142) (03/28/2026)
+
+### Miscellaneous
+
+- **build-tools:** Added `INTERNAL_PACKAGES` centralized list of organization packages ([f87d57141](https://github.com/storm-software/storm-ops/commit/f87d57141))
+
+### Updated Dependencies
+
+- Updated **config-tools** to **v1.189.61**
+
 ## [1.97.141](https://github.com/storm-software/storm-ops/releases/tag/create-storm-workspace%401.97.141) (03/26/2026)
 
 ### Miscellaneous

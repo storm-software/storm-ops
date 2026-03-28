@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - Config
 
+## [1.137.15](https://github.com/storm-software/storm-ops/releases/tag/config%401.137.15) (03/28/2026)
+
+### Miscellaneous
+
+- **build-tools:** Added `INTERNAL_PACKAGES` centralized list of organization packages ([f87d57141](https://github.com/storm-software/storm-ops/commit/f87d57141))
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.136**
+
 ## [1.137.14](https://github.com/storm-software/storm-ops/releases/tag/config%401.137.14) (03/26/2026)
 
 ### Miscellaneous

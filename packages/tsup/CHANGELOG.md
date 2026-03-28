@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Tsup
 
+## [0.2.140](https://github.com/storm-software/storm-ops/releases/tag/tsup%400.2.140) (03/28/2026)
+
+### Miscellaneous
+
+- **build-tools:** Added `INTERNAL_PACKAGES` centralized list of organization packages ([f87d57141](https://github.com/storm-software/storm-ops/commit/f87d57141))
+
+### Updated Dependencies
+
+- Updated **config-tools** to **v1.189.61**
+- Updated **build-tools** to **v0.158.142**
+
 ## [0.2.139](https://github.com/storm-software/storm-ops/releases/tag/tsup%400.2.139) (03/26/2026)
 
 ### Miscellaneous
