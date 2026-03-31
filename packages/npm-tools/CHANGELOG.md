@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Npm Tools
 
+## [0.6.100](https://github.com/storm-software/storm-ops/releases/tag/npm-tools%400.6.100) (03/31/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace packages' dependencies ([fd69cea92](https://github.com/storm-software/storm-ops/commit/fd69cea92))
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.137**
+- Updated **config-tools** to **v1.189.62**
+- Updated **config** to **v1.137.16**
+
 ## [0.6.99](https://github.com/storm-software/storm-ops/releases/tag/npm-tools%400.6.99) (03/28/2026)
 
 ### Miscellaneous
