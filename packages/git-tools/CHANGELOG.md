@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Git Tools
 
+## [2.130.22](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.130.22) (03/31/2026)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate `README.md` files ([162476557](https://github.com/storm-software/storm-ops/commit/162476557))
+
+### Updated Dependencies
+
+- Updated **conventional-changelog** to **v0.3.145**
+- Updated **config-tools** to **v1.189.64**
+- Updated **config** to **v1.137.18**
+
 ## [2.130.21](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.130.21) (03/31/2026)
 
 ### Miscellaneous

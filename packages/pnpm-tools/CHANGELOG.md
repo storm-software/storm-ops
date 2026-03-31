@@ -2,6 +2,24 @@
 
 # Changelog for Storm Ops - Pnpm Tools
 
+## [0.6.149](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.6.149) (03/31/2026)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate `README.md` files ([162476557](https://github.com/storm-software/storm-ops/commit/162476557))
+
+### Bug Fixes
+
+- **pnpm-tools:** Ensure the `packages` argument is no longer required ([659da4277](https://github.com/storm-software/storm-ops/commit/659da4277))
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.139**
+- Updated **config-tools** to **v1.189.64**
+- Updated **build-tools** to **v0.158.145**
+- Updated **npm-tools** to **v0.6.102**
+- Updated **config** to **v1.137.18**
+
 ## [0.6.148](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.6.148) (03/31/2026)
 
 ### Miscellaneous
