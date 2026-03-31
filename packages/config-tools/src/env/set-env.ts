@@ -10,6 +10,15 @@ import { getLogLevel } from "../logger/get-log-level";
 import { LogLevel } from "../types";
 import { correctPaths } from "../utilities/correct-paths";
 
+declare global {
+  // eslint-disable-next-line @typescript-eslint/no-namespace
+  namespace NodeJS {
+    interface ProcessEnv {
+      [key: string]: string | undefined;
+    }
+  }
+}
+
 /**
  * Get the config for an extension module of Storm workspace from environment variables
  *

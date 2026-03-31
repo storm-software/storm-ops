@@ -5,6 +5,7 @@ import { workspaceConfigSchema } from "@storm-software/config/schema";
 import defu from "defu";
 import { existsSync } from "node:fs";
 import * as z from "zod";
+import { ParsePayload } from "zod/v4/core";
 import { getConfigFile } from "./config-file/get-config-file";
 import { getConfigEnv, getExtensionEnv } from "./env/get-env";
 import { setConfigEnv } from "./env/set-env";
@@ -32,8 +33,8 @@ let _static_cache = undefined as StaticCache | undefined;
  * @returns The config for the current Storm workspace
  */
 export const createStormWorkspaceConfig = async <
-  TExtensionName extends
-    keyof StormWorkspaceConfig["extensions"] = keyof StormWorkspaceConfig["extensions"],
+  TExtensionName extends keyof StormWorkspaceConfig["extensions"] =
+    keyof StormWorkspaceConfig["extensions"],
   TExtensionConfig = any,
   TExtensionSchema extends z.ZodType = z.ZodType,
   TUseDefault extends boolean | undefined = boolean | undefined,
@@ -93,9 +94,18 @@ export const createStormWorkspaceConfig = async <
     }
 
     try {
-      result = applyDefaultConfig(
-        await workspaceConfigSchema.parseAsync(configInput)
-      ) as StormWorkspaceConfig<TExtensionName, TExtensionConfig>;
+      const parseResult = (await Promise.resolve(
+        workspaceConfigSchema._zod.parse(
+          { value: configInput, issues: [] },
+          { async: true }
+        )
+      )) as ParsePayload<
+        StormWorkspaceConfig<TExtensionName, TExtensionConfig>
+      >;
+      result = applyDefaultConfig(parseResult.value) as StormWorkspaceConfig<
+        TExtensionName,
+        TExtensionConfig
+      >;
       result.workspaceRoot ??= _workspaceRoot;
     } catch (error) {
       throw new Error(
@@ -142,8 +152,8 @@ Please ensure your configuration file is valid JSON and matches the expected sch
  * @returns The config for the specified Storm config extension. If the extension does not exist, `undefined` is returned.
  */
 export const createConfigExtension = <
-  TExtensionName extends
-    keyof StormWorkspaceConfig["extensions"] = keyof StormWorkspaceConfig["extensions"],
+  TExtensionName extends keyof StormWorkspaceConfig["extensions"] =
+    keyof StormWorkspaceConfig["extensions"],
   TExtensionConfig = any,
   TExtensionSchema extends z.ZodType = z.ZodType
 >(
