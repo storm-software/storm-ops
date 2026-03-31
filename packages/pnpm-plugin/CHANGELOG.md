@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Pnpm Plugin
 
+## [0.1.95](https://github.com/storm-software/storm-ops/releases/tag/pnpm-plugin%400.1.95) (03/31/2026)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate workspace files ([241e519f6](https://github.com/storm-software/storm-ops/commit/241e519f6))
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.138**
+- Updated **build-tools** to **v0.158.144**
+
 ## [0.1.94](https://github.com/storm-software/storm-ops/releases/tag/pnpm-plugin%400.1.94) (03/31/2026)
 
 ### Miscellaneous

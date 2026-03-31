@@ -2,6 +2,20 @@
 
 # Changelog for Storm Ops - Config
 
+## [1.137.17](https://github.com/storm-software/storm-ops/releases/tag/config%401.137.17) (03/31/2026)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate workspace files ([241e519f6](https://github.com/storm-software/storm-ops/commit/241e519f6))
+
+### Bug Fixes
+
+- **config:** Ensure correct `zod` versions are used when resolving schema ([af266f796](https://github.com/storm-software/storm-ops/commit/af266f796))
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.138**
+
 ## [1.137.16](https://github.com/storm-software/storm-ops/releases/tag/config%401.137.16) (03/31/2026)
 
 ### Miscellaneous

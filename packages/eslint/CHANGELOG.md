@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - ESLint
 
+## [0.170.5](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.170.5) (03/31/2026)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate workspace files ([241e519f6](https://github.com/storm-software/storm-ops/commit/241e519f6))
+
+### Updated Dependencies
+
+- Updated **config-tools** to **v1.189.63**
+- Updated **config** to **v1.137.17**
+- Updated **tsdoc** to **v0.13.138**
+
 ## [0.170.4](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.170.4) (03/31/2026)
 
 ### Miscellaneous
