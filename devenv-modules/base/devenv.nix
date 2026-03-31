@@ -36,7 +36,7 @@ in
     pnpm = {
       enable = true;
       install.enable = true;
-      package = pkgs-unstable.nodePackages.pnpm;
+      package = pkgs-unstable.pnpm;
     };
   };
   languages.typescript.enable = true;
