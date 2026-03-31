@@ -125,9 +125,9 @@
   "module": "dist/index.mjs",
   "typings": "dist/index.d.ts",
   "dependencies": {
-    "@aws-sdk/client-s3": "^3.1019.0",
-    "@aws-sdk/lib-storage": "^3.1019.0",
-    "@smithy/node-http-handler": "^4.5.0",
+    "@aws-sdk/client-s3": "^3.1020.0",
+    "@aws-sdk/lib-storage": "^3.1020.0",
+    "@smithy/node-http-handler": "^4.5.1",
     "defu": "catalog:",
     "glob": "catalog:",
     "mime-types": "^3.0.2",
@@ -142,7 +142,7 @@
     "nx": "catalog:",
     "tsup": "catalog:",
     "untyped": "catalog:",
-    "wrangler": "^4.78.0"
+    "wrangler": "^4.79.0"
   },
   "peerDependencies": {
     "@nx/devkit": "catalog:",

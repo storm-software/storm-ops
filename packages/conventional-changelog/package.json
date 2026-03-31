@@ -215,7 +215,10 @@
     "./templates/*": "./dist/templates/*"
   },
   "types": "./dist/index.d.ts",
-  "files": ["dist/**/*", "templates/**/*"],
+  "files": [
+    "dist/**/*",
+    "templates/**/*"
+  ],
   "keywords": [
     "conventional-changelog",
     "commitlint",
@@ -228,7 +231,7 @@
     "@storm-software/config": "workspace:*",
     "@storm-software/config-tools": "workspace:*",
     "compare-func": "^2.0.0",
-    "conventional-changelog-conventionalcommits": "^9.3.0",
+    "conventional-changelog-conventionalcommits": "^9.3.1",
     "conventional-changelog-writer": "^8.4.0",
     "defu": "catalog:"
   },
