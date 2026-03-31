@@ -1,18 +1,31 @@
 {
   "name": "@storm-software/config-tools",
   "version": "1.189.62",
-  "type": "module",
+  "private": false,
   "description": "A package containing various utilities to support custom workspace configurations and environment management for Storm Software projects, including configuration file handling, environment variable management, and logging utilities.",
-  "repository": {
-    "type": "github",
-    "url": "https://github.com/storm-software/storm-ops",
-    "directory": "packages/config-tools"
-  },
+  "keywords": [
+    "storm-software",
+    "storm",
+    "storm-ops",
+    "sullivanpj",
+    "monorepo",
+    "config"
+  ],
   "homepage": "https://stormsoftware.com",
   "bugs": {
     "url": "https://stormsoftware.com/support",
     "email": "support@stormsoftware.com"
   },
+  "repository": {
+    "type": "github",
+    "url": "https://github.com/storm-software/storm-ops",
+    "directory": "packages/config-tools"
+  },
+  "funding": {
+    "type": "github",
+    "url": "https://github.com/sponsors/storm-software"
+  },
+  "license": "Apache-2.0",
   "author": {
     "name": "Storm Software",
     "email": "contact@stormsoftware.com",
@@ -25,19 +38,8 @@
       "url": "https://stormsoftware.com"
     }
   ],
-  "funding": {
-    "type": "github",
-    "url": "https://github.com/sponsors/storm-software"
-  },
-  "license": "Apache-2.0",
-  "private": false,
-  "bin": {
-    "storm-config": "./bin/config.cjs",
-    "storm-config-esm": "./bin/config.js",
-    "storm-config-cjs": "./bin/config.cjs"
-  },
-  "main": "./dist/index.cjs",
-  "module": "./dist/index.js",
+  "sideEffects": false,
+  "type": "module",
   "exports": {
     "./package.json": "./package.json",
     "./types": {
@@ -223,15 +225,16 @@
       }
     }
   },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
-  "files": ["dist/**/*"],
-  "keywords": [
-    "storm-software",
-    "storm",
-    "storm-ops",
-    "sullivanpj",
-    "monorepo",
-    "config"
+  "bin": {
+    "storm-config": "./bin/config.cjs",
+    "storm-config-cjs": "./bin/config.cjs",
+    "storm-config-esm": "./bin/config.js"
+  },
+  "files": [
+    "dist/**/*"
   ],
   "dependencies": {
     "@ltd/j-toml": "catalog:",
@@ -243,15 +246,22 @@
     "defu": "catalog:",
     "giget": "^1.2.5",
     "jiti": "catalog:",
-    "sqlite": "^5.1.1",
-    "zod": "catalog:"
+    "sqlite": "^5.1.1"
   },
   "devDependencies": {
     "@types/node": "catalog:",
-    "tsup": "catalog:"
+    "tsup": "catalog:",
+    "zod": "catalog:"
+  },
+  "peerDependencies": {
+    "zod": "^3.25.0 || ^4.0.0"
+  },
+  "peerDependenciesMeta": {
+    "zod": {
+      "optional": false
+    }
   },
   "publishConfig": {
     "access": "public"
-  },
-  "sideEffects": false
+  }
 }
