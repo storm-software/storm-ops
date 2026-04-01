@@ -11,7 +11,7 @@ import {
 } from "@storm-software/config-tools";
 import { INTERNAL_PACKAGES } from "@storm-software/package-constants/internal-packages";
 import { Command } from "commander";
-import { version } from "../../package.json" with { type: "json" };
+import packageJson from "../../package.json" with { type: "json" };
 import {
   getCatalog,
   setCatalog,
@@ -42,7 +42,7 @@ export function createProgram(config: StormWorkspaceConfig) {
   }
 
   const program = new Command("storm-pnpm");
-  program.version(version, "-v --version", "display CLI version");
+  program.version(packageJson.version, "-v --version", "display CLI version");
 
   program
     .command("update")
