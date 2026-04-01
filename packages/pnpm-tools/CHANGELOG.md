@@ -2,6 +2,25 @@
 
 # Changelog for Storm Ops - Pnpm Tools
 
+## [0.6.154](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.6.154) (04/01/2026)
+
+### Miscellaneous
+
+- **pnpm-tools:** Added try-catch handler to CLI app ([915e8ad4c](https://github.com/storm-software/storm-ops/commit/915e8ad4c))
+- **monorepo:** Regenerate `README.md` files ([7179007bc](https://github.com/storm-software/storm-ops/commit/7179007bc))
+
+### Bug Fixes
+
+- **pnpm-tools:** Add backup version string ([a5544bf3b](https://github.com/storm-software/storm-ops/commit/a5544bf3b))
+
+### Updated Dependencies
+
+- Updated **package-constants** to **v0.1.4**
+- Updated **testing-tools** to **v1.119.144**
+- Updated **config-tools** to **v1.189.69**
+- Updated **npm-tools** to **v0.6.107**
+- Updated **config** to **v1.137.23**
+
 ## [0.6.153](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.6.153) (04/01/2026)
 
 ### Miscellaneous
