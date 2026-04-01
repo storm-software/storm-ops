@@ -66,7 +66,6 @@ export function createProgram(config: StormWorkspaceConfig) {
         "Whether to install the package after updating the version.",
         false
       )
-      .option("--all", "Whether to update all Storm Software packages.", false)
       .option(
         "-p, --prefix <string>",
         `The version prefix to use when updating the package (e.g., "^", "~", or "1.2.3"). Defaults to "^".
@@ -77,6 +76,18 @@ export function createProgram(config: StormWorkspaceConfig) {
 - Wildcard (*): Allows the most flexibility by accepting any version. Example: “*2.4.6" allows any version.`,
         "^"
       )
+      .option(
+        "--internal",
+        "Whether to update all Storm Software packages.",
+        false
+      )
+      .option("--nx", "Whether to update Nx packages.", false)
+      .option(
+        "--pnpm-plugin",
+        "Whether to upgrade the Storm Software pnpm plugin.",
+        false
+      )
+      .option("--all", "Whether to update all packages.", false)
       .action(updateAction);
 
     return program;
@@ -96,13 +107,24 @@ async function updateAction(
     tag: string;
     install: boolean;
     all: boolean;
+    internal: boolean;
+    nx: boolean;
     prefix: string;
+    pnpmPlugin: boolean;
   }
 ) {
   try {
-    const { tag, install = false, all = false, prefix = "^" } = options || {};
+    const {
+      tag,
+      install = false,
+      all = false,
+      internal = all,
+      nx = all,
+      pnpmPlugin = all,
+      prefix = "^"
+    } = options || {};
     const pkgs = (packages && Array.isArray(packages) ? packages : [])
-      .concat(all ? [...INTERNAL_PACKAGES] : [])
+      .concat(internal ? [...INTERNAL_PACKAGES] : [])
       .filter(Boolean)
       .map(pkg => pkg.trim().replaceAll("*", ""));
 
@@ -153,6 +175,39 @@ async function updateAction(
           }
         }
       }
+    }
+
+    if (nx) {
+      writeDebug(
+        "Running `nx migrate latest` to update Nx packages to their latest versions",
+        _config
+      );
+
+      const proc = await runAsync(_config, "pnpm nx migrate latest");
+      proc.stdout?.on("data", data => {
+        console.log(data.toString());
+      });
+
+      packagesFound = true;
+      packagesUpdated = true;
+    }
+
+    if (pnpmPlugin) {
+      writeDebug(
+        "Running `pnpm add --config pnpm-plugin-storm-software` to update the Storm Software pnpm plugin to its latest version",
+        _config
+      );
+
+      const proc = await runAsync(
+        _config,
+        "pnpm add --config pnpm-plugin-storm-software"
+      );
+      proc.stdout?.on("data", data => {
+        console.log(data.toString());
+      });
+
+      packagesFound = true;
+      packagesUpdated = true;
     }
 
     if (!packagesFound) {
