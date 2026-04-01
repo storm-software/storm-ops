@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Unbuild
 
+## [0.57.147](https://github.com/storm-software/storm-ops/releases/tag/unbuild%400.57.147) (04/01/2026)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate `README.md` files ([cf5149751](https://github.com/storm-software/storm-ops/commit/cf5149751))
+
+### Updated Dependencies
+
+- Updated **config-tools** to **v1.189.65**
+- Updated **build-tools** to **v0.158.146**
+- Updated **config** to **v1.137.19**
+
 ## [0.57.146](https://github.com/storm-software/storm-ops/releases/tag/unbuild%400.57.146) (03/31/2026)
 
 ### Miscellaneous

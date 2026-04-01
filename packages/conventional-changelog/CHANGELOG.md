@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Conventional Changelog
 
+## [0.3.146](https://github.com/storm-software/storm-ops/releases/tag/conventional-changelog%400.3.146) (04/01/2026)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate `README.md` files ([cf5149751](https://github.com/storm-software/storm-ops/commit/cf5149751))
+
+### Updated Dependencies
+
+- Updated **config-tools** to **v1.189.65**
+- Updated **config** to **v1.137.19**
+
 ## [0.3.145](https://github.com/storm-software/storm-ops/releases/tag/conventional-changelog%400.3.145) (03/31/2026)
 
 ### Miscellaneous

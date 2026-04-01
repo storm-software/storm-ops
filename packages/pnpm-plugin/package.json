@@ -1,6 +1,6 @@
 {
   "name": "pnpm-plugin-storm-software",
-  "version": "0.1.96",
+  "version": "0.1.97",
   "private": false,
   "description": "A [pnpm](https://pnpm.io/) plugin to enhance pnpm functionality for Storm Software projects.",
   "repository": {
@@ -17,11 +17,7 @@
     "./allow.json": "./allow.json"
   },
   "main": "./pnpmfile.cjs",
-  "files": [
-    "./pnpmfile.cjs",
-    "./esm_loader.mjs",
-    "./allow.json"
-  ],
+  "files": ["./pnpmfile.cjs", "./esm_loader.mjs", "./allow.json"],
   "devDependencies": {
     "@pnpm/types": "catalog:",
     "@storm-software/package-constants": "workspace:*",

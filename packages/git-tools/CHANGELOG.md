@@ -2,6 +2,19 @@
 
 # Changelog for Storm Ops - Git Tools
 
+## [2.130.23](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.130.23) (04/01/2026)
+
+### Miscellaneous
+
+- **git-tools:** Remove unused fields from `lefthook` config ([7f9f0f043](https://github.com/storm-software/storm-ops/commit/7f9f0f043))
+- **monorepo:** Regenerate `README.md` files ([cf5149751](https://github.com/storm-software/storm-ops/commit/cf5149751))
+
+### Updated Dependencies
+
+- Updated **conventional-changelog** to **v0.3.146**
+- Updated **config-tools** to **v1.189.65**
+- Updated **config** to **v1.137.19**
+
 ## [2.130.22](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.130.22) (03/31/2026)
 
 ### Miscellaneous
