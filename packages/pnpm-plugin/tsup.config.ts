@@ -18,6 +18,6 @@ export default defineConfig([
     shims: true,
     silent: true,
     skipNodeModulesBundle: true,
-    noExternal: ["defu", "@storm-software/build-tools"]
+    noExternal: ["defu", "@storm-software/package-constants"]
   }
 ]);

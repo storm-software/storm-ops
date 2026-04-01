@@ -7,7 +7,7 @@
  * @packageDocumentation
  */
 
-import { INTERNAL_PACKAGES } from "@storm-software/build-tools/constants/internal-packages";
+import { INTERNAL_PACKAGES } from "@storm-software/package-constants/internal-packages";
 import defu from "defu";
 import path from "node:path";
 import { pathToFileURL } from "node:url";

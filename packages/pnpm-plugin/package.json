@@ -17,10 +17,14 @@
     "./allow.json": "./allow.json"
   },
   "main": "./pnpmfile.cjs",
-  "files": ["./pnpmfile.cjs", "./esm_loader.mjs", "./allow.json"],
+  "files": [
+    "./pnpmfile.cjs",
+    "./esm_loader.mjs",
+    "./allow.json"
+  ],
   "devDependencies": {
     "@pnpm/types": "catalog:",
-    "@storm-software/build-tools": "workspace:*",
+    "@storm-software/package-constants": "workspace:*",
     "@types/node": "catalog:",
     "defu": "catalog:",
     "tsup": "catalog:"

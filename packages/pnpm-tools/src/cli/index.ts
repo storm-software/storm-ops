@@ -1,4 +1,3 @@
-import { INTERNAL_PACKAGES } from "@storm-software/build-tools/constants/internal-packages";
 import type { StormWorkspaceConfig } from "@storm-software/config";
 import {
   brandIcon,
@@ -10,6 +9,7 @@ import {
   writeTrace,
   writeWarning
 } from "@storm-software/config-tools";
+import { INTERNAL_PACKAGES } from "@storm-software/package-constants/internal-packages";
 import { Command } from "commander";
 import {
   getCatalog,

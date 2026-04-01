@@ -103,7 +103,7 @@
   },
   "devDependencies": {
     "@pnpm/types": "catalog:",
-    "@storm-software/build-tools": "workspace:*",
+    "@storm-software/package-constants": "workspace:*",
     "@types/node": "catalog:",
     "tsup": "catalog:"
   },

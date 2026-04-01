@@ -27,7 +27,7 @@ This package is part of the <b>⚡Storm-Ops</b> monorepo. The Storm-Ops packages
 
 <h3 align="center">💻 Visit <a href="https://stormsoftware.com" target="_blank">stormsoftware.com</a> to stay up to date with this developer</h3><br />
 
-[![Version](https://img.shields.io/badge/version-0.1.95-1fb2a6.svg?style=for-the-badge&color=1fb2a6)](https://prettier.io/)&nbsp;[![Nx](https://img.shields.io/badge/Nx-17.0.2-lightgrey?style=for-the-badge&logo=nx&logoWidth=20&&color=1fb2a6)](http://nx.dev/)&nbsp;[![NextJs](https://img.shields.io/badge/Next.js-14.0.2-lightgrey?style=for-the-badge&logo=nextdotjs&logoWidth=20&color=1fb2a6)](https://nextjs.org/)&nbsp;[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg?style=for-the-badge&logo=commitlint&color=1fb2a6)](http://commitizen.github.io/cz-cli/)&nbsp;![Semantic-Release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg?style=for-the-badge&color=1fb2a6)&nbsp;[![documented with Fumadocs](https://img.shields.io/badge/documented_with-fumadocs-success.svg?style=for-the-badge&logo=readthedocs&color=1fb2a6)](https://fumadocs.vercel.app/)&nbsp;![GitHub Workflow Status (with event)](https://img.shields.io/github/actions/workflow/status/storm-software/storm-ops/cr.yml?style=for-the-badge&logo=github-actions&color=1fb2a6)
+[![Version](https://img.shields.io/badge/version-0.158.144-1fb2a6.svg?style=for-the-badge&color=1fb2a6)](https://prettier.io/)&nbsp;[![Nx](https://img.shields.io/badge/Nx-17.0.2-lightgrey?style=for-the-badge&logo=nx&logoWidth=20&&color=1fb2a6)](http://nx.dev/)&nbsp;[![NextJs](https://img.shields.io/badge/Next.js-14.0.2-lightgrey?style=for-the-badge&logo=nextdotjs&logoWidth=20&color=1fb2a6)](https://nextjs.org/)&nbsp;[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg?style=for-the-badge&logo=commitlint&color=1fb2a6)](http://commitizen.github.io/cz-cli/)&nbsp;![Semantic-Release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg?style=for-the-badge&color=1fb2a6)&nbsp;[![documented with Fumadocs](https://img.shields.io/badge/documented_with-fumadocs-success.svg?style=for-the-badge&logo=readthedocs&color=1fb2a6)](https://fumadocs.vercel.app/)&nbsp;![GitHub Workflow Status (with event)](https://img.shields.io/github/actions/workflow/status/storm-software/storm-ops/cr.yml?style=for-the-badge&logo=github-actions&color=1fb2a6)
 
 <!-- prettier-ignore-start -->
 <!-- markdownlint-disable -->
@@ -49,13 +49,10 @@ This package is part of the <b>⚡Storm-Ops</b> monorepo. The Storm-Ops packages
 
 ## Table of Contents
 
-- [Storm Configuration Package](#storm-configuration-package)
+- [Storm Software - Package Constants](#storm-software---package-constants)
   - [Installing](#installing)
-  - [Reduced Package Size](#reduced-package-size)
-  - [Development](#development)
-    - [Building](#building)
-    - [Running unit tests](#running-unit-tests)
-    - [Linting](#linting)
+  - [Building](#building)
+  - [Running unit tests](#running-unit-tests)
   - [Storm Workspaces](#storm-workspaces)
   - [Roadmap](#roadmap)
   - [Support](#support)
@@ -73,71 +70,23 @@ This package is part of the <b>⚡Storm-Ops</b> monorepo. The Storm-Ops packages
 
 <!-- END header -->
 
-# Storm Configuration Package
+# Storm Software - Package Constants
 
-A package containing the definition and Zod validation schema for the custom
-workspace configuration used by the Storm Software organization.
-
-Below is a list of the available configuration values that can be set through
-environment variables:
-
-| Name                            | Description                                    | Default                     |
-| ------------------------------- | ---------------------------------------------- | --------------------------- |
-| STORM_COLOR_BACKGROUND          | The workspace's background theme color         | `#1d1e22`                   |
-| STORM_COLOR_FOREGROUND          | The workspace's foreground theme color         | `#f4f4f5`                   |
-| STORM_COLOR_BRAND               | The workspace's primary brand specific color   | `#1fb2a6`                   |
-| STORM_COLOR_ALTERNATE           | The workspace's alternate brand specific color | `null`                      |
-| STORM_COLOR_ACCENT              | The workspace's secondary brand specific color | `null`                      |
-| STORM_COLOR_LINK                | The color used to display hyperlink text       | `null`                      |
-| STORM_COLOR_HELP                | The workspace's help theme color               | `#8256D0`                   |
-| STORM_COLOR_SUCCESS             | The workspace's success theme color            | `#12B66A`                   |
-| STORM_COLOR_INFO                | The workspace's informational theme color      | `#0070E0`                   |
-| STORM_COLOR_WARNING             | The workspace's warning theme color            | `#fcc419`                   |
-| STORM_COLOR_DANGER              | The workspace's danger theme color             | `#D8314A`                   |
-| STORM_COLOR_FATAL               | The workspace's fatal theme color              | `null`                      |
-| STORM_COLOR_POSITIVE            | The workspace's positive number color          | `#4ade80`                   |
-| STORM_COLOR_NEGATIVE            | The workspace's negative number color          | `#ef4444`                   |
-| STORM_LOG_LEVEL                 | The logging level for the workspace            | "info"                      |
-| STORM_NAME                      | The name of the package                        | `null`                      |
-| STORM_NAMESPACE                 | The namespace of the package                   | `null`                      |
-| STORM_OWNER                     | The owner of the workspace                     | `null`                      |
-| STORM_WORKER                    | The worker of the workspace                    | "stormie-bot"               |
-| STORM_ORG                       | The organization of the workspace              | "storm-software"            |
-| STORM_PACKAGE_MANAGER           | The package manager used in the workspace      | "pnpm"                      |
-| STORM_LICENSE                   | The license of the workspace                   | "Apache-2.0"                |
-| STORM_HOMEPAGE                  | The homepage of the workspace                  | <https://stormsoftware.com> |
-| STORM_DOCS                      | The documentation URL of the workspace         | `null`                      |
-| STORM_LICENSING                 | The licensing information of the workspace     | `null`                      |
-| STORM_TIMEZONE                  | The timezone of the workspace                  | "America/New_York"          |
-| STORM_LOCALE                    | The locale of the workspace                    | "en-US"                     |
-| STORM_CONFIG_FILE               | The path to the configuration file             | `null`                      |
-| STORM_WORKSPACE_ROOT            | The root directory of the workspace            | `null`                      |
-| STORM_PACKAGE_DIRECTORY         | The directory where packages are stored        | `null`                      |
-| STORM_BUILD_DIRECTORY           | The directory where build artifacts are stored | "dist"                      |
-| STORM_SKIP_CACHE                | Whether to skip caching                        | `false`                     |
-| STORM_CACHE_DIRECTORY           | The directory where cache is stored            | "node_modules/.cache/storm" |
-| STORM_RUNTIME_VERSION           | The runtime version used in the workspace      | `null`                      |
-| STORM_OUTPUT_DIRECTORY          | The directory where output files are stored    | `null`                      |
-| STORM_MODE                      | The environment mode type of the workspace     | "production"                |
-| STORM_REPOSITORY                | The repository URL of the workspace            | `null`                      |
-| STORM_BRANCH                    | The branch of the repository                   | "main"                      |
-| STORM_PRE_ID                    | The pre-release identifier                     | `null`                      |
-| STORM_EXTERNAL_PACKAGE_PATTERNS | The patterns for external packages             | `[]`                        |
-| STORM_CLOUDFLARE_ACCOUNT_ID     | The Cloudflare account ID                      | `null`                      |
+This package contains a set of constants shared by various packages in the Storm Software organization.
 
 ## Installing
 
 Using [pnpm](http://pnpm.io):
 
 ```bash
-pnpm add -D @storm-software/config
+pnpm add -D @storm-software/package-constants
 ```
 
 <details>
   <summary>Using npm</summary>
 
 ```bash
-npm install -D @storm-software/config
+npm install -D @storm-software/package-constants
 ```
 
 </details>
@@ -146,34 +95,19 @@ npm install -D @storm-software/config
   <summary>Using yarn</summary>
 
 ```bash
-yarn add -D @storm-software/config
+yarn add -D @storm-software/package-constants
 ```
 
 </details>
 
-## Reduced Package Size
+## Building
 
-This project uses [tsup](https://tsup.egoist.dev/) to package the source code
-due to its ability to remove unused code and ship smaller javascript files
-thanks to code splitting. This helps to greatly reduce the size of the package
-and to make it easier to use in other projects.
+Run `nx build package-constants` to package-constants the library.
 
-## Development
+## Running unit tests
 
-This project is built using [Nx](https://nx.dev). As a result, many of the usual
-commands are available to assist in development.
-
-### Building
-
-Run `nx build config` to build the library.
-
-### Running unit tests
-
-Run `nx test config` to execute the unit tests via [Jest](https://jestjs.io).
-
-### Linting
-
-Run `nx lint config` to run [ESLint](https://eslint.org/) on the package.
+Run `nx test package-constants` to execute the unit tests via
+[Jest](https://jestjs.io).
 
 <!-- START footer -->
 <!-- prettier-ignore-start -->

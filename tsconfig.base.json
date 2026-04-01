@@ -7,7 +7,13 @@
     "strict": false,
     "paths": {
       "@storm-software/build-tools": ["packages/build-tools/src/index.ts"],
-      "@storm-software/build-tools/*": ["packages/build-tools/src/index.ts"],
+      "@storm-software/build-tools/*": ["packages/build-tools/src/*"],
+      "@storm-software/package-constants": [
+        "packages/package-constants/src/index.ts"
+      ],
+      "@storm-software/package-constants/*": [
+        "packages/package-constants/src/*"
+      ],
       "@storm-software/cloudflare-tools": [
         "packages/cloudflare-tools/src/index.ts"
       ],
@@ -23,11 +29,11 @@
       "@storm-software/eslint": ["packages/eslint/src/index.ts"],
       "@storm-software/eslint/*": ["packages/eslint/src/*"],
       "@storm-software/git-tools": ["packages/git-tools/src/index.ts"],
-      "@storm-software/git-tools/*": ["packages/git-tools/*"],
+      "@storm-software/git-tools/*": ["packages/git-tools/src/*"],
       "@storm-software/k8s-tools": ["packages/k8s-tools/src/index.ts"],
       "@storm-software/k8s-tools/*": ["packages/k8s-tools/src/*"],
       "@storm-software/linting-tools": ["packages/linting-tools/src/index.ts"],
-      "@storm-software/linting-tools/*": ["packages/linting-tools/*"],
+      "@storm-software/linting-tools/*": ["packages/linting-tools/src/*"],
       "@storm-software/markdownlint": ["packages/markdownlint/src/index.ts"],
       "@storm-software/markdownlint/*": ["packages/markdownlint/src/*"],
       "@storm-software/npm-tools": ["packages/npm-tools/src/index.ts"],
@@ -40,7 +46,9 @@
       "@storm-software/projen/*": ["packages/projen/src/*"],
       "@storm-software/pulumi-tools": ["packages/pulumi-tools/src/index.ts"],
       "@storm-software/pulumi-tools/*": ["packages/pulumi-tools/src/*"],
-      "@storm-software/terraform-tools": ["packages/terraform-tools/index.ts"],
+      "@storm-software/terraform-tools": [
+        "packages/terraform-tools/src/index.ts"
+      ],
       "@storm-software/terraform-tools/*": ["packages/terraform-tools/src/*"],
       "@storm-software/testing-tools": ["packages/testing-tools/src/index.ts"],
       "@storm-software/testing-tools/*": ["packages/testing-tools/src/*"],
