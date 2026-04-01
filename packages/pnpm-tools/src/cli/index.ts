@@ -54,8 +54,7 @@ export function createProgram(config: StormWorkspaceConfig) {
       .description("Update pnpm catalog dependency package version.")
       .argument(
         "<packages...>",
-        "The package name/pattern to update the version for (e.g., @storm-software/config or @storm-software/ or @storm-software/*).",
-        []
+        "The package name/pattern to update the version for (e.g., @storm-software/config or @storm-software/ or @storm-software/*)."
       )
       .option(
         "-t, --tag <string>",
@@ -92,7 +91,7 @@ export function createProgram(config: StormWorkspaceConfig) {
 }
 
 async function updateAction(
-  packages: string | string[] = [],
+  packages: string | string[],
   {
     tag,
     install = false,
@@ -107,11 +106,11 @@ async function updateAction(
 ) {
   try {
     const pkgs = (
-      Array.isArray(packages)
-        ? packages
-        : typeof packages === "string"
-          ? [packages.split(",")].flat()
-          : []
+      packages && (Array.isArray(packages) || typeof packages === "string")
+        ? Array.isArray(packages)
+          ? packages
+          : [packages.split(",")].flat()
+        : []
     )
       .concat(all ? [...INTERNAL_PACKAGES] : [])
       .filter(Boolean)
