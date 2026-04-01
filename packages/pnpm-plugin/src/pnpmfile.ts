@@ -12,7 +12,7 @@ import defu from "defu";
 import path from "node:path";
 import { pathToFileURL } from "node:url";
 
-export default {
+const config = {
   hooks: {
     updateConfig(config) {
       const result = defu(config, {
@@ -69,3 +69,5 @@ export default {
     }
   }
 };
+
+export default config;
