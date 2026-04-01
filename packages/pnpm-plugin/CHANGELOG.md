@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Pnpm Plugin
 
+## [0.1.100](https://github.com/storm-software/storm-ops/releases/tag/pnpm-plugin%400.1.100) (04/01/2026)
+
+### Bug Fixes
+
+- **pnpm-plugin:** Resolve issue returning the configuration ([c6ab33f97](https://github.com/storm-software/storm-ops/commit/c6ab33f97))
+
 ## [0.1.99](https://github.com/storm-software/storm-ops/releases/tag/pnpm-plugin%400.1.99) (04/01/2026)
 
 ### Miscellaneous
