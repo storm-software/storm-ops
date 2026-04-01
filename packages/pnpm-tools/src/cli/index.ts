@@ -28,54 +28,63 @@ let _config: Partial<StormWorkspaceConfig> = {};
  * @returns The created command-line program.
  */
 export function createProgram(config: StormWorkspaceConfig) {
-  _config = config;
-  writeInfo(
-    `${brandIcon(_config)}  Running the \`storm-pnpm\` command-line application`,
-    config
-  );
+  try {
+    _config = config;
+    writeInfo(
+      `${brandIcon(_config)}  Running the \`storm-pnpm\` command-line application`,
+      config
+    );
 
-  const root = findWorkspaceRootSafe(_config.workspaceRoot || process.cwd());
-  process.env.STORM_WORKSPACE_ROOT ??= root;
-  process.env.NX_WORKSPACE_ROOT_PATH ??= root;
-  if (root) {
-    process.chdir(root);
-  }
+    const root = findWorkspaceRootSafe(_config.workspaceRoot || process.cwd());
+    process.env.STORM_WORKSPACE_ROOT ??= root;
+    process.env.NX_WORKSPACE_ROOT_PATH ??= root;
+    if (root) {
+      process.chdir(root);
+    }
 
-  const program = new Command("storm-pnpm");
-  program.version(packageJson.version, "-v --version", "display CLI version");
+    const program = new Command("storm-pnpm");
+    program.version(packageJson.version, "-v --version", "display CLI version");
 
-  program
-    .command("update")
-    .description("Update pnpm catalog dependency package version.")
-    .argument(
-      "<packages...>",
-      "The package name/pattern to update the version for (e.g., @storm-software/config or @storm-software/ or @storm-software/*).",
-      []
-    )
-    .option(
-      "-t, --tag <string>",
-      `The npm tag to use when fetching the latest version of the package (e.g., "latest", "next", etc.). Defaults to "latest".`,
-      "latest"
-    )
-    .option(
-      "-i, --install",
-      "Whether to install the package after updating the version.",
-      false
-    )
-    .option("--all", "Whether to update all Storm Software packages.", false)
-    .option(
-      "-p, --prefix <string>",
-      `The version prefix to use when updating the package (e.g., "^", "~", or "1.2.3"). Defaults to "^".
+    program
+      .command("update")
+      .description("Update pnpm catalog dependency package version.")
+      .argument(
+        "<packages...>",
+        "The package name/pattern to update the version for (e.g., @storm-software/config or @storm-software/ or @storm-software/*).",
+        []
+      )
+      .option(
+        "-t, --tag <string>",
+        `The npm tag to use when fetching the latest version of the package (e.g., "latest", "next", etc.). Defaults to "latest".`,
+        "latest"
+      )
+      .option(
+        "-i, --install",
+        "Whether to install the package after updating the version.",
+        false
+      )
+      .option("--all", "Whether to update all Storm Software packages.", false)
+      .option(
+        "-p, --prefix <string>",
+        `The version prefix to use when updating the package (e.g., "^", "~", or "1.2.3"). Defaults to "^".
 - Caret (^): The default prefix. It allows updates to the latest minor or patch version while staying within the same major version. Example: “^1.2.3" allows updates to 1.3.0 or 1.2.4, but not 2.0.0.
 - Tilde (~): Allows updates to the latest patch version while staying within the same minor version. Example: “~1.2.3" allows updates to 1.2.4 but not 1.3.0.
 - Exact (no prefix): Locks the dependency to a specific version. No updates are allowed. Example: 1.2.3 will only use 1.2.3.
 - Greater/Less Than (>, <, >=, <=): Specifies a range of acceptable versions. Example: “>=1.2.3 <2.0.0" allows any version from 1.2.3 to 1.9.x.
 - Wildcard (*): Allows the most flexibility by accepting any version. Example: “*2.4.6" allows any version.`,
-      "^"
-    )
-    .action(updateAction);
+        "^"
+      )
+      .action(updateAction);
 
-  return program;
+    return program;
+  } catch (error) {
+    writeFatal(
+      `A fatal error occurred while running the Storm pnpm CLI program: \n\n${error.message}`,
+      _config
+    );
+
+    throw new Error(error.message, { cause: error });
+  }
 }
 
 async function updateAction(
