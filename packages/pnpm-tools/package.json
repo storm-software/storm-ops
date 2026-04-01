@@ -94,6 +94,7 @@
     "@storm-software/config": "workspace:*",
     "@storm-software/config-tools": "workspace:*",
     "@storm-software/npm-tools": "workspace:*",
+    "@storm-software/package-constants": "workspace:*",
     "commander": "catalog:",
     "defu": "catalog:",
     "prettier": "catalog:",
@@ -103,7 +104,6 @@
   },
   "devDependencies": {
     "@pnpm/types": "catalog:",
-    "@storm-software/package-constants": "workspace:*",
     "@types/node": "catalog:",
     "tsup": "catalog:"
   },

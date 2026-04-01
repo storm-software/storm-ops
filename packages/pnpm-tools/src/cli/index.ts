@@ -11,6 +11,7 @@ import {
 } from "@storm-software/config-tools";
 import { INTERNAL_PACKAGES } from "@storm-software/package-constants/internal-packages";
 import { Command } from "commander";
+import { version } from "../../package.json" with { type: "json" };
 import {
   getCatalog,
   setCatalog,
@@ -41,7 +42,7 @@ export function createProgram(config: StormWorkspaceConfig) {
   }
 
   const program = new Command("storm-pnpm");
-  program.version("1.0.0", "-v --version", "display CLI version");
+  program.version(version, "-v --version", "display CLI version");
 
   program
     .command("update")
@@ -58,9 +59,10 @@ export function createProgram(config: StormWorkspaceConfig) {
     )
     .option(
       "-i, --install",
-      "Whether to install the package after updating the version."
+      "Whether to install the package after updating the version.",
+      false
     )
-    .option("--all", "Whether to update all Storm Software packages.")
+    .option("--all", "Whether to update all Storm Software packages.", false)
     .option(
       "-p, --prefix <string>",
       `The version prefix to use when updating the package (e.g., "^", "~", or "1.2.3"). Defaults to "^".
@@ -98,7 +100,7 @@ async function updateAction(
           ? [packages.split(",")].flat()
           : []
     )
-      .concat(all ? INTERNAL_PACKAGES : [])
+      .concat(all ? [...INTERNAL_PACKAGES] : [])
       .filter(Boolean)
       .map(pkg => pkg.trim().replaceAll("*", ""));
 
