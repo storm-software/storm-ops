@@ -26,8 +26,11 @@ export default {
         catalogMode: "prefer",
         cleanupUnusedCatalogs: true,
         linkWorkspacePackages: true,
+        dedupeDirectDeps: true,
+        dedupePeerDependents: true,
+        useNodeVersion: "25.5.0",
         minimumReleaseAge: 800,
-        minimumReleaseAgeExclude: INTERNAL_PACKAGES
+        minimumReleaseAgeExclude: [...INTERNAL_PACKAGES]
       });
 
       if (result.hoistPattern?.length === 1 && result.hoistPattern[0] === "*") {

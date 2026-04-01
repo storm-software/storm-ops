@@ -3,7 +3,7 @@ import { defineConfig } from "tsup";
 export default defineConfig([
   {
     name: "pnpm-plugin",
-    target: "esnext",
+    target: "node16",
     entryPoints: ["./src/pnpmfile.ts"],
     format: ["cjs"],
     outDir: "dist",
@@ -15,9 +15,9 @@ export default defineConfig([
     dts: false,
     sourcemap: false,
     tsconfig: "./tsconfig.json",
+    cjsInterop: true,
     shims: true,
     silent: true,
-    skipNodeModulesBundle: true,
     noExternal: ["defu", "@storm-software/package-constants"]
   }
 ]);
