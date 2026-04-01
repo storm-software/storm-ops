@@ -2,6 +2,24 @@
 
 # Changelog for Storm Ops - Pnpm Tools
 
+## [0.7.0](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.7.0) (04/01/2026)
+
+### Miscellaneous
+
+- **monorepo:** Regenerated `README.md` files ([9611f84ed](https://github.com/storm-software/storm-ops/commit/9611f84ed))
+
+### Features
+
+- **pnpm-tools:** Added `nx`, `internal`, and `pnpm-plugin` flags to CLI ([d7c05d042](https://github.com/storm-software/storm-ops/commit/d7c05d042))
+
+### Updated Dependencies
+
+- Updated **package-constants** to **v0.1.7**
+- Updated **testing-tools** to **v1.119.147**
+- Updated **config-tools** to **v1.189.72**
+- Updated **npm-tools** to **v0.6.110**
+- Updated **config** to **v1.137.26**
+
 ## [0.6.156](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.6.156) (04/01/2026)
 
 ### Miscellaneous

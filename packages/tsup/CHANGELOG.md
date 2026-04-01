@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Tsup
 
+## [0.2.151](https://github.com/storm-software/storm-ops/releases/tag/tsup%400.2.151) (04/01/2026)
+
+### Miscellaneous
+
+- **monorepo:** Regenerated `README.md` files ([9611f84ed](https://github.com/storm-software/storm-ops/commit/9611f84ed))
+
+### Updated Dependencies
+
+- Updated **config-tools** to **v1.189.72**
+- Updated **build-tools** to **v0.158.153**
+
 ## [0.2.150](https://github.com/storm-software/storm-ops/releases/tag/tsup%400.2.150) (04/01/2026)
 
 ### Miscellaneous

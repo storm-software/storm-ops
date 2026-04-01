@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - Markdownlint
 
+## [0.30.150](https://github.com/storm-software/storm-ops/releases/tag/markdownlint%400.30.150) (04/01/2026)
+
+### Miscellaneous
+
+- **monorepo:** Regenerated `README.md` files ([9611f84ed](https://github.com/storm-software/storm-ops/commit/9611f84ed))
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.147**
+
 ## [0.30.149](https://github.com/storm-software/storm-ops/releases/tag/markdownlint%400.30.149) (04/01/2026)
 
 ### Miscellaneous
