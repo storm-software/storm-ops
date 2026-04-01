@@ -43,7 +43,11 @@ export function createProgram(config: StormWorkspaceConfig) {
     }
 
     const program = new Command("storm-pnpm");
-    program.version(packageJson.version, "-v --version", "display CLI version");
+    program.version(
+      packageJson?.version || "1.0.0",
+      "-v --version",
+      "display CLI version"
+    );
 
     program
       .command("update")
@@ -79,11 +83,11 @@ export function createProgram(config: StormWorkspaceConfig) {
     return program;
   } catch (error) {
     writeFatal(
-      `A fatal error occurred while running the Storm pnpm CLI program: \n\n${error.message}`,
+      `A fatal error occurred while running the Storm pnpm CLI program: \n\n${error?.message}`,
       _config
     );
 
-    throw new Error(error.message, { cause: error });
+    throw new Error(error?.message, { cause: error });
   }
 }
 
@@ -206,6 +210,6 @@ async function updateAction(
       _config
     );
 
-    throw new Error(error.message, { cause: error });
+    throw new Error(error?.message, { cause: error });
   }
 }
