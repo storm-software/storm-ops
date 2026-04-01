@@ -2,6 +2,14 @@
 
 # Changelog for Storm Ops - K8s Tools
 
+## [0.42.159](https://github.com/storm-software/storm-ops/releases/tag/k8s-tools%400.42.159) (04/01/2026)
+
+### Updated Dependencies
+
+- Updated **workspace-tools** to **v1.295.44**
+- Updated **config-tools** to **v1.189.68**
+- Updated **config** to **v1.137.22**
+
 ## [0.42.158](https://github.com/storm-software/storm-ops/releases/tag/k8s-tools%400.42.158) (04/01/2026)
 
 ### Miscellaneous

@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Package Constants
 
+## [0.1.3](https://github.com/storm-software/storm-ops/releases/tag/package-constants%400.1.3) (04/01/2026)
+
+### Bug Fixes
+
+- **pnpm-tools:** Resolve issue with bundled dependencies ([49d923a2d](https://github.com/storm-software/storm-ops/commit/49d923a2d))
+
 ## [0.1.2](https://github.com/storm-software/storm-ops/releases/tag/package-constants%400.1.2) (04/01/2026)
 
 ### Miscellaneous

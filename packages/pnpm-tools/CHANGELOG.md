@@ -2,6 +2,24 @@
 
 # Changelog for Storm Ops - Pnpm Tools
 
+## [0.6.153](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.6.153) (04/01/2026)
+
+### Miscellaneous
+
+- **pnpm-tools:** Resolve issue with invalid `version` import ([21c678e98](https://github.com/storm-software/storm-ops/commit/21c678e98))
+
+### Bug Fixes
+
+- **pnpm-tools:** Resolve issue with bundled dependencies ([49d923a2d](https://github.com/storm-software/storm-ops/commit/49d923a2d))
+
+### Updated Dependencies
+
+- Updated **package-constants** to **v0.1.3**
+- Updated **testing-tools** to **v1.119.143**
+- Updated **config-tools** to **v1.189.68**
+- Updated **npm-tools** to **v0.6.106**
+- Updated **config** to **v1.137.22**
+
 ## [0.6.152](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.6.152) (04/01/2026)
 
 ### Miscellaneous
