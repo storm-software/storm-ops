@@ -7,24 +7,24 @@ on:
   workflow_call:
     inputs:
       scan-type:
-        required: true
+        required: false
         type: string
+        default: fs
       format:
-        required: true
+        required: false
         type: string
         default: sarif
       output:
         required: false
         type: string
-        default: scan-output.sarif
+        default: trivy-output.sarif
       image-ref:
         required: false
         type: string
-        default: ""
       severity:
         required: false
         type: string
-        default: "CRITICAL,HIGH,MEDIUM"
+        default: "CRITICAL,HIGH"
       exit-code:
         required: true
         type: number
@@ -45,7 +45,7 @@ jobs:
           persist-credentials: false
 
       - name: Aqua Security Trivy
-        uses: aquasecurity/trivy-action@0.23.0
+        uses: aquasecurity/trivy-action@0.35.0
         with:
           scan-type: ${{ inputs.scan-type }}
           image-ref: ${{ inputs.image-ref }}
@@ -53,10 +53,9 @@ jobs:
           output: ${{ inputs.output }}
           exit-code: ${{ inputs.exit-code }}
           severity: ${{ inputs.severity }}
-          trivy-config: ./trivy.yaml
 
       - name: Upload results to GitHub Security
-        uses: github/codeql-action/upload-sarif@v3
+        uses: github/codeql-action/upload-sarif@v4
         if: ${{ inputs.publish }}
         with:
           sarif_file: ${{ inputs.output }}
