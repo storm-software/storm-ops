@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Pnpm Plugin
 
+## [0.1.106](https://github.com/storm-software/storm-ops/releases/tag/pnpm-plugin%400.1.106) (04/07/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace packages' dependencies ([c9e9f1659](https://github.com/storm-software/storm-ops/commit/c9e9f1659))
+
+### Updated Dependencies
+
+- Updated **package-constants** to **v0.1.8**
+- Updated **testing-tools** to **v1.119.148**
+
 ## [0.1.105](https://github.com/storm-software/storm-ops/releases/tag/pnpm-plugin%400.1.105) (04/01/2026)
 
 ### Miscellaneous

@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Build Tools
 
+## [0.158.154](https://github.com/storm-software/storm-ops/releases/tag/build-tools%400.158.154) (04/07/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace packages' dependencies ([c9e9f1659](https://github.com/storm-software/storm-ops/commit/c9e9f1659))
+
+### Updated Dependencies
+
+- Updated **config-tools** to **v1.189.73**
+- Updated **config** to **v1.137.27**
+
 ## [0.158.153](https://github.com/storm-software/storm-ops/releases/tag/build-tools%400.158.153) (04/01/2026)
 
 ### Miscellaneous
