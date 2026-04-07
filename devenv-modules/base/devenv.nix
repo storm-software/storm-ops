@@ -24,6 +24,7 @@ in
   packages = with pkgs; [
     # Tools
     nixd
+    zizmor
   ];
 
   languages.nix = {
