@@ -18,6 +18,7 @@
     cargo-deny
     openssl
     yamllint
+    zizmor
   ];
 
   # https://devenv.sh/languages/
