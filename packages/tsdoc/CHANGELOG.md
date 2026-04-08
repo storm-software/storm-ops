@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Tsdoc
 
+## [0.13.149](https://github.com/storm-software/storm-ops/releases/tag/tsdoc%400.13.149) (04/08/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update devenv modules ([6e20ef576](https://github.com/storm-software/storm-ops/commit/6e20ef576))
+
 ## [0.13.148](https://github.com/storm-software/storm-ops/releases/tag/tsdoc%400.13.148) (04/07/2026)
 
 ### Miscellaneous

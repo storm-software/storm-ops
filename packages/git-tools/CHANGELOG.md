@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Git Tools
 
+## [2.130.32](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.130.32) (04/08/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update devenv modules ([6e20ef576](https://github.com/storm-software/storm-ops/commit/6e20ef576))
+
+### Updated Dependencies
+
+- Updated **conventional-changelog** to **v0.3.155**
+- Updated **config-tools** to **v1.189.74**
+- Updated **config** to **v1.137.28**
+
 ## [2.130.31](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.130.31) (04/07/2026)
 
 ### Miscellaneous

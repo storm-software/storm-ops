@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Testing Tools
 
+## [1.119.149](https://github.com/storm-software/storm-ops/releases/tag/testing-tools%401.119.149) (04/08/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update devenv modules ([6e20ef576](https://github.com/storm-software/storm-ops/commit/6e20ef576))
+
 ## [1.119.148](https://github.com/storm-software/storm-ops/releases/tag/testing-tools%401.119.148) (04/07/2026)
 
 ### Miscellaneous

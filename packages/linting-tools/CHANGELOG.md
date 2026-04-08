@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Linting Tools
 
+## [1.133.25](https://github.com/storm-software/storm-ops/releases/tag/linting-tools%401.133.25) (04/08/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update devenv modules ([6e20ef576](https://github.com/storm-software/storm-ops/commit/6e20ef576))
+
+### Updated Dependencies
+
+- Updated **config-tools** to **v1.189.74**
+- Updated **config** to **v1.137.28**
+
 ## [1.133.24](https://github.com/storm-software/storm-ops/releases/tag/linting-tools%401.133.24) (04/07/2026)
 
 ### Miscellaneous

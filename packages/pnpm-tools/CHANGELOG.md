@@ -2,6 +2,20 @@
 
 # Changelog for Storm Ops - Pnpm Tools
 
+## [0.7.2](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.7.2) (04/08/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update devenv modules ([6e20ef576](https://github.com/storm-software/storm-ops/commit/6e20ef576))
+
+### Updated Dependencies
+
+- Updated **package-constants** to **v0.1.9**
+- Updated **testing-tools** to **v1.119.149**
+- Updated **config-tools** to **v1.189.74**
+- Updated **npm-tools** to **v0.6.112**
+- Updated **config** to **v1.137.28**
+
 ## [0.7.1](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.7.1) (04/07/2026)
 
 ### Miscellaneous

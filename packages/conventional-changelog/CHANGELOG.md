@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Conventional Changelog
 
+## [0.3.155](https://github.com/storm-software/storm-ops/releases/tag/conventional-changelog%400.3.155) (04/08/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update devenv modules ([6e20ef576](https://github.com/storm-software/storm-ops/commit/6e20ef576))
+
+### Updated Dependencies
+
+- Updated **config-tools** to **v1.189.74**
+- Updated **config** to **v1.137.28**
+
 ## [0.3.154](https://github.com/storm-software/storm-ops/releases/tag/conventional-changelog%400.3.154) (04/07/2026)
 
 ### Miscellaneous

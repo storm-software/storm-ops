@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - K8s Tools
 
+## [0.42.165](https://github.com/storm-software/storm-ops/releases/tag/k8s-tools%400.42.165) (04/08/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update devenv modules ([6e20ef576](https://github.com/storm-software/storm-ops/commit/6e20ef576))
+
+### Updated Dependencies
+
+- Updated **workspace-tools** to **v1.295.50**
+- Updated **config-tools** to **v1.189.74**
+- Updated **config** to **v1.137.28**
+
 ## [0.42.164](https://github.com/storm-software/storm-ops/releases/tag/k8s-tools%400.42.164) (04/07/2026)
 
 ### Miscellaneous

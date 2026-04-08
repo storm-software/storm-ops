@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - Markdownlint
 
+## [0.30.152](https://github.com/storm-software/storm-ops/releases/tag/markdownlint%400.30.152) (04/08/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update devenv modules ([6e20ef576](https://github.com/storm-software/storm-ops/commit/6e20ef576))
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.149**
+
 ## [0.30.151](https://github.com/storm-software/storm-ops/releases/tag/markdownlint%400.30.151) (04/07/2026)
 
 ### Miscellaneous

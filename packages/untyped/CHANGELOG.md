@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Untyped
 
+## [0.24.137](https://github.com/storm-software/storm-ops/releases/tag/untyped%400.24.137) (04/08/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update devenv modules ([6e20ef576](https://github.com/storm-software/storm-ops/commit/6e20ef576))
+
+### Updated Dependencies
+
+- Updated **config-tools** to **v1.189.74**
+- Updated **config** to **v1.137.28**
+
 ## [0.24.136](https://github.com/storm-software/storm-ops/releases/tag/untyped%400.24.136) (04/07/2026)
 
 ### Miscellaneous

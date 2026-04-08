@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Build Tools
 
+## [0.158.155](https://github.com/storm-software/storm-ops/releases/tag/build-tools%400.158.155) (04/08/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update devenv modules ([6e20ef576](https://github.com/storm-software/storm-ops/commit/6e20ef576))
+
+### Updated Dependencies
+
+- Updated **config-tools** to **v1.189.74**
+- Updated **config** to **v1.137.28**
+
 ## [0.158.154](https://github.com/storm-software/storm-ops/releases/tag/build-tools%400.158.154) (04/07/2026)
 
 ### Miscellaneous
