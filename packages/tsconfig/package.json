@@ -1,6 +1,6 @@
 {
   "name": "@storm-software/tsconfig",
-  "version": "0.48.63",
+  "version": "0.48.64",
   "private": false,
   "description": "A package containing shared TypeScript configuration files (tsconfig.json) used in Storm Software projects.",
   "keywords": ["storm-ops", "storm-software", "typescript", "tsconfig"],

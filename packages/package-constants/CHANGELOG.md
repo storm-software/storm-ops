@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Package Constants
 
+## [0.1.10](https://github.com/storm-software/storm-ops/releases/tag/package-constants%400.1.10) (04/10/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace packages' dependencies ([c86e980b0](https://github.com/storm-software/storm-ops/commit/c86e980b0))
+
 ## [0.1.9](https://github.com/storm-software/storm-ops/releases/tag/package-constants%400.1.9) (04/08/2026)
 
 ### Miscellaneous

@@ -1,6 +1,6 @@
 {
   "name": "@storm-software/eslint",
-  "version": "0.170.16",
+  "version": "0.170.17",
   "private": false,
   "description": "A package containing the base ESLint configuration used by Storm Software across many projects.",
   "keywords": [
