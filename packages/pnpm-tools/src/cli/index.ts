@@ -63,8 +63,7 @@ export function createProgram(config: StormWorkspaceConfig) {
       )
       .option(
         "-i, --install",
-        "Whether to install the package after updating the version.",
-        false
+        "Whether to install the package after updating the version."
       )
       .option(
         "-p, --prefix <string>",
@@ -76,18 +75,13 @@ export function createProgram(config: StormWorkspaceConfig) {
 - Wildcard (*): Allows the most flexibility by accepting any version. Example: “*2.4.6" allows any version.`,
         "^"
       )
-      .option(
-        "--internal",
-        "Whether to update all Storm Software packages.",
-        false
-      )
-      .option("--nx", "Whether to update Nx packages.", false)
+      .option("--internal", "Whether to update all Storm Software packages.")
+      .option("--nx", "Whether to update Nx packages.")
       .option(
         "--pnpm-plugin",
-        "Whether to upgrade the Storm Software pnpm plugin.",
-        false
+        "Whether to upgrade the Storm Software pnpm plugin."
       )
-      .option("--all", "Whether to update all packages.", false)
+      .option("--all", "Whether to update all packages.")
       .action(updateAction);
 
     return program;
@@ -105,75 +99,97 @@ async function updateAction(
   packages?: string[],
   options?: {
     tag: string;
-    install: boolean;
-    all: boolean;
-    internal: boolean;
-    nx: boolean;
-    prefix: string;
-    pnpmPlugin: boolean;
+    install?: boolean;
+    all?: boolean;
+    internal?: boolean;
+    nx?: boolean;
+    prefix?: string;
+    pnpmPlugin?: boolean;
   }
 ) {
   try {
     const {
       tag,
-      install = false,
-      all = false,
+      install,
+      all,
       internal = all,
       nx = all,
       pnpmPlugin = all,
       prefix = "^"
     } = options || {};
-    const pkgs = (packages && Array.isArray(packages) ? packages : [])
-      .concat(internal ? [...INTERNAL_PACKAGES] : [])
-      .filter(Boolean)
-      .map(pkg => pkg.trim().replaceAll("*", ""));
-
-    writeInfo(
-      `${brandIcon(_config)}  Preparing to update the package version for ${pkgs.join(", ")}.`,
-      _config
-    );
-
-    let catalog = (await getCatalog()) as Record<string, string>;
-    if (!catalog) {
-      throw new Error(
-        "No catalog found in the pnpm-workspace.yaml file of the current workspace."
-      );
-    }
 
     let packagesFound = false;
     let packagesUpdated = false;
-    for (const pkg of pkgs) {
-      const matchedPackages = Object.keys(catalog).filter(p =>
-        pkg.endsWith("/") ? p.startsWith(pkg) : p === pkg
+
+    let pkgs = packages && Array.isArray(packages) ? packages : [];
+    if (internal) {
+      pkgs.push(...INTERNAL_PACKAGES);
+    }
+
+    pkgs = pkgs.filter(Boolean).map(pkg => pkg.trim().replaceAll("*", ""));
+
+    if (pkgs.length > 0) {
+      writeInfo(
+        `${brandIcon(_config)}  Preparing to update the package version for ${pkgs.join(
+          ", "
+        )}.`,
+        _config
       );
-      if (matchedPackages.length === 0) {
-        writeInfo(
-          `No packages found in the catalog matching the name/pattern "${pkg}".`,
-          _config
+
+      let catalog = (await getCatalog()) as Record<string, string>;
+      if (!catalog) {
+        throw new Error(
+          "No catalog found in the pnpm-workspace.yaml file of the current workspace."
         );
-      } else {
-        writeDebug(
-          `${brandIcon(_config)}  Found ${matchedPackages.length} packages matching "${pkg}" in the pnpm catalog file: \n\n- ${matchedPackages
-            .map(p => `${p} (${catalog[p] || "unknown"})`)
-            .join("\n- ")}`,
-          _config
+      }
+
+      for (const pkg of pkgs) {
+        const matchedPackages = Object.keys(catalog).filter(p =>
+          pkg.endsWith("/") ? p.startsWith(pkg) : p === pkg
         );
+        if (matchedPackages.length === 0) {
+          writeInfo(
+            `No packages found in the catalog matching the name/pattern "${pkg}".`,
+            _config
+          );
+        } else {
+          writeDebug(
+            `${brandIcon(_config)}  Found ${matchedPackages.length} packages matching "${pkg}" in the pnpm catalog file: \n\n- ${matchedPackages
+              .map(p => `${p} (${catalog[p] || "unknown"})`)
+              .join("\n- ")}`,
+            _config
+          );
 
-        packagesFound = true;
+          packagesFound = true;
 
-        for (const matchedPackage of matchedPackages) {
-          writeTrace(`- Upgrading ${matchedPackage}...`, _config);
+          for (const matchedPackage of matchedPackages) {
+            writeTrace(`- Upgrading ${matchedPackage}...`, _config);
 
-          const result = await upgradeCatalog(catalog, matchedPackage, {
-            tag,
-            prefix: prefix as UpgradeCatalogPackageOptions["prefix"],
-            workspaceRoot: _config.workspaceRoot
-          });
-          if (result.updated) {
-            catalog = result.catalog;
-            packagesUpdated = true;
+            const result = await upgradeCatalog(catalog, matchedPackage, {
+              tag,
+              prefix: prefix as UpgradeCatalogPackageOptions["prefix"],
+              workspaceRoot: _config.workspaceRoot
+            });
+            if (result.updated) {
+              catalog = result.catalog;
+              packagesUpdated = true;
+            }
           }
         }
+      }
+
+      if (packagesUpdated) {
+        writeDebug(
+          "Finalizing changes to the pnpm workspace's catalog dependencies",
+          _config
+        );
+
+        await setCatalog(catalog, _config.workspaceRoot);
+      } else {
+        writeDebug(
+          "No packages were updated since all matching packages are already up to date in the catalog.",
+          _config
+        );
       }
     }
 
@@ -218,22 +234,7 @@ async function updateAction(
       return;
     }
 
-    writeDebug(
-      "Finalizing changes to the pnpm workspace's catalog dependencies",
-      _config
-    );
-
-    if (!packagesUpdated) {
-      writeDebug(
-        "No packages were updated since all matching packages are already up to date in the catalog.",
-        _config
-      );
-      return;
-    }
-
-    await setCatalog(catalog, _config.workspaceRoot);
-
-    if (install) {
+    if (install && packagesUpdated) {
       writeDebug(
         "Running `pnpm install --no-frozen-lockfile` to update local dependency versions",
         _config
