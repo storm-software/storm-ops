@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - Workspace Tools
 
+## [1.295.54](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.295.54) (04/14/2026)
+
+### Bug Fixes
+
+- **workspace-tools:** Resolve issue with `cwd` parameter provided to `napi` ([d41c02145](https://github.com/storm-software/storm-ops/commit/d41c02145))
+
+### Documentation
+
+- **monorepo:** Update workspace's `README.md` files ([7d41882b7](https://github.com/storm-software/storm-ops/commit/7d41882b7))
+
 ## [1.295.53](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.295.53) (04/14/2026)
 
 ### Miscellaneous

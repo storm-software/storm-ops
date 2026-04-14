@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - Pulumi Tools
 
+## [0.22.169](https://github.com/storm-software/storm-ops/releases/tag/pulumi-tools%400.22.169) (04/14/2026)
+
+### Documentation
+
+- **monorepo:** Update workspace's `README.md` files ([7d41882b7](https://github.com/storm-software/storm-ops/commit/7d41882b7))
+
+### Updated Dependencies
+
+- Updated **workspace-tools** to **v1.295.54**
+
 ## [0.22.168](https://github.com/storm-software/storm-ops/releases/tag/pulumi-tools%400.22.168) (04/14/2026)
 
 ### Miscellaneous
