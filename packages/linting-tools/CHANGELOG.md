@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Linting Tools
 
+## [1.133.28](https://github.com/storm-software/storm-ops/releases/tag/linting-tools%401.133.28) (04/14/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace packages' dependencies ([3a2b8a77e](https://github.com/storm-software/storm-ops/commit/3a2b8a77e))
+
+### Updated Dependencies
+
+- Updated **config-tools** to **v1.189.77**
+- Updated **config** to **v1.137.31**
+
 ## [1.133.27](https://github.com/storm-software/storm-ops/releases/tag/linting-tools%401.133.27) (04/13/2026)
 
 ### Bug Fixes

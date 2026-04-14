@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - CSpell
 
+## [0.46.67](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.46.67) (04/14/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace packages' dependencies ([3a2b8a77e](https://github.com/storm-software/storm-ops/commit/3a2b8a77e))
+- **cspell:** Added various rust and development specific terms to dictionary ([a7a68f880](https://github.com/storm-software/storm-ops/commit/a7a68f880))
+
 ## [0.46.66](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.46.66) (04/13/2026)
 
 ### Bug Fixes
