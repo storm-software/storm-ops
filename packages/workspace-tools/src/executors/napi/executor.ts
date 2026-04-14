@@ -49,7 +49,7 @@ export async function napiExecutor(
   }
 
   const projectRoot =
-    context.projectGraph?.nodes[context.projectName ?? ""]!.data.root;
+    context.projectGraph?.nodes[context.projectName ?? ""]?.data.root;
   const packageJson = joinPaths(projectRoot ?? ".", "package.json");
   if (!fileExists(packageJson)) {
     throw new Error(`Could not find package.json at ${packageJson}`);
@@ -69,15 +69,14 @@ export async function napiExecutor(
   if (options.cwd) {
     normalizedOptions.cwd = correctPaths(options.cwd);
   } else {
-    normalizedOptions.cwd = correctPaths(projectRoot);
-    const absoluteProjectRoot = joinPaths(
-      config.workspaceRoot,
-      projectRoot || "."
+    const absoluteProjectRoot = correctPaths(
+      joinPaths(config.workspaceRoot, projectRoot || ".")
     );
+    normalizedOptions.cwd = absoluteProjectRoot;
 
     if (normalizedOptions.outputDir) {
       normalizedOptions.outputDir = relative(
-        absoluteProjectRoot,
+        normalizedOptions.cwd,
         correctPaths(
           isAbsolute(normalizedOptions.outputDir)
             ? normalizedOptions.outputDir
@@ -87,16 +86,19 @@ export async function napiExecutor(
     }
 
     if (normalizedOptions.packageJsonPath) {
-      normalizedOptions.packageJsonPath = correctPaths(
-        isAbsolute(normalizedOptions.packageJsonPath)
-          ? normalizedOptions.packageJsonPath
-          : joinPaths(config.workspaceRoot, normalizedOptions.packageJsonPath)
+      normalizedOptions.packageJsonPath = relative(
+        normalizedOptions.cwd,
+        correctPaths(
+          isAbsolute(normalizedOptions.packageJsonPath)
+            ? normalizedOptions.packageJsonPath
+            : joinPaths(config.workspaceRoot, normalizedOptions.packageJsonPath)
+        )
       );
     }
 
     if (normalizedOptions.configPath) {
       normalizedOptions.configPath = relative(
-        absoluteProjectRoot,
+        normalizedOptions.cwd,
         correctPaths(
           isAbsolute(normalizedOptions.configPath)
             ? normalizedOptions.configPath
@@ -107,7 +109,7 @@ export async function napiExecutor(
 
     if (normalizedOptions.manifestPath) {
       normalizedOptions.manifestPath = relative(
-        absoluteProjectRoot,
+        normalizedOptions.cwd,
         correctPaths(
           isAbsolute(normalizedOptions.manifestPath)
             ? normalizedOptions.manifestPath
