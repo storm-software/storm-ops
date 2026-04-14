@@ -201,7 +201,10 @@
     "storm-version-warning-cjs": "./bin/version-warning.cjs",
     "storm-version-warning-esm": "./bin/version-warning.js"
   },
-  "files": ["bin/**/*", "dist/**/*"],
+  "files": [
+    "bin/**/*",
+    "dist/**/*"
+  ],
   "dependencies": {
     "@commitlint/ensure": "^19.8.1",
     "@commitlint/rules": "^19.8.1",
@@ -236,7 +239,7 @@
     "conventional-commits-parser": "^6.4.0",
     "defu": "catalog:",
     "semver": "7.6.2",
-    "simple-git": "^3.35.2",
+    "simple-git": "^3.36.0",
     "tsup": "catalog:"
   },
   "peerDependencies": {

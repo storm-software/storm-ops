@@ -1,5 +1,6 @@
 import type { NapiCli as TNapiCli } from "@napi-rs/cli";
 import { ExecutorContext, PromiseExecutor } from "@nx/devkit";
+import { writeDebug } from "@storm-software/config-tools/logger/console";
 import {
   correctPaths,
   isAbsolute,
@@ -63,7 +64,7 @@ export async function napiExecutor(
     metadata?.target_directory ||
     joinPaths(config.workspaceRoot, "dist", "target");
   normalizedOptions.outputDir = options.outputPath;
-  normalizedOptions.packageJsonPath = options.packageJsonPath || packageJson;
+  normalizedOptions.packageJsonPath ??= packageJson;
 
   if (options.cwd) {
     normalizedOptions.cwd = correctPaths(options.cwd);
@@ -86,13 +87,10 @@ export async function napiExecutor(
     }
 
     if (normalizedOptions.packageJsonPath) {
-      normalizedOptions.packageJsonPath = relative(
-        absoluteProjectRoot,
-        correctPaths(
-          isAbsolute(normalizedOptions.packageJsonPath)
-            ? normalizedOptions.packageJsonPath
-            : joinPaths(config.workspaceRoot, normalizedOptions.packageJsonPath)
-        )
+      normalizedOptions.packageJsonPath = correctPaths(
+        isAbsolute(normalizedOptions.packageJsonPath)
+          ? normalizedOptions.packageJsonPath
+          : joinPaths(config.workspaceRoot, normalizedOptions.packageJsonPath)
       );
     }
 
@@ -123,6 +121,17 @@ export async function napiExecutor(
     // Vercel doesn't have support for cargo atm, so auto success builds
     return { success: true };
   }
+
+  writeDebug(
+    `Normalized Napi Options: \npackageJsonPath: ${
+      normalizedOptions.packageJsonPath
+    } \noutputDir: ${normalizedOptions.outputDir} \ntargetDir: ${
+      normalizedOptions.targetDir
+    } \nmanifestPath: ${normalizedOptions.manifestPath} \nconfigPath: ${
+      normalizedOptions.configPath
+    } \ncwd: ${normalizedOptions.cwd}`,
+    config
+  );
 
   const { task } = await napi.build(normalizedOptions);
 
