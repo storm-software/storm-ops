@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - Vite
 
+## [0.1.91](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.91) (04/13/2026)
+
+### Bug Fixes
+
+- **workspace-tools:** Resolve issue with relative package.json paths ([f73c8dfe9](https://github.com/storm-software/storm-ops/commit/f73c8dfe9))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.157**
+
 ## [0.1.90](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.90) (04/10/2026)
 
 ### Miscellaneous

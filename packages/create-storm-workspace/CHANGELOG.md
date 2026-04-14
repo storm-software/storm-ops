@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - Create Storm Workspace
 
+## [1.97.157](https://github.com/storm-software/storm-ops/releases/tag/create-storm-workspace%401.97.157) (04/13/2026)
+
+### Bug Fixes
+
+- **workspace-tools:** Resolve issue with relative package.json paths ([f73c8dfe9](https://github.com/storm-software/storm-ops/commit/f73c8dfe9))
+
+### Updated Dependencies
+
+- Updated **config-tools** to **v1.189.76**
+
 ## [1.97.156](https://github.com/storm-software/storm-ops/releases/tag/create-storm-workspace%401.97.156) (04/10/2026)
 
 ### Miscellaneous

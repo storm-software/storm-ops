@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - ESLint
 
+## [0.170.18](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.170.18) (04/13/2026)
+
+### Bug Fixes
+
+- **workspace-tools:** Resolve issue with relative package.json paths ([f73c8dfe9](https://github.com/storm-software/storm-ops/commit/f73c8dfe9))
+
+### Updated Dependencies
+
+- Updated **config-tools** to **v1.189.76**
+- Updated **config** to **v1.137.30**
+- Updated **tsdoc** to **v0.13.151**
+
 ## [0.170.17](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.170.17) (04/10/2026)
 
 ### Miscellaneous

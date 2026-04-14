@@ -1,6 +1,6 @@
 {
   "name": "@storm-software/projen",
-  "version": "0.21.166",
+  "version": "0.21.167",
   "type": "commonjs",
   "description": "Tools for managing Projen configuration automation within a Nx workspace.",
   "repository": {
@@ -127,9 +127,9 @@
   ],
   "peerDependencies": {
     "@nx/devkit": "catalog:",
-    "@storm-software/config": "1.137.29",
-    "@storm-software/config-tools": "1.189.75",
-    "@storm-software/workspace-tools": "1.295.51",
+    "@storm-software/config": "1.137.30",
+    "@storm-software/config-tools": "1.189.76",
+    "@storm-software/workspace-tools": "1.295.52",
     "projen": "^0.91.6",
     "tsup": "catalog:",
     "untyped": "1.5.2"

@@ -2,6 +2,19 @@
 
 # Changelog for Storm Ops - Esbuild
 
+## [0.53.158](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.53.158) (04/13/2026)
+
+### Bug Fixes
+
+- **workspace-tools:** Resolve issue with relative package.json paths ([f73c8dfe9](https://github.com/storm-software/storm-ops/commit/f73c8dfe9))
+
+### Updated Dependencies
+
+- Updated **config-tools** to **v1.189.76**
+- Updated **build-tools** to **v0.158.157**
+- Updated **config** to **v1.137.30**
+- Updated **tsup** to **v0.2.155**
+
 ## [0.53.157](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.53.157) (04/10/2026)
 
 ### Miscellaneous

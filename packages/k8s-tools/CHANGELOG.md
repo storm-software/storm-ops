@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - K8s Tools
 
+## [0.42.167](https://github.com/storm-software/storm-ops/releases/tag/k8s-tools%400.42.167) (04/13/2026)
+
+### Bug Fixes
+
+- **workspace-tools:** Resolve issue with relative package.json paths ([f73c8dfe9](https://github.com/storm-software/storm-ops/commit/f73c8dfe9))
+
+### Updated Dependencies
+
+- Updated **workspace-tools** to **v1.295.52**
+- Updated **config-tools** to **v1.189.76**
+- Updated **config** to **v1.137.30**
+
 ## [0.42.166](https://github.com/storm-software/storm-ops/releases/tag/k8s-tools%400.42.166) (04/10/2026)
 
 ### Miscellaneous

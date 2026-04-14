@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Pnpm Plugin
 
+## [0.1.109](https://github.com/storm-software/storm-ops/releases/tag/pnpm-plugin%400.1.109) (04/13/2026)
+
+### Bug Fixes
+
+- **workspace-tools:** Resolve issue with relative package.json paths ([f73c8dfe9](https://github.com/storm-software/storm-ops/commit/f73c8dfe9))
+
+### Updated Dependencies
+
+- Updated **package-constants** to **v0.1.11**
+- Updated **testing-tools** to **v1.119.151**
+
 ## [0.1.108](https://github.com/storm-software/storm-ops/releases/tag/pnpm-plugin%400.1.108) (04/10/2026)
 
 ### Miscellaneous

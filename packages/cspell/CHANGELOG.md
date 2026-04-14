@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - CSpell
 
+## [0.46.66](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.46.66) (04/13/2026)
+
+### Bug Fixes
+
+- **workspace-tools:** Resolve issue with relative package.json paths ([f73c8dfe9](https://github.com/storm-software/storm-ops/commit/f73c8dfe9))
+
 ## [0.46.65](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.46.65) (04/10/2026)
 
 ### Miscellaneous

@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Untyped
 
+## [0.24.139](https://github.com/storm-software/storm-ops/releases/tag/untyped%400.24.139) (04/13/2026)
+
+### Bug Fixes
+
+- **workspace-tools:** Resolve issue with relative package.json paths ([f73c8dfe9](https://github.com/storm-software/storm-ops/commit/f73c8dfe9))
+
+### Updated Dependencies
+
+- Updated **config-tools** to **v1.189.76**
+- Updated **config** to **v1.137.30**
+
 ## [0.24.138](https://github.com/storm-software/storm-ops/releases/tag/untyped%400.24.138) (04/10/2026)
 
 ### Miscellaneous

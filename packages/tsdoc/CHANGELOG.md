@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Tsdoc
 
+## [0.13.151](https://github.com/storm-software/storm-ops/releases/tag/tsdoc%400.13.151) (04/13/2026)
+
+### Bug Fixes
+
+- **workspace-tools:** Resolve issue with relative package.json paths ([f73c8dfe9](https://github.com/storm-software/storm-ops/commit/f73c8dfe9))
+
 ## [0.13.150](https://github.com/storm-software/storm-ops/releases/tag/tsdoc%400.13.150) (04/10/2026)
 
 ### Miscellaneous

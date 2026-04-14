@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - Markdownlint
 
+## [0.30.154](https://github.com/storm-software/storm-ops/releases/tag/markdownlint%400.30.154) (04/13/2026)
+
+### Bug Fixes
+
+- **workspace-tools:** Resolve issue with relative package.json paths ([f73c8dfe9](https://github.com/storm-software/storm-ops/commit/f73c8dfe9))
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.151**
+
 ## [0.30.153](https://github.com/storm-software/storm-ops/releases/tag/markdownlint%400.30.153) (04/10/2026)
 
 ### Miscellaneous

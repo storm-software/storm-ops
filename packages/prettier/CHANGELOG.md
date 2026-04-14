@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Prettier
 
+## [0.59.50](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.59.50) (04/13/2026)
+
+### Bug Fixes
+
+- **workspace-tools:** Resolve issue with relative package.json paths ([f73c8dfe9](https://github.com/storm-software/storm-ops/commit/f73c8dfe9))
+
 ## [0.59.49](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.59.49) (04/10/2026)
 
 ### Miscellaneous

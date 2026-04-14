@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Tsup
 
+## [0.2.155](https://github.com/storm-software/storm-ops/releases/tag/tsup%400.2.155) (04/13/2026)
+
+### Bug Fixes
+
+- **workspace-tools:** Resolve issue with relative package.json paths ([f73c8dfe9](https://github.com/storm-software/storm-ops/commit/f73c8dfe9))
+
+### Updated Dependencies
+
+- Updated **config-tools** to **v1.189.76**
+- Updated **build-tools** to **v0.158.157**
+
 ## [0.2.154](https://github.com/storm-software/storm-ops/releases/tag/tsup%400.2.154) (04/10/2026)
 
 ### Miscellaneous

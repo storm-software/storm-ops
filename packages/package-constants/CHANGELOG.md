@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Package Constants
 
+## [0.1.11](https://github.com/storm-software/storm-ops/releases/tag/package-constants%400.1.11) (04/13/2026)
+
+### Bug Fixes
+
+- **workspace-tools:** Resolve issue with relative package.json paths ([f73c8dfe9](https://github.com/storm-software/storm-ops/commit/f73c8dfe9))
+
 ## [0.1.10](https://github.com/storm-software/storm-ops/releases/tag/package-constants%400.1.10) (04/10/2026)
 
 ### Miscellaneous

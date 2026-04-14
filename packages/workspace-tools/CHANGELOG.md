@@ -2,6 +2,24 @@
 
 # Changelog for Storm Ops - Workspace Tools
 
+## [1.295.52](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.295.52) (04/13/2026)
+
+### Bug Fixes
+
+- **workspace-tools:** Resolve issue with relative package.json paths ([f73c8dfe9](https://github.com/storm-software/storm-ops/commit/f73c8dfe9))
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.151**
+- Updated **config-tools** to **v1.189.76**
+- Updated **pnpm-tools** to **v0.7.4**
+- Updated **npm-tools** to **v0.6.114**
+- Updated **prettier** to **v0.59.50**
+- Updated **esbuild** to **v0.53.158**
+- Updated **unbuild** to **v0.57.158**
+- Updated **config** to **v1.137.30**
+- Updated **tsdown** to **v0.45.158**
+
 ## [1.295.51](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.295.51) (04/10/2026)
 
 ### Miscellaneous

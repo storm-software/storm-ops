@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - Config
 
+## [1.137.30](https://github.com/storm-software/storm-ops/releases/tag/config%401.137.30) (04/13/2026)
+
+### Bug Fixes
+
+- **workspace-tools:** Resolve issue with relative package.json paths ([f73c8dfe9](https://github.com/storm-software/storm-ops/commit/f73c8dfe9))
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.151**
+
 ## [1.137.29](https://github.com/storm-software/storm-ops/releases/tag/config%401.137.29) (04/10/2026)
 
 ### Miscellaneous

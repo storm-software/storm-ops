@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Npm Tools
 
+## [0.6.114](https://github.com/storm-software/storm-ops/releases/tag/npm-tools%400.6.114) (04/13/2026)
+
+### Bug Fixes
+
+- **workspace-tools:** Resolve issue with relative package.json paths ([f73c8dfe9](https://github.com/storm-software/storm-ops/commit/f73c8dfe9))
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.151**
+- Updated **config-tools** to **v1.189.76**
+- Updated **config** to **v1.137.30**
+
 ## [0.6.113](https://github.com/storm-software/storm-ops/releases/tag/npm-tools%400.6.113) (04/10/2026)
 
 ### Miscellaneous
