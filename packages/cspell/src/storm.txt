@@ -457,6 +457,8 @@ davidanson
 mikestead
 bbenoist
 justinvdm
+numtide
+oxalica
 
 # TSDoc Tags
 preapproved
@@ -488,6 +490,7 @@ ffmpeg
 gpgsign
 allowincompletepush
 shellcheck
+treefmt
 
 # AI / Machine Learning
 llms
@@ -495,12 +498,32 @@ agi
 
 # Algorithm Names
 murmurhash
+xxhash
 
 # Misc
 testuser
 sslmode
 pgsslmode
 scaffolder
+
+# Rust
+clippy
+rustrs
+rustc
+rustls
+docsrs
+scrutinee
+serde
+camino
+flate
+mimalloc
+ropey
+schemars
+simdutf
+webpki
+mdbook
+fenix
+wasip
 
 # Python
 pipfile
