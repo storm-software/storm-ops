@@ -171,7 +171,7 @@
   },
   "dependencies": {
     "@nx/devkit": "catalog:",
-    "@pulumi/aws": "^6.83.2",
+    "@pulumi/aws": "^6.83.3",
     "@pulumi/awsx": "^2.22.0",
     "@pulumi/pulumi": "^3.230.0",
     "@storm-software/config": "workspace:*",
