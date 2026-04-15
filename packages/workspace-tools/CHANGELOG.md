@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - Workspace Tools
 
+## [1.295.55](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.295.55) (04/15/2026)
+
+### Bug Fixes
+
+- **workspace-tools:** Ensure we correctly handle Cargo args without a key ([ff5605eb2](https://github.com/storm-software/storm-ops/commit/ff5605eb2))
+
+### Documentation
+
+- **monorepo:** Regenerate `README.md` files ([8b9adfe78](https://github.com/storm-software/storm-ops/commit/8b9adfe78))
+
 ## [1.295.54](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.295.54) (04/14/2026)
 
 ### Bug Fixes
