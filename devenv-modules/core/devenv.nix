@@ -14,7 +14,6 @@ in
       env.ENVIRONMENT = "development";
       env.NODE_ENV = "development";
       env.DEBUG = true;
-      env.CI = false;
       tasks = {
         "storm:setup:git" = {
           exec = ''
@@ -26,7 +25,6 @@ in
             npm config set provenance true
           '';
           before = [
-            # "storm:setup:updates"
             "devenv:enterShell"
             "devenv:enterTest"
           ];
@@ -45,7 +43,6 @@ in
             pnpm exec storm-git prepare
           '';
           before = [
-            # "storm:setup:updates"
             "devenv:enterShell"
             "devenv:enterTest"
           ];
@@ -55,25 +52,6 @@ in
             "storm:setup:git"
           ];
         };
-        # "storm:setup:updates" = {
-        #   exec = ''
-        #     pnpm update --recursive --workspace
-        #     update-storm
-        #   '';
-        #   before = [
-        #     "devenv:enterShell"
-        #     "devenv:enterTest"
-        #   ];
-        #   after = [
-        #     "storm:setup:git"
-        #     "devenv:files"
-        #     "devenv:files:cleanup"
-        #   ];
-        #   execIfModified = [
-        #     "pnpm-workspace.yaml"
-
-        #   ];
-        # };
       };
     };
 
@@ -81,7 +59,6 @@ in
       env.ENVIRONMENT = "production";
       env.NODE_ENV = "production";
       env.DEBUG = false;
-      env.CI = true;
       env.DEVENV_TUI = false;
       tasks = {
         "storm:setup:git" = {
