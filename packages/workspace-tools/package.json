@@ -259,7 +259,7 @@
     "zod": "catalog:"
   },
   "devDependencies": {
-    "@napi-rs/cli": "^3.6.1",
+    "@napi-rs/cli": "^3.6.2",
     "@types/micromatch": "^4.0.10",
     "@types/node": "catalog:",
     "@types/semver": "7.5.8",
