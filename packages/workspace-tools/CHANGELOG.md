@@ -2,6 +2,28 @@
 
 # Changelog for Storm Ops - Workspace Tools
 
+## [1.295.56](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.295.56) (04/26/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace packages' dependencies ([7bb1aaaf6](https://github.com/storm-software/storm-ops/commit/7bb1aaaf6))
+
+### Bug Fixes
+
+- **workspace-tools:** Resolve issue with incorrectly defaulted `outputPath` value ([f2c457f27](https://github.com/storm-software/storm-ops/commit/f2c457f27))
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.153**
+- Updated **config-tools** to **v1.189.78**
+- Updated **pnpm-tools** to **v0.7.6**
+- Updated **npm-tools** to **v0.6.116**
+- Updated **prettier** to **v0.59.52**
+- Updated **esbuild** to **v0.53.160**
+- Updated **unbuild** to **v0.57.160**
+- Updated **config** to **v1.137.32**
+- Updated **tsdown** to **v0.45.160**
+
 ## [1.295.55](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.295.55) (04/15/2026)
 
 ### Bug Fixes
