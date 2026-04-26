@@ -12,7 +12,6 @@ export default defineUntypedSchema({
       type: "string",
       format: "path",
       description: "The output path for the build"
-    },
-    $default: "dist/{projectRoot}"
+    }
   }
 });

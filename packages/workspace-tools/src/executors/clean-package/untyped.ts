@@ -14,8 +14,7 @@ export default defineUntypedSchema({
       title: "Output Path",
       type: "string",
       description: "The path to the output"
-    },
-    $default: "dist/{projectRoot}"
+    }
   },
   packageJsonPath: {
     $schema: {
