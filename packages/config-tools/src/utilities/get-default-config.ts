@@ -41,7 +41,6 @@ export async function getPackageJsonConfig(
     );
     if (file) {
       const packageJson = JSON.parse(file);
-
       if (packageJson.name) {
         name = packageJson.name;
       }

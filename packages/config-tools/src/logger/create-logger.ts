@@ -12,14 +12,14 @@ import { getLogFn, getStopwatch } from "./console";
 export async function createLogger(
   config?: Partial<StormWorkspaceConfig>
 ): Promise<Logger> {
-  const writeFatal = getLogFn(LogLevel.FATAL, config, chalk);
-  const writeError = getLogFn(LogLevel.ERROR, config, chalk);
-  const writeWarning = getLogFn(LogLevel.WARN, config, chalk);
-  const writeInfo = getLogFn(LogLevel.INFO, config, chalk);
-  const writeSuccess = getLogFn(LogLevel.SUCCESS, config, chalk);
-  const writeDebug = getLogFn(LogLevel.DEBUG, config, chalk);
-  const writePerformance = getLogFn(LogLevel.PERFORMANCE, config, chalk);
-  const writeTrace = getLogFn(LogLevel.TRACE, config, chalk);
+  const writeFatal = getLogFn(LogLevel.FATAL, config, { chalk });
+  const writeError = getLogFn(LogLevel.ERROR, config, { chalk });
+  const writeWarning = getLogFn(LogLevel.WARN, config, { chalk });
+  const writeInfo = getLogFn(LogLevel.INFO, config, { chalk });
+  const writeSuccess = getLogFn(LogLevel.SUCCESS, config, { chalk });
+  const writeDebug = getLogFn(LogLevel.DEBUG, config, { chalk });
+  const writePerformance = getLogFn(LogLevel.PERFORMANCE, config, { chalk });
+  const writeTrace = getLogFn(LogLevel.TRACE, config, { chalk });
 
   return {
     fatal: writeFatal,
