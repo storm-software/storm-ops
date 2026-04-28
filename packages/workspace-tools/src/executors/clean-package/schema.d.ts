@@ -8,7 +8,6 @@ export interface CleanPackageExecutorSchema {
   * 
   * The path to the output
   * 
-  * @default "dist/{projectRoot}"
  */
  outputPath?: string,
 

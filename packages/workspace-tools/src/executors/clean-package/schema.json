@@ -7,8 +7,7 @@
       "title": "Output Path",
       "type": "string",
       "description": "The path to the output",
-      "id": "#outputPath",
-      "default": "dist/{projectRoot}"
+      "id": "#outputPath"
     },
     "packageJsonPath": {
       "title": "Package JSON Path",
@@ -48,7 +47,6 @@
   },
   "type": "object",
   "default": {
-    "outputPath": "dist/{projectRoot}",
     "packageJsonPath": "{outputPath}/package.json",
     "fields": [],
     "cleanReadMe": true,

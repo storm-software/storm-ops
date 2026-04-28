@@ -27,7 +27,7 @@ This package is part of the <b>⚡Storm-Ops</b> monorepo. The Storm-Ops packages
 
 <h3 align="center">💻 Visit <a href="https://stormsoftware.com" target="_blank">stormsoftware.com</a> to stay up to date with this developer</h3><br />
 
-[![Version](https://img.shields.io/badge/version-1.295.54-1fb2a6.svg?style=for-the-badge&color=1fb2a6)](https://prettier.io/)&nbsp;[![Nx](https://img.shields.io/badge/Nx-17.0.2-lightgrey?style=for-the-badge&logo=nx&logoWidth=20&&color=1fb2a6)](http://nx.dev/)&nbsp;[![NextJs](https://img.shields.io/badge/Next.js-14.0.2-lightgrey?style=for-the-badge&logo=nextdotjs&logoWidth=20&color=1fb2a6)](https://nextjs.org/)&nbsp;[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg?style=for-the-badge&logo=commitlint&color=1fb2a6)](http://commitizen.github.io/cz-cli/)&nbsp;![Semantic-Release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg?style=for-the-badge&color=1fb2a6)&nbsp;[![documented with Fumadocs](https://img.shields.io/badge/documented_with-fumadocs-success.svg?style=for-the-badge&logo=readthedocs&color=1fb2a6)](https://fumadocs.vercel.app/)&nbsp;![GitHub Workflow Status (with event)](https://img.shields.io/github/actions/workflow/status/storm-software/storm-ops/cr.yml?style=for-the-badge&logo=github-actions&color=1fb2a6)
+[![Version](https://img.shields.io/badge/version-1.295.55-1fb2a6.svg?style=for-the-badge&color=1fb2a6)](https://prettier.io/)&nbsp;[![Nx](https://img.shields.io/badge/Nx-17.0.2-lightgrey?style=for-the-badge&logo=nx&logoWidth=20&&color=1fb2a6)](http://nx.dev/)&nbsp;[![NextJs](https://img.shields.io/badge/Next.js-14.0.2-lightgrey?style=for-the-badge&logo=nextdotjs&logoWidth=20&color=1fb2a6)](https://nextjs.org/)&nbsp;[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg?style=for-the-badge&logo=commitlint&color=1fb2a6)](http://commitizen.github.io/cz-cli/)&nbsp;![Semantic-Release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg?style=for-the-badge&color=1fb2a6)&nbsp;[![documented with Fumadocs](https://img.shields.io/badge/documented_with-fumadocs-success.svg?style=for-the-badge&logo=readthedocs&color=1fb2a6)](https://fumadocs.vercel.app/)&nbsp;![GitHub Workflow Status (with event)](https://img.shields.io/github/actions/workflow/status/storm-software/storm-ops/cr.yml?style=for-the-badge&logo=github-actions&color=1fb2a6)
 
 <!-- prettier-ignore-start -->
 <!-- markdownlint-disable -->
@@ -215,7 +215,7 @@ The following executor options are available:
 
 | Option    | Type   | Description   | Default   | 
 | --------- | ------ | ------------- | --------- | 
-| outputPath      | `string`    | The output path for the build     | "dist/{projectRoot}"     | 
+| outputPath      | `string`    | The output path for the build     |     | 
  | entry      | `string[]`   | The entry file or files to build     | `[]`     | 
  | tsconfig      | `string`    | The path to the tsconfig file     | "{projectRoot}/tsconfig.json"     | 
  | bundle      | `boolean`    | Bundle the output     |     | 
@@ -307,7 +307,7 @@ The following executor options are available:
 
 | Option    | Type   | Description   | Default   | 
 | --------- | ------ | ------------- | --------- | 
-| outputPath      | `string`    | The path to the output     | "dist/{projectRoot}"     | 
+| outputPath      | `string`    | The path to the output     |     | 
  | packageJsonPath      | `string`    | The path to the package.json that will be modified     | "{outputPath}/package.json"     | 
  | ignoredFiles      | `string`    | The files to ignore     |     | 
  | fields      | `string`    | The fields to include     | ""     | 
@@ -337,7 +337,7 @@ The following executor options are available:
 
 | Option    | Type   | Description   | Default   | 
 | --------- | ------ | ------------- | --------- | 
-| outputPath      | `string`    | The output path for the build     | "dist/{projectRoot}"     | 
+| outputPath      | `string`    | The output path for the build     |     | 
  | entry      | `string[]`   | The path to the entry file     |     | 
 
 
@@ -394,7 +394,7 @@ The following executor options are available:
 
 | Option    | Type   | Description   | Default   | 
 | --------- | ------ | ------------- | --------- | 
-| outputPath      | `string`    | The output path for the build     | "dist/{projectRoot}"     | 
+| outputPath      | `string`    | The output path for the build     |     | 
  | package      | `string`    | The path to the Cargo.toml file     | "{projectRoot}/Cargo.toml"     | 
  | toolchain      | "stable" \| "beta" \| "nightly"     | The type of toolchain to use for the build     | "stable"     | 
  | target      | `string`    | The target to build     |     | 
@@ -463,7 +463,7 @@ The following executor options are available:
 
 | Option    | Type   | Description   | Default   | 
 | --------- | ------ | ------------- | --------- | 
-| outputPath      | `string`    | The output path for the build     | "dist/{projectRoot}"     | 
+| outputPath      | `string`    | The output path for the build     |     | 
  | package      | `string`    | The path to the Cargo.toml file     | "{projectRoot}/Cargo.toml"     | 
  | toolchain      | "stable" \| "beta" \| "nightly"     | The type of toolchain to use for the build     | "stable"     | 
  | target      | `string`    | The target to build     |     | 
@@ -496,7 +496,7 @@ The following executor options are available:
 
 | Option    | Type   | Description   | Default   | 
 | --------- | ------ | ------------- | --------- | 
-| outputPath      | `string`    | The output path for the build     | "dist/{projectRoot}"     | 
+| outputPath      | `string`    | The output path for the build     |     | 
  | package      | `string`    | The path to the Cargo.toml file     | "{projectRoot}/Cargo.toml"     | 
  | toolchain      | "stable" \| "beta" \| "nightly"     | The type of toolchain to use for the build     | "stable"     | 
  | target      | `string`    | The target to build     |     | 
@@ -529,7 +529,7 @@ The following executor options are available:
 
 | Option    | Type   | Description   | Default   | 
 | --------- | ------ | ------------- | --------- | 
-| outputPath      | `string`    | The output path for the build     | "dist/{projectRoot}"     | 
+| outputPath      | `string`    | The output path for the build     |     | 
  | package      | `string`    | The path to the Cargo.toml file     | "{projectRoot}/Cargo.toml"     | 
  | toolchain      | "stable" \| "beta" \| "nightly"     | The type of toolchain to use for the build     | "stable"     | 
  | target      | `string`    | The target to build     |     | 
@@ -563,7 +563,7 @@ The following executor options are available:
 
 | Option    | Type   | Description   | Default   | 
 | --------- | ------ | ------------- | --------- | 
-| outputPath      | `string`    | The output path for the build     | "dist/{projectRoot}"     | 
+| outputPath      | `string`    | The output path for the build     |     | 
  | package      | `string`    | The path to the Cargo.toml file     | "{projectRoot}/Cargo.toml"     | 
  | toolchain      | "stable" \| "beta" \| "nightly"     | The type of toolchain to use for the build     | "stable"     | 
  | target      | `string`    | The target to build     |     | 

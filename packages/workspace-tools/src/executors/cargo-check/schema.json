@@ -8,8 +8,7 @@
       "type": "string",
       "format": "path",
       "description": "The output path for the build",
-      "id": "#outputPath",
-      "default": "dist/{projectRoot}"
+      "id": "#outputPath"
     },
     "package": {
       "title": "Cargo.toml Path",
@@ -81,7 +80,6 @@
   },
   "type": "object",
   "default": {
-    "outputPath": "dist/{projectRoot}",
     "package": "{projectRoot}/Cargo.toml",
     "toolchain": "stable"
   }

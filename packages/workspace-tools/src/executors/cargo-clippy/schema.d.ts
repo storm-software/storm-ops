@@ -8,7 +8,6 @@ export interface CargoClippyExecutorSchema {
   * 
   * The output path for the build
   * 
-  * @default "dist/{projectRoot}"
   * 
   * @format path
  */

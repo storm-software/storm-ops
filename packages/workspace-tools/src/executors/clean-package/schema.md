@@ -6,7 +6,6 @@
 
 ## `outputPath`
 - **Type**: `string`
-- **Default**: `"dist/{projectRoot}"`
 
 > Output Path
 

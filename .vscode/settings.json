@@ -186,5 +186,6 @@
   "nxConsole.generateAiAgentRules": true,
   "[nix]": {
     "editor.defaultFormatter": "brettm12345.nixfmt-vscode"
-  }
+  },
+  "typescript.native-preview.tsdk": "/home/development/repos/storm-ops/node_modules/@typescript/native-preview"
 }
