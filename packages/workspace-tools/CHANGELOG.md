@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Workspace Tools
 
+## [1.295.59](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.295.59) (04/28/2026)
+
+### Updated Dependencies
+
+- Updated **pnpm-tools** to **v0.7.9**
+
 ## [1.295.58](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.295.58) (04/28/2026)
 
 ### Updated Dependencies
