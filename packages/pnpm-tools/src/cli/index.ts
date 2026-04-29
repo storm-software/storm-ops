@@ -124,7 +124,6 @@ async function updateAction(
     } = options || {};
 
     let packagesFound = false;
-    let packagesUpdated = false;
 
     let pkgs = packages && Array.isArray(packages) ? packages : [];
     if (internal) {
@@ -187,7 +186,6 @@ async function updateAction(
                 });
                 if (result.updated && result.catalog[matchedPackage]) {
                   catalog[matchedPackage] = result.catalog[matchedPackage];
-                  packagesUpdated = true;
                 }
               })
             );
@@ -205,7 +203,7 @@ async function updateAction(
           current: catalog[packageName] || "unknown"
         }));
 
-      if (packagesUpdated) {
+      if (changed.length > 0) {
         writeDebug(
           "Finalizing changes to the pnpm workspace's catalog dependencies",
           _config
@@ -232,7 +230,6 @@ async function updateAction(
       });
 
       packagesFound = true;
-      packagesUpdated = true;
     }
 
     if (pnpmPlugin) {
@@ -250,7 +247,6 @@ async function updateAction(
       });
 
       packagesFound = true;
-      packagesUpdated = true;
     }
 
     if (!packagesFound) {
@@ -261,24 +257,31 @@ async function updateAction(
       return;
     }
 
-    if (install && packagesUpdated) {
-      writeDebug(
-        "Running `pnpm install --no-frozen-lockfile` to update local dependency versions",
-        _config
-      );
+    if (changed.length > 0) {
+      if (install) {
+        writeDebug(
+          "Running `pnpm install --no-frozen-lockfile` to update local dependency versions",
+          _config
+        );
 
-      const proc = await runAsync(_config, "pnpm install --no-frozen-lockfile");
-      proc.stdout?.on("data", data => {
-        console.log(data.toString());
-      });
+        const proc = await runAsync(
+          _config,
+          "pnpm install --no-frozen-lockfile"
+        );
+        proc.stdout?.on("data", data => {
+          console.log(data.toString());
+        });
+      }
 
       writeSuccess(
-        `${brandIcon(_config)}  Successfully updated the version for the following package(s):
+        `${brandIcon(_config)}  Successfully updated${
+          install ? " and installed" : ""
+        } the following package(s):
 ${changed
   .map(
     pkg =>
-      `- ${chalk.bold(pkg.packageName)}: ${chalk.bold(chalk.red(pkg.previous))} -> ${chalk.bold(
-        chalk.green(pkg.current)
+      `- ${chalk.bold(pkg.packageName)}: ${chalk.bold(chalk.red(`v${pkg.previous}`))} -> ${chalk.bold(
+        chalk.green(`v${pkg.current}`)
       )}`
   )
   .join("\n")}`,
