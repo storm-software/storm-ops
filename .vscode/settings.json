@@ -35,9 +35,6 @@
   "editor.bracketPairColorization.enabled": true,
   "editor.guides.bracketPairs": "active",
   "editor.tabCompletion": "on",
-  "typescript.tsserver.log": "off",
-  "typescript.tsdk": "node_modules/typescript/lib",
-  "typescript.enablePromptUseWorkspaceTsdk": true,
   "tailwindCSS.experimental.classRegex": [
     [
       "cva(?:<[^>]*>)?(([^)]*))",
@@ -186,6 +183,5 @@
   "nxConsole.generateAiAgentRules": true,
   "[nix]": {
     "editor.defaultFormatter": "brettm12345.nixfmt-vscode"
-  },
-  "typescript.native-preview.tsdk": "/home/development/repos/storm-ops/node_modules/@typescript/native-preview"
+  }
 }

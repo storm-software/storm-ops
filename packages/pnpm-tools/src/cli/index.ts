@@ -280,8 +280,10 @@ async function updateAction(
 ${changed
   .map(
     pkg =>
-      `- ${chalk.bold(pkg.packageName)}: ${chalk.bold(chalk.red(`v${pkg.previous}`))} -> ${chalk.bold(
-        chalk.green(`v${pkg.current}`)
+      `- ${chalk.bold(pkg.packageName)}: ${chalk.bold(
+        chalk.red(`v${pkg.previous.replace(/^[\^~><=]*/, "")}`)
+      )} -> ${chalk.bold(
+        chalk.green(`v${pkg.current.replace(/^[\^~><=]*/, "")}`)
       )}`
   )
   .join("\n")}`,
