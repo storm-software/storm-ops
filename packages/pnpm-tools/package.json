@@ -95,6 +95,7 @@
     "@storm-software/config-tools": "workspace:*",
     "@storm-software/npm-tools": "workspace:*",
     "@storm-software/package-constants": "workspace:*",
+    "chalk": "catalog:",
     "commander": "catalog:",
     "defu": "catalog:",
     "prettier": "catalog:",

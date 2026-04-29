@@ -6,10 +6,12 @@ import {
   writeDebug,
   writeFatal,
   writeInfo,
+  writeSuccess,
   writeTrace,
   writeWarning
 } from "@storm-software/config-tools";
 import { INTERNAL_PACKAGES } from "@storm-software/package-constants/internal-packages";
+import { bold, green, red } from "chalk";
 import { Command } from "commander";
 import packageJson from "../../package.json" with { type: "json" };
 import {
@@ -81,7 +83,10 @@ export function createProgram(config: StormWorkspaceConfig) {
         "--pnpm-plugin",
         "Whether to upgrade the Storm Software pnpm plugin."
       )
-      .option("--all", "Whether to update all packages.")
+      .option(
+        "--all",
+        "Whether to update all packages (with the exception of the pnpm plugin)."
+      )
       .action(updateAction);
 
     return program;
@@ -114,7 +119,7 @@ async function updateAction(
       all,
       internal = all,
       nx = all,
-      pnpmPlugin = all,
+      pnpmPlugin,
       prefix = "^"
     } = options || {};
 
@@ -128,8 +133,14 @@ async function updateAction(
 
     pkgs = pkgs.filter(Boolean).map(pkg => pkg.trim().replaceAll("*", ""));
 
+    let changed: {
+      packageName: string;
+      previous: string;
+      current: string;
+    }[] = [];
+
     if (pkgs.length > 0) {
-      writeInfo(
+      writeDebug(
         `${brandIcon(_config)}  Preparing to update the package version for ${pkgs.join(
           ", "
         )}.`,
@@ -142,6 +153,8 @@ async function updateAction(
           "No catalog found in the pnpm-workspace.yaml file of the current workspace."
         );
       }
+
+      const originalCatalog = { ...catalog };
 
       await Promise.all(
         pkgs.map(async pkg => {
@@ -181,6 +194,16 @@ async function updateAction(
           }
         })
       );
+
+      changed = Object.keys(catalog)
+        .filter(
+          packageName => originalCatalog[packageName] !== catalog[packageName]
+        )
+        .map(packageName => ({
+          packageName,
+          previous: originalCatalog[packageName] || "unknown",
+          current: catalog[packageName] || "unknown"
+        }));
 
       if (packagesUpdated) {
         writeDebug(
@@ -248,6 +271,19 @@ async function updateAction(
       proc.stdout?.on("data", data => {
         console.log(data.toString());
       });
+
+      writeSuccess(
+        `${brandIcon(_config)}  Successfully updated the version for the following package(s):
+${changed
+  .map(
+    pkg =>
+      `- ${bold(pkg.packageName)}: ${bold(red(pkg.previous))} -> ${bold(
+        green(pkg.current)
+      )}`
+  )
+  .join("\n")}`,
+        _config
+      );
     }
   } catch (error) {
     writeFatal(
