@@ -45,7 +45,7 @@ jobs:
           persist-credentials: false
 
       - name: Aqua Security Trivy
-        uses: aquasecurity/trivy-action@0.35.0
+        uses: aquasecurity/trivy-action@v0.36.0
         with:
           scan-type: ${{ inputs.scan-type }}
           image-ref: ${{ inputs.image-ref }}
