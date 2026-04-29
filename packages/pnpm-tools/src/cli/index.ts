@@ -136,47 +136,51 @@ async function updateAction(
         _config
       );
 
-      let catalog = (await getCatalog()) as Record<string, string>;
+      const catalog = (await getCatalog()) as Record<string, string>;
       if (!catalog) {
         throw new Error(
           "No catalog found in the pnpm-workspace.yaml file of the current workspace."
         );
       }
 
-      for (const pkg of pkgs) {
-        const matchedPackages = Object.keys(catalog).filter(p =>
-          pkg.endsWith("/") ? p.startsWith(pkg) : p === pkg
-        );
-        if (matchedPackages.length === 0) {
-          writeInfo(
-            `No packages found in the catalog matching the name/pattern "${pkg}".`,
-            _config
+      await Promise.all(
+        pkgs.map(async pkg => {
+          const matchedPackages = Object.keys(catalog).filter(p =>
+            pkg.endsWith("/") ? p.startsWith(pkg) : p === pkg
           );
-        } else {
-          writeDebug(
-            `${brandIcon(_config)}  Found ${matchedPackages.length} packages matching "${pkg}" in the pnpm catalog file: \n\n- ${matchedPackages
-              .map(p => `${p} (${catalog[p] || "unknown"})`)
-              .join("\n- ")}`,
-            _config
-          );
+          if (matchedPackages.length === 0) {
+            writeInfo(
+              `No packages found in the catalog matching the name/pattern "${pkg}".`,
+              _config
+            );
+          } else {
+            writeDebug(
+              `${brandIcon(_config)}  Found ${matchedPackages.length} packages matching "${pkg}" in the pnpm catalog file: \n\n- ${matchedPackages
+                .map(p => `${p} (${catalog[p] || "unknown"})`)
+                .join("\n- ")}`,
+              _config
+            );
 
-          packagesFound = true;
+            packagesFound = true;
 
-          for (const matchedPackage of matchedPackages) {
-            writeTrace(`- Upgrading ${matchedPackage}...`, _config);
+            await Promise.all(
+              matchedPackages.map(async matchedPackage => {
+                writeTrace(`- Upgrading ${matchedPackage}...`, _config);
 
-            const result = await upgradeCatalog(catalog, matchedPackage, {
-              tag,
-              prefix: prefix as UpgradeCatalogPackageOptions["prefix"],
-              workspaceRoot: _config.workspaceRoot
-            });
-            if (result.updated) {
-              catalog = result.catalog;
-              packagesUpdated = true;
-            }
+                const result = await upgradeCatalog(catalog, matchedPackage, {
+                  tag,
+                  prefix: prefix as UpgradeCatalogPackageOptions["prefix"],
+                  workspaceRoot: _config.workspaceRoot
+                });
+                if (result.updated && result.catalog[matchedPackage]) {
+                  catalog[matchedPackage] = result.catalog[matchedPackage];
+                  packagesUpdated = true;
+                }
+              })
+            );
           }
-        }
-      }
+        })
+      );
 
       if (packagesUpdated) {
         writeDebug(
