@@ -11,7 +11,7 @@ import {
   writeWarning
 } from "@storm-software/config-tools";
 import { INTERNAL_PACKAGES } from "@storm-software/package-constants/internal-packages";
-import { bold, green, red } from "chalk";
+import chalk from "chalk";
 import { Command } from "commander";
 import packageJson from "../../package.json" with { type: "json" };
 import {
@@ -277,8 +277,8 @@ async function updateAction(
 ${changed
   .map(
     pkg =>
-      `- ${bold(pkg.packageName)}: ${bold(red(pkg.previous))} -> ${bold(
-        green(pkg.current)
+      `- ${chalk.bold(pkg.packageName)}: ${chalk.bold(chalk.red(pkg.previous))} -> ${chalk.bold(
+        chalk.green(pkg.current)
       )}`
   )
   .join("\n")}`,
