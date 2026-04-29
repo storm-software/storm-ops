@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Projen
 
+## [0.21.172](https://github.com/storm-software/storm-ops/releases/tag/projen%400.21.172) (04/28/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace packages' dependencies ([ab3958717](https://github.com/storm-software/storm-ops/commit/ab3958717))
+
+### Updated Dependencies
+
+- Updated **workspace-tools** to **v1.295.57**
+- Updated **config-tools** to **v1.190.0**
+- Updated **config** to **v1.137.33**
+
 ## [0.21.171](https://github.com/storm-software/storm-ops/releases/tag/projen%400.21.171) (04/26/2026)
 
 ### Updated Dependencies

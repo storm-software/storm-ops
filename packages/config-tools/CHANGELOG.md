@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Config Tools
 
+## [1.190.0](https://github.com/storm-software/storm-ops/releases/tag/config-tools%401.190.0) (04/28/2026)
+
+### Features
+
+- **config-tools:** Added the `fullDateTime` and `hideDateTime` options to `getLogFn` function ([951938c39](https://github.com/storm-software/storm-ops/commit/951938c39))
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.154**
+- Updated **config** to **v1.137.33**
+
 ## [1.189.78](https://github.com/storm-software/storm-ops/releases/tag/config-tools%401.189.78) (04/26/2026)
 
 ### Updated Dependencies

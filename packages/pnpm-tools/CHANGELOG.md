@@ -2,6 +2,20 @@
 
 # Changelog for Storm Ops - Pnpm Tools
 
+## [0.7.7](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.7.7) (04/28/2026)
+
+### Miscellaneous
+
+- **pnpm-plugin:** Improve `update` CLI tool to process packages in parallel ([74ee5f885](https://github.com/storm-software/storm-ops/commit/74ee5f885))
+
+### Updated Dependencies
+
+- Updated **package-constants** to **v0.1.14**
+- Updated **testing-tools** to **v1.119.154**
+- Updated **config-tools** to **v1.190.0**
+- Updated **npm-tools** to **v0.6.117**
+- Updated **config** to **v1.137.33**
+
 ## [0.7.6](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.7.6) (04/26/2026)
 
 ### Updated Dependencies
