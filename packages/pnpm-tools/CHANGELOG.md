@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Pnpm Tools
 
+## [0.7.11](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.7.11) (04/29/2026)
+
+### Miscellaneous
+
+- **pnpm-tools:** Clean up version logging in the CLI ([be68c8635](https://github.com/storm-software/storm-ops/commit/be68c8635))
+
 ## [0.7.10](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.7.10) (04/29/2026)
 
 ### Miscellaneous
