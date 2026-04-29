@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Pnpm Tools
 
+## [0.7.10](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.7.10) (04/29/2026)
+
+### Miscellaneous
+
+- **pnpm-tools:** Ensure success message is logged at the end of CLI script ([806319a2d](https://github.com/storm-software/storm-ops/commit/806319a2d))
+
 ## [0.7.9](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.7.9) (04/28/2026)
 
 ### Bug Fixes
