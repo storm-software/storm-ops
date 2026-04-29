@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Git Tools
 
+## [2.130.38](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.130.38) (04/28/2026)
+
+### Miscellaneous
+
+- **git-tools:** Removed unneeded leading space to success logs ([5538131f6](https://github.com/storm-software/storm-ops/commit/5538131f6))
+
+### Updated Dependencies
+
+- Updated **conventional-changelog** to **v0.3.161**
+- Updated **config-tools** to **v1.190.1**
+- Updated **config** to **v1.137.34**
+
 ## [2.130.37](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.130.37) (04/28/2026)
 
 ### Updated Dependencies

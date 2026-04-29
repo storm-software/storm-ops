@@ -2,6 +2,20 @@
 
 # Changelog for Storm Ops - Pnpm Tools
 
+## [0.7.8](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.7.8) (04/28/2026)
+
+### Miscellaneous
+
+- **pnpm-tools:** Added summary logging and reduced general CLI noise ([9d3749d7b](https://github.com/storm-software/storm-ops/commit/9d3749d7b))
+
+### Updated Dependencies
+
+- Updated **package-constants** to **v0.1.15**
+- Updated **testing-tools** to **v1.119.155**
+- Updated **config-tools** to **v1.190.1**
+- Updated **npm-tools** to **v0.6.118**
+- Updated **config** to **v1.137.34**
+
 ## [0.7.7](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.7.7) (04/28/2026)
 
 ### Miscellaneous
