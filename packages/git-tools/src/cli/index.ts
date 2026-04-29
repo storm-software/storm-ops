@@ -147,7 +147,7 @@ export async function commitAction({
     await runCommit(config, dryRun);
 
     writeSuccess(
-      ` ✔ Storm Commit processing completed successfully!
+      `✔ Storm Commit processing completed successfully!
 
 Note: Please run "pnpm push" to upload these changes to the remote ${
         _config.name
@@ -185,7 +185,7 @@ export async function readmeAction(options: ReadMeOptions) {
     await runReadme(options);
 
     writeSuccess(
-      " ✔ Formatting of the workspace's README.md files is complete\n",
+      "✔ Formatting of the workspace's README.md files is complete\n",
       _config
     );
   } catch (error) {
@@ -220,7 +220,7 @@ export async function releaseAction({
       head
     });
 
-    writeSuccess(" ✔ Release completed successfully!\n", _config);
+    writeSuccess("✔ Release completed successfully!\n", _config);
   } catch (error) {
     writeFatal(
       `A fatal error occurred while running release action: \n\n${error.message} ${error.stack ? `\n\nStacktrace: ${error.stack}` : ""}`,
@@ -254,7 +254,7 @@ export async function commitLintAction(options: CommitLintCLIOptions) {
     await runCommitLint(_config as StormWorkspaceConfig, options);
 
     writeSuccess(
-      " ✔ Linting the commit messages completed successfully!\n",
+      "✔ Linting the commit messages completed successfully!\n",
       _config
     );
   } catch (error) {
@@ -277,7 +277,7 @@ export async function postCheckoutAction({ files }: { files: string[] }) {
 
     await postCheckoutHook(_config as StormWorkspaceConfig, files);
 
-    writeSuccess(" ✔ Post-checkout hook completed successfully!\n", _config);
+    writeSuccess("✔ Post-checkout hook completed successfully!\n", _config);
   } catch (error) {
     writeFatal(
       `A fatal error occurred while running the post-checkout hook: \n\n${error.message}`,
@@ -298,7 +298,7 @@ export async function postCommitAction({ files }: { files: string[] }) {
 
     await postCommitHook(_config as StormWorkspaceConfig, files);
 
-    writeSuccess(" ✔ Post-commit hook completed successfully!\n", _config);
+    writeSuccess("✔ Post-commit hook completed successfully!\n", _config);
   } catch (error) {
     writeFatal(
       `A fatal error occurred while running the post-commit hook: \n\n${error.message}`,
@@ -319,7 +319,7 @@ export async function postMergeAction({ files }: { files: string[] }) {
 
     await postMergeHook(_config as StormWorkspaceConfig, files);
 
-    writeSuccess(" ✔ Post-merge hook completed successfully!\n", _config);
+    writeSuccess("✔ Post-merge hook completed successfully!\n", _config);
   } catch (error) {
     writeFatal(
       `A fatal error occurred while running the post-merge hook: \n\n${error.message}`,
@@ -340,7 +340,7 @@ export async function preCommitAction({ files }: { files: string[] }) {
 
     await preCommitHook(_config as StormWorkspaceConfig, files);
 
-    writeSuccess(" ✔ Pre-commit hook completed successfully!\n", _config);
+    writeSuccess("✔ Pre-commit hook completed successfully!\n", _config);
   } catch (error) {
     writeFatal(
       `A fatal error occurred while running the pre-commit hook: \n\n${error.message}`,
@@ -361,7 +361,7 @@ export async function prePushAction({ files }: { files: string[] }) {
 
     await prePushHook(_config as StormWorkspaceConfig, files);
 
-    writeSuccess(" ✔ Pre-push hook completed successfully!\n", _config);
+    writeSuccess("✔ Pre-push hook completed successfully!\n", _config);
   } catch (error) {
     writeFatal(
       `A fatal error occurred while running the pre-push hook: \n\n${error.message}`,
@@ -380,7 +380,7 @@ export async function preInstallAction() {
 
     await preInstallHook(_config as StormWorkspaceConfig);
 
-    writeSuccess(" ✔ Pre-install hook completed successfully!\n", _config);
+    writeSuccess("✔ Pre-install hook completed successfully!\n", _config);
   } catch (error) {
     writeFatal(
       `A fatal error occurred while running the pre-install hook: \n\n${error.message}`,
@@ -399,7 +399,7 @@ export async function prepareAction() {
 
     await prepareHook(_config as StormWorkspaceConfig);
 
-    writeSuccess(" ✔ Prepare hook completed successfully!\n", _config);
+    writeSuccess("✔ Prepare hook completed successfully!\n", _config);
   } catch (error) {
     writeFatal(
       `A fatal error occurred while running the prepare hook: \n\n${error.message}`,
