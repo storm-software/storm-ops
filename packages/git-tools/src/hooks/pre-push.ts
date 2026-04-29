@@ -14,7 +14,7 @@ export async function prePushHook(
   writeInfo("Running pre-push hook...", config);
   checkPackageVersion(files);
 
-  writeInfo("🔒🔒🔒 Validating lock files 🔒🔒🔒\n", config);
+  writeInfo("🔒🔒🔒 Validating lock files 🔒🔒🔒", config);
 
   const errors = [] as string[];
   if (
@@ -57,7 +57,7 @@ export async function prePushHook(
     );
   }
 
-  writeSuccess(" ✔ Lock file is valid for push", config);
+  writeSuccess("✔ Lock file is valid for push", config);
 
   // run(config, "git lfs pre-push origin");
 
