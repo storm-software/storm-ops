@@ -34,7 +34,7 @@ catalog:
   create-nx-workspace: ^22.7.1
   cspell: ^8.19.4
   date-fns: ^4.1.0
-  defu: 6.1.4
+  defu: 6.1.5
   esbuild: ^0.25.12
   eslint: ^9.39.4
   glob: ^11.1.0
