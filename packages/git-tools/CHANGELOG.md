@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Git Tools
 
+## [2.130.39](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.130.39) (04/28/2026)
+
+### Miscellaneous
+
+- **git-tools:** Cleaned up logging in CLI application ([a7d73b53d](https://github.com/storm-software/storm-ops/commit/a7d73b53d))
+
 ## [2.130.38](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.130.38) (04/28/2026)
 
 ### Miscellaneous
