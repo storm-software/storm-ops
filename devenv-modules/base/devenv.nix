@@ -33,6 +33,8 @@ in
   languages.javascript = {
     enable = true;
     package = pkgs.nodejs_25;
+    nodejs.enable = true;
+    lsp.enable = true;
     pnpm = {
       enable = true;
       install.enable = true;
