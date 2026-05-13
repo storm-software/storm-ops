@@ -201,7 +201,10 @@
     "storm-version-warning-cjs": "./bin/version-warning.cjs",
     "storm-version-warning-esm": "./bin/version-warning.js"
   },
-  "files": ["bin/**/*", "dist/**/*"],
+  "files": [
+    "bin/**/*",
+    "dist/**/*"
+  ],
   "dependencies": {
     "@commitlint/ensure": "^19.8.1",
     "@commitlint/rules": "^19.8.1",
@@ -223,6 +226,7 @@
     "jsonc-parser": "3.2.1",
     "nx": "catalog:",
     "prettier": "catalog:",
+    "prettier-plugin-organize-imports": "^4.3.0",
     "tsconfig-paths": "4.2.0",
     "underscore": "1.13.7",
     "update-section": "0.3.3",

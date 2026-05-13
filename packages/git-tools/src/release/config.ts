@@ -15,6 +15,7 @@ export const DEFAULT_CONVENTIONAL_COMMITS_CONFIG = {
 };
 
 export const DEFAULT_RELEASE_TAG_PATTERN = "{projectName}@{version}";
+export const DEFAULT_FIXED_RELEASE_TAG_PATTERN = "{releaseGroupName}@{version}";
 
 export const DEFAULT_RELEASE_GROUP_CONFIG = {
   projectsRelationship: "independent",
@@ -35,6 +36,15 @@ export const DEFAULT_RELEASE_GROUP_CONFIG = {
     groupPreVersionCommand: "pnpm build"
   },
   releaseTag: { pattern: DEFAULT_RELEASE_TAG_PATTERN }
+} as const;
+
+export const DEFAULT_FIXED_RELEASE_GROUP_CONFIG = {
+  ...DEFAULT_RELEASE_GROUP_CONFIG,
+  projectsRelationship: "fixed",
+  releaseTag: {
+    ...DEFAULT_RELEASE_GROUP_CONFIG.releaseTag,
+    pattern: DEFAULT_FIXED_RELEASE_TAG_PATTERN
+  }
 } as const;
 
 export const DEFAULT_JS_RELEASE_GROUP_CONFIG: ReleaseGroupConfig = {
@@ -105,21 +115,35 @@ export function getReleaseGroupConfig(
         Object.entries(releaseConfig.groups).map(([name, group]) => {
           const config = defu(
             {
-              ...omit(DEFAULT_RELEASE_GROUP_CONFIG, ["changelog", "version"]),
+              ...omit(
+                group.projectsRelationship === "fixed"
+                  ? DEFAULT_FIXED_RELEASE_GROUP_CONFIG
+                  : DEFAULT_RELEASE_GROUP_CONFIG,
+                ["changelog", "version"]
+              ),
               ...group
             },
             {
               version: {
-                ...(DEFAULT_RELEASE_GROUP_CONFIG.version as NxReleaseChangelogConfiguration)
+                ...((group.projectsRelationship === "fixed"
+                  ? DEFAULT_FIXED_RELEASE_GROUP_CONFIG
+                  : DEFAULT_RELEASE_GROUP_CONFIG
+                ).version as NxReleaseChangelogConfiguration)
               }
             },
             {
               changelog: {
-                ...(DEFAULT_RELEASE_GROUP_CONFIG.changelog as NxReleaseChangelogConfiguration),
+                ...((group.projectsRelationship === "fixed"
+                  ? DEFAULT_FIXED_RELEASE_GROUP_CONFIG
+                  : DEFAULT_RELEASE_GROUP_CONFIG
+                ).changelog as NxReleaseChangelogConfiguration),
                 renderer: StormChangelogRenderer,
                 renderOptions: {
                   ...(
-                    DEFAULT_RELEASE_GROUP_CONFIG.changelog as NxReleaseChangelogConfiguration
+                    (group.projectsRelationship === "fixed"
+                      ? DEFAULT_FIXED_RELEASE_GROUP_CONFIG
+                      : DEFAULT_RELEASE_GROUP_CONFIG
+                    ).changelog as NxReleaseChangelogConfiguration
                   ).renderOptions,
                   workspaceConfig
                 }

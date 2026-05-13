@@ -49,3 +49,5 @@ packages/*/src/generators/*/schema.md
 
 packages/workspace-tools/src/executors/*/*.schema.*
 packages/workspace-tools/src/generators/*/*.schema.*
+
+.nx/self-healing

@@ -63,9 +63,11 @@
       "cache": true,
       "inputs": [
         "default",
+        "^default",
         "{workspaceRoot}/.eslintrc.json",
         "{workspaceRoot}/.eslintignore",
-        "{workspaceRoot}/eslint.config.js"
+        "{workspaceRoot}/eslint.config.js",
+        "{workspaceRoot}/tools/eslint-rules/**/*"
       ]
     }
   },
@@ -107,6 +109,7 @@
       }
     }
   },
+  "parallel": 5,
   "plugins": [
     {
       "plugin": "./dist/plugins/typescript/index.js",
@@ -119,8 +122,6 @@
     "./dist/plugins/cloudflare/index.js",
     "./dist/plugins/rust/index.js"
   ],
-  "parallel": 5,
-  "defaultBase": "main",
   "neverConnectToCloud": true,
   "analytics": false
 }
