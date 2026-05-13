@@ -2,7 +2,6 @@ import {
   createProjectGraphAsync,
   ProjectGraph,
   ProjectsConfigurations,
-  readCachedProjectGraph,
   readProjectsConfigurationFromProjectGraph,
   Tree
 } from "@nx/devkit";
@@ -99,16 +98,10 @@ export class StormReleaseClient extends ReleaseClient {
       workspaceConfig = await getWorkspaceConfig();
     }
 
-    let projectGraph!: ProjectGraph;
-    try {
-      projectGraph = readCachedProjectGraph();
-    } catch {
-      projectGraph = await createProjectGraphAsync({
-        exitOnError: true,
-        resetDaemonClient: true
-      });
-    }
-
+    const projectGraph = await createProjectGraphAsync({
+      exitOnError: true,
+      resetDaemonClient: true
+    });
     if (!projectGraph) {
       throw new Error(
         "Failed to load the project graph. Please run `nx reset`, then run the `storm-git commit` command again."
@@ -693,7 +686,9 @@ ${Object.keys(allProjectChangelogs)
           groups: options.groups
         },
         firstRelease: !!options.firstRelease,
-        verbose
+        verbose,
+        preid: options.preid ?? this.workspaceConfig.preid,
+        versionActionsOptionsOverrides: options.versionActionsOptionsOverrides
       }));
 
     // Display filter log if filters were applied
