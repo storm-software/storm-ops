@@ -25,7 +25,11 @@ import {
   ChangelogOptions as NxChangelogOptions,
   VersionOptions
 } from "nx/src/command-line/release/command-object";
-import { NxReleaseConfig } from "nx/src/command-line/release/config/config";
+import {
+  createNxReleaseConfig,
+  handleNxReleaseConfigError,
+  NxReleaseConfig
+} from "nx/src/command-line/release/config/config";
 import {
   readRawVersionPlans,
   setResolvedVersionPlansOnGroups
@@ -56,7 +60,10 @@ import {
   readNxJson
 } from "nx/src/config/nx-json";
 import { FsTree } from "nx/src/generators/tree";
-import { createFileMapUsingProjectGraph } from "nx/src/project-graph/file-map-utils";
+import {
+  createFileMapUsingProjectGraph,
+  createProjectFileMapUsingProjectGraph
+} from "nx/src/project-graph/file-map-utils";
 import { ReleaseConfig } from "../types";
 import {
   filterHiddenChanges,
@@ -108,53 +115,6 @@ export class StormReleaseClient extends ReleaseClient {
       );
     }
 
-    return new StormReleaseClient(
-      projectGraph,
-      releaseConfig,
-      ignoreNxJsonConfig,
-      workspaceConfig
-    );
-  }
-
-  /**
-   * The release configuration used by this release client.
-   */
-  protected config: ReleaseConfig;
-
-  /**
-   * The workspace configuration used by this release client.
-   */
-  protected workspaceConfig: StormWorkspaceConfig;
-
-  /**
-   * The project graph of the workspace.
-   */
-  protected projectGraph: ProjectGraph;
-
-  /**
-   * The project configurations of the workspace.
-   */
-  protected projectConfigurations: ProjectsConfigurations;
-
-  /**
-   * The file system tree used by this release client.
-   */
-  protected tree: Tree;
-
-  /**
-   *  Creates an instance of {@link StormReleaseClient}.
-   *
-   * @param projectGraph - The project graph of the workspace.
-   * @param releaseConfig - Release configuration to use for the current release client. By default, it will be combined with any configuration in `nx.json`, but you can choose to use it as the sole source of truth by setting {@link ignoreNxJsonConfig} to true.
-   * @param ignoreNxJsonConfig - Whether to ignore the nx.json configuration and use only the provided {@link releaseConfig}. Default is false.
-   * @param workspaceConfig - Optional Storm workspace configuration object for logging purposes.
-   */
-  protected constructor(
-    projectGraph: ProjectGraph,
-    releaseConfig: Partial<ReleaseConfig>,
-    ignoreNxJsonConfig: boolean,
-    workspaceConfig: StormWorkspaceConfig
-  ) {
     let nxJson!: Partial<NxJsonConfiguration>;
     if (
       !ignoreNxJsonConfig &&
@@ -202,16 +162,84 @@ export class StormReleaseClient extends ReleaseClient {
       );
     }
 
-    super(config, true);
+    // Apply default configuration to any optional user configuration
+    const { error: configError, nxReleaseConfig } = await createNxReleaseConfig(
+      projectGraph,
+      await createProjectFileMapUsingProjectGraph(projectGraph),
+      config
+    );
+    if (configError) {
+      return await handleNxReleaseConfigError(configError);
+    }
+    if (!nxReleaseConfig) {
+      throw new Error(
+        "An unknown error occurred while creating the release configuration."
+      );
+    }
+
+    return new StormReleaseClient(
+      projectGraph,
+      config,
+      nxReleaseConfig,
+      workspaceConfig
+    );
+  }
+
+  /**
+   * The release configuration used by this release client.
+   */
+  protected config: ReleaseConfig;
+
+  /**
+   * The normalized release configuration used by this release client.
+   */
+  protected normalizedConfig: NxReleaseConfig;
+
+  /**
+   * The workspace configuration used by this release client.
+   */
+  protected workspaceConfig: StormWorkspaceConfig;
+
+  /**
+   * The project graph of the workspace.
+   */
+  protected projectGraph: ProjectGraph;
+
+  /**
+   * The project configurations of the workspace.
+   */
+  protected projectConfigurations: ProjectsConfigurations;
+
+  /**
+   * The file system tree used by this release client.
+   */
+  protected tree: Tree;
+
+  /**
+   *  Creates an instance of {@link StormReleaseClient}.
+   *
+   * @param projectGraph - The project graph of the workspace.
+   * @param releaseConfig - Release configuration to use for the current release client. By default, it will be combined with any configuration in `nx.json`, but you can choose to use it as the sole source of truth by setting {@link ignoreNxJsonConfig} to true.
+   * @param ignoreNxJsonConfig - Whether to ignore the nx.json configuration and use only the provided {@link releaseConfig}. Default is false.
+   * @param workspaceConfig - Optional Storm workspace configuration object for logging purposes.
+   */
+  protected constructor(
+    projectGraph: ProjectGraph,
+    config: ReleaseConfig,
+    normalizedConfig: NxReleaseConfig,
+    workspaceConfig: StormWorkspaceConfig
+  ) {
+    super(normalizedConfig, true);
 
     writeDebug(
       "Executing release with the following configuration",
       workspaceConfig
     );
-    writeDebug(config, workspaceConfig);
+    writeDebug(normalizedConfig, workspaceConfig);
 
     this.projectGraph = projectGraph;
     this.config = config;
+    this.normalizedConfig = normalizedConfig;
     this.workspaceConfig = workspaceConfig;
     this.tree = new FsTree(workspaceConfig.workspaceRoot, false);
 
@@ -240,7 +268,7 @@ export class StormReleaseClient extends ReleaseClient {
       (await createReleaseGraph({
         tree: this.tree,
         projectGraph: this.projectGraph,
-        nxReleaseConfig: this.config as NxReleaseConfig,
+        nxReleaseConfig: this.normalizedConfig,
         filters: {
           projects: options.projects,
           groups: options.groups
@@ -413,7 +441,7 @@ export class StormReleaseClient extends ReleaseClient {
                 ? "*"
                 : getProjectsAffectedByCommit(c, fileToProjectMap)
             })),
-            this.config.conventionalCommits
+            this.normalizedConfig.conventionalCommits
           );
 
           writeDebug(
@@ -509,7 +537,7 @@ export class StormReleaseClient extends ReleaseClient {
               ? "*"
               : getProjectsAffectedByCommit(c, fileToProjectMap)
           })),
-          this.config.conventionalCommits
+          this.normalizedConfig.conventionalCommits
         );
 
         writeDebug(
@@ -579,7 +607,7 @@ ${Object.keys(allProjectChangelogs)
       options.releaseGraph.releaseGroupToFilteredProjects,
       options.versionData,
       options.gitCommitMessage ||
-        this.config.changelog?.git?.commitMessage ||
+        this.normalizedConfig.changelog?.git?.commitMessage ||
         "release(monorepo): Publish workspace release updates"
     );
 
@@ -610,7 +638,8 @@ ${Object.keys(allProjectChangelogs)
       isVerbose: !!options.verbose,
       gitCommitMessages: commitMessageValues,
       gitCommitArgs:
-        options.gitCommitArgs || this.config.changelog?.git?.commitArgs
+        options.gitCommitArgs ||
+        this.normalizedConfig.changelog?.git?.commitArgs
     });
 
     // Resolve the commit we just made
@@ -625,9 +654,10 @@ ${Object.keys(allProjectChangelogs)
       await gitTag({
         tag,
         message:
-          options.gitTagMessage || this.config.changelog?.git?.tagMessage,
+          options.gitTagMessage ||
+          this.normalizedConfig.changelog?.git?.tagMessage,
         additionalArgs:
-          options.gitTagArgs || this.config.changelog?.git?.tagArgs,
+          options.gitTagArgs || this.normalizedConfig.changelog?.git?.tagArgs,
         dryRun: options.dryRun,
         verbose: options.verbose
       });
@@ -643,7 +673,7 @@ ${Object.keys(allProjectChangelogs)
       dryRun: options.dryRun,
       verbose: options.verbose,
       additionalArgs:
-        options.gitPushArgs || this.config.changelog?.git?.pushArgs
+        options.gitPushArgs || this.normalizedConfig.changelog?.git?.pushArgs
     });
 
     // Run any post-git tasks in series
@@ -667,7 +697,7 @@ ${Object.keys(allProjectChangelogs)
       (options.gitCommit === undefined ||
         options.gitTag === undefined ||
         options.stageChanges === undefined) &&
-      this.config.git
+      this.normalizedConfig.git
     ) {
       throw new Error(
         `The "release.git" property in nx.json may not be used with the "nx release version" subcommand or programmatic API. Instead, configure git options for subcommands directly with "release.version.git" and "release.changelog.git".`
@@ -690,7 +720,7 @@ ${Object.keys(allProjectChangelogs)
       (await createReleaseGraph({
         tree: this.tree,
         projectGraph: this.projectGraph,
-        nxReleaseConfig: this.config as NxReleaseConfig,
+        nxReleaseConfig: this.normalizedConfig as NxReleaseConfig,
         filters: {
           projects: options.projects,
           groups: options.groups
@@ -744,17 +774,17 @@ ${Object.keys(allProjectChangelogs)
     /**
      * Run any configured top level pre-version command
      */
-    if (this.config.version?.preVersionCommand) {
+    if (this.normalizedConfig.version?.preVersionCommand) {
       writeDebug(
         "Executing the following pre-version command: \n" +
-          this.config.version.preVersionCommand,
+          this.normalizedConfig.version.preVersionCommand,
         this.workspaceConfig
       );
 
       try {
         const childProcess = runAsync(
           this.workspaceConfig,
-          this.config.version.preVersionCommand,
+          this.normalizedConfig.version.preVersionCommand,
           this.workspaceConfig.workspaceRoot,
           {
             ...process.env,
@@ -771,7 +801,7 @@ ${Object.keys(allProjectChangelogs)
         throw new Error(
           formatNxLog({
             title: `The pre-version command failed. See the full output above.`,
-            bodyLines: [this.config.version.preVersionCommand, e]
+            bodyLines: [this.normalizedConfig.version.preVersionCommand, e]
           })
         );
       }
@@ -834,7 +864,8 @@ ${Object.keys(allProjectChangelogs)
     await releaseGraph.validate(this.tree);
 
     const commitMessage: string | undefined =
-      options.gitCommitMessage || this.config.version?.git?.commitMessage;
+      options.gitCommitMessage ||
+      this.normalizedConfig.version?.git?.commitMessage;
 
     /**
      * additionalChangedFiles are files which need to be updated as a side-effect of versioning (such as package manager lock files),
@@ -847,7 +878,7 @@ ${Object.keys(allProjectChangelogs)
       this.tree,
       this.workspaceConfig,
       this.projectGraph,
-      this.config as NxReleaseConfig,
+      this.normalizedConfig as NxReleaseConfig,
       releaseGraph,
       options
     );
@@ -876,7 +907,7 @@ ${Object.keys(allProjectChangelogs)
 
     const { changedFiles: changed, deletedFiles: deleted } =
       await processor.afterAllProjectsVersioned({
-        ...(this.config.version as NxReleaseVersionConfiguration)
+        ...(this.normalizedConfig.version as NxReleaseVersionConfiguration)
           .versionActionsOptions,
         ...(options.versionActionsOptionsOverrides ?? {})
       });
@@ -885,23 +916,23 @@ ${Object.keys(allProjectChangelogs)
 
     // After all version actions have run, process docker projects as a layer above
     if (
-      this.config.docker &&
-      typeof this.config.docker === "object" &&
-      this.config.docker?.preVersionCommand
+      this.normalizedConfig.docker &&
+      typeof this.normalizedConfig.docker === "object" &&
+      this.normalizedConfig.docker?.preVersionCommand
     ) {
       /**
        * Run any configured top level docker pre-version command
        */
       writeDebug(
         `Executing the docker pre-version command: \n` +
-          this.config.docker.preVersionCommand,
+          this.normalizedConfig.docker.preVersionCommand,
         this.workspaceConfig
       );
 
       try {
         const childProcess = runAsync(
           this.workspaceConfig,
-          this.config.docker.preVersionCommand,
+          this.normalizedConfig.docker.preVersionCommand,
           this.workspaceConfig.workspaceRoot,
           {
             ...process.env,
@@ -918,7 +949,7 @@ ${Object.keys(allProjectChangelogs)
         throw new Error(
           formatNxLog({
             title: `The docker pre-version command failed. See the full output above.`,
-            bodyLines: [this.config.docker.preVersionCommand, e]
+            bodyLines: [this.normalizedConfig.docker.preVersionCommand, e]
           })
         );
       }
@@ -971,7 +1002,7 @@ ${Object.keys(allProjectChangelogs)
     }
 
     if (
-      this.config.docker ||
+      this.normalizedConfig.docker ||
       releaseGraph.releaseGroups.some(rg => rg.docker)
     ) {
       writeWarning(
@@ -992,7 +1023,7 @@ ${Object.keys(allProjectChangelogs)
 
     // Resolve any git tags as early as possible so that we can hard error in case of any duplicates before reaching the actual git command
     const gitTagValues: string[] =
-      (options.gitTag ?? this.config.version?.git?.tag)
+      (options.gitTag ?? this.normalizedConfig.version?.git?.tag)
         ? createGitTagValues(
             releaseGraph.releaseGroups,
             releaseGraph.releaseGroupToFilteredProjects,
@@ -1029,7 +1060,7 @@ ${Object.keys(allProjectChangelogs)
       };
     }
 
-    if (options.gitCommit ?? this.config.version?.git?.commit) {
+    if (options.gitCommit ?? this.normalizedConfig.version?.git?.commit) {
       await commitChanges({
         changedFiles,
         deletedFiles,
@@ -1042,9 +1073,13 @@ ${Object.keys(allProjectChangelogs)
           commitMessage!
         ),
         gitCommitArgs:
-          options.gitCommitArgs || this.config.version?.git?.commitArgs
+          options.gitCommitArgs ||
+          this.normalizedConfig.version?.git?.commitArgs
       });
-    } else if (options.stageChanges ?? this.config.version?.git?.stageChanges) {
+    } else if (
+      options.stageChanges ??
+      this.normalizedConfig.version?.git?.stageChanges
+    ) {
       writeDebug(`Staging changed files with git`);
       await gitAdd({
         changedFiles,
@@ -1054,29 +1089,30 @@ ${Object.keys(allProjectChangelogs)
       });
     }
 
-    if (options.gitTag ?? this.config.version?.git?.tag) {
+    if (options.gitTag ?? this.normalizedConfig.version?.git?.tag) {
       writeDebug(`Tagging commit with git`);
       for (const tag of gitTagValues) {
         await gitTag({
           tag,
           message:
-            options.gitTagMessage || this.config.version?.git?.tagMessage,
+            options.gitTagMessage ||
+            this.normalizedConfig.version?.git?.tagMessage,
           additionalArgs:
-            options.gitTagArgs || this.config.version?.git?.tagArgs,
+            options.gitTagArgs || this.normalizedConfig.version?.git?.tagArgs,
           dryRun: options.dryRun,
           verbose: options.verbose
         });
       }
     }
 
-    if (options.gitPush ?? this.config.version?.git?.push) {
+    if (options.gitPush ?? this.normalizedConfig.version?.git?.push) {
       writeDebug(`Pushing to git remote "${options.gitRemote ?? "origin"}"`);
       await gitPush({
         gitRemote: options.gitRemote,
         dryRun: options.dryRun,
         verbose: options.verbose,
         additionalArgs:
-          options.gitPushArgs || this.config.version?.git?.pushArgs
+          options.gitPushArgs || this.normalizedConfig.version?.git?.pushArgs
       });
     }
 
