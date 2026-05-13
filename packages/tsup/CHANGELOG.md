@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Tsup
 
+## [0.2.160](https://github.com/storm-software/storm-ops/releases/tag/tsup%400.2.160) (05/12/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update devenv modules to latest version ([5467f0db1](https://github.com/storm-software/storm-ops/commit/5467f0db1))
+
+### Updated Dependencies
+
+- Updated **config-tools** to **v1.190.2**
+- Updated **build-tools** to **v0.158.162**
+
 ## [0.2.159](https://github.com/storm-software/storm-ops/releases/tag/tsup%400.2.159) (04/28/2026)
 
 ### Updated Dependencies

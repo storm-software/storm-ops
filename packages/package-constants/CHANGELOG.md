@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Package Constants
 
+## [0.1.16](https://github.com/storm-software/storm-ops/releases/tag/package-constants%400.1.16) (05/12/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update devenv modules to latest version ([5467f0db1](https://github.com/storm-software/storm-ops/commit/5467f0db1))
+
 ## [0.1.12](https://github.com/storm-software/storm-ops/releases/tag/package-constants%400.1.12) (04/14/2026)
 
 ### Miscellaneous

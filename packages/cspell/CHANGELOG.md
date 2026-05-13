@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - CSpell
 
+## [0.46.71](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.46.71) (05/12/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update devenv modules to latest version ([5467f0db1](https://github.com/storm-software/storm-ops/commit/5467f0db1))
+
 ## [0.46.67](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.46.67) (04/14/2026)
 
 ### Miscellaneous

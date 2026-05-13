@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - Config
 
+## [1.137.35](https://github.com/storm-software/storm-ops/releases/tag/config%401.137.35) (05/12/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update devenv modules to latest version ([5467f0db1](https://github.com/storm-software/storm-ops/commit/5467f0db1))
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.156**
+
 ## [1.137.34](https://github.com/storm-software/storm-ops/releases/tag/config%401.137.34) (04/28/2026)
 
 ### Updated Dependencies

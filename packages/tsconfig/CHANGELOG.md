@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Tsconfig
 
+## [0.48.70](https://github.com/storm-software/storm-ops/releases/tag/tsconfig%400.48.70) (05/12/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update devenv modules to latest version ([5467f0db1](https://github.com/storm-software/storm-ops/commit/5467f0db1))
+
 ## [0.48.66](https://github.com/storm-software/storm-ops/releases/tag/tsconfig%400.48.66) (04/14/2026)
 
 ### Miscellaneous
