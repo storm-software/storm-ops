@@ -5712,7 +5712,7 @@ Backward pagination arguments
    */
   'test/no-mocks-import'?: Linter.RuleEntry<[]>
   /**
-   * disallow .only blocks in tests
+   * disallow focused/only tests
    * @see https://github.com/levibuzolic/eslint-plugin-no-only-tests
    */
   'test/no-only-tests'?: Linter.RuleEntry<TestNoOnlyTests>
@@ -5837,7 +5837,7 @@ Backward pagination arguments
    */
   'test/prefer-expect-resolves'?: Linter.RuleEntry<[]>
   /**
-   * enforce using `expectTypeOf` instead of `expect(typeof ...)`
+   * enforce using `expect(...).toBeTypeOf(...)` instead of `expect(typeof ...).toBe(...)`
    * @see https://github.com/vitest-dev/eslint-plugin-vitest/blob/main/docs/rules/prefer-expect-type-of.md
    */
   'test/prefer-expect-type-of'?: Linter.RuleEntry<[]>
