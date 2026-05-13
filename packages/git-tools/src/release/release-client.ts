@@ -674,6 +674,16 @@ ${Object.keys(allProjectChangelogs)
       );
     }
 
+    this.projectGraph = await createProjectGraphAsync({
+      exitOnError: true,
+      resetDaemonClient: true
+    });
+    if (!this.projectGraph) {
+      throw new Error(
+        "Failed to load the project graph. Please run `nx reset`, then run the `storm-git commit` command again."
+      );
+    }
+
     // Use pre-built release graph if provided, otherwise create a new one
     const releaseGraph: ReleaseGraph =
       options.releaseGraph ??
