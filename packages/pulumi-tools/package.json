@@ -1,24 +1,31 @@
 {
   "name": "@storm-software/pulumi-tools",
   "version": "0.22.183",
-  "type": "commonjs",
   "description": "Tools for managing Pulumi infrastructure within a Nx workspace.",
+  "keywords": [
+    "iac",
+    "infrastructure",
+    "monorepo",
+    "pulumi",
+    "storm",
+    "storm-ops",
+    "storm-stack",
+    "sullivanpj"
+  ],
+  "homepage": "https://stormsoftware.com",
+  "bugs": "https://github.com/storm-software/storm-ops/issues",
   "repository": {
     "type": "github",
     "url": "https://github.com/storm-software/storm-ops",
     "directory": "packages/pulumi-tools"
   },
-  "homepage": "https://stormsoftware.com",
-  "bugs": "https://github.com/storm-software/storm-ops/issues",
+  "license": "Apache-2.0",
   "author": {
     "name": "Storm Software",
     "email": "contact@stormsoftware.com",
     "url": "https://stormsoftware.com"
   },
-  "license": "Apache-2.0",
-  "private": false,
-  "main": "dist/index.js",
-  "module": "dist/index.mjs",
+  "type": "commonjs",
   "exports": {
     "./package.json": "./package.json",
     "./docs/*": "./docs/*",
@@ -142,33 +149,9 @@
     "./executors/*/executor.js": "./dist/src/executors/*/executor.js",
     "./generators/*/generators.js": "./dist/src/generators/*/generator.js"
   },
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
   "typings": "dist/index.d.ts",
-  "keywords": [
-    "iac",
-    "infrastructure",
-    "monorepo",
-    "pulumi",
-    "storm",
-    "storm-ops",
-    "storm-stack",
-    "sullivanpj"
-  ],
-  "peerDependencies": {
-    "@nx/devkit": "catalog:",
-    "@storm-software/workspace-tools": ">=1.267.0",
-    "tsup": "catalog:"
-  },
-  "peerDependenciesMeta": {
-    "@nx/devkit": {
-      "optional": false
-    },
-    "@pulumi/pulumi": {
-      "optional": false
-    },
-    "nx": {
-      "optional": false
-    }
-  },
   "dependencies": {
     "@nx/devkit": "catalog:",
     "@pulumi/aws": "^6.83.3",
@@ -176,6 +159,7 @@
     "@pulumi/pulumi": "^3.238.0",
     "@storm-software/config": "workspace:*",
     "@storm-software/config-tools": "workspace:*",
+    "@storm-software/workspace-tools": "workspace:*",
     "defu": "catalog:",
     "shelljs": "^0.8.5"
   },

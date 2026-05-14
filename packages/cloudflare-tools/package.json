@@ -128,6 +128,9 @@
     "@aws-sdk/client-s3": "^3.1046.0",
     "@aws-sdk/lib-storage": "^3.1046.0",
     "@smithy/node-http-handler": "^4.7.2",
+    "@storm-software/config": "workspace:*",
+    "@storm-software/config-tools": "workspace:*",
+    "@storm-software/workspace-tools": "workspace:*",
     "defu": "catalog:",
     "glob": "catalog:",
     "mime-types": "^3.0.2",
@@ -145,30 +148,10 @@
     "wrangler": "^4.90.1"
   },
   "peerDependencies": {
-    "@nx/devkit": "catalog:",
-    "@nx/js": "catalog:",
-    "@nx/node": "catalog:",
-    "@nx/web": "catalog:",
-    "@storm-software/config": "1.137.41",
-    "@storm-software/config-tools": "1.190.8",
-    "@storm-software/workspace-tools": "1.295.68",
-    "nx": "catalog:",
-    "tsup": "catalog:",
+    "nx": ">=22.7.1",
     "wrangler": ">=3.58.0"
   },
   "peerDependenciesMeta": {
-    "@nx/devkit": {
-      "optional": false
-    },
-    "@nx/node": {
-      "optional": false
-    },
-    "@nx/web": {
-      "optional": false
-    },
-    "@nx/webpack": {
-      "optional": false
-    },
     "nx": {
       "optional": false
     },
