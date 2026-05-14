@@ -693,16 +693,21 @@ ${Object.keys(allProjectChangelogs)
     // if the top level release command was used or if the user is using the changelog subcommand.
     // If the user explicitly overrides these args, then it doesn't matter if the top level config is set,
     // as all of the git options would be overridden anyway.
-    // if (
-    //   (options.gitCommit === undefined ||
-    //     options.gitTag === undefined ||
-    //     options.stageChanges === undefined) &&
-    //   this.normalizedConfig.git
-    // ) {
-    //   throw new Error(
-    //     `The "release.git" property in nx.json may not be used with the "nx release version" subcommand or programmatic API. Instead, configure git options for subcommands directly with "release.version.git" and "release.changelog.git".`
-    //   );
-    // }
+    if (
+      (options.gitCommit === undefined ||
+        options.gitTag === undefined ||
+        options.stageChanges === undefined) &&
+      this.normalizedConfig.git
+    ) {
+      this.normalizedConfig.version ??= {} as NxReleaseConfig["version"];
+      this.normalizedConfig.version.git ??= this.normalizedConfig.git;
+
+      this.normalizedConfig.changelog ??= {} as NxReleaseConfig["changelog"];
+      this.normalizedConfig.changelog!.git ??= this.normalizedConfig.git;
+
+      this.normalizedConfig.git =
+        undefined as unknown as NxReleaseConfig["git"];
+    }
 
     this.projectGraph = await createProjectGraphAsync({
       exitOnError: true,
