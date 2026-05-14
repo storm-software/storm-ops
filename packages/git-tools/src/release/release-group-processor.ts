@@ -898,7 +898,11 @@ export class StormReleaseGroupProcessor extends ReleaseGroupProcessor {
       const currentVersion =
         this.#getCurrentCachedVersionForProject(projectName);
       const bumpType = await deriveSpecifierFromConventionalCommits(
-        this.#nxReleaseConfig,
+        {
+          ...this.#nxReleaseConfig,
+          git:
+            this.#nxReleaseConfig.version.git ?? this.#nxReleaseConfig.git ?? {}
+        },
         this.#projectGraph,
         projectLogger,
         releaseGroup,
