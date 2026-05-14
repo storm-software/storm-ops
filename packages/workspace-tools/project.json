@@ -3,11 +3,10 @@
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "packages/workspace-tools/src",
   "projectType": "library",
-  "implicitDependencies": ["untyped", "unbuild", "esbuild"],
   "targets": {
     "build-untyped": {
       "executor": "nx:run-commands",
-      "dependsOn": ["clean", "^build"],
+      "dependsOn": ["^build"],
       "inputs": [
         "{projectRoot}/src/**/untyped.ts",
         "{projectRoot}/src/**/*.untyped.ts"
@@ -28,7 +27,7 @@
     },
     "build-base": {
       "executor": "nx:run-commands",
-      "dependsOn": ["clean", "build-untyped", "^build"],
+      "dependsOn": ["build-untyped", "^build"],
       "options": {
         "command": "tsup-node --config=tsup.config.ts",
         "cwd": "{projectRoot}"
