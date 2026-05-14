@@ -31,7 +31,6 @@ export const DEFAULT_RELEASE_GROUP_GIT_CONFIG = {
   tagMessage: "",
   tagArgs: "",
   stageChanges: false,
-  push: false,
   pushArgs: ""
 };
 
@@ -48,6 +47,7 @@ export const DEFAULT_VERSION_RELEASE_CONFIG = {
   updateDependents: "always",
   git: {
     ...DEFAULT_RELEASE_GROUP_GIT_CONFIG,
+    push: false,
     stageChanges: true
   }
 } as const;
