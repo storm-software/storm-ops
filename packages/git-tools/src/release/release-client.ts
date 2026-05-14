@@ -823,14 +823,14 @@ ${Object.keys(allProjectChangelogs)
       if (releaseGroup.version?.groupPreVersionCommand) {
         writeDebug(
           `Executing the ${releaseGroup.name} release group's pre-version command: \n` +
-            releaseGroup.version?.groupPreVersionCommand.preVersionCommand,
+            releaseGroup.version?.groupPreVersionCommand,
           this.workspaceConfig
         );
 
         try {
           const childProcess = runAsync(
             this.workspaceConfig,
-            releaseGroup.version?.groupPreVersionCommand.preVersionCommand,
+            releaseGroup.version?.groupPreVersionCommand,
             this.workspaceConfig.workspaceRoot,
             {
               ...process.env,
@@ -847,10 +847,7 @@ ${Object.keys(allProjectChangelogs)
           throw new Error(
             formatNxLog({
               title: `The ${releaseGroup.name} release group's pre-version command failed. See the full output above.`,
-              bodyLines: [
-                releaseGroup.version?.groupPreVersionCommand.preVersionCommand,
-                e
-              ]
+              bodyLines: [releaseGroup.version?.groupPreVersionCommand, e]
             })
           );
         }
