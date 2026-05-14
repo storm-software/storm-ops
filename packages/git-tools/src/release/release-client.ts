@@ -268,7 +268,7 @@ export class StormReleaseClient extends ReleaseClient {
       (await createReleaseGraph({
         tree: this.tree,
         projectGraph: this.projectGraph,
-        nxReleaseConfig: this.normalizedConfig,
+        nxReleaseConfig: this.config as NxReleaseConfig,
         filters: {
           projects: options.projects,
           groups: options.groups
@@ -441,7 +441,7 @@ export class StormReleaseClient extends ReleaseClient {
                 ? "*"
                 : getProjectsAffectedByCommit(c, fileToProjectMap)
             })),
-            this.normalizedConfig.conventionalCommits
+            this.config.conventionalCommits
           );
 
           writeDebug(
@@ -537,7 +537,7 @@ export class StormReleaseClient extends ReleaseClient {
               ? "*"
               : getProjectsAffectedByCommit(c, fileToProjectMap)
           })),
-          this.normalizedConfig.conventionalCommits
+          this.config.conventionalCommits
         );
 
         writeDebug(
@@ -607,7 +607,7 @@ ${Object.keys(allProjectChangelogs)
       options.releaseGraph.releaseGroupToFilteredProjects,
       options.versionData,
       options.gitCommitMessage ||
-        this.normalizedConfig.changelog?.git?.commitMessage ||
+        this.config.changelog?.git?.commitMessage ||
         "release(monorepo): Publish workspace release updates"
     );
 
@@ -638,8 +638,7 @@ ${Object.keys(allProjectChangelogs)
       isVerbose: !!options.verbose,
       gitCommitMessages: commitMessageValues,
       gitCommitArgs:
-        options.gitCommitArgs ||
-        this.normalizedConfig.changelog?.git?.commitArgs
+        options.gitCommitArgs || this.config.changelog?.git?.commitArgs
     });
 
     // Resolve the commit we just made
@@ -654,10 +653,9 @@ ${Object.keys(allProjectChangelogs)
       await gitTag({
         tag,
         message:
-          options.gitTagMessage ||
-          this.normalizedConfig.changelog?.git?.tagMessage,
+          options.gitTagMessage || this.config.changelog?.git?.tagMessage,
         additionalArgs:
-          options.gitTagArgs || this.normalizedConfig.changelog?.git?.tagArgs,
+          options.gitTagArgs || this.config.changelog?.git?.tagArgs,
         dryRun: options.dryRun,
         verbose: options.verbose
       });
@@ -673,7 +671,7 @@ ${Object.keys(allProjectChangelogs)
       dryRun: options.dryRun,
       verbose: options.verbose,
       additionalArgs:
-        options.gitPushArgs || this.normalizedConfig.changelog?.git?.pushArgs
+        options.gitPushArgs || this.config.changelog?.git?.pushArgs
     });
 
     // Run any post-git tasks in series
