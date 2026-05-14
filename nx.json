@@ -76,35 +76,15 @@
       "packages": {
         "projects": ["packages/*"],
         "projectsRelationship": "independent",
-        "changelog": {
-          "createRelease": "github",
-          "entryWhenNoChanges": false
-        },
         "version": {
-          "groupPreVersionCommand": "pnpm build",
-          "versionActions": "./dist/packages/workspace-tools/dist/src/release/js-version-actions.js",
-          "currentVersionResolver": "git-tag",
-          "specifierSource": "conventional-commits"
-        },
-        "releaseTag": {
-          "pattern": "{projectName}@{version}"
+          "versionActions": "./dist/packages/workspace-tools/dist/src/release/js-version-actions.js"
         }
       },
       "crates": {
         "projects": ["crates/*"],
         "projectsRelationship": "independent",
-        "changelog": {
-          "createRelease": "github",
-          "entryWhenNoChanges": false
-        },
         "version": {
-          "groupPreVersionCommand": "pnpm build",
-          "versionActions": "./dist/packages/workspace-tools/dist/src/release/rust-version-actions.js",
-          "currentVersionResolver": "git-tag",
-          "specifierSource": "conventional-commits"
-        },
-        "releaseTag": {
-          "pattern": "{projectName}@{version}"
+          "versionActions": "./dist/packages/workspace-tools/dist/src/release/rust-version-actions.js"
         }
       }
     }
