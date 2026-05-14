@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Linting Tools
 
+## [1.133.37](https://github.com/storm-software/storm-ops/releases/tag/linting-tools%401.133.37) (05/14/2026)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate workspace packages' `README.md` files ([ec3df43cd](https://github.com/storm-software/storm-ops/commit/ec3df43cd))
+
+### Updated Dependencies
+
+- Updated **config-tools** to **v1.190.7**
+- Updated **config** to **v1.137.40**
+
 ## [1.133.36](https://github.com/storm-software/storm-ops/releases/tag/linting-tools%401.133.36) (05/14/2026)
 
 ### Updated Dependencies
