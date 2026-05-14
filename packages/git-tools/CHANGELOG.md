@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Git Tools
 
+## [2.131.5](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.131.5) (05/14/2026)
+
+### Bug Fixes
+
+- **git-tools:** Resolve issue with invalid push value for top-level git config ([8edcac152](https://github.com/storm-software/storm-ops/commit/8edcac152))
+
 ## [2.131.4](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.131.4) (05/14/2026)
 
 ### Miscellaneous
