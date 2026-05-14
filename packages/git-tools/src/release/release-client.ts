@@ -58,7 +58,6 @@ import {
 } from "nx/src/config/nx-json";
 import { FsTree } from "nx/src/generators/tree";
 import { createFileMapUsingProjectGraph } from "nx/src/project-graph/file-map-utils";
-import { findMatchingProjects } from "nx/src/utils/find-matching-projects";
 import { ReleaseConfig } from "../types";
 import {
   filterHiddenChanges,
@@ -131,10 +130,15 @@ export class StormReleaseClient extends ReleaseClient {
         }
       },
       {
-        groups: getReleaseGroupConfig(releaseConfig, workspaceConfig)
+        groups: getReleaseGroupConfig(
+          projectGraph,
+          releaseConfig,
+          workspaceConfig
+        )
       },
       {
         groups: getReleaseGroupConfig(
+          projectGraph,
           (nxJson.release ?? {}) as Partial<ReleaseConfig>,
           workspaceConfig
         )
@@ -145,7 +149,6 @@ export class StormReleaseClient extends ReleaseClient {
     ) as ReleaseConfig;
 
     const normalizedConfig = clone(config) as NxReleaseConfig;
-
     if (workspaceConfig.preid) {
       normalizedConfig.groups = Object.fromEntries(
         Object.entries(normalizedConfig.groups ?? {}).map(([name, group]) => {
@@ -162,38 +165,6 @@ export class StormReleaseClient extends ReleaseClient {
         })
       );
     }
-
-    const alreadyMatchedProjects = new Set<string>();
-    normalizedConfig.groups = Object.fromEntries(
-      Object.entries(normalizedConfig.groups ?? {}).map(([name, group]) => {
-        const matchingProjects = findMatchingProjects(
-          group.projects,
-          projectGraph.nodes
-        );
-        if (!matchingProjects.length) {
-          throw new Error(
-            `Release group "${name}" does not have any matching projects.`
-          );
-        }
-
-        for (const project of matchingProjects) {
-          if (alreadyMatchedProjects.has(project)) {
-            throw new Error(
-              `Project "${project}" is included in more than one release group. Please ensure that each project is only included in one release group, or remove the "projects" property from the release group configuration to allow it to be included in the same release group as other projects with overlapping globs.`
-            );
-          }
-          alreadyMatchedProjects.add(project);
-        }
-
-        return [
-          name,
-          {
-            ...group,
-            projects: matchingProjects
-          }
-        ];
-      })
-    );
 
     return new StormReleaseClient(
       projectGraph,

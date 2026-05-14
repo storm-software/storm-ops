@@ -201,7 +201,10 @@
     "storm-version-warning-cjs": "./bin/version-warning.cjs",
     "storm-version-warning-esm": "./bin/version-warning.js"
   },
-  "files": ["bin/**/*", "dist/**/*"],
+  "files": [
+    "bin/**/*",
+    "dist/**/*"
+  ],
   "dependencies": {
     "@commitlint/ensure": "^19.8.1",
     "@commitlint/rules": "^19.8.1",
@@ -233,6 +236,7 @@
     "zod": "catalog:"
   },
   "devDependencies": {
+    "@storm-software/package-constants": "workspace:*",
     "@types/node": "catalog:",
     "commander": "catalog:",
     "conventional-commits-parser": "^6.4.0",

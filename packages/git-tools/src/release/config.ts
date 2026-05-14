@@ -1,8 +1,18 @@
+import { ProjectGraph } from "@nx/devkit";
 import { joinPaths } from "@storm-software/config-tools/utilities/correct-paths";
 import { StormWorkspaceConfig } from "@storm-software/config/types";
+import {
+  isEqualProjectTag,
+  ProjectTagConstants
+} from "@storm-software/package-constants/tags";
 import { DEFAULT_COMMIT_TYPES } from "conventional-changelog-storm-software/commit-types";
 import defu from "defu";
-import { NxReleaseChangelogConfiguration } from "nx/src/config/nx-json";
+import { existsSync } from "fs";
+import {
+  NxReleaseChangelogConfiguration,
+  NxReleaseVersionConfiguration
+} from "nx/src/config/nx-json";
+import { findMatchingProjects } from "nx/src/utils/find-matching-projects";
 import { DEFAULT_MONOREPO_COMMIT_QUESTIONS } from "../commit/config/monorepo";
 import { ReleaseConfig, ReleaseGroupConfig } from "../types";
 import { omit } from "../utilities/omit";
@@ -14,14 +24,12 @@ export const DEFAULT_CONVENTIONAL_COMMITS_CONFIG = {
   types: DEFAULT_COMMIT_TYPES
 };
 
-export const DEFAULT_RELEASE_TAG_PATTERN = "{projectName}@{version}";
+export const DEFAULT_INDEPENDENT_RELEASE_TAG_PATTERN =
+  "{projectName}@{version}";
 export const DEFAULT_FIXED_RELEASE_TAG_PATTERN = "{releaseGroupName}@{version}";
 
 export const DEFAULT_COMMIT_MESSAGE =
   "release(monorepo): Publish v{version} release updates";
-
-export const DEFAULT_VERSION_ACTIONS_PATH =
-  "@nx/js/src/release/version-actions";
 
 export const DEFAULT_RELEASE_GROUP_GIT_CONFIG = {
   commit: false,
@@ -39,8 +47,6 @@ export const DEFAULT_VERSION_RELEASE_CONFIG = {
   fallbackCurrentVersionResolver: "disk",
   specifierSource: "conventional-commits",
   groupPreVersionCommand: "pnpm build",
-  versionActions: DEFAULT_VERSION_ACTIONS_PATH,
-  versionActionsOptions: {},
   preserveLocalDependencyProtocols: true,
   preserveMatchingDependencyRanges: true,
   logUnchangedProjects: true,
@@ -78,26 +84,28 @@ export const DEFAULT_RELEASE_GROUP_CONFIG = {
     ...DEFAULT_VERSION_RELEASE_CONFIG
   },
   releaseTag: {
-    pattern: DEFAULT_RELEASE_TAG_PATTERN,
+    pattern: DEFAULT_INDEPENDENT_RELEASE_TAG_PATTERN,
     preferDockerVersion: false
   },
   versionPlans: false
 } as const;
 
+export const DEFAULT_INDEPENDENT_RELEASE_GROUP_CONFIG = {
+  projectsRelationship: "independent",
+  releaseTag: {
+    pattern: DEFAULT_INDEPENDENT_RELEASE_TAG_PATTERN
+  }
+} as const;
+
 export const DEFAULT_FIXED_RELEASE_GROUP_CONFIG = {
-  ...DEFAULT_RELEASE_GROUP_CONFIG,
   projectsRelationship: "fixed",
   releaseTag: {
-    ...DEFAULT_RELEASE_GROUP_CONFIG.releaseTag,
     pattern: DEFAULT_FIXED_RELEASE_TAG_PATTERN
   }
 } as const;
 
-export const DEFAULT_JS_RELEASE_GROUP_CONFIG: ReleaseGroupConfig = {
-  ...DEFAULT_RELEASE_GROUP_CONFIG,
-  projects: ["packages/*"],
+export const DEFAULT_JS_RELEASE_GROUP_CONFIG = {
   version: {
-    ...DEFAULT_RELEASE_GROUP_CONFIG.version,
     versionActions:
       "@storm-software/workspace-tools/release/js-version-actions",
     versionActionsOptions: {
@@ -112,13 +120,10 @@ export const DEFAULT_JS_RELEASE_GROUP_CONFIG: ReleaseGroupConfig = {
       }
     ]
   }
-} as const;
+} as Omit<ReleaseGroupConfig, "projects">;
 
-export const DEFAULT_RUST_RELEASE_GROUP_CONFIG: ReleaseGroupConfig = {
-  ...DEFAULT_RELEASE_GROUP_CONFIG,
-  projects: ["crates/*"],
+export const DEFAULT_RUST_RELEASE_GROUP_CONFIG = {
   version: {
-    ...DEFAULT_RELEASE_GROUP_CONFIG.version,
     versionActions:
       "@storm-software/workspace-tools/release/rust-version-actions",
     versionActionsOptions: {
@@ -127,13 +132,25 @@ export const DEFAULT_RUST_RELEASE_GROUP_CONFIG: ReleaseGroupConfig = {
     },
     manifestRootsToUpdate: ["{projectRoot}"]
   }
-} as const;
+} as Omit<ReleaseGroupConfig, "projects">;
 
 export const DEFAULT_RELEASE_CONFIG: ReleaseConfig = {
   conventionalCommits: DEFAULT_CONVENTIONAL_COMMITS_CONFIG,
   groups: {
-    packages: DEFAULT_JS_RELEASE_GROUP_CONFIG,
-    crates: DEFAULT_RUST_RELEASE_GROUP_CONFIG
+    packages: defu(
+      {
+        projects: ["packages/*"]
+      },
+      DEFAULT_JS_RELEASE_GROUP_CONFIG,
+      DEFAULT_RELEASE_GROUP_CONFIG
+    ),
+    crates: defu(
+      {
+        projects: ["crates/*"]
+      },
+      DEFAULT_RUST_RELEASE_GROUP_CONFIG,
+      DEFAULT_RELEASE_GROUP_CONFIG
+    )
   },
   changelog: {
     ...DEFAULT_CHANGELOG_RELEASE_CONFIG,
@@ -142,13 +159,45 @@ export const DEFAULT_RELEASE_CONFIG: ReleaseConfig = {
     projectChangelogs: true
   },
   releaseTag: {
-    pattern: DEFAULT_RELEASE_TAG_PATTERN,
+    pattern: DEFAULT_INDEPENDENT_RELEASE_TAG_PATTERN,
     preferDockerVersion: false
   },
   version: {
     ...DEFAULT_VERSION_RELEASE_CONFIG
   }
 } as const;
+
+export function mergeReleaseGroupConfig(
+  config: Partial<ReleaseGroupConfig>,
+  defaultConfig: Partial<ReleaseGroupConfig>,
+  workspaceConfig: StormWorkspaceConfig
+) {
+  return defu(
+    {
+      ...omit(defaultConfig, ["changelog", "version"]),
+      ...config
+    },
+    {
+      version: {
+        ...defaultConfig.version
+      } as NxReleaseVersionConfiguration
+    },
+    {
+      changelog: {
+        ...(typeof defaultConfig.changelog === "object"
+          ? defaultConfig.changelog
+          : {}),
+        renderer: StormChangelogRenderer,
+        renderOptions: {
+          ...((typeof defaultConfig.changelog === "object" &&
+            defaultConfig.changelog.renderOptions) ||
+            {}),
+          workspaceConfig
+        }
+      } as NxReleaseChangelogConfiguration
+    }
+  ) as ReleaseGroupConfig;
+}
 
 /**
  * Get the release group configurations, applying defaults where necessary
@@ -158,51 +207,100 @@ export const DEFAULT_RELEASE_CONFIG: ReleaseConfig = {
  * @returns The release group configurations
  */
 export function getReleaseGroupConfig(
+  projectGraph: ProjectGraph,
   releaseConfig: Partial<ReleaseConfig>,
   workspaceConfig: StormWorkspaceConfig
 ) {
+  const alreadyMatchedProjects = new Set<string>();
   return !releaseConfig?.groups ||
     Object.keys(releaseConfig.groups).length === 0
     ? {}
     : Object.fromEntries(
         Object.entries(releaseConfig.groups).map(([name, group]) => {
-          const config = defu(
-            {
-              ...omit(
-                group.projectsRelationship === "fixed"
-                  ? DEFAULT_FIXED_RELEASE_GROUP_CONFIG
-                  : DEFAULT_RELEASE_GROUP_CONFIG,
-                ["changelog", "version"]
-              ),
-              ...group
-            },
-            {
-              version: {
-                ...((group.projectsRelationship === "fixed"
-                  ? DEFAULT_FIXED_RELEASE_GROUP_CONFIG
-                  : DEFAULT_RELEASE_GROUP_CONFIG
-                ).version as NxReleaseChangelogConfiguration)
-              }
-            },
-            {
-              changelog: {
-                ...((group.projectsRelationship === "fixed"
-                  ? DEFAULT_FIXED_RELEASE_GROUP_CONFIG
-                  : DEFAULT_RELEASE_GROUP_CONFIG
-                ).changelog as NxReleaseChangelogConfiguration),
-                renderer: StormChangelogRenderer,
-                renderOptions: {
-                  ...(
-                    (group.projectsRelationship === "fixed"
-                      ? DEFAULT_FIXED_RELEASE_GROUP_CONFIG
-                      : DEFAULT_RELEASE_GROUP_CONFIG
-                    ).changelog as NxReleaseChangelogConfiguration
-                  ).renderOptions,
-                  workspaceConfig
-                }
-              }
+          const matchingProjects = findMatchingProjects(
+            typeof group.projects === "string"
+              ? [group.projects]
+              : group.projects,
+            projectGraph.nodes
+          );
+          if (!matchingProjects.length) {
+            throw new Error(
+              `Release group "${name}" does not have any matching projects.`
+            );
+          }
+
+          for (const project of matchingProjects) {
+            if (alreadyMatchedProjects.has(project)) {
+              throw new Error(
+                `Project "${project}" is included in more than one release group. Please ensure that each project is only included in one release group, or remove the "projects" property from the release group configuration to allow it to be included in the same release group as other projects with overlapping globs.`
+              );
             }
-          ) as ReleaseGroupConfig;
+            alreadyMatchedProjects.add(project);
+          }
+
+          let languageDefaultConfig: Partial<ReleaseGroupConfig> = {};
+          if (
+            matchingProjects.every(
+              project =>
+                projectGraph.nodes[project]?.data &&
+                (projectGraph.nodes[project]?.data.metadata?.js ||
+                  isEqualProjectTag(
+                    projectGraph.nodes[project]?.data,
+                    ProjectTagConstants.Language.TAG_ID,
+                    ProjectTagConstants.Language.TYPESCRIPT
+                  ) ||
+                  (projectGraph.nodes[project]?.data.metadata?.root &&
+                    existsSync(
+                      joinPaths(
+                        projectGraph.nodes[project]?.data.metadata?.root,
+                        "package.json"
+                      )
+                    )))
+            )
+          ) {
+            languageDefaultConfig = defu(
+              DEFAULT_JS_RELEASE_GROUP_CONFIG,
+              DEFAULT_RELEASE_GROUP_CONFIG
+            );
+          } else if (
+            matchingProjects.every(
+              project =>
+                projectGraph.nodes[project]?.data &&
+                (projectGraph.nodes[project]?.data.metadata?.rust ||
+                  projectGraph.nodes[project]?.data.metadata?.cargo ||
+                  isEqualProjectTag(
+                    projectGraph.nodes[project]?.data,
+                    ProjectTagConstants.Language.TAG_ID,
+                    ProjectTagConstants.Language.RUST
+                  ) ||
+                  (projectGraph.nodes[project]?.data.metadata?.root &&
+                    existsSync(
+                      joinPaths(
+                        projectGraph.nodes[project]?.data.metadata?.root,
+                        "Cargo.toml"
+                      )
+                    )))
+            )
+          ) {
+            languageDefaultConfig = defu(
+              DEFAULT_RUST_RELEASE_GROUP_CONFIG,
+              DEFAULT_RELEASE_GROUP_CONFIG
+            );
+          }
+
+          const config = mergeReleaseGroupConfig(
+            group,
+            defu(
+              languageDefaultConfig,
+              group.projectsRelationship === "fixed"
+                ? DEFAULT_FIXED_RELEASE_GROUP_CONFIG
+                : DEFAULT_INDEPENDENT_RELEASE_GROUP_CONFIG,
+              DEFAULT_RELEASE_GROUP_CONFIG
+            ),
+            workspaceConfig
+          );
+
+          config.projects = matchingProjects;
 
           if (workspaceConfig?.workspaceRoot) {
             if (

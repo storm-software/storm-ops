@@ -34,6 +34,7 @@ export default defineConfig([
     shims: true,
     silent: true,
     tsconfig: "./tsconfig.json",
-    external: ["@nx/devkit", "jiti", "typescript", "@napi-rs/cli"]
+    external: ["@nx/devkit", "jiti", "typescript", "@napi-rs/cli"],
+    noExternal: ["@storm-software/package-constants"]
   }
 ]);
