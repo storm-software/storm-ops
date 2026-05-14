@@ -900,8 +900,7 @@ export class StormReleaseGroupProcessor extends ReleaseGroupProcessor {
       const bumpType = await deriveSpecifierFromConventionalCommits(
         {
           ...this.#nxReleaseConfig,
-          git:
-            this.#nxReleaseConfig.version.git ?? this.#nxReleaseConfig.git ?? {}
+          git: this.#nxReleaseConfig.git ?? {}
         },
         this.#projectGraph,
         projectLogger,
