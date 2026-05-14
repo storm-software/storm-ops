@@ -705,8 +705,7 @@ ${Object.keys(allProjectChangelogs)
       this.normalizedConfig.changelog ??= {} as NxReleaseConfig["changelog"];
       this.normalizedConfig.changelog!.git ??= this.normalizedConfig.git;
 
-      this.normalizedConfig.git =
-        undefined as unknown as NxReleaseConfig["git"];
+      this.normalizedConfig.git = {} as NxReleaseConfig["git"];
     }
 
     this.projectGraph = await createProjectGraphAsync({
