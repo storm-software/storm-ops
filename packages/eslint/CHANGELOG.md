@@ -2,6 +2,19 @@
 
 # Changelog for Storm Ops - ESLint
 
+## [0.170.32](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.170.32) (05/14/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update `pnpm-lock.yaml` and packages' `README.md` files ([6f43d2237](https://github.com/storm-software/storm-ops/commit/6f43d2237))
+- **workspace-tools:** Update default `nx.json` configurations ([da734b5f4](https://github.com/storm-software/storm-ops/commit/da734b5f4))
+
+### Updated Dependencies
+
+- Updated **config-tools** to **v1.190.11**
+- Updated **config** to **v1.137.44**
+- Updated **tsdoc** to **v0.13.165**
+
 ## [0.170.31](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.170.31) (05/14/2026)
 
 ### Miscellaneous

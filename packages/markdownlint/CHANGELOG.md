@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Markdownlint
 
+## [0.30.168](https://github.com/storm-software/storm-ops/releases/tag/markdownlint%400.30.168) (05/14/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update `pnpm-lock.yaml` and packages' `README.md` files ([6f43d2237](https://github.com/storm-software/storm-ops/commit/6f43d2237))
+- **workspace-tools:** Update default `nx.json` configurations ([da734b5f4](https://github.com/storm-software/storm-ops/commit/da734b5f4))
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.165**
+
 ## [0.30.167](https://github.com/storm-software/storm-ops/releases/tag/markdownlint%400.30.167) (05/14/2026)
 
 ### Miscellaneous

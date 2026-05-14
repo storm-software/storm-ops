@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Config Tools
 
+## [1.190.11](https://github.com/storm-software/storm-ops/releases/tag/config-tools%401.190.11) (05/14/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update `pnpm-lock.yaml` and packages' `README.md` files ([6f43d2237](https://github.com/storm-software/storm-ops/commit/6f43d2237))
+- **workspace-tools:** Update default `nx.json` configurations ([da734b5f4](https://github.com/storm-software/storm-ops/commit/da734b5f4))
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.165**
+- Updated **config** to **v1.137.44**
+
 ## [1.190.10](https://github.com/storm-software/storm-ops/releases/tag/config-tools%401.190.10) (05/14/2026)
 
 ### Miscellaneous

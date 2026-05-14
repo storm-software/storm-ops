@@ -2,6 +2,20 @@
 
 # Changelog for Storm Ops - Git Tools
 
+## [2.131.12](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.131.12) (05/14/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update `pnpm-lock.yaml` and packages' `README.md` files ([6f43d2237](https://github.com/storm-software/storm-ops/commit/6f43d2237))
+- **workspace-tools:** Update default `nx.json` configurations ([da734b5f4](https://github.com/storm-software/storm-ops/commit/da734b5f4))
+
+### Updated Dependencies
+
+- Updated **conventional-changelog** to **v0.3.171**
+- Updated **package-constants** to **v0.1.25**
+- Updated **config-tools** to **v1.190.11**
+- Updated **config** to **v1.137.44**
+
 ## [2.131.11](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.131.11) (05/14/2026)
 
 ### Miscellaneous

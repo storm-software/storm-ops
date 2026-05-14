@@ -2,6 +2,19 @@
 
 # Changelog for Storm Ops - Unbuild
 
+## [0.57.172](https://github.com/storm-software/storm-ops/releases/tag/unbuild%400.57.172) (05/14/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update `pnpm-lock.yaml` and packages' `README.md` files ([6f43d2237](https://github.com/storm-software/storm-ops/commit/6f43d2237))
+- **workspace-tools:** Update default `nx.json` configurations ([da734b5f4](https://github.com/storm-software/storm-ops/commit/da734b5f4))
+
+### Updated Dependencies
+
+- Updated **config-tools** to **v1.190.11**
+- Updated **build-tools** to **v0.158.171**
+- Updated **config** to **v1.137.44**
+
 ## [0.57.171](https://github.com/storm-software/storm-ops/releases/tag/unbuild%400.57.171) (05/14/2026)
 
 ### Miscellaneous
