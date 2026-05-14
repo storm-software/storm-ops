@@ -2,6 +2,19 @@
 
 # Changelog for Storm Ops - Git Tools
 
+## [2.131.9](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.131.9) (05/14/2026)
+
+### Miscellaneous
+
+- **git-tools:** Simplify logic to resolve Nx release configuration ([6478d757e](https://github.com/storm-software/storm-ops/commit/6478d757e))
+
+### Updated Dependencies
+
+- Updated **conventional-changelog** to **v0.3.168**
+- Updated **package-constants** to **v0.1.22**
+- Updated **config-tools** to **v1.190.8**
+- Updated **config** to **v1.137.41**
+
 ## [2.131.8](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.131.8) (05/14/2026)
 
 ### Miscellaneous
