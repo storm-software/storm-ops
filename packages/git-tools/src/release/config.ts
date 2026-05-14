@@ -17,6 +17,21 @@ export const DEFAULT_CONVENTIONAL_COMMITS_CONFIG = {
 export const DEFAULT_RELEASE_TAG_PATTERN = "{projectName}@{version}";
 export const DEFAULT_FIXED_RELEASE_TAG_PATTERN = "{releaseGroupName}@{version}";
 
+export const DEFAULT_COMMIT_MESSAGE =
+  "release(monorepo): Publish v{version} release updates";
+
+export const DEFAULT_RELEASE_GROUP_GIT_CONFIG = {
+  commit: false,
+  commitMessage: DEFAULT_COMMIT_MESSAGE,
+  commitArgs: "",
+  tag: false,
+  tagMessage: "",
+  tagArgs: "",
+  stageChanges: false,
+  push: false,
+  pushArgs: ""
+};
+
 export const DEFAULT_RELEASE_GROUP_CONFIG = {
   projectsRelationship: "independent",
   changelog: {
@@ -27,13 +42,23 @@ export const DEFAULT_RELEASE_GROUP_CONFIG = {
       authors: false,
       commitReferences: true,
       versionTitleDate: true
+    },
+    git: {
+      ...DEFAULT_RELEASE_GROUP_GIT_CONFIG,
+      commit: true,
+      tag: true,
+      push: true
     }
   },
   version: {
     currentVersionResolver: "git-tag",
     fallbackCurrentVersionResolver: "disk",
     specifierSource: "conventional-commits",
-    groupPreVersionCommand: "pnpm build"
+    groupPreVersionCommand: "pnpm build",
+    git: {
+      ...DEFAULT_RELEASE_GROUP_GIT_CONFIG,
+      stageChanges: true
+    }
   },
   releaseTag: { pattern: DEFAULT_RELEASE_TAG_PATTERN }
 } as const;

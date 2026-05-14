@@ -13,6 +13,7 @@ import {
   writeWarning
 } from "@storm-software/config-tools/logger/console";
 import defu from "defu";
+import clone from "nanoclone";
 import { existsSync } from "node:fs";
 import { ReleaseClient } from "nx/release";
 import { DependencyBump } from "nx/release/changelog-renderer";
@@ -25,11 +26,7 @@ import {
   ChangelogOptions as NxChangelogOptions,
   VersionOptions
 } from "nx/src/command-line/release/command-object";
-import {
-  createNxReleaseConfig,
-  handleNxReleaseConfigError,
-  NxReleaseConfig
-} from "nx/src/command-line/release/config/config";
+import { NxReleaseConfig } from "nx/src/command-line/release/config/config";
 import {
   readRawVersionPlans,
   setResolvedVersionPlansOnGroups
@@ -60,10 +57,7 @@ import {
   readNxJson
 } from "nx/src/config/nx-json";
 import { FsTree } from "nx/src/generators/tree";
-import {
-  createFileMapUsingProjectGraph,
-  createProjectFileMapUsingProjectGraph
-} from "nx/src/project-graph/file-map-utils";
+import { createFileMapUsingProjectGraph } from "nx/src/project-graph/file-map-utils";
 import { ReleaseConfig } from "../types";
 import {
   filterHiddenChanges,
@@ -83,7 +77,11 @@ import { formatNxLog } from "../utilities/logs";
 import { omit } from "../utilities/omit";
 import { formatChangedFiles } from "../utilities/prettier";
 import StormChangelogRenderer from "./changelog-renderer";
-import { DEFAULT_RELEASE_CONFIG, getReleaseGroupConfig } from "./config";
+import {
+  DEFAULT_COMMIT_MESSAGE,
+  DEFAULT_RELEASE_CONFIG,
+  getReleaseGroupConfig
+} from "./config";
 import { StormReleaseGroupProcessor } from "./release-group-processor";
 
 export type ChangelogOptions = Omit<
@@ -145,9 +143,11 @@ export class StormReleaseClient extends ReleaseClient {
       omit(DEFAULT_RELEASE_CONFIG, ["groups"])
     ) as ReleaseConfig;
 
+    const normalizedConfig = clone(config) as NxReleaseConfig;
+
     if (workspaceConfig.preid) {
-      config.groups = Object.fromEntries(
-        Object.entries(config.groups).map(([name, group]) => {
+      normalizedConfig.groups = Object.fromEntries(
+        Object.entries(normalizedConfig.groups ?? {}).map(([name, group]) => {
           return [
             name,
             {
@@ -162,25 +162,10 @@ export class StormReleaseClient extends ReleaseClient {
       );
     }
 
-    // Apply default configuration to any optional user configuration
-    const { error: configError, nxReleaseConfig } = await createNxReleaseConfig(
-      projectGraph,
-      await createProjectFileMapUsingProjectGraph(projectGraph),
-      config
-    );
-    if (configError) {
-      return await handleNxReleaseConfigError(configError);
-    }
-    if (!nxReleaseConfig) {
-      throw new Error(
-        "An unknown error occurred while creating the release configuration."
-      );
-    }
-
     return new StormReleaseClient(
       projectGraph,
       config,
-      nxReleaseConfig,
+      normalizedConfig,
       workspaceConfig
     );
   }
@@ -268,7 +253,7 @@ export class StormReleaseClient extends ReleaseClient {
       (await createReleaseGraph({
         tree: this.tree,
         projectGraph: this.projectGraph,
-        nxReleaseConfig: this.config as NxReleaseConfig,
+        nxReleaseConfig: this.normalizedConfig,
         filters: {
           projects: options.projects,
           groups: options.groups
@@ -441,7 +426,7 @@ export class StormReleaseClient extends ReleaseClient {
                 ? "*"
                 : getProjectsAffectedByCommit(c, fileToProjectMap)
             })),
-            this.config.conventionalCommits
+            this.normalizedConfig.conventionalCommits
           );
 
           writeDebug(
@@ -537,7 +522,7 @@ export class StormReleaseClient extends ReleaseClient {
               ? "*"
               : getProjectsAffectedByCommit(c, fileToProjectMap)
           })),
-          this.config.conventionalCommits
+          this.normalizedConfig.conventionalCommits
         );
 
         writeDebug(
@@ -607,8 +592,8 @@ ${Object.keys(allProjectChangelogs)
       options.releaseGraph.releaseGroupToFilteredProjects,
       options.versionData,
       options.gitCommitMessage ||
-        this.config.changelog?.git?.commitMessage ||
-        "release(monorepo): Publish workspace release updates"
+        this.normalizedConfig.changelog?.git?.commitMessage ||
+        DEFAULT_COMMIT_MESSAGE
     );
 
     const changes = this.tree.listChanges();
@@ -638,7 +623,8 @@ ${Object.keys(allProjectChangelogs)
       isVerbose: !!options.verbose,
       gitCommitMessages: commitMessageValues,
       gitCommitArgs:
-        options.gitCommitArgs || this.config.changelog?.git?.commitArgs
+        options.gitCommitArgs ||
+        this.normalizedConfig.changelog?.git?.commitArgs
     });
 
     // Resolve the commit we just made
@@ -653,9 +639,10 @@ ${Object.keys(allProjectChangelogs)
       await gitTag({
         tag,
         message:
-          options.gitTagMessage || this.config.changelog?.git?.tagMessage,
+          options.gitTagMessage ||
+          this.normalizedConfig.changelog?.git?.tagMessage,
         additionalArgs:
-          options.gitTagArgs || this.config.changelog?.git?.tagArgs,
+          options.gitTagArgs || this.normalizedConfig.changelog?.git?.tagArgs,
         dryRun: options.dryRun,
         verbose: options.verbose
       });
@@ -671,7 +658,7 @@ ${Object.keys(allProjectChangelogs)
       dryRun: options.dryRun,
       verbose: options.verbose,
       additionalArgs:
-        options.gitPushArgs || this.config.changelog?.git?.pushArgs
+        options.gitPushArgs || this.normalizedConfig.changelog?.git?.pushArgs
     });
 
     // Run any post-git tasks in series
@@ -686,26 +673,6 @@ ${Object.keys(allProjectChangelogs)
     options: VersionOptions
   ): Promise<NxReleaseVersionResult> => {
     const verbose = options.verbose || isVerbose(this.workspaceConfig.logLevel);
-
-    // The nx release top level command will always override these three git args. This is how we can tell
-    // if the top level release command was used or if the user is using the changelog subcommand.
-    // If the user explicitly overrides these args, then it doesn't matter if the top level config is set,
-    // as all of the git options would be overridden anyway.
-    if (
-      (options.gitCommit === undefined ||
-        options.gitTag === undefined ||
-        options.stageChanges === undefined) &&
-      this.normalizedConfig.git
-    ) {
-      this.normalizedConfig.version ??= {} as NxReleaseConfig["version"];
-      this.normalizedConfig.version.git ??= this.normalizedConfig.git;
-
-      this.normalizedConfig.changelog ??= {} as NxReleaseConfig["changelog"];
-      this.normalizedConfig.changelog!.git ??= this.normalizedConfig.git;
-
-      this.normalizedConfig.git =
-        undefined as unknown as NxReleaseConfig["git"];
-    }
 
     this.projectGraph = await createProjectGraphAsync({
       exitOnError: true,

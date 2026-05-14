@@ -201,7 +201,10 @@
     "storm-version-warning-cjs": "./bin/version-warning.cjs",
     "storm-version-warning-esm": "./bin/version-warning.js"
   },
-  "files": ["bin/**/*", "dist/**/*"],
+  "files": [
+    "bin/**/*",
+    "dist/**/*"
+  ],
   "dependencies": {
     "@commitlint/ensure": "^19.8.1",
     "@commitlint/rules": "^19.8.1",
@@ -221,6 +224,7 @@
     "conventional-changelog-storm-software": "workspace:*",
     "htmlparser2": "10.0.0",
     "jsonc-parser": "3.2.1",
+    "nanoclone": "^1.0.2",
     "nx": "catalog:",
     "prettier": "catalog:",
     "prettier-plugin-organize-imports": "^4.3.0",
