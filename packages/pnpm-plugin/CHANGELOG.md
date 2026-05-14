@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Pnpm Plugin
 
+## [0.1.121](https://github.com/storm-software/storm-ops/releases/tag/pnpm-plugin%400.1.121) (05/14/2026)
+
+### Updated Dependencies
+
+- Updated **package-constants** to **v0.1.23**
+- Updated **testing-tools** to **v1.119.163**
+
 ## [0.1.120](https://github.com/storm-software/storm-ops/releases/tag/pnpm-plugin%400.1.120) (05/14/2026)
 
 ### Updated Dependencies
