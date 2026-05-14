@@ -20,6 +20,9 @@ export const DEFAULT_FIXED_RELEASE_TAG_PATTERN = "{releaseGroupName}@{version}";
 export const DEFAULT_COMMIT_MESSAGE =
   "release(monorepo): Publish v{version} release updates";
 
+export const DEFAULT_VERSION_ACTIONS_PATH =
+  "@nx/js/src/release/version-actions";
+
 export const DEFAULT_RELEASE_GROUP_GIT_CONFIG = {
   commit: false,
   commitMessage: DEFAULT_COMMIT_MESSAGE,
@@ -36,7 +39,8 @@ export const DEFAULT_RELEASE_GROUP_CONFIG = {
   projectsRelationship: "independent",
   changelog: {
     createRelease: "github",
-    entryWhenNoChanges: false,
+    entryWhenNoChanges:
+      "This was a version bump only for {projectName} to align it with other projects, there were no code changes.",
     file: false,
     renderOptions: {
       authors: false,
@@ -55,12 +59,22 @@ export const DEFAULT_RELEASE_GROUP_CONFIG = {
     fallbackCurrentVersionResolver: "disk",
     specifierSource: "conventional-commits",
     groupPreVersionCommand: "pnpm build",
+    versionActions: DEFAULT_VERSION_ACTIONS_PATH,
+    versionActionsOptions: {},
+    preserveLocalDependencyProtocols: true,
+    preserveMatchingDependencyRanges: true,
+    logUnchangedProjects: true,
+    updateDependents: "always",
     git: {
       ...DEFAULT_RELEASE_GROUP_GIT_CONFIG,
       stageChanges: true
     }
   },
-  releaseTag: { pattern: DEFAULT_RELEASE_TAG_PATTERN }
+  releaseTag: {
+    pattern: DEFAULT_RELEASE_TAG_PATTERN,
+    preferDockerVersion: false
+  },
+  versionPlans: false
 } as const;
 
 export const DEFAULT_FIXED_RELEASE_GROUP_CONFIG = {
