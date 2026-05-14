@@ -2,6 +2,19 @@
 
 # Changelog for Storm Ops - Git Tools
 
+## [2.131.7](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.131.7) (05/14/2026)
+
+### Bug Fixes
+
+- **git-tools:** Improvements to logic to handle configuration resolution ([12eb27271](https://github.com/storm-software/storm-ops/commit/12eb27271))
+
+### Updated Dependencies
+
+- Updated **conventional-changelog** to **v0.3.166**
+- Updated **package-constants** to **v0.1.20**
+- Updated **config-tools** to **v1.190.6**
+- Updated **config** to **v1.137.39**
+
 ## [2.131.6](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.131.6) (05/14/2026)
 
 ### Bug Fixes

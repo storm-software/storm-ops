@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Package Constants
 
+## [0.1.20](https://github.com/storm-software/storm-ops/releases/tag/package-constants%400.1.20) (05/14/2026)
+
+### Bug Fixes
+
+- **git-tools:** Improvements to logic to handle configuration resolution ([12eb27271](https://github.com/storm-software/storm-ops/commit/12eb27271))
+
 ## [0.1.18](https://github.com/storm-software/storm-ops/releases/tag/package-constants%400.1.18) (05/14/2026)
 
 ### Miscellaneous
