@@ -8,9 +8,12 @@ import {
 import { DEFAULT_COMMIT_TYPES } from "conventional-changelog-storm-software/commit-types";
 import defu from "defu";
 import { existsSync } from "fs";
+import { NxReleaseConfig } from "nx/src/command-line/release/config/config.js";
 import {
+  NxJsonConfiguration,
   NxReleaseChangelogConfiguration,
-  NxReleaseVersionConfiguration
+  NxReleaseVersionConfiguration,
+  readNxJson
 } from "nx/src/config/nx-json";
 import { findMatchingProjects } from "nx/src/utils/find-matching-projects";
 import { DEFAULT_MONOREPO_COMMIT_QUESTIONS } from "../commit/config/monorepo";
@@ -59,9 +62,6 @@ export const DEFAULT_VERSION_RELEASE_CONFIG = {
 
 export const DEFAULT_CHANGELOG_RELEASE_CONFIG = {
   createRelease: "github",
-  entryWhenNoChanges:
-    "This was a version bump only for {projectName} to align it with other projects, there were no code changes.",
-  file: false,
   renderOptions: {
     authors: false,
     commitReferences: true,
@@ -333,4 +333,54 @@ export function getReleaseGroupConfig(
           return [name, config];
         })
       );
+}
+
+export function getReleaseConfig(
+  projectGraph: ProjectGraph,
+  releaseConfig: Partial<ReleaseConfig>,
+  workspaceConfig: StormWorkspaceConfig,
+  ignoreNxJsonConfig = false
+): NxReleaseConfig {
+  let nxJson: Partial<NxJsonConfiguration> = {};
+  if (
+    !ignoreNxJsonConfig &&
+    existsSync(joinPaths(workspaceConfig.workspaceRoot, "nx.json"))
+  ) {
+    nxJson = readNxJson();
+  }
+
+  const baseConfig = defu(
+    {
+      changelog: {
+        renderOptions: {
+          workspaceConfig
+        }
+      },
+      groups: {}
+    },
+    omit(releaseConfig, ["groups"]),
+    nxJson.release ? omit(nxJson.release, ["groups"]) : {},
+    omit(DEFAULT_RELEASE_CONFIG, ["groups"])
+  ) as NxReleaseConfig;
+
+  let groups = {} as Record<string, ReleaseGroupConfig>;
+  if (releaseConfig?.groups && Object.keys(releaseConfig.groups).length > 0) {
+    groups = releaseConfig.groups;
+  } else if (
+    nxJson.release?.groups &&
+    Object.keys(nxJson.release.groups).length > 0
+  ) {
+    groups = nxJson.release.groups as Record<string, ReleaseGroupConfig>;
+  } else {
+    groups = DEFAULT_RELEASE_CONFIG.groups;
+  }
+
+  return {
+    ...baseConfig,
+    groups: getReleaseGroupConfig(
+      projectGraph,
+      { ...baseConfig, groups },
+      workspaceConfig
+    )
+  } as NxReleaseConfig;
 }
