@@ -3,6 +3,12 @@
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "packages/workspace-tools/src",
   "projectType": "library",
+  "implicitDependencies": [
+    "untyped",
+    "unbuild",
+    "esbuild",
+    "package-constants"
+  ],
   "targets": {
     "build-untyped": {
       "executor": "nx:run-commands",
