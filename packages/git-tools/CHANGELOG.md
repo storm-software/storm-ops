@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Git Tools
 
+## [2.131.3](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.131.3) (05/14/2026)
+
+### Bug Fixes
+
+- **git-tools:** Resolve issue with invalid config during changelog release ([8afca3792](https://github.com/storm-software/storm-ops/commit/8afca3792))
+
 ## [2.131.2](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.131.2) (05/14/2026)
 
 ### Bug Fixes
