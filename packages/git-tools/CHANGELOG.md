@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Git Tools
 
+## [2.131.6](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.131.6) (05/14/2026)
+
+### Bug Fixes
+
+- **git-tools:** Ensure `push` is no longer incorrectly provided to publish ([bd320f101](https://github.com/storm-software/storm-ops/commit/bd320f101))
+
 ## [2.131.5](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.131.5) (05/14/2026)
 
 ### Bug Fixes
