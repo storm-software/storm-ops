@@ -35,40 +35,48 @@ export const DEFAULT_RELEASE_GROUP_GIT_CONFIG = {
   pushArgs: ""
 };
 
+export const DEFAULT_VERSION_RELEASE_CONFIG = {
+  currentVersionResolver: "git-tag",
+  fallbackCurrentVersionResolver: "disk",
+  specifierSource: "conventional-commits",
+  groupPreVersionCommand: "pnpm build",
+  versionActions: DEFAULT_VERSION_ACTIONS_PATH,
+  versionActionsOptions: {},
+  preserveLocalDependencyProtocols: true,
+  preserveMatchingDependencyRanges: true,
+  logUnchangedProjects: true,
+  updateDependents: "always",
+  git: {
+    ...DEFAULT_RELEASE_GROUP_GIT_CONFIG,
+    stageChanges: true
+  }
+} as const;
+
+export const DEFAULT_CHANGELOG_RELEASE_CONFIG = {
+  createRelease: "github",
+  entryWhenNoChanges:
+    "This was a version bump only for {projectName} to align it with other projects, there were no code changes.",
+  file: false,
+  renderOptions: {
+    authors: false,
+    commitReferences: true,
+    versionTitleDate: true
+  },
+  git: {
+    ...DEFAULT_RELEASE_GROUP_GIT_CONFIG,
+    commit: true,
+    tag: true,
+    push: true
+  }
+} as const;
+
 export const DEFAULT_RELEASE_GROUP_CONFIG = {
   projectsRelationship: "independent",
   changelog: {
-    createRelease: "github",
-    entryWhenNoChanges:
-      "This was a version bump only for {projectName} to align it with other projects, there were no code changes.",
-    file: false,
-    renderOptions: {
-      authors: false,
-      commitReferences: true,
-      versionTitleDate: true
-    },
-    git: {
-      ...DEFAULT_RELEASE_GROUP_GIT_CONFIG,
-      commit: true,
-      tag: true,
-      push: true
-    }
+    ...DEFAULT_CHANGELOG_RELEASE_CONFIG
   },
   version: {
-    currentVersionResolver: "git-tag",
-    fallbackCurrentVersionResolver: "disk",
-    specifierSource: "conventional-commits",
-    groupPreVersionCommand: "pnpm build",
-    versionActions: DEFAULT_VERSION_ACTIONS_PATH,
-    versionActionsOptions: {},
-    preserveLocalDependencyProtocols: true,
-    preserveMatchingDependencyRanges: true,
-    logUnchangedProjects: true,
-    updateDependents: "always",
-    git: {
-      ...DEFAULT_RELEASE_GROUP_GIT_CONFIG,
-      stageChanges: true
-    }
+    ...DEFAULT_VERSION_RELEASE_CONFIG
   },
   releaseTag: {
     pattern: DEFAULT_RELEASE_TAG_PATTERN,
@@ -129,11 +137,18 @@ export const DEFAULT_RELEASE_CONFIG: ReleaseConfig = {
     crates: DEFAULT_RUST_RELEASE_GROUP_CONFIG
   },
   changelog: {
+    ...DEFAULT_CHANGELOG_RELEASE_CONFIG,
     automaticFromRef: true,
     workspaceChangelog: false,
     projectChangelogs: true
   },
-  releaseTag: { pattern: DEFAULT_RELEASE_TAG_PATTERN }
+  releaseTag: {
+    pattern: DEFAULT_RELEASE_TAG_PATTERN,
+    preferDockerVersion: false
+  },
+  version: {
+    ...DEFAULT_VERSION_RELEASE_CONFIG
+  }
 } as const;
 
 /**
