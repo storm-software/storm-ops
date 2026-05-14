@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Git Tools
 
+## [2.131.2](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.131.2) (05/14/2026)
+
+### Bug Fixes
+
+- **git-tools:** Ensure git commit message is applied during versioning ([6d86a79a0](https://github.com/storm-software/storm-ops/commit/6d86a79a0))
+
 ## [2.131.1](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.131.1) (05/14/2026)
 
 ### Miscellaneous
