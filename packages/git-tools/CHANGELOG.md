@@ -2,6 +2,25 @@
 
 # Changelog for Storm Ops - Git Tools
 
+## [2.131.4](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.131.4) (05/14/2026)
+
+### Miscellaneous
+
+- **git-tools:** Updated defaults for release configuration ([77f9eda76](https://github.com/storm-software/storm-ops/commit/77f9eda76))
+- **git-tools:** Resolve issue with git release configuration ([973b7ccde](https://github.com/storm-software/storm-ops/commit/973b7ccde))
+
+### Bug Fixes
+
+- **git-tools:** Resolve issue with missing top-level release configurations ([70c1bec79](https://github.com/storm-software/storm-ops/commit/70c1bec79))
+- **git-tools:** Resolve issue with null object reference ([d314f3287](https://github.com/storm-software/storm-ops/commit/d314f3287))
+- **git-tools:** Ensure correct projects are provided to the release configuration ([6b585899f](https://github.com/storm-software/storm-ops/commit/6b585899f))
+
+### Updated Dependencies
+
+- Updated **conventional-changelog** to **v0.3.165**
+- Updated **config-tools** to **v1.190.5**
+- Updated **config** to **v1.137.38**
+
 ## [2.131.3](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.131.3) (05/14/2026)
 
 ### Bug Fixes
