@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - K8s Tools
 
+## [0.42.185](https://github.com/storm-software/storm-ops/releases/tag/k8s-tools%400.42.185) (05/14/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace packages' `README.md` file ([ff527d217](https://github.com/storm-software/storm-ops/commit/ff527d217))
+
+### Updated Dependencies
+
+- Updated **workspace-tools** to **v1.295.70**
+- Updated **config-tools** to **v1.190.10**
+- Updated **config** to **v1.137.43**
+
 ## [0.42.184](https://github.com/storm-software/storm-ops/releases/tag/k8s-tools%400.42.184) (05/14/2026)
 
 ### Updated Dependencies

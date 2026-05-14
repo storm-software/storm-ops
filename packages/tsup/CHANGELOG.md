@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Tsup
 
+## [0.2.168](https://github.com/storm-software/storm-ops/releases/tag/tsup%400.2.168) (05/14/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace packages' `README.md` file ([ff527d217](https://github.com/storm-software/storm-ops/commit/ff527d217))
+
+### Updated Dependencies
+
+- Updated **config-tools** to **v1.190.10**
+- Updated **build-tools** to **v0.158.170**
+
 ## [0.2.167](https://github.com/storm-software/storm-ops/releases/tag/tsup%400.2.167) (05/14/2026)
 
 ### Updated Dependencies
