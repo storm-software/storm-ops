@@ -2,6 +2,32 @@
 
 # Changelog for Storm Ops - Git Tools
 
+## [2.131.1](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.131.1) (05/14/2026)
+
+### Miscellaneous
+
+- **git-tools:** Ensure the git object exists ([463092608](https://github.com/storm-software/storm-ops/commit/463092608))
+- **release:** publish ([d45102e8d](https://github.com/storm-software/storm-ops/commit/d45102e8d))
+- **git-tools:** Remove invalid config validation from release ([098d375a0](https://github.com/storm-software/storm-ops/commit/098d375a0))
+
+### Bug Fixes
+
+- **git-tools:** Populate git on `version` and `changelog` nodes ([0bee2d78a](https://github.com/storm-software/storm-ops/commit/0bee2d78a))
+- **git-tools:** Resolve issue with invalid pre-version command string ([3d809740d](https://github.com/storm-software/storm-ops/commit/3d809740d))
+- **git-tools:** Ensure configuration is normalized before being used in versioning ([510116b2c](https://github.com/storm-software/storm-ops/commit/510116b2c))
+- **git-tools:** Force a recalculation of the project graph prior to versioning ([9be79a081](https://github.com/storm-software/storm-ops/commit/9be79a081))
+- **git-tools:** Ensure non-cached project graph is used during release graph creation ([af729bd1f](https://github.com/storm-software/storm-ops/commit/af729bd1f))
+
+### Features
+
+- **git-tools:** Introduce custom release versioning logic ([c6abd0bf6](https://github.com/storm-software/storm-ops/commit/c6abd0bf6))
+
+### Updated Dependencies
+
+- Updated **conventional-changelog** to **v0.3.164**
+- Updated **config-tools** to **v1.190.4**
+- Updated **config** to **v1.137.37**
+
 ## [2.131.0](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.131.0) (05/13/2026)
 
 ### Miscellaneous

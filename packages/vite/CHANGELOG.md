@@ -2,6 +2,20 @@
 
 # Changelog for Storm Ops - Vite
 
+## [0.1.98](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.98) (05/14/2026)
+
+### Miscellaneous
+
+- **release:** publish ([d45102e8d](https://github.com/storm-software/storm-ops/commit/d45102e8d))
+
+### Bug Fixes
+
+- **git-tools:** Ensure non-cached project graph is used during release graph creation ([af729bd1f](https://github.com/storm-software/storm-ops/commit/af729bd1f))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.164**
+
 ## [0.1.97](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.97) (05/13/2026)
 
 ### Bug Fixes

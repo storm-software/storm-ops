@@ -2,6 +2,23 @@
 
 # Changelog for Storm Ops - Esbuild
 
+## [0.53.165](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.53.165) (05/14/2026)
+
+### Miscellaneous
+
+- **release:** publish ([d45102e8d](https://github.com/storm-software/storm-ops/commit/d45102e8d))
+
+### Bug Fixes
+
+- **git-tools:** Ensure non-cached project graph is used during release graph creation ([af729bd1f](https://github.com/storm-software/storm-ops/commit/af729bd1f))
+
+### Updated Dependencies
+
+- Updated **config-tools** to **v1.190.4**
+- Updated **build-tools** to **v0.158.164**
+- Updated **config** to **v1.137.37**
+- Updated **tsup** to **v0.2.162**
+
 ## [0.53.164](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.53.164) (05/13/2026)
 
 ### Bug Fixes

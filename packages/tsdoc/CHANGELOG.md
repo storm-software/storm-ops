@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - Tsdoc
 
+## [0.13.158](https://github.com/storm-software/storm-ops/releases/tag/tsdoc%400.13.158) (05/14/2026)
+
+### Miscellaneous
+
+- **release:** publish ([d45102e8d](https://github.com/storm-software/storm-ops/commit/d45102e8d))
+
+### Bug Fixes
+
+- **git-tools:** Ensure non-cached project graph is used during release graph creation ([af729bd1f](https://github.com/storm-software/storm-ops/commit/af729bd1f))
+
 ## [0.13.157](https://github.com/storm-software/storm-ops/releases/tag/tsdoc%400.13.157) (05/13/2026)
 
 ### Bug Fixes

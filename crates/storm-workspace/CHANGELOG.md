@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Storm Workspace
 
+## [0.19.207](https://github.com/storm-software/storm-ops/releases/tag/storm-workspace%400.19.207) (05/14/2026)
+
+### Miscellaneous
+
+- **release:** publish ([d45102e8d](https://github.com/storm-software/storm-ops/commit/d45102e8d))
+
 ## [0.19.137](https://github.com/storm-software/storm-ops/releases/tag/storm-workspace%400.19.137) (03/11/2026)
 
 ### Miscellaneous

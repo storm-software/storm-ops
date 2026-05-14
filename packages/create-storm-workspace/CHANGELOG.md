@@ -2,6 +2,20 @@
 
 # Changelog for Storm Ops - Create Storm Workspace
 
+## [1.97.164](https://github.com/storm-software/storm-ops/releases/tag/create-storm-workspace%401.97.164) (05/14/2026)
+
+### Miscellaneous
+
+- **release:** publish ([d45102e8d](https://github.com/storm-software/storm-ops/commit/d45102e8d))
+
+### Bug Fixes
+
+- **git-tools:** Ensure non-cached project graph is used during release graph creation ([af729bd1f](https://github.com/storm-software/storm-ops/commit/af729bd1f))
+
+### Updated Dependencies
+
+- Updated **config-tools** to **v1.190.4**
+
 ## [1.97.163](https://github.com/storm-software/storm-ops/releases/tag/create-storm-workspace%401.97.163) (05/13/2026)
 
 ### Bug Fixes

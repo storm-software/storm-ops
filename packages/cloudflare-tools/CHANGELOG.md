@@ -2,6 +2,22 @@
 
 # Changelog for Storm Ops - Cloudflare Tools
 
+## [0.71.138](https://github.com/storm-software/storm-ops/releases/tag/cloudflare-tools%400.71.138) (05/14/2026)
+
+### Miscellaneous
+
+- **release:** publish ([d45102e8d](https://github.com/storm-software/storm-ops/commit/d45102e8d))
+
+### Bug Fixes
+
+- **git-tools:** Ensure non-cached project graph is used during release graph creation ([af729bd1f](https://github.com/storm-software/storm-ops/commit/af729bd1f))
+
+### Updated Dependencies
+
+- Updated **workspace-tools** to **v1.295.64**
+- Updated **config-tools** to **v1.190.4**
+- Updated **config** to **v1.137.37**
+
 ## [0.71.137](https://github.com/storm-software/storm-ops/releases/tag/cloudflare-tools%400.71.137) (05/13/2026)
 
 ### Bug Fixes

@@ -2,6 +2,21 @@
 
 # Changelog for Storm Ops - Linting Tools
 
+## [1.133.34](https://github.com/storm-software/storm-ops/releases/tag/linting-tools%401.133.34) (05/14/2026)
+
+### Miscellaneous
+
+- **release:** publish ([d45102e8d](https://github.com/storm-software/storm-ops/commit/d45102e8d))
+
+### Bug Fixes
+
+- **git-tools:** Ensure non-cached project graph is used during release graph creation ([af729bd1f](https://github.com/storm-software/storm-ops/commit/af729bd1f))
+
+### Updated Dependencies
+
+- Updated **config-tools** to **v1.190.4**
+- Updated **config** to **v1.137.37**
+
 ## [1.133.33](https://github.com/storm-software/storm-ops/releases/tag/linting-tools%401.133.33) (05/13/2026)
 
 ### Bug Fixes
