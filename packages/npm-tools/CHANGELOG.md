@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Npm Tools
 
+## [0.6.120](https://github.com/storm-software/storm-ops/releases/tag/npm-tools%400.6.120) (05/13/2026)
+
+### Bug Fixes
+
+- **git-tools:** Ensure non-cached project graph is used during release graph creation ([af729bd1f](https://github.com/storm-software/storm-ops/commit/af729bd1f))
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.157**
+- Updated **config-tools** to **v1.190.3**
+- Updated **config** to **v1.137.36**
+
 ## [0.6.119](https://github.com/storm-software/storm-ops/releases/tag/npm-tools%400.6.119) (05/12/2026)
 
 ### Miscellaneous

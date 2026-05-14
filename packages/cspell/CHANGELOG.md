@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - CSpell
 
+## [0.46.72](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.46.72) (05/13/2026)
+
+### Bug Fixes
+
+- **git-tools:** Ensure non-cached project graph is used during release graph creation ([af729bd1f](https://github.com/storm-software/storm-ops/commit/af729bd1f))
+
 ## [0.46.71](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.46.71) (05/12/2026)
 
 ### Miscellaneous

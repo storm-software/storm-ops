@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Build Tools
 
+## [0.158.163](https://github.com/storm-software/storm-ops/releases/tag/build-tools%400.158.163) (05/13/2026)
+
+### Bug Fixes
+
+- **git-tools:** Ensure non-cached project graph is used during release graph creation ([af729bd1f](https://github.com/storm-software/storm-ops/commit/af729bd1f))
+
+### Updated Dependencies
+
+- Updated **config-tools** to **v1.190.3**
+- Updated **config** to **v1.137.36**
+
 ## [0.158.162](https://github.com/storm-software/storm-ops/releases/tag/build-tools%400.158.162) (05/12/2026)
 
 ### Miscellaneous

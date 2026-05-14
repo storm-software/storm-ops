@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Projen
 
+## [0.21.178](https://github.com/storm-software/storm-ops/releases/tag/projen%400.21.178) (05/13/2026)
+
+### Bug Fixes
+
+- **git-tools:** Ensure non-cached project graph is used during release graph creation ([af729bd1f](https://github.com/storm-software/storm-ops/commit/af729bd1f))
+
+### Updated Dependencies
+
+- Updated **workspace-tools** to **v1.295.63**
+- Updated **config-tools** to **v1.190.3**
+- Updated **config** to **v1.137.36**
+
 ## [0.21.177](https://github.com/storm-software/storm-ops/releases/tag/projen%400.21.177) (05/12/2026)
 
 ### Miscellaneous

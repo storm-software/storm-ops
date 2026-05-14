@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - ESLint
 
+## [0.170.24](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.170.24) (05/13/2026)
+
+### Bug Fixes
+
+- **git-tools:** Ensure non-cached project graph is used during release graph creation ([af729bd1f](https://github.com/storm-software/storm-ops/commit/af729bd1f))
+
+### Updated Dependencies
+
+- Updated **config-tools** to **v1.190.3**
+- Updated **config** to **v1.137.36**
+- Updated **tsdoc** to **v0.13.157**
+
 ## [0.170.23](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.170.23) (05/12/2026)
 
 ### Miscellaneous

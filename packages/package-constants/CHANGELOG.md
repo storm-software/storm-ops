@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Package Constants
 
+## [0.1.17](https://github.com/storm-software/storm-ops/releases/tag/package-constants%400.1.17) (05/13/2026)
+
+### Bug Fixes
+
+- **git-tools:** Ensure non-cached project graph is used during release graph creation ([af729bd1f](https://github.com/storm-software/storm-ops/commit/af729bd1f))
+
 ## [0.1.16](https://github.com/storm-software/storm-ops/releases/tag/package-constants%400.1.16) (05/12/2026)
 
 ### Miscellaneous

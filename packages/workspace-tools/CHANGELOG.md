@@ -2,6 +2,24 @@
 
 # Changelog for Storm Ops - Workspace Tools
 
+## [1.295.63](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.295.63) (05/13/2026)
+
+### Bug Fixes
+
+- **git-tools:** Ensure non-cached project graph is used during release graph creation ([af729bd1f](https://github.com/storm-software/storm-ops/commit/af729bd1f))
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.157**
+- Updated **config-tools** to **v1.190.3**
+- Updated **pnpm-tools** to **v0.7.13**
+- Updated **npm-tools** to **v0.6.120**
+- Updated **prettier** to **v0.59.56**
+- Updated **esbuild** to **v0.53.164**
+- Updated **unbuild** to **v0.57.164**
+- Updated **config** to **v1.137.36**
+- Updated **tsdown** to **v0.45.164**
+
 ## [1.295.62](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.295.62) (05/12/2026)
 
 ### Miscellaneous

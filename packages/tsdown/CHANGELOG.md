@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Tsdown
 
+## [0.45.164](https://github.com/storm-software/storm-ops/releases/tag/tsdown%400.45.164) (05/13/2026)
+
+### Bug Fixes
+
+- **git-tools:** Ensure non-cached project graph is used during release graph creation ([af729bd1f](https://github.com/storm-software/storm-ops/commit/af729bd1f))
+
+### Updated Dependencies
+
+- Updated **config-tools** to **v1.190.3**
+- Updated **build-tools** to **v0.158.163**
+- Updated **config** to **v1.137.36**
+
 ## [0.45.163](https://github.com/storm-software/storm-ops/releases/tag/tsdown%400.45.163) (05/12/2026)
 
 ### Miscellaneous

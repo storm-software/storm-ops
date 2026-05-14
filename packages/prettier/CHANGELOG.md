@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Prettier
 
+## [0.59.56](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.59.56) (05/13/2026)
+
+### Bug Fixes
+
+- **git-tools:** Ensure non-cached project graph is used during release graph creation ([af729bd1f](https://github.com/storm-software/storm-ops/commit/af729bd1f))
+
 ## [0.59.55](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.59.55) (05/12/2026)
 
 ### Miscellaneous

@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Tsconfig
 
+## [0.48.71](https://github.com/storm-software/storm-ops/releases/tag/tsconfig%400.48.71) (05/13/2026)
+
+### Bug Fixes
+
+- **git-tools:** Ensure non-cached project graph is used during release graph creation ([af729bd1f](https://github.com/storm-software/storm-ops/commit/af729bd1f))
+
 ## [0.48.70](https://github.com/storm-software/storm-ops/releases/tag/tsconfig%400.48.70) (05/12/2026)
 
 ### Miscellaneous

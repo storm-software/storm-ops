@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Testing Tools
 
+## [1.119.157](https://github.com/storm-software/storm-ops/releases/tag/testing-tools%401.119.157) (05/13/2026)
+
+### Bug Fixes
+
+- **git-tools:** Ensure non-cached project graph is used during release graph creation ([af729bd1f](https://github.com/storm-software/storm-ops/commit/af729bd1f))
+
 ## [1.119.156](https://github.com/storm-software/storm-ops/releases/tag/testing-tools%401.119.156) (05/12/2026)
 
 ### Miscellaneous

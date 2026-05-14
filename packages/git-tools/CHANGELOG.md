@@ -2,6 +2,29 @@
 
 # Changelog for Storm Ops - Git Tools
 
+## [2.131.0](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.131.0) (05/13/2026)
+
+### Miscellaneous
+
+- **git-tools:** Remove invalid config validation from release ([098d375a0](https://github.com/storm-software/storm-ops/commit/098d375a0))
+
+### Bug Fixes
+
+- **git-tools:** Resolve issue with invalid pre-version command string ([3d809740d](https://github.com/storm-software/storm-ops/commit/3d809740d))
+- **git-tools:** Ensure configuration is normalized before being used in versioning ([510116b2c](https://github.com/storm-software/storm-ops/commit/510116b2c))
+- **git-tools:** Force a recalculation of the project graph prior to versioning ([9be79a081](https://github.com/storm-software/storm-ops/commit/9be79a081))
+- **git-tools:** Ensure non-cached project graph is used during release graph creation ([af729bd1f](https://github.com/storm-software/storm-ops/commit/af729bd1f))
+
+### Features
+
+- **git-tools:** Introduce custom release versioning logic ([c6abd0bf6](https://github.com/storm-software/storm-ops/commit/c6abd0bf6))
+
+### Updated Dependencies
+
+- Updated **conventional-changelog** to **v0.3.163**
+- Updated **config-tools** to **v1.190.3**
+- Updated **config** to **v1.137.36**
+
 ## [2.130.40](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.130.40) (05/12/2026)
 
 ### Miscellaneous

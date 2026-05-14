@@ -2,6 +2,20 @@
 
 # Changelog for Storm Ops - Pnpm Tools
 
+## [0.7.13](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.7.13) (05/13/2026)
+
+### Bug Fixes
+
+- **git-tools:** Ensure non-cached project graph is used during release graph creation ([af729bd1f](https://github.com/storm-software/storm-ops/commit/af729bd1f))
+
+### Updated Dependencies
+
+- Updated **package-constants** to **v0.1.17**
+- Updated **testing-tools** to **v1.119.157**
+- Updated **config-tools** to **v1.190.3**
+- Updated **npm-tools** to **v0.6.120**
+- Updated **config** to **v1.137.36**
+
 ## [0.7.12](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.7.12) (05/12/2026)
 
 ### Miscellaneous

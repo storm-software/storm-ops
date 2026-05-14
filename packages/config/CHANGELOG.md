@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - Config
 
+## [1.137.36](https://github.com/storm-software/storm-ops/releases/tag/config%401.137.36) (05/13/2026)
+
+### Bug Fixes
+
+- **git-tools:** Ensure non-cached project graph is used during release graph creation ([af729bd1f](https://github.com/storm-software/storm-ops/commit/af729bd1f))
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.157**
+
 ## [1.137.35](https://github.com/storm-software/storm-ops/releases/tag/config%401.137.35) (05/12/2026)
 
 ### Miscellaneous

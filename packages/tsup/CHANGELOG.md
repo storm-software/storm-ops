@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Tsup
 
+## [0.2.161](https://github.com/storm-software/storm-ops/releases/tag/tsup%400.2.161) (05/13/2026)
+
+### Bug Fixes
+
+- **git-tools:** Ensure non-cached project graph is used during release graph creation ([af729bd1f](https://github.com/storm-software/storm-ops/commit/af729bd1f))
+
+### Updated Dependencies
+
+- Updated **config-tools** to **v1.190.3**
+- Updated **build-tools** to **v0.158.163**
+
 ## [0.2.160](https://github.com/storm-software/storm-ops/releases/tag/tsup%400.2.160) (05/12/2026)
 
 ### Miscellaneous

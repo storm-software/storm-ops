@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - K8s Tools
 
+## [0.42.178](https://github.com/storm-software/storm-ops/releases/tag/k8s-tools%400.42.178) (05/13/2026)
+
+### Bug Fixes
+
+- **git-tools:** Ensure non-cached project graph is used during release graph creation ([af729bd1f](https://github.com/storm-software/storm-ops/commit/af729bd1f))
+
+### Updated Dependencies
+
+- Updated **workspace-tools** to **v1.295.63**
+- Updated **config-tools** to **v1.190.3**
+- Updated **config** to **v1.137.36**
+
 ## [0.42.177](https://github.com/storm-software/storm-ops/releases/tag/k8s-tools%400.42.177) (05/12/2026)
 
 ### Miscellaneous
