@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Git Tools
 
+## [2.131.15](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.131.15) (05/15/2026)
+
+### Bug Fixes
+
+- **git-tools:** Resolve issue determining the correct release version ([073d953eb](https://github.com/storm-software/storm-ops/commit/073d953eb))
+
 ## [2.131.14](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.131.14) (05/15/2026)
 
 ### Miscellaneous
