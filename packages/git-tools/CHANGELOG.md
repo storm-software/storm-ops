@@ -2,6 +2,20 @@
 
 # Changelog for Storm Ops - Git Tools
 
+## [2.131.14](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.131.14) (05/15/2026)
+
+### Miscellaneous
+
+- **git-tools:** Add config logging to release process ([24ed503dc](https://github.com/storm-software/storm-ops/commit/24ed503dc))
+- **git-tools:** Resolve issues finding largest version in `fixed` release groups ([a61057d69](https://github.com/storm-software/storm-ops/commit/a61057d69))
+
+### Updated Dependencies
+
+- Updated **conventional-changelog** to **v0.3.173**
+- Updated **package-constants** to **v0.1.27**
+- Updated **config-tools** to **v1.190.13**
+- Updated **config** to **v1.137.46**
+
 ## [2.131.13](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.131.13) (05/15/2026)
 
 ### Miscellaneous
