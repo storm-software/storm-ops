@@ -38,10 +38,7 @@ import {
   gitPush
 } from "nx/src/command-line/release/utils/git";
 import { printAndFlushChanges } from "nx/src/command-line/release/utils/print-changes.js";
-import {
-  createReleaseGraph,
-  ReleaseGraph
-} from "nx/src/command-line/release/utils/release-graph";
+import { ReleaseGraph as NxReleaseGraph } from "nx/src/command-line/release/utils/release-graph";
 import {
   createCommitMessageValues,
   createGitTagValues,
@@ -75,6 +72,7 @@ import {
   formatConfigLog,
   getReleaseConfig
 } from "./config";
+import { createReleaseGraph, ReleaseGraph } from "./release-graph";
 import { StormReleaseGroupProcessor } from "./release-group-processor";
 
 export type ChangelogOptions = Omit<
@@ -196,19 +194,17 @@ export class StormReleaseClient extends ReleaseClient {
       );
 
     // Use pre-built release graph if provided, otherwise create a new one
-    const releaseGraph: ReleaseGraph =
-      options.releaseGraph ??
-      (await createReleaseGraph({
-        tree: this.tree,
-        projectGraph: this.projectGraph,
-        nxReleaseConfig: this.releaseConfig,
-        filters: {
-          projects: options.projects,
-          groups: options.groups
-        },
-        firstRelease: !!options.firstRelease,
-        verbose: isVerbose(this.workspaceConfig.logLevel)
-      }));
+    const releaseGraph: ReleaseGraph = await createReleaseGraph({
+      tree: this.tree,
+      projectGraph: this.projectGraph,
+      nxReleaseConfig: this.releaseConfig,
+      filters: {
+        projects: options.projects,
+        groups: options.groups
+      },
+      firstRelease: !!options.firstRelease,
+      verbose: isVerbose(this.workspaceConfig.logLevel)
+    });
 
     /**
      * Compute any additional dependency bumps up front because there could be cases of circular dependencies,
@@ -632,21 +628,19 @@ ${Object.keys(allProjectChangelogs)
     }
 
     // Use pre-built release graph if provided, otherwise create a new one
-    const releaseGraph: ReleaseGraph =
-      options.releaseGraph ??
-      (await createReleaseGraph({
-        tree: this.tree,
-        projectGraph: this.projectGraph,
-        nxReleaseConfig: this.releaseConfig,
-        filters: {
-          projects: options.projects,
-          groups: options.groups
-        },
-        firstRelease: !!options.firstRelease,
-        verbose,
-        preid: options.preid ?? this.workspaceConfig.preid,
-        versionActionsOptionsOverrides: options.versionActionsOptionsOverrides
-      }));
+    const releaseGraph: ReleaseGraph = await createReleaseGraph({
+      tree: this.tree,
+      projectGraph: this.projectGraph,
+      nxReleaseConfig: this.releaseConfig,
+      filters: {
+        projects: options.projects,
+        groups: options.groups
+      },
+      firstRelease: !!options.firstRelease,
+      verbose,
+      preid: options.preid ?? this.workspaceConfig.preid,
+      versionActionsOptionsOverrides: options.versionActionsOptionsOverrides
+    });
 
     // Display filter log if filters were applied
     if (
@@ -793,7 +787,7 @@ ${Object.keys(allProjectChangelogs)
       this.workspaceConfig,
       this.projectGraph,
       this.releaseConfig as NxReleaseConfig,
-      releaseGraph,
+      releaseGraph as unknown as NxReleaseGraph,
       options
     );
 
@@ -804,7 +798,7 @@ ${Object.keys(allProjectChangelogs)
       if (options.deleteVersionPlans) {
         processor.deleteProcessedVersionPlanFiles();
       }
-    } catch (err: any) {
+    } catch (err) {
       // Flush any pending project logs before printing the error to make troubleshooting easier
       processor.flushAllProjectLoggers();
       // Bubble up the error so that the CLI can print the error and exit, or the programmatic API can handle it
@@ -970,7 +964,7 @@ ${Object.keys(allProjectChangelogs)
       return {
         workspaceVersion,
         projectsVersionData: versionData,
-        releaseGraph
+        releaseGraph: releaseGraph as unknown as NxReleaseGraph
       };
     }
 
@@ -1032,7 +1026,7 @@ ${Object.keys(allProjectChangelogs)
     return {
       workspaceVersion,
       projectsVersionData: versionData,
-      releaseGraph
+      releaseGraph: releaseGraph as unknown as NxReleaseGraph
     };
   };
 }
