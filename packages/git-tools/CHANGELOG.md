@@ -2,6 +2,19 @@
 
 # Changelog for Storm Ops - Git Tools
 
+## [2.131.19](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.131.19) (05/15/2026)
+
+### Bug Fixes
+
+- **git-tools:** Resolve issue comparing version bump types ([06bf84708](https://github.com/storm-software/storm-ops/commit/06bf84708))
+
+### Updated Dependencies
+
+- Updated **conventional-changelog** to **v0.3.176**
+- Updated **package-constants** to **v0.1.29**
+- Updated **config-tools** to **v1.190.16**
+- Updated **config** to **v1.137.48**
+
 ## [2.131.18](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.131.18) (05/15/2026)
 
 ### Miscellaneous
