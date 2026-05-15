@@ -75,14 +75,12 @@
     "groups": {
       "packages": {
         "projects": ["packages/*"],
-        "projectsRelationship": "independent",
         "version": {
           "versionActions": "./dist/packages/workspace-tools/dist/src/release/js-version-actions.js"
         }
       },
       "crates": {
         "projects": ["crates/*"],
-        "projectsRelationship": "independent",
         "version": {
           "versionActions": "./dist/packages/workspace-tools/dist/src/release/rust-version-actions.js"
         }

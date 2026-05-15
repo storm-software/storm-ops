@@ -39,6 +39,17 @@ import { Tree } from "nx/src/generators/tree.js";
 import semver from "semver";
 
 export class StormReleaseGroupProcessor extends ReleaseGroupProcessor {
+  static readonly #BUMP_TYPE_PRIORITY: Record<SemverBumpType, number> = {
+    major: 8,
+    premajor: 7,
+    minor: 6,
+    preminor: 5,
+    patch: 4,
+    prepatch: 3,
+    prerelease: 2,
+    none: 1
+  };
+
   #tree: Tree;
 
   #projectGraph: ProjectGraph;
@@ -364,8 +375,10 @@ export class StormReleaseGroupProcessor extends ReleaseGroupProcessor {
             semver.gt(currentVersion, fixedGroup.currentVersion)) ||
           !fixedGroup.newVersion ||
           fixedGroup.newVersion.input === "none" ||
-          (newVersionInput &&
-            semver.gt(newVersionInput, fixedGroup.newVersion.input))
+          this.#isHigherPriorityBumpType(
+            newVersionInput,
+            fixedGroup.newVersion?.input
+          )
         ) {
           if (
             !fixedGroup.currentVersion ||
@@ -378,8 +391,10 @@ export class StormReleaseGroupProcessor extends ReleaseGroupProcessor {
           if (
             !fixedGroup.newVersion ||
             fixedGroup.newVersion.input === "none" ||
-            (newVersionInput &&
-              semver.gt(newVersionInput, fixedGroup.newVersion.input))
+            this.#isHigherPriorityBumpType(
+              newVersionInput,
+              fixedGroup.newVersion?.input
+            )
           ) {
             fixedGroup.newVersion = {
               input: newVersionInput,
@@ -792,6 +807,28 @@ export class StormReleaseGroupProcessor extends ReleaseGroupProcessor {
     }
 
     return bumped;
+  }
+
+  #isHigherPriorityBumpType(
+    candidate: SemverBumpType | string,
+    current?: SemverBumpType | string
+  ): boolean {
+    const candidatePriority =
+      StormReleaseGroupProcessor.#BUMP_TYPE_PRIORITY[
+        candidate as SemverBumpType
+      ];
+    const currentPriority =
+      StormReleaseGroupProcessor.#BUMP_TYPE_PRIORITY[current as SemverBumpType];
+
+    if (candidatePriority === undefined) {
+      return false;
+    }
+
+    if (currentPriority === undefined) {
+      return true;
+    }
+
+    return candidatePriority > currentPriority;
   }
 
   #getCurrentCachedVersionForProject(projectName: string): string | null {
