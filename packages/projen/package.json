@@ -132,7 +132,6 @@
     "@storm-software/workspace-tools": "workspace:*"
   },
   "devDependencies": {
-    "@nx/devkit": "catalog:",
     "@types/node": "catalog:",
     "nx": "catalog:",
     "projen": "^0.91.31",

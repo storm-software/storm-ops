@@ -1,15 +1,30 @@
 {
   "name": "@storm-software/tsdown",
   "version": "0.45.175",
-  "type": "module",
+  "private": false,
   "description": "A package containing `tsdown` utilities for building Storm Software libraries and applications",
+  "keywords": [
+    "acidic",
+    "cyclone-ui",
+    "tsdown",
+    "monorepo",
+    "storm",
+    "storm-ops",
+    "storm-stack",
+    "sullivanpj"
+  ],
+  "homepage": "https://stormsoftware.com",
+  "bugs": "https://github.com/storm-software/storm-ops/issues",
   "repository": {
     "type": "github",
     "url": "https://github.com/storm-software/storm-ops.git",
     "directory": "packages/tsdown"
   },
-  "homepage": "https://stormsoftware.com",
-  "bugs": "https://github.com/storm-software/storm-ops/issues",
+  "funding": {
+    "type": "github",
+    "url": "https://github.com/sponsors/storm-software"
+  },
+  "license": "Apache-2.0",
   "author": {
     "name": "Storm Software",
     "email": "contact@stormsoftware.com",
@@ -34,17 +49,8 @@
       "url": "https://stormsoftware.com"
     }
   ],
-  "funding": {
-    "type": "github",
-    "url": "https://github.com/sponsors/storm-software"
-  },
-  "license": "Apache-2.0",
-  "private": false,
-  "bin": {
-    "storm-tsdown": "./bin/tsdown.cjs"
-  },
-  "main": "./dist/index.cjs",
-  "module": "./dist/index.js",
+  "sideEffects": false,
+  "type": "module",
   "exports": {
     "./package.json": "./package.json",
     "./types": {
@@ -146,43 +152,15 @@
       }
     }
   },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
-  "files": ["dist/**/*"],
-  "keywords": [
-    "acidic",
-    "cyclone-ui",
-    "tsdown",
-    "monorepo",
-    "storm",
-    "storm-ops",
-    "storm-stack",
-    "sullivanpj"
+  "bin": {
+    "storm-tsdown": "./bin/tsdown.cjs"
+  },
+  "files": [
+    "dist/**/*"
   ],
-  "peerDependencies": {
-    "spdx-exceptions": "^2.5.0",
-    "spdx-license-ids": "^3.0.20",
-    "tsdown": ">=0.15.4"
-  },
-  "peerDependenciesMeta": {
-    "@microsoft/api-extractor": {
-      "optional": true
-    },
-    "@nx/devkit": {
-      "optional": false
-    },
-    "@nx/js": {
-      "optional": false
-    },
-    "spdx-exceptions": {
-      "optional": true
-    },
-    "spdx-license-ids": {
-      "optional": true
-    },
-    "tsdown": {
-      "optional": false
-    }
-  },
   "dependencies": {
     "@storm-software/build-tools": "workspace:*",
     "@storm-software/config": "workspace:*",
@@ -207,8 +185,23 @@
     "spdx-license-ids": "^3.0.23",
     "tsdown": "catalog:"
   },
+  "peerDependencies": {
+    "spdx-exceptions": "^2.5.0",
+    "spdx-license-ids": "^3.0.20",
+    "tsdown": ">=0.15.4"
+  },
+  "peerDependenciesMeta": {
+    "spdx-exceptions": {
+      "optional": true
+    },
+    "spdx-license-ids": {
+      "optional": true
+    },
+    "tsdown": {
+      "optional": false
+    }
+  },
   "publishConfig": {
     "access": "public"
-  },
-  "sideEffects": false
+  }
 }

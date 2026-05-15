@@ -273,8 +273,8 @@
   "peerDependencies": {
     "@napi-rs/cli": "^3.4.1",
     "markdownlint-cli2": "^0.17.2",
-    "nx": "catalog:",
-    "prettier": "catalog:"
+    "nx": ">=22.7.1",
+    "prettier": ">=3.8.3"
   },
   "peerDependenciesMeta": {
     "@napi-rs/cli": {

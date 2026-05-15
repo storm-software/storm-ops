@@ -1,23 +1,31 @@
 {
   "name": "@storm-software/k8s-tools",
   "version": "0.42.189",
+  "private": false,
   "description": "Tools for managing Kubernetes (k8s) infrastructure within a Nx workspace.",
+  "keywords": [
+    "helm",
+    "k8s",
+    "kubernetes",
+    "monorepo",
+    "storm",
+    "storm-ops",
+    "storm-stack",
+    "sullivanpj"
+  ],
+  "homepage": "https://stormsoftware.com",
+  "bugs": "https://github.com/storm-software/storm-ops/issues",
   "repository": {
     "type": "github",
     "url": "https://github.com/storm-software/storm-ops",
     "directory": "packages/k8s-tools"
   },
-  "homepage": "https://stormsoftware.com",
-  "bugs": "https://github.com/storm-software/storm-ops/issues",
+  "license": "Apache-2.0",
   "author": {
     "name": "Storm Software",
     "email": "contact@stormsoftware.com",
     "url": "https://stormsoftware.com"
   },
-  "license": "Apache-2.0",
-  "private": false,
-  "main": "dist/index.js",
-  "module": "dist/index.mjs",
   "exports": {
     "./package.json": "./package.json",
     "./docs/*": "./docs/*",
@@ -128,19 +136,30 @@
     "./generators/*/generator.js": "./dist/src/generators/*/generator.js",
     "./plugins/docker": "./dist/src/plugins/docker/index.js"
   },
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
   "typings": "dist/index.d.ts",
-  "keywords": [
-    "helm",
-    "k8s",
-    "kubernetes",
-    "monorepo",
-    "storm",
-    "storm-ops",
-    "storm-stack",
-    "sullivanpj"
-  ],
-  "peerDependencies": {
+  "dependencies": {
+    "@storm-software/config": "workspace:*",
+    "@storm-software/config-tools": "workspace:*",
+    "@storm-software/workspace-tools": "workspace:*",
+    "defu": "catalog:",
+    "yaml": "catalog:"
+  },
+  "devDependencies": {
+    "@nx-tools/container-metadata": "^6.9.1",
+    "@nx-tools/nx-container": "^6.9.1",
     "@nx/devkit": "catalog:",
+    "@nx/workspace": "catalog:",
+    "@types/node": "catalog:",
+    "nx": "catalog:",
+    "tsup": "catalog:",
+    "typescript": "^5.9.3",
+    "untyped": "catalog:"
+  },
+  "peerDependencies": {
+    "@nx/devkit": ">=22.7.1",
+    "nx": ">=22.7.1",
     "prettier": "catalog:",
     "tsup": "catalog:"
   },
@@ -160,24 +179,6 @@
     "nx": {
       "optional": false
     }
-  },
-  "dependencies": {
-    "@storm-software/config": "workspace:*",
-    "@storm-software/config-tools": "workspace:*",
-    "@storm-software/workspace-tools": "workspace:*",
-    "defu": "catalog:",
-    "yaml": "catalog:"
-  },
-  "devDependencies": {
-    "@nx-tools/container-metadata": "^6.9.1",
-    "@nx-tools/nx-container": "^6.9.1",
-    "@nx/devkit": "catalog:",
-    "@nx/workspace": "catalog:",
-    "@types/node": "catalog:",
-    "nx": "catalog:",
-    "tsup": "catalog:",
-    "typescript": "^5.9.3",
-    "untyped": "catalog:"
   },
   "publishConfig": {
     "access": "public"

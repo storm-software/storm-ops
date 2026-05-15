@@ -164,7 +164,6 @@
     "shelljs": "^0.8.5"
   },
   "devDependencies": {
-    "@nx/devkit": "catalog:",
     "@types/node": "catalog:",
     "nx": "catalog:",
     "tsup": "catalog:",

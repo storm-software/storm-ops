@@ -124,13 +124,13 @@
   "module": "dist/index.mjs",
   "typings": "dist/index.d.ts",
   "dependencies": {
+    "@nx/devkit": "catalog:",
     "@storm-software/config": "workspace:*",
     "@storm-software/config-tools": "workspace:*",
     "@storm-software/workspace-tools": "workspace:*",
     "shelljs": "^0.8.5"
   },
   "devDependencies": {
-    "@nx/devkit": "catalog:",
     "@types/node": "catalog:",
     "nx": "catalog:",
     "tsup": "catalog:",
