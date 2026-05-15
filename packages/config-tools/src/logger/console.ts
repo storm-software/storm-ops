@@ -322,13 +322,22 @@ export const getStopwatch = (name: string) => {
   };
 };
 
-const MAX_DEPTH = 6;
+const MAX_DEPTH = 10;
 
 export type FormatLogMessageOptions = {
   prefix?: string;
   skip?: string[];
+  sort?: boolean;
 };
 
+/**
+ * Format a log message for output to the console, handling different types of messages (e.g. strings, objects, arrays) and applying formatting options such as prefixing and skipping certain keys in objects.
+ *
+ * @param message - The message to format
+ * @param options - Formatting options
+ * @param depth - The current depth of recursion
+ * @returns The formatted log message
+ */
 export const formatLogMessage = (
   message?: any,
   options: FormatLogMessageOptions = {},
@@ -338,36 +347,51 @@ export const formatLogMessage = (
     return "<max depth>";
   }
 
-  const prefix = options.prefix ?? "-";
+  const prefix = options.prefix ?? "";
   const skip = options.skip ?? [];
+  const sort = options.sort ?? true;
 
-  return typeof message === "undefined" ||
-    message === null ||
-    (!message && typeof message !== "boolean")
-    ? "<none>"
+  return typeof message === "undefined" || message === null
+    ? "<empty>"
     : typeof message === "string"
-      ? message
+      ? !message
+        ? "<empty string>"
+        : message
       : Array.isArray(message)
-        ? `\n${message.map((item, index) => ` ${prefix}> #${index} = ${formatLogMessage(item, { prefix: `${prefix}-`, skip }, depth + 1)}`).join("\n")}`
+        ? `\n${message
+            .map(
+              (item, index) =>
+                ` ${prefix}> #${index} = ${formatLogMessage(
+                  item,
+                  { prefix: `${prefix}--`, skip, sort },
+                  depth + 1
+                )}`
+            )
+            .join("\n")}`
         : typeof message === "object"
           ? `\n${Object.keys(message)
               .filter(key => !skip.includes(key))
+              .sort(sort ? (a, b) => a.localeCompare(b) : undefined)
               .map(
                 key =>
                   ` ${prefix}> ${key} = ${
                     _isFunction(message[key])
                       ? "<function>"
                       : typeof message[key] === "object"
-                        ? formatLogMessage(
-                            message[key],
-                            { prefix: `${prefix}-`, skip },
-                            depth + 1
-                          )
+                        ? Object.keys(message[key]).filter(
+                            key => !skip.includes(key)
+                          ).length === 0
+                          ? "{}"
+                          : formatLogMessage(
+                              message[key],
+                              { prefix: `${prefix}--`, skip, sort },
+                              depth + 1
+                            )
                         : message[key]
                   }`
               )
               .join("\n")}`
-          : message;
+          : String(message);
 };
 
 const _isFunction = (

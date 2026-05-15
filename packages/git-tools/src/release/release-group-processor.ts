@@ -310,16 +310,7 @@ export class StormReleaseGroupProcessor extends ReleaseGroupProcessor {
 
     // Flush the project loggers for the group
     for (const project of groupNode.group.projects) {
-      const projectLogger = this.#releaseGraph.projectLoggers.get(project);
-      if (!projectLogger) {
-        throw new Error(
-          `No project logger found for project ${
-            project
-          } in release group ${releaseGroupName}. This should never happen.`
-        );
-      }
-
-      projectLogger.flush();
+      this.#getProjectLoggerForProject(project).flush();
     }
   }
 
@@ -1042,7 +1033,9 @@ export class StormReleaseGroupProcessor extends ReleaseGroupProcessor {
     const projectLogger = this.#releaseGraph.projectLoggers.get(projectName);
     if (!projectLogger) {
       throw new Error(
-        `No project logger found for project ${projectName}, please report this as a bug on https://github.com/nrwl/nx/issues`
+        `No project logger found for project ${
+          projectName
+        }, please report this as a bug on https://github.com/nrwl/nx/issues`
       );
     }
     return projectLogger;

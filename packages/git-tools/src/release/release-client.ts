@@ -9,7 +9,6 @@ import { StormWorkspaceConfig } from "@storm-software/config";
 import { isVerbose, runAsync } from "@storm-software/config-tools";
 import { getWorkspaceConfig } from "@storm-software/config-tools/get-config";
 import {
-  formatLogMessage,
   writeDebug,
   writeTrace,
   writeWarning
@@ -71,7 +70,11 @@ import {
 import { formatNxLog } from "../utilities/logs";
 import { formatChangedFiles } from "../utilities/prettier";
 import StormChangelogRenderer from "./changelog-renderer";
-import { DEFAULT_COMMIT_MESSAGE, getReleaseConfig } from "./config";
+import {
+  DEFAULT_COMMIT_MESSAGE,
+  formatConfigLog,
+  getReleaseConfig
+} from "./config";
 import { StormReleaseGroupProcessor } from "./release-group-processor";
 
 export type ChangelogOptions = Omit<
@@ -104,7 +107,7 @@ export class StormReleaseClient extends ReleaseClient {
     }
 
     writeTrace(
-      `Provided release configuration: \n${formatLogMessage(releaseConfig)}`,
+      `Provided release configuration: \n${formatConfigLog(releaseConfig)}`,
       workspaceConfig
     );
 
@@ -116,7 +119,7 @@ export class StormReleaseClient extends ReleaseClient {
     );
 
     writeDebug(
-      `Resolved release configuration: \n${formatLogMessage(config)}`,
+      `Resolved release configuration: \n${formatConfigLog(config)}`,
       workspaceConfig
     );
 
@@ -173,7 +176,6 @@ export class StormReleaseClient extends ReleaseClient {
     this.releaseConfig = releaseConfig;
     this.workspaceConfig = workspaceConfig;
     this.tree = new FsTree(workspaceConfig.workspaceRoot, false);
-
     this.projectConfigurations =
       readProjectsConfigurationFromProjectGraph(projectGraph);
   }
