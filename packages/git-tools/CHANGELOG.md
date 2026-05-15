@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - Git Tools
 
+## [2.131.18](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.131.18) (05/15/2026)
+
+### Miscellaneous
+
+- **monorepo:** Added missing file from previous changeset ([c38ea00a0](https://github.com/storm-software/storm-ops/commit/c38ea00a0))
+
+### Bug Fixes
+
+- **git-tools:** Added custom release graph to properly handle `fixed` release groups ([f53c3485d](https://github.com/storm-software/storm-ops/commit/f53c3485d))
+
 ## [2.131.17](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.131.17) (05/15/2026)
 
 ### Updated Dependencies
