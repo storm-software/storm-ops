@@ -1,6 +1,6 @@
 {
   "name": "@storm-software/linting-tools",
-  "version": "1.133.43",
+  "version": "1.133.44",
   "private": false,
   "description": "⚡ A package containing various linting tools used to validate syntax, enforce design standards, and format code in a Storm workspace.",
   "keywords": [
