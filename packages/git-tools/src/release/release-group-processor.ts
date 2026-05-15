@@ -1,5 +1,9 @@
 import { StormWorkspaceConfig } from "@storm-software/config";
-import { isVerbose, writeDebug } from "@storm-software/config-tools";
+import {
+  isVerbose,
+  writeDebug,
+  writeTrace
+} from "@storm-software/config-tools";
 import { VersionOptions } from "nx/src/command-line/release/command-object.js";
 import {
   IMPLICIT_DEFAULT_RELEASE_GROUP,
@@ -300,6 +304,7 @@ export class StormReleaseGroupProcessor extends ReleaseGroupProcessor {
   }
 
   async #processGroup(releaseGroupName: string): Promise<void> {
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     const groupNode = this.#releaseGraph.groupGraph.get(releaseGroupName)!;
     await this.#bumpVersions(groupNode.group);
 
@@ -328,25 +333,49 @@ export class StormReleaseGroupProcessor extends ReleaseGroupProcessor {
     let bumped = false;
     const firstProject = releaseGroup.projects.reduce((ret, project) => {
       const currentVersion = this.#getCurrentCachedVersionForProject(project);
+      if (!currentVersion) {
+        writeTrace(
+          `No current version found for project ${project} in release group ${
+            releaseGroup.name
+          }, skipping version comparison.`,
+          this.workspaceConfig
+        );
+
+        return "";
+      }
+
       if (!ret) {
-        return currentVersion;
+        writeTrace(
+          `Defaulting to first version ${currentVersion} (project: ${project})`,
+          this.workspaceConfig
+        );
+
+        return project;
       }
 
       const largestVersion = this.#getCurrentCachedVersionForProject(ret);
       if (!largestVersion) {
-        return currentVersion;
+        writeTrace(
+          `No current version found for project ${ret} in release group ${
+            releaseGroup.name
+          }, skipping version comparison.`,
+          this.workspaceConfig
+        );
+
+        return project;
       }
 
       writeDebug(
         `Comparing versions for fixed group ${
           releaseGroup.name
-        }: Current Greatest Version: ${largestVersion}, Current Project Version: ${
-          currentVersion
-        } (project: ${project})`
+        }: Current Greatest Version: ${
+          largestVersion
+        }, Current Project Version: ${currentVersion} (project: ${project})`,
+        this.workspaceConfig
       );
 
       if (currentVersion && semver.gt(currentVersion, largestVersion)) {
-        return currentVersion;
+        return project;
       }
 
       return ret;
