@@ -1,5 +1,5 @@
 import { StormWorkspaceConfig } from "@storm-software/config";
-import { isVerbose } from "@storm-software/config-tools";
+import { isVerbose, writeDebug } from "@storm-software/config-tools";
 import { VersionOptions } from "nx/src/command-line/release/command-object.js";
 import {
   IMPLICIT_DEFAULT_RELEASE_GROUP,
@@ -326,12 +326,30 @@ export class StormReleaseGroupProcessor extends ReleaseGroupProcessor {
     }
 
     let bumped = false;
-    const firstProject = releaseGroup.projects.reduce((acc, project) => {
+    const firstProject = releaseGroup.projects.reduce((ret, project) => {
       const currentVersion = this.#getCurrentCachedVersionForProject(project);
-      if (currentVersion && semver.gt(currentVersion, acc)) {
+      if (!ret) {
         return currentVersion;
       }
-      return acc;
+
+      const largestVersion = this.#getCurrentCachedVersionForProject(ret);
+      if (!largestVersion) {
+        return currentVersion;
+      }
+
+      writeDebug(
+        `Comparing versions for fixed group ${
+          releaseGroup.name
+        }: Current Greatest Version: ${largestVersion}, Current Project Version: ${
+          currentVersion
+        } (project: ${project})`
+      );
+
+      if (currentVersion && semver.gt(currentVersion, largestVersion)) {
+        return currentVersion;
+      }
+
+      return ret;
     }, "");
 
     const {
