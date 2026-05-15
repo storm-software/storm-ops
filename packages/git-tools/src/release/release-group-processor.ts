@@ -322,7 +322,18 @@ export class StormReleaseGroupProcessor extends ReleaseGroupProcessor {
     }
 
     let bumped = false;
-    const firstProject = releaseGroup.projects.reduce((ret, project) => {
+
+    const fixedGroup = {
+      firstProject: null as string | null,
+      newVersion: null as null | {
+        input: SemverBumpType | string;
+        reason: keyof typeof BUMP_TYPE_REASON_TEXT;
+        reasonData: Record<string, unknown>;
+      },
+      currentVersion: null as string | null
+    };
+
+    for (const project of releaseGroup.projects) {
       const currentVersion = this.#getCurrentCachedVersionForProject(project);
       if (!currentVersion) {
         writeTrace(
@@ -331,54 +342,69 @@ export class StormReleaseGroupProcessor extends ReleaseGroupProcessor {
           }, skipping version comparison.`,
           this.workspaceConfig
         );
-
-        return "";
-      }
-
-      if (!ret) {
-        writeTrace(
-          `Defaulting to first version ${currentVersion} (project: ${project})`,
-          this.workspaceConfig
-        );
-
-        return project;
-      }
-
-      const largestVersion = this.#getCurrentCachedVersionForProject(ret);
-      if (!largestVersion) {
-        writeTrace(
-          `No current version found for project ${ret} in release group ${
+      } else {
+        writeDebug(
+          `Comparing versions for fixed group ${
             releaseGroup.name
-          }, skipping version comparison.`,
+          }: Current Greatest Version: ${
+            fixedGroup.currentVersion || "none"
+          }, Current Project Version: ${currentVersion} (project: ${project})`,
           this.workspaceConfig
         );
 
-        return project;
+        const {
+          newVersionInput,
+          newVersionInputReason,
+          newVersionInputReasonData
+        } = await this.#determineVersionBumpForProject(releaseGroup, project);
+
+        if (
+          !fixedGroup.currentVersion ||
+          (currentVersion &&
+            semver.gt(currentVersion, fixedGroup.currentVersion)) ||
+          !fixedGroup.newVersion ||
+          fixedGroup.newVersion.input === "none" ||
+          (newVersionInput &&
+            semver.gt(newVersionInput, fixedGroup.newVersion.input))
+        ) {
+          if (
+            !fixedGroup.currentVersion ||
+            (currentVersion &&
+              semver.gt(currentVersion, fixedGroup.currentVersion))
+          ) {
+            fixedGroup.currentVersion = currentVersion;
+          }
+
+          if (
+            !fixedGroup.newVersion ||
+            fixedGroup.newVersion.input === "none" ||
+            (newVersionInput &&
+              semver.gt(newVersionInput, fixedGroup.newVersion.input))
+          ) {
+            fixedGroup.newVersion = {
+              input: newVersionInput,
+              reason: newVersionInputReason,
+              reasonData: newVersionInputReasonData
+            };
+          }
+
+          writeDebug(
+            `Fixed release group ${
+              releaseGroup.name
+            } updated: Current Version: ${
+              fixedGroup.currentVersion || "none"
+            }, New Version: ${
+              fixedGroup.newVersion?.input || "none"
+            } (first project: ${project})`,
+            this.workspaceConfig
+          );
+
+          fixedGroup.firstProject = project;
+        }
       }
+    }
 
-      writeDebug(
-        `Comparing versions for fixed group ${
-          releaseGroup.name
-        }: Current Greatest Version: ${
-          largestVersion
-        }, Current Project Version: ${currentVersion} (project: ${project})`,
-        this.workspaceConfig
-      );
-
-      if (currentVersion && semver.gt(currentVersion, largestVersion)) {
-        return project;
-      }
-
-      return ret;
-    }, "");
-
-    const {
-      newVersionInput,
-      newVersionInputReason,
-      newVersionInputReasonData
-    } = await this.#determineVersionBumpForProject(releaseGroup, firstProject);
-
-    if (newVersionInput === "none") {
+    if (fixedGroup.newVersion?.input === "none") {
       // No direct bump for this group, but we may still need to bump if a dependency group has been bumped
       let bumpedByDependency = false;
 
@@ -452,12 +478,12 @@ export class StormReleaseGroupProcessor extends ReleaseGroupProcessor {
             dockerVersion: null,
             dependentProjects: this.#getOriginalDependentProjects(project)
           });
-          if (project === firstProject) {
+          if (project === fixedGroup.firstProject) {
             continue;
           }
           const projectLogger = this.#getProjectLoggerForProject(project);
           projectLogger.buffer(
-            `🚫 Skipping versioning for ${project} as it is a part of a fixed release group with ${firstProject} and no dependency bumps were detected`
+            `🚫 Skipping versioning for ${project} as it is a part of a fixed release group with ${fixedGroup.firstProject} and no dependency bumps were detected`
           );
         }
       }
@@ -466,10 +492,10 @@ export class StormReleaseGroupProcessor extends ReleaseGroupProcessor {
     }
 
     const { newVersion } = await this.#calculateNewVersion(
-      firstProject,
-      newVersionInput,
-      newVersionInputReason,
-      newVersionInputReasonData
+      fixedGroup.firstProject!,
+      fixedGroup.newVersion?.input ?? "none",
+      fixedGroup.newVersion!.reason,
+      fixedGroup.newVersion?.reasonData ?? {}
     );
 
     // Use sorted projects for processing projects in the right order
@@ -486,9 +512,9 @@ export class StormReleaseGroupProcessor extends ReleaseGroupProcessor {
       ) as string;
 
       // The first project's version was determined above, so this log is only appropriate for the remaining projects
-      if (project !== firstProject) {
+      if (project !== fixedGroup.firstProject) {
         projectLogger.buffer(
-          `❓ Applied version ${newVersion} directly, because the project is a member of a fixed release group containing ${firstProject}`
+          `❓ Applied version ${newVersion} directly, because the project is a member of a fixed release group containing ${fixedGroup.firstProject}`
         );
       }
 
