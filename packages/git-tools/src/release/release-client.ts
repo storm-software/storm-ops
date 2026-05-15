@@ -9,7 +9,9 @@ import { StormWorkspaceConfig } from "@storm-software/config";
 import { isVerbose, runAsync } from "@storm-software/config-tools";
 import { getWorkspaceConfig } from "@storm-software/config-tools/get-config";
 import {
+  formatLogMessage,
   writeDebug,
+  writeTrace,
   writeWarning
 } from "@storm-software/config-tools/logger/console";
 import { ReleaseClient } from "nx/release";
@@ -101,16 +103,24 @@ export class StormReleaseClient extends ReleaseClient {
       );
     }
 
-    return new StormReleaseClient(
-      projectGraph,
-      getReleaseConfig(
-        projectGraph,
-        releaseConfig,
-        workspaceConfig,
-        ignoreNxJsonConfig
-      ),
+    writeTrace(
+      `Provided release configuration: \n${formatLogMessage(releaseConfig)}`,
       workspaceConfig
     );
+
+    const config = getReleaseConfig(
+      projectGraph,
+      releaseConfig,
+      workspaceConfig,
+      ignoreNxJsonConfig
+    );
+
+    writeDebug(
+      `Resolved release configuration: \n${formatLogMessage(config)}`,
+      workspaceConfig
+    );
+
+    return new StormReleaseClient(projectGraph, config, workspaceConfig);
   }
 
   /**

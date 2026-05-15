@@ -366,6 +366,15 @@ export function getReleaseConfig(
   let groups = {} as Record<string, ReleaseGroupConfig>;
   if (releaseConfig?.groups && Object.keys(releaseConfig.groups).length > 0) {
     groups = releaseConfig.groups;
+    if (
+      nxJson.release?.groups &&
+      Object.keys(nxJson.release.groups).length > 0
+    ) {
+      groups = defu(
+        groups,
+        nxJson.release.groups as Record<string, ReleaseGroupConfig>
+      );
+    }
   } else if (
     nxJson.release?.groups &&
     Object.keys(nxJson.release.groups).length > 0
