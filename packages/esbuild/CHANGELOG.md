@@ -2,6 +2,19 @@
 
 # Changelog for Storm Ops - Esbuild
 
+## [0.53.176](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.53.176) (05/15/2026)
+
+### Miscellaneous
+
+- **monorepo:** Clean up dependencies in `package.json` files ([84994b720](https://github.com/storm-software/storm-ops/commit/84994b720))
+
+### Updated Dependencies
+
+- Updated **config-tools** to **v1.190.15**
+- Updated **build-tools** to **v0.158.175**
+- Updated **config** to **v1.137.47**
+- Updated **tsup** to **v0.2.173**
+
 ## [0.53.175](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.53.175) (05/15/2026)
 
 ### Updated Dependencies

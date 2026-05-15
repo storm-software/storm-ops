@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Tsdown
 
+## [0.45.176](https://github.com/storm-software/storm-ops/releases/tag/tsdown%400.45.176) (05/15/2026)
+
+### Miscellaneous
+
+- **monorepo:** Clean up dependencies in `package.json` files ([84994b720](https://github.com/storm-software/storm-ops/commit/84994b720))
+
+### Updated Dependencies
+
+- Updated **config-tools** to **v1.190.15**
+- Updated **build-tools** to **v0.158.175**
+- Updated **config** to **v1.137.47**
+
 ## [0.45.175](https://github.com/storm-software/storm-ops/releases/tag/tsdown%400.45.175) (05/15/2026)
 
 ### Updated Dependencies
