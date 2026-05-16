@@ -36,7 +36,7 @@ export const DEFAULT_INDEPENDENT_RELEASE_TAG_PATTERN =
 export const DEFAULT_FIXED_RELEASE_TAG_PATTERN = "{releaseGroupName}@{version}";
 
 export const DEFAULT_COMMIT_MESSAGE =
-  "release(monorepo): Publish v{version} release updates";
+  "release(monorepo): Publish release updates";
 
 export const DEFAULT_RELEASE_GROUP_GIT_CONFIG = {
   commit: false,

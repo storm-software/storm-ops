@@ -370,7 +370,12 @@ export const formatLogMessage = (
             .join("\n")}`
         : typeof message === "object"
           ? `\n${Object.keys(message)
-              .filter(key => !skip.includes(key))
+              .filter(
+                key =>
+                  !skip
+                    .map(k => k.toLowerCase())
+                    .includes(typeof key === "string" ? key.toLowerCase() : key)
+              )
               .sort(sort ? (a, b) => a.localeCompare(b) : undefined)
               .map(
                 key =>
@@ -379,7 +384,14 @@ export const formatLogMessage = (
                       ? "<function>"
                       : typeof message[key] === "object"
                         ? Object.keys(message[key]).filter(
-                            key => !skip.includes(key)
+                            key =>
+                              !skip
+                                .map(k => k.toLowerCase())
+                                .includes(
+                                  typeof key === "string"
+                                    ? key.toLowerCase()
+                                    : key
+                                )
                           ).length === 0
                           ? "{}"
                           : formatLogMessage(
