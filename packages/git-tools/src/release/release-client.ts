@@ -2,17 +2,19 @@ import {
   createProjectGraphAsync,
   ProjectGraph,
   ProjectsConfigurations,
+  readCachedProjectGraph,
   readProjectsConfigurationFromProjectGraph,
   Tree
 } from "@nx/devkit";
 import { StormWorkspaceConfig } from "@storm-software/config";
-import { isVerbose } from "@storm-software/config-tools";
+import { isVerbose, joinPaths } from "@storm-software/config-tools";
 import { getWorkspaceConfig } from "@storm-software/config-tools/get-config";
 import {
   writeDebug,
-  writeTrace,
   writeWarning
 } from "@storm-software/config-tools/logger/console";
+import defu from "defu";
+import { existsSync } from "node:fs";
 import { ReleaseClient } from "nx/release";
 import { DependencyBump } from "nx/release/changelog-renderer";
 import {
@@ -21,7 +23,7 @@ import {
   PostGitTask
 } from "nx/src/command-line/release/changelog";
 import { ChangelogOptions as NxChangelogOptions } from "nx/src/command-line/release/command-object";
-import { NxReleaseConfig } from "nx/src/command-line/release/config/config";
+import { NxReleaseConfig } from "nx/src/command-line/release/config/config.js";
 import {
   getCommitHash,
   getFirstGitCommit,
@@ -38,6 +40,7 @@ import {
   createGitTagValues,
   handleDuplicateGitTags
 } from "nx/src/command-line/release/utils/shared";
+import { NxJsonConfiguration, readNxJson } from "nx/src/config/nx-json";
 import { FsTree } from "nx/src/generators/tree";
 import { createFileMapUsingProjectGraph } from "nx/src/project-graph/file-map-utils";
 import { ReleaseConfig } from "../types";
@@ -55,12 +58,9 @@ import {
   getProjectsAffectedByCommit,
   gitTag
 } from "../utilities/git-utils";
+import { omit } from "../utilities/omit";
 import StormChangelogRenderer from "./changelog-renderer";
-import {
-  DEFAULT_COMMIT_MESSAGE,
-  formatConfigLog,
-  getReleaseConfig
-} from "./config";
+import { DEFAULT_RELEASE_CONFIG, getReleaseGroupConfig } from "./config";
 
 export type ChangelogOptions = Omit<
   NxChangelogOptions,
@@ -81,40 +81,34 @@ export class StormReleaseClient extends ReleaseClient {
       workspaceConfig = await getWorkspaceConfig();
     }
 
-    const projectGraph = await createProjectGraphAsync({
-      exitOnError: true,
-      resetDaemonClient: true
-    });
+    let projectGraph!: ProjectGraph;
+    try {
+      projectGraph = readCachedProjectGraph();
+    } catch {
+      projectGraph = await createProjectGraphAsync({
+        exitOnError: true,
+        resetDaemonClient: true
+      });
+    }
+
     if (!projectGraph) {
       throw new Error(
         "Failed to load the project graph. Please run `nx reset`, then run the `storm-git commit` command again."
       );
     }
 
-    writeTrace(
-      `Provided release configuration: \n${formatConfigLog(releaseConfig)}`,
-      workspaceConfig
-    );
-
-    const config = getReleaseConfig(
+    return new StormReleaseClient(
       projectGraph,
       releaseConfig,
-      workspaceConfig,
-      ignoreNxJsonConfig
-    );
-
-    writeDebug(
-      `Resolved release configuration: \n${formatConfigLog(config)}`,
+      ignoreNxJsonConfig,
       workspaceConfig
     );
-
-    return new StormReleaseClient(projectGraph, config, workspaceConfig);
   }
 
   /**
-   * The normalized release configuration used by this release client.
+   * The release configuration used by this release client.
    */
-  protected releaseConfig: NxReleaseConfig;
+  protected config: ReleaseConfig;
 
   /**
    * The workspace configuration used by this release client.
@@ -146,21 +140,58 @@ export class StormReleaseClient extends ReleaseClient {
    */
   protected constructor(
     projectGraph: ProjectGraph,
-    releaseConfig: NxReleaseConfig,
+    releaseConfig: Partial<ReleaseConfig>,
+    ignoreNxJsonConfig: boolean,
     workspaceConfig: StormWorkspaceConfig
   ) {
-    super(releaseConfig, true);
+    let nxJson!: Partial<NxJsonConfiguration>;
+    if (
+      !ignoreNxJsonConfig &&
+      existsSync(joinPaths(workspaceConfig.workspaceRoot, "nx.json"))
+    ) {
+      nxJson = readNxJson();
+    }
+
+    const config = defu(
+      {
+        changelog: {
+          renderOptions: {
+            workspaceConfig
+          }
+        }
+      },
+      {
+        groups: getReleaseGroupConfig(
+          projectGraph,
+          releaseConfig,
+          workspaceConfig
+        )
+      },
+      {
+        groups: getReleaseGroupConfig(
+          projectGraph,
+          (nxJson.release ?? {}) as Partial<ReleaseConfig>,
+          workspaceConfig
+        )
+      },
+      omit(releaseConfig, ["groups"]),
+      nxJson.release ? omit(nxJson.release, ["groups"]) : {},
+      omit(DEFAULT_RELEASE_CONFIG, ["groups"])
+    ) as ReleaseConfig;
+
+    super(config, true);
 
     writeDebug(
       "Executing release with the following configuration",
       workspaceConfig
     );
-    writeDebug(releaseConfig, workspaceConfig);
+    writeDebug(config, workspaceConfig);
 
     this.projectGraph = projectGraph;
-    this.releaseConfig = releaseConfig;
+    this.config = config;
     this.workspaceConfig = workspaceConfig;
     this.tree = new FsTree(workspaceConfig.workspaceRoot, false);
+
     this.projectConfigurations =
       readProjectsConfigurationFromProjectGraph(projectGraph);
   }
@@ -186,7 +217,7 @@ export class StormReleaseClient extends ReleaseClient {
       (await createReleaseGraph({
         tree: this.tree,
         projectGraph: this.projectGraph,
-        nxReleaseConfig: this.releaseConfig,
+        nxReleaseConfig: this.config as NxReleaseConfig,
         filters: {
           projects: options.projects,
           groups: options.groups
@@ -207,7 +238,6 @@ export class StormReleaseClient extends ReleaseClient {
       if (releaseGroup.projectsRelationship !== "independent") {
         continue;
       }
-
       for (const project of releaseGroup.projects) {
         // If the project does not have any changes, do not process its dependents
         if (
@@ -296,8 +326,7 @@ export class StormReleaseClient extends ReleaseClient {
                 {
                   checkAllBranchesWhen:
                     releaseGroup.releaseTag.checkAllBranchesWhen,
-                  preid:
-                    projectsPreid[project.name] || this.workspaceConfig.preid,
+                  preid: projectsPreid[project.name],
                   requireSemver: releaseGroup.releaseTag.requireSemver,
                   strictPreid: releaseGroup.releaseTag.strictPreid
                 }
@@ -360,7 +389,7 @@ export class StormReleaseClient extends ReleaseClient {
                 ? "*"
                 : getProjectsAffectedByCommit(c, fileToProjectMap)
             })),
-            this.releaseConfig.conventionalCommits
+            this.config.conventionalCommits
           );
 
           writeDebug(
@@ -376,7 +405,7 @@ export class StormReleaseClient extends ReleaseClient {
             projectsVersionData: options.versionData,
             releaseGroup,
             projects: [project],
-            releaseConfig: this.releaseConfig as ReleaseConfig,
+            releaseConfig: this.config,
             projectToAdditionalDependencyBumps,
             workspaceConfig: this.workspaceConfig,
             ChangelogRendererClass: StormChangelogRenderer
@@ -409,15 +438,11 @@ export class StormReleaseClient extends ReleaseClient {
               {
                 checkAllBranchesWhen:
                   releaseGroup.releaseTag.checkAllBranchesWhen,
-                preid:
-                  Object.keys(projectsPreid)[0] &&
-                  projectsPreid?.[Object.keys(projectsPreid)[0]!]
-                    ? projectsPreid?.[Object.keys(projectsPreid)[0]!]
-                    : this.workspaceConfig.preid,
+                preid: Object.keys(projectsPreid)[0]
+                  ? projectsPreid?.[Object.keys(projectsPreid)[0]!]
+                  : undefined,
                 requireSemver: releaseGroup.releaseTag.requireSemver,
-                strictPreid:
-                  releaseGroup.releaseTag.strictPreid ||
-                  this.workspaceConfig.preid !== undefined
+                strictPreid: releaseGroup.releaseTag.strictPreid
               }
             )
           )?.tag;
@@ -456,7 +481,7 @@ export class StormReleaseClient extends ReleaseClient {
               ? "*"
               : getProjectsAffectedByCommit(c, fileToProjectMap)
           })),
-          this.releaseConfig.conventionalCommits
+          this.config.conventionalCommits
         );
 
         writeDebug(
@@ -472,7 +497,7 @@ export class StormReleaseClient extends ReleaseClient {
           projectsVersionData: options.versionData,
           releaseGroup,
           projects: projectNodes,
-          releaseConfig: this.releaseConfig as ReleaseConfig,
+          releaseConfig: this.config,
           projectToAdditionalDependencyBumps,
           workspaceConfig: this.workspaceConfig,
           ChangelogRendererClass: StormChangelogRenderer
@@ -526,8 +551,8 @@ ${Object.keys(allProjectChangelogs)
       options.releaseGraph.releaseGroupToFilteredProjects,
       options.versionData,
       options.gitCommitMessage ||
-        this.releaseConfig.changelog?.git?.commitMessage ||
-        DEFAULT_COMMIT_MESSAGE
+        this.config.changelog?.git?.commitMessage ||
+        "release(monorepo): Publish workspace release updates"
     );
 
     const changes = this.tree.listChanges();
@@ -557,7 +582,7 @@ ${Object.keys(allProjectChangelogs)
       isVerbose: !!options.verbose,
       gitCommitMessages: commitMessageValues,
       gitCommitArgs:
-        options.gitCommitArgs || this.releaseConfig.changelog?.git?.commitArgs
+        options.gitCommitArgs || this.config.changelog?.git?.commitArgs
     });
 
     // Resolve the commit we just made
@@ -572,10 +597,9 @@ ${Object.keys(allProjectChangelogs)
       await gitTag({
         tag,
         message:
-          options.gitTagMessage ||
-          this.releaseConfig.changelog?.git?.tagMessage,
+          options.gitTagMessage || this.config.changelog?.git?.tagMessage,
         additionalArgs:
-          options.gitTagArgs || this.releaseConfig.changelog?.git?.tagArgs,
+          options.gitTagArgs || this.config.changelog?.git?.tagArgs,
         dryRun: options.dryRun,
         verbose: options.verbose
       });
@@ -591,7 +615,7 @@ ${Object.keys(allProjectChangelogs)
       dryRun: options.dryRun,
       verbose: options.verbose,
       additionalArgs:
-        options.gitPushArgs || this.releaseConfig.changelog?.git?.pushArgs
+        options.gitPushArgs || this.config.changelog?.git?.pushArgs
     });
 
     // Run any post-git tasks in series
