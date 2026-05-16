@@ -1,3 +1,5 @@
+import { StormWorkspaceConfig } from "@storm-software/config";
+import { writeDebug } from "@storm-software/config-tools";
 import {
   IMPLICIT_DEFAULT_RELEASE_GROUP,
   type NxReleaseConfig
@@ -161,7 +163,8 @@ export class ReleaseGraph {
     public readonly filters: {
       projects?: string[];
       groups?: string[];
-    }
+    },
+    public readonly workspaceConfig: StormWorkspaceConfig
   ) {}
 
   /**
@@ -676,16 +679,28 @@ export class ReleaseGraph {
               options
             );
 
+            const projectReleaseTagPattern = releaseTagPattern.includes(
+              "{releaseGroupName}"
+            )
+              ? releaseTagPattern.replace("{releaseGroupName}", "{projectName}")
+              : `{projectName}@${releaseTagPattern}`;
+
             const projectReleaseTag = await getLatestGitTagForPattern(
-              releaseTagPattern.includes("{releaseGroupName}")
-                ? releaseTagPattern.replace(
-                    /\{releaseGroupName\}/g,
-                    "{projectName}"
-                  )
-                : `{projectName}@${releaseTagPattern}`,
+              projectReleaseTagPattern,
               additionalInterpolationData,
               this.resolveRepositoryTags.bind(this),
               options
+            );
+
+            writeDebug(
+              `Group release tag pattern: ${
+                releaseTagPattern
+              } \nProject release tag pattern: ${
+                projectReleaseTagPattern
+              } \nGroup release tag: ${
+                groupReleaseTag?.tag
+              } \nProject release tag: ${projectReleaseTag?.tag}`,
+              this.workspaceConfig
             );
 
             if (
@@ -1134,7 +1149,8 @@ Valid values are: ${validReleaseVersionPrefixes.map(s => `"${s}"`).join(", ")}`
  * The returned graph can be reused across versioning, changelog, and publishing operations.
  */
 export async function createReleaseGraph(
-  options: CreateReleaseGraphOptions
+  options: CreateReleaseGraphOptions,
+  workspaceConfig: StormWorkspaceConfig
 ): Promise<ReleaseGraph> {
   // Construct ReleaseGroupWithName objects from nxReleaseConfig
   const releaseGroups: ReleaseGroupWithName[] = Object.entries(
@@ -1147,7 +1163,11 @@ export async function createReleaseGraph(
     };
   });
 
-  const graph = new ReleaseGraph(releaseGroups, options.filters);
+  const graph = new ReleaseGraph(
+    releaseGroups,
+    options.filters,
+    workspaceConfig
+  );
   await graph.init(options);
 
   return graph;
