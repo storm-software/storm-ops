@@ -2,6 +2,19 @@
 
 # Changelog for Storm Ops - Git Tools
 
+## [2.131.21](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.131.21) (05/15/2026)
+
+### Bug Fixes
+
+- **git-tools:** Resolve issue applying incorrect release group tags ([9edc226d0](https://github.com/storm-software/storm-ops/commit/9edc226d0))
+
+### Updated Dependencies
+
+- Updated **conventional-changelog** to **v0.3.178**
+- Updated **package-constants** to **v0.1.31**
+- Updated **config-tools** to **v1.190.18**
+- Updated **config** to **v1.137.50**
+
 ## [2.131.20](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.131.20) (05/15/2026)
 
 ### Bug Fixes
