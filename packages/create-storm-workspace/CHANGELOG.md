@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Create Storm Workspace
 
+## [1.97.180](https://github.com/storm-software/storm-ops/releases/tag/create-storm-workspace%401.97.180) (05/16/2026)
+
+### Updated Dependencies
+
+- Updated **config-tools** to **v1.190.20**
+
 ## [1.97.179](https://github.com/storm-software/storm-ops/releases/tag/create-storm-workspace%401.97.179) (05/16/2026)
 
 ### Updated Dependencies

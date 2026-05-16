@@ -2,6 +2,28 @@
 
 # Changelog for Storm Ops - Git Tools
 
+## [2.131.23](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.131.23) (05/16/2026)
+
+### Miscellaneous
+
+- **git-tools:** Revert release config changes ([dc51a9c78](https://github.com/storm-software/storm-ops/commit/dc51a9c78))
+- **monorepo:** Clean up logging during release ([94e133fe1](https://github.com/storm-software/storm-ops/commit/94e133fe1))
+- **git-tools:** Fixed various logging issues ([000c43c34](https://github.com/storm-software/storm-ops/commit/000c43c34))
+- **git-tools:** Reduce defaulted configuration values ([e6703c16d](https://github.com/storm-software/storm-ops/commit/e6703c16d))
+- **git-tools:** Revert changes to the release workflow ([6d30faf95](https://github.com/storm-software/storm-ops/commit/6d30faf95))
+
+### Bug Fixes
+
+- **git-tools:** Added back release group processor ([c93d25b36](https://github.com/storm-software/storm-ops/commit/c93d25b36))
+- **git-tools:** Resolve issue launching prompt during release ([73de59c8c](https://github.com/storm-software/storm-ops/commit/73de59c8c))
+
+### Updated Dependencies
+
+- Updated **conventional-changelog** to **v0.3.180**
+- Updated **package-constants** to **v0.1.33**
+- Updated **config-tools** to **v1.190.20**
+- Updated **config** to **v1.137.52**
+
 ## [2.131.22](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.131.22) (05/16/2026)
 
 ### Bug Fixes

@@ -2,6 +2,26 @@
 
 # Changelog for Storm Ops - Workspace Tools
 
+## [1.295.80](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.295.80) (05/16/2026)
+
+### Miscellaneous
+
+- **monorepo:** Added more release fields to `base.json` file ([78a664388](https://github.com/storm-software/storm-ops/commit/78a664388))
+- **workspace-tools:** Revert changes to `nx.json` file ([de5a83976](https://github.com/storm-software/storm-ops/commit/de5a83976))
+
+### Updated Dependencies
+
+- Updated **package-constants** to **v0.1.33**
+- Updated **testing-tools** to **v1.119.173**
+- Updated **config-tools** to **v1.190.20**
+- Updated **pnpm-tools** to **v0.7.30**
+- Updated **npm-tools** to **v0.6.137**
+- Updated **prettier** to **v0.59.72**
+- Updated **esbuild** to **v0.53.181**
+- Updated **unbuild** to **v0.57.181**
+- Updated **config** to **v1.137.52**
+- Updated **tsdown** to **v0.45.181**
+
 ## [1.295.79](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.295.79) (05/16/2026)
 
 ### Updated Dependencies
