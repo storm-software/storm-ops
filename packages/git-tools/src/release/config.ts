@@ -401,19 +401,8 @@ export function getReleaseConfig(
 export function formatConfigLog(
   config: NxReleaseConfig | Partial<ReleaseConfig>
 ): string {
-  return formatLogMessage(
-    {
-      ...omit(config, ["groups"]),
-      groups: Object.fromEntries(
-        Object.entries(config.groups ?? {}).map(([name, group]) => [
-          name,
-          {
-            ...omit(group, ["projects"]),
-            projects: group.projects.length ? group.projects : "No projects"
-          }
-        ])
-      )
-    },
-    { sort: true, skip: ["workspaceConfig"] }
-  );
+  return formatLogMessage(config, {
+    sort: true,
+    skip: ["workspaceConfig", "conventionalCommits"]
+  });
 }
