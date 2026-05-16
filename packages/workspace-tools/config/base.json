@@ -295,7 +295,26 @@
     "groups": {
       "packages": {
         "projects": ["packages/*"],
-        "projectsRelationship": "independent"
+        "projectsRelationship": "independent",
+        "changelog": {
+          "createRelease": "github",
+          "entryWhenNoChanges": false
+        },
+        "version": {
+          "groupPreVersionCommand": "pnpm build",
+          "currentVersionResolver": "git-tag",
+          "specifierSource": "conventional-commits",
+          "manifestRootsToUpdate": [
+            "{projectRoot}",
+            {
+              "path": "dist/{projectRoot}",
+              "preserveLocalDependencyProtocols": false
+            }
+          ]
+        },
+        "releaseTag": {
+          "pattern": "{projectName}@{version}"
+        }
       }
     }
   },
