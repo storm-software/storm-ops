@@ -40,13 +40,7 @@ export const DEFAULT_COMMIT_MESSAGE =
 
 export const DEFAULT_RELEASE_GROUP_GIT_CONFIG = {
   commit: false,
-  commitMessage: DEFAULT_COMMIT_MESSAGE,
-  commitArgs: "",
-  tag: false,
-  tagMessage: "",
-  tagArgs: "",
-  stageChanges: false,
-  pushArgs: ""
+  commitMessage: DEFAULT_COMMIT_MESSAGE
 };
 
 export const DEFAULT_VERSION_RELEASE_CONFIG = {
@@ -54,10 +48,6 @@ export const DEFAULT_VERSION_RELEASE_CONFIG = {
   fallbackCurrentVersionResolver: "disk",
   specifierSource: "conventional-commits",
   groupPreVersionCommand: "pnpm build",
-  preserveLocalDependencyProtocols: true,
-  preserveMatchingDependencyRanges: true,
-  logUnchangedProjects: true,
-  updateDependents: "always",
   git: {
     ...DEFAULT_RELEASE_GROUP_GIT_CONFIG,
     stageChanges: true
