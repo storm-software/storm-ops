@@ -2,6 +2,19 @@
 
 # Changelog for Storm Ops - Git Tools
 
+## [2.131.22](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.131.22) (05/16/2026)
+
+### Bug Fixes
+
+- **git-tools:** Resolve issue with missing parameter ([20798f4f4](https://github.com/storm-software/storm-ops/commit/20798f4f4))
+
+### Updated Dependencies
+
+- Updated **conventional-changelog** to **v0.3.179**
+- Updated **package-constants** to **v0.1.32**
+- Updated **config-tools** to **v1.190.19**
+- Updated **config** to **v1.137.51**
+
 ## [2.131.21](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.131.21) (05/15/2026)
 
 ### Bug Fixes

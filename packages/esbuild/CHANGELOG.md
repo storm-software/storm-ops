@@ -2,6 +2,19 @@
 
 # Changelog for Storm Ops - Esbuild
 
+## [0.53.180](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.53.180) (05/16/2026)
+
+### Bug Fixes
+
+- **git-tools:** Resolve issue with missing parameter ([20798f4f4](https://github.com/storm-software/storm-ops/commit/20798f4f4))
+
+### Updated Dependencies
+
+- Updated **config-tools** to **v1.190.19**
+- Updated **build-tools** to **v0.158.179**
+- Updated **config** to **v1.137.51**
+- Updated **tsup** to **v0.2.177**
+
 ## [0.53.179](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.53.179) (05/15/2026)
 
 ### Updated Dependencies
