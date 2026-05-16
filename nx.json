@@ -77,14 +77,27 @@
         "projects": ["packages/*"],
         "projectsRelationship": "independent",
         "version": {
-          "versionActions": "./dist/packages/workspace-tools/dist/src/release/js-version-actions.js"
+          "versionActions": "./dist/packages/workspace-tools/dist/src/release/js-version-actions.js",
+          "groupPreVersionCommand": "pnpm build",
+          "currentVersionResolver": "git-tag",
+          "specifierSource": "conventional-commits",
+          "manifestRootsToUpdate": [
+            "{projectRoot}",
+            {
+              "path": "dist/{projectRoot}",
+              "preserveLocalDependencyProtocols": false
+            }
+          ]
         }
       },
       "crates": {
         "projects": ["crates/*"],
         "projectsRelationship": "independent",
         "version": {
-          "versionActions": "./dist/packages/workspace-tools/dist/src/release/rust-version-actions.js"
+          "versionActions": "./dist/packages/workspace-tools/dist/src/release/rust-version-actions.js",
+          "groupPreVersionCommand": "pnpm build",
+          "currentVersionResolver": "git-tag",
+          "specifierSource": "conventional-commits"
         }
       }
     }
