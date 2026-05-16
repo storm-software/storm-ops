@@ -228,7 +228,11 @@
   "bin": {
     "storm-esbuild": "./bin/esbuild.cjs"
   },
-  "files": ["assets/**/*", "bin/**/*", "dist/**/*"],
+  "files": [
+    "assets/**/*",
+    "bin/**/*",
+    "dist/**/*"
+  ],
   "dependencies": {
     "@nx/devkit": "catalog:",
     "@nx/js": "catalog:",
@@ -246,11 +250,6 @@
   "devDependencies": {
     "@types/node": "catalog:",
     "typescript": "^5.9.3"
-  },
-  "packageManager": "pnpm@10.3.0",
-  "engines": {
-    "node": ">=22.4.0",
-    "pnpm": ">=10.3.0"
   },
   "publishConfig": {
     "access": "public"

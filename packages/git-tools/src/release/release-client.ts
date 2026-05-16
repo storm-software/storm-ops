@@ -194,17 +194,20 @@ export class StormReleaseClient extends ReleaseClient {
       );
 
     // Use pre-built release graph if provided, otherwise create a new one
-    const releaseGraph: ReleaseGraph = await createReleaseGraph({
-      tree: this.tree,
-      projectGraph: this.projectGraph,
-      nxReleaseConfig: this.releaseConfig,
-      filters: {
-        projects: options.projects,
-        groups: options.groups
+    const releaseGraph: ReleaseGraph = await createReleaseGraph(
+      {
+        tree: this.tree,
+        projectGraph: this.projectGraph,
+        nxReleaseConfig: this.releaseConfig,
+        filters: {
+          projects: options.projects,
+          groups: options.groups
+        },
+        firstRelease: !!options.firstRelease,
+        verbose: isVerbose(this.workspaceConfig.logLevel)
       },
-      firstRelease: !!options.firstRelease,
-      verbose: isVerbose(this.workspaceConfig.logLevel)
-    });
+      this.workspaceConfig
+    );
 
     /**
      * Compute any additional dependency bumps up front because there could be cases of circular dependencies,
@@ -628,19 +631,22 @@ ${Object.keys(allProjectChangelogs)
     }
 
     // Use pre-built release graph if provided, otherwise create a new one
-    const releaseGraph: ReleaseGraph = await createReleaseGraph({
-      tree: this.tree,
-      projectGraph: this.projectGraph,
-      nxReleaseConfig: this.releaseConfig,
-      filters: {
-        projects: options.projects,
-        groups: options.groups
+    const releaseGraph: ReleaseGraph = await createReleaseGraph(
+      {
+        tree: this.tree,
+        projectGraph: this.projectGraph,
+        nxReleaseConfig: this.releaseConfig,
+        filters: {
+          projects: options.projects,
+          groups: options.groups
+        },
+        firstRelease: !!options.firstRelease,
+        verbose,
+        preid: options.preid ?? this.workspaceConfig.preid,
+        versionActionsOptionsOverrides: options.versionActionsOptionsOverrides
       },
-      firstRelease: !!options.firstRelease,
-      verbose,
-      preid: options.preid ?? this.workspaceConfig.preid,
-      versionActionsOptionsOverrides: options.versionActionsOptionsOverrides
-    });
+      this.workspaceConfig
+    );
 
     // Display filter log if filters were applied
     if (
