@@ -181,17 +181,19 @@ export class StormReleaseClient extends ReleaseClient {
       );
 
     // Use pre-built release graph if provided, otherwise create a new one
-    const releaseGraph: ReleaseGraph = await createReleaseGraph({
-      tree: this.tree,
-      projectGraph: this.projectGraph,
-      nxReleaseConfig: this.releaseConfig,
-      filters: {
-        projects: options.projects,
-        groups: options.groups
-      },
-      firstRelease: !!options.firstRelease,
-      verbose: isVerbose(this.workspaceConfig.logLevel)
-    });
+    const releaseGraph: ReleaseGraph =
+      options.releaseGraph ||
+      (await createReleaseGraph({
+        tree: this.tree,
+        projectGraph: this.projectGraph,
+        nxReleaseConfig: this.releaseConfig,
+        filters: {
+          projects: options.projects,
+          groups: options.groups
+        },
+        firstRelease: !!options.firstRelease,
+        verbose: isVerbose(this.workspaceConfig.logLevel)
+      }));
 
     /**
      * Compute any additional dependency bumps up front because there could be cases of circular dependencies,
@@ -205,6 +207,7 @@ export class StormReleaseClient extends ReleaseClient {
       if (releaseGroup.projectsRelationship !== "independent") {
         continue;
       }
+
       for (const project of releaseGroup.projects) {
         // If the project does not have any changes, do not process its dependents
         if (
