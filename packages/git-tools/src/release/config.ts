@@ -87,7 +87,9 @@ export const DEFAULT_RELEASE_GROUP_CONFIG = {
     ...DEFAULT_VERSION_RELEASE_CONFIG
   },
   releaseTag: {
-    preferDockerVersion: false
+    checkAllBranchesWhen: true,
+    preferDockerVersion: false,
+    strictPreid: true
   },
   versionPlans: false
 } as const;

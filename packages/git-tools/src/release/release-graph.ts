@@ -6,7 +6,6 @@ import {
 } from "nx/src/command-line/release/config/config";
 import type { ReleaseGroupWithName } from "nx/src/command-line/release/config/filter-release-groups";
 import {
-  getLatestGitTagForPattern,
   GetLatestGitTagForPatternOptions,
   GitCommit,
   sanitizeProjectNameForGitTag
@@ -38,6 +37,7 @@ import { filterAffected } from "nx/src/project-graph/affected/affected-project-g
 import { calculateFileChanges } from "nx/src/project-graph/file-utils";
 import { NxArgs } from "nx/src/utils/command-line-utils";
 import gte from "semver/functions/gte";
+import { getLatestGitTagForPattern } from "../utilities/git-utils";
 
 /**
  * Final configuration for a project after applying release group and project level overrides
@@ -673,6 +673,7 @@ export class ReleaseGraph {
             !releaseTagPattern.includes("{projectName}")
           ) {
             const groupReleaseTag = await getLatestGitTagForPattern(
+              this.workspaceConfig,
               releaseTagPattern,
               additionalInterpolationData,
               this.resolveRepositoryTags.bind(this),
@@ -686,6 +687,7 @@ export class ReleaseGraph {
               : `{projectName}@${releaseTagPattern}`;
 
             const projectReleaseTag = await getLatestGitTagForPattern(
+              this.workspaceConfig,
               projectReleaseTagPattern,
               additionalInterpolationData,
               this.resolveRepositoryTags.bind(this),
@@ -717,6 +719,7 @@ export class ReleaseGraph {
             }
           } else {
             latestMatchingGitTag = await getLatestGitTagForPattern(
+              this.workspaceConfig,
               releaseTagPattern,
               additionalInterpolationData,
               this.resolveRepositoryTags.bind(this),
@@ -939,7 +942,11 @@ Valid values are: ${validReleaseVersionPrefixes.map(s => `"${s}"`).join(", ")}`
       currentVersionResolver !== "git-tag"
     ) {
       throw new Error(
-        `Invalid currentVersionResolver "${currentVersionResolver}" provided for project "${projectGraphNode.name}". Must be "git-tag" when "specifierSource" is "conventional-commits"`
+        `Invalid currentVersionResolver "${
+          currentVersionResolver
+        }" provided for project "${
+          projectGraphNode.name
+        }". Must be "git-tag" when "specifierSource" is "conventional-commits"`
       );
     }
 

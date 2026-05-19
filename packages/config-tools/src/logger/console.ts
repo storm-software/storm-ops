@@ -359,6 +359,7 @@ export const formatLogMessage = (
         : message
       : Array.isArray(message)
         ? `\n${message
+            .sort(sort ? (a, b) => a.localeCompare(b) : undefined)
             .map(
               (item, index) =>
                 ` ${prefix}> #${index} = ${formatLogMessage(
@@ -372,9 +373,10 @@ export const formatLogMessage = (
           ? `\n${Object.keys(message)
               .filter(
                 key =>
+                  typeof key !== "string" ||
                   !skip
-                    .map(k => k.toLowerCase())
-                    .includes(typeof key === "string" ? key.toLowerCase() : key)
+                    .map(k => k.toLowerCase().trim())
+                    .includes(key.toLowerCase().trim())
               )
               .sort(sort ? (a, b) => a.localeCompare(b) : undefined)
               .map(
@@ -385,13 +387,10 @@ export const formatLogMessage = (
                       : typeof message[key] === "object"
                         ? Object.keys(message[key]).filter(
                             key =>
+                              typeof key !== "string" ||
                               !skip
-                                .map(k => k.toLowerCase())
-                                .includes(
-                                  typeof key === "string"
-                                    ? key.toLowerCase()
-                                    : key
-                                )
+                                .map(k => k.toLowerCase().trim())
+                                .includes(key.toLowerCase().trim())
                           ).length === 0
                           ? "{}"
                           : formatLogMessage(

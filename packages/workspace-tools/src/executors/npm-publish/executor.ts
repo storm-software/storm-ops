@@ -196,9 +196,7 @@ export default async function npmPublishExecutorFn(
           `An error occurred while checking for existing dist-tags
 ${JSON.stringify(err)}
 
-Note: If this is the first time this package has been published to NPM, this can be ignored.
-
-`
+Note: If this is the first time this package has been published to NPM, this can be ignored.`
         );
         console.info("");
       }
@@ -209,8 +207,7 @@ Note: If this is the first time this package has been published to NPM, this can
 
           console.info(
             `Adding the dist-tag ${tag} - preparing to run the following:
-${command}
-`
+${command}`
           );
 
           const result = execSync(command, {
@@ -226,8 +223,7 @@ ${command}
           console.info(
             `Added the dist-tag ${tag} to v${currentVersion} for registry "${registry}"
 
-Execution response: ${result.toString()}
-`
+Execution response: ${result.toString()}`
           );
         } else {
           console.info(
@@ -250,9 +246,7 @@ Execution response: ${result.toString()}
             `An error occurred while adding dist-tags:
 ${error}
 
-Note: If this is the first time this package has been published to NPM, this can be ignored.
-
-`
+Note: If this is the first time this package has been published to NPM, this can be ignored.`
           );
           console.info("");
 
@@ -326,8 +320,7 @@ Note: If this is the first time this package has been published to NPM, this can
         console.error(
           `Something unexpected went wrong when checking for existing dist-tags.
 
-Error: ${JSON.stringify(err)}
-`
+Error: ${JSON.stringify(err, null, 2)}`
         );
 
         return { success: false };
@@ -340,7 +333,9 @@ Error: ${JSON.stringify(err)}
     const command = npmPublishCommandSegments.join(" ");
 
     console.info(
-      `Running publish command "${command}" in current working directory: "${cwd}" `
+      `Running publish command "${command}" in current working directory: "${
+        cwd
+      }" `
     );
 
     const result = execSync(command, {
@@ -361,18 +356,18 @@ Error: ${JSON.stringify(err)}
 
 Execution response: ${result.toString()}`
             : ""
-        }
-`
+        }`
       );
     } else {
-      console.info(`Published to ${registry} with tag "${tag}" ${
-        result
-          ? `
+      console.info(
+        `Published to ${registry} with tag "${tag}" ${
+          result
+            ? `
 
 Execution response: ${result.toString()}`
-          : ""
-      }
-`);
+            : ""
+        }`
+      );
     }
 
     return { success: true };
@@ -413,8 +408,7 @@ Execution response: ${result.toString()}`
       console.error(
         `Something unexpected went wrong when processing the npm publish output
 
-Error: ${JSON.stringify(error)}
-`
+Error: ${JSON.stringify(error, null, 2)}`
       );
 
       console.error("\n ********************** \n");

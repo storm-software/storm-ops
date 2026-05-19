@@ -32,7 +32,6 @@ import {
 import {
   getCommitHash,
   getFirstGitCommit,
-  getLatestGitTagForPattern,
   gitAdd,
   GitCommit,
   gitPush
@@ -61,6 +60,7 @@ import {
   extractPreid,
   filterProjectCommits,
   getCommits,
+  getLatestGitTagForPattern,
   getProjectsAffectedByCommit,
   gitTag
 } from "../utilities/git-utils";
@@ -300,6 +300,7 @@ export class StormReleaseClient extends ReleaseClient {
             options.from ||
             (
               await getLatestGitTagForPattern(
+                this.workspaceConfig,
                 releaseGroup.releaseTag.pattern,
                 {
                   projectName: project.name,
@@ -414,6 +415,7 @@ export class StormReleaseClient extends ReleaseClient {
           options.from ||
           (
             await getLatestGitTagForPattern(
+              this.workspaceConfig,
               releaseGroup.releaseTag.pattern,
               {
                 releaseGroupName: releaseGroup.name

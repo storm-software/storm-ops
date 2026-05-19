@@ -1,13 +1,20 @@
 import { FileData } from "@nx/devkit";
+import { StormWorkspaceConfig } from "@storm-software/config";
+import { writeDebug } from "@storm-software/config-tools/logger/console";
 import { execCommand } from "nx/src/command-line/release/utils/exec-command.js";
 import {
+  extractTagAndVersion,
   getGitDiff,
+  GetLatestGitTagForPatternOptions,
   gitAdd,
   GitCommit,
+  GitTagAndVersion,
   parseCommits
 } from "nx/src/command-line/release/utils/git";
+import { RepoGitTags } from "nx/src/command-line/release/utils/repository-git-tags.js";
 import { isPrerelease } from "nx/src/command-line/release/utils/shared";
-import { prerelease } from "semver";
+import { interpolate } from "nx/src/tasks-runner/utils.js";
+import { coerce, gte, prerelease } from "semver";
 
 export async function getCommits(
   fromSHA: string,
@@ -286,4 +293,197 @@ export async function commitChanges({
     dryRun: isDryRun,
     verbose: isVerbose
   });
+}
+
+// https://semver.org/#is-there-a-suggested-regular-expression-regex-to-check-a-semver-string
+const SEMVER_REGEX =
+  /^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-((?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\+([0-9a-zA-Z-]+(?:\.[0-9a-zA-Z-]+)*))?$/g;
+
+/**
+ * Get the latest git tag for the configured release tag pattern.
+ *
+ * This function will:
+ * - Get all tags from the git repo, sorted by version
+ * - Filter the tags into a list with SEMVER-compliant tags, matching the release tag pattern
+ * - If a preid is provided, prioritize tags for that preid, then semver tags without a preid
+ * - If no preid is provided, search only for stable semver tags (i.e. no pre-release or build metadata)
+ *
+ * @param releaseTagPattern - The pattern to filter the tags list by
+ * @param additionalInterpolationData - Additional data used when interpolating the release tag pattern
+ * @param options - The options to use when getting the latest git tag for the pattern
+ *
+ * @returns The tag and version
+ */
+export async function getLatestGitTagForPattern(
+  workspaceConfig: StormWorkspaceConfig,
+  releaseTagPattern: string,
+  additionalInterpolationData = {},
+  resolveTags: RepoGitTags["resolveTags"],
+  options: GetLatestGitTagForPatternOptions
+): Promise<GitTagAndVersion | null> {
+  const { requireSemver, strictPreid, preid, checkAllBranchesWhen } = options;
+
+  try {
+    const tags: string[] = await resolveTags(checkAllBranchesWhen);
+    if (!tags.length) {
+      return null;
+    }
+
+    const interpolatedTagPattern = interpolate(releaseTagPattern, {
+      version: "%v%",
+      projectName: "%p%",
+      releaseGroupName: "%rg%",
+      ...additionalInterpolationData
+    });
+
+    const tagRegexp = `^${interpolatedTagPattern
+      .replace(/[/\-\\^$*+?.()|[\]{}]/g, "\\$&")
+      .replace("%v%", "(.+)")
+      .replace("%p%", "(.+)")
+      .replace("%rg%", "(.+)")}`;
+
+    const matchingTags = tags.filter(tag => {
+      if (requireSemver) {
+        // Match against Semver Regex when using semverVersioning to ensure only valid semver tags are matched
+        return (
+          !!tag.match(tagRegexp) &&
+          tag.match(tagRegexp)!.some(r => r.match(SEMVER_REGEX))
+        );
+      } else {
+        return !!tag.match(tagRegexp);
+      }
+    });
+    if (!matchingTags.length) {
+      return null;
+    }
+
+    writeDebug(
+      `Found ${matchingTags.length} matching tags out of ${
+        tags.length
+      } total tags for release tag pattern "${
+        releaseTagPattern
+      }" (Interpolated tag pattern: ${interpolatedTagPattern})`,
+      workspaceConfig
+    );
+
+    if (!strictPreid) {
+      writeDebug(
+        `Not using strict preid, will use the first matching tag ${matchingTags[0]!} for release tag pattern "${
+          releaseTagPattern
+        }" (Interpolated tag pattern: ${interpolatedTagPattern})`,
+        workspaceConfig
+      );
+
+      // If not using strict preid, we can just return the first matching tag
+      return extractTagAndVersion(matchingTags[0]!, tagRegexp, options);
+    }
+
+    // Find stable release tags
+    const stableReleaseTags = matchingTags.filter(tag => {
+      const matches = tag.match(tagRegexp);
+      if (!matches) return false;
+      const [, version] = matches;
+      return version && !isPrerelease(version);
+    });
+
+    writeDebug(
+      `Found ${stableReleaseTags.length} stable tags for release tag pattern "${
+        releaseTagPattern
+      }" (Interpolated tag pattern: ${interpolatedTagPattern})`,
+      workspaceConfig
+    );
+
+    if (preid && preid.length > 0) {
+      // When a preid is provided, find tags matching that preid
+      const preidReleaseTags = matchingTags.filter(tag => {
+        const match = tag.match(tagRegexp);
+        if (!match) return false;
+
+        const version = match.find(part => part.match(SEMVER_REGEX));
+        return version && version.includes(`-${preid}.`);
+      });
+
+      writeDebug(
+        `Found ${preidReleaseTags.length} preid tags for release tag pattern "${
+          releaseTagPattern
+        }" (Interpolated tag pattern: ${interpolatedTagPattern})`,
+        workspaceConfig
+      );
+
+      // If both preid and stable tags exist, compare them to determine which is truly "latest"
+      if (preidReleaseTags.length > 0 && stableReleaseTags.length > 0) {
+        const preidResult = extractTagAndVersion(
+          preidReleaseTags[0]!,
+          tagRegexp,
+          options
+        );
+        const stableResult = extractTagAndVersion(
+          stableReleaseTags[0]!,
+          tagRegexp,
+          options
+        );
+
+        writeDebug(
+          `Extracted preid version: ${
+            preidResult.extractedVersion
+          } and stable version: ${
+            stableResult.extractedVersion
+          } for release tag pattern "${
+            releaseTagPattern
+          }" (Interpolated tag pattern: ${interpolatedTagPattern})`,
+          workspaceConfig
+        );
+
+        // Get the base version of the preid release (e.g., "1.2.4" from "1.2.4-alpha.1")
+        const preidBaseVersion = coerce(preidResult.extractedVersion)?.version;
+        const stableVersion = stableResult.extractedVersion;
+
+        // If the stable version is >= the preid's base version, use the stable tag
+        // This handles the case where a stable release was made after the prerelease
+        // (e.g., 1.1.1 stable was released after 1.1.0-alpha.3)
+        if (
+          preidBaseVersion &&
+          stableVersion &&
+          gte(stableVersion, preidBaseVersion)
+        ) {
+          writeDebug(
+            `Using latest stable tag for release tag pattern "${releaseTagPattern}" (Interpolated tag pattern: ${interpolatedTagPattern}) because its version (${stableVersion}) is greater than or equal to the base version of the latest preid tag (${preidBaseVersion})`,
+            workspaceConfig
+          );
+
+          return stableResult;
+        }
+
+        // Otherwise, use the preid tag (prerelease's base is ahead of stable)
+        return preidResult;
+      }
+
+      // If only preid tags exist (no stable), use the latest preid tag
+      if (preidReleaseTags.length > 0) {
+        writeDebug(
+          `Using latest preid tag for release tag pattern "${releaseTagPattern}" (Interpolated tag pattern: ${interpolatedTagPattern})`,
+          workspaceConfig
+        );
+
+        return extractTagAndVersion(preidReleaseTags[0]!, tagRegexp, options);
+      }
+
+      // If no matching preid tags, fall through to find stable tags below
+    }
+
+    // If there are stable release tags, use the latest one
+    if (stableReleaseTags.length > 0) {
+      writeDebug(
+        `Using latest stable tag for release tag pattern "${releaseTagPattern}" (Interpolated tag pattern: ${interpolatedTagPattern})`,
+        workspaceConfig
+      );
+
+      return extractTagAndVersion(stableReleaseTags[0]!, tagRegexp, options);
+    }
+
+    // Otherwise return null
+    return null;
+  } catch {
+    return null;
+  }
 }
