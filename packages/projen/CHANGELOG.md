@@ -2,6 +2,14 @@
 
 # Changelog for Storm Ops - Projen
 
+## [0.21.196](https://github.com/storm-software/storm-ops/releases/tag/projen%400.21.196) (05/19/2026)
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.53**
+- Updated **config-tools** to **v1.190.21**
+- Updated **workspace-tools** to **v1.295.81**
+
 ## [0.21.195](https://github.com/storm-software/storm-ops/releases/tag/projen%400.21.195) (05/16/2026)
 
 ### Updated Dependencies

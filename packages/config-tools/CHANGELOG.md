@@ -2,6 +2,21 @@
 
 # Changelog for Storm Ops - Config Tools
 
+## [1.190.21](https://github.com/storm-software/storm-ops/releases/tag/config-tools%401.190.21) (05/19/2026)
+
+### Miscellaneous
+
+- **git-tools:** Added git tag logging and updated release defaults ([9cc43a242](https://github.com/storm-software/storm-ops/commit/9cc43a242))
+
+### Bug Fixes
+
+- **config-tools:** Resolve issue with sorting null values ([d6d6f2b2a](https://github.com/storm-software/storm-ops/commit/d6d6f2b2a))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.53**
+- Updated **testing-tools** to **v1.119.174**
+
 ## [1.190.20](https://github.com/storm-software/storm-ops/releases/tag/config-tools%401.190.20) (05/16/2026)
 
 ### Miscellaneous
