@@ -20,7 +20,7 @@ The path to the package root
 > Registry
 
 
-The registry to publish to
+The URL of the registry to publish to
 
 
 ## `tag`
@@ -45,10 +45,10 @@ The version to publish. If not provided, the version from package.json will be u
 ## `otp`
 - **Type**: `string`
 
-> One Time Password
+> One Time Password (OTP)
 
 
-The one time password
+The one time password (OTP) for two-factor authentication
 
 
 ## `dryRun`

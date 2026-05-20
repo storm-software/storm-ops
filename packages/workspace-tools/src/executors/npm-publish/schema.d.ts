@@ -16,7 +16,7 @@ export interface NpmPublishExecutorSchema {
  /**
   * Registry
   * 
-  * The registry to publish to
+  * The URL of the registry to publish to
   * 
   * @default "https://registry.npmjs.org/"
  */
@@ -40,9 +40,9 @@ export interface NpmPublishExecutorSchema {
  version?: string,
 
  /**
-  * One Time Password
+  * One Time Password (OTP)
   * 
-  * The one time password
+  * The one time password (OTP) for two-factor authentication
   * 
  */
  otp?: string,

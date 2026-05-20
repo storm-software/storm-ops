@@ -23,9 +23,7 @@ export async function getCommits(
   fromSHA: string,
   toSHA: string
 ): Promise<GitCommit[]> {
-  const rawCommits = await getGitDiff(fromSHA, toSHA);
-  // Parse as conventional commits
-  return parseCommits(rawCommits);
+  return parseCommits(await getGitDiff(fromSHA, toSHA));
 }
 
 export async function filterProjectCommits({
@@ -81,50 +79,6 @@ export function extractPreid(version: string): string | undefined {
   }
   return undefined;
 }
-
-// export function createGitTagValues(
-//   releaseGroups: ReleaseGroupWithName[],
-//   releaseGroupToFilteredProjects: Map<ReleaseGroupWithName, Set<string>>,
-//   versionData: VersionData
-// ): string[] {
-//   const tags = [] as string[];
-
-//   for (const releaseGroup of releaseGroups) {
-//     const releaseGroupProjectNames = Array.from(
-//       releaseGroupToFilteredProjects.get(releaseGroup) ?? []
-//     );
-//     // For independent groups we want one tag per project, not one for the overall group
-//     if (releaseGroup.projectsRelationship === "independent") {
-//       for (const project of releaseGroupProjectNames) {
-//         const projectVersionData = versionData[project];
-//         if (projectVersionData?.newVersion) {
-//           tags.push(
-//             interpolate(releaseGroup.releaseTag.pattern, {
-//               version: projectVersionData.newVersion,
-//               projectName: project
-//             })
-//           );
-//         }
-//       }
-//       continue;
-//     }
-
-//     if (releaseGroupProjectNames.length > 0 && releaseGroupProjectNames[0]) {
-//       // For fixed groups we want one tag for the overall group
-//       const projectVersionData = versionData[releaseGroupProjectNames[0]]; // all at the same version, so we can just pick the first one
-//       if (projectVersionData?.newVersion) {
-//         tags.push(
-//           interpolate(releaseGroup.releaseTag.pattern, {
-//             version: projectVersionData.newVersion,
-//             releaseGroupName: releaseGroup.name
-//           })
-//         );
-//       }
-//     }
-//   }
-
-//   return tags;
-// }
 
 /**
  * Create a git tag for the current commit.
@@ -303,6 +257,39 @@ const SEMVER_REGEX =
   /^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-((?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\+([0-9a-zA-Z-]+(?:\.[0-9a-zA-Z-]+)*))?$/g;
 
 /**
+ * Compare a list of git tags and return the one with the greatest semver version, using the provided tag regexp to extract the version from the tag.
+ *
+ * @param tags - The list of tags to compare
+ * @param tagRegexp - The regex to use to extract the version from the tag
+ * @param options - The options to use when comparing the tags
+ * @returns The tag with the greatest semver version
+ */
+export function compareTags(
+  tags: string[],
+  tagRegexp: string,
+  options: GetLatestGitTagForPatternOptions
+): GitTagAndVersion {
+  return tags.reduce(
+    (ret, releaseTag) => {
+      const result = extractTagAndVersion(releaseTag, tagRegexp, options);
+
+      const version = coerce(result.extractedVersion)?.version;
+      const current = coerce(ret.extractedVersion)?.version;
+      if (
+        version &&
+        valid(version) &&
+        (!current || !valid(current) || gt(version, current, { loose: true }))
+      ) {
+        return result;
+      }
+
+      return ret;
+    },
+    extractTagAndVersion(tags[0]!, tagRegexp, options)
+  );
+}
+
+/**
  * Get the latest git tag for the configured release tag pattern.
  *
  * This function will:
@@ -378,26 +365,7 @@ export async function getLatestGitTagForPattern(
       );
 
       // If not using strict preid, we can just return the first matching tag
-      return matchingTags.reduce(
-        (ret, releaseTag) => {
-          const result = extractTagAndVersion(releaseTag, tagRegexp, options);
-
-          const version = coerce(result.extractedVersion)?.version;
-          const current = coerce(ret.extractedVersion)?.version;
-          if (
-            version &&
-            valid(version) &&
-            (!current ||
-              !valid(current) ||
-              gt(version, current, { loose: true }))
-          ) {
-            return result;
-          }
-
-          return ret;
-        },
-        extractTagAndVersion(matchingTags[0]!, tagRegexp, options)
-      );
+      return compareTags(matchingTags, tagRegexp, options);
     }
 
     // Find stable release tags
@@ -434,51 +402,8 @@ export async function getLatestGitTagForPattern(
 
       // If both preid and stable tags exist, compare them to determine which is truly "latest"
       if (preidReleaseTags.length > 0 && stableReleaseTags.length > 0) {
-        const preidResult = preidReleaseTags.reduce(
-          (ret, releaseTag) => {
-            const result = extractTagAndVersion(releaseTag, tagRegexp, options);
-
-            const version = coerce(result.extractedVersion)?.version;
-            const current = coerce(ret.extractedVersion)?.version;
-            if (
-              version &&
-              valid(version) &&
-              (!current ||
-                !valid(current) ||
-                gt(version, current, {
-                  loose: true
-                }))
-            ) {
-              return result;
-            }
-
-            return ret;
-          },
-          extractTagAndVersion(preidReleaseTags[0]!, tagRegexp, options)
-        );
-
-        const stableResult = stableReleaseTags.reduce(
-          (ret, releaseTag) => {
-            const result = extractTagAndVersion(releaseTag, tagRegexp, options);
-
-            const version = coerce(result.extractedVersion)?.version;
-            const current = coerce(ret.extractedVersion)?.version;
-            if (
-              version &&
-              valid(version) &&
-              (!current ||
-                !valid(current) ||
-                gt(version, current, {
-                  loose: true
-                }))
-            ) {
-              return result;
-            }
-
-            return ret;
-          },
-          extractTagAndVersion(stableReleaseTags[0]!, tagRegexp, options)
-        );
+        const preidResult = compareTags(preidReleaseTags, tagRegexp, options);
+        const stableResult = compareTags(stableReleaseTags, tagRegexp, options);
 
         // Get the base version of the preid release (e.g., "1.2.4" from "1.2.4-alpha.1")
         const preidBaseVersion = coerce(preidResult.extractedVersion)?.version;
@@ -530,28 +455,7 @@ export async function getLatestGitTagForPattern(
           workspaceConfig
         );
 
-        return preidReleaseTags.reduce(
-          (ret, releaseTag) => {
-            const result = extractTagAndVersion(releaseTag, tagRegexp, options);
-
-            const version = coerce(result.extractedVersion)?.version;
-            const current = coerce(ret.extractedVersion)?.version;
-            if (
-              version &&
-              valid(version) &&
-              (!current ||
-                !valid(current) ||
-                gt(version, current, {
-                  loose: true
-                }))
-            ) {
-              return result;
-            }
-
-            return ret;
-          },
-          extractTagAndVersion(preidReleaseTags[0]!, tagRegexp, options)
-        );
+        return compareTags(preidReleaseTags, tagRegexp, options);
       }
 
       // If no matching preid tags, fall through to find stable tags below
@@ -566,26 +470,7 @@ export async function getLatestGitTagForPattern(
         workspaceConfig
       );
 
-      return stableReleaseTags.reduce(
-        (ret, releaseTag) => {
-          const result = extractTagAndVersion(releaseTag, tagRegexp, options);
-
-          const version = coerce(result.extractedVersion)?.version;
-          const current = coerce(ret.extractedVersion)?.version;
-          if (
-            version &&
-            valid(version) &&
-            (!current ||
-              !valid(current) ||
-              gt(version, current, { loose: true }))
-          ) {
-            return result;
-          }
-
-          return ret;
-        },
-        extractTagAndVersion(stableReleaseTags[0]!, tagRegexp, options)
-      );
+      return compareTags(stableReleaseTags, tagRegexp, options);
     }
 
     // Otherwise return null
