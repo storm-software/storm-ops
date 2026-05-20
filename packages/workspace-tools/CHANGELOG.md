@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Workspace Tools
 
+## [1.295.87](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.295.87) (05/20/2026)
+
+### Bug Fixes
+
+- **workspace-tools:** Remove clean calls to prevent pre-release issues ([6066a689e](https://github.com/storm-software/storm-ops/commit/6066a689e))
+
 ## [1.295.86](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.295.86) (05/20/2026)
 
 ### Miscellaneous
