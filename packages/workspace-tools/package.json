@@ -1,6 +1,6 @@
 {
   "name": "@storm-software/workspace-tools",
-  "version": "1.295.86",
+  "version": "1.295.85",
   "description": "Tools for managing a Storm workspace, including various Nx generators and executors for common development tasks.",
   "keywords": [
     "monorepo",
@@ -231,6 +231,15 @@
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "typings": "dist/index.d.ts",
+  "files": [
+    "config",
+    "dist",
+    "assets",
+    "docs",
+    "executors.json",
+    "generators.json",
+    "package.json"
+  ],
   "dependencies": {
     "@ltd/j-toml": "catalog:",
     "@microsoft/api-extractor": "catalog:",

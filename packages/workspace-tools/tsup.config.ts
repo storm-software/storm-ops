@@ -27,7 +27,7 @@ const config = defineConfig([
     format: ["cjs", "esm"],
     platform: "node",
     splitting: true,
-    clean: true,
+    clean: false,
     dts: true,
     sourcemap: false,
     shims: true,
