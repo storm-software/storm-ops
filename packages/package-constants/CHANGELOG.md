@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Package Constants
 
+## [0.1.36](https://github.com/storm-software/storm-ops/releases/tag/package-constants%400.1.36) (05/20/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update packages' `README.md` files ([2d2aae1a6](https://github.com/storm-software/storm-ops/commit/2d2aae1a6))
+
 ## [0.1.25](https://github.com/storm-software/storm-ops/releases/tag/package-constants%400.1.25) (05/14/2026)
 
 ### Miscellaneous
