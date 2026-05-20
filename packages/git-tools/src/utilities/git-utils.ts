@@ -14,7 +14,7 @@ import {
 import { RepoGitTags } from "nx/src/command-line/release/utils/repository-git-tags.js";
 import { isPrerelease } from "nx/src/command-line/release/utils/shared";
 import { interpolate } from "nx/src/tasks-runner/utils.js";
-import { coerce, gt, gte, prerelease } from "semver";
+import { coerce, gt, gte, prerelease, valid } from "semver";
 
 export async function getCommits(
   fromSHA: string,
@@ -478,7 +478,10 @@ export async function getLatestGitTagForPattern(
         return preidReleaseTags.reduce(
           (ret, releaseTag) => {
             const result = extractTagAndVersion(releaseTag, tagRegexp, options);
-            if (gt(result.extractedVersion, ret.extractedVersion)) {
+            if (
+              valid(result.extractedVersion) &&
+              gt(result.extractedVersion, ret.extractedVersion)
+            ) {
               return result;
             }
 
@@ -503,7 +506,10 @@ export async function getLatestGitTagForPattern(
       return stableReleaseTags.reduce(
         (ret, releaseTag) => {
           const result = extractTagAndVersion(releaseTag, tagRegexp, options);
-          if (gt(result.extractedVersion, ret.extractedVersion)) {
+          if (
+            valid(result.extractedVersion) &&
+            gt(result.extractedVersion, ret.extractedVersion)
+          ) {
             return result;
           }
 
