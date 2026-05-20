@@ -231,15 +231,6 @@
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "typings": "dist/index.d.ts",
-  "files": [
-    "config",
-    "dist",
-    "assets",
-    "docs",
-    "executors.json",
-    "generators.json",
-    "package.json"
-  ],
   "dependencies": {
     "@ltd/j-toml": "catalog:",
     "@microsoft/api-extractor": "catalog:",
