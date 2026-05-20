@@ -727,6 +727,15 @@ export class ReleaseGraph {
             );
           }
 
+          writeDebug(
+            `Resolved latest matching git tag ${
+              latestMatchingGitTag?.tag
+            } (version: ${
+              latestMatchingGitTag?.extractedVersion
+            }) for project "${projectName}"`,
+            this.workspaceConfig
+          );
+
           this.cachedLatestMatchingGitTag.set(
             projectName,
             latestMatchingGitTag

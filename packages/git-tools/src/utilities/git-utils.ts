@@ -447,7 +447,15 @@ export async function getLatestGitTagForPattern(
           gte(stableVersion, preidBaseVersion)
         ) {
           writeDebug(
-            `Using latest stable tag for release tag pattern "${releaseTagPattern}" (Interpolated tag pattern: ${interpolatedTagPattern}) because its version (${stableVersion}) is greater than or equal to the base version of the latest preid tag (${preidBaseVersion})`,
+            `Using latest stable tag for release tag pattern "${
+              releaseTagPattern
+            }" (Interpolated tag pattern: ${
+              interpolatedTagPattern
+            }) because its version (${
+              stableVersion
+            }) is greater than or equal to the base version of the latest preid tag (${
+              preidBaseVersion
+            })`,
             workspaceConfig
           );
 
@@ -461,7 +469,9 @@ export async function getLatestGitTagForPattern(
       // If only preid tags exist (no stable), use the latest preid tag
       if (preidReleaseTags.length > 0) {
         writeDebug(
-          `Using latest preid tag for release tag pattern "${releaseTagPattern}" (Interpolated tag pattern: ${interpolatedTagPattern})`,
+          `Using latest preid tag for release tag pattern "${
+            releaseTagPattern
+          }" (Interpolated tag pattern: ${interpolatedTagPattern})`,
           workspaceConfig
         );
 
@@ -474,7 +484,9 @@ export async function getLatestGitTagForPattern(
     // If there are stable release tags, use the latest one
     if (stableReleaseTags.length > 0) {
       writeDebug(
-        `Using latest stable tag for release tag pattern "${releaseTagPattern}" (Interpolated tag pattern: ${interpolatedTagPattern})`,
+        `Using latest stable tag for release tag pattern "${
+          releaseTagPattern
+        }" (Interpolated tag pattern: ${interpolatedTagPattern})`,
         workspaceConfig
       );
 
