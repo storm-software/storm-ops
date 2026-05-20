@@ -18,7 +18,7 @@ export default defineUntypedSchema({
     $schema: {
       title: "Registry",
       type: "string",
-      description: "The registry to publish to"
+      description: "The URL of the registry to publish to"
     },
     $default: "https://registry.npmjs.org/"
   },
@@ -40,9 +40,9 @@ export default defineUntypedSchema({
   },
   otp: {
     $schema: {
-      title: "One Time Password",
+      title: "One Time Password (OTP)",
       type: "string",
-      description: "The one time password"
+      description: "The one time password (OTP) for two-factor authentication"
     }
   },
   dryRun: {
