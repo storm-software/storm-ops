@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - Git Tools
 
+## [2.131.27](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.131.27) (05/20/2026)
+
+### Miscellaneous
+
+- **git-tools:** Ensure semver tag is valid prior to comparison ([59a6f7be2](https://github.com/storm-software/storm-ops/commit/59a6f7be2))
+
+### Bug Fixes
+
+- **git-tools:** Ensure release tags are sorted before returning them ([c5e868904](https://github.com/storm-software/storm-ops/commit/c5e868904))
+
 ## [2.131.26](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.131.26) (05/20/2026)
 
 ### Miscellaneous
