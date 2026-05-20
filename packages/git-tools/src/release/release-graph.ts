@@ -1,5 +1,5 @@
 import { StormWorkspaceConfig } from "@storm-software/config";
-import { writeDebug } from "@storm-software/config-tools";
+import { writeDebug, writeInfo } from "@storm-software/config-tools";
 import {
   IMPLICIT_DEFAULT_RELEASE_GROUP,
   type NxReleaseConfig
@@ -727,12 +727,10 @@ export class ReleaseGraph {
             );
           }
 
-          writeDebug(
-            `Resolved latest matching git tag ${
+          writeInfo(
+            `Resolved latest matching git tag for "${projectName}": ${
               latestMatchingGitTag?.tag
-            } (version: ${
-              latestMatchingGitTag?.extractedVersion
-            }) for project "${projectName}"`,
+            } (version: ${latestMatchingGitTag?.extractedVersion})`,
             this.workspaceConfig
           );
 

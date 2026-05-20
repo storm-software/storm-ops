@@ -301,7 +301,6 @@
           "entryWhenNoChanges": false
         },
         "version": {
-          "groupPreVersionCommand": "pnpm build",
           "currentVersionResolver": "git-tag",
           "specifierSource": "conventional-commits",
           "manifestRootsToUpdate": [

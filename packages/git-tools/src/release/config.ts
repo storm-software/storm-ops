@@ -36,7 +36,7 @@ export const DEFAULT_INDEPENDENT_RELEASE_TAG_PATTERN =
 export const DEFAULT_FIXED_RELEASE_TAG_PATTERN = "{releaseGroupName}@{version}";
 
 export const DEFAULT_COMMIT_MESSAGE =
-  "release(monorepo): Publish v{version} release updates";
+  "release(monorepo): Publish release updates";
 
 export const DEFAULT_RELEASE_GROUP_GIT_CONFIG = {
   commit: false,
@@ -85,11 +85,6 @@ export const DEFAULT_RELEASE_GROUP_CONFIG = {
   },
   version: {
     ...DEFAULT_VERSION_RELEASE_CONFIG
-  },
-  releaseTag: {
-    checkAllBranchesWhen: true,
-    preferDockerVersion: false,
-    strictPreid: true
   },
   versionPlans: false
 } as const;
@@ -165,8 +160,7 @@ export const DEFAULT_RELEASE_CONFIG: ReleaseConfig = {
     projectChangelogs: true
   },
   releaseTag: {
-    pattern: DEFAULT_INDEPENDENT_RELEASE_TAG_PATTERN,
-    preferDockerVersion: false
+    pattern: DEFAULT_INDEPENDENT_RELEASE_TAG_PATTERN
   },
   version: {
     ...DEFAULT_VERSION_RELEASE_CONFIG

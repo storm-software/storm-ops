@@ -375,7 +375,26 @@ export async function getLatestGitTagForPattern(
       );
 
       // If not using strict preid, we can just return the first matching tag
-      return extractTagAndVersion(matchingTags[0]!, tagRegexp, options);
+      return matchingTags.reduce(
+        (ret, releaseTag) => {
+          const result = extractTagAndVersion(releaseTag, tagRegexp, options);
+
+          const version = coerce(result.extractedVersion)?.version;
+          const current = coerce(ret.extractedVersion)?.version;
+          if (
+            version &&
+            valid(version) &&
+            (!current ||
+              !valid(current) ||
+              gt(version, current, { loose: true }))
+          ) {
+            return result;
+          }
+
+          return ret;
+        },
+        extractTagAndVersion(matchingTags[0]!, tagRegexp, options)
+      );
     }
 
     // Find stable release tags
@@ -412,31 +431,64 @@ export async function getLatestGitTagForPattern(
 
       // If both preid and stable tags exist, compare them to determine which is truly "latest"
       if (preidReleaseTags.length > 0 && stableReleaseTags.length > 0) {
-        const preidResult = extractTagAndVersion(
-          preidReleaseTags[0]!,
-          tagRegexp,
-          options
-        );
-        const stableResult = extractTagAndVersion(
-          stableReleaseTags[0]!,
-          tagRegexp,
-          options
+        const preidResult = preidReleaseTags.reduce(
+          (ret, releaseTag) => {
+            const result = extractTagAndVersion(releaseTag, tagRegexp, options);
+
+            const version = coerce(result.extractedVersion)?.version;
+            const current = coerce(ret.extractedVersion)?.version;
+            if (
+              version &&
+              valid(version) &&
+              (!current ||
+                !valid(current) ||
+                gt(version, current, {
+                  loose: true
+                }))
+            ) {
+              return result;
+            }
+
+            return ret;
+          },
+          extractTagAndVersion(preidReleaseTags[0]!, tagRegexp, options)
         );
 
+        const stableResult = stableReleaseTags.reduce(
+          (ret, releaseTag) => {
+            const result = extractTagAndVersion(releaseTag, tagRegexp, options);
+
+            const version = coerce(result.extractedVersion)?.version;
+            const current = coerce(ret.extractedVersion)?.version;
+            if (
+              version &&
+              valid(version) &&
+              (!current ||
+                !valid(current) ||
+                gt(version, current, {
+                  loose: true
+                }))
+            ) {
+              return result;
+            }
+
+            return ret;
+          },
+          extractTagAndVersion(stableReleaseTags[0]!, tagRegexp, options)
+        );
+
+        // Get the base version of the preid release (e.g., "1.2.4" from "1.2.4-alpha.1")
+        const preidBaseVersion = coerce(preidResult.extractedVersion)?.version;
+        const stableVersion = coerce(stableResult.extractedVersion)?.version;
+
         writeDebug(
-          `Extracted preid version: ${
-            preidResult.extractedVersion
-          } and stable version: ${
-            stableResult.extractedVersion
+          `Extracted preid version: ${preidBaseVersion} and stable version: ${
+            stableVersion
           } for release tag pattern "${
             releaseTagPattern
           }" (Interpolated tag pattern: ${interpolatedTagPattern})`,
           workspaceConfig
         );
-
-        // Get the base version of the preid release (e.g., "1.2.4" from "1.2.4-alpha.1")
-        const preidBaseVersion = coerce(preidResult.extractedVersion)?.version;
-        const stableVersion = stableResult.extractedVersion;
 
         // If the stable version is >= the preid's base version, use the stable tag
         // This handles the case where a stable release was made after the prerelease
@@ -478,9 +530,17 @@ export async function getLatestGitTagForPattern(
         return preidReleaseTags.reduce(
           (ret, releaseTag) => {
             const result = extractTagAndVersion(releaseTag, tagRegexp, options);
+
+            const version = coerce(result.extractedVersion)?.version;
+            const current = coerce(ret.extractedVersion)?.version;
             if (
-              valid(result.extractedVersion) &&
-              gt(result.extractedVersion, ret.extractedVersion)
+              version &&
+              valid(version) &&
+              (!current ||
+                !valid(current) ||
+                gt(version, current, {
+                  loose: true
+                }))
             ) {
               return result;
             }
@@ -506,9 +566,15 @@ export async function getLatestGitTagForPattern(
       return stableReleaseTags.reduce(
         (ret, releaseTag) => {
           const result = extractTagAndVersion(releaseTag, tagRegexp, options);
+
+          const version = coerce(result.extractedVersion)?.version;
+          const current = coerce(ret.extractedVersion)?.version;
           if (
-            valid(result.extractedVersion) &&
-            gt(result.extractedVersion, ret.extractedVersion)
+            version &&
+            valid(version) &&
+            (!current ||
+              !valid(current) ||
+              gt(version, current, { loose: true }))
           ) {
             return result;
           }
