@@ -2,6 +2,19 @@
 
 # Changelog for Storm Ops - Git Tools
 
+## [2.131.28](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.131.28) (05/20/2026)
+
+### Miscellaneous
+
+- **git-tools:** Clean up logic around resolving release git tags ([e8959a159](https://github.com/storm-software/storm-ops/commit/e8959a159))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.56**
+- Updated **config-tools** to **v1.190.24**
+- Updated **conventional-changelog** to **v0.3.184**
+- Updated **package-constants** to **v0.1.37**
+
 ## [2.131.27](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.131.27) (05/20/2026)
 
 ### Miscellaneous
