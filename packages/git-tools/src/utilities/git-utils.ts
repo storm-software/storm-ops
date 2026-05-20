@@ -1,6 +1,9 @@
 import { FileData } from "@nx/devkit";
 import { StormWorkspaceConfig } from "@storm-software/config";
-import { writeDebug } from "@storm-software/config-tools/logger/console";
+import {
+  writeDebug,
+  writeTrace
+} from "@storm-software/config-tools/logger/console";
 import { execCommand } from "nx/src/command-line/release/utils/exec-command.js";
 import {
   extractTagAndVersion,
@@ -317,7 +320,7 @@ const SEMVER_REGEX =
 export async function getLatestGitTagForPattern(
   workspaceConfig: StormWorkspaceConfig,
   releaseTagPattern: string,
-  additionalInterpolationData = {},
+  additionalInterpolationData = {} as Record<string, string>,
   resolveTags: RepoGitTags["resolveTags"],
   options: GetLatestGitTagForPatternOptions
 ): Promise<GitTagAndVersion | null> {
@@ -367,10 +370,10 @@ export async function getLatestGitTagForPattern(
     );
 
     if (!strictPreid) {
-      writeDebug(
-        `Not using strict preid, will use the first matching tag ${matchingTags[0]!} for release tag pattern "${
-          releaseTagPattern
-        }" (Interpolated tag pattern: ${interpolatedTagPattern})`,
+      writeTrace(
+        `Not using strict preid, will use the greatest matching tag of project "${
+          additionalInterpolationData.projectName
+        }": \n${matchingTags.join(", ")}`,
         workspaceConfig
       );
 
