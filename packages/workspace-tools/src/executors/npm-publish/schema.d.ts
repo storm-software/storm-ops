@@ -45,7 +45,7 @@ export interface NpmPublishExecutorSchema {
   * The one time password
   * 
  */
- otp?: number,
+ otp?: string,
 
  /**
   * Dry Run

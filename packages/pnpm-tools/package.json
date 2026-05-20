@@ -100,7 +100,7 @@
     "defu": "catalog:",
     "prettier": "catalog:",
     "prettier-plugin-packagejson": "catalog:",
-    "semver": "^7.8.0",
+    "semver": "catalog:",
     "yaml": "catalog:"
   },
   "devDependencies": {

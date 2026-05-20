@@ -43,7 +43,7 @@ The version to publish. If not provided, the version from package.json will be u
 
 
 ## `otp`
-- **Type**: `number`
+- **Type**: `string`
 
 > One Time Password
 

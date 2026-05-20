@@ -241,6 +241,7 @@
     "package.json"
   ],
   "dependencies": {
+    "@actions/core": "catalog:",
     "@ltd/j-toml": "catalog:",
     "@microsoft/api-extractor": "catalog:",
     "@nx/devkit": "catalog:",
@@ -261,7 +262,7 @@
     "jiti": "catalog:",
     "markdownlint-cli2": "^0.17.2",
     "micromatch": "^4.0.8",
-    "semver": "^7.8.0",
+    "semver": "catalog:",
     "size-limit": "^11.2.0",
     "typia": "catalog:",
     "untyped": "catalog:",

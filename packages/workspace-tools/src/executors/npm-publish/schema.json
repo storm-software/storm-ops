@@ -32,7 +32,7 @@
     },
     "otp": {
       "title": "One Time Password",
-      "type": "number",
+      "type": "string",
       "description": "The one time password",
       "id": "#otp"
     },

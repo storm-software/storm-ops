@@ -41,7 +41,7 @@ export default defineUntypedSchema({
   otp: {
     $schema: {
       title: "One Time Password",
-      type: "number",
+      type: "string",
       description: "The one time password"
     }
   },
