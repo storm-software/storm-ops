@@ -2,6 +2,23 @@
 
 # Changelog for Storm Ops - Git Tools
 
+## [2.131.30](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.131.30) (05/20/2026)
+
+### Miscellaneous
+
+- **git-tools:** Added git tag logging to release process ([cb267fe1a](https://github.com/storm-software/storm-ops/commit/cb267fe1a))
+
+### Features
+
+- **workspace-tools:** Added GitHub OIDC token retrieval to `npm-publish` executor ([a154fdcb8](https://github.com/storm-software/storm-ops/commit/a154fdcb8))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.58**
+- Updated **config-tools** to **v1.190.26**
+- Updated **conventional-changelog** to **v0.3.186**
+- Updated **package-constants** to **v0.1.39**
+
 ## [2.131.29](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.131.29) (05/20/2026)
 
 ### Miscellaneous

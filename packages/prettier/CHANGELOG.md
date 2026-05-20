@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Prettier
 
+## [0.59.78](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.59.78) (05/20/2026)
+
+### Features
+
+- **workspace-tools:** Added GitHub OIDC token retrieval to `npm-publish` executor ([a154fdcb8](https://github.com/storm-software/storm-ops/commit/a154fdcb8))
+
 ## [0.59.77](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.59.77) (05/20/2026)
 
 ### Miscellaneous

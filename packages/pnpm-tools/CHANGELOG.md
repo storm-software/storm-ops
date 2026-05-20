@@ -2,6 +2,20 @@
 
 # Changelog for Storm Ops - Pnpm Tools
 
+## [0.7.36](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.7.36) (05/20/2026)
+
+### Features
+
+- **workspace-tools:** Added GitHub OIDC token retrieval to `npm-publish` executor ([a154fdcb8](https://github.com/storm-software/storm-ops/commit/a154fdcb8))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.58**
+- Updated **config-tools** to **v1.190.26**
+- Updated **npm-tools** to **v0.6.143**
+- Updated **package-constants** to **v0.1.39**
+- Updated **testing-tools** to **v1.119.179**
+
 ## [0.7.35](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.7.35) (05/20/2026)
 
 ### Miscellaneous

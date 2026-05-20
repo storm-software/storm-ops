@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Tsdoc
 
+## [0.13.179](https://github.com/storm-software/storm-ops/releases/tag/tsdoc%400.13.179) (05/20/2026)
+
+### Features
+
+- **workspace-tools:** Added GitHub OIDC token retrieval to `npm-publish` executor ([a154fdcb8](https://github.com/storm-software/storm-ops/commit/a154fdcb8))
+
 ## [0.13.178](https://github.com/storm-software/storm-ops/releases/tag/tsdoc%400.13.178) (05/20/2026)
 
 ### Miscellaneous

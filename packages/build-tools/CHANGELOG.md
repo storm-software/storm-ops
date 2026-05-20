@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Build Tools
 
+## [0.158.186](https://github.com/storm-software/storm-ops/releases/tag/build-tools%400.158.186) (05/20/2026)
+
+### Features
+
+- **workspace-tools:** Added GitHub OIDC token retrieval to `npm-publish` executor ([a154fdcb8](https://github.com/storm-software/storm-ops/commit/a154fdcb8))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.58**
+- Updated **config-tools** to **v1.190.26**
+
 ## [0.158.185](https://github.com/storm-software/storm-ops/releases/tag/build-tools%400.158.185) (05/20/2026)
 
 ### Miscellaneous

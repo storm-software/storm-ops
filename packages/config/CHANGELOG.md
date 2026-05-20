@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - Config
 
+## [1.137.58](https://github.com/storm-software/storm-ops/releases/tag/config%401.137.58) (05/20/2026)
+
+### Features
+
+- **workspace-tools:** Added GitHub OIDC token retrieval to `npm-publish` executor ([a154fdcb8](https://github.com/storm-software/storm-ops/commit/a154fdcb8))
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.179**
+
 ## [1.137.57](https://github.com/storm-software/storm-ops/releases/tag/config%401.137.57) (05/20/2026)
 
 ### Miscellaneous

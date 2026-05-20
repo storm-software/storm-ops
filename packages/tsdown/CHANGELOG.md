@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Tsdown
 
+## [0.45.187](https://github.com/storm-software/storm-ops/releases/tag/tsdown%400.45.187) (05/20/2026)
+
+### Features
+
+- **workspace-tools:** Added GitHub OIDC token retrieval to `npm-publish` executor ([a154fdcb8](https://github.com/storm-software/storm-ops/commit/a154fdcb8))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.186**
+- Updated **config** to **v1.137.58**
+- Updated **config-tools** to **v1.190.26**
+
 ## [0.45.186](https://github.com/storm-software/storm-ops/releases/tag/tsdown%400.45.186) (05/20/2026)
 
 ### Miscellaneous

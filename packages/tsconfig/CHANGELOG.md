@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Tsconfig
 
+## [0.48.93](https://github.com/storm-software/storm-ops/releases/tag/tsconfig%400.48.93) (05/20/2026)
+
+### Features
+
+- **workspace-tools:** Added GitHub OIDC token retrieval to `npm-publish` executor ([a154fdcb8](https://github.com/storm-software/storm-ops/commit/a154fdcb8))
+
 ## [0.48.92](https://github.com/storm-software/storm-ops/releases/tag/tsconfig%400.48.92) (05/20/2026)
 
 ### Miscellaneous

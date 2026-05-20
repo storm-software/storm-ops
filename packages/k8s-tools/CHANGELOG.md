@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - K8s Tools
 
+## [0.42.203](https://github.com/storm-software/storm-ops/releases/tag/k8s-tools%400.42.203) (05/20/2026)
+
+### Features
+
+- **workspace-tools:** Added GitHub OIDC token retrieval to `npm-publish` executor ([a154fdcb8](https://github.com/storm-software/storm-ops/commit/a154fdcb8))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.58**
+- Updated **config-tools** to **v1.190.26**
+- Updated **workspace-tools** to **v1.296.0**
+
 ## [0.42.202](https://github.com/storm-software/storm-ops/releases/tag/k8s-tools%400.42.202) (05/20/2026)
 
 ### Updated Dependencies

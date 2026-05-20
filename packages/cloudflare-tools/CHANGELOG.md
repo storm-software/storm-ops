@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Cloudflare Tools
 
+## [0.71.162](https://github.com/storm-software/storm-ops/releases/tag/cloudflare-tools%400.71.162) (05/20/2026)
+
+### Features
+
+- **workspace-tools:** Added GitHub OIDC token retrieval to `npm-publish` executor ([a154fdcb8](https://github.com/storm-software/storm-ops/commit/a154fdcb8))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.58**
+- Updated **config-tools** to **v1.190.26**
+- Updated **workspace-tools** to **v1.296.0**
+
 ## [0.71.161](https://github.com/storm-software/storm-ops/releases/tag/cloudflare-tools%400.71.161) (05/20/2026)
 
 ### Updated Dependencies

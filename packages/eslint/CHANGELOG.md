@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - ESLint
 
+## [0.170.47](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.170.47) (05/20/2026)
+
+### Features
+
+- **workspace-tools:** Added GitHub OIDC token retrieval to `npm-publish` executor ([a154fdcb8](https://github.com/storm-software/storm-ops/commit/a154fdcb8))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.58**
+- Updated **config-tools** to **v1.190.26**
+- Updated **tsdoc** to **v0.13.179**
+
 ## [0.170.46](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.170.46) (05/20/2026)
 
 ### Miscellaneous

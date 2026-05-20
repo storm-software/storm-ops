@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - Vite
 
+## [0.1.120](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.120) (05/20/2026)
+
+### Features
+
+- **workspace-tools:** Added GitHub OIDC token retrieval to `npm-publish` executor ([a154fdcb8](https://github.com/storm-software/storm-ops/commit/a154fdcb8))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.186**
+
 ## [0.1.119](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.119) (05/20/2026)
 
 ### Miscellaneous

@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Linting Tools
 
+## [1.133.56](https://github.com/storm-software/storm-ops/releases/tag/linting-tools%401.133.56) (05/20/2026)
+
+### Features
+
+- **workspace-tools:** Added GitHub OIDC token retrieval to `npm-publish` executor ([a154fdcb8](https://github.com/storm-software/storm-ops/commit/a154fdcb8))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.58**
+- Updated **config-tools** to **v1.190.26**
+
 ## [1.133.55](https://github.com/storm-software/storm-ops/releases/tag/linting-tools%401.133.55) (05/20/2026)
 
 ### Miscellaneous

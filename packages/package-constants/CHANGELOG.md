@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Package Constants
 
+## [0.1.39](https://github.com/storm-software/storm-ops/releases/tag/package-constants%400.1.39) (05/20/2026)
+
+### Features
+
+- **workspace-tools:** Added GitHub OIDC token retrieval to `npm-publish` executor ([a154fdcb8](https://github.com/storm-software/storm-ops/commit/a154fdcb8))
+
 ## [0.1.38](https://github.com/storm-software/storm-ops/releases/tag/package-constants%400.1.38) (05/20/2026)
 
 ### Miscellaneous

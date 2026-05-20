@@ -2,6 +2,29 @@
 
 # Changelog for Storm Ops - Workspace Tools
 
+## [1.296.0](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.296.0) (05/20/2026)
+
+### Miscellaneous
+
+- **monorepo:** Added workspace's `Cargo.lock` file ([bfe2eb073](https://github.com/storm-software/storm-ops/commit/bfe2eb073))
+
+### Features
+
+- **workspace-tools:** Added GitHub OIDC token retrieval to `npm-publish` executor ([a154fdcb8](https://github.com/storm-software/storm-ops/commit/a154fdcb8))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.58**
+- Updated **config-tools** to **v1.190.26**
+- Updated **esbuild** to **v0.53.187**
+- Updated **npm-tools** to **v0.6.143**
+- Updated **package-constants** to **v0.1.39**
+- Updated **pnpm-tools** to **v0.7.36**
+- Updated **prettier** to **v0.59.78**
+- Updated **testing-tools** to **v1.119.179**
+- Updated **tsdown** to **v0.45.187**
+- Updated **unbuild** to **v0.57.187**
+
 ## [1.295.87](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.295.87) (05/20/2026)
 
 ### Bug Fixes

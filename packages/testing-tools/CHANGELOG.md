@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Testing Tools
 
+## [1.119.179](https://github.com/storm-software/storm-ops/releases/tag/testing-tools%401.119.179) (05/20/2026)
+
+### Features
+
+- **workspace-tools:** Added GitHub OIDC token retrieval to `npm-publish` executor ([a154fdcb8](https://github.com/storm-software/storm-ops/commit/a154fdcb8))
+
 ## [1.119.178](https://github.com/storm-software/storm-ops/releases/tag/testing-tools%401.119.178) (05/20/2026)
 
 ### Miscellaneous

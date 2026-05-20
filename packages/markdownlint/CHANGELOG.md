@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - Markdownlint
 
+## [0.30.182](https://github.com/storm-software/storm-ops/releases/tag/markdownlint%400.30.182) (05/20/2026)
+
+### Features
+
+- **workspace-tools:** Added GitHub OIDC token retrieval to `npm-publish` executor ([a154fdcb8](https://github.com/storm-software/storm-ops/commit/a154fdcb8))
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.179**
+
 ## [0.30.181](https://github.com/storm-software/storm-ops/releases/tag/markdownlint%400.30.181) (05/20/2026)
 
 ### Miscellaneous

@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - CSpell
 
+## [0.46.94](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.46.94) (05/20/2026)
+
+### Features
+
+- **workspace-tools:** Added GitHub OIDC token retrieval to `npm-publish` executor ([a154fdcb8](https://github.com/storm-software/storm-ops/commit/a154fdcb8))
+
 ## [0.46.93](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.46.93) (05/20/2026)
 
 ### Miscellaneous
