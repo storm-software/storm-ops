@@ -1,5 +1,5 @@
-import { error, getIDToken } from "@actions/core";
 import { type ExecutorContext } from "@nx/devkit";
+import { getConfig } from "@storm-software/config-tools/get-config";
 import { joinPaths } from "@storm-software/config-tools/utilities/correct-paths";
 import {
   getNpmRegistry,
@@ -9,6 +9,7 @@ import { replaceDepsAliases } from "@storm-software/pnpm-tools/helpers/replace-d
 import { execSync } from "node:child_process";
 import { readFile, writeFile } from "node:fs/promises";
 import { format } from "prettier";
+import { getGitHubTools } from "../../utils/github";
 import { addPackageJsonGitHead } from "../../utils/package-helpers";
 import type { NpmPublishExecutorSchema } from "./schema.d";
 
@@ -18,10 +19,12 @@ export default async function npmPublishExecutorFn(
   options: NpmPublishExecutorSchema,
   context: ExecutorContext
 ) {
+  const workspaceConfig = await getConfig(context.root);
+  const github = await getGitHubTools(workspaceConfig);
+
   const isDryRun = process.env.NX_DRY_RUN === "true" || options.dryRun || false;
   if (!context.projectName) {
-    error("The `npm-publish` executor requires a `projectName`.");
-    console.error("The `npm-publish` executor requires a `projectName`.");
+    github.error("The `npm-publish` executor requires a `projectName`.");
 
     return { success: false };
   }
@@ -29,10 +32,7 @@ export default async function npmPublishExecutorFn(
   const projectConfig =
     context.projectsConfigurations?.projects?.[context.projectName];
   if (!projectConfig) {
-    error(
-      `Could not find project configuration for \`${context.projectName}\``
-    );
-    console.error(
+    github.error(
       `Could not find project configuration for \`${context.projectName}\``
     );
 
@@ -56,8 +56,7 @@ export default async function npmPublishExecutorFn(
   const packageJsonPath = joinPaths(packageRoot, "package.json");
   const packageJsonFile = await readFile(packageJsonPath, "utf8");
   if (!packageJsonFile) {
-    error(`Could not find \`package.json\` at ${packageJsonPath}`);
-    console.error(`Could not find \`package.json\` at ${packageJsonPath}`);
+    github.error(`Could not find \`package.json\` at ${packageJsonPath}`);
 
     return { success: false };
   }
@@ -67,8 +66,7 @@ export default async function npmPublishExecutorFn(
   const projectPackageJsonPath = joinPaths(projectRoot, "package.json");
   const projectPackageJsonFile = await readFile(projectPackageJsonPath, "utf8");
   if (!projectPackageJsonFile) {
-    error(`Could not find \`package.json\` at ${projectPackageJsonPath}`);
-    console.error(
+    github.error(
       `Could not find \`package.json\` at ${projectPackageJsonPath}`
     );
 
@@ -146,16 +144,14 @@ export default async function npmPublishExecutorFn(
 
   let otp = options.otp;
   if (!otp) {
-    otp = await getIDToken();
+    otp = await github.getIDToken();
   }
 
   if (!otp) {
     const errorMessage = `One time password (OTP) is required to publish ${
       packageTxt
     } to NPM. Usually this should be provided automatically via the GitHub Actions OIDC token (see: https://github.com/actions/toolkit/tree/main/packages/core#oidc-token); however, the release process was unable to retrieve it. Please provide it via the \`otp\` executor option.`;
-
-    error(errorMessage);
-    console.error(errorMessage);
+    github.error(errorMessage);
 
     return { success: false };
   }
@@ -286,9 +282,7 @@ export default async function npmPublishExecutorFn(
                   }\n`
                 : ""
             }${stdoutData?.error?.detail ? `Detail: ${stdoutData?.error?.detail}\n` : ""}`;
-
-            error(errorMessage);
-            console.error(errorMessage);
+            github.error(errorMessage);
 
             return { success: false };
           }
@@ -302,9 +296,7 @@ export default async function npmPublishExecutorFn(
                 }\n`
               : ""
           }${stdoutData?.error?.detail ? `Detail: ${stdoutData?.error?.detail}\n` : ""}`;
-
-          error(errorMessage);
-          console.error(errorMessage);
+          github.error(errorMessage);
 
           return { success: false };
         }
@@ -330,9 +322,7 @@ export default async function npmPublishExecutorFn(
               }\n`
             : ""
         }${stdoutData?.error?.detail ? `Detail: ${stdoutData?.error?.detail}\n` : ""}`;
-
-        error(errorMessage);
-        console.error(errorMessage);
+        github.error(errorMessage);
 
         return { success: false };
       }
@@ -384,9 +374,7 @@ export default async function npmPublishExecutorFn(
             }\n`
           : ""
       }${stdoutData?.error?.detail ? `Detail: ${stdoutData?.error?.detail}\n` : ""}`;
-
-      error(errorMessage);
-      console.error(errorMessage);
+      github.error(errorMessage);
 
       return { success: false };
     } catch (err) {
@@ -395,9 +383,7 @@ export default async function npmPublishExecutorFn(
         null,
         2
       )}`;
-
-      error(errorMessage);
-      console.error(errorMessage);
+      github.error(errorMessage);
 
       return { success: false };
     }

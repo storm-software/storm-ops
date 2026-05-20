@@ -2,6 +2,7 @@ export * from "./apply-workspace-tokens";
 export * from "./cargo";
 export * from "./create-cli-options";
 export * from "./get-project-configurations";
+export * from "./github";
 export * from "./lock-file";
 export * from "./nx-json";
 export * from "./package-helpers";
