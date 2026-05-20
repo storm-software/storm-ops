@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - Vite
 
+## [0.1.119](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.119) (05/20/2026)
+
+### Miscellaneous
+
+- **monorepo:** Ensure workspace package versions align ([3cb6e486a](https://github.com/storm-software/storm-ops/commit/3cb6e486a))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.185**
+
 ## [0.1.118](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.118) (05/20/2026)
 
 ### Updated Dependencies

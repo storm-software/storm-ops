@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Build Tools
 
+## [0.158.185](https://github.com/storm-software/storm-ops/releases/tag/build-tools%400.158.185) (05/20/2026)
+
+### Miscellaneous
+
+- **monorepo:** Ensure workspace package versions align ([3cb6e486a](https://github.com/storm-software/storm-ops/commit/3cb6e486a))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.57**
+- Updated **config-tools** to **v1.190.25**
+
 ## [0.158.184](https://github.com/storm-software/storm-ops/releases/tag/build-tools%400.158.184) (05/20/2026)
 
 ### Updated Dependencies

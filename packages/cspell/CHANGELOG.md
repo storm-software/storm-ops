@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - CSpell
 
+## [0.46.93](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.46.93) (05/20/2026)
+
+### Miscellaneous
+
+- **monorepo:** Ensure workspace package versions align ([3cb6e486a](https://github.com/storm-software/storm-ops/commit/3cb6e486a))
+
 ## [0.46.91](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.46.91) (05/20/2026)
 
 ### Miscellaneous

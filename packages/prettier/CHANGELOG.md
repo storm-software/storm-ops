@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Prettier
 
+## [0.59.77](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.59.77) (05/20/2026)
+
+### Miscellaneous
+
+- **monorepo:** Ensure workspace package versions align ([3cb6e486a](https://github.com/storm-software/storm-ops/commit/3cb6e486a))
+
 ## [0.59.75](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.59.75) (05/20/2026)
 
 ### Miscellaneous

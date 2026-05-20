@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Untyped
 
+## [0.24.167](https://github.com/storm-software/storm-ops/releases/tag/untyped%400.24.167) (05/20/2026)
+
+### Miscellaneous
+
+- **monorepo:** Ensure workspace package versions align ([3cb6e486a](https://github.com/storm-software/storm-ops/commit/3cb6e486a))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.57**
+- Updated **config-tools** to **v1.190.25**
+
 ## [0.24.166](https://github.com/storm-software/storm-ops/releases/tag/untyped%400.24.166) (05/20/2026)
 
 ### Updated Dependencies

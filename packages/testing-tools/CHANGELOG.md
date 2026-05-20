@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Testing Tools
 
+## [1.119.178](https://github.com/storm-software/storm-ops/releases/tag/testing-tools%401.119.178) (05/20/2026)
+
+### Miscellaneous
+
+- **monorepo:** Ensure workspace package versions align ([3cb6e486a](https://github.com/storm-software/storm-ops/commit/3cb6e486a))
+
 ## [1.119.176](https://github.com/storm-software/storm-ops/releases/tag/testing-tools%401.119.176) (05/20/2026)
 
 ### Miscellaneous

@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - Config
 
+## [1.137.57](https://github.com/storm-software/storm-ops/releases/tag/config%401.137.57) (05/20/2026)
+
+### Miscellaneous
+
+- **monorepo:** Ensure workspace package versions align ([3cb6e486a](https://github.com/storm-software/storm-ops/commit/3cb6e486a))
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.178**
+
 ## [1.137.56](https://github.com/storm-software/storm-ops/releases/tag/config%401.137.56) (05/20/2026)
 
 ### Updated Dependencies

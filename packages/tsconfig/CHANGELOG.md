@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Tsconfig
 
+## [0.48.92](https://github.com/storm-software/storm-ops/releases/tag/tsconfig%400.48.92) (05/20/2026)
+
+### Miscellaneous
+
+- **monorepo:** Ensure workspace package versions align ([3cb6e486a](https://github.com/storm-software/storm-ops/commit/3cb6e486a))
+
 ## [0.48.90](https://github.com/storm-software/storm-ops/releases/tag/tsconfig%400.48.90) (05/20/2026)
 
 ### Miscellaneous

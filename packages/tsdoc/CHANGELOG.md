@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Tsdoc
 
+## [0.13.178](https://github.com/storm-software/storm-ops/releases/tag/tsdoc%400.13.178) (05/20/2026)
+
+### Miscellaneous
+
+- **monorepo:** Ensure workspace package versions align ([3cb6e486a](https://github.com/storm-software/storm-ops/commit/3cb6e486a))
+
 ## [0.13.176](https://github.com/storm-software/storm-ops/releases/tag/tsdoc%400.13.176) (05/20/2026)
 
 ### Miscellaneous

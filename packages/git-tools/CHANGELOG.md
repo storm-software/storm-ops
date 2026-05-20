@@ -2,6 +2,19 @@
 
 # Changelog for Storm Ops - Git Tools
 
+## [2.131.29](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.131.29) (05/20/2026)
+
+### Miscellaneous
+
+- **monorepo:** Ensure workspace package versions align ([3cb6e486a](https://github.com/storm-software/storm-ops/commit/3cb6e486a))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.57**
+- Updated **config-tools** to **v1.190.25**
+- Updated **conventional-changelog** to **v0.3.185**
+- Updated **package-constants** to **v0.1.38**
+
 ## [2.131.28](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.131.28) (05/20/2026)
 
 ### Miscellaneous

@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Package Constants
 
+## [0.1.38](https://github.com/storm-software/storm-ops/releases/tag/package-constants%400.1.38) (05/20/2026)
+
+### Miscellaneous
+
+- **monorepo:** Ensure workspace package versions align ([3cb6e486a](https://github.com/storm-software/storm-ops/commit/3cb6e486a))
+
 ## [0.1.36](https://github.com/storm-software/storm-ops/releases/tag/package-constants%400.1.36) (05/20/2026)
 
 ### Miscellaneous

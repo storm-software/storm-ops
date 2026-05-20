@@ -2,6 +2,29 @@
 
 # Changelog for Storm Ops - Workspace Tools
 
+## [1.295.85](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.295.85) (05/20/2026)
+
+### Miscellaneous
+
+- **monorepo:** Ensure workspace package versions align ([3cb6e486a](https://github.com/storm-software/storm-ops/commit/3cb6e486a))
+
+### Bug Fixes
+
+- **workspace-tools:** Add specific commands to copy `schema.json` files into dist directory ([c6d401661](https://github.com/storm-software/storm-ops/commit/c6d401661))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.57**
+- Updated **config-tools** to **v1.190.25**
+- Updated **esbuild** to **v0.53.186**
+- Updated **npm-tools** to **v0.6.142**
+- Updated **package-constants** to **v0.1.38**
+- Updated **pnpm-tools** to **v0.7.35**
+- Updated **prettier** to **v0.59.77**
+- Updated **testing-tools** to **v1.119.178**
+- Updated **tsdown** to **v0.45.186**
+- Updated **unbuild** to **v0.57.186**
+
 ## [1.295.84](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.295.84) (05/20/2026)
 
 ### Miscellaneous

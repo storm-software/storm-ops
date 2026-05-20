@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Config Tools
 
+## [1.190.25](https://github.com/storm-software/storm-ops/releases/tag/config-tools%401.190.25) (05/20/2026)
+
+### Miscellaneous
+
+- **monorepo:** Ensure workspace package versions align ([3cb6e486a](https://github.com/storm-software/storm-ops/commit/3cb6e486a))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.57**
+- Updated **testing-tools** to **v1.119.178**
+
 ## [1.190.24](https://github.com/storm-software/storm-ops/releases/tag/config-tools%401.190.24) (05/20/2026)
 
 ### Updated Dependencies

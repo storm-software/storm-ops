@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Pnpm Plugin
 
+## [0.1.136](https://github.com/storm-software/storm-ops/releases/tag/pnpm-plugin%400.1.136) (05/20/2026)
+
+### Miscellaneous
+
+- **monorepo:** Ensure workspace package versions align ([3cb6e486a](https://github.com/storm-software/storm-ops/commit/3cb6e486a))
+
+### Updated Dependencies
+
+- Updated **package-constants** to **v0.1.38**
+- Updated **testing-tools** to **v1.119.178**
+
 ## [0.1.135](https://github.com/storm-software/storm-ops/releases/tag/pnpm-plugin%400.1.135) (05/20/2026)
 
 ### Updated Dependencies
