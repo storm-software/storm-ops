@@ -1,6 +1,6 @@
-import { defineConfig } from "tsup";
+import { defineConfig, Options } from "tsup";
 
-export default defineConfig([
+const config = defineConfig([
   {
     name: "workspace-tools",
     target: "node22",
@@ -25,16 +25,16 @@ export default defineConfig([
     ],
     outDir: "dist",
     format: ["cjs", "esm"],
-    bundle: true,
     platform: "node",
     splitting: true,
     clean: true,
     dts: true,
     sourcemap: false,
     shims: true,
-    silent: true,
     tsconfig: "./tsconfig.json",
     external: ["@nx/devkit", "jiti", "typescript", "@napi-rs/cli"],
     noExternal: ["@storm-software/package-constants"]
   }
-]);
+]) as Options;
+
+export default config;
