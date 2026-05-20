@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Workspace Tools
 
+## [1.295.86](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.295.86) (05/20/2026)
+
+### Miscellaneous
+
+- **workspace-tools:** Remove `files` specification from `package.json` file ([dda9b3fe5](https://github.com/storm-software/storm-ops/commit/dda9b3fe5))
+
 ## [1.295.85](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.295.85) (05/20/2026)
 
 ### Miscellaneous
