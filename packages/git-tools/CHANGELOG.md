@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Git Tools
 
+## [2.131.31](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.131.31) (05/20/2026)
+
+### Bug Fixes
+
+- **workspace-tools:** Added `jiti` call to handle `@action/core` imports ([d349a5365](https://github.com/storm-software/storm-ops/commit/d349a5365))
+
 ## [2.131.30](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.131.30) (05/20/2026)
 
 ### Miscellaneous

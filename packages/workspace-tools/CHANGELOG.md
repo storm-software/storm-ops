@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - Workspace Tools
 
+## [1.296.1](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.296.1) (05/20/2026)
+
+### Miscellaneous
+
+- **workspace-tools:** Added files missing from previous changes ([866986d38](https://github.com/storm-software/storm-ops/commit/866986d38))
+
+### Bug Fixes
+
+- **workspace-tools:** Added `jiti` call to handle `@action/core` imports ([d349a5365](https://github.com/storm-software/storm-ops/commit/d349a5365))
+
 ## [1.296.0](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.296.0) (05/20/2026)
 
 ### Miscellaneous

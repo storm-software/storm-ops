@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - Terraform Tools
 
+## [0.66.204](https://github.com/storm-software/storm-ops/releases/tag/terraform-tools%400.66.204) (05/20/2026)
+
+### Bug Fixes
+
+- **workspace-tools:** Added `jiti` call to handle `@action/core` imports ([d349a5365](https://github.com/storm-software/storm-ops/commit/d349a5365))
+
+### Updated Dependencies
+
+- Updated **workspace-tools** to **v1.296.1**
+
 ## [0.66.203](https://github.com/storm-software/storm-ops/releases/tag/terraform-tools%400.66.203) (05/20/2026)
 
 ### Features

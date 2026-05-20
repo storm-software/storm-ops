@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - Cloudflare Tools
 
+## [0.71.163](https://github.com/storm-software/storm-ops/releases/tag/cloudflare-tools%400.71.163) (05/20/2026)
+
+### Bug Fixes
+
+- **workspace-tools:** Added `jiti` call to handle `@action/core` imports ([d349a5365](https://github.com/storm-software/storm-ops/commit/d349a5365))
+
+### Updated Dependencies
+
+- Updated **workspace-tools** to **v1.296.1**
+
 ## [0.71.162](https://github.com/storm-software/storm-ops/releases/tag/cloudflare-tools%400.71.162) (05/20/2026)
 
 ### Features
