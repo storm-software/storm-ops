@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Workspace Tools
 
+## [1.296.3](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.296.3) (05/20/2026)
+
+### Bug Fixes
+
+- **workspace-tools:** Update manual OIDC token retrieval to be optional ([d457df537](https://github.com/storm-software/storm-ops/commit/d457df537))
+
 ## [1.296.2](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.296.2) (05/20/2026)
 
 ### Bug Fixes
