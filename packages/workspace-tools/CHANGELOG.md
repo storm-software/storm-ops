@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Workspace Tools
 
+## [1.296.2](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.296.2) (05/20/2026)
+
+### Bug Fixes
+
+- **workspace-tools:** Added OIDC token to `NPM_ID_TOKEN` env prior to publish ([649842f0e](https://github.com/storm-software/storm-ops/commit/649842f0e))
+
 ## [1.296.1](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.296.1) (05/20/2026)
 
 ### Miscellaneous

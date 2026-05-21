@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Terraform Tools
 
+## [0.66.205](https://github.com/storm-software/storm-ops/releases/tag/terraform-tools%400.66.205) (05/20/2026)
+
+### Updated Dependencies
+
+- Updated **workspace-tools** to **v1.296.2**
+
 ## [0.66.204](https://github.com/storm-software/storm-ops/releases/tag/terraform-tools%400.66.204) (05/20/2026)
 
 ### Bug Fixes
