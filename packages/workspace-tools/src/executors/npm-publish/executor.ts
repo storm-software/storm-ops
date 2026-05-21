@@ -135,28 +135,34 @@ export default async function npmPublishExecutorFn(
     `npm view ${packageName} versions dist-tags --json`
   ];
 
-  const registry =
-    options.registry ?? ((await getRegistry()) || getNpmRegistry());
+  const registry = await Promise.resolve(
+    options.registry ?? ((await getRegistry()) || getNpmRegistry())
+  );
   if (registry) {
     npmPublishCommandSegments.push(`--registry="${registry}" `);
     npmViewCommandSegments.push(`--registry="${registry}" `);
   }
 
-  let otp = options.otp;
-  if (!otp) {
-    otp = await github.getIDToken();
+  if (options.otp) {
+    npmPublishCommandSegments.push(`--otp="${options.otp}" `);
   }
 
-  if (!otp) {
-    const errorMessage = `One time password (OTP) is required to publish ${
-      packageTxt
-    } to NPM. Usually this should be provided automatically via the GitHub Actions OIDC token (see: https://github.com/actions/toolkit/tree/main/packages/core#oidc-token); however, the release process was unable to retrieve it. Please provide it via the \`otp\` executor option.`;
-    github.error(errorMessage);
+  let token: string | undefined;
+  if (!options.otp) {
+    token = await github.getIDToken(
+      `npm:${registry.replace(/^https?:\/\//, "")}`
+    );
+    if (!token) {
+      github.error(
+        `Either a One time password (OTP) or an OpenID Connect (OIDC) token is required to publish ${
+          packageTxt
+        } to NPM. Usually the OIDC token should be provided automatically via GitHub Actions (see: https://github.com/actions/toolkit/tree/main/packages/core#oidc-token); however, the release process was unable to retrieve it. Please provide a \`otp\` executor option, or investigate why the OIDC token could not be retrieved.`
+      );
 
-    return { success: false };
+      return { success: false };
+    }
   }
 
-  npmPublishCommandSegments.push(`--otp="${otp}" `);
   npmPublishCommandSegments.push("--provenance --access=public ");
 
   if (isDryRun) {
@@ -170,6 +176,7 @@ export default async function npmPublishExecutorFn(
       cwd: packageRoot,
       env: {
         ...process.env,
+        NPM_ID_TOKEN: token,
         FORCE_COLOR: "true"
       },
       maxBuffer: LARGE_BUFFER,
@@ -198,6 +205,7 @@ export default async function npmPublishExecutorFn(
           cwd: packageRoot,
           env: {
             ...process.env,
+            NPM_ID_TOKEN: token,
             FORCE_COLOR: "true"
           },
           maxBuffer: LARGE_BUFFER,
@@ -237,6 +245,7 @@ export default async function npmPublishExecutorFn(
             cwd: packageRoot,
             env: {
               ...process.env,
+              NPM_ID_TOKEN: token,
               FORCE_COLOR: "true"
             },
             maxBuffer: LARGE_BUFFER,
@@ -343,7 +352,8 @@ export default async function npmPublishExecutorFn(
       cwd,
       env: {
         ...process.env,
-        FORCE_COLOR: "true"
+        FORCE_COLOR: "true",
+        NPM_ID_TOKEN: token
       },
       maxBuffer: LARGE_BUFFER,
       killSignal: "SIGTERM"
