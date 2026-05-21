@@ -153,13 +153,11 @@ export default async function npmPublishExecutorFn(
       `npm:${registry.replace(/^https?:\/\//, "")}`
     );
     if (!token) {
-      github.error(
-        `Either a One time password (OTP) or an OpenID Connect (OIDC) token is required to publish ${
+      github.warning(
+        `Either a One time password (OTP) or an OpenID Connect (OIDC) token is generally required to publish ${
           packageTxt
         } to NPM. Usually the OIDC token should be provided automatically via GitHub Actions (see: https://github.com/actions/toolkit/tree/main/packages/core#oidc-token); however, the release process was unable to retrieve it. Please provide a \`otp\` executor option, or investigate why the OIDC token could not be retrieved.`
       );
-
-      return { success: false };
     }
   }
 
@@ -175,8 +173,8 @@ export default async function npmPublishExecutorFn(
     execSync("npm config get tag", {
       cwd: packageRoot,
       env: {
-        ...process.env,
         NPM_ID_TOKEN: token,
+        ...process.env,
         FORCE_COLOR: "true"
       },
       maxBuffer: LARGE_BUFFER,
@@ -204,8 +202,8 @@ export default async function npmPublishExecutorFn(
         const result = execSync(npmViewCommandSegments.join(" "), {
           cwd: packageRoot,
           env: {
-            ...process.env,
             NPM_ID_TOKEN: token,
+            ...process.env,
             FORCE_COLOR: "true"
           },
           maxBuffer: LARGE_BUFFER,
@@ -244,8 +242,8 @@ export default async function npmPublishExecutorFn(
           const result = execSync(command, {
             cwd: packageRoot,
             env: {
-              ...process.env,
               NPM_ID_TOKEN: token,
+              ...process.env,
               FORCE_COLOR: "true"
             },
             maxBuffer: LARGE_BUFFER,
@@ -351,9 +349,9 @@ export default async function npmPublishExecutorFn(
     const result = execSync(command, {
       cwd,
       env: {
+        NPM_ID_TOKEN: token,
         ...process.env,
-        FORCE_COLOR: "true",
-        NPM_ID_TOKEN: token
+        FORCE_COLOR: "true"
       },
       maxBuffer: LARGE_BUFFER,
       killSignal: "SIGTERM"
