@@ -1090,6 +1090,12 @@ importers:
       prettier-plugin-organize-imports:
         specifier: ^4.3.0
         version: 4.3.0(prettier@3.8.3)(typescript@5.9.3)
+      semver:
+        specifier: 'catalog:'
+        version: 7.8.1
+      simple-git:
+        specifier: ^3.36.0
+        version: 3.36.0
       tsconfig-paths:
         specifier: 4.2.0
         version: 4.2.0
@@ -1124,12 +1130,6 @@ importers:
       defu:
         specifier: 'catalog:'
         version: 6.1.7
-      semver:
-        specifier: 'catalog:'
-        version: 7.8.1
-      simple-git:
-        specifier: ^3.36.0
-        version: 3.36.0
       tsup:
         specifier: 'catalog:'
         version: 8.4.0(patch_hash=751a554d775c3572381af4e7e5fa22eeda6dd6856012fb1cf521d6806eb2dc74)(@microsoft/api-extractor@7.58.7(@types/node@25.9.1))(@swc/core@1.7.26(@swc/helpers@0.5.13))(jiti@2.7.0)(postcss@8.5.15)(tsx@4.22.3)(typescript@5.9.3)(yaml@2.9.0)
@@ -28925,7 +28925,7 @@ snapshots:
       micromark-util-character: 2.1.1
       micromark-util-sanitize-uri: 2.0.1
       micromark-util-symbol: 2.0.1
-      micromark-util-types: 2.0.1
+      micromark-util-types: 2.0.2
 
   micromark-extension-gfm-footnote@1.1.2:
     dependencies:
@@ -29237,7 +29237,7 @@ snapshots:
   micromark-factory-space@2.0.1:
     dependencies:
       micromark-util-character: 2.1.1
-      micromark-util-types: 2.0.1
+      micromark-util-types: 2.0.2
 
   micromark-factory-title@1.1.0:
     dependencies:
@@ -29295,7 +29295,7 @@ snapshots:
     dependencies:
       micromark-util-character: 2.1.1
       micromark-util-symbol: 2.0.1
-      micromark-util-types: 2.0.1
+      micromark-util-types: 2.0.2
 
   micromark-util-combine-extensions@1.1.0:
     dependencies:
@@ -29372,7 +29372,7 @@ snapshots:
 
   micromark-util-resolve-all@2.0.1:
     dependencies:
-      micromark-util-types: 2.0.1
+      micromark-util-types: 2.0.2
 
   micromark-util-sanitize-uri@1.2.0:
     dependencies:
@@ -29398,7 +29398,7 @@ snapshots:
       devlop: 1.1.0
       micromark-util-chunked: 2.0.1
       micromark-util-symbol: 2.0.1
-      micromark-util-types: 2.0.1
+      micromark-util-types: 2.0.2
 
   micromark-util-symbol@1.1.0: {}
 
