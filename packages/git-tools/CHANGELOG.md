@@ -2,6 +2,19 @@
 
 # Changelog for Storm Ops - Git Tools
 
+## [2.131.34](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.131.34) (05/22/2026)
+
+### Miscellaneous
+
+- **git-tools:** Update package to no longer use `chalk-template` dependency ([bf68dfa55](https://github.com/storm-software/storm-ops/commit/bf68dfa55))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.61**
+- Updated **config-tools** to **v1.190.29**
+- Updated **conventional-changelog** to **v0.3.189**
+- Updated **package-constants** to **v0.1.42**
+
 ## [2.131.33](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.131.33) (05/22/2026)
 
 ### Bug Fixes
