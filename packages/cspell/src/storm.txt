@@ -536,3 +536,6 @@ codeship
 truecolor
 pathext
 colorterm
+
+# K8s
+kubectx

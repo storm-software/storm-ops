@@ -102,6 +102,8 @@ The following Devenv modules are included in this package:
   [vhs](https://github.com/charmbracelet/vhs) support.
 - `storm-ops/devenv-modules/mdbook`: Devenv module to include
   [mdbook](https://github.com/rust-lang/mdBook) support.
+- `storm-ops/devenv-modules/k8s`: Devenv module to include [Kubernetes](https://kubernetes.io/) support. Also includes support for [kubectl](https://kubernetes.io/docs/reference/kubectl/overview/), [k9s](https://k9scli.io/), and [kind](https://kind.sigs.k8s.io/).
+- `storm-ops/devenv-modules/terraform`: Devenv module to include [OpenTofu](https://opentofu.com/), [Terraform](https://www.terraform.io/), [Terragrunt](https://terragrunt.gruntwork.io/), and [Tenv](https://www.env0.com/blog/how-to-use-tenv-to-streamline-iac-version-management).
 
 ## Usage
 
