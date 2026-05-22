@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Conventional Changelog
 
+## [0.3.190](https://github.com/storm-software/storm-ops/releases/tag/conventional-changelog%400.3.190) (05/22/2026)
+
+### Bug Fixes
+
+- **git-tools:** Resolve formatting issue in CLI ([702bc697c](https://github.com/storm-software/storm-ops/commit/702bc697c))
+
 ## [0.3.189](https://github.com/storm-software/storm-ops/releases/tag/conventional-changelog%400.3.189) (05/22/2026)
 
 ### Updated Dependencies

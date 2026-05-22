@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - Git Tools
 
+## [2.131.35](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.131.35) (05/22/2026)
+
+### Bug Fixes
+
+- **git-tools:** Resolve formatting issue in CLI ([702bc697c](https://github.com/storm-software/storm-ops/commit/702bc697c))
+
+### Updated Dependencies
+
+- Updated **conventional-changelog** to **v0.3.190**
+
 ## [2.131.34](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.131.34) (05/22/2026)
 
 ### Miscellaneous
