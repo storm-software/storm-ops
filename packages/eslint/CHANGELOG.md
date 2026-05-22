@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - ESLint
 
+## [0.170.48](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.170.48) (05/22/2026)
+
+### Features
+
+- **devenv-modules:** Added `k8s` and `terraform` modules ([0ec1994bf](https://github.com/storm-software/storm-ops/commit/0ec1994bf))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.59**
+- Updated **config-tools** to **v1.190.27**
+- Updated **tsdoc** to **v0.13.180**
+
 ## [0.170.47](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.170.47) (05/20/2026)
 
 ### Features

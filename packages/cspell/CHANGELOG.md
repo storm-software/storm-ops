@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - CSpell
 
+## [0.46.95](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.46.95) (05/22/2026)
+
+### Features
+
+- **devenv-modules:** Added `k8s` and `terraform` modules ([0ec1994bf](https://github.com/storm-software/storm-ops/commit/0ec1994bf))
+
 ## [0.46.94](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.46.94) (05/20/2026)
 
 ### Features
