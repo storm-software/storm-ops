@@ -25,7 +25,7 @@ export async function runCommit(commitizenFile?: string, dryRun = false) {
 
   console.log(
     chalk.bold.hex("#999999")("----------------------------------------") +
-      "\n\n" +
+      "\n" +
       chalk.bold.hex("#FFFFFF")(
         `  ${brandIcon(workspaceConfig)}  Storm Software Git-Tools - Commit`
       ) +
@@ -40,11 +40,11 @@ export async function runCommit(commitizenFile?: string, dryRun = false) {
 
   console.log(
     chalk.bold.hex("#999999")("----------------------------------------") +
-      "\n\n" +
+      "\n" +
       `${chalk.bold.hex("#FFFFFF")("Commit message")} - ${chalk.hex("#DDDDDD")(message)}\n` +
       `${chalk.bold.hex("#FFFFFF")("Git-Commit File")} - ${chalk.hex("#DDDDDD")(
         commitMsgFile
-      )}\n\n    `
+      )}\n`
   );
 
   await runCommitLint(workspaceConfig, { message });
@@ -94,7 +94,9 @@ export async function askQuestion(
   index: number,
   question: CommitQuestionProps
 ): Promise<string | boolean> {
-  const message = `${chalk.bold(`${index + 1}. ${question.title}`)} - ${question.description}`;
+  const message = `${chalk.bold(
+    `${index + 1}. ${question.title}`
+  )} - ${question.description}\n`;
 
   if (
     question.type === "select" &&
