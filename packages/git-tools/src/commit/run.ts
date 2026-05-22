@@ -8,7 +8,7 @@ import {
 } from "@storm-software/config-tools/logger/console";
 import { run } from "@storm-software/config-tools/utilities/run";
 import shellescape from "any-shell-escape";
-import chalkTemplate from "chalk-template";
+import chalk from "chalk";
 import fs from "node:fs/promises";
 import { runCommitLint } from "../commitlint/run";
 import { CommitQuestionProps, CommitState } from "../types";
@@ -23,25 +23,29 @@ export async function runCommit(commitizenFile?: string, dryRun = false) {
     writeInfo("Running in dry mode.", workspaceConfig);
   }
 
-  console.log(chalkTemplate`
-{bold.#999999 ----------------------------------------}
-
-{bold.#FFFFFF   ${brandIcon(workspaceConfig)}  Storm Software Git-Tools - Commit}
-{#CCCCCC Please provide the requested details below...}
-`);
+  console.log(
+    chalk.bold.hex("#999999")("----------------------------------------") +
+      "\n\n" +
+      chalk.bold.hex("#FFFFFF")(
+        `  ${brandIcon(workspaceConfig)}  Storm Software Git-Tools - Commit`
+      ) +
+      "\n" +
+      chalk.hex("#CCCCCC")("Please provide the requested details below...")
+  );
 
   state.answers = await askQuestions(state);
 
   const message = formatCommitMessage(state, workspaceConfig);
   const commitMsgFile = joinPaths(getGitDir(), "COMMIT_EDITMSG");
 
-  console.log(chalkTemplate`
-{bold.#999999 ----------------------------------------}
-
-{bold.#FFFFFF Commit message} - {#DDDDDD ${message}}
-{bold.#FFFFFF Git-Commit File} - {#DDDDDD ${commitMsgFile}}
-
-    `);
+  console.log(
+    chalk.bold.hex("#999999")("----------------------------------------") +
+      "\n\n" +
+      `${chalk.bold.hex("#FFFFFF")("Commit message")} - ${chalk.hex("#DDDDDD")(message)}\n` +
+      `${chalk.bold.hex("#FFFFFF")("Git-Commit File")} - ${chalk.hex("#DDDDDD")(
+        commitMsgFile
+      )}\n\n    `
+  );
 
   await runCommitLint(workspaceConfig, { message });
 
@@ -90,10 +94,7 @@ export async function askQuestion(
   index: number,
   question: CommitQuestionProps
 ): Promise<string | boolean> {
-  const message = chalkTemplate`{bold ${index + 1}. ${question.title}} - ${question.description}
-`;
-
-  // const message = `${index + 1}. ${question.title}: ${question.description}`;
+  const message = `${chalk.bold(`${index + 1}. ${question.title}`)} - ${question.description}`;
 
   if (
     question.type === "select" &&

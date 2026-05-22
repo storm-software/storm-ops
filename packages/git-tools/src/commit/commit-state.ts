@@ -1,7 +1,7 @@
 import { ProjectGraph } from "@nx/devkit";
 import { StormWorkspaceConfig } from "@storm-software/config";
 import { joinPaths } from "@storm-software/config-tools";
-import chalkTemplate from "chalk-template";
+import chalk from "chalk";
 import {
   CommitTypeProps,
   CommitTypesEnum
@@ -79,11 +79,11 @@ export async function createState<
       if (state.config.questions.type.enum) {
         ret[key] = {
           ...state.config.questions.type.enum[key],
-          title: chalkTemplate`${
+          title: `${
             state.config.questions.type.enum[key]?.emoji
               ? `${state.config.questions.type.enum[key]?.emoji} `
               : ""
-          }{bold ${key}} ${
+          }${chalk.bold(key)} ${
             state.config.questions.type.enum[key]?.title &&
             state.config.questions.type.enum[key]?.title !== key
               ? `- ${state.config.questions.type.enum[key]?.title}`
@@ -122,7 +122,7 @@ export async function createState<
         (state.config.questions as typeof monorepoConfig.questions).scope.enum[
           scope
         ] = {
-          title: chalkTemplate`{bold monorepo} - workspace root`,
+          title: chalk.bold("monorepo") + " - workspace root",
           description: "The base workspace package (workspace root)",
           hidden: false,
           projectRoot: "/"
@@ -165,7 +165,7 @@ export async function createState<
           (
             state.config.questions as typeof monorepoConfig.questions
           ).scope.enum[scope] = {
-            title: chalkTemplate`{bold ${project.name}} - ${project.root}`,
+            title: chalk.bold(project.name) + " - " + project.root,
             description,
             hidden: false,
             projectRoot: project.root

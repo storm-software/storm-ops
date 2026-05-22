@@ -201,7 +201,10 @@
     "storm-version-warning-cjs": "./bin/version-warning.cjs",
     "storm-version-warning-esm": "./bin/version-warning.js"
   },
-  "files": ["bin", "dist"],
+  "files": [
+    "bin",
+    "dist"
+  ],
   "dependencies": {
     "@commitlint/ensure": "^19.8.1",
     "@commitlint/rules": "^19.8.1",
@@ -216,7 +219,6 @@
     "any-shell-escape": "0.1.1",
     "axios": "1.8.2",
     "chalk": "catalog:",
-    "chalk-template": "1.1.0",
     "conventional-changelog-conventionalcommits": "^9.3.1",
     "conventional-changelog-storm-software": "workspace:*",
     "htmlparser2": "10.0.0",
