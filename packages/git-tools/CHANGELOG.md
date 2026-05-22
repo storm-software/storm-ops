@@ -2,6 +2,19 @@
 
 # Changelog for Storm Ops - Git Tools
 
+## [2.131.33](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.131.33) (05/22/2026)
+
+### Bug Fixes
+
+- **git-tools:** Resolve missing dependency issues ([1a1e787ef](https://github.com/storm-software/storm-ops/commit/1a1e787ef))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.60**
+- Updated **config-tools** to **v1.190.28**
+- Updated **conventional-changelog** to **v0.3.188**
+- Updated **package-constants** to **v0.1.41**
+
 ## [2.131.32](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.131.32) (05/22/2026)
 
 ### Updated Dependencies
