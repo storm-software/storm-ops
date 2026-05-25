@@ -380,7 +380,7 @@ export const formatLogMessage = (
                 )}`
             )
             .join("\n")}`
-        : typeof message === "object"
+        : typeof message === "object" && message
           ? `\n${Object.keys(message)
               .filter(
                 key =>
@@ -406,7 +406,7 @@ export const formatLogMessage = (
                   ` ${prefix}> ${key} = ${
                     _isFunction(message[key])
                       ? "<function>"
-                      : typeof message[key] === "object"
+                      : typeof message[key] === "object" && message[key]
                         ? Object.keys(message[key]).filter(
                             key =>
                               typeof key !== "string" ||
