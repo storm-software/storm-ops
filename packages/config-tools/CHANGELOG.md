@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Config Tools
 
+## [1.190.30](https://github.com/storm-software/storm-ops/releases/tag/config-tools%401.190.30) (05/25/2026)
+
+### Bug Fixes
+
+- **config-tools:** Resolve issue with null object property in logger ([5b1f1e6ea](https://github.com/storm-software/storm-ops/commit/5b1f1e6ea))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.62**
+- Updated **testing-tools** to **v1.119.183**
+
 ## [1.190.29](https://github.com/storm-software/storm-ops/releases/tag/config-tools%401.190.29) (05/22/2026)
 
 ### Updated Dependencies

@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Tsdown
 
+## [0.45.191](https://github.com/storm-software/storm-ops/releases/tag/tsdown%400.45.191) (05/25/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace packages' dependencies ([fc8e77a84](https://github.com/storm-software/storm-ops/commit/fc8e77a84))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.190**
+- Updated **config** to **v1.137.62**
+- Updated **config-tools** to **v1.190.30**
+
 ## [0.45.190](https://github.com/storm-software/storm-ops/releases/tag/tsdown%400.45.190) (05/22/2026)
 
 ### Updated Dependencies
