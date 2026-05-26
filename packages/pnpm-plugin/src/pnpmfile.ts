@@ -27,7 +27,7 @@ const config = {
         linkWorkspacePackages: true,
         dedupeDirectDeps: true,
         dedupePeerDependents: true,
-        useNodeVersion: "25.5.0",
+        useNodeVersion: "26.2.0",
         minimumReleaseAge: 800,
         minimumReleaseAgeExclude: [...INTERNAL_PACKAGES],
         ...config

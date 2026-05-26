@@ -132,10 +132,10 @@
     "zod": "catalog:",
     "zx": "catalog:"
   },
-  "packageManager": "pnpm@10.30.0",
+  "packageManager": "pnpm@11.1.2",
   "engines": {
-    "node": ">=25.5.0",
-    "pnpm": ">=10.30.0"
+    "node": ">=26.2.0",
+    "pnpm": ">=11.1.2"
   },
   "manypkg": {
     "defaultBranch": "main",

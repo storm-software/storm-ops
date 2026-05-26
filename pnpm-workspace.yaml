@@ -4,6 +4,20 @@ packages:
   - "devenv-modules"
   - "terraform-modules"
   - "docs/**"
+allowBuilds:
+  "@parcel/watcher": false
+  "@pulumi/docker": true
+  "@pulumi/docker-build": true
+  "@swc/core": true
+  core-js-pure: true
+  esbuild: true
+  lefthook: true
+  less: false
+  nx: true
+  protobufjs: true
+  sharp: true
+  unrs-resolver: true
+  workerd: true
 catalog:
   "@actions/core": "^3.0.1"
   "@ltd/j-toml": "1.38.0"
@@ -129,5 +143,5 @@ shamefullyHoist: true
 shellEmulator: true
 supportedArchitectures:
   cpu: ["current"]
-useNodeVersion: "25.5.0"
+useNodeVersion: "26.2.0"
 verifyDepsBeforeRun: "install"

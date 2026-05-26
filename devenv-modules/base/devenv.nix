@@ -32,7 +32,7 @@ in
   };
   languages.javascript = {
     enable = true;
-    package = pkgs.nodejs_25;
+    package = pkgs.nodejs-slim_latest;
     nodejs.enable = true;
     lsp.enable = true;
     pnpm = {
