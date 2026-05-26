@@ -10,6 +10,7 @@ import type {
 import {
   GLOB_ASTRO_TS,
   GLOB_MARKDOWN,
+  GLOB_SRC_FILE,
   GLOB_TS,
   GLOB_TSX
 } from "../utils/constants";
@@ -93,7 +94,7 @@ export async function typescript(
           ...(typeAware
             ? {
                 projectService: {
-                  allowDefaultProject: ["./*.js", "./*.ts"],
+                  allowDefaultProject: [GLOB_SRC_FILE],
                   defaultProject: tsconfigPath
                 },
                 tsconfigRootDir: findWorkspaceRoot()
