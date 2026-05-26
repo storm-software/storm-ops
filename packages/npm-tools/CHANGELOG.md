@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Npm Tools
 
+## [0.6.150](https://github.com/storm-software/storm-ops/releases/tag/npm-tools%400.6.150) (05/26/2026)
+
+### Miscellaneous
+
+- **npm-tools:** Remove invalid `tag` option from command ([742736bd2](https://github.com/storm-software/storm-ops/commit/742736bd2))
+
 ## [0.6.149](https://github.com/storm-software/storm-ops/releases/tag/npm-tools%400.6.149) (05/26/2026)
 
 ### Miscellaneous
