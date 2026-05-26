@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - Vite
 
+## [0.1.126](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.126) (05/26/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update nodejs to v26.2.0 and pnpm to v11.1.2 ([855c4d4f0](https://github.com/storm-software/storm-ops/commit/855c4d4f0))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.192**
+
 ## [0.1.125](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.125) (05/26/2026)
 
 ### Miscellaneous

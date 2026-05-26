@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Testing Tools
 
+## [1.119.185](https://github.com/storm-software/storm-ops/releases/tag/testing-tools%401.119.185) (05/26/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update nodejs to v26.2.0 and pnpm to v11.1.2 ([855c4d4f0](https://github.com/storm-software/storm-ops/commit/855c4d4f0))
+
 ## [1.119.184](https://github.com/storm-software/storm-ops/releases/tag/testing-tools%401.119.184) (05/26/2026)
 
 ### Miscellaneous

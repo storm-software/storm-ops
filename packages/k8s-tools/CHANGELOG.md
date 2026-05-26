@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - K8s Tools
 
+## [0.42.212](https://github.com/storm-software/storm-ops/releases/tag/k8s-tools%400.42.212) (05/26/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update nodejs to v26.2.0 and pnpm to v11.1.2 ([855c4d4f0](https://github.com/storm-software/storm-ops/commit/855c4d4f0))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.64**
+- Updated **config-tools** to **v1.190.32**
+- Updated **workspace-tools** to **v1.296.9**
+
 ## [0.42.211](https://github.com/storm-software/storm-ops/releases/tag/k8s-tools%400.42.211) (05/26/2026)
 
 ### Miscellaneous

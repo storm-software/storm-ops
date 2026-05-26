@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - Config
 
+## [1.137.64](https://github.com/storm-software/storm-ops/releases/tag/config%401.137.64) (05/26/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update nodejs to v26.2.0 and pnpm to v11.1.2 ([855c4d4f0](https://github.com/storm-software/storm-ops/commit/855c4d4f0))
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.185**
+
 ## [1.137.63](https://github.com/storm-software/storm-ops/releases/tag/config%401.137.63) (05/26/2026)
 
 ### Miscellaneous

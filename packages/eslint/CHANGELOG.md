@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - ESLint
 
+## [0.170.53](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.170.53) (05/26/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update nodejs to v26.2.0 and pnpm to v11.1.2 ([855c4d4f0](https://github.com/storm-software/storm-ops/commit/855c4d4f0))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.64**
+- Updated **config-tools** to **v1.190.32**
+- Updated **tsdoc** to **v0.13.185**
+
 ## [0.170.52](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.170.52) (05/26/2026)
 
 ### Miscellaneous

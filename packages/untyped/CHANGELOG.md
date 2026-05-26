@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Untyped
 
+## [0.24.174](https://github.com/storm-software/storm-ops/releases/tag/untyped%400.24.174) (05/26/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update nodejs to v26.2.0 and pnpm to v11.1.2 ([855c4d4f0](https://github.com/storm-software/storm-ops/commit/855c4d4f0))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.64**
+- Updated **config-tools** to **v1.190.32**
+
 ## [0.24.173](https://github.com/storm-software/storm-ops/releases/tag/untyped%400.24.173) (05/26/2026)
 
 ### Miscellaneous

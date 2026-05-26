@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Pulumi Tools
 
+## [0.22.212](https://github.com/storm-software/storm-ops/releases/tag/pulumi-tools%400.22.212) (05/26/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update nodejs to v26.2.0 and pnpm to v11.1.2 ([855c4d4f0](https://github.com/storm-software/storm-ops/commit/855c4d4f0))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.64**
+- Updated **config-tools** to **v1.190.32**
+- Updated **workspace-tools** to **v1.296.9**
+
 ## [0.22.211](https://github.com/storm-software/storm-ops/releases/tag/pulumi-tools%400.22.211) (05/26/2026)
 
 ### Miscellaneous

@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Terraform Tools
 
+## [0.66.212](https://github.com/storm-software/storm-ops/releases/tag/terraform-tools%400.66.212) (05/26/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update nodejs to v26.2.0 and pnpm to v11.1.2 ([855c4d4f0](https://github.com/storm-software/storm-ops/commit/855c4d4f0))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.64**
+- Updated **config-tools** to **v1.190.32**
+- Updated **workspace-tools** to **v1.296.9**
+
 ## [0.66.211](https://github.com/storm-software/storm-ops/releases/tag/terraform-tools%400.66.211) (05/26/2026)
 
 ### Miscellaneous

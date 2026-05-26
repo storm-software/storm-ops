@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Package Constants
 
+## [0.1.45](https://github.com/storm-software/storm-ops/releases/tag/package-constants%400.1.45) (05/26/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update nodejs to v26.2.0 and pnpm to v11.1.2 ([855c4d4f0](https://github.com/storm-software/storm-ops/commit/855c4d4f0))
+
 ## [0.1.44](https://github.com/storm-software/storm-ops/releases/tag/package-constants%400.1.44) (05/26/2026)
 
 ### Miscellaneous

@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Pnpm Plugin
 
+## [0.1.143](https://github.com/storm-software/storm-ops/releases/tag/pnpm-plugin%400.1.143) (05/26/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update nodejs to v26.2.0 and pnpm to v11.1.2 ([855c4d4f0](https://github.com/storm-software/storm-ops/commit/855c4d4f0))
+
+### Updated Dependencies
+
+- Updated **package-constants** to **v0.1.45**
+- Updated **testing-tools** to **v1.119.185**
+
 ## [0.1.142](https://github.com/storm-software/storm-ops/releases/tag/pnpm-plugin%400.1.142) (05/26/2026)
 
 ### Miscellaneous

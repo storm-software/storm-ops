@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Tsdoc
 
+## [0.13.185](https://github.com/storm-software/storm-ops/releases/tag/tsdoc%400.13.185) (05/26/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update nodejs to v26.2.0 and pnpm to v11.1.2 ([855c4d4f0](https://github.com/storm-software/storm-ops/commit/855c4d4f0))
+
 ## [0.13.184](https://github.com/storm-software/storm-ops/releases/tag/tsdoc%400.13.184) (05/26/2026)
 
 ### Miscellaneous

@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Tsconfig
 
+## [0.48.99](https://github.com/storm-software/storm-ops/releases/tag/tsconfig%400.48.99) (05/26/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update nodejs to v26.2.0 and pnpm to v11.1.2 ([855c4d4f0](https://github.com/storm-software/storm-ops/commit/855c4d4f0))
+
 ## [0.48.98](https://github.com/storm-software/storm-ops/releases/tag/tsconfig%400.48.98) (05/26/2026)
 
 ### Miscellaneous
