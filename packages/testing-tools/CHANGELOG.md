@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Testing Tools
 
+## [1.119.184](https://github.com/storm-software/storm-ops/releases/tag/testing-tools%401.119.184) (05/26/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace package dependencies ([859ec16d2](https://github.com/storm-software/storm-ops/commit/859ec16d2))
+
 ## [1.119.179](https://github.com/storm-software/storm-ops/releases/tag/testing-tools%401.119.179) (05/20/2026)
 
 ### Features

@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Untyped
 
+## [0.24.173](https://github.com/storm-software/storm-ops/releases/tag/untyped%400.24.173) (05/26/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace package dependencies ([859ec16d2](https://github.com/storm-software/storm-ops/commit/859ec16d2))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.63**
+- Updated **config-tools** to **v1.190.31**
+
 ## [0.24.172](https://github.com/storm-software/storm-ops/releases/tag/untyped%400.24.172) (05/25/2026)
 
 ### Updated Dependencies
