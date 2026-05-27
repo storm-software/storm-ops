@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Tsup
 
+## [0.2.191](https://github.com/storm-software/storm-ops/releases/tag/tsup%400.2.191) (05/26/2026)
+
+### Miscellaneous
+
+- **devenv-modules:** Update shared K8s modules ([d571d536f](https://github.com/storm-software/storm-ops/commit/d571d536f))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.193**
+- Updated **config-tools** to **v1.190.33**
+
 ## [0.2.190](https://github.com/storm-software/storm-ops/releases/tag/tsup%400.2.190) (05/26/2026)
 
 ### Miscellaneous

@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Npm Tools
 
+## [0.6.151](https://github.com/storm-software/storm-ops/releases/tag/npm-tools%400.6.151) (05/26/2026)
+
+### Miscellaneous
+
+- **devenv-modules:** Update shared K8s modules ([d571d536f](https://github.com/storm-software/storm-ops/commit/d571d536f))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.65**
+- Updated **config-tools** to **v1.190.33**
+- Updated **testing-tools** to **v1.119.186**
+
 ## [0.6.150](https://github.com/storm-software/storm-ops/releases/tag/npm-tools%400.6.150) (05/26/2026)
 
 ### Miscellaneous

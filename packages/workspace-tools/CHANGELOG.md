@@ -2,6 +2,25 @@
 
 # Changelog for Storm Ops - Workspace Tools
 
+## [1.296.11](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.296.11) (05/26/2026)
+
+### Miscellaneous
+
+- **devenv-modules:** Update shared K8s modules ([d571d536f](https://github.com/storm-software/storm-ops/commit/d571d536f))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.65**
+- Updated **config-tools** to **v1.190.33**
+- Updated **esbuild** to **v0.53.194**
+- Updated **npm-tools** to **v0.6.151**
+- Updated **package-constants** to **v0.1.46**
+- Updated **pnpm-tools** to **v0.7.44**
+- Updated **prettier** to **v0.59.85**
+- Updated **testing-tools** to **v1.119.186**
+- Updated **tsdown** to **v0.45.194**
+- Updated **unbuild** to **v0.57.194**
+
 ## [1.296.10](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.296.10) (05/26/2026)
 
 ### Updated Dependencies

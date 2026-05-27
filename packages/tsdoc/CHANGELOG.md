@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Tsdoc
 
+## [0.13.186](https://github.com/storm-software/storm-ops/releases/tag/tsdoc%400.13.186) (05/26/2026)
+
+### Miscellaneous
+
+- **devenv-modules:** Update shared K8s modules ([d571d536f](https://github.com/storm-software/storm-ops/commit/d571d536f))
+
 ## [0.13.185](https://github.com/storm-software/storm-ops/releases/tag/tsdoc%400.13.185) (05/26/2026)
 
 ### Miscellaneous

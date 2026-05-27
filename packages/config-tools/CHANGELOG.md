@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Config Tools
 
+## [1.190.33](https://github.com/storm-software/storm-ops/releases/tag/config-tools%401.190.33) (05/26/2026)
+
+### Miscellaneous
+
+- **devenv-modules:** Update shared K8s modules ([d571d536f](https://github.com/storm-software/storm-ops/commit/d571d536f))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.65**
+- Updated **testing-tools** to **v1.119.186**
+
 ## [1.190.32](https://github.com/storm-software/storm-ops/releases/tag/config-tools%401.190.32) (05/26/2026)
 
 ### Miscellaneous

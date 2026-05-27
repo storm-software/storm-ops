@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Pnpm Plugin
 
+## [0.1.144](https://github.com/storm-software/storm-ops/releases/tag/pnpm-plugin%400.1.144) (05/26/2026)
+
+### Miscellaneous
+
+- **devenv-modules:** Update shared K8s modules ([d571d536f](https://github.com/storm-software/storm-ops/commit/d571d536f))
+
+### Updated Dependencies
+
+- Updated **package-constants** to **v0.1.46**
+- Updated **testing-tools** to **v1.119.186**
+
 ## [0.1.143](https://github.com/storm-software/storm-ops/releases/tag/pnpm-plugin%400.1.143) (05/26/2026)
 
 ### Miscellaneous

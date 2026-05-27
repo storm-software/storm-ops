@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Build Tools
 
+## [0.158.193](https://github.com/storm-software/storm-ops/releases/tag/build-tools%400.158.193) (05/26/2026)
+
+### Miscellaneous
+
+- **devenv-modules:** Update shared K8s modules ([d571d536f](https://github.com/storm-software/storm-ops/commit/d571d536f))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.65**
+- Updated **config-tools** to **v1.190.33**
+
 ## [0.158.192](https://github.com/storm-software/storm-ops/releases/tag/build-tools%400.158.192) (05/26/2026)
 
 ### Miscellaneous

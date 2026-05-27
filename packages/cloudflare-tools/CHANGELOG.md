@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Cloudflare Tools
 
+## [0.71.173](https://github.com/storm-software/storm-ops/releases/tag/cloudflare-tools%400.71.173) (05/26/2026)
+
+### Miscellaneous
+
+- **devenv-modules:** Update shared K8s modules ([d571d536f](https://github.com/storm-software/storm-ops/commit/d571d536f))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.65**
+- Updated **config-tools** to **v1.190.33**
+- Updated **workspace-tools** to **v1.296.11**
+
 ## [0.71.172](https://github.com/storm-software/storm-ops/releases/tag/cloudflare-tools%400.71.172) (05/26/2026)
 
 ### Updated Dependencies

@@ -2,6 +2,20 @@
 
 # Changelog for Storm Ops - Pnpm Tools
 
+## [0.7.44](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.7.44) (05/26/2026)
+
+### Miscellaneous
+
+- **devenv-modules:** Update shared K8s modules ([d571d536f](https://github.com/storm-software/storm-ops/commit/d571d536f))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.65**
+- Updated **config-tools** to **v1.190.33**
+- Updated **npm-tools** to **v0.6.151**
+- Updated **package-constants** to **v0.1.46**
+- Updated **testing-tools** to **v1.119.186**
+
 ## [0.7.43](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.7.43) (05/26/2026)
 
 ### Updated Dependencies

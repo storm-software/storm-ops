@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - CSpell
 
+## [0.46.101](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.46.101) (05/26/2026)
+
+### Miscellaneous
+
+- **devenv-modules:** Update shared K8s modules ([d571d536f](https://github.com/storm-software/storm-ops/commit/d571d536f))
+
 ## [0.46.100](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.46.100) (05/26/2026)
 
 ### Miscellaneous

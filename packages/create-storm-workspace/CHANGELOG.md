@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - Create Storm Workspace
 
+## [1.97.193](https://github.com/storm-software/storm-ops/releases/tag/create-storm-workspace%401.97.193) (05/26/2026)
+
+### Miscellaneous
+
+- **devenv-modules:** Update shared K8s modules ([d571d536f](https://github.com/storm-software/storm-ops/commit/d571d536f))
+
+### Updated Dependencies
+
+- Updated **config-tools** to **v1.190.33**
+
 ## [1.97.192](https://github.com/storm-software/storm-ops/releases/tag/create-storm-workspace%401.97.192) (05/26/2026)
 
 ### Miscellaneous

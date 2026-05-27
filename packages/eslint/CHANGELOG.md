@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - ESLint
 
+## [0.170.54](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.170.54) (05/26/2026)
+
+### Miscellaneous
+
+- **devenv-modules:** Update shared K8s modules ([d571d536f](https://github.com/storm-software/storm-ops/commit/d571d536f))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.65**
+- Updated **config-tools** to **v1.190.33**
+- Updated **tsdoc** to **v0.13.186**
+
 ## [0.170.53](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.170.53) (05/26/2026)
 
 ### Miscellaneous

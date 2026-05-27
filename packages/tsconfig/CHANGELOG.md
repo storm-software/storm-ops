@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Tsconfig
 
+## [0.48.100](https://github.com/storm-software/storm-ops/releases/tag/tsconfig%400.48.100) (05/26/2026)
+
+### Miscellaneous
+
+- **devenv-modules:** Update shared K8s modules ([d571d536f](https://github.com/storm-software/storm-ops/commit/d571d536f))
+
 ## [0.48.99](https://github.com/storm-software/storm-ops/releases/tag/tsconfig%400.48.99) (05/26/2026)
 
 ### Miscellaneous

@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Package Constants
 
+## [0.1.46](https://github.com/storm-software/storm-ops/releases/tag/package-constants%400.1.46) (05/26/2026)
+
+### Miscellaneous
+
+- **devenv-modules:** Update shared K8s modules ([d571d536f](https://github.com/storm-software/storm-ops/commit/d571d536f))
+
 ## [0.1.45](https://github.com/storm-software/storm-ops/releases/tag/package-constants%400.1.45) (05/26/2026)
 
 ### Miscellaneous

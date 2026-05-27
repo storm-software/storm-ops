@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Linting Tools
 
+## [1.133.63](https://github.com/storm-software/storm-ops/releases/tag/linting-tools%401.133.63) (05/26/2026)
+
+### Miscellaneous
+
+- **devenv-modules:** Update shared K8s modules ([d571d536f](https://github.com/storm-software/storm-ops/commit/d571d536f))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.65**
+- Updated **config-tools** to **v1.190.33**
+
 ## [1.133.62](https://github.com/storm-software/storm-ops/releases/tag/linting-tools%401.133.62) (05/26/2026)
 
 ### Miscellaneous

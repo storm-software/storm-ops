@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Prettier
 
+## [0.59.85](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.59.85) (05/26/2026)
+
+### Miscellaneous
+
+- **devenv-modules:** Update shared K8s modules ([d571d536f](https://github.com/storm-software/storm-ops/commit/d571d536f))
+
 ## [0.59.84](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.59.84) (05/26/2026)
 
 ### Miscellaneous
