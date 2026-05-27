@@ -4,8 +4,7 @@
   packages = [
     pkgs.kubectl
     pkgs.kubectx
-    pkgs.minikube
-    pkgs.tilt
+    pkgs.helmfile
   ];
 
   languages.helm = {
