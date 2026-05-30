@@ -2,6 +2,25 @@
 
 # Changelog for Storm Ops - Workspace Tools
 
+## [1.296.15](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.296.15) (05/30/2026)
+
+### Features
+
+- **monorepo:** Added `vitest` configurations to various files lists ([8ffec3105](https://github.com/storm-software/storm-ops/commit/8ffec3105))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.69**
+- Updated **config-tools** to **v1.190.37**
+- Updated **esbuild** to **v0.53.198**
+- Updated **npm-tools** to **v0.6.155**
+- Updated **package-constants** to **v0.1.50**
+- Updated **pnpm-tools** to **v0.7.48**
+- Updated **prettier** to **v0.59.89**
+- Updated **testing-tools** to **v1.119.190**
+- Updated **tsdown** to **v0.45.198**
+- Updated **unbuild** to **v0.57.198**
+
 ## [1.296.14](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.296.14) (05/30/2026)
 
 ### Miscellaneous

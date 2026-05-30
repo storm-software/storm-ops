@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - ESLint
 
+## [0.170.58](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.170.58) (05/30/2026)
+
+### Features
+
+- **monorepo:** Added `vitest` configurations to various files lists ([8ffec3105](https://github.com/storm-software/storm-ops/commit/8ffec3105))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.69**
+- Updated **config-tools** to **v1.190.37**
+- Updated **tsdoc** to **v0.13.190**
+
 ## [0.170.57](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.170.57) (05/30/2026)
 
 ### Miscellaneous

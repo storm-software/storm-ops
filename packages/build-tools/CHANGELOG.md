@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Build Tools
 
+## [0.158.197](https://github.com/storm-software/storm-ops/releases/tag/build-tools%400.158.197) (05/30/2026)
+
+### Features
+
+- **monorepo:** Added `vitest` configurations to various files lists ([8ffec3105](https://github.com/storm-software/storm-ops/commit/8ffec3105))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.69**
+- Updated **config-tools** to **v1.190.37**
+
 ## [0.158.196](https://github.com/storm-software/storm-ops/releases/tag/build-tools%400.158.196) (05/30/2026)
 
 ### Miscellaneous

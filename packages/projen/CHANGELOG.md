@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Projen
 
+## [0.21.218](https://github.com/storm-software/storm-ops/releases/tag/projen%400.21.218) (05/30/2026)
+
+### Features
+
+- **monorepo:** Added `vitest` configurations to various files lists ([8ffec3105](https://github.com/storm-software/storm-ops/commit/8ffec3105))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.69**
+- Updated **config-tools** to **v1.190.37**
+- Updated **workspace-tools** to **v1.296.15**
+
 ## [0.21.217](https://github.com/storm-software/storm-ops/releases/tag/projen%400.21.217) (05/30/2026)
 
 ### Miscellaneous

@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Linting Tools
 
+## [1.133.67](https://github.com/storm-software/storm-ops/releases/tag/linting-tools%401.133.67) (05/30/2026)
+
+### Features
+
+- **monorepo:** Added `vitest` configurations to various files lists ([8ffec3105](https://github.com/storm-software/storm-ops/commit/8ffec3105))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.69**
+- Updated **config-tools** to **v1.190.37**
+
 ## [1.133.66](https://github.com/storm-software/storm-ops/releases/tag/linting-tools%401.133.66) (05/30/2026)
 
 ### Miscellaneous
