@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Prettier
 
+## [0.59.88](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.59.88) (05/30/2026)
+
+### Miscellaneous
+
+- **devenv-modules:** Removed unneeded `input` modules ([25f4a61d5](https://github.com/storm-software/storm-ops/commit/25f4a61d5))
+
 ## [0.59.87](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.59.87) (05/30/2026)
 
 ### Miscellaneous

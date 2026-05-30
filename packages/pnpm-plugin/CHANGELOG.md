@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Pnpm Plugin
 
+## [0.1.147](https://github.com/storm-software/storm-ops/releases/tag/pnpm-plugin%400.1.147) (05/30/2026)
+
+### Miscellaneous
+
+- **devenv-modules:** Removed unneeded `input` modules ([25f4a61d5](https://github.com/storm-software/storm-ops/commit/25f4a61d5))
+
+### Updated Dependencies
+
+- Updated **package-constants** to **v0.1.49**
+- Updated **testing-tools** to **v1.119.189**
+
 ## [0.1.146](https://github.com/storm-software/storm-ops/releases/tag/pnpm-plugin%400.1.146) (05/30/2026)
 
 ### Updated Dependencies

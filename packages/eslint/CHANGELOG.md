@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - ESLint
 
+## [0.170.57](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.170.57) (05/30/2026)
+
+### Miscellaneous
+
+- **devenv-modules:** Removed unneeded `input` modules ([25f4a61d5](https://github.com/storm-software/storm-ops/commit/25f4a61d5))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.68**
+- Updated **config-tools** to **v1.190.36**
+- Updated **tsdoc** to **v0.13.189**
+
 ## [0.170.56](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.170.56) (05/30/2026)
 
 ### Miscellaneous

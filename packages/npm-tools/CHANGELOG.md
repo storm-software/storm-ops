@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Npm Tools
 
+## [0.6.154](https://github.com/storm-software/storm-ops/releases/tag/npm-tools%400.6.154) (05/30/2026)
+
+### Miscellaneous
+
+- **devenv-modules:** Removed unneeded `input` modules ([25f4a61d5](https://github.com/storm-software/storm-ops/commit/25f4a61d5))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.68**
+- Updated **config-tools** to **v1.190.36**
+- Updated **testing-tools** to **v1.119.189**
+
 ## [0.6.153](https://github.com/storm-software/storm-ops/releases/tag/npm-tools%400.6.153) (05/30/2026)
 
 ### Updated Dependencies

@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Package Constants
 
+## [0.1.49](https://github.com/storm-software/storm-ops/releases/tag/package-constants%400.1.49) (05/30/2026)
+
+### Miscellaneous
+
+- **devenv-modules:** Removed unneeded `input` modules ([25f4a61d5](https://github.com/storm-software/storm-ops/commit/25f4a61d5))
+
 ## [0.1.46](https://github.com/storm-software/storm-ops/releases/tag/package-constants%400.1.46) (05/26/2026)
 
 ### Miscellaneous

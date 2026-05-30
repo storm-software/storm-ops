@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Conventional Changelog
 
+## [0.3.197](https://github.com/storm-software/storm-ops/releases/tag/conventional-changelog%400.3.197) (05/30/2026)
+
+### Miscellaneous
+
+- **devenv-modules:** Removed unneeded `input` modules ([25f4a61d5](https://github.com/storm-software/storm-ops/commit/25f4a61d5))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.68**
+- Updated **config-tools** to **v1.190.36**
+
 ## [0.3.196](https://github.com/storm-software/storm-ops/releases/tag/conventional-changelog%400.3.196) (05/30/2026)
 
 ### Updated Dependencies

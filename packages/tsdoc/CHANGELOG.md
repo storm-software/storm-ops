@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Tsdoc
 
+## [0.13.189](https://github.com/storm-software/storm-ops/releases/tag/tsdoc%400.13.189) (05/30/2026)
+
+### Miscellaneous
+
+- **devenv-modules:** Removed unneeded `input` modules ([25f4a61d5](https://github.com/storm-software/storm-ops/commit/25f4a61d5))
+
 ## [0.13.186](https://github.com/storm-software/storm-ops/releases/tag/tsdoc%400.13.186) (05/26/2026)
 
 ### Miscellaneous

@@ -2,6 +2,25 @@
 
 # Changelog for Storm Ops - Workspace Tools
 
+## [1.296.14](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.296.14) (05/30/2026)
+
+### Miscellaneous
+
+- **devenv-modules:** Removed unneeded `input` modules ([25f4a61d5](https://github.com/storm-software/storm-ops/commit/25f4a61d5))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.68**
+- Updated **config-tools** to **v1.190.36**
+- Updated **esbuild** to **v0.53.197**
+- Updated **npm-tools** to **v0.6.154**
+- Updated **package-constants** to **v0.1.49**
+- Updated **pnpm-tools** to **v0.7.47**
+- Updated **prettier** to **v0.59.88**
+- Updated **testing-tools** to **v1.119.189**
+- Updated **tsdown** to **v0.45.197**
+- Updated **unbuild** to **v0.57.197**
+
 ## [1.296.13](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.296.13) (05/30/2026)
 
 ### Miscellaneous

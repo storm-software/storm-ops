@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - Markdownlint
 
+## [0.30.192](https://github.com/storm-software/storm-ops/releases/tag/markdownlint%400.30.192) (05/30/2026)
+
+### Miscellaneous
+
+- **devenv-modules:** Removed unneeded `input` modules ([25f4a61d5](https://github.com/storm-software/storm-ops/commit/25f4a61d5))
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.189**
+
 ## [0.30.191](https://github.com/storm-software/storm-ops/releases/tag/markdownlint%400.30.191) (05/30/2026)
 
 ### Updated Dependencies

@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - CSpell
 
+## [0.46.104](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.46.104) (05/30/2026)
+
+### Miscellaneous
+
+- **devenv-modules:** Removed unneeded `input` modules ([25f4a61d5](https://github.com/storm-software/storm-ops/commit/25f4a61d5))
+
 ## [0.46.101](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.46.101) (05/26/2026)
 
 ### Miscellaneous

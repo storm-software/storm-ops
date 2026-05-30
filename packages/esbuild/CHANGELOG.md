@@ -2,6 +2,19 @@
 
 # Changelog for Storm Ops - Esbuild
 
+## [0.53.197](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.53.197) (05/30/2026)
+
+### Miscellaneous
+
+- **devenv-modules:** Removed unneeded `input` modules ([25f4a61d5](https://github.com/storm-software/storm-ops/commit/25f4a61d5))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.196**
+- Updated **config** to **v1.137.68**
+- Updated **config-tools** to **v1.190.36**
+- Updated **tsup** to **v0.2.194**
+
 ## [0.53.196](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.53.196) (05/30/2026)
 
 ### Updated Dependencies

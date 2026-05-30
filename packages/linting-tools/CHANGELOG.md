@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Linting Tools
 
+## [1.133.66](https://github.com/storm-software/storm-ops/releases/tag/linting-tools%401.133.66) (05/30/2026)
+
+### Miscellaneous
+
+- **devenv-modules:** Removed unneeded `input` modules ([25f4a61d5](https://github.com/storm-software/storm-ops/commit/25f4a61d5))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.68**
+- Updated **config-tools** to **v1.190.36**
+
 ## [1.133.65](https://github.com/storm-software/storm-ops/releases/tag/linting-tools%401.133.65) (05/30/2026)
 
 ### Updated Dependencies

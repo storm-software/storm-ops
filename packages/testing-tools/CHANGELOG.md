@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Testing Tools
 
+## [1.119.189](https://github.com/storm-software/storm-ops/releases/tag/testing-tools%401.119.189) (05/30/2026)
+
+### Miscellaneous
+
+- **devenv-modules:** Removed unneeded `input` modules ([25f4a61d5](https://github.com/storm-software/storm-ops/commit/25f4a61d5))
+
 ## [1.119.186](https://github.com/storm-software/storm-ops/releases/tag/testing-tools%401.119.186) (05/26/2026)
 
 ### Miscellaneous

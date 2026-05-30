@@ -2,6 +2,20 @@
 
 # Changelog for Storm Ops - Pnpm Tools
 
+## [0.7.47](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.7.47) (05/30/2026)
+
+### Miscellaneous
+
+- **devenv-modules:** Removed unneeded `input` modules ([25f4a61d5](https://github.com/storm-software/storm-ops/commit/25f4a61d5))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.68**
+- Updated **config-tools** to **v1.190.36**
+- Updated **npm-tools** to **v0.6.154**
+- Updated **package-constants** to **v0.1.49**
+- Updated **testing-tools** to **v1.119.189**
+
 ## [0.7.46](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.7.46) (05/30/2026)
 
 ### Updated Dependencies

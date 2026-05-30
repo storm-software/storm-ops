@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - Vite
 
+## [0.1.130](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.130) (05/30/2026)
+
+### Miscellaneous
+
+- **devenv-modules:** Removed unneeded `input` modules ([25f4a61d5](https://github.com/storm-software/storm-ops/commit/25f4a61d5))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.196**
+
 ## [0.1.129](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.129) (05/30/2026)
 
 ### Updated Dependencies

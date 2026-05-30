@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - Config
 
+## [1.137.68](https://github.com/storm-software/storm-ops/releases/tag/config%401.137.68) (05/30/2026)
+
+### Miscellaneous
+
+- **devenv-modules:** Removed unneeded `input` modules ([25f4a61d5](https://github.com/storm-software/storm-ops/commit/25f4a61d5))
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.189**
+
 ## [1.137.67](https://github.com/storm-software/storm-ops/releases/tag/config%401.137.67) (05/30/2026)
 
 ### Updated Dependencies
