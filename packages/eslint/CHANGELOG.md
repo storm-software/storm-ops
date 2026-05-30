@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - ESLint
 
+## [0.170.56](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.170.56) (05/30/2026)
+
+### Miscellaneous
+
+- **devenv-modules:** Update `pkgs` to use rolling nixpkgs ([ebd9c0d06](https://github.com/storm-software/storm-ops/commit/ebd9c0d06))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.67**
+- Updated **config-tools** to **v1.190.35**
+- Updated **tsdoc** to **v0.13.188**
+
 ## [0.170.55](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.170.55) (05/28/2026)
 
 ### Updated Dependencies

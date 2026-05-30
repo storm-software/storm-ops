@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Pulumi Tools
 
+## [0.22.216](https://github.com/storm-software/storm-ops/releases/tag/pulumi-tools%400.22.216) (05/30/2026)
+
+### Miscellaneous
+
+- **devenv-modules:** Update `pkgs` to use rolling nixpkgs ([ebd9c0d06](https://github.com/storm-software/storm-ops/commit/ebd9c0d06))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.67**
+- Updated **config-tools** to **v1.190.35**
+- Updated **workspace-tools** to **v1.296.13**
+
 ## [0.22.215](https://github.com/storm-software/storm-ops/releases/tag/pulumi-tools%400.22.215) (05/28/2026)
 
 ### Updated Dependencies

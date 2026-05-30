@@ -2,6 +2,25 @@
 
 # Changelog for Storm Ops - Workspace Tools
 
+## [1.296.13](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.296.13) (05/30/2026)
+
+### Miscellaneous
+
+- **devenv-modules:** Update `pkgs` to use rolling nixpkgs ([ebd9c0d06](https://github.com/storm-software/storm-ops/commit/ebd9c0d06))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.67**
+- Updated **config-tools** to **v1.190.35**
+- Updated **esbuild** to **v0.53.196**
+- Updated **npm-tools** to **v0.6.153**
+- Updated **package-constants** to **v0.1.48**
+- Updated **pnpm-tools** to **v0.7.46**
+- Updated **prettier** to **v0.59.87**
+- Updated **testing-tools** to **v1.119.188**
+- Updated **tsdown** to **v0.45.196**
+- Updated **unbuild** to **v0.57.196**
+
 ## [1.296.12](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.296.12) (05/28/2026)
 
 ### Updated Dependencies

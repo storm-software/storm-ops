@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Prettier
 
+## [0.59.87](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.59.87) (05/30/2026)
+
+### Miscellaneous
+
+- **devenv-modules:** Update `pkgs` to use rolling nixpkgs ([ebd9c0d06](https://github.com/storm-software/storm-ops/commit/ebd9c0d06))
+
 ## [0.59.85](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.59.85) (05/26/2026)
 
 ### Miscellaneous
