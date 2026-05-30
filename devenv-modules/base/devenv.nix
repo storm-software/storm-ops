@@ -32,13 +32,13 @@ in
   };
   languages.javascript = {
     enable = true;
-    package = pkgs-unstable.nodejs-slim_26;
+    package = pkgs.nodejs-slim_25;
     nodejs.enable = true;
     lsp.enable = true;
     pnpm = {
       enable = true;
       install.enable = true;
-      package = pkgs-unstable.pnpm;
+      package = pkgs.pnpm;
     };
   };
   languages.typescript.enable = true;

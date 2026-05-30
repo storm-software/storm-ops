@@ -269,7 +269,7 @@
     "zod": "catalog:"
   },
   "devDependencies": {
-    "@napi-rs/cli": "^3.6.2",
+    "@napi-rs/cli": "^3.7.0",
     "@storm-software/package-constants": "workspace:*",
     "@types/micromatch": "^4.0.10",
     "@types/node": "catalog:",

@@ -66,7 +66,7 @@
     "./tailwindcss.json"
   ],
   "dependencies": {
-    "prettier-plugin-jsdoc": "^1.8.0",
+    "prettier-plugin-jsdoc": "^1.8.1",
     "prettier-plugin-organize-imports": "^4.3.0",
     "prettier-plugin-packagejson": "catalog:",
     "prettier-plugin-sh": "^0.15.0",
