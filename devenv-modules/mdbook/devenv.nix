@@ -1,12 +1,9 @@
 { pkgs, ... }:
 {
-  # https://devenv.sh/packages/
-  packages = [
-    pkgs.mdbook
-    pkgs.mdbook-linkcheck2
-    pkgs.mdbook-admonish
-    pkgs.mdbook-toc
+  packages = with pkgs; [
+    mdbook
+    mdbook-linkcheck2
+    mdbook-admonish
+    mdbook-toc
   ];
-
-  # See full reference at https://devenv.sh/reference/options/
 }

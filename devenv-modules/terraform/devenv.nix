@@ -1,16 +1,13 @@
 { pkgs, ... }:
 {
   # https://devenv.sh/packages/
-  packages = [
-    pkgs.terragrunt
-    pkgs.tenv
+  packages = with pkgs; [
+    terragrunt
+    tenv
   ];
 
-  languages.opentofu = {
-    enable = true;
-  };
-
-  languages.terraform = {
-    enable = true;
+  languages = {
+    opentofu.enable = true;
+    terraform.enable = true;
   };
 }

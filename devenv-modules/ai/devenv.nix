@@ -1,20 +1,5 @@
+{ config, ... }:
 {
-  pkgs,
-  inputs,
-  config,
-  ...
-}:
-let
-  pkgs-unstable = import inputs.nixpkgs-unstable { system = pkgs.stdenv.system; };
-in
-{
-  dotenv.enable = true;
-  dotenv.filename = [
-    ".env"
-    ".env.local"
-  ];
-  dotenv.disableHint = true;
-
   claude.code = {
     enable = true;
     hooks = {

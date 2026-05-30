@@ -1,10 +1,9 @@
 { pkgs, ... }:
 {
-  # https://devenv.sh/packages/
-  packages = [
-    pkgs.kubectl
-    pkgs.kubectx
-    pkgs.helmfile
+  packages = with pkgs; [
+    kubectl
+    kubectx
+    helmfile
   ];
 
   languages.helm = {

@@ -11686,8 +11686,8 @@ packages:
     resolution: {integrity: sha512-KvNT4XqAMzdcL6ka6Tl3i2lYeFDgXNCuIX+xNx6ZMVR1dFq+idXd9FLKNMOIx0t9mJ9/HudyX4oZWXZQ0UJHeg==}
     engines: {node: '>=14.16'}
 
-  launch-editor@2.13.2:
-    resolution: {integrity: sha512-4VVDnbOpLXy/s8rdRCSXb+zfMeFR0WlJWpET1iA9CQdlZDfwyLjUuGQzXU4VeOoey6AicSAluWan7Etga6Kcmg==}
+  launch-editor@2.14.0:
+    resolution: {integrity: sha512-Pj3ZOx9dD1BClS7YcSQx0An1PCF9wz4JpvbEmKvDxQtm0jxlkk5NhW8x0SBAKA/acHBKZaqdd5FFOWlXo500JA==}
 
   lefthook-darwin-arm64@1.6.18:
     resolution: {integrity: sha512-AkpsTeO7aLZIIy6CKQ7Chx8RltE8a9uItbwQWoeaCkIdzpV8TFjq7/Pw4F5CkoJ2315sHtB8k+VFkgipQMBw1w==}
@@ -15243,8 +15243,8 @@ packages:
   tinyexec@0.3.2:
     resolution: {integrity: sha512-KQQR9yN7R5+OSwaK0XQoj22pwHoTlgYqmUscPYoknOoWCWfj/5/ABTMRi69FrKU5ffPVh5QcFikpWJI/P1ocHA==}
 
-  tinyexec@1.2.2:
-    resolution: {integrity: sha512-M/Q0B2cp4K7kynaT/vnED1j8TlLY+Pp7C6Wl2bl/7u/F0mUVwdyOpwomQb8JpYLitHUssAJRmLZdMCGsrx7i+g==}
+  tinyexec@1.2.3:
+    resolution: {integrity: sha512-g62dB+w1/OEFnPvmX0yd/HnetYITOL+1nJW7kitOycOeAvmbWC/nu0fwmmQ/kupNojqExzyC/T++pST/jRJ2mQ==}
     engines: {node: '>=18'}
 
   tinyglobby@0.2.16:
@@ -16442,7 +16442,7 @@ snapshots:
   '@antfu/install-pkg@1.1.0':
     dependencies:
       package-manager-detector: 1.6.0
-      tinyexec: 1.2.2
+      tinyexec: 1.2.3
 
   '@antfu/utils@8.1.1': {}
 
@@ -27637,7 +27637,7 @@ snapshots:
     dependencies:
       package-json: 8.1.1
 
-  launch-editor@2.13.2:
+  launch-editor@2.14.0:
     dependencies:
       picocolors: 1.1.1
       shell-quote: 1.8.4
@@ -32296,7 +32296,7 @@ snapshots:
 
   tinyexec@0.3.2: {}
 
-  tinyexec@1.2.2: {}
+  tinyexec@1.2.3: {}
 
   tinyglobby@0.2.16:
     dependencies:
@@ -32459,7 +32459,7 @@ snapshots:
       rolldown: 1.0.0-beta.45(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)
       rolldown-plugin-dts: 0.17.8(@typescript/native-preview@7.0.0-dev.20250908.1)(oxc-resolver@11.20.0)(rolldown@1.0.0-beta.45(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0))(typescript@5.9.3)
       semver: 7.8.1
-      tinyexec: 1.2.2
+      tinyexec: 1.2.3
       tinyglobby: 0.2.16
       tree-kill: 1.2.2
       unconfig: 7.5.0
@@ -33418,7 +33418,7 @@ snapshots:
       graceful-fs: 4.2.11
       http-proxy-middleware: 2.0.9(@types/express@4.17.25)
       ipaddr.js: 2.4.0
-      launch-editor: 2.13.2
+      launch-editor: 2.14.0
       open: 10.2.0
       p-retry: 6.2.1
       schema-utils: 4.3.3

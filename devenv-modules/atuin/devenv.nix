@@ -1,12 +1,10 @@
 { pkgs, ... }:
 {
-  # https://devenv.sh/packages/
-  packages = [
-    # Shell
-    pkgs.zsh
-    pkgs.zsh-autosuggestions
-    pkgs.zsh-completions
-    pkgs.atuin
+  packages = with pkgs; [
+    zsh
+    zsh-autosuggestions
+    zsh-completions
+    atuin
   ];
 
   enterShell = ''

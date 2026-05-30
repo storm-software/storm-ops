@@ -2,8 +2,6 @@
 inputs:
   nixpkgs:
     url: github:cachix/devenv-nixpkgs/rolling
-  nixpkgs-unstable:
-    url: github:nixos/nixpkgs/nixpkgs-unstable
   treefmt-nix:
     url: github:numtide/treefmt-nix
     follows: nixpkgs

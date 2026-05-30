@@ -1,10 +1,10 @@
 { pkgs, ... }:
 {
   # https://devenv.sh/packages/
-  packages = [
-    pkgs.cargo-deny
-    pkgs.capnproto
-    pkgs.capnproto-rust
+  packages = with pkgs; [
+    cargo-deny
+    capnproto
+    capnproto-rust
   ];
 
   languages.rust = {
