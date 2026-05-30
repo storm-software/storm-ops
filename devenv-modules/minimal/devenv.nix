@@ -12,14 +12,11 @@
   env.DEFAULT_LOCALE = "en_US";
   env.DEFAULT_TIMEZONE = "America/New_York";
 
-  packages = [
-    # Source Control
-    pkgs.gnupg
-    pkgs.git-lfs
-    pkgs.git-crypt
-
-    # Tools
-    pkgs.nixd
+  packages = with pkgs; [
+    gnupg
+    git-lfs
+    git-crypt
+    nixd
   ];
 
   languages = {

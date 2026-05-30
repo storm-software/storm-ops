@@ -86,7 +86,7 @@ The following Devenv modules are included in this package:
   repositories. This module builds off the `storm-ops/devenv-modules/base` module to include additional tools and infrastructure.
 - `storm-ops/devenv-modules/minimal`: Minimal Devenv module for Storm Software
   repositories. This module should be used in Storm Software's repositories with the `variant` type of `minimal`.
-- `storm-ops/devenv-modules/ai`: Devenv module to support development with AI tools, such as:
+- `storm-ops/devenv-modules/claude`: Devenv module to support development with AI tools, such as:
   - [OpenAI's GPT models](https://openai.com/api/).
   - [Claude](https://claude.ai/).
   - [Cursor](https://www.cursor.so/).
