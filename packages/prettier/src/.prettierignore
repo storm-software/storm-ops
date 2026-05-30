@@ -72,12 +72,10 @@ bun.lockb
 **/dist
 **/fallback*.js
 **/ios
-**/jest.config.js
-**/jest.config.json
-**/jest.config.ts
-**/jest.setup.js
-**/jest.setup.json
-**/jest.setup.ts
+**/jest.config.{js,ts,cjs,cts,mjs,mts,json}
+**/jest.setup.{js,ts,cjs,cts,mjs,mts,json}
+**/vitest.config.{js,ts,cjs,cts,mjs,mts,json}
+**/vitest.setup.{js,ts,cjs,cts,mjs,mts,json}
 **/next-env.d.ts
 **/node_modules
 **/npm-lock.*

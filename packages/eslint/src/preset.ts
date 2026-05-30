@@ -126,6 +126,7 @@ export function getStormConfig(
     typescript: enableTypeScript = isPackageExists("typescript"),
     unicorn: enableUnicorn = true,
     tsdoc: enableTSDoc = true,
+    test: enableTest = true,
     unocss: enableUnoCSS = false,
     zod: enableZod = true
   } = options;
@@ -256,7 +257,7 @@ export function getStormConfig(
     configs.push(regexp(typeof enableRegexp === "boolean" ? {} : enableRegexp));
   }
 
-  if (options.test ?? true) {
+  if (enableTest) {
     configs.push(
       test({
         isInEditor,

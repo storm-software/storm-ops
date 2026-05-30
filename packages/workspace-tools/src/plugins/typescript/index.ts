@@ -356,7 +356,24 @@ export const createNodesV2: CreateNodesV2<TypeScriptPluginOptions> = [
             }
           };
 
-          if (checkJestConfigAtPath(project.root)) {
+          if (checkVitestConfigAtPath(project.root)) {
+            targets.test ??= {
+              cache: true,
+              executor: "@nx/vitest:test",
+              inputs: ["testing", "typescript", "^production"],
+              outputs: [`{workspaceRoot}/coverage/${root}`],
+              defaultConfiguration: "development",
+              options: {
+                configFile: `{projectRoot}/${checkVitestConfigAtPath(project.root)}`
+              },
+              configurations: {
+                development: {},
+                production: {
+                  reportsDirectory: `{workspaceRoot}/coverage/${root}`
+                }
+              }
+            };
+          } else if (checkJestConfigAtPath(project.root)) {
             targets.test ??= {
               cache: true,
               executor: "@nx/jest:jest",
@@ -364,7 +381,7 @@ export const createNodesV2: CreateNodesV2<TypeScriptPluginOptions> = [
               outputs: [`{workspaceRoot}/coverage/${root}`],
               defaultConfiguration: "development",
               options: {
-                jestConfig: "{projectRoot}/jest.config.ts",
+                jestConfig: `{projectRoot}/${checkJestConfigAtPath(project.root)}`,
                 passWithNoTests: true
               },
               configurations: {
@@ -616,18 +633,40 @@ function checkEslintConfigAtPath(directory: string): string | null {
   return null;
 }
 
+function checkVitestConfigAtPath(directory: string): string | null {
+  const hasVitestConfigFile = (fileName: string): boolean => {
+    return existsSync(join(directory, fileName));
+  };
+
+  if (hasVitestConfigFile("vitest.config.js")) {
+    return "vitest.config.js";
+  } else if (hasVitestConfigFile("vitest.config.cjs")) {
+    return "vitest.config.cjs";
+  } else if (hasVitestConfigFile("vitest.config.mjs")) {
+    return "vitest.config.mjs";
+  } else if (hasVitestConfigFile("vitest.config.ts")) {
+    return "vitest.config.ts";
+  } else if (hasVitestConfigFile("vitest.config.cts")) {
+    return "vitest.config.cts";
+  } else if (hasVitestConfigFile("vitest.config.mts")) {
+    return "vitest.config.mts";
+  }
+
+  return null;
+}
+
 function checkJestConfigAtPath(directory: string): string | null {
   const hasJestConfigFile = (fileName: string): boolean => {
     return existsSync(join(directory, fileName));
   };
 
-  if (hasJestConfigFile("eslint.config.js")) {
+  if (hasJestConfigFile("jest.config.js")) {
     return "jest.config.js";
-  } else if (hasJestConfigFile("eslint.config.cjs")) {
+  } else if (hasJestConfigFile("jest.config.cjs")) {
     return "jest.config.cjs";
-  } else if (hasJestConfigFile("eslint.config.mjs")) {
+  } else if (hasJestConfigFile("jest.config.mjs")) {
     return "jest.config.mjs";
-  } else if (hasJestConfigFile("eslint.config.ts")) {
+  } else if (hasJestConfigFile("jest.config.ts")) {
     return "jest.config.ts";
   } else if (hasJestConfigFile("jest.config.cts")) {
     return "jest.config.cts";

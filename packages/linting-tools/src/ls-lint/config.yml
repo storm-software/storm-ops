@@ -38,6 +38,7 @@ ignore:
   - "**/*.config.*"
   - "**/tsup.*.*"
   - "**/jest.*.*"
+  - "**/vitest.*.*"
   - "**/babel.*.*"
   - "**/webpack.*.*"
   - "**/rollup.*.*"

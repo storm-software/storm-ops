@@ -165,6 +165,7 @@
         "**/jest.setup.ts"
         "**/jest.config.json"
         "**/jest.setup.json"
+        "**/vitest.config.{js,ts,cjs,cts,mjs,mts}"
         "**/*.spec.{ts,tsx}"
         "**/*.test.{ts,tsx}"
         "**/output"
