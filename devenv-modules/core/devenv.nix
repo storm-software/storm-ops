@@ -1,32 +1,18 @@
 { pkgs, ... }:
 {
-  packages = with pkgs; [
-    rustfmt
-    nixfmt
-    nixpkgs-fmt
-  ];
-
   profiles = {
     development.module = {
-      env = {
-        ENVIRONMENT = "development";
-        NODE_ENV = "development";
-        DEBUG = true;
-        CI = false;
-        FORCE_COLOR = 3;
-        CLICOLOR = 1;
-      };
+      env.ENVIRONMENT = "development";
+      env.NODE_ENV = "development";
+      env.DEBUG = true;
 
-      packages = with pkgs; [
-        zizmor
-        taplo
-        typos
-        rustfmt
-        nixfmt
-        nixpkgs-fmt
-        yamllint
-        ls-lint
-      ];
+      delta.enable = true;
+
+      languages = {
+        nix = {
+          enable = true;
+        };
+      };
 
       tasks = {
         "storm:setup:git" = {
@@ -70,31 +56,10 @@
     };
 
     production.module = {
-      env = {
-        ENVIRONMENT = "production";
-        NODE_ENV = "production";
-        DEBUG = false;
-        DEVENV_TUI = false;
-        FORCE_COLOR = 3;
-        CLICOLOR = 1;
-      };
-
-      packages = with pkgs; [
-        # Source Control
-        gnupg
-        git-lfs
-        git-crypt
-
-        # Linting
-        zizmor
-        taplo
-        typos
-        rustfmt
-        nixfmt
-        nixpkgs-fmt
-        yamllint
-        ls-lint
-      ];
+      env.ENVIRONMENT = "production";
+      env.NODE_ENV = "production";
+      env.DEBUG = false;
+      env.DEVENV_TUI = false;
 
       tasks = {
         "storm:setup:git" = {
@@ -133,6 +98,35 @@
         };
       };
     };
+  };
+
+  packages = with pkgs; [
+    gnupg
+    git-lfs
+    git-crypt
+    zizmor
+    taplo
+    typos
+    rustfmt
+    nixfmt
+    nixpkgs-fmt
+    yamllint
+    ls-lint
+  ];
+
+  scripts = {
+    bootstrap.exec = "pnpm bootstrap";
+    update-storm.exec = "pnpm update-storm";
+    build.exec = "pnpm build";
+    build-dev.exec = "pnpm build-dev";
+    clean.exec = "pnpm clean";
+    lint.exec = "pnpm lint";
+    format.exec = "pnpm format";
+    test.exec = "pnpm test";
+    test-ci.exec = "pnpm test-ci";
+    docs.exec = "pnpm docs";
+    release.exec = "pnpm release --base=$1 --head=$2";
+    nuke.exec = "pnpm nuke";
   };
 
   treefmt = {

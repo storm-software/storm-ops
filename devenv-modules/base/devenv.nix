@@ -1,4 +1,7 @@
 { pkgs, inputs, ... }:
+let
+  pkgs-unstable = import inputs.nixpkgs-unstable { system = pkgs.stdenv.system; };
+in
 {
   dotenv = {
     enable = true;
@@ -16,26 +19,16 @@
     CLICOLOR = 1;
   };
 
-  delta.enable = true;
-
-  packages = with pkgs; [
-    nixd
-  ];
-
   languages = {
-    nix = {
-      enable = true;
-      lsp.package = pkgs.nixd;
-    };
     javascript = {
       enable = true;
-      package = pkgs.nodejs-slim_latest;
+      package = pkgs-unstable.nodejs-slim_latest;
       nodejs.enable = true;
       lsp.enable = true;
       pnpm = {
         enable = true;
         install.enable = true;
-        package = pkgs.pnpm;
+        package = pkgs-unstable.pnpm;
       };
     };
     typescript = {
