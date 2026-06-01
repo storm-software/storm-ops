@@ -1,10 +1,33 @@
 { pkgs, ... }:
 {
+  packages = with pkgs; [
+    rustfmt
+    nixfmt
+    nixpkgs-fmt
+  ];
+
   profiles = {
     development.module = {
-      env.ENVIRONMENT = "development";
-      env.NODE_ENV = "development";
-      env.DEBUG = true;
+      env = {
+        ENVIRONMENT = "development";
+        NODE_ENV = "development";
+        DEBUG = true;
+        CI = false;
+        FORCE_COLOR = 3;
+        CLICOLOR = 1;
+      };
+
+      packages = with pkgs; [
+        zizmor
+        taplo
+        typos
+        rustfmt
+        nixfmt
+        nixpkgs-fmt
+        yamllint
+        ls-lint
+      ];
+
       tasks = {
         "storm:setup:git" = {
           exec = ''
@@ -47,10 +70,32 @@
     };
 
     production.module = {
-      env.ENVIRONMENT = "production";
-      env.NODE_ENV = "production";
-      env.DEBUG = false;
-      env.DEVENV_TUI = false;
+      env = {
+        ENVIRONMENT = "production";
+        NODE_ENV = "production";
+        DEBUG = false;
+        DEVENV_TUI = false;
+        FORCE_COLOR = 3;
+        CLICOLOR = 1;
+      };
+
+      packages = with pkgs; [
+        # Source Control
+        gnupg
+        git-lfs
+        git-crypt
+
+        # Linting
+        zizmor
+        taplo
+        typos
+        rustfmt
+        nixfmt
+        nixpkgs-fmt
+        yamllint
+        ls-lint
+      ];
+
       tasks = {
         "storm:setup:git" = {
           exec = ''
@@ -90,29 +135,6 @@
     };
   };
 
-  env.FORCE_COLOR = 3;
-  env.CLICOLOR = 1;
-
-  packages = with pkgs; [
-    # Source Control
-    gnupg
-    git-lfs
-    git-crypt
-
-    # Linting
-    zizmor
-    taplo
-    typos
-    rustfmt
-    nixfmt
-    nixpkgs-fmt
-    yamllint
-    ls-lint
-
-    # Tools
-    capnproto
-  ];
-
   treefmt = {
     enable = true;
     config = {
@@ -124,6 +146,7 @@
         "**/node_modules"
         "**/dist"
         "**/tmp"
+        "**/tests"
         "**/coverage"
         "**/bench"
         "**/__snapshots__"

@@ -358,6 +358,7 @@ techdocs
 rdjson
 polyfilling
 xchacha
+oxfmtrc
 
 # Acronyms
 dpdm
@@ -491,6 +492,7 @@ gpgsign
 allowincompletepush
 shellcheck
 treefmt
+stdenv
 
 # AI / Machine Learning
 llms
@@ -500,7 +502,7 @@ agi
 murmurhash
 xxhash
 
-# Misc
+# Misc Packages
 testuser
 sslmode
 pgsslmode

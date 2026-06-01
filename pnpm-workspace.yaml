@@ -47,7 +47,7 @@ catalog:
   copyfiles: "2.4.1"
   create-nx-workspace: "^22.7.5"
   cspell: "^8.19.4"
-  date-fns: "^4.3.0"
+  date-fns: "^4.4.0"
   defu: "^6.1.7"
   esbuild: "^0.25.12"
   eslint: "^9.39.4"
@@ -70,7 +70,7 @@ catalog:
   tsdown: "^0.15.12"
   tslib: "^2.8.1"
   tsup: "8.4.0"
-  tsx: "^4.22.3"
+  tsx: "^4.22.4"
   typia: "^7.6.4"
   unbuild: "^3.6.1"
   untyped: "^2.0.0"
@@ -142,6 +142,6 @@ preferWorkspacePackages: true
 shamefullyHoist: true
 shellEmulator: true
 supportedArchitectures:
-  cpu: ["current"]
+  cpu: [ "current" ]
 useNodeVersion: "26.2.0"
 verifyDepsBeforeRun: "install"

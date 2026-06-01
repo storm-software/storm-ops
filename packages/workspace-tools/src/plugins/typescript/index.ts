@@ -72,6 +72,16 @@ export interface TypeScriptPluginOptions extends BaseTypescriptPluginOptions {
   enableTypecheck?: string | true;
 
   /**
+   * Whether to enable Vitest or Jest for testing TypeScript projects.
+   *
+   * @remarks
+   * If set to a string, it will be used as the target name instead of the default "test".
+   *
+   * @defaultValue false
+   */
+  enableTest?: string | true;
+
+  /**
    * Whether to use `tsgo` for TypeScript language features in editors that support it.
    *
    * @remarks
@@ -129,6 +139,7 @@ export const createNodesV2: CreateNodesV2<TypeScriptPluginOptions> = [
           const enableMarkdownlint = options?.enableMarkdownlint !== false;
           const enableEslint = options?.enableEslint !== false;
           const enableTypecheck = !!options?.enableTypecheck;
+          const enableTest = !!options?.enableTest;
 
           const targets: ProjectConfiguration["targets"] =
             readTargetsFromPackageJson(
@@ -356,45 +367,47 @@ export const createNodesV2: CreateNodesV2<TypeScriptPluginOptions> = [
             }
           };
 
-          if (checkVitestConfigAtPath(project.root)) {
-            targets.test ??= {
-              cache: true,
-              executor: "@nx/vitest:test",
-              inputs: ["testing", "typescript", "^production"],
-              outputs: [`{workspaceRoot}/coverage/${root}`],
-              defaultConfiguration: "development",
-              options: {
-                configFile: `{projectRoot}/${checkVitestConfigAtPath(project.root)}`
-              },
-              configurations: {
-                development: {},
-                production: {
-                  reportsDirectory: `{workspaceRoot}/coverage/${root}`
-                }
-              }
-            };
-          } else if (checkJestConfigAtPath(project.root)) {
-            targets.test ??= {
-              cache: true,
-              executor: "@nx/jest:jest",
-              inputs: ["testing", "typescript", "^production"],
-              outputs: [`{workspaceRoot}/coverage/${root}`],
-              defaultConfiguration: "development",
-              options: {
-                jestConfig: `{projectRoot}/${checkJestConfigAtPath(project.root)}`,
-                passWithNoTests: true
-              },
-              configurations: {
-                development: {
-                  ci: false,
-                  codeCoverage: true
+          if (enableTest) {
+            if (checkVitestConfigAtPath(project.root)) {
+              targets.test ??= {
+                cache: true,
+                executor: "@nx/vitest:test",
+                inputs: ["testing", "typescript", "^production"],
+                outputs: [`{workspaceRoot}/coverage/${root}`],
+                defaultConfiguration: "development",
+                options: {
+                  configFile: `{projectRoot}/${checkVitestConfigAtPath(project.root)}`
                 },
-                production: {
-                  ci: true,
-                  codeCoverage: true
+                configurations: {
+                  development: {},
+                  production: {
+                    reportsDirectory: `{workspaceRoot}/coverage/${root}`
+                  }
                 }
-              }
-            };
+              };
+            } else if (checkJestConfigAtPath(project.root)) {
+              targets.test ??= {
+                cache: true,
+                executor: "@nx/jest:jest",
+                inputs: ["testing", "typescript", "^production"],
+                outputs: [`{workspaceRoot}/coverage/${root}`],
+                defaultConfiguration: "development",
+                options: {
+                  jestConfig: `{projectRoot}/${checkJestConfigAtPath(project.root)}`,
+                  passWithNoTests: true
+                },
+                configurations: {
+                  development: {
+                    ci: false,
+                    codeCoverage: true
+                  },
+                  production: {
+                    ci: true,
+                    codeCoverage: true
+                  }
+                }
+              };
+            }
           }
 
           targets["docs"] ??= {
