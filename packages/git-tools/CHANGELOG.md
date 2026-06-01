@@ -2,6 +2,20 @@
 
 # Changelog for Storm Ops - Git Tools
 
+## [2.131.44](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.131.44) (06/01/2026)
+
+### Miscellaneous
+
+- **git-tools:** Update `@inquirer/prompts` to v8.5.2 ([8075b992e](https://github.com/storm-software/storm-ops/commit/8075b992e))
+- **workspace-tools:** Updates to shared Nx config and devenv modules ([6403f076b](https://github.com/storm-software/storm-ops/commit/6403f076b))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.70**
+- Updated **config-tools** to **v1.190.38**
+- Updated **conventional-changelog** to **v0.3.199**
+- Updated **package-constants** to **v0.1.51**
+
 ## [2.131.43](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.131.43) (05/30/2026)
 
 ### Updated Dependencies

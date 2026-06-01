@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Cloudflare Tools
 
+## [0.71.178](https://github.com/storm-software/storm-ops/releases/tag/cloudflare-tools%400.71.178) (06/01/2026)
+
+### Miscellaneous
+
+- **workspace-tools:** Updates to shared Nx config and devenv modules ([6403f076b](https://github.com/storm-software/storm-ops/commit/6403f076b))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.70**
+- Updated **config-tools** to **v1.190.38**
+- Updated **workspace-tools** to **v1.296.16**
+
 ## [0.71.177](https://github.com/storm-software/storm-ops/releases/tag/cloudflare-tools%400.71.177) (05/30/2026)
 
 ### Updated Dependencies

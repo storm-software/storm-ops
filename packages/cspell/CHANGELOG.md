@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - CSpell
 
+## [0.46.106](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.46.106) (06/01/2026)
+
+### Miscellaneous
+
+- **workspace-tools:** Updates to shared Nx config and devenv modules ([6403f076b](https://github.com/storm-software/storm-ops/commit/6403f076b))
+
 ## [0.46.104](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.46.104) (05/30/2026)
 
 ### Miscellaneous

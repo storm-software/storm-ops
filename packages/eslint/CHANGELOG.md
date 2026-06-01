@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - ESLint
 
+## [0.170.59](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.170.59) (06/01/2026)
+
+### Miscellaneous
+
+- **workspace-tools:** Updates to shared Nx config and devenv modules ([6403f076b](https://github.com/storm-software/storm-ops/commit/6403f076b))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.70**
+- Updated **config-tools** to **v1.190.38**
+- Updated **tsdoc** to **v0.13.191**
+
 ## [0.170.58](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.170.58) (05/30/2026)
 
 ### Features

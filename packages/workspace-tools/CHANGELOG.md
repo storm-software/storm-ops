@@ -2,6 +2,25 @@
 
 # Changelog for Storm Ops - Workspace Tools
 
+## [1.296.16](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.296.16) (06/01/2026)
+
+### Miscellaneous
+
+- **workspace-tools:** Updates to shared Nx config and devenv modules ([6403f076b](https://github.com/storm-software/storm-ops/commit/6403f076b))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.70**
+- Updated **config-tools** to **v1.190.38**
+- Updated **esbuild** to **v0.53.199**
+- Updated **npm-tools** to **v0.6.156**
+- Updated **package-constants** to **v0.1.51**
+- Updated **pnpm-tools** to **v0.7.49**
+- Updated **prettier** to **v0.59.90**
+- Updated **testing-tools** to **v1.119.191**
+- Updated **tsdown** to **v0.45.199**
+- Updated **unbuild** to **v0.57.199**
+
 ## [1.296.15](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.296.15) (05/30/2026)
 
 ### Features
