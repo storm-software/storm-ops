@@ -134,7 +134,9 @@ overrides:
   pnpm-plugin-storm-software: "workspace:*"
   request: ">=2.88.2"
   tough-cookie: "4.1.4"
+  minimatch: ">=10.2.5"
 patchedDependencies:
+  eslint-plugin-import-x: patches/eslint-plugin-import-x.patch
   eslint-plugin-pnpm@0.3.0: "patches/eslint-plugin-pnpm@0.3.0.patch"
   eslint-plugin-tsdoc: "patches/eslint-plugin-tsdoc.patch"
   tsup@8.4.0: "patches/tsup@8.4.0.patch"

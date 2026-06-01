@@ -1,0 +1,15 @@
+diff --git a/lib/rules/no-extraneous-dependencies.js b/lib/rules/no-extraneous-dependencies.js
+index 382c77b6f3095915bb70106ac4091a5af64eecdc..8f737400ccc7e8b0b05bd32be13ad9eefe1fc840 100644
+--- a/lib/rules/no-extraneous-dependencies.js
++++ b/lib/rules/no-extraneous-dependencies.js
+@@ -1,8 +1,9 @@
+ import fs from 'node:fs';
+ import path from 'node:path';
+-import { minimatch } from 'minimatch';
++import * as minimatchPkg from 'minimatch';
+ import { createRule, moduleVisitor, resolve, pkgUp, importType, getFilePackageName, getNpmInstallCommand, } from '../utils/index.js';
+ const depFieldCache = new Map();
++const minimatch = minimatchPkg.minimatch;
+ function hasKeys(obj = {}) {
+     return Object.keys(obj).length > 0;
+ }

@@ -10,6 +10,8 @@
     "skipDefaultLibCheck": true,
     "moduleResolution": "Bundler",
     "moduleDetection": "force",
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
     "types": ["node"],
     "strict": true
   },
