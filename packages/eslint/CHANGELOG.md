@@ -2,6 +2,22 @@
 
 # Changelog for Storm Ops - ESLint
 
+## [0.170.60](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.170.60) (06/01/2026)
+
+### Miscellaneous
+
+- **devenv-modules:** Update devenv profile configuration ([d19daf654](https://github.com/storm-software/storm-ops/commit/d19daf654))
+
+### Bug Fixes
+
+- **eslint:** Resolve issue generating `typegen.d.ts` file ([d995a37e8](https://github.com/storm-software/storm-ops/commit/d995a37e8))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.71**
+- Updated **config-tools** to **v1.190.39**
+- Updated **tsdoc** to **v0.13.192**
+
 ## [0.170.59](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.170.59) (06/01/2026)
 
 ### Miscellaneous
