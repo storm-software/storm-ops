@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - ESLint
 
+## [0.170.61](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.170.61) (06/01/2026)
+
+### Bug Fixes
+
+- **eslint:** Resolve issue with missing `eslint-import-context` dependency ([2d96c934d](https://github.com/storm-software/storm-ops/commit/2d96c934d))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.72**
+- Updated **config-tools** to **v1.190.40**
+- Updated **tsdoc** to **v0.13.193**
+
 ## [0.170.60](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.170.60) (06/01/2026)
 
 ### Miscellaneous

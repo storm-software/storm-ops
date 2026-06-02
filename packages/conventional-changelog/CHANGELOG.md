@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Conventional Changelog
 
+## [0.3.201](https://github.com/storm-software/storm-ops/releases/tag/conventional-changelog%400.3.201) (06/01/2026)
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.72**
+- Updated **config-tools** to **v1.190.40**
+
 ## [0.3.200](https://github.com/storm-software/storm-ops/releases/tag/conventional-changelog%400.3.200) (06/01/2026)
 
 ### Updated Dependencies
