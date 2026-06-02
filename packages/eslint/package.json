@@ -139,7 +139,9 @@
   },
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
-  "files": ["dist/**/*"],
+  "files": [
+    "dist/**/*"
+  ],
   "dependencies": {
     "@antfu/install-pkg": "^1.1.0",
     "@clack/prompts": "^0.10.1",
@@ -159,6 +161,7 @@
     "eslint-config-flat-gitignore": "^2.3.0",
     "eslint-config-prettier": "^10.1.8",
     "eslint-flat-config-utils": "^2.1.4",
+    "eslint-import-context": "^0.2.0",
     "eslint-merge-processors": "^2.0.0",
     "eslint-plugin-jsdoc": "^50.8.0",
     "eslint-plugin-json": "^4.0.1",
