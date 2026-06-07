@@ -1,0 +1,40 @@
+{
+  "name": "eslint-plugin-storm-banner",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "packages/eslint-plugin-storm-banner/src",
+  "targets": {
+    "build-base": {
+      "executor": "nx:run-commands",
+      "dependsOn": ["clean", "^build"],
+      "options": {
+        "command": "tsdown --config=tsdown.config.ts",
+        "cwd": "{projectRoot}"
+      }
+    },
+    "build": {
+      "executor": "nx:run-commands",
+      "dependsOn": ["build-base"],
+      "options": {
+        "commands": [
+          "pnpm copyfiles LICENSE dist/packages/eslint-plugin-storm-banner",
+          "pnpm copyfiles --up=2 ./packages/eslint-plugin-storm-banner/*.md ./packages/eslint-plugin-storm-banner/package.json dist/packages/eslint-plugin-storm-banner",
+          "pnpm copyfiles --up=3 \"./packages/eslint-plugin-storm-banner/dist/**/*\" dist/packages/eslint-plugin-storm-banner/dist"
+        ]
+      }
+    },
+    "docs": {
+      "executor": "nx:run-commands",
+      "outputs": ["{projectRoot}/docs"],
+      "dependsOn": ["build"],
+      "options": {
+        "cwd": "{projectRoot}",
+        "command": "pnpm exec eslint-doc-generator"
+      }
+    },
+    "nx-release-publish": {
+      "executor": "@storm-software/workspace-tools:npm-publish"
+    }
+  },
+  "tags": ["platform:node"]
+}

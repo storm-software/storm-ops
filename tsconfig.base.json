@@ -38,6 +38,8 @@
       "@storm-software/markdownlint/*": ["packages/markdownlint/src/*"],
       "@storm-software/npm-tools": ["packages/npm-tools/src/index.ts"],
       "@storm-software/npm-tools/*": ["packages/npm-tools/src/*"],
+      "@storm-software/oxlint": ["packages/oxlint/src/index.ts"],
+      "@storm-software/oxlint/*": ["packages/oxlint/src/*"],
       "@storm-software/pnpm-tools": ["packages/pnpm-tools/src/index.ts"],
       "@storm-software/pnpm-tools/*": ["packages/pnpm-tools/src/*"],
       "@storm-software/prettier": ["packages/prettier/src/index.ts"],
@@ -75,6 +77,12 @@
       ],
       "conventional-changelog-storm-software/*": [
         "packages/conventional-changelog/src/*"
+      ],
+      "eslint-plugin-storm-banner": [
+        "packages/eslint-plugin-storm-banner/src/index.ts"
+      ],
+      "eslint-plugin-storm-banner/*": [
+        "packages/eslint-plugin-storm-banner/src/*"
       ],
       "create-storm-workspace": [
         "packages/create-storm-workspace/bin/index.ts"
