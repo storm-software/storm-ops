@@ -1,6 +1,6 @@
 {
   "name": "@storm-software/tsdown",
-  "version": "0.45.204",
+  "version": "0.45.205",
   "private": false,
   "description": "A package containing `tsdown` utilities for building Storm Software libraries and applications",
   "keywords": [

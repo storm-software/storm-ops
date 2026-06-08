@@ -2,6 +2,20 @@
 
 # Changelog for Storm Ops - Oxlint
 
+## [0.0.5](https://github.com/storm-software/storm-ops/releases/tag/oxlint%400.0.5) (06/08/2026)
+
+### Bug Fixes
+
+- **oxlint:** Added missing `eslint-config-prettier` dependencies ([60b656ef6](https://github.com/storm-software/storm-ops/commit/60b656ef6))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.76**
+- Updated **config-tools** to **v1.190.44**
+- Updated **eslint-plugin-banner** to **v0.0.5**
+- Updated **eslint-plugin-pnpm** to **v0.0.5**
+- Updated **eslint-plugin-tsdoc** to **v0.0.5**
+
 ## [0.0.4](https://github.com/storm-software/storm-ops/releases/tag/oxlint%400.0.4) (06/08/2026)
 
 ### Miscellaneous
