@@ -41,13 +41,13 @@ pre-commit:
       run: pnpm exec storm-lint all --skip-cspell --skip-circular-deps
       stage_fixed: true
     readme:
-      glob: "**/{README.md,README.*.md,readme/**/*,package.json,executors.json,genera\
-        tors.json}"
+      glob: "**/{README.md,README.*.md,readme/**/*,package.json,executors.json,generators.json}"
       run: pnpm exec storm-git readme --templates="tools/readme-templates" --workspace
       stage_fixed: true
     prettier:
       glob: "**/*"
-      run: pnpm exec prettier --write --ignore-unknown --no-error-on-unmatched-pattern
+      run:
+        pnpm exec prettier --write --ignore-unknown --no-error-on-unmatched-pattern
         --config="node_modules/@storm-software/prettier/exclude-packagejson.json"
         --ignore-path="node_modules/@storm-software/prettier/.prettierignore-exclude-packagejson"
         --cache --cache-location="node_modules/.cache/prettier/workspace.cache"
@@ -59,6 +59,7 @@ pre-commit:
       stage_fixed: true
     lint:
       glob: "**/*"
-      run: pnpm nx affected --target=lint --files="{staged_files}" --exclude=monorepo
+      run:
+        pnpm nx affected --target=lint --files="{staged_files}" --exclude=monorepo
         --outputStyle=dynamic-legacy --parallel=3
       stage_fixed: true
