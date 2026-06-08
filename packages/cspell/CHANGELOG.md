@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - CSpell
 
+## [0.46.113](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.46.113) (06/08/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update `README.md` and `pnpm-lock.yaml` files ([63d786b3a](https://github.com/storm-software/storm-ops/commit/63d786b3a))
+
 ## [0.46.111](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.46.111) (06/08/2026)
 
 ### Miscellaneous

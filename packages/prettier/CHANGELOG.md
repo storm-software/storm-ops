@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Prettier
 
+## [0.59.97](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.59.97) (06/08/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update `README.md` and `pnpm-lock.yaml` files ([63d786b3a](https://github.com/storm-software/storm-ops/commit/63d786b3a))
+
 ## [0.59.95](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.59.95) (06/08/2026)
 
 ### Miscellaneous

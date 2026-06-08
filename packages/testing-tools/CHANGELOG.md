@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Testing Tools
 
+## [1.119.198](https://github.com/storm-software/storm-ops/releases/tag/testing-tools%401.119.198) (06/08/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update `README.md` and `pnpm-lock.yaml` files ([63d786b3a](https://github.com/storm-software/storm-ops/commit/63d786b3a))
+
 ## [1.119.196](https://github.com/storm-software/storm-ops/releases/tag/testing-tools%401.119.196) (06/08/2026)
 
 ### Miscellaneous

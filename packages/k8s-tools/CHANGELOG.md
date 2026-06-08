@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - K8s Tools
 
+## [0.42.226](https://github.com/storm-software/storm-ops/releases/tag/k8s-tools%400.42.226) (06/08/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update `README.md` and `pnpm-lock.yaml` files ([63d786b3a](https://github.com/storm-software/storm-ops/commit/63d786b3a))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.77**
+- Updated **config-tools** to **v1.190.45**
+- Updated **workspace-tools** to **v1.296.23**
+
 ## [0.42.225](https://github.com/storm-software/storm-ops/releases/tag/k8s-tools%400.42.225) (06/08/2026)
 
 ### Updated Dependencies

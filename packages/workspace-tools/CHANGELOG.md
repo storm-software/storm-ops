@@ -2,6 +2,29 @@
 
 # Changelog for Storm Ops - Workspace Tools
 
+## [1.296.23](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.296.23) (06/08/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update `README.md` and `pnpm-lock.yaml` files ([63d786b3a](https://github.com/storm-software/storm-ops/commit/63d786b3a))
+
+### Bug Fixes
+
+- **eslint-plugin-tsdoc:** Resolve issue with missing ESM shims ([6d11b65d2](https://github.com/storm-software/storm-ops/commit/6d11b65d2))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.77**
+- Updated **config-tools** to **v1.190.45**
+- Updated **esbuild** to **v0.53.206**
+- Updated **npm-tools** to **v0.6.163**
+- Updated **package-constants** to **v0.1.58**
+- Updated **pnpm-tools** to **v0.7.56**
+- Updated **prettier** to **v0.59.97**
+- Updated **testing-tools** to **v1.119.198**
+- Updated **tsdown** to **v0.45.206**
+- Updated **unbuild** to **v0.57.206**
+
 ## [1.296.22](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.296.22) (06/08/2026)
 
 ### Updated Dependencies

@@ -2,6 +2,22 @@
 
 # Changelog for Storm Ops - ESLint Plugin Pnpm
 
+## [0.0.7](https://github.com/storm-software/storm-ops/releases/tag/eslint-plugin-pnpm%400.0.7) (06/08/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update `README.md` and `pnpm-lock.yaml` files ([63d786b3a](https://github.com/storm-software/storm-ops/commit/63d786b3a))
+
+### Bug Fixes
+
+- **eslint-plugin-tsdoc:** Resolve issue with missing ESM shims ([6d11b65d2](https://github.com/storm-software/storm-ops/commit/6d11b65d2))
+
+### Updated Dependencies
+
+- Updated **package-constants** to **v0.1.58**
+- Updated **prettier** to **v0.59.97**
+- Updated **tsdoc** to **v0.13.198**
+
 ## [0.0.6](https://github.com/storm-software/storm-ops/releases/tag/eslint-plugin-pnpm%400.0.6) (06/08/2026)
 
 ### Bug Fixes

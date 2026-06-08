@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Tsconfig
 
+## [0.48.112](https://github.com/storm-software/storm-ops/releases/tag/tsconfig%400.48.112) (06/08/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update `README.md` and `pnpm-lock.yaml` files ([63d786b3a](https://github.com/storm-software/storm-ops/commit/63d786b3a))
+
 ## [0.48.110](https://github.com/storm-software/storm-ops/releases/tag/tsconfig%400.48.110) (06/08/2026)
 
 ### Miscellaneous

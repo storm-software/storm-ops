@@ -2,6 +2,23 @@
 
 # Changelog for Storm Ops - Git Tools
 
+## [2.131.52](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.131.52) (06/08/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update `README.md` and `pnpm-lock.yaml` files ([63d786b3a](https://github.com/storm-software/storm-ops/commit/63d786b3a))
+
+### Bug Fixes
+
+- **git-tools:** Ensure `strict` lefthook config extends `minimal` ([de5627ea6](https://github.com/storm-software/storm-ops/commit/de5627ea6))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.77**
+- Updated **config-tools** to **v1.190.45**
+- Updated **conventional-changelog** to **v0.3.206**
+- Updated **package-constants** to **v0.1.58**
+
 ## [2.131.51](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.131.51) (06/08/2026)
 
 ### Miscellaneous

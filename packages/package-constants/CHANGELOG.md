@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Package Constants
 
+## [0.1.58](https://github.com/storm-software/storm-ops/releases/tag/package-constants%400.1.58) (06/08/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update `README.md` and `pnpm-lock.yaml` files ([63d786b3a](https://github.com/storm-software/storm-ops/commit/63d786b3a))
+
 ## [0.1.56](https://github.com/storm-software/storm-ops/releases/tag/package-constants%400.1.56) (06/08/2026)
 
 ### Miscellaneous
