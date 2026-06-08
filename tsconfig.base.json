@@ -44,6 +44,8 @@
       "@storm-software/pnpm-tools/*": ["packages/pnpm-tools/src/*"],
       "@storm-software/prettier": ["packages/prettier/src/index.ts"],
       "@storm-software/prettier/*": ["packages/prettier/src/*"],
+      "@storm-software/oxfmt": ["packages/oxfmt/src/index.ts"],
+      "@storm-software/oxfmt/*": ["packages/oxfmt/src/*"],
       "@storm-software/projen": ["packages/projen/src/index.ts"],
       "@storm-software/projen/*": ["packages/projen/src/*"],
       "@storm-software/pulumi-tools": ["packages/pulumi-tools/src/index.ts"],

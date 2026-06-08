@@ -1,0 +1,64 @@
+{
+  "name": "@storm-software/oxfmt",
+  "version": "0.0.1",
+  "private": false,
+  "description": "",
+  "keywords": [
+    "oxfmt",
+    "oxfmt-config",
+    "storm-software",
+    "storm-ops",
+    "sullivanpj"
+  ],
+  "homepage": "https://stormsoftware.com",
+  "bugs": "https://github.com/storm-software/storm-ops/issues",
+  "repository": {
+    "type": "github",
+    "url": "https://github.com/storm-software/storm-ops",
+    "directory": "packages/oxfmt"
+  },
+  "license": "Apache-2.0",
+  "author": {
+    "name": "Storm Software",
+    "email": "contact@stormsoftware.com",
+    "url": "https://stormsoftware.com"
+  },
+  "type": "commonjs",
+  "exports": {
+    ".": {
+      "import": "./index.js",
+      "require": "./index.cjs",
+      "default": "./index.js"
+    },
+    "./index": {
+      "import": "./index.js",
+      "require": "./index.cjs",
+      "default": "./index.js"
+    },
+    "./.prettierignore": "./.prettierignore",
+    "./.prettierignore-exclude-packagejson": "./.prettierignore-exclude-packagejson",
+    "./recommended.json": "./recommended.json",
+    "./config.json": "./config.json",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "./.prettierignore",
+    "./.prettierignore-exclude-packagejson",
+    "./config.json",
+    "./index.cjs",
+    "./index.js",
+    "./package.json",
+    "./recommended.json"
+  ],
+  "peerDependencies": {
+    "oxfmt": "*"
+  },
+  "peerDependenciesMeta": {
+    "oxfmt": {
+      "optional": false
+    }
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

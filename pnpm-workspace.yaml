@@ -121,6 +121,7 @@ overrides:
   "@storm-software/eslint-plugin-pnpm": "workspace:*"
   "@storm-software/eslint-plugin-tsdoc": "workspace:*"
   "@storm-software/oxlint": "workspace:*"
+  "@storm-software/oxfmt": "workspace:*"
   "@storm-software/git-tools": "workspace:*"
   "@storm-software/k8s-tools": "workspace:*"
   "@storm-software/linting-tools": "workspace:*"

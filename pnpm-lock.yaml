@@ -230,6 +230,7 @@ overrides:
   '@storm-software/eslint-plugin-pnpm': workspace:*
   '@storm-software/eslint-plugin-tsdoc': workspace:*
   '@storm-software/oxlint': workspace:*
+  '@storm-software/oxfmt': workspace:*
   '@storm-software/git-tools': workspace:*
   '@storm-software/k8s-tools': workspace:*
   '@storm-software/linting-tools': workspace:*
@@ -1524,6 +1525,12 @@ importers:
       tsup:
         specifier: 'catalog:'
         version: 8.4.0(patch_hash=751a554d775c3572381af4e7e5fa22eeda6dd6856012fb1cf521d6806eb2dc74)(@microsoft/api-extractor@7.58.7(@types/node@25.9.2))(@swc/core@1.7.26(@swc/helpers@0.5.13))(jiti@2.7.0)(postcss@8.5.15)(tsx@4.22.4)(typescript@5.9.3)(yaml@2.9.0)
+
+  packages/oxfmt:
+    dependencies:
+      oxfmt:
+        specifier: '*'
+        version: 0.35.0
 
   packages/oxlint:
     dependencies:
