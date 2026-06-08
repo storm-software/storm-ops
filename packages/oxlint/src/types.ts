@@ -148,26 +148,113 @@ export interface OptionsBanner {
 }
 
 export interface OptionsConfig extends TypedConfigItem {
+  /**
+   * Configure banner options for generated files.
+   */
   banner?: boolean | OptionsBanner;
+
+  /**
+   * Enable automatic `.gitignore` file generation and handling.
+   */
   gitignore?: boolean;
+
+  /**
+   * Custom ignore patterns for files and directories.
+   */
   ignores?: string[];
+
+  /**
+   * Enable JavaScript linting rules.
+   */
   javascript?: boolean;
+
+  /**
+   * Enable TypeScript linting rules with optional configuration.
+   */
   typescript?: boolean | OptionsTypeScript;
+
+  /**
+   * Enable import statement linting rules.
+   */
   imports?: boolean;
+
+  /**
+   * Enable JSX syntax support and linting.
+   */
   jsx?: boolean;
+
+  /**
+   * Enable React-specific linting rules with optional configuration.
+   */
   react?: boolean | OptionsReact;
+
+  /**
+   * Enable React performance linting rules.
+   */
   "react-perf"?: boolean;
+
+  /**
+   * Enable Next.js-specific linting rules with optional configuration.
+   */
   next?: boolean | OptionsNext;
+
+  /**
+   * Enable JSDoc comment linting rules.
+   */
   jsdoc?: boolean;
+
+  /**
+   * Enable Node.js environment linting rules.
+   */
   node?: boolean;
+
+  /**
+   * Enable PNPM-specific linting rules with optional configuration.
+   */
   pnpm?: boolean | OptionsPNPM;
+
+  /**
+   * Enable Promise linting rules.
+   */
   promise?: boolean;
+
+  /**
+   * Enable Prettier code formatting integration.
+   */
   prettier?: boolean;
+
+  /**
+   * Enable Unicorn linting rules for code quality improvements.
+   */
   unicorn?: boolean;
+
+  /**
+   * Enable test file linting with optional configuration.
+   */
   test?: boolean | OptionsTest;
+
+  /**
+   * Enable Vitest testing framework support.
+   */
   vitest?: boolean;
+
+  /**
+   * Enable Jest testing framework support.
+   */
   jest?: boolean;
+
+  /**
+   * Enable regular expression linting rules.
+   */
   regexp?: boolean;
+
+  /**
+   * Enable Storybook component documentation support with optional configuration.
+   */
   storybook?: boolean | OptionsStorybook;
+
+  /**
+   * Enable TSDoc comment linting with optional configuration.
+   */
   tsdoc?: boolean | OptionsTSDoc;
 }

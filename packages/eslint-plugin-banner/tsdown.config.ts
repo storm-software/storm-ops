@@ -26,7 +26,6 @@ const config = defineConfig({
     "./src/rules/*.ts"
   ],
   platform: "node",
-  unbundle: true,
   target: "es2022",
   exports: true
 });

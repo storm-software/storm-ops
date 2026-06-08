@@ -21,7 +21,6 @@ import { defineConfig } from "tsdown";
 const config = defineConfig({
   entry: ["./src/*.ts", "./src/configs/*.ts"],
   platform: "node",
-  unbundle: true,
   target: "es2022",
   exports: true,
   deps: {
