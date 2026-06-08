@@ -1049,7 +1049,7 @@ importers:
         specifier: ^16.14.1
         version: 16.14.1
       minimatch:
-        specifier: ^10.2.5
+        specifier: '>=10.2.5'
         version: 10.2.5
       prettier-plugin-astro:
         specifier: ^0.14.1

@@ -6,7 +6,7 @@
 
 $schema: https://raw.githubusercontent.com/evilmartians/lefthook/refs/heads/master/schema.json
 extends:
-  - ./recommended.yml
+  - ./minimal.yml
 
 pre-commit:
   commands:
