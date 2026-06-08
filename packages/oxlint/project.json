@@ -1,0 +1,62 @@
+{
+  "name": "oxlint",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/oxlint/src",
+  "projectType": "library",
+  "targets": {
+    "clean": {
+      "cache": true,
+      "inputs": ["typescript", "^production"],
+      "outputs": ["{workspaceRoot}/dist/packages/oxlint/**"],
+      "executor": "nx:run-commands",
+      "dependsOn": ["clean", "^build"],
+      "options": {
+        "commands": [
+          "pnpm exec rimraf dist/packages/oxlint",
+          "pnpm exec rimraf packages/oxlint/dist"
+        ],
+        "parallel": true,
+        "color": true
+      }
+    },
+    "build-typegen": {
+      "executor": "nx:run-commands",
+      "dependsOn": ["clean", "^build"],
+      "options": {
+        "command": "tsx scripts/typegen.ts",
+        "cwd": "{projectRoot}"
+      }
+    },
+    "build-base": {
+      "executor": "nx:run-commands",
+      "dependsOn": ["clean", "build-typegen", "^build"],
+      "options": {
+        "command": "tsup-node --config=tsup.config.ts",
+        "cwd": "{projectRoot}"
+      }
+    },
+    "build": {
+      "cache": true,
+      "inputs": ["{workspaceRoot}/packages/oxlint/dist/**"],
+      "outputs": ["{workspaceRoot}/dist/packages/oxlint/**"],
+      "executor": "nx:run-commands",
+      "dependsOn": ["build-base"],
+      "options": {
+        "commands": [
+          "pnpm copyfiles --up=3 packages/oxlint/dist/* dist/packages/oxlint/dist",
+          "pnpm copyfiles --up=3 packages/oxlint/dist/configs/* dist/packages/oxlint/dist",
+          "pnpm copyfiles --up=3 packages/oxlint/dist/utils/* dist/packages/oxlint/dist",
+          "pnpm copyfiles --up=3 packages/oxlint/src/typegen.d.ts dist/packages/oxlint/dist",
+          "pnpm copyfiles --up=2 packages/oxlint/declarations.d.ts dist/packages/oxlint",
+          "pnpm copyfiles --up=2 packages/oxlint/README.md packages/oxlint/CHANGELOG.md packages/oxlint/package.json dist/packages/oxlint",
+          "pnpm copyfiles LICENSE dist/packages/oxlint"
+        ],
+        "parallel": false,
+        "color": true
+      }
+    },
+    "nx-release-publish": {
+      "executor": "@storm-software/workspace-tools:npm-publish"
+    }
+  }
+}

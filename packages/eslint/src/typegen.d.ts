@@ -4916,6 +4916,9 @@ Backward pagination arguments
    * Validates that the second argument is passed to relay hooks.
    */
   'relay/hook-required-argument'?: Linter.RuleEntry<[]>
+  'relay/must-colocate-fragment-spreads'?: Linter.RuleEntry<[]>
+  'relay/no-future-added-value'?: Linter.RuleEntry<[]>
+  'relay/unused-fields'?: Linter.RuleEntry<[]>
   /**
    * Disallow assignments that can lead to race conditions due to usage of `await` or `yield`
    * @see https://eslint.org/docs/latest/rules/require-atomic-updates

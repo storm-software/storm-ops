@@ -21,9 +21,12 @@ import {
   TypeScriptBuildOptions
 } from "@storm-software/build-tools";
 import { StormWorkspaceConfig } from "@storm-software/config/types";
-import type { Options } from "tsdown";
+import type { UserConfig } from "tsdown";
 
-type ExternalTSDownOptions = Omit<Options, "treeshake" | "outDir" | "external">;
+type ExternalTSDownOptions = Omit<
+  UserConfig,
+  "treeshake" | "outDir" | "external"
+>;
 
 export type TSDownOptions = ExternalTSDownOptions &
   Partial<
@@ -46,8 +49,8 @@ export type TSDownOptions = ExternalTSDownOptions &
     distDir?: string;
   };
 
-export type TSDownResolvedOptions = Options &
-  Required<Pick<Options, "entry" | "outDir" | "format">> &
+export type TSDownResolvedOptions = UserConfig &
+  Required<Pick<UserConfig, "entry" | "outDir" | "format">> &
   Required<
     Pick<
       TSDownOptions,

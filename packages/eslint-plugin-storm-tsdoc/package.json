@@ -1,0 +1,109 @@
+{
+  "name": "@storm-software/eslint-plugin-tsdoc",
+  "version": "0.0.1",
+  "private": false,
+  "description": "An ESLint Plugin that enforces TSDoc comments in Storm Software projects.",
+  "keywords": [
+    "eslint",
+    "eslint-plugin",
+    "storm-software"
+  ],
+  "homepage": "https://stormsoftware.com",
+  "bugs": {
+    "url": "https://stormsoftware.com/support",
+    "email": "support@stormsoftware.com"
+  },
+  "repository": {
+    "type": "github",
+    "url": "https://github.com/storm-software/storm-ops.git",
+    "directory": "packages/eslint-plugin-tsdoc"
+  },
+  "funding": {
+    "type": "github",
+    "url": "https://github.com/sponsors/storm-software"
+  },
+  "license": "Apache-2.0",
+  "author": {
+    "name": "Storm Software",
+    "email": "contact@stormsoftware.com",
+    "url": "https://stormsoftware.com"
+  },
+  "maintainers": [
+    {
+      "name": "Storm Software",
+      "email": "contact@stormsoftware.com",
+      "url": "https://stormsoftware.com"
+    }
+  ],
+  "contributors": [
+    {
+      "name": "Storm Software",
+      "email": "contact@stormsoftware.com",
+      "url": "https://stormsoftware.com"
+    }
+  ],
+  "type": "module",
+  "exports": {
+    ".": "./dist/index.mjs",
+    "./configs": "./dist/configs/index.mjs",
+    "./configs/recommended": "./dist/configs/recommended.mjs",
+    "./plugin": "./dist/plugin.mjs",
+    "./package.json": "./package.json"
+  },
+  "types": "./dist/index.d.ts",
+  "typings": "dist/index.d.mts",
+  "files": [
+    "dist/**/*"
+  ],
+  "dependencies": {
+    "@storm-software/package-constants": "workspace:*",
+    "@typescript-eslint/utils": "catalog:",
+    "defu": "catalog:"
+  },
+  "devDependencies": {
+    "@eslint/compat": "catalog:",
+    "@eslint/config-inspector": "catalog:",
+    "@storm-software/prettier": "workspace:*",
+    "@types/eslint": "catalog:",
+    "@types/eslint__js": "catalog:",
+    "@types/node": "catalog:",
+    "eslint": "catalog:",
+    "eslint-flat-config-utils": "catalog:",
+    "eslint-plugin-eslint-plugin": "catalog:",
+    "eslint-plugin-i18n-text": "catalog:",
+    "eslint-plugin-tsdoc": "0.4.0",
+    "eslint-typegen": "catalog:",
+    "tsdown": "catalog:"
+  },
+  "peerDependencies": {
+    "@storm-software/tsdoc": "*",
+    "eslint": ">=9.39.3"
+  },
+  "peerDependenciesMeta": {
+    "@storm-software/tsdoc": {
+      "optional": true
+    },
+    "eslint": {
+      "optional": false
+    }
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "inlinedDependencies": {
+    "@microsoft/tsdoc": "0.15.1",
+    "@microsoft/tsdoc-config": "0.17.1",
+    "ajv": "8.12.0",
+    "es-errors": "1.3.0",
+    "eslint-plugin-tsdoc": "0.4.0",
+    "fast-deep-equal": "3.1.3",
+    "function-bind": "1.1.2",
+    "hasown": "2.0.4",
+    "is-core-module": "2.16.2",
+    "jju": "1.4.0",
+    "json-schema-traverse": "1.0.0",
+    "path-parse": "1.0.7",
+    "resolve": "1.22.12",
+    "uri-js": "4.4.1"
+  }
+}

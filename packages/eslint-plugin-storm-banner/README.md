@@ -82,14 +82,14 @@ This package provides an ESLint plugin that enforces the presence of a standardi
 Using [pnpm](http://pnpm.io):
 
 ```bash
-pnpm add -D eslint-plugin-storm-banner
+pnpm add -D @storm-software/eslint-plugin-banner
 ```
 
 <details>
   <summary>Using npm</summary>
 
 ```bash
-npm install -D eslint-plugin-storm-banner
+npm install -D @storm-software/eslint-plugin-banner
 ```
 
 </details>
@@ -98,7 +98,7 @@ npm install -D eslint-plugin-storm-banner
   <summary>Using yarn</summary>
 
 ```bash
-yarn add -D eslint-plugin-storm-banner
+yarn add -D @storm-software/eslint-plugin-banner
 ```
 
 </details>
@@ -152,11 +152,11 @@ The following configurations are available for this plugin:
 
 ## Building
 
-Run `nx build eslint-plugin-storm-banner` to build the library.
+Run `nx build eslint-plugin-banner` to build the library.
 
 ## Running unit tests
 
-Run `nx test eslint-plugin-storm-banner` to execute the unit tests via [Jest](https://jestjs.io).
+Run `nx test eslint-plugin-banner` to execute the unit tests via [Jest](https://jestjs.io).
 
 <!-- START footer -->
 <!-- prettier-ignore-start -->

@@ -24,13 +24,14 @@ export async function runCommit(commitizenFile?: string, dryRun = false) {
   }
 
   console.log(
-    chalk.bold.hex("#999999")("----------------------------------------") +
+    chalk.bold.hex("#4b585b")("----------------------------------------") +
       "\n" +
       chalk.bold.hex("#FFFFFF")(
         `  ${brandIcon(workspaceConfig)}  Storm Software Git-Tools - Commit`
       ) +
       "\n" +
-      chalk.hex("#CCCCCC")("Please provide the requested details below...")
+      chalk.hex("#9ca8ab")("Please provide the requested details below...") +
+      "\n"
   );
 
   state.answers = await askQuestions(state);
@@ -39,12 +40,14 @@ export async function runCommit(commitizenFile?: string, dryRun = false) {
   const commitMsgFile = joinPaths(getGitDir(), "COMMIT_EDITMSG");
 
   console.log(
-    chalk.bold.hex("#999999")("----------------------------------------") +
-      "\n" +
-      `${chalk.bold.hex("#FFFFFF")("Commit message")} - ${chalk.hex("#DDDDDD")(message)}\n` +
-      `${chalk.bold.hex("#FFFFFF")("Git-Commit File")} - ${chalk.hex("#DDDDDD")(
-        commitMsgFile
-      )}\n`
+    chalk.bold.hex("#4b585b")("----------------------------------------") +
+      "\n\n" +
+      `${chalk.bold.hex("#FFFFFF")("Commit message")}${chalk.hex("#4b585b")(
+        " - "
+      )}${chalk.hex("#9ca8ab")(message)}\n` +
+      `${chalk.bold.hex("#FFFFFF")("Git-Commit File")}${chalk.hex("#4b585b")(
+        " - "
+      )}${chalk.hex("#9ca8ab")(commitMsgFile)}\n`
   );
 
   await runCommitLint(workspaceConfig, { message });

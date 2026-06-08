@@ -1,0 +1,31 @@
+{
+  "name": "eslint-plugin-pnpm",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "packages/eslint-plugin-pnpm/src",
+  "targets": {
+    "build-base": {
+      "executor": "nx:run-commands",
+      "dependsOn": ["clean", "^build"],
+      "options": {
+        "command": "tsdown --config=tsdown.config.ts",
+        "cwd": "{projectRoot}"
+      }
+    },
+    "build": {
+      "executor": "nx:run-commands",
+      "dependsOn": ["build-base"],
+      "options": {
+        "commands": [
+          "pnpm copyfiles LICENSE dist/packages/eslint-plugin-pnpm",
+          "pnpm copyfiles --up=2 ./packages/eslint-plugin-pnpm/*.md ./packages/eslint-plugin-pnpm/package.json dist/packages/eslint-plugin-pnpm",
+          "pnpm copyfiles --up=3 \"./packages/eslint-plugin-pnpm/dist/**/*\" dist/packages/eslint-plugin-pnpm/dist"
+        ]
+      }
+    },
+    "nx-release-publish": {
+      "executor": "@storm-software/workspace-tools:npm-publish"
+    }
+  },
+  "tags": ["platform:node"]
+}

@@ -1,0 +1,170 @@
+{
+  "name": "@storm-software/oxlint",
+  "version": "0.0.1",
+  "private": false,
+  "description": "A package containing the base Oxlint configuration used by Storm Software across many projects.",
+  "keywords": [
+    "oxlint",
+    "oxlint-config",
+    "storm-ops",
+    "storm-software"
+  ],
+  "homepage": "https://stormsoftware.com",
+  "bugs": "https://github.com/storm-software/storm-ops/issues",
+  "repository": {
+    "type": "github",
+    "url": "https://github.com/storm-software/storm-ops",
+    "directory": "packages/oxlint"
+  },
+  "funding": {
+    "type": "github",
+    "url": "https://github.com/sponsors/storm-software"
+  },
+  "license": "Apache-2.0",
+  "author": {
+    "name": "Storm Software",
+    "email": "contact@stormsoftware.com",
+    "url": "https://stormsoftware.com"
+  },
+  "maintainers": [
+    {
+      "name": "Storm Software",
+      "email": "contact@stormsoftware.com",
+      "url": "https://stormsoftware.com"
+    },
+    {
+      "name": "Pat Sullivan",
+      "email": "admin@stormsoftware.com",
+      "url": "https://patsullivan.org"
+    }
+  ],
+  "contributors": [
+    {
+      "name": "Storm Software",
+      "email": "contact@stormsoftware.com",
+      "url": "https://stormsoftware.com"
+    }
+  ],
+  "sideEffects": false,
+  "type": "module",
+  "exports": {
+    "./package.json": "./package.json",
+    ".": {
+      "import": {
+        "types": "./dist/preset.d.ts",
+        "default": "./dist/preset.js"
+      },
+      "require": {
+        "types": "./dist/preset.d.cts",
+        "default": "./dist/preset.cjs"
+      },
+      "default": {
+        "types": "./dist/preset.d.ts",
+        "default": "./dist/preset.js"
+      }
+    },
+    "./index": {
+      "import": {
+        "types": "./dist/preset.d.ts",
+        "default": "./dist/preset.js"
+      },
+      "require": {
+        "types": "./dist/preset.d.cts",
+        "default": "./dist/preset.cjs"
+      },
+      "default": {
+        "types": "./dist/preset.d.ts",
+        "default": "./dist/preset.js"
+      }
+    },
+    "./preset": {
+      "import": {
+        "types": "./dist/preset.d.ts",
+        "default": "./dist/preset.js"
+      },
+      "require": {
+        "types": "./dist/preset.d.cts",
+        "default": "./dist/preset.cjs"
+      },
+      "default": {
+        "types": "./dist/preset.d.ts",
+        "default": "./dist/preset.js"
+      }
+    },
+    "./types": {
+      "import": {
+        "types": "./dist/types.d.ts",
+        "default": "./dist/types.js"
+      },
+      "require": {
+        "types": "./dist/types.d.cts",
+        "default": "./dist/types.cjs"
+      },
+      "default": {
+        "types": "./dist/types.d.ts",
+        "default": "./dist/types.js"
+      }
+    },
+    "./configs/*": {
+      "import": {
+        "types": "./dist/configs/*.d.ts",
+        "default": "./dist/configs/*.js"
+      },
+      "require": {
+        "types": "./dist/configs/*.d.cts",
+        "default": "./dist/configs/*.cjs"
+      },
+      "default": {
+        "types": "./dist/configs/*.d.ts",
+        "default": "./dist/configs/*.js"
+      }
+    },
+    "./utils/*": {
+      "import": {
+        "types": "./dist/utils/*.d.ts",
+        "default": "./dist/utils/*.js"
+      },
+      "require": {
+        "types": "./dist/utils/*.d.cts",
+        "default": "./dist/utils/*.cjs"
+      },
+      "default": {
+        "types": "./dist/utils/*.d.ts",
+        "default": "./dist/utils/*.js"
+      }
+    }
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist/**/*"
+  ],
+  "dependencies": {
+    "@storm-software/eslint-plugin-banner": "workspace:*",
+    "@storm-software/eslint-plugin-pnpm": "workspace:*",
+    "@storm-software/eslint-plugin-tsdoc": "workspace:*",
+    "defu": "catalog:",
+    "eslint-plugin-react-compiler": "19.0.0-beta-21e868a-20250216",
+    "eslint-plugin-react-hooks": "^5.2.0",
+    "eslint-plugin-regexp": "^2.10.0",
+    "eslint-plugin-storybook": "^0.11.6",
+    "oxlint": "^1.68.0",
+    "oxlint-tsgolint": "^0.14.2",
+    "parse-gitignore": "^2.0.0"
+  },
+  "devDependencies": {
+    "@prettier/plugin-xml": "^3.4.2",
+    "@types/node": "catalog:",
+    "tsup": "catalog:",
+    "tsx": "catalog:",
+    "typescript": "^5.9.3",
+    "zod": "catalog:"
+  },
+  "peerDependencies": {
+    "oxlint": "^1.68.0",
+    "oxlint-tsgolint": "^0.14.2"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

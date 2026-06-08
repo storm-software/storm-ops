@@ -44,7 +44,7 @@ import ... from "...";
 
 ## Version
 
-This rule was introduced in version 0.1.0 of `eslint-plugin-storm-banner`.
+This rule was introduced in version 0.1.0 of `@storm-software/eslint-plugin-banner`.
 
 ## Options
 

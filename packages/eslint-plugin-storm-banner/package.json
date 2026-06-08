@@ -1,8 +1,8 @@
 {
-  "name": "eslint-plugin-storm-banner",
+  "name": "@storm-software/eslint-plugin-banner",
   "version": "0.0.1",
   "private": false,
-  "description": "An ESLint Plugin with linting rules that ensure a Shell Shock project is following the best practices.",
+  "description": "An ESLint Plugin that enforces the existence of file banners in Storm Software projects.",
   "keywords": [
     "eslint",
     "eslint-plugin",
@@ -16,7 +16,7 @@
   "repository": {
     "type": "github",
     "url": "https://github.com/storm-software/storm-ops.git",
-    "directory": "packages/eslint-plugin-storm-banner"
+    "directory": "packages/eslint-plugin-banner"
   },
   "funding": {
     "type": "github",
@@ -44,21 +44,20 @@
   ],
   "type": "module",
   "exports": {
-    ".": "./dist/index.js",
-    "./configs": "./dist/configs/index.js",
-    "./configs/recommended": "./dist/configs/recommended.js",
-    "./helpers/create-rule": "./dist/helpers/create-rule.js",
-    "./helpers/get-banner": "./dist/helpers/get-banner.js",
-    "./plugin": "./dist/plugin.js",
-    "./rules/banner": "./dist/rules/banner.js",
+    ".": "./dist/index.mjs",
+    "./configs": "./dist/configs/index.mjs",
+    "./configs/recommended": "./dist/configs/recommended.mjs",
+    "./helpers/create-rule": "./dist/helpers/create-rule.mjs",
+    "./helpers/get-banner": "./dist/helpers/get-banner.mjs",
+    "./plugin": "./dist/plugin.mjs",
+    "./rules/banner": "./dist/rules/banner.mjs",
     "./package.json": "./package.json"
   },
-  "main": "./dist/index.js",
-  "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "typings": "dist/index.d.mts",
   "files": [
-    "dist/**/*"
+    "dist",
+    "docs"
   ],
   "dependencies": {
     "@storm-software/package-constants": "workspace:*",

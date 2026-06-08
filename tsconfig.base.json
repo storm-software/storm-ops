@@ -78,11 +78,23 @@
       "conventional-changelog-storm-software/*": [
         "packages/conventional-changelog/src/*"
       ],
-      "eslint-plugin-storm-banner": [
-        "packages/eslint-plugin-storm-banner/src/index.ts"
+      "@storm-software/eslint-plugin-banner": [
+        "packages/eslint-plugin-banner/src/index.ts"
       ],
-      "eslint-plugin-storm-banner/*": [
-        "packages/eslint-plugin-storm-banner/src/*"
+      "@storm-software/eslint-plugin-banner/*": [
+        "packages/eslint-plugin-banner/src/*"
+      ],
+      "@storm-software/eslint-plugin-pnpm": [
+        "packages/eslint-plugin-pnpm/src/index.ts"
+      ],
+      "@storm-software/eslint-plugin-pnpm/*": [
+        "packages/eslint-plugin-pnpm/src/*"
+      ],
+      "@storm-software/eslint-plugin-tsdoc": [
+        "packages/eslint-plugin-tsdoc/src/index.ts"
+      ],
+      "@storm-software/eslint-plugin-tsdoc/*": [
+        "packages/eslint-plugin-tsdoc/src/*"
       ],
       "create-storm-workspace": [
         "packages/create-storm-workspace/bin/index.ts"

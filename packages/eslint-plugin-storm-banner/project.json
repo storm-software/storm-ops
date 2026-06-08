@@ -1,8 +1,8 @@
 {
-  "name": "eslint-plugin-storm-banner",
+  "name": "eslint-plugin-banner",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
-  "sourceRoot": "packages/eslint-plugin-storm-banner/src",
+  "sourceRoot": "packages/eslint-plugin-banner/src",
   "targets": {
     "build-base": {
       "executor": "nx:run-commands",
@@ -17,9 +17,10 @@
       "dependsOn": ["build-base"],
       "options": {
         "commands": [
-          "pnpm copyfiles LICENSE dist/packages/eslint-plugin-storm-banner",
-          "pnpm copyfiles --up=2 ./packages/eslint-plugin-storm-banner/*.md ./packages/eslint-plugin-storm-banner/package.json dist/packages/eslint-plugin-storm-banner",
-          "pnpm copyfiles --up=3 \"./packages/eslint-plugin-storm-banner/dist/**/*\" dist/packages/eslint-plugin-storm-banner/dist"
+          "pnpm copyfiles LICENSE dist/packages/eslint-plugin-banner",
+          "pnpm copyfiles --up=2 ./packages/eslint-plugin-banner/*.md ./packages/eslint-plugin-banner/package.json dist/packages/eslint-plugin-banner",
+          "pnpm copyfiles --up=3 \"./packages/eslint-plugin-banner/dist/**/*\" dist/packages/eslint-plugin-banner/dist",
+          "pnpm copyfiles --up=3 \"./packages/eslint-plugin-banner/docs/**/*\" dist/packages/eslint-plugin-banner/docs"
         ]
       }
     },
