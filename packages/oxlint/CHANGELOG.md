@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Oxlint
 
+## [0.0.8](https://github.com/storm-software/storm-ops/releases/tag/oxlint%400.0.8) (06/08/2026)
+
+### Bug Fixes
+
+- **oxlint:** Filter out invalid oxlint rules from `prettier` plugin ([b74588e44](https://github.com/storm-software/storm-ops/commit/b74588e44))
+
 ## [0.0.7](https://github.com/storm-software/storm-ops/releases/tag/oxlint%400.0.7) (06/08/2026)
 
 ### Miscellaneous
