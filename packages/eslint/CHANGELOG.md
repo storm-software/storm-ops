@@ -2,6 +2,14 @@
 
 # Changelog for Storm Ops - ESLint
 
+## [0.170.66](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.170.66) (06/08/2026)
+
+### Updated Dependencies
+
+- Updated **eslint-plugin-banner** to **v0.0.6**
+- Updated **eslint-plugin-pnpm** to **v0.0.6**
+- Updated **eslint-plugin-tsdoc** to **v0.0.6**
+
 ## [0.170.65](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.170.65) (06/08/2026)
 
 ### Updated Dependencies

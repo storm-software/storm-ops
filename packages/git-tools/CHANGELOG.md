@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Git Tools
 
+## [2.131.51](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.131.51) (06/08/2026)
+
+### Miscellaneous
+
+- **git-tools:** Clean up `lefthook` configurations ([6a6ab3e81](https://github.com/storm-software/storm-ops/commit/6a6ab3e81))
+
 ## [2.131.50](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.131.50) (06/08/2026)
 
 ### Updated Dependencies
