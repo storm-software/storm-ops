@@ -2,6 +2,19 @@
 
 # Changelog for Storm Ops - Esbuild
 
+## [0.53.204](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.53.204) (06/08/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace packages `README.md` files ([7d65425b0](https://github.com/storm-software/storm-ops/commit/7d65425b0))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.203**
+- Updated **config** to **v1.137.75**
+- Updated **config-tools** to **v1.190.43**
+- Updated **tsup** to **v0.2.201**
+
 ## [0.53.203](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.53.203) (06/08/2026)
 
 ### Updated Dependencies

@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Tsdoc
 
+## [0.13.196](https://github.com/storm-software/storm-ops/releases/tag/tsdoc%400.13.196) (06/08/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace packages `README.md` files ([7d65425b0](https://github.com/storm-software/storm-ops/commit/7d65425b0))
+
 ## [0.13.194](https://github.com/storm-software/storm-ops/releases/tag/tsdoc%400.13.194) (06/08/2026)
 
 ### Features

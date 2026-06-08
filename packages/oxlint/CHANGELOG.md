@@ -2,6 +2,21 @@
 
 # Changelog for Storm Ops - Oxlint
 
+## [0.0.4](https://github.com/storm-software/storm-ops/releases/tag/oxlint%400.0.4) (06/08/2026)
+
+### Miscellaneous
+
+- **oxlint:** Added various `react` rules configurations ([71c54084e](https://github.com/storm-software/storm-ops/commit/71c54084e))
+- **monorepo:** Update workspace packages `README.md` files ([7d65425b0](https://github.com/storm-software/storm-ops/commit/7d65425b0))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.75**
+- Updated **config-tools** to **v1.190.43**
+- Updated **eslint-plugin-banner** to **v0.0.4**
+- Updated **eslint-plugin-pnpm** to **v0.0.4**
+- Updated **eslint-plugin-tsdoc** to **v0.0.4**
+
 ## [0.0.3](https://github.com/storm-software/storm-ops/releases/tag/oxlint%400.0.3) (06/08/2026)
 
 ### Miscellaneous
