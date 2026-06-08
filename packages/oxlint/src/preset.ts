@@ -7,6 +7,7 @@ import { jsx } from "./configs/jsx";
 import { next } from "./configs/next";
 import { node } from "./configs/node";
 import { pnpm } from "./configs/pnpm";
+import { prettier } from "./configs/prettier";
 import { promise } from "./configs/promise";
 import { react } from "./configs/react";
 import { reactPerf } from "./configs/react-perf";
@@ -58,6 +59,7 @@ export async function getStormConfig(
     jsdoc: enableJsdoc = true,
     node: enableNode = true,
     promise: enablePromise = true,
+    prettier: enablePrettier = true,
     pnpm: enablePnpm = true,
     tsdoc: enableTSDoc = true,
     unicorn: enableUnicorn = true,
@@ -129,6 +131,10 @@ export async function getStormConfig(
 
   if (enablePromise) {
     configs.push(promise());
+  }
+
+  if (enablePrettier) {
+    configs.push(prettier());
   }
 
   if (enableUnicorn) {

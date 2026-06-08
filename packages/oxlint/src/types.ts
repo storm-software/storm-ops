@@ -161,6 +161,7 @@ export interface OptionsConfig extends TypedConfigItem {
   node?: boolean;
   pnpm?: boolean | OptionsPNPM;
   promise?: boolean;
+  prettier?: boolean;
   unicorn?: boolean;
   test?: boolean | OptionsTest;
   vitest?: boolean;
