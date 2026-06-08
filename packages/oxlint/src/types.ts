@@ -86,6 +86,7 @@ export interface OptionsNext {
 }
 
 export interface OptionsReact {
+  typeAware?: boolean;
   version?: string;
 }
 

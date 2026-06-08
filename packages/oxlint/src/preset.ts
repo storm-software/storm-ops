@@ -106,7 +106,12 @@ export async function getStormConfig(
   }
 
   if (enableReact) {
-    configs.push(react(resolveSubOptions(enableReact)));
+    configs.push(
+      ...react({
+        typeAware: enableTypeScript !== false,
+        ...resolveSubOptions(enableReact)
+      })
+    );
   }
 
   if (enableReactPerf) {

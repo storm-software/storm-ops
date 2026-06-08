@@ -23,7 +23,6 @@ const ReactRouterPackages = [
   "@react-router/serve",
   "@react-router/dev"
 ];
-const NextJsPackages = ["next"];
 
 export async function react(
   options: OptionsTypeScriptParserOptions &
@@ -75,7 +74,7 @@ export async function react(
     {
       name: "storm/react/setup",
       plugins: {
-        "react": plugins["@eslint-react"],
+        react: plugins["@eslint-react"],
         "react-dom": plugins["@eslint-react/dom"],
         "react-hooks": pluginReactHooks,
         "react-hooks-extra": plugins["@eslint-react/hooks-extra"],
