@@ -19,15 +19,16 @@
 import { defineConfig } from "tsdown";
 
 const config = defineConfig({
-  entry: [
-    "./src/*.ts",
-    "./src/helpers/*.ts",
-    "./src/configs/*.ts",
-    "./src/rules/*.ts"
-  ],
+  entry: ["src/*.ts", "src/helpers/*.ts", "src/configs/*.ts", "src/rules/*.ts"],
   platform: "node",
   target: "es2022",
-  exports: true
+  outDir: "dist",
+  exports: true,
+  shims: true,
+  clean: true,
+  dts: true,
+  sourcemap: false,
+  treeshake: true
 });
 
 export default config;

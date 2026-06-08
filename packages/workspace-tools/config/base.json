@@ -161,7 +161,7 @@
       "{projectRoot}/**/*.stories.@(js|jsx|ts|tsx|mdx)",
       "{projectRoot}/**/*.@(proto|acid|acidic|prisma)",
       "{projectRoot}/src/**/*.@(cts|mts|ts|tsx|graphql|gql|js|cjs|mjs|jsx|json|jsonc|yaml|yml|toml|md|mdx)",
-      "{projectRoot}/{build,tsup,contentlayer,vite}.*.[jt]s?(x)",
+      "{projectRoot}/{build,tsup,tsdown,vite,contentlayer,powerlines,shell-shock,earthquake}.*.[jt]s?(x)",
       "{projectRoot}/{bin,tools,helpers,scripts}/**/*"
     ]
   },

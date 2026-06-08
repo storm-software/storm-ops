@@ -19,10 +19,16 @@
 import { defineConfig } from "tsdown";
 
 const config = defineConfig({
-  entry: ["./src/*.ts", "./src/configs/*.ts"],
+  entry: ["src/*.ts", "src/configs/*.ts"],
   platform: "node",
   target: "es2022",
+  outDir: "dist",
   exports: true,
+  shims: true,
+  clean: true,
+  dts: true,
+  sourcemap: false,
+  treeshake: true,
   deps: {
     alwaysBundle: ["eslint-plugin-tsdoc"]
   }
