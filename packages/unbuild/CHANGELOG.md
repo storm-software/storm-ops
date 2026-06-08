@@ -2,6 +2,14 @@
 
 # Changelog for Storm Ops - Unbuild
 
+## [0.57.207](https://github.com/storm-software/storm-ops/releases/tag/unbuild%400.57.207) (06/08/2026)
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.206**
+- Updated **config** to **v1.137.78**
+- Updated **config-tools** to **v1.190.46**
+
 ## [0.57.206](https://github.com/storm-software/storm-ops/releases/tag/unbuild%400.57.206) (06/08/2026)
 
 ### Miscellaneous

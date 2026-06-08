@@ -1,6 +1,6 @@
 {
   "name": "@storm-software/package-constants",
-  "version": "0.1.58",
+  "version": "0.1.59",
   "private": false,
   "description": "A set of constants shared by various packages in the Storm Software organization.",
   "keywords": [
