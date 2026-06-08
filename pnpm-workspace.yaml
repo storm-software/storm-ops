@@ -22,9 +22,9 @@ catalog:
   "@actions/core": "^3.0.1"
   "@ltd/j-toml": "1.38.0"
   "@eslint/compat": "^2.1.0"
-  "@eslint/config-inspector": ^1.5.0
+  "@eslint/config-inspector": "^1.5.0"
   "@microsoft/api-extractor": "^7.58.7"
-  "@nx/devkit": "^22.7.5"
+  "@nx/devkit": "22.7.5"
   "@nx/esbuild": "22.7.5"
   "@nx/eslint": "22.7.5"
   "@nx/eslint-plugin": "22.7.5"
@@ -55,12 +55,12 @@ catalog:
   defu: "^6.1.7"
   esbuild: "^0.25.12"
   eslint: "^9.39.4"
-  eslint-doc-generator: ^3.6.0
-  eslint-flat-config-utils: ^2.1.4
-  eslint-plugin-eslint-plugin: ^7.4.0
-  eslint-plugin-i18n-text: ^1.0.1
-  eslint-rule-documentation: ^1.0.23
-  eslint-typegen: ^2.3.1
+  eslint-doc-generator: "^3.6.0"
+  eslint-flat-config-utils: "^2.1.4"
+  eslint-plugin-eslint-plugin: "^7.4.0"
+  eslint-plugin-i18n-text: "^1.0.1"
+  eslint-rule-documentation: "^1.0.23"
+  eslint-typegen: "^2.3.1"
   jsonc-eslint-parser: "^2.4.2"
   yaml-eslint-parser: "^1.3.2"
   glob: "^11.1.0"
@@ -152,7 +152,7 @@ overrides:
   tough-cookie: "4.1.4"
   minimatch: ">=10.2.5"
 patchedDependencies:
-  eslint-plugin-import-x: patches/eslint-plugin-import-x.patch
+  eslint-plugin-import-x: "patches/eslint-plugin-import-x.patch"
   eslint-plugin-pnpm@0.3.0: "patches/eslint-plugin-pnpm@0.3.0.patch"
   eslint-plugin-tsdoc: "patches/eslint-plugin-tsdoc.patch"
   tsup@8.4.0: "patches/tsup@8.4.0.patch"
