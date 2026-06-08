@@ -56,7 +56,7 @@ export async function getStormConfig(
     "react-perf": enableReactPerf = enableReact,
     jsx: enableJsx = enableReact,
     next: enableNext = false,
-    jsdoc: enableJsdoc = true,
+    jsdoc: enableJsdoc = false,
     node: enableNode = true,
     promise: enablePromise = true,
     prettier: enablePrettier = true,

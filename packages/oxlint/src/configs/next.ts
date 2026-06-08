@@ -17,9 +17,7 @@ export function next(options: OptionsNext = {}): TypedConfigItem {
       "nextjs/no-head-import-in-document": "error"
     },
     settings: {
-      next: {
-        ...(rootDir ? { rootDir } : {})
-      }
+      next: rootDir ? { rootDir } : {}
     }
   };
 }
