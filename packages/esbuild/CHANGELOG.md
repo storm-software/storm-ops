@@ -2,6 +2,19 @@
 
 # Changelog for Storm Ops - Esbuild
 
+## [0.53.202](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.53.202) (06/08/2026)
+
+### Features
+
+- **oxlint:** Added oxlint config package and eslint plugins ([80c3439b6](https://github.com/storm-software/storm-ops/commit/80c3439b6))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.201**
+- Updated **config** to **v1.137.73**
+- Updated **config-tools** to **v1.190.41**
+- Updated **tsup** to **v0.2.199**
+
 ## [0.53.201](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.53.201) (06/01/2026)
 
 ### Updated Dependencies

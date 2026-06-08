@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - CSpell
 
+## [0.46.109](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.46.109) (06/08/2026)
+
+### Features
+
+- **oxlint:** Added oxlint config package and eslint plugins ([80c3439b6](https://github.com/storm-software/storm-ops/commit/80c3439b6))
+
 ## [0.46.106](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.46.106) (06/01/2026)
 
 ### Miscellaneous

@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - K8s Tools
 
+## [0.42.222](https://github.com/storm-software/storm-ops/releases/tag/k8s-tools%400.42.222) (06/08/2026)
+
+### Features
+
+- **oxlint:** Added oxlint config package and eslint plugins ([80c3439b6](https://github.com/storm-software/storm-ops/commit/80c3439b6))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.73**
+- Updated **config-tools** to **v1.190.41**
+- Updated **workspace-tools** to **v1.296.19**
+
 ## [0.42.221](https://github.com/storm-software/storm-ops/releases/tag/k8s-tools%400.42.221) (06/01/2026)
 
 ### Updated Dependencies

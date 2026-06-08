@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Package Constants
 
+## [0.1.54](https://github.com/storm-software/storm-ops/releases/tag/package-constants%400.1.54) (06/08/2026)
+
+### Features
+
+- **oxlint:** Added oxlint config package and eslint plugins ([80c3439b6](https://github.com/storm-software/storm-ops/commit/80c3439b6))
+
 ## [0.1.49](https://github.com/storm-software/storm-ops/releases/tag/package-constants%400.1.49) (05/30/2026)
 
 ### Miscellaneous

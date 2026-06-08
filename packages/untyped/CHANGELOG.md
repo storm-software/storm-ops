@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Untyped
 
+## [0.24.183](https://github.com/storm-software/storm-ops/releases/tag/untyped%400.24.183) (06/08/2026)
+
+### Features
+
+- **oxlint:** Added oxlint config package and eslint plugins ([80c3439b6](https://github.com/storm-software/storm-ops/commit/80c3439b6))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.73**
+- Updated **config-tools** to **v1.190.41**
+
 ## [0.24.182](https://github.com/storm-software/storm-ops/releases/tag/untyped%400.24.182) (06/01/2026)
 
 ### Updated Dependencies

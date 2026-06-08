@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Config Tools
 
+## [1.190.41](https://github.com/storm-software/storm-ops/releases/tag/config-tools%401.190.41) (06/08/2026)
+
+### Features
+
+- **oxlint:** Added oxlint config package and eslint plugins ([80c3439b6](https://github.com/storm-software/storm-ops/commit/80c3439b6))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.73**
+- Updated **testing-tools** to **v1.119.194**
+
 ## [1.190.40](https://github.com/storm-software/storm-ops/releases/tag/config-tools%401.190.40) (06/01/2026)
 
 ### Updated Dependencies

@@ -1,13 +1,9 @@
 {
   "name": "@storm-software/eslint-plugin-pnpm",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "private": false,
   "description": "An ESLint Plugin that enforces PNPM-related rules in Storm Software projects.",
-  "keywords": [
-    "eslint",
-    "eslint-plugin",
-    "storm-software"
-  ],
+  "keywords": ["eslint", "eslint-plugin", "storm-software"],
   "homepage": "https://stormsoftware.com",
   "bugs": {
     "url": "https://stormsoftware.com/support",
@@ -52,9 +48,7 @@
   },
   "types": "./dist/index.d.ts",
   "typings": "dist/index.d.mts",
-  "files": [
-    "dist/**/*"
-  ],
+  "files": ["dist/**/*"],
   "dependencies": {
     "@eslint/core": "^1.2.1",
     "@storm-software/package-constants": "workspace:*",

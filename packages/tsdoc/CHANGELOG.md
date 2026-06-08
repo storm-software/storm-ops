@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Tsdoc
 
+## [0.13.194](https://github.com/storm-software/storm-ops/releases/tag/tsdoc%400.13.194) (06/08/2026)
+
+### Features
+
+- **oxlint:** Added oxlint config package and eslint plugins ([80c3439b6](https://github.com/storm-software/storm-ops/commit/80c3439b6))
+
 ## [0.13.189](https://github.com/storm-software/storm-ops/releases/tag/tsdoc%400.13.189) (05/30/2026)
 
 ### Miscellaneous

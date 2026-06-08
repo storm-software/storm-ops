@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Prettier
 
+## [0.59.93](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.59.93) (06/08/2026)
+
+### Features
+
+- **oxlint:** Added oxlint config package and eslint plugins ([80c3439b6](https://github.com/storm-software/storm-ops/commit/80c3439b6))
+
 ## [0.59.89](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.59.89) (05/30/2026)
 
 ### Features

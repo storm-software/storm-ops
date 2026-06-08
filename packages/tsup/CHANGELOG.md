@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Tsup
 
+## [0.2.199](https://github.com/storm-software/storm-ops/releases/tag/tsup%400.2.199) (06/08/2026)
+
+### Features
+
+- **oxlint:** Added oxlint config package and eslint plugins ([80c3439b6](https://github.com/storm-software/storm-ops/commit/80c3439b6))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.201**
+- Updated **config-tools** to **v1.190.41**
+
 ## [0.2.198](https://github.com/storm-software/storm-ops/releases/tag/tsup%400.2.198) (06/01/2026)
 
 ### Updated Dependencies

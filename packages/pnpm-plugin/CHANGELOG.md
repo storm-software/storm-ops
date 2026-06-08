@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Pnpm Plugin
 
+## [0.1.152](https://github.com/storm-software/storm-ops/releases/tag/pnpm-plugin%400.1.152) (06/08/2026)
+
+### Features
+
+- **oxlint:** Added oxlint config package and eslint plugins ([80c3439b6](https://github.com/storm-software/storm-ops/commit/80c3439b6))
+
+### Updated Dependencies
+
+- Updated **package-constants** to **v0.1.54**
+- Updated **testing-tools** to **v1.119.194**
+
 ## [0.1.151](https://github.com/storm-software/storm-ops/releases/tag/pnpm-plugin%400.1.151) (06/01/2026)
 
 ### Updated Dependencies

@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Projen
 
+## [0.21.222](https://github.com/storm-software/storm-ops/releases/tag/projen%400.21.222) (06/08/2026)
+
+### Features
+
+- **oxlint:** Added oxlint config package and eslint plugins ([80c3439b6](https://github.com/storm-software/storm-ops/commit/80c3439b6))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.73**
+- Updated **config-tools** to **v1.190.41**
+- Updated **workspace-tools** to **v1.296.19**
+
 ## [0.21.221](https://github.com/storm-software/storm-ops/releases/tag/projen%400.21.221) (06/01/2026)
 
 ### Updated Dependencies

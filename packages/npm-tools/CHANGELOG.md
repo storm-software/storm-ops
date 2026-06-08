@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Npm Tools
 
+## [0.6.159](https://github.com/storm-software/storm-ops/releases/tag/npm-tools%400.6.159) (06/08/2026)
+
+### Features
+
+- **oxlint:** Added oxlint config package and eslint plugins ([80c3439b6](https://github.com/storm-software/storm-ops/commit/80c3439b6))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.73**
+- Updated **config-tools** to **v1.190.41**
+- Updated **testing-tools** to **v1.119.194**
+
 ## [0.6.158](https://github.com/storm-software/storm-ops/releases/tag/npm-tools%400.6.158) (06/01/2026)
 
 ### Updated Dependencies

@@ -2,6 +2,19 @@
 
 # Changelog for Storm Ops - Git Tools
 
+## [2.131.47](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.131.47) (06/08/2026)
+
+### Features
+
+- **oxlint:** Added oxlint config package and eslint plugins ([80c3439b6](https://github.com/storm-software/storm-ops/commit/80c3439b6))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.73**
+- Updated **config-tools** to **v1.190.41**
+- Updated **conventional-changelog** to **v0.3.202**
+- Updated **package-constants** to **v0.1.54**
+
 ## [2.131.46](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.131.46) (06/01/2026)
 
 ### Updated Dependencies

@@ -2,6 +2,24 @@
 
 # Changelog for Storm Ops - Pnpm Tools
 
+## [0.7.52](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.7.52) (06/08/2026)
+
+### Bug Fixes
+
+- **pnpm-tools:** Resolve issue writing invalid versions to pnpm catalog ([3c07617cb](https://github.com/storm-software/storm-ops/commit/3c07617cb))
+
+### Features
+
+- **oxlint:** Added oxlint config package and eslint plugins ([80c3439b6](https://github.com/storm-software/storm-ops/commit/80c3439b6))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.73**
+- Updated **config-tools** to **v1.190.41**
+- Updated **npm-tools** to **v0.6.159**
+- Updated **package-constants** to **v0.1.54**
+- Updated **testing-tools** to **v1.119.194**
+
 ## [0.7.51](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.7.51) (06/01/2026)
 
 ### Updated Dependencies

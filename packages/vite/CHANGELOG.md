@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - Vite
 
+## [0.1.135](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.135) (06/08/2026)
+
+### Features
+
+- **oxlint:** Added oxlint config package and eslint plugins ([80c3439b6](https://github.com/storm-software/storm-ops/commit/80c3439b6))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.201**
+
 ## [0.1.134](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.134) (06/01/2026)
 
 ### Updated Dependencies
