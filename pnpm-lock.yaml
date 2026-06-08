@@ -845,13 +845,13 @@ importers:
         version: link:../config-tools
       '@storm-software/eslint-plugin-banner':
         specifier: workspace:*
-        version: link:../eslint-plugin-storm-banner
+        version: link:../eslint-plugin-banner
       '@storm-software/eslint-plugin-pnpm':
         specifier: workspace:*
-        version: link:../eslint-plugin-storm-pnpm
+        version: link:../eslint-plugin-pnpm
       '@storm-software/eslint-plugin-tsdoc':
         specifier: workspace:*
-        version: link:../eslint-plugin-storm-tsdoc
+        version: link:../eslint-plugin-tsdoc
       '@storm-software/tsdoc':
         specifier: workspace:*
         version: link:../tsdoc
@@ -1067,7 +1067,7 @@ importers:
         specifier: 'catalog:'
         version: 4.4.3
 
-  packages/eslint-plugin-storm-banner:
+  packages/eslint-plugin-banner:
     dependencies:
       '@storm-software/package-constants':
         specifier: workspace:*
@@ -1122,7 +1122,7 @@ importers:
         specifier: 'catalog:'
         version: 0.22.2(@typescript/native-preview@7.0.0-dev.20250908.1)(oxc-resolver@11.20.0)(tsx@4.22.4)(typescript@5.9.3)
 
-  packages/eslint-plugin-storm-pnpm:
+  packages/eslint-plugin-pnpm:
     dependencies:
       '@eslint/core':
         specifier: ^1.2.1
@@ -1186,7 +1186,7 @@ importers:
         specifier: 'catalog:'
         version: 0.22.2(@typescript/native-preview@7.0.0-dev.20250908.1)(oxc-resolver@11.20.0)(tsx@4.22.4)(typescript@5.9.3)
 
-  packages/eslint-plugin-storm-tsdoc:
+  packages/eslint-plugin-tsdoc:
     dependencies:
       '@storm-software/package-constants':
         specifier: workspace:*
@@ -1529,13 +1529,13 @@ importers:
     dependencies:
       '@storm-software/eslint-plugin-banner':
         specifier: workspace:*
-        version: link:../eslint-plugin-storm-banner
+        version: link:../eslint-plugin-banner
       '@storm-software/eslint-plugin-pnpm':
         specifier: workspace:*
-        version: link:../eslint-plugin-storm-pnpm
+        version: link:../eslint-plugin-pnpm
       '@storm-software/eslint-plugin-tsdoc':
         specifier: workspace:*
-        version: link:../eslint-plugin-storm-tsdoc
+        version: link:../eslint-plugin-tsdoc
       defu:
         specifier: 'catalog:'
         version: 6.1.7
@@ -20029,7 +20029,7 @@ snapshots:
       '@microsoft/tsdoc': 0.15.1
       ajv: 8.12.0
       jju: 1.4.0
-      resolve: 1.22.12
+      resolve: 1.22.8
 
   '@microsoft/tsdoc-config@0.18.1':
     dependencies:
@@ -31663,7 +31663,7 @@ snapshots:
     dependencies:
       debug: 4.4.3
       module-details-from-path: 1.0.4
-      resolve: 1.22.12
+      resolve: 1.22.8
     transitivePeerDependencies:
       - supports-color
 
