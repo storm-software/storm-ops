@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Prettier
 
+## [0.59.101](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.59.101) (06/10/2026)
+
+### Bug Fixes
+
+- **prettier:** Fix issue with task order during build process ([316d5946d](https://github.com/storm-software/storm-ops/commit/316d5946d))
+
 ## [0.59.100](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.59.100) (06/10/2026)
 
 ### Miscellaneous

@@ -2,6 +2,25 @@
 
 # Changelog for Storm Ops - Workspace Tools
 
+## [1.296.27](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.296.27) (06/10/2026)
+
+### Bug Fixes
+
+- **prettier:** Fix issue with task order during build process ([316d5946d](https://github.com/storm-software/storm-ops/commit/316d5946d))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.81**
+- Updated **config-tools** to **v1.190.49**
+- Updated **esbuild** to **v0.53.210**
+- Updated **npm-tools** to **v0.6.167**
+- Updated **package-constants** to **v0.1.62**
+- Updated **pnpm-tools** to **v0.7.60**
+- Updated **prettier** to **v0.59.101**
+- Updated **testing-tools** to **v1.119.202**
+- Updated **tsdown** to **v0.45.210**
+- Updated **unbuild** to **v0.57.210**
+
 ## [1.296.26](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.296.26) (06/10/2026)
 
 ### Miscellaneous
