@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Untyped
 
+## [0.24.190](https://github.com/storm-software/storm-ops/releases/tag/untyped%400.24.190) (06/10/2026)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate `pnpm-lock.yaml` and `README.md` files ([989ff5a35](https://github.com/storm-software/storm-ops/commit/989ff5a35))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.80**
+- Updated **config-tools** to **v1.190.48**
+
 ## [0.24.189](https://github.com/storm-software/storm-ops/releases/tag/untyped%400.24.189) (06/10/2026)
 
 ### Miscellaneous

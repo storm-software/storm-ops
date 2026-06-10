@@ -2,6 +2,26 @@
 
 # Changelog for Storm Ops - Workspace Tools
 
+## [1.296.26](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.296.26) (06/10/2026)
+
+### Miscellaneous
+
+- **workspace-tools:** Update targets in shared Nx configurations ([20616fa98](https://github.com/storm-software/storm-ops/commit/20616fa98))
+- **monorepo:** Regenerate `pnpm-lock.yaml` and `README.md` files ([989ff5a35](https://github.com/storm-software/storm-ops/commit/989ff5a35))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.80**
+- Updated **config-tools** to **v1.190.48**
+- Updated **esbuild** to **v0.53.209**
+- Updated **npm-tools** to **v0.6.166**
+- Updated **package-constants** to **v0.1.61**
+- Updated **pnpm-tools** to **v0.7.59**
+- Updated **prettier** to **v0.59.100**
+- Updated **testing-tools** to **v1.119.201**
+- Updated **tsdown** to **v0.45.209**
+- Updated **unbuild** to **v0.57.209**
+
 ## [1.296.25](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.296.25) (06/10/2026)
 
 ### Miscellaneous

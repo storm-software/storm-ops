@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Cloudflare Tools
 
+## [0.71.188](https://github.com/storm-software/storm-ops/releases/tag/cloudflare-tools%400.71.188) (06/10/2026)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate `pnpm-lock.yaml` and `README.md` files ([989ff5a35](https://github.com/storm-software/storm-ops/commit/989ff5a35))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.80**
+- Updated **config-tools** to **v1.190.48**
+- Updated **workspace-tools** to **v1.296.26**
+
 ## [0.71.187](https://github.com/storm-software/storm-ops/releases/tag/cloudflare-tools%400.71.187) (06/10/2026)
 
 ### Miscellaneous

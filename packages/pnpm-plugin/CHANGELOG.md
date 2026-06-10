@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Pnpm Plugin
 
+## [0.1.159](https://github.com/storm-software/storm-ops/releases/tag/pnpm-plugin%400.1.159) (06/10/2026)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate `pnpm-lock.yaml` and `README.md` files ([989ff5a35](https://github.com/storm-software/storm-ops/commit/989ff5a35))
+
+### Updated Dependencies
+
+- Updated **package-constants** to **v0.1.61**
+- Updated **testing-tools** to **v1.119.201**
+
 ## [0.1.158](https://github.com/storm-software/storm-ops/releases/tag/pnpm-plugin%400.1.158) (06/10/2026)
 
 ### Miscellaneous

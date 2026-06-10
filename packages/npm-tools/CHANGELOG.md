@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Npm Tools
 
+## [0.6.166](https://github.com/storm-software/storm-ops/releases/tag/npm-tools%400.6.166) (06/10/2026)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate `pnpm-lock.yaml` and `README.md` files ([989ff5a35](https://github.com/storm-software/storm-ops/commit/989ff5a35))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.80**
+- Updated **config-tools** to **v1.190.48**
+- Updated **testing-tools** to **v1.119.201**
+
 ## [0.6.165](https://github.com/storm-software/storm-ops/releases/tag/npm-tools%400.6.165) (06/10/2026)
 
 ### Miscellaneous

@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Linting Tools
 
+## [1.133.78](https://github.com/storm-software/storm-ops/releases/tag/linting-tools%401.133.78) (06/10/2026)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate `pnpm-lock.yaml` and `README.md` files ([989ff5a35](https://github.com/storm-software/storm-ops/commit/989ff5a35))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.80**
+- Updated **config-tools** to **v1.190.48**
+
 ## [1.133.77](https://github.com/storm-software/storm-ops/releases/tag/linting-tools%401.133.77) (06/10/2026)
 
 ### Miscellaneous

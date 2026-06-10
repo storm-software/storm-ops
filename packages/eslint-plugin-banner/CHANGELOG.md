@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - ESLint Plugin Banner
 
+## [0.0.10](https://github.com/storm-software/storm-ops/releases/tag/eslint-plugin-banner%400.0.10) (06/10/2026)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate `pnpm-lock.yaml` and `README.md` files ([989ff5a35](https://github.com/storm-software/storm-ops/commit/989ff5a35))
+
+### Updated Dependencies
+
+- Updated **package-constants** to **v0.1.61**
+- Updated **prettier** to **v0.59.100**
+
 ## [0.0.9](https://github.com/storm-software/storm-ops/releases/tag/eslint-plugin-banner%400.0.9) (06/10/2026)
 
 ### Miscellaneous

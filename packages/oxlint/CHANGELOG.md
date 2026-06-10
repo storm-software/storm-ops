@@ -2,6 +2,20 @@
 
 # Changelog for Storm Ops - Oxlint
 
+## [0.0.11](https://github.com/storm-software/storm-ops/releases/tag/oxlint%400.0.11) (06/10/2026)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate `pnpm-lock.yaml` and `README.md` files ([989ff5a35](https://github.com/storm-software/storm-ops/commit/989ff5a35))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.80**
+- Updated **config-tools** to **v1.190.48**
+- Updated **eslint-plugin-banner** to **v0.0.10**
+- Updated **eslint-plugin-pnpm** to **v0.0.10**
+- Updated **eslint-plugin-tsdoc** to **v0.0.10**
+
 ## [0.0.10](https://github.com/storm-software/storm-ops/releases/tag/oxlint%400.0.10) (06/10/2026)
 
 ### Miscellaneous

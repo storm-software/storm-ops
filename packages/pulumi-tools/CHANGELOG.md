@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Pulumi Tools
 
+## [0.22.229](https://github.com/storm-software/storm-ops/releases/tag/pulumi-tools%400.22.229) (06/10/2026)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate `pnpm-lock.yaml` and `README.md` files ([989ff5a35](https://github.com/storm-software/storm-ops/commit/989ff5a35))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.80**
+- Updated **config-tools** to **v1.190.48**
+- Updated **workspace-tools** to **v1.296.26**
+
 ## [0.22.228](https://github.com/storm-software/storm-ops/releases/tag/pulumi-tools%400.22.228) (06/10/2026)
 
 ### Miscellaneous

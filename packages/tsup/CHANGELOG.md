@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Tsup
 
+## [0.2.206](https://github.com/storm-software/storm-ops/releases/tag/tsup%400.2.206) (06/10/2026)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate `pnpm-lock.yaml` and `README.md` files ([989ff5a35](https://github.com/storm-software/storm-ops/commit/989ff5a35))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.208**
+- Updated **config-tools** to **v1.190.48**
+
 ## [0.2.205](https://github.com/storm-software/storm-ops/releases/tag/tsup%400.2.205) (06/10/2026)
 
 ### Miscellaneous

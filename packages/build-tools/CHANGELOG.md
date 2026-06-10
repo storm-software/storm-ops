@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Build Tools
 
+## [0.158.208](https://github.com/storm-software/storm-ops/releases/tag/build-tools%400.158.208) (06/10/2026)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate `pnpm-lock.yaml` and `README.md` files ([989ff5a35](https://github.com/storm-software/storm-ops/commit/989ff5a35))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.80**
+- Updated **config-tools** to **v1.190.48**
+
 ## [0.158.207](https://github.com/storm-software/storm-ops/releases/tag/build-tools%400.158.207) (06/10/2026)
 
 ### Miscellaneous

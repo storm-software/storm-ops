@@ -2,6 +2,19 @@
 
 # Changelog for Storm Ops - Esbuild
 
+## [0.53.209](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.53.209) (06/10/2026)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate `pnpm-lock.yaml` and `README.md` files ([989ff5a35](https://github.com/storm-software/storm-ops/commit/989ff5a35))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.208**
+- Updated **config** to **v1.137.80**
+- Updated **config-tools** to **v1.190.48**
+- Updated **tsup** to **v0.2.206**
+
 ## [0.53.208](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.53.208) (06/10/2026)
 
 ### Miscellaneous

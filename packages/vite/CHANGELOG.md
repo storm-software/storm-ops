@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - Vite
 
+## [0.1.142](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.142) (06/10/2026)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate `pnpm-lock.yaml` and `README.md` files ([989ff5a35](https://github.com/storm-software/storm-ops/commit/989ff5a35))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.208**
+
 ## [0.1.141](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.141) (06/10/2026)
 
 ### Miscellaneous

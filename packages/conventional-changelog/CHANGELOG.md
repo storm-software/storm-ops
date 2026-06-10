@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Conventional Changelog
 
+## [0.3.209](https://github.com/storm-software/storm-ops/releases/tag/conventional-changelog%400.3.209) (06/10/2026)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate `pnpm-lock.yaml` and `README.md` files ([989ff5a35](https://github.com/storm-software/storm-ops/commit/989ff5a35))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.80**
+- Updated **config-tools** to **v1.190.48**
+
 ## [0.3.208](https://github.com/storm-software/storm-ops/releases/tag/conventional-changelog%400.3.208) (06/10/2026)
 
 ### Miscellaneous
