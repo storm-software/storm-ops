@@ -22,16 +22,6 @@ export default defineConfig([
     silent: true,
     bundle: true,
     skipNodeModulesBundle: true,
-    noExternal: [
-      "eslint-plugin-import-x",
-      "eslint-plugin-pnpm",
-      "eslint-plugin-tsdoc",
-      "minimatch",
-      "zod",
-      "date-fns",
-      "@storm-software/eslint-plugin-pnpm",
-      "@storm-software/eslint-plugin-tsdoc",
-      "@storm-software/eslint-plugin-banner"
-    ]
+    noExternal: ["eslint-plugin-pnpm"]
   }
 ]);

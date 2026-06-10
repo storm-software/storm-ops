@@ -843,15 +843,6 @@ importers:
       '@storm-software/config-tools':
         specifier: workspace:*
         version: link:../config-tools
-      '@storm-software/eslint-plugin-banner':
-        specifier: workspace:*
-        version: link:../eslint-plugin-banner
-      '@storm-software/eslint-plugin-pnpm':
-        specifier: workspace:*
-        version: link:../eslint-plugin-pnpm
-      '@storm-software/eslint-plugin-tsdoc':
-        specifier: workspace:*
-        version: link:../eslint-plugin-tsdoc
       '@storm-software/package-constants':
         specifier: workspace:*
         version: link:../package-constants
@@ -991,6 +982,15 @@ importers:
       '@prettier/plugin-xml':
         specifier: ^3.4.2
         version: 3.4.2(prettier@3.8.4)
+      '@storm-software/eslint-plugin-banner':
+        specifier: workspace:*
+        version: link:../eslint-plugin-banner
+      '@storm-software/eslint-plugin-pnpm':
+        specifier: workspace:*
+        version: link:../eslint-plugin-pnpm
+      '@storm-software/eslint-plugin-tsdoc':
+        specifier: workspace:*
+        version: link:../eslint-plugin-tsdoc
       '@stylistic/eslint-plugin-migrate':
         specifier: ^4.4.1
         version: 4.4.1(eslint@9.39.4(jiti@2.7.0))(typescript@5.9.3)
@@ -1158,8 +1158,8 @@ importers:
         specifier: ^4.0.4
         version: 4.0.4
       pnpm-workspace-yaml:
-        specifier: ^0.3.1
-        version: 0.3.1
+        specifier: ^0.3.0
+        version: 0.3.0
       tinyglobby:
         specifier: ^0.2.17
         version: 0.2.17
@@ -14119,9 +14119,6 @@ packages:
 
   pnpm-workspace-yaml@0.3.0:
     resolution: {integrity: sha512-akyhU8XeKUbVqOatMoiFWq9OCvYa8X9gHyZIB0dQEIHV73sXgbnUm7sOf2mpl3AoEFN4p4oFFxIJKQfsoAiuJg==}
-
-  pnpm-workspace-yaml@0.3.1:
-    resolution: {integrity: sha512-3nW5RLmREmZ8Pm8MbPsO2RM+99RRjYd25ynj3NV0cFsN7CcEl4sDFzgoFmSyduFwxFQ2Qbu3y2UdCh6HlyUOeA==}
 
   portfinder@1.0.38:
     resolution: {integrity: sha512-rEwq/ZHlJIKw++XtLAO8PPuOQA/zaPJOZJ37BVuN97nLpMJeuDVLVGRwbFoBgLudgdTMP2hdRJP++H+8QOA3vg==}
@@ -31238,10 +31235,6 @@ snapshots:
   pluralize@8.0.0: {}
 
   pnpm-workspace-yaml@0.3.0:
-    dependencies:
-      yaml: 2.9.0
-
-  pnpm-workspace-yaml@0.3.1:
     dependencies:
       yaml: 2.9.0
 

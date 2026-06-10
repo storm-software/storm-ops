@@ -32,3 +32,4 @@ export * from "./typescript";
 export * from "./unicorn";
 export * from "./unocss";
 export * from "./yaml";
+export * from "./zod";

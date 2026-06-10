@@ -3,6 +3,7 @@ import { builtinRules } from "eslint/use-at-your-own-risk";
 import fs from "node:fs/promises";
 import {
   astro,
+  banner,
   cspell,
   formatters,
   graphql,
@@ -32,9 +33,9 @@ import {
   typescript,
   unicorn,
   unocss,
-  yaml
+  yaml,
+  zod
 } from "../src/configs";
-import { zod } from "../src/configs/zod";
 import { combine } from "../src/utils/combine";
 
 const configs = await combine(
@@ -45,6 +46,7 @@ const configs = await combine(
       }
     }
   },
+  banner(),
   cspell(),
   astro(),
   formatters(),

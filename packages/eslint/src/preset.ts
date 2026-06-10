@@ -3,6 +3,8 @@ import { FlatConfigComposer } from "eslint-flat-config-utils";
 import { isPackageExists } from "local-pkg";
 import {
   astro,
+  banner,
+  cspell,
   disables,
   formatters,
   graphql,
@@ -13,32 +15,30 @@ import {
   jsonc,
   jsx,
   markdown,
+  mdx,
   next,
   node,
   nx,
   perfectionist,
+  pnpm,
+  prettier,
   react,
+  reactNative,
   regexp,
+  secrets,
   sortPackageJson,
   sortTsconfig,
   storybook,
   stylistic,
   test,
   toml,
+  tsdoc,
   typescript,
   unicorn,
   unocss,
-  yaml
+  yaml,
+  zod
 } from "./configs";
-import { banner } from "./configs/banner";
-import { cspell } from "./configs/cspell";
-import { mdx } from "./configs/mdx";
-import { pnpm } from "./configs/pnpm";
-import { prettier } from "./configs/prettier";
-import { reactNative } from "./configs/react-native";
-import { secrets } from "./configs/secrets";
-import { tsdoc } from "./configs/tsdoc";
-import { zod } from "./configs/zod";
 import { RuleOptions } from "./typegen";
 import type {
   Awaitable,
