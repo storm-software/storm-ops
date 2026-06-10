@@ -24,17 +24,63 @@
     "email": "contact@stormsoftware.com",
     "url": "https://stormsoftware.com"
   },
-  "type": "commonjs",
+  "type": "module",
   "exports": {
     ".": {
-      "import": "./index.js",
-      "require": "./index.cjs",
-      "default": "./index.js"
+      "require": {
+        "types": "./index.d.cts",
+        "default": "./index.cjs"
+      },
+      "import": {
+        "types": "./index.d.mts",
+        "default": "./index.mjs"
+      },
+      "default": {
+        "types": "./index.d.mts",
+        "default": "./index.mjs"
+      }
     },
     "./index": {
-      "import": "./index.js",
-      "require": "./index.cjs",
-      "default": "./index.js"
+      "require": {
+        "types": "./index.d.cts",
+        "default": "./index.cjs"
+      },
+      "import": {
+        "types": "./index.d.mts",
+        "default": "./index.mjs"
+      },
+      "default": {
+        "types": "./index.d.mts",
+        "default": "./index.mjs"
+      }
+    },
+    "./config": {
+      "require": {
+        "types": "./index.d.cts",
+        "default": "./index.cjs"
+      },
+      "import": {
+        "types": "./index.d.mts",
+        "default": "./index.mjs"
+      },
+      "default": {
+        "types": "./index.d.mts",
+        "default": "./index.mjs"
+      }
+    },
+    "./recommended": {
+      "require": {
+        "types": "./index.d.cts",
+        "default": "./index.cjs"
+      },
+      "import": {
+        "types": "./index.d.mts",
+        "default": "./index.mjs"
+      },
+      "default": {
+        "types": "./index.d.mts",
+        "default": "./index.mjs"
+      }
     },
     "./.prettierignore": "./.prettierignore",
     "./.prettierignore-exclude-packagejson": "./.prettierignore-exclude-packagejson",
@@ -56,7 +102,9 @@
     "./base.json",
     "./config.json",
     "./index.cjs",
-    "./index.js",
+    "./index.d.cjs",
+    "./index.mjs",
+    "./index.d.mjs",
     "./jsdoc.json",
     "./package.json",
     "./prisma.json",
