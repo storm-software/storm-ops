@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - ESLint Plugin Banner
 
+## [0.0.12](https://github.com/storm-software/storm-ops/releases/tag/eslint-plugin-banner%400.0.12) (06/10/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update `README.md` files ([fe24f6887](https://github.com/storm-software/storm-ops/commit/fe24f6887))
+
+### Updated Dependencies
+
+- Updated **package-constants** to **v0.1.63**
+- Updated **prettier** to **v0.59.102**
+
 ## [0.0.11](https://github.com/storm-software/storm-ops/releases/tag/eslint-plugin-banner%400.0.11) (06/10/2026)
 
 ### Updated Dependencies

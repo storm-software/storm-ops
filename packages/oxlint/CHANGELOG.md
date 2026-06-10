@@ -2,6 +2,20 @@
 
 # Changelog for Storm Ops - Oxlint
 
+## [0.0.13](https://github.com/storm-software/storm-ops/releases/tag/oxlint%400.0.13) (06/10/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update `README.md` files ([fe24f6887](https://github.com/storm-software/storm-ops/commit/fe24f6887))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.82**
+- Updated **config-tools** to **v1.190.50**
+- Updated **eslint-plugin-banner** to **v0.0.12**
+- Updated **eslint-plugin-pnpm** to **v0.0.12**
+- Updated **eslint-plugin-tsdoc** to **v0.0.12**
+
 ## [0.0.12](https://github.com/storm-software/storm-ops/releases/tag/oxlint%400.0.12) (06/10/2026)
 
 ### Updated Dependencies

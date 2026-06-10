@@ -2,6 +2,26 @@
 
 # Changelog for Storm Ops - ESLint
 
+## [0.170.72](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.170.72) (06/10/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update `README.md` files ([fe24f6887](https://github.com/storm-software/storm-ops/commit/fe24f6887))
+
+### Bug Fixes
+
+- **eslint:** Update bundle to include patched dependencies ([bec4a5acb](https://github.com/storm-software/storm-ops/commit/bec4a5acb))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.82**
+- Updated **config-tools** to **v1.190.50**
+- Updated **eslint-plugin-banner** to **v0.0.12**
+- Updated **eslint-plugin-pnpm** to **v0.0.12**
+- Updated **eslint-plugin-tsdoc** to **v0.0.12**
+- Updated **package-constants** to **v0.1.63**
+- Updated **tsdoc** to **v0.13.203**
+
 ## [0.170.71](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.170.71) (06/10/2026)
 
 ### Updated Dependencies

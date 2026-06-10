@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Oxfmt
 
+## [0.0.6](https://github.com/storm-software/storm-ops/releases/tag/oxfmt%400.0.6) (06/10/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update `README.md` files ([fe24f6887](https://github.com/storm-software/storm-ops/commit/fe24f6887))
+
 ## [0.0.4](https://github.com/storm-software/storm-ops/releases/tag/oxfmt%400.0.4) (06/10/2026)
 
 ### Miscellaneous
