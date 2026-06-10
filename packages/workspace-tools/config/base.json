@@ -166,18 +166,6 @@
     ]
   },
   "targetDefaults": {
-    "clean": {
-      "inputs": ["{workspaceRoot}/dist/{projectRoot}", "{projectRoot}/dist"],
-      "outputs": ["{workspaceRoot}/dist/{projectRoot}", "{projectRoot}/dist"],
-      "dependsOn": ["^clean"],
-      "executor": "nx:run-commands",
-      "options": {
-        "commands": [
-          "pnpm exec rimraf --glob {projectRoot}/dist",
-          "pnpm exec rimraf dist/{projectRoot}"
-        ]
-      }
-    },
     "nx-release-publish": {
       "dependsOn": ["build", "^nx-release-publish"]
     }

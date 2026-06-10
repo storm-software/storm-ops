@@ -360,7 +360,7 @@ export async function getLatestGitTagForPattern(
       writeTrace(
         `Not using strict preid, will use the greatest matching tag of project "${
           additionalInterpolationData.projectName
-        }": \n${matchingTags.join(", ")}`,
+        }"`,
         workspaceConfig
       );
 

@@ -193,6 +193,7 @@
         "version": {
           "currentVersionResolver": "git-tag",
           "specifierSource": "conventional-commits",
+          "groupPreVersionCommand": "pnpm build",
           "manifestRootsToUpdate": [
             "{projectRoot}",
             {
