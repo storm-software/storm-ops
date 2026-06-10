@@ -2,6 +2,29 @@
 
 # Changelog for Storm Ops - Workspace Tools
 
+## [1.296.25](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.296.25) (06/10/2026)
+
+### Miscellaneous
+
+- **monorepo:** Align package dependencies and update `README.md` files ([a1d1fd5b8](https://github.com/storm-software/storm-ops/commit/a1d1fd5b8))
+
+### Bug Fixes
+
+- **eslint:** Resolve issue using internal eslint plugin packages ([64b3b7dfd](https://github.com/storm-software/storm-ops/commit/64b3b7dfd))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.79**
+- Updated **config-tools** to **v1.190.47**
+- Updated **esbuild** to **v0.53.208**
+- Updated **npm-tools** to **v0.6.165**
+- Updated **package-constants** to **v0.1.60**
+- Updated **pnpm-tools** to **v0.7.58**
+- Updated **prettier** to **v0.59.99**
+- Updated **testing-tools** to **v1.119.200**
+- Updated **tsdown** to **v0.45.208**
+- Updated **unbuild** to **v0.57.208**
+
 ## [1.296.24](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.296.24) (06/08/2026)
 
 ### Updated Dependencies

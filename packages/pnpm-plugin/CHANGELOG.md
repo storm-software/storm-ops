@@ -2,6 +2,21 @@
 
 # Changelog for Storm Ops - Pnpm Plugin
 
+## [0.1.158](https://github.com/storm-software/storm-ops/releases/tag/pnpm-plugin%400.1.158) (06/10/2026)
+
+### Miscellaneous
+
+- **monorepo:** Align package dependencies and update `README.md` files ([a1d1fd5b8](https://github.com/storm-software/storm-ops/commit/a1d1fd5b8))
+
+### Bug Fixes
+
+- **eslint:** Resolve issue using internal eslint plugin packages ([64b3b7dfd](https://github.com/storm-software/storm-ops/commit/64b3b7dfd))
+
+### Updated Dependencies
+
+- Updated **package-constants** to **v0.1.60**
+- Updated **testing-tools** to **v1.119.200**
+
 ## [0.1.157](https://github.com/storm-software/storm-ops/releases/tag/pnpm-plugin%400.1.157) (06/08/2026)
 
 ### Updated Dependencies

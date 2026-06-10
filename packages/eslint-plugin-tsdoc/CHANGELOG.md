@@ -2,6 +2,22 @@
 
 # Changelog for Storm Ops - ESLint Plugin Tsdoc
 
+## [0.0.9](https://github.com/storm-software/storm-ops/releases/tag/eslint-plugin-tsdoc%400.0.9) (06/10/2026)
+
+### Miscellaneous
+
+- **monorepo:** Align package dependencies and update `README.md` files ([a1d1fd5b8](https://github.com/storm-software/storm-ops/commit/a1d1fd5b8))
+
+### Bug Fixes
+
+- **eslint:** Resolve issue using internal eslint plugin packages ([64b3b7dfd](https://github.com/storm-software/storm-ops/commit/64b3b7dfd))
+
+### Updated Dependencies
+
+- Updated **package-constants** to **v0.1.60**
+- Updated **prettier** to **v0.59.99**
+- Updated **tsdoc** to **v0.13.200**
+
 ## [0.0.8](https://github.com/storm-software/storm-ops/releases/tag/eslint-plugin-tsdoc%400.0.8) (06/08/2026)
 
 ### Updated Dependencies

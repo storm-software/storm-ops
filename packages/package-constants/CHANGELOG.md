@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - Package Constants
 
+## [0.1.60](https://github.com/storm-software/storm-ops/releases/tag/package-constants%400.1.60) (06/10/2026)
+
+### Miscellaneous
+
+- **monorepo:** Align package dependencies and update `README.md` files ([a1d1fd5b8](https://github.com/storm-software/storm-ops/commit/a1d1fd5b8))
+
+### Bug Fixes
+
+- **eslint:** Resolve issue using internal eslint plugin packages ([64b3b7dfd](https://github.com/storm-software/storm-ops/commit/64b3b7dfd))
+
 ## [0.1.58](https://github.com/storm-software/storm-ops/releases/tag/package-constants%400.1.58) (06/08/2026)
 
 ### Miscellaneous

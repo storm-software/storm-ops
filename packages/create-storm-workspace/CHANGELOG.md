@@ -2,6 +2,20 @@
 
 # Changelog for Storm Ops - Create Storm Workspace
 
+## [1.97.207](https://github.com/storm-software/storm-ops/releases/tag/create-storm-workspace%401.97.207) (06/10/2026)
+
+### Miscellaneous
+
+- **monorepo:** Align package dependencies and update `README.md` files ([a1d1fd5b8](https://github.com/storm-software/storm-ops/commit/a1d1fd5b8))
+
+### Bug Fixes
+
+- **eslint:** Resolve issue using internal eslint plugin packages ([64b3b7dfd](https://github.com/storm-software/storm-ops/commit/64b3b7dfd))
+
+### Updated Dependencies
+
+- Updated **config-tools** to **v1.190.47**
+
 ## [1.97.206](https://github.com/storm-software/storm-ops/releases/tag/create-storm-workspace%401.97.206) (06/08/2026)
 
 ### Updated Dependencies

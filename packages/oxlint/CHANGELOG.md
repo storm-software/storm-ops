@@ -2,6 +2,24 @@
 
 # Changelog for Storm Ops - Oxlint
 
+## [0.0.10](https://github.com/storm-software/storm-ops/releases/tag/oxlint%400.0.10) (06/10/2026)
+
+### Miscellaneous
+
+- **monorepo:** Align package dependencies and update `README.md` files ([a1d1fd5b8](https://github.com/storm-software/storm-ops/commit/a1d1fd5b8))
+
+### Bug Fixes
+
+- **eslint:** Resolve issue using internal eslint plugin packages ([64b3b7dfd](https://github.com/storm-software/storm-ops/commit/64b3b7dfd))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.79**
+- Updated **config-tools** to **v1.190.47**
+- Updated **eslint-plugin-banner** to **v0.0.9**
+- Updated **eslint-plugin-pnpm** to **v0.0.9**
+- Updated **eslint-plugin-tsdoc** to **v0.0.9**
+
 ## [0.0.9](https://github.com/storm-software/storm-ops/releases/tag/oxlint%400.0.9) (06/08/2026)
 
 ### Bug Fixes
