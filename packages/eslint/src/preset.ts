@@ -30,6 +30,7 @@ import {
   unocss,
   yaml
 } from "./configs";
+import { banner } from "./configs/banner";
 import { cspell } from "./configs/cspell";
 import { mdx } from "./configs/mdx";
 import { pnpm } from "./configs/pnpm";
@@ -110,7 +111,7 @@ export function getStormConfig(
   const {
     name,
     globals = {},
-    lineEndings = "unix",
+    banner: enableBanner = true,
     astro: enableAstro = false,
     autoRenamePlugins = true,
     componentExts = [],
@@ -125,20 +126,22 @@ export function getStormConfig(
     storybook: enableStorybook = false,
     typescript: enableTypeScript = isPackageExists("typescript"),
     unicorn: enableUnicorn = true,
+    jsdoc: enableJSDoc = false,
     tsdoc: enableTSDoc = true,
     test: enableTest = true,
     unocss: enableUnoCSS = false,
-    zod: enableZod = true
+    zod: enableZod = false
   } = options;
 
   let isInEditor = options.isInEditor;
-  if (isInEditor == null) {
+  if (!isInEditor) {
     isInEditor = isInEditorEnv();
-    if (isInEditor)
+    if (isInEditor) {
       // eslint-disable-next-line no-console
       console.log(
         "[@storm-software/eslint] Detected running in editor, some rules are disabled."
       );
+    }
   }
 
   const stylisticOptions = !options.stylistic
@@ -147,8 +150,9 @@ export function getStormConfig(
       ? options.stylistic
       : {};
 
-  if (stylisticOptions && !("jsx" in stylisticOptions))
+  if (stylisticOptions && !("jsx" in stylisticOptions)) {
     stylisticOptions.jsx = enableJsx;
+  }
 
   const configs: Awaitable<TypedFlatConfigItem[]>[] = [];
 
@@ -180,16 +184,11 @@ export function getStormConfig(
   configs.push(
     ignores(options.ignores),
     javascript({
-      name,
       globals,
-      lineEndings,
       isInEditor,
       overrides: getOverrides(options, "javascript")
     }),
     node(),
-    jsdoc({
-      stylistic: stylisticOptions
-    }),
     imports({
       stylistic: stylisticOptions
     }),
@@ -197,6 +196,16 @@ export function getStormConfig(
     perfectionist(),
     secrets({ json: options.jsonc !== false })
   );
+
+  if (enableBanner) {
+    configs.push(
+      banner({
+        ...resolveSubOptions(options, "banner"),
+        name,
+        overrides: getOverrides(options, "banner")
+      })
+    );
+  }
 
   if (!stylisticOptions) {
     configs.push(prettier());
@@ -208,6 +217,15 @@ export function getStormConfig(
 
   if (enableUnicorn) {
     configs.push(unicorn(enableUnicorn === true ? {} : enableUnicorn));
+  }
+
+  if (enableJSDoc) {
+    configs.push(
+      jsdoc({
+        ...resolveSubOptions(options, "jsdoc"),
+        overrides: getOverrides(options, "jsdoc")
+      })
+    );
   }
 
   if (enableTSDoc) {
@@ -246,7 +264,7 @@ export function getStormConfig(
     configs.push(
       stylistic({
         ...stylisticOptions,
-        lineEndings,
+        lineEndings: stylisticOptions.lineEndings ?? "unix",
         lessOpinionated: options.lessOpinionated,
         overrides: getOverrides(options, "stylistic")
       })

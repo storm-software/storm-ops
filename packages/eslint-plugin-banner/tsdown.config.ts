@@ -28,7 +28,10 @@ const config = defineConfig({
   clean: true,
   dts: true,
   sourcemap: false,
-  treeshake: true
+  treeshake: true,
+  deps: {
+    skipNodeModulesBundle: false
+  }
 });
 
 export default config;

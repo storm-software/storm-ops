@@ -1,10 +1,10 @@
-import type { OptionsStylistic, TypedFlatConfigItem } from "../types";
+import type { OptionsJSDoc, TypedFlatConfigItem } from "../types";
 import { interopDefault } from "../utils/helpers";
 
 export async function jsdoc(
-  options: OptionsStylistic = {}
+  options: OptionsJSDoc = {}
 ): Promise<TypedFlatConfigItem[]> {
-  const { stylistic = true } = options;
+  const { stylistic = true, severity = "warn" } = options;
 
   return [
     {
@@ -13,26 +13,26 @@ export async function jsdoc(
         jsdoc: await interopDefault(import("eslint-plugin-jsdoc"))
       },
       rules: {
-        "jsdoc/check-access": "warn",
-        "jsdoc/check-param-names": "warn",
-        "jsdoc/check-property-names": "warn",
+        "jsdoc/check-access": severity,
+        "jsdoc/check-param-names": severity,
+        "jsdoc/check-property-names": severity,
         "jsdoc/check-types": "off",
-        "jsdoc/empty-tags": "warn",
-        "jsdoc/implements-on-classes": "warn",
-        "jsdoc/no-defaults": "warn",
-        "jsdoc/no-multi-asterisks": "warn",
-        "jsdoc/require-param-name": "warn",
-        "jsdoc/require-property": "warn",
-        "jsdoc/require-property-description": "warn",
-        "jsdoc/require-property-name": "warn",
-        "jsdoc/require-returns-check": "warn",
-        "jsdoc/require-returns-description": "warn",
-        "jsdoc/require-yields-check": "warn",
+        "jsdoc/empty-tags": severity,
+        "jsdoc/implements-on-classes": severity,
+        "jsdoc/no-defaults": severity,
+        "jsdoc/no-multi-asterisks": severity,
+        "jsdoc/require-param-name": severity,
+        "jsdoc/require-property": severity,
+        "jsdoc/require-property-description": severity,
+        "jsdoc/require-property-name": severity,
+        "jsdoc/require-returns-check": severity,
+        "jsdoc/require-returns-description": severity,
+        "jsdoc/require-yields-check": severity,
 
         ...(stylistic
           ? {
-              "jsdoc/check-alignment": "warn",
-              "jsdoc/multiline-blocks": "warn"
+              "jsdoc/check-alignment": severity,
+              "jsdoc/multiline-blocks": severity
             }
           : {})
       }

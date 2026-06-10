@@ -1,4 +1,4 @@
-import { GLOB_EXCLUDE } from "@storm-software/package-constants";
+import { GLOB_EXCLUDE } from "@storm-software/package-constants/globs";
 import type { Linter } from "eslint";
 import parserJsonc from "jsonc-eslint-parser";
 import parserYaml from "yaml-eslint-parser";
@@ -6,13 +6,13 @@ import { plugin } from "../plugin";
 
 const config: Linter.Config[] = [
   {
-    name: "storm-pnpm/recommended/setup",
+    name: "pnpm/recommended/setup",
     plugins: {
-      "storm-pnpm": plugin
+      pnpm: plugin
     }
   },
   {
-    name: "storm-pnpm/recommended/package-json",
+    name: "pnpm/recommended/package-json",
     ignores: GLOB_EXCLUDE,
     files: ["package.json", "**/package.json"],
     languageOptions: {
@@ -35,7 +35,7 @@ const config: Linter.Config[] = [
     }
   },
   {
-    name: "storm-pnpm/recommended/pnpm-workspace",
+    name: "pnpm/recommended/pnpm-workspace",
     ignores: GLOB_EXCLUDE,
     files: ["pnpm-workspace.yaml", "**/pnpm-workspace.yaml"],
     languageOptions: {

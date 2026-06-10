@@ -1,10 +1,10 @@
+import { GLOB_MDX } from "@storm-software/package-constants/globs";
 import type {
   OptionsComponentExts,
   OptionsFiles,
   OptionsOverrides,
   TypedFlatConfigItem
 } from "../types";
-import { GLOB_MDX } from "../utils/constants";
 import { ensurePackages, interopDefault } from "../utils/helpers";
 
 export async function mdx(

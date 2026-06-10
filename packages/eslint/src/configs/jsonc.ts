@@ -1,10 +1,14 @@
+import {
+  GLOB_JSON,
+  GLOB_JSON5,
+  GLOB_JSONC
+} from "@storm-software/package-constants/globs";
 import type {
   OptionsFiles,
   OptionsOverrides,
   OptionsStylistic,
   TypedFlatConfigItem
 } from "../types";
-import { GLOB_JSON, GLOB_JSON5, GLOB_JSONC } from "../utils/constants";
 import { interopDefault } from "../utils/helpers";
 
 export async function jsonc(

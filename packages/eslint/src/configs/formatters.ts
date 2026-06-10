@@ -1,9 +1,3 @@
-import defu from "defu";
-import type {
-  OptionsFormatters,
-  StylisticConfig,
-  TypedFlatConfigItem
-} from "../types";
 import {
   GLOB_ASTRO,
   GLOB_ASTRO_TS,
@@ -16,7 +10,13 @@ import {
   GLOB_SCSS,
   GLOB_SVG,
   GLOB_XML
-} from "../utils/constants";
+} from "@storm-software/package-constants/globs";
+import defu from "defu";
+import type {
+  OptionsFormatters,
+  StylisticConfig,
+  TypedFlatConfigItem
+} from "../types";
 import {
   ensurePackages,
   interopDefault,
@@ -130,7 +130,7 @@ export async function formatters(
             "error",
             mergePrettierOptions(prettierOptions, {
               parser: "css"
-            })
+            }) as { [key: string]: unknown; parser: "css" }
           ]
         }
       },
@@ -145,7 +145,7 @@ export async function formatters(
             "error",
             mergePrettierOptions(prettierOptions, {
               parser: "scss"
-            })
+            }) as { [key: string]: unknown; parser: "scss" }
           ]
         }
       },
@@ -160,7 +160,7 @@ export async function formatters(
             "error",
             mergePrettierOptions(prettierOptions, {
               parser: "less"
-            })
+            }) as { [key: string]: unknown; parser: "less" }
           ]
         }
       }
@@ -179,7 +179,7 @@ export async function formatters(
           "error",
           mergePrettierOptions(prettierOptions, {
             parser: "html"
-          })
+          }) as { [key: string]: unknown; parser: "html" }
         ]
       }
     });
@@ -201,7 +201,7 @@ export async function formatters(
               parser: "xml",
               plugins: ["@prettier/plugin-xml"]
             }
-          )
+          ) as { [key: string]: unknown; parser: "xml"; plugins: string[] }
         ]
       }
     });
@@ -222,7 +222,7 @@ export async function formatters(
               parser: "xml",
               plugins: ["@prettier/plugin-xml"]
             }
-          )
+          ) as { [key: string]: unknown; parser: "xml"; plugins: string[] }
         ]
       }
     });
@@ -267,7 +267,7 @@ export async function formatters(
           mergePrettierOptions(prettierOptions, {
             parser: "astro",
             plugins: ["prettier-plugin-astro"]
-          })
+          }) as { [key: string]: unknown; parser: "astro"; plugins: string[] }
         ]
       }
     });
@@ -299,7 +299,7 @@ export async function formatters(
           "error",
           mergePrettierOptions(prettierOptions, {
             parser: "graphql"
-          })
+          }) as { [key: string]: unknown; parser: "graphql" }
         ]
       }
     });

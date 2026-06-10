@@ -5,7 +5,7 @@ import packageJson from "../package.json" with { type: "json" };
 export const plugin = {
   ...base,
   meta: {
-    name: "storm-pnpm",
+    name: "pnpm",
     version: packageJson.version
   }
 } as Plugin;

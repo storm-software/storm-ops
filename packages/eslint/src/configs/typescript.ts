@@ -1,3 +1,10 @@
+import {
+  GLOB_ASTRO_TS,
+  GLOB_MARKDOWN,
+  GLOB_SRC_FILE,
+  GLOB_TS,
+  GLOB_TSX
+} from "@storm-software/package-constants/globs";
 import type {
   OptionsComponentExts,
   OptionsFiles,
@@ -7,13 +14,6 @@ import type {
   OptionsTypeScriptWithTypes,
   TypedFlatConfigItem
 } from "../types";
-import {
-  GLOB_ASTRO_TS,
-  GLOB_MARKDOWN,
-  GLOB_SRC_FILE,
-  GLOB_TS,
-  GLOB_TSX
-} from "../utils/constants";
 import { findWorkspaceRoot } from "../utils/find-workspace-root";
 import { interopDefault, renameRules } from "../utils/helpers";
 import { getTsConfigPath } from "../utils/tsconfig-path";

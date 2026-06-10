@@ -1,6 +1,6 @@
+import { GLOB_TS, GLOB_TSX } from "@storm-software/package-constants/globs";
 import pluginTsdoc from "eslint-plugin-tsdoc";
 import type { OptionsFiles, OptionsTSDoc, TypedFlatConfigItem } from "../types";
-import { GLOB_TS, GLOB_TSX } from "../utils/constants";
 
 export async function tsdoc(
   options: OptionsFiles & OptionsTSDoc = {}

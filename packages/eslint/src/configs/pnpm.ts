@@ -3,9 +3,9 @@ import {
   ProjectGraph,
   readCachedProjectGraph
 } from "@nx/devkit";
+import plugin from "@storm-software/eslint-plugin-pnpm";
 import { existsSync } from "node:fs";
 import { readFile } from "node:fs/promises";
-import { pluginPnpm } from "../plugins";
 import type { OptionsPnpm, TypedFlatConfigItem } from "../types";
 import { joinPaths } from "../utils/correct-paths";
 import { findWorkspaceRoot } from "../utils/find-workspace-root";
@@ -75,7 +75,7 @@ export async function pnpm(
     {
       name: "storm/pnpm/setup",
       plugins: {
-        pnpm: pluginPnpm
+        pnpm: plugin
       }
     },
     {

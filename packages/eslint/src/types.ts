@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { DepConstraint } from "@nx/eslint-plugin/src/utils/runtime-lint-utils";
+import type { Options as BannerOptions } from "@storm-software/eslint-plugin-banner/rules/banner";
 import type { StylisticCustomizeOptions } from "@stylistic/eslint-plugin";
 import type { ParserOptions } from "@typescript-eslint/parser";
 import type { Linter } from "eslint";
@@ -148,6 +149,20 @@ export interface OptionsTSDoc extends OptionsOverrides {
    * The path to a TSDoc config file.
    */
   configFile?: string;
+}
+
+export interface OptionsJSDoc extends OptionsOverrides {
+  /**
+   * The JSDoc ESLint rule severity.
+   *
+   * @defaultValue "error"
+   */
+  severity?: "error" | "warn" | "off";
+
+  /**
+   * Enable stylistic rules for JSDoc.
+   */
+  stylistic?: boolean;
 }
 
 export interface OptionsTypeScriptParserOptions {
@@ -504,29 +519,24 @@ export type ESLintGlobalsPropValue =
   | "writable"
   | "writeable";
 
-export interface OptionsJavascript {
-  /**
-   * The name of the repository used in adding the banner comments
-   */
-  name?: string;
+export type OptionsBanner = OptionsOverrides & BannerOptions[0];
 
+export interface OptionsJavascript {
   /**
    * An object containing a list of extra global variables to include in the configuration.
    */
   globals?: Record<string, ESLintGlobalsPropValue>;
-
-  /**
-   * The style of line endings to use.
-   *
-   * @defaultValue "unix"
-   */
-  lineEndings?: "unix" | "windows";
 }
 
 export interface OptionsConfig
-  extends OptionsComponentExts,
-    OptionsJavascript,
-    OptionsProjectType {
+  extends OptionsComponentExts, OptionsJavascript, OptionsProjectType {
+  /**
+   * Options to control the generated file header banner.
+   *
+   * @see https://github.com/storm-software/eslint-plugin-banner
+   */
+  banner?: boolean | OptionsBanner;
+
   /**
    * Enable gitignore support.
    *
@@ -600,7 +610,14 @@ export interface OptionsConfig
   unicorn?: boolean | OptionsUnicorn;
 
   /**
-   * Options for eslint-plugin-tsdoc.
+   * Options for eslint-plugin-jsdoc.
+   *
+   * @defaultValue false
+   */
+  jsdoc?: boolean | OptionsJSDoc;
+
+  /**
+   * Options for @storm-software/eslint-plugin-tsdoc.
    *
    * @defaultValue true
    */
@@ -609,7 +626,7 @@ export interface OptionsConfig
   /**
    * Enable Zod support.
    *
-   * @defaultValue true
+   * @defaultValue false
    */
   zod?: boolean | OptionsOverrides;
 

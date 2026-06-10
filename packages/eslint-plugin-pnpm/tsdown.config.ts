@@ -30,6 +30,7 @@ const config = defineConfig({
   sourcemap: false,
   treeshake: true,
   deps: {
+    skipNodeModulesBundle: false,
     alwaysBundle: ["eslint-plugin-pnpm"]
   }
 });

@@ -1,16 +1,19 @@
-import { GLOB_EXCLUDE, GLOB_SRC } from "@storm-software/package-constants";
+import {
+  GLOB_EXCLUDE,
+  GLOB_SRC
+} from "@storm-software/package-constants/globs";
 import type { Linter } from "eslint";
 import { plugin } from "../plugin";
 
 const config: Linter.Config = {
   files: [GLOB_SRC],
   ignores: GLOB_EXCLUDE,
-  name: "storm-banner/recommended",
+  name: "banner/recommended",
   plugins: {
-    "storm-banner": plugin
+    banner: plugin
   },
   rules: {
-    "storm-banner/banner": ["error", { commentType: "block", numNewlines: 2 }]
+    "banner/banner": ["error", { commentType: "block", numNewlines: 2 }]
   }
 };
 

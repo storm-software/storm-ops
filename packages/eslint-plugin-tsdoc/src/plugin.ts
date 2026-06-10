@@ -5,7 +5,7 @@ import packageJson from "../package.json" with { type: "json" };
 export const plugin = {
   ...base,
   meta: {
-    name: "storm-tsdoc",
+    name: "tsdoc",
     version: packageJson.version
   }
 } satisfies ESLint.Plugin;

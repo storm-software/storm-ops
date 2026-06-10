@@ -1,10 +1,10 @@
+import { GLOB_ASTRO } from "@storm-software/package-constants/globs";
 import type {
   OptionsFiles,
   OptionsOverrides,
   OptionsStylistic,
   TypedFlatConfigItem
 } from "../types";
-import { GLOB_ASTRO } from "../utils/constants";
 import { interopDefault } from "../utils/helpers";
 
 export async function astro(

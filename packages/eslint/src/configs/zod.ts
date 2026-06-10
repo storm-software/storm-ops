@@ -1,6 +1,6 @@
+import { GLOB_SRC } from "@storm-software/package-constants/globs";
 import { pluginImportZod } from "../plugins";
 import type { OptionsOverrides, TypedFlatConfigItem } from "../types";
-import { GLOB_SRC } from "../utils/constants";
 
 /**
  * Config for Import-Zod ESLint plugin

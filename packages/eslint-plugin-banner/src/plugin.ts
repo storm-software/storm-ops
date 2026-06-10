@@ -4,7 +4,7 @@ import banner from "./rules/banner";
 
 export const plugin = {
   meta: {
-    name: "storm-banner",
+    name: "banner",
     version: packageJson.version
   },
   rules: {

@@ -22,13 +22,6 @@ export default defineConfig([
     silent: true,
     bundle: true,
     skipNodeModulesBundle: true,
-    noExternal: [
-      "eslint-plugin-pnpm",
-      "eslint-plugin-tsdoc",
-      "eslint-plugin-import-x",
-      "minimatch",
-      "zod",
-      "date-fns"
-    ]
+    noExternal: ["eslint-plugin-import-x", "minimatch", "zod", "date-fns"]
   }
 ]);

@@ -1,3 +1,4 @@
+import { GLOB_TESTS } from "@storm-software/package-constants/globs";
 import { pluginNoOnlyTests, pluginVitest } from "../plugins";
 import type {
   OptionsFiles,
@@ -5,7 +6,6 @@ import type {
   OptionsOverrides,
   TypedFlatConfigItem
 } from "../types";
-import { GLOB_TESTS } from "../utils/constants";
 
 // Hold the reference so we don't redeclare the plugin on each call
 let plugin: any;

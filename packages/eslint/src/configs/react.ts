@@ -1,3 +1,10 @@
+import {
+  GLOB_ASTRO_TS,
+  GLOB_MARKDOWN,
+  GLOB_SRC,
+  GLOB_TS,
+  GLOB_TSX
+} from "@storm-software/package-constants/globs";
 import { isPackageExists } from "local-pkg";
 import type {
   OptionsFiles,
@@ -6,13 +13,6 @@ import type {
   OptionsTypeScriptWithTypes,
   TypedFlatConfigItem
 } from "../types";
-import {
-  GLOB_ASTRO_TS,
-  GLOB_MARKDOWN,
-  GLOB_SRC,
-  GLOB_TS,
-  GLOB_TSX
-} from "../utils/constants";
 import { ensurePackages, interopDefault } from "../utils/helpers";
 
 // react refresh
