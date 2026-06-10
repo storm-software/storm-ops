@@ -26,7 +26,7 @@ const config = defineConfig({
   outDir: "dist",
   exports: false,
   shims: true,
-  clean: true,
+  clean: false,
   dts: true,
   sourcemap: false,
   fixedExtension: true,

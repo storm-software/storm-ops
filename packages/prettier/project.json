@@ -6,6 +6,7 @@
   "targets": {
     "build-json": {
       "executor": "nx:run-commands",
+      "dependsOn": ["clean", "^build"],
       "options": {
         "commands": [
           "pnpm copyfiles packages/prettier/src/recommended.json tmp",
@@ -17,7 +18,7 @@
     },
     "build-base": {
       "executor": "nx:run-commands",
-      "dependsOn": ["clean", "^build"],
+      "dependsOn": ["build-json"],
       "options": {
         "command": "tsdown --config=tsdown.config.ts",
         "cwd": "{projectRoot}"
@@ -25,7 +26,7 @@
     },
     "build": {
       "executor": "nx:run-commands",
-      "dependsOn": ["build-base", "build-json"],
+      "dependsOn": ["build-base"],
       "options": {
         "commands": [
           "pnpm copyfiles LICENSE dist/packages/prettier",
