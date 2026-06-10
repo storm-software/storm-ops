@@ -442,8 +442,8 @@ importers:
         specifier: 'catalog:'
         version: 11.1.0
       resolve:
-        specifier: 1.22.8
-        version: 1.22.8
+        specifier: 1.22.12
+        version: 1.22.12
       resolve-from:
         specifier: 5.0.0
         version: 5.0.0
@@ -1165,7 +1165,7 @@ importers:
         specifier: ^0.2.17
         version: 0.2.17
       yaml:
-        specifier: ^2.9.0
+        specifier: 'catalog:'
         version: 2.9.0
       yaml-eslint-parser:
         specifier: 'catalog:'
@@ -14918,10 +14918,6 @@ packages:
   resolve@1.22.12:
     resolution: {integrity: sha512-TyeJ1zif53BPfHootBGwPRYT1RUt6oGWsaQr8UyZW/eAm9bKoijtvruSDEmZHm92CwS9nj7/fWttqPCgzep8CA==}
     engines: {node: '>= 0.4'}
-    hasBin: true
-
-  resolve@1.22.8:
-    resolution: {integrity: sha512-oKWePCxqpd6FlLvGV1VU0x7bkPmmCNolxzjMf4NczoDnQcIWrAF+cPtZn5i6n+RfD2d9i0tzpKnG6Yk168yIyw==}
     hasBin: true
 
   responselike@2.0.1:
@@ -32017,12 +32013,6 @@ snapshots:
   resolve@1.22.12:
     dependencies:
       es-errors: 1.3.0
-      is-core-module: 2.16.2
-      path-parse: 1.0.7
-      supports-preserve-symlinks-flag: 1.0.0
-
-  resolve@1.22.8:
-    dependencies:
       is-core-module: 2.16.2
       path-parse: 1.0.7
       supports-preserve-symlinks-flag: 1.0.0
