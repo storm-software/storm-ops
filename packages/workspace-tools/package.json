@@ -1,6 +1,6 @@
 {
   "name": "@storm-software/workspace-tools",
-  "version": "1.296.29",
+  "version": "1.296.30",
   "description": "Tools for managing a Storm workspace, including various Nx generators and executors for common development tasks.",
   "keywords": [
     "monorepo",
@@ -269,7 +269,7 @@
     "zod": "catalog:"
   },
   "devDependencies": {
-    "@napi-rs/cli": "^3.7.0",
+    "@napi-rs/cli": "^3.7.1",
     "@storm-software/package-constants": "workspace:*",
     "@types/micromatch": "^4.0.10",
     "@types/node": "catalog:",
