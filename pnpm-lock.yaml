@@ -939,6 +939,12 @@ importers:
       eslint-plugin-yml:
         specifier: ^1.19.1
         version: 1.19.1(eslint@9.39.4(jiti@2.7.0))
+      fdir:
+        specifier: ^6.5.0
+        version: 6.5.0(picomatch@4.0.4)
+      find-up-simple:
+        specifier: ^1.0.1
+        version: 1.0.1
       globals:
         specifier: ^16.5.0
         version: 16.5.0
@@ -951,6 +957,18 @@ importers:
       parse-gitignore:
         specifier: ^2.0.0
         version: 2.0.0
+      pathe:
+        specifier: ^2.0.3
+        version: 2.0.3
+      picomatch:
+        specifier: ^4.0.4
+        version: 4.0.4
+      pnpm-workspace-yaml:
+        specifier: ^0.3.1
+        version: 0.3.1
+      tinyglobby:
+        specifier: ^0.2.17
+        version: 0.2.17
       toml-eslint-parser:
         specifier: ^0.10.1
         version: 0.10.1
