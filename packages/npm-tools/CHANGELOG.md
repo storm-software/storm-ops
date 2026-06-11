@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Npm Tools
 
+## [0.6.172](https://github.com/storm-software/storm-ops/releases/tag/npm-tools%400.6.172) (06/11/2026)
+
+### Bug Fixes
+
+- **git-tools:** Update lefthook configurations to reduce duplicates ([2a41fcbb1](https://github.com/storm-software/storm-ops/commit/2a41fcbb1))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.86**
+- Updated **config-tools** to **v1.190.54**
+- Updated **testing-tools** to **v1.119.207**
+
 ## [0.6.171](https://github.com/storm-software/storm-ops/releases/tag/npm-tools%400.6.171) (06/11/2026)
 
 ### Updated Dependencies

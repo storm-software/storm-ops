@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - Markdownlint
 
+## [0.30.210](https://github.com/storm-software/storm-ops/releases/tag/markdownlint%400.30.210) (06/11/2026)
+
+### Bug Fixes
+
+- **git-tools:** Update lefthook configurations to reduce duplicates ([2a41fcbb1](https://github.com/storm-software/storm-ops/commit/2a41fcbb1))
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.207**
+
 ## [0.30.209](https://github.com/storm-software/storm-ops/releases/tag/markdownlint%400.30.209) (06/11/2026)
 
 ### Updated Dependencies

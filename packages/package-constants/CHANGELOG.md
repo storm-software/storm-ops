@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Package Constants
 
+## [0.1.67](https://github.com/storm-software/storm-ops/releases/tag/package-constants%400.1.67) (06/11/2026)
+
+### Bug Fixes
+
+- **git-tools:** Update lefthook configurations to reduce duplicates ([2a41fcbb1](https://github.com/storm-software/storm-ops/commit/2a41fcbb1))
+
 ## [0.1.63](https://github.com/storm-software/storm-ops/releases/tag/package-constants%400.1.63) (06/10/2026)
 
 ### Miscellaneous

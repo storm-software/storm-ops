@@ -2,6 +2,19 @@
 
 # Changelog for Storm Ops - Esbuild
 
+## [0.53.215](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.53.215) (06/11/2026)
+
+### Bug Fixes
+
+- **git-tools:** Update lefthook configurations to reduce duplicates ([2a41fcbb1](https://github.com/storm-software/storm-ops/commit/2a41fcbb1))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.214**
+- Updated **config** to **v1.137.86**
+- Updated **config-tools** to **v1.190.54**
+- Updated **tsup** to **v0.2.212**
+
 ## [0.53.214](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.53.214) (06/11/2026)
 
 ### Updated Dependencies

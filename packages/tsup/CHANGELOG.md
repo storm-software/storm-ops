@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Tsup
 
+## [0.2.212](https://github.com/storm-software/storm-ops/releases/tag/tsup%400.2.212) (06/11/2026)
+
+### Bug Fixes
+
+- **git-tools:** Update lefthook configurations to reduce duplicates ([2a41fcbb1](https://github.com/storm-software/storm-ops/commit/2a41fcbb1))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.214**
+- Updated **config-tools** to **v1.190.54**
+
 ## [0.2.211](https://github.com/storm-software/storm-ops/releases/tag/tsup%400.2.211) (06/11/2026)
 
 ### Updated Dependencies

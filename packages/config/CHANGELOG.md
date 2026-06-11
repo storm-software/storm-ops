@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - Config
 
+## [1.137.86](https://github.com/storm-software/storm-ops/releases/tag/config%401.137.86) (06/11/2026)
+
+### Bug Fixes
+
+- **git-tools:** Update lefthook configurations to reduce duplicates ([2a41fcbb1](https://github.com/storm-software/storm-ops/commit/2a41fcbb1))
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.207**
+
 ## [1.137.85](https://github.com/storm-software/storm-ops/releases/tag/config%401.137.85) (06/11/2026)
 
 ### Updated Dependencies

@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - K8s Tools
 
+## [0.42.236](https://github.com/storm-software/storm-ops/releases/tag/k8s-tools%400.42.236) (06/11/2026)
+
+### Bug Fixes
+
+- **git-tools:** Update lefthook configurations to reduce duplicates ([2a41fcbb1](https://github.com/storm-software/storm-ops/commit/2a41fcbb1))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.86**
+- Updated **config-tools** to **v1.190.54**
+- Updated **workspace-tools** to **v1.296.33**
+
 ## [0.42.235](https://github.com/storm-software/storm-ops/releases/tag/k8s-tools%400.42.235) (06/11/2026)
 
 ### Updated Dependencies

@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Testing Tools
 
+## [1.119.207](https://github.com/storm-software/storm-ops/releases/tag/testing-tools%401.119.207) (06/11/2026)
+
+### Bug Fixes
+
+- **git-tools:** Update lefthook configurations to reduce duplicates ([2a41fcbb1](https://github.com/storm-software/storm-ops/commit/2a41fcbb1))
+
 ## [1.119.203](https://github.com/storm-software/storm-ops/releases/tag/testing-tools%401.119.203) (06/10/2026)
 
 ### Miscellaneous

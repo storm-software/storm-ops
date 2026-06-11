@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Oxfmt
 
+## [0.0.10](https://github.com/storm-software/storm-ops/releases/tag/oxfmt%400.0.10) (06/11/2026)
+
+### Bug Fixes
+
+- **git-tools:** Update lefthook configurations to reduce duplicates ([2a41fcbb1](https://github.com/storm-software/storm-ops/commit/2a41fcbb1))
+
 ## [0.0.6](https://github.com/storm-software/storm-ops/releases/tag/oxfmt%400.0.6) (06/10/2026)
 
 ### Miscellaneous

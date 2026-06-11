@@ -2,6 +2,19 @@
 
 # Changelog for Storm Ops - Git Tools
 
+## [2.131.61](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.131.61) (06/11/2026)
+
+### Bug Fixes
+
+- **git-tools:** Update lefthook configurations to reduce duplicates ([2a41fcbb1](https://github.com/storm-software/storm-ops/commit/2a41fcbb1))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.86**
+- Updated **config-tools** to **v1.190.54**
+- Updated **conventional-changelog** to **v0.3.215**
+- Updated **package-constants** to **v0.1.67**
+
 ## [2.131.60](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.131.60) (06/11/2026)
 
 ### Updated Dependencies

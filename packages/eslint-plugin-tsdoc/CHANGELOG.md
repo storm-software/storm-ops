@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - ESLint Plugin Tsdoc
 
+## [0.0.17](https://github.com/storm-software/storm-ops/releases/tag/eslint-plugin-tsdoc%400.0.17) (06/11/2026)
+
+### Bug Fixes
+
+- **git-tools:** Update lefthook configurations to reduce duplicates ([2a41fcbb1](https://github.com/storm-software/storm-ops/commit/2a41fcbb1))
+
+### Updated Dependencies
+
+- Updated **package-constants** to **v0.1.67**
+- Updated **prettier** to **v0.59.107**
+- Updated **tsdoc** to **v0.13.207**
+
 ## [0.0.16](https://github.com/storm-software/storm-ops/releases/tag/eslint-plugin-tsdoc%400.0.16) (06/11/2026)
 
 ### Updated Dependencies

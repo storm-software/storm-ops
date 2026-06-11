@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - Vite
 
+## [0.1.148](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.148) (06/11/2026)
+
+### Bug Fixes
+
+- **git-tools:** Update lefthook configurations to reduce duplicates ([2a41fcbb1](https://github.com/storm-software/storm-ops/commit/2a41fcbb1))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.214**
+
 ## [0.1.147](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.147) (06/11/2026)
 
 ### Updated Dependencies

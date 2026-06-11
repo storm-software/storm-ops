@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Tsconfig
 
+## [0.48.121](https://github.com/storm-software/storm-ops/releases/tag/tsconfig%400.48.121) (06/11/2026)
+
+### Bug Fixes
+
+- **git-tools:** Update lefthook configurations to reduce duplicates ([2a41fcbb1](https://github.com/storm-software/storm-ops/commit/2a41fcbb1))
+
 ## [0.48.117](https://github.com/storm-software/storm-ops/releases/tag/tsconfig%400.48.117) (06/10/2026)
 
 ### Miscellaneous

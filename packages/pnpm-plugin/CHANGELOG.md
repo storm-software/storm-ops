@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Pnpm Plugin
 
+## [0.1.165](https://github.com/storm-software/storm-ops/releases/tag/pnpm-plugin%400.1.165) (06/11/2026)
+
+### Bug Fixes
+
+- **git-tools:** Update lefthook configurations to reduce duplicates ([2a41fcbb1](https://github.com/storm-software/storm-ops/commit/2a41fcbb1))
+
+### Updated Dependencies
+
+- Updated **package-constants** to **v0.1.67**
+- Updated **testing-tools** to **v1.119.207**
+
 ## [0.1.164](https://github.com/storm-software/storm-ops/releases/tag/pnpm-plugin%400.1.164) (06/11/2026)
 
 ### Updated Dependencies

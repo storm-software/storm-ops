@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - CSpell
 
+## [0.46.122](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.46.122) (06/11/2026)
+
+### Bug Fixes
+
+- **git-tools:** Update lefthook configurations to reduce duplicates ([2a41fcbb1](https://github.com/storm-software/storm-ops/commit/2a41fcbb1))
+
 ## [0.46.118](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.46.118) (06/10/2026)
 
 ### Miscellaneous

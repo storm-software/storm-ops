@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Build Tools
 
+## [0.158.214](https://github.com/storm-software/storm-ops/releases/tag/build-tools%400.158.214) (06/11/2026)
+
+### Bug Fixes
+
+- **git-tools:** Update lefthook configurations to reduce duplicates ([2a41fcbb1](https://github.com/storm-software/storm-ops/commit/2a41fcbb1))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.86**
+- Updated **config-tools** to **v1.190.54**
+
 ## [0.158.213](https://github.com/storm-software/storm-ops/releases/tag/build-tools%400.158.213) (06/11/2026)
 
 ### Updated Dependencies
