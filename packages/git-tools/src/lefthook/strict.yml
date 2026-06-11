@@ -6,44 +6,10 @@
 
 $schema: https://raw.githubusercontent.com/evilmartians/lefthook/refs/heads/master/schema.json
 extends:
-  - ./minimal.yml
+  - ./recommended.yml
 
 pre-commit:
   commands:
-    readme:
-      glob: "**/{README.md,README.*.md,readme/**/*,executors.json,generators.json}"
-      run: pnpm exec storm-git readme --templates="tools/readme-templates" --workspace
-      stage_fixed: true
-    lint:
-      glob:
-        - "*.js"
-        - "*.ts"
-        - "*.cjs"
-        - "*.mjs"
-        - "*.d.cts"
-        - "*.d.mts"
-        - "*.jsx"
-        - "*.tsx"
-        - "*.json"
-        - "*.jsonc"
-        - "*.yaml"
-        - "*.yml"
-        - "*.md"
-        - "*.mdx"
-        - "*.markdown"
-        - "*.css"
-        - "*.scss"
-        - "*.sass"
-        - "*.less"
-        - "*.stylus"
-        - "*.graphql"
-        - "*.gql"
-        - "*.xml"
-        - "*.svg"
-        - "*.env"
-        - ".env.{local,development,test,production,staging}"
-      run: pnpm lint --files {staged_files}
-      stage_fixed: true
     treefmt:
       glob: "**/*"
       run: treefmt {staged_files}

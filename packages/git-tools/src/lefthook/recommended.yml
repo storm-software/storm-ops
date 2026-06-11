@@ -11,34 +11,8 @@ extends:
 pre-commit:
   commands:
     storm-lint:
-      glob:
-        - "*.js"
-        - "*.ts"
-        - "*.cjs"
-        - "*.mjs"
-        - "*.d.cts"
-        - "*.d.mts"
-        - "*.jsx"
-        - "*.tsx"
-        - "*.json"
-        - "*.jsonc"
-        - "*.yaml"
-        - "*.yml"
-        - "*.md"
-        - "*.mdx"
-        - "*.markdown"
-        - "*.css"
-        - "*.scss"
-        - "*.sass"
-        - "*.less"
-        - "*.stylus"
-        - "*.graphql"
-        - "*.gql"
-        - "*.xml"
-        - "*.svg"
-        - "*.env"
-        - ".env.{local,development,test,production,staging}"
-      run: pnpm exec storm-lint all --skip-cspell --skip-circular-deps
+      glob: "**/*"
+      run: pnpm lint --files {staged_files}
       stage_fixed: true
     readme:
       glob: "**/{README.md,README.*.md,readme/**/*,package.json,executors.json,generators.json}"
@@ -52,14 +26,4 @@ pre-commit:
         --ignore-path="node_modules/@storm-software/prettier/.prettierignore-exclude-packagejson"
         --cache --cache-location="node_modules/.cache/prettier/workspace.cache"
         {staged_files}
-      stage_fixed: true
-    treefmt:
-      glob: "**/*"
-      run: treefmt {staged_files}
-      stage_fixed: true
-    lint:
-      glob: "**/*"
-      run:
-        pnpm nx affected --target=lint --files="{staged_files}" --exclude=monorepo
-        --outputStyle=dynamic-legacy --parallel=3
       stage_fixed: true
