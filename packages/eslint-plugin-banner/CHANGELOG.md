@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - ESLint Plugin Banner
 
+## [0.0.16](https://github.com/storm-software/storm-ops/releases/tag/eslint-plugin-banner%400.0.16) (06/11/2026)
+
+### Bug Fixes
+
+- **eslint-plugin-banner:** Resolve issue with invalid configuration parameters ([137bdd333](https://github.com/storm-software/storm-ops/commit/137bdd333))
+
 ## [0.0.15](https://github.com/storm-software/storm-ops/releases/tag/eslint-plugin-banner%400.0.15) (06/11/2026)
 
 ### Updated Dependencies
