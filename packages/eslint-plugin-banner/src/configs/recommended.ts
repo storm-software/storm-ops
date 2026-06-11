@@ -13,7 +13,7 @@ const config: Linter.Config = {
     banner: plugin
   },
   rules: {
-    "banner/banner": ["error", { commentType: "block", numNewlines: 2 }]
+    "banner/banner": ["error", { commentStyle: "block", newlines: 2 }]
   }
 };
 
