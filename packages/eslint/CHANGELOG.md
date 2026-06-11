@@ -2,6 +2,22 @@
 
 # Changelog for Storm Ops - ESLint
 
+## [0.170.75](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.170.75) (06/11/2026)
+
+### Bug Fixes
+
+- **eslint:** Resolve issue with missing package dependencies ([efe6f6d4a](https://github.com/storm-software/storm-ops/commit/efe6f6d4a))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.85**
+- Updated **config-tools** to **v1.190.53**
+- Updated **eslint-plugin-banner** to **v0.0.15**
+- Updated **eslint-plugin-pnpm** to **v0.0.15**
+- Updated **eslint-plugin-tsdoc** to **v0.0.15**
+- Updated **package-constants** to **v0.1.66**
+- Updated **tsdoc** to **v0.13.206**
+
 ## [0.170.74](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.170.74) (06/11/2026)
 
 ### Bug Fixes
