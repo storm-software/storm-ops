@@ -67,9 +67,25 @@
       }
     },
     {
-      "files": "**/*.{json,jsonc,json5}",
+      "files": "**/*.json",
       "options": {
         "parser": "json",
+        "trailingComma": "none",
+        "objectWrap": "preserve"
+      }
+    },
+    {
+      "files": "**/*.jsonc",
+      "options": {
+        "parser": "jsonc",
+        "trailingComma": "none",
+        "objectWrap": "preserve"
+      }
+    },
+    {
+      "files": "**/*.json5",
+      "options": {
+        "parser": "json5",
         "trailingComma": "none",
         "objectWrap": "preserve"
       }

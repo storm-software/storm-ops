@@ -95,23 +95,17 @@
     "./tailwindcss.json": "./tailwindcss.json",
     "./package.json": "./package.json"
   },
+  "main": "./index.cjs",
+  "types": "./index.d.cts",
+  "typings": "./index.d.mts",
   "files": [
     "./.prettierignore",
     "./.prettierignore-exclude-packagejson",
-    "./all.json",
-    "./base.json",
-    "./config.json",
-    "./index.cjs",
-    "./index.d.cjs",
-    "./index.mjs",
-    "./index.d.mjs",
-    "./jsdoc.json",
-    "./package.json",
-    "./prisma.json",
-    "./recommended.json",
-    "./exclude-packagejson.json",
-    "./solidity.json",
-    "./tailwindcss.json"
+    "./*.json",
+    "./*.cjs",
+    "./*.d.cts",
+    "./*.mjs",
+    "./*.d.mts"
   ],
   "dependencies": {
     "prettier-plugin-jsdoc": "^1.8.1",
@@ -153,7 +147,7 @@
       "optional": false
     },
     "prettier-plugin-prisma": {
-      "optional": false
+      "optional": true
     },
     "prettier-plugin-sh": {
       "optional": false
