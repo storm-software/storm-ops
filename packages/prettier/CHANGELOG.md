@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Prettier
 
+## [0.59.106](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.59.106) (06/11/2026)
+
+### Miscellaneous
+
+- **prettier:** Ensure types are provided in dist package ([c48534205](https://github.com/storm-software/storm-ops/commit/c48534205))
+
 ## [0.59.102](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.59.102) (06/10/2026)
 
 ### Miscellaneous
