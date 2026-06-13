@@ -24,6 +24,20 @@ index e2be0294a87d6aea0a335f6448ccb7417c053a99..cc6dd3d387692017a0ea22d37004e109
  
    function sort(array) {
      return [].concat(array).sort((a, b) => {
+diff --git a/lib/rules/split-platform-components.js b/lib/rules/split-platform-components.js
+index 31ce4861531bc6ea6cb33163c7f4ab06835201e5..b1dd1435939301e1a6f74b31efd02d46211d4bbf 100644
+--- a/lib/rules/split-platform-components.js
++++ b/lib/rules/split-platform-components.js
+@@ -71,8 +71,7 @@ function create(context) {
+       }
+     },
+     'Program:exit': function () {
+-      const filename = context.getFilename();
+-      reportErrors(reactComponents, filename);
++      reportErrors(reactComponents, context.filename || context.getFilename());
+     },
+   };
+ }
 diff --git a/lib/util/Components.js b/lib/util/Components.js
 index f744d52fa076f5a284fd02ed5d852cbb51848b5b..e78f0d5120629d96951fbea41d4ca274cbedcd5a 100644
 --- a/lib/util/Components.js
