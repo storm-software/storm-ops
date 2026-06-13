@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Linting Tools
 
+## [1.133.87](https://github.com/storm-software/storm-ops/releases/tag/linting-tools%401.133.87) (06/13/2026)
+
+### Features
+
+- **eslint-config-react:** Initial check-in of the shared React ESLint config package ([8f39c5c32](https://github.com/storm-software/storm-ops/commit/8f39c5c32))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.89**
+- Updated **config-tools** to **v1.190.57**
+
 ## [1.133.86](https://github.com/storm-software/storm-ops/releases/tag/linting-tools%401.133.86) (06/13/2026)
 
 ### Bug Fixes

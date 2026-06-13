@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Tsdoc
 
+## [0.13.210](https://github.com/storm-software/storm-ops/releases/tag/tsdoc%400.13.210) (06/13/2026)
+
+### Features
+
+- **eslint-config-react:** Initial check-in of the shared React ESLint config package ([8f39c5c32](https://github.com/storm-software/storm-ops/commit/8f39c5c32))
+
 ## [0.13.209](https://github.com/storm-software/storm-ops/releases/tag/tsdoc%400.13.209) (06/13/2026)
 
 ### Bug Fixes

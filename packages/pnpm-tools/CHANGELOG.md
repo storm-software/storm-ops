@@ -2,6 +2,20 @@
 
 # Changelog for Storm Ops - Pnpm Tools
 
+## [0.7.68](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.7.68) (06/13/2026)
+
+### Features
+
+- **eslint-config-react:** Initial check-in of the shared React ESLint config package ([8f39c5c32](https://github.com/storm-software/storm-ops/commit/8f39c5c32))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.89**
+- Updated **config-tools** to **v1.190.57**
+- Updated **npm-tools** to **v0.6.175**
+- Updated **package-constants** to **v0.1.70**
+- Updated **testing-tools** to **v1.119.210**
+
 ## [0.7.67](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.7.67) (06/13/2026)
 
 ### Bug Fixes

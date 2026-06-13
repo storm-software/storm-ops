@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Package Constants
 
+## [0.1.70](https://github.com/storm-software/storm-ops/releases/tag/package-constants%400.1.70) (06/13/2026)
+
+### Features
+
+- **eslint-config-react:** Initial check-in of the shared React ESLint config package ([8f39c5c32](https://github.com/storm-software/storm-ops/commit/8f39c5c32))
+
 ## [0.1.69](https://github.com/storm-software/storm-ops/releases/tag/package-constants%400.1.69) (06/13/2026)
 
 ### Bug Fixes

@@ -2,6 +2,25 @@
 
 # Changelog for Storm Ops - Workspace Tools
 
+## [1.296.36](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.296.36) (06/13/2026)
+
+### Features
+
+- **eslint-config-react:** Initial check-in of the shared React ESLint config package ([8f39c5c32](https://github.com/storm-software/storm-ops/commit/8f39c5c32))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.89**
+- Updated **config-tools** to **v1.190.57**
+- Updated **esbuild** to **v0.53.218**
+- Updated **npm-tools** to **v0.6.175**
+- Updated **package-constants** to **v0.1.70**
+- Updated **pnpm-tools** to **v0.7.68**
+- Updated **prettier** to **v0.59.110**
+- Updated **testing-tools** to **v1.119.210**
+- Updated **tsdown** to **v0.45.218**
+- Updated **unbuild** to **v0.57.218**
+
 ## [1.296.35](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.296.35) (06/13/2026)
 
 ### Bug Fixes

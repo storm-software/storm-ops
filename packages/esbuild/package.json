@@ -1,6 +1,6 @@
 {
   "name": "@storm-software/esbuild",
-  "version": "0.53.217",
+  "version": "0.53.218",
   "private": false,
   "description": "A package containing `esbuild` utilities for building Storm Software libraries and applications",
   "keywords": [

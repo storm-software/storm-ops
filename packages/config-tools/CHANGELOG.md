@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Config Tools
 
+## [1.190.57](https://github.com/storm-software/storm-ops/releases/tag/config-tools%401.190.57) (06/13/2026)
+
+### Features
+
+- **eslint-config-react:** Initial check-in of the shared React ESLint config package ([8f39c5c32](https://github.com/storm-software/storm-ops/commit/8f39c5c32))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.89**
+- Updated **testing-tools** to **v1.119.210**
+
 ## [1.190.56](https://github.com/storm-software/storm-ops/releases/tag/config-tools%401.190.56) (06/13/2026)
 
 ### Bug Fixes

@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Cloudflare Tools
 
+## [0.71.198](https://github.com/storm-software/storm-ops/releases/tag/cloudflare-tools%400.71.198) (06/13/2026)
+
+### Features
+
+- **eslint-config-react:** Initial check-in of the shared React ESLint config package ([8f39c5c32](https://github.com/storm-software/storm-ops/commit/8f39c5c32))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.89**
+- Updated **config-tools** to **v1.190.57**
+- Updated **workspace-tools** to **v1.296.36**
+
 ## [0.71.197](https://github.com/storm-software/storm-ops/releases/tag/cloudflare-tools%400.71.197) (06/13/2026)
 
 ### Bug Fixes

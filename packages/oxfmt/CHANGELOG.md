@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Oxfmt
 
+## [0.0.13](https://github.com/storm-software/storm-ops/releases/tag/oxfmt%400.0.13) (06/13/2026)
+
+### Features
+
+- **eslint-config-react:** Initial check-in of the shared React ESLint config package ([8f39c5c32](https://github.com/storm-software/storm-ops/commit/8f39c5c32))
+
 ## [0.0.12](https://github.com/storm-software/storm-ops/releases/tag/oxfmt%400.0.12) (06/13/2026)
 
 ### Bug Fixes

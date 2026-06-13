@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Npm Tools
 
+## [0.6.175](https://github.com/storm-software/storm-ops/releases/tag/npm-tools%400.6.175) (06/13/2026)
+
+### Features
+
+- **eslint-config-react:** Initial check-in of the shared React ESLint config package ([8f39c5c32](https://github.com/storm-software/storm-ops/commit/8f39c5c32))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.89**
+- Updated **config-tools** to **v1.190.57**
+- Updated **testing-tools** to **v1.119.210**
+
 ## [0.6.174](https://github.com/storm-software/storm-ops/releases/tag/npm-tools%400.6.174) (06/13/2026)
 
 ### Bug Fixes

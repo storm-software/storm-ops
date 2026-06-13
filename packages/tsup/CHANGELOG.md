@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Tsup
 
+## [0.2.215](https://github.com/storm-software/storm-ops/releases/tag/tsup%400.2.215) (06/13/2026)
+
+### Features
+
+- **eslint-config-react:** Initial check-in of the shared React ESLint config package ([8f39c5c32](https://github.com/storm-software/storm-ops/commit/8f39c5c32))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.217**
+- Updated **config-tools** to **v1.190.57**
+
 ## [0.2.214](https://github.com/storm-software/storm-ops/releases/tag/tsup%400.2.214) (06/13/2026)
 
 ### Bug Fixes

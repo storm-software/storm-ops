@@ -2,6 +2,20 @@
 
 # Changelog for Storm Ops - Oxlint
 
+## [0.0.22](https://github.com/storm-software/storm-ops/releases/tag/oxlint%400.0.22) (06/13/2026)
+
+### Features
+
+- **eslint-config-react:** Initial check-in of the shared React ESLint config package ([8f39c5c32](https://github.com/storm-software/storm-ops/commit/8f39c5c32))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.89**
+- Updated **config-tools** to **v1.190.57**
+- Updated **eslint-plugin-banner** to **v0.0.21**
+- Updated **eslint-plugin-pnpm** to **v0.0.20**
+- Updated **eslint-plugin-tsdoc** to **v0.0.20**
+
 ## [0.0.21](https://github.com/storm-software/storm-ops/releases/tag/oxlint%400.0.21) (06/13/2026)
 
 ### Bug Fixes

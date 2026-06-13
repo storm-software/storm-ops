@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Build Tools
 
+## [0.158.217](https://github.com/storm-software/storm-ops/releases/tag/build-tools%400.158.217) (06/13/2026)
+
+### Features
+
+- **eslint-config-react:** Initial check-in of the shared React ESLint config package ([8f39c5c32](https://github.com/storm-software/storm-ops/commit/8f39c5c32))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.89**
+- Updated **config-tools** to **v1.190.57**
+
 ## [0.158.216](https://github.com/storm-software/storm-ops/releases/tag/build-tools%400.158.216) (06/13/2026)
 
 ### Bug Fixes

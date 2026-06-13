@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Projen
 
+## [0.21.239](https://github.com/storm-software/storm-ops/releases/tag/projen%400.21.239) (06/13/2026)
+
+### Features
+
+- **eslint-config-react:** Initial check-in of the shared React ESLint config package ([8f39c5c32](https://github.com/storm-software/storm-ops/commit/8f39c5c32))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.89**
+- Updated **config-tools** to **v1.190.57**
+- Updated **workspace-tools** to **v1.296.36**
+
 ## [0.21.238](https://github.com/storm-software/storm-ops/releases/tag/projen%400.21.238) (06/13/2026)
 
 ### Bug Fixes

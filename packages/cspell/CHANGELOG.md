@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - CSpell
 
+## [0.46.125](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.46.125) (06/13/2026)
+
+### Features
+
+- **eslint-config-react:** Initial check-in of the shared React ESLint config package ([8f39c5c32](https://github.com/storm-software/storm-ops/commit/8f39c5c32))
+
 ## [0.46.124](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.46.124) (06/13/2026)
 
 ### Bug Fixes

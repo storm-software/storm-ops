@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - ESLint Plugin Tsdoc
 
+## [0.0.20](https://github.com/storm-software/storm-ops/releases/tag/eslint-plugin-tsdoc%400.0.20) (06/13/2026)
+
+### Features
+
+- **eslint-config-react:** Initial check-in of the shared React ESLint config package ([8f39c5c32](https://github.com/storm-software/storm-ops/commit/8f39c5c32))
+
+### Updated Dependencies
+
+- Updated **package-constants** to **v0.1.70**
+- Updated **prettier** to **v0.59.110**
+- Updated **tsdoc** to **v0.13.210**
+
 ## [0.0.19](https://github.com/storm-software/storm-ops/releases/tag/eslint-plugin-tsdoc%400.0.19) (06/13/2026)
 
 ### Bug Fixes

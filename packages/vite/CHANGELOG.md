@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - Vite
 
+## [0.1.151](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.151) (06/13/2026)
+
+### Features
+
+- **eslint-config-react:** Initial check-in of the shared React ESLint config package ([8f39c5c32](https://github.com/storm-software/storm-ops/commit/8f39c5c32))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.217**
+
 ## [0.1.150](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.150) (06/13/2026)
 
 ### Bug Fixes

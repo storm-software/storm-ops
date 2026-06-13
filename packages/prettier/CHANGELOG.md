@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Prettier
 
+## [0.59.110](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.59.110) (06/13/2026)
+
+### Features
+
+- **eslint-config-react:** Initial check-in of the shared React ESLint config package ([8f39c5c32](https://github.com/storm-software/storm-ops/commit/8f39c5c32))
+
 ## [0.59.109](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.59.109) (06/13/2026)
 
 ### Bug Fixes
