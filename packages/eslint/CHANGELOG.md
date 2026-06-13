@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - ESLint
 
+## [0.170.83](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.170.83) (06/13/2026)
+
+### Bug Fixes
+
+- **eslint:** Resolve issue applying react plugin prefixes ([1a00ae11a](https://github.com/storm-software/storm-ops/commit/1a00ae11a))
+
 ## [0.170.82](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.170.82) (06/13/2026)
 
 ### Bug Fixes
