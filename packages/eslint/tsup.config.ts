@@ -26,6 +26,7 @@ export default defineConfig([
       "eslint-plugin-import-x",
       "eslint-plugin-pnpm",
       "eslint-plugin-tsdoc",
+      "eslint-plugin-react-native",
       "minimatch",
       "zod",
       "date-fns",

@@ -139,7 +139,9 @@
   },
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "dependencies": {
     "@antfu/install-pkg": "^1.1.0",
     "@clack/prompts": "^0.10.1",
@@ -249,7 +251,6 @@
     "eslint-plugin-mdx": "^3.8.1",
     "eslint-plugin-react-compiler": "19.1.0-rc.2",
     "eslint-plugin-react-hooks": "^7.1.1",
-    "eslint-plugin-react-native": "^5.0.0",
     "eslint-plugin-react-refresh": "^0.5.2",
     "eslint-plugin-relay": "^1.8.3",
     "eslint-plugin-storybook": "^0.11.0",

@@ -54,7 +54,7 @@ catalog:
   date-fns: "^4.4.0"
   defu: "^6.1.7"
   esbuild: "^0.25.12"
-  eslint: "^9.39.4"
+  eslint: "^10.5.0"
   eslint-doc-generator: "^3.6.0"
   eslint-flat-config-utils: "^2.1.4"
   eslint-plugin-eslint-plugin: "^7.4.0"
@@ -155,12 +155,13 @@ overrides:
 patchedDependencies:
   eslint-plugin-import-x: "patches/eslint-plugin-import-x.patch"
   eslint-plugin-pnpm@0.3.0: "patches/eslint-plugin-pnpm@0.3.0.patch"
+  eslint-plugin-react-native: patches/eslint-plugin-react-native.patch
   eslint-plugin-tsdoc: "patches/eslint-plugin-tsdoc.patch"
   tsup@8.4.0: "patches/tsup@8.4.0.patch"
 preferWorkspacePackages: true
 shamefullyHoist: true
 shellEmulator: true
 supportedArchitectures:
-  cpu: ["current"]
+  cpu: [ "current" ]
 useNodeVersion: "26.2.0"
 verifyDepsBeforeRun: "install"
