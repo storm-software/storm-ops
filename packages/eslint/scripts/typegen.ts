@@ -83,15 +83,17 @@ const configs = await combine(
   zod()
 );
 
-const configNames = configs.map(i => i.name).filter(Boolean) as string[];
+await fs.writeFile(
+  "src/typegen.d.ts",
+  `${await flatConfigsToRulesDTS(configs, {
+    includeAugmentation: false
+  })}
 
-let dts = await flatConfigsToRulesDTS(configs, {
-  includeAugmentation: false
-});
-
-dts += `
 // Names of all the configs
-export type ConfigNames = ${configNames.map(i => `'${i}'`).join(" | ")}
-`;
-
-await fs.writeFile("src/typegen.d.ts", dts);
+export type ConfigNames = ${(
+    configs.map(i => i.name).filter(Boolean) as string[]
+  )
+    .map(i => JSON.stringify(i))
+    .join(" | ")}
+`
+);

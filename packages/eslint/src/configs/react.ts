@@ -68,20 +68,16 @@ export async function react(
   );
   const isUsingReactRouter = ReactRouterPackages.some(i => isPackageExists(i));
 
-  const plugins = pluginReact.configs.all.plugins;
-
   return [
-    ...pluginReactHooks.configs.flat["recommended-latest"],
+    pluginReactHooks.configs.flat["recommended-latest"],
+    isTypeAware
+      ? pluginReact.configs["recommended-type-checked"]
+      : pluginReact.configs["recommended"],
     {
       name: "storm/react/setup",
       plugins: {
-        react: plugins["@eslint-react"],
-        "react-dom": plugins["@eslint-react/dom"],
         "react-hooks": pluginReactHooks,
-        "react-hooks-extra": plugins["@eslint-react/hooks-extra"],
-        "react-naming-convention": plugins["@eslint-react/naming-convention"],
         "react-refresh": pluginReactRefresh,
-        "react-web-api": plugins["@eslint-react/web-api"],
         "react-compiler": pluginReactCompiler
       }
     },
