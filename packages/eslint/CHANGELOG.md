@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - ESLint
 
+## [0.170.82](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.170.82) (06/13/2026)
+
+### Bug Fixes
+
+- **eslint-config-react:** Resolve issue with invalid react plugin names ([607d13b18](https://github.com/storm-software/storm-ops/commit/607d13b18))
+
 ## [0.170.81](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.170.81) (06/13/2026)
 
 ### Features
