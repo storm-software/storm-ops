@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - ESLint Config React
 
+## [0.0.7](https://github.com/storm-software/storm-ops/releases/tag/eslint-config-react%400.0.7) (06/13/2026)
+
+### Bug Fixes
+
+- **eslint:** Resolve issue with missing `eslint-plugin-react-native-globals` dependency ([dc79c3a61](https://github.com/storm-software/storm-ops/commit/dc79c3a61))
+
+### Updated Dependencies
+
+- Updated **eslint** to **v0.170.85**
+
 ## [0.0.6](https://github.com/storm-software/storm-ops/releases/tag/eslint-config-react%400.0.6) (06/13/2026)
 
 ### Updated Dependencies
