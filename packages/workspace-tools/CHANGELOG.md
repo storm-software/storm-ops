@@ -2,6 +2,21 @@
 
 # Changelog for Storm Ops - Workspace Tools
 
+## [1.296.37](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.296.37) (06/13/2026)
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.90**
+- Updated **config-tools** to **v1.190.58**
+- Updated **esbuild** to **v0.53.219**
+- Updated **npm-tools** to **v0.6.176**
+- Updated **package-constants** to **v0.1.71**
+- Updated **pnpm-tools** to **v0.7.69**
+- Updated **prettier** to **v0.59.111**
+- Updated **testing-tools** to **v1.119.211**
+- Updated **tsdown** to **v0.45.219**
+- Updated **unbuild** to **v0.57.219**
+
 ## [1.296.36](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.296.36) (06/13/2026)
 
 ### Features

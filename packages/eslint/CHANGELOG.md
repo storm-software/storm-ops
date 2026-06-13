@@ -2,6 +2,22 @@
 
 # Changelog for Storm Ops - ESLint
 
+## [0.170.84](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.170.84) (06/13/2026)
+
+### Bug Fixes
+
+- **eslint:** Bundle `eslint-plugin-react-native` patch to resolve deprecated code ([1753d3fa3](https://github.com/storm-software/storm-ops/commit/1753d3fa3))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.90**
+- Updated **config-tools** to **v1.190.58**
+- Updated **eslint-plugin-banner** to **v0.0.22**
+- Updated **eslint-plugin-pnpm** to **v0.0.21**
+- Updated **eslint-plugin-tsdoc** to **v0.0.21**
+- Updated **package-constants** to **v0.1.71**
+- Updated **tsdoc** to **v0.13.211**
+
 ## [0.170.83](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.170.83) (06/13/2026)
 
 ### Bug Fixes
