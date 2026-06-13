@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Prettier
 
+## [0.59.109](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.59.109) (06/13/2026)
+
+### Bug Fixes
+
+- **monorepo:** Ensure `es-toolkit` versions align properly ([6c387e4d6](https://github.com/storm-software/storm-ops/commit/6c387e4d6))
+
 ## [0.59.108](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.59.108) (06/13/2026)
 
 ### Miscellaneous

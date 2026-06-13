@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Conventional Changelog
 
+## [0.3.217](https://github.com/storm-software/storm-ops/releases/tag/conventional-changelog%400.3.217) (06/13/2026)
+
+### Bug Fixes
+
+- **monorepo:** Ensure `es-toolkit` versions align properly ([6c387e4d6](https://github.com/storm-software/storm-ops/commit/6c387e4d6))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.88**
+- Updated **config-tools** to **v1.190.56**
+
 ## [0.3.216](https://github.com/storm-software/storm-ops/releases/tag/conventional-changelog%400.3.216) (06/13/2026)
 
 ### Updated Dependencies

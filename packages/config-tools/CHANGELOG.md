@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Config Tools
 
+## [1.190.56](https://github.com/storm-software/storm-ops/releases/tag/config-tools%401.190.56) (06/13/2026)
+
+### Bug Fixes
+
+- **monorepo:** Ensure `es-toolkit` versions align properly ([6c387e4d6](https://github.com/storm-software/storm-ops/commit/6c387e4d6))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.88**
+- Updated **testing-tools** to **v1.119.209**
+
 ## [1.190.55](https://github.com/storm-software/storm-ops/releases/tag/config-tools%401.190.55) (06/13/2026)
 
 ### Updated Dependencies

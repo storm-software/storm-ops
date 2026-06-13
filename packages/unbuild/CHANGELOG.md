@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Unbuild
 
+## [0.57.217](https://github.com/storm-software/storm-ops/releases/tag/unbuild%400.57.217) (06/13/2026)
+
+### Bug Fixes
+
+- **monorepo:** Ensure `es-toolkit` versions align properly ([6c387e4d6](https://github.com/storm-software/storm-ops/commit/6c387e4d6))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.216**
+- Updated **config** to **v1.137.88**
+- Updated **config-tools** to **v1.190.56**
+
 ## [0.57.216](https://github.com/storm-software/storm-ops/releases/tag/unbuild%400.57.216) (06/13/2026)
 
 ### Updated Dependencies

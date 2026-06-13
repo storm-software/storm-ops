@@ -2,6 +2,22 @@
 
 # Changelog for Storm Ops - ESLint
 
+## [0.170.80](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.170.80) (06/13/2026)
+
+### Bug Fixes
+
+- **monorepo:** Ensure `es-toolkit` versions align properly ([6c387e4d6](https://github.com/storm-software/storm-ops/commit/6c387e4d6))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.88**
+- Updated **config-tools** to **v1.190.56**
+- Updated **eslint-plugin-banner** to **v0.0.20**
+- Updated **eslint-plugin-pnpm** to **v0.0.19**
+- Updated **eslint-plugin-tsdoc** to **v0.0.19**
+- Updated **package-constants** to **v0.1.69**
+- Updated **tsdoc** to **v0.13.209**
+
 ## [0.170.79](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.170.79) (06/13/2026)
 
 ### Miscellaneous

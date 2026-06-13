@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Package Constants
 
+## [0.1.69](https://github.com/storm-software/storm-ops/releases/tag/package-constants%400.1.69) (06/13/2026)
+
+### Bug Fixes
+
+- **monorepo:** Ensure `es-toolkit` versions align properly ([6c387e4d6](https://github.com/storm-software/storm-ops/commit/6c387e4d6))
+
 ## [0.1.67](https://github.com/storm-software/storm-ops/releases/tag/package-constants%400.1.67) (06/11/2026)
 
 ### Bug Fixes

@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Oxfmt
 
+## [0.0.12](https://github.com/storm-software/storm-ops/releases/tag/oxfmt%400.0.12) (06/13/2026)
+
+### Bug Fixes
+
+- **monorepo:** Ensure `es-toolkit` versions align properly ([6c387e4d6](https://github.com/storm-software/storm-ops/commit/6c387e4d6))
+
 ## [0.0.10](https://github.com/storm-software/storm-ops/releases/tag/oxfmt%400.0.10) (06/11/2026)
 
 ### Bug Fixes

@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Pnpm Plugin
 
+## [0.1.167](https://github.com/storm-software/storm-ops/releases/tag/pnpm-plugin%400.1.167) (06/13/2026)
+
+### Bug Fixes
+
+- **monorepo:** Ensure `es-toolkit` versions align properly ([6c387e4d6](https://github.com/storm-software/storm-ops/commit/6c387e4d6))
+
+### Updated Dependencies
+
+- Updated **package-constants** to **v0.1.69**
+- Updated **testing-tools** to **v1.119.209**
+
 ## [0.1.166](https://github.com/storm-software/storm-ops/releases/tag/pnpm-plugin%400.1.166) (06/13/2026)
 
 ### Updated Dependencies

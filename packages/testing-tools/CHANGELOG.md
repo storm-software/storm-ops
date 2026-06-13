@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Testing Tools
 
+## [1.119.209](https://github.com/storm-software/storm-ops/releases/tag/testing-tools%401.119.209) (06/13/2026)
+
+### Bug Fixes
+
+- **monorepo:** Ensure `es-toolkit` versions align properly ([6c387e4d6](https://github.com/storm-software/storm-ops/commit/6c387e4d6))
+
 ## [1.119.207](https://github.com/storm-software/storm-ops/releases/tag/testing-tools%401.119.207) (06/11/2026)
 
 ### Bug Fixes

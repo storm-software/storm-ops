@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Pulumi Tools
 
+## [0.22.238](https://github.com/storm-software/storm-ops/releases/tag/pulumi-tools%400.22.238) (06/13/2026)
+
+### Bug Fixes
+
+- **monorepo:** Ensure `es-toolkit` versions align properly ([6c387e4d6](https://github.com/storm-software/storm-ops/commit/6c387e4d6))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.88**
+- Updated **config-tools** to **v1.190.56**
+- Updated **workspace-tools** to **v1.296.35**
+
 ## [0.22.237](https://github.com/storm-software/storm-ops/releases/tag/pulumi-tools%400.22.237) (06/13/2026)
 
 ### Miscellaneous

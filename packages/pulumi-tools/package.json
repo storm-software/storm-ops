@@ -1,6 +1,6 @@
 {
   "name": "@storm-software/pulumi-tools",
-  "version": "0.22.237",
+  "version": "0.22.238",
   "description": "Tools for managing Pulumi infrastructure within a Nx workspace.",
   "keywords": [
     "iac",

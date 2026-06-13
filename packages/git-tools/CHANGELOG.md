@@ -2,6 +2,19 @@
 
 # Changelog for Storm Ops - Git Tools
 
+## [2.131.63](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.131.63) (06/13/2026)
+
+### Bug Fixes
+
+- **monorepo:** Ensure `es-toolkit` versions align properly ([6c387e4d6](https://github.com/storm-software/storm-ops/commit/6c387e4d6))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.88**
+- Updated **config-tools** to **v1.190.56**
+- Updated **conventional-changelog** to **v0.3.217**
+- Updated **package-constants** to **v0.1.69**
+
 ## [2.131.62](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.131.62) (06/13/2026)
 
 ### Updated Dependencies

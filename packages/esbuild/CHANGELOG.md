@@ -2,6 +2,19 @@
 
 # Changelog for Storm Ops - Esbuild
 
+## [0.53.217](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.53.217) (06/13/2026)
+
+### Bug Fixes
+
+- **monorepo:** Ensure `es-toolkit` versions align properly ([6c387e4d6](https://github.com/storm-software/storm-ops/commit/6c387e4d6))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.216**
+- Updated **config** to **v1.137.88**
+- Updated **config-tools** to **v1.190.56**
+- Updated **tsup** to **v0.2.214**
+
 ## [0.53.216](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.53.216) (06/13/2026)
 
 ### Updated Dependencies

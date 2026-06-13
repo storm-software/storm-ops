@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Tsconfig
 
+## [0.48.123](https://github.com/storm-software/storm-ops/releases/tag/tsconfig%400.48.123) (06/13/2026)
+
+### Bug Fixes
+
+- **monorepo:** Ensure `es-toolkit` versions align properly ([6c387e4d6](https://github.com/storm-software/storm-ops/commit/6c387e4d6))
+
 ## [0.48.121](https://github.com/storm-software/storm-ops/releases/tag/tsconfig%400.48.121) (06/11/2026)
 
 ### Bug Fixes
