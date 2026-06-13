@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Terraform Tools
 
+## [0.66.237](https://github.com/storm-software/storm-ops/releases/tag/terraform-tools%400.66.237) (06/13/2026)
+
+### Miscellaneous
+
+- **eslint:** Update react linter plugin versions ([f35bece5b](https://github.com/storm-software/storm-ops/commit/f35bece5b))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.87**
+- Updated **config-tools** to **v1.190.55**
+- Updated **workspace-tools** to **v1.296.34**
+
 ## [0.66.236](https://github.com/storm-software/storm-ops/releases/tag/terraform-tools%400.66.236) (06/11/2026)
 
 ### Bug Fixes

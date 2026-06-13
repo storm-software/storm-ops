@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Prettier
 
+## [0.59.108](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.59.108) (06/13/2026)
+
+### Miscellaneous
+
+- **eslint:** Update react linter plugin versions ([f35bece5b](https://github.com/storm-software/storm-ops/commit/f35bece5b))
+
 ## [0.59.107](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.59.107) (06/11/2026)
 
 ### Bug Fixes

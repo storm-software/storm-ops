@@ -2,6 +2,25 @@
 
 # Changelog for Storm Ops - Workspace Tools
 
+## [1.296.34](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.296.34) (06/13/2026)
+
+### Miscellaneous
+
+- **eslint:** Update react linter plugin versions ([f35bece5b](https://github.com/storm-software/storm-ops/commit/f35bece5b))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.87**
+- Updated **config-tools** to **v1.190.55**
+- Updated **esbuild** to **v0.53.216**
+- Updated **npm-tools** to **v0.6.173**
+- Updated **package-constants** to **v0.1.68**
+- Updated **pnpm-tools** to **v0.7.66**
+- Updated **prettier** to **v0.59.108**
+- Updated **testing-tools** to **v1.119.208**
+- Updated **tsdown** to **v0.45.216**
+- Updated **unbuild** to **v0.57.216**
+
 ## [1.296.33](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.296.33) (06/11/2026)
 
 ### Bug Fixes

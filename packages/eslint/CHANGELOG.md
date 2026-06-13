@@ -2,6 +2,26 @@
 
 # Changelog for Storm Ops - ESLint
 
+## [0.170.79](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.170.79) (06/13/2026)
+
+### Miscellaneous
+
+- **eslint:** Update react linter plugin versions ([f35bece5b](https://github.com/storm-software/storm-ops/commit/f35bece5b))
+
+### Bug Fixes
+
+- **eslint:** Resolve typegen issues with react plugins ([32cedcabc](https://github.com/storm-software/storm-ops/commit/32cedcabc))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.87**
+- Updated **config-tools** to **v1.190.55**
+- Updated **eslint-plugin-banner** to **v0.0.19**
+- Updated **eslint-plugin-pnpm** to **v0.0.18**
+- Updated **eslint-plugin-tsdoc** to **v0.0.18**
+- Updated **package-constants** to **v0.1.68**
+- Updated **tsdoc** to **v0.13.208**
+
 ## [0.170.78](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.170.78) (06/11/2026)
 
 ### Bug Fixes

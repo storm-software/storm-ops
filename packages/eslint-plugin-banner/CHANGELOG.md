@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - ESLint Plugin Banner
 
+## [0.0.19](https://github.com/storm-software/storm-ops/releases/tag/eslint-plugin-banner%400.0.19) (06/13/2026)
+
+### Miscellaneous
+
+- **eslint:** Update react linter plugin versions ([f35bece5b](https://github.com/storm-software/storm-ops/commit/f35bece5b))
+
+### Updated Dependencies
+
+- Updated **package-constants** to **v0.1.68**
+- Updated **prettier** to **v0.59.108**
+
 ## [0.0.18](https://github.com/storm-software/storm-ops/releases/tag/eslint-plugin-banner%400.0.18) (06/11/2026)
 
 ### Bug Fixes

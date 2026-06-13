@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Cloudflare Tools
 
+## [0.71.196](https://github.com/storm-software/storm-ops/releases/tag/cloudflare-tools%400.71.196) (06/13/2026)
+
+### Miscellaneous
+
+- **eslint:** Update react linter plugin versions ([f35bece5b](https://github.com/storm-software/storm-ops/commit/f35bece5b))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.87**
+- Updated **config-tools** to **v1.190.55**
+- Updated **workspace-tools** to **v1.296.34**
+
 ## [0.71.195](https://github.com/storm-software/storm-ops/releases/tag/cloudflare-tools%400.71.195) (06/11/2026)
 
 ### Bug Fixes
