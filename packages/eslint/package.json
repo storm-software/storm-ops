@@ -1,6 +1,6 @@
 {
   "name": "@storm-software/eslint",
-  "version": "0.170.84",
+  "version": "0.170.83",
   "private": false,
   "description": "A package containing the base ESLint configuration used by Storm Software across many projects.",
   "keywords": [
@@ -139,7 +139,9 @@
   },
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "dependencies": {
     "@antfu/install-pkg": "^1.1.0",
     "@clack/prompts": "^0.10.1",
@@ -221,6 +223,7 @@
     "eslint-plugin-react-compiler": "19.1.0-rc.2",
     "eslint-plugin-react-hooks": "^7.1.1",
     "eslint-plugin-react-native": "^5.0.0",
+    "eslint-plugin-react-native-globals": "^0.1.2",
     "eslint-plugin-react-refresh": "^0.5.2",
     "eslint-plugin-relay": "^1.8.3",
     "eslint-plugin-storybook": "^0.11.6",
@@ -249,12 +252,81 @@
     "eslint-plugin-mdx": "^3.8.1",
     "eslint-plugin-react-compiler": "19.1.0-rc.2",
     "eslint-plugin-react-hooks": "^7.1.1",
-    "eslint-plugin-react-refresh": "^0.5.2",
+    "eslint-plugin-react-native": "^5.0.0",
+    "eslint-plugin-react-native-globals": "^0.1.2",
     "eslint-plugin-relay": "^1.8.3",
     "eslint-plugin-storybook": "^0.11.0",
     "graphql": "^14.0.0 || ^15.0.0 || ^16.0.0",
     "prettier-plugin-astro": "^0.14.0",
     "zod": "^3.25.0 || ^4.0.0"
+  },
+  "peerDependenciesMeta": {
+    "@eslint-react/eslint-plugin": {
+      "optional": true
+    },
+    "@graphql-eslint/eslint-plugin": {
+      "optional": true
+    },
+    "@next/eslint-plugin-next": {
+      "optional": true
+    },
+    "@nx/eslint": {
+      "optional": false
+    },
+    "@prettier/plugin-xml": {
+      "optional": false
+    },
+    "@storm-software/tsdoc": {
+      "optional": true
+    },
+    "@unocss/eslint-plugin": {
+      "optional": true
+    },
+    "astro-eslint-parser": {
+      "optional": true
+    },
+    "eslint": {
+      "optional": false
+    },
+    "eslint-plugin-astro": {
+      "optional": true
+    },
+    "eslint-plugin-format": {
+      "optional": true
+    },
+    "eslint-plugin-import-zod": {
+      "optional": true
+    },
+    "eslint-plugin-mdx": {
+      "optional": true
+    },
+    "eslint-plugin-react-compiler": {
+      "optional": true
+    },
+    "eslint-plugin-react-hooks": {
+      "optional": true
+    },
+    "eslint-plugin-react-native": {
+      "optional": true
+    },
+    "eslint-plugin-react-native-globals": {
+      "optional": true
+    },
+    "eslint-plugin-relay": {
+      "optional": true
+    },
+    "eslint-plugin-storybook": {
+      "optional": true
+    },
+    "graphql": {
+      "optional": true
+    },
+    "prettier-plugin-astro": {
+      "optional": true
+    },
+    "zod": {
+      "optional": true
+    }
   },
   "publishConfig": {
     "access": "public"
