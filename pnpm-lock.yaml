@@ -1128,12 +1128,6 @@ importers:
       eslint-plugin-react-hooks:
         specifier: ^7.1.1
         version: 7.1.1(eslint@10.5.0(jiti@2.7.0))
-      eslint-plugin-react-native:
-        specifier: ^5.0.0
-        version: 5.0.0(patch_hash=1320a4c113a7f7ebb367bb0eaf377bd76dd7730f216b97f5a2b6642309ae49d6)(eslint@10.5.0(jiti@2.7.0))
-      eslint-plugin-react-native-globals:
-        specifier: ^0.1.2
-        version: 0.1.2
       eslint-plugin-react-refresh:
         specifier: ^0.5.2
         version: 0.5.2(eslint@10.5.0(jiti@2.7.0))
