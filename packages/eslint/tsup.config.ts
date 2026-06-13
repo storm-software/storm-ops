@@ -24,6 +24,7 @@ export default defineConfig([
     skipNodeModulesBundle: true,
     noExternal: [
       "eslint-plugin-import-x",
+      "eslint-plugin-import-zod",
       "eslint-plugin-pnpm",
       "eslint-plugin-tsdoc",
       "eslint-plugin-react-native",

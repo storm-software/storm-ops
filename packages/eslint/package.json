@@ -139,7 +139,9 @@
   },
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "dependencies": {
     "@antfu/install-pkg": "^1.1.0",
     "@clack/prompts": "^0.10.1",
@@ -246,7 +248,6 @@
     "eslint": "catalog:",
     "eslint-plugin-astro": "^1.2.0",
     "eslint-plugin-format": ">=0.1.0",
-    "eslint-plugin-import-zod": "^1.2.0",
     "eslint-plugin-mdx": "^3.8.1",
     "eslint-plugin-react-compiler": "19.1.0-rc.2",
     "eslint-plugin-react-hooks": "^7.1.1",
@@ -290,9 +291,6 @@
       "optional": true
     },
     "eslint-plugin-format": {
-      "optional": true
-    },
-    "eslint-plugin-import-zod": {
       "optional": true
     },
     "eslint-plugin-mdx": {
