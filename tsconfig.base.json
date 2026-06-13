@@ -28,6 +28,12 @@
       "@storm-software/esbuild/*": ["packages/esbuild/src/*"],
       "@storm-software/eslint": ["packages/eslint/src/index.ts"],
       "@storm-software/eslint/*": ["packages/eslint/src/*"],
+      "@storm-software/eslint-config-react": [
+        "packages/eslint-config-react/src/index.ts"
+      ],
+      "@storm-software/eslint-config-react/*": [
+        "packages/eslint-config-react/src/*"
+      ],
       "@storm-software/git-tools": ["packages/git-tools/src/index.ts"],
       "@storm-software/git-tools/*": ["packages/git-tools/src/*"],
       "@storm-software/k8s-tools": ["packages/k8s-tools/src/index.ts"],

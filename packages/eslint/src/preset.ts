@@ -44,7 +44,10 @@ import type {
   Awaitable,
   ConfigNames,
   OptionsConfig,
-  TypedFlatConfigItem
+  PresetConfig,
+  PresetResult,
+  TypedFlatConfigItem,
+  UserConfig
 } from "./types";
 import { interopDefault, isInEditorEnv } from "./utils/helpers";
 
@@ -99,15 +102,10 @@ export function getOverrides<K extends keyof OptionsConfig>(
  * @param options - The preset options.
  * @param userConfigs - Additional ESLint configurations.
  */
-export function getStormConfig(
-  options: OptionsConfig & Omit<TypedFlatConfigItem, "files">,
-  ...userConfigs: Awaitable<
-    | TypedFlatConfigItem
-    | TypedFlatConfigItem[]
-    | FlatConfigComposer<object, string>
-    | Linter.Config[]
-  >[]
-): FlatConfigComposer<TypedFlatConfigItem, ConfigNames> {
+export function preset(
+  options: PresetConfig<OptionsConfig>,
+  ...userConfigs: UserConfig[]
+): PresetResult {
   const {
     name,
     globals = {},
@@ -117,6 +115,7 @@ export function getStormConfig(
     componentExts = [],
     gitignore: enableGitignore = true,
     jsx: enableJsx = true,
+    mdx: enableMdx = true,
     cspell: enableCSpell = true,
     react: enableReact = false,
     "react-native": enableReactNative = false,
@@ -387,7 +386,7 @@ export function getStormConfig(
     );
   }
 
-  if (options.mdx ?? true) {
+  if (enableMdx) {
     configs.push(
       mdx({
         overrides: getOverrides(options, "mdx")
@@ -446,7 +445,6 @@ export function getStormConfig(
   return composer;
 }
 
-export const getConfig = getStormConfig;
-export const defineConfig = getStormConfig;
-
-export default getStormConfig;
+export const getConfig = preset;
+export const defineConfig = preset;
+export default preset;

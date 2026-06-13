@@ -27,7 +27,7 @@ This package is part of the <b>⚡Storm-Ops</b> monorepo. The Storm-Ops packages
 
 <h3 align="center">💻 Visit <a href="https://stormsoftware.com" target="_blank">stormsoftware.com</a> to stay up to date with this developer</h3><br />
 
-[![Version](https://img.shields.io/badge/version-1.119.208-1fb2a6.svg?style=for-the-badge&color=1fb2a6)](https://prettier.io/)&nbsp;[![Nx](https://img.shields.io/badge/Nx-17.0.2-lightgrey?style=for-the-badge&logo=nx&logoWidth=20&&color=1fb2a6)](http://nx.dev/)&nbsp;[![NextJs](https://img.shields.io/badge/Next.js-14.0.2-lightgrey?style=for-the-badge&logo=nextdotjs&logoWidth=20&color=1fb2a6)](https://nextjs.org/)&nbsp;[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg?style=for-the-badge&logo=commitlint&color=1fb2a6)](http://commitizen.github.io/cz-cli/)&nbsp;![Semantic-Release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg?style=for-the-badge&color=1fb2a6)&nbsp;[![documented with Fumadocs](https://img.shields.io/badge/documented_with-fumadocs-success.svg?style=for-the-badge&logo=readthedocs&color=1fb2a6)](https://fumadocs.vercel.app/)&nbsp;![GitHub Workflow Status (with event)](https://img.shields.io/github/actions/workflow/status/storm-software/storm-ops/cr.yml?style=for-the-badge&logo=github-actions&color=1fb2a6)
+[![Version](https://img.shields.io/badge/version-0.170.79-1fb2a6.svg?style=for-the-badge&color=1fb2a6)](https://prettier.io/)&nbsp;[![Nx](https://img.shields.io/badge/Nx-17.0.2-lightgrey?style=for-the-badge&logo=nx&logoWidth=20&&color=1fb2a6)](http://nx.dev/)&nbsp;[![NextJs](https://img.shields.io/badge/Next.js-14.0.2-lightgrey?style=for-the-badge&logo=nextdotjs&logoWidth=20&color=1fb2a6)](https://nextjs.org/)&nbsp;[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg?style=for-the-badge&logo=commitlint&color=1fb2a6)](http://commitizen.github.io/cz-cli/)&nbsp;![Semantic-Release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg?style=for-the-badge&color=1fb2a6)&nbsp;[![documented with Fumadocs](https://img.shields.io/badge/documented_with-fumadocs-success.svg?style=for-the-badge&logo=readthedocs&color=1fb2a6)](https://fumadocs.vercel.app/)&nbsp;![GitHub Workflow Status (with event)](https://img.shields.io/github/actions/workflow/status/storm-software/storm-ops/cr.yml?style=for-the-badge&logo=github-actions&color=1fb2a6)
 
 <!-- prettier-ignore-start -->
 <!-- markdownlint-disable -->
@@ -49,7 +49,7 @@ This package is part of the <b>⚡Storm-Ops</b> monorepo. The Storm-Ops packages
 
 ## Table of Contents
 
-- [Storm Testing Tools](#storm-testing-tools)
+- [Storm Software - React ESLint Configuration](#storm-software---react-eslint-configuration)
   - [Installing](#installing)
   - [Building](#building)
   - [Running unit tests](#running-unit-tests)
@@ -70,29 +70,23 @@ This package is part of the <b>⚡Storm-Ops</b> monorepo. The Storm-Ops packages
 
 <!-- END header -->
 
-# Storm Testing Tools
+# Storm Software - React ESLint Configuration
 
-This package contains various testing tools used by Storm workspaces to drive
-unit and e2e testing. The following packages are included and combined into an
-easy to use CLI tool:
-
-- [Jest](https://jestjs.io/)
-- [Vitest](https://vitest.dev/)
-- [Cypress](https://www.cypress.io/)
+This package contains a set of ESLint rules and configurations for React projects, built on top of the base ESLint configuration provided by the `@storm-software/eslint` package. It includes recommended rules for React development, as well as some custom rules and configurations specific to our projects.
 
 ## Installing
 
 Using [pnpm](http://pnpm.io):
 
 ```bash
-pnpm add -D @storm-software/testing-tools
+pnpm add -D @storm-software/eslint-config-react
 ```
 
 <details>
   <summary>Using npm</summary>
 
 ```bash
-npm install -D @storm-software/testing-tools
+npm install -D @storm-software/eslint-config-react
 ```
 
 </details>
@@ -101,19 +95,18 @@ npm install -D @storm-software/testing-tools
   <summary>Using yarn</summary>
 
 ```bash
-yarn add -D @storm-software/testing-tools
+yarn add -D @storm-software/eslint-config-react
 ```
 
 </details>
 
 ## Building
 
-Run `nx build testing-tools` to build the library.
+Run `nx build eslint-config-react` to build the library.
 
 ## Running unit tests
 
-Run `nx test testing-tools` to execute the unit tests via
-[Jest](https://jestjs.io).
+Run `nx test eslint-config-react` to execute the unit tests via [Jest](https://jestjs.io).
 
 <!-- START footer -->
 <!-- prettier-ignore-start -->

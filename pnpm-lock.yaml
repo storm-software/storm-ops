@@ -226,6 +226,7 @@ overrides:
   '@storm-software/cspell': workspace:*
   '@storm-software/esbuild': workspace:*
   '@storm-software/eslint': workspace:*
+  '@storm-software/eslint-config-react': workspace:*
   '@storm-software/eslint-plugin-banner': workspace:*
   '@storm-software/eslint-plugin-pnpm': workspace:*
   '@storm-software/eslint-plugin-tsdoc': workspace:*
@@ -903,9 +904,6 @@ importers:
       eslint-plugin-markdownlint:
         specifier: ^0.6.0
         version: 0.6.0(eslint@9.39.4(jiti@2.7.0))
-      eslint-plugin-mdx:
-        specifier: ^3.8.1
-        version: 3.8.1(eslint@9.39.4(jiti@2.7.0))
       eslint-plugin-n:
         specifier: ^17.24.0
         version: 17.24.0(eslint@9.39.4(jiti@2.7.0))(typescript@5.9.3)
@@ -1048,6 +1046,9 @@ importers:
       eslint-plugin-import-zod:
         specifier: ^1.2.1
         version: 1.2.1(@typescript-eslint/utils@8.61.0(eslint@9.39.4(jiti@2.7.0))(typescript@5.9.3))(eslint@9.39.4(jiti@2.7.0))
+      eslint-plugin-mdx:
+        specifier: ^3.8.1
+        version: 3.8.1(eslint@9.39.4(jiti@2.7.0))
       eslint-plugin-react-compiler:
         specifier: 19.1.0-rc.2
         version: 19.1.0-rc.2(eslint@9.39.4(jiti@2.7.0))
@@ -1090,6 +1091,58 @@ importers:
       zod:
         specifier: 'catalog:'
         version: 4.4.3
+
+  packages/eslint-config-react:
+    dependencies:
+      '@eslint-react/eslint-plugin':
+        specifier: ^5.9.0
+        version: 5.9.0(eslint@9.39.4(jiti@2.7.0))(typescript@5.9.3)
+      '@next/eslint-plugin-next':
+        specifier: ^15.5.19
+        version: 15.5.19
+      '@storm-software/eslint':
+        specifier: workspace:*
+        version: link:../eslint
+      '@unocss/eslint-plugin':
+        specifier: ^65.5.0
+        version: 65.5.0(eslint@9.39.4(jiti@2.7.0))(typescript@5.9.3)
+      astro-eslint-parser:
+        specifier: ^1.4.0
+        version: 1.4.0
+      eslint:
+        specifier: 'catalog:'
+        version: 9.39.4(jiti@2.7.0)
+      eslint-plugin-astro:
+        specifier: ^1.7.0
+        version: 1.7.0(eslint@9.39.4(jiti@2.7.0))
+      eslint-plugin-mdx:
+        specifier: ^3.8.1
+        version: 3.8.1(eslint@9.39.4(jiti@2.7.0))
+      eslint-plugin-react-compiler:
+        specifier: 19.1.0-rc.2
+        version: 19.1.0-rc.2(eslint@9.39.4(jiti@2.7.0))
+      eslint-plugin-react-hooks:
+        specifier: ^7.1.1
+        version: 7.1.1(eslint@9.39.4(jiti@2.7.0))
+      eslint-plugin-react-native:
+        specifier: ^5.0.0
+        version: 5.0.0(eslint@9.39.4(jiti@2.7.0))
+      eslint-plugin-react-refresh:
+        specifier: ^0.5.2
+        version: 0.5.2(eslint@9.39.4(jiti@2.7.0))
+      eslint-plugin-storybook:
+        specifier: ^0.11.6
+        version: 0.11.6(eslint@9.39.4(jiti@2.7.0))(typescript@5.9.3)
+      prettier-plugin-astro:
+        specifier: ^0.14.1
+        version: 0.14.1
+    devDependencies:
+      tsup:
+        specifier: 'catalog:'
+        version: 8.4.0(patch_hash=751a554d775c3572381af4e7e5fa22eeda6dd6856012fb1cf521d6806eb2dc74)(@microsoft/api-extractor@7.58.8(@types/node@25.9.3))(@swc/core@1.7.26(@swc/helpers@0.5.13))(jiti@2.7.0)(postcss@8.5.15)(tsx@4.22.4)(typescript@5.9.3)(yaml@2.9.0)
+      typescript:
+        specifier: ^5.9.3
+        version: 5.9.3
 
   packages/eslint-plugin-banner:
     dependencies:

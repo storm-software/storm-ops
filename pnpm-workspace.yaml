@@ -117,6 +117,7 @@ overrides:
   "@storm-software/cspell": "workspace:*"
   "@storm-software/esbuild": "workspace:*"
   "@storm-software/eslint": "workspace:*"
+  "@storm-software/eslint-config-react": "workspace:*"
   "@storm-software/eslint-plugin-banner": "workspace:*"
   "@storm-software/eslint-plugin-pnpm": "workspace:*"
   "@storm-software/eslint-plugin-tsdoc": "workspace:*"
@@ -160,6 +161,6 @@ preferWorkspacePackages: true
 shamefullyHoist: true
 shellEmulator: true
 supportedArchitectures:
-  cpu: [ "current" ]
+  cpu: ["current"]
 useNodeVersion: "26.2.0"
 verifyDepsBeforeRun: "install"

@@ -5,6 +5,7 @@ import type { StylisticCustomizeOptions } from "@stylistic/eslint-plugin";
 import type { ParserOptions } from "@typescript-eslint/parser";
 import type { Linter } from "eslint";
 import type { FlatGitignoreOptions } from "eslint-config-flat-gitignore";
+import { FlatConfigComposer } from "eslint-flat-config-utils";
 import type { ConfigNames, RuleOptions } from "./typegen";
 import type { VendoredPrettierOptions } from "./vendor/prettier-types";
 
@@ -683,7 +684,7 @@ export interface OptionsConfig
   /**
    * Enable linting for mdx files.
    *
-   * @defaultValue true
+   * @defaultValue false
    */
   mdx?: boolean | OptionsOverrides;
 
@@ -785,3 +786,15 @@ export interface OptionsConfig
    */
   autoRenamePlugins?: boolean;
 }
+
+export type UserConfig = Awaitable<
+  | TypedFlatConfigItem
+  | TypedFlatConfigItem[]
+  | FlatConfigComposer<object, string>
+  | Linter.Config[]
+>;
+
+export type PresetConfig<TOptions> = TOptions &
+  Omit<TypedFlatConfigItem, "files">;
+
+export type PresetResult = FlatConfigComposer<TypedFlatConfigItem, ConfigNames>;
