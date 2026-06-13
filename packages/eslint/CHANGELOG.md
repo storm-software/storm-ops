@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - ESLint
 
+## [0.170.86](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.170.86) (06/13/2026)
+
+### Bug Fixes
+
+- **eslint:** Resolve issue with missing `eslint-plugin-import-zod` module ([8916d2b4e](https://github.com/storm-software/storm-ops/commit/8916d2b4e))
+
 ## [0.170.85](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.170.85) (06/13/2026)
 
 ### Bug Fixes
