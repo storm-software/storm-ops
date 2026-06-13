@@ -1,6 +1,6 @@
 {
   "name": "pnpm-plugin-storm-software",
-  "version": "0.1.171",
+  "version": "0.1.172",
   "private": false,
   "description": "A [pnpm](https://pnpm.io/) plugin to enhance pnpm functionality for Storm Software projects.",
   "repository": {
