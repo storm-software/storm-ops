@@ -71,6 +71,7 @@ export async function react(
   const plugins = pluginReact.configs.all.plugins;
 
   return [
+    ...pluginReactHooks.configs.flat["recommended-latest"],
     {
       name: "storm/react/setup",
       plugins: {
@@ -112,6 +113,7 @@ export async function react(
         // recommended rules react-hooks
         "react-hooks/exhaustive-deps": "warn",
         "react-hooks/rules-of-hooks": "error",
+
         // react refresh
         "react-refresh/only-export-components": [
           "warn",
