@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - ESLint Plugin Banner
 
+## [0.0.26](https://github.com/storm-software/storm-ops/releases/tag/eslint-plugin-banner%400.0.26) (06/14/2026)
+
+### Miscellaneous
+
+- **eslint-plugin-banner:** Changed remaining context accessor methods for backwards compatibility ([142c8a821](https://github.com/storm-software/storm-ops/commit/142c8a821))
+
+### Bug Fixes
+
+- **eslint-plugin-banner:** Update component to use latest context type definitions ([4a72f0972](https://github.com/storm-software/storm-ops/commit/4a72f0972))
+
 ## [0.0.25](https://github.com/storm-software/storm-ops/releases/tag/eslint-plugin-banner%400.0.25) (06/13/2026)
 
 ### Updated Dependencies
