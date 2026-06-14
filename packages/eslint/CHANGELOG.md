@@ -2,6 +2,22 @@
 
 # Changelog for Storm Ops - ESLint
 
+## [0.170.98](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.170.98) (06/14/2026)
+
+### Miscellaneous
+
+- **eslint-plugin-tsdoc:** Patched base plugin to include `tsconfigRootDir` option ([91cffe828](https://github.com/storm-software/storm-ops/commit/91cffe828))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.2**
+- Updated **config-tools** to **v1.190.65**
+- Updated **eslint-plugin-banner** to **v0.0.30**
+- Updated **eslint-plugin-pnpm** to **v0.0.28**
+- Updated **eslint-plugin-tsdoc** to **v0.0.28**
+- Updated **package-constants** to **v0.1.78**
+- Updated **tsdoc** to **v0.13.218**
+
 ## [0.170.97](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.170.97) (06/14/2026)
 
 ### Updated Dependencies

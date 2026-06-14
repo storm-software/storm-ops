@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Prettier
 
+## [0.59.118](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.59.118) (06/14/2026)
+
+### Miscellaneous
+
+- **eslint-plugin-tsdoc:** Patched base plugin to include `tsconfigRootDir` option ([91cffe828](https://github.com/storm-software/storm-ops/commit/91cffe828))
+
 ## [0.59.117](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.59.117) (06/14/2026)
 
 ### Miscellaneous

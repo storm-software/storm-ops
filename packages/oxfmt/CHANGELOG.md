@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Oxfmt
 
+## [0.0.21](https://github.com/storm-software/storm-ops/releases/tag/oxfmt%400.0.21) (06/14/2026)
+
+### Miscellaneous
+
+- **eslint-plugin-tsdoc:** Patched base plugin to include `tsconfigRootDir` option ([91cffe828](https://github.com/storm-software/storm-ops/commit/91cffe828))
+
 ## [0.0.20](https://github.com/storm-software/storm-ops/releases/tag/oxfmt%400.0.20) (06/14/2026)
 
 ### Miscellaneous
