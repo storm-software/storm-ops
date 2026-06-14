@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - ESLint
 
+## [0.170.94](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.170.94) (06/14/2026)
+
+### Bug Fixes
+
+- **eslint:** Apply `parserOptions` to type-aware linting rules ([2dde0a212](https://github.com/storm-software/storm-ops/commit/2dde0a212))
+
 ## [0.170.93](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.170.93) (06/14/2026)
 
 ### Updated Dependencies
