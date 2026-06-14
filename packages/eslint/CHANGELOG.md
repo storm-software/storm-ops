@@ -2,6 +2,22 @@
 
 # Changelog for Storm Ops - ESLint
 
+## [0.170.101](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.170.101) (06/14/2026)
+
+### Miscellaneous
+
+- **monorepo:** Added internal Nx plugin to ensure `implicitDependencies` are applied to all of the workspace's packages ([bbe43f892](https://github.com/storm-software/storm-ops/commit/bbe43f892))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.5**
+- Updated **config-tools** to **v1.190.68**
+- Updated **eslint-plugin-banner** to **v0.0.33**
+- Updated **eslint-plugin-pnpm** to **v0.0.31**
+- Updated **eslint-plugin-tsdoc** to **v0.0.31**
+- Updated **package-constants** to **v0.1.81**
+- Updated **tsdoc** to **v0.13.221**
+
 ## [0.170.100](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.170.100) (06/14/2026)
 
 ### Updated Dependencies

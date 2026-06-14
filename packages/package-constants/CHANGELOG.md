@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Package Constants
 
+## [0.1.81](https://github.com/storm-software/storm-ops/releases/tag/package-constants%400.1.81) (06/14/2026)
+
+### Miscellaneous
+
+- **monorepo:** Added internal Nx plugin to ensure `implicitDependencies` are applied to all of the workspace's packages ([bbe43f892](https://github.com/storm-software/storm-ops/commit/bbe43f892))
+
 ## [0.1.76](https://github.com/storm-software/storm-ops/releases/tag/package-constants%400.1.76) (06/14/2026)
 
 ### Miscellaneous

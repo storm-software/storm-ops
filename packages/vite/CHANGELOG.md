@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - Vite
 
+## [0.1.162](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.162) (06/14/2026)
+
+### Miscellaneous
+
+- **monorepo:** Added internal Nx plugin to ensure `implicitDependencies` are applied to all of the workspace's packages ([bbe43f892](https://github.com/storm-software/storm-ops/commit/bbe43f892))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.228**
+
 ## [0.1.161](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.161) (06/14/2026)
 
 ### Updated Dependencies

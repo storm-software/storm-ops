@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Linting Tools
 
+## [1.133.98](https://github.com/storm-software/storm-ops/releases/tag/linting-tools%401.133.98) (06/14/2026)
+
+### Miscellaneous
+
+- **monorepo:** Added internal Nx plugin to ensure `implicitDependencies` are applied to all of the workspace's packages ([bbe43f892](https://github.com/storm-software/storm-ops/commit/bbe43f892))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.5**
+- Updated **config-tools** to **v1.190.68**
+
 ## [1.133.97](https://github.com/storm-software/storm-ops/releases/tag/linting-tools%401.133.97) (06/14/2026)
 
 ### Updated Dependencies

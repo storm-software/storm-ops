@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - CSpell
 
+## [0.46.136](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.46.136) (06/14/2026)
+
+### Miscellaneous
+
+- **monorepo:** Added internal Nx plugin to ensure `implicitDependencies` are applied to all of the workspace's packages ([bbe43f892](https://github.com/storm-software/storm-ops/commit/bbe43f892))
+
 ## [0.46.135](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.46.135) (06/14/2026)
 
 ### Miscellaneous

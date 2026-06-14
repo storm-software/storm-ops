@@ -2,6 +2,20 @@
 
 # Changelog for Storm Ops - Pnpm Tools
 
+## [0.7.79](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.7.79) (06/14/2026)
+
+### Miscellaneous
+
+- **monorepo:** Added internal Nx plugin to ensure `implicitDependencies` are applied to all of the workspace's packages ([bbe43f892](https://github.com/storm-software/storm-ops/commit/bbe43f892))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.5**
+- Updated **config-tools** to **v1.190.68**
+- Updated **npm-tools** to **v0.6.186**
+- Updated **package-constants** to **v0.1.81**
+- Updated **testing-tools** to **v1.119.221**
+
 ## [0.7.78](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.7.78) (06/14/2026)
 
 ### Updated Dependencies

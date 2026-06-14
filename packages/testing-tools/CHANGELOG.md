@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Testing Tools
 
+## [1.119.221](https://github.com/storm-software/storm-ops/releases/tag/testing-tools%401.119.221) (06/14/2026)
+
+### Miscellaneous
+
+- **monorepo:** Added internal Nx plugin to ensure `implicitDependencies` are applied to all of the workspace's packages ([bbe43f892](https://github.com/storm-software/storm-ops/commit/bbe43f892))
+
 ## [1.119.216](https://github.com/storm-software/storm-ops/releases/tag/testing-tools%401.119.216) (06/14/2026)
 
 ### Miscellaneous

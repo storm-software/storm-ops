@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Pnpm Plugin
 
+## [0.1.179](https://github.com/storm-software/storm-ops/releases/tag/pnpm-plugin%400.1.179) (06/14/2026)
+
+### Miscellaneous
+
+- **monorepo:** Added internal Nx plugin to ensure `implicitDependencies` are applied to all of the workspace's packages ([bbe43f892](https://github.com/storm-software/storm-ops/commit/bbe43f892))
+
+### Updated Dependencies
+
+- Updated **package-constants** to **v0.1.81**
+- Updated **testing-tools** to **v1.119.221**
+
 ## [0.1.178](https://github.com/storm-software/storm-ops/releases/tag/pnpm-plugin%400.1.178) (06/14/2026)
 
 ### Miscellaneous

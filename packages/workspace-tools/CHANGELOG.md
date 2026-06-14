@@ -2,6 +2,25 @@
 
 # Changelog for Storm Ops - Workspace Tools
 
+## [1.296.48](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.296.48) (06/14/2026)
+
+### Miscellaneous
+
+- **monorepo:** Added internal Nx plugin to ensure `implicitDependencies` are applied to all of the workspace's packages ([bbe43f892](https://github.com/storm-software/storm-ops/commit/bbe43f892))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.5**
+- Updated **config-tools** to **v1.190.68**
+- Updated **esbuild** to **v0.53.229**
+- Updated **npm-tools** to **v0.6.186**
+- Updated **package-constants** to **v0.1.81**
+- Updated **pnpm-tools** to **v0.7.79**
+- Updated **prettier** to **v0.59.121**
+- Updated **testing-tools** to **v1.119.221**
+- Updated **tsdown** to **v0.45.229**
+- Updated **unbuild** to **v0.57.229**
+
 ## [1.296.47](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.296.47) (06/14/2026)
 
 ### Miscellaneous

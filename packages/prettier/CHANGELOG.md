@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Prettier
 
+## [0.59.121](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.59.121) (06/14/2026)
+
+### Miscellaneous
+
+- **monorepo:** Added internal Nx plugin to ensure `implicitDependencies` are applied to all of the workspace's packages ([bbe43f892](https://github.com/storm-software/storm-ops/commit/bbe43f892))
+
 ## [0.59.118](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.59.118) (06/14/2026)
 
 ### Miscellaneous

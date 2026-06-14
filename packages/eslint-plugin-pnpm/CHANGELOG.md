@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - ESLint Plugin Pnpm
 
+## [0.0.31](https://github.com/storm-software/storm-ops/releases/tag/eslint-plugin-pnpm%400.0.31) (06/14/2026)
+
+### Miscellaneous
+
+- **monorepo:** Added internal Nx plugin to ensure `implicitDependencies` are applied to all of the workspace's packages ([bbe43f892](https://github.com/storm-software/storm-ops/commit/bbe43f892))
+
+### Updated Dependencies
+
+- Updated **package-constants** to **v0.1.81**
+- Updated **prettier** to **v0.59.121**
+- Updated **tsdoc** to **v0.13.221**
+
 ## [0.0.30](https://github.com/storm-software/storm-ops/releases/tag/eslint-plugin-pnpm%400.0.30) (06/14/2026)
 
 ### Updated Dependencies

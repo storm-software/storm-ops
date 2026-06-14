@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - ESLint Config React
 
+## [0.0.23](https://github.com/storm-software/storm-ops/releases/tag/eslint-config-react%400.0.23) (06/14/2026)
+
+### Miscellaneous
+
+- **monorepo:** Added internal Nx plugin to ensure `implicitDependencies` are applied to all of the workspace's packages ([bbe43f892](https://github.com/storm-software/storm-ops/commit/bbe43f892))
+
+### Updated Dependencies
+
+- Updated **eslint** to **v0.170.101**
+
 ## [0.0.22](https://github.com/storm-software/storm-ops/releases/tag/eslint-config-react%400.0.22) (06/14/2026)
 
 ### Updated Dependencies

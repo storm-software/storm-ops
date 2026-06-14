@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Unbuild
 
+## [0.57.229](https://github.com/storm-software/storm-ops/releases/tag/unbuild%400.57.229) (06/14/2026)
+
+### Miscellaneous
+
+- **monorepo:** Added internal Nx plugin to ensure `implicitDependencies` are applied to all of the workspace's packages ([bbe43f892](https://github.com/storm-software/storm-ops/commit/bbe43f892))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.228**
+- Updated **config** to **v1.138.5**
+- Updated **config-tools** to **v1.190.68**
+
 ## [0.57.228](https://github.com/storm-software/storm-ops/releases/tag/unbuild%400.57.228) (06/14/2026)
 
 ### Miscellaneous

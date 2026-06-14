@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Tsdoc
 
+## [0.13.221](https://github.com/storm-software/storm-ops/releases/tag/tsdoc%400.13.221) (06/14/2026)
+
+### Miscellaneous
+
+- **monorepo:** Added internal Nx plugin to ensure `implicitDependencies` are applied to all of the workspace's packages ([bbe43f892](https://github.com/storm-software/storm-ops/commit/bbe43f892))
+
 ## [0.13.216](https://github.com/storm-software/storm-ops/releases/tag/tsdoc%400.13.216) (06/14/2026)
 
 ### Miscellaneous

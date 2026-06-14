@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Oxfmt
 
+## [0.0.24](https://github.com/storm-software/storm-ops/releases/tag/oxfmt%400.0.24) (06/14/2026)
+
+### Miscellaneous
+
+- **monorepo:** Added internal Nx plugin to ensure `implicitDependencies` are applied to all of the workspace's packages ([bbe43f892](https://github.com/storm-software/storm-ops/commit/bbe43f892))
+
 ## [0.0.21](https://github.com/storm-software/storm-ops/releases/tag/oxfmt%400.0.21) (06/14/2026)
 
 ### Miscellaneous

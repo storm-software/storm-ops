@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - Markdownlint
 
+## [0.30.224](https://github.com/storm-software/storm-ops/releases/tag/markdownlint%400.30.224) (06/14/2026)
+
+### Miscellaneous
+
+- **monorepo:** Added internal Nx plugin to ensure `implicitDependencies` are applied to all of the workspace's packages ([bbe43f892](https://github.com/storm-software/storm-ops/commit/bbe43f892))
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.221**
+
 ## [0.30.223](https://github.com/storm-software/storm-ops/releases/tag/markdownlint%400.30.223) (06/14/2026)
 
 ### Updated Dependencies

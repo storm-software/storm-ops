@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - Config
 
+## [1.138.5](https://github.com/storm-software/storm-ops/releases/tag/config%401.138.5) (06/14/2026)
+
+### Miscellaneous
+
+- **monorepo:** Added internal Nx plugin to ensure `implicitDependencies` are applied to all of the workspace's packages ([bbe43f892](https://github.com/storm-software/storm-ops/commit/bbe43f892))
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.221**
+
 ## [1.138.4](https://github.com/storm-software/storm-ops/releases/tag/config%401.138.4) (06/14/2026)
 
 ### Updated Dependencies

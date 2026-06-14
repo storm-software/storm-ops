@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Build Tools
 
+## [0.158.228](https://github.com/storm-software/storm-ops/releases/tag/build-tools%400.158.228) (06/14/2026)
+
+### Miscellaneous
+
+- **monorepo:** Added internal Nx plugin to ensure `implicitDependencies` are applied to all of the workspace's packages ([bbe43f892](https://github.com/storm-software/storm-ops/commit/bbe43f892))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.5**
+- Updated **config-tools** to **v1.190.68**
+
 ## [0.158.227](https://github.com/storm-software/storm-ops/releases/tag/build-tools%400.158.227) (06/14/2026)
 
 ### Updated Dependencies
