@@ -15,7 +15,6 @@ import type {
   OptionsTypeScriptWithTypes,
   TypedFlatConfigItem
 } from "../types";
-import { dirname } from "../utils/correct-paths";
 import { findWorkspaceRoot } from "../utils/find-workspace-root";
 import { ensurePackages, interopDefault } from "../utils/helpers";
 
@@ -264,9 +263,7 @@ export async function react(
                   allowDefaultProject: [GLOB_SRC_FILE],
                   defaultProject: tsconfigPath
                 },
-                tsconfigRootDir: !tsconfigPath
-                  ? findWorkspaceRoot()
-                  : dirname(tsconfigPath)
+                tsconfigRootDir: findWorkspaceRoot()
               }
             },
             name: "storm/react/type-aware-rules",
