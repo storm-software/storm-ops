@@ -1,0 +1,70 @@
+{
+  "name": "@storm-software/tools-nx",
+  "version": "0.0.1",
+  "private": true,
+  "description": "An internal Nx plugin used by the Storm-Ops monorepo to manage and streamline development workflows.",
+  "repository": {
+    "type": "github",
+    "url": "https://github.com/storm-software/storm-ops.git",
+    "directory": "tools/nx"
+  },
+  "exports": {
+    "./package.json": "./package.json",
+    ".": {
+      "import": {
+        "types": "./dist/index.d.mts",
+        "default": "./dist/index.mjs"
+      },
+      "require": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "default": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      }
+    },
+    "./index": {
+      "import": {
+        "types": "./dist/index.d.mts",
+        "default": "./dist/index.mjs"
+      },
+      "require": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "default": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      }
+    },
+    "./plugin": {
+      "import": {
+        "types": "./dist/src/plugin/index.d.mts",
+        "default": "./dist/src/plugin/index.mjs"
+      },
+      "require": {
+        "types": "./dist/src/plugin/index.d.ts",
+        "default": "./dist/src/plugin/index.js"
+      },
+      "default": {
+        "types": "./dist/src/plugin/index.d.ts",
+        "default": "./dist/src/plugin/index.js"
+      }
+    }
+  },
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "typings": "dist/index.d.ts",
+  "dependencies": {
+    "@nx/devkit": "catalog:",
+    "nx": "catalog:"
+  },
+  "devDependencies": {
+    "@types/node": "catalog:",
+    "tsup": "catalog:"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

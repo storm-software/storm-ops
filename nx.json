@@ -92,7 +92,8 @@
       }
     },
     "./dist/plugins/cloudflare/index.js",
-    "./dist/plugins/rust/index.js"
+    "./dist/plugins/rust/index.js",
+    "./dist/plugins/internal/index.js"
   ],
   "neverConnectToCloud": true,
   "analytics": false

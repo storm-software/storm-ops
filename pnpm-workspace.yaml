@@ -135,6 +135,7 @@ overrides:
   "@storm-software/pulumi-tools": "workspace:*"
   "@storm-software/terraform-tools": "workspace:*"
   "@storm-software/testing-tools": "workspace:*"
+  "@storm-software/tools-nx": "workspace:*"
   "@storm-software/tools-scripts": "workspace:*"
   "@storm-software/tsconfig": "workspace:*"
   "@storm-software/tsdoc": "workspace:*"
@@ -162,6 +163,6 @@ preferWorkspacePackages: true
 shamefullyHoist: true
 shellEmulator: true
 supportedArchitectures:
-  cpu: [ "current" ]
+  cpu: ["current"]
 useNodeVersion: "26.2.0"
 verifyDepsBeforeRun: "install"

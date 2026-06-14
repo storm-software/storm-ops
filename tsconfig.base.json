@@ -64,6 +64,8 @@
       "@storm-software/testing-tools/*": ["packages/testing-tools/src/*"],
       "@storm-software/tools-scripts": ["packages/tools-scripts/src/index.ts"],
       "@storm-software/tools-scripts/*": ["packages/tools-scripts/src/*"],
+      "@storm-software/tools-nx": ["packages/tools-nx/src/index.ts"],
+      "@storm-software/tools-nx/*": ["packages/tools-nx/src/*"],
       "@storm-software/tsconfig": ["packages/tsconfig/src/index.ts"],
       "@storm-software/tsconfig/*": ["packages/tsconfig/src/*"],
       "@storm-software/tsdoc": ["packages/tsdoc/src/index.ts"],

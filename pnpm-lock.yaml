@@ -244,6 +244,7 @@ overrides:
   '@storm-software/pulumi-tools': workspace:*
   '@storm-software/terraform-tools': workspace:*
   '@storm-software/testing-tools': workspace:*
+  '@storm-software/tools-nx': workspace:*
   '@storm-software/tools-scripts': workspace:*
   '@storm-software/tsconfig': workspace:*
   '@storm-software/tsdoc': workspace:*
@@ -2323,6 +2324,22 @@ importers:
   terraform-modules: {}
 
   tools/config: {}
+
+  tools/nx:
+    dependencies:
+      '@nx/devkit':
+        specifier: 'catalog:'
+        version: 22.7.5(nx@22.7.5(@swc-node/register@1.10.9(@swc/core@1.7.26(@swc/helpers@0.5.13))(@swc/types@0.1.26)(typescript@5.9.3))(@swc/core@1.7.26(@swc/helpers@0.5.13)))
+      nx:
+        specifier: 'catalog:'
+        version: 22.7.5(@swc-node/register@1.10.9(@swc/core@1.7.26(@swc/helpers@0.5.13))(@swc/types@0.1.26)(typescript@5.9.3))(@swc/core@1.7.26(@swc/helpers@0.5.13))
+    devDependencies:
+      '@types/node':
+        specifier: 'catalog:'
+        version: 25.9.3
+      tsup:
+        specifier: 'catalog:'
+        version: 8.4.0(patch_hash=751a554d775c3572381af4e7e5fa22eeda6dd6856012fb1cf521d6806eb2dc74)(@microsoft/api-extractor@7.58.9(@types/node@25.9.3))(@swc/core@1.7.26(@swc/helpers@0.5.13))(jiti@2.7.0)(postcss@8.5.15)(tsx@4.22.4)(typescript@5.9.3)(yaml@2.9.0)
 
   tools/scripts:
     dependencies:

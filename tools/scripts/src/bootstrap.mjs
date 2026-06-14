@@ -8,6 +8,22 @@ try {
 
   await Promise.all([
     build({
+      entryPoints: ["tools/nx/src/plugin/index.ts"],
+      outdir: "dist/plugins/internal",
+      tsconfig: "tools/nx/tsconfig.json",
+      packages: "external",
+      logLevel: "info",
+      bundle: true,
+      minify: false,
+      outExtension: {
+        ".js": ".js"
+      },
+      format: "cjs",
+      platform: "node"
+    }).then(() => {
+      echo`${chalk.green("Storm-Ops Internal Nx plugin built successfully")}`;
+    }),
+    build({
       entryPoints: [
         "packages/workspace-tools/src/plugins/rust/index.ts",
         "packages/workspace-tools/src/plugins/typescript/index.ts",
