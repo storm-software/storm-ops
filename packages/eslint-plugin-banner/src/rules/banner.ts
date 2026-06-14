@@ -354,7 +354,11 @@ export default createRule<Options, MessageIds>({
         const normalizedNewlines = newlines ?? 1;
 
         if (
-          !hasBanner(normalizedCommentStyle, context.sourceCode.getText(), eol)
+          !hasBanner(
+            normalizedCommentStyle,
+            (context.sourceCode || context.getSourceCode()).getText(),
+            eol
+          )
         ) {
           context.report({
             loc: node.loc,
@@ -476,7 +480,9 @@ export default createRule<Options, MessageIds>({
                   return;
                 }
 
-                const postLineBanner = context.sourceCode.text.substr(
+                const postLineBanner = (
+                  context.sourceCode || context.getSourceCode()
+                ).text.substr(
                   lastLeadingComment.range[1],
                   normalizedNewlines * 2
                 );
@@ -537,7 +543,9 @@ export default createRule<Options, MessageIds>({
                       : null
                   });
                 } else {
-                  const postBlockBanner = context.sourceCode.text.substr(
+                  const postBlockBanner = (
+                    context.sourceCode || context.getSourceCode()
+                  ).text.substr(
                     firstLeadingComment.range[1],
                     normalizedNewlines * 2
                   );
