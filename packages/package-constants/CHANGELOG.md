@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Package Constants
 
+## [0.1.76](https://github.com/storm-software/storm-ops/releases/tag/package-constants%400.1.76) (06/14/2026)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate `README` markdown files ([2f934c964](https://github.com/storm-software/storm-ops/commit/2f934c964))
+
 ## [0.1.70](https://github.com/storm-software/storm-ops/releases/tag/package-constants%400.1.70) (06/13/2026)
 
 ### Features

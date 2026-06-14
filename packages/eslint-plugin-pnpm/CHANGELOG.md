@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - ESLint Plugin Pnpm
 
+## [0.0.26](https://github.com/storm-software/storm-ops/releases/tag/eslint-plugin-pnpm%400.0.26) (06/14/2026)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate `README` markdown files ([2f934c964](https://github.com/storm-software/storm-ops/commit/2f934c964))
+
+### Updated Dependencies
+
+- Updated **package-constants** to **v0.1.76**
+- Updated **prettier** to **v0.59.116**
+- Updated **tsdoc** to **v0.13.216**
+
 ## [0.0.25](https://github.com/storm-software/storm-ops/releases/tag/eslint-plugin-pnpm%400.0.25) (06/14/2026)
 
 ### Updated Dependencies

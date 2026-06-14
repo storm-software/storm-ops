@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - ESLint Config React
 
+## [0.0.18](https://github.com/storm-software/storm-ops/releases/tag/eslint-config-react%400.0.18) (06/14/2026)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate `README` markdown files ([2f934c964](https://github.com/storm-software/storm-ops/commit/2f934c964))
+
+### Updated Dependencies
+
+- Updated **eslint** to **v0.170.96**
+
 ## [0.0.17](https://github.com/storm-software/storm-ops/releases/tag/eslint-config-react%400.0.17) (06/14/2026)
 
 ### Updated Dependencies

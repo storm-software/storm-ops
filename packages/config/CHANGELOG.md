@@ -2,6 +2,20 @@
 
 # Changelog for Storm Ops - Config
 
+## [1.138.0](https://github.com/storm-software/storm-ops/releases/tag/config%401.138.0) (06/14/2026)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate `README` markdown files ([2f934c964](https://github.com/storm-software/storm-ops/commit/2f934c964))
+
+### Features
+
+- **config:** Rename `help` to `discovery` and update dark color ([570491044](https://github.com/storm-software/storm-ops/commit/570491044))
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.216**
+
 ## [1.137.94](https://github.com/storm-software/storm-ops/releases/tag/config%401.137.94) (06/14/2026)
 
 ### Updated Dependencies

@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Oxfmt
 
+## [0.0.19](https://github.com/storm-software/storm-ops/releases/tag/oxfmt%400.0.19) (06/14/2026)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate `README` markdown files ([2f934c964](https://github.com/storm-software/storm-ops/commit/2f934c964))
+
 ## [0.0.13](https://github.com/storm-software/storm-ops/releases/tag/oxfmt%400.0.13) (06/13/2026)
 
 ### Features

@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - Vite
 
+## [0.1.157](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.157) (06/14/2026)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate `README` markdown files ([2f934c964](https://github.com/storm-software/storm-ops/commit/2f934c964))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.223**
+
 ## [0.1.156](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.156) (06/14/2026)
 
 ### Updated Dependencies

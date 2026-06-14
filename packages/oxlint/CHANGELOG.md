@@ -2,6 +2,20 @@
 
 # Changelog for Storm Ops - Oxlint
 
+## [0.0.29](https://github.com/storm-software/storm-ops/releases/tag/oxlint%400.0.29) (06/14/2026)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate `README` markdown files ([2f934c964](https://github.com/storm-software/storm-ops/commit/2f934c964))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.0**
+- Updated **config-tools** to **v1.190.63**
+- Updated **eslint-plugin-banner** to **v0.0.28**
+- Updated **eslint-plugin-pnpm** to **v0.0.26**
+- Updated **eslint-plugin-tsdoc** to **v0.0.26**
+
 ## [0.0.28](https://github.com/storm-software/storm-ops/releases/tag/oxlint%400.0.28) (06/14/2026)
 
 ### Updated Dependencies
