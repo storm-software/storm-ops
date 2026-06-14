@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - ESLint
 
+## [0.170.90](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.170.90) (06/13/2026)
+
+### Bug Fixes
+
+- **eslint:** Remove invalid plugin rules missed by copilot ([b425b3b6e](https://github.com/storm-software/storm-ops/commit/b425b3b6e))
+
 ## [0.170.89](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.170.89) (06/13/2026)
 
 ### Bug Fixes
