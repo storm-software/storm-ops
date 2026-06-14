@@ -50,6 +50,7 @@ import type {
   UserConfig
 } from "./types";
 import { interopDefault, isInEditorEnv } from "./utils/helpers";
+import { getTsConfigPath } from "./utils/tsconfig";
 
 const flatConfigProps = [
   "name",
@@ -178,6 +179,12 @@ export function preset(
   }
 
   const typescriptOptions = resolveSubOptions(options, "typescript");
+  if (typescriptOptions.tsconfigPath !== false) {
+    typescriptOptions.tsconfigPath = getTsConfigPath(
+      typescriptOptions.tsconfigPath,
+      options.type
+    );
+  }
 
   // Base configs
   configs.push(
@@ -244,6 +251,10 @@ export function preset(
     configs.push(
       typescript({
         ...typescriptOptions,
+        tsconfigPath:
+          typescriptOptions.tsconfigPath === false
+            ? undefined
+            : typescriptOptions.tsconfigPath,
         componentExts,
         overrides: getOverrides(options, "typescript"),
         type: options.type
@@ -291,11 +302,12 @@ export function preset(
     configs.push(
       react({
         ...typescriptOptions,
-        overrides: getOverrides(options, "react"),
         tsconfigPath:
-          "tsconfigPath" in typescriptOptions
-            ? typescriptOptions.tsconfigPath
-            : undefined
+          typescriptOptions.tsconfigPath === false
+            ? undefined
+            : typescriptOptions.tsconfigPath,
+        ...(typeof enableReact === "boolean" ? { strict: false } : enableReact),
+        overrides: getOverrides(options, "react")
       })
     );
   }

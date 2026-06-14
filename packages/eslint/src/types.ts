@@ -168,6 +168,13 @@ export interface OptionsJSDoc extends OptionsOverrides {
 
 export interface OptionsTypeScriptParserOptions {
   /**
+   * When this options is provided as false, type aware rules will be **disabled**.
+   *
+   * @see https://typescript-eslint.io/linting/typed-linting/
+   */
+  tsconfigPath: false;
+
+  /**
    * Additional parser options for TypeScript.
    */
   parserOptions?: Partial<ParserOptions>;
@@ -187,7 +194,8 @@ export interface OptionsTypeScriptParserOptions {
 
 export interface OptionsTypeScriptWithTypes {
   /**
-   * When this options is provided, type aware rules will be enabled.
+   * When this options is provided (or if `tsconfigPath` is found with {@link @storm-software/eslint/utils/tsconfig#getTsConfigPath | the getTsConfigPath function}), type aware rules will be enabled.
+   *
    * @see https://typescript-eslint.io/linting/typed-linting/
    */
   tsconfigPath?: string;
@@ -321,6 +329,15 @@ export interface OptionsStorybook extends OptionsOverrides {
    * @defaultValue "loose"
    */
   csf?: "none" | "loose" | "strict";
+}
+
+export interface OptionsReact extends OptionsOverrides {
+  /**
+   * Use a strict mode for React rules, which will enable more strict rules that may cause more false positives but can catch more potential issues.
+   *
+   * @defaultValue false
+   */
+  strict?: boolean;
 }
 
 export interface OptionsNxDependencyChecks extends OptionsOverrides {
@@ -729,7 +746,7 @@ export interface OptionsConfig
    *
    * @defaultValue false
    */
-  react?: boolean | OptionsOverrides;
+  react?: boolean | OptionsReact;
 
   /**
    * Enable react native rules.

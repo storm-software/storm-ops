@@ -8,7 +8,7 @@ import {
 import { isPackageExists } from "local-pkg";
 import type {
   OptionsFiles,
-  OptionsOverrides,
+  OptionsReact,
   OptionsTypeScriptParserOptions,
   OptionsTypeScriptWithTypes,
   TypedFlatConfigItem
@@ -63,15 +63,16 @@ function renameRules(
 }
 
 export async function react(
-  options: OptionsTypeScriptParserOptions &
+  options: Omit<OptionsTypeScriptParserOptions, "tsconfigPath"> &
     OptionsTypeScriptWithTypes &
-    OptionsOverrides &
+    OptionsReact &
     OptionsFiles = {}
 ): Promise<TypedFlatConfigItem[]> {
   const {
     files = [GLOB_SRC],
     filesTypeAware = [GLOB_TS, GLOB_TSX],
     ignoresTypeAware = [`${GLOB_MARKDOWN}/**`, GLOB_ASTRO_TS],
+    strict = false,
     overrides = {},
     tsconfigPath
   } = options;
@@ -148,11 +149,15 @@ export async function react(
       rules: {
         ...renameRules(
           !!tsconfigPath
-            ? pluginReact.configs["recommended-type-checked"]
-            : pluginReact.configs["recommended"]
+            ? strict
+              ? pluginReact.configs["strict-type-checked"]
+              : pluginReact.configs["recommended-type-checked"]
+            : strict
+              ? pluginReact.configs["strict"]
+              : pluginReact.configs["recommended"]
         ),
 
-        "react-hooks/exhaustive-deps": "warn",
+        "react-hooks/exhaustive-deps": strict ? "error" : "warn",
         "react-hooks/rules-of-hooks": "error",
 
         "react-refresh/only-export-components": [
@@ -219,7 +224,6 @@ export async function react(
         "react/no-direct-mutation-state": "error",
         "react/no-duplicate-key": "error",
         "react/no-forward-ref": "warn",
-        "react/no-implicit-key": "warn",
         "react/no-missing-key": "error",
         "react/no-nested-component-definitions": "error",
         "react/no-set-state-in-component-did-mount": "warn",
@@ -247,7 +251,9 @@ export async function react(
             ignores: ignoresTypeAware,
             name: "storm/react/type-aware-rules",
             rules: {
-              "react/no-leaked-conditional-rendering": "warn"
+              "react/no-leaked-conditional-rendering": "warn",
+              "react/no-implicit-key": "warn",
+              "react/no-unused-props": strict ? "error" : "warn"
             }
           }
         ]

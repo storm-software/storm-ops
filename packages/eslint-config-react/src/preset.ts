@@ -17,6 +17,7 @@ export function preset(
   ...userConfigs: UserConfig[]
 ): PresetResult {
   const {
+    strict = false,
     mdx: enableMdx = true,
     react = true,
     "react-native": enableReactNative = true,
@@ -29,7 +30,7 @@ export function preset(
       ...rest,
       jsx: true,
       mdx: enableMdx,
-      react: typeof react === "object" ? react : true,
+      react: typeof react === "object" ? { ...react, strict } : { strict },
       "react-native": enableReactNative,
       storybook: enableStorybook
     },
