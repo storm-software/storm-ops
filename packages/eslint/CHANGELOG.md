@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - ESLint
 
+## [0.170.89](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.170.89) (06/13/2026)
+
+### Bug Fixes
+
+- **eslint:** Resolve issue with invalid plugin rules ([b2c844ce8](https://github.com/storm-software/storm-ops/commit/b2c844ce8))
+
 ## [0.170.88](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.170.88) (06/13/2026)
 
 ### Updated Dependencies
