@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - ESLint Config React
 
+## [0.0.13](https://github.com/storm-software/storm-ops/releases/tag/eslint-config-react%400.0.13) (06/14/2026)
+
+### Bug Fixes
+
+- **eslint:** Ensure `tsconfigPath` is calculated before applying `react` linting rules ([5095b3f0a](https://github.com/storm-software/storm-ops/commit/5095b3f0a))
+
+### Updated Dependencies
+
+- Updated **eslint** to **v0.170.91**
+
 ## [0.0.12](https://github.com/storm-software/storm-ops/releases/tag/eslint-config-react%400.0.12) (06/13/2026)
 
 ### Updated Dependencies
