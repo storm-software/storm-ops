@@ -1,6 +1,6 @@
 {
   "name": "@storm-software/cloudflare-tools",
-  "version": "0.71.210",
+  "version": "0.71.209",
   "private": false,
   "description": "A Nx plugin package that contains various executors, generators, and utilities that assist in managing Cloudflare services.",
   "keywords": [
@@ -75,6 +75,20 @@
         "default": "./dist/executors.js"
       }
     },
+    "./executors/*": {
+      "import": {
+        "types": "./dist/src/executors/*.d.mts",
+        "default": "./dist/src/executors/*.mjs"
+      },
+      "require": {
+        "types": "./dist/src/executors/*.d.ts",
+        "default": "./dist/src/executors/*.js"
+      },
+      "default": {
+        "types": "./dist/src/executors/*.d.ts",
+        "default": "./dist/src/executors/*.js"
+      }
+    },
     "./generators": {
       "import": {
         "types": "./dist/generators.d.mts",
@@ -87,6 +101,20 @@
       "default": {
         "types": "./dist/generators.d.ts",
         "default": "./dist/generators.js"
+      }
+    },
+    "./generators/*": {
+      "import": {
+        "types": "./dist/src/generators/*.d.mts",
+        "default": "./dist/src/generators/*.mjs"
+      },
+      "require": {
+        "types": "./dist/src/generators/*.d.ts",
+        "default": "./dist/src/generators/*.js"
+      },
+      "default": {
+        "types": "./dist/src/generators/*.d.ts",
+        "default": "./dist/src/generators/*.js"
       }
     },
     "./utils": {
