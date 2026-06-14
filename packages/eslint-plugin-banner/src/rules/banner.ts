@@ -93,7 +93,9 @@ function getLeadingComments(context: RuleContextLike, node: RuleNodeWithBody) {
   const firstBodyNode =
     Array.isArray(node.body) && node.body.length ? node.body[0] : node;
   const all = excludeShebangs(
-    context.getSourceCode().getAllComments(firstBodyNode)
+    (context.sourceCode || context.getSourceCode()).getAllComments(
+      firstBodyNode
+    )
   );
 
   if (!all.length) {
@@ -112,8 +114,7 @@ function getLeadingComments(context: RuleContextLike, node: RuleNodeWithBody) {
       break;
     }
 
-    const txt = context
-      .getSourceCode()
+    const txt = (context.sourceCode || context.getSourceCode())
       .getText()
       .slice(prev.range[1], current.range[0]);
     if (!txt.match(/^(\r\n|\r|\n)$/)) {
@@ -149,7 +150,7 @@ function genCommentsRange(
 
   const start = comments[0].range[0];
   let end = comments.slice(-1)[0]?.range[1] ?? start;
-  if (context.getSourceCode().text[end] === eol) {
+  if ((context.sourceCode || context.getSourceCode()).text[end] === eol) {
     end += eol.length;
   }
   return [start, end];
