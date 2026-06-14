@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Cloudflare Tools
 
+## [0.71.203](https://github.com/storm-software/storm-ops/releases/tag/cloudflare-tools%400.71.203) (06/14/2026)
+
+### Bug Fixes
+
+- **eslint:** Ensure `tsconfigRootDir` is provided as an absolute path ([cdbec9726](https://github.com/storm-software/storm-ops/commit/cdbec9726))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.94**
+- Updated **config-tools** to **v1.190.62**
+- Updated **workspace-tools** to **v1.296.41**
+
 ## [0.71.202](https://github.com/storm-software/storm-ops/releases/tag/cloudflare-tools%400.71.202) (06/13/2026)
 
 ### Updated Dependencies

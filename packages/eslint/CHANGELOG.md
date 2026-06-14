@@ -2,6 +2,22 @@
 
 # Changelog for Storm Ops - ESLint
 
+## [0.170.95](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.170.95) (06/14/2026)
+
+### Bug Fixes
+
+- **eslint:** Ensure `tsconfigRootDir` is provided as an absolute path ([cdbec9726](https://github.com/storm-software/storm-ops/commit/cdbec9726))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.94**
+- Updated **config-tools** to **v1.190.62**
+- Updated **eslint-plugin-banner** to **v0.0.27**
+- Updated **eslint-plugin-pnpm** to **v0.0.25**
+- Updated **eslint-plugin-tsdoc** to **v0.0.25**
+- Updated **package-constants** to **v0.1.75**
+- Updated **tsdoc** to **v0.13.215**
+
 ## [0.170.94](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.170.94) (06/14/2026)
 
 ### Bug Fixes
