@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Workspace Tools
 
+## [1.296.46](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.296.46) (06/14/2026)
+
+### Bug Fixes
+
+- **workspace-tools:** Resolve issue with missing extension for `eslint` cache file ([a08c4224d](https://github.com/storm-software/storm-ops/commit/a08c4224d))
+
 ## [1.296.45](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.296.45) (06/14/2026)
 
 ### Miscellaneous
