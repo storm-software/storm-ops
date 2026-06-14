@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Oxfmt
 
+## [0.0.20](https://github.com/storm-software/storm-ops/releases/tag/oxfmt%400.0.20) (06/14/2026)
+
+### Miscellaneous
+
+- **oxfmt:** Added `$schema` values to formatter JSONs ([b17b468bb](https://github.com/storm-software/storm-ops/commit/b17b468bb))
+
 ## [0.0.19](https://github.com/storm-software/storm-ops/releases/tag/oxfmt%400.0.19) (06/14/2026)
 
 ### Miscellaneous

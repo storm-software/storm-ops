@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Prettier
 
+## [0.59.117](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.59.117) (06/14/2026)
+
+### Miscellaneous
+
+- **oxfmt:** Added `$schema` values to formatter JSONs ([b17b468bb](https://github.com/storm-software/storm-ops/commit/b17b468bb))
+
 ## [0.59.116](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.59.116) (06/14/2026)
 
 ### Miscellaneous
