@@ -2,17 +2,21 @@ import {
   GLOB_ASTRO_TS,
   GLOB_MARKDOWN,
   GLOB_SRC,
+  GLOB_SRC_FILE,
   GLOB_TS,
   GLOB_TSX
 } from "@storm-software/package-constants/globs";
 import { isPackageExists } from "local-pkg";
 import type {
+  OptionsComponentExts,
   OptionsFiles,
   OptionsReact,
   OptionsTypeScriptParserOptions,
   OptionsTypeScriptWithTypes,
   TypedFlatConfigItem
 } from "../types";
+import { dirname } from "../utils/correct-paths";
+import { findWorkspaceRoot } from "../utils/find-workspace-root";
 import { ensurePackages, interopDefault } from "../utils/helpers";
 
 // react refresh
@@ -63,7 +67,8 @@ function renameRules(
 }
 
 export async function react(
-  options: Omit<OptionsTypeScriptParserOptions, "tsconfigPath"> &
+  options: OptionsComponentExts &
+    Omit<OptionsTypeScriptParserOptions, "tsconfigPath"> &
     OptionsTypeScriptWithTypes &
     OptionsReact &
     OptionsFiles = {}
@@ -74,6 +79,7 @@ export async function react(
     ignoresTypeAware = [`${GLOB_MARKDOWN}/**`, GLOB_ASTRO_TS],
     strict = false,
     overrides = {},
+    componentExts = [],
     tsconfigPath
   } = options;
 
@@ -119,8 +125,12 @@ export async function react(
   );
   const isUsingReactRouter = ReactRouterPackages.some(i => isPackageExists(i));
 
+  const [pluginTs, parserTs] = await Promise.all([
+    interopDefault(import("@typescript-eslint/eslint-plugin")),
+    interopDefault(import("@typescript-eslint/parser"))
+  ] as const);
+
   return [
-    pluginReactHooks.configs.flat["recommended-latest"],
     {
       name: "storm/react/setup",
       plugins: {
@@ -135,6 +145,8 @@ export async function react(
         "react-web-api": pluginReactWebApi
       }
     },
+
+    pluginReactHooks.configs.flat["recommended-latest"],
     {
       files,
       languageOptions: {
@@ -148,13 +160,9 @@ export async function react(
       name: "storm/react/rules",
       rules: {
         ...renameRules(
-          !!tsconfigPath
-            ? strict
-              ? pluginReact.configs["strict-type-checked"]
-              : pluginReact.configs["recommended-type-checked"]
-            : strict
-              ? pluginReact.configs["strict"]
-              : pluginReact.configs["recommended"]
+          strict
+            ? pluginReact.configs["strict"]
+            : pluginReact.configs["recommended"]
         ),
 
         "react-hooks/exhaustive-deps": strict ? "error" : "warn",
@@ -237,10 +245,6 @@ export async function react(
         "react/no-unused-class-component-members": "warn",
         "react/no-unused-state": "warn",
 
-        // "react/prefer-destructuring-assignment": "warn",
-        // "react/prefer-shorthand-boolean": "warn",
-        // "react/prefer-shorthand-fragment": "warn",
-
         ...overrides
       }
     },
@@ -249,8 +253,29 @@ export async function react(
           {
             files: filesTypeAware,
             ignores: ignoresTypeAware,
+            languageOptions: {
+              parser: parserTs,
+              parserOptions: {
+                extraFileExtensions: componentExts.map(ext => `.${ext}`),
+                ecmaFeatures: { jsx: true },
+                ecmaVersion: 2022,
+                sourceType: "module",
+                projectService: {
+                  allowDefaultProject: [GLOB_SRC_FILE],
+                  defaultProject: tsconfigPath
+                },
+                tsconfigRootDir: !tsconfigPath
+                  ? findWorkspaceRoot()
+                  : dirname(tsconfigPath)
+              }
+            },
             name: "storm/react/type-aware-rules",
             rules: {
+              ...renameRules(
+                strict
+                  ? pluginReact.configs["strict-type-checked"]
+                  : pluginReact.configs["recommended-type-checked"]
+              ),
               "react/no-leaked-conditional-rendering": "warn",
               "react/no-implicit-key": "warn",
               "react/no-unused-props": strict ? "error" : "warn"
