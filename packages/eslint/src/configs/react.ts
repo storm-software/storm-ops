@@ -49,7 +49,7 @@ function renameRules(
         )}`
       ] = ruleConfig;
     } else if (ruleName.startsWith("@eslint-react/x-")) {
-      renamedRules[`react-x/${ruleName.slice("@eslint-react/x-".length)}`] =
+      renamedRules[`react/${ruleName.slice("@eslint-react/x-".length)}`] =
         ruleConfig;
     } else if (ruleName.startsWith("@eslint-react/")) {
       renamedRules[`react/${ruleName.slice("@eslint-react/".length)}`] =
@@ -123,16 +123,15 @@ export async function react(
     {
       name: "storm/react/setup",
       plugins: {
+        react: pluginReactX,
         "react-hooks": pluginReactHooks,
         "react-refresh": pluginReactRefresh,
         "react-compiler": pluginReactCompiler,
-        react: pluginReact,
         "react-dom": pluginReactDom,
         "react-jsx": pluginReactJsx,
         "react-naming-convention": pluginReactNamingConvention,
         "react-rsc": pluginReactRsc,
-        "react-web-api": pluginReactWebApi,
-        "react-x": pluginReactX
+        "react-web-api": pluginReactWebApi
       }
     },
     {
@@ -190,7 +189,6 @@ export async function react(
         "react-dom/no-find-dom-node": "error",
         "react-dom/no-missing-button-type": "warn",
         "react-dom/no-missing-iframe-sandbox": "warn",
-        "react-dom/no-namespace": "error",
         "react-dom/no-render-return-value": "error",
         "react-dom/no-script-url": "warn",
         "react-dom/no-unsafe-iframe-sandbox": "warn",
@@ -201,9 +199,10 @@ export async function react(
         "react-web-api/no-leaked-resize-observer": "warn",
         "react-web-api/no-leaked-timeout": "warn",
 
-        "react-x/error-boundaries": "error",
+        "react-jsx/no-namespace": "error",
+        "react-jsx/no-comment-textnodes": "warn",
 
-        "react/ensure-forward-ref-using-ref": "warn",
+        "react/error-boundaries": "error",
         "react/no-access-state-in-setstate": "error",
         "react/no-array-index-key": "warn",
         "react/no-children-count": "warn",
@@ -212,21 +211,17 @@ export async function react(
         "react/no-children-only": "warn",
         "react/no-children-to-array": "warn",
         "react/no-clone-element": "warn",
-        "react/no-comment-textnodes": "warn",
         "react/no-component-will-mount": "error",
         "react/no-component-will-receive-props": "error",
         "react/no-component-will-update": "error",
         "react/no-context-provider": "warn",
         "react/no-create-ref": "error",
-        "react/no-default-props": "error",
         "react/no-direct-mutation-state": "error",
         "react/no-duplicate-key": "error",
         "react/no-forward-ref": "warn",
         "react/no-implicit-key": "warn",
         "react/no-missing-key": "error",
-        "react/no-nested-components": "error",
-        "react/no-prop-types": "error",
-        "react/no-redundant-should-component-update": "error",
+        "react/no-nested-component-definitions": "error",
         "react/no-set-state-in-component-did-mount": "warn",
         "react/no-set-state-in-component-did-update": "warn",
         "react/no-set-state-in-component-will-update": "warn",
