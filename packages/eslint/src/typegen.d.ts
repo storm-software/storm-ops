@@ -17599,6 +17599,8 @@ type TsdocSyntax = []|[{
   type?: ("typedoc" | "api-extractor" | "base" | "core" | "callouts" | "recommended")
   
   configFile?: string
+  
+  tsconfigRootDir?: string
 }]
 // ----- unicode-bom -----
 type UnicodeBom = []|[("always" | "never")]

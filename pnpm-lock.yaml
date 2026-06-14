@@ -266,7 +266,7 @@ patchedDependencies:
   eslint-plugin-import-x: 2fde63e367ada6ae348459ff5a2b0bbc53a12189dad6a555a76978c9150bce32
   eslint-plugin-pnpm@0.3.0: 72dcde755c336eeca3e6170de1106fd85ecb66171e060788f80df45cea29bc9b
   eslint-plugin-react-native: 697a1cfd3f9a70758c1743e394cb6f0b089088d13885e6de0229ba52097c8303
-  eslint-plugin-tsdoc: 11b9fbe0e91a2ce3492e80b89a7502a9ff364683b23b9bdfc2c979d988e1682b
+  eslint-plugin-tsdoc: c262176eba68bfd8898c896d48ca12af2147a650ca7a9cbfe8edf1cf981cdbc9
   tsup@8.4.0: 751a554d775c3572381af4e7e5fa22eeda6dd6856012fb1cf521d6806eb2dc74
 
 importers:
@@ -1371,7 +1371,7 @@ importers:
         version: 1.0.1(eslint@10.5.0(jiti@2.7.0))
       eslint-plugin-tsdoc:
         specifier: 0.4.0
-        version: 0.4.0(patch_hash=11b9fbe0e91a2ce3492e80b89a7502a9ff364683b23b9bdfc2c979d988e1682b)
+        version: 0.4.0(patch_hash=c262176eba68bfd8898c896d48ca12af2147a650ca7a9cbfe8edf1cf981cdbc9)
       eslint-typegen:
         specifier: 'catalog:'
         version: 2.3.1(eslint@10.5.0(jiti@2.7.0))
@@ -26167,7 +26167,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  eslint-plugin-tsdoc@0.4.0(patch_hash=11b9fbe0e91a2ce3492e80b89a7502a9ff364683b23b9bdfc2c979d988e1682b):
+  eslint-plugin-tsdoc@0.4.0(patch_hash=c262176eba68bfd8898c896d48ca12af2147a650ca7a9cbfe8edf1cf981cdbc9):
     dependencies:
       '@microsoft/tsdoc': 0.15.1
       '@microsoft/tsdoc-config': 0.17.1

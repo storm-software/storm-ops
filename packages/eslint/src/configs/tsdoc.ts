@@ -1,6 +1,7 @@
 import { GLOB_TS, GLOB_TSX } from "@storm-software/package-constants/globs";
 import pluginTsdoc from "eslint-plugin-tsdoc";
 import type { OptionsFiles, OptionsTSDoc, TypedFlatConfigItem } from "../types";
+import { findWorkspaceRoot } from "../utils/find-workspace-root";
 
 export async function tsdoc(
   options: OptionsFiles & OptionsTSDoc = {}
@@ -20,7 +21,10 @@ export async function tsdoc(
         tsdoc: pluginTsdoc
       },
       rules: {
-        "tsdoc/syntax": [severity, { type, configFile }]
+        "tsdoc/syntax": [
+          severity,
+          { type, configFile, tsconfigRootDir: findWorkspaceRoot() }
+        ]
       }
     }
   ];

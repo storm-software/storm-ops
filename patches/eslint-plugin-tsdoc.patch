@@ -332,7 +332,7 @@ index 55d07a04c611f65e0a27f59b5de9c89c9d393888..44295ecce15d7d3b696070c32b2b6353
      }
  }
 diff --git a/lib/Debug.js b/lib/Debug.js
-index abdc844796e31fa49872c8eed312b0a19299e1ef..e3b3d696b707ab7bea3699333f1437b1d4b8e10d 100644
+index abdc844796e31fa49872c8eed312b0a19299e1ef..6ba5d39df61cadf69dbf0a12866b81e83bfd7083 100644
 --- a/lib/Debug.js
 +++ b/lib/Debug.js
 @@ -8,6 +8,7 @@ class Debug {
@@ -344,10 +344,10 @@ index abdc844796e31fa49872c8eed312b0a19299e1ef..e3b3d696b707ab7bea3699333f1437b1
      }
  }
 diff --git a/lib/index.js b/lib/index.js
-index 73c357f96e3c69ac87e19cc3e5d2733073d6aef3..8db601f574495874fcdab1a202de8c413d897753 100644
+index 73c357f96e3c69ac87e19cc3e5d2733073d6aef3..ab270e58a60eb186db80e8a3b23c43297cace018 100644
 --- a/lib/index.js
 +++ b/lib/index.js
-@@ -15,48 +15,132 @@ const plugin = {
+@@ -15,48 +15,142 @@ const plugin = {
          // from the NPM package name, and then appending this string.
          syntax: {
              meta: {
@@ -382,6 +382,11 @@ index 73c357f96e3c69ac87e19cc3e5d2733073d6aef3..8db601f574495874fcdab1a202de8c41
 +                        type: "string",
 +                        description:
 +                          "The TSDoc configuration file to use."
++                      },
++                      tsconfigRootDir: {
++                        type: "string",
++                        description:
++                          "The root directory to use when resolving the tsconfig file. This is only necessary if the tsconfig file is not located in the same directory as the source file being linted. If not provided, eslint will attempt to use the parser option 'tsconfigRootDir' if it is available."
 +                      }
 +                    },
 +                    additionalProperties: false
@@ -394,13 +399,13 @@ index 73c357f96e3c69ac87e19cc3e5d2733073d6aef3..8db601f574495874fcdab1a202de8c41
 +              }
 +            ],
              create: (context) => {
--                const sourceFilePath = context.filename;
 +                const tsdocConfiguration = new tsdoc_1.TSDocConfiguration();
 +
-                 // If eslint is configured with @typescript-eslint/parser, there is a parser option
-                 // to explicitly specify where the tsconfig file is. Use that if available.
-                 const tsConfigDir = context.parserOptions.tsconfigRootDir;
-+                const sourceFilePath = context.filename;
++                let tsConfigDir = undefined;
+                 const sourceFilePath = context.filename;
+-                // If eslint is configured with @typescript-eslint/parser, there is a parser option
+-                // to explicitly specify where the tsconfig file is. Use that if available.
+-                const tsConfigDir = context.parserOptions.tsconfigRootDir;
 +
                  Debug_1.Debug.log(`Linting: "${sourceFilePath}"`);
 -                const tsdocConfiguration = new tsdoc_1.TSDocConfiguration();
@@ -416,6 +421,13 @@ index 73c357f96e3c69ac87e19cc3e5d2733073d6aef3..8db601f574495874fcdab1a202de8c41
 +                          : {}
 +                        : context.options
 +                      : {};
++
++                    tsConfigDir = userOptions.tsconfigRootDir;
++                    if (!tsConfigDir && context.parserOptions && context.parserOptions.tsconfigRootDir) {
++                      // If eslint is configured with @typescript-eslint/parser, there is a parser option
++                      // to explicitly specify where the tsconfig file is. Use that if available.
++                      tsConfigDir = context.parserOptions.tsconfigRootDir;
++                    }
 +
 +                    const config = { type: userOptions.type || "recommended", configFile: userOptions.configFile };
 +                    Debug_1.Debug.log(`Using eslint-plugin-tsdoc config: ${JSON.stringify(config, undefined, 2)}`);
@@ -508,6 +520,15 @@ index 73c357f96e3c69ac87e19cc3e5d2733073d6aef3..8db601f574495874fcdab1a202de8c41
                  }
                  catch (e) {
                      context.report({
+@@ -68,7 +162,7 @@ const plugin = {
+                     });
+                 }
+                 const tsdocParser = new tsdoc_1.TSDocParser(tsdocConfiguration);
+-                const sourceCode = context.getSourceCode();
++                const sourceCode = (context.sourceCode || context.getSourceCode());
+                 const checkCommentBlocks = function (node) {
+                     for (const comment of sourceCode.getAllComments()) {
+                         if (comment.type !== 'Block') {
 diff --git a/package.json b/package.json
 index f616530237bf40b93d931e8fd2f19704e829785b..7ba5a40183030bb79db76229a9b8a372fabf6f7f 100644
 --- a/package.json
