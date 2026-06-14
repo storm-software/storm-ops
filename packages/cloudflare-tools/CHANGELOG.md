@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Cloudflare Tools
 
+## [0.71.211](https://github.com/storm-software/storm-ops/releases/tag/cloudflare-tools%400.71.211) (06/14/2026)
+
+### Miscellaneous
+
+- **cloudflare-tools:** Updated package.json exports to include sub-modules ([27336f19b](https://github.com/storm-software/storm-ops/commit/27336f19b))
+
 ## [0.71.210](https://github.com/storm-software/storm-ops/releases/tag/cloudflare-tools%400.71.210) (06/14/2026)
 
 ### Miscellaneous
