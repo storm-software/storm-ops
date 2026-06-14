@@ -225,7 +225,6 @@ export async function react(
         "react/no-set-state-in-component-did-mount": "warn",
         "react/no-set-state-in-component-did-update": "warn",
         "react/no-set-state-in-component-will-update": "warn",
-        "react/no-string-refs": "error",
         "react/no-unsafe-component-will-mount": "warn",
         "react/no-unsafe-component-will-receive-props": "warn",
         "react/no-unsafe-component-will-update": "warn",
@@ -233,9 +232,10 @@ export async function react(
         "react/no-unstable-default-props": "warn",
         "react/no-unused-class-component-members": "warn",
         "react/no-unused-state": "warn",
-        "react/prefer-destructuring-assignment": "warn",
-        "react/prefer-shorthand-boolean": "warn",
-        "react/prefer-shorthand-fragment": "warn",
+
+        // "react/prefer-destructuring-assignment": "warn",
+        // "react/prefer-shorthand-boolean": "warn",
+        // "react/prefer-shorthand-fragment": "warn",
 
         ...overrides
       }
