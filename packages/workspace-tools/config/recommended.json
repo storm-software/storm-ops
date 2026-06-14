@@ -5,7 +5,7 @@
     "allProjectFiles": ["sharedGlobals", "{projectRoot}/**/*"],
     "default": ["sharedGlobals", "{projectRoot}/**/*"],
     "sharedGlobals": [
-      "{workspaceRoot}/.github/**/*",
+      "{workspaceRoot}/.github/workflows/*.yml",
       "{workspaceRoot}/assets/**/*",
       "{workspaceRoot}/tsconfig.json",
       "{workspaceRoot}/tsconfig.base.json",
