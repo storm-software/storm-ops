@@ -5,6 +5,7 @@ import {
   GLOB_TS,
   GLOB_TSX
 } from "@storm-software/package-constants/globs";
+import { dirname } from "node:path";
 import type {
   OptionsComponentExts,
   OptionsFiles,
@@ -96,7 +97,9 @@ export async function typescript(
                   allowDefaultProject: [GLOB_SRC_FILE],
                   defaultProject: tsconfigPath
                 },
-                tsconfigRootDir: findWorkspaceRoot()
+                tsconfigRootDir: !tsconfigPath
+                  ? findWorkspaceRoot()
+                  : dirname(tsconfigPath)
               }
             : {}),
           ...(parserOptions as any)

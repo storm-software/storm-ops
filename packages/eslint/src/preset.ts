@@ -44,6 +44,7 @@ import type {
   Awaitable,
   ConfigNames,
   OptionsConfig,
+  OptionsTypescript,
   PresetConfig,
   PresetResult,
   TypedFlatConfigItem,
@@ -178,14 +179,6 @@ export function preset(
     }
   }
 
-  const typescriptOptions = resolveSubOptions(options, "typescript");
-  if (typescriptOptions.tsconfigPath !== false) {
-    typescriptOptions.tsconfigPath = getTsConfigPath(
-      typescriptOptions.tsconfigPath,
-      options.type
-    );
-  }
-
   // Base configs
   configs.push(
     ignores(options.ignores),
@@ -202,6 +195,32 @@ export function preset(
     perfectionist(),
     secrets({ json: options.jsonc !== false })
   );
+
+  let typescriptOptions = {} as OptionsTypescript;
+  if (enableTypeScript) {
+    typescriptOptions = resolveSubOptions(options, "typescript");
+    if (typescriptOptions.tsconfigPath !== false) {
+      typescriptOptions.tsconfigPath = getTsConfigPath(
+        typescriptOptions.tsconfigPath,
+        options.type
+      );
+    }
+  }
+
+  if (enableTypeScript) {
+    configs.push(
+      typescript({
+        ...typescriptOptions,
+        tsconfigPath:
+          typescriptOptions.tsconfigPath === false
+            ? undefined
+            : typescriptOptions.tsconfigPath,
+        componentExts,
+        overrides: getOverrides(options, "typescript"),
+        type: options.type
+      })
+    );
+  }
 
   if (enableBanner) {
     configs.push(
@@ -245,21 +264,6 @@ export function preset(
 
   if (enableJsx) {
     configs.push(jsx());
-  }
-
-  if (enableTypeScript) {
-    configs.push(
-      typescript({
-        ...typescriptOptions,
-        tsconfigPath:
-          typescriptOptions.tsconfigPath === false
-            ? undefined
-            : typescriptOptions.tsconfigPath,
-        componentExts,
-        overrides: getOverrides(options, "typescript"),
-        type: options.type
-      })
-    );
   }
 
   if (enableZod) {
