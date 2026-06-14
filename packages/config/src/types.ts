@@ -83,7 +83,7 @@ export const COLOR_KEYS = [
   "accent",
   "link",
   "success",
-  "help",
+  "discovery",
   "info",
   "warning",
   "danger",

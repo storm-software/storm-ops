@@ -25,7 +25,7 @@
       "foreground": "#1d1e22",
       "brand": "#1fb2a6",
       "alternate": "#db2777",
-      "help": "#5C4EE5",
+      "discovery": "#5C4EE5",
       "success": "#087f5b",
       "info": "#0550ae",
       "warning": "#e3b341",
@@ -35,11 +35,11 @@
       "negative": "#dc2626"
     },
     "dark": {
-      "background": "#1d1e22",
+      "background": "#1e2124",
       "foreground": "#cbd5e1",
       "brand": "#1fb2a6",
       "alternate": "#db2777",
-      "help": "#818cf8",
+      "discovery": "#818cf8",
       "success": "#12B66A",
       "info": "#0070E0",
       "warning": "#f3d371",

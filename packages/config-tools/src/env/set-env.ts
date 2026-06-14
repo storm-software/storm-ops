@@ -365,8 +365,8 @@ const setSingleThemeColorsEnv = (prefix: string, config: SingleThemeColors) => {
   if (config.link) {
     process.env[`${prefix}LINK`] = config.link;
   }
-  if (config.help) {
-    process.env[`${prefix}HELP`] = config.help;
+  if (config.discovery) {
+    process.env[`${prefix}DISCOVERY`] = config.discovery;
   }
   if (config.success) {
     process.env[`${prefix}SUCCESS`] = config.success;
@@ -431,8 +431,8 @@ const setBaseThemeColorsEnv = (
   if (config.link) {
     process.env[`${prefix}LINK`] = config.link;
   }
-  if (config.help) {
-    process.env[`${prefix}HELP`] = config.help;
+  if (config.discovery) {
+    process.env[`${prefix}DISCOVERY`] = config.discovery;
   }
   if (config.success) {
     process.env[`${prefix}SUCCESS`] = config.success;

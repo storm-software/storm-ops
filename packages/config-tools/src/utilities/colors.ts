@@ -15,7 +15,7 @@ export const DEFAULT_COLOR_CONFIG = {
     foreground: "#1d1e22",
     brand: "#1fb2a6",
     alternate: "#db2777",
-    help: "#5C4EE5",
+    discovery: "#5C4EE5",
     success: "#087f5b",
     info: "#0550ae",
     debug: "#8afafc",
@@ -29,11 +29,11 @@ export const DEFAULT_COLOR_CONFIG = {
     gradient: ["#1fb2a6", "#db2777", "#5C4EE5"]
   },
   dark: {
-    background: "#1d1e22",
+    background: "#1e2124",
     foreground: "#cbd5e1",
     brand: "#2dd4bf",
     alternate: "#db2777",
-    help: "#818cf8",
+    discovery: "#818cf8",
     success: "#10b981",
     info: "#58a6ff",
     debug: "#8afafc",
@@ -95,7 +95,7 @@ export function getColor(
     | "background"
     | "foreground"
     | "brand"
-    | "help"
+    | "discovery"
     | "success"
     | "info"
     | "debug"
