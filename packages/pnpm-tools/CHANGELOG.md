@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - Pnpm Tools
 
+## [0.7.77](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.7.77) (06/14/2026)
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.3**
+- Updated **config-tools** to **v1.190.66**
+- Updated **npm-tools** to **v0.6.184**
+- Updated **package-constants** to **v0.1.79**
+- Updated **testing-tools** to **v1.119.219**
+
 ## [0.7.76](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.7.76) (06/14/2026)
 
 ### Updated Dependencies

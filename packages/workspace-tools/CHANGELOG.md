@@ -2,6 +2,25 @@
 
 # Changelog for Storm Ops - Workspace Tools
 
+## [1.296.45](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.296.45) (06/14/2026)
+
+### Miscellaneous
+
+- **workspace-tools:** Updated lock files and Nx configuration input to specify `workflows` directory ([763744b01](https://github.com/storm-software/storm-ops/commit/763744b01))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.3**
+- Updated **config-tools** to **v1.190.66**
+- Updated **esbuild** to **v0.53.227**
+- Updated **npm-tools** to **v0.6.184**
+- Updated **package-constants** to **v0.1.79**
+- Updated **pnpm-tools** to **v0.7.77**
+- Updated **prettier** to **v0.59.119**
+- Updated **testing-tools** to **v1.119.219**
+- Updated **tsdown** to **v0.45.227**
+- Updated **unbuild** to **v0.57.227**
+
 ## [1.296.44](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.296.44) (06/14/2026)
 
 ### Updated Dependencies
