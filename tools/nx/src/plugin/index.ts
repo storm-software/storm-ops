@@ -26,6 +26,15 @@ import type { ProjectType } from "nx/src/config/workspace-json-project-json.js";
 
 export const name = "storm-ops/plugin";
 
+const dependencies = [
+  "untyped",
+  "unbuild",
+  "esbuild",
+  "package-constants",
+  "config-tools",
+  "config"
+];
+
 export const createNodesV2: CreateNodesV2 = [
   "packages/**/project.json",
   async (configFiles, optionsV2, contextV2): Promise<CreateNodesResultV2> => {
@@ -39,7 +48,7 @@ export const createNodesV2: CreateNodesV2 = [
           const projectJson = readJsonFile(
             join(contextV2.workspaceRoot, configFile)
           );
-          if (!projectJson?.name || projectJson.name === "workspace-tools") {
+          if (!projectJson?.name || dependencies.includes(projectJson.name)) {
             return {};
           }
 

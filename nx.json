@@ -57,7 +57,7 @@
         "projectsRelationship": "independent",
         "version": {
           "versionActions": "./dist/packages/workspace-tools/dist/src/release/js-version-actions.js",
-          "groupPreVersionCommand": "pnpm build",
+          "groupPreVersionCommand": "pnpm nx run workspace-tools:build",
           "currentVersionResolver": "git-tag",
           "specifierSource": "conventional-commits",
           "manifestRootsToUpdate": [
@@ -74,7 +74,7 @@
         "projectsRelationship": "independent",
         "version": {
           "versionActions": "./dist/packages/workspace-tools/dist/src/release/rust-version-actions.js",
-          "groupPreVersionCommand": "pnpm build",
+          "groupPreVersionCommand": "pnpm nx run workspace-tools:build",
           "currentVersionResolver": "git-tag",
           "specifierSource": "conventional-commits"
         }
@@ -92,8 +92,7 @@
       }
     },
     "./dist/plugins/cloudflare/index.js",
-    "./dist/plugins/rust/index.js",
-    "./dist/plugins/internal/index.js"
+    "./dist/plugins/rust/index.js"
   ],
   "neverConnectToCloud": true,
   "analytics": false
