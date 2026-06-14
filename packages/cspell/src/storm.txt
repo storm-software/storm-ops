@@ -359,6 +359,7 @@ rdjson
 polyfilling
 xchacha
 oxfmtrc
+mkdist
 
 # Acronyms
 dpdm
