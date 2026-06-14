@@ -250,7 +250,7 @@ export const createNodesV2: CreateNodesV2<TypeScriptPluginOptions> = [
                   cache: true,
                   inputs: ["linting", "typescript", "^production"],
                   outputs: [
-                    "{projectRoot}/**/*.{ts,tsx,js,jsx,json,md,mdx,yaml,yml,html,css,scss,sass,less,graphql,gql}"
+                    "{projectRoot}/**/*.{ts,tsx,mts,cts,js,jsx,mjs,cjs,json,md,mdx,yaml,yml,html,css,scss,sass,less,graphql,gql}"
                   ],
                   dependsOn: [
                     enableMarkdownlint
@@ -279,7 +279,7 @@ export const createNodesV2: CreateNodesV2<TypeScriptPluginOptions> = [
                     errorOnUnmatchedPattern: false,
                     cache: true,
                     cacheLocation:
-                      "{workspaceRoot}/node_modules/.cache/eslint/{projectRoot}",
+                      "{workspaceRoot}/node_modules/.cache/eslint/{projectRoot}/cache.json",
                     eslintConfig
                   }
                 };
