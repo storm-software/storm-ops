@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - CSpell
 
+## [0.46.135](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.46.135) (06/14/2026)
+
+### Miscellaneous
+
+- **workspace-tools:** Update build packages to be peer dependencies ([2ad5338d0](https://github.com/storm-software/storm-ops/commit/2ad5338d0))
+
 ## [0.46.131](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.46.131) (06/14/2026)
 
 ### Miscellaneous

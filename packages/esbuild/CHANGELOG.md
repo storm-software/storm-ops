@@ -2,6 +2,19 @@
 
 # Changelog for Storm Ops - Esbuild
 
+## [0.53.228](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.53.228) (06/14/2026)
+
+### Miscellaneous
+
+- **workspace-tools:** Update build packages to be peer dependencies ([2ad5338d0](https://github.com/storm-software/storm-ops/commit/2ad5338d0))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.227**
+- Updated **config** to **v1.138.4**
+- Updated **config-tools** to **v1.190.67**
+- Updated **tsup** to **v0.2.225**
+
 ## [0.53.227](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.53.227) (06/14/2026)
 
 ### Updated Dependencies

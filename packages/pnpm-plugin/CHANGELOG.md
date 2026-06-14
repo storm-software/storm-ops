@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Pnpm Plugin
 
+## [0.1.178](https://github.com/storm-software/storm-ops/releases/tag/pnpm-plugin%400.1.178) (06/14/2026)
+
+### Miscellaneous
+
+- **workspace-tools:** Update build packages to be peer dependencies ([2ad5338d0](https://github.com/storm-software/storm-ops/commit/2ad5338d0))
+
+### Updated Dependencies
+
+- Updated **package-constants** to **v0.1.80**
+- Updated **testing-tools** to **v1.119.220**
+
 ## [0.1.177](https://github.com/storm-software/storm-ops/releases/tag/pnpm-plugin%400.1.177) (06/14/2026)
 
 ### Updated Dependencies

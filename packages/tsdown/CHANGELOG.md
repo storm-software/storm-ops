@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Tsdown
 
+## [0.45.228](https://github.com/storm-software/storm-ops/releases/tag/tsdown%400.45.228) (06/14/2026)
+
+### Miscellaneous
+
+- **workspace-tools:** Update build packages to be peer dependencies ([2ad5338d0](https://github.com/storm-software/storm-ops/commit/2ad5338d0))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.227**
+- Updated **config** to **v1.138.4**
+- Updated **config-tools** to **v1.190.67**
+
 ## [0.45.227](https://github.com/storm-software/storm-ops/releases/tag/tsdown%400.45.227) (06/14/2026)
 
 ### Updated Dependencies
