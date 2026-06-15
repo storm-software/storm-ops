@@ -117,7 +117,7 @@ export function preset(
     componentExts = [],
     gitignore: enableGitignore = true,
     jsx: enableJsx = true,
-    mdx: enableMdx = true,
+    mdx: enableMdx = false,
     cspell: enableCSpell = true,
     react: enableReact = false,
     "react-native": enableReactNative = false,
