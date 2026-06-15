@@ -2,6 +2,20 @@
 
 # Changelog for Storm Ops - Pnpm Tools
 
+## [0.7.80](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.7.80) (06/15/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update asset references to the newly created `media` folder ([40a620402](https://github.com/storm-software/storm-ops/commit/40a620402))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.6**
+- Updated **config-tools** to **v1.190.69**
+- Updated **npm-tools** to **v0.6.187**
+- Updated **package-constants** to **v0.1.82**
+- Updated **testing-tools** to **v1.119.222**
+
 ## [0.7.79](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.7.79) (06/14/2026)
 
 ### Miscellaneous

@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - ESLint Config React
 
+## [0.0.24](https://github.com/storm-software/storm-ops/releases/tag/eslint-config-react%400.0.24) (06/15/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update asset references to the newly created `media` folder ([40a620402](https://github.com/storm-software/storm-ops/commit/40a620402))
+
+### Updated Dependencies
+
+- Updated **eslint** to **v0.170.102**
+
 ## [0.0.23](https://github.com/storm-software/storm-ops/releases/tag/eslint-config-react%400.0.23) (06/14/2026)
 
 ### Miscellaneous

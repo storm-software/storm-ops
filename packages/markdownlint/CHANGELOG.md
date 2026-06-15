@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - Markdownlint
 
+## [0.30.225](https://github.com/storm-software/storm-ops/releases/tag/markdownlint%400.30.225) (06/15/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update asset references to the newly created `media` folder ([40a620402](https://github.com/storm-software/storm-ops/commit/40a620402))
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.222**
+
 ## [0.30.224](https://github.com/storm-software/storm-ops/releases/tag/markdownlint%400.30.224) (06/14/2026)
 
 ### Miscellaneous

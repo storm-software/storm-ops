@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - Config
 
+## [1.138.6](https://github.com/storm-software/storm-ops/releases/tag/config%401.138.6) (06/15/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update asset references to the newly created `media` folder ([40a620402](https://github.com/storm-software/storm-ops/commit/40a620402))
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.222**
+
 ## [1.138.5](https://github.com/storm-software/storm-ops/releases/tag/config%401.138.5) (06/14/2026)
 
 ### Miscellaneous

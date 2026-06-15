@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Oxfmt
 
+## [0.0.25](https://github.com/storm-software/storm-ops/releases/tag/oxfmt%400.0.25) (06/15/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update asset references to the newly created `media` folder ([40a620402](https://github.com/storm-software/storm-ops/commit/40a620402))
+
 ## [0.0.24](https://github.com/storm-software/storm-ops/releases/tag/oxfmt%400.0.24) (06/14/2026)
 
 ### Miscellaneous

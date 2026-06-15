@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Projen
 
+## [0.21.252](https://github.com/storm-software/storm-ops/releases/tag/projen%400.21.252) (06/15/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update asset references to the newly created `media` folder ([40a620402](https://github.com/storm-software/storm-ops/commit/40a620402))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.6**
+- Updated **config-tools** to **v1.190.69**
+- Updated **workspace-tools** to **v1.296.49**
+
 ## [0.21.251](https://github.com/storm-software/storm-ops/releases/tag/projen%400.21.251) (06/14/2026)
 
 ### Miscellaneous

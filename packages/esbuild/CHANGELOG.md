@@ -2,6 +2,19 @@
 
 # Changelog for Storm Ops - Esbuild
 
+## [0.53.230](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.53.230) (06/15/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update asset references to the newly created `media` folder ([40a620402](https://github.com/storm-software/storm-ops/commit/40a620402))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.229**
+- Updated **config** to **v1.138.6**
+- Updated **config-tools** to **v1.190.69**
+- Updated **tsup** to **v0.2.227**
+
 ## [0.53.229](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.53.229) (06/14/2026)
 
 ### Miscellaneous

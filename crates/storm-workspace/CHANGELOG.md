@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Storm Workspace
 
+## [0.19.302](https://github.com/storm-software/storm-ops/releases/tag/storm-workspace%400.19.302) (06/15/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update asset references to the newly created `media` folder ([40a620402](https://github.com/storm-software/storm-ops/commit/40a620402))
+
 ## [0.19.207](https://github.com/storm-software/storm-ops/releases/tag/storm-workspace%400.19.207) (05/14/2026)
 
 ### Miscellaneous

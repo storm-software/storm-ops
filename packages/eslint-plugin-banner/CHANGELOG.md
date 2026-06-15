@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - ESLint Plugin Banner
 
+## [0.0.34](https://github.com/storm-software/storm-ops/releases/tag/eslint-plugin-banner%400.0.34) (06/15/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update asset references to the newly created `media` folder ([40a620402](https://github.com/storm-software/storm-ops/commit/40a620402))
+
+### Updated Dependencies
+
+- Updated **package-constants** to **v0.1.82**
+- Updated **prettier** to **v0.59.122**
+
 ## [0.0.33](https://github.com/storm-software/storm-ops/releases/tag/eslint-plugin-banner%400.0.33) (06/14/2026)
 
 ### Miscellaneous

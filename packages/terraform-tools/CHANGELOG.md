@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Terraform Tools
 
+## [0.66.252](https://github.com/storm-software/storm-ops/releases/tag/terraform-tools%400.66.252) (06/15/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update asset references to the newly created `media` folder ([40a620402](https://github.com/storm-software/storm-ops/commit/40a620402))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.6**
+- Updated **config-tools** to **v1.190.69**
+- Updated **workspace-tools** to **v1.296.49**
+
 ## [0.66.251](https://github.com/storm-software/storm-ops/releases/tag/terraform-tools%400.66.251) (06/14/2026)
 
 ### Miscellaneous

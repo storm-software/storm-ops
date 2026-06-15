@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Tsdoc
 
+## [0.13.222](https://github.com/storm-software/storm-ops/releases/tag/tsdoc%400.13.222) (06/15/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update asset references to the newly created `media` folder ([40a620402](https://github.com/storm-software/storm-ops/commit/40a620402))
+
 ## [0.13.221](https://github.com/storm-software/storm-ops/releases/tag/tsdoc%400.13.221) (06/14/2026)
 
 ### Miscellaneous

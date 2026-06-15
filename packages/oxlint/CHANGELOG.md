@@ -2,6 +2,20 @@
 
 # Changelog for Storm Ops - Oxlint
 
+## [0.0.35](https://github.com/storm-software/storm-ops/releases/tag/oxlint%400.0.35) (06/15/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update asset references to the newly created `media` folder ([40a620402](https://github.com/storm-software/storm-ops/commit/40a620402))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.6**
+- Updated **config-tools** to **v1.190.69**
+- Updated **eslint-plugin-banner** to **v0.0.34**
+- Updated **eslint-plugin-pnpm** to **v0.0.32**
+- Updated **eslint-plugin-tsdoc** to **v0.0.32**
+
 ## [0.0.34](https://github.com/storm-software/storm-ops/releases/tag/oxlint%400.0.34) (06/14/2026)
 
 ### Miscellaneous

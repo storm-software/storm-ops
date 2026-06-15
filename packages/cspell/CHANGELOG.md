@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - CSpell
 
+## [0.46.137](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.46.137) (06/15/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update asset references to the newly created `media` folder ([40a620402](https://github.com/storm-software/storm-ops/commit/40a620402))
+
 ## [0.46.136](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.46.136) (06/14/2026)
 
 ### Miscellaneous

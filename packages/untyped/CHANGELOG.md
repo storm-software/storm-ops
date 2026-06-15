@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Untyped
 
+## [0.24.211](https://github.com/storm-software/storm-ops/releases/tag/untyped%400.24.211) (06/15/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update asset references to the newly created `media` folder ([40a620402](https://github.com/storm-software/storm-ops/commit/40a620402))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.6**
+- Updated **config-tools** to **v1.190.69**
+
 ## [0.24.210](https://github.com/storm-software/storm-ops/releases/tag/untyped%400.24.210) (06/14/2026)
 
 ### Miscellaneous

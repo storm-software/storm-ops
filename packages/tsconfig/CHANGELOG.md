@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Tsconfig
 
+## [0.48.136](https://github.com/storm-software/storm-ops/releases/tag/tsconfig%400.48.136) (06/15/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update asset references to the newly created `media` folder ([40a620402](https://github.com/storm-software/storm-ops/commit/40a620402))
+
 ## [0.48.135](https://github.com/storm-software/storm-ops/releases/tag/tsconfig%400.48.135) (06/14/2026)
 
 ### Miscellaneous

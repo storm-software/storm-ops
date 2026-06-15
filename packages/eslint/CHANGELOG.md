@@ -2,6 +2,26 @@
 
 # Changelog for Storm Ops - ESLint
 
+## [0.170.102](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.170.102) (06/15/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update asset references to the newly created `media` folder ([40a620402](https://github.com/storm-software/storm-ops/commit/40a620402))
+
+### Bug Fixes
+
+- **eslint:** Resolve issue with incorrect default value for `mdx` option ([7fb16d7a1](https://github.com/storm-software/storm-ops/commit/7fb16d7a1))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.6**
+- Updated **config-tools** to **v1.190.69**
+- Updated **eslint-plugin-banner** to **v0.0.34**
+- Updated **eslint-plugin-pnpm** to **v0.0.32**
+- Updated **eslint-plugin-tsdoc** to **v0.0.32**
+- Updated **package-constants** to **v0.1.82**
+- Updated **tsdoc** to **v0.13.222**
+
 ## [0.170.101](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.170.101) (06/14/2026)
 
 ### Miscellaneous

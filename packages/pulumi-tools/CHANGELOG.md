@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Pulumi Tools
 
+## [0.22.252](https://github.com/storm-software/storm-ops/releases/tag/pulumi-tools%400.22.252) (06/15/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update asset references to the newly created `media` folder ([40a620402](https://github.com/storm-software/storm-ops/commit/40a620402))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.6**
+- Updated **config-tools** to **v1.190.69**
+- Updated **workspace-tools** to **v1.296.49**
+
 ## [0.22.251](https://github.com/storm-software/storm-ops/releases/tag/pulumi-tools%400.22.251) (06/14/2026)
 
 ### Miscellaneous

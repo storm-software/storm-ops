@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Npm Tools
 
+## [0.6.187](https://github.com/storm-software/storm-ops/releases/tag/npm-tools%400.6.187) (06/15/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update asset references to the newly created `media` folder ([40a620402](https://github.com/storm-software/storm-ops/commit/40a620402))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.6**
+- Updated **config-tools** to **v1.190.69**
+- Updated **testing-tools** to **v1.119.222**
+
 ## [0.6.186](https://github.com/storm-software/storm-ops/releases/tag/npm-tools%400.6.186) (06/14/2026)
 
 ### Miscellaneous

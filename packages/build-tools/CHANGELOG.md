@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Build Tools
 
+## [0.158.229](https://github.com/storm-software/storm-ops/releases/tag/build-tools%400.158.229) (06/15/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update asset references to the newly created `media` folder ([40a620402](https://github.com/storm-software/storm-ops/commit/40a620402))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.6**
+- Updated **config-tools** to **v1.190.69**
+
 ## [0.158.228](https://github.com/storm-software/storm-ops/releases/tag/build-tools%400.158.228) (06/14/2026)
 
 ### Miscellaneous

@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Tsdown
 
+## [0.45.230](https://github.com/storm-software/storm-ops/releases/tag/tsdown%400.45.230) (06/15/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update asset references to the newly created `media` folder ([40a620402](https://github.com/storm-software/storm-ops/commit/40a620402))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.229**
+- Updated **config** to **v1.138.6**
+- Updated **config-tools** to **v1.190.69**
+
 ## [0.45.229](https://github.com/storm-software/storm-ops/releases/tag/tsdown%400.45.229) (06/14/2026)
 
 ### Miscellaneous

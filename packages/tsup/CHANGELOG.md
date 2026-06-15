@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Tsup
 
+## [0.2.227](https://github.com/storm-software/storm-ops/releases/tag/tsup%400.2.227) (06/15/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update asset references to the newly created `media` folder ([40a620402](https://github.com/storm-software/storm-ops/commit/40a620402))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.229**
+- Updated **config-tools** to **v1.190.69**
+
 ## [0.2.226](https://github.com/storm-software/storm-ops/releases/tag/tsup%400.2.226) (06/14/2026)
 
 ### Miscellaneous

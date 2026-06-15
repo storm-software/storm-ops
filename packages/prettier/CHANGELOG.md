@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Prettier
 
+## [0.59.122](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.59.122) (06/15/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update asset references to the newly created `media` folder ([40a620402](https://github.com/storm-software/storm-ops/commit/40a620402))
+
 ## [0.59.121](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.59.121) (06/14/2026)
 
 ### Miscellaneous

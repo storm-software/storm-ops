@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - Vite
 
+## [0.1.163](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.163) (06/15/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update asset references to the newly created `media` folder ([40a620402](https://github.com/storm-software/storm-ops/commit/40a620402))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.229**
+
 ## [0.1.162](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.162) (06/14/2026)
 
 ### Miscellaneous

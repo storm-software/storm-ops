@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Linting Tools
 
+## [1.133.99](https://github.com/storm-software/storm-ops/releases/tag/linting-tools%401.133.99) (06/15/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update asset references to the newly created `media` folder ([40a620402](https://github.com/storm-software/storm-ops/commit/40a620402))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.6**
+- Updated **config-tools** to **v1.190.69**
+
 ## [1.133.98](https://github.com/storm-software/storm-ops/releases/tag/linting-tools%401.133.98) (06/14/2026)
 
 ### Miscellaneous
