@@ -5,7 +5,7 @@ export const STORM_DEFAULT_SUPPORT = "https://stormsoftware.com/support";
 export const STORM_DEFAULT_LICENSING = "https://stormsoftware.com/license";
 export const STORM_DEFAULT_LICENSE = "Apache-2.0";
 export const STORM_DEFAULT_RELEASE_BANNER =
-  "https://public.storm-cdn.com/brand-banner.png";
+  "https://public.storm-cdn.com/storm-software/media/banner-1280x320.gif";
 export const STORM_DEFAULT_SOCIAL_TWITTER = "StormSoftwareHQ";
 export const STORM_DEFAULT_SOCIAL_DISCORD = "https://discord.gg/MQ6YVzakM5";
 export const STORM_DEFAULT_SOCIAL_TELEGRAM = "https://t.me/storm_software";

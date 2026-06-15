@@ -2291,8 +2291,8 @@ importers:
         version: 4.4.3
     devDependencies:
       '@napi-rs/cli':
-        specifier: ^3.7.1
-        version: 3.7.1(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.1)(@types/node@25.9.3)(node-addon-api@7.1.1)
+        specifier: ^3.7.2
+        version: 3.7.2(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.1)(@types/node@25.9.3)(node-addon-api@7.1.1)
       '@storm-software/package-constants':
         specifier: workspace:*
         version: link:../package-constants
@@ -5285,8 +5285,8 @@ packages:
   '@monodon/rust@1.4.0':
     resolution: {integrity: sha512-MqUOErLfAK6SH/OqLEGFM5Jf+JMiLkSs3Hs13Jk+Hdnw5zuen8zp2FHXgkI2HIYzhCInDbGHTyjuHduFr9GMiQ==}
 
-  '@napi-rs/cli@3.7.1':
-    resolution: {integrity: sha512-7FkcxJ70SqpsYnyjaYwLVpkP3Xoyd8YkT5g7DevuEvSY7mzpLSva8oSQNENHiQ1T0GMLnae1X46KmiNIu5OXDw==}
+  '@napi-rs/cli@3.7.2':
+    resolution: {integrity: sha512-shDW0Td/XZQpP04Yy+OsMt1ILMKGGkoLcy1zVAsSAK0fLfWm0Upgkmfs/NOV2ZhMQwkgpR3ZEdyHmTwgrUDQuA==}
     engines: {node: '>= 16'}
     hasBin: true
     peerDependencies:
@@ -14929,8 +14929,8 @@ packages:
     resolution: {integrity: sha512-cnE+y8bz4NhMjISKbgeVJtqNbtf5QpjZP+Bslo+UqkIt9QPnX9q095eiRRASJG1/tz6dlNr6Z5NsBiWYokp6EQ==}
     hasBin: true
 
-  regjsparser@0.13.1:
-    resolution: {integrity: sha512-dLsljMd9sqwRkby8zhO1gSg3PnJIBFid8f4CQj/sXx+7cKx+E7u0PKhZ+U4wmhx7EfmtvnA318oVaIkAB1lRJw==}
+  regjsparser@0.13.2:
+    resolution: {integrity: sha512-NgRBy2Nx/bE+9F27nVHnqcN5HjyLmecqsqx2PJHu3/IEtADD4WuxuXIVExD5PoSDFVrl78dOonfcOe5O+5nbzQ==}
     hasBin: true
 
   rehype-parse@8.0.5:
@@ -20436,7 +20436,7 @@ snapshots:
       - '@swc/core'
       - debug
 
-  '@napi-rs/cli@3.7.1(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.1)(@types/node@25.9.3)(node-addon-api@7.1.1)':
+  '@napi-rs/cli@3.7.2(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.1)(@types/node@25.9.3)(node-addon-api@7.1.1)':
     dependencies:
       '@inquirer/prompts': 8.5.2(@types/node@25.9.3)
       '@napi-rs/cross-toolchain': 1.0.3(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.1)
@@ -31974,7 +31974,7 @@ snapshots:
       regenerate: 1.4.2
       regenerate-unicode-properties: 10.2.2
       regjsgen: 0.8.0
-      regjsparser: 0.13.1
+      regjsparser: 0.13.2
       unicode-match-property-ecmascript: 2.0.0
       unicode-match-property-value-ecmascript: 2.2.1
 
@@ -31992,7 +31992,7 @@ snapshots:
     dependencies:
       jsesc: 3.0.2
 
-  regjsparser@0.13.1:
+  regjsparser@0.13.2:
     dependencies:
       jsesc: 3.1.0
 
