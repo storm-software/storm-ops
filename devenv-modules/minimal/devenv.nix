@@ -51,4 +51,11 @@
       ];
     };
   };
+
+  scripts = {
+    build.exec = "pnpm build";
+    clean.exec = "pnpm clean";
+    lint.exec = "pnpm lint";
+    nuke.exec = "pnpm nuke";
+  };
 }
