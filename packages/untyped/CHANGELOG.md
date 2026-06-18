@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Untyped
 
+## [0.24.214](https://github.com/storm-software/storm-ops/releases/tag/untyped%400.24.214) (06/18/2026)
+
+### Bug Fixes
+
+- **eslint:** Remove unneeded tsdoc dependency for eslint config ([7ccbee070](https://github.com/storm-software/storm-ops/commit/7ccbee070))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.9**
+- Updated **config-tools** to **v1.190.72**
+
 ## [0.24.213](https://github.com/storm-software/storm-ops/releases/tag/untyped%400.24.213) (06/18/2026)
 
 ### Bug Fixes

@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - K8s Tools
 
+## [0.42.255](https://github.com/storm-software/storm-ops/releases/tag/k8s-tools%400.42.255) (06/18/2026)
+
+### Bug Fixes
+
+- **eslint:** Remove unneeded tsdoc dependency for eslint config ([7ccbee070](https://github.com/storm-software/storm-ops/commit/7ccbee070))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.9**
+- Updated **config-tools** to **v1.190.72**
+- Updated **workspace-tools** to **v1.296.52**
+
 ## [0.42.254](https://github.com/storm-software/storm-ops/releases/tag/k8s-tools%400.42.254) (06/18/2026)
 
 ### Bug Fixes

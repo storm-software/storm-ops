@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Tsup
 
+## [0.2.230](https://github.com/storm-software/storm-ops/releases/tag/tsup%400.2.230) (06/18/2026)
+
+### Bug Fixes
+
+- **eslint:** Remove unneeded tsdoc dependency for eslint config ([7ccbee070](https://github.com/storm-software/storm-ops/commit/7ccbee070))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.232**
+- Updated **config-tools** to **v1.190.72**
+
 ## [0.2.229](https://github.com/storm-software/storm-ops/releases/tag/tsup%400.2.229) (06/18/2026)
 
 ### Bug Fixes

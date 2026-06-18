@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - ESLint Plugin Pnpm
 
+## [0.0.35](https://github.com/storm-software/storm-ops/releases/tag/eslint-plugin-pnpm%400.0.35) (06/18/2026)
+
+### Bug Fixes
+
+- **eslint:** Remove unneeded tsdoc dependency for eslint config ([7ccbee070](https://github.com/storm-software/storm-ops/commit/7ccbee070))
+
+### Updated Dependencies
+
+- Updated **package-constants** to **v0.1.85**
+- Updated **prettier** to **v0.59.125**
+- Updated **tsdoc** to **v0.13.225**
+
 ## [0.0.34](https://github.com/storm-software/storm-ops/releases/tag/eslint-plugin-pnpm%400.0.34) (06/18/2026)
 
 ### Bug Fixes

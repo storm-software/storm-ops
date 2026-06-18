@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Prettier
 
+## [0.59.125](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.59.125) (06/18/2026)
+
+### Bug Fixes
+
+- **eslint:** Remove unneeded tsdoc dependency for eslint config ([7ccbee070](https://github.com/storm-software/storm-ops/commit/7ccbee070))
+
 ## [0.59.124](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.59.124) (06/18/2026)
 
 ### Bug Fixes

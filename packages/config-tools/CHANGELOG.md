@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Config Tools
 
+## [1.190.72](https://github.com/storm-software/storm-ops/releases/tag/config-tools%401.190.72) (06/18/2026)
+
+### Bug Fixes
+
+- **eslint:** Remove unneeded tsdoc dependency for eslint config ([7ccbee070](https://github.com/storm-software/storm-ops/commit/7ccbee070))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.9**
+- Updated **testing-tools** to **v1.119.225**
+
 ## [1.190.71](https://github.com/storm-software/storm-ops/releases/tag/config-tools%401.190.71) (06/18/2026)
 
 ### Bug Fixes

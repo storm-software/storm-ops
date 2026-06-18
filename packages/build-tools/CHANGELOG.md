@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Build Tools
 
+## [0.158.232](https://github.com/storm-software/storm-ops/releases/tag/build-tools%400.158.232) (06/18/2026)
+
+### Bug Fixes
+
+- **eslint:** Remove unneeded tsdoc dependency for eslint config ([7ccbee070](https://github.com/storm-software/storm-ops/commit/7ccbee070))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.9**
+- Updated **config-tools** to **v1.190.72**
+
 ## [0.158.231](https://github.com/storm-software/storm-ops/releases/tag/build-tools%400.158.231) (06/18/2026)
 
 ### Bug Fixes

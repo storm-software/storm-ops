@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Projen
 
+## [0.21.255](https://github.com/storm-software/storm-ops/releases/tag/projen%400.21.255) (06/18/2026)
+
+### Bug Fixes
+
+- **eslint:** Remove unneeded tsdoc dependency for eslint config ([7ccbee070](https://github.com/storm-software/storm-ops/commit/7ccbee070))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.9**
+- Updated **config-tools** to **v1.190.72**
+- Updated **workspace-tools** to **v1.296.52**
+
 ## [0.21.254](https://github.com/storm-software/storm-ops/releases/tag/projen%400.21.254) (06/18/2026)
 
 ### Bug Fixes

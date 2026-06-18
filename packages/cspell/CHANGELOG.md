@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - CSpell
 
+## [0.46.140](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.46.140) (06/18/2026)
+
+### Bug Fixes
+
+- **eslint:** Remove unneeded tsdoc dependency for eslint config ([7ccbee070](https://github.com/storm-software/storm-ops/commit/7ccbee070))
+
 ## [0.46.139](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.46.139) (06/18/2026)
 
 ### Bug Fixes

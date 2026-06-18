@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - ESLint Config React
 
+## [0.0.27](https://github.com/storm-software/storm-ops/releases/tag/eslint-config-react%400.0.27) (06/18/2026)
+
+### Bug Fixes
+
+- **eslint:** Remove unneeded tsdoc dependency for eslint config ([7ccbee070](https://github.com/storm-software/storm-ops/commit/7ccbee070))
+
+### Updated Dependencies
+
+- Updated **eslint** to **v0.170.105**
+
 ## [0.0.26](https://github.com/storm-software/storm-ops/releases/tag/eslint-config-react%400.0.26) (06/18/2026)
 
 ### Bug Fixes

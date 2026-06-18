@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Npm Tools
 
+## [0.6.190](https://github.com/storm-software/storm-ops/releases/tag/npm-tools%400.6.190) (06/18/2026)
+
+### Bug Fixes
+
+- **eslint:** Remove unneeded tsdoc dependency for eslint config ([7ccbee070](https://github.com/storm-software/storm-ops/commit/7ccbee070))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.9**
+- Updated **config-tools** to **v1.190.72**
+- Updated **testing-tools** to **v1.119.225**
+
 ## [0.6.189](https://github.com/storm-software/storm-ops/releases/tag/npm-tools%400.6.189) (06/18/2026)
 
 ### Bug Fixes

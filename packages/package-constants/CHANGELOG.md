@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Package Constants
 
+## [0.1.85](https://github.com/storm-software/storm-ops/releases/tag/package-constants%400.1.85) (06/18/2026)
+
+### Bug Fixes
+
+- **eslint:** Remove unneeded tsdoc dependency for eslint config ([7ccbee070](https://github.com/storm-software/storm-ops/commit/7ccbee070))
+
 ## [0.1.84](https://github.com/storm-software/storm-ops/releases/tag/package-constants%400.1.84) (06/18/2026)
 
 ### Bug Fixes

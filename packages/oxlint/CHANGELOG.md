@@ -2,6 +2,20 @@
 
 # Changelog for Storm Ops - Oxlint
 
+## [0.0.38](https://github.com/storm-software/storm-ops/releases/tag/oxlint%400.0.38) (06/18/2026)
+
+### Bug Fixes
+
+- **eslint:** Remove unneeded tsdoc dependency for eslint config ([7ccbee070](https://github.com/storm-software/storm-ops/commit/7ccbee070))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.9**
+- Updated **config-tools** to **v1.190.72**
+- Updated **eslint-plugin-banner** to **v0.0.37**
+- Updated **eslint-plugin-pnpm** to **v0.0.35**
+- Updated **eslint-plugin-tsdoc** to **v0.0.35**
+
 ## [0.0.37](https://github.com/storm-software/storm-ops/releases/tag/oxlint%400.0.37) (06/18/2026)
 
 ### Bug Fixes

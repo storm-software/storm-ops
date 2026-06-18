@@ -2,6 +2,19 @@
 
 # Changelog for Storm Ops - Git Tools
 
+## [2.131.79](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.131.79) (06/18/2026)
+
+### Bug Fixes
+
+- **eslint:** Remove unneeded tsdoc dependency for eslint config ([7ccbee070](https://github.com/storm-software/storm-ops/commit/7ccbee070))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.9**
+- Updated **config-tools** to **v1.190.72**
+- Updated **conventional-changelog** to **v0.3.233**
+- Updated **package-constants** to **v0.1.85**
+
 ## [2.131.78](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.131.78) (06/18/2026)
 
 ### Bug Fixes

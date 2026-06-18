@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Linting Tools
 
+## [1.134.2](https://github.com/storm-software/storm-ops/releases/tag/linting-tools%401.134.2) (06/18/2026)
+
+### Bug Fixes
+
+- **eslint:** Remove unneeded tsdoc dependency for eslint config ([7ccbee070](https://github.com/storm-software/storm-ops/commit/7ccbee070))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.9**
+- Updated **config-tools** to **v1.190.72**
+
 ## [1.134.1](https://github.com/storm-software/storm-ops/releases/tag/linting-tools%401.134.1) (06/18/2026)
 
 ### Bug Fixes

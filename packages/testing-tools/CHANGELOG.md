@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Testing Tools
 
+## [1.119.225](https://github.com/storm-software/storm-ops/releases/tag/testing-tools%401.119.225) (06/18/2026)
+
+### Bug Fixes
+
+- **eslint:** Remove unneeded tsdoc dependency for eslint config ([7ccbee070](https://github.com/storm-software/storm-ops/commit/7ccbee070))
+
 ## [1.119.224](https://github.com/storm-software/storm-ops/releases/tag/testing-tools%401.119.224) (06/18/2026)
 
 ### Bug Fixes

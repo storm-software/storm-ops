@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - Vite
 
+## [0.1.166](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.166) (06/18/2026)
+
+### Bug Fixes
+
+- **eslint:** Remove unneeded tsdoc dependency for eslint config ([7ccbee070](https://github.com/storm-software/storm-ops/commit/7ccbee070))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.232**
+
 ## [0.1.165](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.165) (06/18/2026)
 
 ### Bug Fixes

@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - ESLint Plugin Banner
 
+## [0.0.37](https://github.com/storm-software/storm-ops/releases/tag/eslint-plugin-banner%400.0.37) (06/18/2026)
+
+### Bug Fixes
+
+- **eslint:** Remove unneeded tsdoc dependency for eslint config ([7ccbee070](https://github.com/storm-software/storm-ops/commit/7ccbee070))
+
+### Updated Dependencies
+
+- Updated **package-constants** to **v0.1.85**
+- Updated **prettier** to **v0.59.125**
+
 ## [0.0.36](https://github.com/storm-software/storm-ops/releases/tag/eslint-plugin-banner%400.0.36) (06/18/2026)
 
 ### Bug Fixes

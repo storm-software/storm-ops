@@ -2,6 +2,25 @@
 
 # Changelog for Storm Ops - Workspace Tools
 
+## [1.296.52](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.296.52) (06/18/2026)
+
+### Bug Fixes
+
+- **eslint:** Remove unneeded tsdoc dependency for eslint config ([7ccbee070](https://github.com/storm-software/storm-ops/commit/7ccbee070))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.9**
+- Updated **config-tools** to **v1.190.72**
+- Updated **esbuild** to **v0.53.233**
+- Updated **npm-tools** to **v0.6.190**
+- Updated **package-constants** to **v0.1.85**
+- Updated **pnpm-tools** to **v0.7.83**
+- Updated **prettier** to **v0.59.125**
+- Updated **testing-tools** to **v1.119.225**
+- Updated **tsdown** to **v0.45.233**
+- Updated **unbuild** to **v0.57.233**
+
 ## [1.296.51](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.296.51) (06/18/2026)
 
 ### Bug Fixes

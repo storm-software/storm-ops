@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - Create Storm Workspace
 
+## [1.97.232](https://github.com/storm-software/storm-ops/releases/tag/create-storm-workspace%401.97.232) (06/18/2026)
+
+### Bug Fixes
+
+- **eslint:** Remove unneeded tsdoc dependency for eslint config ([7ccbee070](https://github.com/storm-software/storm-ops/commit/7ccbee070))
+
+### Updated Dependencies
+
+- Updated **config-tools** to **v1.190.72**
+
 ## [1.97.231](https://github.com/storm-software/storm-ops/releases/tag/create-storm-workspace%401.97.231) (06/18/2026)
 
 ### Bug Fixes

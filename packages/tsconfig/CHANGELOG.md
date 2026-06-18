@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Tsconfig
 
+## [0.48.139](https://github.com/storm-software/storm-ops/releases/tag/tsconfig%400.48.139) (06/18/2026)
+
+### Bug Fixes
+
+- **eslint:** Remove unneeded tsdoc dependency for eslint config ([7ccbee070](https://github.com/storm-software/storm-ops/commit/7ccbee070))
+
 ## [0.48.138](https://github.com/storm-software/storm-ops/releases/tag/tsconfig%400.48.138) (06/18/2026)
 
 ### Bug Fixes

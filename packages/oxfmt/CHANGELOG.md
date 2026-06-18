@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Oxfmt
 
+## [0.0.28](https://github.com/storm-software/storm-ops/releases/tag/oxfmt%400.0.28) (06/18/2026)
+
+### Bug Fixes
+
+- **eslint:** Remove unneeded tsdoc dependency for eslint config ([7ccbee070](https://github.com/storm-software/storm-ops/commit/7ccbee070))
+
 ## [0.0.27](https://github.com/storm-software/storm-ops/releases/tag/oxfmt%400.0.27) (06/18/2026)
 
 ### Bug Fixes

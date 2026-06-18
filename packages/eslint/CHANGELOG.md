@@ -2,6 +2,22 @@
 
 # Changelog for Storm Ops - ESLint
 
+## [0.170.105](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.170.105) (06/18/2026)
+
+### Bug Fixes
+
+- **eslint:** Remove unneeded tsdoc dependency for eslint config ([7ccbee070](https://github.com/storm-software/storm-ops/commit/7ccbee070))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.9**
+- Updated **config-tools** to **v1.190.72**
+- Updated **eslint-plugin-banner** to **v0.0.37**
+- Updated **eslint-plugin-pnpm** to **v0.0.35**
+- Updated **eslint-plugin-tsdoc** to **v0.0.35**
+- Updated **package-constants** to **v0.1.85**
+- Updated **tsdoc** to **v0.13.225**
+
 ## [0.170.104](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.170.104) (06/18/2026)
 
 ### Bug Fixes
