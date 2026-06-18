@@ -23,3 +23,7 @@ pre-commit:
       glob: .github/workflows/*.{yml,yaml}
       run: "zizmor --offline --config='./tools/config/zizmor.yml' .github/workflows/"
       stage_fixed: true
+    readme:
+      glob: "**/{README.md,README.*.md,readme/**/*,package.json,executors.json,generators.json}"
+      run: pnpm exec storm-git readme --templates="tools/readme-templates" --workspace
+      stage_fixed: true
