@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - Create Storm Workspace
 
+## [1.97.231](https://github.com/storm-software/storm-ops/releases/tag/create-storm-workspace%401.97.231) (06/18/2026)
+
+### Bug Fixes
+
+- **eslint:** Resolve issue with eslint importing patched dependency directly ([864f5d538](https://github.com/storm-software/storm-ops/commit/864f5d538))
+
+### Updated Dependencies
+
+- Updated **config-tools** to **v1.190.71**
+
 ## [1.97.230](https://github.com/storm-software/storm-ops/releases/tag/create-storm-workspace%401.97.230) (06/18/2026)
 
 ### Bug Fixes

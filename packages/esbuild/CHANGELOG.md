@@ -2,6 +2,19 @@
 
 # Changelog for Storm Ops - Esbuild
 
+## [0.53.232](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.53.232) (06/18/2026)
+
+### Bug Fixes
+
+- **eslint:** Resolve issue with eslint importing patched dependency directly ([864f5d538](https://github.com/storm-software/storm-ops/commit/864f5d538))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.231**
+- Updated **config** to **v1.138.8**
+- Updated **config-tools** to **v1.190.71**
+- Updated **tsup** to **v0.2.229**
+
 ## [0.53.231](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.53.231) (06/18/2026)
 
 ### Bug Fixes

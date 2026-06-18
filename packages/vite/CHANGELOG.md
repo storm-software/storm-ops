@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - Vite
 
+## [0.1.165](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.165) (06/18/2026)
+
+### Bug Fixes
+
+- **eslint:** Resolve issue with eslint importing patched dependency directly ([864f5d538](https://github.com/storm-software/storm-ops/commit/864f5d538))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.231**
+
 ## [0.1.164](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.164) (06/18/2026)
 
 ### Bug Fixes

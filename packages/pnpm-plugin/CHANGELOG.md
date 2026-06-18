@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Pnpm Plugin
 
+## [0.1.182](https://github.com/storm-software/storm-ops/releases/tag/pnpm-plugin%400.1.182) (06/18/2026)
+
+### Bug Fixes
+
+- **eslint:** Resolve issue with eslint importing patched dependency directly ([864f5d538](https://github.com/storm-software/storm-ops/commit/864f5d538))
+
+### Updated Dependencies
+
+- Updated **package-constants** to **v0.1.84**
+- Updated **testing-tools** to **v1.119.224**
+
 ## [0.1.181](https://github.com/storm-software/storm-ops/releases/tag/pnpm-plugin%400.1.181) (06/18/2026)
 
 ### Bug Fixes

@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Oxfmt
 
+## [0.0.27](https://github.com/storm-software/storm-ops/releases/tag/oxfmt%400.0.27) (06/18/2026)
+
+### Bug Fixes
+
+- **eslint:** Resolve issue with eslint importing patched dependency directly ([864f5d538](https://github.com/storm-software/storm-ops/commit/864f5d538))
+
 ## [0.0.26](https://github.com/storm-software/storm-ops/releases/tag/oxfmt%400.0.26) (06/18/2026)
 
 ### Bug Fixes

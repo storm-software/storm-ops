@@ -1,6 +1,6 @@
 {
   "name": "@storm-software/eslint-config-react",
-  "version": "0.0.25",
+  "version": "0.0.26",
   "private": false,
   "description": "A package containing a shared ESLint configuration for React projects used by Storm Software across many projects.",
   "keywords": [

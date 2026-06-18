@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Linting Tools
 
+## [1.134.1](https://github.com/storm-software/storm-ops/releases/tag/linting-tools%401.134.1) (06/18/2026)
+
+### Bug Fixes
+
+- **eslint:** Resolve issue with eslint importing patched dependency directly ([864f5d538](https://github.com/storm-software/storm-ops/commit/864f5d538))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.8**
+- Updated **config-tools** to **v1.190.71**
+
 ## [1.134.0](https://github.com/storm-software/storm-ops/releases/tag/linting-tools%401.134.0) (06/18/2026)
 
 ### Miscellaneous

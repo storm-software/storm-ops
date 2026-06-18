@@ -2,6 +2,20 @@
 
 # Changelog for Storm Ops - Oxlint
 
+## [0.0.37](https://github.com/storm-software/storm-ops/releases/tag/oxlint%400.0.37) (06/18/2026)
+
+### Bug Fixes
+
+- **eslint:** Resolve issue with eslint importing patched dependency directly ([864f5d538](https://github.com/storm-software/storm-ops/commit/864f5d538))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.8**
+- Updated **config-tools** to **v1.190.71**
+- Updated **eslint-plugin-banner** to **v0.0.36**
+- Updated **eslint-plugin-pnpm** to **v0.0.34**
+- Updated **eslint-plugin-tsdoc** to **v0.0.34**
+
 ## [0.0.36](https://github.com/storm-software/storm-ops/releases/tag/oxlint%400.0.36) (06/18/2026)
 
 ### Bug Fixes

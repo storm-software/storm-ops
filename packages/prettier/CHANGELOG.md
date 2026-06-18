@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Prettier
 
+## [0.59.124](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.59.124) (06/18/2026)
+
+### Bug Fixes
+
+- **eslint:** Resolve issue with eslint importing patched dependency directly ([864f5d538](https://github.com/storm-software/storm-ops/commit/864f5d538))
+
 ## [0.59.123](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.59.123) (06/18/2026)
 
 ### Bug Fixes

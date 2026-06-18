@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Cloudflare Tools
 
+## [0.71.214](https://github.com/storm-software/storm-ops/releases/tag/cloudflare-tools%400.71.214) (06/18/2026)
+
+### Bug Fixes
+
+- **eslint:** Resolve issue with eslint importing patched dependency directly ([864f5d538](https://github.com/storm-software/storm-ops/commit/864f5d538))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.8**
+- Updated **config-tools** to **v1.190.71**
+- Updated **workspace-tools** to **v1.296.51**
+
 ## [0.71.213](https://github.com/storm-software/storm-ops/releases/tag/cloudflare-tools%400.71.213) (06/18/2026)
 
 ### Bug Fixes

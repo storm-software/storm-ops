@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - ESLint Plugin Banner
 
+## [0.0.36](https://github.com/storm-software/storm-ops/releases/tag/eslint-plugin-banner%400.0.36) (06/18/2026)
+
+### Bug Fixes
+
+- **eslint:** Resolve issue with eslint importing patched dependency directly ([864f5d538](https://github.com/storm-software/storm-ops/commit/864f5d538))
+
+### Updated Dependencies
+
+- Updated **package-constants** to **v0.1.84**
+- Updated **prettier** to **v0.59.124**
+
 ## [0.0.35](https://github.com/storm-software/storm-ops/releases/tag/eslint-plugin-banner%400.0.35) (06/18/2026)
 
 ### Bug Fixes

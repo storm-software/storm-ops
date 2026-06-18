@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Terraform Tools
 
+## [0.66.254](https://github.com/storm-software/storm-ops/releases/tag/terraform-tools%400.66.254) (06/18/2026)
+
+### Bug Fixes
+
+- **eslint:** Resolve issue with eslint importing patched dependency directly ([864f5d538](https://github.com/storm-software/storm-ops/commit/864f5d538))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.8**
+- Updated **config-tools** to **v1.190.71**
+- Updated **workspace-tools** to **v1.296.51**
+
 ## [0.66.253](https://github.com/storm-software/storm-ops/releases/tag/terraform-tools%400.66.253) (06/18/2026)
 
 ### Bug Fixes

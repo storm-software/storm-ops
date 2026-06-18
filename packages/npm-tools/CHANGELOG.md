@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Npm Tools
 
+## [0.6.189](https://github.com/storm-software/storm-ops/releases/tag/npm-tools%400.6.189) (06/18/2026)
+
+### Bug Fixes
+
+- **eslint:** Resolve issue with eslint importing patched dependency directly ([864f5d538](https://github.com/storm-software/storm-ops/commit/864f5d538))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.8**
+- Updated **config-tools** to **v1.190.71**
+- Updated **testing-tools** to **v1.119.224**
+
 ## [0.6.188](https://github.com/storm-software/storm-ops/releases/tag/npm-tools%400.6.188) (06/18/2026)
 
 ### Bug Fixes

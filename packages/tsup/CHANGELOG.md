@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Tsup
 
+## [0.2.229](https://github.com/storm-software/storm-ops/releases/tag/tsup%400.2.229) (06/18/2026)
+
+### Bug Fixes
+
+- **eslint:** Resolve issue with eslint importing patched dependency directly ([864f5d538](https://github.com/storm-software/storm-ops/commit/864f5d538))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.231**
+- Updated **config-tools** to **v1.190.71**
+
 ## [0.2.228](https://github.com/storm-software/storm-ops/releases/tag/tsup%400.2.228) (06/18/2026)
 
 ### Bug Fixes

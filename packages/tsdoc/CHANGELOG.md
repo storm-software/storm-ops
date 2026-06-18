@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Tsdoc
 
+## [0.13.224](https://github.com/storm-software/storm-ops/releases/tag/tsdoc%400.13.224) (06/18/2026)
+
+### Bug Fixes
+
+- **eslint:** Resolve issue with eslint importing patched dependency directly ([864f5d538](https://github.com/storm-software/storm-ops/commit/864f5d538))
+
 ## [0.13.223](https://github.com/storm-software/storm-ops/releases/tag/tsdoc%400.13.223) (06/18/2026)
 
 ### Bug Fixes

@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - CSpell
 
+## [0.46.139](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.46.139) (06/18/2026)
+
+### Bug Fixes
+
+- **eslint:** Resolve issue with eslint importing patched dependency directly ([864f5d538](https://github.com/storm-software/storm-ops/commit/864f5d538))
+
 ## [0.46.138](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.46.138) (06/18/2026)
 
 ### Bug Fixes

@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Package Constants
 
+## [0.1.84](https://github.com/storm-software/storm-ops/releases/tag/package-constants%400.1.84) (06/18/2026)
+
+### Bug Fixes
+
+- **eslint:** Resolve issue with eslint importing patched dependency directly ([864f5d538](https://github.com/storm-software/storm-ops/commit/864f5d538))
+
 ## [0.1.83](https://github.com/storm-software/storm-ops/releases/tag/package-constants%400.1.83) (06/18/2026)
 
 ### Bug Fixes

@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Testing Tools
 
+## [1.119.224](https://github.com/storm-software/storm-ops/releases/tag/testing-tools%401.119.224) (06/18/2026)
+
+### Bug Fixes
+
+- **eslint:** Resolve issue with eslint importing patched dependency directly ([864f5d538](https://github.com/storm-software/storm-ops/commit/864f5d538))
+
 ## [1.119.223](https://github.com/storm-software/storm-ops/releases/tag/testing-tools%401.119.223) (06/18/2026)
 
 ### Bug Fixes

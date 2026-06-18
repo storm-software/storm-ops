@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Untyped
 
+## [0.24.213](https://github.com/storm-software/storm-ops/releases/tag/untyped%400.24.213) (06/18/2026)
+
+### Bug Fixes
+
+- **eslint:** Resolve issue with eslint importing patched dependency directly ([864f5d538](https://github.com/storm-software/storm-ops/commit/864f5d538))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.8**
+- Updated **config-tools** to **v1.190.71**
+
 ## [0.24.212](https://github.com/storm-software/storm-ops/releases/tag/untyped%400.24.212) (06/18/2026)
 
 ### Bug Fixes

@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Tsconfig
 
+## [0.48.138](https://github.com/storm-software/storm-ops/releases/tag/tsconfig%400.48.138) (06/18/2026)
+
+### Bug Fixes
+
+- **eslint:** Resolve issue with eslint importing patched dependency directly ([864f5d538](https://github.com/storm-software/storm-ops/commit/864f5d538))
+
 ## [0.48.137](https://github.com/storm-software/storm-ops/releases/tag/tsconfig%400.48.137) (06/18/2026)
 
 ### Bug Fixes
