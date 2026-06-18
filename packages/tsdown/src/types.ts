@@ -15,12 +15,12 @@
 
  -------------------------------------------------------------------*/
 
-import { ProjectGraph, ProjectsConfigurations } from "@nx/devkit";
-import {
+import type { ProjectGraph, ProjectsConfigurations } from "@nx/devkit";
+import type {
   AdditionalCLIOptions,
   TypeScriptBuildOptions
 } from "@storm-software/build-tools";
-import { StormWorkspaceConfig } from "@storm-software/config/types";
+import type { StormWorkspaceConfig } from "@storm-software/config/types";
 import type { UserConfig } from "tsdown";
 
 type ExternalTSDownOptions = Omit<

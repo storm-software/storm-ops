@@ -28,10 +28,10 @@ index 2854b921292126f462d7320b4be5f881c75980aa..249b3150fb54a0dd6688a57c0a949160
 -export { a as checkUpdates };
 +export { a as checkUpdates, r as createGitHubClient };
 diff --git a/dist/core/index.d.ts b/dist/core/index.d.ts
-index c0f374686bf3129700061d89bf6e0dbb6bb8d9a9..6bb6ebbdf8fcd8cffdd98a41a6068ed8275a4327 100644
+index c0f374686bf3129700061d89bf6e0dbb6bb8d9a9..624a975875e691cecc5b068ed924ca5e1678a32c 100644
 --- a/dist/core/index.d.ts
 +++ b/dist/core/index.d.ts
-@@ -1,4 +1,11 @@
+@@ -1,4 +1,12 @@
  export { scanGitHubActions } from './scan-github-actions';
  export { applyUpdates } from './ast/update/apply-updates';
  export { checkUpdates } from './api/check-updates';
@@ -43,11 +43,12 @@ index c0f374686bf3129700061d89bf6e0dbb6bb8d9a9..6bb6ebbdf8fcd8cffdd98a41a6068ed8
 +export { getCompatibleUpdate } from './api/get-compatible-update';
 +export { getUpdateLevel } from './versions/get-update-level';
 +export { resolveTargetReference } from './updates/resolve-target-reference';
++export { parseExcludePatterns } from './filters/parse-exclude-patterns';
 diff --git a/dist/core/index.js b/dist/core/index.js
-index a839ad9e8107f70da06b93fdcc47d2f8e7fd8ede..24904898003a995a78f51dc2099828b455c68ba7 100644
+index a839ad9e8107f70da06b93fdcc47d2f8e7fd8ede..1dd11e29cd47b72a19c3fe21f423c391e4d94cc7 100644
 --- a/dist/core/index.js
 +++ b/dist/core/index.js
-@@ -1,5 +1,25 @@
+@@ -1,5 +1,27 @@
  import { applyUpdates as e } from "./ast/update/apply-updates.js";
  import { checkUpdates as t } from "./api/check-updates.js";
  import { scanRecursive as n } from "./scan-recursive.js";
@@ -60,6 +61,7 @@ index a839ad9e8107f70da06b93fdcc47d2f8e7fd8ede..24904898003a995a78f51dc2099828b4
 +import { createGitHubClient } from './api/create-github-client.js';
 +import { getUpdateLevel } from './versions/get-update-level.js';
 +import { resolveTargetReference } from './updates/resolve-target-reference.js';
++import { parseExcludePatterns } from "./filters/parse-exclude-patterns.js";
 +
 +export {
 +  e as applyUpdates,
@@ -72,5 +74,6 @@ index a839ad9e8107f70da06b93fdcc47d2f8e7fd8ede..24904898003a995a78f51dc2099828b4
 +  readInlineVersionComment,
 +  getCompatibleUpdate,
 +  getUpdateLevel,
-+  resolveTargetReference
++  resolveTargetReference,
++  parseExcludePatterns
 +};

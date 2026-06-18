@@ -16,7 +16,7 @@
   "bugs": "https://github.com/storm-software/storm-ops/issues",
   "repository": {
     "type": "github",
-    "url": "https://github.com/storm-software/storm-ops",
+    "url": "https://github.com/storm-software/storm-ops.git",
     "directory": "packages/cloudflare-tools"
   },
   "license": "Apache-2.0",
@@ -153,9 +153,9 @@
   "module": "dist/index.mjs",
   "typings": "dist/index.d.ts",
   "dependencies": {
-    "@aws-sdk/client-s3": "^3.1068.0",
-    "@aws-sdk/lib-storage": "^3.1068.0",
-    "@smithy/node-http-handler": "^4.7.8",
+    "@aws-sdk/client-s3": "^3.1070.0",
+    "@aws-sdk/lib-storage": "^3.1070.0",
+    "@smithy/node-http-handler": "^4.8.0",
     "@storm-software/config": "workspace:*",
     "@storm-software/config-tools": "workspace:*",
     "@storm-software/workspace-tools": "workspace:*",
@@ -169,11 +169,11 @@
     "@nx/node": "catalog:",
     "@nx/web": "catalog:",
     "@nx/webpack": "catalog:",
-    "@smithy/protocol-http": "^5.4.7",
+    "@smithy/protocol-http": "^5.5.0",
     "nx": "catalog:",
     "tsup": "catalog:",
     "untyped": "catalog:",
-    "wrangler": "^4.100.0"
+    "wrangler": "^4.101.0"
   },
   "peerDependencies": {
     "nx": ">=22.7.1",

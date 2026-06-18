@@ -158,8 +158,11 @@
   "bin": {
     "storm-tsdown": "./bin/tsdown.cjs"
   },
-  "files": ["dist/**/*"],
+  "files": [
+    "dist/**/*"
+  ],
   "dependencies": {
+    "@nx/devkit": "catalog:",
     "@storm-software/build-tools": "workspace:*",
     "@storm-software/config": "workspace:*",
     "@storm-software/config-tools": "workspace:*",
@@ -174,7 +177,6 @@
   },
   "devDependencies": {
     "@microsoft/api-extractor": "catalog:",
-    "@nx/devkit": "catalog:",
     "@nx/js": "catalog:",
     "@types/node": "catalog:",
     "defu": "catalog:",

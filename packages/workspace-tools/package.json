@@ -14,7 +14,7 @@
   "bugs": "https://github.com/storm-software/storm-ops/issues",
   "repository": {
     "type": "github",
-    "url": "https://github.com/storm-software/storm-ops",
+    "url": "https://github.com/storm-software/storm-ops.git",
     "directory": "packages/workspace-tools"
   },
   "license": "Apache-2.0",
@@ -267,13 +267,17 @@
   },
   "devDependencies": {
     "@napi-rs/cli": "^3.7.2",
+    "@storm-software/esbuild": "workspace:*",
     "@storm-software/package-constants": "workspace:*",
+    "@storm-software/tsdown": "workspace:*",
+    "@storm-software/unbuild": "workspace:*",
     "@types/micromatch": "^4.0.10",
     "@types/node": "catalog:",
     "@types/semver": "^7.7.1",
     "defu": "catalog:",
     "nx": "catalog:",
     "pkg-types": "catalog:",
+    "prettier": "catalog:",
     "tsup": "catalog:",
     "typescript": "^5.9.3"
   },

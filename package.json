@@ -17,7 +17,10 @@
   ],
   "homepage": "https://stormsoftware.com",
   "bugs": "https://github.com/storm-software/storm-ops/issues",
-  "repository": "storm-software/storm-ops.git",
+  "repository": {
+    "type": "github",
+    "url": "https://github.com/storm-software/storm-ops.git"
+  },
   "funding": {
     "type": "github",
     "url": "https://github.com/sponsors/storm-software"
@@ -127,7 +130,7 @@
     "tsup": "catalog:",
     "tsx": "catalog:",
     "typescript": "^5.9.3",
-    "typescript-eslint": "^8.61.0",
+    "typescript-eslint": "^8.61.1",
     "verdaccio": "6.6.0",
     "zod": "catalog:",
     "zx": "catalog:"

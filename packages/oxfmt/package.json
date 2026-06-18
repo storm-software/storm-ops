@@ -14,7 +14,7 @@
   "bugs": "https://github.com/storm-software/storm-ops/issues",
   "repository": {
     "type": "github",
-    "url": "https://github.com/storm-software/storm-ops",
+    "url": "https://github.com/storm-software/storm-ops.git",
     "directory": "packages/oxfmt"
   },
   "license": "Apache-2.0",
@@ -60,5 +60,8 @@
   },
   "publishConfig": {
     "access": "public"
+  },
+  "devDependencies": {
+    "oxfmt": "^0.55.0"
   }
 }

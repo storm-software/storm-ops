@@ -16,7 +16,7 @@
   "bugs": "https://github.com/storm-software/storm-ops/issues",
   "repository": {
     "type": "github",
-    "url": "https://github.com/storm-software/storm-ops",
+    "url": "https://github.com/storm-software/storm-ops.git",
     "directory": "packages/eslint"
   },
   "funding": {
@@ -139,7 +139,9 @@
   },
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "dependencies": {
     "@antfu/install-pkg": "^1.1.0",
     "@clack/prompts": "^0.10.1",
@@ -205,6 +207,7 @@
     "@storm-software/eslint-plugin-banner": "workspace:*",
     "@storm-software/eslint-plugin-pnpm": "workspace:*",
     "@storm-software/eslint-plugin-tsdoc": "workspace:*",
+    "@storm-software/tsdoc": "workspace:*",
     "@stylistic/eslint-plugin-migrate": "^4.4.1",
     "@types/eslint": "catalog:",
     "@types/eslint__js": "catalog:",
@@ -222,7 +225,7 @@
     "eslint-plugin-react-hooks": "^7.1.1",
     "eslint-plugin-react-native": "^5.0.0",
     "eslint-plugin-react-native-globals": "^0.1.2",
-    "eslint-plugin-react-refresh": "^0.5.2",
+    "eslint-plugin-react-refresh": "^0.5.3",
     "eslint-plugin-relay": "^1.8.3",
     "eslint-plugin-storybook": "^0.11.6",
     "eslint-typegen": "catalog:",

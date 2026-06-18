@@ -1,24 +1,30 @@
 {
   "name": "@storm-software/testing-tools",
   "version": "1.119.222",
-  "type": "module",
+  "private": false,
   "description": "A package containing various testing tools used by Storm workspaces to drive unit and e2e testing.",
-  "repository": {
-    "type": "github",
-    "url": "https://github.com/storm-software/storm-ops",
-    "directory": "packages/testing-tools"
-  },
+  "keywords": [
+    "monorepo",
+    "jest",
+    "playwright",
+    "storm",
+    "storm-ops",
+    "sullivanpj"
+  ],
   "homepage": "https://stormsoftware.com",
   "bugs": "https://github.com/storm-software/storm-ops/issues",
+  "repository": {
+    "type": "github",
+    "url": "https://github.com/storm-software/storm-ops.git",
+    "directory": "packages/testing-tools"
+  },
+  "license": "Apache-2.0",
   "author": {
     "name": "Storm Software",
     "email": "contact@stormsoftware.com",
     "url": "https://stormsoftware.com"
   },
-  "license": "Apache-2.0",
-  "private": false,
-  "main": "./dist/index.cjs",
-  "module": "./dist/index.js",
+  "type": "module",
   "exports": {
     "./jest/__mocks__/*.js": "./jest/__mocks__/*.js",
     ".": {
@@ -148,20 +154,12 @@
       }
     }
   },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
-  "files": ["dist/**/*"],
-  "keywords": [
-    "monorepo",
-    "jest",
-    "playwright",
-    "storm",
-    "storm-ops",
-    "sullivanpj"
+  "files": [
+    "dist/**/*"
   ],
-  "peerDependencies": {
-    "@nx/jest": "catalog:",
-    "jest": "catalog:"
-  },
   "dependencies": {
     "defu": "catalog:",
     "mlly": "catalog:"
@@ -171,6 +169,10 @@
     "@types/node": "catalog:",
     "jest": "catalog:",
     "jest-resolve": "catalog:"
+  },
+  "peerDependencies": {
+    "@nx/jest": "catalog:",
+    "jest": "catalog:"
   },
   "publishConfig": {
     "access": "public"

@@ -51,11 +51,4 @@
       ];
     };
   };
-
-  git-hooks = {
-    enable = true;
-    hooks = {
-      shellcheck.enable = true;
-    };
-  };
 }

@@ -6,12 +6,12 @@ import {
   getCompatibleUpdate,
   getUpdateLevel,
   isSha,
+  parseExcludePatterns,
   readInlineVersionComment,
   resolveTargetReference,
   scanGitHubActions,
   shouldIgnore
 } from "actions-up";
-import { createSpinner } from "nanospinner";
 import { basename, dirname, isAbsolute, relative, resolve } from "node:path";
 import "node:worker_threads";
 import pc from "picocolors";
@@ -160,6 +160,11 @@ function resolveScanDirectories(
   return results;
 }
 
+export interface RunActionsUpOptions {
+  path?: string;
+  excludes?: string[];
+}
+
 /**
  * Main action function for the "actions-up" command.
  *
@@ -167,11 +172,15 @@ function resolveScanDirectories(
  * @returns A promise that resolves when the action is complete.
  */
 export async function runActionsUp(
-  workspaceConfig: Partial<StormWorkspaceConfig>
+  workspaceConfig: Partial<StormWorkspaceConfig>,
+  options: RunActionsUpOptions = {}
 ): Promise<void> {
-  let spinner: ReturnType<typeof createSpinner> | null = null;
+  const { path = ".github", excludes = [] } = options;
+
+  // let spinner: ReturnType<typeof createSpinner> | null = null;
   let directories = resolveScanDirectories({
-    cwd: workspaceConfig.workspaceRoot || process.cwd()
+    cwd: workspaceConfig.workspaceRoot || process.cwd(),
+    dir: path
   });
 
   let includeBranches = false;
@@ -180,11 +189,8 @@ export async function runActionsUp(
 
   try {
     console.info(pc.cyan("\n🚀 Actions Up!\n"));
-    spinner = createSpinner("Scanning GitHub Actions...").start();
+    // spinner = createSpinner("Scanning GitHub Actions...").start();
 
-    /**
-     * Scan for GitHub Actions in the repository.
-     */
     let scanResults = await Promise.all(
       directories.map(({ root, dir }) => scanGitHubActions(root, dir))
     );
@@ -204,9 +210,6 @@ export async function runActionsUp(
       merged.actions.push(...result.actions);
     }
 
-    /**
-     * Deduplicate actions that appear in multiple scan results.
-     */
     let seen = new Set<string>();
     merged.actions = merged.actions.filter(action => {
       let key = `${action.file}:${action.line}:${action.name}:${action.version}`;
@@ -221,29 +224,38 @@ export async function runActionsUp(
     let totalWorkflows = merged.workflows.size;
     let totalCompositeActions = merged.compositeActions.size;
 
-    spinner?.success(
-      `Found ${pc.yellow(totalActions)} actions in ` +
-        `${pc.yellow(totalWorkflows)} workflows and ` +
-        `${pc.yellow(totalCompositeActions)} composite actions`
-    );
+    // spinner?.success(
+    //   `Found ${pc.yellow(totalActions)} actions in ` +
+    //     `${pc.yellow(totalWorkflows)} workflows and ` +
+    //     `${pc.yellow(totalCompositeActions)} composite actions`
+    // );
 
     if (totalActions === 0) {
       console.info(pc.green("\n✨ No GitHub Actions found in this repository"));
       return;
     }
 
-    /**
-     * Prepare actions list and apply CLI excludes if provided.
-     */
     let actionsToCheck = merged.actions;
 
-    /**
-     * Check for updates.
-     */
-    spinner = createSpinner("Checking for updates...").start();
+    if (excludes.length > 0) {
+      let regexes = parseExcludePatterns(excludes);
+      if (regexes.length > 0) {
+        actionsToCheck = actionsToCheck.filter(action => {
+          let { name } = action;
+          for (let rx of regexes) {
+            if (rx.test(name)) {
+              return false;
+            }
+          }
+          return true;
+        });
+      }
+    }
+
+    // spinner = createSpinner("Checking for updates...").start();
 
     if (actionsToCheck.length === 0) {
-      spinner?.success("No actions to check");
+      // spinner?.success("No actions to check");
       console.info(pc.green("\n✨ Nothing to check\n"));
       return;
     }
@@ -257,9 +269,6 @@ export async function runActionsUp(
       style: "sha"
     });
 
-    /**
-     * Apply ignore comments (file/block/next-line/inline).
-     */
     let filtered: typeof updates = [];
     await Promise.all(
       updates.map(async update => {
@@ -273,27 +282,15 @@ export async function runActionsUp(
       })
     );
 
-    /**
-     * Skipped entries that should trigger a warning (e.g., branches).
-     */
     let skipped = filtered.filter(update => update.status === "skipped");
-
-    /**
-     * Filter outdated actions.
-     */
     let outdated = filtered.filter(update => update.hasUpdate);
 
-    /**
-     * Filter by minimum age if publishedAt is available.
-     */
-    let minAgeMs = 24 * 60 * 60 * 1000;
     let now = Date.now();
     outdated = outdated.filter(update => {
       if (!update.publishedAt) {
         return true;
       }
-      let age = now - update.publishedAt.getTime();
-      return age >= minAgeMs;
+      return now - update.publishedAt.getTime() >= 24 * 60 * 60 * 1000; // greater than 24 hours
     });
 
     let blockedByMode: typeof outdated = [];
@@ -389,7 +386,7 @@ export async function runActionsUp(
     let breaking = outdated.filter(update => update.isBreaking);
 
     if (outdated.length === 0) {
-      spinner?.success("All actions are up to date!");
+      // spinner?.success("All actions are up to date!");
 
       console.info(
         pc.green("\n✨ Everything is already at the latest version!\n")
@@ -397,13 +394,13 @@ export async function runActionsUp(
       return;
     }
 
-    spinner?.success(
-      `Found ${pc.yellow(outdated.length)} updates available${
-        breaking.length > 0
-          ? ` (${pc.redBright(breaking.length)} breaking)`
-          : ""
-      }`
-    );
+    // spinner?.success(
+    //   `Found ${pc.yellow(outdated.length)} updates available${
+    //     breaking.length > 0
+    //       ? ` (${pc.redBright(breaking.length)} breaking)`
+    //       : ""
+    //   }`
+    // );
 
     /**
      * Auto-update all actions with the resolved target ref.
@@ -420,7 +417,7 @@ export async function runActionsUp(
 
     console.info(pc.green("\n✓ Updates applied successfully!"));
   } catch (error) {
-    spinner?.error("Failed");
+    // spinner?.error("Failed");
 
     /**
      * Handle rate limit errors with helpful message.

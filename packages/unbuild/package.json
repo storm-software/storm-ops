@@ -160,7 +160,9 @@
     "storm-unbuild-cjs": "./bin/unbuild.cjs",
     "storm-unbuild-esm": "./bin/unbuild.js"
   },
-  "files": ["dist/**/*"],
+  "files": [
+    "dist/**/*"
+  ],
   "dependencies": {
     "@storm-software/build-tools": "workspace:*",
     "@storm-software/config": "workspace:*",
@@ -179,6 +181,7 @@
   "devDependencies": {
     "@nx/devkit": "catalog:",
     "@nx/js": "catalog:",
+    "@swc/core": "catalog:",
     "@types/node": "catalog:",
     "nx": "catalog:",
     "tsup": "catalog:",

@@ -104,6 +104,7 @@
     gnupg
     git-lfs
     git-crypt
+    gh
     zizmor
     taplo
     typos

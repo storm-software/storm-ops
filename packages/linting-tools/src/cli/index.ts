@@ -97,12 +97,9 @@ export function createProgram(config: StormWorkspaceConfig) {
       "One or more paths to ignore for the dependency version consistency linting (comma-separated)",
       (value: string, previous: string[]) => {
         if (previous === undefined) {
-          return value.split(",").map(v => v.trim().toLowerCase());
+          return value.split(",").map(v => v.trim());
         }
-        return [
-          ...previous,
-          ...value.split(",").map(v => v.trim().toLowerCase())
-        ];
+        return [...previous, ...value.split(",").map(v => v.trim())];
       }
     )
     .action(depsVersionAction);
@@ -147,6 +144,20 @@ export function createProgram(config: StormWorkspaceConfig) {
   program
     .command("actions-up")
     .description("Run Actions Up linting for the workspace.")
+    .option(
+      "--actions-up-path <path>",
+      'The directory to run Actions Up linting in (defaults to ".github")'
+    )
+    .option(
+      "--actions-up-excludes <paths...>",
+      "One or more paths to exclude from Actions Up linting (comma-separated)",
+      (value: string, previous: string[]) => {
+        if (previous === undefined) {
+          return value.split(",").map(v => v.trim());
+        }
+        return [...previous, ...value.split(",").map(v => v.trim())];
+      }
+    )
     .action(actionsUpAction);
 
   program
@@ -171,6 +182,20 @@ export function createProgram(config: StormWorkspaceConfig) {
       "@storm-software/linting-tools/cspell/config.json"
     )
     .option("--skip-actions-up", "Should skip Actions Up linting", false)
+    .option(
+      "--actions-up-path <path>",
+      'The directory to run Actions Up linting in (defaults to ".github")'
+    )
+    .option(
+      "--actions-up-excludes <paths...>",
+      "One or more paths to exclude from Actions Up linting (comma-separated)",
+      (value: string, previous: string[]) => {
+        if (previous === undefined) {
+          return value.split(",").map(v => v.trim());
+        }
+        return [...previous, ...value.split(",").map(v => v.trim())];
+      }
+    )
     .option(
       "--alex-config <file>",
       "Alex.js config file path",
@@ -262,7 +287,9 @@ async function allAction({
   ignorePackagesDepsVersion = [],
   ignorePathsDepsVersion = [],
   manypkgType,
-  manypkgArgs = []
+  manypkgArgs = [],
+  actionsUpPath,
+  actionsUpExcludes = []
 }: {
   skipCspell: boolean;
   skipAlex: boolean;
@@ -278,6 +305,8 @@ async function allAction({
   ignorePathsDepsVersion: string[];
   manypkgType: string;
   manypkgArgs: string[];
+  actionsUpPath?: string;
+  actionsUpExcludes?: string[];
 }) {
   try {
     writeDebug(`${brandIcon(_config)}  Linting the Storm Workspace`, _config);
@@ -310,11 +339,16 @@ async function allAction({
     }
 
     if (!skipActionsUp) {
-      promises.push(actionsUpAction());
+      promises.push(
+        actionsUpAction({
+          actionsUpPath,
+          actionsUpExcludes
+        })
+      );
     }
 
     await Promise.all(promises);
-    writeSuccess("Successfully linted the workspace  ✅", _config);
+    writeSuccess("Successfully linted the workspace  🗹", _config);
   } catch (e) {
     writeFatal(
       `A fatal error occurred while linting the workspace: ${e.message}`,
@@ -353,7 +387,7 @@ async function cspellAction({
       );
     }
 
-    writeSuccess("Spelling linting is complete  ✅", _config);
+    writeSuccess("Spelling linting is complete  🗹", _config);
   } catch (e) {
     writeError(`Spelling linting has failed  ✘ \n\n${e.message}`, _config);
     throw new Error(e.message, { cause: e });
@@ -369,7 +403,7 @@ async function codeownersAction() {
 
     await runCodeowners();
 
-    writeSuccess("CODEOWNERS linting is complete  ✅", _config);
+    writeSuccess("CODEOWNERS linting is complete  🗹", _config);
   } catch (e) {
     writeError("CODEOWNERS linting has failed  ✘", _config);
     writeFatal(
@@ -398,7 +432,7 @@ async function alexAction({
       throw new Error(`Alex CLI Error Code: ${result}`);
     }
 
-    writeSuccess("Language linting is complete  ✅", _config);
+    writeSuccess("Language linting is complete  🗹", _config);
   } catch (e) {
     writeError(`Language linting has failed  ✘ \n\n${e.message} `, _config);
     writeFatal(
@@ -441,7 +475,7 @@ async function depsVersionAction({
       throw new Error(cdvc.toMismatchSummary());
     }
 
-    writeSuccess("Dependency Version linting is complete  ✅", _config);
+    writeSuccess("Dependency Version linting is complete  🗹", _config);
   } catch (e) {
     writeError(
       `Dependency version consistency linting has failed ✘ \n\n${e.message} `,
@@ -483,7 +517,7 @@ async function circularDepsAction() {
       );
     }
 
-    writeSuccess("Circular dependency linting is complete  ✅", _config);
+    writeSuccess("Circular dependency linting is complete  🗹", _config);
   } catch (e) {
     writeError(
       `Circular dependency linting has failed  ✘ \n\n${e.message} `,
@@ -512,7 +546,7 @@ async function manypkgAction({
 
     await runManypkg(_config, manypkgType, manypkgArgs);
 
-    writeSuccess("Manypkg linting is complete  ✅", _config);
+    writeSuccess("Manypkg linting is complete  🗹", _config);
   } catch (e) {
     writeError(`Manypkg linting has failed  ✘ \n\n${e.message} `, _config);
     writeFatal(
@@ -523,16 +557,25 @@ async function manypkgAction({
   }
 }
 
-async function actionsUpAction() {
+async function actionsUpAction({
+  actionsUpPath,
+  actionsUpExcludes = []
+}: {
+  actionsUpPath?: string;
+  actionsUpExcludes?: string[];
+}) {
   try {
     writeDebug(
       `${brandIcon(_config)}  Linting the workspace's GitHub Actions with Actions Up`,
       _config
     );
 
-    await runActionsUp(_config);
+    await runActionsUp(_config, {
+      path: actionsUpPath,
+      excludes: actionsUpExcludes
+    });
 
-    writeSuccess("Actions Up linting is complete  ✅", _config);
+    writeSuccess("Actions Up linting is complete  🗹", _config);
   } catch (e) {
     writeError(`Actions Up linting has failed  ✘ \n\n${e.message} `, _config);
     writeFatal(
