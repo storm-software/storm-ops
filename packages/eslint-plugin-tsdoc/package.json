@@ -50,8 +50,8 @@
   "typings": "dist/index.d.mts",
   "files": ["dist"],
   "dependencies": {
-    "@microsoft/tsdoc": "0.15.1",
-    "@microsoft/tsdoc-config": "0.17.1",
+    "@microsoft/tsdoc": "^0.15.1",
+    "@microsoft/tsdoc-config": "^0.17.1",
     "@storm-software/package-constants": "workspace:*",
     "@typescript-eslint/utils": "catalog:",
     "ajv": "8.12.0",

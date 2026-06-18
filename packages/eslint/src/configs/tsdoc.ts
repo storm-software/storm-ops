@@ -1,5 +1,5 @@
+import pluginTsdoc from "@storm-software/eslint-plugin-tsdoc";
 import { GLOB_TS, GLOB_TSX } from "@storm-software/package-constants/globs";
-import pluginTsdoc from "eslint-plugin-tsdoc";
 import type { OptionsFiles, OptionsTSDoc, TypedFlatConfigItem } from "../types";
 import { findWorkspaceRoot } from "../utils/find-workspace-root";
 

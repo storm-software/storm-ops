@@ -84,8 +84,8 @@
   "types": "./dist/index.d.ts",
   "devDependencies": {
     "@microsoft/api-extractor": "catalog:",
-    "@microsoft/tsdoc": "0.15.1",
-    "@microsoft/tsdoc-config": "0.17.1",
+    "@microsoft/tsdoc": "^0.15.1",
+    "@microsoft/tsdoc-config": "^0.17.1",
     "@types/node": "catalog:",
     "tsup": "catalog:",
     "typescript": "^5.9.3"

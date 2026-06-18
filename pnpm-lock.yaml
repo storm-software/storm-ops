@@ -1290,10 +1290,10 @@ importers:
   packages/eslint-plugin-tsdoc:
     dependencies:
       '@microsoft/tsdoc':
-        specifier: 0.15.1
+        specifier: ^0.15.1
         version: 0.15.1
       '@microsoft/tsdoc-config':
-        specifier: 0.17.1
+        specifier: ^0.17.1
         version: 0.17.1
       '@storm-software/package-constants':
         specifier: workspace:*
@@ -1985,10 +1985,10 @@ importers:
         specifier: 'catalog:'
         version: 7.58.9(@types/node@25.9.3)
       '@microsoft/tsdoc':
-        specifier: 0.15.1
+        specifier: ^0.15.1
         version: 0.15.1
       '@microsoft/tsdoc-config':
-        specifier: 0.17.1
+        specifier: ^0.17.1
         version: 0.17.1
       '@types/node':
         specifier: 'catalog:'
