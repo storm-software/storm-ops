@@ -2,6 +2,25 @@
 
 # Changelog for Storm Ops - Workspace Tools
 
+## [1.296.50](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.296.50) (06/18/2026)
+
+### Bug Fixes
+
+- **linting-tools:** Resolve issue running CLI from lefthook and update version shas ([1751cb249](https://github.com/storm-software/storm-ops/commit/1751cb249))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.7**
+- Updated **config-tools** to **v1.190.70**
+- Updated **esbuild** to **v0.53.231**
+- Updated **npm-tools** to **v0.6.188**
+- Updated **package-constants** to **v0.1.83**
+- Updated **pnpm-tools** to **v0.7.81**
+- Updated **prettier** to **v0.59.123**
+- Updated **testing-tools** to **v1.119.223**
+- Updated **tsdown** to **v0.45.231**
+- Updated **unbuild** to **v0.57.231**
+
 ## [1.296.49](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.296.49) (06/15/2026)
 
 ### Miscellaneous

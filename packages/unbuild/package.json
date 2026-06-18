@@ -1,6 +1,6 @@
 {
   "name": "@storm-software/unbuild",
-  "version": "0.57.230",
+  "version": "0.57.231",
   "private": false,
   "description": "A package containing `unbuild` utilities for building Storm Software libraries and applications",
   "keywords": [
@@ -160,9 +160,7 @@
     "storm-unbuild-cjs": "./bin/unbuild.cjs",
     "storm-unbuild-esm": "./bin/unbuild.js"
   },
-  "files": [
-    "dist/**/*"
-  ],
+  "files": ["dist/**/*"],
   "dependencies": {
     "@storm-software/build-tools": "workspace:*",
     "@storm-software/config": "workspace:*",

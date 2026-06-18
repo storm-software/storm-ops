@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Oxfmt
 
+## [0.0.26](https://github.com/storm-software/storm-ops/releases/tag/oxfmt%400.0.26) (06/18/2026)
+
+### Bug Fixes
+
+- **linting-tools:** Resolve issue running CLI from lefthook and update version shas ([1751cb249](https://github.com/storm-software/storm-ops/commit/1751cb249))
+
 ## [0.0.25](https://github.com/storm-software/storm-ops/releases/tag/oxfmt%400.0.25) (06/15/2026)
 
 ### Miscellaneous

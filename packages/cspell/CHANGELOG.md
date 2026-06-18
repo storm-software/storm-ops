@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - CSpell
 
+## [0.46.138](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.46.138) (06/18/2026)
+
+### Bug Fixes
+
+- **linting-tools:** Resolve issue running CLI from lefthook and update version shas ([1751cb249](https://github.com/storm-software/storm-ops/commit/1751cb249))
+
 ## [0.46.137](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.46.137) (06/15/2026)
 
 ### Miscellaneous

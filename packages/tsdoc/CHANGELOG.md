@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Tsdoc
 
+## [0.13.223](https://github.com/storm-software/storm-ops/releases/tag/tsdoc%400.13.223) (06/18/2026)
+
+### Bug Fixes
+
+- **linting-tools:** Resolve issue running CLI from lefthook and update version shas ([1751cb249](https://github.com/storm-software/storm-ops/commit/1751cb249))
+
 ## [0.13.222](https://github.com/storm-software/storm-ops/releases/tag/tsdoc%400.13.222) (06/15/2026)
 
 ### Miscellaneous

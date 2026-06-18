@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - Create Storm Workspace
 
+## [1.97.230](https://github.com/storm-software/storm-ops/releases/tag/create-storm-workspace%401.97.230) (06/18/2026)
+
+### Bug Fixes
+
+- **linting-tools:** Resolve issue running CLI from lefthook and update version shas ([1751cb249](https://github.com/storm-software/storm-ops/commit/1751cb249))
+
+### Updated Dependencies
+
+- Updated **config-tools** to **v1.190.70**
+
 ## [1.97.229](https://github.com/storm-software/storm-ops/releases/tag/create-storm-workspace%401.97.229) (06/15/2026)
 
 ### Miscellaneous

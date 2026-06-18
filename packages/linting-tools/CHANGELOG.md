@@ -2,6 +2,26 @@
 
 # Changelog for Storm Ops - Linting Tools
 
+## [1.134.0](https://github.com/storm-software/storm-ops/releases/tag/linting-tools%401.134.0) (06/18/2026)
+
+### Miscellaneous
+
+- **linting-tools:** Removed extra `console.info` statement ([558d4b3d6](https://github.com/storm-software/storm-ops/commit/558d4b3d6))
+- **linting-tools:** Clean up `actions-up` linting code ([12d28434a](https://github.com/storm-software/storm-ops/commit/12d28434a))
+
+### Bug Fixes
+
+- **linting-tools:** Resolve issue running CLI from lefthook and update version shas ([1751cb249](https://github.com/storm-software/storm-ops/commit/1751cb249))
+
+### Features
+
+- **linting-tools:** Added `actions-up` action to storm-lint ([3141aa44f](https://github.com/storm-software/storm-ops/commit/3141aa44f))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.7**
+- Updated **config-tools** to **v1.190.70**
+
 ## [1.133.99](https://github.com/storm-software/storm-ops/releases/tag/linting-tools%401.133.99) (06/15/2026)
 
 ### Miscellaneous

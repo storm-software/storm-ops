@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Pnpm Plugin
 
+## [0.1.181](https://github.com/storm-software/storm-ops/releases/tag/pnpm-plugin%400.1.181) (06/18/2026)
+
+### Bug Fixes
+
+- **linting-tools:** Resolve issue running CLI from lefthook and update version shas ([1751cb249](https://github.com/storm-software/storm-ops/commit/1751cb249))
+
+### Updated Dependencies
+
+- Updated **package-constants** to **v0.1.83**
+- Updated **testing-tools** to **v1.119.223**
+
 ## [0.1.180](https://github.com/storm-software/storm-ops/releases/tag/pnpm-plugin%400.1.180) (06/15/2026)
 
 ### Miscellaneous

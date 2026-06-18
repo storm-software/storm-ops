@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Tsconfig
 
+## [0.48.137](https://github.com/storm-software/storm-ops/releases/tag/tsconfig%400.48.137) (06/18/2026)
+
+### Bug Fixes
+
+- **linting-tools:** Resolve issue running CLI from lefthook and update version shas ([1751cb249](https://github.com/storm-software/storm-ops/commit/1751cb249))
+
 ## [0.48.136](https://github.com/storm-software/storm-ops/releases/tag/tsconfig%400.48.136) (06/15/2026)
 
 ### Miscellaneous

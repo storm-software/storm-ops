@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Projen
 
+## [0.21.253](https://github.com/storm-software/storm-ops/releases/tag/projen%400.21.253) (06/18/2026)
+
+### Bug Fixes
+
+- **linting-tools:** Resolve issue running CLI from lefthook and update version shas ([1751cb249](https://github.com/storm-software/storm-ops/commit/1751cb249))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.7**
+- Updated **config-tools** to **v1.190.70**
+- Updated **workspace-tools** to **v1.296.50**
+
 ## [0.21.252](https://github.com/storm-software/storm-ops/releases/tag/projen%400.21.252) (06/15/2026)
 
 ### Miscellaneous

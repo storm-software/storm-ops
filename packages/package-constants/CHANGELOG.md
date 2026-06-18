@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Package Constants
 
+## [0.1.83](https://github.com/storm-software/storm-ops/releases/tag/package-constants%400.1.83) (06/18/2026)
+
+### Bug Fixes
+
+- **linting-tools:** Resolve issue running CLI from lefthook and update version shas ([1751cb249](https://github.com/storm-software/storm-ops/commit/1751cb249))
+
 ## [0.1.82](https://github.com/storm-software/storm-ops/releases/tag/package-constants%400.1.82) (06/15/2026)
 
 ### Miscellaneous

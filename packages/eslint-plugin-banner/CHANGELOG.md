@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - ESLint Plugin Banner
 
+## [0.0.35](https://github.com/storm-software/storm-ops/releases/tag/eslint-plugin-banner%400.0.35) (06/18/2026)
+
+### Bug Fixes
+
+- **linting-tools:** Resolve issue running CLI from lefthook and update version shas ([1751cb249](https://github.com/storm-software/storm-ops/commit/1751cb249))
+
+### Updated Dependencies
+
+- Updated **package-constants** to **v0.1.83**
+- Updated **prettier** to **v0.59.123**
+
 ## [0.0.34](https://github.com/storm-software/storm-ops/releases/tag/eslint-plugin-banner%400.0.34) (06/15/2026)
 
 ### Miscellaneous

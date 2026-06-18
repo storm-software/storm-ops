@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Prettier
 
+## [0.59.123](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.59.123) (06/18/2026)
+
+### Bug Fixes
+
+- **linting-tools:** Resolve issue running CLI from lefthook and update version shas ([1751cb249](https://github.com/storm-software/storm-ops/commit/1751cb249))
+
 ## [0.59.122](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.59.122) (06/15/2026)
 
 ### Miscellaneous

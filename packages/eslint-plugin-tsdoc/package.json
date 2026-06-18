@@ -1,13 +1,9 @@
 {
   "name": "@storm-software/eslint-plugin-tsdoc",
-  "version": "0.0.32",
+  "version": "0.0.33",
   "private": false,
   "description": "An ESLint Plugin that enforces TSDoc comments in Storm Software projects.",
-  "keywords": [
-    "eslint",
-    "eslint-plugin",
-    "storm-software"
-  ],
+  "keywords": ["eslint", "eslint-plugin", "storm-software"],
   "homepage": "https://stormsoftware.com",
   "bugs": {
     "url": "https://stormsoftware.com/support",
@@ -52,9 +48,7 @@
   },
   "types": "./dist/index.d.ts",
   "typings": "dist/index.d.mts",
-  "files": [
-    "dist"
-  ],
+  "files": ["dist"],
   "dependencies": {
     "@microsoft/tsdoc": "0.15.1",
     "@microsoft/tsdoc-config": "0.17.1",

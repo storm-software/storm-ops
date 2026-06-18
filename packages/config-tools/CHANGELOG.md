@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Config Tools
 
+## [1.190.70](https://github.com/storm-software/storm-ops/releases/tag/config-tools%401.190.70) (06/18/2026)
+
+### Bug Fixes
+
+- **linting-tools:** Resolve issue running CLI from lefthook and update version shas ([1751cb249](https://github.com/storm-software/storm-ops/commit/1751cb249))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.7**
+- Updated **testing-tools** to **v1.119.223**
+
 ## [1.190.69](https://github.com/storm-software/storm-ops/releases/tag/config-tools%401.190.69) (06/15/2026)
 
 ### Miscellaneous

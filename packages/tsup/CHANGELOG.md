@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Tsup
 
+## [0.2.228](https://github.com/storm-software/storm-ops/releases/tag/tsup%400.2.228) (06/18/2026)
+
+### Bug Fixes
+
+- **linting-tools:** Resolve issue running CLI from lefthook and update version shas ([1751cb249](https://github.com/storm-software/storm-ops/commit/1751cb249))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.230**
+- Updated **config-tools** to **v1.190.70**
+
 ## [0.2.227](https://github.com/storm-software/storm-ops/releases/tag/tsup%400.2.227) (06/15/2026)
 
 ### Miscellaneous

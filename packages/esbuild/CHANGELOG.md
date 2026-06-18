@@ -2,6 +2,19 @@
 
 # Changelog for Storm Ops - Esbuild
 
+## [0.53.231](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.53.231) (06/18/2026)
+
+### Bug Fixes
+
+- **linting-tools:** Resolve issue running CLI from lefthook and update version shas ([1751cb249](https://github.com/storm-software/storm-ops/commit/1751cb249))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.230**
+- Updated **config** to **v1.138.7**
+- Updated **config-tools** to **v1.190.70**
+- Updated **tsup** to **v0.2.228**
+
 ## [0.53.230](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.53.230) (06/15/2026)
 
 ### Miscellaneous

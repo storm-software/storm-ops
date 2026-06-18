@@ -2,6 +2,19 @@
 
 # Changelog for Storm Ops - Git Tools
 
+## [2.131.77](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.131.77) (06/18/2026)
+
+### Bug Fixes
+
+- **linting-tools:** Resolve issue running CLI from lefthook and update version shas ([1751cb249](https://github.com/storm-software/storm-ops/commit/1751cb249))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.7**
+- Updated **config-tools** to **v1.190.70**
+- Updated **conventional-changelog** to **v0.3.231**
+- Updated **package-constants** to **v0.1.83**
+
 ## [2.131.76](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.131.76) (06/15/2026)
 
 ### Miscellaneous
