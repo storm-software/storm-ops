@@ -1,3 +1,4 @@
+import { writeDebug, writeError } from "@storm-software/config-tools/logger";
 import { StormWorkspaceConfig } from "@storm-software/config/types";
 import {
   applyUpdates,
@@ -14,7 +15,6 @@ import {
 } from "actions-up";
 import { basename, dirname, isAbsolute, relative, resolve } from "node:path";
 import "node:worker_threads";
-import pc from "picocolors";
 
 /**
  * Options for resolving scan directories from CLI flags.
@@ -177,19 +177,20 @@ export async function runActionsUp(
 ): Promise<void> {
   const { path = ".github", excludes = [] } = options;
 
-  // let spinner: ReturnType<typeof createSpinner> | null = null;
   let directories = resolveScanDirectories({
     cwd: workspaceConfig.workspaceRoot || process.cwd(),
     dir: path
   });
 
   let includeBranches = false;
-  let mode = "minor";
-  let style = "sha";
+  let mode: "major" | "minor" | "patch" = "minor" as
+    | "major"
+    | "minor"
+    | "patch";
+  let style: "sha" | "preserve" = "sha";
 
   try {
-    console.info(pc.cyan("\n🚀 Actions Up!\n"));
-    // spinner = createSpinner("Scanning GitHub Actions...").start();
+    writeDebug("Scanning GitHub Actions...", workspaceConfig);
 
     let scanResults = await Promise.all(
       directories.map(({ root, dir }) => scanGitHubActions(root, dir))
@@ -224,14 +225,13 @@ export async function runActionsUp(
     let totalWorkflows = merged.workflows.size;
     let totalCompositeActions = merged.compositeActions.size;
 
-    // spinner?.success(
-    //   `Found ${pc.yellow(totalActions)} actions in ` +
-    //     `${pc.yellow(totalWorkflows)} workflows and ` +
-    //     `${pc.yellow(totalCompositeActions)} composite actions`
-    // );
+    writeDebug(
+      `Found ${totalActions} actions in ${totalWorkflows} workflows and ${totalCompositeActions} composite actions`,
+      workspaceConfig
+    );
 
     if (totalActions === 0) {
-      console.info(pc.green("\n✨ No GitHub Actions found in this repository"));
+      writeDebug("No GitHub Actions found in this repository", workspaceConfig);
       return;
     }
 
@@ -252,11 +252,10 @@ export async function runActionsUp(
       }
     }
 
-    // spinner = createSpinner("Checking for updates...").start();
+    writeDebug("Checking for updates...", workspaceConfig);
 
     if (actionsToCheck.length === 0) {
-      // spinner?.success("No actions to check");
-      console.info(pc.green("\n✨ Nothing to check\n"));
+      writeDebug("No actions to check", workspaceConfig);
       return;
     }
 
@@ -266,7 +265,7 @@ export async function runActionsUp(
     let updates = await checkUpdates(actionsToCheck, token, {
       client: githubClient,
       includeBranches,
-      style: "sha"
+      style
     });
 
     let filtered: typeof updates = [];
@@ -285,7 +284,7 @@ export async function runActionsUp(
     let skipped = filtered.filter(update => update.status === "skipped");
     let outdated = filtered.filter(update => update.hasUpdate);
 
-    let now = Date.now();
+    const now = Date.now();
     outdated = outdated.filter(update => {
       if (!update.publishedAt) {
         return true;
@@ -386,52 +385,33 @@ export async function runActionsUp(
     let breaking = outdated.filter(update => update.isBreaking);
 
     if (outdated.length === 0) {
-      // spinner?.success("All actions are up to date!");
+      writeDebug("All actions are up to date!", workspaceConfig);
 
-      console.info(
-        pc.green("\n✨ Everything is already at the latest version!\n")
-      );
+      console.info("Everything is already at the latest version!");
       return;
     }
 
-    // spinner?.success(
-    //   `Found ${pc.yellow(outdated.length)} updates available${
-    //     breaking.length > 0
-    //       ? ` (${pc.redBright(breaking.length)} breaking)`
-    //       : ""
-    //   }`
-    // );
+    writeDebug(
+      `Found ${outdated.length} updates available${breaking.length > 0 ? ` (${breaking.length} breaking)` : ""}`,
+      workspaceConfig
+    );
 
-    /**
-     * Auto-update all actions with the resolved target ref.
-     */
     let toUpdate = outdated.filter(update => update.targetRef);
     if (toUpdate.length === 0) {
-      console.info(pc.yellow("\n⚠️ No actionable updates available\n"));
+      writeDebug("⚠️ No actionable updates available", workspaceConfig);
       return;
     }
 
-    console.info(pc.yellow(`\n🔄 Updating ${toUpdate.length} actions...\n`));
+    writeDebug(`🔄 Updating ${toUpdate.length} actions...`, workspaceConfig);
 
     await applyUpdates(toUpdate);
-
-    console.info(pc.green("\n✓ Updates applied successfully!"));
   } catch (error) {
-    // spinner?.error("Failed");
-
-    /**
-     * Handle rate limit errors with helpful message.
-     */
     if (error instanceof Error && error.name === "GitHubRateLimitError") {
-      console.error(pc.yellow("\n⚠️ Rate Limit Exceeded\n"));
-      console.error(error.message);
-      console.error(pc.gray("\nExample: GITHUB_TOKEN=ghp_xxxx actions-up\n"));
-    } else {
-      console.error(
-        pc.redBright("\nError:"),
-        error instanceof Error ? error.message : String(error)
-      );
+      writeError("⚠️ Rate Limit Exceeded", workspaceConfig);
+      writeError(error.message, workspaceConfig);
+      writeError("Example: GITHUB_TOKEN=ghp_xxxx actions-up", workspaceConfig);
     }
-    process.exit(1);
+
+    throw error;
   }
 }
