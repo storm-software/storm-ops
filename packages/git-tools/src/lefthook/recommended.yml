@@ -10,14 +10,6 @@ extends:
 
 pre-commit:
   commands:
-    storm-lint:
-      glob: "**/*"
-      run: pnpm lint --files {staged_files}
-      stage_fixed: true
-    readme:
-      glob: "**/{README.md,README.*.md,readme/**/*,package.json,executors.json,generators.json}"
-      run: pnpm exec storm-git readme --templates="tools/readme-templates" --workspace
-      stage_fixed: true
     prettier:
       glob: "**/*"
       run:
@@ -26,4 +18,8 @@ pre-commit:
         --ignore-path="node_modules/@storm-software/prettier/.prettierignore-exclude-packagejson"
         --cache --cache-location="node_modules/.cache/prettier/workspace.cache"
         {staged_files}
+      stage_fixed: true
+    zizmor:
+      glob: .github/workflows/*.{yml,yaml}
+      run: "zizmor --offline --config='./tools/config/zizmor.yml' .github/workflows/"
       stage_fixed: true
