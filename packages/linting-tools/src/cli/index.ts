@@ -12,6 +12,7 @@ import { CDVC } from "check-dependency-version-consistency";
 import { Command } from "commander";
 import { lint } from "cspell";
 import { parseCircular, parseDependencyTree, prettyCircular } from "dpdm";
+import { runActionsUp } from "../actions-up";
 import { runAlex } from "../alex";
 import { runCodeowners } from "../codeowners";
 import { MANY_PKG_TYPE_OPTIONS, runManypkg } from "../manypkg";
@@ -144,6 +145,11 @@ export function createProgram(config: StormWorkspaceConfig) {
     .action(codeownersAction);
 
   program
+    .command("actions-up")
+    .description("Run Actions Up linting for the workspace.")
+    .action(actionsUpAction);
+
+  program
     .command("all")
     .description("Run all linters for the workspace.")
     .option("--skip-cspell", "Should skip CSpell linting", true)
@@ -164,6 +170,7 @@ export function createProgram(config: StormWorkspaceConfig) {
       "CSpell config file path",
       "@storm-software/linting-tools/cspell/config.json"
     )
+    .option("--skip-actions-up", "Should skip Actions Up linting", false)
     .option(
       "--alex-config <file>",
       "Alex.js config file path",
@@ -247,6 +254,7 @@ async function allAction({
   skipDepsVersion,
   skipCircularDeps,
   skipManypkg,
+  skipActionsUp,
   cspellConfig,
   alexConfig,
   alexIgnore,
@@ -261,6 +269,7 @@ async function allAction({
   skipDepsVersion: boolean;
   skipCircularDeps: boolean;
   skipManypkg: boolean;
+  skipActionsUp: boolean;
   cspellConfig: string;
   alexConfig: string;
   alexIgnore: string;
@@ -298,6 +307,10 @@ async function allAction({
 
     if (!skipManypkg) {
       promises.push(manypkgAction({ manypkgType, manypkgArgs }));
+    }
+
+    if (!skipActionsUp) {
+      promises.push(actionsUpAction());
     }
 
     await Promise.all(promises);
@@ -504,6 +517,26 @@ async function manypkgAction({
     writeError(`Manypkg linting has failed  ✘ \n\n${e.message} `, _config);
     writeFatal(
       `A fatal error occurred while manypkg linting the workspace: ${e.message}`,
+      _config
+    );
+    throw new Error(e.message, { cause: e });
+  }
+}
+
+async function actionsUpAction() {
+  try {
+    writeDebug(
+      `${brandIcon(_config)}  Linting the workspace's GitHub Actions with Actions Up`,
+      _config
+    );
+
+    await runActionsUp(_config);
+
+    writeSuccess("Actions Up linting is complete  ✅", _config);
+  } catch (e) {
+    writeError(`Actions Up linting has failed  ✘ \n\n${e.message} `, _config);
+    writeFatal(
+      `A fatal error occurred while Actions Up linting the workspace: ${e.message}`,
       _config
     );
     throw new Error(e.message, { cause: e });

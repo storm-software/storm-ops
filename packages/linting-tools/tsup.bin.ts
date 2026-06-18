@@ -15,6 +15,7 @@ export default defineConfig([
     sourcemap: false,
     tsconfig: "./tsconfig.json",
     shims: true,
-    silent: true
+    silent: true,
+    noExternal: ["actions-up"]
   }
 ]);
