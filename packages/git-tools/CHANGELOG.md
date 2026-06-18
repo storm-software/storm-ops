@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Git Tools
 
+## [2.131.81](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.131.81) (06/18/2026)
+
+### Bug Fixes
+
+- **git-tools:** Remove `readme` hook from `minimal` and added to `recommended` ([f46033698](https://github.com/storm-software/storm-ops/commit/f46033698))
+
 ## [2.131.80](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.131.80) (06/18/2026)
 
 ### Miscellaneous
