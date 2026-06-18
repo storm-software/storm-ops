@@ -386,8 +386,6 @@ export async function runActionsUp(
 
     if (outdated.length === 0) {
       writeDebug("All actions are up to date!", workspaceConfig);
-
-      console.info("Everything is already at the latest version!");
       return;
     }
 
