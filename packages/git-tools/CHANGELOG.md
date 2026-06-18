@@ -2,6 +2,19 @@
 
 # Changelog for Storm Ops - Git Tools
 
+## [2.131.80](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.131.80) (06/18/2026)
+
+### Miscellaneous
+
+- **git-tools:** Reorganize the linting rules in shared `lefthook` config ([175da9daf](https://github.com/storm-software/storm-ops/commit/175da9daf))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.10**
+- Updated **config-tools** to **v1.190.73**
+- Updated **conventional-changelog** to **v0.3.234**
+- Updated **package-constants** to **v0.1.86**
+
 ## [2.131.79](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.131.79) (06/18/2026)
 
 ### Bug Fixes
