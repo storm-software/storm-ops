@@ -1,4 +1,5 @@
 import { type ExecutorContext } from "@nx/devkit";
+import { getConfig } from "@storm-software/config-tools/get-config";
 import { joinPaths } from "@storm-software/config-tools/utilities/correct-paths";
 import {
   getNpmRegistry,
@@ -8,6 +9,7 @@ import { replaceDepsAliases } from "@storm-software/pnpm-tools/helpers/replace-d
 import { execSync } from "node:child_process";
 import { readFile, writeFile } from "node:fs/promises";
 import { format } from "prettier";
+import { getGitHubTools } from "../../utils/github";
 import { addPackageJsonGitHead } from "../../utils/package-helpers";
 import type { NpmPublishExecutorSchema } from "./schema.d";
 
@@ -17,22 +19,24 @@ export default async function npmPublishExecutorFn(
   options: NpmPublishExecutorSchema,
   context: ExecutorContext
 ) {
-  /**
-   * We need to check both the env var and the option because the executor may have been triggered
-   * indirectly via dependsOn, in which case the env var will be set, but the option will not.
-   */
-  const isDryRun = process.env.NX_DRY_RUN === "true" || options.dryRun || false;
+  const workspaceConfig = await getConfig(context.root);
+  const github = await getGitHubTools(workspaceConfig);
 
+  const isDryRun = process.env.NX_DRY_RUN === "true" || options.dryRun || false;
   if (!context.projectName) {
-    throw new Error("The `npm-publish` executor requires a `projectName`.");
+    github.error("The `npm-publish` executor requires a `projectName`.");
+
+    return { success: false };
   }
 
   const projectConfig =
     context.projectsConfigurations?.projects?.[context.projectName];
   if (!projectConfig) {
-    throw new Error(
+    github.error(
       `Could not find project configuration for \`${context.projectName}\``
     );
+
+    return { success: false };
   }
 
   const packageRoot = joinPaths(
@@ -52,7 +56,9 @@ export default async function npmPublishExecutorFn(
   const packageJsonPath = joinPaths(packageRoot, "package.json");
   const packageJsonFile = await readFile(packageJsonPath, "utf8");
   if (!packageJsonFile) {
-    throw new Error(`Could not find \`package.json\` at ${packageJsonPath}`);
+    github.error(`Could not find \`package.json\` at ${packageJsonPath}`);
+
+    return { success: false };
   }
 
   const packageJson = JSON.parse(packageJsonFile);
@@ -60,16 +66,23 @@ export default async function npmPublishExecutorFn(
   const projectPackageJsonPath = joinPaths(projectRoot, "package.json");
   const projectPackageJsonFile = await readFile(projectPackageJsonPath, "utf8");
   if (!projectPackageJsonFile) {
-    throw new Error(
+    github.error(
       `Could not find \`package.json\` at ${projectPackageJsonPath}`
     );
+
+    return { success: false };
   }
 
   const projectPackageJson = JSON.parse(projectPackageJsonFile);
-
   if (packageJson.version !== projectPackageJson.version) {
     console.warn(
-      `The version in the package.json file at ${packageJsonPath} (current: ${packageJson.version}) does not match the version in the package.json file at ${projectPackageJsonPath} (current: ${projectPackageJson.version}). This file will be updated to match the version in the project package.json file.`
+      `The version in the package.json file at ${packageJsonPath} (current: ${
+        packageJson.version
+      }) does not match the version in the package.json file at ${
+        projectPackageJsonPath
+      } (current: ${
+        projectPackageJson.version
+      }). This file will be updated to match the version in the project package.json file.`
     );
 
     if (projectPackageJson.version) {
@@ -107,7 +120,6 @@ export default async function npmPublishExecutorFn(
     packageName === context.projectName
       ? `package "${packageName}"`
       : `package "${packageName}" from project "${context.projectName}"`;
-
   if (packageJson.private === true) {
     console.warn(
       `Skipped ${packageTxt}, because it has \`"private": true\` in ${packageJsonPath}`
@@ -123,8 +135,9 @@ export default async function npmPublishExecutorFn(
     `npm view ${packageName} versions dist-tags --json`
   ];
 
-  const registry =
-    options.registry ?? ((await getRegistry()) || getNpmRegistry());
+  const registry = await Promise.resolve(
+    options.registry ?? ((await getRegistry()) || getNpmRegistry())
+  );
   if (registry) {
     npmPublishCommandSegments.push(`--registry="${registry}" `);
     npmViewCommandSegments.push(`--registry="${registry}" `);
@@ -134,11 +147,25 @@ export default async function npmPublishExecutorFn(
     npmPublishCommandSegments.push(`--otp="${options.otp}" `);
   }
 
-  if (isDryRun) {
-    npmPublishCommandSegments.push("--dry-run");
+  let token: string | undefined;
+  if (!options.otp) {
+    token = await github.getIDToken(
+      `npm:${registry.replace(/^https?:\/\//, "")}`
+    );
+    if (!token) {
+      github.warning(
+        `Either a One time password (OTP) or an OpenID Connect (OIDC) token is generally required to publish ${
+          packageTxt
+        } to NPM. Usually the OIDC token should be provided automatically via GitHub Actions (see: https://github.com/actions/toolkit/tree/main/packages/core#oidc-token); however, the release process was unable to retrieve it. Please provide a \`otp\` executor option, or investigate why the OIDC token could not be retrieved.`
+      );
+    }
   }
 
   npmPublishCommandSegments.push("--provenance --access=public ");
+
+  if (isDryRun) {
+    npmPublishCommandSegments.push("--dry-run");
+  }
 
   // Resolve values using the `npm config` command so that things like environment variables and `publishConfig`s are accounted for
   const tag =
@@ -146,6 +173,7 @@ export default async function npmPublishExecutorFn(
     execSync("npm config get tag", {
       cwd: packageRoot,
       env: {
+        NPM_ID_TOKEN: token,
         ...process.env,
         FORCE_COLOR: "true"
       },
@@ -174,6 +202,7 @@ export default async function npmPublishExecutorFn(
         const result = execSync(npmViewCommandSegments.join(" "), {
           cwd: packageRoot,
           env: {
+            NPM_ID_TOKEN: token,
             ...process.env,
             FORCE_COLOR: "true"
           },
@@ -185,37 +214,35 @@ export default async function npmPublishExecutorFn(
         const distTags = resultJson["dist-tags"] || {};
         if (distTags[tag] === currentVersion) {
           console.warn(
-            `Skipped ${packageTxt} because v${currentVersion} already exists in ${registry} with tag "${tag}"`
+            `Skipped ${packageTxt} because v${
+              currentVersion
+            } already exists in ${registry} with tag "${tag}"`
           );
 
           return { success: true };
         }
       } catch (err) {
-        console.warn("\n ********************** \n");
-        console.warn(
-          `An error occurred while checking for existing dist-tags
-${JSON.stringify(err)}
-
-Note: If this is the first time this package has been published to NPM, this can be ignored.
-
-`
+        console.debug(
+          `An error occurred while checking for existing dist-tags. Please note: if this is the first time this package has been published to npm, this can be ignored. \n\nError: ${JSON.stringify(
+            err,
+            null,
+            2
+          )}`
         );
-        console.info("");
       }
 
       try {
         if (!isDryRun) {
           const command = `npm dist-tag add ${packageName}@${currentVersion} ${tag} --registry="${registry}" `;
 
-          console.info(
-            `Adding the dist-tag ${tag} - preparing to run the following:
-${command}
-`
+          console.debug(
+            `Adding the dist-tag ${tag} - preparing to run the following: ${command}`
           );
 
           const result = execSync(command, {
             cwd: packageRoot,
             env: {
+              NPM_ID_TOKEN: token,
               ...process.env,
               FORCE_COLOR: "true"
             },
@@ -224,38 +251,21 @@ ${command}
           });
 
           console.info(
-            `Added the dist-tag ${tag} to v${currentVersion} for registry "${registry}"
-
-Execution response: ${result.toString()}
-`
+            `Added the dist-tag ${tag} to v${currentVersion} for registry "${
+              registry
+            }". \n\nExecution response: ${result.toString()}`
           );
         } else {
           console.info(
-            `Would add the dist-tag ${tag} to v${currentVersion} for registry "${registry}", but [dry-run] was set.\n`
+            `Would have added the dist-tag ${tag} to v${
+              currentVersion
+            } for registry "${registry}", but [dry-run] was set.\n`
           );
         }
 
         return { success: true };
       } catch (err) {
         try {
-          console.warn("\n ********************** \n");
-
-          // Convert buffer to string only if it is not already a string
-          let error = err;
-          if (Buffer.isBuffer(error)) {
-            error = error.toString();
-          }
-
-          console.warn(
-            `An error occurred while adding dist-tags:
-${error}
-
-Note: If this is the first time this package has been published to NPM, this can be ignored.
-
-`
-          );
-          console.info("");
-
           const stdoutData = JSON.parse(err.stdout?.toString() || "{}");
 
           // If the error is that the package doesn't exist, then we can ignore it because we will be publishing it for the first time in the next step
@@ -270,48 +280,37 @@ Note: If this is the first time this package has been published to NPM, this can
               err.stderr?.toString().includes("no such package available")
             )
           ) {
-            console.error(
-              "npm dist-tag add error please see below for more information:"
-            );
-            if (stdoutData.error.summary) {
-              console.error(stdoutData.error?.summary);
-            }
-            if (stdoutData.error.detail) {
-              console.error(stdoutData.error?.detail);
-            }
-
-            if (context.isVerbose) {
-              console.error(
-                `npm dist-tag add stdout: ${JSON.stringify(stdoutData, null, 2)}`
-              );
-            }
+            const errorMessage = `An unexpected error occured while running the npm dist-tag add command: \n\n${
+              stdoutData?.error?.summary
+                ? `Summary: ${stdoutData?.error?.summary}${
+                    stdoutData?.error?.code
+                      ? ` (${stdoutData?.error?.code})`
+                      : ""
+                  }\n`
+                : ""
+            }${stdoutData?.error?.detail ? `Detail: ${stdoutData?.error?.detail}\n` : ""}`;
+            github.error(errorMessage);
 
             return { success: false };
           }
         } catch (err) {
-          console.error(
-            `Something unexpected went wrong when processing the npm dist-tag add output\n${JSON.stringify(err)}`
-          );
+          const stdoutData = JSON.parse(err.stdout?.toString() || "{}");
+
+          const errorMessage = `An unexpected error occured while processing the npm dist-tag add output: \n\n${
+            stdoutData?.error?.summary
+              ? `Summary: ${stdoutData?.error?.summary}${
+                  stdoutData?.error?.code ? ` (${stdoutData?.error?.code})` : ""
+                }\n`
+              : ""
+          }${stdoutData?.error?.detail ? `Detail: ${stdoutData?.error?.detail}\n` : ""}`;
+          github.error(errorMessage);
 
           return { success: false };
         }
       }
     } catch (err) {
-      // Convert buffer to string only if it is not already a string
-      let error = err;
-      if (Buffer.isBuffer(error)) {
-        error = error.toString();
-      }
-
-      console.error("\n ********************** \n");
-      console.info("");
-      console.error(
-        "An error occured trying to run the npm dist-tag add command."
-      );
-      console.error(error);
-      console.info("");
-
       const stdoutData = JSON.parse(err.stdout?.toString() || "{}");
+
       // If the error is that the package doesn't exist, then we can ignore it because we will be publishing it for the first time in the next step
       if (
         !(
@@ -323,12 +322,14 @@ Note: If this is the first time this package has been published to NPM, this can
           err.stderr?.toString().toLowerCase().includes("not found")
         )
       ) {
-        console.error(
-          `Something unexpected went wrong when checking for existing dist-tags.
-
-Error: ${JSON.stringify(err)}
-`
-        );
+        const errorMessage = `An unexpected error occured while checking for existing dist-tags: \n\n${
+          stdoutData?.error?.summary
+            ? `Summary: ${stdoutData?.error?.summary}${
+                stdoutData?.error?.code ? ` (${stdoutData?.error?.code})` : ""
+              }\n`
+            : ""
+        }${stdoutData?.error?.detail ? `Detail: ${stdoutData?.error?.detail}\n` : ""}`;
+        github.error(errorMessage);
 
         return { success: false };
       }
@@ -340,12 +341,15 @@ Error: ${JSON.stringify(err)}
     const command = npmPublishCommandSegments.join(" ");
 
     console.info(
-      `Running publish command "${command}" in current working directory: "${cwd}" `
+      `Running publish command "${command}" in current working directory: "${
+        cwd
+      }" `
     );
 
     const result = execSync(command, {
       cwd,
       env: {
+        NPM_ID_TOKEN: token,
         ...process.env,
         FORCE_COLOR: "true"
       },
@@ -355,69 +359,40 @@ Error: ${JSON.stringify(err)}
 
     if (isDryRun) {
       console.info(
-        `Would publish to ${registry} with tag "${tag}", but [dry-run] was set ${
-          result
-            ? `
-
-Execution response: ${result.toString()}`
-            : ""
-        }
-`
+        `Would publish tag "${tag}" to ${registry}, but [dry-run] was set. ${
+          result ? `\n\nExecution response: ${result.toString()}` : ""
+        }`
       );
     } else {
-      console.info(`Published to ${registry} with tag "${tag}" ${
-        result
-          ? `
-
-Execution response: ${result.toString()}`
-          : ""
-      }
-`);
+      console.info(
+        `Published tag "${tag}" to ${registry}. ${
+          result ? `\n\nExecution response: ${result.toString()}` : ""
+        }`
+      );
     }
 
     return { success: true };
   } catch (err) {
     try {
-      console.error("\n ********************** \n");
-      console.info("");
-      console.error("An error occured running npm publish.");
-      console.error("Please see below for more information:");
-      console.info("");
-
       const stdoutData = JSON.parse(err.stdout?.toString() || "{}");
+      const errorMessage = `An error occurred while publishing the npm package: \n\n${
+        stdoutData?.error?.summary
+          ? `Summary: ${stdoutData?.error?.summary}${
+              stdoutData?.error?.code ? ` (${stdoutData?.error?.code})` : ""
+            }\n`
+          : ""
+      }${stdoutData?.error?.detail ? `Detail: ${stdoutData?.error?.detail}\n` : ""}`;
+      github.error(errorMessage);
 
-      if (stdoutData.error.summary) {
-        console.error(stdoutData.error.summary);
-        console.error(stdoutData.error.summary);
-      }
-
-      if (stdoutData.error.detail) {
-        console.error(stdoutData.error.detail);
-      }
-
-      if (context.isVerbose) {
-        console.error(
-          `npm publish stdout:\n${JSON.stringify(stdoutData, null, 2)}`
-        );
-      }
-
-      console.error("\n ********************** \n");
       return { success: false };
     } catch (err) {
-      // Convert buffer to string only if it is not already a string
-      let error = err;
-      if (Buffer.isBuffer(error)) {
-        error = error.toString();
-      }
+      const errorMessage = `Something unexpected went wrong when processing the npm publish output. \n\nError: ${JSON.stringify(
+        Buffer.isBuffer(err) ? err.toString() : err,
+        null,
+        2
+      )}`;
+      github.error(errorMessage);
 
-      console.error(
-        `Something unexpected went wrong when processing the npm publish output
-
-Error: ${JSON.stringify(error)}
-`
-      );
-
-      console.error("\n ********************** \n");
       return { success: false };
     }
   }

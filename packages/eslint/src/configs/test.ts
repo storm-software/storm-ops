@@ -1,27 +1,21 @@
+import { GLOB_TESTS } from "@storm-software/package-constants/globs";
+import { pluginNoOnlyTests, pluginVitest } from "../plugins";
 import type {
   OptionsFiles,
   OptionsIsInEditor,
   OptionsOverrides,
   TypedFlatConfigItem
 } from "../types";
-import { GLOB_TESTS } from "../utils/constants";
-import { interopDefault } from "../utils/helpers";
 
 // Hold the reference so we don't redeclare the plugin on each call
-let _pluginTest: any;
+let plugin: any;
 
 export async function test(
   options: OptionsFiles & OptionsIsInEditor & OptionsOverrides = {}
 ): Promise<TypedFlatConfigItem[]> {
   const { files = GLOB_TESTS, isInEditor = false, overrides = {} } = options;
 
-  const [pluginVitest, pluginNoOnlyTests] = await Promise.all([
-    interopDefault(import("@vitest/eslint-plugin")),
-    // @ts-expect-error missing types
-    interopDefault(import("eslint-plugin-no-only-tests"))
-  ] as const);
-
-  _pluginTest = _pluginTest || {
+  plugin = plugin || {
     ...pluginVitest,
     rules: {
       ...pluginVitest.rules,
@@ -34,13 +28,20 @@ export async function test(
     {
       name: "storm/test/setup",
       plugins: {
-        test: _pluginTest
+        test: plugin
       }
     },
     {
       files,
       name: "storm/test/rules",
       rules: {
+        ...Object.entries(pluginVitest.configs.recommended.rules).reduce(
+          (acc, [key, value]) => {
+            acc[key.replace("vitest/", "test/")] = value;
+            return acc;
+          },
+          {} as Record<string, any>
+        ),
         "test/consistent-test-it": [
           "error",
           { fn: "it", withinDescribe: "it" }
@@ -53,11 +54,9 @@ export async function test(
         "test/prefer-lowercase-title": "error",
 
         // Disables
-        ...{
-          "no-unused-expressions": "off",
-          "node/prefer-global/process": "off",
-          "ts/explicit-function-return-type": "off"
-        },
+        "no-unused-expressions": "off",
+        "node/prefer-global/process": "off",
+        "ts/explicit-function-return-type": "off",
 
         ...overrides
       }

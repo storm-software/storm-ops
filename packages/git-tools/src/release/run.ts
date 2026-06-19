@@ -5,7 +5,6 @@ import {
 } from "@nx/devkit";
 import type { StormWorkspaceConfig } from "@storm-software/config";
 import {
-  isVerbose,
   joinPaths,
   parseCargoToml,
   stringifyCargoToml,
@@ -123,7 +122,7 @@ export const runRelease = async (
   const { workspaceVersion, projectsVersionData, releaseGraph } =
     await releaseClient.releaseVersion({
       dryRun,
-      verbose: isVerbose(config.logLevel),
+      verbose: true,
       preid: config.preid,
       stageChanges: true,
       gitCommit: false
@@ -136,7 +135,7 @@ export const runRelease = async (
         : undefined,
     versionData: projectsVersionData,
     dryRun,
-    verbose: isVerbose(config.logLevel),
+    verbose: true,
     to,
     from,
     releaseGraph
@@ -165,7 +164,7 @@ ${changedProjects.map(changedProject => `  - ${changedProject}`).join("\n")}
 
       const result = await releaseClient.releasePublish({
         dryRun,
-        verbose: isVerbose(config.logLevel)
+        verbose: true
       });
 
       const failedProjects = Object.keys(result).filter(

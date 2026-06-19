@@ -18,6 +18,6 @@ export default defineConfig([
     silent: true,
     tsconfig: "./tsconfig.json",
     external: ["nx", "@nx/*"],
-    noExternal: ["zod", "zod/mini"]
+    noExternal: ["zod", "zod/mini", "@storm-software/package-constants"]
   }
 ]);

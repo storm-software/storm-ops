@@ -5,64 +5,25 @@
 #   https://github.com/evilmartians/lefthook/blob/master/docs/configuration.md   #
 
 $schema: https://raw.githubusercontent.com/evilmartians/lefthook/refs/heads/master/schema.json
-assert_lefthook_installed: true
-no_tty: false
-no_auto_install: false
-min_version: "1.5.0"
 extends:
   - ./minimal.yml
 
 pre-commit:
   commands:
-    storm-lint:
-      glob:
-        - "*.js"
-        - "*.ts"
-        - "*.cjs"
-        - "*.mjs"
-        - "*.d.cts"
-        - "*.d.mts"
-        - "*.jsx"
-        - "*.tsx"
-        - "*.json"
-        - "*.jsonc"
-        - "*.yaml"
-        - "*.yml"
-        - "*.md"
-        - "*.mdx"
-        - "*.markdown"
-        - "*.css"
-        - "*.scss"
-        - "*.sass"
-        - "*.less"
-        - "*.stylus"
-        - "*.graphql"
-        - "*.gql"
-        - "*.xml"
-        - "*.svg"
-        - "*.env"
-        - ".env.{local,development,test,production,staging}"
-      run: pnpm exec storm-lint all --skip-cspell --skip-circular-deps
-      stage_fixed: true
-    readme:
-      glob: "**/{README.md,README.*.md,readme/**/*,package.json,executors.json,genera\
-        tors.json}"
-      run: pnpm exec storm-git readme --templates="tools/readme-templates" --workspace
-      stage_fixed: true
     prettier:
       glob: "**/*"
-      run: pnpm exec prettier --write --ignore-unknown --no-error-on-unmatched-pattern
+      run:
+        pnpm exec prettier --write --ignore-unknown --no-error-on-unmatched-pattern
         --config="node_modules/@storm-software/prettier/exclude-packagejson.json"
         --ignore-path="node_modules/@storm-software/prettier/.prettierignore-exclude-packagejson"
         --cache --cache-location="node_modules/.cache/prettier/workspace.cache"
         {staged_files}
       stage_fixed: true
-    treefmt:
-      glob: "**/*"
-      run: treefmt {staged_files}
+    zizmor:
+      glob: .github/workflows/*.{yml,yaml}
+      run: "zizmor --offline --config='./tools/config/zizmor.yml' .github/workflows/"
       stage_fixed: true
-    lint:
-      glob: "**/*"
-      run: pnpm nx affected --target=lint --files="{staged_files}" --exclude=monorepo
-        --outputStyle=dynamic-legacy --parallel=3
+    readme:
+      glob: "**/{README.md,README.*.md,readme/**/*,package.json,executors.json,generators.json}"
+      run: pnpm exec storm-git readme --templates="tools/readme-templates" --workspace
       stage_fixed: true

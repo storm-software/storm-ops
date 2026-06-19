@@ -8,6 +8,27 @@ import { CONSOLE_ICONS } from "./console-icons";
 import { formatTimestamp } from "./format-timestamp";
 import { getLogLevel } from "./get-log-level";
 
+export interface GetLogFnOptions {
+  /**
+   * Whether to include the full date and time in the log message (defaults to `false`, which only includes the time)
+   *
+   * @defaultValue false
+   */
+  fullDateTime?: boolean;
+
+  /**
+   * Whether to hide the date and time in the log message (defaults to `false`, which includes the date and time based on the `fullDateTime` option)
+   *
+   * @defaultValue false
+   */
+  hideDateTime?: boolean;
+
+  /**
+   * The color configuration to use for the log message (defaults to the default Storm color configuration)
+   */
+  chalk?: ReturnType<typeof getChalk>;
+}
+
 /**
  * Get the log function for a log level
  *
@@ -18,8 +39,14 @@ import { getLogLevel } from "./get-log-level";
 export const getLogFn = (
   logLevel: number | LogLevel = LogLevel.INFO,
   config: Partial<StormWorkspaceConfig> = {},
-  _chalk: ReturnType<typeof getChalk> = getChalk()
+  options: GetLogFnOptions = {}
 ): ((message?: any) => void) => {
+  const {
+    chalk: _chalk = getChalk(),
+    fullDateTime = false,
+    hideDateTime = false
+  } = options;
+
   const colors =
     !(config.colors as Colors)?.dark &&
     !config.colors?.["base"] &&
@@ -58,9 +85,9 @@ export const getLogFn = (
     return (message?: any) => {
       console.error(
         `
-${_chalk.gray(formatTimestamp())} ${_chalk.hex(
-          colors.fatal ?? DEFAULT_COLOR_CONFIG.dark.fatal
-        )(
+${
+  hideDateTime ? "" : `${_chalk.gray(formatTimestamp(fullDateTime))} `
+}${_chalk.hex(colors.fatal ?? DEFAULT_COLOR_CONFIG.dark.fatal)(
           `[${CONSOLE_ICONS[LogLevelLabel.FATAL]} Fatal] `
         )}${_chalk.bold.whiteBright(formatLogMessage(message))}
 `
@@ -72,9 +99,9 @@ ${_chalk.gray(formatTimestamp())} ${_chalk.hex(
     return (message?: any) => {
       console.error(
         `
-${_chalk.gray(formatTimestamp())} ${_chalk.hex(
-          colors.danger ?? DEFAULT_COLOR_CONFIG.dark.danger
-        )(
+${
+  hideDateTime ? "" : `${_chalk.gray(formatTimestamp(fullDateTime))} `
+}${_chalk.hex(colors.danger ?? DEFAULT_COLOR_CONFIG.dark.danger)(
           `[${CONSOLE_ICONS[LogLevelLabel.ERROR]} Error] `
         )}${_chalk.bold.whiteBright(formatLogMessage(message))}
 `
@@ -86,9 +113,9 @@ ${_chalk.gray(formatTimestamp())} ${_chalk.hex(
     return (message?: any) => {
       console.warn(
         `
-${_chalk.gray(formatTimestamp())} ${_chalk.hex(
-          colors.warning ?? DEFAULT_COLOR_CONFIG.dark.warning
-        )(
+${
+  hideDateTime ? "" : `${_chalk.gray(formatTimestamp(fullDateTime))} `
+}${_chalk.hex(colors.warning ?? DEFAULT_COLOR_CONFIG.dark.warning)(
           `[${CONSOLE_ICONS[LogLevelLabel.WARN]} Warn] `
         )}${_chalk.bold.whiteBright(formatLogMessage(message))}
 `
@@ -100,9 +127,9 @@ ${_chalk.gray(formatTimestamp())} ${_chalk.hex(
     return (message?: any) => {
       console.info(
         `
-${_chalk.gray(formatTimestamp())} ${_chalk.hex(
-          colors.success ?? DEFAULT_COLOR_CONFIG.dark.success
-        )(
+${
+  hideDateTime ? "" : `${_chalk.gray(formatTimestamp(fullDateTime))} `
+}${_chalk.hex(colors.success ?? DEFAULT_COLOR_CONFIG.dark.success)(
           `[${CONSOLE_ICONS[LogLevelLabel.SUCCESS]} Success] `
         )}${_chalk.bold.whiteBright(formatLogMessage(message))}
 `
@@ -114,9 +141,9 @@ ${_chalk.gray(formatTimestamp())} ${_chalk.hex(
     return (message?: any) => {
       console.info(
         `
-${_chalk.gray(formatTimestamp())} ${_chalk.hex(
-          colors.info ?? DEFAULT_COLOR_CONFIG.dark.info
-        )(
+${
+  hideDateTime ? "" : `${_chalk.gray(formatTimestamp(fullDateTime))} `
+}${_chalk.hex(colors.info ?? DEFAULT_COLOR_CONFIG.dark.info)(
           `[${CONSOLE_ICONS[LogLevelLabel.INFO]} Info] `
         )}${_chalk.bold.whiteBright(formatLogMessage(message))}
 `
@@ -128,9 +155,9 @@ ${_chalk.gray(formatTimestamp())} ${_chalk.hex(
     return (message?: any) => {
       console.debug(
         `
-${_chalk.gray(formatTimestamp())} ${_chalk.hex(
-          colors.performance ?? DEFAULT_COLOR_CONFIG.dark.performance
-        )(
+${
+  hideDateTime ? "" : `${_chalk.gray(formatTimestamp(fullDateTime))} `
+}${_chalk.hex(colors.performance ?? DEFAULT_COLOR_CONFIG.dark.performance)(
           `[${CONSOLE_ICONS[LogLevelLabel.PERFORMANCE]} Performance] `
         )}${_chalk.bold.whiteBright(formatLogMessage(message))}
 `
@@ -142,9 +169,9 @@ ${_chalk.gray(formatTimestamp())} ${_chalk.hex(
     return (message?: any) => {
       console.debug(
         `
-${_chalk.gray(formatTimestamp())} ${_chalk.hex(
-          colors.debug ?? DEFAULT_COLOR_CONFIG.dark.debug
-        )(
+${
+  hideDateTime ? "" : `${_chalk.gray(formatTimestamp(fullDateTime))} `
+}${_chalk.hex(colors.debug ?? DEFAULT_COLOR_CONFIG.dark.debug)(
           `[${CONSOLE_ICONS[LogLevelLabel.DEBUG]} Debug] `
         )}${_chalk.bold.whiteBright(formatLogMessage(message))}
 `
@@ -156,7 +183,9 @@ ${_chalk.gray(formatTimestamp())} ${_chalk.hex(
     return (message?: any) => {
       console.debug(
         `
-${_chalk.gray(formatTimestamp())} ${_chalk.hex("#bbbbbb")(
+${
+  hideDateTime ? "" : `${_chalk.gray(formatTimestamp(fullDateTime))} `
+}${_chalk.hex("#bbbbbb")(
           `[${CONSOLE_ICONS[LogLevelLabel.TRACE]} Trace] `
         )}${_chalk.bold.whiteBright(formatLogMessage(message))}
 `
@@ -167,9 +196,9 @@ ${_chalk.gray(formatTimestamp())} ${_chalk.hex("#bbbbbb")(
   return (message?: any) => {
     console.log(
       `
-${_chalk.gray(formatTimestamp())} ${_chalk.hex(
-        colors.brand ?? DEFAULT_COLOR_CONFIG.dark.brand
-      )(
+${
+  hideDateTime ? "" : `${_chalk.gray(formatTimestamp(fullDateTime))} `
+}${_chalk.hex(colors.brand ?? DEFAULT_COLOR_CONFIG.dark.brand)(
         `[${CONSOLE_ICONS[LogLevelLabel.ALL]} System] `
       )}${_chalk.bold.whiteBright(formatLogMessage(message))}
 `
@@ -293,13 +322,22 @@ export const getStopwatch = (name: string) => {
   };
 };
 
-const MAX_DEPTH = 6;
+const MAX_DEPTH = 10;
 
 export type FormatLogMessageOptions = {
   prefix?: string;
   skip?: string[];
+  sort?: boolean;
 };
 
+/**
+ * Format a log message for output to the console, handling different types of messages (e.g. strings, objects, arrays) and applying formatting options such as prefixing and skipping certain keys in objects.
+ *
+ * @param message - The message to format
+ * @param options - Formatting options
+ * @param depth - The current depth of recursion
+ * @returns The formatted log message
+ */
 export const formatLogMessage = (
   message?: any,
   options: FormatLogMessageOptions = {},
@@ -309,36 +347,84 @@ export const formatLogMessage = (
     return "<max depth>";
   }
 
-  const prefix = options.prefix ?? "-";
+  const prefix = options.prefix ?? "";
   const skip = options.skip ?? [];
+  const sort = options.sort ?? true;
 
-  return typeof message === "undefined" ||
-    message === null ||
-    (!message && typeof message !== "boolean")
-    ? "<none>"
+  return typeof message === "undefined" || message === null
+    ? "<empty>"
     : typeof message === "string"
-      ? message
+      ? !message
+        ? "<empty string>"
+        : message
       : Array.isArray(message)
-        ? `\n${message.map((item, index) => ` ${prefix}> #${index} = ${formatLogMessage(item, { prefix: `${prefix}-`, skip }, depth + 1)}`).join("\n")}`
-        : typeof message === "object"
+        ? `\n${message
+            .sort(
+              sort
+                ? (a, b) =>
+                    !a && !b
+                      ? 0
+                      : !a
+                        ? 1
+                        : !b
+                          ? -1
+                          : String(a).localeCompare(String(b))
+                : undefined
+            )
+            .map(
+              (item, index) =>
+                ` ${prefix}> #${index} = ${formatLogMessage(
+                  item,
+                  { prefix: `${prefix}--`, skip, sort },
+                  depth + 1
+                )}`
+            )
+            .join("\n")}`
+        : typeof message === "object" && message
           ? `\n${Object.keys(message)
-              .filter(key => !skip.includes(key))
+              .filter(
+                key =>
+                  typeof key !== "string" ||
+                  !skip
+                    .map(k => k.toLowerCase().trim())
+                    .includes(key.toLowerCase().trim())
+              )
+              .sort(
+                sort
+                  ? (a, b) =>
+                      !a && !b
+                        ? 0
+                        : !a
+                          ? 1
+                          : !b
+                            ? -1
+                            : String(a).localeCompare(String(b))
+                  : undefined
+              )
               .map(
                 key =>
                   ` ${prefix}> ${key} = ${
                     _isFunction(message[key])
                       ? "<function>"
-                      : typeof message[key] === "object"
-                        ? formatLogMessage(
-                            message[key],
-                            { prefix: `${prefix}-`, skip },
-                            depth + 1
-                          )
+                      : typeof message[key] === "object" && message[key]
+                        ? Object.keys(message[key]).filter(
+                            key =>
+                              typeof key !== "string" ||
+                              !skip
+                                .map(k => k.toLowerCase().trim())
+                                .includes(key.toLowerCase().trim())
+                          ).length === 0
+                          ? "{}"
+                          : formatLogMessage(
+                              message[key],
+                              { prefix: `${prefix}--`, skip, sort },
+                              depth + 1
+                            )
                         : message[key]
                   }`
               )
               .join("\n")}`
-          : message;
+          : String(message);
 };
 
 const _isFunction = (

@@ -1,20 +1,19 @@
-{
-  lib,
-  pkgs,
-  inputs,
-  config,
-  ...
-}:
-let
-  pkgs-unstable = import inputs.nixpkgs-unstable { system = pkgs.stdenv.system; };
-in
+{ pkgs, ... }:
 {
   profiles = {
     development.module = {
       env.ENVIRONMENT = "development";
       env.NODE_ENV = "development";
       env.DEBUG = true;
-      env.CI = false;
+
+      delta.enable = true;
+
+      languages = {
+        nix = {
+          enable = true;
+        };
+      };
+
       tasks = {
         "storm:setup:git" = {
           exec = ''
@@ -26,7 +25,6 @@ in
             npm config set provenance true
           '';
           before = [
-            # "storm:setup:updates"
             "devenv:enterShell"
             "devenv:enterTest"
           ];
@@ -45,7 +43,6 @@ in
             pnpm exec storm-git prepare
           '';
           before = [
-            # "storm:setup:updates"
             "devenv:enterShell"
             "devenv:enterTest"
           ];
@@ -55,25 +52,6 @@ in
             "storm:setup:git"
           ];
         };
-        # "storm:setup:updates" = {
-        #   exec = ''
-        #     pnpm update --recursive --workspace
-        #     update-storm
-        #   '';
-        #   before = [
-        #     "devenv:enterShell"
-        #     "devenv:enterTest"
-        #   ];
-        #   after = [
-        #     "storm:setup:git"
-        #     "devenv:files"
-        #     "devenv:files:cleanup"
-        #   ];
-        #   execIfModified = [
-        #     "pnpm-workspace.yaml"
-
-        #   ];
-        # };
       };
     };
 
@@ -81,8 +59,8 @@ in
       env.ENVIRONMENT = "production";
       env.NODE_ENV = "production";
       env.DEBUG = false;
-      env.CI = true;
       env.DEVENV_TUI = false;
+
       tasks = {
         "storm:setup:git" = {
           exec = ''
@@ -122,16 +100,11 @@ in
     };
   };
 
-  env.FORCE_COLOR = 3;
-  env.CLICOLOR = 1;
-
   packages = with pkgs; [
-    # Source Control
     gnupg
     git-lfs
     git-crypt
-
-    # Linting
+    gh
     zizmor
     taplo
     typos
@@ -140,10 +113,22 @@ in
     nixpkgs-fmt
     yamllint
     ls-lint
-
-    # Tools
-    capnproto
   ];
+
+  scripts = {
+    bootstrap.exec = "pnpm bootstrap";
+    update-storm.exec = "pnpm update-storm";
+    build.exec = "pnpm build";
+    build-dev.exec = "pnpm build-dev";
+    clean.exec = "pnpm clean";
+    lint.exec = "pnpm lint";
+    format.exec = "pnpm format";
+    test.exec = "pnpm test";
+    test-ci.exec = "pnpm test-ci";
+    docs.exec = "pnpm docs";
+    release.exec = "pnpm release --base=$1 --head=$2";
+    nuke.exec = "pnpm nuke";
+  };
 
   treefmt = {
     enable = true;
@@ -156,6 +141,7 @@ in
         "**/node_modules"
         "**/dist"
         "**/tmp"
+        "**/tests"
         "**/coverage"
         "**/bench"
         "**/__snapshots__"
@@ -197,6 +183,7 @@ in
         "**/jest.setup.ts"
         "**/jest.config.json"
         "**/jest.setup.json"
+        "**/vitest.config.{js,ts,cjs,cts,mjs,mts}"
         "**/*.spec.{ts,tsx}"
         "**/*.test.{ts,tsx}"
         "**/output"

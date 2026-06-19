@@ -1,3 +1,10 @@
+import {
+  GLOB_ASTRO_TS,
+  GLOB_MARKDOWN,
+  GLOB_SRC_FILE,
+  GLOB_TS,
+  GLOB_TSX
+} from "@storm-software/package-constants/globs";
 import type {
   OptionsComponentExts,
   OptionsFiles,
@@ -7,22 +14,15 @@ import type {
   OptionsTypeScriptWithTypes,
   TypedFlatConfigItem
 } from "../types";
-import {
-  GLOB_ASTRO_TS,
-  GLOB_MARKDOWN,
-  GLOB_TS,
-  GLOB_TSX
-} from "../utils/constants";
 import { findWorkspaceRoot } from "../utils/find-workspace-root";
 import { interopDefault, renameRules } from "../utils/helpers";
-import { getTsConfigPath } from "../utils/tsconfig-path";
 
 export async function typescript(
   options: OptionsFiles &
     OptionsComponentExts &
     OptionsOverrides &
     OptionsTypeScriptWithTypes &
-    OptionsTypeScriptParserOptions &
+    Omit<OptionsTypeScriptParserOptions, "tsconfigPath"> &
     OptionsProjectType = {}
 ): Promise<TypedFlatConfigItem[]> {
   const {
@@ -30,8 +30,9 @@ export async function typescript(
     overrides = {},
     overridesTypeAware = {},
     parserOptions = {},
-    typeImports = "always",
-    type = "app"
+    tsconfigPath,
+    typeImports = tsconfigPath ? "always" : "optional",
+    type
   } = options;
 
   const files = options.files ?? [
@@ -45,7 +46,6 @@ export async function typescript(
     `${GLOB_MARKDOWN}/**`,
     GLOB_ASTRO_TS
   ];
-  const tsconfigPath = getTsConfigPath(options?.tsconfigPath, type);
 
   const typeAwareRules: TypedFlatConfigItem["rules"] = {
     "dot-notation": "off",
@@ -93,7 +93,7 @@ export async function typescript(
           ...(typeAware
             ? {
                 projectService: {
-                  allowDefaultProject: ["./*.js", "./*.ts"],
+                  allowDefaultProject: [GLOB_SRC_FILE],
                   defaultProject: tsconfigPath
                 },
                 tsconfigRootDir: findWorkspaceRoot()

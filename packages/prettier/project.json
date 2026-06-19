@@ -4,50 +4,34 @@
   "sourceRoot": "packages/prettier/src",
   "projectType": "library",
   "targets": {
-    "build-base": {
+    "build-json": {
       "executor": "nx:run-commands",
+      "dependsOn": ["clean", "^build"],
       "options": {
         "commands": [
           "pnpm copyfiles packages/prettier/src/recommended.json tmp",
-          "mv tmp/packages/prettier/src/recommended.json packages/prettier/src/config.json"
+          "mv tmp/packages/prettier/src/recommended.json packages/prettier/src/config.json",
+          "pnpm copyfiles --up=3 packages/prettier/src/{*.json,.prettierignore,.prettierignore-exclude-packagejson} packages/prettier/dist"
         ],
         "parallel": false
       }
     },
+    "build-base": {
+      "executor": "nx:run-commands",
+      "dependsOn": ["build-json"],
+      "options": {
+        "command": "tsdown --config=tsdown.config.ts",
+        "cwd": "{projectRoot}"
+      }
+    },
     "build": {
-      "cache": true,
-      "executor": "@nx/esbuild:esbuild",
-      "outputs": ["{options.outputPath}"],
+      "executor": "nx:run-commands",
       "dependsOn": ["build-base"],
       "options": {
-        "outputPath": "dist/packages/prettier",
-        "tsConfig": "packages/prettier/tsconfig.json",
-        "project": "packages/prettier/package.json",
-        "main": "packages/prettier/src/index.ts",
-        "format": ["cjs", "esm"],
-        "platform": "node",
-        "deleteOutputPath": true,
-        "bundle": true,
-        "thirdParty": true,
-        "skipTypeCheck": false,
-        "metafile": true,
-        "minify": false,
-        "assets": [
-          {
-            "input": "./packages/prettier",
-            "glob": "*.md",
-            "output": "/"
-          },
-          {
-            "input": "",
-            "glob": "LICENSE",
-            "output": "/"
-          },
-          {
-            "input": "./packages/prettier/src",
-            "glob": "{*.json,.prettierignore,.prettierignore-exclude-packagejson}",
-            "output": "."
-          }
+        "commands": [
+          "pnpm copyfiles LICENSE dist/packages/prettier",
+          "pnpm copyfiles --up=2 ./packages/prettier/*.md ./packages/prettier/package.json dist/packages/prettier",
+          "pnpm copyfiles --up=3 \"./packages/prettier/dist/**/*\" dist/packages/prettier"
         ]
       }
     },

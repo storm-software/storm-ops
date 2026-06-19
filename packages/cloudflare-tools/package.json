@@ -1,6 +1,6 @@
 {
   "name": "@storm-software/cloudflare-tools",
-  "version": "0.71.112",
+  "version": "0.71.216",
   "private": false,
   "description": "A Nx plugin package that contains various executors, generators, and utilities that assist in managing Cloudflare services.",
   "keywords": [
@@ -16,7 +16,7 @@
   "bugs": "https://github.com/storm-software/storm-ops/issues",
   "repository": {
     "type": "github",
-    "url": "https://github.com/storm-software/storm-ops",
+    "url": "https://github.com/storm-software/storm-ops.git",
     "directory": "packages/cloudflare-tools"
   },
   "license": "Apache-2.0",
@@ -75,6 +75,20 @@
         "default": "./dist/executors.js"
       }
     },
+    "./executors/*": {
+      "import": {
+        "types": "./dist/src/executors/*.d.mts",
+        "default": "./dist/src/executors/*.mjs"
+      },
+      "require": {
+        "types": "./dist/src/executors/*.d.ts",
+        "default": "./dist/src/executors/*.js"
+      },
+      "default": {
+        "types": "./dist/src/executors/*.d.ts",
+        "default": "./dist/src/executors/*.js"
+      }
+    },
     "./generators": {
       "import": {
         "types": "./dist/generators.d.mts",
@@ -87,6 +101,20 @@
       "default": {
         "types": "./dist/generators.d.ts",
         "default": "./dist/generators.js"
+      }
+    },
+    "./generators/*": {
+      "import": {
+        "types": "./dist/src/generators/*.d.mts",
+        "default": "./dist/src/generators/*.mjs"
+      },
+      "require": {
+        "types": "./dist/src/generators/*.d.ts",
+        "default": "./dist/src/generators/*.js"
+      },
+      "default": {
+        "types": "./dist/src/generators/*.d.ts",
+        "default": "./dist/src/generators/*.js"
       }
     },
     "./utils": {
@@ -125,9 +153,12 @@
   "module": "dist/index.mjs",
   "typings": "dist/index.d.ts",
   "dependencies": {
-    "@aws-sdk/client-s3": "^3.1020.0",
-    "@aws-sdk/lib-storage": "^3.1020.0",
-    "@smithy/node-http-handler": "^4.5.1",
+    "@aws-sdk/client-s3": "^3.1070.0",
+    "@aws-sdk/lib-storage": "^3.1070.0",
+    "@smithy/node-http-handler": "^4.8.0",
+    "@storm-software/config": "workspace:*",
+    "@storm-software/config-tools": "workspace:*",
+    "@storm-software/workspace-tools": "workspace:*",
     "defu": "catalog:",
     "glob": "catalog:",
     "mime-types": "^3.0.2",
@@ -138,37 +169,17 @@
     "@nx/node": "catalog:",
     "@nx/web": "catalog:",
     "@nx/webpack": "catalog:",
-    "@smithy/protocol-http": "^5.3.12",
+    "@smithy/protocol-http": "^5.5.0",
     "nx": "catalog:",
     "tsup": "catalog:",
     "untyped": "catalog:",
-    "wrangler": "^4.79.0"
+    "wrangler": "^4.101.0"
   },
   "peerDependencies": {
-    "@nx/devkit": "catalog:",
-    "@nx/js": "catalog:",
-    "@nx/node": "catalog:",
-    "@nx/web": "catalog:",
-    "@storm-software/config": "1.137.16",
-    "@storm-software/config-tools": "1.189.62",
-    "@storm-software/workspace-tools": "1.295.38",
-    "nx": "catalog:",
-    "tsup": "catalog:",
+    "nx": ">=22.7.1",
     "wrangler": ">=3.58.0"
   },
   "peerDependenciesMeta": {
-    "@nx/devkit": {
-      "optional": false
-    },
-    "@nx/node": {
-      "optional": false
-    },
-    "@nx/web": {
-      "optional": false
-    },
-    "@nx/webpack": {
-      "optional": false
-    },
     "nx": {
       "optional": false
     },

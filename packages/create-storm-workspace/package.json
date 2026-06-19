@@ -1,26 +1,8 @@
 {
   "name": "create-storm-workspace",
-  "version": "1.97.143",
-  "type": "commonjs",
-  "description": "⚡A CLI tool used to generate and fully configure a Storm Workspace repository.",
-  "repository": {
-    "type": "github",
-    "url": "https://github.com/storm-software/storm-ops",
-    "directory": "packages/create-storm-workspace"
-  },
-  "homepage": "https://stormsoftware.com",
-  "bugs": "https://github.com/storm-software/storm-ops/issues",
-  "author": {
-    "name": "Storm Software",
-    "email": "contact@stormsoftware.com",
-    "url": "https://stormsoftware.com"
-  },
-  "license": "Apache License 2.0",
+  "version": "1.97.233",
   "private": false,
-  "bin": {
-    "create-storm-workspace": "./index.js"
-  },
-  "typings": "./src/index.d.ts",
+  "description": "⚡A CLI tool used to generate and fully configure a Storm Workspace repository.",
   "keywords": [
     "monorepo",
     "open-system",
@@ -30,17 +12,23 @@
     "stormstack",
     "sullivanpj"
   ],
-  "peerDependencies": {
-    "@nx/devkit": "catalog:",
-    "nx": "catalog:"
+  "homepage": "https://stormsoftware.com",
+  "bugs": "https://github.com/storm-software/storm-ops/issues",
+  "repository": {
+    "type": "github",
+    "url": "https://github.com/storm-software/storm-ops.git",
+    "directory": "packages/create-storm-workspace"
   },
-  "peerDependenciesMeta": {
-    "@nx/devkit": {
-      "optional": false
-    },
-    "nx": {
-      "optional": false
-    }
+  "license": "Apache License 2.0",
+  "author": {
+    "name": "Storm Software",
+    "email": "contact@stormsoftware.com",
+    "url": "https://stormsoftware.com"
+  },
+  "type": "commonjs",
+  "typings": "./src/index.d.ts",
+  "bin": {
+    "create-storm-workspace": "./index.js"
   },
   "dependencies": {
     "@nx/workspace": "catalog:",
@@ -51,6 +39,18 @@
     "@nx/devkit": "catalog:",
     "@types/node": "catalog:",
     "nx": "catalog:"
+  },
+  "peerDependencies": {
+    "@nx/devkit": ">=22.7.1",
+    "nx": ">=22.7.1"
+  },
+  "peerDependenciesMeta": {
+    "@nx/devkit": {
+      "optional": false
+    },
+    "nx": {
+      "optional": false
+    }
   },
   "publishConfig": {
     "access": "public"

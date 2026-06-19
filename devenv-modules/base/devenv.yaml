@@ -3,4 +3,4 @@ inputs:
   nixpkgs:
     url: github:cachix/devenv-nixpkgs/rolling
   nixpkgs-unstable:
-    url: github:nixos/nixpkgs/nixpkgs-unstable
+    url: github:NixOS/nixpkgs/nixos-unstable

@@ -1,11 +1,11 @@
 {
   "name": "@storm-software/pnpm-tools",
-  "version": "0.6.147",
+  "version": "0.7.84",
   "private": false,
   "description": "A set of [pnpm](https://pnpm.io/) plugins and utilities for managing workspace packages/dependencies.",
   "repository": {
     "type": "github",
-    "url": "https://github.com/storm-software/storm-ops",
+    "url": "https://github.com/storm-software/storm-ops.git",
     "directory": "packages/pnpm-tools"
   },
   "type": "module",
@@ -94,16 +94,17 @@
     "@storm-software/config": "workspace:*",
     "@storm-software/config-tools": "workspace:*",
     "@storm-software/npm-tools": "workspace:*",
+    "@storm-software/package-constants": "workspace:*",
+    "chalk": "catalog:",
     "commander": "catalog:",
     "defu": "catalog:",
     "prettier": "catalog:",
     "prettier-plugin-packagejson": "catalog:",
-    "semver": "7.6.2",
+    "semver": "catalog:",
     "yaml": "catalog:"
   },
   "devDependencies": {
     "@pnpm/types": "catalog:",
-    "@storm-software/build-tools": "workspace:*",
     "@types/node": "catalog:",
     "tsup": "catalog:"
   },

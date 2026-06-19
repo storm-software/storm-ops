@@ -1,6 +1,1673 @@
-![Storm Software's logo banner](https://public.storm-cdn.com/storm-software/banner-1280x320.gif)
+![Storm Software's logo banner](https://public.storm-cdn.com/storm-software/media/banner-1280x320.gif)
 
 # Changelog for Storm Ops - Workspace Tools
+
+## [1.296.53](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.296.53) (06/18/2026)
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.10**
+- Updated **config-tools** to **v1.190.73**
+- Updated **esbuild** to **v0.53.234**
+- Updated **npm-tools** to **v0.6.191**
+- Updated **package-constants** to **v0.1.86**
+- Updated **pnpm-tools** to **v0.7.84**
+- Updated **prettier** to **v0.59.126**
+- Updated **testing-tools** to **v1.119.226**
+- Updated **tsdown** to **v0.45.234**
+- Updated **unbuild** to **v0.57.234**
+
+## [1.296.52](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.296.52) (06/18/2026)
+
+### Bug Fixes
+
+- **eslint:** Remove unneeded tsdoc dependency for eslint config ([7ccbee070](https://github.com/storm-software/storm-ops/commit/7ccbee070))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.9**
+- Updated **config-tools** to **v1.190.72**
+- Updated **esbuild** to **v0.53.233**
+- Updated **npm-tools** to **v0.6.190**
+- Updated **package-constants** to **v0.1.85**
+- Updated **pnpm-tools** to **v0.7.83**
+- Updated **prettier** to **v0.59.125**
+- Updated **testing-tools** to **v1.119.225**
+- Updated **tsdown** to **v0.45.233**
+- Updated **unbuild** to **v0.57.233**
+
+## [1.296.51](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.296.51) (06/18/2026)
+
+### Bug Fixes
+
+- **eslint:** Resolve issue with eslint importing patched dependency directly ([864f5d538](https://github.com/storm-software/storm-ops/commit/864f5d538))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.8**
+- Updated **config-tools** to **v1.190.71**
+- Updated **esbuild** to **v0.53.232**
+- Updated **npm-tools** to **v0.6.189**
+- Updated **package-constants** to **v0.1.84**
+- Updated **pnpm-tools** to **v0.7.82**
+- Updated **prettier** to **v0.59.124**
+- Updated **testing-tools** to **v1.119.224**
+- Updated **tsdown** to **v0.45.232**
+- Updated **unbuild** to **v0.57.232**
+
+## [1.296.50](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.296.50) (06/18/2026)
+
+### Bug Fixes
+
+- **linting-tools:** Resolve issue running CLI from lefthook and update version shas ([1751cb249](https://github.com/storm-software/storm-ops/commit/1751cb249))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.7**
+- Updated **config-tools** to **v1.190.70**
+- Updated **esbuild** to **v0.53.231**
+- Updated **npm-tools** to **v0.6.188**
+- Updated **package-constants** to **v0.1.83**
+- Updated **pnpm-tools** to **v0.7.81**
+- Updated **prettier** to **v0.59.123**
+- Updated **testing-tools** to **v1.119.223**
+- Updated **tsdown** to **v0.45.231**
+- Updated **unbuild** to **v0.57.231**
+
+## [1.296.49](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.296.49) (06/15/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update asset references to the newly created `media` folder ([40a620402](https://github.com/storm-software/storm-ops/commit/40a620402))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.6**
+- Updated **config-tools** to **v1.190.69**
+- Updated **esbuild** to **v0.53.230**
+- Updated **npm-tools** to **v0.6.187**
+- Updated **package-constants** to **v0.1.82**
+- Updated **pnpm-tools** to **v0.7.80**
+- Updated **prettier** to **v0.59.122**
+- Updated **testing-tools** to **v1.119.222**
+- Updated **tsdown** to **v0.45.230**
+- Updated **unbuild** to **v0.57.230**
+
+## [1.296.48](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.296.48) (06/14/2026)
+
+### Miscellaneous
+
+- **monorepo:** Added internal Nx plugin to ensure `implicitDependencies` are applied to all of the workspace's packages ([bbe43f892](https://github.com/storm-software/storm-ops/commit/bbe43f892))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.5**
+- Updated **config-tools** to **v1.190.68**
+- Updated **esbuild** to **v0.53.229**
+- Updated **npm-tools** to **v0.6.186**
+- Updated **package-constants** to **v0.1.81**
+- Updated **pnpm-tools** to **v0.7.79**
+- Updated **prettier** to **v0.59.121**
+- Updated **testing-tools** to **v1.119.221**
+- Updated **tsdown** to **v0.45.229**
+- Updated **unbuild** to **v0.57.229**
+
+## [1.296.47](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.296.47) (06/14/2026)
+
+### Miscellaneous
+
+- **workspace-tools:** Update build packages to be peer dependencies ([2ad5338d0](https://github.com/storm-software/storm-ops/commit/2ad5338d0))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.4**
+- Updated **config-tools** to **v1.190.67**
+- Updated **esbuild** to **v0.53.228**
+- Updated **npm-tools** to **v0.6.185**
+- Updated **package-constants** to **v0.1.80**
+- Updated **pnpm-tools** to **v0.7.78**
+- Updated **prettier** to **v0.59.120**
+- Updated **testing-tools** to **v1.119.220**
+- Updated **tsdown** to **v0.45.228**
+- Updated **unbuild** to **v0.57.228**
+
+## [1.296.46](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.296.46) (06/14/2026)
+
+### Bug Fixes
+
+- **workspace-tools:** Resolve issue with missing extension for `eslint` cache file ([a08c4224d](https://github.com/storm-software/storm-ops/commit/a08c4224d))
+
+## [1.296.45](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.296.45) (06/14/2026)
+
+### Miscellaneous
+
+- **workspace-tools:** Updated lock files and Nx configuration input to specify `workflows` directory ([763744b01](https://github.com/storm-software/storm-ops/commit/763744b01))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.3**
+- Updated **config-tools** to **v1.190.66**
+- Updated **esbuild** to **v0.53.227**
+- Updated **npm-tools** to **v0.6.184**
+- Updated **package-constants** to **v0.1.79**
+- Updated **pnpm-tools** to **v0.7.77**
+- Updated **prettier** to **v0.59.119**
+- Updated **testing-tools** to **v1.119.219**
+- Updated **tsdown** to **v0.45.227**
+- Updated **unbuild** to **v0.57.227**
+
+## [1.296.44](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.296.44) (06/14/2026)
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.2**
+- Updated **config-tools** to **v1.190.65**
+- Updated **esbuild** to **v0.53.226**
+- Updated **npm-tools** to **v0.6.183**
+- Updated **package-constants** to **v0.1.78**
+- Updated **pnpm-tools** to **v0.7.76**
+- Updated **prettier** to **v0.59.118**
+- Updated **testing-tools** to **v1.119.218**
+- Updated **tsdown** to **v0.45.226**
+- Updated **unbuild** to **v0.57.226**
+
+## [1.296.43](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.296.43) (06/14/2026)
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.1**
+- Updated **config-tools** to **v1.190.64**
+- Updated **esbuild** to **v0.53.225**
+- Updated **npm-tools** to **v0.6.182**
+- Updated **package-constants** to **v0.1.77**
+- Updated **pnpm-tools** to **v0.7.75**
+- Updated **prettier** to **v0.59.117**
+- Updated **testing-tools** to **v1.119.217**
+- Updated **tsdown** to **v0.45.225**
+- Updated **unbuild** to **v0.57.225**
+
+## [1.296.42](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.296.42) (06/14/2026)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate `README` markdown files ([2f934c964](https://github.com/storm-software/storm-ops/commit/2f934c964))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.0**
+- Updated **config-tools** to **v1.190.63**
+- Updated **esbuild** to **v0.53.224**
+- Updated **npm-tools** to **v0.6.181**
+- Updated **package-constants** to **v0.1.76**
+- Updated **pnpm-tools** to **v0.7.74**
+- Updated **prettier** to **v0.59.116**
+- Updated **testing-tools** to **v1.119.216**
+- Updated **tsdown** to **v0.45.224**
+- Updated **unbuild** to **v0.57.224**
+
+## [1.296.41](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.296.41) (06/14/2026)
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.94**
+- Updated **config-tools** to **v1.190.62**
+- Updated **esbuild** to **v0.53.223**
+- Updated **npm-tools** to **v0.6.180**
+- Updated **package-constants** to **v0.1.75**
+- Updated **pnpm-tools** to **v0.7.73**
+- Updated **prettier** to **v0.59.115**
+- Updated **testing-tools** to **v1.119.215**
+- Updated **tsdown** to **v0.45.223**
+- Updated **unbuild** to **v0.57.223**
+
+## [1.296.40](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.296.40) (06/13/2026)
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.93**
+- Updated **config-tools** to **v1.190.61**
+- Updated **esbuild** to **v0.53.222**
+- Updated **npm-tools** to **v0.6.179**
+- Updated **package-constants** to **v0.1.74**
+- Updated **pnpm-tools** to **v0.7.72**
+- Updated **prettier** to **v0.59.114**
+- Updated **testing-tools** to **v1.119.214**
+- Updated **tsdown** to **v0.45.222**
+- Updated **unbuild** to **v0.57.222**
+
+## [1.296.39](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.296.39) (06/13/2026)
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.92**
+- Updated **config-tools** to **v1.190.60**
+- Updated **esbuild** to **v0.53.221**
+- Updated **npm-tools** to **v0.6.178**
+- Updated **package-constants** to **v0.1.73**
+- Updated **pnpm-tools** to **v0.7.71**
+- Updated **prettier** to **v0.59.113**
+- Updated **testing-tools** to **v1.119.213**
+- Updated **tsdown** to **v0.45.221**
+- Updated **unbuild** to **v0.57.221**
+
+## [1.296.38](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.296.38) (06/13/2026)
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.91**
+- Updated **config-tools** to **v1.190.59**
+- Updated **esbuild** to **v0.53.220**
+- Updated **npm-tools** to **v0.6.177**
+- Updated **package-constants** to **v0.1.72**
+- Updated **pnpm-tools** to **v0.7.70**
+- Updated **prettier** to **v0.59.112**
+- Updated **testing-tools** to **v1.119.212**
+- Updated **tsdown** to **v0.45.220**
+- Updated **unbuild** to **v0.57.220**
+
+## [1.296.37](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.296.37) (06/13/2026)
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.90**
+- Updated **config-tools** to **v1.190.58**
+- Updated **esbuild** to **v0.53.219**
+- Updated **npm-tools** to **v0.6.176**
+- Updated **package-constants** to **v0.1.71**
+- Updated **pnpm-tools** to **v0.7.69**
+- Updated **prettier** to **v0.59.111**
+- Updated **testing-tools** to **v1.119.211**
+- Updated **tsdown** to **v0.45.219**
+- Updated **unbuild** to **v0.57.219**
+
+## [1.296.36](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.296.36) (06/13/2026)
+
+### Features
+
+- **eslint-config-react:** Initial check-in of the shared React ESLint config package ([8f39c5c32](https://github.com/storm-software/storm-ops/commit/8f39c5c32))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.89**
+- Updated **config-tools** to **v1.190.57**
+- Updated **esbuild** to **v0.53.218**
+- Updated **npm-tools** to **v0.6.175**
+- Updated **package-constants** to **v0.1.70**
+- Updated **pnpm-tools** to **v0.7.68**
+- Updated **prettier** to **v0.59.110**
+- Updated **testing-tools** to **v1.119.210**
+- Updated **tsdown** to **v0.45.218**
+- Updated **unbuild** to **v0.57.218**
+
+## [1.296.35](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.296.35) (06/13/2026)
+
+### Bug Fixes
+
+- **monorepo:** Ensure `es-toolkit` versions align properly ([6c387e4d6](https://github.com/storm-software/storm-ops/commit/6c387e4d6))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.88**
+- Updated **config-tools** to **v1.190.56**
+- Updated **esbuild** to **v0.53.217**
+- Updated **npm-tools** to **v0.6.174**
+- Updated **package-constants** to **v0.1.69**
+- Updated **pnpm-tools** to **v0.7.67**
+- Updated **prettier** to **v0.59.109**
+- Updated **testing-tools** to **v1.119.209**
+- Updated **tsdown** to **v0.45.217**
+- Updated **unbuild** to **v0.57.217**
+
+## [1.296.34](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.296.34) (06/13/2026)
+
+### Miscellaneous
+
+- **eslint:** Update react linter plugin versions ([f35bece5b](https://github.com/storm-software/storm-ops/commit/f35bece5b))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.87**
+- Updated **config-tools** to **v1.190.55**
+- Updated **esbuild** to **v0.53.216**
+- Updated **npm-tools** to **v0.6.173**
+- Updated **package-constants** to **v0.1.68**
+- Updated **pnpm-tools** to **v0.7.66**
+- Updated **prettier** to **v0.59.108**
+- Updated **testing-tools** to **v1.119.208**
+- Updated **tsdown** to **v0.45.216**
+- Updated **unbuild** to **v0.57.216**
+
+## [1.296.33](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.296.33) (06/11/2026)
+
+### Bug Fixes
+
+- **git-tools:** Update lefthook configurations to reduce duplicates ([2a41fcbb1](https://github.com/storm-software/storm-ops/commit/2a41fcbb1))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.86**
+- Updated **config-tools** to **v1.190.54**
+- Updated **esbuild** to **v0.53.215**
+- Updated **npm-tools** to **v0.6.172**
+- Updated **package-constants** to **v0.1.67**
+- Updated **pnpm-tools** to **v0.7.65**
+- Updated **prettier** to **v0.59.107**
+- Updated **testing-tools** to **v1.119.207**
+- Updated **tsdown** to **v0.45.215**
+- Updated **unbuild** to **v0.57.215**
+
+## [1.296.32](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.296.32) (06/11/2026)
+
+### Updated Dependencies
+
+- Updated **prettier** to **v0.59.106**
+
+## [1.296.31](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.296.31) (06/11/2026)
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.85**
+- Updated **config-tools** to **v1.190.53**
+- Updated **esbuild** to **v0.53.214**
+- Updated **npm-tools** to **v0.6.171**
+- Updated **package-constants** to **v0.1.66**
+- Updated **pnpm-tools** to **v0.7.64**
+- Updated **prettier** to **v0.59.105**
+- Updated **testing-tools** to **v1.119.206**
+- Updated **tsdown** to **v0.45.214**
+- Updated **unbuild** to **v0.57.214**
+
+## [1.296.30](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.296.30) (06/11/2026)
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.84**
+- Updated **config-tools** to **v1.190.52**
+- Updated **esbuild** to **v0.53.213**
+- Updated **npm-tools** to **v0.6.170**
+- Updated **package-constants** to **v0.1.65**
+- Updated **pnpm-tools** to **v0.7.63**
+- Updated **prettier** to **v0.59.104**
+- Updated **testing-tools** to **v1.119.205**
+- Updated **tsdown** to **v0.45.213**
+- Updated **unbuild** to **v0.57.213**
+
+## [1.296.29](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.296.29) (06/10/2026)
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.83**
+- Updated **config-tools** to **v1.190.51**
+- Updated **esbuild** to **v0.53.212**
+- Updated **npm-tools** to **v0.6.169**
+- Updated **package-constants** to **v0.1.64**
+- Updated **pnpm-tools** to **v0.7.62**
+- Updated **prettier** to **v0.59.103**
+- Updated **testing-tools** to **v1.119.204**
+- Updated **tsdown** to **v0.45.212**
+- Updated **unbuild** to **v0.57.212**
+
+## [1.296.28](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.296.28) (06/10/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update `README.md` files ([fe24f6887](https://github.com/storm-software/storm-ops/commit/fe24f6887))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.82**
+- Updated **config-tools** to **v1.190.50**
+- Updated **esbuild** to **v0.53.211**
+- Updated **npm-tools** to **v0.6.168**
+- Updated **package-constants** to **v0.1.63**
+- Updated **pnpm-tools** to **v0.7.61**
+- Updated **prettier** to **v0.59.102**
+- Updated **testing-tools** to **v1.119.203**
+- Updated **tsdown** to **v0.45.211**
+- Updated **unbuild** to **v0.57.211**
+
+## [1.296.27](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.296.27) (06/10/2026)
+
+### Bug Fixes
+
+- **prettier:** Fix issue with task order during build process ([316d5946d](https://github.com/storm-software/storm-ops/commit/316d5946d))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.81**
+- Updated **config-tools** to **v1.190.49**
+- Updated **esbuild** to **v0.53.210**
+- Updated **npm-tools** to **v0.6.167**
+- Updated **package-constants** to **v0.1.62**
+- Updated **pnpm-tools** to **v0.7.60**
+- Updated **prettier** to **v0.59.101**
+- Updated **testing-tools** to **v1.119.202**
+- Updated **tsdown** to **v0.45.210**
+- Updated **unbuild** to **v0.57.210**
+
+## [1.296.26](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.296.26) (06/10/2026)
+
+### Miscellaneous
+
+- **workspace-tools:** Update targets in shared Nx configurations ([20616fa98](https://github.com/storm-software/storm-ops/commit/20616fa98))
+- **monorepo:** Regenerate `pnpm-lock.yaml` and `README.md` files ([989ff5a35](https://github.com/storm-software/storm-ops/commit/989ff5a35))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.80**
+- Updated **config-tools** to **v1.190.48**
+- Updated **esbuild** to **v0.53.209**
+- Updated **npm-tools** to **v0.6.166**
+- Updated **package-constants** to **v0.1.61**
+- Updated **pnpm-tools** to **v0.7.59**
+- Updated **prettier** to **v0.59.100**
+- Updated **testing-tools** to **v1.119.201**
+- Updated **tsdown** to **v0.45.209**
+- Updated **unbuild** to **v0.57.209**
+
+## [1.296.25](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.296.25) (06/10/2026)
+
+### Miscellaneous
+
+- **monorepo:** Align package dependencies and update `README.md` files ([a1d1fd5b8](https://github.com/storm-software/storm-ops/commit/a1d1fd5b8))
+
+### Bug Fixes
+
+- **eslint:** Resolve issue using internal eslint plugin packages ([64b3b7dfd](https://github.com/storm-software/storm-ops/commit/64b3b7dfd))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.79**
+- Updated **config-tools** to **v1.190.47**
+- Updated **esbuild** to **v0.53.208**
+- Updated **npm-tools** to **v0.6.165**
+- Updated **package-constants** to **v0.1.60**
+- Updated **pnpm-tools** to **v0.7.58**
+- Updated **prettier** to **v0.59.99**
+- Updated **testing-tools** to **v1.119.200**
+- Updated **tsdown** to **v0.45.208**
+- Updated **unbuild** to **v0.57.208**
+
+## [1.296.24](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.296.24) (06/08/2026)
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.78**
+- Updated **config-tools** to **v1.190.46**
+- Updated **esbuild** to **v0.53.207**
+- Updated **npm-tools** to **v0.6.164**
+- Updated **package-constants** to **v0.1.59**
+- Updated **pnpm-tools** to **v0.7.57**
+- Updated **prettier** to **v0.59.98**
+- Updated **testing-tools** to **v1.119.199**
+- Updated **tsdown** to **v0.45.207**
+- Updated **unbuild** to **v0.57.207**
+
+## [1.296.23](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.296.23) (06/08/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update `README.md` and `pnpm-lock.yaml` files ([63d786b3a](https://github.com/storm-software/storm-ops/commit/63d786b3a))
+
+### Bug Fixes
+
+- **eslint-plugin-tsdoc:** Resolve issue with missing ESM shims ([6d11b65d2](https://github.com/storm-software/storm-ops/commit/6d11b65d2))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.77**
+- Updated **config-tools** to **v1.190.45**
+- Updated **esbuild** to **v0.53.206**
+- Updated **npm-tools** to **v0.6.163**
+- Updated **package-constants** to **v0.1.58**
+- Updated **pnpm-tools** to **v0.7.56**
+- Updated **prettier** to **v0.59.97**
+- Updated **testing-tools** to **v1.119.198**
+- Updated **tsdown** to **v0.45.206**
+- Updated **unbuild** to **v0.57.206**
+
+## [1.296.22](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.296.22) (06/08/2026)
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.76**
+- Updated **config-tools** to **v1.190.44**
+- Updated **esbuild** to **v0.53.205**
+- Updated **npm-tools** to **v0.6.162**
+- Updated **package-constants** to **v0.1.57**
+- Updated **pnpm-tools** to **v0.7.55**
+- Updated **prettier** to **v0.59.96**
+- Updated **testing-tools** to **v1.119.197**
+- Updated **tsdown** to **v0.45.205**
+- Updated **unbuild** to **v0.57.205**
+
+## [1.296.21](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.296.21) (06/08/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace packages `README.md` files ([7d65425b0](https://github.com/storm-software/storm-ops/commit/7d65425b0))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.75**
+- Updated **config-tools** to **v1.190.43**
+- Updated **esbuild** to **v0.53.204**
+- Updated **npm-tools** to **v0.6.161**
+- Updated **package-constants** to **v0.1.56**
+- Updated **pnpm-tools** to **v0.7.54**
+- Updated **prettier** to **v0.59.95**
+- Updated **testing-tools** to **v1.119.196**
+- Updated **tsdown** to **v0.45.204**
+- Updated **unbuild** to **v0.57.204**
+
+## [1.296.20](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.296.20) (06/08/2026)
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.74**
+- Updated **config-tools** to **v1.190.42**
+- Updated **esbuild** to **v0.53.203**
+- Updated **npm-tools** to **v0.6.160**
+- Updated **package-constants** to **v0.1.55**
+- Updated **pnpm-tools** to **v0.7.53**
+- Updated **prettier** to **v0.59.94**
+- Updated **testing-tools** to **v1.119.195**
+- Updated **tsdown** to **v0.45.203**
+- Updated **unbuild** to **v0.57.203**
+
+## [1.296.19](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.296.19) (06/08/2026)
+
+### Features
+
+- **oxlint:** Added oxlint config package and eslint plugins ([80c3439b6](https://github.com/storm-software/storm-ops/commit/80c3439b6))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.73**
+- Updated **config-tools** to **v1.190.41**
+- Updated **esbuild** to **v0.53.202**
+- Updated **npm-tools** to **v0.6.159**
+- Updated **package-constants** to **v0.1.54**
+- Updated **pnpm-tools** to **v0.7.52**
+- Updated **prettier** to **v0.59.93**
+- Updated **testing-tools** to **v1.119.194**
+- Updated **tsdown** to **v0.45.202**
+- Updated **unbuild** to **v0.57.202**
+
+## [1.296.18](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.296.18) (06/01/2026)
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.72**
+- Updated **config-tools** to **v1.190.40**
+- Updated **esbuild** to **v0.53.201**
+- Updated **npm-tools** to **v0.6.158**
+- Updated **package-constants** to **v0.1.53**
+- Updated **pnpm-tools** to **v0.7.51**
+- Updated **prettier** to **v0.59.92**
+- Updated **testing-tools** to **v1.119.193**
+- Updated **tsdown** to **v0.45.201**
+- Updated **unbuild** to **v0.57.201**
+
+## [1.296.17](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.296.17) (06/01/2026)
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.71**
+- Updated **config-tools** to **v1.190.39**
+- Updated **esbuild** to **v0.53.200**
+- Updated **npm-tools** to **v0.6.157**
+- Updated **package-constants** to **v0.1.52**
+- Updated **pnpm-tools** to **v0.7.50**
+- Updated **prettier** to **v0.59.91**
+- Updated **testing-tools** to **v1.119.192**
+- Updated **tsdown** to **v0.45.200**
+- Updated **unbuild** to **v0.57.200**
+
+## [1.296.16](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.296.16) (06/01/2026)
+
+### Miscellaneous
+
+- **workspace-tools:** Updates to shared Nx config and devenv modules ([6403f076b](https://github.com/storm-software/storm-ops/commit/6403f076b))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.70**
+- Updated **config-tools** to **v1.190.38**
+- Updated **esbuild** to **v0.53.199**
+- Updated **npm-tools** to **v0.6.156**
+- Updated **package-constants** to **v0.1.51**
+- Updated **pnpm-tools** to **v0.7.49**
+- Updated **prettier** to **v0.59.90**
+- Updated **testing-tools** to **v1.119.191**
+- Updated **tsdown** to **v0.45.199**
+- Updated **unbuild** to **v0.57.199**
+
+## [1.296.15](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.296.15) (05/30/2026)
+
+### Features
+
+- **monorepo:** Added `vitest` configurations to various files lists ([8ffec3105](https://github.com/storm-software/storm-ops/commit/8ffec3105))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.69**
+- Updated **config-tools** to **v1.190.37**
+- Updated **esbuild** to **v0.53.198**
+- Updated **npm-tools** to **v0.6.155**
+- Updated **package-constants** to **v0.1.50**
+- Updated **pnpm-tools** to **v0.7.48**
+- Updated **prettier** to **v0.59.89**
+- Updated **testing-tools** to **v1.119.190**
+- Updated **tsdown** to **v0.45.198**
+- Updated **unbuild** to **v0.57.198**
+
+## [1.296.14](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.296.14) (05/30/2026)
+
+### Miscellaneous
+
+- **devenv-modules:** Removed unneeded `input` modules ([25f4a61d5](https://github.com/storm-software/storm-ops/commit/25f4a61d5))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.68**
+- Updated **config-tools** to **v1.190.36**
+- Updated **esbuild** to **v0.53.197**
+- Updated **npm-tools** to **v0.6.154**
+- Updated **package-constants** to **v0.1.49**
+- Updated **pnpm-tools** to **v0.7.47**
+- Updated **prettier** to **v0.59.88**
+- Updated **testing-tools** to **v1.119.189**
+- Updated **tsdown** to **v0.45.197**
+- Updated **unbuild** to **v0.57.197**
+
+## [1.296.13](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.296.13) (05/30/2026)
+
+### Miscellaneous
+
+- **devenv-modules:** Update `pkgs` to use rolling nixpkgs ([ebd9c0d06](https://github.com/storm-software/storm-ops/commit/ebd9c0d06))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.67**
+- Updated **config-tools** to **v1.190.35**
+- Updated **esbuild** to **v0.53.196**
+- Updated **npm-tools** to **v0.6.153**
+- Updated **package-constants** to **v0.1.48**
+- Updated **pnpm-tools** to **v0.7.46**
+- Updated **prettier** to **v0.59.87**
+- Updated **testing-tools** to **v1.119.188**
+- Updated **tsdown** to **v0.45.196**
+- Updated **unbuild** to **v0.57.196**
+
+## [1.296.12](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.296.12) (05/28/2026)
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.66**
+- Updated **config-tools** to **v1.190.34**
+- Updated **esbuild** to **v0.53.195**
+- Updated **npm-tools** to **v0.6.152**
+- Updated **package-constants** to **v0.1.47**
+- Updated **pnpm-tools** to **v0.7.45**
+- Updated **prettier** to **v0.59.86**
+- Updated **testing-tools** to **v1.119.187**
+- Updated **tsdown** to **v0.45.195**
+- Updated **unbuild** to **v0.57.195**
+
+## [1.296.11](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.296.11) (05/26/2026)
+
+### Miscellaneous
+
+- **devenv-modules:** Update shared K8s modules ([d571d536f](https://github.com/storm-software/storm-ops/commit/d571d536f))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.65**
+- Updated **config-tools** to **v1.190.33**
+- Updated **esbuild** to **v0.53.194**
+- Updated **npm-tools** to **v0.6.151**
+- Updated **package-constants** to **v0.1.46**
+- Updated **pnpm-tools** to **v0.7.44**
+- Updated **prettier** to **v0.59.85**
+- Updated **testing-tools** to **v1.119.186**
+- Updated **tsdown** to **v0.45.194**
+- Updated **unbuild** to **v0.57.194**
+
+## [1.296.10](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.296.10) (05/26/2026)
+
+### Updated Dependencies
+
+- Updated **npm-tools** to **v0.6.150**
+- Updated **pnpm-tools** to **v0.7.43**
+
+## [1.296.9](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.296.9) (05/26/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update nodejs to v26.2.0 and pnpm to v11.1.2 ([855c4d4f0](https://github.com/storm-software/storm-ops/commit/855c4d4f0))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.64**
+- Updated **config-tools** to **v1.190.32**
+- Updated **esbuild** to **v0.53.193**
+- Updated **npm-tools** to **v0.6.149**
+- Updated **package-constants** to **v0.1.45**
+- Updated **pnpm-tools** to **v0.7.42**
+- Updated **prettier** to **v0.59.84**
+- Updated **testing-tools** to **v1.119.185**
+- Updated **tsdown** to **v0.45.193**
+- Updated **unbuild** to **v0.57.193**
+
+## [1.296.8](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.296.8) (05/26/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace package dependencies ([859ec16d2](https://github.com/storm-software/storm-ops/commit/859ec16d2))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.63**
+- Updated **config-tools** to **v1.190.31**
+- Updated **esbuild** to **v0.53.192**
+- Updated **npm-tools** to **v0.6.148**
+- Updated **package-constants** to **v0.1.44**
+- Updated **pnpm-tools** to **v0.7.41**
+- Updated **prettier** to **v0.59.83**
+- Updated **testing-tools** to **v1.119.184**
+- Updated **tsdown** to **v0.45.192**
+- Updated **unbuild** to **v0.57.192**
+
+## [1.296.7](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.296.7) (05/25/2026)
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.62**
+- Updated **config-tools** to **v1.190.30**
+- Updated **esbuild** to **v0.53.191**
+- Updated **npm-tools** to **v0.6.147**
+- Updated **package-constants** to **v0.1.43**
+- Updated **pnpm-tools** to **v0.7.40**
+- Updated **prettier** to **v0.59.82**
+- Updated **testing-tools** to **v1.119.183**
+- Updated **tsdown** to **v0.45.191**
+- Updated **unbuild** to **v0.57.191**
+
+## [1.296.6](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.296.6) (05/22/2026)
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.61**
+- Updated **config-tools** to **v1.190.29**
+- Updated **esbuild** to **v0.53.190**
+- Updated **npm-tools** to **v0.6.146**
+- Updated **package-constants** to **v0.1.42**
+- Updated **pnpm-tools** to **v0.7.39**
+- Updated **prettier** to **v0.59.81**
+- Updated **testing-tools** to **v1.119.182**
+- Updated **tsdown** to **v0.45.190**
+- Updated **unbuild** to **v0.57.190**
+
+## [1.296.5](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.296.5) (05/22/2026)
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.60**
+- Updated **config-tools** to **v1.190.28**
+- Updated **esbuild** to **v0.53.189**
+- Updated **npm-tools** to **v0.6.145**
+- Updated **package-constants** to **v0.1.41**
+- Updated **pnpm-tools** to **v0.7.38**
+- Updated **prettier** to **v0.59.80**
+- Updated **testing-tools** to **v1.119.181**
+- Updated **tsdown** to **v0.45.189**
+- Updated **unbuild** to **v0.57.189**
+
+## [1.296.4](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.296.4) (05/22/2026)
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.59**
+- Updated **config-tools** to **v1.190.27**
+- Updated **esbuild** to **v0.53.188**
+- Updated **npm-tools** to **v0.6.144**
+- Updated **package-constants** to **v0.1.40**
+- Updated **pnpm-tools** to **v0.7.37**
+- Updated **prettier** to **v0.59.79**
+- Updated **testing-tools** to **v1.119.180**
+- Updated **tsdown** to **v0.45.188**
+- Updated **unbuild** to **v0.57.188**
+
+## [1.296.3](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.296.3) (05/20/2026)
+
+### Bug Fixes
+
+- **workspace-tools:** Update manual OIDC token retrieval to be optional ([d457df537](https://github.com/storm-software/storm-ops/commit/d457df537))
+
+## [1.296.2](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.296.2) (05/20/2026)
+
+### Bug Fixes
+
+- **workspace-tools:** Added OIDC token to `NPM_ID_TOKEN` env prior to publish ([649842f0e](https://github.com/storm-software/storm-ops/commit/649842f0e))
+
+## [1.296.1](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.296.1) (05/20/2026)
+
+### Miscellaneous
+
+- **workspace-tools:** Added files missing from previous changes ([866986d38](https://github.com/storm-software/storm-ops/commit/866986d38))
+
+### Bug Fixes
+
+- **workspace-tools:** Added `jiti` call to handle `@action/core` imports ([d349a5365](https://github.com/storm-software/storm-ops/commit/d349a5365))
+
+## [1.296.0](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.296.0) (05/20/2026)
+
+### Miscellaneous
+
+- **monorepo:** Added workspace's `Cargo.lock` file ([bfe2eb073](https://github.com/storm-software/storm-ops/commit/bfe2eb073))
+
+### Features
+
+- **workspace-tools:** Added GitHub OIDC token retrieval to `npm-publish` executor ([a154fdcb8](https://github.com/storm-software/storm-ops/commit/a154fdcb8))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.58**
+- Updated **config-tools** to **v1.190.26**
+- Updated **esbuild** to **v0.53.187**
+- Updated **npm-tools** to **v0.6.143**
+- Updated **package-constants** to **v0.1.39**
+- Updated **pnpm-tools** to **v0.7.36**
+- Updated **prettier** to **v0.59.78**
+- Updated **testing-tools** to **v1.119.179**
+- Updated **tsdown** to **v0.45.187**
+- Updated **unbuild** to **v0.57.187**
+
+## [1.295.87](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.295.87) (05/20/2026)
+
+### Bug Fixes
+
+- **workspace-tools:** Remove clean calls to prevent pre-release issues ([6066a689e](https://github.com/storm-software/storm-ops/commit/6066a689e))
+
+## [1.295.86](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.295.86) (05/20/2026)
+
+### Miscellaneous
+
+- **workspace-tools:** Remove `files` specification from `package.json` file ([dda9b3fe5](https://github.com/storm-software/storm-ops/commit/dda9b3fe5))
+
+## [1.295.85](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.295.85) (05/20/2026)
+
+### Miscellaneous
+
+- **monorepo:** Ensure workspace package versions align ([3cb6e486a](https://github.com/storm-software/storm-ops/commit/3cb6e486a))
+
+### Bug Fixes
+
+- **workspace-tools:** Add specific commands to copy `schema.json` files into dist directory ([c6d401661](https://github.com/storm-software/storm-ops/commit/c6d401661))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.57**
+- Updated **config-tools** to **v1.190.25**
+- Updated **esbuild** to **v0.53.186**
+- Updated **npm-tools** to **v0.6.142**
+- Updated **package-constants** to **v0.1.38**
+- Updated **pnpm-tools** to **v0.7.35**
+- Updated **prettier** to **v0.59.77**
+- Updated **testing-tools** to **v1.119.178**
+- Updated **tsdown** to **v0.45.186**
+- Updated **unbuild** to **v0.57.186**
+
+## [1.295.84](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.295.84) (05/20/2026)
+
+### Miscellaneous
+
+- **git-tools:** Clean up logic around resolving release git tags ([e8959a159](https://github.com/storm-software/storm-ops/commit/e8959a159))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.56**
+- Updated **config-tools** to **v1.190.24**
+- Updated **esbuild** to **v0.53.185**
+- Updated **npm-tools** to **v0.6.141**
+- Updated **package-constants** to **v0.1.37**
+- Updated **pnpm-tools** to **v0.7.34**
+- Updated **prettier** to **v0.59.76**
+- Updated **testing-tools** to **v1.119.177**
+- Updated **tsdown** to **v0.45.185**
+- Updated **unbuild** to **v0.57.185**
+
+## [1.295.83](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.295.83) (05/20/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update packages' `README.md` files ([2d2aae1a6](https://github.com/storm-software/storm-ops/commit/2d2aae1a6))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.55**
+- Updated **config-tools** to **v1.190.23**
+- Updated **esbuild** to **v0.53.184**
+- Updated **npm-tools** to **v0.6.140**
+- Updated **package-constants** to **v0.1.36**
+- Updated **pnpm-tools** to **v0.7.33**
+- Updated **prettier** to **v0.59.75**
+- Updated **testing-tools** to **v1.119.176**
+- Updated **tsdown** to **v0.45.184**
+- Updated **unbuild** to **v0.57.184**
+
+## [1.295.82](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.295.82) (05/19/2026)
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.54**
+- Updated **config-tools** to **v1.190.22**
+- Updated **esbuild** to **v0.53.183**
+- Updated **npm-tools** to **v0.6.139**
+- Updated **package-constants** to **v0.1.35**
+- Updated **pnpm-tools** to **v0.7.32**
+- Updated **prettier** to **v0.59.74**
+- Updated **testing-tools** to **v1.119.175**
+- Updated **tsdown** to **v0.45.183**
+- Updated **unbuild** to **v0.57.183**
+
+## [1.295.81](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.295.81) (05/19/2026)
+
+### Miscellaneous
+
+- **git-tools:** Added git tag logging and updated release defaults ([9cc43a242](https://github.com/storm-software/storm-ops/commit/9cc43a242))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.53**
+- Updated **config-tools** to **v1.190.21**
+- Updated **esbuild** to **v0.53.182**
+- Updated **npm-tools** to **v0.6.138**
+- Updated **package-constants** to **v0.1.34**
+- Updated **pnpm-tools** to **v0.7.31**
+- Updated **prettier** to **v0.59.73**
+- Updated **testing-tools** to **v1.119.174**
+- Updated **tsdown** to **v0.45.182**
+- Updated **unbuild** to **v0.57.182**
+
+## [1.295.80](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.295.80) (05/16/2026)
+
+### Miscellaneous
+
+- **monorepo:** Added more release fields to `base.json` file ([78a664388](https://github.com/storm-software/storm-ops/commit/78a664388))
+- **workspace-tools:** Revert changes to `nx.json` file ([de5a83976](https://github.com/storm-software/storm-ops/commit/de5a83976))
+
+### Updated Dependencies
+
+- Updated **package-constants** to **v0.1.33**
+- Updated **testing-tools** to **v1.119.173**
+- Updated **config-tools** to **v1.190.20**
+- Updated **pnpm-tools** to **v0.7.30**
+- Updated **npm-tools** to **v0.6.137**
+- Updated **prettier** to **v0.59.72**
+- Updated **esbuild** to **v0.53.181**
+- Updated **unbuild** to **v0.57.181**
+- Updated **config** to **v1.137.52**
+- Updated **tsdown** to **v0.45.181**
+
+## [1.295.79](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.295.79) (05/16/2026)
+
+### Updated Dependencies
+
+- Updated **package-constants** to **v0.1.32**
+- Updated **testing-tools** to **v1.119.172**
+- Updated **config-tools** to **v1.190.19**
+- Updated **pnpm-tools** to **v0.7.29**
+- Updated **npm-tools** to **v0.6.136**
+- Updated **prettier** to **v0.59.71**
+- Updated **esbuild** to **v0.53.180**
+- Updated **unbuild** to **v0.57.180**
+- Updated **config** to **v1.137.51**
+- Updated **tsdown** to **v0.45.180**
+
+## [1.295.78](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.295.78) (05/15/2026)
+
+### Updated Dependencies
+
+- Updated **package-constants** to **v0.1.31**
+- Updated **testing-tools** to **v1.119.171**
+- Updated **config-tools** to **v1.190.18**
+- Updated **pnpm-tools** to **v0.7.28**
+- Updated **npm-tools** to **v0.6.135**
+- Updated **prettier** to **v0.59.70**
+- Updated **esbuild** to **v0.53.179**
+- Updated **unbuild** to **v0.57.179**
+- Updated **config** to **v1.137.50**
+- Updated **tsdown** to **v0.45.179**
+
+## [1.295.77](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.295.77) (05/15/2026)
+
+### Updated Dependencies
+
+- Updated **package-constants** to **v0.1.30**
+- Updated **testing-tools** to **v1.119.170**
+- Updated **config-tools** to **v1.190.17**
+- Updated **pnpm-tools** to **v0.7.27**
+- Updated **npm-tools** to **v0.6.134**
+- Updated **prettier** to **v0.59.69**
+- Updated **esbuild** to **v0.53.178**
+- Updated **unbuild** to **v0.57.178**
+- Updated **config** to **v1.137.49**
+- Updated **tsdown** to **v0.45.178**
+
+## [1.295.76](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.295.76) (05/15/2026)
+
+### Updated Dependencies
+
+- Updated **package-constants** to **v0.1.29**
+- Updated **testing-tools** to **v1.119.169**
+- Updated **config-tools** to **v1.190.16**
+- Updated **pnpm-tools** to **v0.7.26**
+- Updated **npm-tools** to **v0.6.133**
+- Updated **prettier** to **v0.59.68**
+- Updated **esbuild** to **v0.53.177**
+- Updated **unbuild** to **v0.57.177**
+- Updated **config** to **v1.137.48**
+- Updated **tsdown** to **v0.45.177**
+
+## [1.295.75](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.295.75) (05/15/2026)
+
+### Miscellaneous
+
+- **monorepo:** Clean up dependencies in `package.json` files ([84994b720](https://github.com/storm-software/storm-ops/commit/84994b720))
+
+### Updated Dependencies
+
+- Updated **package-constants** to **v0.1.28**
+- Updated **testing-tools** to **v1.119.168**
+- Updated **config-tools** to **v1.190.15**
+- Updated **pnpm-tools** to **v0.7.25**
+- Updated **npm-tools** to **v0.6.132**
+- Updated **prettier** to **v0.59.67**
+- Updated **esbuild** to **v0.53.176**
+- Updated **unbuild** to **v0.57.176**
+- Updated **config** to **v1.137.47**
+- Updated **tsdown** to **v0.45.176**
+
+## [1.295.74](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.295.74) (05/15/2026)
+
+### Updated Dependencies
+
+- Updated **config-tools** to **v1.190.14**
+- Updated **pnpm-tools** to **v0.7.24**
+- Updated **npm-tools** to **v0.6.131**
+- Updated **esbuild** to **v0.53.175**
+- Updated **unbuild** to **v0.57.175**
+- Updated **tsdown** to **v0.45.175**
+
+## [1.295.73](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.295.73) (05/15/2026)
+
+### Updated Dependencies
+
+- Updated **package-constants** to **v0.1.27**
+- Updated **testing-tools** to **v1.119.167**
+- Updated **config-tools** to **v1.190.13**
+- Updated **pnpm-tools** to **v0.7.23**
+- Updated **npm-tools** to **v0.6.130**
+- Updated **prettier** to **v0.59.66**
+- Updated **esbuild** to **v0.53.174**
+- Updated **unbuild** to **v0.57.174**
+- Updated **config** to **v1.137.46**
+- Updated **tsdown** to **v0.45.174**
+
+## [1.295.72](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.295.72) (05/15/2026)
+
+### Updated Dependencies
+
+- Updated **package-constants** to **v0.1.26**
+- Updated **testing-tools** to **v1.119.166**
+- Updated **config-tools** to **v1.190.12**
+- Updated **pnpm-tools** to **v0.7.22**
+- Updated **npm-tools** to **v0.6.129**
+- Updated **prettier** to **v0.59.65**
+- Updated **esbuild** to **v0.53.173**
+- Updated **unbuild** to **v0.57.173**
+- Updated **config** to **v1.137.45**
+- Updated **tsdown** to **v0.45.173**
+
+## [1.295.71](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.295.71) (05/14/2026)
+
+### Miscellaneous
+
+- **workspace-tools:** Added back required `implicitDependencies` to project config ([aca4dc136](https://github.com/storm-software/storm-ops/commit/aca4dc136))
+- **monorepo:** Update `pnpm-lock.yaml` and packages' `README.md` files ([6f43d2237](https://github.com/storm-software/storm-ops/commit/6f43d2237))
+- **workspace-tools:** Update default `nx.json` configurations ([da734b5f4](https://github.com/storm-software/storm-ops/commit/da734b5f4))
+
+### Updated Dependencies
+
+- Updated **package-constants** to **v0.1.25**
+- Updated **testing-tools** to **v1.119.165**
+- Updated **config-tools** to **v1.190.11**
+- Updated **pnpm-tools** to **v0.7.21**
+- Updated **npm-tools** to **v0.6.128**
+- Updated **prettier** to **v0.59.64**
+- Updated **esbuild** to **v0.53.172**
+- Updated **unbuild** to **v0.57.172**
+- Updated **config** to **v1.137.44**
+- Updated **tsdown** to **v0.45.172**
+
+## [1.295.70](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.295.70) (05/14/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace packages' `README.md` file ([ff527d217](https://github.com/storm-software/storm-ops/commit/ff527d217))
+
+### Updated Dependencies
+
+- Updated **package-constants** to **v0.1.24**
+- Updated **testing-tools** to **v1.119.164**
+- Updated **config-tools** to **v1.190.10**
+- Updated **pnpm-tools** to **v0.7.20**
+- Updated **npm-tools** to **v0.6.127**
+- Updated **prettier** to **v0.59.63**
+- Updated **esbuild** to **v0.53.171**
+- Updated **unbuild** to **v0.57.171**
+- Updated **config** to **v1.137.43**
+- Updated **tsdown** to **v0.45.171**
+
+## [1.295.69](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.295.69) (05/14/2026)
+
+### Updated Dependencies
+
+- Updated **package-constants** to **v0.1.23**
+- Updated **testing-tools** to **v1.119.163**
+- Updated **config-tools** to **v1.190.9**
+- Updated **pnpm-tools** to **v0.7.19**
+- Updated **npm-tools** to **v0.6.126**
+- Updated **prettier** to **v0.59.62**
+- Updated **esbuild** to **v0.53.170**
+- Updated **unbuild** to **v0.57.170**
+- Updated **config** to **v1.137.42**
+- Updated **tsdown** to **v0.45.170**
+
+## [1.295.68](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.295.68) (05/14/2026)
+
+### Updated Dependencies
+
+- Updated **package-constants** to **v0.1.22**
+- Updated **testing-tools** to **v1.119.162**
+- Updated **config-tools** to **v1.190.8**
+- Updated **pnpm-tools** to **v0.7.18**
+- Updated **npm-tools** to **v0.6.125**
+- Updated **prettier** to **v0.59.61**
+- Updated **esbuild** to **v0.53.169**
+- Updated **unbuild** to **v0.57.169**
+- Updated **config** to **v1.137.41**
+- Updated **tsdown** to **v0.45.169**
+
+## [1.295.67](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.295.67) (05/14/2026)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate workspace packages' `README.md` files ([ec3df43cd](https://github.com/storm-software/storm-ops/commit/ec3df43cd))
+
+### Updated Dependencies
+
+- Updated **package-constants** to **v0.1.21**
+- Updated **testing-tools** to **v1.119.161**
+- Updated **config-tools** to **v1.190.7**
+- Updated **pnpm-tools** to **v0.7.17**
+- Updated **npm-tools** to **v0.6.124**
+- Updated **prettier** to **v0.59.60**
+- Updated **esbuild** to **v0.53.168**
+- Updated **unbuild** to **v0.57.168**
+- Updated **config** to **v1.137.40**
+- Updated **tsdown** to **v0.45.168**
+
+## [1.295.66](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.295.66) (05/14/2026)
+
+### Bug Fixes
+
+- **git-tools:** Improvements to logic to handle configuration resolution ([12eb27271](https://github.com/storm-software/storm-ops/commit/12eb27271))
+
+### Updated Dependencies
+
+- Updated **package-constants** to **v0.1.20**
+- Updated **testing-tools** to **v1.119.160**
+- Updated **config-tools** to **v1.190.6**
+- Updated **pnpm-tools** to **v0.7.16**
+- Updated **npm-tools** to **v0.6.123**
+- Updated **prettier** to **v0.59.59**
+- Updated **esbuild** to **v0.53.167**
+- Updated **unbuild** to **v0.57.167**
+- Updated **config** to **v1.137.39**
+- Updated **tsdown** to **v0.45.167**
+
+## [1.295.65](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.295.65) (05/14/2026)
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.159**
+- Updated **config-tools** to **v1.190.5**
+- Updated **pnpm-tools** to **v0.7.15**
+- Updated **npm-tools** to **v0.6.122**
+- Updated **prettier** to **v0.59.58**
+- Updated **esbuild** to **v0.53.166**
+- Updated **unbuild** to **v0.57.166**
+- Updated **config** to **v1.137.38**
+- Updated **tsdown** to **v0.45.166**
+
+## [1.295.64](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.295.64) (05/14/2026)
+
+### Miscellaneous
+
+- **release:** publish ([d45102e8d](https://github.com/storm-software/storm-ops/commit/d45102e8d))
+
+### Bug Fixes
+
+- **git-tools:** Ensure non-cached project graph is used during release graph creation ([af729bd1f](https://github.com/storm-software/storm-ops/commit/af729bd1f))
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.158**
+- Updated **config-tools** to **v1.190.4**
+- Updated **pnpm-tools** to **v0.7.14**
+- Updated **npm-tools** to **v0.6.121**
+- Updated **prettier** to **v0.59.57**
+- Updated **esbuild** to **v0.53.165**
+- Updated **unbuild** to **v0.57.165**
+- Updated **config** to **v1.137.37**
+- Updated **tsdown** to **v0.45.165**
+
+## [1.295.63](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.295.63) (05/13/2026)
+
+### Bug Fixes
+
+- **git-tools:** Ensure non-cached project graph is used during release graph creation ([af729bd1f](https://github.com/storm-software/storm-ops/commit/af729bd1f))
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.157**
+- Updated **config-tools** to **v1.190.3**
+- Updated **pnpm-tools** to **v0.7.13**
+- Updated **npm-tools** to **v0.6.120**
+- Updated **prettier** to **v0.59.56**
+- Updated **esbuild** to **v0.53.164**
+- Updated **unbuild** to **v0.57.164**
+- Updated **config** to **v1.137.36**
+- Updated **tsdown** to **v0.45.164**
+
+## [1.295.62](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.295.62) (05/12/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update devenv modules to latest version ([5467f0db1](https://github.com/storm-software/storm-ops/commit/5467f0db1))
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.156**
+- Updated **config-tools** to **v1.190.2**
+- Updated **pnpm-tools** to **v0.7.12**
+- Updated **npm-tools** to **v0.6.119**
+- Updated **prettier** to **v0.59.55**
+- Updated **esbuild** to **v0.53.163**
+- Updated **unbuild** to **v0.57.163**
+- Updated **config** to **v1.137.35**
+- Updated **tsdown** to **v0.45.163**
+
+## [1.295.61](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.295.61) (04/29/2026)
+
+### Updated Dependencies
+
+- Updated **pnpm-tools** to **v0.7.11**
+
+## [1.295.60](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.295.60) (04/29/2026)
+
+### Updated Dependencies
+
+- Updated **pnpm-tools** to **v0.7.10**
+
+## [1.295.59](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.295.59) (04/28/2026)
+
+### Updated Dependencies
+
+- Updated **pnpm-tools** to **v0.7.9**
+
+## [1.295.58](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.295.58) (04/28/2026)
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.155**
+- Updated **config-tools** to **v1.190.1**
+- Updated **pnpm-tools** to **v0.7.8**
+- Updated **npm-tools** to **v0.6.118**
+- Updated **prettier** to **v0.59.54**
+- Updated **esbuild** to **v0.53.162**
+- Updated **unbuild** to **v0.57.162**
+- Updated **config** to **v1.137.34**
+- Updated **tsdown** to **v0.45.162**
+
+## [1.295.57](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.295.57) (04/28/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace packages' dependencies ([ab3958717](https://github.com/storm-software/storm-ops/commit/ab3958717))
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.154**
+- Updated **config-tools** to **v1.190.0**
+- Updated **pnpm-tools** to **v0.7.7**
+- Updated **npm-tools** to **v0.6.117**
+- Updated **prettier** to **v0.59.53**
+- Updated **esbuild** to **v0.53.161**
+- Updated **unbuild** to **v0.57.161**
+- Updated **config** to **v1.137.33**
+- Updated **tsdown** to **v0.45.161**
+
+## [1.295.56](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.295.56) (04/26/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace packages' dependencies ([7bb1aaaf6](https://github.com/storm-software/storm-ops/commit/7bb1aaaf6))
+
+### Bug Fixes
+
+- **workspace-tools:** Resolve issue with incorrectly defaulted `outputPath` value ([f2c457f27](https://github.com/storm-software/storm-ops/commit/f2c457f27))
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.153**
+- Updated **config-tools** to **v1.189.78**
+- Updated **pnpm-tools** to **v0.7.6**
+- Updated **npm-tools** to **v0.6.116**
+- Updated **prettier** to **v0.59.52**
+- Updated **esbuild** to **v0.53.160**
+- Updated **unbuild** to **v0.57.160**
+- Updated **config** to **v1.137.32**
+- Updated **tsdown** to **v0.45.160**
+
+## [1.295.55](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.295.55) (04/15/2026)
+
+### Bug Fixes
+
+- **workspace-tools:** Ensure we correctly handle Cargo args without a key ([ff5605eb2](https://github.com/storm-software/storm-ops/commit/ff5605eb2))
+
+### Documentation
+
+- **monorepo:** Regenerate `README.md` files ([8b9adfe78](https://github.com/storm-software/storm-ops/commit/8b9adfe78))
+
+## [1.295.54](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.295.54) (04/14/2026)
+
+### Bug Fixes
+
+- **workspace-tools:** Resolve issue with `cwd` parameter provided to `napi` ([d41c02145](https://github.com/storm-software/storm-ops/commit/d41c02145))
+
+### Documentation
+
+- **monorepo:** Update workspace's `README.md` files ([7d41882b7](https://github.com/storm-software/storm-ops/commit/7d41882b7))
+
+## [1.295.53](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.295.53) (04/14/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace packages' dependencies ([3a2b8a77e](https://github.com/storm-software/storm-ops/commit/3a2b8a77e))
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.152**
+- Updated **config-tools** to **v1.189.77**
+- Updated **pnpm-tools** to **v0.7.5**
+- Updated **npm-tools** to **v0.6.115**
+- Updated **prettier** to **v0.59.51**
+- Updated **esbuild** to **v0.53.159**
+- Updated **unbuild** to **v0.57.159**
+- Updated **config** to **v1.137.31**
+- Updated **tsdown** to **v0.45.159**
+
+## [1.295.52](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.295.52) (04/13/2026)
+
+### Bug Fixes
+
+- **workspace-tools:** Resolve issue with relative package.json paths ([f73c8dfe9](https://github.com/storm-software/storm-ops/commit/f73c8dfe9))
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.151**
+- Updated **config-tools** to **v1.189.76**
+- Updated **pnpm-tools** to **v0.7.4**
+- Updated **npm-tools** to **v0.6.114**
+- Updated **prettier** to **v0.59.50**
+- Updated **esbuild** to **v0.53.158**
+- Updated **unbuild** to **v0.57.158**
+- Updated **config** to **v1.137.30**
+- Updated **tsdown** to **v0.45.158**
+
+## [1.295.51](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.295.51) (04/10/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace packages' dependencies ([c86e980b0](https://github.com/storm-software/storm-ops/commit/c86e980b0))
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.150**
+- Updated **config-tools** to **v1.189.75**
+- Updated **pnpm-tools** to **v0.7.3**
+- Updated **npm-tools** to **v0.6.113**
+- Updated **prettier** to **v0.59.49**
+- Updated **esbuild** to **v0.53.157**
+- Updated **unbuild** to **v0.57.157**
+- Updated **config** to **v1.137.29**
+- Updated **tsdown** to **v0.45.157**
+
+## [1.295.50](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.295.50) (04/08/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update devenv modules ([6e20ef576](https://github.com/storm-software/storm-ops/commit/6e20ef576))
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.149**
+- Updated **config-tools** to **v1.189.74**
+- Updated **pnpm-tools** to **v0.7.2**
+- Updated **npm-tools** to **v0.6.112**
+- Updated **prettier** to **v0.59.48**
+- Updated **esbuild** to **v0.53.156**
+- Updated **unbuild** to **v0.57.156**
+- Updated **config** to **v1.137.28**
+- Updated **tsdown** to **v0.45.156**
+
+## [1.295.49](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.295.49) (04/07/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace packages' dependencies ([c9e9f1659](https://github.com/storm-software/storm-ops/commit/c9e9f1659))
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.148**
+- Updated **config-tools** to **v1.189.73**
+- Updated **pnpm-tools** to **v0.7.1**
+- Updated **npm-tools** to **v0.6.111**
+- Updated **prettier** to **v0.59.47**
+- Updated **esbuild** to **v0.53.155**
+- Updated **unbuild** to **v0.57.155**
+- Updated **config** to **v1.137.27**
+- Updated **tsdown** to **v0.45.155**
+
+## [1.295.48](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.295.48) (04/01/2026)
+
+### Miscellaneous
+
+- **monorepo:** Regenerated `README.md` files ([9611f84ed](https://github.com/storm-software/storm-ops/commit/9611f84ed))
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.147**
+- Updated **config-tools** to **v1.189.72**
+- Updated **pnpm-tools** to **v0.7.0**
+- Updated **npm-tools** to **v0.6.110**
+- Updated **prettier** to **v0.59.46**
+- Updated **esbuild** to **v0.53.154**
+- Updated **unbuild** to **v0.57.154**
+- Updated **config** to **v1.137.26**
+- Updated **tsdown** to **v0.45.154**
+
+## [1.295.47](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.295.47) (04/01/2026)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate `README.md` files ([020581272](https://github.com/storm-software/storm-ops/commit/020581272))
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.146**
+- Updated **config-tools** to **v1.189.71**
+- Updated **pnpm-tools** to **v0.6.156**
+- Updated **npm-tools** to **v0.6.109**
+- Updated **prettier** to **v0.59.45**
+- Updated **esbuild** to **v0.53.153**
+- Updated **unbuild** to **v0.57.153**
+- Updated **config** to **v1.137.25**
+- Updated **tsdown** to **v0.45.153**
+
+## [1.295.46](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.295.46) (04/01/2026)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate `README.md` file ([613228ecc](https://github.com/storm-software/storm-ops/commit/613228ecc))
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.145**
+- Updated **config-tools** to **v1.189.70**
+- Updated **pnpm-tools** to **v0.6.155**
+- Updated **npm-tools** to **v0.6.108**
+- Updated **prettier** to **v0.59.44**
+- Updated **esbuild** to **v0.53.152**
+- Updated **unbuild** to **v0.57.152**
+- Updated **config** to **v1.137.24**
+- Updated **tsdown** to **v0.45.152**
+
+## [1.295.45](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.295.45) (04/01/2026)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate `README.md` files ([7179007bc](https://github.com/storm-software/storm-ops/commit/7179007bc))
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.144**
+- Updated **config-tools** to **v1.189.69**
+- Updated **pnpm-tools** to **v0.6.154**
+- Updated **npm-tools** to **v0.6.107**
+- Updated **prettier** to **v0.59.43**
+- Updated **esbuild** to **v0.53.151**
+- Updated **unbuild** to **v0.57.151**
+- Updated **config** to **v1.137.23**
+- Updated **tsdown** to **v0.45.151**
+
+## [1.295.44](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.295.44) (04/01/2026)
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.143**
+- Updated **config-tools** to **v1.189.68**
+- Updated **pnpm-tools** to **v0.6.153**
+- Updated **npm-tools** to **v0.6.106**
+- Updated **prettier** to **v0.59.42**
+- Updated **esbuild** to **v0.53.150**
+- Updated **unbuild** to **v0.57.150**
+- Updated **config** to **v1.137.22**
+- Updated **tsdown** to **v0.45.150**
+
+## [1.295.43](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.295.43) (04/01/2026)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate `README.md` file ([b226844d5](https://github.com/storm-software/storm-ops/commit/b226844d5))
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.142**
+- Updated **config-tools** to **v1.189.67**
+- Updated **pnpm-tools** to **v0.6.152**
+- Updated **npm-tools** to **v0.6.105**
+- Updated **prettier** to **v0.59.41**
+- Updated **esbuild** to **v0.53.149**
+- Updated **unbuild** to **v0.57.149**
+- Updated **config** to **v1.137.21**
+- Updated **tsdown** to **v0.45.149**
+
+## [1.295.42](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.295.42) (04/01/2026)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate `README.md` files ([c22142f62](https://github.com/storm-software/storm-ops/commit/c22142f62))
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.141**
+- Updated **config-tools** to **v1.189.66**
+- Updated **pnpm-tools** to **v0.6.151**
+- Updated **npm-tools** to **v0.6.104**
+- Updated **prettier** to **v0.59.40**
+- Updated **esbuild** to **v0.53.148**
+- Updated **unbuild** to **v0.57.148**
+- Updated **config** to **v1.137.20**
+- Updated **tsdown** to **v0.45.148**
+
+## [1.295.41](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.295.41) (04/01/2026)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate `README.md` files ([cf5149751](https://github.com/storm-software/storm-ops/commit/cf5149751))
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.140**
+- Updated **config-tools** to **v1.189.65**
+- Updated **pnpm-tools** to **v0.6.150**
+- Updated **npm-tools** to **v0.6.103**
+- Updated **prettier** to **v0.59.39**
+- Updated **esbuild** to **v0.53.147**
+- Updated **unbuild** to **v0.57.147**
+- Updated **config** to **v1.137.19**
+- Updated **tsdown** to **v0.45.147**
+
+## [1.295.40](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.295.40) (03/31/2026)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate `README.md` files ([162476557](https://github.com/storm-software/storm-ops/commit/162476557))
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.139**
+- Updated **config-tools** to **v1.189.64**
+- Updated **pnpm-tools** to **v0.6.149**
+- Updated **npm-tools** to **v0.6.102**
+- Updated **prettier** to **v0.59.38**
+- Updated **esbuild** to **v0.53.146**
+- Updated **unbuild** to **v0.57.146**
+- Updated **config** to **v1.137.18**
+- Updated **tsdown** to **v0.45.146**
+
+## [1.295.39](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.295.39) (03/31/2026)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate workspace files ([241e519f6](https://github.com/storm-software/storm-ops/commit/241e519f6))
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.138**
+- Updated **config-tools** to **v1.189.63**
+- Updated **pnpm-tools** to **v0.6.148**
+- Updated **npm-tools** to **v0.6.101**
+- Updated **prettier** to **v0.59.37**
+- Updated **esbuild** to **v0.53.145**
+- Updated **unbuild** to **v0.57.145**
+- Updated **config** to **v1.137.17**
+- Updated **tsdown** to **v0.45.145**
 
 ## [1.295.38](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.295.38) (03/31/2026)
 

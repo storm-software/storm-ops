@@ -1,45 +1,40 @@
-{
-  pkgs,
-  inputs,
-  ...
-}:
+{ pkgs, inputs, ... }:
 let
   pkgs-unstable = import inputs.nixpkgs-unstable { system = pkgs.stdenv.system; };
 in
 {
-  dotenv.enable = true;
-  dotenv.filename = [
-    ".env"
-    ".env.local"
-  ];
-  dotenv.disableHint = true;
-
-  delta.enable = true;
-
-  env.DEFAULT_LOCALE = "en_US";
-  env.DEFAULT_TIMEZONE = "America/New_York";
-  env.FORCE_COLOR = 3;
-  env.CLICOLOR = 1;
-
-  packages = with pkgs; [
-    # Tools
-    nixd
-  ];
-
-  languages.nix = {
+  dotenv = {
     enable = true;
-    lsp.package = pkgs.nixd;
+    filename = [
+      ".env"
+      ".env.local"
+    ];
+    disableHint = true;
   };
-  languages.javascript = {
-    enable = true;
-    package = pkgs.nodejs_25;
-    pnpm = {
+
+  env = {
+    DEFAULT_LOCALE = "en_US";
+    DEFAULT_TIMEZONE = "America/New_York";
+    FORCE_COLOR = 3;
+    CLICOLOR = 1;
+  };
+
+  languages = {
+    javascript = {
       enable = true;
-      install.enable = true;
-      package = pkgs-unstable.pnpm;
+      package = pkgs-unstable.nodejs-slim_latest;
+      nodejs.enable = true;
+      lsp.enable = true;
+      pnpm = {
+        enable = true;
+        install.enable = true;
+        package = pkgs-unstable.pnpm;
+      };
+    };
+    typescript = {
+      enable = true;
     };
   };
-  languages.typescript.enable = true;
 
   scripts = {
     bootstrap.exec = "pnpm bootstrap";

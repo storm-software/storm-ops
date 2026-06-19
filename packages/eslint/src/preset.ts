@@ -3,6 +3,8 @@ import { FlatConfigComposer } from "eslint-flat-config-utils";
 import { isPackageExists } from "local-pkg";
 import {
   astro,
+  banner,
+  cspell,
   disables,
   formatters,
   graphql,
@@ -13,39 +15,43 @@ import {
   jsonc,
   jsx,
   markdown,
+  mdx,
   next,
   node,
   nx,
   perfectionist,
+  pnpm,
+  prettier,
   react,
+  reactNative,
   regexp,
+  secrets,
   sortPackageJson,
   sortTsconfig,
   storybook,
   stylistic,
   test,
   toml,
+  tsdoc,
   typescript,
   unicorn,
   unocss,
-  yaml
+  yaml,
+  zod
 } from "./configs";
-import { cspell } from "./configs/cspell";
-import { mdx } from "./configs/mdx";
-import { pnpm } from "./configs/pnpm";
-import { prettier } from "./configs/prettier";
-import { reactNative } from "./configs/react-native";
-import { secrets } from "./configs/secrets";
-import { tsdoc } from "./configs/tsdoc";
-import { zod } from "./configs/zod";
 import { RuleOptions } from "./typegen";
 import type {
   Awaitable,
   ConfigNames,
   OptionsConfig,
-  TypedFlatConfigItem
+  OptionsTypescript,
+  PresetConfig,
+  PresetResult,
+  TypedFlatConfigItem,
+  UserConfig
 } from "./types";
 import { interopDefault, isInEditorEnv } from "./utils/helpers";
+import { getTsConfigPath } from "./utils/tsconfig";
 
 const flatConfigProps = [
   "name",
@@ -98,24 +104,20 @@ export function getOverrides<K extends keyof OptionsConfig>(
  * @param options - The preset options.
  * @param userConfigs - Additional ESLint configurations.
  */
-export function getStormConfig(
-  options: OptionsConfig & Omit<TypedFlatConfigItem, "files">,
-  ...userConfigs: Awaitable<
-    | TypedFlatConfigItem
-    | TypedFlatConfigItem[]
-    | FlatConfigComposer<object, string>
-    | Linter.Config[]
-  >[]
-): FlatConfigComposer<TypedFlatConfigItem, ConfigNames> {
+export function preset(
+  options: PresetConfig<OptionsConfig>,
+  ...userConfigs: UserConfig[]
+): PresetResult {
   const {
     name,
     globals = {},
-    lineEndings = "unix",
+    banner: enableBanner = true,
     astro: enableAstro = false,
     autoRenamePlugins = true,
     componentExts = [],
     gitignore: enableGitignore = true,
     jsx: enableJsx = true,
+    mdx: enableMdx = false,
     cspell: enableCSpell = true,
     react: enableReact = false,
     "react-native": enableReactNative = false,
@@ -125,19 +127,22 @@ export function getStormConfig(
     storybook: enableStorybook = false,
     typescript: enableTypeScript = isPackageExists("typescript"),
     unicorn: enableUnicorn = true,
+    jsdoc: enableJSDoc = false,
     tsdoc: enableTSDoc = true,
+    test: enableTest = true,
     unocss: enableUnoCSS = false,
-    zod: enableZod = true
+    zod: enableZod = false
   } = options;
 
   let isInEditor = options.isInEditor;
-  if (isInEditor == null) {
+  if (!isInEditor) {
     isInEditor = isInEditorEnv();
-    if (isInEditor)
+    if (isInEditor) {
       // eslint-disable-next-line no-console
       console.log(
         "[@storm-software/eslint] Detected running in editor, some rules are disabled."
       );
+    }
   }
 
   const stylisticOptions = !options.stylistic
@@ -146,8 +151,9 @@ export function getStormConfig(
       ? options.stylistic
       : {};
 
-  if (stylisticOptions && !("jsx" in stylisticOptions))
+  if (stylisticOptions && !("jsx" in stylisticOptions)) {
     stylisticOptions.jsx = enableJsx;
+  }
 
   const configs: Awaitable<TypedFlatConfigItem[]>[] = [];
 
@@ -173,22 +179,15 @@ export function getStormConfig(
     }
   }
 
-  const typescriptOptions = resolveSubOptions(options, "typescript");
-
   // Base configs
   configs.push(
     ignores(options.ignores),
     javascript({
-      name,
       globals,
-      lineEndings,
       isInEditor,
       overrides: getOverrides(options, "javascript")
     }),
     node(),
-    jsdoc({
-      stylistic: stylisticOptions
-    }),
     imports({
       stylistic: stylisticOptions
     }),
@@ -196,6 +195,42 @@ export function getStormConfig(
     perfectionist(),
     secrets({ json: options.jsonc !== false })
   );
+
+  let typescriptOptions = {} as OptionsTypescript;
+  if (enableTypeScript) {
+    typescriptOptions = resolveSubOptions(options, "typescript");
+    if (typescriptOptions.tsconfigPath !== false) {
+      typescriptOptions.tsconfigPath = getTsConfigPath(
+        typescriptOptions.tsconfigPath,
+        options.type
+      );
+    }
+  }
+
+  if (enableTypeScript) {
+    configs.push(
+      typescript({
+        ...typescriptOptions,
+        tsconfigPath:
+          typescriptOptions.tsconfigPath === false
+            ? undefined
+            : typescriptOptions.tsconfigPath,
+        componentExts,
+        overrides: getOverrides(options, "typescript"),
+        type: options.type
+      })
+    );
+  }
+
+  if (enableBanner) {
+    configs.push(
+      banner({
+        ...resolveSubOptions(options, "banner"),
+        name,
+        overrides: getOverrides(options, "banner")
+      })
+    );
+  }
 
   if (!stylisticOptions) {
     configs.push(prettier());
@@ -207,6 +242,15 @@ export function getStormConfig(
 
   if (enableUnicorn) {
     configs.push(unicorn(enableUnicorn === true ? {} : enableUnicorn));
+  }
+
+  if (enableJSDoc) {
+    configs.push(
+      jsdoc({
+        ...resolveSubOptions(options, "jsdoc"),
+        overrides: getOverrides(options, "jsdoc")
+      })
+    );
   }
 
   if (enableTSDoc) {
@@ -222,17 +266,6 @@ export function getStormConfig(
     configs.push(jsx());
   }
 
-  if (enableTypeScript) {
-    configs.push(
-      typescript({
-        ...typescriptOptions,
-        componentExts,
-        overrides: getOverrides(options, "typescript"),
-        type: options.type
-      })
-    );
-  }
-
   if (enableZod) {
     configs.push(
       zod({
@@ -245,7 +278,7 @@ export function getStormConfig(
     configs.push(
       stylistic({
         ...stylisticOptions,
-        lineEndings,
+        lineEndings: stylisticOptions.lineEndings ?? "unix",
         lessOpinionated: options.lessOpinionated,
         overrides: getOverrides(options, "stylistic")
       })
@@ -256,7 +289,7 @@ export function getStormConfig(
     configs.push(regexp(typeof enableRegexp === "boolean" ? {} : enableRegexp));
   }
 
-  if (options.test ?? true) {
+  if (enableTest) {
     configs.push(
       test({
         isInEditor,
@@ -273,11 +306,12 @@ export function getStormConfig(
     configs.push(
       react({
         ...typescriptOptions,
-        overrides: getOverrides(options, "react"),
         tsconfigPath:
-          "tsconfigPath" in typescriptOptions
-            ? typescriptOptions.tsconfigPath
-            : undefined
+          typescriptOptions.tsconfigPath === false
+            ? undefined
+            : typescriptOptions.tsconfigPath,
+        ...(typeof enableReact === "boolean" ? { strict: false } : enableReact),
+        overrides: getOverrides(options, "react")
       })
     );
   }
@@ -368,7 +402,7 @@ export function getStormConfig(
     );
   }
 
-  if (options.mdx ?? true) {
+  if (enableMdx) {
     configs.push(
       mdx({
         overrides: getOverrides(options, "mdx")
@@ -427,7 +461,6 @@ export function getStormConfig(
   return composer;
 }
 
-export const getConfig = getStormConfig;
-export const defineConfig = getStormConfig;
-
-export default getStormConfig;
+export const getConfig = preset;
+export const defineConfig = preset;
+export default preset;

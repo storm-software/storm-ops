@@ -1,0 +1,58 @@
+{
+  "name": "oxfmt",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/oxfmt/src",
+  "projectType": "library",
+  "targets": {
+    "build-base": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": [
+          "pnpm copyfiles packages/oxfmt/src/recommended.json tmp",
+          "mv tmp/packages/oxfmt/src/recommended.json packages/oxfmt/src/config.json"
+        ],
+        "parallel": false
+      }
+    },
+    "build": {
+      "cache": true,
+      "executor": "@nx/esbuild:esbuild",
+      "outputs": ["{options.outputPath}"],
+      "dependsOn": ["build-base"],
+      "options": {
+        "outputPath": "dist/packages/oxfmt",
+        "tsConfig": "packages/oxfmt/tsconfig.json",
+        "project": "packages/oxfmt/package.json",
+        "main": "packages/oxfmt/src/index.ts",
+        "format": ["cjs", "esm"],
+        "platform": "node",
+        "deleteOutputPath": true,
+        "bundle": true,
+        "thirdParty": true,
+        "skipTypeCheck": false,
+        "metafile": true,
+        "minify": false,
+        "assets": [
+          {
+            "input": "./packages/oxfmt",
+            "glob": "*.md",
+            "output": "/"
+          },
+          {
+            "input": "",
+            "glob": "LICENSE",
+            "output": "/"
+          },
+          {
+            "input": "./packages/oxfmt/src",
+            "glob": "{*.json,.prettierignore,.prettierignore-exclude-packagejson}",
+            "output": "."
+          }
+        ]
+      }
+    },
+    "nx-release-publish": {
+      "executor": "@storm-software/workspace-tools:npm-publish"
+    }
+  }
+}

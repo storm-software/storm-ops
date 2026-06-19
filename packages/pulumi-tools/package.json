@@ -1,24 +1,31 @@
 {
   "name": "@storm-software/pulumi-tools",
-  "version": "0.22.153",
-  "type": "commonjs",
+  "version": "0.22.256",
   "description": "Tools for managing Pulumi infrastructure within a Nx workspace.",
-  "repository": {
-    "type": "github",
-    "url": "https://github.com/storm-software/storm-ops",
-    "directory": "packages/pulumi-tools"
-  },
+  "keywords": [
+    "iac",
+    "infrastructure",
+    "monorepo",
+    "pulumi",
+    "storm",
+    "storm-ops",
+    "storm-stack",
+    "sullivanpj"
+  ],
   "homepage": "https://stormsoftware.com",
   "bugs": "https://github.com/storm-software/storm-ops/issues",
+  "repository": {
+    "type": "github",
+    "url": "https://github.com/storm-software/storm-ops.git",
+    "directory": "packages/pulumi-tools"
+  },
+  "license": "Apache-2.0",
   "author": {
     "name": "Storm Software",
     "email": "contact@stormsoftware.com",
     "url": "https://stormsoftware.com"
   },
-  "license": "Apache-2.0",
-  "private": false,
-  "main": "dist/index.js",
-  "module": "dist/index.mjs",
+  "type": "commonjs",
   "exports": {
     "./package.json": "./package.json",
     "./docs/*": "./docs/*",
@@ -142,45 +149,21 @@
     "./executors/*/executor.js": "./dist/src/executors/*/executor.js",
     "./generators/*/generators.js": "./dist/src/generators/*/generator.js"
   },
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
   "typings": "dist/index.d.ts",
-  "keywords": [
-    "iac",
-    "infrastructure",
-    "monorepo",
-    "pulumi",
-    "storm",
-    "storm-ops",
-    "storm-stack",
-    "sullivanpj"
-  ],
-  "peerDependencies": {
-    "@nx/devkit": "catalog:",
-    "@storm-software/workspace-tools": ">=1.267.0",
-    "tsup": "catalog:"
-  },
-  "peerDependenciesMeta": {
-    "@nx/devkit": {
-      "optional": false
-    },
-    "@pulumi/pulumi": {
-      "optional": false
-    },
-    "nx": {
-      "optional": false
-    }
-  },
   "dependencies": {
     "@nx/devkit": "catalog:",
-    "@pulumi/aws": "^6.83.2",
+    "@pulumi/aws": "^6.83.4",
     "@pulumi/awsx": "^2.22.0",
-    "@pulumi/pulumi": "^3.228.0",
+    "@pulumi/pulumi": "^3.246.0",
     "@storm-software/config": "workspace:*",
     "@storm-software/config-tools": "workspace:*",
+    "@storm-software/workspace-tools": "workspace:*",
     "defu": "catalog:",
     "shelljs": "^0.8.5"
   },
   "devDependencies": {
-    "@nx/devkit": "catalog:",
     "@types/node": "catalog:",
     "nx": "catalog:",
     "tsup": "catalog:",

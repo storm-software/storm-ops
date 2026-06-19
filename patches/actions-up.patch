@@ -1,0 +1,79 @@
+diff --git a/dist/core/api/check-updates.d.ts b/dist/core/api/check-updates.d.ts
+index ba3e7b2cb3cc510a0dda4022880741a87f29f905..d09a421a63e0e510098cbbefdf90cd3a5efa4760 100644
+--- a/dist/core/api/check-updates.d.ts
++++ b/dist/core/api/check-updates.d.ts
+@@ -2,6 +2,8 @@ import { GitHubClient } from '../../types/github-client';
+ import { GitHubAction } from '../../types/github-action';
+ import { ActionUpdate } from '../../types/action-update';
+ import { UpdateStyle } from '../../types/update-style';
++import { createGitHubClient } from './create-github-client';
++
+ /**
+  * Check for updates for GitHub Actions.
+  *
+@@ -16,3 +18,5 @@ export declare function checkUpdates(actions: GitHubAction[], token?: string, op
+     client?: GitHubClient;
+     style?: UpdateStyle;
+ }): Promise<ActionUpdate[]>;
++
++export { createGitHubClient };
+diff --git a/dist/core/api/check-updates.js b/dist/core/api/check-updates.js
+index 2854b921292126f462d7320b4be5f881c75980aa..249b3150fb54a0dd6688a57c0a949160e4d12fb4 100644
+--- a/dist/core/api/check-updates.js
++++ b/dist/core/api/check-updates.js
+@@ -254,4 +254,4 @@ function l(t) {
+ function u(e) {
+ 	return e instanceof Error && e.name === "GitHubRateLimitError";
+ }
+-export { a as checkUpdates };
++export { a as checkUpdates, r as createGitHubClient };
+diff --git a/dist/core/index.d.ts b/dist/core/index.d.ts
+index c0f374686bf3129700061d89bf6e0dbb6bb8d9a9..624a975875e691cecc5b068ed924ca5e1678a32c 100644
+--- a/dist/core/index.d.ts
++++ b/dist/core/index.d.ts
+@@ -1,4 +1,12 @@
+ export { scanGitHubActions } from './scan-github-actions';
+ export { applyUpdates } from './ast/update/apply-updates';
+ export { checkUpdates } from './api/check-updates';
++export { createGitHubClient } from './api/create-github-client';
+ export { scanRecursive } from './scan-recursive';
++export { shouldIgnore } from "./ignore/should-ignore";
++export { isSha } from "./versions/is-sha";
++export { readInlineVersionComment } from "./versions/read-inline-version-comment";
++export { getCompatibleUpdate } from './api/get-compatible-update';
++export { getUpdateLevel } from './versions/get-update-level';
++export { resolveTargetReference } from './updates/resolve-target-reference';
++export { parseExcludePatterns } from './filters/parse-exclude-patterns';
+diff --git a/dist/core/index.js b/dist/core/index.js
+index a839ad9e8107f70da06b93fdcc47d2f8e7fd8ede..1dd11e29cd47b72a19c3fe21f423c391e4d94cc7 100644
+--- a/dist/core/index.js
++++ b/dist/core/index.js
+@@ -1,5 +1,27 @@
+ import { applyUpdates as e } from "./ast/update/apply-updates.js";
+ import { checkUpdates as t } from "./api/check-updates.js";
+ import { scanRecursive as n } from "./scan-recursive.js";
++import { shouldIgnore } from "./ignore/should-ignore.js";
++import { isSha } from "./versions/is-sha.js";
++import { readInlineVersionComment } from "./versions/read-inline-version-comment.js";
+ import { scanGitHubActions as r } from "./scan-github-actions.js";
+-export { e as applyUpdates, t as checkUpdates, r as scanGitHubActions, n as scanRecursive };
++import { getCompatibleUpdate } from './api/get-compatible-update.js';
++import { createGitHubClient } from './api/create-github-client.js';
++import { getUpdateLevel } from './versions/get-update-level.js';
++import { resolveTargetReference } from './updates/resolve-target-reference.js';
++import { parseExcludePatterns } from "./filters/parse-exclude-patterns.js";
++
++export {
++  e as applyUpdates,
++  t as checkUpdates,
++  r as scanGitHubActions,
++  n as scanRecursive,
++  createGitHubClient,
++  shouldIgnore,
++  isSha,
++  readInlineVersionComment,
++  getCompatibleUpdate,
++  getUpdateLevel,
++  resolveTargetReference,
++  parseExcludePatterns
++};

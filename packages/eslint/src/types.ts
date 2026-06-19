@@ -1,9 +1,11 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { DepConstraint } from "@nx/eslint-plugin/src/utils/runtime-lint-utils";
+import type { Options as BannerOptions } from "@storm-software/eslint-plugin-banner/rules/banner";
 import type { StylisticCustomizeOptions } from "@stylistic/eslint-plugin";
 import type { ParserOptions } from "@typescript-eslint/parser";
 import type { Linter } from "eslint";
 import type { FlatGitignoreOptions } from "eslint-config-flat-gitignore";
+import { FlatConfigComposer } from "eslint-flat-config-utils";
 import type { ConfigNames, RuleOptions } from "./typegen";
 import type { VendoredPrettierOptions } from "./vendor/prettier-types";
 
@@ -150,7 +152,28 @@ export interface OptionsTSDoc extends OptionsOverrides {
   configFile?: string;
 }
 
+export interface OptionsJSDoc extends OptionsOverrides {
+  /**
+   * The JSDoc ESLint rule severity.
+   *
+   * @defaultValue "error"
+   */
+  severity?: "error" | "warn" | "off";
+
+  /**
+   * Enable stylistic rules for JSDoc.
+   */
+  stylistic?: boolean;
+}
+
 export interface OptionsTypeScriptParserOptions {
+  /**
+   * When this options is provided as false, type aware rules will be **disabled**.
+   *
+   * @see https://typescript-eslint.io/linting/typed-linting/
+   */
+  tsconfigPath: false;
+
   /**
    * Additional parser options for TypeScript.
    */
@@ -171,7 +194,8 @@ export interface OptionsTypeScriptParserOptions {
 
 export interface OptionsTypeScriptWithTypes {
   /**
-   * When this options is provided, type aware rules will be enabled.
+   * When this options is provided (or if `tsconfigPath` is found with {@link @storm-software/eslint/utils/tsconfig#getTsConfigPath | the getTsConfigPath function}), type aware rules will be enabled.
+   *
    * @see https://typescript-eslint.io/linting/typed-linting/
    */
   tsconfigPath?: string;
@@ -305,6 +329,15 @@ export interface OptionsStorybook extends OptionsOverrides {
    * @defaultValue "loose"
    */
   csf?: "none" | "loose" | "strict";
+}
+
+export interface OptionsReact extends OptionsOverrides {
+  /**
+   * Use a strict mode for React rules, which will enable more strict rules that may cause more false positives but can catch more potential issues.
+   *
+   * @defaultValue false
+   */
+  strict?: boolean;
 }
 
 export interface OptionsNxDependencyChecks extends OptionsOverrides {
@@ -504,29 +537,24 @@ export type ESLintGlobalsPropValue =
   | "writable"
   | "writeable";
 
-export interface OptionsJavascript {
-  /**
-   * The name of the repository used in adding the banner comments
-   */
-  name?: string;
+export type OptionsBanner = OptionsOverrides & BannerOptions[0];
 
+export interface OptionsJavascript {
   /**
    * An object containing a list of extra global variables to include in the configuration.
    */
   globals?: Record<string, ESLintGlobalsPropValue>;
-
-  /**
-   * The style of line endings to use.
-   *
-   * @defaultValue "unix"
-   */
-  lineEndings?: "unix" | "windows";
 }
 
 export interface OptionsConfig
-  extends OptionsComponentExts,
-    OptionsJavascript,
-    OptionsProjectType {
+  extends OptionsComponentExts, OptionsJavascript, OptionsProjectType {
+  /**
+   * Options to control the generated file header banner.
+   *
+   * @see https://github.com/storm-software/eslint-plugin-banner
+   */
+  banner?: boolean | OptionsBanner;
+
   /**
    * Enable gitignore support.
    *
@@ -600,7 +628,14 @@ export interface OptionsConfig
   unicorn?: boolean | OptionsUnicorn;
 
   /**
-   * Options for eslint-plugin-tsdoc.
+   * Options for eslint-plugin-jsdoc.
+   *
+   * @defaultValue false
+   */
+  jsdoc?: boolean | OptionsJSDoc;
+
+  /**
+   * Options for @storm-software/eslint-plugin-tsdoc.
    *
    * @defaultValue true
    */
@@ -609,7 +644,7 @@ export interface OptionsConfig
   /**
    * Enable Zod support.
    *
-   * @defaultValue true
+   * @defaultValue false
    */
   zod?: boolean | OptionsOverrides;
 
@@ -666,7 +701,7 @@ export interface OptionsConfig
   /**
    * Enable linting for mdx files.
    *
-   * @defaultValue true
+   * @defaultValue false
    */
   mdx?: boolean | OptionsOverrides;
 
@@ -711,7 +746,7 @@ export interface OptionsConfig
    *
    * @defaultValue false
    */
-  react?: boolean | OptionsOverrides;
+  react?: boolean | OptionsReact;
 
   /**
    * Enable react native rules.
@@ -768,3 +803,15 @@ export interface OptionsConfig
    */
   autoRenamePlugins?: boolean;
 }
+
+export type UserConfig = Awaitable<
+  | TypedFlatConfigItem
+  | TypedFlatConfigItem[]
+  | FlatConfigComposer<object, string>
+  | Linter.Config[]
+>;
+
+export type PresetConfig<TOptions> = TOptions &
+  Omit<TypedFlatConfigItem, "files">;
+
+export type PresetResult = FlatConfigComposer<TypedFlatConfigItem, ConfigNames>;

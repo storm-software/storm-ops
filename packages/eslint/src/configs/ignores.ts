@@ -1,5 +1,5 @@
+import { GLOB_EXCLUDE } from "@storm-software/package-constants/globs";
 import type { TypedFlatConfigItem } from "../types";
-import { GLOB_EXCLUDE } from "../utils/constants";
 
 export async function ignores(
   userIgnores: string[] = []

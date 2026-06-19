@@ -120,7 +120,6 @@ const resolveOptions = async (
     assets: [],
     dts: true,
     shims: true,
-    silent: !debug,
     logLevel:
       workspaceConfig.logLevel === "success" ||
       workspaceConfig.logLevel === "performance" ||

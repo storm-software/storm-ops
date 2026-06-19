@@ -1,6 +1,723 @@
-![Storm Software's logo banner](https://public.storm-cdn.com/storm-software/banner-1280x320.gif)
+![Storm Software's logo banner](https://public.storm-cdn.com/storm-software/media/banner-1280x320.gif)
 
 # Changelog for Storm Ops - Vite
+
+## [0.1.167](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.167) (06/18/2026)
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.233**
+
+## [0.1.166](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.166) (06/18/2026)
+
+### Bug Fixes
+
+- **eslint:** Remove unneeded tsdoc dependency for eslint config ([7ccbee070](https://github.com/storm-software/storm-ops/commit/7ccbee070))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.232**
+
+## [0.1.165](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.165) (06/18/2026)
+
+### Bug Fixes
+
+- **eslint:** Resolve issue with eslint importing patched dependency directly ([864f5d538](https://github.com/storm-software/storm-ops/commit/864f5d538))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.231**
+
+## [0.1.164](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.164) (06/18/2026)
+
+### Bug Fixes
+
+- **linting-tools:** Resolve issue running CLI from lefthook and update version shas ([1751cb249](https://github.com/storm-software/storm-ops/commit/1751cb249))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.230**
+
+## [0.1.163](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.163) (06/15/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update asset references to the newly created `media` folder ([40a620402](https://github.com/storm-software/storm-ops/commit/40a620402))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.229**
+
+## [0.1.162](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.162) (06/14/2026)
+
+### Miscellaneous
+
+- **monorepo:** Added internal Nx plugin to ensure `implicitDependencies` are applied to all of the workspace's packages ([bbe43f892](https://github.com/storm-software/storm-ops/commit/bbe43f892))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.228**
+
+## [0.1.161](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.161) (06/14/2026)
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.227**
+
+## [0.1.160](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.160) (06/14/2026)
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.226**
+
+## [0.1.159](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.159) (06/14/2026)
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.225**
+
+## [0.1.158](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.158) (06/14/2026)
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.224**
+
+## [0.1.157](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.157) (06/14/2026)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate `README` markdown files ([2f934c964](https://github.com/storm-software/storm-ops/commit/2f934c964))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.223**
+
+## [0.1.156](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.156) (06/14/2026)
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.222**
+
+## [0.1.155](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.155) (06/13/2026)
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.221**
+
+## [0.1.154](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.154) (06/13/2026)
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.220**
+
+## [0.1.153](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.153) (06/13/2026)
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.219**
+
+## [0.1.152](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.152) (06/13/2026)
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.218**
+
+## [0.1.151](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.151) (06/13/2026)
+
+### Features
+
+- **eslint-config-react:** Initial check-in of the shared React ESLint config package ([8f39c5c32](https://github.com/storm-software/storm-ops/commit/8f39c5c32))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.217**
+
+## [0.1.150](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.150) (06/13/2026)
+
+### Bug Fixes
+
+- **monorepo:** Ensure `es-toolkit` versions align properly ([6c387e4d6](https://github.com/storm-software/storm-ops/commit/6c387e4d6))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.216**
+
+## [0.1.149](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.149) (06/13/2026)
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.215**
+
+## [0.1.148](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.148) (06/11/2026)
+
+### Bug Fixes
+
+- **git-tools:** Update lefthook configurations to reduce duplicates ([2a41fcbb1](https://github.com/storm-software/storm-ops/commit/2a41fcbb1))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.214**
+
+## [0.1.147](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.147) (06/11/2026)
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.213**
+
+## [0.1.146](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.146) (06/11/2026)
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.212**
+
+## [0.1.145](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.145) (06/10/2026)
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.211**
+
+## [0.1.144](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.144) (06/10/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update `README.md` files ([fe24f6887](https://github.com/storm-software/storm-ops/commit/fe24f6887))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.210**
+
+## [0.1.143](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.143) (06/10/2026)
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.209**
+
+## [0.1.142](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.142) (06/10/2026)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate `pnpm-lock.yaml` and `README.md` files ([989ff5a35](https://github.com/storm-software/storm-ops/commit/989ff5a35))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.208**
+
+## [0.1.141](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.141) (06/10/2026)
+
+### Miscellaneous
+
+- **monorepo:** Align package dependencies and update `README.md` files ([a1d1fd5b8](https://github.com/storm-software/storm-ops/commit/a1d1fd5b8))
+
+### Bug Fixes
+
+- **eslint:** Resolve issue using internal eslint plugin packages ([64b3b7dfd](https://github.com/storm-software/storm-ops/commit/64b3b7dfd))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.207**
+
+## [0.1.140](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.140) (06/08/2026)
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.206**
+
+## [0.1.139](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.139) (06/08/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update `README.md` and `pnpm-lock.yaml` files ([63d786b3a](https://github.com/storm-software/storm-ops/commit/63d786b3a))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.205**
+
+## [0.1.138](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.138) (06/08/2026)
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.204**
+
+## [0.1.137](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.137) (06/08/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace packages `README.md` files ([7d65425b0](https://github.com/storm-software/storm-ops/commit/7d65425b0))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.203**
+
+## [0.1.136](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.136) (06/08/2026)
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.202**
+
+## [0.1.135](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.135) (06/08/2026)
+
+### Features
+
+- **oxlint:** Added oxlint config package and eslint plugins ([80c3439b6](https://github.com/storm-software/storm-ops/commit/80c3439b6))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.201**
+
+## [0.1.134](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.134) (06/01/2026)
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.200**
+
+## [0.1.133](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.133) (06/01/2026)
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.199**
+
+## [0.1.132](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.132) (06/01/2026)
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.198**
+
+## [0.1.131](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.131) (05/30/2026)
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.197**
+
+## [0.1.130](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.130) (05/30/2026)
+
+### Miscellaneous
+
+- **devenv-modules:** Removed unneeded `input` modules ([25f4a61d5](https://github.com/storm-software/storm-ops/commit/25f4a61d5))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.196**
+
+## [0.1.129](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.129) (05/30/2026)
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.195**
+
+## [0.1.128](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.128) (05/28/2026)
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.194**
+
+## [0.1.127](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.127) (05/26/2026)
+
+### Miscellaneous
+
+- **devenv-modules:** Update shared K8s modules ([d571d536f](https://github.com/storm-software/storm-ops/commit/d571d536f))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.193**
+
+## [0.1.126](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.126) (05/26/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update nodejs to v26.2.0 and pnpm to v11.1.2 ([855c4d4f0](https://github.com/storm-software/storm-ops/commit/855c4d4f0))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.192**
+
+## [0.1.125](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.125) (05/26/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace package dependencies ([859ec16d2](https://github.com/storm-software/storm-ops/commit/859ec16d2))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.191**
+
+## [0.1.124](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.124) (05/25/2026)
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.190**
+
+## [0.1.123](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.123) (05/22/2026)
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.189**
+
+## [0.1.122](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.122) (05/22/2026)
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.188**
+
+## [0.1.121](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.121) (05/22/2026)
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.187**
+
+## [0.1.120](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.120) (05/20/2026)
+
+### Features
+
+- **workspace-tools:** Added GitHub OIDC token retrieval to `npm-publish` executor ([a154fdcb8](https://github.com/storm-software/storm-ops/commit/a154fdcb8))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.186**
+
+## [0.1.119](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.119) (05/20/2026)
+
+### Miscellaneous
+
+- **monorepo:** Ensure workspace package versions align ([3cb6e486a](https://github.com/storm-software/storm-ops/commit/3cb6e486a))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.185**
+
+## [0.1.118](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.118) (05/20/2026)
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.184**
+
+## [0.1.117](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.117) (05/20/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update packages' `README.md` files ([2d2aae1a6](https://github.com/storm-software/storm-ops/commit/2d2aae1a6))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.183**
+
+## [0.1.116](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.116) (05/19/2026)
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.182**
+
+## [0.1.115](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.115) (05/19/2026)
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.181**
+
+## [0.1.114](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.114) (05/16/2026)
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.180**
+
+## [0.1.113](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.113) (05/16/2026)
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.179**
+
+## [0.1.112](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.112) (05/15/2026)
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.178**
+
+## [0.1.111](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.111) (05/15/2026)
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.177**
+
+## [0.1.110](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.110) (05/15/2026)
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.176**
+
+## [0.1.109](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.109) (05/15/2026)
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.175**
+
+## [0.1.108](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.108) (05/15/2026)
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.174**
+
+## [0.1.107](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.107) (05/15/2026)
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.173**
+
+## [0.1.106](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.106) (05/15/2026)
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.172**
+
+## [0.1.105](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.105) (05/14/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update `pnpm-lock.yaml` and packages' `README.md` files ([6f43d2237](https://github.com/storm-software/storm-ops/commit/6f43d2237))
+- **workspace-tools:** Update default `nx.json` configurations ([da734b5f4](https://github.com/storm-software/storm-ops/commit/da734b5f4))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.171**
+
+## [0.1.104](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.104) (05/14/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace packages' `README.md` file ([ff527d217](https://github.com/storm-software/storm-ops/commit/ff527d217))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.170**
+
+## [0.1.103](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.103) (05/14/2026)
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.169**
+
+## [0.1.102](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.102) (05/14/2026)
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.168**
+
+## [0.1.101](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.101) (05/14/2026)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate workspace packages' `README.md` files ([ec3df43cd](https://github.com/storm-software/storm-ops/commit/ec3df43cd))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.167**
+
+## [0.1.100](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.100) (05/14/2026)
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.166**
+
+## [0.1.99](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.99) (05/14/2026)
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.165**
+
+## [0.1.98](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.98) (05/14/2026)
+
+### Miscellaneous
+
+- **release:** publish ([d45102e8d](https://github.com/storm-software/storm-ops/commit/d45102e8d))
+
+### Bug Fixes
+
+- **git-tools:** Ensure non-cached project graph is used during release graph creation ([af729bd1f](https://github.com/storm-software/storm-ops/commit/af729bd1f))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.164**
+
+## [0.1.97](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.97) (05/13/2026)
+
+### Bug Fixes
+
+- **git-tools:** Ensure non-cached project graph is used during release graph creation ([af729bd1f](https://github.com/storm-software/storm-ops/commit/af729bd1f))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.163**
+
+## [0.1.96](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.96) (05/12/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update devenv modules to latest version ([5467f0db1](https://github.com/storm-software/storm-ops/commit/5467f0db1))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.162**
+
+## [0.1.95](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.95) (04/28/2026)
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.161**
+
+## [0.1.94](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.94) (04/28/2026)
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.160**
+
+## [0.1.93](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.93) (04/26/2026)
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.159**
+
+## [0.1.92](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.92) (04/14/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace packages' dependencies ([3a2b8a77e](https://github.com/storm-software/storm-ops/commit/3a2b8a77e))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.158**
+
+## [0.1.91](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.91) (04/13/2026)
+
+### Bug Fixes
+
+- **workspace-tools:** Resolve issue with relative package.json paths ([f73c8dfe9](https://github.com/storm-software/storm-ops/commit/f73c8dfe9))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.157**
+
+## [0.1.90](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.90) (04/10/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace packages' dependencies ([c86e980b0](https://github.com/storm-software/storm-ops/commit/c86e980b0))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.156**
+
+## [0.1.89](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.89) (04/08/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update devenv modules ([6e20ef576](https://github.com/storm-software/storm-ops/commit/6e20ef576))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.155**
+
+## [0.1.88](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.88) (04/07/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace packages' dependencies ([c9e9f1659](https://github.com/storm-software/storm-ops/commit/c9e9f1659))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.154**
+
+## [0.1.87](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.87) (04/01/2026)
+
+### Miscellaneous
+
+- **monorepo:** Regenerated `README.md` files ([9611f84ed](https://github.com/storm-software/storm-ops/commit/9611f84ed))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.153**
+
+## [0.1.86](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.86) (04/01/2026)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate `README.md` files ([020581272](https://github.com/storm-software/storm-ops/commit/020581272))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.152**
+
+## [0.1.85](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.85) (04/01/2026)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate `README.md` file ([613228ecc](https://github.com/storm-software/storm-ops/commit/613228ecc))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.151**
+
+## [0.1.84](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.84) (04/01/2026)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate `README.md` files ([7179007bc](https://github.com/storm-software/storm-ops/commit/7179007bc))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.150**
+
+## [0.1.83](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.83) (04/01/2026)
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.149**
+
+## [0.1.82](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.82) (04/01/2026)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate `README.md` file ([b226844d5](https://github.com/storm-software/storm-ops/commit/b226844d5))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.148**
+
+## [0.1.81](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.81) (04/01/2026)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate `README.md` files ([c22142f62](https://github.com/storm-software/storm-ops/commit/c22142f62))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.147**
+
+## [0.1.80](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.80) (04/01/2026)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate `README.md` files ([cf5149751](https://github.com/storm-software/storm-ops/commit/cf5149751))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.146**
+
+## [0.1.79](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.79) (03/31/2026)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate `README.md` files ([162476557](https://github.com/storm-software/storm-ops/commit/162476557))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.145**
+
+## [0.1.78](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.78) (03/31/2026)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate workspace files ([241e519f6](https://github.com/storm-software/storm-ops/commit/241e519f6))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.144**
 
 ## [0.1.77](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.77) (03/31/2026)
 

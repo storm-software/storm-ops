@@ -8,7 +8,6 @@ export interface SizeLimitExecutorSchema {
   * 
   * The output path for the build
   * 
-  * @default "dist/{projectRoot}"
   * 
   * @format path
  */

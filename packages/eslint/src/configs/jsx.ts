@@ -1,5 +1,5 @@
+import { GLOB_JSX, GLOB_TSX } from "@storm-software/package-constants/globs";
 import type { TypedFlatConfigItem } from "../types";
-import { GLOB_JSX, GLOB_TSX } from "../utils/constants";
 import { ensurePackages, interopDefault } from "../utils/helpers";
 
 export async function jsx(): Promise<TypedFlatConfigItem[]> {

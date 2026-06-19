@@ -60,7 +60,7 @@ jobs:
 
     steps:
       - name: Cancel Previous Runs
-        uses: styfle/cancel-workflow-action@0.12.1
+        uses: styfle/cancel-workflow-action@d07a454dad7609a92316b57b23c9ccfd4f59af66 # 0.13.1
         with:
           all_but_latest: true
           access_token: ${{ secrets.STORM_BOT_GITHUB_TOKEN }}
@@ -70,7 +70,7 @@ jobs:
         uses: storm-software/action-devenv-setup@main
         with:
           package-manager: pnpm
-          package-manager-version: 10.30.0
+          package-manager-version: 11.1.2
           gpg-sign-key: ${{ secrets.STORM_BOT_GPG_SIGN_KEY }}
           gpg-private-key: ${{ secrets.STORM_BOT_GPG_PRIVATE_KEY }}
           gpg-passphrase: ${{ secrets.STORM_BOT_GPG_PASSPHRASE }}
@@ -78,7 +78,7 @@ jobs:
 
       # Initializes the CodeQL tools for scanning.
       - name: Initialize CodeQL
-        uses: github/codeql-action/init@v3
+        uses: github/codeql-action/init@dd903d2e4f5405488e5ef1422510ee31c8b32357 # v3.36.2
         with:
           languages: ${{ matrix.language }}
           build-mode: ${{ matrix.build-mode }}
@@ -101,6 +101,6 @@ jobs:
         run: devenv build
 
       - name: Perform CodeQL Analysis
-        uses: github/codeql-action/analyze@v3
+        uses: github/codeql-action/analyze@dd903d2e4f5405488e5ef1422510ee31c8b32357 # v3.36.2
         with:
           category: "/language:${{matrix.language}}"

@@ -41,7 +41,7 @@ export async function getVersion(
 
   return new Promise<string>((resolve, reject) => {
     exec(
-      `${executable} view ${packageName} version --registry=${registry} --tag=${tag}`,
+      `${executable} view ${packageName} version --registry=${registry}`,
       (error, stdout, stderr) => {
         if (
           error &&

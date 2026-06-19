@@ -1,15 +1,30 @@
 {
   "name": "@storm-software/tsdown",
-  "version": "0.45.144",
-  "type": "module",
+  "version": "0.45.234",
+  "private": false,
   "description": "A package containing `tsdown` utilities for building Storm Software libraries and applications",
+  "keywords": [
+    "acidic",
+    "cyclone-ui",
+    "tsdown",
+    "monorepo",
+    "storm",
+    "storm-ops",
+    "storm-stack",
+    "sullivanpj"
+  ],
+  "homepage": "https://stormsoftware.com",
+  "bugs": "https://github.com/storm-software/storm-ops/issues",
   "repository": {
     "type": "github",
     "url": "https://github.com/storm-software/storm-ops.git",
     "directory": "packages/tsdown"
   },
-  "homepage": "https://stormsoftware.com",
-  "bugs": "https://github.com/storm-software/storm-ops/issues",
+  "funding": {
+    "type": "github",
+    "url": "https://github.com/sponsors/storm-software"
+  },
+  "license": "Apache-2.0",
   "author": {
     "name": "Storm Software",
     "email": "contact@stormsoftware.com",
@@ -34,17 +49,8 @@
       "url": "https://stormsoftware.com"
     }
   ],
-  "funding": {
-    "type": "github",
-    "url": "https://github.com/sponsors/storm-software"
-  },
-  "license": "Apache-2.0",
-  "private": false,
-  "bin": {
-    "storm-tsdown": "./bin/tsdown.cjs"
-  },
-  "main": "./dist/index.cjs",
-  "module": "./dist/index.js",
+  "sideEffects": false,
+  "type": "module",
   "exports": {
     "./package.json": "./package.json",
     "./types": {
@@ -146,33 +152,43 @@
       }
     }
   },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
+  "bin": {
+    "storm-tsdown": "./bin/tsdown.cjs"
+  },
   "files": ["dist/**/*"],
-  "keywords": [
-    "acidic",
-    "cyclone-ui",
-    "tsdown",
-    "monorepo",
-    "storm",
-    "storm-ops",
-    "storm-stack",
-    "sullivanpj"
-  ],
+  "dependencies": {
+    "@nx/devkit": "catalog:",
+    "@storm-software/build-tools": "workspace:*",
+    "@storm-software/config": "workspace:*",
+    "@storm-software/config-tools": "workspace:*",
+    "chokidar": "^4.0.3",
+    "commander": "catalog:",
+    "es-toolkit": "^1.47.1",
+    "globby": "^14.1.0",
+    "nx": "catalog:",
+    "rolldown": "1.0.0-beta.1",
+    "source-map": "0.7.4",
+    "tsup": "catalog:"
+  },
+  "devDependencies": {
+    "@microsoft/api-extractor": "catalog:",
+    "@nx/js": "catalog:",
+    "@types/node": "catalog:",
+    "defu": "catalog:",
+    "rollup": "catalog:",
+    "spdx-exceptions": "^2.5.0",
+    "spdx-license-ids": "^3.0.23",
+    "tsdown": "catalog:"
+  },
   "peerDependencies": {
     "spdx-exceptions": "^2.5.0",
     "spdx-license-ids": "^3.0.20",
     "tsdown": ">=0.15.4"
   },
   "peerDependenciesMeta": {
-    "@microsoft/api-extractor": {
-      "optional": true
-    },
-    "@nx/devkit": {
-      "optional": false
-    },
-    "@nx/js": {
-      "optional": false
-    },
     "spdx-exceptions": {
       "optional": true
     },
@@ -183,32 +199,7 @@
       "optional": false
     }
   },
-  "dependencies": {
-    "@storm-software/build-tools": "workspace:*",
-    "@storm-software/config": "workspace:*",
-    "@storm-software/config-tools": "workspace:*",
-    "chokidar": "^4.0.3",
-    "commander": "catalog:",
-    "es-toolkit": "^1.45.1",
-    "globby": "^14.1.0",
-    "nx": "catalog:",
-    "rolldown": "1.0.0-beta.1",
-    "source-map": "0.7.4",
-    "tsup": "catalog:"
-  },
-  "devDependencies": {
-    "@microsoft/api-extractor": "catalog:",
-    "@nx/devkit": "catalog:",
-    "@nx/js": "catalog:",
-    "@types/node": "catalog:",
-    "defu": "catalog:",
-    "rollup": "catalog:",
-    "spdx-exceptions": "^2.5.0",
-    "spdx-license-ids": "^3.0.23",
-    "tsdown": "catalog:"
-  },
   "publishConfig": {
     "access": "public"
-  },
-  "sideEffects": false
+  }
 }

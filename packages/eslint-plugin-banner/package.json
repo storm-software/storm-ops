@@ -1,0 +1,87 @@
+{
+  "name": "@storm-software/eslint-plugin-banner",
+  "version": "0.0.38",
+  "private": false,
+  "description": "An ESLint Plugin that enforces the existence of file banners in Storm Software projects.",
+  "keywords": ["eslint", "eslint-plugin", "storm-software"],
+  "homepage": "https://stormsoftware.com",
+  "bugs": {
+    "url": "https://stormsoftware.com/support",
+    "email": "support@stormsoftware.com"
+  },
+  "repository": {
+    "type": "github",
+    "url": "https://github.com/storm-software/storm-ops.git",
+    "directory": "packages/eslint-plugin-banner"
+  },
+  "funding": {
+    "type": "github",
+    "url": "https://github.com/sponsors/storm-software"
+  },
+  "license": "Apache-2.0",
+  "author": {
+    "name": "Storm Software",
+    "email": "contact@stormsoftware.com",
+    "url": "https://stormsoftware.com"
+  },
+  "maintainers": [
+    {
+      "name": "Storm Software",
+      "email": "contact@stormsoftware.com",
+      "url": "https://stormsoftware.com"
+    }
+  ],
+  "contributors": [
+    {
+      "name": "Storm Software",
+      "email": "contact@stormsoftware.com",
+      "url": "https://stormsoftware.com"
+    }
+  ],
+  "type": "module",
+  "exports": {
+    ".": "./dist/index.mjs",
+    "./configs": "./dist/configs/index.mjs",
+    "./configs/recommended": "./dist/configs/recommended.mjs",
+    "./helpers/create-rule": "./dist/helpers/create-rule.mjs",
+    "./helpers/get-banner": "./dist/helpers/get-banner.mjs",
+    "./plugin": "./dist/plugin.mjs",
+    "./rules/banner": "./dist/rules/banner.mjs",
+    "./package.json": "./package.json"
+  },
+  "types": "./dist/index.d.ts",
+  "typings": "dist/index.d.mts",
+  "files": ["dist", "docs"],
+  "dependencies": {
+    "@storm-software/package-constants": "workspace:*",
+    "@typescript-eslint/utils": "catalog:",
+    "defu": "catalog:"
+  },
+  "devDependencies": {
+    "@eslint/compat": "catalog:",
+    "@eslint/config-inspector": "catalog:",
+    "@storm-software/prettier": "workspace:*",
+    "@types/eslint": "catalog:",
+    "@types/eslint__js": "catalog:",
+    "@types/node": "catalog:",
+    "eslint": "catalog:",
+    "eslint-doc-generator": "catalog:",
+    "eslint-flat-config-utils": "catalog:",
+    "eslint-plugin-eslint-plugin": "catalog:",
+    "eslint-plugin-i18n-text": "catalog:",
+    "eslint-rule-documentation": "catalog:",
+    "eslint-typegen": "catalog:",
+    "tsdown": "catalog:"
+  },
+  "peerDependencies": {
+    "eslint": ">=9.39.3"
+  },
+  "peerDependenciesMeta": {
+    "eslint": {
+      "optional": false
+    }
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

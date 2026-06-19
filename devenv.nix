@@ -9,15 +9,17 @@
   ];
   dotenv.disableHint = true;
 
-  # https://devenv.sh/basics/
-  env.DEFAULT_LOCALE = "en_US";
-  env.DEFAULT_TIMEZONE = "America/New_York";
+  env = {
+    DEFAULT_LOCALE = "en_US";
+    DEFAULT_TIMEZONE = "America/New_York";
+  };
 
   # https://devenv.sh/packages/
   packages = with pkgs; [
     cargo-deny
     openssl
     yamllint
+    zizmor
   ];
 
   # https://devenv.sh/languages/

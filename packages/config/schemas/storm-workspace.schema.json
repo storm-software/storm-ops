@@ -371,7 +371,7 @@
               "type": "object",
               "properties": {
                 "dark": {
-                  "default": "#151718",
+                  "default": "#1e2124",
                   "description": "The dark background color of the workspace",
                   "type": "string",
                   "minLength": 7,
@@ -416,7 +416,7 @@
                   "maxLength": 7,
                   "pattern": "^#([0-9a-f]{3}){1,2}$"
                 },
-                "help": {
+                "discovery": {
                   "default": "#818cf8",
                   "description": "The second brand specific color of the workspace",
                   "type": "string",
@@ -512,7 +512,7 @@
                 "light",
                 "brand",
                 "link",
-                "help",
+                "discovery",
                 "success",
                 "info",
                 "debug",
@@ -539,7 +539,7 @@
                       "pattern": "^#([0-9a-f]{3}){1,2}$"
                     },
                     "background": {
-                      "default": "#151718",
+                      "default": "#1e2124",
                       "description": "The dark background color of the workspace",
                       "type": "string",
                       "minLength": 7,
@@ -576,7 +576,7 @@
                       "maxLength": 7,
                       "pattern": "^#([0-9a-f]{3}){1,2}$"
                     },
-                    "help": {
+                    "discovery": {
                       "default": "#818cf8",
                       "description": "The second brand specific color of the workspace",
                       "type": "string",
@@ -672,7 +672,7 @@
                     "background",
                     "brand",
                     "link",
-                    "help",
+                    "discovery",
                     "success",
                     "info",
                     "debug",
@@ -688,7 +688,7 @@
                   "type": "object",
                   "properties": {
                     "foreground": {
-                      "default": "#151718",
+                      "default": "#1e2124",
                       "description": "The dark background color of the workspace",
                       "type": "string",
                       "minLength": 7,
@@ -733,7 +733,7 @@
                       "maxLength": 7,
                       "pattern": "^#([0-9a-f]{3}){1,2}$"
                     },
-                    "help": {
+                    "discovery": {
                       "default": "#818cf8",
                       "description": "The second brand specific color of the workspace",
                       "type": "string",
@@ -829,7 +829,7 @@
                     "background",
                     "brand",
                     "link",
-                    "help",
+                    "discovery",
                     "success",
                     "info",
                     "debug",
@@ -874,7 +874,7 @@
                 "type": "object",
                 "properties": {
                   "dark": {
-                    "default": "#151718",
+                    "default": "#1e2124",
                     "description": "The dark background color of the workspace",
                     "type": "string",
                     "minLength": 7,
@@ -919,7 +919,7 @@
                     "maxLength": 7,
                     "pattern": "^#([0-9a-f]{3}){1,2}$"
                   },
-                  "help": {
+                  "discovery": {
                     "default": "#818cf8",
                     "description": "The second brand specific color of the workspace",
                     "type": "string",
@@ -1015,7 +1015,7 @@
                   "light",
                   "brand",
                   "link",
-                  "help",
+                  "discovery",
                   "success",
                   "info",
                   "debug",
@@ -1042,7 +1042,7 @@
                         "pattern": "^#([0-9a-f]{3}){1,2}$"
                       },
                       "background": {
-                        "default": "#151718",
+                        "default": "#1e2124",
                         "description": "The dark background color of the workspace",
                         "type": "string",
                         "minLength": 7,
@@ -1079,7 +1079,7 @@
                         "maxLength": 7,
                         "pattern": "^#([0-9a-f]{3}){1,2}$"
                       },
-                      "help": {
+                      "discovery": {
                         "default": "#818cf8",
                         "description": "The second brand specific color of the workspace",
                         "type": "string",
@@ -1175,7 +1175,7 @@
                       "background",
                       "brand",
                       "link",
-                      "help",
+                      "discovery",
                       "success",
                       "info",
                       "debug",
@@ -1191,7 +1191,7 @@
                     "type": "object",
                     "properties": {
                       "foreground": {
-                        "default": "#151718",
+                        "default": "#1e2124",
                         "description": "The dark background color of the workspace",
                         "type": "string",
                         "minLength": 7,
@@ -1236,7 +1236,7 @@
                         "maxLength": 7,
                         "pattern": "^#([0-9a-f]{3}){1,2}$"
                       },
-                      "help": {
+                      "discovery": {
                         "default": "#818cf8",
                         "description": "The second brand specific color of the workspace",
                         "type": "string",
@@ -1332,7 +1332,7 @@
                       "background",
                       "brand",
                       "link",
-                      "help",
+                      "discovery",
                       "success",
                       "info",
                       "debug",

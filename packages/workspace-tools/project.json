@@ -3,11 +3,10 @@
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "packages/workspace-tools/src",
   "projectType": "library",
-  "implicitDependencies": ["untyped", "unbuild", "esbuild"],
   "targets": {
     "build-untyped": {
       "executor": "nx:run-commands",
-      "dependsOn": ["clean", "^build"],
+      "dependsOn": ["^build"],
       "inputs": [
         "{projectRoot}/src/**/untyped.ts",
         "{projectRoot}/src/**/*.untyped.ts"
@@ -28,7 +27,7 @@
     },
     "build-base": {
       "executor": "nx:run-commands",
-      "dependsOn": ["clean", "build-untyped", "^build"],
+      "dependsOn": ["build-untyped"],
       "options": {
         "command": "tsup-node --config=tsup.config.ts",
         "cwd": "{projectRoot}"
@@ -44,15 +43,23 @@
           "pnpm copyfiles --up=3 ./packages/workspace-tools/assets/* dist/packages/workspace-tools/assets",
           "pnpm copyfiles --up=3 ./packages/workspace-tools/config/* dist/packages/workspace-tools/config",
           "pnpm copyfiles --up=3 ./packages/workspace-tools/docs/* dist/packages/workspace-tools/docs",
-          "pnpm copyfiles --up=3 \"./packages/workspace-tools/src/executors/**/*.json\" \"./packages/workspace-tools/src/executors/**/*.d.ts\" \"./packages/workspace-tools/src/generators/**/*.json\" \"./packages/workspace-tools/src/generators/**/*.d.ts\" packages/workspace-tools/dist/src",
           "pnpm copyfiles --up=3 \"./packages/workspace-tools/src/**/*.md\" dist/packages/workspace-tools/docs/api",
-          "pnpm copyfiles --up=4 \"./packages/workspace-tools/src/generators/*/files/**/*\" dist/packages/workspace-tools/dist/src/generators",
-          "pnpm copyfiles --up=3 \"./packages/workspace-tools/dist/**/*\" dist/packages/workspace-tools/dist"
+          "pnpm copyfiles --up=3 \"./packages/workspace-tools/dist/**/*\" dist/packages/workspace-tools/dist",
+          "pnpm copyfiles --up=3 \"./packages/workspace-tools/src/**/schema.d.ts\" \"./packages/workspace-tools/src/**/*.schema.d.ts\" dist/packages/workspace-tools/dist/src",
+          "pnpm copyfiles --up=3 \"./packages/workspace-tools/src/**/schema.json\" \"./packages/workspace-tools/src/**/*.schema.json\" dist/packages/workspace-tools/dist/src"
         ]
       }
     },
     "nx-release-publish": {
       "executor": "@storm-software/workspace-tools:npm-publish"
     }
-  }
+  },
+  "implicitDependencies": [
+    "untyped",
+    "unbuild",
+    "esbuild",
+    "package-constants",
+    "config-tools",
+    "config"
+  ]
 }

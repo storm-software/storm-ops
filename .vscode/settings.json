@@ -35,9 +35,6 @@
   "editor.bracketPairColorization.enabled": true,
   "editor.guides.bracketPairs": "active",
   "editor.tabCompletion": "on",
-  "typescript.tsserver.log": "off",
-  "typescript.tsdk": "node_modules/typescript/lib",
-  "typescript.enablePromptUseWorkspaceTsdk": true,
   "tailwindCSS.experimental.classRegex": [
     [
       "cva(?:<[^>]*>)?(([^)]*))",
@@ -143,6 +140,10 @@
     "editor.formatOnSave": true,
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
+  "[nix]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "brettm12345.nixfmt-vscode"
+  },
   "commitizen.capitalizeWindowsDriveLetter": true,
   "commitizen.autoSync": false,
   "commitizen.showOutputChannel": "always",
@@ -183,8 +184,5 @@
     "enable": true
   },
   "eslint.useFlatConfig": false,
-  "nxConsole.generateAiAgentRules": true,
-  "[nix]": {
-    "editor.defaultFormatter": "brettm12345.nixfmt-vscode"
-  }
+  "nxConsole.generateAiAgentRules": true
 }

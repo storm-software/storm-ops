@@ -1,0 +1,53 @@
+diff --git a/lib/rules/no-single-element-style-arrays.js b/lib/rules/no-single-element-style-arrays.js
+index ce43bc94cc63178c296a08cf9ecb24d6ee70fca0..a648c4af927085db64e37083c6bf71c049d10c54 100644
+--- a/lib/rules/no-single-element-style-arrays.js
++++ b/lib/rules/no-single-element-style-arrays.js
+@@ -25,7 +25,7 @@ module.exports = {
+           'Single element style arrays are not necessary and cause unnecessary re-renders',
+         fix(fixer) {
+           const realStyleNode = JSXExpressionNode.value.expression.elements[0];
+-          const styleSource = context.getSourceCode().getText(realStyleNode);
++          const styleSource = (context.sourceCode ?? context.getSourceCode()).getText(realStyleNode);
+           return fixer.replaceText(JSXExpressionNode.value.expression, styleSource);
+         },
+       });
+diff --git a/lib/rules/sort-styles.js b/lib/rules/sort-styles.js
+index e2be0294a87d6aea0a335f6448ccb7417c053a99..cc6dd3d387692017a0ea22d37004e109ea91ad06 100644
+--- a/lib/rules/sort-styles.js
++++ b/lib/rules/sort-styles.js
+@@ -30,7 +30,7 @@ function create(context) {
+   const { ignoreStyleProperties } = options;
+   const isValidOrder = order === 'asc' ? (a, b) => a <= b : (a, b) => a >= b;
+ 
+-  const sourceCode = context.getSourceCode();
++  const sourceCode = (context.sourceCode ?? context.getSourceCode());
+ 
+   function sort(array) {
+     return [].concat(array).sort((a, b) => {
+diff --git a/lib/rules/split-platform-components.js b/lib/rules/split-platform-components.js
+index 31ce4861531bc6ea6cb33163c7f4ab06835201e5..b1dd1435939301e1a6f74b31efd02d46211d4bbf 100644
+--- a/lib/rules/split-platform-components.js
++++ b/lib/rules/split-platform-components.js
+@@ -71,8 +71,7 @@ function create(context) {
+       }
+     },
+     'Program:exit': function () {
+-      const filename = context.getFilename();
+-      reportErrors(reactComponents, filename);
++      reportErrors(reactComponents, context.filename || context.getFilename());
+     },
+   };
+ }
+diff --git a/lib/util/Components.js b/lib/util/Components.js
+index f744d52fa076f5a284fd02ed5d852cbb51848b5b..e78f0d5120629d96951fbea41d4ca274cbedcd5a 100644
+--- a/lib/util/Components.js
++++ b/lib/util/Components.js
+@@ -100,7 +100,7 @@ Components.prototype.length = function () {
+ };
+ 
+ function componentRule(rule, context, _node) {
+-  const sourceCode = context.getSourceCode();
++  const sourceCode = (context.sourceCode ?? context.getSourceCode());
+   const components = new Components();
+ 
+   // Utilities for component detection

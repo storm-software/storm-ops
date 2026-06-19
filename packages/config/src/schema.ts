@@ -1,4 +1,4 @@
-import * as z from "zod/mini";
+import * as z from "zod/v4/mini";
 import {
   STORM_DEFAULT_BANNER_ALT,
   STORM_DEFAULT_ERROR_CODES_FILE
@@ -18,7 +18,7 @@ schemaRegistry.add(colorSchema, {
   description: "A base schema for describing the format of colors"
 });
 
-export const darkColorSchema = z._default(colorSchema, "#151718");
+export const darkColorSchema = z._default(colorSchema, "#1e2124");
 schemaRegistry.add(darkColorSchema, {
   description: "The dark background color of the workspace"
 });
@@ -48,8 +48,8 @@ schemaRegistry.add(linkColorSchema, {
   description: "The color used to display hyperlink text"
 });
 
-export const helpColorSchema = z._default(colorSchema, "#818cf8");
-schemaRegistry.add(helpColorSchema, {
+export const discoveryColorSchema = z._default(colorSchema, "#818cf8");
+schemaRegistry.add(discoveryColorSchema, {
   description: "The second brand specific color of the workspace"
 });
 
@@ -111,7 +111,7 @@ export const darkColorsSchema = z.object({
   alternate: alternateColorSchema,
   accent: accentColorSchema,
   link: linkColorSchema,
-  help: helpColorSchema,
+  discovery: discoveryColorSchema,
   success: successColorSchema,
   info: infoColorSchema,
   debug: debugColorSchema,
@@ -131,7 +131,7 @@ export const lightColorsSchema = z.object({
   alternate: alternateColorSchema,
   accent: accentColorSchema,
   link: linkColorSchema,
-  help: helpColorSchema,
+  discovery: discoveryColorSchema,
   success: successColorSchema,
   info: infoColorSchema,
   debug: debugColorSchema,
@@ -156,7 +156,7 @@ export const singleColorsSchema = z.object({
   alternate: alternateColorSchema,
   accent: accentColorSchema,
   link: linkColorSchema,
-  help: helpColorSchema,
+  discovery: discoveryColorSchema,
   success: successColorSchema,
   info: infoColorSchema,
   debug: debugColorSchema,

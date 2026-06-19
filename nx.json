@@ -48,25 +48,6 @@
         "command": "pnpm exec prettier \"{projectRoot}/**/*\" --write --ignore-unknown --no-error-on-unmatched-pattern --config=\"packages/prettier/src/config.json\" --ignore-path=\"packages/prettier/src/.prettierignore\" --cache --cache-location=\"tmp/prettier/{projectRoot}\" ",
         "color": true
       }
-    },
-    "@nx/esbuild:esbuild": {
-      "cache": true,
-      "dependsOn": ["^build"],
-      "inputs": ["production", "^production"]
-    },
-    "@nx/js:tsc": {
-      "cache": true,
-      "dependsOn": ["^build"],
-      "inputs": ["production", "^production"]
-    },
-    "@nx/eslint:lint": {
-      "cache": true,
-      "inputs": [
-        "default",
-        "{workspaceRoot}/.eslintrc.json",
-        "{workspaceRoot}/.eslintignore",
-        "{workspaceRoot}/eslint.config.js"
-      ]
     }
   },
   "release": {
@@ -74,39 +55,33 @@
       "packages": {
         "projects": ["packages/*"],
         "projectsRelationship": "independent",
-        "changelog": {
-          "createRelease": "github",
-          "entryWhenNoChanges": false
-        },
         "version": {
-          "groupPreVersionCommand": "pnpm build",
           "versionActions": "./dist/packages/workspace-tools/dist/src/release/js-version-actions.js",
+          "groupPreVersionCommand": "pnpm nx run workspace-tools:build",
           "currentVersionResolver": "git-tag",
-          "specifierSource": "conventional-commits"
-        },
-        "releaseTag": {
-          "pattern": "{projectName}@{version}"
+          "specifierSource": "conventional-commits",
+          "manifestRootsToUpdate": [
+            "{projectRoot}",
+            {
+              "path": "dist/{projectRoot}",
+              "preserveLocalDependencyProtocols": false
+            }
+          ]
         }
       },
       "crates": {
         "projects": ["crates/*"],
         "projectsRelationship": "independent",
-        "changelog": {
-          "createRelease": "github",
-          "entryWhenNoChanges": false
-        },
         "version": {
-          "groupPreVersionCommand": "pnpm build",
           "versionActions": "./dist/packages/workspace-tools/dist/src/release/rust-version-actions.js",
+          "groupPreVersionCommand": "pnpm nx run workspace-tools:build",
           "currentVersionResolver": "git-tag",
           "specifierSource": "conventional-commits"
-        },
-        "releaseTag": {
-          "pattern": "{projectName}@{version}"
         }
       }
     }
   },
+  "parallel": 5,
   "plugins": [
     {
       "plugin": "./dist/plugins/typescript/index.js",
@@ -119,8 +94,6 @@
     "./dist/plugins/cloudflare/index.js",
     "./dist/plugins/rust/index.js"
   ],
-  "parallel": 5,
-  "defaultBase": "main",
   "neverConnectToCloud": true,
   "analytics": false
 }

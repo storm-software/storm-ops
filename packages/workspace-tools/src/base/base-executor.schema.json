@@ -8,12 +8,9 @@
       "type": "string",
       "format": "path",
       "description": "The output path for the build",
-      "id": "#outputPath",
-      "default": "dist/{projectRoot}"
+      "id": "#outputPath"
     }
   },
   "type": "object",
-  "default": {
-    "outputPath": "dist/{projectRoot}"
-  }
+  "default": {}
 }

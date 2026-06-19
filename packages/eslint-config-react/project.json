@@ -1,0 +1,39 @@
+{
+  "name": "eslint-config-react",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/eslint-config-react/src",
+  "projectType": "library",
+  "targets": {
+    "build-base": {
+      "executor": "nx:run-commands",
+      "dependsOn": ["^build"],
+      "options": {
+        "command": "tsup-node --config=tsup.config.ts",
+        "cwd": "{projectRoot}"
+      }
+    },
+    "build": {
+      "cache": true,
+      "inputs": ["{workspaceRoot}/packages/eslint-config-react/dist/**"],
+      "outputs": ["{workspaceRoot}/dist/packages/eslint-config-react/**"],
+      "executor": "nx:run-commands",
+      "dependsOn": ["build-base"],
+      "options": {
+        "commands": [
+          "pnpm copyfiles --up=3 packages/eslint-config-react/dist/* dist/packages/eslint-config-react/dist",
+          "pnpm copyfiles --up=3 packages/eslint-config-react/dist/rules/* dist/packages/eslint-config-react/dist",
+          "pnpm copyfiles --up=3 packages/eslint-config-react/dist/utils/* dist/packages/eslint-config-react/dist",
+          "pnpm copyfiles --up=3 packages/eslint-config-react/src/rules.d.ts dist/packages/eslint-config-react/dist",
+          "pnpm copyfiles --up=2 packages/eslint-config-react/declarations.d.ts dist/packages/eslint-config-react",
+          "pnpm copyfiles --up=2 packages/eslint-config-react/README.md packages/eslint-config-react/CHANGELOG.md packages/eslint-config-react/package.json dist/packages/eslint-config-react",
+          "pnpm copyfiles LICENSE dist/packages/eslint-config-react"
+        ],
+        "parallel": false,
+        "color": true
+      }
+    },
+    "nx-release-publish": {
+      "executor": "@storm-software/workspace-tools:npm-publish"
+    }
+  }
+}

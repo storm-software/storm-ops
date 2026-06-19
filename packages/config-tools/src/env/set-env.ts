@@ -10,6 +10,15 @@ import { getLogLevel } from "../logger/get-log-level";
 import { LogLevel } from "../types";
 import { correctPaths } from "../utilities/correct-paths";
 
+declare global {
+  // eslint-disable-next-line @typescript-eslint/no-namespace
+  namespace NodeJS {
+    interface ProcessEnv {
+      [key: string]: string | undefined;
+    }
+  }
+}
+
 /**
  * Get the config for an extension module of Storm workspace from environment variables
  *
@@ -356,8 +365,8 @@ const setSingleThemeColorsEnv = (prefix: string, config: SingleThemeColors) => {
   if (config.link) {
     process.env[`${prefix}LINK`] = config.link;
   }
-  if (config.help) {
-    process.env[`${prefix}HELP`] = config.help;
+  if (config.discovery) {
+    process.env[`${prefix}DISCOVERY`] = config.discovery;
   }
   if (config.success) {
     process.env[`${prefix}SUCCESS`] = config.success;
@@ -422,8 +431,8 @@ const setBaseThemeColorsEnv = (
   if (config.link) {
     process.env[`${prefix}LINK`] = config.link;
   }
-  if (config.help) {
-    process.env[`${prefix}HELP`] = config.help;
+  if (config.discovery) {
+    process.env[`${prefix}DISCOVERY`] = config.discovery;
   }
   if (config.success) {
     process.env[`${prefix}SUCCESS`] = config.success;

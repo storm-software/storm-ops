@@ -1,6 +1,6 @@
 {
   "name": "@storm-software/build-tools",
-  "version": "0.158.143",
+  "version": "0.158.233",
   "private": false,
   "description": "A comprehensive set of tools for building and managing projects within a Storm workspace. Includes builders such as rollup, rolldown, tsup, and unbuild, along with various utilities.",
   "keywords": [
@@ -19,7 +19,7 @@
   },
   "repository": {
     "type": "github",
-    "url": "https://github.com/storm-software/storm-ops",
+    "url": "https://github.com/storm-software/storm-ops.git",
     "directory": "packages/build-tools"
   },
   "funding": {
@@ -189,7 +189,7 @@
   "dependencies": {
     "@swc/core": "catalog:",
     "glob": "catalog:",
-    "resolve": "1.22.8",
+    "resolve": "1.22.12",
     "resolve-from": "5.0.0",
     "rollup": "catalog:"
   },

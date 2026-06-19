@@ -29,7 +29,8 @@ export default defineConfig([
       "@inquirer/prompts",
       "defu",
       "zod",
-      "zod/mini"
+      "zod/mini",
+      "@storm-software/package-constants"
     ],
     skipNodeModulesBundle: true
   }

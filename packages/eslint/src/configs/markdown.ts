@@ -1,3 +1,7 @@
+import {
+  GLOB_MARKDOWN,
+  GLOB_MARKDOWN_IN_MARKDOWN
+} from "@storm-software/package-constants/globs";
 import { mergeProcessors, processorPassThrough } from "eslint-merge-processors";
 import type {
   OptionsComponentExts,
@@ -5,7 +9,6 @@ import type {
   OptionsOverrides,
   TypedFlatConfigItem
 } from "../types";
-import { GLOB_MARKDOWN, GLOB_MARKDOWN_IN_MARKDOWN } from "../utils/constants";
 import { interopDefault, parserPlain } from "../utils/helpers";
 
 export async function markdown(

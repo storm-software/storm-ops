@@ -1,6 +1,6 @@
 {
   "name": "@storm-software/prettier",
-  "version": "0.59.36",
+  "version": "0.59.126",
   "private": false,
   "description": "⚡ A package containing the base Prettier configuration used by Storm Software across many projects.",
   "keywords": [
@@ -15,7 +15,7 @@
   "bugs": "https://github.com/storm-software/storm-ops/issues",
   "repository": {
     "type": "github",
-    "url": "https://github.com/storm-software/storm-ops",
+    "url": "https://github.com/storm-software/storm-ops.git",
     "directory": "packages/prettier"
   },
   "license": "Apache-2.0",
@@ -24,17 +24,63 @@
     "email": "contact@stormsoftware.com",
     "url": "https://stormsoftware.com"
   },
-  "type": "commonjs",
+  "type": "module",
   "exports": {
     ".": {
-      "import": "./index.js",
-      "require": "./index.cjs",
-      "default": "./index.js"
+      "require": {
+        "types": "./index.d.cts",
+        "default": "./index.cjs"
+      },
+      "import": {
+        "types": "./index.d.mts",
+        "default": "./index.mjs"
+      },
+      "default": {
+        "types": "./index.d.mts",
+        "default": "./index.mjs"
+      }
     },
     "./index": {
-      "import": "./index.js",
-      "require": "./index.cjs",
-      "default": "./index.js"
+      "require": {
+        "types": "./index.d.cts",
+        "default": "./index.cjs"
+      },
+      "import": {
+        "types": "./index.d.mts",
+        "default": "./index.mjs"
+      },
+      "default": {
+        "types": "./index.d.mts",
+        "default": "./index.mjs"
+      }
+    },
+    "./config": {
+      "require": {
+        "types": "./index.d.cts",
+        "default": "./index.cjs"
+      },
+      "import": {
+        "types": "./index.d.mts",
+        "default": "./index.mjs"
+      },
+      "default": {
+        "types": "./index.d.mts",
+        "default": "./index.mjs"
+      }
+    },
+    "./recommended": {
+      "require": {
+        "types": "./index.d.cts",
+        "default": "./index.cjs"
+      },
+      "import": {
+        "types": "./index.d.mts",
+        "default": "./index.mjs"
+      },
+      "default": {
+        "types": "./index.d.mts",
+        "default": "./index.mjs"
+      }
     },
     "./.prettierignore": "./.prettierignore",
     "./.prettierignore-exclude-packagejson": "./.prettierignore-exclude-packagejson",
@@ -49,24 +95,20 @@
     "./tailwindcss.json": "./tailwindcss.json",
     "./package.json": "./package.json"
   },
+  "main": "./index.cjs",
+  "types": "./index.d.cts",
+  "typings": "./index.d.mts",
   "files": [
     "./.prettierignore",
     "./.prettierignore-exclude-packagejson",
-    "./all.json",
-    "./base.json",
-    "./config.json",
-    "./index.cjs",
-    "./index.js",
-    "./jsdoc.json",
-    "./package.json",
-    "./prisma.json",
-    "./recommended.json",
-    "./exclude-packagejson.json",
-    "./solidity.json",
-    "./tailwindcss.json"
+    "./*.json",
+    "./*.cjs",
+    "./*.d.cts",
+    "./*.mjs",
+    "./*.d.mts"
   ],
   "dependencies": {
-    "prettier-plugin-jsdoc": "^1.8.0",
+    "prettier-plugin-jsdoc": "^1.8.1",
     "prettier-plugin-organize-imports": "^4.3.0",
     "prettier-plugin-packagejson": "catalog:",
     "prettier-plugin-sh": "^0.15.0",
@@ -105,7 +147,7 @@
       "optional": false
     },
     "prettier-plugin-prisma": {
-      "optional": false
+      "optional": true
     },
     "prettier-plugin-sh": {
       "optional": false

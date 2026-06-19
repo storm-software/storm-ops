@@ -47,7 +47,9 @@ export const buildCargoCommand = (
 
   args.push(baseCommand);
 
-  for (const [key, value] of Object.entries(options)) {
+  for (const [key, value] of Object.entries(options).filter(
+    ([key]) => key && key !== "_"
+  )) {
     if (
       key === "toolchain" ||
       key === "release" ||
@@ -63,7 +65,7 @@ export const buildCargoCommand = (
       }
     } else if (Array.isArray(value)) {
       for (const item of value) {
-        args.push(`--${key}`, item);
+        args.push(`--${key}`, String(item));
       }
     } else {
       args.push(`--${key}`, String(value));
@@ -161,7 +163,7 @@ export function cargoCommandSync(
     };
   } catch (e) {
     return {
-      output: e as string,
+      output: (e as Error).message,
       success: false
     };
   }

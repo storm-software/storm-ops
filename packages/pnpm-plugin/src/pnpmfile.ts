@@ -7,15 +7,14 @@
  * @packageDocumentation
  */
 
-import { INTERNAL_PACKAGES } from "@storm-software/build-tools/constants/internal-packages";
-import defu from "defu";
+import { INTERNAL_PACKAGES } from "@storm-software/package-constants/internal-packages";
 import path from "node:path";
 import { pathToFileURL } from "node:url";
 
-export default {
+const config = {
   hooks: {
     updateConfig(config) {
-      const result = defu(config, {
+      const result = {
         enableGlobalVirtualStore: true,
         enablePrePostScripts: false,
         ignorePatchFailures: false,
@@ -26,16 +25,20 @@ export default {
         catalogMode: "prefer",
         cleanupUnusedCatalogs: true,
         linkWorkspacePackages: true,
+        dedupeDirectDeps: true,
+        dedupePeerDependents: true,
+        useNodeVersion: "26.2.0",
         minimumReleaseAge: 800,
-        minimumReleaseAgeExclude: INTERNAL_PACKAGES
-      });
+        minimumReleaseAgeExclude: [...INTERNAL_PACKAGES],
+        ...config
+      };
 
       if (result.hoistPattern?.length === 1 && result.hoistPattern[0] === "*") {
         result.hoistPattern = [];
       }
 
       // From @pnpm/plugin-esm-node-path
-      config.extraEnv.NODE_OPTIONS = `${
+      result.extraEnv.NODE_OPTIONS = `${
         process.env.NODE_OPTIONS ? `${process.env.NODE_OPTIONS} ` : ""
       }--import=data:text/javascript,${encodeURIComponent(
         `import{register}from'node:module';register('${
@@ -43,7 +46,7 @@ export default {
         }','${pathToFileURL(path.resolve("./")).href}');`
       )}`;
 
-      return config;
+      return result;
     },
     readPackage(pkg) {
       for (const [devDepName, devDepRange] of Object.entries(
@@ -66,3 +69,5 @@ export default {
     }
   }
 };
+
+export default config;

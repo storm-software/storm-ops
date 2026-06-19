@@ -5,76 +5,14 @@
 #   https://github.com/evilmartians/lefthook/blob/master/docs/configuration.md   #
 
 $schema: https://raw.githubusercontent.com/evilmartians/lefthook/refs/heads/master/schema.json
-assert_lefthook_installed: true
-no_tty: false
-no_auto_install: false
-min_version: "1.5.0"
 extends:
   - ./recommended.yml
 
 pre-commit:
   commands:
-    lint:
-      glob:
-        - "*.js"
-        - "*.ts"
-        - "*.cjs"
-        - "*.mjs"
-        - "*.d.cts"
-        - "*.d.mts"
-        - "*.jsx"
-        - "*.tsx"
-        - "*.json"
-        - "*.jsonc"
-        - "*.yaml"
-        - "*.yml"
-        - "*.md"
-        - "*.mdx"
-        - "*.markdown"
-        - "*.css"
-        - "*.scss"
-        - "*.sass"
-        - "*.less"
-        - "*.stylus"
-        - "*.graphql"
-        - "*.gql"
-        - "*.xml"
-        - "*.svg"
-        - "*.env"
-        - ".env.{local,development,test,production,staging}"
-      run: pnpm lint --files {staged_files}
-      stage_fixed: true
-    eslint:
-      glob:
-        - "*.js"
-        - "*.ts"
-        - "*.cjs"
-        - "*.mjs"
-        - "*.d.cts"
-        - "*.d.mts"
-        - "*.jsx"
-        - "*.tsx"
-        - "*.json"
-        - "*.jsonc"
-        - "*.yaml"
-        - "*.yml"
-        - "*.md"
-        - "*.mdx"
-        - "*.markdown"
-        - "*.css"
-        - "*.scss"
-        - "*.sass"
-        - "*.less"
-        - "*.stylus"
-        - "*.graphql"
-        - "*.gql"
-        - "*.xml"
-        - "*.svg"
-        - "*.env"
-        - ".env.{local,development,test,production,staging}"
-      run: "pnpm exec eslint --fix --color --no-warn-ignored --cache --cache-location
-        \"./node_modules/.cache/storm/eslint-cache\" --config
-        \"./eslint.config.mjs\" {staged_files}"
+    treefmt:
+      glob: "**/*"
+      run: treefmt {staged_files}
       stage_fixed: true
 
 pre-push:

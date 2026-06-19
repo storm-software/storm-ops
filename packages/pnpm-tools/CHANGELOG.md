@@ -1,6 +1,1149 @@
-![Storm Software's logo banner](https://public.storm-cdn.com/storm-software/banner-1280x320.gif)
+![Storm Software's logo banner](https://public.storm-cdn.com/storm-software/media/banner-1280x320.gif)
 
 # Changelog for Storm Ops - Pnpm Tools
+
+## [0.7.84](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.7.84) (06/18/2026)
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.10**
+- Updated **config-tools** to **v1.190.73**
+- Updated **npm-tools** to **v0.6.191**
+- Updated **package-constants** to **v0.1.86**
+- Updated **testing-tools** to **v1.119.226**
+
+## [0.7.83](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.7.83) (06/18/2026)
+
+### Bug Fixes
+
+- **eslint:** Remove unneeded tsdoc dependency for eslint config ([7ccbee070](https://github.com/storm-software/storm-ops/commit/7ccbee070))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.9**
+- Updated **config-tools** to **v1.190.72**
+- Updated **npm-tools** to **v0.6.190**
+- Updated **package-constants** to **v0.1.85**
+- Updated **testing-tools** to **v1.119.225**
+
+## [0.7.82](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.7.82) (06/18/2026)
+
+### Bug Fixes
+
+- **eslint:** Resolve issue with eslint importing patched dependency directly ([864f5d538](https://github.com/storm-software/storm-ops/commit/864f5d538))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.8**
+- Updated **config-tools** to **v1.190.71**
+- Updated **npm-tools** to **v0.6.189**
+- Updated **package-constants** to **v0.1.84**
+- Updated **testing-tools** to **v1.119.224**
+
+## [0.7.81](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.7.81) (06/18/2026)
+
+### Bug Fixes
+
+- **linting-tools:** Resolve issue running CLI from lefthook and update version shas ([1751cb249](https://github.com/storm-software/storm-ops/commit/1751cb249))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.7**
+- Updated **config-tools** to **v1.190.70**
+- Updated **npm-tools** to **v0.6.188**
+- Updated **package-constants** to **v0.1.83**
+- Updated **testing-tools** to **v1.119.223**
+
+## [0.7.80](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.7.80) (06/15/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update asset references to the newly created `media` folder ([40a620402](https://github.com/storm-software/storm-ops/commit/40a620402))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.6**
+- Updated **config-tools** to **v1.190.69**
+- Updated **npm-tools** to **v0.6.187**
+- Updated **package-constants** to **v0.1.82**
+- Updated **testing-tools** to **v1.119.222**
+
+## [0.7.79](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.7.79) (06/14/2026)
+
+### Miscellaneous
+
+- **monorepo:** Added internal Nx plugin to ensure `implicitDependencies` are applied to all of the workspace's packages ([bbe43f892](https://github.com/storm-software/storm-ops/commit/bbe43f892))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.5**
+- Updated **config-tools** to **v1.190.68**
+- Updated **npm-tools** to **v0.6.186**
+- Updated **package-constants** to **v0.1.81**
+- Updated **testing-tools** to **v1.119.221**
+
+## [0.7.78](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.7.78) (06/14/2026)
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.4**
+- Updated **config-tools** to **v1.190.67**
+- Updated **npm-tools** to **v0.6.185**
+- Updated **package-constants** to **v0.1.80**
+- Updated **testing-tools** to **v1.119.220**
+
+## [0.7.77](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.7.77) (06/14/2026)
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.3**
+- Updated **config-tools** to **v1.190.66**
+- Updated **npm-tools** to **v0.6.184**
+- Updated **package-constants** to **v0.1.79**
+- Updated **testing-tools** to **v1.119.219**
+
+## [0.7.76](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.7.76) (06/14/2026)
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.2**
+- Updated **config-tools** to **v1.190.65**
+- Updated **npm-tools** to **v0.6.183**
+- Updated **package-constants** to **v0.1.78**
+- Updated **testing-tools** to **v1.119.218**
+
+## [0.7.75](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.7.75) (06/14/2026)
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.1**
+- Updated **config-tools** to **v1.190.64**
+- Updated **npm-tools** to **v0.6.182**
+- Updated **package-constants** to **v0.1.77**
+- Updated **testing-tools** to **v1.119.217**
+
+## [0.7.74](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.7.74) (06/14/2026)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate `README` markdown files ([2f934c964](https://github.com/storm-software/storm-ops/commit/2f934c964))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.0**
+- Updated **config-tools** to **v1.190.63**
+- Updated **npm-tools** to **v0.6.181**
+- Updated **package-constants** to **v0.1.76**
+- Updated **testing-tools** to **v1.119.216**
+
+## [0.7.73](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.7.73) (06/14/2026)
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.94**
+- Updated **config-tools** to **v1.190.62**
+- Updated **npm-tools** to **v0.6.180**
+- Updated **package-constants** to **v0.1.75**
+- Updated **testing-tools** to **v1.119.215**
+
+## [0.7.72](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.7.72) (06/13/2026)
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.93**
+- Updated **config-tools** to **v1.190.61**
+- Updated **npm-tools** to **v0.6.179**
+- Updated **package-constants** to **v0.1.74**
+- Updated **testing-tools** to **v1.119.214**
+
+## [0.7.71](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.7.71) (06/13/2026)
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.92**
+- Updated **config-tools** to **v1.190.60**
+- Updated **npm-tools** to **v0.6.178**
+- Updated **package-constants** to **v0.1.73**
+- Updated **testing-tools** to **v1.119.213**
+
+## [0.7.70](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.7.70) (06/13/2026)
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.91**
+- Updated **config-tools** to **v1.190.59**
+- Updated **npm-tools** to **v0.6.177**
+- Updated **package-constants** to **v0.1.72**
+- Updated **testing-tools** to **v1.119.212**
+
+## [0.7.69](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.7.69) (06/13/2026)
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.90**
+- Updated **config-tools** to **v1.190.58**
+- Updated **npm-tools** to **v0.6.176**
+- Updated **package-constants** to **v0.1.71**
+- Updated **testing-tools** to **v1.119.211**
+
+## [0.7.68](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.7.68) (06/13/2026)
+
+### Features
+
+- **eslint-config-react:** Initial check-in of the shared React ESLint config package ([8f39c5c32](https://github.com/storm-software/storm-ops/commit/8f39c5c32))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.89**
+- Updated **config-tools** to **v1.190.57**
+- Updated **npm-tools** to **v0.6.175**
+- Updated **package-constants** to **v0.1.70**
+- Updated **testing-tools** to **v1.119.210**
+
+## [0.7.67](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.7.67) (06/13/2026)
+
+### Bug Fixes
+
+- **monorepo:** Ensure `es-toolkit` versions align properly ([6c387e4d6](https://github.com/storm-software/storm-ops/commit/6c387e4d6))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.88**
+- Updated **config-tools** to **v1.190.56**
+- Updated **npm-tools** to **v0.6.174**
+- Updated **package-constants** to **v0.1.69**
+- Updated **testing-tools** to **v1.119.209**
+
+## [0.7.66](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.7.66) (06/13/2026)
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.87**
+- Updated **config-tools** to **v1.190.55**
+- Updated **npm-tools** to **v0.6.173**
+- Updated **package-constants** to **v0.1.68**
+- Updated **testing-tools** to **v1.119.208**
+
+## [0.7.65](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.7.65) (06/11/2026)
+
+### Bug Fixes
+
+- **git-tools:** Update lefthook configurations to reduce duplicates ([2a41fcbb1](https://github.com/storm-software/storm-ops/commit/2a41fcbb1))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.86**
+- Updated **config-tools** to **v1.190.54**
+- Updated **npm-tools** to **v0.6.172**
+- Updated **package-constants** to **v0.1.67**
+- Updated **testing-tools** to **v1.119.207**
+
+## [0.7.64](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.7.64) (06/11/2026)
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.85**
+- Updated **config-tools** to **v1.190.53**
+- Updated **npm-tools** to **v0.6.171**
+- Updated **package-constants** to **v0.1.66**
+- Updated **testing-tools** to **v1.119.206**
+
+## [0.7.63](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.7.63) (06/11/2026)
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.84**
+- Updated **config-tools** to **v1.190.52**
+- Updated **npm-tools** to **v0.6.170**
+- Updated **package-constants** to **v0.1.65**
+- Updated **testing-tools** to **v1.119.205**
+
+## [0.7.62](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.7.62) (06/10/2026)
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.83**
+- Updated **config-tools** to **v1.190.51**
+- Updated **npm-tools** to **v0.6.169**
+- Updated **package-constants** to **v0.1.64**
+- Updated **testing-tools** to **v1.119.204**
+
+## [0.7.61](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.7.61) (06/10/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update `README.md` files ([fe24f6887](https://github.com/storm-software/storm-ops/commit/fe24f6887))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.82**
+- Updated **config-tools** to **v1.190.50**
+- Updated **npm-tools** to **v0.6.168**
+- Updated **package-constants** to **v0.1.63**
+- Updated **testing-tools** to **v1.119.203**
+
+## [0.7.60](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.7.60) (06/10/2026)
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.81**
+- Updated **config-tools** to **v1.190.49**
+- Updated **npm-tools** to **v0.6.167**
+- Updated **package-constants** to **v0.1.62**
+- Updated **testing-tools** to **v1.119.202**
+
+## [0.7.59](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.7.59) (06/10/2026)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate `pnpm-lock.yaml` and `README.md` files ([989ff5a35](https://github.com/storm-software/storm-ops/commit/989ff5a35))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.80**
+- Updated **config-tools** to **v1.190.48**
+- Updated **npm-tools** to **v0.6.166**
+- Updated **package-constants** to **v0.1.61**
+- Updated **testing-tools** to **v1.119.201**
+
+## [0.7.58](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.7.58) (06/10/2026)
+
+### Miscellaneous
+
+- **monorepo:** Align package dependencies and update `README.md` files ([a1d1fd5b8](https://github.com/storm-software/storm-ops/commit/a1d1fd5b8))
+
+### Bug Fixes
+
+- **eslint:** Resolve issue using internal eslint plugin packages ([64b3b7dfd](https://github.com/storm-software/storm-ops/commit/64b3b7dfd))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.79**
+- Updated **config-tools** to **v1.190.47**
+- Updated **npm-tools** to **v0.6.165**
+- Updated **package-constants** to **v0.1.60**
+- Updated **testing-tools** to **v1.119.200**
+
+## [0.7.57](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.7.57) (06/08/2026)
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.78**
+- Updated **config-tools** to **v1.190.46**
+- Updated **npm-tools** to **v0.6.164**
+- Updated **package-constants** to **v0.1.59**
+- Updated **testing-tools** to **v1.119.199**
+
+## [0.7.56](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.7.56) (06/08/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update `README.md` and `pnpm-lock.yaml` files ([63d786b3a](https://github.com/storm-software/storm-ops/commit/63d786b3a))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.77**
+- Updated **config-tools** to **v1.190.45**
+- Updated **npm-tools** to **v0.6.163**
+- Updated **package-constants** to **v0.1.58**
+- Updated **testing-tools** to **v1.119.198**
+
+## [0.7.55](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.7.55) (06/08/2026)
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.76**
+- Updated **config-tools** to **v1.190.44**
+- Updated **npm-tools** to **v0.6.162**
+- Updated **package-constants** to **v0.1.57**
+- Updated **testing-tools** to **v1.119.197**
+
+## [0.7.54](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.7.54) (06/08/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace packages `README.md` files ([7d65425b0](https://github.com/storm-software/storm-ops/commit/7d65425b0))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.75**
+- Updated **config-tools** to **v1.190.43**
+- Updated **npm-tools** to **v0.6.161**
+- Updated **package-constants** to **v0.1.56**
+- Updated **testing-tools** to **v1.119.196**
+
+## [0.7.53](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.7.53) (06/08/2026)
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.74**
+- Updated **config-tools** to **v1.190.42**
+- Updated **npm-tools** to **v0.6.160**
+- Updated **package-constants** to **v0.1.55**
+- Updated **testing-tools** to **v1.119.195**
+
+## [0.7.52](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.7.52) (06/08/2026)
+
+### Bug Fixes
+
+- **pnpm-tools:** Resolve issue writing invalid versions to pnpm catalog ([3c07617cb](https://github.com/storm-software/storm-ops/commit/3c07617cb))
+
+### Features
+
+- **oxlint:** Added oxlint config package and eslint plugins ([80c3439b6](https://github.com/storm-software/storm-ops/commit/80c3439b6))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.73**
+- Updated **config-tools** to **v1.190.41**
+- Updated **npm-tools** to **v0.6.159**
+- Updated **package-constants** to **v0.1.54**
+- Updated **testing-tools** to **v1.119.194**
+
+## [0.7.51](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.7.51) (06/01/2026)
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.72**
+- Updated **config-tools** to **v1.190.40**
+- Updated **npm-tools** to **v0.6.158**
+- Updated **package-constants** to **v0.1.53**
+- Updated **testing-tools** to **v1.119.193**
+
+## [0.7.50](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.7.50) (06/01/2026)
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.71**
+- Updated **config-tools** to **v1.190.39**
+- Updated **npm-tools** to **v0.6.157**
+- Updated **package-constants** to **v0.1.52**
+- Updated **testing-tools** to **v1.119.192**
+
+## [0.7.49](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.7.49) (06/01/2026)
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.70**
+- Updated **config-tools** to **v1.190.38**
+- Updated **npm-tools** to **v0.6.156**
+- Updated **package-constants** to **v0.1.51**
+- Updated **testing-tools** to **v1.119.191**
+
+## [0.7.48](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.7.48) (05/30/2026)
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.69**
+- Updated **config-tools** to **v1.190.37**
+- Updated **npm-tools** to **v0.6.155**
+- Updated **package-constants** to **v0.1.50**
+- Updated **testing-tools** to **v1.119.190**
+
+## [0.7.47](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.7.47) (05/30/2026)
+
+### Miscellaneous
+
+- **devenv-modules:** Removed unneeded `input` modules ([25f4a61d5](https://github.com/storm-software/storm-ops/commit/25f4a61d5))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.68**
+- Updated **config-tools** to **v1.190.36**
+- Updated **npm-tools** to **v0.6.154**
+- Updated **package-constants** to **v0.1.49**
+- Updated **testing-tools** to **v1.119.189**
+
+## [0.7.46](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.7.46) (05/30/2026)
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.67**
+- Updated **config-tools** to **v1.190.35**
+- Updated **npm-tools** to **v0.6.153**
+- Updated **package-constants** to **v0.1.48**
+- Updated **testing-tools** to **v1.119.188**
+
+## [0.7.45](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.7.45) (05/28/2026)
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.66**
+- Updated **config-tools** to **v1.190.34**
+- Updated **npm-tools** to **v0.6.152**
+- Updated **package-constants** to **v0.1.47**
+- Updated **testing-tools** to **v1.119.187**
+
+## [0.7.44](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.7.44) (05/26/2026)
+
+### Miscellaneous
+
+- **devenv-modules:** Update shared K8s modules ([d571d536f](https://github.com/storm-software/storm-ops/commit/d571d536f))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.65**
+- Updated **config-tools** to **v1.190.33**
+- Updated **npm-tools** to **v0.6.151**
+- Updated **package-constants** to **v0.1.46**
+- Updated **testing-tools** to **v1.119.186**
+
+## [0.7.43](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.7.43) (05/26/2026)
+
+### Updated Dependencies
+
+- Updated **npm-tools** to **v0.6.150**
+
+## [0.7.42](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.7.42) (05/26/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update nodejs to v26.2.0 and pnpm to v11.1.2 ([855c4d4f0](https://github.com/storm-software/storm-ops/commit/855c4d4f0))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.64**
+- Updated **config-tools** to **v1.190.32**
+- Updated **npm-tools** to **v0.6.149**
+- Updated **package-constants** to **v0.1.45**
+- Updated **testing-tools** to **v1.119.185**
+
+## [0.7.41](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.7.41) (05/26/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace package dependencies ([859ec16d2](https://github.com/storm-software/storm-ops/commit/859ec16d2))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.63**
+- Updated **config-tools** to **v1.190.31**
+- Updated **npm-tools** to **v0.6.148**
+- Updated **package-constants** to **v0.1.44**
+- Updated **testing-tools** to **v1.119.184**
+
+## [0.7.40](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.7.40) (05/25/2026)
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.62**
+- Updated **config-tools** to **v1.190.30**
+- Updated **npm-tools** to **v0.6.147**
+- Updated **package-constants** to **v0.1.43**
+- Updated **testing-tools** to **v1.119.183**
+
+## [0.7.39](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.7.39) (05/22/2026)
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.61**
+- Updated **config-tools** to **v1.190.29**
+- Updated **npm-tools** to **v0.6.146**
+- Updated **package-constants** to **v0.1.42**
+- Updated **testing-tools** to **v1.119.182**
+
+## [0.7.38](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.7.38) (05/22/2026)
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.60**
+- Updated **config-tools** to **v1.190.28**
+- Updated **npm-tools** to **v0.6.145**
+- Updated **package-constants** to **v0.1.41**
+- Updated **testing-tools** to **v1.119.181**
+
+## [0.7.37](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.7.37) (05/22/2026)
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.59**
+- Updated **config-tools** to **v1.190.27**
+- Updated **npm-tools** to **v0.6.144**
+- Updated **package-constants** to **v0.1.40**
+- Updated **testing-tools** to **v1.119.180**
+
+## [0.7.36](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.7.36) (05/20/2026)
+
+### Features
+
+- **workspace-tools:** Added GitHub OIDC token retrieval to `npm-publish` executor ([a154fdcb8](https://github.com/storm-software/storm-ops/commit/a154fdcb8))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.58**
+- Updated **config-tools** to **v1.190.26**
+- Updated **npm-tools** to **v0.6.143**
+- Updated **package-constants** to **v0.1.39**
+- Updated **testing-tools** to **v1.119.179**
+
+## [0.7.35](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.7.35) (05/20/2026)
+
+### Miscellaneous
+
+- **monorepo:** Ensure workspace package versions align ([3cb6e486a](https://github.com/storm-software/storm-ops/commit/3cb6e486a))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.57**
+- Updated **config-tools** to **v1.190.25**
+- Updated **npm-tools** to **v0.6.142**
+- Updated **package-constants** to **v0.1.38**
+- Updated **testing-tools** to **v1.119.178**
+
+## [0.7.34](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.7.34) (05/20/2026)
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.56**
+- Updated **config-tools** to **v1.190.24**
+- Updated **npm-tools** to **v0.6.141**
+- Updated **package-constants** to **v0.1.37**
+- Updated **testing-tools** to **v1.119.177**
+
+## [0.7.33](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.7.33) (05/20/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update packages' `README.md` files ([2d2aae1a6](https://github.com/storm-software/storm-ops/commit/2d2aae1a6))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.55**
+- Updated **config-tools** to **v1.190.23**
+- Updated **npm-tools** to **v0.6.140**
+- Updated **package-constants** to **v0.1.36**
+- Updated **testing-tools** to **v1.119.176**
+
+## [0.7.32](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.7.32) (05/19/2026)
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.54**
+- Updated **config-tools** to **v1.190.22**
+- Updated **npm-tools** to **v0.6.139**
+- Updated **package-constants** to **v0.1.35**
+- Updated **testing-tools** to **v1.119.175**
+
+## [0.7.31](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.7.31) (05/19/2026)
+
+### Updated Dependencies
+
+- Updated **config** to **v1.137.53**
+- Updated **config-tools** to **v1.190.21**
+- Updated **npm-tools** to **v0.6.138**
+- Updated **package-constants** to **v0.1.34**
+- Updated **testing-tools** to **v1.119.174**
+
+## [0.7.30](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.7.30) (05/16/2026)
+
+### Updated Dependencies
+
+- Updated **package-constants** to **v0.1.33**
+- Updated **testing-tools** to **v1.119.173**
+- Updated **config-tools** to **v1.190.20**
+- Updated **npm-tools** to **v0.6.137**
+- Updated **config** to **v1.137.52**
+
+## [0.7.29](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.7.29) (05/16/2026)
+
+### Updated Dependencies
+
+- Updated **package-constants** to **v0.1.32**
+- Updated **testing-tools** to **v1.119.172**
+- Updated **config-tools** to **v1.190.19**
+- Updated **npm-tools** to **v0.6.136**
+- Updated **config** to **v1.137.51**
+
+## [0.7.28](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.7.28) (05/15/2026)
+
+### Updated Dependencies
+
+- Updated **package-constants** to **v0.1.31**
+- Updated **testing-tools** to **v1.119.171**
+- Updated **config-tools** to **v1.190.18**
+- Updated **npm-tools** to **v0.6.135**
+- Updated **config** to **v1.137.50**
+
+## [0.7.27](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.7.27) (05/15/2026)
+
+### Updated Dependencies
+
+- Updated **package-constants** to **v0.1.30**
+- Updated **testing-tools** to **v1.119.170**
+- Updated **config-tools** to **v1.190.17**
+- Updated **npm-tools** to **v0.6.134**
+- Updated **config** to **v1.137.49**
+
+## [0.7.26](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.7.26) (05/15/2026)
+
+### Updated Dependencies
+
+- Updated **package-constants** to **v0.1.29**
+- Updated **testing-tools** to **v1.119.169**
+- Updated **config-tools** to **v1.190.16**
+- Updated **npm-tools** to **v0.6.133**
+- Updated **config** to **v1.137.48**
+
+## [0.7.25](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.7.25) (05/15/2026)
+
+### Updated Dependencies
+
+- Updated **package-constants** to **v0.1.28**
+- Updated **testing-tools** to **v1.119.168**
+- Updated **config-tools** to **v1.190.15**
+- Updated **npm-tools** to **v0.6.132**
+- Updated **config** to **v1.137.47**
+
+## [0.7.24](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.7.24) (05/15/2026)
+
+### Updated Dependencies
+
+- Updated **config-tools** to **v1.190.14**
+- Updated **npm-tools** to **v0.6.131**
+
+## [0.7.23](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.7.23) (05/15/2026)
+
+### Updated Dependencies
+
+- Updated **package-constants** to **v0.1.27**
+- Updated **testing-tools** to **v1.119.167**
+- Updated **config-tools** to **v1.190.13**
+- Updated **npm-tools** to **v0.6.130**
+- Updated **config** to **v1.137.46**
+
+## [0.7.22](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.7.22) (05/15/2026)
+
+### Updated Dependencies
+
+- Updated **package-constants** to **v0.1.26**
+- Updated **testing-tools** to **v1.119.166**
+- Updated **config-tools** to **v1.190.12**
+- Updated **npm-tools** to **v0.6.129**
+- Updated **config** to **v1.137.45**
+
+## [0.7.21](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.7.21) (05/14/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update `pnpm-lock.yaml` and packages' `README.md` files ([6f43d2237](https://github.com/storm-software/storm-ops/commit/6f43d2237))
+- **workspace-tools:** Update default `nx.json` configurations ([da734b5f4](https://github.com/storm-software/storm-ops/commit/da734b5f4))
+
+### Updated Dependencies
+
+- Updated **package-constants** to **v0.1.25**
+- Updated **testing-tools** to **v1.119.165**
+- Updated **config-tools** to **v1.190.11**
+- Updated **npm-tools** to **v0.6.128**
+- Updated **config** to **v1.137.44**
+
+## [0.7.20](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.7.20) (05/14/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace packages' `README.md` file ([ff527d217](https://github.com/storm-software/storm-ops/commit/ff527d217))
+
+### Updated Dependencies
+
+- Updated **package-constants** to **v0.1.24**
+- Updated **testing-tools** to **v1.119.164**
+- Updated **config-tools** to **v1.190.10**
+- Updated **npm-tools** to **v0.6.127**
+- Updated **config** to **v1.137.43**
+
+## [0.7.19](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.7.19) (05/14/2026)
+
+### Updated Dependencies
+
+- Updated **package-constants** to **v0.1.23**
+- Updated **testing-tools** to **v1.119.163**
+- Updated **config-tools** to **v1.190.9**
+- Updated **npm-tools** to **v0.6.126**
+- Updated **config** to **v1.137.42**
+
+## [0.7.18](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.7.18) (05/14/2026)
+
+### Updated Dependencies
+
+- Updated **package-constants** to **v0.1.22**
+- Updated **testing-tools** to **v1.119.162**
+- Updated **config-tools** to **v1.190.8**
+- Updated **npm-tools** to **v0.6.125**
+- Updated **config** to **v1.137.41**
+
+## [0.7.17](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.7.17) (05/14/2026)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate workspace packages' `README.md` files ([ec3df43cd](https://github.com/storm-software/storm-ops/commit/ec3df43cd))
+
+### Updated Dependencies
+
+- Updated **package-constants** to **v0.1.21**
+- Updated **testing-tools** to **v1.119.161**
+- Updated **config-tools** to **v1.190.7**
+- Updated **npm-tools** to **v0.6.124**
+- Updated **config** to **v1.137.40**
+
+## [0.7.16](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.7.16) (05/14/2026)
+
+### Updated Dependencies
+
+- Updated **package-constants** to **v0.1.20**
+- Updated **testing-tools** to **v1.119.160**
+- Updated **config-tools** to **v1.190.6**
+- Updated **npm-tools** to **v0.6.123**
+- Updated **config** to **v1.137.39**
+
+## [0.7.15](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.7.15) (05/14/2026)
+
+### Updated Dependencies
+
+- Updated **package-constants** to **v0.1.19**
+- Updated **testing-tools** to **v1.119.159**
+- Updated **config-tools** to **v1.190.5**
+- Updated **npm-tools** to **v0.6.122**
+- Updated **config** to **v1.137.38**
+
+## [0.7.14](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.7.14) (05/14/2026)
+
+### Miscellaneous
+
+- **release:** publish ([d45102e8d](https://github.com/storm-software/storm-ops/commit/d45102e8d))
+
+### Bug Fixes
+
+- **git-tools:** Ensure non-cached project graph is used during release graph creation ([af729bd1f](https://github.com/storm-software/storm-ops/commit/af729bd1f))
+
+### Updated Dependencies
+
+- Updated **package-constants** to **v0.1.18**
+- Updated **testing-tools** to **v1.119.158**
+- Updated **config-tools** to **v1.190.4**
+- Updated **npm-tools** to **v0.6.121**
+- Updated **config** to **v1.137.37**
+
+## [0.7.13](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.7.13) (05/13/2026)
+
+### Bug Fixes
+
+- **git-tools:** Ensure non-cached project graph is used during release graph creation ([af729bd1f](https://github.com/storm-software/storm-ops/commit/af729bd1f))
+
+### Updated Dependencies
+
+- Updated **package-constants** to **v0.1.17**
+- Updated **testing-tools** to **v1.119.157**
+- Updated **config-tools** to **v1.190.3**
+- Updated **npm-tools** to **v0.6.120**
+- Updated **config** to **v1.137.36**
+
+## [0.7.12](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.7.12) (05/12/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update devenv modules to latest version ([5467f0db1](https://github.com/storm-software/storm-ops/commit/5467f0db1))
+
+### Updated Dependencies
+
+- Updated **package-constants** to **v0.1.16**
+- Updated **testing-tools** to **v1.119.156**
+- Updated **config-tools** to **v1.190.2**
+- Updated **npm-tools** to **v0.6.119**
+- Updated **config** to **v1.137.35**
+
+## [0.7.11](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.7.11) (04/29/2026)
+
+### Miscellaneous
+
+- **pnpm-tools:** Clean up version logging in the CLI ([be68c8635](https://github.com/storm-software/storm-ops/commit/be68c8635))
+
+## [0.7.10](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.7.10) (04/29/2026)
+
+### Miscellaneous
+
+- **pnpm-tools:** Ensure success message is logged at the end of CLI script ([806319a2d](https://github.com/storm-software/storm-ops/commit/806319a2d))
+
+## [0.7.9](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.7.9) (04/28/2026)
+
+### Bug Fixes
+
+- **pnpm-tools:** Resolve issue with invalid `chalk` imports ([6eac3ea57](https://github.com/storm-software/storm-ops/commit/6eac3ea57))
+
+## [0.7.8](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.7.8) (04/28/2026)
+
+### Miscellaneous
+
+- **pnpm-tools:** Added summary logging and reduced general CLI noise ([9d3749d7b](https://github.com/storm-software/storm-ops/commit/9d3749d7b))
+
+### Updated Dependencies
+
+- Updated **package-constants** to **v0.1.15**
+- Updated **testing-tools** to **v1.119.155**
+- Updated **config-tools** to **v1.190.1**
+- Updated **npm-tools** to **v0.6.118**
+- Updated **config** to **v1.137.34**
+
+## [0.7.7](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.7.7) (04/28/2026)
+
+### Miscellaneous
+
+- **pnpm-plugin:** Improve `update` CLI tool to process packages in parallel ([74ee5f885](https://github.com/storm-software/storm-ops/commit/74ee5f885))
+
+### Updated Dependencies
+
+- Updated **package-constants** to **v0.1.14**
+- Updated **testing-tools** to **v1.119.154**
+- Updated **config-tools** to **v1.190.0**
+- Updated **npm-tools** to **v0.6.117**
+- Updated **config** to **v1.137.33**
+
+## [0.7.6](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.7.6) (04/26/2026)
+
+### Updated Dependencies
+
+- Updated **package-constants** to **v0.1.13**
+- Updated **testing-tools** to **v1.119.153**
+- Updated **config-tools** to **v1.189.78**
+- Updated **npm-tools** to **v0.6.116**
+- Updated **config** to **v1.137.32**
+
+## [0.7.5](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.7.5) (04/14/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace packages' dependencies ([3a2b8a77e](https://github.com/storm-software/storm-ops/commit/3a2b8a77e))
+
+### Updated Dependencies
+
+- Updated **package-constants** to **v0.1.12**
+- Updated **testing-tools** to **v1.119.152**
+- Updated **config-tools** to **v1.189.77**
+- Updated **npm-tools** to **v0.6.115**
+- Updated **config** to **v1.137.31**
+
+## [0.7.4](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.7.4) (04/13/2026)
+
+### Bug Fixes
+
+- **workspace-tools:** Resolve issue with relative package.json paths ([f73c8dfe9](https://github.com/storm-software/storm-ops/commit/f73c8dfe9))
+
+### Updated Dependencies
+
+- Updated **package-constants** to **v0.1.11**
+- Updated **testing-tools** to **v1.119.151**
+- Updated **config-tools** to **v1.189.76**
+- Updated **npm-tools** to **v0.6.114**
+- Updated **config** to **v1.137.30**
+
+## [0.7.3](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.7.3) (04/10/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace packages' dependencies ([c86e980b0](https://github.com/storm-software/storm-ops/commit/c86e980b0))
+
+### Bug Fixes
+
+- **pnpm-tools:** Resolve issue specifying packages in `storm-pnpm` CLI tool ([ee341f063](https://github.com/storm-software/storm-ops/commit/ee341f063))
+
+### Updated Dependencies
+
+- Updated **package-constants** to **v0.1.10**
+- Updated **testing-tools** to **v1.119.150**
+- Updated **config-tools** to **v1.189.75**
+- Updated **npm-tools** to **v0.6.113**
+- Updated **config** to **v1.137.29**
+
+## [0.7.2](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.7.2) (04/08/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update devenv modules ([6e20ef576](https://github.com/storm-software/storm-ops/commit/6e20ef576))
+
+### Updated Dependencies
+
+- Updated **package-constants** to **v0.1.9**
+- Updated **testing-tools** to **v1.119.149**
+- Updated **config-tools** to **v1.189.74**
+- Updated **npm-tools** to **v0.6.112**
+- Updated **config** to **v1.137.28**
+
+## [0.7.1](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.7.1) (04/07/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace packages' dependencies ([c9e9f1659](https://github.com/storm-software/storm-ops/commit/c9e9f1659))
+
+### Updated Dependencies
+
+- Updated **package-constants** to **v0.1.8**
+- Updated **testing-tools** to **v1.119.148**
+- Updated **config-tools** to **v1.189.73**
+- Updated **npm-tools** to **v0.6.111**
+- Updated **config** to **v1.137.27**
+
+## [0.7.0](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.7.0) (04/01/2026)
+
+### Miscellaneous
+
+- **monorepo:** Regenerated `README.md` files ([9611f84ed](https://github.com/storm-software/storm-ops/commit/9611f84ed))
+
+### Features
+
+- **pnpm-tools:** Added `nx`, `internal`, and `pnpm-plugin` flags to CLI ([d7c05d042](https://github.com/storm-software/storm-ops/commit/d7c05d042))
+
+### Updated Dependencies
+
+- Updated **package-constants** to **v0.1.7**
+- Updated **testing-tools** to **v1.119.147**
+- Updated **config-tools** to **v1.189.72**
+- Updated **npm-tools** to **v0.6.110**
+- Updated **config** to **v1.137.26**
+
+## [0.6.156](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.6.156) (04/01/2026)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate `README.md` files ([020581272](https://github.com/storm-software/storm-ops/commit/020581272))
+
+### Bug Fixes
+
+- **pnpm-tools:** Ensure `packages` argument is marked as optional ([96b223829](https://github.com/storm-software/storm-ops/commit/96b223829))
+
+### Updated Dependencies
+
+- Updated **package-constants** to **v0.1.6**
+- Updated **testing-tools** to **v1.119.146**
+- Updated **config-tools** to **v1.189.71**
+- Updated **npm-tools** to **v0.6.109**
+- Updated **config** to **v1.137.25**
+
+## [0.6.155](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.6.155) (04/01/2026)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate `README.md` file ([613228ecc](https://github.com/storm-software/storm-ops/commit/613228ecc))
+
+### Bug Fixes
+
+- **pnpm-tools:** Resolve issue with invalid default argument value ([68668d596](https://github.com/storm-software/storm-ops/commit/68668d596))
+
+### Updated Dependencies
+
+- Updated **package-constants** to **v0.1.5**
+- Updated **testing-tools** to **v1.119.145**
+- Updated **config-tools** to **v1.189.70**
+- Updated **npm-tools** to **v0.6.108**
+- Updated **config** to **v1.137.24**
+
+## [0.6.154](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.6.154) (04/01/2026)
+
+### Miscellaneous
+
+- **pnpm-tools:** Added try-catch handler to CLI app ([915e8ad4c](https://github.com/storm-software/storm-ops/commit/915e8ad4c))
+- **monorepo:** Regenerate `README.md` files ([7179007bc](https://github.com/storm-software/storm-ops/commit/7179007bc))
+
+### Bug Fixes
+
+- **pnpm-tools:** Add backup version string ([a5544bf3b](https://github.com/storm-software/storm-ops/commit/a5544bf3b))
+
+### Updated Dependencies
+
+- Updated **package-constants** to **v0.1.4**
+- Updated **testing-tools** to **v1.119.144**
+- Updated **config-tools** to **v1.189.69**
+- Updated **npm-tools** to **v0.6.107**
+- Updated **config** to **v1.137.23**
+
+## [0.6.153](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.6.153) (04/01/2026)
+
+### Miscellaneous
+
+- **pnpm-tools:** Resolve issue with invalid `version` import ([21c678e98](https://github.com/storm-software/storm-ops/commit/21c678e98))
+
+### Bug Fixes
+
+- **pnpm-tools:** Resolve issue with bundled dependencies ([49d923a2d](https://github.com/storm-software/storm-ops/commit/49d923a2d))
+
+### Updated Dependencies
+
+- Updated **package-constants** to **v0.1.3**
+- Updated **testing-tools** to **v1.119.143**
+- Updated **config-tools** to **v1.189.68**
+- Updated **npm-tools** to **v0.6.106**
+- Updated **config** to **v1.137.22**
+
+## [0.6.152](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.6.152) (04/01/2026)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate `README.md` file ([b226844d5](https://github.com/storm-software/storm-ops/commit/b226844d5))
+
+### Updated Dependencies
+
+- Updated **package-constants** to **v0.1.2**
+- Updated **testing-tools** to **v1.119.142**
+- Updated **config-tools** to **v1.189.67**
+- Updated **npm-tools** to **v0.6.105**
+- Updated **config** to **v1.137.21**
+
+## [0.6.151](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.6.151) (04/01/2026)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate `README.md` files ([c22142f62](https://github.com/storm-software/storm-ops/commit/c22142f62))
+
+### Updated Dependencies
+
+- Updated **package-constants** to **v0.1.1**
+- Updated **testing-tools** to **v1.119.141**
+- Updated **config-tools** to **v1.189.66**
+- Updated **npm-tools** to **v0.6.104**
+- Updated **config** to **v1.137.20**
+
+## [0.6.150](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.6.150) (04/01/2026)
+
+### Features
+
+- **package-constants:** Initial check-in of `package-constants` package ([b4e1537e6](https://github.com/storm-software/storm-ops/commit/b4e1537e6))
+
+### Updated Dependencies
+
+- Updated **package-constants** to **v0.1.0**
+- Updated **testing-tools** to **v1.119.140**
+- Updated **config-tools** to **v1.189.65**
+- Updated **npm-tools** to **v0.6.103**
+- Updated **config** to **v1.137.19**
+
+## [0.6.149](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.6.149) (03/31/2026)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate `README.md` files ([162476557](https://github.com/storm-software/storm-ops/commit/162476557))
+
+### Bug Fixes
+
+- **pnpm-tools:** Ensure the `packages` argument is no longer required ([659da4277](https://github.com/storm-software/storm-ops/commit/659da4277))
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.139**
+- Updated **config-tools** to **v1.189.64**
+- Updated **build-tools** to **v0.158.145**
+- Updated **npm-tools** to **v0.6.102**
+- Updated **config** to **v1.137.18**
+
+## [0.6.148](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.6.148) (03/31/2026)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate workspace files ([241e519f6](https://github.com/storm-software/storm-ops/commit/241e519f6))
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.138**
+- Updated **config-tools** to **v1.189.63**
+- Updated **build-tools** to **v0.158.144**
+- Updated **npm-tools** to **v0.6.101**
+- Updated **config** to **v1.137.17**
 
 ## [0.6.147](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.6.147) (03/31/2026)
 

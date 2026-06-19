@@ -1,4 +1,4 @@
-import { CopyAssetsHandler } from "@nx/js/src/utils/assets/copy-assets-handler";
+import { CopyAssetsHandler } from "@nx/js/src/utils/assets/copy-assets-handler.js";
 import { StormWorkspaceConfig } from "@storm-software/config";
 import { writeDebug, writeTrace } from "@storm-software/config-tools/logger";
 import { joinPaths } from "@storm-software/config-tools/utilities/correct-paths";

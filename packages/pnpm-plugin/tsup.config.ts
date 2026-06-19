@@ -16,8 +16,9 @@ export default defineConfig([
     sourcemap: false,
     tsconfig: "./tsconfig.json",
     shims: true,
+    removeNodeProtocol: false,
     silent: true,
     skipNodeModulesBundle: true,
-    noExternal: ["defu", "@storm-software/build-tools"]
+    noExternal: ["@storm-software/package-constants"]
   }
 ]);

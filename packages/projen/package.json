@@ -1,24 +1,31 @@
 {
   "name": "@storm-software/projen",
-  "version": "0.21.153",
-  "type": "commonjs",
+  "version": "0.21.256",
   "description": "Tools for managing Projen configuration automation within a Nx workspace.",
-  "repository": {
-    "type": "github",
-    "url": "https://github.com/storm-software/storm-ops",
-    "directory": "packages/projen"
-  },
+  "keywords": [
+    "iac",
+    "infrastructure",
+    "monorepo",
+    "projen",
+    "storm",
+    "storm-ops",
+    "storm-stack",
+    "sullivanpj"
+  ],
   "homepage": "https://stormsoftware.com",
   "bugs": "https://github.com/storm-software/storm-ops/issues",
+  "repository": {
+    "type": "github",
+    "url": "https://github.com/storm-software/storm-ops.git",
+    "directory": "packages/projen"
+  },
+  "license": "Apache-2.0",
   "author": {
     "name": "Storm Software",
     "email": "contact@stormsoftware.com",
     "url": "https://stormsoftware.com"
   },
-  "license": "Apache-2.0",
-  "private": false,
-  "main": "dist/index.js",
-  "module": "dist/index.mjs",
+  "type": "commonjs",
   "exports": {
     "./package.json": "./package.json",
     "./docs/*": "./docs/*",
@@ -114,48 +121,34 @@
     "./executors/*/executor.js": "./dist/src/executors/*/executor.js",
     "./generators/*/generators.js": "./dist/src/generators/*/generator.js"
   },
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
   "typings": "dist/index.d.ts",
-  "keywords": [
-    "iac",
-    "infrastructure",
-    "monorepo",
-    "projen",
-    "storm",
-    "storm-ops",
-    "storm-stack",
-    "sullivanpj"
-  ],
-  "peerDependencies": {
+  "dependencies": {
+    "@aws/pdk": "^0.25.17",
     "@nx/devkit": "catalog:",
-    "@storm-software/config": "1.137.16",
-    "@storm-software/config-tools": "1.189.62",
-    "@storm-software/workspace-tools": "1.295.38",
-    "projen": "^0.91.6",
+    "@storm-software/config": "workspace:*",
+    "@storm-software/config-tools": "workspace:*",
+    "@storm-software/workspace-tools": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/node": "catalog:",
+    "nx": "catalog:",
+    "projen": "^0.91.31",
     "tsup": "catalog:",
-    "untyped": "1.5.2"
+    "untyped": "catalog:"
+  },
+  "peerDependencies": {
+    "nx": ">=22.7.1",
+    "projen": ">=0.91.20"
   },
   "peerDependenciesMeta": {
-    "@nx/devkit": {
-      "optional": false
-    },
     "nx": {
       "optional": false
     },
     "projen": {
       "optional": false
     }
-  },
-  "dependencies": {
-    "@aws/pdk": "^0.25.17",
-    "@nx/devkit": "catalog:",
-    "projen": "0.91.20"
-  },
-  "devDependencies": {
-    "@nx/devkit": "catalog:",
-    "@types/node": "catalog:",
-    "nx": "catalog:",
-    "tsup": "catalog:",
-    "untyped": "catalog:"
   },
   "publishConfig": {
     "access": "public"

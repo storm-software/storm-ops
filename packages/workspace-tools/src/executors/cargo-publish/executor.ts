@@ -22,7 +22,9 @@ export default async function runExecutor(
   }
 
   console.info(
-    `🚀  Running Storm Cargo Publish executor on the ${context.projectName} crate`
+    `🚀  Running Storm Cargo Publish executor on the ${
+      context.projectName
+    } crate`
   );
 
   if (

@@ -1,4 +1,5 @@
 {
+  "$schema": "https://www.schemastore.org/prettierrc.json",
   "proseWrap": "preserve",
   "trailingComma": "none",
   "tabWidth": 2,
@@ -67,9 +68,25 @@
       }
     },
     {
-      "files": "**/*.{json,jsonc,json5}",
+      "files": "**/*.json",
       "options": {
         "parser": "json",
+        "trailingComma": "none",
+        "objectWrap": "preserve"
+      }
+    },
+    {
+      "files": "**/*.jsonc",
+      "options": {
+        "parser": "jsonc",
+        "trailingComma": "none",
+        "objectWrap": "preserve"
+      }
+    },
+    {
+      "files": "**/*.json5",
+      "options": {
+        "parser": "json5",
         "trailingComma": "none",
         "objectWrap": "preserve"
       }
@@ -79,18 +96,6 @@
       "options": {
         "parser": "html"
       }
-    },
-    {
-      "files": "**/*.prisma",
-      "options": {
-        "parser": "prisma-parse"
-      }
-    },
-    {
-      "files": "**/{*.acid,*.aci,*.acidic}",
-      "options": {
-        "parser": "prisma-parse"
-      }
     }
   ],
   "plugins": [
@@ -98,8 +103,7 @@
     "prettier-plugin-packagejson",
     "prettier-plugin-toml",
     "prettier-plugin-jsdoc",
-    "prettier-plugin-organize-imports",
-    "prettier-plugin-prisma"
+    "prettier-plugin-organize-imports"
   ],
   "organizeImportsSkipDestructiveCodeActions": false
 }

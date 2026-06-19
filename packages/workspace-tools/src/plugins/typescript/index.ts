@@ -72,6 +72,16 @@ export interface TypeScriptPluginOptions extends BaseTypescriptPluginOptions {
   enableTypecheck?: string | true;
 
   /**
+   * Whether to enable Vitest or Jest for testing TypeScript projects.
+   *
+   * @remarks
+   * If set to a string, it will be used as the target name instead of the default "test".
+   *
+   * @defaultValue false
+   */
+  enableTest?: string | true;
+
+  /**
    * Whether to use `tsgo` for TypeScript language features in editors that support it.
    *
    * @remarks
@@ -129,6 +139,7 @@ export const createNodesV2: CreateNodesV2<TypeScriptPluginOptions> = [
           const enableMarkdownlint = options?.enableMarkdownlint !== false;
           const enableEslint = options?.enableEslint !== false;
           const enableTypecheck = !!options?.enableTypecheck;
+          const enableTest = !!options?.enableTest;
 
           const targets: ProjectConfiguration["targets"] =
             readTargetsFromPackageJson(
@@ -239,7 +250,7 @@ export const createNodesV2: CreateNodesV2<TypeScriptPluginOptions> = [
                   cache: true,
                   inputs: ["linting", "typescript", "^production"],
                   outputs: [
-                    "{projectRoot}/**/*.{ts,tsx,js,jsx,json,md,mdx,yaml,yml,html,css,scss,sass,less,graphql,gql}"
+                    "{projectRoot}/**/*.{ts,tsx,mts,cts,js,jsx,mjs,cjs,json,md,mdx,yaml,yml,html,css,scss,sass,less,graphql,gql}"
                   ],
                   dependsOn: [
                     enableMarkdownlint
@@ -268,7 +279,7 @@ export const createNodesV2: CreateNodesV2<TypeScriptPluginOptions> = [
                     errorOnUnmatchedPattern: false,
                     cache: true,
                     cacheLocation:
-                      "{workspaceRoot}/node_modules/.cache/eslint/{projectRoot}",
+                      "{workspaceRoot}/node_modules/.cache/eslint/{projectRoot}/cache.json",
                     eslintConfig
                   }
                 };
@@ -356,28 +367,47 @@ export const createNodesV2: CreateNodesV2<TypeScriptPluginOptions> = [
             }
           };
 
-          if (checkJestConfigAtPath(project.root)) {
-            targets.test ??= {
-              cache: true,
-              executor: "@nx/jest:jest",
-              inputs: ["testing", "typescript", "^production"],
-              outputs: [`{workspaceRoot}/coverage/${root}`],
-              defaultConfiguration: "development",
-              options: {
-                jestConfig: "{projectRoot}/jest.config.ts",
-                passWithNoTests: true
-              },
-              configurations: {
-                development: {
-                  ci: false,
-                  codeCoverage: true
+          if (enableTest) {
+            if (checkVitestConfigAtPath(project.root)) {
+              targets.test ??= {
+                cache: true,
+                executor: "@nx/vitest:test",
+                inputs: ["testing", "typescript", "^production"],
+                outputs: [`{workspaceRoot}/coverage/${root}`],
+                defaultConfiguration: "development",
+                options: {
+                  configFile: `{projectRoot}/${checkVitestConfigAtPath(project.root)}`
                 },
-                production: {
-                  ci: true,
-                  codeCoverage: true
+                configurations: {
+                  development: {},
+                  production: {
+                    reportsDirectory: `{workspaceRoot}/coverage/${root}`
+                  }
                 }
-              }
-            };
+              };
+            } else if (checkJestConfigAtPath(project.root)) {
+              targets.test ??= {
+                cache: true,
+                executor: "@nx/jest:jest",
+                inputs: ["testing", "typescript", "^production"],
+                outputs: [`{workspaceRoot}/coverage/${root}`],
+                defaultConfiguration: "development",
+                options: {
+                  jestConfig: `{projectRoot}/${checkJestConfigAtPath(project.root)}`,
+                  passWithNoTests: true
+                },
+                configurations: {
+                  development: {
+                    ci: false,
+                    codeCoverage: true
+                  },
+                  production: {
+                    ci: true,
+                    codeCoverage: true
+                  }
+                }
+              };
+            }
           }
 
           targets["docs"] ??= {
@@ -616,18 +646,40 @@ function checkEslintConfigAtPath(directory: string): string | null {
   return null;
 }
 
+function checkVitestConfigAtPath(directory: string): string | null {
+  const hasVitestConfigFile = (fileName: string): boolean => {
+    return existsSync(join(directory, fileName));
+  };
+
+  if (hasVitestConfigFile("vitest.config.js")) {
+    return "vitest.config.js";
+  } else if (hasVitestConfigFile("vitest.config.cjs")) {
+    return "vitest.config.cjs";
+  } else if (hasVitestConfigFile("vitest.config.mjs")) {
+    return "vitest.config.mjs";
+  } else if (hasVitestConfigFile("vitest.config.ts")) {
+    return "vitest.config.ts";
+  } else if (hasVitestConfigFile("vitest.config.cts")) {
+    return "vitest.config.cts";
+  } else if (hasVitestConfigFile("vitest.config.mts")) {
+    return "vitest.config.mts";
+  }
+
+  return null;
+}
+
 function checkJestConfigAtPath(directory: string): string | null {
   const hasJestConfigFile = (fileName: string): boolean => {
     return existsSync(join(directory, fileName));
   };
 
-  if (hasJestConfigFile("eslint.config.js")) {
+  if (hasJestConfigFile("jest.config.js")) {
     return "jest.config.js";
-  } else if (hasJestConfigFile("eslint.config.cjs")) {
+  } else if (hasJestConfigFile("jest.config.cjs")) {
     return "jest.config.cjs";
-  } else if (hasJestConfigFile("eslint.config.mjs")) {
+  } else if (hasJestConfigFile("jest.config.mjs")) {
     return "jest.config.mjs";
-  } else if (hasJestConfigFile("eslint.config.ts")) {
+  } else if (hasJestConfigFile("jest.config.ts")) {
     return "jest.config.ts";
   } else if (hasJestConfigFile("jest.config.cts")) {
     return "jest.config.cts";

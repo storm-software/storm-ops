@@ -1,6 +1,6 @@
 {
   "name": "@storm-software/workspace-tools",
-  "version": "1.295.38",
+  "version": "1.296.53",
   "description": "Tools for managing a Storm workspace, including various Nx generators and executors for common development tasks.",
   "keywords": [
     "monorepo",
@@ -14,7 +14,7 @@
   "bugs": "https://github.com/storm-software/storm-ops/issues",
   "repository": {
     "type": "github",
-    "url": "https://github.com/storm-software/storm-ops",
+    "url": "https://github.com/storm-software/storm-ops.git",
     "directory": "packages/workspace-tools"
   },
   "license": "Apache-2.0",
@@ -231,52 +231,76 @@
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "typings": "dist/index.d.ts",
+  "files": [
+    "config",
+    "dist",
+    "assets",
+    "docs",
+    "executors.json",
+    "generators.json",
+    "package.json"
+  ],
   "dependencies": {
+    "@actions/core": "catalog:",
     "@ltd/j-toml": "catalog:",
     "@microsoft/api-extractor": "catalog:",
     "@nx/devkit": "catalog:",
     "@nx/js": "catalog:",
     "@samchon/openapi": "^2.5.3",
-    "@size-limit/esbuild": "11.1.4",
-    "@size-limit/esbuild-why": "11.1.4",
-    "@size-limit/file": "11.1.4",
+    "@size-limit/esbuild": "^11.2.0",
+    "@size-limit/esbuild-why": "^11.2.0",
+    "@size-limit/file": "^11.2.0",
     "@storm-software/config-tools": "workspace:*",
-    "@storm-software/esbuild": "workspace:*",
     "@storm-software/npm-tools": "workspace:*",
     "@storm-software/pnpm-tools": "workspace:*",
     "@storm-software/prettier": "workspace:*",
-    "@storm-software/tsdown": "workspace:*",
-    "@storm-software/unbuild": "workspace:*",
     "fs-extra": "11.2.0",
     "glob": "catalog:",
     "jiti": "catalog:",
     "markdownlint-cli2": "^0.17.2",
     "micromatch": "^4.0.8",
-    "semver": "7.6.2",
-    "size-limit": "11.1.4",
+    "semver": "catalog:",
+    "size-limit": "^11.2.0",
     "typia": "catalog:",
     "untyped": "catalog:",
     "zod": "catalog:"
   },
   "devDependencies": {
-    "@napi-rs/cli": "^3.6.0",
+    "@napi-rs/cli": "^3.7.2",
+    "@storm-software/esbuild": "workspace:*",
+    "@storm-software/package-constants": "workspace:*",
+    "@storm-software/tsdown": "workspace:*",
+    "@storm-software/unbuild": "workspace:*",
     "@types/micromatch": "^4.0.10",
     "@types/node": "catalog:",
-    "@types/semver": "7.5.8",
+    "@types/semver": "^7.7.1",
     "defu": "catalog:",
     "nx": "catalog:",
     "pkg-types": "catalog:",
+    "prettier": "catalog:",
     "tsup": "catalog:",
     "typescript": "^5.9.3"
   },
   "peerDependencies": {
     "@napi-rs/cli": "^3.4.1",
+    "@storm-software/esbuild": "*",
+    "@storm-software/tsdown": "*",
+    "@storm-software/unbuild": "*",
     "markdownlint-cli2": "^0.17.2",
-    "nx": "catalog:",
-    "prettier": "catalog:"
+    "nx": ">=22.7.1",
+    "prettier": ">=3.8.3"
   },
   "peerDependenciesMeta": {
     "@napi-rs/cli": {
+      "optional": true
+    },
+    "@storm-software/esbuild": {
+      "optional": true
+    },
+    "@storm-software/tsdown": {
+      "optional": true
+    },
+    "@storm-software/unbuild": {
       "optional": true
     },
     "markdownlint-cli2": {

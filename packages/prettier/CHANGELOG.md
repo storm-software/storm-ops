@@ -1,6 +1,313 @@
-![Storm Software's logo banner](https://public.storm-cdn.com/storm-software/banner-1280x320.gif)
+![Storm Software's logo banner](https://public.storm-cdn.com/storm-software/media/banner-1280x320.gif)
 
 # Changelog for Storm Ops - Prettier
+
+## [0.59.125](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.59.125) (06/18/2026)
+
+### Bug Fixes
+
+- **eslint:** Remove unneeded tsdoc dependency for eslint config ([7ccbee070](https://github.com/storm-software/storm-ops/commit/7ccbee070))
+
+## [0.59.124](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.59.124) (06/18/2026)
+
+### Bug Fixes
+
+- **eslint:** Resolve issue with eslint importing patched dependency directly ([864f5d538](https://github.com/storm-software/storm-ops/commit/864f5d538))
+
+## [0.59.123](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.59.123) (06/18/2026)
+
+### Bug Fixes
+
+- **linting-tools:** Resolve issue running CLI from lefthook and update version shas ([1751cb249](https://github.com/storm-software/storm-ops/commit/1751cb249))
+
+## [0.59.122](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.59.122) (06/15/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update asset references to the newly created `media` folder ([40a620402](https://github.com/storm-software/storm-ops/commit/40a620402))
+
+## [0.59.121](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.59.121) (06/14/2026)
+
+### Miscellaneous
+
+- **monorepo:** Added internal Nx plugin to ensure `implicitDependencies` are applied to all of the workspace's packages ([bbe43f892](https://github.com/storm-software/storm-ops/commit/bbe43f892))
+
+## [0.59.118](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.59.118) (06/14/2026)
+
+### Miscellaneous
+
+- **eslint-plugin-tsdoc:** Patched base plugin to include `tsconfigRootDir` option ([91cffe828](https://github.com/storm-software/storm-ops/commit/91cffe828))
+
+## [0.59.117](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.59.117) (06/14/2026)
+
+### Miscellaneous
+
+- **oxfmt:** Added `$schema` values to formatter JSONs ([b17b468bb](https://github.com/storm-software/storm-ops/commit/b17b468bb))
+
+## [0.59.116](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.59.116) (06/14/2026)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate `README` markdown files ([2f934c964](https://github.com/storm-software/storm-ops/commit/2f934c964))
+
+## [0.59.110](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.59.110) (06/13/2026)
+
+### Features
+
+- **eslint-config-react:** Initial check-in of the shared React ESLint config package ([8f39c5c32](https://github.com/storm-software/storm-ops/commit/8f39c5c32))
+
+## [0.59.109](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.59.109) (06/13/2026)
+
+### Bug Fixes
+
+- **monorepo:** Ensure `es-toolkit` versions align properly ([6c387e4d6](https://github.com/storm-software/storm-ops/commit/6c387e4d6))
+
+## [0.59.108](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.59.108) (06/13/2026)
+
+### Miscellaneous
+
+- **eslint:** Update react linter plugin versions ([f35bece5b](https://github.com/storm-software/storm-ops/commit/f35bece5b))
+
+## [0.59.107](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.59.107) (06/11/2026)
+
+### Bug Fixes
+
+- **git-tools:** Update lefthook configurations to reduce duplicates ([2a41fcbb1](https://github.com/storm-software/storm-ops/commit/2a41fcbb1))
+
+## [0.59.106](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.59.106) (06/11/2026)
+
+### Miscellaneous
+
+- **prettier:** Ensure types are provided in dist package ([c48534205](https://github.com/storm-software/storm-ops/commit/c48534205))
+
+## [0.59.102](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.59.102) (06/10/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update `README.md` files ([fe24f6887](https://github.com/storm-software/storm-ops/commit/fe24f6887))
+
+## [0.59.101](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.59.101) (06/10/2026)
+
+### Bug Fixes
+
+- **prettier:** Fix issue with task order during build process ([316d5946d](https://github.com/storm-software/storm-ops/commit/316d5946d))
+
+## [0.59.100](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.59.100) (06/10/2026)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate `pnpm-lock.yaml` and `README.md` files ([989ff5a35](https://github.com/storm-software/storm-ops/commit/989ff5a35))
+
+### Bug Fixes
+
+- **prettier:** Resolve issue with package output files ([2dd72ebde](https://github.com/storm-software/storm-ops/commit/2dd72ebde))
+
+## [0.59.99](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.59.99) (06/10/2026)
+
+### Miscellaneous
+
+- **monorepo:** Align package dependencies and update `README.md` files ([a1d1fd5b8](https://github.com/storm-software/storm-ops/commit/a1d1fd5b8))
+
+### Bug Fixes
+
+- **eslint:** Resolve issue using internal eslint plugin packages ([64b3b7dfd](https://github.com/storm-software/storm-ops/commit/64b3b7dfd))
+
+## [0.59.97](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.59.97) (06/08/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update `README.md` and `pnpm-lock.yaml` files ([63d786b3a](https://github.com/storm-software/storm-ops/commit/63d786b3a))
+
+## [0.59.95](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.59.95) (06/08/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace packages `README.md` files ([7d65425b0](https://github.com/storm-software/storm-ops/commit/7d65425b0))
+
+## [0.59.93](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.59.93) (06/08/2026)
+
+### Features
+
+- **oxlint:** Added oxlint config package and eslint plugins ([80c3439b6](https://github.com/storm-software/storm-ops/commit/80c3439b6))
+
+## [0.59.89](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.59.89) (05/30/2026)
+
+### Features
+
+- **monorepo:** Added `vitest` configurations to various files lists ([8ffec3105](https://github.com/storm-software/storm-ops/commit/8ffec3105))
+
+## [0.59.88](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.59.88) (05/30/2026)
+
+### Miscellaneous
+
+- **devenv-modules:** Removed unneeded `input` modules ([25f4a61d5](https://github.com/storm-software/storm-ops/commit/25f4a61d5))
+
+## [0.59.87](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.59.87) (05/30/2026)
+
+### Miscellaneous
+
+- **devenv-modules:** Update `pkgs` to use rolling nixpkgs ([ebd9c0d06](https://github.com/storm-software/storm-ops/commit/ebd9c0d06))
+
+## [0.59.85](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.59.85) (05/26/2026)
+
+### Miscellaneous
+
+- **devenv-modules:** Update shared K8s modules ([d571d536f](https://github.com/storm-software/storm-ops/commit/d571d536f))
+
+## [0.59.84](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.59.84) (05/26/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update nodejs to v26.2.0 and pnpm to v11.1.2 ([855c4d4f0](https://github.com/storm-software/storm-ops/commit/855c4d4f0))
+
+## [0.59.83](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.59.83) (05/26/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace package dependencies ([859ec16d2](https://github.com/storm-software/storm-ops/commit/859ec16d2))
+
+## [0.59.78](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.59.78) (05/20/2026)
+
+### Features
+
+- **workspace-tools:** Added GitHub OIDC token retrieval to `npm-publish` executor ([a154fdcb8](https://github.com/storm-software/storm-ops/commit/a154fdcb8))
+
+## [0.59.77](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.59.77) (05/20/2026)
+
+### Miscellaneous
+
+- **monorepo:** Ensure workspace package versions align ([3cb6e486a](https://github.com/storm-software/storm-ops/commit/3cb6e486a))
+
+## [0.59.75](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.59.75) (05/20/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update packages' `README.md` files ([2d2aae1a6](https://github.com/storm-software/storm-ops/commit/2d2aae1a6))
+
+## [0.59.64](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.59.64) (05/14/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update `pnpm-lock.yaml` and packages' `README.md` files ([6f43d2237](https://github.com/storm-software/storm-ops/commit/6f43d2237))
+- **workspace-tools:** Update default `nx.json` configurations ([da734b5f4](https://github.com/storm-software/storm-ops/commit/da734b5f4))
+
+## [0.59.63](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.59.63) (05/14/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace packages' `README.md` file ([ff527d217](https://github.com/storm-software/storm-ops/commit/ff527d217))
+
+## [0.59.60](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.59.60) (05/14/2026)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate workspace packages' `README.md` files ([ec3df43cd](https://github.com/storm-software/storm-ops/commit/ec3df43cd))
+
+## [0.59.57](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.59.57) (05/14/2026)
+
+### Miscellaneous
+
+- **release:** publish ([d45102e8d](https://github.com/storm-software/storm-ops/commit/d45102e8d))
+
+### Bug Fixes
+
+- **git-tools:** Ensure non-cached project graph is used during release graph creation ([af729bd1f](https://github.com/storm-software/storm-ops/commit/af729bd1f))
+
+## [0.59.56](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.59.56) (05/13/2026)
+
+### Bug Fixes
+
+- **git-tools:** Ensure non-cached project graph is used during release graph creation ([af729bd1f](https://github.com/storm-software/storm-ops/commit/af729bd1f))
+
+## [0.59.55](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.59.55) (05/12/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update devenv modules to latest version ([5467f0db1](https://github.com/storm-software/storm-ops/commit/5467f0db1))
+
+## [0.59.51](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.59.51) (04/14/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace packages' dependencies ([3a2b8a77e](https://github.com/storm-software/storm-ops/commit/3a2b8a77e))
+
+## [0.59.50](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.59.50) (04/13/2026)
+
+### Bug Fixes
+
+- **workspace-tools:** Resolve issue with relative package.json paths ([f73c8dfe9](https://github.com/storm-software/storm-ops/commit/f73c8dfe9))
+
+## [0.59.49](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.59.49) (04/10/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace packages' dependencies ([c86e980b0](https://github.com/storm-software/storm-ops/commit/c86e980b0))
+
+## [0.59.48](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.59.48) (04/08/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update devenv modules ([6e20ef576](https://github.com/storm-software/storm-ops/commit/6e20ef576))
+
+## [0.59.47](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.59.47) (04/07/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace packages' dependencies ([c9e9f1659](https://github.com/storm-software/storm-ops/commit/c9e9f1659))
+
+## [0.59.46](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.59.46) (04/01/2026)
+
+### Miscellaneous
+
+- **monorepo:** Regenerated `README.md` files ([9611f84ed](https://github.com/storm-software/storm-ops/commit/9611f84ed))
+
+## [0.59.45](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.59.45) (04/01/2026)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate `README.md` files ([020581272](https://github.com/storm-software/storm-ops/commit/020581272))
+
+## [0.59.44](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.59.44) (04/01/2026)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate `README.md` file ([613228ecc](https://github.com/storm-software/storm-ops/commit/613228ecc))
+
+## [0.59.43](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.59.43) (04/01/2026)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate `README.md` files ([7179007bc](https://github.com/storm-software/storm-ops/commit/7179007bc))
+
+## [0.59.41](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.59.41) (04/01/2026)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate `README.md` file ([b226844d5](https://github.com/storm-software/storm-ops/commit/b226844d5))
+
+## [0.59.40](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.59.40) (04/01/2026)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate `README.md` files ([c22142f62](https://github.com/storm-software/storm-ops/commit/c22142f62))
+
+## [0.59.39](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.59.39) (04/01/2026)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate `README.md` files ([cf5149751](https://github.com/storm-software/storm-ops/commit/cf5149751))
+
+## [0.59.38](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.59.38) (03/31/2026)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate `README.md` files ([162476557](https://github.com/storm-software/storm-ops/commit/162476557))
+
+## [0.59.37](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.59.37) (03/31/2026)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate workspace files ([241e519f6](https://github.com/storm-software/storm-ops/commit/241e519f6))
 
 ## [0.59.36](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.59.36) (03/31/2026)
 

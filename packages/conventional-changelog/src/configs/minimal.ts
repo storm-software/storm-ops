@@ -41,7 +41,7 @@ export const commitlint = {
     enableMultipleScopes: false,
     disableEmoji: true,
     breakingChangePrefix: "💣 ",
-    closedIssuePrefix: "✅ ",
+    closedIssuePrefix: "✔ ",
     format: "{type}: {emoji}{subject}"
   }
 };

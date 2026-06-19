@@ -22,24 +22,23 @@ jobs:
       actions: read
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
         with:
           persist-credentials: false
 
       - name: Install the latest version of uv
-        uses: astral-sh/setup-uv@v5
+        uses: astral-sh/setup-uv@d4b2f3b6ecc6e67c4457f6d3e41ec42d3d0fcb86 # v5.4.2
         with:
           enable-cache: false
 
       - name: Run zizmor
-        run:
-          uvx zizmor --config="./tools/config/zizmor.yml" .github/workflows -v
-          -p --min-severity=medium --format sarif . > results.sarif
+        run: uvx zizmor --config="./tools/config/zizmor.yml" .github/workflows -v -p
+          --min-severity=medium --format sarif . > results.sarif
         env:
           GH_TOKEN: ${{ github.token }}
 
       - name: Upload SARIF file
-        uses: github/codeql-action/upload-sarif@v3
+        uses: github/codeql-action/upload-sarif@8aad20d150bbac5944a9f9d289da16a4b0d87c1e # v4.36.2
         with:
           sarif_file: results.sarif
           category: zizmor

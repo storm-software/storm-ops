@@ -2,19 +2,17 @@ import {
   createProjectGraphAsync,
   ProjectGraph,
   ProjectsConfigurations,
-  readCachedProjectGraph,
   readProjectsConfigurationFromProjectGraph,
   Tree
 } from "@nx/devkit";
 import { StormWorkspaceConfig } from "@storm-software/config";
-import { joinPaths } from "@storm-software/config-tools";
+import { isVerbose, runAsync } from "@storm-software/config-tools";
 import { getWorkspaceConfig } from "@storm-software/config-tools/get-config";
 import {
   writeDebug,
+  writeTrace,
   writeWarning
 } from "@storm-software/config-tools/logger/console";
-import defu from "defu";
-import { existsSync } from "node:fs";
 import { ReleaseClient } from "nx/release";
 import { DependencyBump } from "nx/release/changelog-renderer";
 import {
@@ -22,20 +20,32 @@ import {
   NxReleaseChangelogResult,
   PostGitTask
 } from "nx/src/command-line/release/changelog";
-import { ChangelogOptions as NxChangelogOptions } from "nx/src/command-line/release/command-object";
+import {
+  ChangelogOptions as NxChangelogOptions,
+  VersionOptions
+} from "nx/src/command-line/release/command-object";
+import { NxReleaseConfig } from "nx/src/command-line/release/config/config";
+import {
+  readRawVersionPlans,
+  setResolvedVersionPlansOnGroups
+} from "nx/src/command-line/release/config/version-plans";
 import {
   getCommitHash,
   getFirstGitCommit,
-  getLatestGitTagForPattern,
+  gitAdd,
   GitCommit,
   gitPush
 } from "nx/src/command-line/release/utils/git";
+import { printAndFlushChanges } from "nx/src/command-line/release/utils/print-changes.js";
+import { ReleaseGraph as NxReleaseGraph } from "nx/src/command-line/release/utils/release-graph";
 import {
   createCommitMessageValues,
   createGitTagValues,
   handleDuplicateGitTags
 } from "nx/src/command-line/release/utils/shared";
-import { NxJsonConfiguration, readNxJson } from "nx/src/config/nx-json";
+import { validateResolvedVersionPlansAgainstFilter } from "nx/src/command-line/release/utils/version-plan-utils";
+import { NxReleaseVersionResult } from "nx/src/command-line/release/version";
+import { NxReleaseVersionConfiguration } from "nx/src/config/nx-json";
 import { FsTree } from "nx/src/generators/tree";
 import { createFileMapUsingProjectGraph } from "nx/src/project-graph/file-map-utils";
 import { ReleaseConfig } from "../types";
@@ -50,12 +60,20 @@ import {
   extractPreid,
   filterProjectCommits,
   getCommits,
+  getLatestGitTagForPattern,
   getProjectsAffectedByCommit,
   gitTag
 } from "../utilities/git-utils";
-import { omit } from "../utilities/omit";
+import { formatNxLog } from "../utilities/logs";
+import { formatChangedFiles } from "../utilities/prettier";
 import StormChangelogRenderer from "./changelog-renderer";
-import { DEFAULT_RELEASE_CONFIG, getReleaseGroupConfig } from "./config";
+import {
+  DEFAULT_COMMIT_MESSAGE,
+  formatConfigLog,
+  getReleaseConfig
+} from "./config";
+import { createReleaseGraph, ReleaseGraph } from "./release-graph";
+import { StormReleaseGroupProcessor } from "./release-group-processor";
 
 export type ChangelogOptions = Omit<
   NxChangelogOptions,
@@ -76,34 +94,40 @@ export class StormReleaseClient extends ReleaseClient {
       workspaceConfig = await getWorkspaceConfig();
     }
 
-    let projectGraph!: ProjectGraph;
-    try {
-      projectGraph = readCachedProjectGraph();
-    } catch {
-      projectGraph = await createProjectGraphAsync({
-        exitOnError: true,
-        resetDaemonClient: true
-      });
-    }
-
+    const projectGraph = await createProjectGraphAsync({
+      exitOnError: true,
+      resetDaemonClient: true
+    });
     if (!projectGraph) {
       throw new Error(
         "Failed to load the project graph. Please run `nx reset`, then run the `storm-git commit` command again."
       );
     }
 
-    return new StormReleaseClient(
-      projectGraph,
-      releaseConfig,
-      ignoreNxJsonConfig,
+    writeTrace(
+      `Provided release configuration: \n${formatConfigLog(releaseConfig)}`,
       workspaceConfig
     );
+
+    const config = getReleaseConfig(
+      projectGraph,
+      releaseConfig,
+      workspaceConfig,
+      ignoreNxJsonConfig
+    );
+
+    writeDebug(
+      `Resolved release configuration: \n${formatConfigLog(config)}`,
+      workspaceConfig
+    );
+
+    return new StormReleaseClient(projectGraph, config, workspaceConfig);
   }
 
   /**
-   * The release configuration used by this release client.
+   * The normalized release configuration used by this release client.
    */
-  protected config: ReleaseConfig;
+  protected releaseConfig: NxReleaseConfig;
 
   /**
    * The workspace configuration used by this release client.
@@ -135,53 +159,21 @@ export class StormReleaseClient extends ReleaseClient {
    */
   protected constructor(
     projectGraph: ProjectGraph,
-    releaseConfig: Partial<ReleaseConfig>,
-    ignoreNxJsonConfig: boolean,
+    releaseConfig: NxReleaseConfig,
     workspaceConfig: StormWorkspaceConfig
   ) {
-    let nxJson!: Partial<NxJsonConfiguration>;
-    if (
-      !ignoreNxJsonConfig &&
-      existsSync(joinPaths(workspaceConfig.workspaceRoot, "nx.json"))
-    ) {
-      nxJson = readNxJson();
-    }
-
-    const config = defu(
-      {
-        changelog: {
-          renderOptions: {
-            workspaceConfig
-          }
-        }
-      },
-      {
-        groups: getReleaseGroupConfig(releaseConfig, workspaceConfig)
-      },
-      {
-        groups: getReleaseGroupConfig(
-          (nxJson.release ?? {}) as Partial<ReleaseConfig>,
-          workspaceConfig
-        )
-      },
-      omit(releaseConfig, ["groups"]),
-      nxJson.release ? omit(nxJson.release, ["groups"]) : {},
-      omit(DEFAULT_RELEASE_CONFIG, ["groups"])
-    ) as ReleaseConfig;
-
-    super(config, true);
+    super(releaseConfig, true);
 
     writeDebug(
       "Executing release with the following configuration",
       workspaceConfig
     );
-    writeDebug(config, workspaceConfig);
+    writeDebug(releaseConfig, workspaceConfig);
 
     this.projectGraph = projectGraph;
-    this.config = config;
+    this.releaseConfig = releaseConfig;
     this.workspaceConfig = workspaceConfig;
     this.tree = new FsTree(workspaceConfig.workspaceRoot, false);
-
     this.projectConfigurations =
       readProjectsConfigurationFromProjectGraph(projectGraph);
   }
@@ -201,6 +193,22 @@ export class StormReleaseClient extends ReleaseClient {
         ])
       );
 
+    // Use pre-built release graph if provided, otherwise create a new one
+    const releaseGraph: ReleaseGraph = await createReleaseGraph(
+      {
+        tree: this.tree,
+        projectGraph: this.projectGraph,
+        nxReleaseConfig: this.releaseConfig,
+        filters: {
+          projects: options.projects,
+          groups: options.groups
+        },
+        firstRelease: !!options.firstRelease,
+        verbose: isVerbose(this.workspaceConfig.logLevel)
+      },
+      this.workspaceConfig
+    );
+
     /**
      * Compute any additional dependency bumps up front because there could be cases of circular dependencies,
      * and figuring them out during the main iteration would be too late.
@@ -209,7 +217,7 @@ export class StormReleaseClient extends ReleaseClient {
       string,
       DependencyBump[]
     >();
-    for (const releaseGroup of options.releaseGraph.releaseGroups) {
+    for (const releaseGroup of releaseGraph.releaseGroups) {
       if (releaseGroup.projectsRelationship !== "independent") {
         continue;
       }
@@ -254,16 +262,14 @@ export class StormReleaseClient extends ReleaseClient {
     const allProjectChangelogs: NxReleaseChangelogResult["projectChangelogs"] =
       {};
 
-    for (const releaseGroup of options.releaseGraph.releaseGroups) {
+    for (const releaseGroup of releaseGraph.releaseGroups) {
       const config = releaseGroup.changelog;
       // The entire feature is disabled at the release group level, exit early
       if (config === false) {
         continue;
       }
 
-      if (
-        !options.releaseGraph.releaseGroupToFilteredProjects.has(releaseGroup)
-      ) {
+      if (!releaseGraph.releaseGroupToFilteredProjects.has(releaseGroup)) {
         throw new Error(
           `No filtered projects found for release group ${releaseGroup.name}`
         );
@@ -273,9 +279,7 @@ export class StormReleaseClient extends ReleaseClient {
         ? // If the user has passed a list of projects, we need to use the filtered list of projects within the release group, plus any dependents
           Array.from(
             // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-            options.releaseGraph.releaseGroupToFilteredProjects.get(
-              releaseGroup
-            )!
+            releaseGraph.releaseGroupToFilteredProjects.get(releaseGroup)!
           ).flatMap(project => {
             return [
               project,
@@ -296,15 +300,18 @@ export class StormReleaseClient extends ReleaseClient {
             options.from ||
             (
               await getLatestGitTagForPattern(
+                this.workspaceConfig,
                 releaseGroup.releaseTag.pattern,
                 {
                   projectName: project.name,
                   releaseGroupName: releaseGroup.name
                 },
+                releaseGraph.resolveRepositoryTags.bind(releaseGraph),
                 {
                   checkAllBranchesWhen:
                     releaseGroup.releaseTag.checkAllBranchesWhen,
-                  preid: projectsPreid[project.name],
+                  preid:
+                    projectsPreid[project.name] || this.workspaceConfig.preid,
                   requireSemver: releaseGroup.releaseTag.requireSemver,
                   strictPreid: releaseGroup.releaseTag.strictPreid
                 }
@@ -367,7 +374,7 @@ export class StormReleaseClient extends ReleaseClient {
                 ? "*"
                 : getProjectsAffectedByCommit(c, fileToProjectMap)
             })),
-            this.config.conventionalCommits
+            this.releaseConfig.conventionalCommits
           );
 
           writeDebug(
@@ -383,7 +390,7 @@ export class StormReleaseClient extends ReleaseClient {
             projectsVersionData: options.versionData,
             releaseGroup,
             projects: [project],
-            releaseConfig: this.config,
+            releaseConfig: this.releaseConfig as ReleaseConfig,
             projectToAdditionalDependencyBumps,
             workspaceConfig: this.workspaceConfig,
             ChangelogRendererClass: StormChangelogRenderer
@@ -408,16 +415,24 @@ export class StormReleaseClient extends ReleaseClient {
           options.from ||
           (
             await getLatestGitTagForPattern(
+              this.workspaceConfig,
               releaseGroup.releaseTag.pattern,
-              {},
+              {
+                releaseGroupName: releaseGroup.name
+              },
+              releaseGraph.resolveRepositoryTags.bind(releaseGraph),
               {
                 checkAllBranchesWhen:
                   releaseGroup.releaseTag.checkAllBranchesWhen,
-                preid: Object.keys(projectsPreid)[0]
-                  ? projectsPreid?.[Object.keys(projectsPreid)[0]!]
-                  : undefined,
+                preid:
+                  Object.keys(projectsPreid)[0] &&
+                  projectsPreid?.[Object.keys(projectsPreid)[0]!]
+                    ? projectsPreid?.[Object.keys(projectsPreid)[0]!]
+                    : this.workspaceConfig.preid,
                 requireSemver: releaseGroup.releaseTag.requireSemver,
-                strictPreid: releaseGroup.releaseTag.strictPreid
+                strictPreid:
+                  releaseGroup.releaseTag.strictPreid ||
+                  this.workspaceConfig.preid !== undefined
               }
             )
           )?.tag;
@@ -456,7 +471,7 @@ export class StormReleaseClient extends ReleaseClient {
               ? "*"
               : getProjectsAffectedByCommit(c, fileToProjectMap)
           })),
-          this.config.conventionalCommits
+          this.releaseConfig.conventionalCommits
         );
 
         writeDebug(
@@ -472,7 +487,7 @@ export class StormReleaseClient extends ReleaseClient {
           projectsVersionData: options.versionData,
           releaseGroup,
           projects: projectNodes,
-          releaseConfig: this.config,
+          releaseConfig: this.releaseConfig as ReleaseConfig,
           projectToAdditionalDependencyBumps,
           workspaceConfig: this.workspaceConfig,
           ChangelogRendererClass: StormChangelogRenderer
@@ -526,8 +541,8 @@ ${Object.keys(allProjectChangelogs)
       options.releaseGraph.releaseGroupToFilteredProjects,
       options.versionData,
       options.gitCommitMessage ||
-        this.config.changelog?.git?.commitMessage ||
-        "release(monorepo): Publish workspace release updates"
+        this.releaseConfig.changelog?.git?.commitMessage ||
+        DEFAULT_COMMIT_MESSAGE
     );
 
     const changes = this.tree.listChanges();
@@ -557,7 +572,7 @@ ${Object.keys(allProjectChangelogs)
       isVerbose: !!options.verbose,
       gitCommitMessages: commitMessageValues,
       gitCommitArgs:
-        options.gitCommitArgs || this.config.changelog?.git?.commitArgs
+        options.gitCommitArgs || this.releaseConfig.changelog?.git?.commitArgs
     });
 
     // Resolve the commit we just made
@@ -572,9 +587,10 @@ ${Object.keys(allProjectChangelogs)
       await gitTag({
         tag,
         message:
-          options.gitTagMessage || this.config.changelog?.git?.tagMessage,
+          options.gitTagMessage ||
+          this.releaseConfig.changelog?.git?.tagMessage,
         additionalArgs:
-          options.gitTagArgs || this.config.changelog?.git?.tagArgs,
+          options.gitTagArgs || this.releaseConfig.changelog?.git?.tagArgs,
         dryRun: options.dryRun,
         verbose: options.verbose
       });
@@ -590,7 +606,7 @@ ${Object.keys(allProjectChangelogs)
       dryRun: options.dryRun,
       verbose: options.verbose,
       additionalArgs:
-        options.gitPushArgs || this.config.changelog?.git?.pushArgs
+        options.gitPushArgs || this.releaseConfig.changelog?.git?.pushArgs
     });
 
     // Run any post-git tasks in series
@@ -599,5 +615,426 @@ ${Object.keys(allProjectChangelogs)
     }
 
     return;
+  };
+
+  public override releaseVersion = async (
+    options: VersionOptions
+  ): Promise<NxReleaseVersionResult> => {
+    const verbose = options.verbose || isVerbose(this.workspaceConfig.logLevel);
+
+    this.projectGraph = await createProjectGraphAsync({
+      exitOnError: true,
+      resetDaemonClient: true
+    });
+    if (!this.projectGraph) {
+      throw new Error(
+        "Failed to load the project graph. Please run `nx reset`, then run the `storm-git commit` command again."
+      );
+    }
+
+    // Use pre-built release graph if provided, otherwise create a new one
+    const releaseGraph: ReleaseGraph = await createReleaseGraph(
+      {
+        tree: this.tree,
+        projectGraph: this.projectGraph,
+        nxReleaseConfig: this.releaseConfig,
+        filters: {
+          projects: options.projects,
+          groups: options.groups
+        },
+        firstRelease: !!options.firstRelease,
+        verbose,
+        preid: options.preid ?? this.workspaceConfig.preid,
+        versionActionsOptionsOverrides: options.versionActionsOptionsOverrides
+      },
+      this.workspaceConfig
+    );
+
+    // Display filter log if filters were applied
+    if (
+      releaseGraph.filterLog &&
+      process.env.NX_RELEASE_INTERNAL_SUPPRESS_FILTER_LOG !== "true"
+    ) {
+      writeDebug(formatNxLog(releaseGraph.filterLog), this.workspaceConfig);
+    }
+
+    if (!options.specifier) {
+      const rawVersionPlans = await readRawVersionPlans();
+      await setResolvedVersionPlansOnGroups(
+        rawVersionPlans,
+        releaseGraph.releaseGroups,
+        Object.keys(this.projectGraph.nodes),
+        verbose
+      );
+
+      // Validate version plans against the filter after resolution
+      const versionPlanValidationError =
+        validateResolvedVersionPlansAgainstFilter(
+          releaseGraph.releaseGroups,
+          releaseGraph.releaseGroupToFilteredProjects
+        );
+      if (versionPlanValidationError) {
+        throw new Error(formatNxLog(versionPlanValidationError));
+      }
+    } else {
+      if (verbose && releaseGraph.releaseGroups.some(g => !!g.versionPlans)) {
+        writeDebug(
+          `Skipping version plan discovery as a specifier was provided`,
+          this.workspaceConfig
+        );
+      }
+    }
+
+    if (options.deleteVersionPlans === undefined) {
+      // default to not delete version plans after versioning as they may be needed for changelog generation
+      options.deleteVersionPlans = false;
+    }
+
+    /**
+     * Run any configured top level pre-version command
+     */
+    if (this.releaseConfig.version?.preVersionCommand) {
+      writeDebug(
+        "Executing the following pre-version command: \n" +
+          this.releaseConfig.version.preVersionCommand,
+        this.workspaceConfig
+      );
+
+      try {
+        const childProcess = runAsync(
+          this.workspaceConfig,
+          this.releaseConfig.version.preVersionCommand,
+          this.workspaceConfig.workspaceRoot,
+          {
+            ...process.env,
+            NX_DRY_RUN: options.dryRun ? "true" : "false"
+          }
+        );
+        if (options.verbose) {
+          childProcess.stdout?.pipe(process.stdout);
+          childProcess.stderr?.pipe(process.stderr);
+        }
+
+        await childProcess;
+      } catch (e) {
+        throw new Error(
+          formatNxLog({
+            title: `The pre-version command failed. See the full output above.`,
+            bodyLines: [this.releaseConfig.version.preVersionCommand, e]
+          })
+        );
+      }
+    }
+
+    /**
+     * Run any configured pre-version command for the selected release groups
+     * in topological order
+     */
+    for (const groupName of releaseGraph.sortedReleaseGroups) {
+      const releaseGroup = releaseGraph.releaseGroups.find(
+        g => g.name === groupName
+      );
+      if (!releaseGroup) {
+        // Release group was filtered out, skip
+        continue;
+      }
+
+      if (releaseGroup.version?.groupPreVersionCommand) {
+        writeDebug(
+          `Executing the ${releaseGroup.name} release group's pre-version command: \n` +
+            releaseGroup.version?.groupPreVersionCommand,
+          this.workspaceConfig
+        );
+
+        try {
+          const childProcess = runAsync(
+            this.workspaceConfig,
+            releaseGroup.version?.groupPreVersionCommand,
+            this.workspaceConfig.workspaceRoot,
+            {
+              ...process.env,
+              NX_DRY_RUN: options.dryRun ? "true" : "false"
+            }
+          );
+          if (options.verbose) {
+            childProcess.stdout?.pipe(process.stdout);
+            childProcess.stderr?.pipe(process.stderr);
+          }
+
+          await childProcess;
+        } catch (e) {
+          throw new Error(
+            formatNxLog({
+              title: `The ${releaseGroup.name} release group's pre-version command failed. See the full output above.`,
+              bodyLines: [releaseGroup.version?.groupPreVersionCommand, e]
+            })
+          );
+        }
+      }
+    }
+
+    /**
+     * Validate the resolved data for the release graph, e.g. that manifest files exist for all projects that will be processed.
+     * This happens after preVersionCommands run, as those commands may create manifest files needed for versioning.
+     */
+    await releaseGraph.validate(this.tree);
+
+    const commitMessage: string | undefined =
+      options.gitCommitMessage ||
+      this.releaseConfig.version?.git?.commitMessage;
+
+    /**
+     * additionalChangedFiles are files which need to be updated as a side-effect of versioning (such as package manager lock files),
+     * and need to get staged and committed as part of the existing commit, if applicable.
+     */
+    const additionalChangedFiles = new Set<string>();
+    const additionalDeletedFiles = new Set<string>();
+
+    const processor = new StormReleaseGroupProcessor(
+      this.tree,
+      this.workspaceConfig,
+      this.projectGraph,
+      this.releaseConfig as NxReleaseConfig,
+      releaseGraph as unknown as NxReleaseGraph,
+      options
+    );
+
+    try {
+      await processor.processGroups();
+
+      // Delete processed version plan files if applicable
+      if (options.deleteVersionPlans) {
+        processor.deleteProcessedVersionPlanFiles();
+      }
+    } catch (err) {
+      // Flush any pending project logs before printing the error to make troubleshooting easier
+      processor.flushAllProjectLoggers();
+      // Bubble up the error so that the CLI can print the error and exit, or the programmatic API can handle it
+      throw err;
+    }
+
+    /**
+     * Ensure that formatting is applied so that version bump diffs are as minimal as possible
+     * within the context of the user's workspace.
+     */
+    await formatChangedFiles(this.tree);
+
+    printAndFlushChanges(this.tree, !!options.dryRun);
+
+    const { changedFiles: changed, deletedFiles: deleted } =
+      await processor.afterAllProjectsVersioned({
+        ...(this.releaseConfig.version as NxReleaseVersionConfiguration)
+          .versionActionsOptions,
+        ...(options.versionActionsOptionsOverrides ?? {})
+      });
+    changed.forEach(f => additionalChangedFiles.add(f));
+    deleted.forEach(f => additionalDeletedFiles.add(f));
+
+    // After all version actions have run, process docker projects as a layer above
+    if (
+      this.releaseConfig.docker &&
+      typeof this.releaseConfig.docker === "object" &&
+      this.releaseConfig.docker?.preVersionCommand
+    ) {
+      /**
+       * Run any configured top level docker pre-version command
+       */
+      writeDebug(
+        `Executing the docker pre-version command: \n` +
+          this.releaseConfig.docker.preVersionCommand,
+        this.workspaceConfig
+      );
+
+      try {
+        const childProcess = runAsync(
+          this.workspaceConfig,
+          this.releaseConfig.docker.preVersionCommand,
+          this.workspaceConfig.workspaceRoot,
+          {
+            ...process.env,
+            NX_DRY_RUN: options.dryRun ? "true" : "false"
+          }
+        );
+        if (options.verbose) {
+          childProcess.stdout?.pipe(process.stdout);
+          childProcess.stderr?.pipe(process.stderr);
+        }
+
+        await childProcess;
+      } catch (e) {
+        throw new Error(
+          formatNxLog({
+            title: `The docker pre-version command failed. See the full output above.`,
+            bodyLines: [this.releaseConfig.docker.preVersionCommand, e]
+          })
+        );
+      }
+    }
+
+    /**
+     * Run any configured docker pre-version command for the selected release groups
+     * in topological order (dependencies before dependents)
+     */
+    for (const groupName of releaseGraph.sortedReleaseGroups) {
+      const releaseGroup = releaseGraph.releaseGroups.find(
+        g => g.name === groupName
+      );
+      if (!releaseGroup) {
+        // Release group was filtered out, skip
+        continue;
+      }
+      if (releaseGroup.docker?.groupPreVersionCommand) {
+        writeDebug(
+          `Executing the ${releaseGroup.name} release group's docker pre-version command: \n` +
+            releaseGroup.docker?.groupPreVersionCommand,
+          this.workspaceConfig
+        );
+
+        try {
+          const childProcess = runAsync(
+            this.workspaceConfig,
+            releaseGroup.docker?.groupPreVersionCommand,
+            this.workspaceConfig.workspaceRoot,
+            {
+              ...process.env,
+              NX_DRY_RUN: options.dryRun ? "true" : "false"
+            }
+          );
+          if (options.verbose) {
+            childProcess.stdout?.pipe(process.stdout);
+            childProcess.stderr?.pipe(process.stderr);
+          }
+
+          await childProcess;
+        } catch (e) {
+          throw new Error(
+            formatNxLog({
+              title: `The ${releaseGroup.name} release group's docker pre-version command failed. See the full output above.`,
+              bodyLines: [releaseGroup.docker?.groupPreVersionCommand, e]
+            })
+          );
+        }
+      }
+    }
+
+    if (
+      this.releaseConfig.docker ||
+      releaseGraph.releaseGroups.some(rg => rg.docker)
+    ) {
+      writeWarning(
+        formatNxLog({
+          title: "Warning",
+          bodyLines: [
+            `Docker support is experimental. Breaking changes may occur and not adhere to semver versioning.`
+          ]
+        })
+      );
+    }
+    await processor.processDockerProjects(
+      options.dockerVersionScheme,
+      options.dockerVersion
+    );
+
+    const versionData = processor.getVersionData();
+
+    // Resolve any git tags as early as possible so that we can hard error in case of any duplicates before reaching the actual git command
+    const gitTagValues: string[] =
+      (options.gitTag ?? this.releaseConfig.version?.git?.tag)
+        ? createGitTagValues(
+            releaseGraph.releaseGroups,
+            releaseGraph.releaseGroupToFilteredProjects,
+            versionData
+          )
+        : [];
+    handleDuplicateGitTags(gitTagValues);
+
+    // Only applicable when there is a single release group with a fixed relationship
+    let workspaceVersion: string | null | undefined = undefined;
+    if (releaseGraph.releaseGroups.length === 1) {
+      const releaseGroup = releaseGraph.releaseGroups[0];
+      if (releaseGroup?.projectsRelationship === "fixed") {
+        const releaseGroupProjectNames = Array.from(
+          releaseGraph.releaseGroupToFilteredProjects.get(releaseGroup)!
+        );
+        workspaceVersion =
+          versionData[releaseGroupProjectNames[0]!]!.newVersion; // all projects have the same version so we can just grab the first
+      }
+    }
+
+    const changedFiles = [
+      ...this.tree.listChanges().map(f => f.path),
+      ...additionalChangedFiles
+    ];
+    const deletedFiles = Array.from(additionalDeletedFiles);
+
+    // No further actions are necessary in this scenario (e.g. if conventional commits detected no changes)
+    if (!changedFiles.length && !deletedFiles.length) {
+      return {
+        workspaceVersion,
+        projectsVersionData: versionData,
+        releaseGraph: releaseGraph as unknown as NxReleaseGraph
+      };
+    }
+
+    if (options.gitCommit ?? this.releaseConfig.version?.git?.commit) {
+      await commitChanges({
+        changedFiles,
+        deletedFiles,
+        isDryRun: !!options.dryRun,
+        isVerbose: !!options.verbose,
+        gitCommitMessages: createCommitMessageValues(
+          releaseGraph.releaseGroups,
+          releaseGraph.releaseGroupToFilteredProjects,
+          versionData,
+          commitMessage!
+        ),
+        gitCommitArgs:
+          options.gitCommitArgs || this.releaseConfig.version?.git?.commitArgs
+      });
+    } else if (
+      options.stageChanges ??
+      this.releaseConfig.version?.git?.stageChanges
+    ) {
+      writeDebug(`Staging changed files with git`);
+      await gitAdd({
+        changedFiles,
+        deletedFiles,
+        dryRun: options.dryRun,
+        verbose
+      });
+    }
+
+    if (options.gitTag ?? this.releaseConfig.version?.git?.tag) {
+      writeDebug(`Tagging commit with git`);
+      for (const tag of gitTagValues) {
+        await gitTag({
+          tag,
+          message:
+            options.gitTagMessage ||
+            this.releaseConfig.version?.git?.tagMessage,
+          additionalArgs:
+            options.gitTagArgs || this.releaseConfig.version?.git?.tagArgs,
+          dryRun: options.dryRun,
+          verbose: options.verbose
+        });
+      }
+    }
+
+    if (options.gitPush ?? this.releaseConfig.version?.git?.push) {
+      writeDebug(`Pushing to git remote "${options.gitRemote ?? "origin"}"`);
+      await gitPush({
+        gitRemote: options.gitRemote,
+        dryRun: options.dryRun,
+        verbose: options.verbose,
+        additionalArgs:
+          options.gitPushArgs || this.releaseConfig.version?.git?.pushArgs
+      });
+    }
+
+    return {
+      workspaceVersion,
+      projectsVersionData: versionData,
+      releaseGraph: releaseGraph as unknown as NxReleaseGraph
+    };
   };
 }

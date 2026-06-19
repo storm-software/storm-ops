@@ -5,9 +5,9 @@
 
 <div align="center">
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://public.storm-cdn.com/storm-software/banner-1280x640-dark.gif">
-  <source media="(prefers-color-scheme: light)" srcset="https://public.storm-cdn.com/storm-software/banner-1280x640-light.gif">
-<img src="https://public.storm-cdn.com/storm-software/banner-1280x640-dark.gif" width="100%" alt="Storm Software" />
+  <source media="(prefers-color-scheme: dark)" srcset="https://public.storm-cdn.com/storm-software/media/banner-1280x640-dark.gif">
+  <source media="(prefers-color-scheme: light)" srcset="https://public.storm-cdn.com/storm-software/media/banner-1280x640-light.gif">
+<img src="https://public.storm-cdn.com/storm-software/media/banner-1280x640-dark.gif" width="100%" alt="Storm Software" />
 </picture>
 </div>
 <br />
@@ -27,7 +27,7 @@ This package is part of the <b>⚡Storm-Ops</b> monorepo. The Storm-Ops packages
 
 <h3 align="center">💻 Visit <a href="https://stormsoftware.com" target="_blank">stormsoftware.com</a> to stay up to date with this developer</h3><br />
 
-[![Version](https://img.shields.io/badge/version-1.295.36-1fb2a6.svg?style=for-the-badge&color=1fb2a6)](https://prettier.io/)&nbsp;[![Nx](https://img.shields.io/badge/Nx-17.0.2-lightgrey?style=for-the-badge&logo=nx&logoWidth=20&&color=1fb2a6)](http://nx.dev/)&nbsp;[![NextJs](https://img.shields.io/badge/Next.js-14.0.2-lightgrey?style=for-the-badge&logo=nextdotjs&logoWidth=20&color=1fb2a6)](https://nextjs.org/)&nbsp;[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg?style=for-the-badge&logo=commitlint&color=1fb2a6)](http://commitizen.github.io/cz-cli/)&nbsp;![Semantic-Release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg?style=for-the-badge&color=1fb2a6)&nbsp;[![documented with Fumadocs](https://img.shields.io/badge/documented_with-fumadocs-success.svg?style=for-the-badge&logo=readthedocs&color=1fb2a6)](https://fumadocs.vercel.app/)&nbsp;![GitHub Workflow Status (with event)](https://img.shields.io/github/actions/workflow/status/storm-software/storm-ops/cr.yml?style=for-the-badge&logo=github-actions&color=1fb2a6)
+[![Version](https://img.shields.io/badge/version-1.296.50-1fb2a6.svg?style=for-the-badge&color=1fb2a6)](https://prettier.io/)&nbsp;[![Nx](https://img.shields.io/badge/Nx-17.0.2-lightgrey?style=for-the-badge&logo=nx&logoWidth=20&&color=1fb2a6)](http://nx.dev/)&nbsp;[![NextJs](https://img.shields.io/badge/Next.js-14.0.2-lightgrey?style=for-the-badge&logo=nextdotjs&logoWidth=20&color=1fb2a6)](https://nextjs.org/)&nbsp;[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg?style=for-the-badge&logo=commitlint&color=1fb2a6)](http://commitizen.github.io/cz-cli/)&nbsp;![Semantic-Release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg?style=for-the-badge&color=1fb2a6)&nbsp;[![documented with Fumadocs](https://img.shields.io/badge/documented_with-fumadocs-success.svg?style=for-the-badge&logo=readthedocs&color=1fb2a6)](https://fumadocs.vercel.app/)&nbsp;![GitHub Workflow Status (with event)](https://img.shields.io/github/actions/workflow/status/storm-software/storm-ops/cr.yml?style=for-the-badge&logo=github-actions&color=1fb2a6)
 
 <!-- prettier-ignore-start -->
 <!-- markdownlint-disable -->
@@ -52,58 +52,39 @@ This package is part of the <b>⚡Storm-Ops</b> monorepo. The Storm-Ops packages
 - [Storm Workspace Tools](#storm-workspace-tools)
   - [Installing](#installing)
   - [Executors](#executors)
-  - [Typia Executor](#typia-executor)
+  - [typia](#typia)
     - [Example](#example)
-    - [Options](#options)
-  - [ESBuild Executor](#esbuild-executor)
+  - [esbuild](#esbuild)
     - [Example](#example-1)
-    - [Options](#options-1)
-  - [Unbuild Executor](#unbuild-executor)
+  - [unbuild](#unbuild)
     - [Example](#example-2)
-    - [Options](#options-2)
-  - [Clean Package Executor](#clean-package-executor)
+  - [clean-package](#clean-package)
     - [Example](#example-3)
-    - [Options](#options-3)
-  - [Size Limit Executor](#size-limit-executor)
+  - [size-limit](#size-limit)
     - [Example](#example-4)
-    - [Options](#options-4)
-  - [Npm Publish Executor](#npm-publish-executor)
+  - [npm-publish](#npm-publish)
     - [Example](#example-5)
-    - [Options](#options-5)
-  - [Cargo Publish Executor](#cargo-publish-executor)
+  - [cargo-publish](#cargo-publish)
     - [Example](#example-6)
-    - [Options](#options-6)
-  - [Cargo Build Executor](#cargo-build-executor)
+  - [cargo-build](#cargo-build)
     - [Example](#example-7)
-    - [Options](#options-7)
-  - [Cargo Check Executor](#cargo-check-executor)
+  - [cargo-check](#cargo-check)
     - [Example](#example-8)
-    - [Options](#options-8)
-  - [Cargo Format Executor](#cargo-format-executor)
+  - [cargo-format](#cargo-format)
     - [Example](#example-9)
-    - [Options](#options-9)
-  - [Cargo Clippy Executor](#cargo-clippy-executor)
+  - [cargo-clippy](#cargo-clippy)
     - [Example](#example-10)
-    - [Options](#options-10)
-  - [Cargo Doc Executor](#cargo-doc-executor)
+  - [cargo-doc](#cargo-doc)
     - [Example](#example-11)
-    - [Options](#options-11)
-  - [Napi Executor](#napi-executor)
+  - [napi](#napi)
     - [Example](#example-12)
-    - [Options](#options-12)
   - [Generators](#generators)
-  - [Init Generator](#init-generator)
-    - [Options](#options-13)
-  - [Preset Generator](#preset-generator)
-    - [Options](#options-14)
-  - [Node Library Generator](#node-library-generator)
-    - [Options](#options-15)
-  - [Config Schema Generator](#config-schema-generator)
-    - [Options](#options-16)
-  - [Neutral Library Generator](#neutral-library-generator)
-    - [Options](#options-17)
-  - [Browser Library Generator](#browser-library-generator)
-    - [Options](#options-18)
+  - [init](#init)
+  - [preset](#preset)
+  - [node-library](#node-library)
+  - [config-schema](#config-schema)
+  - [neutral-library](#neutral-library)
+  - [browser-library](#browser-library)
   - [release-version](#release-version)
   - [Building](#building)
   - [Running unit tests](#running-unit-tests)
@@ -165,9 +146,9 @@ the workspace's projects:
 <!-- markdownlint-disable -->
 
 
-## Typia Executor
+## typia
 
-A type definition for a Typia executor schema
+Run the \`typia\` generator to create runtime type validators
 
 ### Example 
 
@@ -177,27 +158,13 @@ This executor can be used by executing the following in a command line utility:
 nx run my-project:typia
 ```
 
-**Please note:** _The typia executor should be included in the desired projects's `project.json` file.All required options must be included in the `options` property of the json._ 
-
-### Options
-
-The following executor options are available:
-
-| Option    | Type   | Description   | Default   | 
-| --------- | ------ | ------------- | --------- | 
-| **outputPath \***    | `string`    | The output path for the build     | "{sourceRoot}/__generated__/typia"     | 
- | **entry \***    | `string[]`   | The entry file or files to build     | `[]`     | 
- | **tsconfig \***    | `string`    | The path to the tsconfig file     | "{projectRoot}/tsconfig.json"     | 
- | clean      | `boolean`    | Clean the output directory before building     | `true`     | 
-
-
-**Please note:** _Option names followed by \* above are required, and must be provided to run the executor._ 
+**Please note:** _The typia executor should be included in the desired projects's `project.json` file._ 
 
 
 
-## ESBuild Executor
+## esbuild
 
-A type definition for an ESBuild executor schema
+Run the \`esbuild\` build process on a selected project
 
 ### Example 
 
@@ -209,33 +176,11 @@ nx run my-project:esbuild
 
 **Please note:** _The esbuild executor should be included in the desired projects's `project.json` file._ 
 
-### Options
-
-The following executor options are available:
-
-| Option    | Type   | Description   | Default   | 
-| --------- | ------ | ------------- | --------- | 
-| outputPath      | `string`    | The output path for the build     | "dist/{projectRoot}"     | 
- | entry      | `string[]`   | The entry file or files to build     | `[]`     | 
- | tsconfig      | `string`    | The path to the tsconfig file     | "{projectRoot}/tsconfig.json"     | 
- | bundle      | `boolean`    | Bundle the output     |     | 
- | minify      | `boolean`    | Minify the output     |     | 
- | debug      | `boolean`    | Debug the output     |     | 
- | sourcemap      | `boolean`    | Generate a sourcemap     |     | 
- | silent      | `boolean`    | Should the build run silently - only report errors back to the user     |     | 
- | target      | "es3" \| "es5" \| "es6" \| "es2015" \| "es2016" \| "es2017" \| "es2018" \| "es2019" \| "es2020" \| "es2021" \| "es2022" \| "es2023" \| "es2024" \| "esnext" \| "node12" \| "node14" \| "node16" \| "node18" \| "node20" \| "node22" \| "browser" \| "chrome58" \| "chrome59" \| "chrome60"     | The target to build     | "esnext"     | 
- | format      | "cjs" \| "esm" \| "iife"     | The format to build     | "esm"     | 
- | platform      | "neutral" \| "node" \| "browser"     | The platform to build     | "neutral"     | 
- | external      | `any[]`   | The external dependencies     | `[]`     | 
- | define      | `object`    | The define values     | `[object Object]`     | 
- | env      | `object`    | The environment variable values     | `[object Object]`     | 
 
 
+## unbuild
 
-
-## Unbuild Executor
-
-A type definition for a unbuild executor schema
+Run the \`unbuild\` build process on a selected project
 
 ### Example 
 
@@ -245,51 +190,13 @@ This executor can be used by executing the following in a command line utility:
 nx run my-project:unbuild
 ```
 
-**Please note:** _The unbuild executor should be included in the desired projects's `project.json` file.All required options must be included in the `options` property of the json._ 
-
-### Options
-
-The following executor options are available:
-
-| Option    | Type   | Description   | Default   | 
-| --------- | ------ | ------------- | --------- | 
-| outputPath      | `string`    | The output path for the build     |     | 
- | **entry \***    | `string[]`   | The directory to use as input for the build     | `[]`     | 
- | tsconfig      | `string`    | The path to the tsconfig file     | "{projectRoot}/tsconfig.json"     | 
- | bundle      | `boolean`    | Bundle the output     |     | 
- | minify      | `boolean`    | Minify the output     |     | 
- | debug      | `boolean`    | Debug the output     |     | 
- | sourcemap      | `boolean`    | Generate a sourcemap     |     | 
- | silent      | `boolean`    | Should the build run silently - only report errors back to the user     |     | 
- | target      | "es3" \| "es5" \| "es6" \| "es2015" \| "es2016" \| "es2017" \| "es2018" \| "es2019" \| "es2020" \| "es2021" \| "es2022" \| "es2023" \| "es2024" \| "esnext" \| "node12" \| "node14" \| "node16" \| "node18" \| "node20" \| "node22" \| "browser" \| "chrome58" \| "chrome59" \| "chrome60"     | The target to build     | "esnext"     | 
- | format      | `string[]`   | The format to build     | `[]`     | 
- | platform      | "neutral" \| "node" \| "browser"     | The platform to build     | "neutral"     | 
- | external      | `any[]`   | The external dependencies     | `[]`     | 
- | define      | `object`    | The define values     | `[object Object]`     | 
- | env      | `object`    | The environment variable values     | `[object Object]`     | 
- | **name \***    | `string`    | The name of the project/build     | "{projectName}"     | 
- | treeShaking      | `boolean`    | Enable tree shaking     | `true`     | 
- | watch      | `boolean`    | Watch for changes     |     | 
- | clean      | `boolean`    | Clean the output directory before building     | `true`     | 
- | stub      | `boolean`    | Stub the output     |     | 
- | buildOnly      | `boolean`    | Should the build process skip generating a package.json and copying assets     |     | 
- | watchOptions      | `object`    | Watch options     | `[object Object]`     | 
- | stubOptions      | `object`    | Stub options     | `[object Object]`     | 
- | dependencies      | `string[]`   | The dependencies to install     |     | 
- | peerDependencies      | `string[]`   | The peer dependencies to install     |     | 
- | devDependencies      | `string[]`   | The dev dependencies to install     |     | 
- | alias      | `object`    | The alias to use     | `[object Object]`     | 
- | replace      | `object`    | The replace to use     | `[object Object]`     | 
- | rollup      | `object`    | The rollup options     | `[object Object]`     | 
-
-
-**Please note:** _Option names followed by \* above are required, and must be provided to run the executor._ 
+**Please note:** _The unbuild executor should be included in the desired projects's `project.json` file._ 
 
 
 
-## Clean Package Executor
+## clean-package
 
-The clean package executor is responsible for removing unnecessary files and fields from a distributable package to make it as light as possible (for scenarios like edge computing, limited memory environments, etc.)
+Remove configuration files, fields, and scripts for development before publishing package. The executor will remove these unnecessary files and fields to make the distributable package as light as possible (for scenarios like edge computing, limited memory environments, etc.)
 
 ### Example 
 
@@ -301,25 +208,11 @@ nx run my-project:clean-package
 
 **Please note:** _The clean-package executor should be included in the desired projects's `project.json` file._ 
 
-### Options
-
-The following executor options are available:
-
-| Option    | Type   | Description   | Default   | 
-| --------- | ------ | ------------- | --------- | 
-| outputPath      | `string`    | The path to the output     | "dist/{projectRoot}"     | 
- | packageJsonPath      | `string`    | The path to the package.json that will be modified     | "{outputPath}/package.json"     | 
- | ignoredFiles      | `string`    | The files to ignore     |     | 
- | fields      | `string`    | The fields to include     | ""     | 
- | cleanReadMe      | `boolean`    | Clean the read me     | `true`     | 
- | cleanComments      | `boolean`    | Clean the comments     | `true`     | 
 
 
+## size-limit
 
-
-## Size Limit Executor
-
-A type definition for a Size Limit executor schema
+Run a size-limit performance test on the project
 
 ### Example 
 
@@ -331,21 +224,11 @@ nx run my-project:size-limit
 
 **Please note:** _The size-limit executor should be included in the desired projects's `project.json` file._ 
 
-### Options
-
-The following executor options are available:
-
-| Option    | Type   | Description   | Default   | 
-| --------- | ------ | ------------- | --------- | 
-| outputPath      | `string`    | The output path for the build     | "dist/{projectRoot}"     | 
- | entry      | `string[]`   | The path to the entry file     |     | 
 
 
+## npm-publish
 
-
-## Npm Publish Executor
-
-A type definition for a Npm Publish executor schema
+Publish a package to the NPM registry
 
 ### Example 
 
@@ -357,26 +240,11 @@ nx run my-project:npm-publish
 
 **Please note:** _The npm-publish executor should be included in the desired projects's `project.json` file._ 
 
-### Options
-
-The following executor options are available:
-
-| Option    | Type   | Description   | Default   | 
-| --------- | ------ | ------------- | --------- | 
-| packageRoot      | `string`    | The path to the package root     |     | 
- | registry      | `string`    | The registry to publish to     | "https://registry.npmjs.org/"     | 
- | tag      | `string`    | The tag to publish with     | "latest"     | 
- | version      | `string`    | The version to publish. If not provided, the version from package.json will be used     |     | 
- | otp      | `number`    | The one time password     |     | 
- | dryRun      | `boolean`    | Perform a dry run     |     | 
- | firstRelease      | `boolean`    | Publish the first release     |     | 
 
 
+## cargo-publish
 
-
-## Cargo Publish Executor
-
-A type definition for a Cargo/rust Publish executor schema
+Publish a Rust crate to the crates.io registry
 
 ### Example 
 
@@ -388,31 +256,11 @@ nx run my-project:cargo-publish
 
 **Please note:** _The cargo-publish executor should be included in the desired projects's `project.json` file._ 
 
-### Options
-
-The following executor options are available:
-
-| Option    | Type   | Description   | Default   | 
-| --------- | ------ | ------------- | --------- | 
-| outputPath      | `string`    | The output path for the build     | "dist/{projectRoot}"     | 
- | package      | `string`    | The path to the Cargo.toml file     | "{projectRoot}/Cargo.toml"     | 
- | toolchain      | "stable" \| "beta" \| "nightly"     | The type of toolchain to use for the build     | "stable"     | 
- | target      | `string`    | The target to build     |     | 
- | allTargets      | `boolean`    | Build all targets     |     | 
- | profile      | `string`    | The profile to build     |     | 
- | release      | `boolean`    | Build in release mode     |     | 
- | features      | `string`    | The features to build     |     | 
- | allFeatures      | `boolean`    | Build all features     |     | 
- | registry      | `string`    | The registry to publish to     |     | 
- | packageRoot      | `string`    | The path to the package root     |     | 
- | dryRun      | `boolean`    | Perform a dry run     |     | 
 
 
+## cargo-build
 
-
-## Cargo Build Executor
-
-A type definition for a Cargo/rust build executor schema
+Build a Rust project with Cargo Build
 
 ### Example 
 
@@ -424,28 +272,11 @@ nx run my-project:cargo-build
 
 **Please note:** _The cargo-build executor should be included in the desired projects's `project.json` file._ 
 
-### Options
-
-The following executor options are available:
-
-| Option    | Type   | Description   | Default   | 
-| --------- | ------ | ------------- | --------- | 
-| outputPath      | `string`    | The path to the output directory     |     | 
- | package      | `string`    | The path to the Cargo.toml file     | "{projectRoot}/Cargo.toml"     | 
- | toolchain      | "stable" \| "beta" \| "nightly"     | The type of toolchain to use for the build     | "stable"     | 
- | target      | `string`    | The target to build     |     | 
- | allTargets      | `boolean`    | Build all targets     |     | 
- | profile      | `string`    | The profile to build     |     | 
- | release      | `boolean`    | Build in release mode     |     | 
- | features      | `string`    | The features to build     |     | 
- | allFeatures      | `boolean`    | Build all features     |     | 
 
 
+## cargo-check
 
-
-## Cargo Check Executor
-
-A type definition for a Cargo/rust check executor schema
+Check a Rust project with Cargo Check
 
 ### Example 
 
@@ -457,28 +288,11 @@ nx run my-project:cargo-check
 
 **Please note:** _The cargo-check executor should be included in the desired projects's `project.json` file._ 
 
-### Options
-
-The following executor options are available:
-
-| Option    | Type   | Description   | Default   | 
-| --------- | ------ | ------------- | --------- | 
-| outputPath      | `string`    | The output path for the build     | "dist/{projectRoot}"     | 
- | package      | `string`    | The path to the Cargo.toml file     | "{projectRoot}/Cargo.toml"     | 
- | toolchain      | "stable" \| "beta" \| "nightly"     | The type of toolchain to use for the build     | "stable"     | 
- | target      | `string`    | The target to build     |     | 
- | allTargets      | `boolean`    | Build all targets     |     | 
- | profile      | `string`    | The profile to build     |     | 
- | release      | `boolean`    | Build in release mode     |     | 
- | features      | `string`    | The features to build     |     | 
- | allFeatures      | `boolean`    | Build all features     |     | 
 
 
+## cargo-format
 
-
-## Cargo Format Executor
-
-A type definition for a Cargo/rust format executor schema
+Format a Rust project with Cargo Fmt
 
 ### Example 
 
@@ -490,28 +304,11 @@ nx run my-project:cargo-format
 
 **Please note:** _The cargo-format executor should be included in the desired projects's `project.json` file._ 
 
-### Options
-
-The following executor options are available:
-
-| Option    | Type   | Description   | Default   | 
-| --------- | ------ | ------------- | --------- | 
-| outputPath      | `string`    | The output path for the build     | "dist/{projectRoot}"     | 
- | package      | `string`    | The path to the Cargo.toml file     | "{projectRoot}/Cargo.toml"     | 
- | toolchain      | "stable" \| "beta" \| "nightly"     | The type of toolchain to use for the build     | "stable"     | 
- | target      | `string`    | The target to build     |     | 
- | allTargets      | `boolean`    | Build all targets     |     | 
- | profile      | `string`    | The profile to build     |     | 
- | release      | `boolean`    | Build in release mode     |     | 
- | features      | `string`    | The features to build     |     | 
- | allFeatures      | `boolean`    | Build all features     |     | 
 
 
+## cargo-clippy
 
-
-## Cargo Clippy Executor
-
-A type definition for a Cargo/rust clippy executor schema
+Lint a Rust project with Cargo Clippy
 
 ### Example 
 
@@ -523,29 +320,11 @@ nx run my-project:cargo-clippy
 
 **Please note:** _The cargo-clippy executor should be included in the desired projects's `project.json` file._ 
 
-### Options
-
-The following executor options are available:
-
-| Option    | Type   | Description   | Default   | 
-| --------- | ------ | ------------- | --------- | 
-| outputPath      | `string`    | The output path for the build     | "dist/{projectRoot}"     | 
- | package      | `string`    | The path to the Cargo.toml file     | "{projectRoot}/Cargo.toml"     | 
- | toolchain      | "stable" \| "beta" \| "nightly"     | The type of toolchain to use for the build     | "stable"     | 
- | target      | `string`    | The target to build     |     | 
- | allTargets      | `boolean`    | Build all targets     |     | 
- | profile      | `string`    | The profile to build     |     | 
- | release      | `boolean`    | Build in release mode     |     | 
- | features      | `string`    | The features to build     |     | 
- | allFeatures      | `boolean`    | Build all features     |     | 
- | fix      | `boolean`    | Automatically fix issues     |     | 
 
 
+## cargo-doc
 
-
-## Cargo Doc Executor
-
-A type definition for a Cargo/rust documentation executor schema
+Create docs for a Rust project with Cargo Doc
 
 ### Example 
 
@@ -557,32 +336,11 @@ nx run my-project:cargo-doc
 
 **Please note:** _The cargo-doc executor should be included in the desired projects's `project.json` file._ 
 
-### Options
-
-The following executor options are available:
-
-| Option    | Type   | Description   | Default   | 
-| --------- | ------ | ------------- | --------- | 
-| outputPath      | `string`    | The output path for the build     | "dist/{projectRoot}"     | 
- | package      | `string`    | The path to the Cargo.toml file     | "{projectRoot}/Cargo.toml"     | 
- | toolchain      | "stable" \| "beta" \| "nightly"     | The type of toolchain to use for the build     | "stable"     | 
- | target      | `string`    | The target to build     |     | 
- | allTargets      | `boolean`    | Build all targets     |     | 
- | profile      | `string`    | The profile to build     |     | 
- | release      | `boolean`    | Build in release mode     |     | 
- | features      | `string`    | The features to build     |     | 
- | allFeatures      | `boolean`    | Build all features     |     | 
- | lib      | `boolean`    | Generate documentation for the library     | `[object Object]`     | 
- | bins      | `boolean`    | Generate documentation for the bins     | `[object Object]`     | 
- | examples      | `boolean`    | Generate documentation for the examples     | `[object Object]`     | 
- | noDeps      | `boolean`    | Do not generate documentation for dependencies     | `[object Object]`     | 
 
 
+## napi
 
-
-## Napi Executor
-
-A type definition for the Napi - Bindings Build executor schema
+Build Node.js native addons using N-API and Rust via the NAPI-RS framework
 
 ### Example 
 
@@ -592,49 +350,7 @@ This executor can be used by executing the following in a command line utility:
 nx run my-project:napi
 ```
 
-**Please note:** _The napi executor should be included in the desired projects's `project.json` file.All required options must be included in the `options` property of the json._ 
-
-### Options
-
-The following executor options are available:
-
-| Option    | Type   | Description   | Default   | 
-| --------- | ------ | ------------- | --------- | 
-| **outputPath \***    | `string`    | The path to the output directory     | "{sourceRoot}"     | 
- | **package \***    | `string`    | Build the specified library or the one at cwd     |     | 
- | toolchain      | "stable" \| "beta" \| "nightly"     | The type of toolchain to use for the build     | "stable"     | 
- | target      | `string`    | Build for the target triple, bypassed to \`cargo build --target\`     |     | 
- | allTargets      | `boolean`    | Build all targets     |     | 
- | profile      | `string`    | Build artifacts with the specified profile     |     | 
- | release      | `boolean`    | Build in release mode     |     | 
- | features      | `string[]`   | List of features to activate     |     | 
- | allFeatures      | `boolean`    | Activate all available features     |     | 
- | **jsBinding \***    | `string`    | The path to the output JavaScript file     | "binding.js"     | 
- | **dts \***    | `string`    | The path to the output TypeScript declaration file     | "binding.d.ts"     | 
- | **manifestPath \***    | `string`    | The path to the Cargo.toml manifest file     |     | 
- | cwd      | `string`    | Working directory where napi command will be executed; other paths are relative to this     |     | 
- | configPath      | `string`    | Path to napi config JSON file     |     | 
- | packageJsonPath      | `string`    | Path to package.json     |     | 
- | targetDir      | `string`    | Directory for all crate generated artifacts (cargo build --target-dir)     |     | 
- | platform      | `boolean`    | Add platform triple to generated Node.js binding file, e.g. [name].linux-x64-gnu.node     | `true`     | 
- | jsPackageName      | `string`    | Package name in generated JS binding file. Works only with --platform     |     | 
- | constEnum      | `boolean`    | Whether to generate const enum for TypeScript bindings     |     | 
- | noJsBinding      | `boolean`    | Disable generation of JS binding file. Works only with --platform     |     | 
- | dtsHeader      | `string`    | Custom file header for generated type def file (requires typedef feature)     |     | 
- | noDtsHeader      | `boolean`    | Disable default file header for generated type def file (requires typedef feature)     |     | 
- | dtsCache      | `boolean`    | Enable the DTS cache     | `true`     | 
- | esm      | `boolean`    | Emit an ESM JS binding file instead of CJS (works only with --platform)     |     | 
- | strip      | `boolean`    | Strip the library to minimize file size     |     | 
- | verbose      | `boolean`    | Verbosely log build command trace     |     | 
- | bin      | `string`    | Build only the specified binary     |     | 
- | crossCompile      | `boolean`    | [experimental] Cross-compile for the specified target with cargo-xwin on Windows and cargo-zigbuild on other platforms     |     | 
- | useCross      | `boolean`    | [experimental] Use cross (https://github.com/cross-rs/cross) instead of cargo     |     | 
- | useNapiCross      | `boolean`    | [experimental] Use @napi-rs/cross-toolchain to cross-compile Linux arm/arm64/x64 gnu targets     |     | 
- | watch      | `boolean`    | Watch crate changes and build continuously with cargo-watch     |     | 
- | noDefaultFeatures      | `boolean`    | Do not activate the default feature     |     | 
-
-
-**Please note:** _Option names followed by \* above are required, and must be provided to run the executor._ 
+**Please note:** _The napi executor should be included in the desired projects's `project.json` file._ 
 
 
 
@@ -653,148 +369,39 @@ management:
 <!-- markdownlint-disable -->
 
 
-## Init Generator
+## init
 
-A type definition for an init generator schema
-
-### Options
-
-The following executor options are available:
-
-| Option    | Type   | Description   | Default   | 
-| --------- | ------ | ------------- | --------- | 
-| skipFormat      | `boolean`    | Skip formatting the generated files     |     | 
+Initialize the `@storm-software/workspace-tools` plugin.
 
 
 
+## preset
 
-## Preset Generator
-
-A type definition for a preset generator schema
-
-### Options
-
-The following executor options are available:
-
-| Option    | Type   | Description   | Default   | 
-| --------- | ------ | ------------- | --------- | 
-| **directory \***    | `string`    | The directory to create the library in     |     | 
- | **name \***    | `string`    | The name of the workspace     |     | 
- | organization      | `string`    | The organization of the workspace     | "storm-software"     | 
- | includeApps      | `boolean`    | Include apps in the workspace     | `true`     | 
- | includeRust      | `boolean`    | Include Rust support in the workspace     |     | 
- | namespace      | `string`    | The namespace of the workspace     | "storm-software"     | 
- | description      | `string`    | The description of the workspace     |     | 
- | repositoryUrl      | `string`    | The URL of the repository     |     | 
- | nxCloud      | `string`    | Nx Cloud configuration     |     | 
- | mode      | `string`    | The mode of the Nx client     |     | 
- | packageManager      | "npm" \| "pnpm" \| "yarn" \| "bun"     | The package manager to use     | "pnpm"     | 
-
-
-**Please note:** _Option names followed by \* above are required, and must be provided to run the executor._ 
+Storm workspace preset generator
 
 
 
-## Node Library Generator
+## node-library
 
-A type definition for a NodeJs library generator schema
-
-### Options
-
-The following executor options are available:
-
-| Option    | Type   | Description   | Default   | 
-| --------- | ------ | ------------- | --------- | 
-| **directory \***    | `string`    | The directory to create the library in     |     | 
- | **name \***    | `string`    | The name of the library     |     | 
- | description      | `string`    | The description of the library     |     | 
- | buildExecutor      | `string`    | The executor to use for building the library     | "@storm-software/workspace-tools:unbuild"     | 
- | platform      | "node" \| "neutral"     | The platform to target with the library     | "node"     | 
- | importPath      | `string`    | The import path for the library     |     | 
- | tags      | `string`    | The tags for the library     |     | 
- | unitTestRunner      | "jest" \| "vitest" \| "none"     | The unit test runner to use     |     | 
- | testEnvironment      | "jsdom" \| "node"     | The test environment to use     |     | 
- | pascalCaseFiles      | `boolean`    | Use PascalCase for file names     |     | 
- | strict      | `boolean`    | Enable strict mode     | `true`     | 
- | publishable      | `boolean`    | Make the library publishable     |     | 
- | buildable      | `boolean`    | Make the library buildable     | `true`     | 
-
-
-**Please note:** _Option names followed by \* above are required, and must be provided to run the executor._ 
+Create a new NodeJs TypeScript library package in the Storm workspace
 
 
 
-## Config Schema Generator
+## config-schema
 
-A type definition for a config schema generator schema
-
-### Options
-
-The following executor options are available:
-
-| Option    | Type   | Description   | Default   | 
-| --------- | ------ | ------------- | --------- | 
-| directory      | `string`    | The directory to create the library in     |     | 
- | outputFile      | `string`    | The file to write the schema to     | "{workspaceRoot}/storm-workspace.schema.json"     | 
+Create a Storm JSON schema based on the workspaces project configurations
 
 
 
+## neutral-library
 
-## Neutral Library Generator
-
-A type definition for a neutral library generator schema
-
-### Options
-
-The following executor options are available:
-
-| Option    | Type   | Description   | Default   | 
-| --------- | ------ | ------------- | --------- | 
-| **directory \***    | `string`    | The directory to create the library in     |     | 
- | **name \***    | `string`    | The name of the library     |     | 
- | description      | `string`    | The description of the library     |     | 
- | buildExecutor      | `string`    | The executor to use for building the library     | "@storm-software/workspace-tools:unbuild"     | 
- | platform      | "neutral"     | The platform to target with the library     | "neutral"     | 
- | importPath      | `string`    | The import path for the library     |     | 
- | tags      | `string`    | The tags for the library     |     | 
- | unitTestRunner      | "jest" \| "vitest" \| "none"     | The unit test runner to use     |     | 
- | testEnvironment      | "jsdom" \| "node"     | The test environment to use     |     | 
- | pascalCaseFiles      | `boolean`    | Use PascalCase for file names     |     | 
- | strict      | `boolean`    | Enable strict mode     | `true`     | 
- | publishable      | `boolean`    | Make the library publishable     |     | 
- | buildable      | `boolean`    | Make the library buildable     | `true`     | 
-
-
-**Please note:** _Option names followed by \* above are required, and must be provided to run the executor._ 
+Create a new Neutral TypeScript library package in the Storm workspace
 
 
 
-## Browser Library Generator
+## browser-library
 
-A type definition for a browser library generator schema
-
-### Options
-
-The following executor options are available:
-
-| Option    | Type   | Description   | Default   | 
-| --------- | ------ | ------------- | --------- | 
-| **directory \***    | `string`    | The directory to create the library in     |     | 
- | **name \***    | `string`    | The name of the library     |     | 
- | description      | `string`    | The description of the library     |     | 
- | buildExecutor      | `string`    | The executor to use for building the library     | "@storm-software/workspace-tools:unbuild"     | 
- | platform      | "browser" \| "neutral"     | The platform to target with the library     | "browser"     | 
- | importPath      | `string`    | The import path for the library     |     | 
- | tags      | `string`    | The tags for the library     |     | 
- | unitTestRunner      | "jest" \| "vitest" \| "none"     | The unit test runner to use     |     | 
- | testEnvironment      | "jsdom" \| "node"     | The test environment to use     |     | 
- | pascalCaseFiles      | `boolean`    | Use PascalCase for file names     |     | 
- | strict      | `boolean`    | Enable strict mode     | `true`     | 
- | publishable      | `boolean`    | Make the library publishable     |     | 
- | buildable      | `boolean`    | Make the library buildable     | `true`     | 
-
-
-**Please note:** _Option names followed by \* above are required, and must be provided to run the executor._ 
+Create a new browser TypeScript library package in the Storm workspace
 
 
 
@@ -944,9 +551,9 @@ specification. Contributions of any kind welcome!
 
 <div align="center">
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://public.storm-cdn.com/storm-software/banner-1280x320-dark.webp">
-  <source media="(prefers-color-scheme: light)" srcset="https://public.storm-cdn.com/storm-software/banner-1280x320-light.webp">
-<img src="https://public.storm-cdn.com/storm-software/banner-1280x320-dark.webp" width="100%" alt="Storm Software" />
+  <source media="(prefers-color-scheme: dark)" srcset="https://public.storm-cdn.com/storm-software/media/banner-1280x320-dark.webp">
+  <source media="(prefers-color-scheme: light)" srcset="https://public.storm-cdn.com/storm-software/media/banner-1280x320-light.webp">
+<img src="https://public.storm-cdn.com/storm-software/media/banner-1280x320-dark.webp" width="100%" alt="Storm Software" />
 </picture>
 </div>
 <br />

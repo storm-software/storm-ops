@@ -1,6 +1,788 @@
-![Storm Software's logo banner](https://public.storm-cdn.com/storm-software/banner-1280x320.gif)
+![Storm Software's logo banner](https://public.storm-cdn.com/storm-software/media/banner-1280x320.gif)
 
 # Changelog for Storm Ops - Storm Config
+
+## [0.28.278](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.28.278) (06/18/2026)
+
+### Updated Dependencies
+
+- Updated **storm-workspace** to **v0.19.307**
+
+## [0.28.277](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.28.277) (06/18/2026)
+
+### Updated Dependencies
+
+- Updated **storm-workspace** to **v0.19.306**
+
+## [0.28.276](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.28.276) (06/18/2026)
+
+### Updated Dependencies
+
+- Updated **storm-workspace** to **v0.19.305**
+
+## [0.28.275](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.28.275) (06/18/2026)
+
+### Updated Dependencies
+
+- Updated **storm-workspace** to **v0.19.304**
+
+## [0.28.274](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.28.274) (06/18/2026)
+
+### Updated Dependencies
+
+- Updated **storm-workspace** to **v0.19.303**
+
+## [0.28.273](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.28.273) (06/15/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update asset references to the newly created `media` folder ([40a620402](https://github.com/storm-software/storm-ops/commit/40a620402))
+
+### Updated Dependencies
+
+- Updated **storm-workspace** to **v0.19.302**
+
+## [0.28.272](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.28.272) (06/14/2026)
+
+### Updated Dependencies
+
+- Updated **storm-workspace** to **v0.19.301**
+
+## [0.28.271](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.28.271) (06/14/2026)
+
+### Updated Dependencies
+
+- Updated **storm-workspace** to **v0.19.300**
+
+## [0.28.270](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.28.270) (06/14/2026)
+
+### Updated Dependencies
+
+- Updated **storm-workspace** to **v0.19.299**
+
+## [0.28.269](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.28.269) (06/14/2026)
+
+### Updated Dependencies
+
+- Updated **storm-workspace** to **v0.19.298**
+
+## [0.28.268](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.28.268) (06/14/2026)
+
+### Updated Dependencies
+
+- Updated **storm-workspace** to **v0.19.297**
+
+## [0.28.267](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.28.267) (06/14/2026)
+
+### Updated Dependencies
+
+- Updated **storm-workspace** to **v0.19.296**
+
+## [0.28.266](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.28.266) (06/14/2026)
+
+### Updated Dependencies
+
+- Updated **storm-workspace** to **v0.19.295**
+
+## [0.28.265](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.28.265) (06/14/2026)
+
+### Updated Dependencies
+
+- Updated **storm-workspace** to **v0.19.294**
+
+## [0.28.264](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.28.264) (06/14/2026)
+
+### Updated Dependencies
+
+- Updated **storm-workspace** to **v0.19.293**
+
+## [0.28.263](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.28.263) (06/14/2026)
+
+### Updated Dependencies
+
+- Updated **storm-workspace** to **v0.19.292**
+
+## [0.28.262](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.28.262) (06/14/2026)
+
+### Updated Dependencies
+
+- Updated **storm-workspace** to **v0.19.291**
+
+## [0.28.261](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.28.261) (06/14/2026)
+
+### Updated Dependencies
+
+- Updated **storm-workspace** to **v0.19.290**
+
+## [0.28.260](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.28.260) (06/14/2026)
+
+### Updated Dependencies
+
+- Updated **storm-workspace** to **v0.19.289**
+
+## [0.28.259](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.28.259) (06/13/2026)
+
+### Updated Dependencies
+
+- Updated **storm-workspace** to **v0.19.288**
+
+## [0.28.258](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.28.258) (06/13/2026)
+
+### Updated Dependencies
+
+- Updated **storm-workspace** to **v0.19.287**
+
+## [0.28.257](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.28.257) (06/13/2026)
+
+### Updated Dependencies
+
+- Updated **storm-workspace** to **v0.19.286**
+
+## [0.28.256](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.28.256) (06/13/2026)
+
+### Updated Dependencies
+
+- Updated **storm-workspace** to **v0.19.285**
+
+## [0.28.255](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.28.255) (06/13/2026)
+
+### Updated Dependencies
+
+- Updated **storm-workspace** to **v0.19.284**
+
+## [0.28.254](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.28.254) (06/13/2026)
+
+### Updated Dependencies
+
+- Updated **storm-workspace** to **v0.19.283**
+
+## [0.28.253](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.28.253) (06/13/2026)
+
+### Updated Dependencies
+
+- Updated **storm-workspace** to **v0.19.282**
+
+## [0.28.252](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.28.252) (06/13/2026)
+
+### Updated Dependencies
+
+- Updated **storm-workspace** to **v0.19.281**
+
+## [0.28.251](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.28.251) (06/13/2026)
+
+### Updated Dependencies
+
+- Updated **storm-workspace** to **v0.19.280**
+
+## [0.28.250](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.28.250) (06/13/2026)
+
+### Updated Dependencies
+
+- Updated **storm-workspace** to **v0.19.279**
+
+## [0.28.249](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.28.249) (06/13/2026)
+
+### Updated Dependencies
+
+- Updated **storm-workspace** to **v0.19.278**
+
+## [0.28.248](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.28.248) (06/13/2026)
+
+### Updated Dependencies
+
+- Updated **storm-workspace** to **v0.19.277**
+
+## [0.28.247](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.28.247) (06/13/2026)
+
+### Updated Dependencies
+
+- Updated **storm-workspace** to **v0.19.276**
+
+## [0.28.246](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.28.246) (06/11/2026)
+
+### Updated Dependencies
+
+- Updated **storm-workspace** to **v0.19.275**
+
+## [0.28.245](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.28.245) (06/11/2026)
+
+### Updated Dependencies
+
+- Updated **storm-workspace** to **v0.19.274**
+
+## [0.28.244](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.28.244) (06/11/2026)
+
+### Updated Dependencies
+
+- Updated **storm-workspace** to **v0.19.273**
+
+## [0.28.243](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.28.243) (06/11/2026)
+
+### Updated Dependencies
+
+- Updated **storm-workspace** to **v0.19.272**
+
+## [0.28.242](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.28.242) (06/11/2026)
+
+### Updated Dependencies
+
+- Updated **storm-workspace** to **v0.19.271**
+
+## [0.28.241](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.28.241) (06/10/2026)
+
+### Updated Dependencies
+
+- Updated **storm-workspace** to **v0.19.270**
+
+## [0.28.240](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.28.240) (06/10/2026)
+
+### Updated Dependencies
+
+- Updated **storm-workspace** to **v0.19.269**
+
+## [0.28.239](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.28.239) (06/10/2026)
+
+### Updated Dependencies
+
+- Updated **storm-workspace** to **v0.19.268**
+
+## [0.28.238](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.28.238) (06/10/2026)
+
+### Updated Dependencies
+
+- Updated **storm-workspace** to **v0.19.267**
+
+## [0.28.237](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.28.237) (06/10/2026)
+
+### Updated Dependencies
+
+- Updated **storm-workspace** to **v0.19.266**
+
+## [0.28.236](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.28.236) (06/08/2026)
+
+### Updated Dependencies
+
+- Updated **storm-workspace** to **v0.19.265**
+
+## [0.28.235](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.28.235) (06/08/2026)
+
+### Updated Dependencies
+
+- Updated **storm-workspace** to **v0.19.264**
+
+## [0.28.234](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.28.234) (06/08/2026)
+
+### Updated Dependencies
+
+- Updated **storm-workspace** to **v0.19.263**
+
+## [0.28.233](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.28.233) (06/08/2026)
+
+### Updated Dependencies
+
+- Updated **storm-workspace** to **v0.19.262**
+
+## [0.28.232](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.28.232) (06/08/2026)
+
+### Updated Dependencies
+
+- Updated **storm-workspace** to **v0.19.261**
+
+## [0.28.231](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.28.231) (06/08/2026)
+
+### Updated Dependencies
+
+- Updated **storm-workspace** to **v0.19.260**
+
+## [0.28.230](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.28.230) (06/08/2026)
+
+### Updated Dependencies
+
+- Updated **storm-workspace** to **v0.19.259**
+
+## [0.28.229](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.28.229) (06/08/2026)
+
+### Updated Dependencies
+
+- Updated **storm-workspace** to **v0.19.258**
+
+## [0.28.228](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.28.228) (06/01/2026)
+
+### Updated Dependencies
+
+- Updated **storm-workspace** to **v0.19.257**
+
+## [0.28.227](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.28.227) (06/01/2026)
+
+### Updated Dependencies
+
+- Updated **storm-workspace** to **v0.19.256**
+
+## [0.28.226](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.28.226) (06/01/2026)
+
+### Updated Dependencies
+
+- Updated **storm-workspace** to **v0.19.255**
+
+## [0.28.225](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.28.225) (06/01/2026)
+
+### Updated Dependencies
+
+- Updated **storm-workspace** to **v0.19.254**
+
+## [0.28.224](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.28.224) (05/30/2026)
+
+### Updated Dependencies
+
+- Updated **storm-workspace** to **v0.19.253**
+
+## [0.28.223](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.28.223) (05/30/2026)
+
+### Updated Dependencies
+
+- Updated **storm-workspace** to **v0.19.252**
+
+## [0.28.222](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.28.222) (05/30/2026)
+
+### Updated Dependencies
+
+- Updated **storm-workspace** to **v0.19.251**
+
+## [0.28.221](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.28.221) (05/30/2026)
+
+### Updated Dependencies
+
+- Updated **storm-workspace** to **v0.19.250**
+
+## [0.28.220](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.28.220) (05/28/2026)
+
+### Updated Dependencies
+
+- Updated **storm-workspace** to **v0.19.249**
+
+## [0.28.219](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.28.219) (05/26/2026)
+
+### Updated Dependencies
+
+- Updated **storm-workspace** to **v0.19.248**
+
+## [0.28.218](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.28.218) (05/26/2026)
+
+### Updated Dependencies
+
+- Updated **storm-workspace** to **v0.19.247**
+
+## [0.28.217](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.28.217) (05/26/2026)
+
+### Updated Dependencies
+
+- Updated **storm-workspace** to **v0.19.246**
+
+## [0.28.216](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.28.216) (05/26/2026)
+
+### Updated Dependencies
+
+- Updated **storm-workspace** to **v0.19.245**
+
+## [0.28.215](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.28.215) (05/25/2026)
+
+### Updated Dependencies
+
+- Updated **storm-workspace** to **v0.19.244**
+
+## [0.28.214](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.28.214) (05/22/2026)
+
+### Updated Dependencies
+
+- Updated **storm-workspace** to **v0.19.243**
+
+## [0.28.213](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.28.213) (05/22/2026)
+
+### Updated Dependencies
+
+- Updated **storm-workspace** to **v0.19.242**
+
+## [0.28.212](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.28.212) (05/22/2026)
+
+### Updated Dependencies
+
+- Updated **storm-workspace** to **v0.19.241**
+
+## [0.28.211](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.28.211) (05/22/2026)
+
+### Updated Dependencies
+
+- Updated **storm-workspace** to **v0.19.240**
+
+## [0.28.210](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.28.210) (05/20/2026)
+
+### Updated Dependencies
+
+- Updated **storm-workspace** to **v0.19.239**
+
+## [0.28.209](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.28.209) (05/20/2026)
+
+### Updated Dependencies
+
+- Updated **storm-workspace** to **v0.19.238**
+
+## [0.28.208](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.28.208) (05/20/2026)
+
+### Updated Dependencies
+
+- Updated **storm-workspace** to **v0.19.237**
+
+## [0.28.207](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.28.207) (05/20/2026)
+
+### Updated Dependencies
+
+- Updated **storm-workspace** to **v0.19.236**
+
+## [0.28.206](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.28.206) (05/20/2026)
+
+### Updated Dependencies
+
+- Updated **storm-workspace** to **v0.19.235**
+
+## [0.28.205](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.28.205) (05/20/2026)
+
+### Updated Dependencies
+
+- Updated **storm-workspace** to **v0.19.234**
+
+## [0.28.204](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.28.204) (05/20/2026)
+
+### Updated Dependencies
+
+- Updated **storm-workspace** to **v0.19.233**
+
+## [0.28.203](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.28.203) (05/20/2026)
+
+### Updated Dependencies
+
+- Updated **storm-workspace** to **v0.19.232**
+
+## [0.28.202](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.28.202) (05/20/2026)
+
+### Updated Dependencies
+
+- Updated **storm-workspace** to **v0.19.231**
+
+## [0.28.201](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.28.201) (05/19/2026)
+
+### Updated Dependencies
+
+- Updated **storm-workspace** to **v0.19.230**
+
+## [0.28.200](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.28.200) (05/19/2026)
+
+### Updated Dependencies
+
+- Updated **storm-workspace** to **v0.19.229**
+
+## [0.28.199](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.28.199) (05/16/2026)
+
+### Updated Dependencies
+
+- Updated **storm-workspace** to **v0.19.228**
+
+## [0.28.198](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.28.198) (05/16/2026)
+
+### Updated Dependencies
+
+- Updated **storm-workspace** to **v0.19.227**
+
+## [0.28.197](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.28.197) (05/15/2026)
+
+### Updated Dependencies
+
+- Updated **storm-workspace** to **v0.19.226**
+
+## [0.28.196](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.28.196) (05/15/2026)
+
+### Updated Dependencies
+
+- Updated **storm-workspace** to **v0.19.225**
+
+## [0.28.195](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.28.195) (05/15/2026)
+
+### Updated Dependencies
+
+- Updated **storm-workspace** to **v0.19.224**
+
+## [0.28.194](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.28.194) (05/15/2026)
+
+### Updated Dependencies
+
+- Updated **storm-workspace** to **v0.19.223**
+
+## [0.28.193](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.28.193) (05/15/2026)
+
+### Updated Dependencies
+
+- Updated **storm-workspace** to **v0.19.222**
+
+## [0.28.192](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.28.192) (05/15/2026)
+
+### Updated Dependencies
+
+- Updated **storm-workspace** to **v0.19.221**
+
+## [0.28.191](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.28.191) (05/15/2026)
+
+### Updated Dependencies
+
+- Updated **storm-workspace** to **v0.19.220**
+
+## [0.28.190](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.28.190) (05/15/2026)
+
+### Updated Dependencies
+
+- Updated **storm-workspace** to **v0.19.219**
+
+## [0.28.189](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.28.189) (05/15/2026)
+
+### Updated Dependencies
+
+- Updated **storm-workspace** to **v0.19.218**
+
+## [0.28.188](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.28.188) (05/14/2026)
+
+### Updated Dependencies
+
+- Updated **storm-workspace** to **v0.19.217**
+
+## [0.28.187](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.28.187) (05/14/2026)
+
+### Updated Dependencies
+
+- Updated **storm-workspace** to **v0.19.216**
+
+## [0.28.186](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.28.186) (05/14/2026)
+
+### Updated Dependencies
+
+- Updated **storm-workspace** to **v0.19.215**
+
+## [0.28.185](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.28.185) (05/14/2026)
+
+### Updated Dependencies
+
+- Updated **storm-workspace** to **v0.19.214**
+
+## [0.28.184](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.28.184) (05/14/2026)
+
+### Updated Dependencies
+
+- Updated **storm-workspace** to **v0.19.213**
+
+## [0.28.183](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.28.183) (05/14/2026)
+
+### Updated Dependencies
+
+- Updated **storm-workspace** to **v0.19.212**
+
+## [0.28.182](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.28.182) (05/14/2026)
+
+### Updated Dependencies
+
+- Updated **storm-workspace** to **v0.19.211**
+
+## [0.28.181](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.28.181) (05/14/2026)
+
+### Updated Dependencies
+
+- Updated **storm-workspace** to **v0.19.210**
+
+## [0.28.180](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.28.180) (05/14/2026)
+
+### Updated Dependencies
+
+- Updated **storm-workspace** to **v0.19.209**
+
+## [0.28.179](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.28.179) (05/14/2026)
+
+### Updated Dependencies
+
+- Updated **storm-workspace** to **v0.19.208**
+
+## [0.28.178](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.28.178) (05/14/2026)
+
+### Miscellaneous
+
+- **release:** publish ([d45102e8d](https://github.com/storm-software/storm-ops/commit/d45102e8d))
+
+### Updated Dependencies
+
+- Updated **storm-workspace** to **v0.19.207**
+
+## [0.28.177](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.28.177) (05/13/2026)
+
+### Updated Dependencies
+
+- Updated **storm-workspace** to **v0.19.206**
+
+## [0.28.176](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.28.176) (05/12/2026)
+
+### Updated Dependencies
+
+- Updated **storm-workspace** to **v0.19.205**
+
+## [0.28.175](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.28.175) (04/29/2026)
+
+### Updated Dependencies
+
+- Updated **storm-workspace** to **v0.19.204**
+
+## [0.28.174](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.28.174) (04/29/2026)
+
+### Updated Dependencies
+
+- Updated **storm-workspace** to **v0.19.203**
+
+## [0.28.173](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.28.173) (04/28/2026)
+
+### Updated Dependencies
+
+- Updated **storm-workspace** to **v0.19.202**
+
+## [0.28.172](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.28.172) (04/28/2026)
+
+### Updated Dependencies
+
+- Updated **storm-workspace** to **v0.19.201**
+
+## [0.28.171](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.28.171) (04/28/2026)
+
+### Updated Dependencies
+
+- Updated **storm-workspace** to **v0.19.200**
+
+## [0.28.170](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.28.170) (04/28/2026)
+
+### Updated Dependencies
+
+- Updated **storm-workspace** to **v0.19.199**
+
+## [0.28.169](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.28.169) (04/26/2026)
+
+### Updated Dependencies
+
+- Updated **storm-workspace** to **v0.19.198**
+
+## [0.28.168](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.28.168) (04/15/2026)
+
+### Updated Dependencies
+
+- Updated **storm-workspace** to **v0.19.197**
+
+## [0.28.167](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.28.167) (04/14/2026)
+
+### Updated Dependencies
+
+- Updated **storm-workspace** to **v0.19.196**
+
+## [0.28.166](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.28.166) (04/14/2026)
+
+### Updated Dependencies
+
+- Updated **storm-workspace** to **v0.19.195**
+
+## [0.28.165](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.28.165) (04/14/2026)
+
+### Updated Dependencies
+
+- Updated **storm-workspace** to **v0.19.194**
+
+## [0.28.164](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.28.164) (04/13/2026)
+
+### Updated Dependencies
+
+- Updated **storm-workspace** to **v0.19.193**
+
+## [0.28.163](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.28.163) (04/10/2026)
+
+### Updated Dependencies
+
+- Updated **storm-workspace** to **v0.19.192**
+
+## [0.28.162](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.28.162) (04/08/2026)
+
+### Updated Dependencies
+
+- Updated **storm-workspace** to **v0.19.191**
+
+## [0.28.161](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.28.161) (04/07/2026)
+
+### Updated Dependencies
+
+- Updated **storm-workspace** to **v0.19.190**
+
+## [0.28.160](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.28.160) (04/01/2026)
+
+### Updated Dependencies
+
+- Updated **storm-workspace** to **v0.19.189**
+
+## [0.28.159](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.28.159) (04/01/2026)
+
+### Updated Dependencies
+
+- Updated **storm-workspace** to **v0.19.188**
+
+## [0.28.158](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.28.158) (04/01/2026)
+
+### Updated Dependencies
+
+- Updated **storm-workspace** to **v0.19.187**
+
+## [0.28.157](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.28.157) (04/01/2026)
+
+### Updated Dependencies
+
+- Updated **storm-workspace** to **v0.19.186**
+
+## [0.28.156](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.28.156) (04/01/2026)
+
+### Updated Dependencies
+
+- Updated **storm-workspace** to **v0.19.185**
+
+## [0.28.155](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.28.155) (04/01/2026)
+
+### Updated Dependencies
+
+- Updated **storm-workspace** to **v0.19.184**
+
+## [0.28.154](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.28.154) (04/01/2026)
+
+### Updated Dependencies
+
+- Updated **storm-workspace** to **v0.19.183**
+
+## [0.28.153](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.28.153) (04/01/2026)
+
+### Updated Dependencies
+
+- Updated **storm-workspace** to **v0.19.182**
+
+## [0.28.152](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.28.152) (04/01/2026)
+
+### Updated Dependencies
+
+- Updated **storm-workspace** to **v0.19.181**
+
+## [0.28.151](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.28.151) (03/31/2026)
+
+### Updated Dependencies
+
+- Updated **storm-workspace** to **v0.19.180**
+
+## [0.28.150](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.28.150) (03/31/2026)
+
+### Updated Dependencies
+
+- Updated **storm-workspace** to **v0.19.179**
 
 ## [0.28.149](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.28.149) (03/31/2026)
 

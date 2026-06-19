@@ -17,7 +17,10 @@
   ],
   "homepage": "https://stormsoftware.com",
   "bugs": "https://github.com/storm-software/storm-ops/issues",
-  "repository": "storm-software/storm-ops.git",
+  "repository": {
+    "type": "github",
+    "url": "https://github.com/storm-software/storm-ops.git"
+  },
   "funding": {
     "type": "github",
     "url": "https://github.com/sponsors/storm-software"
@@ -47,8 +50,7 @@
     "build": "pnpm build-prod",
     "build-dev": "pnpm exec zx tools/scripts/src/build.mjs --dev",
     "build-prod": "pnpm exec zx tools/scripts/src/build.mjs --prod",
-    "clean": "rimraf dist",
-    "clean-packages": "rimraf dist/packages",
+    "clean": "pnpm exec zx tools/scripts/src/clean.mjs",
     "commit": "node ./dist/packages/git-tools/bin/git.cjs commit",
     "dep-graph": "nx dep-graph",
     "e2e": "nx e2e",
@@ -128,16 +130,12 @@
     "tsup": "catalog:",
     "tsx": "catalog:",
     "typescript": "^5.9.3",
-    "typescript-eslint": "^8.58.0",
-    "verdaccio": "6.0.5",
+    "typescript-eslint": "^8.61.1",
+    "verdaccio": "6.6.0",
     "zod": "catalog:",
     "zx": "catalog:"
   },
-  "packageManager": "pnpm@10.30.0",
-  "engines": {
-    "node": ">=25.5.0",
-    "pnpm": ">=10.30.0"
-  },
+  "packageManager": "pnpm@11.1.2",
   "manypkg": {
     "defaultBranch": "main",
     "workspaceProtocol": "require"

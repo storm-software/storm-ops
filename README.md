@@ -1,8 +1,8 @@
 <div align="center">
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://public.storm-cdn.com/storm-software/banner-1280x640-dark.gif">
-  <source media="(prefers-color-scheme: light)" srcset="https://public.storm-cdn.com/storm-software/banner-1280x640-light.gif">
-<img src="https://public.storm-cdn.com/storm-software/banner-1280x640-dark.gif" width="100%" alt="Storm Software" />
+  <source media="(prefers-color-scheme: dark)" srcset="https://public.storm-cdn.com/storm-software/media/banner-1280x640-dark.gif">
+  <source media="(prefers-color-scheme: light)" srcset="https://public.storm-cdn.com/storm-software/media/banner-1280x640-light.gif">
+<img src="https://public.storm-cdn.com/storm-software/media/banner-1280x640-dark.gif" width="100%" alt="Storm Software" />
 </picture>
 </div>
 <br />
@@ -44,12 +44,6 @@ keeping the codebase maintainable.
 
 ![Alt](https://repobeats.axiom.co/api/embed/1737e8026f460248c9ce34e2b1e06d31351942c1.svg "Repobeats analytics image")
 
-<!--#if GitHubActions-->
-
-[![GitHub Actions Build History](https://buildstats.info/github/chart/storm-software/storm-ops?branch=main&includeBuildsFromPullRequest=false)](https://github.com/storm-software/storm-ops/actions)
-
-<!--#endif-->
-
 <!-- START doctoc -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
@@ -71,7 +65,7 @@ keeping the codebase maintainable.
   - [Running End-to-End Tests](#running-end-to-end-tests)
   - [Understand your workspace](#understand-your-workspace)
 - [☁ Nx Cloud](#-nx-cloud)
-  - [Distributed Computation Caching & Distributed Task Execution](#distributed-computation-caching--distributed-task-execution)
+  - [Distributed Computation Caching \& Distributed Task Execution](#distributed-computation-caching--distributed-task-execution)
 - [Roadmap](#roadmap)
 - [Contributing](#contributing)
 - [Support](#support)
@@ -429,9 +423,9 @@ specification. Contributions of any kind welcome!
 
 <div align="center">
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://public.storm-cdn.com/storm-software/banner-1280x320-dark.webp">
-  <source media="(prefers-color-scheme: light)" srcset="https://public.storm-cdn.com/storm-software/banner-1280x320-light.webp">
-<img src="https://public.storm-cdn.com/storm-software/banner-1280x320-dark.webp" width="100%" alt="Storm Software" />
+  <source media="(prefers-color-scheme: dark)" srcset="https://public.storm-cdn.com/storm-software/media/banner-1280x320-dark.webp">
+  <source media="(prefers-color-scheme: light)" srcset="https://public.storm-cdn.com/storm-software/media/banner-1280x320-light.webp">
+<img src="https://public.storm-cdn.com/storm-software/media/banner-1280x320-dark.webp" width="100%" alt="Storm Software" />
 </picture>
 </div>
 <br />
@@ -453,21 +447,15 @@ one where anyone can create software without years of prior development
 experience serving as a barrier to entry. We hope to achieve this via LLMs,
 Generative AI, and intuitive, high-level data modeling/programming languages.
 
-Join us on [Discord](https://discord.gg/MQ6YVzakM5) to chat with the team,
-receive release notifications, ask questions, and get involved.
+Join us on [**Discord**](https://discord.gg/MQ6YVzakM5) to chat with the team, receive release notifications, ask questions, and get involved.
 
-If this sounds interesting, and you would like to help us in creating the next
-generation of development tools, please reach out on our
-[website](https://stormsoftware.com/contact) or join our
-[Slack](https://join.slack.com/t/storm-software/shared_invite/zt-2gsmk04hs-i6yhK_r6urq0dkZYAwq2pA)
-channel!
+If this sounds interesting, and you would like to help us in creating the next generation of development tools, please reach out on our [**website**](https://stormsoftware.com/contact) or join our [**Slack**](https://join.slack.com/t/storm-software/shared_invite/zt-2gsmk04hs-i6yhK_r6urq0dkZYAwq2pA) channel! If you plan on publishing content that incorporates the Storm Software brand in anyway, please take a quick look at our [**brand guidelines**](https://github.com/storm-software/media-kit).
 
 <br />
 
-<div align="center"><a href="https://stormsoftware.com" target="_blank"><img src="https://public.storm-cdn.com/icon-fill.png" alt="Storm Software" width="200px"/></a></div>
+<div align="center"><a href="https://stormsoftware.com" target="_blank"><picture><source media="(prefers-color-scheme: dark)" srcset="https://public.storm-cdn.com/storm-software/icons/circle-dark.webp"><source media="(prefers-color-scheme: light)" srcset="https://public.storm-cdn.com/storm-software/icons/circle-light.webp"><img src="https://public.storm-cdn.com/storm-software/icons/circle-dark.webp" width="200px" alt="Storm Software" /></picture></a></div>
 <br />
-<div align="center"><a href="https://stormsoftware.com" target="_blank"><img src="https://public.storm-cdn.com/visit-us-text.svg" alt="Visit us at stormsoftware.com" height="90px"/></a></div>
-
+<div align="center"><a href="https://stormsoftware.com" target="_blank"><picture><source media="(prefers-color-scheme: dark)" srcset="https://public.storm-cdn.com/misc/text/visit-us-dark.png"><source media="(prefers-color-scheme: light)" srcset="https://public.storm-cdn.com/misc/text/visit-us-light.png"><img src="https://public.storm-cdn.com/misc/text/visit-us-dark.png" height="90px" alt="Visit us at stormsoftware.com" /></picture></a></div>
 <br />
 
 <div align="right">[ <a href="#table-of-contents">Back to top ▲</a> ]</div>

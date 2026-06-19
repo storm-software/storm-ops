@@ -1,6 +1,6 @@
 {
   "name": "@storm-software/git-tools",
-  "version": "2.130.20",
+  "version": "2.131.81",
   "private": false,
   "description": "Tools for managing Git repositories within a Nx workspace.",
   "keywords": [
@@ -18,7 +18,7 @@
   "bugs": "https://github.com/storm-software/storm-ops/issues",
   "repository": {
     "type": "github",
-    "url": "https://github.com/storm-software/storm-ops",
+    "url": "https://github.com/storm-software/storm-ops.git",
     "directory": "packages/git-tools"
   },
   "funding": {
@@ -201,11 +201,11 @@
     "storm-version-warning-cjs": "./bin/version-warning.cjs",
     "storm-version-warning-esm": "./bin/version-warning.js"
   },
-  "files": ["bin/**/*", "dist/**/*"],
+  "files": ["bin", "dist"],
   "dependencies": {
     "@commitlint/ensure": "^19.8.1",
     "@commitlint/rules": "^19.8.1",
-    "@inquirer/prompts": "^8.3.2",
+    "@inquirer/prompts": "^8.5.2",
     "@nx/devkit": "catalog:",
     "@nx/js": "catalog:",
     "@storm-software/config": "workspace:*",
@@ -216,13 +216,16 @@
     "any-shell-escape": "0.1.1",
     "axios": "1.8.2",
     "chalk": "catalog:",
-    "chalk-template": "1.1.0",
     "conventional-changelog-conventionalcommits": "^9.3.1",
     "conventional-changelog-storm-software": "workspace:*",
     "htmlparser2": "10.0.0",
     "jsonc-parser": "3.2.1",
+    "nanoclone": "^1.0.2",
     "nx": "catalog:",
     "prettier": "catalog:",
+    "prettier-plugin-organize-imports": "^4.3.0",
+    "semver": "catalog:",
+    "simple-git": "^3.36.0",
     "tsconfig-paths": "4.2.0",
     "underscore": "1.13.7",
     "update-section": "0.3.3",
@@ -231,21 +234,15 @@
     "zod": "catalog:"
   },
   "devDependencies": {
+    "@storm-software/package-constants": "workspace:*",
     "@types/node": "catalog:",
     "commander": "catalog:",
     "conventional-commits-parser": "^6.4.0",
     "defu": "catalog:",
-    "semver": "7.6.2",
-    "simple-git": "^3.33.0",
     "tsup": "catalog:"
   },
   "peerDependencies": {
     "zod": ">=4.0.0"
-  },
-  "packageManager": "pnpm@10.3.0",
-  "engines": {
-    "node": ">=22.4.0",
-    "pnpm": ">=10.3.0"
   },
   "publishConfig": {
     "access": "public"

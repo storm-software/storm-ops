@@ -158,6 +158,17 @@ export async function upgradeCatalog(
   const origVersion = await getVersion(packageName, tag, {
     executable: "pnpm"
   });
+  if (!origVersion) {
+    throw new Error(
+      `Failed to fetch version for package "${packageName}" with tag "${tag}"`
+    );
+  }
+  if (!valid(coerce(origVersion))) {
+    throw new Error(
+      `Invalid version "${origVersion}" fetched for package "${packageName}" with tag "${tag}"`
+    );
+  }
+
   const version = `${prefix || ""}${origVersion.replace(/^[\^~><=*]+/g, "")}`;
 
   let updated = false;

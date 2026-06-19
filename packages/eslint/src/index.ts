@@ -1,8 +1,7 @@
-import { getStormConfig } from "./preset";
+import { defineConfig } from "./preset";
 
 export * from "./configs";
 export * from "./preset";
-export * from "./types";
-export * from "./utils";
+export type * from "./types";
 
-export default getStormConfig;
+export default defineConfig;

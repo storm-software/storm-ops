@@ -1,6 +1,6 @@
 {
   "name": "@storm-software/linting-tools",
-  "version": "1.133.13",
+  "version": "1.134.3",
   "private": false,
   "description": "⚡ A package containing various linting tools used to validate syntax, enforce design standards, and format code in a Storm workspace.",
   "keywords": [
@@ -21,7 +21,7 @@
   "bugs": "https://github.com/storm-software/storm-ops/issues",
   "repository": {
     "type": "github",
-    "url": "https://github.com/storm-software/storm-ops",
+    "url": "https://github.com/storm-software/storm-ops.git",
     "directory": "packages/linting-tools"
   },
   "funding": {
@@ -138,13 +138,13 @@
     "zizmor/**/*"
   ],
   "dependencies": {
-    "@angular-devkit/architect": "0.1900.6",
     "jiti": "catalog:"
   },
   "devDependencies": {
     "@manypkg/cli": "^0.23.0",
     "@manypkg/get-packages": "^2.2.2",
     "@types/node": "catalog:",
+    "actions-up": "1.14.3",
     "alex": "^11.0.1",
     "check-dependency-version-consistency": "4.1.0",
     "commander": "catalog:",
@@ -170,11 +170,6 @@
     "unified": "11.0.5",
     "unified-engine": "11.2.1",
     "vfile-reporter": "8.1.1"
-  },
-  "packageManager": "pnpm@10.3.0",
-  "engines": {
-    "node": ">=22.4.0",
-    "pnpm": ">=10.3.0"
   },
   "publishConfig": {
     "access": "public"

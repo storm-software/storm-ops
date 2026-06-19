@@ -1,0 +1,64 @@
+{
+  "$schema": "https://raw.githubusercontent.com/oxc-project/oxc/refs/heads/main/npm/oxfmt/configuration_schema.json",
+  "proseWrap": "preserve",
+  "trailingComma": "none",
+  "tabWidth": 2,
+  "semi": true,
+  "singleQuote": false,
+  "quoteProps": "as-needed",
+  "bracketSameLine": true,
+  "printWidth": 80,
+  "bracketSpacing": true,
+  "arrowParens": "avoid",
+  "endOfLine": "lf",
+  "overrides": [
+    {
+      "files": ["**/*.{ts,tsx,mts,cts,js,jsx,mjs,cjs}"],
+      "options": {
+        "singleQuote": false,
+        "trailingComma": "none",
+        "sortImports": {
+          "newlinesBetween": false,
+          "groups": [
+            "type-import",
+            ["value-builtin", "value-external"],
+            "type-internal",
+            "value-internal",
+            ["type-parent", "type-sibling", "type-index"],
+            ["value-parent", "value-sibling", "value-index"],
+            "unknown"
+          ]
+        },
+        "jsdoc": {
+          "descriptionWithDot": false,
+          "descriptionTag": true,
+          "commentLineStrategy": "multiline",
+          "capitalizeDescriptions": true,
+          "separateTagGroups": true,
+          "preferCodeFences": true
+        }
+      }
+    },
+    {
+      "files": ["**/*.mdx"],
+      "options": {
+        "semi": false,
+        "trailingComma": "none"
+      }
+    },
+    {
+      "files": ["**/*.md"],
+      "options": {
+        "semi": false,
+        "trailingComma": "none"
+      }
+    },
+    {
+      "files": ["**/*.{json,jsonc,json5}"],
+      "options": {
+        "trailingComma": "none",
+        "objectWrap": "preserve"
+      }
+    }
+  ]
+}

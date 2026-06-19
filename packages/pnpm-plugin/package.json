@@ -1,11 +1,11 @@
 {
   "name": "pnpm-plugin-storm-software",
-  "version": "0.1.94",
+  "version": "0.1.184",
   "private": false,
   "description": "A [pnpm](https://pnpm.io/) plugin to enhance pnpm functionality for Storm Software projects.",
   "repository": {
     "type": "github",
-    "url": "https://github.com/storm-software/storm-ops",
+    "url": "https://github.com/storm-software/storm-ops.git",
     "directory": "packages/pnpm-plugin"
   },
   "type": "module",
@@ -20,7 +20,7 @@
   "files": ["./pnpmfile.cjs", "./esm_loader.mjs", "./allow.json"],
   "devDependencies": {
     "@pnpm/types": "catalog:",
-    "@storm-software/build-tools": "workspace:*",
+    "@storm-software/package-constants": "workspace:*",
     "@types/node": "catalog:",
     "defu": "catalog:",
     "tsup": "catalog:"

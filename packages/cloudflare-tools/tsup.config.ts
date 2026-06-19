@@ -5,11 +5,15 @@ const config = defineConfig([
     name: "cloudflare-tools",
     target: "node22",
     entryPoints: [
-      "./*.ts",
+      "./index.ts",
+      "./executors.ts",
+      "./generators.ts",
       "./src/utils/*.ts",
       "./src/executors/*/executor.ts",
+      "./src/executors/*/untyped.ts",
       "./src/generators/*/generator.ts",
-      "./src/generators/plugins/*.ts"
+      "./src/generators/*/untyped.ts",
+      "./src/plugins/*.ts"
     ],
     outDir: "dist",
     format: ["cjs", "esm"],
