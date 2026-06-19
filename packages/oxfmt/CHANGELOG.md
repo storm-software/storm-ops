@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Oxfmt
 
+## [0.0.30](https://github.com/storm-software/storm-ops/releases/tag/oxfmt%400.0.30) (06/19/2026)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate workspace packages' `README.md` files ([1090c1b70](https://github.com/storm-software/storm-ops/commit/1090c1b70))
+
 ## [0.0.28](https://github.com/storm-software/storm-ops/releases/tag/oxfmt%400.0.28) (06/18/2026)
 
 ### Bug Fixes

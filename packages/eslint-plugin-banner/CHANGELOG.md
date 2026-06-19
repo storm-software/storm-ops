@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - ESLint Plugin Banner
 
+## [0.0.39](https://github.com/storm-software/storm-ops/releases/tag/eslint-plugin-banner%400.0.39) (06/19/2026)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate workspace packages' `README.md` files ([1090c1b70](https://github.com/storm-software/storm-ops/commit/1090c1b70))
+
+### Updated Dependencies
+
+- Updated **package-constants** to **v0.1.87**
+- Updated **prettier** to **v0.59.127**
+
 ## [0.0.38](https://github.com/storm-software/storm-ops/releases/tag/eslint-plugin-banner%400.0.38) (06/18/2026)
 
 ### Updated Dependencies

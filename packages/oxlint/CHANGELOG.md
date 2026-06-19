@@ -2,6 +2,20 @@
 
 # Changelog for Storm Ops - Oxlint
 
+## [0.0.40](https://github.com/storm-software/storm-ops/releases/tag/oxlint%400.0.40) (06/19/2026)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate workspace packages' `README.md` files ([1090c1b70](https://github.com/storm-software/storm-ops/commit/1090c1b70))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.11**
+- Updated **config-tools** to **v1.190.74**
+- Updated **eslint-plugin-banner** to **v0.0.39**
+- Updated **eslint-plugin-pnpm** to **v0.0.37**
+- Updated **eslint-plugin-tsdoc** to **v0.0.37**
+
 ## [0.0.39](https://github.com/storm-software/storm-ops/releases/tag/oxlint%400.0.39) (06/18/2026)
 
 ### Updated Dependencies

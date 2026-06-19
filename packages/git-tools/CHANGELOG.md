@@ -2,6 +2,19 @@
 
 # Changelog for Storm Ops - Git Tools
 
+## [2.131.82](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.131.82) (06/19/2026)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate workspace packages' `README.md` files ([1090c1b70](https://github.com/storm-software/storm-ops/commit/1090c1b70))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.11**
+- Updated **config-tools** to **v1.190.74**
+- Updated **conventional-changelog** to **v0.3.235**
+- Updated **package-constants** to **v0.1.87**
+
 ## [2.131.81](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.131.81) (06/18/2026)
 
 ### Bug Fixes

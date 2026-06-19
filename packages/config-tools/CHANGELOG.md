@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Config Tools
 
+## [1.190.74](https://github.com/storm-software/storm-ops/releases/tag/config-tools%401.190.74) (06/19/2026)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate workspace packages' `README.md` files ([1090c1b70](https://github.com/storm-software/storm-ops/commit/1090c1b70))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.11**
+- Updated **testing-tools** to **v1.119.227**
+
 ## [1.190.73](https://github.com/storm-software/storm-ops/releases/tag/config-tools%401.190.73) (06/18/2026)
 
 ### Updated Dependencies

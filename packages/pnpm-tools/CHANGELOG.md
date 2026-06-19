@@ -2,6 +2,20 @@
 
 # Changelog for Storm Ops - Pnpm Tools
 
+## [0.7.85](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.7.85) (06/19/2026)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate workspace packages' `README.md` files ([1090c1b70](https://github.com/storm-software/storm-ops/commit/1090c1b70))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.11**
+- Updated **config-tools** to **v1.190.74**
+- Updated **npm-tools** to **v0.6.192**
+- Updated **package-constants** to **v0.1.87**
+- Updated **testing-tools** to **v1.119.227**
+
 ## [0.7.84](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.7.84) (06/18/2026)
 
 ### Updated Dependencies
