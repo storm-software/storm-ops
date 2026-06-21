@@ -137,8 +137,8 @@
       }
     }
   },
-  "main": "./dist/index.js",
-  "types": "./dist/index.d.ts",
+  "main": "./dist/preset.js",
+  "types": "./dist/preset.d.ts",
   "files": ["dist"],
   "dependencies": {
     "@antfu/install-pkg": "^1.1.0",
