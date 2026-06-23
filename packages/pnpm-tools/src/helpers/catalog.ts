@@ -80,9 +80,19 @@ export async function setCatalog(
   }
 
   pnpmWorkspaceFile.catalog = Object.fromEntries(
-    Object.entries(catalog).map(([key, value]) => {
-      return [key, value.replaceAll('"', "").replaceAll("'", "")];
-    })
+    Object.entries(catalog)
+      .filter(([, value]) => value)
+      .map(([key, value]) => {
+        if (!valid(value)) {
+          throw new Error(
+            `Tried to save invalid version "${value}" for package "${
+              key
+            }" to the PNPM catalog in the pnpm-workspace.yaml file. Please ensure that the version is valid before saving.`
+          );
+        }
+
+        return [key, value.replaceAll('"', "").replaceAll("'", "")];
+      })
   );
 
   await writePnpmWorkspaceFile(pnpmWorkspaceFile, workspaceRoot);
@@ -163,7 +173,7 @@ export async function upgradeCatalog(
       `Failed to fetch version for package "${packageName}" with tag "${tag}"`
     );
   }
-  if (!valid(coerce(origVersion))) {
+  if (!valid(origVersion)) {
     throw new Error(
       `Invalid version "${origVersion}" fetched for package "${packageName}" with tag "${tag}"`
     );
@@ -247,6 +257,17 @@ export async function saveCatalog(
   const origVersion = await getVersion(packageName, tag, {
     executable: "pnpm"
   });
+  if (!origVersion) {
+    throw new Error(
+      `Failed to fetch version for package "${packageName}" with tag "${tag}"`
+    );
+  }
+  if (!valid(origVersion)) {
+    throw new Error(
+      `Invalid version "${origVersion}" fetched for package "${packageName}" with tag "${tag}"`
+    );
+  }
+
   const version = `${prefix || ""}${origVersion.replace(/^[\^~><=*]+/g, "")}`;
 
   if (version === catalog[packageName]) {
