@@ -156,7 +156,7 @@
     "@nx/devkit": "catalog:",
     "@pulumi/aws": "^6.83.4",
     "@pulumi/awsx": "^2.22.0",
-    "@pulumi/pulumi": "^3.246.0",
+    "@pulumi/pulumi": "^3.247.0",
     "@storm-software/config": "workspace:*",
     "@storm-software/config-tools": "workspace:*",
     "@storm-software/workspace-tools": "workspace:*",

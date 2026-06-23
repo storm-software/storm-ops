@@ -228,7 +228,11 @@
   "bin": {
     "storm-esbuild": "./bin/esbuild.cjs"
   },
-  "files": ["assets/**/*", "bin/**/*", "dist/**/*"],
+  "files": [
+    "assets/**/*",
+    "bin/**/*",
+    "dist/**/*"
+  ],
   "dependencies": {
     "@nx/devkit": "catalog:",
     "@nx/js": "catalog:",
@@ -239,7 +243,7 @@
     "chokidar": "^4.0.3",
     "commander": "catalog:",
     "defu": "catalog:",
-    "es-toolkit": "^1.47.1",
+    "es-toolkit": "^1.48.1",
     "esbuild": "catalog:",
     "globby": "^14.1.0"
   },
