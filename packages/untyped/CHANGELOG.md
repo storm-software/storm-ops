@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Untyped
 
+## [0.24.217](https://github.com/storm-software/storm-ops/releases/tag/untyped%400.24.217) (06/23/2026)
+
+### Miscellaneous
+
+- **monorepo:** Lint workspace package files ([952a75243](https://github.com/storm-software/storm-ops/commit/952a75243))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.12**
+- Updated **config-tools** to **v1.190.75**
+
 ## [0.24.216](https://github.com/storm-software/storm-ops/releases/tag/untyped%400.24.216) (06/19/2026)
 
 ### Miscellaneous

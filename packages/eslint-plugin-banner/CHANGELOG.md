@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - ESLint Plugin Banner
 
+## [0.0.40](https://github.com/storm-software/storm-ops/releases/tag/eslint-plugin-banner%400.0.40) (06/23/2026)
+
+### Miscellaneous
+
+- **monorepo:** Lint workspace package files ([952a75243](https://github.com/storm-software/storm-ops/commit/952a75243))
+
+### Updated Dependencies
+
+- Updated **package-constants** to **v0.1.88**
+- Updated **prettier** to **v0.59.128**
+
 ## [0.0.39](https://github.com/storm-software/storm-ops/releases/tag/eslint-plugin-banner%400.0.39) (06/19/2026)
 
 ### Miscellaneous

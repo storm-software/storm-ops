@@ -2,6 +2,19 @@
 
 # Changelog for Storm Ops - Git Tools
 
+## [2.131.83](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.131.83) (06/23/2026)
+
+### Miscellaneous
+
+- **monorepo:** Lint workspace package files ([952a75243](https://github.com/storm-software/storm-ops/commit/952a75243))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.12**
+- Updated **config-tools** to **v1.190.75**
+- Updated **conventional-changelog** to **v0.3.236**
+- Updated **package-constants** to **v0.1.88**
+
 ## [2.131.82](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.131.82) (06/19/2026)
 
 ### Miscellaneous

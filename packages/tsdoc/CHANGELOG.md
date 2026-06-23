@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Tsdoc
 
+## [0.13.228](https://github.com/storm-software/storm-ops/releases/tag/tsdoc%400.13.228) (06/23/2026)
+
+### Miscellaneous
+
+- **monorepo:** Lint workspace package files ([952a75243](https://github.com/storm-software/storm-ops/commit/952a75243))
+
 ## [0.13.227](https://github.com/storm-software/storm-ops/releases/tag/tsdoc%400.13.227) (06/19/2026)
 
 ### Miscellaneous

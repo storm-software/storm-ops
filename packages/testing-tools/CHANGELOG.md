@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Testing Tools
 
+## [1.119.228](https://github.com/storm-software/storm-ops/releases/tag/testing-tools%401.119.228) (06/23/2026)
+
+### Miscellaneous
+
+- **monorepo:** Lint workspace package files ([952a75243](https://github.com/storm-software/storm-ops/commit/952a75243))
+
 ## [1.119.227](https://github.com/storm-software/storm-ops/releases/tag/testing-tools%401.119.227) (06/19/2026)
 
 ### Miscellaneous

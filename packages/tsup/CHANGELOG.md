@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Tsup
 
+## [0.2.233](https://github.com/storm-software/storm-ops/releases/tag/tsup%400.2.233) (06/23/2026)
+
+### Miscellaneous
+
+- **monorepo:** Lint workspace package files ([952a75243](https://github.com/storm-software/storm-ops/commit/952a75243))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.235**
+- Updated **config-tools** to **v1.190.75**
+
 ## [0.2.232](https://github.com/storm-software/storm-ops/releases/tag/tsup%400.2.232) (06/19/2026)
 
 ### Miscellaneous

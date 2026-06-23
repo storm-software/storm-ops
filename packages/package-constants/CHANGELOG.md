@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Package Constants
 
+## [0.1.88](https://github.com/storm-software/storm-ops/releases/tag/package-constants%400.1.88) (06/23/2026)
+
+### Miscellaneous
+
+- **monorepo:** Lint workspace package files ([952a75243](https://github.com/storm-software/storm-ops/commit/952a75243))
+
 ## [0.1.87](https://github.com/storm-software/storm-ops/releases/tag/package-constants%400.1.87) (06/19/2026)
 
 ### Miscellaneous

@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - Vite
 
+## [0.1.169](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.169) (06/23/2026)
+
+### Miscellaneous
+
+- **monorepo:** Lint workspace package files ([952a75243](https://github.com/storm-software/storm-ops/commit/952a75243))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.235**
+
 ## [0.1.168](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.168) (06/19/2026)
 
 ### Miscellaneous

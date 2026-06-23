@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Tsconfig
 
+## [0.48.142](https://github.com/storm-software/storm-ops/releases/tag/tsconfig%400.48.142) (06/23/2026)
+
+### Miscellaneous
+
+- **monorepo:** Lint workspace package files ([952a75243](https://github.com/storm-software/storm-ops/commit/952a75243))
+
 ## [0.48.141](https://github.com/storm-software/storm-ops/releases/tag/tsconfig%400.48.141) (06/19/2026)
 
 ### Miscellaneous

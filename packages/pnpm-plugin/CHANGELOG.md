@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Pnpm Plugin
 
+## [0.1.186](https://github.com/storm-software/storm-ops/releases/tag/pnpm-plugin%400.1.186) (06/23/2026)
+
+### Miscellaneous
+
+- **monorepo:** Lint workspace package files ([952a75243](https://github.com/storm-software/storm-ops/commit/952a75243))
+
+### Updated Dependencies
+
+- Updated **package-constants** to **v0.1.88**
+- Updated **testing-tools** to **v1.119.228**
+
 ## [0.1.185](https://github.com/storm-software/storm-ops/releases/tag/pnpm-plugin%400.1.185) (06/19/2026)
 
 ### Miscellaneous

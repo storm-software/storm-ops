@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Unbuild
 
+## [0.57.236](https://github.com/storm-software/storm-ops/releases/tag/unbuild%400.57.236) (06/23/2026)
+
+### Miscellaneous
+
+- **monorepo:** Lint workspace package files ([952a75243](https://github.com/storm-software/storm-ops/commit/952a75243))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.235**
+- Updated **config** to **v1.138.12**
+- Updated **config-tools** to **v1.190.75**
+
 ## [0.57.235](https://github.com/storm-software/storm-ops/releases/tag/unbuild%400.57.235) (06/19/2026)
 
 ### Miscellaneous
