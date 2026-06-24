@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - CSpell
 
+## [0.46.145](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.46.145) (06/24/2026)
+
+### Bug Fixes
+
+- **pnpm-tools:** Resolve issue with replace statement when formatting semver ([f9e233720](https://github.com/storm-software/storm-ops/commit/f9e233720))
+
 ## [0.46.144](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.46.144) (06/24/2026)
 
 ### Miscellaneous

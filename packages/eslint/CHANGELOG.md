@@ -2,6 +2,22 @@
 
 # Changelog for Storm Ops - ESLint
 
+## [0.170.110](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.170.110) (06/24/2026)
+
+### Bug Fixes
+
+- **pnpm-tools:** Resolve issue with replace statement when formatting semver ([f9e233720](https://github.com/storm-software/storm-ops/commit/f9e233720))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.14**
+- Updated **config-tools** to **v1.190.77**
+- Updated **eslint-plugin-banner** to **v0.0.42**
+- Updated **eslint-plugin-pnpm** to **v0.0.40**
+- Updated **eslint-plugin-tsdoc** to **v0.0.40**
+- Updated **package-constants** to **v0.1.90**
+- Updated **tsdoc** to **v0.13.230**
+
 ## [0.170.109](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.170.109) (06/24/2026)
 
 ### Miscellaneous

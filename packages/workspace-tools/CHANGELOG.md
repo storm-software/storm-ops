@@ -2,6 +2,25 @@
 
 # Changelog for Storm Ops - Workspace Tools
 
+## [1.296.57](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.296.57) (06/24/2026)
+
+### Bug Fixes
+
+- **pnpm-tools:** Resolve issue with replace statement when formatting semver ([f9e233720](https://github.com/storm-software/storm-ops/commit/f9e233720))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.14**
+- Updated **config-tools** to **v1.190.77**
+- Updated **esbuild** to **v0.53.238**
+- Updated **npm-tools** to **v0.6.195**
+- Updated **package-constants** to **v0.1.90**
+- Updated **pnpm-tools** to **v0.7.88**
+- Updated **prettier** to **v0.59.130**
+- Updated **testing-tools** to **v1.119.230**
+- Updated **tsdown** to **v0.45.238**
+- Updated **unbuild** to **v0.57.238**
+
 ## [1.296.56](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.296.56) (06/24/2026)
 
 ### Miscellaneous

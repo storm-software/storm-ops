@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Tsup
 
+## [0.2.235](https://github.com/storm-software/storm-ops/releases/tag/tsup%400.2.235) (06/24/2026)
+
+### Bug Fixes
+
+- **pnpm-tools:** Resolve issue with replace statement when formatting semver ([f9e233720](https://github.com/storm-software/storm-ops/commit/f9e233720))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.237**
+- Updated **config-tools** to **v1.190.77**
+
 ## [0.2.234](https://github.com/storm-software/storm-ops/releases/tag/tsup%400.2.234) (06/24/2026)
 
 ### Miscellaneous

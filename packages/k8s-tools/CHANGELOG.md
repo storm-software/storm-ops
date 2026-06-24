@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - K8s Tools
 
+## [0.42.260](https://github.com/storm-software/storm-ops/releases/tag/k8s-tools%400.42.260) (06/24/2026)
+
+### Bug Fixes
+
+- **pnpm-tools:** Resolve issue with replace statement when formatting semver ([f9e233720](https://github.com/storm-software/storm-ops/commit/f9e233720))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.14**
+- Updated **config-tools** to **v1.190.77**
+- Updated **workspace-tools** to **v1.296.57**
+
 ## [0.42.259](https://github.com/storm-software/storm-ops/releases/tag/k8s-tools%400.42.259) (06/24/2026)
 
 ### Miscellaneous

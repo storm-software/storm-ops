@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Prettier
 
+## [0.59.130](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.59.130) (06/24/2026)
+
+### Bug Fixes
+
+- **pnpm-tools:** Resolve issue with replace statement when formatting semver ([f9e233720](https://github.com/storm-software/storm-ops/commit/f9e233720))
+
 ## [0.59.129](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.59.129) (06/24/2026)
 
 ### Miscellaneous

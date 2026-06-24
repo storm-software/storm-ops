@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Npm Tools
 
+## [0.6.195](https://github.com/storm-software/storm-ops/releases/tag/npm-tools%400.6.195) (06/24/2026)
+
+### Bug Fixes
+
+- **pnpm-tools:** Resolve issue with replace statement when formatting semver ([f9e233720](https://github.com/storm-software/storm-ops/commit/f9e233720))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.14**
+- Updated **config-tools** to **v1.190.77**
+- Updated **testing-tools** to **v1.119.230**
+
 ## [0.6.194](https://github.com/storm-software/storm-ops/releases/tag/npm-tools%400.6.194) (06/24/2026)
 
 ### Miscellaneous

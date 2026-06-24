@@ -2,6 +2,19 @@
 
 # Changelog for Storm Ops - Esbuild
 
+## [0.53.238](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.53.238) (06/24/2026)
+
+### Bug Fixes
+
+- **pnpm-tools:** Resolve issue with replace statement when formatting semver ([f9e233720](https://github.com/storm-software/storm-ops/commit/f9e233720))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.237**
+- Updated **config** to **v1.138.14**
+- Updated **config-tools** to **v1.190.77**
+- Updated **tsup** to **v0.2.235**
+
 ## [0.53.237](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.53.237) (06/24/2026)
 
 ### Miscellaneous

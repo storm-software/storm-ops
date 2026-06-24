@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - ESLint Config React
 
+## [0.0.32](https://github.com/storm-software/storm-ops/releases/tag/eslint-config-react%400.0.32) (06/24/2026)
+
+### Bug Fixes
+
+- **pnpm-tools:** Resolve issue with replace statement when formatting semver ([f9e233720](https://github.com/storm-software/storm-ops/commit/f9e233720))
+
+### Updated Dependencies
+
+- Updated **eslint** to **v0.170.110**
+
 ## [0.0.31](https://github.com/storm-software/storm-ops/releases/tag/eslint-config-react%400.0.31) (06/24/2026)
 
 ### Miscellaneous

@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - Vite
 
+## [0.1.171](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.171) (06/24/2026)
+
+### Bug Fixes
+
+- **pnpm-tools:** Resolve issue with replace statement when formatting semver ([f9e233720](https://github.com/storm-software/storm-ops/commit/f9e233720))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.237**
+
 ## [0.1.170](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.170) (06/24/2026)
 
 ### Miscellaneous

@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Untyped
 
+## [0.24.219](https://github.com/storm-software/storm-ops/releases/tag/untyped%400.24.219) (06/24/2026)
+
+### Bug Fixes
+
+- **pnpm-tools:** Resolve issue with replace statement when formatting semver ([f9e233720](https://github.com/storm-software/storm-ops/commit/f9e233720))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.14**
+- Updated **config-tools** to **v1.190.77**
+
 ## [0.24.218](https://github.com/storm-software/storm-ops/releases/tag/untyped%400.24.218) (06/24/2026)
 
 ### Miscellaneous

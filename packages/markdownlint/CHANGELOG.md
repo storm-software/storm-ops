@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - Markdownlint
 
+## [0.30.233](https://github.com/storm-software/storm-ops/releases/tag/markdownlint%400.30.233) (06/24/2026)
+
+### Bug Fixes
+
+- **pnpm-tools:** Resolve issue with replace statement when formatting semver ([f9e233720](https://github.com/storm-software/storm-ops/commit/f9e233720))
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.230**
+
 ## [0.30.232](https://github.com/storm-software/storm-ops/releases/tag/markdownlint%400.30.232) (06/24/2026)
 
 ### Miscellaneous

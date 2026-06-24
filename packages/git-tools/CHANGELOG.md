@@ -2,6 +2,19 @@
 
 # Changelog for Storm Ops - Git Tools
 
+## [2.131.85](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.131.85) (06/24/2026)
+
+### Bug Fixes
+
+- **pnpm-tools:** Resolve issue with replace statement when formatting semver ([f9e233720](https://github.com/storm-software/storm-ops/commit/f9e233720))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.14**
+- Updated **config-tools** to **v1.190.77**
+- Updated **conventional-changelog** to **v0.3.238**
+- Updated **package-constants** to **v0.1.90**
+
 ## [2.131.84](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.131.84) (06/24/2026)
 
 ### Miscellaneous

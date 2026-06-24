@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Pnpm Plugin
 
+## [0.1.188](https://github.com/storm-software/storm-ops/releases/tag/pnpm-plugin%400.1.188) (06/24/2026)
+
+### Bug Fixes
+
+- **pnpm-tools:** Resolve issue with replace statement when formatting semver ([f9e233720](https://github.com/storm-software/storm-ops/commit/f9e233720))
+
+### Updated Dependencies
+
+- Updated **package-constants** to **v0.1.90**
+- Updated **testing-tools** to **v1.119.230**
+
 ## [0.1.187](https://github.com/storm-software/storm-ops/releases/tag/pnpm-plugin%400.1.187) (06/24/2026)
 
 ### Miscellaneous

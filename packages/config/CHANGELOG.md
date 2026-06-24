@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - Config
 
+## [1.138.14](https://github.com/storm-software/storm-ops/releases/tag/config%401.138.14) (06/24/2026)
+
+### Bug Fixes
+
+- **pnpm-tools:** Resolve issue with replace statement when formatting semver ([f9e233720](https://github.com/storm-software/storm-ops/commit/f9e233720))
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.230**
+
 ## [1.138.13](https://github.com/storm-software/storm-ops/releases/tag/config%401.138.13) (06/24/2026)
 
 ### Miscellaneous

@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - ESLint Plugin Banner
 
+## [0.0.42](https://github.com/storm-software/storm-ops/releases/tag/eslint-plugin-banner%400.0.42) (06/24/2026)
+
+### Bug Fixes
+
+- **pnpm-tools:** Resolve issue with replace statement when formatting semver ([f9e233720](https://github.com/storm-software/storm-ops/commit/f9e233720))
+
+### Updated Dependencies
+
+- Updated **package-constants** to **v0.1.90**
+- Updated **prettier** to **v0.59.130**
+
 ## [0.0.41](https://github.com/storm-software/storm-ops/releases/tag/eslint-plugin-banner%400.0.41) (06/24/2026)
 
 ### Miscellaneous

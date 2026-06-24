@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Tsdoc
 
+## [0.13.230](https://github.com/storm-software/storm-ops/releases/tag/tsdoc%400.13.230) (06/24/2026)
+
+### Bug Fixes
+
+- **pnpm-tools:** Resolve issue with replace statement when formatting semver ([f9e233720](https://github.com/storm-software/storm-ops/commit/f9e233720))
+
 ## [0.13.229](https://github.com/storm-software/storm-ops/releases/tag/tsdoc%400.13.229) (06/24/2026)
 
 ### Miscellaneous

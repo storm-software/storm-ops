@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - Create Storm Workspace
 
+## [1.97.237](https://github.com/storm-software/storm-ops/releases/tag/create-storm-workspace%401.97.237) (06/24/2026)
+
+### Bug Fixes
+
+- **pnpm-tools:** Resolve issue with replace statement when formatting semver ([f9e233720](https://github.com/storm-software/storm-ops/commit/f9e233720))
+
+### Updated Dependencies
+
+- Updated **config-tools** to **v1.190.77**
+
 ## [1.97.236](https://github.com/storm-software/storm-ops/releases/tag/create-storm-workspace%401.97.236) (06/24/2026)
 
 ### Miscellaneous
