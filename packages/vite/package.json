@@ -102,8 +102,16 @@
     }
   },
   "types": "./dist/index.d.ts",
-  "files": ["dist/**/*"],
-  "keywords": ["vite", "storm", "storm-software", "storm-ops", "sullivanpj"],
+  "files": [
+    "dist/**/*"
+  ],
+  "keywords": [
+    "vite",
+    "storm",
+    "storm-software",
+    "storm-ops",
+    "sullivanpj"
+  ],
   "peerDependencies": {
     "vite": ">=8.0.0-beta.2"
   },
