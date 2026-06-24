@@ -6,14 +6,14 @@
  */
 export function replacePrefix(value?: string) {
   return (value ?? "")
-    .replaceAll(/^===/, "")
-    .replaceAll(/^!==/, "")
-    .replaceAll(/^==/, "")
-    .replaceAll(/^!=/, "")
-    .replaceAll(/^>/, "")
-    .replaceAll(/^>=/, "")
-    .replaceAll(/^</, "")
-    .replaceAll(/^<=/, "")
-    .replaceAll(/^\^/, "")
-    .replaceAll(/^~/, "");
+    .replace(/^===/g, "")
+    .replace(/^!==/g, "")
+    .replace(/^==/g, "")
+    .replace(/^!=/g, "")
+    .replace(/^>/g, "")
+    .replace(/^>=/g, "")
+    .replace(/^</g, "")
+    .replace(/^<=/g, "")
+    .replace(/^\^/g, "")
+    .replace(/^~/g, "");
 }
