@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Tsconfig
 
+## [0.48.143](https://github.com/storm-software/storm-ops/releases/tag/tsconfig%400.48.143) (06/24/2026)
+
+### Miscellaneous
+
+- **monorepo:** Reformat workspace packages' `package.json` files ([ca6f03b66](https://github.com/storm-software/storm-ops/commit/ca6f03b66))
+- **monorepo:** Update workspace packages' dependencies ([ab5da025e](https://github.com/storm-software/storm-ops/commit/ab5da025e))
+
 ## [0.48.142](https://github.com/storm-software/storm-ops/releases/tag/tsconfig%400.48.142) (06/23/2026)
 
 ### Miscellaneous

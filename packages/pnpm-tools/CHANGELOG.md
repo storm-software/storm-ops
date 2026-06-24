@@ -2,6 +2,24 @@
 
 # Changelog for Storm Ops - Pnpm Tools
 
+## [0.7.87](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.7.87) (06/24/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace packages' dependencies ([ab5da025e](https://github.com/storm-software/storm-ops/commit/ab5da025e))
+
+### Features
+
+- **pnpm-tools:** Added `verbose` flag to CLI and improvoed semver validation logic ([b9dbabed0](https://github.com/storm-software/storm-ops/commit/b9dbabed0))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.13**
+- Updated **config-tools** to **v1.190.76**
+- Updated **npm-tools** to **v0.6.194**
+- Updated **package-constants** to **v0.1.89**
+- Updated **testing-tools** to **v1.119.229**
+
 ## [0.7.86](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.7.86) (06/23/2026)
 
 ### Bug Fixes

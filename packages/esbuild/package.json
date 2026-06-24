@@ -1,6 +1,6 @@
 {
   "name": "@storm-software/esbuild",
-  "version": "0.53.236",
+  "version": "0.53.237",
   "private": false,
   "description": "A package containing `esbuild` utilities for building Storm Software libraries and applications",
   "keywords": [
@@ -228,11 +228,7 @@
   "bin": {
     "storm-esbuild": "./bin/esbuild.cjs"
   },
-  "files": [
-    "assets/**/*",
-    "bin/**/*",
-    "dist/**/*"
-  ],
+  "files": ["assets/**/*", "bin/**/*", "dist/**/*"],
   "dependencies": {
     "@nx/devkit": "catalog:",
     "@nx/js": "catalog:",

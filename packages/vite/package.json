@@ -1,6 +1,6 @@
 {
   "name": "@storm-software/vite",
-  "version": "0.1.169",
+  "version": "0.1.170",
   "type": "module",
   "description": "A package containing a shared `vite` configuration and utilities for building Storm Software libraries and applications",
   "repository": {
@@ -102,16 +102,8 @@
     }
   },
   "types": "./dist/index.d.ts",
-  "files": [
-    "dist/**/*"
-  ],
-  "keywords": [
-    "vite",
-    "storm",
-    "storm-software",
-    "storm-ops",
-    "sullivanpj"
-  ],
+  "files": ["dist/**/*"],
+  "keywords": ["vite", "storm", "storm-software", "storm-ops", "sullivanpj"],
   "peerDependencies": {
     "vite": ">=8.0.0-beta.2"
   },

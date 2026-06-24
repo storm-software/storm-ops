@@ -1,6 +1,6 @@
 {
   "name": "@storm-software/tsdown",
-  "version": "0.45.236",
+  "version": "0.45.237",
   "private": false,
   "description": "A package containing `tsdown` utilities for building Storm Software libraries and applications",
   "keywords": [
@@ -158,9 +158,7 @@
   "bin": {
     "storm-tsdown": "./bin/tsdown.cjs"
   },
-  "files": [
-    "dist/**/*"
-  ],
+  "files": ["dist/**/*"],
   "dependencies": {
     "@nx/devkit": "catalog:",
     "@storm-software/build-tools": "workspace:*",

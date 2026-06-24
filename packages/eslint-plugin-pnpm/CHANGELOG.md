@@ -2,6 +2,19 @@
 
 # Changelog for Storm Ops - ESLint Plugin Pnpm
 
+## [0.0.39](https://github.com/storm-software/storm-ops/releases/tag/eslint-plugin-pnpm%400.0.39) (06/24/2026)
+
+### Miscellaneous
+
+- **monorepo:** Reformat workspace packages' `package.json` files ([ca6f03b66](https://github.com/storm-software/storm-ops/commit/ca6f03b66))
+- **monorepo:** Update workspace packages' dependencies ([ab5da025e](https://github.com/storm-software/storm-ops/commit/ab5da025e))
+
+### Updated Dependencies
+
+- Updated **package-constants** to **v0.1.89**
+- Updated **prettier** to **v0.59.129**
+- Updated **tsdoc** to **v0.13.229**
+
 ## [0.0.38](https://github.com/storm-software/storm-ops/releases/tag/eslint-plugin-pnpm%400.0.38) (06/23/2026)
 
 ### Miscellaneous
