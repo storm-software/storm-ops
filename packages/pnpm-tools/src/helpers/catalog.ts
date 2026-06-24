@@ -8,6 +8,7 @@ import { findWorkspaceRoot } from "@storm-software/config-tools/utilities/find-w
 import { DEFAULT_NPM_TAG } from "@storm-software/npm-tools/constants";
 import { getVersion } from "@storm-software/npm-tools/helpers/get-version";
 import { coerce, gt, valid } from "semver";
+import { replacePrefix } from "./format";
 import {
   readPnpmWorkspaceFile,
   writePnpmWorkspaceFile
@@ -81,16 +82,8 @@ export async function setCatalog(
 
   pnpmWorkspaceFile.catalog = Object.fromEntries(
     Object.entries(catalog)
-      .filter(([, value]) => value)
+      .filter(([, value]) => value && valid(replacePrefix(value), true))
       .map(([key, value]) => {
-        if (!valid(value)) {
-          throw new Error(
-            `Tried to save invalid version "${value}" for package "${
-              key
-            }" to the PNPM catalog in the pnpm-workspace.yaml file. Please ensure that the version is valid before saving.`
-          );
-        }
-
         return [key, value.replaceAll('"', "").replaceAll("'", "")];
       })
   );
@@ -132,6 +125,13 @@ export interface UpgradeCatalogPackageOptions {
    * @defaultValue `"^"`
    */
   prefix?: "^" | "~" | ">" | "<" | ">=" | "<=" | "*";
+
+  /**
+   * An indicator of whether to enable debug logging for the upgrade process.
+   *
+   * @defaultValue `false`
+   */
+  verbose?: boolean;
 }
 
 export interface UpgradeCatalogResult {
@@ -155,15 +155,18 @@ export async function upgradeCatalog(
   const {
     tag = DEFAULT_NPM_TAG,
     prefix = "^",
-    workspaceRoot = findWorkspaceRoot()
+    workspaceRoot = findWorkspaceRoot(),
+    verbose = false
   } = options;
 
   const workspaceConfig = await getWorkspaceConfig(true, { workspaceRoot });
 
-  writeTrace(
-    `Upgrading catalog entry for package "${packageName}" with tag "${tag}"`,
-    workspaceConfig
-  );
+  if (verbose) {
+    writeTrace(
+      `Upgrading catalog entry for package "${packageName}" with tag "${tag}"`,
+      workspaceConfig
+    );
+  }
 
   const origVersion = await getVersion(packageName, tag, {
     executable: "pnpm"
@@ -173,13 +176,13 @@ export async function upgradeCatalog(
       `Failed to fetch version for package "${packageName}" with tag "${tag}"`
     );
   }
-  if (!valid(origVersion)) {
+  if (!valid(replacePrefix(origVersion), true)) {
     throw new Error(
       `Invalid version "${origVersion}" fetched for package "${packageName}" with tag "${tag}"`
     );
   }
 
-  const version = `${prefix || ""}${origVersion.replace(/^[\^~><=*]+/g, "")}`;
+  const version = `${prefix || ""}${replacePrefix(origVersion)}`;
 
   let updated = false;
   if (
@@ -189,8 +192,7 @@ export async function upgradeCatalog(
       // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       gt(coerce(version)!, coerce(catalog[packageName])!))
   ) {
-    catalog[packageName] =
-      `${prefix || ""}${version.replace(/^[\^~><=*]+/g, "")}`;
+    catalog[packageName] = `${prefix || ""}${replacePrefix(version)}`;
 
     writeDebug(
       `Writing version ${catalog[packageName]} to catalog for "${
@@ -200,13 +202,13 @@ export async function upgradeCatalog(
     );
 
     updated = true;
-  } else {
+  } else if (verbose) {
     writeDebug(
       `The current version ${catalog[packageName]} for package "${
         packageName
-      }" is greater than or equal to the version ${
+      }" is greater than or equal to the version ${replacePrefix(
         version
-      } fetched from the npm registry with tag "${tag}". No update performed.`,
+      )} fetched from the npm registry with tag "${tag}". No update performed.`,
       workspaceConfig
     );
   }
@@ -230,7 +232,8 @@ export async function saveCatalog(
     tag = DEFAULT_NPM_TAG,
     prefix = "^",
     throwIfMissingInCatalog = false,
-    workspaceRoot = findWorkspaceRoot()
+    workspaceRoot = findWorkspaceRoot(),
+    verbose = false
   } = options;
 
   const workspaceConfig = await getWorkspaceConfig(true, { workspaceRoot });
@@ -249,10 +252,12 @@ export async function saveCatalog(
     );
   }
 
-  writeTrace(
-    `Upgrading catalog entry for package "${packageName}" with tag "${tag}"`,
-    workspaceConfig
-  );
+  if (verbose) {
+    writeTrace(
+      `Upgrading catalog entry for package "${packageName}" with tag "${tag}"`,
+      workspaceConfig
+    );
+  }
 
   const origVersion = await getVersion(packageName, tag, {
     executable: "pnpm"
@@ -262,28 +267,29 @@ export async function saveCatalog(
       `Failed to fetch version for package "${packageName}" with tag "${tag}"`
     );
   }
-  if (!valid(origVersion)) {
+  if (!valid(replacePrefix(origVersion), true)) {
     throw new Error(
       `Invalid version "${origVersion}" fetched for package "${packageName}" with tag "${tag}"`
     );
   }
 
-  const version = `${prefix || ""}${origVersion.replace(/^[\^~><=*]+/g, "")}`;
+  const version = `${prefix || ""}${replacePrefix(origVersion)}`;
 
   if (version === catalog[packageName]) {
-    writeTrace(
-      `The version for package "${packageName}" is already up to date in the catalog: ${version}`,
-      workspaceConfig
-    );
+    if (verbose) {
+      writeTrace(
+        `The version for package "${packageName}" is already up to date in the catalog: ${version}`,
+        workspaceConfig
+      );
+    }
   } else if (
-    !valid(coerce(catalog[packageName])) ||
+    !valid(replacePrefix(catalog[packageName]), true) ||
     (coerce(catalog[packageName]) &&
       coerce(version) &&
       // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       gt(coerce(version)!, coerce(catalog[packageName])!))
   ) {
-    catalog[packageName] =
-      `${prefix || ""}${version.replace(/^[\^~><=*]+/g, "")}`;
+    catalog[packageName] = `${prefix || ""}${replacePrefix(version)}`;
 
     writeDebug(
       `Writing version ${catalog[packageName]} to catalog for "${packageName}" package`,
@@ -291,7 +297,7 @@ export async function saveCatalog(
     );
 
     await setCatalog(catalog, workspaceRoot);
-  } else {
+  } else if (verbose) {
     writeWarning(
       `The current version "${catalog[packageName]}" for package "${
         packageName
