@@ -101,7 +101,9 @@
   "types": "./dist/index.d.ts",
   "dependencies": {
     "@storm-software/config": "workspace:*",
-    "@storm-software/config-tools": "workspace:*"
+    "@storm-software/config-tools": "workspace:*",
+    "semver": "catalog:",
+    "strip-ansi": "^7.2.0"
   },
   "devDependencies": {
     "@types/node": "catalog:",

@@ -173,7 +173,7 @@
     "nx": "catalog:",
     "tsup": "catalog:",
     "untyped": "catalog:",
-    "wrangler": "^4.103.0"
+    "wrangler": "^4.105.0"
   },
   "peerDependencies": {
     "nx": ">=22.7.1",
