@@ -2,6 +2,21 @@
 
 # Changelog for Storm Ops - ESLint Plugin Banner
 
+## [0.0.43](https://github.com/storm-software/storm-ops/releases/tag/eslint-plugin-banner%400.0.43) (06/26/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace packages' dependencies ([5b4faf445](https://github.com/storm-software/storm-ops/commit/5b4faf445))
+
+### Features
+
+- **npm-tools:** Updated `getVersion` function to allow `retries` and `timeout` options ([c1ebc0184](https://github.com/storm-software/storm-ops/commit/c1ebc0184))
+
+### Updated Dependencies
+
+- Updated **package-constants** to **v0.1.91**
+- Updated **prettier** to **v0.59.131**
+
 ## [0.0.42](https://github.com/storm-software/storm-ops/releases/tag/eslint-plugin-banner%400.0.42) (06/24/2026)
 
 ### Bug Fixes

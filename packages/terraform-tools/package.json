@@ -1,6 +1,6 @@
 {
   "name": "@storm-software/terraform-tools",
-  "version": "0.66.260",
+  "version": "0.66.261",
   "description": "Tools for managing Terraform infrastructure within a Nx workspace.",
   "keywords": [
     "iac",

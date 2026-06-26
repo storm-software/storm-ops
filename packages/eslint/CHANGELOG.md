@@ -2,6 +2,26 @@
 
 # Changelog for Storm Ops - ESLint
 
+## [0.170.111](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.170.111) (06/26/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace packages' dependencies ([5b4faf445](https://github.com/storm-software/storm-ops/commit/5b4faf445))
+
+### Features
+
+- **npm-tools:** Updated `getVersion` function to allow `retries` and `timeout` options ([c1ebc0184](https://github.com/storm-software/storm-ops/commit/c1ebc0184))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.15**
+- Updated **config-tools** to **v1.190.78**
+- Updated **eslint-plugin-banner** to **v0.0.43**
+- Updated **eslint-plugin-pnpm** to **v0.0.41**
+- Updated **eslint-plugin-tsdoc** to **v0.0.41**
+- Updated **package-constants** to **v0.1.91**
+- Updated **tsdoc** to **v0.13.231**
+
 ## [0.170.110](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.170.110) (06/24/2026)
 
 ### Bug Fixes

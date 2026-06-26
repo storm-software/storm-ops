@@ -2,6 +2,20 @@
 
 # Changelog for Storm Ops - ESLint Config React
 
+## [0.0.33](https://github.com/storm-software/storm-ops/releases/tag/eslint-config-react%400.0.33) (06/26/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace packages' dependencies ([5b4faf445](https://github.com/storm-software/storm-ops/commit/5b4faf445))
+
+### Features
+
+- **npm-tools:** Updated `getVersion` function to allow `retries` and `timeout` options ([c1ebc0184](https://github.com/storm-software/storm-ops/commit/c1ebc0184))
+
+### Updated Dependencies
+
+- Updated **eslint** to **v0.170.111**
+
 ## [0.0.32](https://github.com/storm-software/storm-ops/releases/tag/eslint-config-react%400.0.32) (06/24/2026)
 
 ### Bug Fixes

@@ -2,6 +2,24 @@
 
 # Changelog for Storm Ops - Pnpm Tools
 
+## [0.7.89](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.7.89) (06/26/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace packages' dependencies ([5b4faf445](https://github.com/storm-software/storm-ops/commit/5b4faf445))
+
+### Features
+
+- **npm-tools:** Updated `getVersion` function to allow `retries` and `timeout` options ([c1ebc0184](https://github.com/storm-software/storm-ops/commit/c1ebc0184))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.15**
+- Updated **config-tools** to **v1.190.78**
+- Updated **npm-tools** to **v0.6.196**
+- Updated **package-constants** to **v0.1.91**
+- Updated **testing-tools** to **v1.119.231**
+
 ## [0.7.88](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.7.88) (06/24/2026)
 
 ### Bug Fixes

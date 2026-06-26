@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - Tsconfig
 
+## [0.48.145](https://github.com/storm-software/storm-ops/releases/tag/tsconfig%400.48.145) (06/26/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace packages' dependencies ([5b4faf445](https://github.com/storm-software/storm-ops/commit/5b4faf445))
+
+### Features
+
+- **npm-tools:** Updated `getVersion` function to allow `retries` and `timeout` options ([c1ebc0184](https://github.com/storm-software/storm-ops/commit/c1ebc0184))
+
 ## [0.48.144](https://github.com/storm-software/storm-ops/releases/tag/tsconfig%400.48.144) (06/24/2026)
 
 ### Bug Fixes

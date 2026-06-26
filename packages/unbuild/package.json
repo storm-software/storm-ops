@@ -1,6 +1,6 @@
 {
   "name": "@storm-software/unbuild",
-  "version": "0.57.238",
+  "version": "0.57.239",
   "private": false,
   "description": "A package containing `unbuild` utilities for building Storm Software libraries and applications",
   "keywords": [

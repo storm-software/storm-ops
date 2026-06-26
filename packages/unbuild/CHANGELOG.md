@@ -2,6 +2,22 @@
 
 # Changelog for Storm Ops - Unbuild
 
+## [0.57.239](https://github.com/storm-software/storm-ops/releases/tag/unbuild%400.57.239) (06/26/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace packages' dependencies ([5b4faf445](https://github.com/storm-software/storm-ops/commit/5b4faf445))
+
+### Features
+
+- **npm-tools:** Updated `getVersion` function to allow `retries` and `timeout` options ([c1ebc0184](https://github.com/storm-software/storm-ops/commit/c1ebc0184))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.238**
+- Updated **config** to **v1.138.15**
+- Updated **config-tools** to **v1.190.78**
+
 ## [0.57.238](https://github.com/storm-software/storm-ops/releases/tag/unbuild%400.57.238) (06/24/2026)
 
 ### Bug Fixes

@@ -2,6 +2,21 @@
 
 # Changelog for Storm Ops - Config Tools
 
+## [1.190.78](https://github.com/storm-software/storm-ops/releases/tag/config-tools%401.190.78) (06/26/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace packages' dependencies ([5b4faf445](https://github.com/storm-software/storm-ops/commit/5b4faf445))
+
+### Features
+
+- **npm-tools:** Updated `getVersion` function to allow `retries` and `timeout` options ([c1ebc0184](https://github.com/storm-software/storm-ops/commit/c1ebc0184))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.15**
+- Updated **testing-tools** to **v1.119.231**
+
 ## [1.190.77](https://github.com/storm-software/storm-ops/releases/tag/config-tools%401.190.77) (06/24/2026)
 
 ### Bug Fixes

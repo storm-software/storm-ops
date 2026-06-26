@@ -2,6 +2,29 @@
 
 # Changelog for Storm Ops - Workspace Tools
 
+## [1.296.58](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.296.58) (06/26/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace packages' dependencies ([5b4faf445](https://github.com/storm-software/storm-ops/commit/5b4faf445))
+
+### Features
+
+- **npm-tools:** Updated `getVersion` function to allow `retries` and `timeout` options ([c1ebc0184](https://github.com/storm-software/storm-ops/commit/c1ebc0184))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.15**
+- Updated **config-tools** to **v1.190.78**
+- Updated **esbuild** to **v0.53.239**
+- Updated **npm-tools** to **v0.6.196**
+- Updated **package-constants** to **v0.1.91**
+- Updated **pnpm-tools** to **v0.7.89**
+- Updated **prettier** to **v0.59.131**
+- Updated **testing-tools** to **v1.119.231**
+- Updated **tsdown** to **v0.45.239**
+- Updated **unbuild** to **v0.57.239**
+
 ## [1.296.57](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.296.57) (06/24/2026)
 
 ### Bug Fixes

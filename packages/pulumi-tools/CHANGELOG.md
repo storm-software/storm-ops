@@ -2,6 +2,22 @@
 
 # Changelog for Storm Ops - Pulumi Tools
 
+## [0.22.261](https://github.com/storm-software/storm-ops/releases/tag/pulumi-tools%400.22.261) (06/26/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace packages' dependencies ([5b4faf445](https://github.com/storm-software/storm-ops/commit/5b4faf445))
+
+### Features
+
+- **npm-tools:** Updated `getVersion` function to allow `retries` and `timeout` options ([c1ebc0184](https://github.com/storm-software/storm-ops/commit/c1ebc0184))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.15**
+- Updated **config-tools** to **v1.190.78**
+- Updated **workspace-tools** to **v1.296.58**
+
 ## [0.22.260](https://github.com/storm-software/storm-ops/releases/tag/pulumi-tools%400.22.260) (06/24/2026)
 
 ### Bug Fixes

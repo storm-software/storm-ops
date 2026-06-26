@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - Package Constants
 
+## [0.1.91](https://github.com/storm-software/storm-ops/releases/tag/package-constants%400.1.91) (06/26/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace packages' dependencies ([5b4faf445](https://github.com/storm-software/storm-ops/commit/5b4faf445))
+
+### Features
+
+- **npm-tools:** Updated `getVersion` function to allow `retries` and `timeout` options ([c1ebc0184](https://github.com/storm-software/storm-ops/commit/c1ebc0184))
+
 ## [0.1.90](https://github.com/storm-software/storm-ops/releases/tag/package-constants%400.1.90) (06/24/2026)
 
 ### Bug Fixes
