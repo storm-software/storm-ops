@@ -175,8 +175,8 @@ catalogs:
       specifier: ^1.3.1
       version: 1.3.1
     prettier:
-      specifier: ^3.8.5
-      version: 3.8.5
+      specifier: ^3.9.0
+      version: 3.9.0
     prettier-plugin-packagejson:
       specifier: ^3.0.2
       version: 3.0.2
@@ -388,19 +388,19 @@ importers:
         version: 1.3.1
       prettier:
         specifier: 'catalog:'
-        version: 3.8.5
+        version: 3.9.0
       prettier-plugin-organize-imports:
         specifier: ^4.3.0
-        version: 4.3.0(prettier@3.8.5)(typescript@5.9.3)
+        version: 4.3.0(prettier@3.9.0)(typescript@5.9.3)
       prettier-plugin-packagejson:
         specifier: 'catalog:'
-        version: 3.0.2(prettier@3.8.5)
+        version: 3.0.2(prettier@3.9.0)
       prettier-plugin-prisma:
         specifier: ^5.0.0
-        version: 5.0.0(prettier@3.8.5)
+        version: 5.0.0(prettier@3.9.0)
       prettier-plugin-sh:
         specifier: ^0.15.0
-        version: 0.15.0(prettier@3.8.5)
+        version: 0.15.0(prettier@3.9.0)
       rimraf:
         specifier: 'catalog:'
         version: 6.0.1
@@ -927,7 +927,7 @@ importers:
         version: 4.15.1(eslint@10.6.0(jiti@2.7.0))(typescript@5.9.3)
       eslint-plugin-prettier:
         specifier: ^5.5.6
-        version: 5.5.6(@types/eslint@9.6.1)(eslint-config-prettier@10.1.8(eslint@10.6.0(jiti@2.7.0)))(eslint@10.6.0(jiti@2.7.0))(prettier@3.8.5)
+        version: 5.5.6(@types/eslint@9.6.1)(eslint-config-prettier@10.1.8(eslint@10.6.0(jiti@2.7.0)))(eslint@10.6.0(jiti@2.7.0))(prettier@3.9.0)
       eslint-plugin-regexp:
         specifier: ^2.10.0
         version: 2.10.0(eslint@10.6.0(jiti@2.7.0))
@@ -1006,7 +1006,7 @@ importers:
         version: 22.7.5(@babel/traverse@7.29.7)(@nx/jest@22.7.5(@babel/traverse@7.29.7)(@swc-node/register@1.10.9(@swc/core@1.7.26(@swc/helpers@0.5.13))(@swc/types@0.1.27)(typescript@5.9.3))(@swc/core@1.7.26(@swc/helpers@0.5.13))(@types/node@25.9.4)(babel-plugin-macros@3.1.0)(nx@22.7.5(@swc-node/register@1.10.9(@swc/core@1.7.26(@swc/helpers@0.5.13))(@swc/types@0.1.27)(typescript@5.9.3))(@swc/core@1.7.26(@swc/helpers@0.5.13)))(ts-node@10.9.2(@swc/core@1.7.26(@swc/helpers@0.5.13))(@swc/wasm@1.6.5)(@types/node@25.9.4)(typescript@5.9.3))(typescript@5.9.3)(verdaccio@6.6.0(typanion@3.14.0)))(@swc-node/register@1.10.9(@swc/core@1.7.26(@swc/helpers@0.5.13))(@swc/types@0.1.27)(typescript@5.9.3))(@swc/core@1.7.26(@swc/helpers@0.5.13))(@zkochan/js-yaml@0.0.7)(eslint@10.6.0(jiti@2.7.0))(nx@22.7.5(@swc-node/register@1.10.9(@swc/core@1.7.26(@swc/helpers@0.5.13))(@swc/types@0.1.27)(typescript@5.9.3))(@swc/core@1.7.26(@swc/helpers@0.5.13)))(verdaccio@6.6.0(typanion@3.14.0))
       '@prettier/plugin-xml':
         specifier: ^3.4.2
-        version: 3.4.2(prettier@3.8.5)
+        version: 3.4.2(prettier@3.9.0)
       '@storm-software/eslint-plugin-banner':
         specifier: workspace:*
         version: link:../eslint-plugin-banner
@@ -1188,7 +1188,7 @@ importers:
         version: 10.6.0(jiti@2.7.0)
       eslint-doc-generator:
         specifier: 'catalog:'
-        version: 3.6.0(eslint@10.6.0(jiti@2.7.0))(prettier@3.8.5)(typescript@5.9.3)
+        version: 3.6.0(eslint@10.6.0(jiti@2.7.0))(prettier@3.9.0)(typescript@5.9.3)
       eslint-flat-config-utils:
         specifier: 'catalog:'
         version: 2.1.4
@@ -1448,10 +1448,10 @@ importers:
         version: 22.7.5(@swc-node/register@1.10.9(@swc/core@1.7.26(@swc/helpers@0.5.13))(@swc/types@0.1.27)(typescript@5.9.3))(@swc/core@1.7.26(@swc/helpers@0.5.13))
       prettier:
         specifier: 'catalog:'
-        version: 3.8.5
+        version: 3.9.0
       prettier-plugin-organize-imports:
         specifier: ^4.3.0
-        version: 4.3.0(prettier@3.8.5)(typescript@5.9.3)
+        version: 4.3.0(prettier@3.9.0)(typescript@5.9.3)
       semver:
         specifier: 'catalog:'
         version: 7.8.5
@@ -1534,7 +1534,7 @@ importers:
         version: 22.7.5(@swc-node/register@1.10.9(@swc/core@1.7.26(@swc/helpers@0.5.13))(@swc/types@0.1.27)(typescript@5.9.3))(@swc/core@1.7.26(@swc/helpers@0.5.13))
       prettier:
         specifier: 'catalog:'
-        version: 3.8.5
+        version: 3.9.0
       tsup:
         specifier: 'catalog:'
         version: 8.4.0(patch_hash=751a554d775c3572381af4e7e5fa22eeda6dd6856012fb1cf521d6806eb2dc74)(@microsoft/api-extractor@7.58.9(@types/node@25.9.4))(@swc/core@1.7.26(@swc/helpers@0.5.13))(jiti@2.7.0)(postcss@8.5.15)(tsx@4.22.4)(typescript@5.9.3)(yaml@2.9.0)
@@ -1702,7 +1702,7 @@ importers:
         version: 10.1.8(eslint@10.6.0(jiti@2.7.0))
       eslint-plugin-prettier:
         specifier: ^5.5.6
-        version: 5.5.6(@types/eslint@9.6.1)(eslint-config-prettier@10.1.8(eslint@10.6.0(jiti@2.7.0)))(eslint@10.6.0(jiti@2.7.0))(prettier@3.8.5)
+        version: 5.5.6(@types/eslint@9.6.1)(eslint-config-prettier@10.1.8(eslint@10.6.0(jiti@2.7.0)))(eslint@10.6.0(jiti@2.7.0))(prettier@3.9.0)
       eslint-plugin-react-compiler:
         specifier: 19.1.0-rc.2
         version: 19.1.0-rc.2(eslint@10.6.0(jiti@2.7.0))
@@ -1727,7 +1727,7 @@ importers:
     devDependencies:
       '@prettier/plugin-xml':
         specifier: ^3.4.2
-        version: 3.4.2(prettier@3.8.5)
+        version: 3.4.2(prettier@3.9.0)
       '@types/node':
         specifier: 'catalog:'
         version: 25.9.4
@@ -1793,10 +1793,10 @@ importers:
         version: 6.1.7
       prettier:
         specifier: 'catalog:'
-        version: 3.8.5
+        version: 3.9.0
       prettier-plugin-packagejson:
         specifier: 'catalog:'
-        version: 3.0.2(prettier@3.8.5)
+        version: 3.0.2(prettier@3.9.0)
       semver:
         specifier: 'catalog:'
         version: 7.8.5
@@ -1818,38 +1818,38 @@ importers:
     dependencies:
       prettier-plugin-jsdoc:
         specifier: ^1.8.1
-        version: 1.8.1(prettier@3.8.5)
+        version: 1.8.1(prettier@3.9.0)
       prettier-plugin-organize-imports:
         specifier: ^4.3.0
-        version: 4.3.0(prettier@3.8.5)(typescript@5.9.3)
+        version: 4.3.0(prettier@3.9.0)(typescript@5.9.3)
       prettier-plugin-packagejson:
         specifier: 'catalog:'
-        version: 3.0.2(prettier@3.8.5)
+        version: 3.0.2(prettier@3.9.0)
       prettier-plugin-sh:
         specifier: ^0.15.0
-        version: 0.15.0(prettier@3.8.5)
+        version: 0.15.0(prettier@3.9.0)
       prettier-plugin-toml:
         specifier: ^2.0.6
-        version: 2.0.6(prettier@3.8.5)
+        version: 2.0.6(prettier@3.9.0)
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
         version: 25.9.4
       prettier:
         specifier: 'catalog:'
-        version: 3.8.5
+        version: 3.9.0
       prettier-plugin-astro:
         specifier: ^0.14.1
         version: 0.14.1
       prettier-plugin-prisma:
         specifier: ^5.0.0
-        version: 5.0.0(prettier@3.8.5)
+        version: 5.0.0(prettier@3.9.0)
       prettier-plugin-solidity:
         specifier: ^1.4.3
-        version: 1.4.3(prettier@3.8.5)
+        version: 1.4.3(prettier@3.9.0)
       prettier-plugin-tailwindcss:
         specifier: ^0.6.14
-        version: 0.6.14(prettier-plugin-astro@0.14.1)(prettier-plugin-jsdoc@1.8.1(prettier@3.8.5))(prettier-plugin-organize-imports@4.3.0(prettier@3.8.5)(typescript@5.9.3))(prettier@3.8.5)
+        version: 0.6.14(prettier-plugin-astro@0.14.1)(prettier-plugin-jsdoc@1.8.1(prettier@3.9.0))(prettier-plugin-organize-imports@4.3.0(prettier@3.9.0)(typescript@5.9.3))(prettier@3.9.0)
 
   packages/projen:
     dependencies:
@@ -2326,7 +2326,7 @@ importers:
         version: 1.3.1
       prettier:
         specifier: 'catalog:'
-        version: 3.8.5
+        version: 3.9.0
       tsup:
         specifier: 'catalog:'
         version: 8.4.0(patch_hash=751a554d775c3572381af4e7e5fa22eeda6dd6856012fb1cf521d6806eb2dc74)(@microsoft/api-extractor@7.58.9(@types/node@25.9.4))(@swc/core@1.7.26(@swc/helpers@0.5.13))(jiti@2.7.0)(postcss@8.5.15)(tsx@4.22.4)(typescript@5.9.3)(yaml@2.9.0)
@@ -14449,8 +14449,8 @@ packages:
     peerDependencies:
       prettier: ^3.0.3
 
-  prettier@3.8.5:
-    resolution: {integrity: sha512-zxcTTCedNGJM4R8sj/Cq/F0W/c4iE0afWBcBwMTRtw4WHYP9TWkYjdiH3npPRUYsXQCPR0hTU9yjovOu+E6EQA==}
+  prettier@3.9.0:
+    resolution: {integrity: sha512-LjIqSIC5VYLzs9WedVmJ2ljNAGnU+DteIClbahu4L/DBeWjZ6iT/k1lAYyu9JUh+1xINxWadaPw/Pl63y/agAw==}
     engines: {node: '>=14'}
     hasBin: true
 
@@ -22094,10 +22094,10 @@ snapshots:
 
   '@poppinss/exception@1.2.3': {}
 
-  '@prettier/plugin-xml@3.4.2(prettier@3.8.5)':
+  '@prettier/plugin-xml@3.4.2(prettier@3.9.0)':
     dependencies:
       '@xml-tools/parser': 1.0.11
-      prettier: 3.8.5
+      prettier: 3.9.0
 
   '@prisma/prisma-schema-wasm@4.17.0-26.6b0aef69b7cdfc787f822ecd7cdc76d5f1991584': {}
 
@@ -25601,7 +25601,7 @@ snapshots:
     dependencies:
       eslint: 10.6.0(jiti@2.7.0)
 
-  eslint-doc-generator@3.6.0(eslint@10.6.0(jiti@2.7.0))(prettier@3.8.5)(typescript@5.9.3):
+  eslint-doc-generator@3.6.0(eslint@10.6.0(jiti@2.7.0))(prettier@3.9.0)(typescript@5.9.3):
     dependencies:
       '@typescript-eslint/utils': 8.62.0(eslint@10.6.0(jiti@2.7.0))(typescript@5.9.3)
       ajv: 8.20.0
@@ -25620,7 +25620,7 @@ snapshots:
       table: 6.9.0
       type-fest: 5.7.0
     optionalDependencies:
-      prettier: 3.8.5
+      prettier: 3.9.0
     transitivePeerDependencies:
       - supports-color
       - typescript
@@ -25716,7 +25716,7 @@ snapshots:
       eslint-parser-plain: 0.1.1
       ohash: 2.0.11
       oxfmt: 0.35.0
-      prettier: 3.8.5
+      prettier: 3.9.0
       synckit: 0.11.13
 
   eslint-plugin-i18n-text@1.0.1(eslint@10.6.0(jiti@2.7.0)):
@@ -25875,10 +25875,10 @@ snapshots:
       tinyglobby: 0.2.17
       yaml-eslint-parser: 1.3.2
 
-  eslint-plugin-prettier@5.5.6(@types/eslint@9.6.1)(eslint-config-prettier@10.1.8(eslint@10.6.0(jiti@2.7.0)))(eslint@10.6.0(jiti@2.7.0))(prettier@3.8.5):
+  eslint-plugin-prettier@5.5.6(@types/eslint@9.6.1)(eslint-config-prettier@10.1.8(eslint@10.6.0(jiti@2.7.0)))(eslint@10.6.0(jiti@2.7.0))(prettier@3.9.0):
     dependencies:
       eslint: 10.6.0(jiti@2.7.0)
-      prettier: 3.8.5
+      prettier: 3.9.0
       prettier-linter-helpers: 1.0.1
       synckit: 0.11.13
     optionalDependencies:
@@ -31471,60 +31471,60 @@ snapshots:
   prettier-plugin-astro@0.14.1:
     dependencies:
       '@astrojs/compiler': 2.13.1
-      prettier: 3.8.5
+      prettier: 3.9.0
       sass-formatter: 0.7.9
 
-  prettier-plugin-jsdoc@1.8.1(prettier@3.8.5):
+  prettier-plugin-jsdoc@1.8.1(prettier@3.9.0):
     dependencies:
       binary-searching: 2.0.5
       comment-parser: 1.4.7
       mdast-util-from-markdown: 2.0.3
-      prettier: 3.8.5
+      prettier: 3.9.0
     transitivePeerDependencies:
       - supports-color
 
-  prettier-plugin-organize-imports@4.3.0(prettier@3.8.5)(typescript@5.9.3):
+  prettier-plugin-organize-imports@4.3.0(prettier@3.9.0)(typescript@5.9.3):
     dependencies:
-      prettier: 3.8.5
+      prettier: 3.9.0
       typescript: 5.9.3
 
-  prettier-plugin-packagejson@3.0.2(prettier@3.8.5):
+  prettier-plugin-packagejson@3.0.2(prettier@3.9.0):
     dependencies:
       sort-package-json: 3.7.1
     optionalDependencies:
-      prettier: 3.8.5
+      prettier: 3.9.0
 
-  prettier-plugin-prisma@5.0.0(prettier@3.8.5):
+  prettier-plugin-prisma@5.0.0(prettier@3.9.0):
     dependencies:
       '@prisma/prisma-schema-wasm': 4.17.0-26.6b0aef69b7cdfc787f822ecd7cdc76d5f1991584
-      prettier: 3.8.5
+      prettier: 3.9.0
 
-  prettier-plugin-sh@0.15.0(prettier@3.8.5):
+  prettier-plugin-sh@0.15.0(prettier@3.9.0):
     dependencies:
       mvdan-sh: 0.10.1
-      prettier: 3.8.5
+      prettier: 3.9.0
       sh-syntax: 0.4.2
 
-  prettier-plugin-solidity@1.4.3(prettier@3.8.5):
+  prettier-plugin-solidity@1.4.3(prettier@3.9.0):
     dependencies:
       '@solidity-parser/parser': 0.20.2
-      prettier: 3.8.5
+      prettier: 3.9.0
       semver: 7.8.5
 
-  prettier-plugin-tailwindcss@0.6.14(prettier-plugin-astro@0.14.1)(prettier-plugin-jsdoc@1.8.1(prettier@3.8.5))(prettier-plugin-organize-imports@4.3.0(prettier@3.8.5)(typescript@5.9.3))(prettier@3.8.5):
+  prettier-plugin-tailwindcss@0.6.14(prettier-plugin-astro@0.14.1)(prettier-plugin-jsdoc@1.8.1(prettier@3.9.0))(prettier-plugin-organize-imports@4.3.0(prettier@3.9.0)(typescript@5.9.3))(prettier@3.9.0):
     dependencies:
-      prettier: 3.8.5
+      prettier: 3.9.0
     optionalDependencies:
       prettier-plugin-astro: 0.14.1
-      prettier-plugin-jsdoc: 1.8.1(prettier@3.8.5)
-      prettier-plugin-organize-imports: 4.3.0(prettier@3.8.5)(typescript@5.9.3)
+      prettier-plugin-jsdoc: 1.8.1(prettier@3.9.0)
+      prettier-plugin-organize-imports: 4.3.0(prettier@3.9.0)(typescript@5.9.3)
 
-  prettier-plugin-toml@2.0.6(prettier@3.8.5):
+  prettier-plugin-toml@2.0.6(prettier@3.9.0):
     dependencies:
       '@taplo/lib': 0.5.0
-      prettier: 3.8.5
+      prettier: 3.9.0
 
-  prettier@3.8.5: {}
+  prettier@3.9.0: {}
 
   pretty-bytes@7.1.0: {}
 

@@ -2723,7 +2723,7 @@ Backward pagination arguments
    * Disallow expressions where the operation doesn't affect the value
    * @see https://eslint.org/docs/latest/rules/no-constant-binary-expression
    */
-  'no-constant-binary-expression'?: Linter.RuleEntry<[]>
+  'no-constant-binary-expression'?: Linter.RuleEntry<NoConstantBinaryExpression>
   /**
    * Disallow constant expressions in conditions
    * @see https://eslint.org/docs/latest/rules/no-constant-condition
@@ -10729,6 +10729,10 @@ type NoConfusingArrow = []|[{
 type NoConsole = []|[{
   
   allow?: [string, ...(string)[]]
+}]
+// ----- no-constant-binary-expression -----
+type NoConstantBinaryExpression = []|[{
+  checkRelationalComparisons?: boolean
 }]
 // ----- no-constant-condition -----
 type NoConstantCondition = []|[{
