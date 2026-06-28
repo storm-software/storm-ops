@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - ESLint Config React
 
+## [0.0.34](https://github.com/storm-software/storm-ops/releases/tag/eslint-config-react%400.0.34) (06/28/2026)
+
+### Bug Fixes
+
+- **eslint:** Disable `sort-named-exports` linting rule ([6abdad890](https://github.com/storm-software/storm-ops/commit/6abdad890))
+
+### Updated Dependencies
+
+- Updated **eslint** to **v0.170.112**
+
 ## [0.0.33](https://github.com/storm-software/storm-ops/releases/tag/eslint-config-react%400.0.33) (06/26/2026)
 
 ### Miscellaneous

@@ -2,6 +2,14 @@
 
 # Changelog for Storm Ops - Npm Tools
 
+## [0.6.197](https://github.com/storm-software/storm-ops/releases/tag/npm-tools%400.6.197) (06/28/2026)
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.16**
+- Updated **config-tools** to **v1.190.79**
+- Updated **testing-tools** to **v1.119.232**
+
 ## [0.6.196](https://github.com/storm-software/storm-ops/releases/tag/npm-tools%400.6.196) (06/26/2026)
 
 ### Miscellaneous

@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Tsdown
 
+## [0.45.240](https://github.com/storm-software/storm-ops/releases/tag/tsdown%400.45.240) (06/28/2026)
+
+### Bug Fixes
+
+- **eslint:** Disable `sort-named-exports` linting rule ([6abdad890](https://github.com/storm-software/storm-ops/commit/6abdad890))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.239**
+- Updated **config** to **v1.138.16**
+- Updated **config-tools** to **v1.190.79**
+
 ## [0.45.239](https://github.com/storm-software/storm-ops/releases/tag/tsdown%400.45.239) (06/26/2026)
 
 ### Miscellaneous
