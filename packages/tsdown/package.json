@@ -158,7 +158,9 @@
   "bin": {
     "storm-tsdown": "./bin/tsdown.cjs"
   },
-  "files": ["dist/**/*"],
+  "files": [
+    "dist/**/*"
+  ],
   "dependencies": {
     "@nx/devkit": "catalog:",
     "@storm-software/build-tools": "workspace:*",
@@ -166,7 +168,7 @@
     "@storm-software/config-tools": "workspace:*",
     "chokidar": "^4.0.3",
     "commander": "catalog:",
-    "es-toolkit": "^1.48.1",
+    "es-toolkit": "^1.49.0",
     "globby": "^14.1.0",
     "nx": "catalog:",
     "rolldown": "1.0.0-beta.1",

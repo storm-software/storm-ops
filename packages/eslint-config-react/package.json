@@ -111,9 +111,11 @@
   },
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "dependencies": {
-    "@eslint-react/eslint-plugin": "^5.9.3",
+    "@eslint-react/eslint-plugin": "^5.9.5",
     "@next/eslint-plugin-next": "^15.5.19",
     "@storm-software/eslint": "workspace:*",
     "@unocss/eslint-plugin": "^65.5.0",

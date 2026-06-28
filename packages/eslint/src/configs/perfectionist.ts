@@ -39,15 +39,16 @@ export async function perfectionist(): Promise<TypedFlatConfigItem[]> {
         //   }
         // ],
         "perfectionist/sort-imports": "off",
-        "perfectionist/sort-named-exports": [
-          "error",
-          { order: "asc", type: "natural" }
-        ],
+        // "perfectionist/sort-named-exports": [
+        //   "error",
+        //   { order: "asc", type: "natural" }
+        // ],
         // "perfectionist/sort-named-imports": [
         //   "error",
         //   { order: "asc", type: "natural" }
         // ],
-        "perfectionist/sort-named-imports": "off"
+        "perfectionist/sort-named-imports": "off",
+        "perfectionist/sort-named-exports": "off"
       }
     }
   ];
