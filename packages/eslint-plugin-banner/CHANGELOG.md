@@ -2,6 +2,21 @@
 
 # Changelog for Storm Ops - ESLint Plugin Banner
 
+## [0.0.45](https://github.com/storm-software/storm-ops/releases/tag/eslint-plugin-banner%400.0.45) (06/28/2026)
+
+### Miscellaneous
+
+- **monorepo:** Upgrade workspace packages' dependencies ([fcc009e9d](https://github.com/storm-software/storm-ops/commit/fcc009e9d))
+
+### Continuous Integration
+
+- **monorepo:** Update clean owners workflow action ([2f3d525b4](https://github.com/storm-software/storm-ops/commit/2f3d525b4))
+
+### Updated Dependencies
+
+- Updated **package-constants** to **v0.1.93**
+- Updated **prettier** to **v0.59.133**
+
 ## [0.0.44](https://github.com/storm-software/storm-ops/releases/tag/eslint-plugin-banner%400.0.44) (06/28/2026)
 
 ### Updated Dependencies

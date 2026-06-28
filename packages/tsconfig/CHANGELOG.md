@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - Tsconfig
 
+## [0.48.147](https://github.com/storm-software/storm-ops/releases/tag/tsconfig%400.48.147) (06/28/2026)
+
+### Miscellaneous
+
+- **monorepo:** Upgrade workspace packages' dependencies ([fcc009e9d](https://github.com/storm-software/storm-ops/commit/fcc009e9d))
+
+### Continuous Integration
+
+- **monorepo:** Update clean owners workflow action ([2f3d525b4](https://github.com/storm-software/storm-ops/commit/2f3d525b4))
+
 ## [0.48.145](https://github.com/storm-software/storm-ops/releases/tag/tsconfig%400.48.145) (06/26/2026)
 
 ### Miscellaneous

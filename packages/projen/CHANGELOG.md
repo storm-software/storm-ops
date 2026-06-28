@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Projen
 
+## [0.21.263](https://github.com/storm-software/storm-ops/releases/tag/projen%400.21.263) (06/28/2026)
+
+### Miscellaneous
+
+- **monorepo:** Upgrade workspace packages' dependencies ([fcc009e9d](https://github.com/storm-software/storm-ops/commit/fcc009e9d))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.17**
+- Updated **config-tools** to **v1.190.80**
+- Updated **workspace-tools** to **v1.296.60**
+
 ## [0.21.262](https://github.com/storm-software/storm-ops/releases/tag/projen%400.21.262) (06/28/2026)
 
 ### Updated Dependencies

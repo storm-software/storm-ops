@@ -2,6 +2,20 @@
 
 # Changelog for Storm Ops - Package Constants
 
+## [0.1.93](https://github.com/storm-software/storm-ops/releases/tag/package-constants%400.1.93) (06/28/2026)
+
+### Miscellaneous
+
+- **monorepo:** Upgrade workspace packages' dependencies ([fcc009e9d](https://github.com/storm-software/storm-ops/commit/fcc009e9d))
+
+### Bug Fixes
+
+- **package-constants:** Remove `output` directory from excludes list ([6e13b4801](https://github.com/storm-software/storm-ops/commit/6e13b4801))
+
+### Continuous Integration
+
+- **monorepo:** Update clean owners workflow action ([2f3d525b4](https://github.com/storm-software/storm-ops/commit/2f3d525b4))
+
 ## [0.1.91](https://github.com/storm-software/storm-ops/releases/tag/package-constants%400.1.91) (06/26/2026)
 
 ### Miscellaneous

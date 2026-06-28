@@ -2,6 +2,20 @@
 
 # Changelog for Storm Ops - Pnpm Tools
 
+## [0.7.91](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.7.91) (06/28/2026)
+
+### Miscellaneous
+
+- **monorepo:** Upgrade workspace packages' dependencies ([fcc009e9d](https://github.com/storm-software/storm-ops/commit/fcc009e9d))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.17**
+- Updated **config-tools** to **v1.190.80**
+- Updated **npm-tools** to **v0.6.198**
+- Updated **package-constants** to **v0.1.93**
+- Updated **testing-tools** to **v1.119.233**
+
 ## [0.7.90](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.7.90) (06/28/2026)
 
 ### Updated Dependencies

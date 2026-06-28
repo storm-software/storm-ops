@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - Config
 
+## [1.138.17](https://github.com/storm-software/storm-ops/releases/tag/config%401.138.17) (06/28/2026)
+
+### Miscellaneous
+
+- **monorepo:** Upgrade workspace packages' dependencies ([fcc009e9d](https://github.com/storm-software/storm-ops/commit/fcc009e9d))
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.233**
+
 ## [1.138.16](https://github.com/storm-software/storm-ops/releases/tag/config%401.138.16) (06/28/2026)
 
 ### Updated Dependencies

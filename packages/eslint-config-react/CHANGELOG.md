@@ -2,6 +2,20 @@
 
 # Changelog for Storm Ops - ESLint Config React
 
+## [0.0.35](https://github.com/storm-software/storm-ops/releases/tag/eslint-config-react%400.0.35) (06/28/2026)
+
+### Miscellaneous
+
+- **monorepo:** Upgrade workspace packages' dependencies ([fcc009e9d](https://github.com/storm-software/storm-ops/commit/fcc009e9d))
+
+### Continuous Integration
+
+- **monorepo:** Update clean owners workflow action ([2f3d525b4](https://github.com/storm-software/storm-ops/commit/2f3d525b4))
+
+### Updated Dependencies
+
+- Updated **eslint** to **v0.170.113**
+
 ## [0.0.34](https://github.com/storm-software/storm-ops/releases/tag/eslint-config-react%400.0.34) (06/28/2026)
 
 ### Bug Fixes
