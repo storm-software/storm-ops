@@ -3,7 +3,13 @@
   "version": "0.13.233",
   "private": false,
   "description": "This package contains shared TSDoc configurations used in Storm Software projects.",
-  "keywords": ["tsdoc", "typedoc", "storm", "storm-ops", "storm-software"],
+  "keywords": [
+    "tsdoc",
+    "typedoc",
+    "storm",
+    "storm-ops",
+    "storm-software"
+  ],
   "homepage": "https://stormsoftware.com",
   "bugs": "https://github.com/storm-software/storm-ops/issues",
   "repository": {
