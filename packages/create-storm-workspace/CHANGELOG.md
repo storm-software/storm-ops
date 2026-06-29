@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - Create Storm Workspace
 
+## [1.97.241](https://github.com/storm-software/storm-ops/releases/tag/create-storm-workspace%401.97.241) (06/29/2026)
+
+### Bug Fixes
+
+- **workspace-tools:** Resolve issue applying the cargo project name parameter ([f927214be](https://github.com/storm-software/storm-ops/commit/f927214be))
+
+### Updated Dependencies
+
+- Updated **config-tools** to **v1.190.81**
+
 ## [1.97.240](https://github.com/storm-software/storm-ops/releases/tag/create-storm-workspace%401.97.240) (06/28/2026)
 
 ### Miscellaneous

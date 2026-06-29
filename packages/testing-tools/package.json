@@ -1,6 +1,6 @@
 {
   "name": "@storm-software/testing-tools",
-  "version": "1.119.233",
+  "version": "1.119.234",
   "private": false,
   "description": "A package containing various testing tools used by Storm workspaces to drive unit and e2e testing.",
   "keywords": [
@@ -157,9 +157,7 @@
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
-  "files": [
-    "dist/**/*"
-  ],
+  "files": ["dist/**/*"],
   "dependencies": {
     "defu": "catalog:",
     "mlly": "catalog:"

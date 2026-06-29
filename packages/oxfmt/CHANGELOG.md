@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Oxfmt
 
+## [0.0.37](https://github.com/storm-software/storm-ops/releases/tag/oxfmt%400.0.37) (06/29/2026)
+
+### Bug Fixes
+
+- **workspace-tools:** Resolve issue applying the cargo project name parameter ([f927214be](https://github.com/storm-software/storm-ops/commit/f927214be))
+
 ## [0.0.36](https://github.com/storm-software/storm-ops/releases/tag/oxfmt%400.0.36) (06/28/2026)
 
 ### Miscellaneous

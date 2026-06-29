@@ -2,6 +2,21 @@
 
 # Changelog for Storm Ops - Config Tools
 
+## [1.190.81](https://github.com/storm-software/storm-ops/releases/tag/config-tools%401.190.81) (06/29/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update formatting in `package.json` file ([d46f84d43](https://github.com/storm-software/storm-ops/commit/d46f84d43))
+
+### Bug Fixes
+
+- **workspace-tools:** Resolve issue applying the cargo project name parameter ([f927214be](https://github.com/storm-software/storm-ops/commit/f927214be))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.18**
+- Updated **testing-tools** to **v1.119.234**
+
 ## [1.190.80](https://github.com/storm-software/storm-ops/releases/tag/config-tools%401.190.80) (06/28/2026)
 
 ### Miscellaneous

@@ -2,6 +2,22 @@
 
 # Changelog for Storm Ops - ESLint Plugin Pnpm
 
+## [0.0.44](https://github.com/storm-software/storm-ops/releases/tag/eslint-plugin-pnpm%400.0.44) (06/29/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update formatting in `package.json` file ([d46f84d43](https://github.com/storm-software/storm-ops/commit/d46f84d43))
+
+### Bug Fixes
+
+- **workspace-tools:** Resolve issue applying the cargo project name parameter ([f927214be](https://github.com/storm-software/storm-ops/commit/f927214be))
+
+### Updated Dependencies
+
+- Updated **package-constants** to **v0.1.94**
+- Updated **prettier** to **v0.59.134**
+- Updated **tsdoc** to **v0.13.234**
+
 ## [0.0.43](https://github.com/storm-software/storm-ops/releases/tag/eslint-plugin-pnpm%400.0.43) (06/28/2026)
 
 ### Miscellaneous

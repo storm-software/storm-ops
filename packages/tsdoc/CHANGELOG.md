@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - Tsdoc
 
+## [0.13.234](https://github.com/storm-software/storm-ops/releases/tag/tsdoc%400.13.234) (06/29/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update formatting in `package.json` file ([d46f84d43](https://github.com/storm-software/storm-ops/commit/d46f84d43))
+
+### Bug Fixes
+
+- **workspace-tools:** Resolve issue applying the cargo project name parameter ([f927214be](https://github.com/storm-software/storm-ops/commit/f927214be))
+
 ## [0.13.233](https://github.com/storm-software/storm-ops/releases/tag/tsdoc%400.13.233) (06/28/2026)
 
 ### Miscellaneous

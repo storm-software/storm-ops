@@ -2,6 +2,20 @@
 
 # Changelog for Storm Ops - Pnpm Tools
 
+## [0.7.92](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.7.92) (06/29/2026)
+
+### Bug Fixes
+
+- **workspace-tools:** Resolve issue applying the cargo project name parameter ([f927214be](https://github.com/storm-software/storm-ops/commit/f927214be))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.18**
+- Updated **config-tools** to **v1.190.81**
+- Updated **npm-tools** to **v0.6.199**
+- Updated **package-constants** to **v0.1.94**
+- Updated **testing-tools** to **v1.119.234**
+
 ## [0.7.91](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.7.91) (06/28/2026)
 
 ### Miscellaneous

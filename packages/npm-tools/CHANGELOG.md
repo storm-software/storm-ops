@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Npm Tools
 
+## [0.6.199](https://github.com/storm-software/storm-ops/releases/tag/npm-tools%400.6.199) (06/29/2026)
+
+### Bug Fixes
+
+- **workspace-tools:** Resolve issue applying the cargo project name parameter ([f927214be](https://github.com/storm-software/storm-ops/commit/f927214be))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.18**
+- Updated **config-tools** to **v1.190.81**
+- Updated **testing-tools** to **v1.119.234**
+
 ## [0.6.198](https://github.com/storm-software/storm-ops/releases/tag/npm-tools%400.6.198) (06/28/2026)
 
 ### Miscellaneous

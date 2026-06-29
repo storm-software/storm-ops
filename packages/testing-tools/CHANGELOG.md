@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - Testing Tools
 
+## [1.119.234](https://github.com/storm-software/storm-ops/releases/tag/testing-tools%401.119.234) (06/29/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update formatting in `package.json` file ([d46f84d43](https://github.com/storm-software/storm-ops/commit/d46f84d43))
+
+### Bug Fixes
+
+- **workspace-tools:** Resolve issue applying the cargo project name parameter ([f927214be](https://github.com/storm-software/storm-ops/commit/f927214be))
+
 ## [1.119.233](https://github.com/storm-software/storm-ops/releases/tag/testing-tools%401.119.233) (06/28/2026)
 
 ### Miscellaneous

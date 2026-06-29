@@ -2,6 +2,20 @@
 
 # Changelog for Storm Ops - ESLint Config React
 
+## [0.0.36](https://github.com/storm-software/storm-ops/releases/tag/eslint-config-react%400.0.36) (06/29/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update formatting in `package.json` file ([d46f84d43](https://github.com/storm-software/storm-ops/commit/d46f84d43))
+
+### Bug Fixes
+
+- **workspace-tools:** Resolve issue applying the cargo project name parameter ([f927214be](https://github.com/storm-software/storm-ops/commit/f927214be))
+
+### Updated Dependencies
+
+- Updated **eslint** to **v0.170.114**
+
 ## [0.0.35](https://github.com/storm-software/storm-ops/releases/tag/eslint-config-react%400.0.35) (06/28/2026)
 
 ### Miscellaneous

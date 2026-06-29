@@ -2,6 +2,23 @@
 
 # Changelog for Storm Ops - Git Tools
 
+## [2.131.89](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.131.89) (06/29/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update formatting in `package.json` file ([d46f84d43](https://github.com/storm-software/storm-ops/commit/d46f84d43))
+
+### Bug Fixes
+
+- **workspace-tools:** Resolve issue applying the cargo project name parameter ([f927214be](https://github.com/storm-software/storm-ops/commit/f927214be))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.18**
+- Updated **config-tools** to **v1.190.81**
+- Updated **conventional-changelog** to **v0.3.242**
+- Updated **package-constants** to **v0.1.94**
+
 ## [2.131.88](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.131.88) (06/28/2026)
 
 ### Miscellaneous

@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Prettier
 
+## [0.59.134](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.59.134) (06/29/2026)
+
+### Bug Fixes
+
+- **workspace-tools:** Resolve issue applying the cargo project name parameter ([f927214be](https://github.com/storm-software/storm-ops/commit/f927214be))
+
 ## [0.59.133](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.59.133) (06/28/2026)
 
 ### Miscellaneous

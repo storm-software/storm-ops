@@ -2,6 +2,21 @@
 
 # Changelog for Storm Ops - Pnpm Plugin
 
+## [0.1.192](https://github.com/storm-software/storm-ops/releases/tag/pnpm-plugin%400.1.192) (06/29/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update formatting in `package.json` file ([d46f84d43](https://github.com/storm-software/storm-ops/commit/d46f84d43))
+
+### Bug Fixes
+
+- **workspace-tools:** Resolve issue applying the cargo project name parameter ([f927214be](https://github.com/storm-software/storm-ops/commit/f927214be))
+
+### Updated Dependencies
+
+- Updated **package-constants** to **v0.1.94**
+- Updated **testing-tools** to **v1.119.234**
+
 ## [0.1.191](https://github.com/storm-software/storm-ops/releases/tag/pnpm-plugin%400.1.191) (06/28/2026)
 
 ### Miscellaneous

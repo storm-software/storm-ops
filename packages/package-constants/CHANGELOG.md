@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - Package Constants
 
+## [0.1.94](https://github.com/storm-software/storm-ops/releases/tag/package-constants%400.1.94) (06/29/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update formatting in `package.json` file ([d46f84d43](https://github.com/storm-software/storm-ops/commit/d46f84d43))
+
+### Bug Fixes
+
+- **workspace-tools:** Resolve issue applying the cargo project name parameter ([f927214be](https://github.com/storm-software/storm-ops/commit/f927214be))
+
 ## [0.1.93](https://github.com/storm-software/storm-ops/releases/tag/package-constants%400.1.93) (06/28/2026)
 
 ### Miscellaneous

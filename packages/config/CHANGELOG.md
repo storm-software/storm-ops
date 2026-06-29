@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - Config
 
+## [1.138.18](https://github.com/storm-software/storm-ops/releases/tag/config%401.138.18) (06/29/2026)
+
+### Bug Fixes
+
+- **workspace-tools:** Resolve issue applying the cargo project name parameter ([f927214be](https://github.com/storm-software/storm-ops/commit/f927214be))
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.234**
+
 ## [1.138.17](https://github.com/storm-software/storm-ops/releases/tag/config%401.138.17) (06/28/2026)
 
 ### Miscellaneous

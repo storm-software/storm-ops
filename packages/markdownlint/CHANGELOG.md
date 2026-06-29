@@ -2,6 +2,20 @@
 
 # Changelog for Storm Ops - Markdownlint
 
+## [0.30.237](https://github.com/storm-software/storm-ops/releases/tag/markdownlint%400.30.237) (06/29/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update formatting in `package.json` file ([d46f84d43](https://github.com/storm-software/storm-ops/commit/d46f84d43))
+
+### Bug Fixes
+
+- **workspace-tools:** Resolve issue applying the cargo project name parameter ([f927214be](https://github.com/storm-software/storm-ops/commit/f927214be))
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.234**
+
 ## [0.30.236](https://github.com/storm-software/storm-ops/releases/tag/markdownlint%400.30.236) (06/28/2026)
 
 ### Miscellaneous

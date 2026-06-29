@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - K8s Tools
 
+## [0.42.264](https://github.com/storm-software/storm-ops/releases/tag/k8s-tools%400.42.264) (06/29/2026)
+
+### Bug Fixes
+
+- **workspace-tools:** Resolve issue applying the cargo project name parameter ([f927214be](https://github.com/storm-software/storm-ops/commit/f927214be))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.18**
+- Updated **config-tools** to **v1.190.81**
+- Updated **workspace-tools** to **v1.296.61**
+
 ## [0.42.263](https://github.com/storm-software/storm-ops/releases/tag/k8s-tools%400.42.263) (06/28/2026)
 
 ### Miscellaneous

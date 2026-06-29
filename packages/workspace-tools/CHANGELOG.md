@@ -2,6 +2,25 @@
 
 # Changelog for Storm Ops - Workspace Tools
 
+## [1.296.61](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.296.61) (06/29/2026)
+
+### Bug Fixes
+
+- **workspace-tools:** Resolve issue applying the cargo project name parameter ([f927214be](https://github.com/storm-software/storm-ops/commit/f927214be))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.18**
+- Updated **config-tools** to **v1.190.81**
+- Updated **esbuild** to **v0.53.242**
+- Updated **npm-tools** to **v0.6.199**
+- Updated **package-constants** to **v0.1.94**
+- Updated **pnpm-tools** to **v0.7.92**
+- Updated **prettier** to **v0.59.134**
+- Updated **testing-tools** to **v1.119.234**
+- Updated **tsdown** to **v0.45.242**
+- Updated **unbuild** to **v0.57.242**
+
 ## [1.296.60](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.296.60) (06/28/2026)
 
 ### Miscellaneous

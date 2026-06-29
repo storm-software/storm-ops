@@ -2,6 +2,21 @@
 
 # Changelog for Storm Ops - Build Tools
 
+## [0.158.241](https://github.com/storm-software/storm-ops/releases/tag/build-tools%400.158.241) (06/29/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update formatting in `package.json` file ([d46f84d43](https://github.com/storm-software/storm-ops/commit/d46f84d43))
+
+### Bug Fixes
+
+- **workspace-tools:** Resolve issue applying the cargo project name parameter ([f927214be](https://github.com/storm-software/storm-ops/commit/f927214be))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.18**
+- Updated **config-tools** to **v1.190.81**
+
 ## [0.158.240](https://github.com/storm-software/storm-ops/releases/tag/build-tools%400.158.240) (06/28/2026)
 
 ### Miscellaneous

@@ -2,6 +2,20 @@
 
 # Changelog for Storm Ops - Vite
 
+## [0.1.175](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.175) (06/29/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update formatting in `package.json` file ([d46f84d43](https://github.com/storm-software/storm-ops/commit/d46f84d43))
+
+### Bug Fixes
+
+- **workspace-tools:** Resolve issue applying the cargo project name parameter ([f927214be](https://github.com/storm-software/storm-ops/commit/f927214be))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.241**
+
 ## [0.1.174](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.174) (06/28/2026)
 
 ### Miscellaneous

@@ -2,6 +2,26 @@
 
 # Changelog for Storm Ops - ESLint
 
+## [0.170.114](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.170.114) (06/29/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace package dependencies ([c0606b2fe](https://github.com/storm-software/storm-ops/commit/c0606b2fe))
+
+### Bug Fixes
+
+- **workspace-tools:** Resolve issue applying the cargo project name parameter ([f927214be](https://github.com/storm-software/storm-ops/commit/f927214be))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.18**
+- Updated **config-tools** to **v1.190.81**
+- Updated **eslint-plugin-banner** to **v0.0.46**
+- Updated **eslint-plugin-pnpm** to **v0.0.44**
+- Updated **eslint-plugin-tsdoc** to **v0.0.44**
+- Updated **package-constants** to **v0.1.94**
+- Updated **tsdoc** to **v0.13.234**
+
 ## [0.170.113](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.170.113) (06/28/2026)
 
 ### Miscellaneous
