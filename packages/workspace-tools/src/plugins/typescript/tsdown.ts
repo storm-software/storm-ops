@@ -2,14 +2,19 @@ import {
   CreateNodes,
   createNodesFromFiles,
   CreateNodesResultArray,
+  detectPackageManager,
+  getPackageManagerCommand,
   readJsonFile
 } from "@nx/devkit";
 import defu from "defu";
 import { existsSync } from "node:fs";
 import { dirname, join } from "node:path";
-import { readNxJson } from "nx/src/config/nx-json.js";
+import { readNxJson } from "nx/src/config/nx-json";
 import type { ProjectConfiguration } from "nx/src/config/workspace-json-project-json";
-import { readTargetsFromPackageJson } from "nx/src/utils/package-json";
+import {
+  NxPackageJson,
+  readTargetsFromPackageJson
+} from "nx/src/utils/package-json";
 import type { PackageJson } from "pkg-types";
 import {
   BaseTypescriptPluginOptions,
@@ -57,12 +62,18 @@ export const createNodesV2: CreateNodes<TSDownPluginOptions> = [
           );
 
           const nxJson = readNxJson(context.workspaceRoot);
+          const packageManagerCommand = getPackageManagerCommand(
+            detectPackageManager(context.workspaceRoot),
+            context.workspaceRoot
+          );
+
           const targets: ProjectConfiguration["targets"] =
             readTargetsFromPackageJson(
-              packageJson,
+              packageJson as NxPackageJson,
               nxJson,
-              projectRoot,
-              context.workspaceRoot
+              project.root,
+              context.workspaceRoot,
+              packageManagerCommand
             );
 
           const root = getRoot(projectRoot, context);

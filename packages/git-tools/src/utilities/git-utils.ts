@@ -4,7 +4,7 @@ import {
   writeDebug,
   writeTrace
 } from "@storm-software/config-tools/logger/console";
-import { execCommand } from "nx/src/command-line/release/utils/exec-command.js";
+import { execCommand } from "nx/src/command-line/release/utils/exec-command";
 import {
   extractTagAndVersion,
   getGitDiff,
@@ -14,9 +14,9 @@ import {
   GitTagAndVersion,
   parseCommits
 } from "nx/src/command-line/release/utils/git";
-import { RepoGitTags } from "nx/src/command-line/release/utils/repository-git-tags.js";
+import { RepoGitTags } from "nx/src/command-line/release/utils/repository-git-tags";
 import { isPrerelease } from "nx/src/command-line/release/utils/shared";
-import { interpolate } from "nx/src/tasks-runner/utils.js";
+import { interpolate } from "nx/src/tasks-runner/utils";
 import { coerce, gt, gte, prerelease, valid } from "semver";
 
 export async function getCommits(

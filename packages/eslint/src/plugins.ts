@@ -2,7 +2,7 @@
 // @ts-nocheck
 
 export { default as pluginCspell } from "@cspell/eslint-plugin";
-export { default as pluginNx } from "@nx/eslint-plugin/nx.js";
+export { default as pluginNx } from "@nx/eslint-plugin/nx";
 export { default as pluginVitest } from "@vitest/eslint-plugin";
 export { default as pluginImport } from "eslint-plugin-import-x";
 export { default as pluginImportZod } from "eslint-plugin-import-zod";

@@ -20,7 +20,7 @@ import type { CreateNodes, CreateNodesResultArray } from "@nx/devkit";
 import { createNodesFromFiles, readJsonFile } from "@nx/devkit";
 import { existsSync } from "node:fs";
 import { dirname, join } from "node:path";
-import type { ProjectType } from "nx/src/config/workspace-json-project-json.js";
+import type { ProjectType } from "nx/src/config/workspace-json-project-json";
 
 /* eslint-disable no-console */
 

@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { DepConstraint } from "@nx/eslint-plugin/src/utils/runtime-lint-utils";
 import type { Options as BannerOptions } from "@storm-software/eslint-plugin-banner/rules/banner";
 import type { StylisticCustomizeOptions } from "@stylistic/eslint-plugin";
 import type { ParserOptions } from "@typescript-eslint/parser";
@@ -10,6 +9,27 @@ import type { ConfigNames, RuleOptions } from "./typegen";
 import type { VendoredPrettierOptions } from "./vendor/prettier-types";
 
 export type Awaitable<T> = T | Promise<T>;
+
+/**
+ * Matches `@nx/enforce-module-boundaries` dependency constraint options.
+ *
+ * @see https://nx.dev/nx-api/eslint-plugin/documents/enforce-module-boundaries#dependency-constraints
+ */
+type DepConstraint =
+  | {
+      sourceTag: string;
+      onlyDependOnLibsWithTags?: string[];
+      notDependOnLibsWithTags?: string[];
+      allowedExternalImports?: string[];
+      bannedExternalImports?: string[];
+    }
+  | {
+      allSourceTags: string[];
+      onlyDependOnLibsWithTags?: string[];
+      notDependOnLibsWithTags?: string[];
+      allowedExternalImports?: string[];
+      bannedExternalImports?: string[];
+    };
 
 export type Rules = RuleOptions;
 
@@ -139,12 +159,7 @@ export interface OptionsTSDoc extends OptionsOverrides {
    * @defaultValue "recommended"
    */
   type?:
-    | "base"
-    | "typedoc"
-    | "api-extractor"
-    | "core"
-    | "callouts"
-    | "recommended";
+    "base" | "typedoc" | "api-extractor" | "core" | "callouts" | "recommended";
 
   /**
    * The path to a TSDoc config file.
@@ -531,11 +546,7 @@ export interface OptionsCSpell extends OptionsOverrides {
  * The ESLint globals property value.
  */
 export type ESLintGlobalsPropValue =
-  | boolean
-  | "readonly"
-  | "readable"
-  | "writable"
-  | "writeable";
+  boolean | "readonly" | "readable" | "writable" | "writeable";
 
 export type OptionsBanner = OptionsOverrides & BannerOptions[0];
 

@@ -1,5 +1,5 @@
 import { ProjectGraphProjectNode, Tree } from "@nx/devkit";
-import JsVersionActions from "@nx/js/src/release/version-actions.js";
+import JsVersionActions from "@nx/js/src/release/version-actions";
 import { getWorkspaceConfig } from "@storm-software/config-tools/get-config";
 import { StormWorkspaceConfig } from "@storm-software/config/types";
 import { ReleaseGroupWithName } from "nx/src/command-line/release/config/filter-release-groups";

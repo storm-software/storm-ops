@@ -12,7 +12,7 @@ import {
 import { DEFAULT_COMMIT_TYPES } from "conventional-changelog-storm-software/commit-types";
 import defu from "defu";
 import { existsSync } from "fs";
-import { NxReleaseConfig } from "nx/src/command-line/release/config/config.js";
+import { NxReleaseConfig } from "nx/src/command-line/release/config/config";
 import {
   NxJsonConfiguration,
   NxReleaseChangelogConfiguration,

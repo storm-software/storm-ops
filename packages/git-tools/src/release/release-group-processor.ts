@@ -4,23 +4,23 @@ import {
   writeDebug,
   writeTrace
 } from "@storm-software/config-tools";
-import { VersionOptions } from "nx/src/command-line/release/command-object.js";
+import { VersionOptions } from "nx/src/command-line/release/command-object";
 import {
   IMPLICIT_DEFAULT_RELEASE_GROUP,
   NxReleaseConfig
-} from "nx/src/command-line/release/config/config.js";
-import { ReleaseGroupWithName } from "nx/src/command-line/release/config/filter-release-groups.js";
+} from "nx/src/command-line/release/config/config";
+import { ReleaseGroupWithName } from "nx/src/command-line/release/config/filter-release-groups";
 import {
   FinalConfigForProject,
   ReleaseGraph
-} from "nx/src/command-line/release/utils/release-graph.js";
+} from "nx/src/command-line/release/utils/release-graph";
 import {
   VersionData,
   VersionDataEntry
-} from "nx/src/command-line/release/utils/shared.js";
+} from "nx/src/command-line/release/utils/shared";
 import { deriveSpecifierFromConventionalCommits } from "nx/src/command-line/release/version/derive-specifier-from-conventional-commits";
 import { deriveSpecifierFromVersionPlan } from "nx/src/command-line/release/version/deriver-specifier-from-version-plans";
-import { ProjectLogger } from "nx/src/command-line/release/version/project-logger.js";
+import { ProjectLogger } from "nx/src/command-line/release/version/project-logger";
 import {
   BUMP_TYPE_REASON_TEXT,
   ReleaseGroupProcessor
@@ -29,13 +29,13 @@ import {
   NOOP_VERSION_ACTIONS,
   SemverBumpType,
   VersionActions
-} from "nx/src/command-line/release/version/version-actions.js";
-import { NxReleaseVersionConfiguration } from "nx/src/config/nx-json.js";
+} from "nx/src/command-line/release/version/version-actions";
+import { NxReleaseVersionConfiguration } from "nx/src/config/nx-json";
 import {
   ProjectGraph,
   ProjectGraphProjectNode
-} from "nx/src/config/project-graph.js";
-import { Tree } from "nx/src/generators/tree.js";
+} from "nx/src/config/project-graph";
+import { Tree } from "nx/src/generators/tree";
 import semver from "semver";
 
 export class StormReleaseGroupProcessor extends ReleaseGroupProcessor {
@@ -99,8 +99,7 @@ export class StormReleaseGroupProcessor extends ReleaseGroupProcessor {
       firstRelease: !!versionOptions.firstRelease,
       preid: versionOptions.preid ?? workspaceConfig.preid ?? "",
       userGivenSpecifier: versionOptions.specifier as
-        | SemverBumpType
-        | undefined,
+        SemverBumpType | undefined,
       filters: {
         projects: versionOptions.projects,
         groups: versionOptions.groups
@@ -916,9 +915,7 @@ export class StormReleaseGroupProcessor extends ReleaseGroupProcessor {
     // Get updateDependents from the release group level config
     const updateDependents =
       (releaseGroupVersionConfig?.updateDependents as
-        | "auto"
-        | "always"
-        | "never") || "always";
+        "auto" | "always" | "never") || "always";
 
     // Only update dependencies for dependents if the group's updateDependents is 'auto' or 'always'
     if (updateDependents === "auto" || updateDependents === "always") {

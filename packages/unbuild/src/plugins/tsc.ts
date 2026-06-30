@@ -3,11 +3,7 @@ import {
   ProjectGraph,
   readCachedProjectGraph
 } from "@nx/devkit";
-import {
-  calculateProjectBuildableDependencies,
-  getHelperDependency,
-  HelperDependency
-} from "@nx/js/internal";
+import { calculateProjectBuildableDependencies } from "@nx/js/internal";
 import type { Plugin } from "rollup";
 import ts2Plugin from "rollup-plugin-typescript2";
 import { UnbuildResolvedOptions } from "../types";
@@ -39,27 +35,12 @@ export const tscPlugin = async (
     process.env.NX_TASK_TARGET_CONFIGURATION || "production",
     true
   );
-  let dependencies = result.dependencies;
-
-  const tsLibDependency = getHelperDependency(
-    HelperDependency.tsc,
-    options.tsconfig,
-    dependencies,
-    projectGraph,
-    true
-  );
-  if (tsLibDependency) {
-    dependencies = dependencies.filter(
-      deps => deps.name !== tsLibDependency.name
-    );
-    dependencies.push(tsLibDependency);
-  }
 
   const compilerOptions = await createTsCompilerOptions(
     options.config,
     options.tsconfig,
     options.projectRoot,
-    dependencies
+    result.dependencies
   );
 
   return ts2Plugin({

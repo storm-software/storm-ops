@@ -10,7 +10,7 @@ import { join } from "node:path";
 import {
   createProjectGraphAsync,
   readProjectsConfigurationFromProjectGraph
-} from "nx/src/project-graph/project-graph.js";
+} from "nx/src/project-graph/project-graph";
 import type { ReadMeOptions } from "../types";
 import { findFileName, findFilePath } from "../utilities/file-utils";
 import { doctoc } from "./doctoc";

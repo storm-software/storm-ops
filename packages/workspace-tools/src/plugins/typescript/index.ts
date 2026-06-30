@@ -8,7 +8,7 @@ import {
 import defu from "defu";
 import { existsSync } from "node:fs";
 import { dirname, join } from "node:path";
-import { readNxJson } from "nx/src/config/nx-json.js";
+import { readNxJson } from "nx/src/config/nx-json";
 import type {
   ProjectConfiguration,
   TargetDependencyConfig

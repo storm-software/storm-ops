@@ -20,7 +20,7 @@ import { readFile, writeFile } from "node:fs/promises";
 import type {
   ReleaseVersion,
   VersionData
-} from "nx/src/command-line/release/utils/shared.js";
+} from "nx/src/command-line/release/utils/shared";
 import { ReleaseConfig } from "../types";
 import { isUserAnOrganizationMember } from "./github";
 import { StormReleaseClient } from "./release-client";
