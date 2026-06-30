@@ -2,6 +2,30 @@
 
 # Changelog for Storm Ops - Workspace Tools
 
+## [1.296.62](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.296.62) (06/30/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update repository packages' dependencies ([6f81fb5b5](https://github.com/storm-software/storm-ops/commit/6f81fb5b5))
+
+### Bug Fixes
+
+- **monorepo:** Resolve typing issues resulting from Nx upgrade ([82b59fcc9](https://github.com/storm-software/storm-ops/commit/82b59fcc9))
+- **workspace-tools:** Update Nx to v23.0.1 and resolve out-dated function signature issue in plugin ([86f015008](https://github.com/storm-software/storm-ops/commit/86f015008))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.19**
+- Updated **config-tools** to **v1.190.82**
+- Updated **esbuild** to **v0.53.243**
+- Updated **npm-tools** to **v0.6.200**
+- Updated **package-constants** to **v0.1.95**
+- Updated **pnpm-tools** to **v0.7.93**
+- Updated **prettier** to **v0.59.135**
+- Updated **testing-tools** to **v1.119.235**
+- Updated **tsdown** to **v0.45.243**
+- Updated **unbuild** to **v0.57.243**
+
 ## [1.296.61](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.296.61) (06/29/2026)
 
 ### Bug Fixes

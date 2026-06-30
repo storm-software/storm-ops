@@ -1,6 +1,6 @@
 {
   "name": "@storm-software/k8s-tools",
-  "version": "0.42.264",
+  "version": "0.42.265",
   "private": false,
   "description": "Tools for managing Kubernetes (k8s) infrastructure within a Nx workspace.",
   "keywords": [

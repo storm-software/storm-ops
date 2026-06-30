@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - Package Constants
 
+## [0.1.95](https://github.com/storm-software/storm-ops/releases/tag/package-constants%400.1.95) (06/30/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update repository packages' dependencies ([6f81fb5b5](https://github.com/storm-software/storm-ops/commit/6f81fb5b5))
+
+### Bug Fixes
+
+- **monorepo:** Resolve typing issues resulting from Nx upgrade ([82b59fcc9](https://github.com/storm-software/storm-ops/commit/82b59fcc9))
+
 ## [0.1.94](https://github.com/storm-software/storm-ops/releases/tag/package-constants%400.1.94) (06/29/2026)
 
 ### Miscellaneous

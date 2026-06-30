@@ -2,6 +2,24 @@
 
 # Changelog for Storm Ops - Oxlint
 
+## [0.0.48](https://github.com/storm-software/storm-ops/releases/tag/oxlint%400.0.48) (06/30/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update repository packages' dependencies ([6f81fb5b5](https://github.com/storm-software/storm-ops/commit/6f81fb5b5))
+
+### Bug Fixes
+
+- **monorepo:** Resolve typing issues resulting from Nx upgrade ([82b59fcc9](https://github.com/storm-software/storm-ops/commit/82b59fcc9))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.19**
+- Updated **config-tools** to **v1.190.82**
+- Updated **eslint-plugin-banner** to **v0.0.47**
+- Updated **eslint-plugin-pnpm** to **v0.0.45**
+- Updated **eslint-plugin-tsdoc** to **v0.0.45**
+
 ## [0.0.47](https://github.com/storm-software/storm-ops/releases/tag/oxlint%400.0.47) (06/29/2026)
 
 ### Miscellaneous

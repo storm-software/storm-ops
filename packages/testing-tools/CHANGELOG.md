@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - Testing Tools
 
+## [1.119.235](https://github.com/storm-software/storm-ops/releases/tag/testing-tools%401.119.235) (06/30/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update repository packages' dependencies ([6f81fb5b5](https://github.com/storm-software/storm-ops/commit/6f81fb5b5))
+
+### Bug Fixes
+
+- **monorepo:** Resolve typing issues resulting from Nx upgrade ([82b59fcc9](https://github.com/storm-software/storm-ops/commit/82b59fcc9))
+
 ## [1.119.234](https://github.com/storm-software/storm-ops/releases/tag/testing-tools%401.119.234) (06/29/2026)
 
 ### Miscellaneous

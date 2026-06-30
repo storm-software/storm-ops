@@ -2,6 +2,23 @@
 
 # Changelog for Storm Ops - Unbuild
 
+## [0.57.243](https://github.com/storm-software/storm-ops/releases/tag/unbuild%400.57.243) (06/30/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update repository packages' dependencies ([6f81fb5b5](https://github.com/storm-software/storm-ops/commit/6f81fb5b5))
+
+### Bug Fixes
+
+- **monorepo:** Resolve typing issues resulting from Nx upgrade ([82b59fcc9](https://github.com/storm-software/storm-ops/commit/82b59fcc9))
+- **workspace-tools:** Update Nx to v23.0.1 and resolve out-dated function signature issue in plugin ([86f015008](https://github.com/storm-software/storm-ops/commit/86f015008))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.242**
+- Updated **config** to **v1.138.19**
+- Updated **config-tools** to **v1.190.82**
+
 ## [0.57.242](https://github.com/storm-software/storm-ops/releases/tag/unbuild%400.57.242) (06/29/2026)
 
 ### Miscellaneous

@@ -2,6 +2,20 @@
 
 # Changelog for Storm Ops - Markdownlint
 
+## [0.30.238](https://github.com/storm-software/storm-ops/releases/tag/markdownlint%400.30.238) (06/30/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update repository packages' dependencies ([6f81fb5b5](https://github.com/storm-software/storm-ops/commit/6f81fb5b5))
+
+### Bug Fixes
+
+- **monorepo:** Resolve typing issues resulting from Nx upgrade ([82b59fcc9](https://github.com/storm-software/storm-ops/commit/82b59fcc9))
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.235**
+
 ## [0.30.237](https://github.com/storm-software/storm-ops/releases/tag/markdownlint%400.30.237) (06/29/2026)
 
 ### Miscellaneous

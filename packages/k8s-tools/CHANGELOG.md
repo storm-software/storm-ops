@@ -2,6 +2,22 @@
 
 # Changelog for Storm Ops - K8s Tools
 
+## [0.42.265](https://github.com/storm-software/storm-ops/releases/tag/k8s-tools%400.42.265) (06/30/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update repository packages' dependencies ([6f81fb5b5](https://github.com/storm-software/storm-ops/commit/6f81fb5b5))
+
+### Bug Fixes
+
+- **workspace-tools:** Update Nx to v23.0.1 and resolve out-dated function signature issue in plugin ([86f015008](https://github.com/storm-software/storm-ops/commit/86f015008))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.19**
+- Updated **config-tools** to **v1.190.82**
+- Updated **workspace-tools** to **v1.296.62**
+
 ## [0.42.264](https://github.com/storm-software/storm-ops/releases/tag/k8s-tools%400.42.264) (06/29/2026)
 
 ### Bug Fixes

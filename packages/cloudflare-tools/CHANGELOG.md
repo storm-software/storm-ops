@@ -2,6 +2,22 @@
 
 # Changelog for Storm Ops - Cloudflare Tools
 
+## [0.71.225](https://github.com/storm-software/storm-ops/releases/tag/cloudflare-tools%400.71.225) (06/30/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update repository packages' dependencies ([6f81fb5b5](https://github.com/storm-software/storm-ops/commit/6f81fb5b5))
+
+### Bug Fixes
+
+- **workspace-tools:** Update Nx to v23.0.1 and resolve out-dated function signature issue in plugin ([86f015008](https://github.com/storm-software/storm-ops/commit/86f015008))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.19**
+- Updated **config-tools** to **v1.190.82**
+- Updated **workspace-tools** to **v1.296.62**
+
 ## [0.71.224](https://github.com/storm-software/storm-ops/releases/tag/cloudflare-tools%400.71.224) (06/29/2026)
 
 ### Bug Fixes

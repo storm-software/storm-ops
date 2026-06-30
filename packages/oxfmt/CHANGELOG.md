@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Oxfmt
 
+## [0.0.38](https://github.com/storm-software/storm-ops/releases/tag/oxfmt%400.0.38) (06/30/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update repository packages' dependencies ([6f81fb5b5](https://github.com/storm-software/storm-ops/commit/6f81fb5b5))
+
 ## [0.0.37](https://github.com/storm-software/storm-ops/releases/tag/oxfmt%400.0.37) (06/29/2026)
 
 ### Bug Fixes

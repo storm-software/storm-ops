@@ -2,6 +2,23 @@
 
 # Changelog for Storm Ops - Git Tools
 
+## [2.131.90](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.131.90) (06/30/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update repository packages' dependencies ([6f81fb5b5](https://github.com/storm-software/storm-ops/commit/6f81fb5b5))
+
+### Bug Fixes
+
+- **monorepo:** Resolve typing issues resulting from Nx upgrade ([82b59fcc9](https://github.com/storm-software/storm-ops/commit/82b59fcc9))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.19**
+- Updated **config-tools** to **v1.190.82**
+- Updated **conventional-changelog** to **v0.3.243**
+- Updated **package-constants** to **v0.1.95**
+
 ## [2.131.89](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.131.89) (06/29/2026)
 
 ### Miscellaneous

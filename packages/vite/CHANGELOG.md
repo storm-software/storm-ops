@@ -2,6 +2,20 @@
 
 # Changelog for Storm Ops - Vite
 
+## [0.1.176](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.176) (06/30/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update repository packages' dependencies ([6f81fb5b5](https://github.com/storm-software/storm-ops/commit/6f81fb5b5))
+
+### Bug Fixes
+
+- **monorepo:** Resolve typing issues resulting from Nx upgrade ([82b59fcc9](https://github.com/storm-software/storm-ops/commit/82b59fcc9))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.242**
+
 ## [0.1.175](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.175) (06/29/2026)
 
 ### Miscellaneous

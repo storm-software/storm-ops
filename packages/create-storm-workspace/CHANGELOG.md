@@ -2,6 +2,20 @@
 
 # Changelog for Storm Ops - Create Storm Workspace
 
+## [1.97.242](https://github.com/storm-software/storm-ops/releases/tag/create-storm-workspace%401.97.242) (06/30/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update repository packages' dependencies ([6f81fb5b5](https://github.com/storm-software/storm-ops/commit/6f81fb5b5))
+
+### Bug Fixes
+
+- **monorepo:** Resolve typing issues resulting from Nx upgrade ([82b59fcc9](https://github.com/storm-software/storm-ops/commit/82b59fcc9))
+
+### Updated Dependencies
+
+- Updated **config-tools** to **v1.190.82**
+
 ## [1.97.241](https://github.com/storm-software/storm-ops/releases/tag/create-storm-workspace%401.97.241) (06/29/2026)
 
 ### Bug Fixes

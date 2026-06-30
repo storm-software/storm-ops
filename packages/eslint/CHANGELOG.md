@@ -2,6 +2,27 @@
 
 # Changelog for Storm Ops - ESLint
 
+## [0.170.115](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.170.115) (06/30/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update repository packages' dependencies ([6f81fb5b5](https://github.com/storm-software/storm-ops/commit/6f81fb5b5))
+
+### Bug Fixes
+
+- **monorepo:** Resolve typing issues resulting from Nx upgrade ([82b59fcc9](https://github.com/storm-software/storm-ops/commit/82b59fcc9))
+- **workspace-tools:** Update Nx to v23.0.1 and resolve out-dated function signature issue in plugin ([86f015008](https://github.com/storm-software/storm-ops/commit/86f015008))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.19**
+- Updated **config-tools** to **v1.190.82**
+- Updated **eslint-plugin-banner** to **v0.0.47**
+- Updated **eslint-plugin-pnpm** to **v0.0.45**
+- Updated **eslint-plugin-tsdoc** to **v0.0.45**
+- Updated **package-constants** to **v0.1.95**
+- Updated **tsdoc** to **v0.13.235**
+
 ## [0.170.114](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.170.114) (06/29/2026)
 
 ### Miscellaneous
