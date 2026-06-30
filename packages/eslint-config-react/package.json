@@ -111,7 +111,9 @@
   },
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "dependencies": {
     "@eslint-react/eslint-plugin": "^5.10.0",
     "@next/eslint-plugin-next": "^15.5.19",

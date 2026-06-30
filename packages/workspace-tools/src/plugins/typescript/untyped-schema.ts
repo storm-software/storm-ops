@@ -1,7 +1,7 @@
 import {
+  CreateNodes,
   createNodesFromFiles,
-  CreateNodesResultV2,
-  CreateNodesV2,
+  CreateNodesResultArray,
   readJsonFile
 } from "@nx/devkit";
 import { defu } from "defu";
@@ -21,9 +21,9 @@ export const name = "storm-software/typescript/untyped";
 // eslint-disable-next-line @typescript-eslint/no-empty-object-type
 export type UntypedPluginOptions = {};
 
-export const createNodesV2: CreateNodesV2<UntypedPluginOptions> = [
+export const createNodesV2: CreateNodes<UntypedPluginOptions> = [
   "**/*untyped.ts",
-  async (configFiles, options, context): Promise<CreateNodesResultV2> => {
+  async (configFiles, options, context): Promise<CreateNodesResultArray> => {
     return await createNodesFromFiles(
       (configFile, options, context) => {
         try {

@@ -1,7 +1,7 @@
 import {
+  CreateNodes,
   createNodesFromFiles,
-  CreateNodesResultV2,
-  CreateNodesV2,
+  CreateNodesResultArray,
   readJsonFile
 } from "@nx/devkit";
 import defu from "defu";
@@ -26,9 +26,9 @@ export const name = "storm-software/typescript/tsup";
 
 export type TsupPluginOptions = BaseTypescriptPluginOptions;
 
-export const createNodesV2: CreateNodesV2<TsupPluginOptions> = [
+export const createNodesV2: CreateNodes<TsupPluginOptions> = [
   "**/tsup.config.ts",
-  async (configFiles, options, context): Promise<CreateNodesResultV2> => {
+  async (configFiles, options, context): Promise<CreateNodesResultArray> => {
     return await createNodesFromFiles(
       (configFile, options, context) => {
         try {

@@ -1,5 +1,5 @@
 import type { ExecutorContext, PromiseExecutor } from "@nx/devkit";
-import { createAsyncIterable } from "@nx/devkit/src/utils/async-iterable";
+import { createAsyncIterable } from "@nx/devkit/internal";
 import { waitForPortOpen } from "@nx/web/src/utils/wait-for-port-open";
 import {
   createCliOptions,

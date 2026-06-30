@@ -16,7 +16,7 @@
 
  ------------------------------------------------------------------- */
 
-import type { CreateNodesResultV2, CreateNodesV2 } from "@nx/devkit";
+import type { CreateNodes, CreateNodesResultArray } from "@nx/devkit";
 import { createNodesFromFiles, readJsonFile } from "@nx/devkit";
 import { existsSync } from "node:fs";
 import { dirname, join } from "node:path";
@@ -35,9 +35,13 @@ const dependencies = [
   "config"
 ];
 
-export const createNodesV2: CreateNodesV2 = [
+export const createNodesV2: CreateNodes = [
   "packages/**/project.json",
-  async (configFiles, optionsV2, contextV2): Promise<CreateNodesResultV2> => {
+  async (
+    configFiles,
+    optionsV2,
+    contextV2
+  ): Promise<CreateNodesResultArray> => {
     return createNodesFromFiles(
       async (configFile, _, context) => {
         try {

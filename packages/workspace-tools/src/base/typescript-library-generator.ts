@@ -12,20 +12,20 @@ import {
   updateJson,
   writeJson
 } from "@nx/devkit";
-import { determineProjectNameAndRootOptions } from "@nx/devkit/src/generators/project-name-and-root-utils";
+import { determineProjectNameAndRootOptions } from "@nx/devkit/internal";
 import {
   addTsConfigPath,
   getRelativePathToRootTsConfig,
   tsConfigBaseOptions
 } from "@nx/js";
-import jsInitGenerator from "@nx/js/src/generators/init/init";
-import { InitSchema } from "@nx/js/src/generators/init/schema";
 import {
   Bundler,
-  NormalizedLibraryGeneratorOptions
-} from "@nx/js/src/generators/library/schema";
-import setupVerdaccio from "@nx/js/src/generators/setup-verdaccio/generator";
-import { ProjectPackageManagerWorkspaceState } from "@nx/js/src/utils/package-manager-workspaces";
+  InitSchema,
+  default as jsInitGenerator,
+  NormalizedLibraryGeneratorOptions,
+  ProjectPackageManagerWorkspaceState,
+  default as setupVerdaccio
+} from "@nx/js/internal";
 import { StormWorkspaceConfig } from "@storm-software/config";
 import { joinPaths } from "@storm-software/config-tools/utilities/correct-paths";
 import type { PackageJson } from "nx/src/utils/package-json";

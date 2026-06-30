@@ -3,11 +3,11 @@ import {
   ProjectGraph,
   readCachedProjectGraph
 } from "@nx/devkit";
-import { calculateProjectBuildableDependencies } from "@nx/js/src/utils/buildable-libs-utils";
 import {
+  calculateProjectBuildableDependencies,
   getHelperDependency,
   HelperDependency
-} from "@nx/js/src/utils/compiler-helper-dependency";
+} from "@nx/js/internal";
 import type { Plugin } from "rollup";
 import ts2Plugin from "rollup-plugin-typescript2";
 import { UnbuildResolvedOptions } from "../types";

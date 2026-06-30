@@ -1,7 +1,9 @@
 import {
+  CreateNodes,
   createNodesFromFiles,
-  CreateNodesResultV2,
-  CreateNodesV2
+  CreateNodesResultArray,
+  detectPackageManager,
+  getPackageManagerCommand
 } from "@nx/devkit";
 import defu from "defu";
 import { existsSync } from "node:fs";
@@ -99,13 +101,13 @@ export interface TypeScriptPluginOptions extends BaseTypescriptPluginOptions {
   lintInternalTools?: boolean;
 }
 
-export const createNodesV2: CreateNodesV2<TypeScriptPluginOptions> = [
+export const createNodesV2: CreateNodes<TypeScriptPluginOptions> = [
   "{project.json,**/project.json}",
   async (
     configFiles,
     options = { includeApps: true },
     context
-  ): Promise<CreateNodesResultV2> => {
+  ): Promise<CreateNodesResultArray> => {
     const nxJson = readNxJson(context.workspaceRoot);
 
     return createNodesFromFiles(
@@ -141,12 +143,18 @@ export const createNodesV2: CreateNodesV2<TypeScriptPluginOptions> = [
           const enableTypecheck = !!options?.enableTypecheck;
           const enableTest = !!options?.enableTest;
 
+          const packageManagerCommand = getPackageManagerCommand(
+            detectPackageManager(context.workspaceRoot),
+            context.workspaceRoot
+          );
+
           const targets: ProjectConfiguration["targets"] =
             readTargetsFromPackageJson(
               packageJson as NxPackageJson,
               nxJson,
               project.root,
-              context.workspaceRoot
+              context.workspaceRoot,
+              packageManagerCommand
             );
 
           if (
