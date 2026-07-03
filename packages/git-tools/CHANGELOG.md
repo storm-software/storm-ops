@@ -2,6 +2,24 @@
 
 # Changelog for Storm Ops - Git Tools
 
+## [2.131.91](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.131.91) (07/03/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace packages' dependencies ([94184a932](https://github.com/storm-software/storm-ops/commit/94184a932))
+- **monorepo:** Update workspace packages' dependencies ([5580e18dc](https://github.com/storm-software/storm-ops/commit/5580e18dc))
+
+### Bug Fixes
+
+- **devenv-modules:** Remove `treefmt` to prevent circular formatting ([2a24f0bb7](https://github.com/storm-software/storm-ops/commit/2a24f0bb7))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.20**
+- Updated **config-tools** to **v1.190.83**
+- Updated **conventional-changelog** to **v0.3.244**
+- Updated **package-constants** to **v0.1.96**
+
 ## [2.131.90](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.131.90) (06/30/2026)
 
 ### Miscellaneous
