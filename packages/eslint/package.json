@@ -139,7 +139,9 @@
   },
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "dependencies": {
     "@antfu/install-pkg": "^1.1.0",
     "@clack/prompts": "^0.10.1",
@@ -186,7 +188,7 @@
     "local-pkg": "^1.2.1",
     "parse-gitignore": "^2.0.0",
     "pathe": "^2.0.3",
-    "picomatch": "^4.0.4",
+    "picomatch": "^4.0.5",
     "pnpm-workspace-yaml": "^0.3.1",
     "tinyglobby": "^0.2.17",
     "toml-eslint-parser": "^0.10.1",
@@ -199,7 +201,7 @@
     "@eslint-types/typescript-eslint": "^7.5.0",
     "@eslint/config-inspector": "catalog:",
     "@graphql-eslint/eslint-plugin": "^4.4.0",
-    "@next/eslint-plugin-next": "^15.5.19",
+    "@next/eslint-plugin-next": "^15.5.20",
     "@nx/eslint": "catalog:",
     "@prettier/plugin-xml": "^3.4.2",
     "@storm-software/eslint-plugin-banner": "workspace:*",
