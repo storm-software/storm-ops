@@ -2,6 +2,22 @@
 
 # Changelog for Storm Ops - ESLint
 
+## [0.170.118](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.170.118) (07/04/2026)
+
+### Miscellaneous
+
+- **monorepo:** Disable `treefmt` to prevent build issues ([0d2e21f3f](https://github.com/storm-software/storm-ops/commit/0d2e21f3f))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.22**
+- Updated **config-tools** to **v1.190.85**
+- Updated **eslint-plugin-banner** to **v0.0.50**
+- Updated **eslint-plugin-pnpm** to **v0.0.48**
+- Updated **eslint-plugin-tsdoc** to **v0.0.48**
+- Updated **package-constants** to **v0.1.98**
+- Updated **tsdoc** to **v0.13.238**
+
 ## [0.170.117](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.170.117) (07/04/2026)
 
 ### Bug Fixes

@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Prettier
 
+## [0.59.138](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.59.138) (07/04/2026)
+
+### Miscellaneous
+
+- **monorepo:** Disable `treefmt` to prevent build issues ([0d2e21f3f](https://github.com/storm-software/storm-ops/commit/0d2e21f3f))
+
 ## [0.59.136](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.59.136) (07/03/2026)
 
 ### Miscellaneous

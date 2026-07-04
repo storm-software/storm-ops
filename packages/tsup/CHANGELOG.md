@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Tsup
 
+## [0.2.243](https://github.com/storm-software/storm-ops/releases/tag/tsup%400.2.243) (07/04/2026)
+
+### Miscellaneous
+
+- **monorepo:** Disable `treefmt` to prevent build issues ([0d2e21f3f](https://github.com/storm-software/storm-ops/commit/0d2e21f3f))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.245**
+- Updated **config-tools** to **v1.190.85**
+
 ## [0.2.242](https://github.com/storm-software/storm-ops/releases/tag/tsup%400.2.242) (07/04/2026)
 
 ### Updated Dependencies

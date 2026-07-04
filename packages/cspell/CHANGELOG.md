@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - CSpell
 
+## [0.46.153](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.46.153) (07/04/2026)
+
+### Miscellaneous
+
+- **monorepo:** Disable `treefmt` to prevent build issues ([0d2e21f3f](https://github.com/storm-software/storm-ops/commit/0d2e21f3f))
+
 ## [0.46.151](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.46.151) (07/03/2026)
 
 ### Miscellaneous

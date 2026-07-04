@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - ESLint Plugin Banner
 
+## [0.0.50](https://github.com/storm-software/storm-ops/releases/tag/eslint-plugin-banner%400.0.50) (07/04/2026)
+
+### Miscellaneous
+
+- **monorepo:** Disable `treefmt` to prevent build issues ([0d2e21f3f](https://github.com/storm-software/storm-ops/commit/0d2e21f3f))
+
+### Updated Dependencies
+
+- Updated **package-constants** to **v0.1.98**
+- Updated **prettier** to **v0.59.138**
+
 ## [0.0.49](https://github.com/storm-software/storm-ops/releases/tag/eslint-plugin-banner%400.0.49) (07/04/2026)
 
 ### Updated Dependencies

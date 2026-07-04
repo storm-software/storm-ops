@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Package Constants
 
+## [0.1.98](https://github.com/storm-software/storm-ops/releases/tag/package-constants%400.1.98) (07/04/2026)
+
+### Miscellaneous
+
+- **monorepo:** Disable `treefmt` to prevent build issues ([0d2e21f3f](https://github.com/storm-software/storm-ops/commit/0d2e21f3f))
+
 ## [0.1.96](https://github.com/storm-software/storm-ops/releases/tag/package-constants%400.1.96) (07/03/2026)
 
 ### Miscellaneous

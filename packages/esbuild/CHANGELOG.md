@@ -2,6 +2,19 @@
 
 # Changelog for Storm Ops - Esbuild
 
+## [0.53.246](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.53.246) (07/04/2026)
+
+### Miscellaneous
+
+- **monorepo:** Disable `treefmt` to prevent build issues ([0d2e21f3f](https://github.com/storm-software/storm-ops/commit/0d2e21f3f))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.245**
+- Updated **config** to **v1.138.22**
+- Updated **config-tools** to **v1.190.85**
+- Updated **tsup** to **v0.2.243**
+
 ## [0.53.245](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.53.245) (07/04/2026)
 
 ### Updated Dependencies

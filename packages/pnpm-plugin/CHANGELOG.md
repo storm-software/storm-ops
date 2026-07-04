@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Pnpm Plugin
 
+## [0.1.196](https://github.com/storm-software/storm-ops/releases/tag/pnpm-plugin%400.1.196) (07/04/2026)
+
+### Miscellaneous
+
+- **monorepo:** Disable `treefmt` to prevent build issues ([0d2e21f3f](https://github.com/storm-software/storm-ops/commit/0d2e21f3f))
+
+### Updated Dependencies
+
+- Updated **package-constants** to **v0.1.98**
+- Updated **testing-tools** to **v1.119.238**
+
 ## [0.1.195](https://github.com/storm-software/storm-ops/releases/tag/pnpm-plugin%400.1.195) (07/04/2026)
 
 ### Updated Dependencies

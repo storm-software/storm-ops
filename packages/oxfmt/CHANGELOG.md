@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Oxfmt
 
+## [0.0.41](https://github.com/storm-software/storm-ops/releases/tag/oxfmt%400.0.41) (07/04/2026)
+
+### Miscellaneous
+
+- **monorepo:** Disable `treefmt` to prevent build issues ([0d2e21f3f](https://github.com/storm-software/storm-ops/commit/0d2e21f3f))
+
 ## [0.0.39](https://github.com/storm-software/storm-ops/releases/tag/oxfmt%400.0.39) (07/03/2026)
 
 ### Miscellaneous

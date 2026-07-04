@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - ESLint Config React
 
+## [0.0.40](https://github.com/storm-software/storm-ops/releases/tag/eslint-config-react%400.0.40) (07/04/2026)
+
+### Miscellaneous
+
+- **monorepo:** Disable `treefmt` to prevent build issues ([0d2e21f3f](https://github.com/storm-software/storm-ops/commit/0d2e21f3f))
+
+### Updated Dependencies
+
+- Updated **eslint** to **v0.170.118**
+
 ## [0.0.39](https://github.com/storm-software/storm-ops/releases/tag/eslint-config-react%400.0.39) (07/04/2026)
 
 ### Bug Fixes

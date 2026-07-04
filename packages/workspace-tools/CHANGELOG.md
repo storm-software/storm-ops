@@ -2,6 +2,25 @@
 
 # Changelog for Storm Ops - Workspace Tools
 
+## [1.296.65](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.296.65) (07/04/2026)
+
+### Miscellaneous
+
+- **monorepo:** Disable `treefmt` to prevent build issues ([0d2e21f3f](https://github.com/storm-software/storm-ops/commit/0d2e21f3f))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.22**
+- Updated **config-tools** to **v1.190.85**
+- Updated **esbuild** to **v0.53.246**
+- Updated **npm-tools** to **v0.6.203**
+- Updated **package-constants** to **v0.1.98**
+- Updated **pnpm-tools** to **v0.7.96**
+- Updated **prettier** to **v0.59.138**
+- Updated **testing-tools** to **v1.119.238**
+- Updated **tsdown** to **v0.45.246**
+- Updated **unbuild** to **v0.57.246**
+
 ## [1.296.64](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.296.64) (07/04/2026)
 
 ### Updated Dependencies

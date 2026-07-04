@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Tsconfig
 
+## [0.48.152](https://github.com/storm-software/storm-ops/releases/tag/tsconfig%400.48.152) (07/04/2026)
+
+### Miscellaneous
+
+- **monorepo:** Disable `treefmt` to prevent build issues ([0d2e21f3f](https://github.com/storm-software/storm-ops/commit/0d2e21f3f))
+
 ## [0.48.150](https://github.com/storm-software/storm-ops/releases/tag/tsconfig%400.48.150) (07/03/2026)
 
 ### Miscellaneous

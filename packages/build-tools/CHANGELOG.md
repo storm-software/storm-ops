@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Build Tools
 
+## [0.158.245](https://github.com/storm-software/storm-ops/releases/tag/build-tools%400.158.245) (07/04/2026)
+
+### Miscellaneous
+
+- **monorepo:** Disable `treefmt` to prevent build issues ([0d2e21f3f](https://github.com/storm-software/storm-ops/commit/0d2e21f3f))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.22**
+- Updated **config-tools** to **v1.190.85**
+
 ## [0.158.244](https://github.com/storm-software/storm-ops/releases/tag/build-tools%400.158.244) (07/04/2026)
 
 ### Updated Dependencies

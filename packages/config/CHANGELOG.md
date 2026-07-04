@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - Config
 
+## [1.138.22](https://github.com/storm-software/storm-ops/releases/tag/config%401.138.22) (07/04/2026)
+
+### Miscellaneous
+
+- **monorepo:** Disable `treefmt` to prevent build issues ([0d2e21f3f](https://github.com/storm-software/storm-ops/commit/0d2e21f3f))
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.238**
+
 ## [1.138.21](https://github.com/storm-software/storm-ops/releases/tag/config%401.138.21) (07/04/2026)
 
 ### Updated Dependencies

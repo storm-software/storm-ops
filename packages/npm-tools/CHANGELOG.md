@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Npm Tools
 
+## [0.6.203](https://github.com/storm-software/storm-ops/releases/tag/npm-tools%400.6.203) (07/04/2026)
+
+### Miscellaneous
+
+- **monorepo:** Disable `treefmt` to prevent build issues ([0d2e21f3f](https://github.com/storm-software/storm-ops/commit/0d2e21f3f))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.22**
+- Updated **config-tools** to **v1.190.85**
+- Updated **testing-tools** to **v1.119.238**
+
 ## [0.6.202](https://github.com/storm-software/storm-ops/releases/tag/npm-tools%400.6.202) (07/04/2026)
 
 ### Updated Dependencies
