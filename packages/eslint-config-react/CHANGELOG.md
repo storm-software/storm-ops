@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - ESLint Config React
 
+## [0.0.39](https://github.com/storm-software/storm-ops/releases/tag/eslint-config-react%400.0.39) (07/04/2026)
+
+### Bug Fixes
+
+- **git-tools:** Resolve circular formatting issue and added back `treefmt` configuration ([20ed59138](https://github.com/storm-software/storm-ops/commit/20ed59138))
+
+### Updated Dependencies
+
+- Updated **eslint** to **v0.170.117**
+
 ## [0.0.38](https://github.com/storm-software/storm-ops/releases/tag/eslint-config-react%400.0.38) (07/03/2026)
 
 ### Miscellaneous

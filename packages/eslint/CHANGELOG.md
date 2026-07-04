@@ -2,6 +2,22 @@
 
 # Changelog for Storm Ops - ESLint
 
+## [0.170.117](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.170.117) (07/04/2026)
+
+### Bug Fixes
+
+- **git-tools:** Resolve circular formatting issue and added back `treefmt` configuration ([20ed59138](https://github.com/storm-software/storm-ops/commit/20ed59138))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.21**
+- Updated **config-tools** to **v1.190.84**
+- Updated **eslint-plugin-banner** to **v0.0.49**
+- Updated **eslint-plugin-pnpm** to **v0.0.47**
+- Updated **eslint-plugin-tsdoc** to **v0.0.47**
+- Updated **package-constants** to **v0.1.97**
+- Updated **tsdoc** to **v0.13.237**
+
 ## [0.170.116](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.170.116) (07/03/2026)
 
 ### Miscellaneous

@@ -2,6 +2,19 @@
 
 # Changelog for Storm Ops - Git Tools
 
+## [2.131.92](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.131.92) (07/04/2026)
+
+### Bug Fixes
+
+- **git-tools:** Resolve circular formatting issue and added back `treefmt` configuration ([20ed59138](https://github.com/storm-software/storm-ops/commit/20ed59138))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.21**
+- Updated **config-tools** to **v1.190.84**
+- Updated **conventional-changelog** to **v0.3.245**
+- Updated **package-constants** to **v0.1.97**
+
 ## [2.131.91](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.131.91) (07/03/2026)
 
 ### Miscellaneous

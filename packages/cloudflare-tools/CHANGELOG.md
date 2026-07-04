@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Cloudflare Tools
 
+## [0.71.227](https://github.com/storm-software/storm-ops/releases/tag/cloudflare-tools%400.71.227) (07/04/2026)
+
+### Bug Fixes
+
+- **git-tools:** Resolve circular formatting issue and added back `treefmt` configuration ([20ed59138](https://github.com/storm-software/storm-ops/commit/20ed59138))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.21**
+- Updated **config-tools** to **v1.190.84**
+- Updated **workspace-tools** to **v1.296.64**
+
 ## [0.71.226](https://github.com/storm-software/storm-ops/releases/tag/cloudflare-tools%400.71.226) (07/03/2026)
 
 ### Miscellaneous
