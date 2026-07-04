@@ -8,12 +8,12 @@ $schema: https://raw.githubusercontent.com/evilmartians/lefthook/refs/heads/mast
 extends:
   - ./recommended.yml
 
-pre-commit:
-  commands:
-    treefmt:
-      glob: "**/*"
-      run: treefmt {staged_files}
-      stage_fixed: true
+# pre-commit:
+#   commands:
+#     treefmt:
+#       glob: "**/*"
+#       run: treefmt {staged_files}
+#       stage_fixed: true
 
 pre-push:
   commands:

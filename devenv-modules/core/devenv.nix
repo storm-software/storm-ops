@@ -130,187 +130,187 @@
     nuke.exec = "pnpm nuke";
   };
 
-  treefmt = {
-    enable = true;
-    config = {
-      enableDefaultExcludes = true;
-      projectRootFile = "storm-workspace.json";
+  # treefmt = {
+  #   enable = true;
+  #   config = {
+  #     enableDefaultExcludes = true;
+  #     projectRootFile = "storm-workspace.json";
 
-      settings.excludes = [
-        "**/.git"
-        "**/node_modules"
-        "**/dist"
-        "**/tmp"
-        "**/tests"
-        "**/coverage"
-        "**/bench"
-        "**/__snapshots__"
-        "**/__test__"
-        "**/__mocks__"
-        "**/__generated__"
-        "**/.wrangler"
-        "**/.rolldown"
-        "**/.docusaurus"
-        "**/.tamagui"
-        "**/tamagui.css"
-        "**/.nx"
-        "**/.next"
-        "**/.storm"
-        "**/.powerlines"
-        "**/.shell-shock"
-        "**/.earthquake"
-        "**/.aftershock"
-        "**/workbox*.js"
-        "**/sw*.js"
-        "**/service-worker.js"
-        "**/fallback*.js"
-        "**/ios"
-        "**/.android"
-        "**/.DS_Store"
-        "**/Thumbs.db"
-        "**/.cspellcache"
-        "**/package-lock.*"
-        "**/npm-lock.*"
-        "**/pnpm-lock.*"
-        "**/bun.lockb"
-        "**/cargo.lock"
-        "**/next-env.d.ts"
-        "**/CODEOWNERS"
-        "**/yarn.lock"
-        "**/jest.config.js"
-        "**/jest.setup.js"
-        "**/jest.config.ts"
-        "**/jest.setup.ts"
-        "**/jest.config.json"
-        "**/jest.setup.json"
-        "**/vitest.config.{js,ts,cjs,cts,mjs,mts}"
-        "**/*.spec.{ts,tsx}"
-        "**/*.test.{ts,tsx}"
-        "**/output"
-        "**/temp"
-        "**/.temp"
-        "**/.history"
-        "**/.vitepress/cache"
-        "**/.nuxt"
-        "**/.svelte-kit"
-        "**/.vercel"
-        "**/.changeset"
-        "**/.idea"
-        "**/.cache"
-        "**/.vite-inspect"
-        "**/.yarn"
-        "**/*.min.*"
-        "**/CHANGELOG*.md"
-        "**/CONTRIBUTING.md"
-        "**/SECURITY.md"
-        "**/CODE_OF_CONDUCT.md"
-        "**/PULL_REQUEST_TEMPLATE.md"
-        "**/LICENSE*"
-        "**/auto-import?(s).d.ts"
-        "**/components.d.ts"
-        "**/vite.config.*.timestamp-*"
-        "**/webpack.config.*.timestamp-*"
-        "**/rollup.config.*.timestamp-*"
-        "**/nx/**/schema.d.ts"
-        "**/nx/**/schema.json"
-        "**/nx/**/schema.md"
-        "**/nx/**/*.schema.d.ts"
-        "**/nx/**/*.schema.json"
-        "**/nx/**/*.schema.md"
-        "**/nx/**/generators/**/files"
-        ".agents/**/*"
-        "**/.agents/**/*"
-        ".claude/**/*"
-        "**/.claude/**/*"
-        ".codex/**/*"
-        "**/.codex/**/*"
-        ".cursor/**/*"
-        "**/.cursor/**/*"
-        ".opencode/**/*"
-        "**/.opencode/**/*"
-        ".nx/**/*"
-        "**/.nx/**/*"
-      ];
+  #     settings.excludes = [
+  #       "**/.git"
+  #       "**/node_modules"
+  #       "**/dist"
+  #       "**/tmp"
+  #       "**/tests"
+  #       "**/coverage"
+  #       "**/bench"
+  #       "**/__snapshots__"
+  #       "**/__test__"
+  #       "**/__mocks__"
+  #       "**/__generated__"
+  #       "**/.wrangler"
+  #       "**/.rolldown"
+  #       "**/.docusaurus"
+  #       "**/.tamagui"
+  #       "**/tamagui.css"
+  #       "**/.nx"
+  #       "**/.next"
+  #       "**/.storm"
+  #       "**/.powerlines"
+  #       "**/.shell-shock"
+  #       "**/.earthquake"
+  #       "**/.aftershock"
+  #       "**/workbox*.js"
+  #       "**/sw*.js"
+  #       "**/service-worker.js"
+  #       "**/fallback*.js"
+  #       "**/ios"
+  #       "**/.android"
+  #       "**/.DS_Store"
+  #       "**/Thumbs.db"
+  #       "**/.cspellcache"
+  #       "**/package-lock.*"
+  #       "**/npm-lock.*"
+  #       "**/pnpm-lock.*"
+  #       "**/bun.lockb"
+  #       "**/cargo.lock"
+  #       "**/next-env.d.ts"
+  #       "**/CODEOWNERS"
+  #       "**/yarn.lock"
+  #       "**/jest.config.js"
+  #       "**/jest.setup.js"
+  #       "**/jest.config.ts"
+  #       "**/jest.setup.ts"
+  #       "**/jest.config.json"
+  #       "**/jest.setup.json"
+  #       "**/vitest.config.{js,ts,cjs,cts,mjs,mts}"
+  #       "**/*.spec.{ts,tsx}"
+  #       "**/*.test.{ts,tsx}"
+  #       "**/output"
+  #       "**/temp"
+  #       "**/.temp"
+  #       "**/.history"
+  #       "**/.vitepress/cache"
+  #       "**/.nuxt"
+  #       "**/.svelte-kit"
+  #       "**/.vercel"
+  #       "**/.changeset"
+  #       "**/.idea"
+  #       "**/.cache"
+  #       "**/.vite-inspect"
+  #       "**/.yarn"
+  #       "**/*.min.*"
+  #       "**/CHANGELOG*.md"
+  #       "**/CONTRIBUTING.md"
+  #       "**/SECURITY.md"
+  #       "**/CODE_OF_CONDUCT.md"
+  #       "**/PULL_REQUEST_TEMPLATE.md"
+  #       "**/LICENSE*"
+  #       "**/auto-import?(s).d.ts"
+  #       "**/components.d.ts"
+  #       "**/vite.config.*.timestamp-*"
+  #       "**/webpack.config.*.timestamp-*"
+  #       "**/rollup.config.*.timestamp-*"
+  #       "**/nx/**/schema.d.ts"
+  #       "**/nx/**/schema.json"
+  #       "**/nx/**/schema.md"
+  #       "**/nx/**/*.schema.d.ts"
+  #       "**/nx/**/*.schema.json"
+  #       "**/nx/**/*.schema.md"
+  #       "**/nx/**/generators/**/files"
+  #       ".agents/**/*"
+  #       "**/.agents/**/*"
+  #       ".claude/**/*"
+  #       "**/.claude/**/*"
+  #       ".codex/**/*"
+  #       "**/.codex/**/*"
+  #       ".cursor/**/*"
+  #       "**/.cursor/**/*"
+  #       ".opencode/**/*"
+  #       "**/.opencode/**/*"
+  #       ".nx/**/*"
+  #       "**/.nx/**/*"
+  #     ];
 
-      programs = {
-        nixfmt = {
-          enable = true;
-          indent = 2;
-          width = 80;
-        };
+  #     programs = {
+  #       nixfmt = {
+  #         enable = true;
+  #         indent = 2;
+  #         width = 80;
+  #       };
 
-        nixpkgs-fmt.enable = true;
+  #       nixpkgs-fmt.enable = true;
 
-        rustfmt = {
-          enable = true;
-          edition = "2024";
-        };
+  #       rustfmt = {
+  #         enable = true;
+  #         edition = "2024";
+  #       };
 
-        taplo = {
-          enable = true;
-          settings = {
-            include = [
-              "*.toml"
-              "**/Cargo.toml"
-              "**/.config/**/*.toml"
-              "crates/**/*.toml"
-              "apps/**/*.toml"
-            ];
-            formatting = {
-              align_entries = true;
-              array_trailing_comma = false;
-              array_auto_expand = true;
-              array_auto_collapse = false;
-              compact_arrays = true;
-              compact_inline_tables = false;
-              column_width = 80;
-              indent_tables = false;
-              indent_string = "  ";
-              trailing_newline = true;
-              reorder_keys = true;
-              allowed_blank_lines = 1;
-              crlf = false;
-              object_trailing_comma = false;
-            };
-            rule = [
-              {
-                formatting = {
-                  reorder_keys = true;
-                };
-                keys = [
-                  "dependencies"
-                  "dev-dependencies"
-                  "build-dependencies"
-                  "workspace.dependencies"
-                  "patch.crates-io"
-                ];
-              }
-            ];
-          };
-        };
+  #       taplo = {
+  #         enable = true;
+  #         settings = {
+  #           include = [
+  #             "*.toml"
+  #             "**/Cargo.toml"
+  #             "**/.config/**/*.toml"
+  #             "crates/**/*.toml"
+  #             "apps/**/*.toml"
+  #           ];
+  #           formatting = {
+  #             align_entries = true;
+  #             array_trailing_comma = false;
+  #             array_auto_expand = true;
+  #             array_auto_collapse = false;
+  #             compact_arrays = true;
+  #             compact_inline_tables = false;
+  #             column_width = 80;
+  #             indent_tables = false;
+  #             indent_string = "  ";
+  #             trailing_newline = true;
+  #             reorder_keys = true;
+  #             allowed_blank_lines = 1;
+  #             crlf = false;
+  #             object_trailing_comma = false;
+  #           };
+  #           rule = [
+  #             {
+  #               formatting = {
+  #                 reorder_keys = true;
+  #               };
+  #               keys = [
+  #                 "dependencies"
+  #                 "dev-dependencies"
+  #                 "build-dependencies"
+  #                 "workspace.dependencies"
+  #                 "patch.crates-io"
+  #               ];
+  #             }
+  #           ];
+  #         };
+  #       };
 
-        yamllint = {
-          enable = true;
-          settings = {
-            include = [
-              "*.yaml"
-              "*.yml"
-              "**/.github/**/*.yaml"
-              "**/.github/**/*.yml"
-              "**/.config/**/*.yaml"
-              "**/.config/**/*.yml"
-              "apps/**/*.yaml"
-              "apps/**/*.yml"
-              "crates/**/*.yaml"
-              "crates/**/*.yml"
-            ];
-            formatting = {
-              # Maximum line length in characters, this is used as a reference for deciding whether to break a line or not, but is not set in stone.
-              line_length = 80;
-            };
-          };
-        };
-      };
-    };
-  };
+  #       yamllint = {
+  #         enable = true;
+  #         settings = {
+  #           include = [
+  #             "*.yaml"
+  #             "*.yml"
+  #             "**/.github/**/*.yaml"
+  #             "**/.github/**/*.yml"
+  #             "**/.config/**/*.yaml"
+  #             "**/.config/**/*.yml"
+  #             "apps/**/*.yaml"
+  #             "apps/**/*.yml"
+  #             "crates/**/*.yaml"
+  #             "crates/**/*.yml"
+  #           ];
+  #           formatting = {
+  #             # Maximum line length in characters, this is used as a reference for deciding whether to break a line or not, but is not set in stone.
+  #             line_length = 80;
+  #           };
+  #         };
+  #       };
+  #     };
+  #   };
+  # };
 }
