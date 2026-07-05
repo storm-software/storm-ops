@@ -1,6 +1,6 @@
 {
   "name": "@storm-software/projen",
-  "version": "0.21.268",
+  "version": "0.21.269",
   "description": "Tools for managing Projen configuration automation within a Nx workspace.",
   "keywords": [
     "iac",

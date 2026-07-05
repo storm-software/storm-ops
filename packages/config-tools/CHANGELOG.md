@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Config Tools
 
+## [1.190.86](https://github.com/storm-software/storm-ops/releases/tag/config-tools%401.190.86) (07/05/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace packages' dependencies ([8cfa3011d](https://github.com/storm-software/storm-ops/commit/8cfa3011d))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.23**
+- Updated **testing-tools** to **v1.119.239**
+
 ## [1.190.85](https://github.com/storm-software/storm-ops/releases/tag/config-tools%401.190.85) (07/04/2026)
 
 ### Miscellaneous
