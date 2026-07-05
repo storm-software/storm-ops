@@ -84,7 +84,7 @@ catalog:
   tsdown: "^0.22.3"
   tslib: "^2.8.1"
   tsup: "8.4.0"
-  tsx: "^4.22.5"
+  tsx: "^4.23.0"
   typia: "^7.6.4"
   unbuild: "^3.6.1"
   untyped: "^2.0.0"
