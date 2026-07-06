@@ -2,7 +2,7 @@ import type { ExecutorContext } from "@nx/devkit";
 import type { StormWorkspaceConfig } from "@storm-software/config";
 import { writeInfo } from "@storm-software/config-tools/logger/console";
 import { joinPaths } from "@storm-software/config-tools/utilities/correct-paths";
-import createJiti from "jiti";
+import { createJiti } from "jiti";
 import { withRunExecutor } from "../../base/base-executor";
 import type { ESBuildExecutorSchema } from "./schema.d";
 

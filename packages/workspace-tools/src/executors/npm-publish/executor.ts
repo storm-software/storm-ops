@@ -1,11 +1,8 @@
 import { type ExecutorContext } from "@nx/devkit";
 import { getConfig } from "@storm-software/config-tools/get-config";
 import { joinPaths } from "@storm-software/config-tools/utilities/correct-paths";
-import {
-  getNpmRegistry,
-  getRegistry
-} from "@storm-software/npm-tools/helpers/get-registry";
 import { replaceDepsAliases } from "@storm-software/pnpm-tools";
+import { createJiti } from "jiti";
 import { execSync } from "node:child_process";
 import { readFile, writeFile } from "node:fs/promises";
 import { format } from "prettier";
@@ -52,6 +49,16 @@ export default async function npmPublishExecutorFn(
         context.projectsConfigurations.projects[context.projectName]!.root
       )
     : packageRoot;
+
+  const jiti = createJiti(context.root, {
+    fsCache: joinPaths(context.root, "node_modules/.cache/storm", "jiti"),
+    interopDefault: true
+  });
+
+  const { getNpmRegistry, getRegistry } = await jiti.import<{
+    getNpmRegistry: () => Promise<string | undefined>;
+    getRegistry: () => Promise<string | undefined>;
+  }>(jiti.esmResolve("@storm-software/npm-tools/helpers"));
 
   const packageJsonPath = joinPaths(packageRoot, "package.json");
   const packageJsonFile = await readFile(packageJsonPath, "utf8");
@@ -148,7 +155,7 @@ export default async function npmPublishExecutorFn(
   }
 
   let token: string | undefined;
-  if (!options.otp) {
+  if (!options.otp && registry) {
     token = await github.getIDToken(
       `npm:${registry.replace(/^https?:\/\//, "")}`
     );
