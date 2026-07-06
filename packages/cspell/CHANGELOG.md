@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - CSpell
 
+## [0.46.157](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.46.157) (07/06/2026)
+
+### Bug Fixes
+
+- **monorepo:** Set `NX_PREFER_NODE_STRIP_TYPES` to false to resolve release issue ([6d8d78727](https://github.com/storm-software/storm-ops/commit/6d8d78727))
+
 ## [0.46.156](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.46.156) (07/06/2026)
 
 ### Miscellaneous

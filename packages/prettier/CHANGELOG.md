@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Prettier
 
+## [0.59.142](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.59.142) (07/06/2026)
+
+### Bug Fixes
+
+- **monorepo:** Set `NX_PREFER_NODE_STRIP_TYPES` to false to resolve release issue ([6d8d78727](https://github.com/storm-software/storm-ops/commit/6d8d78727))
+
 ## [0.59.141](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.59.141) (07/06/2026)
 
 ### Miscellaneous

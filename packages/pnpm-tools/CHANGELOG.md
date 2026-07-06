@@ -2,6 +2,20 @@
 
 # Changelog for Storm Ops - Pnpm Tools
 
+## [0.7.100](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.7.100) (07/06/2026)
+
+### Bug Fixes
+
+- **monorepo:** Set `NX_PREFER_NODE_STRIP_TYPES` to false to resolve release issue ([6d8d78727](https://github.com/storm-software/storm-ops/commit/6d8d78727))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.26**
+- Updated **config-tools** to **v1.190.89**
+- Updated **npm-tools** to **v0.6.207**
+- Updated **package-constants** to **v0.1.102**
+- Updated **testing-tools** to **v1.119.242**
+
 ## [0.7.99](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.7.99) (07/06/2026)
 
 ### Miscellaneous

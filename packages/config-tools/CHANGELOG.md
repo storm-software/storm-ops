@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Config Tools
 
+## [1.190.89](https://github.com/storm-software/storm-ops/releases/tag/config-tools%401.190.89) (07/06/2026)
+
+### Bug Fixes
+
+- **monorepo:** Set `NX_PREFER_NODE_STRIP_TYPES` to false to resolve release issue ([6d8d78727](https://github.com/storm-software/storm-ops/commit/6d8d78727))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.26**
+- Updated **testing-tools** to **v1.119.242**
+
 ## [1.190.88](https://github.com/storm-software/storm-ops/releases/tag/config-tools%401.190.88) (07/06/2026)
 
 ### Miscellaneous

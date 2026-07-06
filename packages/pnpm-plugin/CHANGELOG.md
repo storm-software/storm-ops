@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Pnpm Plugin
 
+## [0.1.200](https://github.com/storm-software/storm-ops/releases/tag/pnpm-plugin%400.1.200) (07/06/2026)
+
+### Bug Fixes
+
+- **monorepo:** Set `NX_PREFER_NODE_STRIP_TYPES` to false to resolve release issue ([6d8d78727](https://github.com/storm-software/storm-ops/commit/6d8d78727))
+
+### Updated Dependencies
+
+- Updated **package-constants** to **v0.1.102**
+- Updated **testing-tools** to **v1.119.242**
+
 ## [0.1.199](https://github.com/storm-software/storm-ops/releases/tag/pnpm-plugin%400.1.199) (07/06/2026)
 
 ### Miscellaneous

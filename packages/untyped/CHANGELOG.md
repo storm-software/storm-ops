@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Untyped
 
+## [0.24.231](https://github.com/storm-software/storm-ops/releases/tag/untyped%400.24.231) (07/06/2026)
+
+### Bug Fixes
+
+- **monorepo:** Set `NX_PREFER_NODE_STRIP_TYPES` to false to resolve release issue ([6d8d78727](https://github.com/storm-software/storm-ops/commit/6d8d78727))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.26**
+- Updated **config-tools** to **v1.190.89**
+
 ## [0.24.230](https://github.com/storm-software/storm-ops/releases/tag/untyped%400.24.230) (07/06/2026)
 
 ### Miscellaneous

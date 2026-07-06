@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Tsdown
 
+## [0.45.250](https://github.com/storm-software/storm-ops/releases/tag/tsdown%400.45.250) (07/06/2026)
+
+### Bug Fixes
+
+- **monorepo:** Set `NX_PREFER_NODE_STRIP_TYPES` to false to resolve release issue ([6d8d78727](https://github.com/storm-software/storm-ops/commit/6d8d78727))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.249**
+- Updated **config** to **v1.138.26**
+- Updated **config-tools** to **v1.190.89**
+
 ## [0.45.249](https://github.com/storm-software/storm-ops/releases/tag/tsdown%400.45.249) (07/06/2026)
 
 ### Miscellaneous

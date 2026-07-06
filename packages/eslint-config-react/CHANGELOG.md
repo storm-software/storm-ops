@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - ESLint Config React
 
+## [0.0.45](https://github.com/storm-software/storm-ops/releases/tag/eslint-config-react%400.0.45) (07/06/2026)
+
+### Bug Fixes
+
+- **monorepo:** Set `NX_PREFER_NODE_STRIP_TYPES` to false to resolve release issue ([6d8d78727](https://github.com/storm-software/storm-ops/commit/6d8d78727))
+
+### Updated Dependencies
+
+- Updated **eslint** to **v0.170.123**
+
 ## [0.0.44](https://github.com/storm-software/storm-ops/releases/tag/eslint-config-react%400.0.44) (07/06/2026)
 
 ### Miscellaneous

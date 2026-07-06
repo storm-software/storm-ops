@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - Create Storm Workspace
 
+## [1.97.249](https://github.com/storm-software/storm-ops/releases/tag/create-storm-workspace%401.97.249) (07/06/2026)
+
+### Bug Fixes
+
+- **monorepo:** Set `NX_PREFER_NODE_STRIP_TYPES` to false to resolve release issue ([6d8d78727](https://github.com/storm-software/storm-ops/commit/6d8d78727))
+
+### Updated Dependencies
+
+- Updated **config-tools** to **v1.190.89**
+
 ## [1.97.248](https://github.com/storm-software/storm-ops/releases/tag/create-storm-workspace%401.97.248) (07/06/2026)
 
 ### Miscellaneous

@@ -2,6 +2,19 @@
 
 # Changelog for Storm Ops - Esbuild
 
+## [0.53.250](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.53.250) (07/06/2026)
+
+### Bug Fixes
+
+- **monorepo:** Set `NX_PREFER_NODE_STRIP_TYPES` to false to resolve release issue ([6d8d78727](https://github.com/storm-software/storm-ops/commit/6d8d78727))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.249**
+- Updated **config** to **v1.138.26**
+- Updated **config-tools** to **v1.190.89**
+- Updated **tsup** to **v0.2.247**
+
 ## [0.53.249](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.53.249) (07/06/2026)
 
 ### Updated Dependencies

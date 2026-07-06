@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - ESLint Plugin Banner
 
+## [0.0.54](https://github.com/storm-software/storm-ops/releases/tag/eslint-plugin-banner%400.0.54) (07/06/2026)
+
+### Bug Fixes
+
+- **monorepo:** Set `NX_PREFER_NODE_STRIP_TYPES` to false to resolve release issue ([6d8d78727](https://github.com/storm-software/storm-ops/commit/6d8d78727))
+
+### Updated Dependencies
+
+- Updated **package-constants** to **v0.1.102**
+- Updated **prettier** to **v0.59.142**
+
 ## [0.0.53](https://github.com/storm-software/storm-ops/releases/tag/eslint-plugin-banner%400.0.53) (07/06/2026)
 
 ### Miscellaneous

@@ -2,6 +2,25 @@
 
 # Changelog for Storm Ops - Workspace Tools
 
+## [1.296.69](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.296.69) (07/06/2026)
+
+### Bug Fixes
+
+- **monorepo:** Set `NX_PREFER_NODE_STRIP_TYPES` to false to resolve release issue ([6d8d78727](https://github.com/storm-software/storm-ops/commit/6d8d78727))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.26**
+- Updated **config-tools** to **v1.190.89**
+- Updated **esbuild** to **v0.53.250**
+- Updated **npm-tools** to **v0.6.207**
+- Updated **package-constants** to **v0.1.102**
+- Updated **pnpm-tools** to **v0.7.100**
+- Updated **prettier** to **v0.59.142**
+- Updated **testing-tools** to **v1.119.242**
+- Updated **tsdown** to **v0.45.250**
+- Updated **unbuild** to **v0.57.250**
+
 ## [1.296.68](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.296.68) (07/06/2026)
 
 ### Miscellaneous

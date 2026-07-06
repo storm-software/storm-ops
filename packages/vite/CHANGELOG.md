@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - Vite
 
+## [0.1.183](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.183) (07/06/2026)
+
+### Bug Fixes
+
+- **monorepo:** Set `NX_PREFER_NODE_STRIP_TYPES` to false to resolve release issue ([6d8d78727](https://github.com/storm-software/storm-ops/commit/6d8d78727))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.249**
+
 ## [0.1.182](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.182) (07/06/2026)
 
 ### Miscellaneous

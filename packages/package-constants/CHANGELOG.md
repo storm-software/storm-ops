@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Package Constants
 
+## [0.1.102](https://github.com/storm-software/storm-ops/releases/tag/package-constants%400.1.102) (07/06/2026)
+
+### Bug Fixes
+
+- **monorepo:** Set `NX_PREFER_NODE_STRIP_TYPES` to false to resolve release issue ([6d8d78727](https://github.com/storm-software/storm-ops/commit/6d8d78727))
+
 ## [0.1.101](https://github.com/storm-software/storm-ops/releases/tag/package-constants%400.1.101) (07/06/2026)
 
 ### Miscellaneous

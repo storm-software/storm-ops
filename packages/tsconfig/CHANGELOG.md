@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Tsconfig
 
+## [0.48.156](https://github.com/storm-software/storm-ops/releases/tag/tsconfig%400.48.156) (07/06/2026)
+
+### Bug Fixes
+
+- **monorepo:** Set `NX_PREFER_NODE_STRIP_TYPES` to false to resolve release issue ([6d8d78727](https://github.com/storm-software/storm-ops/commit/6d8d78727))
+
 ## [0.48.155](https://github.com/storm-software/storm-ops/releases/tag/tsconfig%400.48.155) (07/06/2026)
 
 ### Miscellaneous

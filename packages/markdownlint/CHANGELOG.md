@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - Markdownlint
 
+## [0.30.245](https://github.com/storm-software/storm-ops/releases/tag/markdownlint%400.30.245) (07/06/2026)
+
+### Bug Fixes
+
+- **monorepo:** Set `NX_PREFER_NODE_STRIP_TYPES` to false to resolve release issue ([6d8d78727](https://github.com/storm-software/storm-ops/commit/6d8d78727))
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.242**
+
 ## [0.30.244](https://github.com/storm-software/storm-ops/releases/tag/markdownlint%400.30.244) (07/06/2026)
 
 ### Miscellaneous

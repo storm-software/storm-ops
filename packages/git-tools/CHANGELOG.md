@@ -2,6 +2,19 @@
 
 # Changelog for Storm Ops - Git Tools
 
+## [2.131.97](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.131.97) (07/06/2026)
+
+### Bug Fixes
+
+- **monorepo:** Set `NX_PREFER_NODE_STRIP_TYPES` to false to resolve release issue ([6d8d78727](https://github.com/storm-software/storm-ops/commit/6d8d78727))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.26**
+- Updated **config-tools** to **v1.190.89**
+- Updated **conventional-changelog** to **v0.3.250**
+- Updated **package-constants** to **v0.1.102**
+
 ## [2.131.96](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.131.96) (07/06/2026)
 
 ### Miscellaneous

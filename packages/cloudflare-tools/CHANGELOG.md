@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Cloudflare Tools
 
+## [0.71.232](https://github.com/storm-software/storm-ops/releases/tag/cloudflare-tools%400.71.232) (07/06/2026)
+
+### Bug Fixes
+
+- **monorepo:** Set `NX_PREFER_NODE_STRIP_TYPES` to false to resolve release issue ([6d8d78727](https://github.com/storm-software/storm-ops/commit/6d8d78727))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.26**
+- Updated **config-tools** to **v1.190.89**
+- Updated **workspace-tools** to **v1.296.69**
+
 ## [0.71.231](https://github.com/storm-software/storm-ops/releases/tag/cloudflare-tools%400.71.231) (07/06/2026)
 
 ### Miscellaneous

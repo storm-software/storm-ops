@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Tsup
 
+## [0.2.247](https://github.com/storm-software/storm-ops/releases/tag/tsup%400.2.247) (07/06/2026)
+
+### Bug Fixes
+
+- **monorepo:** Set `NX_PREFER_NODE_STRIP_TYPES` to false to resolve release issue ([6d8d78727](https://github.com/storm-software/storm-ops/commit/6d8d78727))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.249**
+- Updated **config-tools** to **v1.190.89**
+
 ## [0.2.246](https://github.com/storm-software/storm-ops/releases/tag/tsup%400.2.246) (07/06/2026)
 
 ### Miscellaneous

@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Testing Tools
 
+## [1.119.242](https://github.com/storm-software/storm-ops/releases/tag/testing-tools%401.119.242) (07/06/2026)
+
+### Bug Fixes
+
+- **monorepo:** Set `NX_PREFER_NODE_STRIP_TYPES` to false to resolve release issue ([6d8d78727](https://github.com/storm-software/storm-ops/commit/6d8d78727))
+
 ## [1.119.241](https://github.com/storm-software/storm-ops/releases/tag/testing-tools%401.119.241) (07/06/2026)
 
 ### Miscellaneous

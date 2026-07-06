@@ -2,6 +2,20 @@
 
 # Changelog for Storm Ops - Oxlint
 
+## [0.0.55](https://github.com/storm-software/storm-ops/releases/tag/oxlint%400.0.55) (07/06/2026)
+
+### Bug Fixes
+
+- **monorepo:** Set `NX_PREFER_NODE_STRIP_TYPES` to false to resolve release issue ([6d8d78727](https://github.com/storm-software/storm-ops/commit/6d8d78727))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.26**
+- Updated **config-tools** to **v1.190.89**
+- Updated **eslint-plugin-banner** to **v0.0.54**
+- Updated **eslint-plugin-pnpm** to **v0.0.52**
+- Updated **eslint-plugin-tsdoc** to **v0.0.52**
+
 ## [0.0.54](https://github.com/storm-software/storm-ops/releases/tag/oxlint%400.0.54) (07/06/2026)
 
 ### Miscellaneous

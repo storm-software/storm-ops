@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - ESLint Plugin Tsdoc
 
+## [0.0.52](https://github.com/storm-software/storm-ops/releases/tag/eslint-plugin-tsdoc%400.0.52) (07/06/2026)
+
+### Bug Fixes
+
+- **monorepo:** Set `NX_PREFER_NODE_STRIP_TYPES` to false to resolve release issue ([6d8d78727](https://github.com/storm-software/storm-ops/commit/6d8d78727))
+
+### Updated Dependencies
+
+- Updated **package-constants** to **v0.1.102**
+- Updated **prettier** to **v0.59.142**
+- Updated **tsdoc** to **v0.13.242**
+
 ## [0.0.51](https://github.com/storm-software/storm-ops/releases/tag/eslint-plugin-tsdoc%400.0.51) (07/06/2026)
 
 ### Miscellaneous
