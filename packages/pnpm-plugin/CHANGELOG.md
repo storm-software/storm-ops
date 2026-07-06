@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Pnpm Plugin
 
+## [0.1.199](https://github.com/storm-software/storm-ops/releases/tag/pnpm-plugin%400.1.199) (07/06/2026)
+
+### Miscellaneous
+
+- **workspace-tools:** Resolve issue with import type in `npm-publish` executor ([5405d0ed5](https://github.com/storm-software/storm-ops/commit/5405d0ed5))
+
+### Updated Dependencies
+
+- Updated **package-constants** to **v0.1.101**
+- Updated **testing-tools** to **v1.119.241**
+
 ## [0.1.198](https://github.com/storm-software/storm-ops/releases/tag/pnpm-plugin%400.1.198) (07/06/2026)
 
 ### Miscellaneous

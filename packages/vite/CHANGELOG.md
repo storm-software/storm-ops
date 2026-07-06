@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - Vite
 
+## [0.1.182](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.182) (07/06/2026)
+
+### Miscellaneous
+
+- **workspace-tools:** Resolve issue with import type in `npm-publish` executor ([5405d0ed5](https://github.com/storm-software/storm-ops/commit/5405d0ed5))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.248**
+
 ## [0.1.181](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.181) (07/06/2026)
 
 ### Miscellaneous

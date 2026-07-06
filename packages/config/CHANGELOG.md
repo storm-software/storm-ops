@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - Config
 
+## [1.138.25](https://github.com/storm-software/storm-ops/releases/tag/config%401.138.25) (07/06/2026)
+
+### Miscellaneous
+
+- **workspace-tools:** Resolve issue with import type in `npm-publish` executor ([5405d0ed5](https://github.com/storm-software/storm-ops/commit/5405d0ed5))
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.241**
+
 ## [1.138.24](https://github.com/storm-software/storm-ops/releases/tag/config%401.138.24) (07/06/2026)
 
 ### Miscellaneous

@@ -2,6 +2,19 @@
 
 # Changelog for Storm Ops - Git Tools
 
+## [2.131.96](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.131.96) (07/06/2026)
+
+### Miscellaneous
+
+- **workspace-tools:** Resolve issue with import type in `npm-publish` executor ([5405d0ed5](https://github.com/storm-software/storm-ops/commit/5405d0ed5))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.25**
+- Updated **config-tools** to **v1.190.88**
+- Updated **conventional-changelog** to **v0.3.249**
+- Updated **package-constants** to **v0.1.101**
+
 ## [2.131.95](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.131.95) (07/06/2026)
 
 ### Miscellaneous

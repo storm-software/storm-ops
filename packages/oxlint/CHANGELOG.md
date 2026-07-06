@@ -2,6 +2,20 @@
 
 # Changelog for Storm Ops - Oxlint
 
+## [0.0.54](https://github.com/storm-software/storm-ops/releases/tag/oxlint%400.0.54) (07/06/2026)
+
+### Miscellaneous
+
+- **workspace-tools:** Resolve issue with import type in `npm-publish` executor ([5405d0ed5](https://github.com/storm-software/storm-ops/commit/5405d0ed5))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.25**
+- Updated **config-tools** to **v1.190.88**
+- Updated **eslint-plugin-banner** to **v0.0.53**
+- Updated **eslint-plugin-pnpm** to **v0.0.51**
+- Updated **eslint-plugin-tsdoc** to **v0.0.51**
+
 ## [0.0.53](https://github.com/storm-software/storm-ops/releases/tag/oxlint%400.0.53) (07/06/2026)
 
 ### Miscellaneous

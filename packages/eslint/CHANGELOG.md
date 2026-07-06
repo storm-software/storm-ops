@@ -2,6 +2,22 @@
 
 # Changelog for Storm Ops - ESLint
 
+## [0.170.122](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.170.122) (07/06/2026)
+
+### Miscellaneous
+
+- **workspace-tools:** Resolve issue with import type in `npm-publish` executor ([5405d0ed5](https://github.com/storm-software/storm-ops/commit/5405d0ed5))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.25**
+- Updated **config-tools** to **v1.190.88**
+- Updated **eslint-plugin-banner** to **v0.0.53**
+- Updated **eslint-plugin-pnpm** to **v0.0.51**
+- Updated **eslint-plugin-tsdoc** to **v0.0.51**
+- Updated **package-constants** to **v0.1.101**
+- Updated **tsdoc** to **v0.13.241**
+
 ## [0.170.121](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.170.121) (07/06/2026)
 
 ### Miscellaneous

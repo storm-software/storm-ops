@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Testing Tools
 
+## [1.119.241](https://github.com/storm-software/storm-ops/releases/tag/testing-tools%401.119.241) (07/06/2026)
+
+### Miscellaneous
+
+- **workspace-tools:** Resolve issue with import type in `npm-publish` executor ([5405d0ed5](https://github.com/storm-software/storm-ops/commit/5405d0ed5))
+
 ## [1.119.240](https://github.com/storm-software/storm-ops/releases/tag/testing-tools%401.119.240) (07/06/2026)
 
 ### Miscellaneous

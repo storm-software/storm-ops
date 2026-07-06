@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Tsdown
 
+## [0.45.249](https://github.com/storm-software/storm-ops/releases/tag/tsdown%400.45.249) (07/06/2026)
+
+### Miscellaneous
+
+- **workspace-tools:** Resolve issue with import type in `npm-publish` executor ([5405d0ed5](https://github.com/storm-software/storm-ops/commit/5405d0ed5))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.248**
+- Updated **config** to **v1.138.25**
+- Updated **config-tools** to **v1.190.88**
+
 ## [0.45.248](https://github.com/storm-software/storm-ops/releases/tag/tsdown%400.45.248) (07/06/2026)
 
 ### Miscellaneous

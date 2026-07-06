@@ -2,6 +2,25 @@
 
 # Changelog for Storm Ops - Workspace Tools
 
+## [1.296.68](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.296.68) (07/06/2026)
+
+### Miscellaneous
+
+- **workspace-tools:** Resolve issue with import type in `npm-publish` executor ([5405d0ed5](https://github.com/storm-software/storm-ops/commit/5405d0ed5))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.25**
+- Updated **config-tools** to **v1.190.88**
+- Updated **esbuild** to **v0.53.249**
+- Updated **npm-tools** to **v0.6.206**
+- Updated **package-constants** to **v0.1.101**
+- Updated **pnpm-tools** to **v0.7.99**
+- Updated **prettier** to **v0.59.141**
+- Updated **testing-tools** to **v1.119.241**
+- Updated **tsdown** to **v0.45.249**
+- Updated **unbuild** to **v0.57.249**
+
 ## [1.296.67](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.296.67) (07/06/2026)
 
 ### Miscellaneous

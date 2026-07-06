@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - ESLint Plugin Banner
 
+## [0.0.53](https://github.com/storm-software/storm-ops/releases/tag/eslint-plugin-banner%400.0.53) (07/06/2026)
+
+### Miscellaneous
+
+- **workspace-tools:** Resolve issue with import type in `npm-publish` executor ([5405d0ed5](https://github.com/storm-software/storm-ops/commit/5405d0ed5))
+
+### Updated Dependencies
+
+- Updated **package-constants** to **v0.1.101**
+- Updated **prettier** to **v0.59.141**
+
 ## [0.0.52](https://github.com/storm-software/storm-ops/releases/tag/eslint-plugin-banner%400.0.52) (07/06/2026)
 
 ### Miscellaneous

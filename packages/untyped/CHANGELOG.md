@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Untyped
 
+## [0.24.230](https://github.com/storm-software/storm-ops/releases/tag/untyped%400.24.230) (07/06/2026)
+
+### Miscellaneous
+
+- **workspace-tools:** Resolve issue with import type in `npm-publish` executor ([5405d0ed5](https://github.com/storm-software/storm-ops/commit/5405d0ed5))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.25**
+- Updated **config-tools** to **v1.190.88**
+
 ## [0.24.229](https://github.com/storm-software/storm-ops/releases/tag/untyped%400.24.229) (07/06/2026)
 
 ### Miscellaneous

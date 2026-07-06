@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Projen
 
+## [0.21.271](https://github.com/storm-software/storm-ops/releases/tag/projen%400.21.271) (07/06/2026)
+
+### Miscellaneous
+
+- **workspace-tools:** Resolve issue with import type in `npm-publish` executor ([5405d0ed5](https://github.com/storm-software/storm-ops/commit/5405d0ed5))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.25**
+- Updated **config-tools** to **v1.190.88**
+- Updated **workspace-tools** to **v1.296.68**
+
 ## [0.21.270](https://github.com/storm-software/storm-ops/releases/tag/projen%400.21.270) (07/06/2026)
 
 ### Miscellaneous

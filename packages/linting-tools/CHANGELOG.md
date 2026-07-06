@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Linting Tools
 
+## [1.134.18](https://github.com/storm-software/storm-ops/releases/tag/linting-tools%401.134.18) (07/06/2026)
+
+### Miscellaneous
+
+- **workspace-tools:** Resolve issue with import type in `npm-publish` executor ([5405d0ed5](https://github.com/storm-software/storm-ops/commit/5405d0ed5))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.25**
+- Updated **config-tools** to **v1.190.88**
+
 ## [1.134.17](https://github.com/storm-software/storm-ops/releases/tag/linting-tools%401.134.17) (07/06/2026)
 
 ### Miscellaneous

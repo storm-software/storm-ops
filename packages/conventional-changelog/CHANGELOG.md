@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Conventional Changelog
 
+## [0.3.249](https://github.com/storm-software/storm-ops/releases/tag/conventional-changelog%400.3.249) (07/06/2026)
+
+### Miscellaneous
+
+- **workspace-tools:** Resolve issue with import type in `npm-publish` executor ([5405d0ed5](https://github.com/storm-software/storm-ops/commit/5405d0ed5))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.25**
+- Updated **config-tools** to **v1.190.88**
+
 ## [0.3.248](https://github.com/storm-software/storm-ops/releases/tag/conventional-changelog%400.3.248) (07/06/2026)
 
 ### Miscellaneous

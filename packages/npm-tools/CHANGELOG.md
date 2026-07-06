@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Npm Tools
 
+## [0.6.206](https://github.com/storm-software/storm-ops/releases/tag/npm-tools%400.6.206) (07/06/2026)
+
+### Miscellaneous
+
+- **workspace-tools:** Resolve issue with import type in `npm-publish` executor ([5405d0ed5](https://github.com/storm-software/storm-ops/commit/5405d0ed5))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.25**
+- Updated **config-tools** to **v1.190.88**
+- Updated **testing-tools** to **v1.119.241**
+
 ## [0.6.205](https://github.com/storm-software/storm-ops/releases/tag/npm-tools%400.6.205) (07/06/2026)
 
 ### Miscellaneous

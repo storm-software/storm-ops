@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Tsup
 
+## [0.2.246](https://github.com/storm-software/storm-ops/releases/tag/tsup%400.2.246) (07/06/2026)
+
+### Miscellaneous
+
+- **workspace-tools:** Resolve issue with import type in `npm-publish` executor ([5405d0ed5](https://github.com/storm-software/storm-ops/commit/5405d0ed5))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.248**
+- Updated **config-tools** to **v1.190.88**
+
 ## [0.2.245](https://github.com/storm-software/storm-ops/releases/tag/tsup%400.2.245) (07/06/2026)
 
 ### Miscellaneous

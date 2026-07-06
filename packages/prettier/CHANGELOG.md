@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Prettier
 
+## [0.59.141](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.59.141) (07/06/2026)
+
+### Miscellaneous
+
+- **workspace-tools:** Resolve issue with import type in `npm-publish` executor ([5405d0ed5](https://github.com/storm-software/storm-ops/commit/5405d0ed5))
+
 ## [0.59.140](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.59.140) (07/06/2026)
 
 ### Miscellaneous

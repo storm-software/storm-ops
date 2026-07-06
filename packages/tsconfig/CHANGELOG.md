@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Tsconfig
 
+## [0.48.155](https://github.com/storm-software/storm-ops/releases/tag/tsconfig%400.48.155) (07/06/2026)
+
+### Miscellaneous
+
+- **workspace-tools:** Resolve issue with import type in `npm-publish` executor ([5405d0ed5](https://github.com/storm-software/storm-ops/commit/5405d0ed5))
+
 ## [0.48.154](https://github.com/storm-software/storm-ops/releases/tag/tsconfig%400.48.154) (07/06/2026)
 
 ### Miscellaneous

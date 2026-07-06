@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - CSpell
 
+## [0.46.156](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.46.156) (07/06/2026)
+
+### Miscellaneous
+
+- **workspace-tools:** Resolve issue with import type in `npm-publish` executor ([5405d0ed5](https://github.com/storm-software/storm-ops/commit/5405d0ed5))
+
 ## [0.46.155](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.46.155) (07/06/2026)
 
 ### Miscellaneous

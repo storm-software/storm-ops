@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Oxfmt
 
+## [0.0.44](https://github.com/storm-software/storm-ops/releases/tag/oxfmt%400.0.44) (07/06/2026)
+
+### Miscellaneous
+
+- **workspace-tools:** Resolve issue with import type in `npm-publish` executor ([5405d0ed5](https://github.com/storm-software/storm-ops/commit/5405d0ed5))
+
 ## [0.0.43](https://github.com/storm-software/storm-ops/releases/tag/oxfmt%400.0.43) (07/06/2026)
 
 ### Miscellaneous
