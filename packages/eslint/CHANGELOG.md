@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - ESLint
 
+## [0.170.120](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.170.120) (07/06/2026)
+
+### Bug Fixes
+
+- point eslint entries to preset ([#1499](https://github.com/storm-software/storm-ops/pull/1499))
+
 ## [0.170.119](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.170.119) (07/05/2026)
 
 ### Miscellaneous
