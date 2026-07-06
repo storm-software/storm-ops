@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Untyped
 
+## [0.24.229](https://github.com/storm-software/storm-ops/releases/tag/untyped%400.24.229) (07/06/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update GitHub workflow action SHAs ([32f71bf4d](https://github.com/storm-software/storm-ops/commit/32f71bf4d))
+- **monorepo:** Update repository to typescript v6 ([9211ae91f](https://github.com/storm-software/storm-ops/commit/9211ae91f))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.24**
+- Updated **config-tools** to **v1.190.87**
+
 ## [0.24.228](https://github.com/storm-software/storm-ops/releases/tag/untyped%400.24.228) (07/05/2026)
 
 ### Miscellaneous

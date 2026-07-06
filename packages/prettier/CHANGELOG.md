@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Prettier
 
+## [0.59.140](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.59.140) (07/06/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update repository to typescript v6 ([9211ae91f](https://github.com/storm-software/storm-ops/commit/9211ae91f))
+
 ## [0.59.139](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.59.139) (07/05/2026)
 
 ### Miscellaneous

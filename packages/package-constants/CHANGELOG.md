@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Package Constants
 
+## [0.1.100](https://github.com/storm-software/storm-ops/releases/tag/package-constants%400.1.100) (07/06/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update GitHub workflow action SHAs ([32f71bf4d](https://github.com/storm-software/storm-ops/commit/32f71bf4d))
+- **monorepo:** Update repository to typescript v6 ([9211ae91f](https://github.com/storm-software/storm-ops/commit/9211ae91f))
+
 ## [0.1.99](https://github.com/storm-software/storm-ops/releases/tag/package-constants%400.1.99) (07/05/2026)
 
 ### Miscellaneous

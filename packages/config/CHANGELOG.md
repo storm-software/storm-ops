@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - Config
 
+## [1.138.24](https://github.com/storm-software/storm-ops/releases/tag/config%401.138.24) (07/06/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update repository to typescript v6 ([9211ae91f](https://github.com/storm-software/storm-ops/commit/9211ae91f))
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.240**
+
 ## [1.138.23](https://github.com/storm-software/storm-ops/releases/tag/config%401.138.23) (07/05/2026)
 
 ### Miscellaneous

@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Tsconfig
 
+## [0.48.154](https://github.com/storm-software/storm-ops/releases/tag/tsconfig%400.48.154) (07/06/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update GitHub workflow action SHAs ([32f71bf4d](https://github.com/storm-software/storm-ops/commit/32f71bf4d))
+- **monorepo:** Update repository to typescript v6 ([9211ae91f](https://github.com/storm-software/storm-ops/commit/9211ae91f))
+
 ## [0.48.153](https://github.com/storm-software/storm-ops/releases/tag/tsconfig%400.48.153) (07/05/2026)
 
 ### Miscellaneous

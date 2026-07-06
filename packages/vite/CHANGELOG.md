@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - Vite
 
+## [0.1.181](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.181) (07/06/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update repository to typescript v6 ([9211ae91f](https://github.com/storm-software/storm-ops/commit/9211ae91f))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.247**
+
 ## [0.1.180](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.180) (07/05/2026)
 
 ### Miscellaneous

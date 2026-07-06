@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Tsdoc
 
+## [0.13.240](https://github.com/storm-software/storm-ops/releases/tag/tsdoc%400.13.240) (07/06/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update repository to typescript v6 ([9211ae91f](https://github.com/storm-software/storm-ops/commit/9211ae91f))
+
 ## [0.13.239](https://github.com/storm-software/storm-ops/releases/tag/tsdoc%400.13.239) (07/05/2026)
 
 ### Miscellaneous

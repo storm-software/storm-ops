@@ -2,6 +2,22 @@
 
 # Changelog for Storm Ops - K8s Tools
 
+## [0.42.270](https://github.com/storm-software/storm-ops/releases/tag/k8s-tools%400.42.270) (07/06/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update repository to typescript v6 ([9211ae91f](https://github.com/storm-software/storm-ops/commit/9211ae91f))
+
+### Bug Fixes
+
+- **monorepo:** Fixed type resolution errors in Nx plugin packages ([df27203f8](https://github.com/storm-software/storm-ops/commit/df27203f8))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.24**
+- Updated **config-tools** to **v1.190.87**
+- Updated **workspace-tools** to **v1.296.67**
+
 ## [0.42.269](https://github.com/storm-software/storm-ops/releases/tag/k8s-tools%400.42.269) (07/05/2026)
 
 ### Miscellaneous

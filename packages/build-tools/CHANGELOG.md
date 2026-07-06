@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Build Tools
 
+## [0.158.247](https://github.com/storm-software/storm-ops/releases/tag/build-tools%400.158.247) (07/06/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update repository to typescript v6 ([9211ae91f](https://github.com/storm-software/storm-ops/commit/9211ae91f))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.24**
+- Updated **config-tools** to **v1.190.87**
+
 ## [0.158.246](https://github.com/storm-software/storm-ops/releases/tag/build-tools%400.158.246) (07/05/2026)
 
 ### Miscellaneous

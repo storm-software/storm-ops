@@ -2,6 +2,30 @@
 
 # Changelog for Storm Ops - Workspace Tools
 
+## [1.296.67](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.296.67) (07/06/2026)
+
+### Miscellaneous
+
+- **monorepo:** Updates to local package dist files ([f48195fb6](https://github.com/storm-software/storm-ops/commit/f48195fb6))
+- **monorepo:** Update repository to typescript v6 ([9211ae91f](https://github.com/storm-software/storm-ops/commit/9211ae91f))
+
+### Bug Fixes
+
+- **monorepo:** Fixed type resolution errors in Nx plugin packages ([df27203f8](https://github.com/storm-software/storm-ops/commit/df27203f8))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.24**
+- Updated **config-tools** to **v1.190.87**
+- Updated **esbuild** to **v0.53.248**
+- Updated **npm-tools** to **v0.6.205**
+- Updated **package-constants** to **v0.1.100**
+- Updated **pnpm-tools** to **v0.7.98**
+- Updated **prettier** to **v0.59.140**
+- Updated **testing-tools** to **v1.119.240**
+- Updated **tsdown** to **v0.45.248**
+- Updated **unbuild** to **v0.57.248**
+
 ## [1.296.66](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.296.66) (07/05/2026)
 
 ### Miscellaneous

@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - Create Storm Workspace
 
+## [1.97.247](https://github.com/storm-software/storm-ops/releases/tag/create-storm-workspace%401.97.247) (07/06/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update repository to typescript v6 ([9211ae91f](https://github.com/storm-software/storm-ops/commit/9211ae91f))
+
+### Updated Dependencies
+
+- Updated **config-tools** to **v1.190.87**
+
 ## [1.97.246](https://github.com/storm-software/storm-ops/releases/tag/create-storm-workspace%401.97.246) (07/05/2026)
 
 ### Miscellaneous

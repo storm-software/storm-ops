@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Tsup
 
+## [0.2.245](https://github.com/storm-software/storm-ops/releases/tag/tsup%400.2.245) (07/06/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update repository to typescript v6 ([9211ae91f](https://github.com/storm-software/storm-ops/commit/9211ae91f))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.247**
+- Updated **config-tools** to **v1.190.87**
+
 ## [0.2.244](https://github.com/storm-software/storm-ops/releases/tag/tsup%400.2.244) (07/05/2026)
 
 ### Miscellaneous

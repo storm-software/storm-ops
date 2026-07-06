@@ -2,6 +2,20 @@
 
 # Changelog for Storm Ops - Oxlint
 
+## [0.0.53](https://github.com/storm-software/storm-ops/releases/tag/oxlint%400.0.53) (07/06/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update repository to typescript v6 ([9211ae91f](https://github.com/storm-software/storm-ops/commit/9211ae91f))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.24**
+- Updated **config-tools** to **v1.190.87**
+- Updated **eslint-plugin-banner** to **v0.0.52**
+- Updated **eslint-plugin-pnpm** to **v0.0.50**
+- Updated **eslint-plugin-tsdoc** to **v0.0.50**
+
 ## [0.0.52](https://github.com/storm-software/storm-ops/releases/tag/oxlint%400.0.52) (07/05/2026)
 
 ### Miscellaneous

@@ -2,6 +2,20 @@
 
 # Changelog for Storm Ops - Git Tools
 
+## [2.131.95](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.131.95) (07/06/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update GitHub workflow action SHAs ([32f71bf4d](https://github.com/storm-software/storm-ops/commit/32f71bf4d))
+- **monorepo:** Update repository to typescript v6 ([9211ae91f](https://github.com/storm-software/storm-ops/commit/9211ae91f))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.24**
+- Updated **config-tools** to **v1.190.87**
+- Updated **conventional-changelog** to **v0.3.248**
+- Updated **package-constants** to **v0.1.100**
+
 ## [2.131.94](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.131.94) (07/05/2026)
 
 ### Miscellaneous

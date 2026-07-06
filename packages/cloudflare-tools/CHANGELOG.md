@@ -2,6 +2,22 @@
 
 # Changelog for Storm Ops - Cloudflare Tools
 
+## [0.71.230](https://github.com/storm-software/storm-ops/releases/tag/cloudflare-tools%400.71.230) (07/06/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update repository to typescript v6 ([9211ae91f](https://github.com/storm-software/storm-ops/commit/9211ae91f))
+
+### Bug Fixes
+
+- **monorepo:** Fixed type resolution errors in Nx plugin packages ([df27203f8](https://github.com/storm-software/storm-ops/commit/df27203f8))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.24**
+- Updated **config-tools** to **v1.190.87**
+- Updated **workspace-tools** to **v1.296.67**
+
 ## [0.71.229](https://github.com/storm-software/storm-ops/releases/tag/cloudflare-tools%400.71.229) (07/05/2026)
 
 ### Miscellaneous

@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Npm Tools
 
+## [0.6.205](https://github.com/storm-software/storm-ops/releases/tag/npm-tools%400.6.205) (07/06/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update repository to typescript v6 ([9211ae91f](https://github.com/storm-software/storm-ops/commit/9211ae91f))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.24**
+- Updated **config-tools** to **v1.190.87**
+- Updated **testing-tools** to **v1.119.240**
+
 ## [0.6.204](https://github.com/storm-software/storm-ops/releases/tag/npm-tools%400.6.204) (07/05/2026)
 
 ### Miscellaneous

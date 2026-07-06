@@ -2,6 +2,21 @@
 
 # Changelog for Storm Ops - Pnpm Tools
 
+## [0.7.98](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.7.98) (07/06/2026)
+
+### Miscellaneous
+
+- **monorepo:** Updates to local package dist files ([f48195fb6](https://github.com/storm-software/storm-ops/commit/f48195fb6))
+- **monorepo:** Update repository to typescript v6 ([9211ae91f](https://github.com/storm-software/storm-ops/commit/9211ae91f))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.24**
+- Updated **config-tools** to **v1.190.87**
+- Updated **npm-tools** to **v0.6.205**
+- Updated **package-constants** to **v0.1.100**
+- Updated **testing-tools** to **v1.119.240**
+
 ## [0.7.97](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.7.97) (07/05/2026)
 
 ### Miscellaneous

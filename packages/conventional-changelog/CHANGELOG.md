@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Conventional Changelog
 
+## [0.3.248](https://github.com/storm-software/storm-ops/releases/tag/conventional-changelog%400.3.248) (07/06/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update repository to typescript v6 ([9211ae91f](https://github.com/storm-software/storm-ops/commit/9211ae91f))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.24**
+- Updated **config-tools** to **v1.190.87**
+
 ## [0.3.247](https://github.com/storm-software/storm-ops/releases/tag/conventional-changelog%400.3.247) (07/05/2026)
 
 ### Miscellaneous

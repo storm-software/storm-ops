@@ -2,6 +2,27 @@
 
 # Changelog for Storm Ops - ESLint
 
+## [0.170.121](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.170.121) (07/06/2026)
+
+### Miscellaneous
+
+- **monorepo:** Updates to local package dist files ([f48195fb6](https://github.com/storm-software/storm-ops/commit/f48195fb6))
+- **monorepo:** Update repository to typescript v6 ([9211ae91f](https://github.com/storm-software/storm-ops/commit/9211ae91f))
+
+### Bug Fixes
+
+- point eslint entries to preset ([#1499](https://github.com/storm-software/storm-ops/pull/1499))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.24**
+- Updated **config-tools** to **v1.190.87**
+- Updated **eslint-plugin-banner** to **v0.0.52**
+- Updated **eslint-plugin-pnpm** to **v0.0.50**
+- Updated **eslint-plugin-tsdoc** to **v0.0.50**
+- Updated **package-constants** to **v0.1.100**
+- Updated **tsdoc** to **v0.13.240**
+
 ## [0.170.120](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.170.120) (07/06/2026)
 
 ### Bug Fixes

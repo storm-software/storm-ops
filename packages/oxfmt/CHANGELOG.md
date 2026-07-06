@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Oxfmt
 
+## [0.0.43](https://github.com/storm-software/storm-ops/releases/tag/oxfmt%400.0.43) (07/06/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update repository to typescript v6 ([9211ae91f](https://github.com/storm-software/storm-ops/commit/9211ae91f))
+
 ## [0.0.42](https://github.com/storm-software/storm-ops/releases/tag/oxfmt%400.0.42) (07/05/2026)
 
 ### Miscellaneous

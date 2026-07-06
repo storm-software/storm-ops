@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Testing Tools
 
+## [1.119.240](https://github.com/storm-software/storm-ops/releases/tag/testing-tools%401.119.240) (07/06/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update GitHub workflow action SHAs ([32f71bf4d](https://github.com/storm-software/storm-ops/commit/32f71bf4d))
+- **monorepo:** Update repository to typescript v6 ([9211ae91f](https://github.com/storm-software/storm-ops/commit/9211ae91f))
+
 ## [1.119.239](https://github.com/storm-software/storm-ops/releases/tag/testing-tools%401.119.239) (07/05/2026)
 
 ### Miscellaneous
