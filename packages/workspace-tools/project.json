@@ -60,6 +60,7 @@
     "esbuild",
     "package-constants",
     "config-tools",
-    "config"
+    "config",
+    "pnpm-tools"
   ]
 }

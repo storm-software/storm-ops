@@ -124,10 +124,7 @@ export async function react(
   );
   const isUsingReactRouter = ReactRouterPackages.some(i => isPackageExists(i));
 
-  const [pluginTs, parserTs] = await Promise.all([
-    interopDefault(import("@typescript-eslint/eslint-plugin")),
-    interopDefault(import("@typescript-eslint/parser"))
-  ] as const);
+  const parserTs = await interopDefault(import("@typescript-eslint/parser"));
 
   return [
     {

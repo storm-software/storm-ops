@@ -28,12 +28,15 @@ const config = defineConfig([
     platform: "node",
     splitting: true,
     clean: false,
-    dts: false,
+    dts: true,
     sourcemap: false,
     shims: true,
     tsconfig: "./tsconfig.json",
     external: ["@nx/devkit", "jiti", "typescript", "@napi-rs/cli"],
-    noExternal: ["@storm-software/package-constants"]
+    noExternal: [
+      "@storm-software/package-constants",
+      "@storm-software/pnpm-tools"
+    ]
   }
 ]) as Options;
 

@@ -5,7 +5,7 @@ import {
   getNpmRegistry,
   getRegistry
 } from "@storm-software/npm-tools/helpers/get-registry";
-import { replaceDepsAliases } from "@storm-software/pnpm-tools/helpers/replace-deps-aliases";
+import { replaceDepsAliases } from "@storm-software/pnpm-tools";
 import { execSync } from "node:child_process";
 import { readFile, writeFile } from "node:fs/promises";
 import { format } from "prettier";

@@ -2,10 +2,8 @@
   "extends": "./tsconfig.base.json",
   "compileOnSave": false,
   "compilerOptions": {
-    "target": "ES2021",
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
-    "module": "commonjs",
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "isolatedModules": true,

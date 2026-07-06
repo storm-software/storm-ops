@@ -5,6 +5,7 @@ export default defineConfig([
     name: "eslint",
     platform: "node",
     entryPoints: [
+      "src/index.ts",
       "src/preset.ts",
       "src/types.ts",
       "src/rules/*.ts",
