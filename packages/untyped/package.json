@@ -182,7 +182,9 @@
     }
   },
   "types": "./dist/index.d.cts",
-  "files": ["dist/**/*"],
+  "files": [
+    "dist/**/*"
+  ],
   "keywords": [
     "acidic",
     "cyclone-ui",
