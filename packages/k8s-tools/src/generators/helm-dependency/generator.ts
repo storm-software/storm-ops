@@ -49,7 +49,7 @@ export async function helmDependencyGeneratorFn(
   };
 }
 
-export default withRunGenerator<HelmDependencyGeneratorSchema>(
+export default withRunGenerator<any>(
   "Helm Dependency",
   helmDependencyGeneratorFn
 );

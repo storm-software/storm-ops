@@ -1,4 +1,4 @@
-import { BaseExecutorSchema } from "@storm-software/workspace-tools/base/base-executor.schema.d";
+import { BaseExecutorSchema } from "@storm-software/workspace-tools/types";
 
 export interface HelmPackageExecutorSchema extends BaseExecutorSchema {
   /** Folder where the chart is stored */

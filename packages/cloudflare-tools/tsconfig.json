@@ -10,7 +10,7 @@
     "skipDefaultLibCheck": true,
     "moduleResolution": "Bundler",
     "moduleDetection": "force",
-    "types": ["node"]
+    "types": ["node", "@storm-software/workspace-tools"]
   },
   "include": [
     "executors.ts",

@@ -3,7 +3,7 @@ import type { StormWorkspaceConfig } from "@storm-software/config";
 import { writeWarning } from "@storm-software/config-tools/logger/console";
 import { withRunExecutor } from "@storm-software/workspace-tools/base/base-executor";
 import { createHelmClient } from "../../utils/client";
-import { HelmPackageExecutorSchema } from "./schema";
+import type { HelmPackageExecutorSchema } from "./schema";
 
 export async function serveExecutor(
   options: HelmPackageExecutorSchema,
@@ -55,7 +55,7 @@ export async function serveExecutor(
   };
 }
 
-export default withRunExecutor<HelmPackageExecutorSchema>(
+export default withRunExecutor<any>(
   "Helm Chart Package executor",
   serveExecutor,
   {

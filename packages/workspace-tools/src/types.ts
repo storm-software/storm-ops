@@ -1,7 +1,10 @@
 import type { StormWorkspaceConfig } from "@storm-software/config";
 import type { Options } from "tsup";
-import { BaseExecutorSchema } from "./base/base-executor.schema.d";
-import { BaseGeneratorSchema } from "./base/base-generator.schema.d";
+import type { BaseExecutorSchema } from "./base/base-executor.schema.d";
+import type { BaseGeneratorSchema } from "./base/base-generator.schema.d";
+
+export type { BaseExecutorSchema } from "./base/base-executor.schema.d";
+export type { BaseGeneratorSchema } from "./base/base-generator.schema.d";
 
 export enum TypescriptProjectLinkingType {
   ALIAS = "alias",

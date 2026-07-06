@@ -1,4 +1,4 @@
-import { BaseGeneratorSchema } from "@storm-software/workspace-tools/base/base-generator.schema.d";
+import { BaseGeneratorSchema } from "@storm-software/workspace-tools/base/types";
 
 export interface HelmDependencyGeneratorSchema extends BaseGeneratorSchema {
   /** Project name */

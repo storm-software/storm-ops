@@ -2,8 +2,10 @@ import type { ExecutorContext } from "@nx/devkit";
 import { StormWorkspaceConfig } from "@storm-software/config";
 import { ProjectTokenizerOptions, run } from "@storm-software/config-tools";
 import { withRunExecutor } from "@storm-software/workspace-tools/base/base-executor";
-import type { BaseExecutorSchema } from "@storm-software/workspace-tools/base/base-executor.schema.d";
-import type { BaseExecutorOptions } from "@storm-software/workspace-tools/types";
+import type {
+  BaseExecutorOptions,
+  BaseExecutorSchema
+} from "@storm-software/workspace-tools/types";
 import { which } from "shelljs";
 import type { BaseTerraformExecutorSchema } from "./base-terraform-executor.schema.d";
 

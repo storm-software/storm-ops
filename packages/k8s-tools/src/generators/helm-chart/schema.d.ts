@@ -1,4 +1,4 @@
-import { BaseGeneratorSchema } from "@storm-software/workspace-tools/base/base-generator.schema.d";
+import { BaseGeneratorSchema } from "@storm-software/workspace-tools/types";
 
 export interface HelmChartGeneratorSchema extends BaseGeneratorSchema {
   /** Name of the chart */
