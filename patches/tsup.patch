@@ -852,7 +852,7 @@ index e875f0c94b50eb7921cfe54b8ebc40cca1a6c565..3d85973ca2d7504c045d37473a505a0d
                      depsHash = currentHash;
                    } else if (!buildDependencies.has(file)) {
 diff --git a/dist/rollup.js b/dist/rollup.js
-index cc82363277fe849c9460937773d9bc8b5c86beb6..eb7b2d497869a941a5463e027d0c99f4bd394540 100644
+index cc82363277fe849c9460937773d9bc8b5c86beb6..81187786e4312ea7c7e2e2371b42a0013c958bce 100644
 --- a/dist/rollup.js
 +++ b/dist/rollup.js
 @@ -4834,14 +4834,14 @@ var require_rollup_plugin_dts = _chunkTWFEYLU4js.__commonJS.call(void 0, {
@@ -1003,7 +1003,7 @@ index cc82363277fe849c9460937773d9bc8b5c86beb6..eb7b2d497869a941a5463e027d0c99f4
    const tsupCleanPlugin = {
      name: "tsup:clean",
      async buildStart() {
-@@ -6784,7 +6784,7 @@ var getRollupConfig = async (options) => {
+@@ -6784,14 +6784,14 @@ var getRollupConfig = async (options) => {
        },
        plugins: [
          tsupCleanPlugin,
@@ -1012,6 +1012,14 @@ index cc82363277fe849c9460937773d9bc8b5c86beb6..eb7b2d497869a941a5463e027d0c99f4
          json(),
          ignoreFiles,
          dtsPlugin.default({
+           tsconfig: options.tsconfig,
+           compilerOptions: {
+             ...compilerOptions,
+-            baseUrl: compilerOptions.baseUrl || ".",
++            rootDir: compilerOptions.rootDir,
+             // Ensure ".d.ts" modules are generated
+             declaration: true,
+             // Skip ".js" generation
 @@ -6844,12 +6844,12 @@ async function runRollup(options) {
      const results = await Promise.all(options.outputConfig.map(bundle.write));
      const outputs = results.flatMap((result) => result.output);

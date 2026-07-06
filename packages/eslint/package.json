@@ -137,9 +137,11 @@
       }
     }
   },
-  "main": "./dist/preset.js",
-  "types": "./dist/preset.d.ts",
-  "files": ["dist"],
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "dependencies": {
     "@antfu/install-pkg": "^1.1.0",
     "@clack/prompts": "^0.10.1",
@@ -232,7 +234,7 @@
     "prettier-plugin-astro": "^0.14.1",
     "tsup": "catalog:",
     "tsx": "catalog:",
-    "typescript": "^5.9.3",
+    "typescript": "^6.0.3",
     "zod": "catalog:"
   },
   "peerDependencies": {

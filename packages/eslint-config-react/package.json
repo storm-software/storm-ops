@@ -111,7 +111,9 @@
   },
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "dependencies": {
     "@eslint-react/eslint-plugin": "^5.11.0",
     "@next/eslint-plugin-next": "^15.5.20",
@@ -129,7 +131,7 @@
   },
   "devDependencies": {
     "tsup": "catalog:",
-    "typescript": "^5.9.3"
+    "typescript": "^6.0.3"
   },
   "publishConfig": {
     "access": "public"

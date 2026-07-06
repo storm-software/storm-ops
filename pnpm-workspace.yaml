@@ -161,11 +161,11 @@ patchedDependencies:
   eslint-plugin-pnpm@0.3.0: "patches/eslint-plugin-pnpm@0.3.0.patch"
   eslint-plugin-react-native: "patches/eslint-plugin-react-native.patch"
   eslint-plugin-tsdoc: "patches/eslint-plugin-tsdoc.patch"
-  tsup@8.4.0: "patches/tsup@8.4.0.patch"
+  tsup: patches/tsup.patch
 preferWorkspacePackages: true
 shamefullyHoist: true
 shellEmulator: true
 supportedArchitectures:
-  cpu: [ "current" ]
+  cpu: ["current"]
 useNodeVersion: "26.2.0"
 verifyDepsBeforeRun: "install"

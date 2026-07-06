@@ -4,7 +4,6 @@
     "outDir": "../../dist/out-tsc",
     "rootDir": "../..",
     "target": "ESNext",
-    "baseUrl": ".",
     "module": "ESNext",
     "moduleResolution": "Bundler",
     "resolveJsonModule": true,

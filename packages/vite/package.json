@@ -1,15 +1,27 @@
 {
   "name": "@storm-software/vite",
   "version": "0.1.180",
-  "type": "module",
+  "private": false,
   "description": "A package containing a shared `vite` configuration and utilities for building Storm Software libraries and applications",
+  "keywords": [
+    "vite",
+    "storm",
+    "storm-software",
+    "storm-ops",
+    "sullivanpj"
+  ],
+  "homepage": "https://stormsoftware.com",
+  "bugs": "https://github.com/storm-software/storm-ops/issues",
   "repository": {
     "type": "github",
     "url": "https://github.com/storm-software/storm-ops.git",
     "directory": "packages/vite"
   },
-  "homepage": "https://stormsoftware.com",
-  "bugs": "https://github.com/storm-software/storm-ops/issues",
+  "funding": {
+    "type": "github",
+    "url": "https://github.com/sponsors/storm-software"
+  },
+  "license": "Apache-2.0",
   "author": {
     "name": "Storm Software",
     "email": "contact@stormsoftware.com",
@@ -34,14 +46,8 @@
       "url": "https://stormsoftware.com"
     }
   ],
-  "funding": {
-    "type": "github",
-    "url": "https://github.com/sponsors/storm-software"
-  },
-  "license": "Apache-2.0",
-  "private": false,
-  "main": "./dist/index.cjs",
-  "module": "./dist/index.js",
+  "sideEffects": false,
+  "type": "module",
   "exports": {
     "./package.json": "./package.json",
     "./types": {
@@ -101,17 +107,12 @@
       }
     }
   },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
-  "files": ["dist/**/*"],
-  "keywords": ["vite", "storm", "storm-software", "storm-ops", "sullivanpj"],
-  "peerDependencies": {
-    "vite": ">=8.0.0-beta.2"
-  },
-  "peerDependenciesMeta": {
-    "vite": {
-      "optional": false
-    }
-  },
+  "files": [
+    "dist/**/*"
+  ],
   "dependencies": {
     "rollup-plugin-preserve-directives": "^0.4.0",
     "vite-plugin-dts": "^4.5.4",
@@ -121,11 +122,18 @@
   "devDependencies": {
     "@types/node": "catalog:",
     "tsup": "catalog:",
-    "typescript": "^5.9.3",
+    "typescript": "^6.0.3",
     "vite": "8.0.0-beta.2"
+  },
+  "peerDependencies": {
+    "vite": ">=8.0.0-beta.2"
+  },
+  "peerDependenciesMeta": {
+    "vite": {
+      "optional": false
+    }
   },
   "publishConfig": {
     "access": "public"
-  },
-  "sideEffects": false
+  }
 }

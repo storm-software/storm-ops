@@ -185,7 +185,9 @@
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
-  "files": ["dist/**/*"],
+  "files": [
+    "dist/**/*"
+  ],
   "dependencies": {
     "@swc/core": "catalog:",
     "glob": "catalog:",
@@ -199,13 +201,13 @@
     "@types/node": "catalog:",
     "nx": "catalog:",
     "tsup": "catalog:",
-    "typescript": "^5.9.3"
+    "typescript": "^6.0.3"
   },
   "peerDependencies": {
     "@nx/devkit": "catalog:",
     "@nx/js": "catalog:",
     "nx": "catalog:",
-    "typescript": "^5.9.2"
+    "typescript": "^6.0.3"
   },
   "peerDependenciesMeta": {
     "@nx/devkit": {

@@ -3,7 +3,12 @@
   "version": "0.0.52",
   "private": false,
   "description": "A package containing the base Oxlint configuration used by Storm Software across many projects.",
-  "keywords": ["oxlint", "oxlint-config", "storm-ops", "storm-software"],
+  "keywords": [
+    "oxlint",
+    "oxlint-config",
+    "storm-ops",
+    "storm-software"
+  ],
   "homepage": "https://stormsoftware.com",
   "bugs": "https://github.com/storm-software/storm-ops/issues",
   "repository": {
@@ -131,7 +136,9 @@
   },
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
-  "files": ["dist/**/*"],
+  "files": [
+    "dist/**/*"
+  ],
   "dependencies": {
     "@storm-software/eslint-plugin-banner": "workspace:*",
     "@storm-software/eslint-plugin-pnpm": "workspace:*",
@@ -152,7 +159,7 @@
     "@types/node": "catalog:",
     "tsup": "catalog:",
     "tsx": "catalog:",
-    "typescript": "^5.9.3",
+    "typescript": "^6.0.3",
     "zod": "catalog:"
   },
   "peerDependencies": {

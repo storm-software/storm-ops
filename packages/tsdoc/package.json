@@ -3,7 +3,13 @@
   "version": "0.13.239",
   "private": false,
   "description": "This package contains shared TSDoc configurations used in Storm Software projects.",
-  "keywords": ["tsdoc", "typedoc", "storm", "storm-ops", "storm-software"],
+  "keywords": [
+    "tsdoc",
+    "typedoc",
+    "storm",
+    "storm-ops",
+    "storm-software"
+  ],
   "homepage": "https://stormsoftware.com",
   "bugs": "https://github.com/storm-software/storm-ops/issues",
   "repository": {
@@ -90,7 +96,7 @@
     "@microsoft/api-extractor": "catalog:",
     "@types/node": "catalog:",
     "tsup": "catalog:",
-    "typescript": "^5.9.3"
+    "typescript": "^6.0.3"
   },
   "peerDependencies": {
     "@microsoft/api-extractor": ">=7.58.0"

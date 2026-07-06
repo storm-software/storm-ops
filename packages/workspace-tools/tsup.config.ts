@@ -28,7 +28,7 @@ const config = defineConfig([
     platform: "node",
     splitting: true,
     clean: false,
-    dts: true,
+    dts: false,
     sourcemap: false,
     shims: true,
     tsconfig: "./tsconfig.json",
