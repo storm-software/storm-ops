@@ -3,7 +3,7 @@ import type {
   ProjectGraph,
   ProjectGraphProjectNode
 } from "@nx/devkit";
-import { calculateProjectBuildableDependencies } from "@nx/js/src/utils/buildable-libs-utils";
+import { calculateProjectBuildableDependencies } from "@nx/js/internal";
 import type { StormWorkspaceConfig } from "@storm-software/config";
 import { writeTrace } from "@storm-software/config-tools/logger/console";
 import { joinPaths } from "@storm-software/config-tools/utilities/correct-paths";

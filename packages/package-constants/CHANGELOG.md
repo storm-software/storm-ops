@@ -2,6 +2,88 @@
 
 # Changelog for Storm Ops - Package Constants
 
+## [0.1.99](https://github.com/storm-software/storm-ops/releases/tag/package-constants%400.1.99) (07/05/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace packages' dependencies ([8cfa3011d](https://github.com/storm-software/storm-ops/commit/8cfa3011d))
+
+## [0.1.98](https://github.com/storm-software/storm-ops/releases/tag/package-constants%400.1.98) (07/04/2026)
+
+### Miscellaneous
+
+- **monorepo:** Disable `treefmt` to prevent build issues ([0d2e21f3f](https://github.com/storm-software/storm-ops/commit/0d2e21f3f))
+
+## [0.1.96](https://github.com/storm-software/storm-ops/releases/tag/package-constants%400.1.96) (07/03/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace packages' dependencies ([94184a932](https://github.com/storm-software/storm-ops/commit/94184a932))
+- **monorepo:** Update workspace packages' dependencies ([5580e18dc](https://github.com/storm-software/storm-ops/commit/5580e18dc))
+
+## [0.1.95](https://github.com/storm-software/storm-ops/releases/tag/package-constants%400.1.95) (06/30/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update repository packages' dependencies ([6f81fb5b5](https://github.com/storm-software/storm-ops/commit/6f81fb5b5))
+
+### Bug Fixes
+
+- **monorepo:** Resolve typing issues resulting from Nx upgrade ([82b59fcc9](https://github.com/storm-software/storm-ops/commit/82b59fcc9))
+
+## [0.1.94](https://github.com/storm-software/storm-ops/releases/tag/package-constants%400.1.94) (06/29/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update formatting in `package.json` file ([d46f84d43](https://github.com/storm-software/storm-ops/commit/d46f84d43))
+
+### Bug Fixes
+
+- **workspace-tools:** Resolve issue applying the cargo project name parameter ([f927214be](https://github.com/storm-software/storm-ops/commit/f927214be))
+
+## [0.1.93](https://github.com/storm-software/storm-ops/releases/tag/package-constants%400.1.93) (06/28/2026)
+
+### Miscellaneous
+
+- **monorepo:** Upgrade workspace packages' dependencies ([fcc009e9d](https://github.com/storm-software/storm-ops/commit/fcc009e9d))
+
+### Bug Fixes
+
+- **package-constants:** Remove `output` directory from excludes list ([6e13b4801](https://github.com/storm-software/storm-ops/commit/6e13b4801))
+
+### Continuous Integration
+
+- **monorepo:** Update clean owners workflow action ([2f3d525b4](https://github.com/storm-software/storm-ops/commit/2f3d525b4))
+
+## [0.1.91](https://github.com/storm-software/storm-ops/releases/tag/package-constants%400.1.91) (06/26/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace packages' dependencies ([5b4faf445](https://github.com/storm-software/storm-ops/commit/5b4faf445))
+
+### Features
+
+- **npm-tools:** Updated `getVersion` function to allow `retries` and `timeout` options ([c1ebc0184](https://github.com/storm-software/storm-ops/commit/c1ebc0184))
+
+## [0.1.90](https://github.com/storm-software/storm-ops/releases/tag/package-constants%400.1.90) (06/24/2026)
+
+### Bug Fixes
+
+- **pnpm-tools:** Resolve issue with replace statement when formatting semver ([f9e233720](https://github.com/storm-software/storm-ops/commit/f9e233720))
+
+## [0.1.89](https://github.com/storm-software/storm-ops/releases/tag/package-constants%400.1.89) (06/24/2026)
+
+### Miscellaneous
+
+- **monorepo:** Reformat workspace packages' `package.json` files ([ca6f03b66](https://github.com/storm-software/storm-ops/commit/ca6f03b66))
+- **monorepo:** Update workspace packages' dependencies ([ab5da025e](https://github.com/storm-software/storm-ops/commit/ab5da025e))
+
+## [0.1.88](https://github.com/storm-software/storm-ops/releases/tag/package-constants%400.1.88) (06/23/2026)
+
+### Miscellaneous
+
+- **monorepo:** Lint workspace package files ([952a75243](https://github.com/storm-software/storm-ops/commit/952a75243))
+
 ## [0.1.87](https://github.com/storm-software/storm-ops/releases/tag/package-constants%400.1.87) (06/19/2026)
 
 ### Miscellaneous

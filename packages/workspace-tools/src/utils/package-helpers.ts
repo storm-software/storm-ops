@@ -11,7 +11,7 @@ import {
 import { execFileSync } from "child_process";
 import { existsSync } from "node:fs";
 import { readFile, writeFile } from "node:fs/promises";
-import type { PackageJson } from "nx/src/utils/package-json.js";
+import type { PackageJson } from "nx/src/utils/package-json";
 import { dirname, resolve } from "path";
 import { format } from "prettier";
 import { isEqualProjectTag, ProjectTagConstants } from "./project-tags";

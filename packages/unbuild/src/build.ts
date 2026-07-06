@@ -22,7 +22,7 @@ import {
   writeJsonFile
 } from "@nx/devkit";
 import { getHelperDependency, HelperDependency } from "@nx/js";
-import { calculateProjectBuildableDependencies } from "@nx/js/src/utils/buildable-libs-utils";
+import { calculateProjectBuildableDependencies } from "@nx/js/internal";
 import {
   addPackageDependencies,
   addWorkspacePackageJsonFields,

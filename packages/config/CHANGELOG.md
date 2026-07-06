@@ -2,6 +2,119 @@
 
 # Changelog for Storm Ops - Config
 
+## [1.138.23](https://github.com/storm-software/storm-ops/releases/tag/config%401.138.23) (07/05/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace packages' dependencies ([8cfa3011d](https://github.com/storm-software/storm-ops/commit/8cfa3011d))
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.239**
+
+## [1.138.22](https://github.com/storm-software/storm-ops/releases/tag/config%401.138.22) (07/04/2026)
+
+### Miscellaneous
+
+- **monorepo:** Disable `treefmt` to prevent build issues ([0d2e21f3f](https://github.com/storm-software/storm-ops/commit/0d2e21f3f))
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.238**
+
+## [1.138.21](https://github.com/storm-software/storm-ops/releases/tag/config%401.138.21) (07/04/2026)
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.237**
+
+## [1.138.20](https://github.com/storm-software/storm-ops/releases/tag/config%401.138.20) (07/03/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace packages' dependencies ([94184a932](https://github.com/storm-software/storm-ops/commit/94184a932))
+- **monorepo:** Update workspace packages' dependencies ([5580e18dc](https://github.com/storm-software/storm-ops/commit/5580e18dc))
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.236**
+
+## [1.138.19](https://github.com/storm-software/storm-ops/releases/tag/config%401.138.19) (06/30/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update repository packages' dependencies ([6f81fb5b5](https://github.com/storm-software/storm-ops/commit/6f81fb5b5))
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.235**
+
+## [1.138.18](https://github.com/storm-software/storm-ops/releases/tag/config%401.138.18) (06/29/2026)
+
+### Bug Fixes
+
+- **workspace-tools:** Resolve issue applying the cargo project name parameter ([f927214be](https://github.com/storm-software/storm-ops/commit/f927214be))
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.234**
+
+## [1.138.17](https://github.com/storm-software/storm-ops/releases/tag/config%401.138.17) (06/28/2026)
+
+### Miscellaneous
+
+- **monorepo:** Upgrade workspace packages' dependencies ([fcc009e9d](https://github.com/storm-software/storm-ops/commit/fcc009e9d))
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.233**
+
+## [1.138.16](https://github.com/storm-software/storm-ops/releases/tag/config%401.138.16) (06/28/2026)
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.232**
+
+## [1.138.15](https://github.com/storm-software/storm-ops/releases/tag/config%401.138.15) (06/26/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace packages' dependencies ([5b4faf445](https://github.com/storm-software/storm-ops/commit/5b4faf445))
+
+### Features
+
+- **npm-tools:** Updated `getVersion` function to allow `retries` and `timeout` options ([c1ebc0184](https://github.com/storm-software/storm-ops/commit/c1ebc0184))
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.231**
+
+## [1.138.14](https://github.com/storm-software/storm-ops/releases/tag/config%401.138.14) (06/24/2026)
+
+### Bug Fixes
+
+- **pnpm-tools:** Resolve issue with replace statement when formatting semver ([f9e233720](https://github.com/storm-software/storm-ops/commit/f9e233720))
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.230**
+
+## [1.138.13](https://github.com/storm-software/storm-ops/releases/tag/config%401.138.13) (06/24/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace packages' dependencies ([ab5da025e](https://github.com/storm-software/storm-ops/commit/ab5da025e))
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.229**
+
+## [1.138.12](https://github.com/storm-software/storm-ops/releases/tag/config%401.138.12) (06/23/2026)
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.228**
+
 ## [1.138.11](https://github.com/storm-software/storm-ops/releases/tag/config%401.138.11) (06/19/2026)
 
 ### Miscellaneous

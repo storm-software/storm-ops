@@ -12,7 +12,7 @@ import {
   updateJson,
   updateProjectConfiguration
 } from "@nx/devkit";
-import { determineProjectNameAndRootOptions } from "@nx/devkit/src/generators/project-name-and-root-utils";
+import { determineProjectNameAndRootOptions } from "@nx/devkit/internal";
 import { applicationGenerator as nodeApplicationGenerator } from "@nx/node";
 import { nxVersion } from "@nx/node/src/utils/versions";
 import { StormWorkspaceConfig } from "@storm-software/config";

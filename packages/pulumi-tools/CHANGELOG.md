@@ -2,6 +2,147 @@
 
 # Changelog for Storm Ops - Pulumi Tools
 
+## [0.22.269](https://github.com/storm-software/storm-ops/releases/tag/pulumi-tools%400.22.269) (07/05/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace packages' dependencies ([8cfa3011d](https://github.com/storm-software/storm-ops/commit/8cfa3011d))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.23**
+- Updated **config-tools** to **v1.190.86**
+- Updated **workspace-tools** to **v1.296.66**
+
+## [0.22.268](https://github.com/storm-software/storm-ops/releases/tag/pulumi-tools%400.22.268) (07/04/2026)
+
+### Miscellaneous
+
+- **monorepo:** Disable `treefmt` to prevent build issues ([0d2e21f3f](https://github.com/storm-software/storm-ops/commit/0d2e21f3f))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.22**
+- Updated **config-tools** to **v1.190.85**
+- Updated **workspace-tools** to **v1.296.65**
+
+## [0.22.267](https://github.com/storm-software/storm-ops/releases/tag/pulumi-tools%400.22.267) (07/04/2026)
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.21**
+- Updated **config-tools** to **v1.190.84**
+- Updated **workspace-tools** to **v1.296.64**
+
+## [0.22.266](https://github.com/storm-software/storm-ops/releases/tag/pulumi-tools%400.22.266) (07/03/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace packages' dependencies ([94184a932](https://github.com/storm-software/storm-ops/commit/94184a932))
+- **monorepo:** Update workspace packages' dependencies ([5580e18dc](https://github.com/storm-software/storm-ops/commit/5580e18dc))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.20**
+- Updated **config-tools** to **v1.190.83**
+- Updated **workspace-tools** to **v1.296.63**
+
+## [0.22.265](https://github.com/storm-software/storm-ops/releases/tag/pulumi-tools%400.22.265) (06/30/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update repository packages' dependencies ([6f81fb5b5](https://github.com/storm-software/storm-ops/commit/6f81fb5b5))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.19**
+- Updated **config-tools** to **v1.190.82**
+- Updated **workspace-tools** to **v1.296.62**
+
+## [0.22.264](https://github.com/storm-software/storm-ops/releases/tag/pulumi-tools%400.22.264) (06/29/2026)
+
+### Bug Fixes
+
+- **workspace-tools:** Resolve issue applying the cargo project name parameter ([f927214be](https://github.com/storm-software/storm-ops/commit/f927214be))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.18**
+- Updated **config-tools** to **v1.190.81**
+- Updated **workspace-tools** to **v1.296.61**
+
+## [0.22.263](https://github.com/storm-software/storm-ops/releases/tag/pulumi-tools%400.22.263) (06/28/2026)
+
+### Miscellaneous
+
+- **monorepo:** Upgrade workspace packages' dependencies ([fcc009e9d](https://github.com/storm-software/storm-ops/commit/fcc009e9d))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.17**
+- Updated **config-tools** to **v1.190.80**
+- Updated **workspace-tools** to **v1.296.60**
+
+## [0.22.262](https://github.com/storm-software/storm-ops/releases/tag/pulumi-tools%400.22.262) (06/28/2026)
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.16**
+- Updated **config-tools** to **v1.190.79**
+- Updated **workspace-tools** to **v1.296.59**
+
+## [0.22.261](https://github.com/storm-software/storm-ops/releases/tag/pulumi-tools%400.22.261) (06/26/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace packages' dependencies ([5b4faf445](https://github.com/storm-software/storm-ops/commit/5b4faf445))
+
+### Features
+
+- **npm-tools:** Updated `getVersion` function to allow `retries` and `timeout` options ([c1ebc0184](https://github.com/storm-software/storm-ops/commit/c1ebc0184))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.15**
+- Updated **config-tools** to **v1.190.78**
+- Updated **workspace-tools** to **v1.296.58**
+
+## [0.22.260](https://github.com/storm-software/storm-ops/releases/tag/pulumi-tools%400.22.260) (06/24/2026)
+
+### Bug Fixes
+
+- **pnpm-tools:** Resolve issue with replace statement when formatting semver ([f9e233720](https://github.com/storm-software/storm-ops/commit/f9e233720))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.14**
+- Updated **config-tools** to **v1.190.77**
+- Updated **workspace-tools** to **v1.296.57**
+
+## [0.22.259](https://github.com/storm-software/storm-ops/releases/tag/pulumi-tools%400.22.259) (06/24/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace packages' dependencies ([ab5da025e](https://github.com/storm-software/storm-ops/commit/ab5da025e))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.13**
+- Updated **config-tools** to **v1.190.76**
+- Updated **workspace-tools** to **v1.296.56**
+
+## [0.22.258](https://github.com/storm-software/storm-ops/releases/tag/pulumi-tools%400.22.258) (06/23/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace packages' dependencies ([aeabca9eb](https://github.com/storm-software/storm-ops/commit/aeabca9eb))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.12**
+- Updated **config-tools** to **v1.190.75**
+- Updated **workspace-tools** to **v1.296.55**
+
 ## [0.22.257](https://github.com/storm-software/storm-ops/releases/tag/pulumi-tools%400.22.257) (06/19/2026)
 
 ### Miscellaneous

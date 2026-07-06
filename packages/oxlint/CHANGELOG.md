@@ -2,6 +2,184 @@
 
 # Changelog for Storm Ops - Oxlint
 
+## [0.0.52](https://github.com/storm-software/storm-ops/releases/tag/oxlint%400.0.52) (07/05/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace packages' dependencies ([8cfa3011d](https://github.com/storm-software/storm-ops/commit/8cfa3011d))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.23**
+- Updated **config-tools** to **v1.190.86**
+- Updated **eslint-plugin-banner** to **v0.0.51**
+- Updated **eslint-plugin-pnpm** to **v0.0.49**
+- Updated **eslint-plugin-tsdoc** to **v0.0.49**
+
+## [0.0.51](https://github.com/storm-software/storm-ops/releases/tag/oxlint%400.0.51) (07/04/2026)
+
+### Miscellaneous
+
+- **monorepo:** Disable `treefmt` to prevent build issues ([0d2e21f3f](https://github.com/storm-software/storm-ops/commit/0d2e21f3f))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.22**
+- Updated **config-tools** to **v1.190.85**
+- Updated **eslint-plugin-banner** to **v0.0.50**
+- Updated **eslint-plugin-pnpm** to **v0.0.48**
+- Updated **eslint-plugin-tsdoc** to **v0.0.48**
+
+## [0.0.50](https://github.com/storm-software/storm-ops/releases/tag/oxlint%400.0.50) (07/04/2026)
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.21**
+- Updated **config-tools** to **v1.190.84**
+- Updated **eslint-plugin-banner** to **v0.0.49**
+- Updated **eslint-plugin-pnpm** to **v0.0.47**
+- Updated **eslint-plugin-tsdoc** to **v0.0.47**
+
+## [0.0.49](https://github.com/storm-software/storm-ops/releases/tag/oxlint%400.0.49) (07/03/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace packages' dependencies ([94184a932](https://github.com/storm-software/storm-ops/commit/94184a932))
+- **monorepo:** Update workspace packages' dependencies ([5580e18dc](https://github.com/storm-software/storm-ops/commit/5580e18dc))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.20**
+- Updated **config-tools** to **v1.190.83**
+- Updated **eslint-plugin-banner** to **v0.0.48**
+- Updated **eslint-plugin-pnpm** to **v0.0.46**
+- Updated **eslint-plugin-tsdoc** to **v0.0.46**
+
+## [0.0.48](https://github.com/storm-software/storm-ops/releases/tag/oxlint%400.0.48) (06/30/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update repository packages' dependencies ([6f81fb5b5](https://github.com/storm-software/storm-ops/commit/6f81fb5b5))
+
+### Bug Fixes
+
+- **monorepo:** Resolve typing issues resulting from Nx upgrade ([82b59fcc9](https://github.com/storm-software/storm-ops/commit/82b59fcc9))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.19**
+- Updated **config-tools** to **v1.190.82**
+- Updated **eslint-plugin-banner** to **v0.0.47**
+- Updated **eslint-plugin-pnpm** to **v0.0.45**
+- Updated **eslint-plugin-tsdoc** to **v0.0.45**
+
+## [0.0.47](https://github.com/storm-software/storm-ops/releases/tag/oxlint%400.0.47) (06/29/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update formatting in `package.json` file ([d46f84d43](https://github.com/storm-software/storm-ops/commit/d46f84d43))
+
+### Bug Fixes
+
+- **workspace-tools:** Resolve issue applying the cargo project name parameter ([f927214be](https://github.com/storm-software/storm-ops/commit/f927214be))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.18**
+- Updated **config-tools** to **v1.190.81**
+- Updated **eslint-plugin-banner** to **v0.0.46**
+- Updated **eslint-plugin-pnpm** to **v0.0.44**
+- Updated **eslint-plugin-tsdoc** to **v0.0.44**
+
+## [0.0.46](https://github.com/storm-software/storm-ops/releases/tag/oxlint%400.0.46) (06/28/2026)
+
+### Miscellaneous
+
+- **monorepo:** Upgrade workspace packages' dependencies ([fcc009e9d](https://github.com/storm-software/storm-ops/commit/fcc009e9d))
+
+### Continuous Integration
+
+- **monorepo:** Update clean owners workflow action ([2f3d525b4](https://github.com/storm-software/storm-ops/commit/2f3d525b4))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.17**
+- Updated **config-tools** to **v1.190.80**
+- Updated **eslint-plugin-banner** to **v0.0.45**
+- Updated **eslint-plugin-pnpm** to **v0.0.43**
+- Updated **eslint-plugin-tsdoc** to **v0.0.43**
+
+## [0.0.45](https://github.com/storm-software/storm-ops/releases/tag/oxlint%400.0.45) (06/28/2026)
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.16**
+- Updated **config-tools** to **v1.190.79**
+- Updated **eslint-plugin-banner** to **v0.0.44**
+- Updated **eslint-plugin-pnpm** to **v0.0.42**
+- Updated **eslint-plugin-tsdoc** to **v0.0.42**
+
+## [0.0.44](https://github.com/storm-software/storm-ops/releases/tag/oxlint%400.0.44) (06/26/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace packages' dependencies ([5b4faf445](https://github.com/storm-software/storm-ops/commit/5b4faf445))
+
+### Features
+
+- **npm-tools:** Updated `getVersion` function to allow `retries` and `timeout` options ([c1ebc0184](https://github.com/storm-software/storm-ops/commit/c1ebc0184))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.15**
+- Updated **config-tools** to **v1.190.78**
+- Updated **eslint-plugin-banner** to **v0.0.43**
+- Updated **eslint-plugin-pnpm** to **v0.0.41**
+- Updated **eslint-plugin-tsdoc** to **v0.0.41**
+
+## [0.0.43](https://github.com/storm-software/storm-ops/releases/tag/oxlint%400.0.43) (06/24/2026)
+
+### Bug Fixes
+
+- **pnpm-tools:** Resolve issue with replace statement when formatting semver ([f9e233720](https://github.com/storm-software/storm-ops/commit/f9e233720))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.14**
+- Updated **config-tools** to **v1.190.77**
+- Updated **eslint-plugin-banner** to **v0.0.42**
+- Updated **eslint-plugin-pnpm** to **v0.0.40**
+- Updated **eslint-plugin-tsdoc** to **v0.0.40**
+
+## [0.0.42](https://github.com/storm-software/storm-ops/releases/tag/oxlint%400.0.42) (06/24/2026)
+
+### Miscellaneous
+
+- **monorepo:** Reformat workspace packages' `package.json` files ([ca6f03b66](https://github.com/storm-software/storm-ops/commit/ca6f03b66))
+- **monorepo:** Update workspace packages' dependencies ([ab5da025e](https://github.com/storm-software/storm-ops/commit/ab5da025e))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.13**
+- Updated **config-tools** to **v1.190.76**
+- Updated **eslint-plugin-banner** to **v0.0.41**
+- Updated **eslint-plugin-pnpm** to **v0.0.39**
+- Updated **eslint-plugin-tsdoc** to **v0.0.39**
+
+## [0.0.41](https://github.com/storm-software/storm-ops/releases/tag/oxlint%400.0.41) (06/23/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace packages' dependencies ([aeabca9eb](https://github.com/storm-software/storm-ops/commit/aeabca9eb))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.12**
+- Updated **config-tools** to **v1.190.75**
+- Updated **eslint-plugin-banner** to **v0.0.40**
+- Updated **eslint-plugin-pnpm** to **v0.0.38**
+- Updated **eslint-plugin-tsdoc** to **v0.0.38**
+
 ## [0.0.40](https://github.com/storm-software/storm-ops/releases/tag/oxlint%400.0.40) (06/19/2026)
 
 ### Miscellaneous

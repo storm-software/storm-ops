@@ -2,6 +2,65 @@
 
 # Changelog for Storm Ops - Prettier
 
+## [0.59.139](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.59.139) (07/05/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace packages' dependencies ([8cfa3011d](https://github.com/storm-software/storm-ops/commit/8cfa3011d))
+
+## [0.59.138](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.59.138) (07/04/2026)
+
+### Miscellaneous
+
+- **monorepo:** Disable `treefmt` to prevent build issues ([0d2e21f3f](https://github.com/storm-software/storm-ops/commit/0d2e21f3f))
+
+## [0.59.136](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.59.136) (07/03/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace packages' dependencies ([94184a932](https://github.com/storm-software/storm-ops/commit/94184a932))
+- **monorepo:** Update workspace packages' dependencies ([5580e18dc](https://github.com/storm-software/storm-ops/commit/5580e18dc))
+
+## [0.59.135](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.59.135) (06/30/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update repository packages' dependencies ([6f81fb5b5](https://github.com/storm-software/storm-ops/commit/6f81fb5b5))
+
+## [0.59.134](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.59.134) (06/29/2026)
+
+### Bug Fixes
+
+- **workspace-tools:** Resolve issue applying the cargo project name parameter ([f927214be](https://github.com/storm-software/storm-ops/commit/f927214be))
+
+## [0.59.133](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.59.133) (06/28/2026)
+
+### Miscellaneous
+
+- **monorepo:** Upgrade workspace packages' dependencies ([fcc009e9d](https://github.com/storm-software/storm-ops/commit/fcc009e9d))
+
+## [0.59.131](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.59.131) (06/26/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace packages' dependencies ([5b4faf445](https://github.com/storm-software/storm-ops/commit/5b4faf445))
+
+### Features
+
+- **npm-tools:** Updated `getVersion` function to allow `retries` and `timeout` options ([c1ebc0184](https://github.com/storm-software/storm-ops/commit/c1ebc0184))
+
+## [0.59.130](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.59.130) (06/24/2026)
+
+### Bug Fixes
+
+- **pnpm-tools:** Resolve issue with replace statement when formatting semver ([f9e233720](https://github.com/storm-software/storm-ops/commit/f9e233720))
+
+## [0.59.129](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.59.129) (06/24/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace packages' dependencies ([ab5da025e](https://github.com/storm-software/storm-ops/commit/ab5da025e))
+
 ## [0.59.127](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.59.127) (06/19/2026)
 
 ### Miscellaneous

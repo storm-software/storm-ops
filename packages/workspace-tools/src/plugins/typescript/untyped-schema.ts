@@ -1,15 +1,18 @@
 import {
+  CreateNodes,
   createNodesFromFiles,
-  CreateNodesResultV2,
-  CreateNodesV2,
+  CreateNodesResultArray,
+  detectPackageManager,
+  getPackageManagerCommand,
   readJsonFile
 } from "@nx/devkit";
 import { defu } from "defu";
 import { existsSync } from "node:fs";
 import { dirname, join } from "node:path";
-import { readNxJson } from "nx/src/config/nx-json.js";
+import { readNxJson } from "nx/src/config/nx-json";
 import type { ProjectConfiguration } from "nx/src/config/workspace-json-project-json";
 import {
+  NxPackageJson,
   readTargetsFromPackageJson,
   type PackageJson
 } from "nx/src/utils/package-json";
@@ -21,9 +24,9 @@ export const name = "storm-software/typescript/untyped";
 // eslint-disable-next-line @typescript-eslint/no-empty-object-type
 export type UntypedPluginOptions = {};
 
-export const createNodesV2: CreateNodesV2<UntypedPluginOptions> = [
+export const createNodesV2: CreateNodes<UntypedPluginOptions> = [
   "**/*untyped.ts",
-  async (configFiles, options, context): Promise<CreateNodesResultV2> => {
+  async (configFiles, options, context): Promise<CreateNodesResultArray> => {
     return await createNodesFromFiles(
       (configFile, options, context) => {
         try {
@@ -64,12 +67,18 @@ Please add it to your dependencies by running "pnpm add untyped -D --filter="${p
           );
 
           const nxJson = readNxJson(context.workspaceRoot);
+          const packageManagerCommand = getPackageManagerCommand(
+            detectPackageManager(context.workspaceRoot),
+            context.workspaceRoot
+          );
+
           const targets: ProjectConfiguration["targets"] =
             readTargetsFromPackageJson(
-              packageJson as PackageJson,
+              packageJson as NxPackageJson,
               nxJson,
               projectConfig.root,
-              context.workspaceRoot
+              context.workspaceRoot,
+              packageManagerCommand
             );
 
           const root = getRoot(projectRoot, context);

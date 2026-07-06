@@ -2,6 +2,180 @@
 
 # Changelog for Storm Ops - Git Tools
 
+## [2.131.94](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.131.94) (07/05/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace packages' dependencies ([8cfa3011d](https://github.com/storm-software/storm-ops/commit/8cfa3011d))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.23**
+- Updated **config-tools** to **v1.190.86**
+- Updated **conventional-changelog** to **v0.3.247**
+- Updated **package-constants** to **v0.1.99**
+
+## [2.131.93](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.131.93) (07/04/2026)
+
+### Miscellaneous
+
+- **monorepo:** Disable `treefmt` to prevent build issues ([0d2e21f3f](https://github.com/storm-software/storm-ops/commit/0d2e21f3f))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.22**
+- Updated **config-tools** to **v1.190.85**
+- Updated **conventional-changelog** to **v0.3.246**
+- Updated **package-constants** to **v0.1.98**
+
+## [2.131.92](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.131.92) (07/04/2026)
+
+### Bug Fixes
+
+- **git-tools:** Resolve circular formatting issue and added back `treefmt` configuration ([20ed59138](https://github.com/storm-software/storm-ops/commit/20ed59138))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.21**
+- Updated **config-tools** to **v1.190.84**
+- Updated **conventional-changelog** to **v0.3.245**
+- Updated **package-constants** to **v0.1.97**
+
+## [2.131.91](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.131.91) (07/03/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace packages' dependencies ([94184a932](https://github.com/storm-software/storm-ops/commit/94184a932))
+- **monorepo:** Update workspace packages' dependencies ([5580e18dc](https://github.com/storm-software/storm-ops/commit/5580e18dc))
+
+### Bug Fixes
+
+- **devenv-modules:** Remove `treefmt` to prevent circular formatting ([2a24f0bb7](https://github.com/storm-software/storm-ops/commit/2a24f0bb7))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.20**
+- Updated **config-tools** to **v1.190.83**
+- Updated **conventional-changelog** to **v0.3.244**
+- Updated **package-constants** to **v0.1.96**
+
+## [2.131.90](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.131.90) (06/30/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update repository packages' dependencies ([6f81fb5b5](https://github.com/storm-software/storm-ops/commit/6f81fb5b5))
+
+### Bug Fixes
+
+- **monorepo:** Resolve typing issues resulting from Nx upgrade ([82b59fcc9](https://github.com/storm-software/storm-ops/commit/82b59fcc9))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.19**
+- Updated **config-tools** to **v1.190.82**
+- Updated **conventional-changelog** to **v0.3.243**
+- Updated **package-constants** to **v0.1.95**
+
+## [2.131.89](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.131.89) (06/29/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update formatting in `package.json` file ([d46f84d43](https://github.com/storm-software/storm-ops/commit/d46f84d43))
+
+### Bug Fixes
+
+- **workspace-tools:** Resolve issue applying the cargo project name parameter ([f927214be](https://github.com/storm-software/storm-ops/commit/f927214be))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.18**
+- Updated **config-tools** to **v1.190.81**
+- Updated **conventional-changelog** to **v0.3.242**
+- Updated **package-constants** to **v0.1.94**
+
+## [2.131.88](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.131.88) (06/28/2026)
+
+### Miscellaneous
+
+- **monorepo:** Upgrade workspace packages' dependencies ([fcc009e9d](https://github.com/storm-software/storm-ops/commit/fcc009e9d))
+
+### Continuous Integration
+
+- **monorepo:** Update clean owners workflow action ([2f3d525b4](https://github.com/storm-software/storm-ops/commit/2f3d525b4))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.17**
+- Updated **config-tools** to **v1.190.80**
+- Updated **conventional-changelog** to **v0.3.241**
+- Updated **package-constants** to **v0.1.93**
+
+## [2.131.87](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.131.87) (06/28/2026)
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.16**
+- Updated **config-tools** to **v1.190.79**
+- Updated **conventional-changelog** to **v0.3.240**
+- Updated **package-constants** to **v0.1.92**
+
+## [2.131.86](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.131.86) (06/26/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace packages' dependencies ([5b4faf445](https://github.com/storm-software/storm-ops/commit/5b4faf445))
+
+### Features
+
+- **npm-tools:** Updated `getVersion` function to allow `retries` and `timeout` options ([c1ebc0184](https://github.com/storm-software/storm-ops/commit/c1ebc0184))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.15**
+- Updated **config-tools** to **v1.190.78**
+- Updated **conventional-changelog** to **v0.3.239**
+- Updated **package-constants** to **v0.1.91**
+
+## [2.131.85](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.131.85) (06/24/2026)
+
+### Bug Fixes
+
+- **pnpm-tools:** Resolve issue with replace statement when formatting semver ([f9e233720](https://github.com/storm-software/storm-ops/commit/f9e233720))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.14**
+- Updated **config-tools** to **v1.190.77**
+- Updated **conventional-changelog** to **v0.3.238**
+- Updated **package-constants** to **v0.1.90**
+
+## [2.131.84](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.131.84) (06/24/2026)
+
+### Miscellaneous
+
+- **monorepo:** Reformat workspace packages' `package.json` files ([ca6f03b66](https://github.com/storm-software/storm-ops/commit/ca6f03b66))
+- **monorepo:** Update workspace packages' dependencies ([ab5da025e](https://github.com/storm-software/storm-ops/commit/ab5da025e))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.13**
+- Updated **config-tools** to **v1.190.76**
+- Updated **conventional-changelog** to **v0.3.237**
+- Updated **package-constants** to **v0.1.89**
+
+## [2.131.83](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.131.83) (06/23/2026)
+
+### Miscellaneous
+
+- **monorepo:** Lint workspace package files ([952a75243](https://github.com/storm-software/storm-ops/commit/952a75243))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.12**
+- Updated **config-tools** to **v1.190.75**
+- Updated **conventional-changelog** to **v0.3.236**
+- Updated **package-constants** to **v0.1.88**
+
 ## [2.131.82](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.131.82) (06/19/2026)
 
 ### Miscellaneous

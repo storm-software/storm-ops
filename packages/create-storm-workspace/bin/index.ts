@@ -1,6 +1,5 @@
 #!/usr/bin/env node
 
-import { getNpmPackageVersion } from "@nx/workspace/src/generators/utils/get-npm-package-version";
 import { getConfig } from "@storm-software/config-tools";
 import {
   brandIcon,
@@ -11,6 +10,37 @@ import {
 } from "@storm-software/config-tools/logger/console";
 import { createWorkspace } from "create-nx-workspace";
 import { prompt } from "enquirer";
+import { execFileSync } from "node:child_process";
+
+function getNpmPackageVersion(
+  packageName: string,
+  packageVersion?: string
+): string | null {
+  try {
+    const packageSpec = packageVersion
+      ? `${packageName}@${packageVersion}`
+      : packageName;
+    const npmBin = process.platform === "win32" ? "npm.cmd" : "npm";
+    const version = execFileSync(
+      npmBin,
+      ["view", packageSpec, "version", "--json"],
+      { stdio: ["pipe", "pipe", "ignore"], windowsHide: true }
+    );
+
+    if (version) {
+      const versionOrArray = JSON.parse(version.toString()) as
+        string | string[];
+      if (typeof versionOrArray === "string") {
+        return versionOrArray;
+      }
+      return versionOrArray.at(-1) ?? null;
+    }
+  } catch {
+    // npm view failed; fall back to the provided version tag if any
+  }
+
+  return packageVersion ?? null;
+}
 
 async function main() {
   const stopwatch = getStopwatch("create-storm-workspace");

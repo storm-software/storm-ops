@@ -2,6 +2,147 @@
 
 # Changelog for Storm Ops - K8s Tools
 
+## [0.42.269](https://github.com/storm-software/storm-ops/releases/tag/k8s-tools%400.42.269) (07/05/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace packages' dependencies ([8cfa3011d](https://github.com/storm-software/storm-ops/commit/8cfa3011d))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.23**
+- Updated **config-tools** to **v1.190.86**
+- Updated **workspace-tools** to **v1.296.66**
+
+## [0.42.268](https://github.com/storm-software/storm-ops/releases/tag/k8s-tools%400.42.268) (07/04/2026)
+
+### Miscellaneous
+
+- **monorepo:** Disable `treefmt` to prevent build issues ([0d2e21f3f](https://github.com/storm-software/storm-ops/commit/0d2e21f3f))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.22**
+- Updated **config-tools** to **v1.190.85**
+- Updated **workspace-tools** to **v1.296.65**
+
+## [0.42.267](https://github.com/storm-software/storm-ops/releases/tag/k8s-tools%400.42.267) (07/04/2026)
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.21**
+- Updated **config-tools** to **v1.190.84**
+- Updated **workspace-tools** to **v1.296.64**
+
+## [0.42.266](https://github.com/storm-software/storm-ops/releases/tag/k8s-tools%400.42.266) (07/03/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace packages' dependencies ([94184a932](https://github.com/storm-software/storm-ops/commit/94184a932))
+- **monorepo:** Update workspace packages' dependencies ([5580e18dc](https://github.com/storm-software/storm-ops/commit/5580e18dc))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.20**
+- Updated **config-tools** to **v1.190.83**
+- Updated **workspace-tools** to **v1.296.63**
+
+## [0.42.265](https://github.com/storm-software/storm-ops/releases/tag/k8s-tools%400.42.265) (06/30/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update repository packages' dependencies ([6f81fb5b5](https://github.com/storm-software/storm-ops/commit/6f81fb5b5))
+
+### Bug Fixes
+
+- **workspace-tools:** Update Nx to v23.0.1 and resolve out-dated function signature issue in plugin ([86f015008](https://github.com/storm-software/storm-ops/commit/86f015008))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.19**
+- Updated **config-tools** to **v1.190.82**
+- Updated **workspace-tools** to **v1.296.62**
+
+## [0.42.264](https://github.com/storm-software/storm-ops/releases/tag/k8s-tools%400.42.264) (06/29/2026)
+
+### Bug Fixes
+
+- **workspace-tools:** Resolve issue applying the cargo project name parameter ([f927214be](https://github.com/storm-software/storm-ops/commit/f927214be))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.18**
+- Updated **config-tools** to **v1.190.81**
+- Updated **workspace-tools** to **v1.296.61**
+
+## [0.42.263](https://github.com/storm-software/storm-ops/releases/tag/k8s-tools%400.42.263) (06/28/2026)
+
+### Miscellaneous
+
+- **monorepo:** Upgrade workspace packages' dependencies ([fcc009e9d](https://github.com/storm-software/storm-ops/commit/fcc009e9d))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.17**
+- Updated **config-tools** to **v1.190.80**
+- Updated **workspace-tools** to **v1.296.60**
+
+## [0.42.262](https://github.com/storm-software/storm-ops/releases/tag/k8s-tools%400.42.262) (06/28/2026)
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.16**
+- Updated **config-tools** to **v1.190.79**
+- Updated **workspace-tools** to **v1.296.59**
+
+## [0.42.261](https://github.com/storm-software/storm-ops/releases/tag/k8s-tools%400.42.261) (06/26/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace packages' dependencies ([5b4faf445](https://github.com/storm-software/storm-ops/commit/5b4faf445))
+
+### Features
+
+- **npm-tools:** Updated `getVersion` function to allow `retries` and `timeout` options ([c1ebc0184](https://github.com/storm-software/storm-ops/commit/c1ebc0184))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.15**
+- Updated **config-tools** to **v1.190.78**
+- Updated **workspace-tools** to **v1.296.58**
+
+## [0.42.260](https://github.com/storm-software/storm-ops/releases/tag/k8s-tools%400.42.260) (06/24/2026)
+
+### Bug Fixes
+
+- **pnpm-tools:** Resolve issue with replace statement when formatting semver ([f9e233720](https://github.com/storm-software/storm-ops/commit/f9e233720))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.14**
+- Updated **config-tools** to **v1.190.77**
+- Updated **workspace-tools** to **v1.296.57**
+
+## [0.42.259](https://github.com/storm-software/storm-ops/releases/tag/k8s-tools%400.42.259) (06/24/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace packages' dependencies ([ab5da025e](https://github.com/storm-software/storm-ops/commit/ab5da025e))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.13**
+- Updated **config-tools** to **v1.190.76**
+- Updated **workspace-tools** to **v1.296.56**
+
+## [0.42.258](https://github.com/storm-software/storm-ops/releases/tag/k8s-tools%400.42.258) (06/23/2026)
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.12**
+- Updated **config-tools** to **v1.190.75**
+- Updated **workspace-tools** to **v1.296.55**
+
 ## [0.42.257](https://github.com/storm-software/storm-ops/releases/tag/k8s-tools%400.42.257) (06/19/2026)
 
 ### Miscellaneous

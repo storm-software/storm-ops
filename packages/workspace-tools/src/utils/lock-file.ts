@@ -3,7 +3,7 @@ import {
   readJsonFile,
   workspaceRoot,
   type CreateDependenciesContext,
-  type CreateNodesContextV2,
+  type CreateNodesContext,
   type PackageManager,
   type ProjectGraphExternalNode,
   type RawProjectGraphDependency
@@ -39,7 +39,7 @@ export function getLockFileNodes(
   packageManager: PackageManager,
   contents: string,
   lockFileHash: string,
-  context: CreateNodesContextV2
+  context: CreateNodesContext
 ): {
   nodes: Record<string, ProjectGraphExternalNode>;
   keyMap:

@@ -2,6 +2,176 @@
 
 # Changelog for Storm Ops - Esbuild
 
+## [0.53.247](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.53.247) (07/05/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace packages' dependencies ([8cfa3011d](https://github.com/storm-software/storm-ops/commit/8cfa3011d))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.246**
+- Updated **config** to **v1.138.23**
+- Updated **config-tools** to **v1.190.86**
+- Updated **tsup** to **v0.2.244**
+
+## [0.53.246](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.53.246) (07/04/2026)
+
+### Miscellaneous
+
+- **monorepo:** Disable `treefmt` to prevent build issues ([0d2e21f3f](https://github.com/storm-software/storm-ops/commit/0d2e21f3f))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.245**
+- Updated **config** to **v1.138.22**
+- Updated **config-tools** to **v1.190.85**
+- Updated **tsup** to **v0.2.243**
+
+## [0.53.245](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.53.245) (07/04/2026)
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.244**
+- Updated **config** to **v1.138.21**
+- Updated **config-tools** to **v1.190.84**
+- Updated **tsup** to **v0.2.242**
+
+## [0.53.244](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.53.244) (07/03/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace packages' dependencies ([94184a932](https://github.com/storm-software/storm-ops/commit/94184a932))
+- **monorepo:** Update workspace packages' dependencies ([5580e18dc](https://github.com/storm-software/storm-ops/commit/5580e18dc))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.243**
+- Updated **config** to **v1.138.20**
+- Updated **config-tools** to **v1.190.83**
+- Updated **tsup** to **v0.2.241**
+
+## [0.53.243](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.53.243) (06/30/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update repository packages' dependencies ([6f81fb5b5](https://github.com/storm-software/storm-ops/commit/6f81fb5b5))
+
+### Bug Fixes
+
+- **monorepo:** Resolve typing issues resulting from Nx upgrade ([82b59fcc9](https://github.com/storm-software/storm-ops/commit/82b59fcc9))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.242**
+- Updated **config** to **v1.138.19**
+- Updated **config-tools** to **v1.190.82**
+- Updated **tsup** to **v0.2.240**
+
+## [0.53.242](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.53.242) (06/29/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update formatting in `package.json` file ([d46f84d43](https://github.com/storm-software/storm-ops/commit/d46f84d43))
+
+### Bug Fixes
+
+- **workspace-tools:** Resolve issue applying the cargo project name parameter ([f927214be](https://github.com/storm-software/storm-ops/commit/f927214be))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.241**
+- Updated **config** to **v1.138.18**
+- Updated **config-tools** to **v1.190.81**
+- Updated **tsup** to **v0.2.239**
+
+## [0.53.241](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.53.241) (06/28/2026)
+
+### Miscellaneous
+
+- **monorepo:** Upgrade workspace packages' dependencies ([fcc009e9d](https://github.com/storm-software/storm-ops/commit/fcc009e9d))
+
+### Continuous Integration
+
+- **monorepo:** Update clean owners workflow action ([2f3d525b4](https://github.com/storm-software/storm-ops/commit/2f3d525b4))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.240**
+- Updated **config** to **v1.138.17**
+- Updated **config-tools** to **v1.190.80**
+- Updated **tsup** to **v0.2.238**
+
+## [0.53.240](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.53.240) (06/28/2026)
+
+### Bug Fixes
+
+- **eslint:** Disable `sort-named-exports` linting rule ([6abdad890](https://github.com/storm-software/storm-ops/commit/6abdad890))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.239**
+- Updated **config** to **v1.138.16**
+- Updated **config-tools** to **v1.190.79**
+- Updated **tsup** to **v0.2.237**
+
+## [0.53.239](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.53.239) (06/26/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace packages' dependencies ([5b4faf445](https://github.com/storm-software/storm-ops/commit/5b4faf445))
+
+### Features
+
+- **npm-tools:** Updated `getVersion` function to allow `retries` and `timeout` options ([c1ebc0184](https://github.com/storm-software/storm-ops/commit/c1ebc0184))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.238**
+- Updated **config** to **v1.138.15**
+- Updated **config-tools** to **v1.190.78**
+- Updated **tsup** to **v0.2.236**
+
+## [0.53.238](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.53.238) (06/24/2026)
+
+### Bug Fixes
+
+- **pnpm-tools:** Resolve issue with replace statement when formatting semver ([f9e233720](https://github.com/storm-software/storm-ops/commit/f9e233720))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.237**
+- Updated **config** to **v1.138.14**
+- Updated **config-tools** to **v1.190.77**
+- Updated **tsup** to **v0.2.235**
+
+## [0.53.237](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.53.237) (06/24/2026)
+
+### Miscellaneous
+
+- **monorepo:** Reformat workspace packages' `package.json` files ([ca6f03b66](https://github.com/storm-software/storm-ops/commit/ca6f03b66))
+- **monorepo:** Update workspace packages' dependencies ([ab5da025e](https://github.com/storm-software/storm-ops/commit/ab5da025e))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.236**
+- Updated **config** to **v1.138.13**
+- Updated **config-tools** to **v1.190.76**
+- Updated **tsup** to **v0.2.234**
+
+## [0.53.236](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.53.236) (06/23/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace packages' dependencies ([aeabca9eb](https://github.com/storm-software/storm-ops/commit/aeabca9eb))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.235**
+- Updated **config** to **v1.138.12**
+- Updated **config-tools** to **v1.190.75**
+- Updated **tsup** to **v0.2.233**
+
 ## [0.53.235](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.53.235) (06/19/2026)
 
 ### Miscellaneous

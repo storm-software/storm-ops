@@ -12,20 +12,12 @@ import {
   updateJson,
   writeJson
 } from "@nx/devkit";
-import { determineProjectNameAndRootOptions } from "@nx/devkit/src/generators/project-name-and-root-utils";
+import { determineProjectNameAndRootOptions } from "@nx/devkit/internal";
 import {
   addTsConfigPath,
   getRelativePathToRootTsConfig,
   tsConfigBaseOptions
 } from "@nx/js";
-import jsInitGenerator from "@nx/js/src/generators/init/init";
-import { InitSchema } from "@nx/js/src/generators/init/schema";
-import {
-  Bundler,
-  NormalizedLibraryGeneratorOptions
-} from "@nx/js/src/generators/library/schema";
-import setupVerdaccio from "@nx/js/src/generators/setup-verdaccio/generator";
-import { ProjectPackageManagerWorkspaceState } from "@nx/js/src/utils/package-manager-workspaces";
 import { StormWorkspaceConfig } from "@storm-software/config";
 import { joinPaths } from "@storm-software/config-tools/utilities/correct-paths";
 import type { PackageJson } from "nx/src/utils/package-json";
@@ -44,7 +36,7 @@ export type TypeScriptLibraryGeneratorOptions =
 
 export type TypeScriptLibraryGeneratorNormalizedOptions =
   TypeScriptLibraryGeneratorOptions &
-    NormalizedLibraryGeneratorOptions & {
+    any & {
       rootProject: boolean;
     };
 
@@ -62,14 +54,6 @@ export async function typeScriptLibraryGeneratorFn(
   const normalized = await normalizeOptions(tree, { ...options });
 
   const tasks: GeneratorCallback[] = [];
-  tasks.push(
-    await jsInitGenerator(tree, {
-      ...normalized,
-      tsConfigName: normalized.rootProject
-        ? "tsconfig.json"
-        : "tsconfig.base.json"
-    } as InitSchema)
-  );
 
   tasks.push(
     addDependenciesToPackageJson(
@@ -82,10 +66,6 @@ export async function typeScriptLibraryGeneratorFn(
       }
     )
   );
-
-  if (normalized.publishable) {
-    tasks.push(await setupVerdaccio(tree, { ...normalized, skipFormat: true }));
-  }
 
   const projectConfig = {
     root: normalized.directory,
@@ -364,7 +344,7 @@ export async function normalizeOptions(
     }
   }
 
-  let bundler: Bundler = "tsc";
+  let bundler = "tsc";
   if (options.publishable === false && options.buildable === false) {
     bundler = "none";
   }
@@ -404,8 +384,7 @@ export async function normalizeOptions(
     minimal: false,
     hasPlugin: false,
     isUsingTsSolutionConfig: false,
-    projectPackageManagerWorkspaceState:
-      "included" as ProjectPackageManagerWorkspaceState,
+    projectPackageManagerWorkspaceState: "included",
     ...options,
     fileName,
     name: projectName,

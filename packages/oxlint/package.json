@@ -1,6 +1,6 @@
 {
   "name": "@storm-software/oxlint",
-  "version": "0.0.40",
+  "version": "0.0.52",
   "private": false,
   "description": "A package containing the base Oxlint configuration used by Storm Software across many projects.",
   "keywords": ["oxlint", "oxlint-config", "storm-ops", "storm-software"],
@@ -143,7 +143,7 @@
     "eslint-plugin-react-hooks": "^7.1.1",
     "eslint-plugin-regexp": "^2.10.0",
     "eslint-plugin-storybook": "^0.11.6",
-    "oxlint": "^1.70.0",
+    "oxlint": "^1.72.0",
     "oxlint-tsgolint": "^0.14.2",
     "parse-gitignore": "^2.0.0"
   },

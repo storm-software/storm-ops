@@ -20,6 +20,7 @@ import {
   upgradeCatalog,
   UpgradeCatalogPackageOptions
 } from "../helpers/catalog";
+import { replacePrefix } from "../helpers/format";
 
 let _config: Partial<StormWorkspaceConfig> = {};
 
@@ -80,6 +81,11 @@ export function createProgram(config: StormWorkspaceConfig) {
       .option("--internal", "Whether to update all Storm Software packages.")
       .option("--nx", "Whether to update Nx packages.")
       .option(
+        "--verbose",
+        "An option to enable verbose logging for the update process.",
+        false
+      )
+      .option(
         "--pnpm-plugin",
         "Whether to upgrade the Storm Software pnpm plugin."
       )
@@ -110,6 +116,7 @@ async function updateAction(
     nx?: boolean;
     prefix?: string;
     pnpmPlugin?: boolean;
+    verbose?: boolean;
   }
 ) {
   try {
@@ -118,9 +125,10 @@ async function updateAction(
       install,
       all,
       internal = all,
-      nx = all,
+      nx = false,
       pnpmPlugin,
-      prefix = "^"
+      prefix = "^",
+      verbose = false
     } = options || {};
 
     let packagesFound = false;
@@ -182,7 +190,8 @@ async function updateAction(
                 const result = await upgradeCatalog(catalog, matchedPackage, {
                   tag,
                   prefix: prefix as UpgradeCatalogPackageOptions["prefix"],
-                  workspaceRoot: _config.workspaceRoot
+                  workspaceRoot: _config.workspaceRoot,
+                  verbose
                 });
                 if (result.updated && result.catalog[matchedPackage]) {
                   catalog[matchedPackage] = result.catalog[matchedPackage];
@@ -281,10 +290,8 @@ ${changed
   .map(
     pkg =>
       `- ${chalk.bold(pkg.packageName)}: ${chalk.bold(
-        chalk.red(`v${pkg.previous.replace(/^[\^~><=]*/, "")}`)
-      )} -> ${chalk.bold(
-        chalk.green(`v${pkg.current.replace(/^[\^~><=]*/, "")}`)
-      )}`
+        chalk.red(`v${replacePrefix(pkg.previous)}`)
+      )} -> ${chalk.bold(chalk.green(`v${replacePrefix(pkg.current)}`))}`
   )
   .join("\n")}`,
         _config
@@ -292,14 +299,16 @@ ${changed
     }
   } catch (error) {
     writeFatal(
-      `A fatal error occurred while running Storm pnpm update: \n\n${JSON.stringify(
-        error,
-        null,
-        2
-      )}`,
+      `A fatal error occurred while running storm-pnpm update: ${
+        typeof error === "object"
+          ? error.message
+            ? error.message
+            : `\n${JSON.stringify(error, null, 2)}`
+          : error
+      }`,
       _config
     );
 
-    throw new Error(error?.message, { cause: error });
+    throw error;
   }
 }

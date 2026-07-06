@@ -1,6 +1,6 @@
 {
   "name": "@storm-software/pulumi-tools",
-  "version": "0.22.257",
+  "version": "0.22.269",
   "description": "Tools for managing Pulumi infrastructure within a Nx workspace.",
   "keywords": [
     "iac",
@@ -156,7 +156,7 @@
     "@nx/devkit": "catalog:",
     "@pulumi/aws": "^6.83.4",
     "@pulumi/awsx": "^2.22.0",
-    "@pulumi/pulumi": "^3.246.0",
+    "@pulumi/pulumi": "^3.250.0",
     "@storm-software/config": "workspace:*",
     "@storm-software/config-tools": "workspace:*",
     "@storm-software/workspace-tools": "workspace:*",

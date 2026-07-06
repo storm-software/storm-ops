@@ -1,7 +1,7 @@
 import {
+  CreateNodes,
   createNodesFromFiles,
-  CreateNodesResultV2,
-  CreateNodesV2,
+  CreateNodesResultArray,
   ProjectGraphExternalNode
 } from "@nx/devkit";
 import {
@@ -17,13 +17,13 @@ import { type PackageJson } from "nx/src/utils/package-json";
 
 export const name = "storm-software/cloudflare-tools/cloudflare";
 
-export const createNodesV2: CreateNodesV2 = [
+export const createNodesV2: CreateNodes = [
   "{**/wrangler.toml}",
   async (
     configFiles,
     options = { includeApps: true },
     context
-  ): Promise<CreateNodesResultV2> => {
+  ): Promise<CreateNodesResultArray> => {
     return await createNodesFromFiles(
       async (file, options, context) => {
         try {

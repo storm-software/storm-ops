@@ -2,6 +2,175 @@
 
 # Changelog for Storm Ops - Pnpm Tools
 
+## [0.7.97](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.7.97) (07/05/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace packages' dependencies ([8cfa3011d](https://github.com/storm-software/storm-ops/commit/8cfa3011d))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.23**
+- Updated **config-tools** to **v1.190.86**
+- Updated **npm-tools** to **v0.6.204**
+- Updated **package-constants** to **v0.1.99**
+- Updated **testing-tools** to **v1.119.239**
+
+## [0.7.96](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.7.96) (07/04/2026)
+
+### Miscellaneous
+
+- **monorepo:** Disable `treefmt` to prevent build issues ([0d2e21f3f](https://github.com/storm-software/storm-ops/commit/0d2e21f3f))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.22**
+- Updated **config-tools** to **v1.190.85**
+- Updated **npm-tools** to **v0.6.203**
+- Updated **package-constants** to **v0.1.98**
+- Updated **testing-tools** to **v1.119.238**
+
+## [0.7.95](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.7.95) (07/04/2026)
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.21**
+- Updated **config-tools** to **v1.190.84**
+- Updated **npm-tools** to **v0.6.202**
+- Updated **package-constants** to **v0.1.97**
+- Updated **testing-tools** to **v1.119.237**
+
+## [0.7.94](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.7.94) (07/03/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace packages' dependencies ([94184a932](https://github.com/storm-software/storm-ops/commit/94184a932))
+- **monorepo:** Update workspace packages' dependencies ([5580e18dc](https://github.com/storm-software/storm-ops/commit/5580e18dc))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.20**
+- Updated **config-tools** to **v1.190.83**
+- Updated **npm-tools** to **v0.6.201**
+- Updated **package-constants** to **v0.1.96**
+- Updated **testing-tools** to **v1.119.236**
+
+## [0.7.93](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.7.93) (06/30/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update repository packages' dependencies ([6f81fb5b5](https://github.com/storm-software/storm-ops/commit/6f81fb5b5))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.19**
+- Updated **config-tools** to **v1.190.82**
+- Updated **npm-tools** to **v0.6.200**
+- Updated **package-constants** to **v0.1.95**
+- Updated **testing-tools** to **v1.119.235**
+
+## [0.7.92](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.7.92) (06/29/2026)
+
+### Bug Fixes
+
+- **workspace-tools:** Resolve issue applying the cargo project name parameter ([f927214be](https://github.com/storm-software/storm-ops/commit/f927214be))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.18**
+- Updated **config-tools** to **v1.190.81**
+- Updated **npm-tools** to **v0.6.199**
+- Updated **package-constants** to **v0.1.94**
+- Updated **testing-tools** to **v1.119.234**
+
+## [0.7.91](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.7.91) (06/28/2026)
+
+### Miscellaneous
+
+- **monorepo:** Upgrade workspace packages' dependencies ([fcc009e9d](https://github.com/storm-software/storm-ops/commit/fcc009e9d))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.17**
+- Updated **config-tools** to **v1.190.80**
+- Updated **npm-tools** to **v0.6.198**
+- Updated **package-constants** to **v0.1.93**
+- Updated **testing-tools** to **v1.119.233**
+
+## [0.7.90](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.7.90) (06/28/2026)
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.16**
+- Updated **config-tools** to **v1.190.79**
+- Updated **npm-tools** to **v0.6.197**
+- Updated **package-constants** to **v0.1.92**
+- Updated **testing-tools** to **v1.119.232**
+
+## [0.7.89](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.7.89) (06/26/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace packages' dependencies ([5b4faf445](https://github.com/storm-software/storm-ops/commit/5b4faf445))
+
+### Features
+
+- **npm-tools:** Updated `getVersion` function to allow `retries` and `timeout` options ([c1ebc0184](https://github.com/storm-software/storm-ops/commit/c1ebc0184))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.15**
+- Updated **config-tools** to **v1.190.78**
+- Updated **npm-tools** to **v0.6.196**
+- Updated **package-constants** to **v0.1.91**
+- Updated **testing-tools** to **v1.119.231**
+
+## [0.7.88](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.7.88) (06/24/2026)
+
+### Bug Fixes
+
+- **pnpm-tools:** Resolve issue with replace statement when formatting semver ([f9e233720](https://github.com/storm-software/storm-ops/commit/f9e233720))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.14**
+- Updated **config-tools** to **v1.190.77**
+- Updated **npm-tools** to **v0.6.195**
+- Updated **package-constants** to **v0.1.90**
+- Updated **testing-tools** to **v1.119.230**
+
+## [0.7.87](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.7.87) (06/24/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace packages' dependencies ([ab5da025e](https://github.com/storm-software/storm-ops/commit/ab5da025e))
+
+### Features
+
+- **pnpm-tools:** Added `verbose` flag to CLI and improvoed semver validation logic ([b9dbabed0](https://github.com/storm-software/storm-ops/commit/b9dbabed0))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.13**
+- Updated **config-tools** to **v1.190.76**
+- Updated **npm-tools** to **v0.6.194**
+- Updated **package-constants** to **v0.1.89**
+- Updated **testing-tools** to **v1.119.229**
+
+## [0.7.86](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.7.86) (06/23/2026)
+
+### Bug Fixes
+
+- **pnpm-tools:** Ensure invalid values are never saved to the catalog ([66657e599](https://github.com/storm-software/storm-ops/commit/66657e599))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.12**
+- Updated **config-tools** to **v1.190.75**
+- Updated **npm-tools** to **v0.6.193**
+- Updated **package-constants** to **v0.1.88**
+- Updated **testing-tools** to **v1.119.228**
+
 ## [0.7.85](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.7.85) (06/19/2026)
 
 ### Miscellaneous

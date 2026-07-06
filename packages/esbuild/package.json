@@ -1,6 +1,6 @@
 {
   "name": "@storm-software/esbuild",
-  "version": "0.53.235",
+  "version": "0.53.247",
   "private": false,
   "description": "A package containing `esbuild` utilities for building Storm Software libraries and applications",
   "keywords": [
@@ -239,7 +239,7 @@
     "chokidar": "^4.0.3",
     "commander": "catalog:",
     "defu": "catalog:",
-    "es-toolkit": "^1.47.1",
+    "es-toolkit": "^1.49.0",
     "esbuild": "catalog:",
     "globby": "^14.1.0"
   },

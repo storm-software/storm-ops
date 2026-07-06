@@ -36,7 +36,7 @@ import {
   GitCommit,
   gitPush
 } from "nx/src/command-line/release/utils/git";
-import { printAndFlushChanges } from "nx/src/command-line/release/utils/print-changes.js";
+import { printAndFlushChanges } from "nx/src/command-line/release/utils/print-changes";
 import { ReleaseGraph as NxReleaseGraph } from "nx/src/command-line/release/utils/release-graph";
 import {
   createCommitMessageValues,

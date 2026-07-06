@@ -1,7 +1,7 @@
 import {
+  CreateNodes,
   createNodesFromFiles,
-  CreateNodesResultV2,
-  CreateNodesV2,
+  CreateNodesResultArray,
   joinPathFragments,
   ProjectGraphExternalNode,
   readJsonFile,
@@ -28,9 +28,9 @@ export interface DockerFilePluginOptions {
   defaultEngine?: ExternalContainerExecutorSchema["engine"];
 }
 
-export const createNodesV2: CreateNodesV2<DockerFilePluginOptions> = [
+export const createNodesV2: CreateNodes<DockerFilePluginOptions> = [
   "*/**/{Dockerfile,Dockerfile.*}",
-  async (configFiles, options, context): Promise<CreateNodesResultV2> => {
+  async (configFiles, options, context): Promise<CreateNodesResultArray> => {
     return await createNodesFromFiles(
       async (
         dockerFilePath,

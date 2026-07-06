@@ -2,7 +2,7 @@ import { joinPathFragments } from "@nx/devkit";
 import {
   computeCompilerOptionsPaths,
   DependentBuildableProjectNode
-} from "@nx/js/src/utils/buildable-libs-utils";
+} from "@nx/js/internal";
 import { StormWorkspaceConfig } from "@storm-software/config";
 import { writeTrace } from "@storm-software/config-tools/logger/console";
 import { dirname, extname } from "node:path";

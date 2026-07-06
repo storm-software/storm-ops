@@ -1,15 +1,17 @@
 import { ExecutorContext, joinPathFragments } from "@nx/devkit";
-import type {
-  CargoMetadata,
-  Dependency,
-  Package
+import {
+  parseCargoToml,
+  type CargoMetadata,
+  type Dependency,
+  type Package
 } from "@storm-software/config-tools/utilities/toml";
 import {
-  type ChildProcess,
   execSync,
   spawn,
+  type ChildProcess,
   type StdioOptions
 } from "node:child_process";
+import { readFileSync } from "node:fs";
 import { relative } from "node:path";
 import { CargoBaseExecutorSchema } from "../base/cargo-base-executor.schema.d";
 
@@ -72,8 +74,26 @@ export const buildCargoCommand = (
     }
   }
 
-  if (context.projectName) {
-    args.push("-p", context.projectName);
+  if (
+    context.projectName &&
+    context.projectsConfigurations?.projects &&
+    context.projectsConfigurations?.projects[context.projectName] &&
+    context.projectsConfigurations?.projects[context.projectName]?.root &&
+    context.projectsConfigurations?.projects[
+      context.projectName
+    ]?.root.includes("Cargo.toml")
+  ) {
+    const cargoToml = parseCargoToml(
+      readFileSync(
+        joinPathFragments(
+          context.projectsConfigurations.projects[context.projectName]!
+            .root as string,
+          "Cargo.toml"
+        ),
+        "utf-8"
+      )
+    );
+    args.push("-p", cargoToml.package.name);
   }
 
   if (options.allFeatures && !args.includes("--all-features")) {

@@ -2,6 +2,78 @@
 
 # Changelog for Storm Ops - Storm Config
 
+## [0.28.291](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.28.291) (07/05/2026)
+
+### Updated Dependencies
+
+- Updated **storm-workspace** to **v0.19.320**
+
+## [0.28.290](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.28.290) (07/04/2026)
+
+### Updated Dependencies
+
+- Updated **storm-workspace** to **v0.19.319**
+
+## [0.28.289](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.28.289) (07/04/2026)
+
+### Updated Dependencies
+
+- Updated **storm-workspace** to **v0.19.318**
+
+## [0.28.288](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.28.288) (07/03/2026)
+
+### Updated Dependencies
+
+- Updated **storm-workspace** to **v0.19.317**
+
+## [0.28.287](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.28.287) (06/30/2026)
+
+### Updated Dependencies
+
+- Updated **storm-workspace** to **v0.19.316**
+
+## [0.28.286](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.28.286) (06/29/2026)
+
+### Updated Dependencies
+
+- Updated **storm-workspace** to **v0.19.315**
+
+## [0.28.285](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.28.285) (06/28/2026)
+
+### Updated Dependencies
+
+- Updated **storm-workspace** to **v0.19.314**
+
+## [0.28.284](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.28.284) (06/28/2026)
+
+### Updated Dependencies
+
+- Updated **storm-workspace** to **v0.19.313**
+
+## [0.28.283](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.28.283) (06/26/2026)
+
+### Updated Dependencies
+
+- Updated **storm-workspace** to **v0.19.312**
+
+## [0.28.282](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.28.282) (06/24/2026)
+
+### Updated Dependencies
+
+- Updated **storm-workspace** to **v0.19.311**
+
+## [0.28.281](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.28.281) (06/24/2026)
+
+### Updated Dependencies
+
+- Updated **storm-workspace** to **v0.19.310**
+
+## [0.28.280](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.28.280) (06/23/2026)
+
+### Updated Dependencies
+
+- Updated **storm-workspace** to **v0.19.309**
+
 ## [0.28.279](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.28.279) (06/19/2026)
 
 ### Updated Dependencies

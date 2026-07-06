@@ -1,8 +1,8 @@
 import {
   CreateDependenciesContext,
+  CreateNodes,
   createNodesFromFiles,
-  CreateNodesResultV2,
-  CreateNodesV2,
+  CreateNodesResultArray,
   joinPathFragments,
   readJsonFile,
   TargetConfiguration,
@@ -66,9 +66,9 @@ export interface CargoPluginOptions {
 /**
  * Create nodes for Rust projects based on Cargo.toml files
  */
-export const createNodesV2: CreateNodesV2<CargoPluginOptions | undefined> = [
+export const createNodesV2: CreateNodes<CargoPluginOptions | undefined> = [
   "*/**/Cargo.toml",
-  async (configFiles, options, context): Promise<CreateNodesResultV2> => {
+  async (configFiles, options, context): Promise<CreateNodesResultArray> => {
     return await createNodesFromFiles(
       (configFile, options, context) => {
         try {
