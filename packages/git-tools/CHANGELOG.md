@@ -2,6 +2,19 @@
 
 # Changelog for Storm Ops - Git Tools
 
+## [2.131.98](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.131.98) (07/10/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace packages' dependencies ([e3ad71111](https://github.com/storm-software/storm-ops/commit/e3ad71111))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.27**
+- Updated **config-tools** to **v1.190.90**
+- Updated **conventional-changelog** to **v0.3.251**
+- Updated **package-constants** to **v0.1.103**
+
 ## [2.131.97](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.131.97) (07/06/2026)
 
 ### Bug Fixes

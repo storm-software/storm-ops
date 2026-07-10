@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Conventional Changelog
 
+## [0.3.251](https://github.com/storm-software/storm-ops/releases/tag/conventional-changelog%400.3.251) (07/10/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace packages' dependencies ([e3ad71111](https://github.com/storm-software/storm-ops/commit/e3ad71111))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.27**
+- Updated **config-tools** to **v1.190.90**
+
 ## [0.3.250](https://github.com/storm-software/storm-ops/releases/tag/conventional-changelog%400.3.250) (07/06/2026)
 
 ### Bug Fixes

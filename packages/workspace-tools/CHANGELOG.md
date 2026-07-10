@@ -2,6 +2,29 @@
 
 # Changelog for Storm Ops - Workspace Tools
 
+## [1.296.70](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.296.70) (07/10/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace packages' dependencies ([e3ad71111](https://github.com/storm-software/storm-ops/commit/e3ad71111))
+
+### Features
+
+- **eslint:** Added `markdownlint` to the list of linters ([4077b54f9](https://github.com/storm-software/storm-ops/commit/4077b54f9))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.27**
+- Updated **config-tools** to **v1.190.90**
+- Updated **esbuild** to **v0.53.251**
+- Updated **npm-tools** to **v0.6.208**
+- Updated **package-constants** to **v0.1.103**
+- Updated **pnpm-tools** to **v0.7.101**
+- Updated **prettier** to **v0.59.143**
+- Updated **testing-tools** to **v1.119.243**
+- Updated **tsdown** to **v0.45.251**
+- Updated **unbuild** to **v0.57.251**
+
 ## [1.296.69](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.296.69) (07/06/2026)
 
 ### Bug Fixes
