@@ -167,7 +167,7 @@ export const createNodesV2: CreateNodes<CargoPluginOptions | undefined> = [
                   executor: "@storm-software/workspace-tools:cargo-clippy",
                   options: {
                     toolchain,
-                    fix: false
+                    fix: true
                   },
                   defaultConfiguration: "development",
                   configurations
@@ -256,7 +256,7 @@ export const createNodesV2: CreateNodes<CargoPluginOptions | undefined> = [
                   executor: "@storm-software/workspace-tools:cargo-build",
                   outputs: [`{workspaceRoot}/dist/{projectRoot}/target`],
                   options: {
-                    toolchain: toolchain
+                    toolchain
                   },
                   defaultConfiguration: "development",
                   configurations
@@ -268,7 +268,7 @@ export const createNodesV2: CreateNodes<CargoPluginOptions | undefined> = [
                   executor: "@storm-software/workspace-tools:cargo-build",
                   outputs: [`{workspaceRoot}/dist/{projectRoot}/target`],
                   options: {
-                    toolchain: toolchain
+                    toolchain
                   },
                   defaultConfiguration: "development",
                   configurations
@@ -295,7 +295,7 @@ export const createNodesV2: CreateNodes<CargoPluginOptions | undefined> = [
                   outputs: [`{workspaceRoot}/dist/{projectRoot}/docs`],
                   executor: "@storm-software/workspace-tools:cargo-doc",
                   options: {
-                    toolchain: toolchain
+                    toolchain
                   },
                   defaultConfiguration: "production",
                   configurations
