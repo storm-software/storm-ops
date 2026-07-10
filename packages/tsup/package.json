@@ -3,7 +3,12 @@
   "version": "0.2.247",
   "private": false,
   "description": "A package containing bundled patches for tsup.",
-  "keywords": ["tsup", "storm", "storm-ops", "storm-software"],
+  "keywords": [
+    "tsup",
+    "storm",
+    "storm-ops",
+    "storm-software"
+  ],
   "homepage": "https://stormsoftware.com",
   "bugs": "https://github.com/storm-software/storm-ops/issues",
   "repository": {
@@ -121,7 +126,10 @@
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
-  "files": ["assets/**/*", "dist/**/*"],
+  "files": [
+    "assets/**/*",
+    "dist/**/*"
+  ],
   "dependencies": {
     "@storm-software/build-tools": "workspace:*",
     "@storm-software/config-tools": "workspace:*"

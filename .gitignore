@@ -23,6 +23,7 @@ packages/config-tools/bin/*.cjs
 
 # dependencies
 node_modules
+.pnpm-store
 
 # IDEs and editors
 /.idea
