@@ -2465,90 +2465,270 @@ Backward pagination arguments
    */
   'logical-assignment-operators'?: Linter.RuleEntry<LogicalAssignmentOperators>
   /**
-   * Require languages for fenced code blocks
-   * @see https://github.com/eslint/markdown/blob/main/docs/rules/fenced-code-language.md
+   * heading levels should only increment by one level at a time
+   * @see https://github.com/DavidAnson/markdownlint/blob/main/doc/Rules.md#md001
    */
-  'markdown/fenced-code-language'?: Linter.RuleEntry<MarkdownFencedCodeLanguage>
+  'markdownlint/md001'?: Linter.RuleEntry<[]>
   /**
-   * Enforce heading levels increment by one
-   * @see https://github.com/eslint/markdown/blob/main/docs/rules/heading-increment.md
+   * heading style
+   * @see https://github.com/DavidAnson/markdownlint/blob/main/doc/Rules.md#md003
    */
-  'markdown/heading-increment'?: Linter.RuleEntry<[]>
+  'markdownlint/md003'?: Linter.RuleEntry<MarkdownlintMd003>
   /**
-   * Disallow bare URLs
-   * @see https://github.com/eslint/markdown/blob/main/docs/rules/no-bare-urls.md
+   * unordered list style
+   * @see https://github.com/DavidAnson/markdownlint/blob/main/doc/Rules.md#md004
    */
-  'markdown/no-bare-urls'?: Linter.RuleEntry<[]>
+  'markdownlint/md004'?: Linter.RuleEntry<MarkdownlintMd004>
   /**
-   * Disallow duplicate definitions
-   * @see https://github.com/eslint/markdown/blob/main/docs/rules/no-duplicate-definitions.md
+   * heading levels should only increment by one level at a time
+   * @see https://github.com/DavidAnson/markdownlint/blob/main/doc/Rules.md#md005
    */
-  'markdown/no-duplicate-definitions'?: Linter.RuleEntry<MarkdownNoDuplicateDefinitions>
+  'markdownlint/md005'?: Linter.RuleEntry<[]>
   /**
-   * Disallow duplicate headings in the same document
-   * @see https://github.com/eslint/markdown/blob/main/docs/rules/no-duplicate-headings.md
+   * unordered list indentation
+   * @see https://github.com/DavidAnson/markdownlint/blob/main/doc/Rules.md#md007
    */
-  'markdown/no-duplicate-headings'?: Linter.RuleEntry<MarkdownNoDuplicateHeadings>
+  'markdownlint/md007'?: Linter.RuleEntry<MarkdownlintMd007>
   /**
-   * Disallow empty definitions
-   * @see https://github.com/eslint/markdown/blob/main/docs/rules/no-empty-definitions.md
+   * trailing spaces
+   * @see https://github.com/DavidAnson/markdownlint/blob/main/doc/Rules.md#md009
    */
-  'markdown/no-empty-definitions'?: Linter.RuleEntry<[]>
+  'markdownlint/md009'?: Linter.RuleEntry<MarkdownlintMd009>
   /**
-   * Disallow empty images
-   * @see https://github.com/eslint/markdown/blob/main/docs/rules/no-empty-images.md
+   * hard tabs
+   * @see https://github.com/DavidAnson/markdownlint/blob/main/doc/Rules.md#md010
    */
-  'markdown/no-empty-images'?: Linter.RuleEntry<[]>
+  'markdownlint/md010'?: Linter.RuleEntry<MarkdownlintMd010>
   /**
-   * Disallow empty links
-   * @see https://github.com/eslint/markdown/blob/main/docs/rules/no-empty-links.md
+   * reversed link syntax
+   * @see https://github.com/DavidAnson/markdownlint/blob/main/doc/Rules.md#md011
    */
-  'markdown/no-empty-links'?: Linter.RuleEntry<[]>
+  'markdownlint/md011'?: Linter.RuleEntry<[]>
   /**
-   * Disallow HTML tags
-   * @see https://github.com/eslint/markdown/blob/main/docs/rules/no-html.md
+   * multiple consecutive blank lines
+   * @see https://github.com/DavidAnson/markdownlint/blob/main/doc/Rules.md#md012
    */
-  'markdown/no-html'?: Linter.RuleEntry<MarkdownNoHtml>
+  'markdownlint/md012'?: Linter.RuleEntry<MarkdownlintMd012>
   /**
-   * Disallow invalid label references
-   * @see https://github.com/eslint/markdown/blob/main/docs/rules/no-invalid-label-refs.md
+   * line length
+   * @see https://github.com/DavidAnson/markdownlint/blob/main/doc/Rules.md#md013
    */
-  'markdown/no-invalid-label-refs'?: Linter.RuleEntry<[]>
+  'markdownlint/md013'?: Linter.RuleEntry<MarkdownlintMd013>
   /**
-   * Disallow headings without a space after the hash characters
-   * @see https://github.com/eslint/markdown/blob/main/docs/rules/no-missing-atx-heading-space.md
+   * dollar signs used before commands without showing output
+   * @see https://github.com/DavidAnson/markdownlint/blob/main/doc/Rules.md#md014
    */
-  'markdown/no-missing-atx-heading-space'?: Linter.RuleEntry<[]>
+  'markdownlint/md014'?: Linter.RuleEntry<[]>
   /**
-   * Disallow missing label references
-   * @see https://github.com/eslint/markdown/blob/main/docs/rules/no-missing-label-refs.md
+   * no space after hash on atx style heading
+   * @see https://github.com/DavidAnson/markdownlint/blob/main/doc/Rules.md#md018
    */
-  'markdown/no-missing-label-refs'?: Linter.RuleEntry<[]>
+  'markdownlint/md018'?: Linter.RuleEntry<[]>
   /**
-   * Disallow link fragments that do not reference valid headings
-   * @see https://github.com/eslint/markdown/blob/main/docs/rules/no-missing-link-fragments.md
+   * multiple spaces after hash on atx style heading
+   * @see https://github.com/DavidAnson/markdownlint/blob/main/doc/Rules.md#md019
    */
-  'markdown/no-missing-link-fragments'?: Linter.RuleEntry<MarkdownNoMissingLinkFragments>
+  'markdownlint/md019'?: Linter.RuleEntry<[]>
   /**
-   * Disallow multiple H1 headings in the same document
-   * @see https://github.com/eslint/markdown/blob/main/docs/rules/no-multiple-h1.md
+   * no space inside hashes on closed atx style heading
+   * @see https://github.com/DavidAnson/markdownlint/blob/main/doc/Rules.md#md020
    */
-  'markdown/no-multiple-h1'?: Linter.RuleEntry<MarkdownNoMultipleH1>
+  'markdownlint/md020'?: Linter.RuleEntry<[]>
   /**
-   * Disallow reversed link and image syntax
-   * @see https://github.com/eslint/markdown/blob/main/docs/rules/no-reversed-media-syntax.md
+   * multiple spaces inside hashes on closed atx style heading
+   * @see https://github.com/DavidAnson/markdownlint/blob/main/doc/Rules.md#md021
    */
-  'markdown/no-reversed-media-syntax'?: Linter.RuleEntry<[]>
+  'markdownlint/md021'?: Linter.RuleEntry<[]>
   /**
-   * Require alternative text for images
-   * @see https://github.com/eslint/markdown/blob/main/docs/rules/require-alt-text.md
+   * headings should be surrounded by blank lines
+   * @see https://github.com/DavidAnson/markdownlint/blob/main/doc/Rules.md#md022
    */
-  'markdown/require-alt-text'?: Linter.RuleEntry<[]>
+  'markdownlint/md022'?: Linter.RuleEntry<MarkdownlintMd022>
   /**
-   * Disallow data rows in a GitHub Flavored Markdown table from having more cells than the header row
-   * @see https://github.com/eslint/markdown/blob/main/docs/rules/table-column-count.md
+   * headings must start at the beginning of the line
+   * @see https://github.com/DavidAnson/markdownlint/blob/main/doc/Rules.md#md023
    */
-  'markdown/table-column-count'?: Linter.RuleEntry<[]>
+  'markdownlint/md023'?: Linter.RuleEntry<[]>
+  /**
+   * headings should be surrounded by blank lines
+   * @see https://github.com/DavidAnson/markdownlint/blob/main/doc/Rules.md#md024
+   */
+  'markdownlint/md024'?: Linter.RuleEntry<MarkdownlintMd024>
+  /**
+   * headings should be surrounded by blank lines
+   * @see https://github.com/DavidAnson/markdownlint/blob/main/doc/Rules.md#md025
+   */
+  'markdownlint/md025'?: Linter.RuleEntry<MarkdownlintMd025>
+  /**
+   * trailing punctuation in heading
+   * @see https://github.com/DavidAnson/markdownlint/blob/main/doc/Rules.md#md026
+   */
+  'markdownlint/md026'?: Linter.RuleEntry<MarkdownlintMd026>
+  /**
+   * multiple spaces after blockquote symbol
+   * @see https://github.com/DavidAnson/markdownlint/blob/main/doc/Rules.md#md027
+   */
+  'markdownlint/md027'?: Linter.RuleEntry<[]>
+  /**
+   * blank line inside blockquote
+   * @see https://github.com/DavidAnson/markdownlint/blob/main/doc/Rules.md#md028
+   */
+  'markdownlint/md028'?: Linter.RuleEntry<[]>
+  /**
+   * ordered list item prefix
+   * @see https://github.com/DavidAnson/markdownlint/blob/main/doc/Rules.md#md029
+   */
+  'markdownlint/md029'?: Linter.RuleEntry<MarkdownlintMd029>
+  /**
+   * spaces after list markers
+   * @see https://github.com/DavidAnson/markdownlint/blob/main/doc/Rules.md#md030
+   */
+  'markdownlint/md030'?: Linter.RuleEntry<MarkdownlintMd030>
+  /**
+   * fenced code blocks should be surrounded by blank lines
+   * @see https://github.com/DavidAnson/markdownlint/blob/main/doc/Rules.md#md031
+   */
+  'markdownlint/md031'?: Linter.RuleEntry<MarkdownlintMd031>
+  /**
+   * lists should be surrounded by blank lines
+   * @see https://github.com/DavidAnson/markdownlint/blob/main/doc/Rules.md#md032
+   */
+  'markdownlint/md032'?: Linter.RuleEntry<[]>
+  /**
+   * inline HTML
+   * @see https://github.com/DavidAnson/markdownlint/blob/main/doc/Rules.md#md033
+   */
+  'markdownlint/md033'?: Linter.RuleEntry<MarkdownlintMd033>
+  /**
+   * bare URL used
+   * @see https://github.com/DavidAnson/markdownlint/blob/main/doc/Rules.md#md034
+   */
+  'markdownlint/md034'?: Linter.RuleEntry<[]>
+  /**
+   * horizontal rule style
+   * @see https://github.com/DavidAnson/markdownlint/blob/main/doc/Rules.md#md035
+   */
+  'markdownlint/md035'?: Linter.RuleEntry<MarkdownlintMd035>
+  /**
+   * emphasis used instead of a heading
+   * @see https://github.com/DavidAnson/markdownlint/blob/main/doc/Rules.md#md036
+   */
+  'markdownlint/md036'?: Linter.RuleEntry<MarkdownlintMd036>
+  /**
+   * spaces inside emphasis markers
+   * @see https://github.com/DavidAnson/markdownlint/blob/main/doc/Rules.md#md037
+   */
+  'markdownlint/md037'?: Linter.RuleEntry<[]>
+  /**
+   * spaces inside code span elements
+   * @see https://github.com/DavidAnson/markdownlint/blob/main/doc/Rules.md#md038
+   */
+  'markdownlint/md038'?: Linter.RuleEntry<[]>
+  /**
+   * spaces inside link text
+   * @see https://github.com/DavidAnson/markdownlint/blob/main/doc/Rules.md#md039
+   */
+  'markdownlint/md039'?: Linter.RuleEntry<[]>
+  /**
+   * fenced code blocks should have a language specified
+   * @see https://github.com/DavidAnson/markdownlint/blob/main/doc/Rules.md#md040
+   */
+  'markdownlint/md040'?: Linter.RuleEntry<[]>
+  /**
+   * first line in a file should be a top-level heading
+   * @see https://github.com/DavidAnson/markdownlint/blob/main/doc/Rules.md#md041
+   */
+  'markdownlint/md041'?: Linter.RuleEntry<MarkdownlintMd041>
+  /**
+   * no empty links
+   * @see https://github.com/DavidAnson/markdownlint/blob/main/doc/Rules.md#md042
+   */
+  'markdownlint/md042'?: Linter.RuleEntry<[]>
+  /**
+   * required heading structure
+   * @see https://github.com/DavidAnson/markdownlint/blob/main/doc/Rules.md#md043
+   */
+  'markdownlint/md043'?: Linter.RuleEntry<MarkdownlintMd043>
+  /**
+   * proper names should have the correct capitalization
+   * @see https://github.com/DavidAnson/markdownlint/blob/main/doc/Rules.md#md044
+   */
+  'markdownlint/md044'?: Linter.RuleEntry<MarkdownlintMd044>
+  /**
+   * images should have alternate text (alt text)
+   * @see https://github.com/DavidAnson/markdownlint/blob/main/doc/Rules.md#md045
+   */
+  'markdownlint/md045'?: Linter.RuleEntry<[]>
+  /**
+   * code block style
+   * @see https://github.com/DavidAnson/markdownlint/blob/main/doc/Rules.md#md046
+   */
+  'markdownlint/md046'?: Linter.RuleEntry<MarkdownlintMd046>
+  /**
+   * files should end with a single newline character
+   * @see https://github.com/DavidAnson/markdownlint/blob/main/doc/Rules.md#md047
+   */
+  'markdownlint/md047'?: Linter.RuleEntry<[]>
+  /**
+   * code block style
+   * @see https://github.com/DavidAnson/markdownlint/blob/main/doc/Rules.md#md048
+   */
+  'markdownlint/md048'?: Linter.RuleEntry<MarkdownlintMd048>
+  /**
+   * emphasis style should be consistent
+   * @see https://github.com/DavidAnson/markdownlint/blob/main/doc/Rules.md#md049
+   */
+  'markdownlint/md049'?: Linter.RuleEntry<MarkdownlintMd049>
+  /**
+   * strong style should be consistent
+   * @see https://github.com/DavidAnson/markdownlint/blob/main/doc/Rules.md#md050
+   */
+  'markdownlint/md050'?: Linter.RuleEntry<MarkdownlintMd050>
+  /**
+   * link fragments should be valid
+   * @see https://github.com/DavidAnson/markdownlint/blob/main/doc/Rules.md#md051
+   */
+  'markdownlint/md051'?: Linter.RuleEntry<MarkdownlintMd051>
+  /**
+   * reference links and images should use a label that is defined
+   * @see https://github.com/DavidAnson/markdownlint/blob/main/doc/Rules.md#md052
+   */
+  'markdownlint/md052'?: Linter.RuleEntry<MarkdownlintMd052>
+  /**
+   * link and image reference definitions should be needed
+   * @see https://github.com/DavidAnson/markdownlint/blob/main/doc/Rules.md#md053
+   */
+  'markdownlint/md053'?: Linter.RuleEntry<MarkdownlintMd053>
+  /**
+   * link and image style
+   * @see https://github.com/DavidAnson/markdownlint/blob/main/doc/Rules.md#md054
+   */
+  'markdownlint/md054'?: Linter.RuleEntry<MarkdownlintMd054>
+  /**
+   * table pipe style
+   * @see https://github.com/DavidAnson/markdownlint/blob/main/doc/Rules.md#md055
+   */
+  'markdownlint/md055'?: Linter.RuleEntry<MarkdownlintMd055>
+  /**
+   * table column count
+   * @see https://github.com/DavidAnson/markdownlint/blob/main/doc/Rules.md#md056
+   */
+  'markdownlint/md056'?: Linter.RuleEntry<[]>
+  /**
+   * tables should be surrounded by blank lines
+   * @see https://github.com/DavidAnson/markdownlint/blob/main/doc/Rules.md#md058
+   */
+  'markdownlint/md058'?: Linter.RuleEntry<[]>
+  /**
+   * link text should be descriptive
+   * @see https://github.com/DavidAnson/markdownlint/blob/main/doc/Rules.md#md059
+   */
+  'markdownlint/md059'?: Linter.RuleEntry<[]>
+  /**
+   * table column style
+   * @see https://github.com/DavidAnson/markdownlint/blob/main/doc/Rules.md#md060
+   */
+  'markdownlint/md060'?: Linter.RuleEntry<MarkdownlintMd060>
   /**
    * Enforce a maximum number of classes per file
    * @see https://eslint.org/docs/latest/rules/max-classes-per-file
@@ -4303,7 +4483,7 @@ Backward pagination arguments
    */
   'react/globals'?: Linter.RuleEntry<[]>
   /**
-   * Validates against mutating props, state, and other values that are immutable.
+   * Validates against passing functions that mutate captured local variables into frozen contexts such as JSX props, hook arguments, and hook return values.
    * @see https://eslint-react.xyz/docs/rules/immutability
    */
   'react/immutability'?: Linter.RuleEntry<[]>
@@ -10544,31 +10724,152 @@ type LinesBetweenClassMembers = []|[({
 type LogicalAssignmentOperators = (([]|["always"]|["always", {
   enforceForIfStatements?: boolean
 }] | ["never"]) & unknown[])
-// ----- markdown/fenced-code-language -----
-type MarkdownFencedCodeLanguage = []|[{
-  required?: string[]
+// ----- markdownlint/md003 -----
+type MarkdownlintMd003 = []|[{
+  style?: ("consistent" | "atx" | "atx_closed" | "setext" | "setext_with_atx" | "setext_with_atx_closed")
 }]
-// ----- markdown/no-duplicate-definitions -----
-type MarkdownNoDuplicateDefinitions = []|[{
-  allowDefinitions?: string[]
-  allowFootnoteDefinitions?: string[]
+// ----- markdownlint/md004 -----
+type MarkdownlintMd004 = []|[{
+  style?: ("consistent" | "asterisk" | "plus" | "dash" | "sublist")
 }]
-// ----- markdown/no-duplicate-headings -----
-type MarkdownNoDuplicateHeadings = []|[{
-  checkSiblingsOnly?: boolean
+// ----- markdownlint/md007 -----
+type MarkdownlintMd007 = []|[{
+  indent?: number
+  start_indented?: boolean
 }]
-// ----- markdown/no-html -----
-type MarkdownNoHtml = []|[{
-  allowed?: string[]
+// ----- markdownlint/md009 -----
+type MarkdownlintMd009 = []|[{
+  br_spaces?: number
+  list_item_empty_lines?: boolean
+  strict?: boolean
 }]
-// ----- markdown/no-missing-link-fragments -----
-type MarkdownNoMissingLinkFragments = []|[{
-  ignoreCase?: boolean
-  allowPattern?: string
+// ----- markdownlint/md010 -----
+type MarkdownlintMd010 = []|[{
+  code_blocks?: boolean
+  ignore_code_languages?: string[]
+  spaces_per_tab?: number
 }]
-// ----- markdown/no-multiple-h1 -----
-type MarkdownNoMultipleH1 = []|[{
-  frontmatterTitle?: string
+// ----- markdownlint/md012 -----
+type MarkdownlintMd012 = []|[{
+  maximum?: number
+}]
+// ----- markdownlint/md013 -----
+type MarkdownlintMd013 = []|[{
+  line_length?: number
+  heading_line_length?: number
+  code_block_line_length?: number
+  code_blocks?: boolean
+  tables?: boolean
+  headings?: boolean
+  strict?: boolean
+  stern?: boolean
+}]
+// ----- markdownlint/md022 -----
+type MarkdownlintMd022 = []|[{
+  lines_above?: number
+  lines_below?: number
+}]
+// ----- markdownlint/md024 -----
+type MarkdownlintMd024 = []|[{
+  siblings_only?: boolean
+}]
+// ----- markdownlint/md025 -----
+type MarkdownlintMd025 = []|[{
+  level?: number
+  front_matter_title?: string
+}]
+// ----- markdownlint/md026 -----
+type MarkdownlintMd026 = []|[{
+  punctuation?: string
+}]
+// ----- markdownlint/md029 -----
+type MarkdownlintMd029 = []|[{
+  style?: ("one" | "ordered" | "one_or_ordered" | "zero")
+}]
+// ----- markdownlint/md030 -----
+type MarkdownlintMd030 = []|[{
+  ul_single?: number
+  ol_single?: number
+  ul_multi?: number
+  ol_multi?: number
+}]
+// ----- markdownlint/md031 -----
+type MarkdownlintMd031 = []|[{
+  list_items?: boolean
+}]
+// ----- markdownlint/md033 -----
+type MarkdownlintMd033 = []|[{
+  allowed_elements?: string[]
+}]
+// ----- markdownlint/md035 -----
+type MarkdownlintMd035 = []|[{
+  style?: ("consistent" | "---" | "***")
+}]
+// ----- markdownlint/md036 -----
+type MarkdownlintMd036 = []|[{
+  punctuation?: string
+}]
+// ----- markdownlint/md041 -----
+type MarkdownlintMd041 = []|[{
+  level?: number
+  front_matter_title?: string
+}]
+// ----- markdownlint/md043 -----
+type MarkdownlintMd043 = []|[{
+  headings?: string[]
+}]
+// ----- markdownlint/md044 -----
+type MarkdownlintMd044 = []|[{
+  names?: string[]
+  code_blocks?: boolean
+}]
+// ----- markdownlint/md046 -----
+type MarkdownlintMd046 = []|[{
+  style?: ("consistent" | "fenced" | "indented")
+}]
+// ----- markdownlint/md048 -----
+type MarkdownlintMd048 = []|[{
+  style?: ("consistent" | "tilde" | "backtick")
+}]
+// ----- markdownlint/md049 -----
+type MarkdownlintMd049 = []|[{
+  style?: ("consistent" | "asterisk" | "underscore")
+}]
+// ----- markdownlint/md050 -----
+type MarkdownlintMd050 = []|[{
+  style?: ("consistent" | "asterisk" | "underscore")
+}]
+// ----- markdownlint/md051 -----
+type MarkdownlintMd051 = []|[{
+  ignore_case?: boolean
+  ignored_pattern?: string
+}]
+// ----- markdownlint/md052 -----
+type MarkdownlintMd052 = []|[{
+  ignored_labels?: string[]
+  shortcut_syntax?: boolean
+}]
+// ----- markdownlint/md053 -----
+type MarkdownlintMd053 = []|[{
+  ignored_definitions?: string[]
+}]
+// ----- markdownlint/md054 -----
+type MarkdownlintMd054 = []|[{
+  autolink?: boolean
+  inline?: boolean
+  full?: boolean
+  collapsed?: boolean
+  shortcut?: boolean
+  url_inline?: boolean
+}]
+// ----- markdownlint/md055 -----
+type MarkdownlintMd055 = []|[{
+  style?: ("consistent" | "leading_only" | "trailing_only" | "leading_and_trailing" | "no_leading_or_trailing")
+}]
+// ----- markdownlint/md060 -----
+type MarkdownlintMd060 = []|[{
+  style?: ("any" | "aligned" | "compact" | "tight")
+  aligned_delimiter?: boolean
 }]
 // ----- max-classes-per-file -----
 type MaxClassesPerFile = []|[(number | {
@@ -18319,4 +18620,4 @@ type Yoda = []|[("always" | "never")]|[("always" | "never"), {
 }]
 
 // Names of all the configs
-export type ConfigNames = "storm/banner" | "storm/cspell/rules" | "storm/astro/setup" | "storm/astro/rules" | "storm/formatter/setup" | "storm/imports/rules" | "storm/graphql/setup" | "storm/graphql/rules" | "storm/graphql/relay" | "storm/javascript/setup" | "storm/javascript/rules" | "storm/jsx/rules" | "storm/jsdoc/rules" | "storm/jsonc/setup" | "storm/jsonc/rules" | "storm/markdown/setup" | "storm/markdown/processor" | "storm/markdown/parser" | "mdx/flat" | "storm/node/rules" | "storm/nx/setup" | "storm/nx/schema" | "storm/nx/dependency-check" | "storm/nx/module-boundaries" | "storm/next/rules" | "storm/prettier" | "storm/perfectionist/rules" | "storm/pnpm/setup" | "storm/pnpm/package-json" | "storm/pnpm/pnpm-workspace-yaml" | "storm/react/setup" | "storm/react/rules" | "storm/react-native/rules" | "storm/sort/package-json" | "storm/stylistic/rules" | "storm/secrets/rules" | "storm/storybook/setup" | "storm/storybook/rules" | "storm/storybook/main" | "storm/test/setup" | "storm/test/rules" | "storm/tsdoc/rules" | "storm/toml/setup" | "storm/toml/rules" | "storm/typescript/setup" | "storm/typescript/parser" | "storm/typescript/type-aware-parser" | "storm/typescript/rules" | "storm/typescript/rules-type-aware" | "storm/regexp/rules" | "storm/unicorn/rules" | "storm/unocss" | "storm/yaml/setup" | "storm/yaml/rules" | "storm/zod/rules"
+export type ConfigNames = "storm/banner" | "storm/cspell/rules" | "storm/astro/setup" | "storm/astro/rules" | "storm/formatter/setup" | "storm/imports/rules" | "storm/graphql/setup" | "storm/graphql/rules" | "storm/graphql/relay" | "storm/javascript/setup" | "storm/javascript/rules" | "storm/jsx/rules" | "storm/jsdoc/rules" | "storm/jsonc/setup" | "storm/jsonc/rules" | "storm/markdown/setup" | "storm/markdown/rules" | "mdx/flat" | "storm/node/rules" | "storm/nx/setup" | "storm/nx/schema" | "storm/nx/dependency-check" | "storm/nx/module-boundaries" | "storm/next/rules" | "storm/prettier" | "storm/perfectionist/rules" | "storm/pnpm/setup" | "storm/pnpm/package-json" | "storm/pnpm/pnpm-workspace-yaml" | "storm/react/setup" | "storm/react/rules" | "storm/react-native/rules" | "storm/sort/package-json" | "storm/stylistic/rules" | "storm/secrets/rules" | "storm/storybook/setup" | "storm/storybook/rules" | "storm/storybook/main" | "storm/test/setup" | "storm/test/rules" | "storm/tsdoc/rules" | "storm/toml/setup" | "storm/toml/rules" | "storm/typescript/setup" | "storm/typescript/parser" | "storm/typescript/type-aware-parser" | "storm/typescript/rules" | "storm/typescript/rules-type-aware" | "storm/regexp/rules" | "storm/unicorn/rules" | "storm/unocss" | "storm/yaml/setup" | "storm/yaml/rules" | "storm/zod/rules"
