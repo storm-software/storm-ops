@@ -34,7 +34,7 @@ export type CargoPluginProfileMap = Record<string, string> & {
   production?: string;
 };
 export const DefaultCargoPluginProfileMap = {
-  development: "debug",
+  development: "dev",
   production: "release"
 };
 
