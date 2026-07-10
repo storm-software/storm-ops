@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Oxfmt
 
+## [0.0.47](https://github.com/storm-software/storm-ops/releases/tag/oxfmt%400.0.47) (07/10/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace packages' `README.md` files ([07018210f](https://github.com/storm-software/storm-ops/commit/07018210f))
+
 ## [0.0.46](https://github.com/storm-software/storm-ops/releases/tag/oxfmt%400.0.46) (07/10/2026)
 
 ### Miscellaneous

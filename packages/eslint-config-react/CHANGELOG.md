@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - ESLint Config React
 
+## [0.0.47](https://github.com/storm-software/storm-ops/releases/tag/eslint-config-react%400.0.47) (07/10/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace packages' `README.md` files ([07018210f](https://github.com/storm-software/storm-ops/commit/07018210f))
+
+### Updated Dependencies
+
+- Updated **eslint** to **v0.170.125**
+
 ## [0.0.46](https://github.com/storm-software/storm-ops/releases/tag/eslint-config-react%400.0.46) (07/10/2026)
 
 ### Miscellaneous
