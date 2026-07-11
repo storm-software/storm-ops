@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Tsup
 
+## [0.2.250](https://github.com/storm-software/storm-ops/releases/tag/tsup%400.2.250) (07/10/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace's lockfiles ([cf18a1819](https://github.com/storm-software/storm-ops/commit/cf18a1819))
+- **workspace-tools:** Rename `prod` profile to `release` for consistency ([7c676ed98](https://github.com/storm-software/storm-ops/commit/7c676ed98))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.252**
+- Updated **config-tools** to **v1.190.92**
+
 ## [0.2.249](https://github.com/storm-software/storm-ops/releases/tag/tsup%400.2.249) (07/10/2026)
 
 ### Miscellaneous

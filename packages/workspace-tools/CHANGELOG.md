@@ -2,6 +2,30 @@
 
 # Changelog for Storm Ops - Workspace Tools
 
+## [1.296.72](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.296.72) (07/10/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace's lockfiles ([cf18a1819](https://github.com/storm-software/storm-ops/commit/cf18a1819))
+- **workspace-tools:** Rename `prod` profile to `release` for consistency ([7c676ed98](https://github.com/storm-software/storm-ops/commit/7c676ed98))
+
+### Bug Fixes
+
+- **workspace-tools:** Update profile name for `release` ([3d60011a2](https://github.com/storm-software/storm-ops/commit/3d60011a2))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.29**
+- Updated **config-tools** to **v1.190.92**
+- Updated **esbuild** to **v0.53.253**
+- Updated **npm-tools** to **v0.6.210**
+- Updated **package-constants** to **v0.1.105**
+- Updated **pnpm-tools** to **v0.7.103**
+- Updated **prettier** to **v0.59.145**
+- Updated **testing-tools** to **v1.119.245**
+- Updated **tsdown** to **v0.45.253**
+- Updated **unbuild** to **v0.57.253**
+
 ## [1.296.71](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.296.71) (07/10/2026)
 
 ### Miscellaneous

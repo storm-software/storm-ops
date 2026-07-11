@@ -2,6 +2,23 @@
 
 # Changelog for Storm Ops - ESLint
 
+## [0.170.126](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.170.126) (07/10/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace's lockfiles ([cf18a1819](https://github.com/storm-software/storm-ops/commit/cf18a1819))
+- **workspace-tools:** Rename `prod` profile to `release` for consistency ([7c676ed98](https://github.com/storm-software/storm-ops/commit/7c676ed98))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.29**
+- Updated **config-tools** to **v1.190.92**
+- Updated **eslint-plugin-banner** to **v0.0.57**
+- Updated **eslint-plugin-pnpm** to **v0.0.55**
+- Updated **eslint-plugin-tsdoc** to **v0.0.55**
+- Updated **package-constants** to **v0.1.105**
+- Updated **tsdoc** to **v0.13.245**
+
 ## [0.170.125](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.170.125) (07/10/2026)
 
 ### Miscellaneous

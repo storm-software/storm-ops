@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Prettier
 
+## [0.59.145](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.59.145) (07/10/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace's lockfiles ([cf18a1819](https://github.com/storm-software/storm-ops/commit/cf18a1819))
+- **workspace-tools:** Rename `prod` profile to `release` for consistency ([7c676ed98](https://github.com/storm-software/storm-ops/commit/7c676ed98))
+
 ## [0.59.144](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.59.144) (07/10/2026)
 
 ### Miscellaneous

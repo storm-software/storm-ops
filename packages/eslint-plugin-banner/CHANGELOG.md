@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - ESLint Plugin Banner
 
+## [0.0.57](https://github.com/storm-software/storm-ops/releases/tag/eslint-plugin-banner%400.0.57) (07/10/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace's lockfiles ([cf18a1819](https://github.com/storm-software/storm-ops/commit/cf18a1819))
+- **workspace-tools:** Rename `prod` profile to `release` for consistency ([7c676ed98](https://github.com/storm-software/storm-ops/commit/7c676ed98))
+
+### Updated Dependencies
+
+- Updated **package-constants** to **v0.1.105**
+- Updated **prettier** to **v0.59.145**
+
 ## [0.0.56](https://github.com/storm-software/storm-ops/releases/tag/eslint-plugin-banner%400.0.56) (07/10/2026)
 
 ### Miscellaneous

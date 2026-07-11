@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Package Constants
 
+## [0.1.105](https://github.com/storm-software/storm-ops/releases/tag/package-constants%400.1.105) (07/10/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace's lockfiles ([cf18a1819](https://github.com/storm-software/storm-ops/commit/cf18a1819))
+- **workspace-tools:** Rename `prod` profile to `release` for consistency ([7c676ed98](https://github.com/storm-software/storm-ops/commit/7c676ed98))
+
 ## [0.1.104](https://github.com/storm-software/storm-ops/releases/tag/package-constants%400.1.104) (07/10/2026)
 
 ### Miscellaneous

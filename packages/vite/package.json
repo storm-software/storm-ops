@@ -1,15 +1,9 @@
 {
   "name": "@storm-software/vite",
-  "version": "0.1.185",
+  "version": "0.1.186",
   "private": false,
   "description": "A package containing a shared `vite` configuration and utilities for building Storm Software libraries and applications",
-  "keywords": [
-    "vite",
-    "storm",
-    "storm-software",
-    "storm-ops",
-    "sullivanpj"
-  ],
+  "keywords": ["vite", "storm", "storm-software", "storm-ops", "sullivanpj"],
   "homepage": "https://stormsoftware.com",
   "bugs": "https://github.com/storm-software/storm-ops/issues",
   "repository": {
@@ -110,9 +104,7 @@
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
-  "files": [
-    "dist/**/*"
-  ],
+  "files": ["dist/**/*"],
   "dependencies": {
     "rollup-plugin-preserve-directives": "^0.4.0",
     "vite-plugin-dts": "^4.5.4",

@@ -2,6 +2,19 @@
 
 # Changelog for Storm Ops - Terraform Tools
 
+## [0.66.275](https://github.com/storm-software/storm-ops/releases/tag/terraform-tools%400.66.275) (07/10/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace's lockfiles ([cf18a1819](https://github.com/storm-software/storm-ops/commit/cf18a1819))
+- **workspace-tools:** Rename `prod` profile to `release` for consistency ([7c676ed98](https://github.com/storm-software/storm-ops/commit/7c676ed98))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.29**
+- Updated **config-tools** to **v1.190.92**
+- Updated **workspace-tools** to **v1.296.72**
+
 ## [0.66.274](https://github.com/storm-software/storm-ops/releases/tag/terraform-tools%400.66.274) (07/10/2026)
 
 ### Miscellaneous

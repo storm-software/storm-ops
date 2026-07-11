@@ -2,6 +2,21 @@
 
 # Changelog for Storm Ops - Oxlint
 
+## [0.0.58](https://github.com/storm-software/storm-ops/releases/tag/oxlint%400.0.58) (07/10/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace's lockfiles ([cf18a1819](https://github.com/storm-software/storm-ops/commit/cf18a1819))
+- **workspace-tools:** Rename `prod` profile to `release` for consistency ([7c676ed98](https://github.com/storm-software/storm-ops/commit/7c676ed98))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.29**
+- Updated **config-tools** to **v1.190.92**
+- Updated **eslint-plugin-banner** to **v0.0.57**
+- Updated **eslint-plugin-pnpm** to **v0.0.55**
+- Updated **eslint-plugin-tsdoc** to **v0.0.55**
+
 ## [0.0.57](https://github.com/storm-software/storm-ops/releases/tag/oxlint%400.0.57) (07/10/2026)
 
 ### Miscellaneous

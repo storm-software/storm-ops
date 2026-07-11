@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Vite
 
+## [0.1.186](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.186) (07/10/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace's lockfiles ([cf18a1819](https://github.com/storm-software/storm-ops/commit/cf18a1819))
+- **workspace-tools:** Rename `prod` profile to `release` for consistency ([7c676ed98](https://github.com/storm-software/storm-ops/commit/7c676ed98))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.252**
+
 ## [0.1.185](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.185) (07/10/2026)
 
 ### Miscellaneous

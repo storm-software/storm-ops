@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Config Tools
 
+## [1.190.92](https://github.com/storm-software/storm-ops/releases/tag/config-tools%401.190.92) (07/10/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace's lockfiles ([cf18a1819](https://github.com/storm-software/storm-ops/commit/cf18a1819))
+- **workspace-tools:** Rename `prod` profile to `release` for consistency ([7c676ed98](https://github.com/storm-software/storm-ops/commit/7c676ed98))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.29**
+- Updated **testing-tools** to **v1.119.245**
+
 ## [1.190.91](https://github.com/storm-software/storm-ops/releases/tag/config-tools%401.190.91) (07/10/2026)
 
 ### Miscellaneous

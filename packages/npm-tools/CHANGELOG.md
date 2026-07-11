@@ -2,6 +2,19 @@
 
 # Changelog for Storm Ops - Npm Tools
 
+## [0.6.210](https://github.com/storm-software/storm-ops/releases/tag/npm-tools%400.6.210) (07/10/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace's lockfiles ([cf18a1819](https://github.com/storm-software/storm-ops/commit/cf18a1819))
+- **workspace-tools:** Rename `prod` profile to `release` for consistency ([7c676ed98](https://github.com/storm-software/storm-ops/commit/7c676ed98))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.29**
+- Updated **config-tools** to **v1.190.92**
+- Updated **testing-tools** to **v1.119.245**
+
 ## [0.6.209](https://github.com/storm-software/storm-ops/releases/tag/npm-tools%400.6.209) (07/10/2026)
 
 ### Miscellaneous

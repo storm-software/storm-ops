@@ -2,6 +2,20 @@
 
 # Changelog for Storm Ops - Esbuild
 
+## [0.53.253](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.53.253) (07/10/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace's lockfiles ([cf18a1819](https://github.com/storm-software/storm-ops/commit/cf18a1819))
+- **workspace-tools:** Rename `prod` profile to `release` for consistency ([7c676ed98](https://github.com/storm-software/storm-ops/commit/7c676ed98))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.252**
+- Updated **config** to **v1.138.29**
+- Updated **config-tools** to **v1.190.92**
+- Updated **tsup** to **v0.2.250**
+
 ## [0.53.252](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.53.252) (07/10/2026)
 
 ### Miscellaneous

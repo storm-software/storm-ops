@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Tsconfig
 
+## [0.48.159](https://github.com/storm-software/storm-ops/releases/tag/tsconfig%400.48.159) (07/10/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace's lockfiles ([cf18a1819](https://github.com/storm-software/storm-ops/commit/cf18a1819))
+- **workspace-tools:** Rename `prod` profile to `release` for consistency ([7c676ed98](https://github.com/storm-software/storm-ops/commit/7c676ed98))
+
 ## [0.48.158](https://github.com/storm-software/storm-ops/releases/tag/tsconfig%400.48.158) (07/10/2026)
 
 ### Miscellaneous

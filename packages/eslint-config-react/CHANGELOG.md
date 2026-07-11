@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - ESLint Config React
 
+## [0.0.48](https://github.com/storm-software/storm-ops/releases/tag/eslint-config-react%400.0.48) (07/10/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace's lockfiles ([cf18a1819](https://github.com/storm-software/storm-ops/commit/cf18a1819))
+- **workspace-tools:** Rename `prod` profile to `release` for consistency ([7c676ed98](https://github.com/storm-software/storm-ops/commit/7c676ed98))
+
+### Updated Dependencies
+
+- Updated **eslint** to **v0.170.126**
+
 ## [0.0.47](https://github.com/storm-software/storm-ops/releases/tag/eslint-config-react%400.0.47) (07/10/2026)
 
 ### Miscellaneous

@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Pnpm Plugin
 
+## [0.1.203](https://github.com/storm-software/storm-ops/releases/tag/pnpm-plugin%400.1.203) (07/10/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace's lockfiles ([cf18a1819](https://github.com/storm-software/storm-ops/commit/cf18a1819))
+- **workspace-tools:** Rename `prod` profile to `release` for consistency ([7c676ed98](https://github.com/storm-software/storm-ops/commit/7c676ed98))
+
+### Updated Dependencies
+
+- Updated **package-constants** to **v0.1.105**
+- Updated **testing-tools** to **v1.119.245**
+
 ## [0.1.202](https://github.com/storm-software/storm-ops/releases/tag/pnpm-plugin%400.1.202) (07/10/2026)
 
 ### Miscellaneous
