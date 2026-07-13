@@ -51,6 +51,8 @@
       "@storm-software/oxlint/*": ["./packages/oxlint/src/*"],
       "@storm-software/pnpm-tools": ["./packages/pnpm-tools/src/index.ts"],
       "@storm-software/pnpm-tools/*": ["./packages/pnpm-tools/src/*"],
+      "@storm-software/bun-tools": ["./packages/bun-tools/src/index.ts"],
+      "@storm-software/bun-tools/*": ["./packages/bun-tools/src/*"],
       "@storm-software/prettier": ["./packages/prettier/src/index.ts"],
       "@storm-software/prettier/*": ["./packages/prettier/src/*"],
       "@storm-software/oxfmt": ["./packages/oxfmt/src/index.ts"],

@@ -27,7 +27,7 @@ This package is part of the <b>⚡Storm-Ops</b> monorepo. The Storm-Ops packages
 
 <h3 align="center">💻 Visit <a href="https://stormsoftware.com" target="_blank">stormsoftware.com</a> to stay up to date with this developer</h3><br />
 
-[![Version](https://img.shields.io/badge/version-0.0.1-1fb2a6.svg?style=for-the-badge&color=1fb2a6)](https://prettier.io/)&nbsp;[![Nx](https://img.shields.io/badge/Nx-17.0.2-lightgrey?style=for-the-badge&logo=nx&logoWidth=20&&color=1fb2a6)](http://nx.dev/)&nbsp;[![NextJs](https://img.shields.io/badge/Next.js-14.0.2-lightgrey?style=for-the-badge&logo=nextdotjs&logoWidth=20&color=1fb2a6)](https://nextjs.org/)&nbsp;[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg?style=for-the-badge&logo=commitlint&color=1fb2a6)](http://commitizen.github.io/cz-cli/)&nbsp;![Semantic-Release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg?style=for-the-badge&color=1fb2a6)&nbsp;[![documented with Fumadocs](https://img.shields.io/badge/documented_with-fumadocs-success.svg?style=for-the-badge&logo=readthedocs&color=1fb2a6)](https://fumadocs.vercel.app/)&nbsp;![GitHub Workflow Status (with event)](https://img.shields.io/github/actions/workflow/status/storm-software/storm-ops/cr.yml?style=for-the-badge&logo=github-actions&color=1fb2a6)
+[![Version](https://img.shields.io/badge/version-0.7.102-1fb2a6.svg?style=for-the-badge&color=1fb2a6)](https://prettier.io/)&nbsp;[![Nx](https://img.shields.io/badge/Nx-17.0.2-lightgrey?style=for-the-badge&logo=nx&logoWidth=20&&color=1fb2a6)](http://nx.dev/)&nbsp;[![NextJs](https://img.shields.io/badge/Next.js-14.0.2-lightgrey?style=for-the-badge&logo=nextdotjs&logoWidth=20&color=1fb2a6)](https://nextjs.org/)&nbsp;[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg?style=for-the-badge&logo=commitlint&color=1fb2a6)](http://commitizen.github.io/cz-cli/)&nbsp;![Semantic-Release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg?style=for-the-badge&color=1fb2a6)&nbsp;[![documented with Fumadocs](https://img.shields.io/badge/documented_with-fumadocs-success.svg?style=for-the-badge&logo=readthedocs&color=1fb2a6)](https://fumadocs.vercel.app/)&nbsp;![GitHub Workflow Status (with event)](https://img.shields.io/github/actions/workflow/status/storm-software/storm-ops/cr.yml?style=for-the-badge&logo=github-actions&color=1fb2a6)
 
 <!-- prettier-ignore-start -->
 <!-- markdownlint-disable -->
@@ -49,9 +49,13 @@ This package is part of the <b>⚡Storm-Ops</b> monorepo. The Storm-Ops packages
 
 ## Table of Contents
 
-- [Storm Software - Devenv Import Modules](#storm-software---devenv-import-modules)
-  - [Modules](#modules)
-  - [Usage](#usage)
+- [Storm Configuration Package](#storm-configuration-package)
+  - [Installing](#installing)
+  - [Reduced Package Size](#reduced-package-size)
+  - [Development](#development)
+    - [Building](#building)
+    - [Running unit tests](#running-unit-tests)
+    - [Linting](#linting)
   - [Storm Workspaces](#storm-workspaces)
   - [Roadmap](#roadmap)
   - [Support](#support)
@@ -69,64 +73,59 @@ This package is part of the <b>⚡Storm-Ops</b> monorepo. The Storm-Ops packages
 
 <!-- END header -->
 
-# Storm Software - Devenv Import Modules
+# Storm Bun Tools Package
 
-This package combines various base [Devenv](https://devenv.sh/) modules that are
-used by Storm Software repositories. They can be combined with local
-configuration via imports. More details around this functionality can be found
-in the [Devenv documentation](https://devenv.sh/composing-using-imports/).
+A set of [Bun](https://bun.sh/) plugins and utilities for managing workspace packages/dependencies.
 
-## Modules
+## Installing
 
-The following Devenv modules are included in this package:
+Using [Bun](https://bun.sh/):
 
-- `storm-ops/devenv-modules/base`: Base Devenv module for Storm Software
-  repositories. This module includes many tools and infrastructure used in all Storm Software repositories.
-- `storm-ops/devenv-modules/core`: Core Devenv module for Storm Software
-  repositories. This module builds off the `storm-ops/devenv-modules/base` module to include additional tools and infrastructure.
-- `storm-ops/devenv-modules/minimal`: Minimal Devenv module for Storm Software
-  repositories. This module should be used in Storm Software's repositories with the `variant` type of `minimal`.
-- `storm-ops/devenv-modules/claude`: Devenv module to support development with AI tools, such as:
-  - [OpenAI's GPT models](https://openai.com/api/).
-  - [Claude](https://claude.ai/).
-  - [Cursor](https://www.cursor.so/).
-- `storm-ops/devenv-modules/rust`: Devenv module to support development with
-  [Rust](https://www.rust-lang.org/).
-- `storm-ops/devenv-modules/python`: Devenv module to support development with
-  [Python](https://www.python.org/).
-- `storm-ops/devenv-modules/cpp`: Devenv module to support development with
-  [C++](https://cplusplus.com/).
-- `storm-ops/devenv-modules/atuin`: Devenv module to include
-  [atuin](https://github.com/atuinsh/atuin) support.
-- `storm-ops/devenv-modules/vhs`: Devenv module to include
-  [vhs](https://github.com/charmbracelet/vhs) support.
-- `storm-ops/devenv-modules/mdbook`: Devenv module to include
-  [mdbook](https://github.com/rust-lang/mdBook) support.
-- `storm-ops/devenv-modules/k8s`: Devenv module to include [Kubernetes](https://kubernetes.io/) support. Also includes support for [kubectl](https://kubernetes.io/docs/reference/kubectl/overview/), [k9s](https://k9scli.io/), and [kind](https://kind.sigs.k8s.io/).
-- `storm-ops/devenv-modules/terraform`: Devenv module to include [OpenTofu](https://opentofu.com/), [Terraform](https://www.terraform.io/), [Terragrunt](https://terragrunt.gruntwork.io/), and [Tenv](https://www.env0.com/blog/how-to-use-tenv-to-streamline-iac-version-management).
-- `storm-ops/devenv-modules/bun`: Devenv module to include [Bun](https://bun.sh/) support.
-- `storm-ops/devenv-modules/pnpm`: Devenv module to include [pnpm](https://pnpm.io/) support.
-
-## Usage
-
-A repository can use the modules included in this package by importing them in
-the `devenv.yaml` file. For example, to use the base module, you can create a
-`devenv.yaml` file in the root of your repository with the following content:
-
-```yaml
-# yaml-language-server: $schema=https://devenv.sh/devenv.schema.json
-inputs:
-  storm-ops:
-    url: github:storm-software/storm-ops
-    flake: false
-  nixpkgs:
-    url: github:cachix/devenv-nixpkgs/rolling
-  nixpkgs-unstable:
-    url: github:nixos/nixpkgs/nixpkgs-unstable
-imports:
-  - storm-ops/devenv-modules/base
-  - storm-ops/devenv-modules/core
+```bash
+bun add -D @storm-software/bun-tools
 ```
+
+<details>
+  <summary>Using npm</summary>
+
+```bash
+npm install -D @storm-software/bun-tools
+```
+
+</details>
+
+<details>
+  <summary>Using yarn</summary>
+
+```bash
+yarn add -D @storm-software/bun-tools
+```
+
+</details>
+
+## Reduced Package Size
+
+This project uses [tsup](https://tsup.egoist.dev/) to package the source code
+due to its ability to remove unused code and ship smaller javascript files
+thanks to code splitting. This helps to greatly reduce the size of the package
+and to make it easier to use in other projects.
+
+## Development
+
+This project is built using [Nx](https://nx.dev). As a result, many of the usual
+commands are available to assist in development.
+
+### Building
+
+Run `nx build bun-tools` to build the library.
+
+### Running unit tests
+
+Run `nx test bun-tools` to execute the unit tests via [Jest](https://jestjs.io).
+
+### Linting
+
+Run `nx lint bun-tools` to run [ESLint](https://eslint.org/) on the package.
 
 <!-- START footer -->
 <!-- prettier-ignore-start -->

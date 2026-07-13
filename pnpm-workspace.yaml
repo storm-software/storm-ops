@@ -51,12 +51,12 @@ catalog:
   chalk: "^4.1.2"
   commander: "^12.1.0"
   copyfiles: "2.4.1"
-  create-nx-workspace: "^22.7.6"
+  create-nx-workspace: "^22.7.7"
   cspell: "^8.19.4"
   date-fns: "^4.4.0"
   defu: "^6.1.7"
   esbuild: "^0.25.12"
-  eslint: "^10.6.0"
+  eslint: "^10.7.0"
   eslint-doc-generator: "^3.6.0"
   eslint-flat-config-utils: "^2.1.4"
   eslint-plugin-eslint-plugin: "^7.4.1"
@@ -81,7 +81,7 @@ catalog:
   rimraf: "6.0.1"
   rollup: "^4.62.2"
   semver: "^7.8.5"
-  tsdown: "^0.22.4"
+  tsdown: "^0.22.5"
   tslib: "^2.8.1"
   tsup: "8.4.0"
   tsx: "^4.23.0"
@@ -132,6 +132,7 @@ overrides:
   "@storm-software/npm-tools": "workspace:*"
   "@storm-software/package-constants": "workspace:*"
   "@storm-software/pnpm-tools": "workspace:*"
+  "@storm-software/bun-tools": "workspace:*"
   "@storm-software/prettier": "workspace:*"
   "@storm-software/projen": "workspace:*"
   "@storm-software/pulumi-tools": "workspace:*"
@@ -166,6 +167,6 @@ preferWorkspacePackages: true
 shamefullyHoist: true
 shellEmulator: true
 supportedArchitectures:
-  cpu: [ "current" ]
+  cpu: ["current"]
 useNodeVersion: "26.2.0"
 verifyDepsBeforeRun: "install"
