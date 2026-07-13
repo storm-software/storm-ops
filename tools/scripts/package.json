@@ -5,6 +5,7 @@
   "private": true,
   "dependencies": {
     "consola": "3.3.3",
+    "semver": "catalog:",
     "esbuild": "catalog:",
     "pkg-types": "catalog:",
     "tslib": "catalog:",

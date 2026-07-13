@@ -74,6 +74,7 @@
     "rebuild": "pnpm clean && pnpm build",
     "rebuild-all": "pnpm clean-all && pnpm build-all",
     "release": "pnpm exec zx tools/scripts/src/release.mjs",
+    "delete-stale-tags": "pnpm exec zx tools/scripts/src/delete-stale-tags.mjs",
     "start": "nx serve",
     "test": "echo Skipping workspace testing...",
     "typecheck": "pnpm exec zx tools/scripts/src/typecheck.mjs",
