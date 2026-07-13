@@ -17,7 +17,6 @@
   # https://devenv.sh/packages/
   packages = with pkgs; [
     cargo-deny
-    openssl
     yamllint
     zizmor
   ];
