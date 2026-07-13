@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Untyped
 
+## [0.24.241](https://github.com/storm-software/storm-ops/releases/tag/untyped%400.24.241) (07/13/2026)
+
+### Miscellaneous
+
+- **bun-tools:** Display full error details during update ([f1c4902a7](https://github.com/storm-software/storm-ops/commit/f1c4902a7))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.36**
+- Updated **config-tools** to **v1.190.99**
+
 ## [0.24.240](https://github.com/storm-software/storm-ops/releases/tag/untyped%400.24.240) (07/13/2026)
 
 ### Miscellaneous

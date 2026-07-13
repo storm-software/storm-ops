@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - ESLint Plugin Banner
 
+## [0.0.64](https://github.com/storm-software/storm-ops/releases/tag/eslint-plugin-banner%400.0.64) (07/13/2026)
+
+### Miscellaneous
+
+- **devenv-modules:** Update devenv modules inputs ([d71083ab0](https://github.com/storm-software/storm-ops/commit/d71083ab0))
+- **bun-tools:** Display full error details during update ([f1c4902a7](https://github.com/storm-software/storm-ops/commit/f1c4902a7))
+
+### Updated Dependencies
+
+- Updated **package-constants** to **v0.1.112**
+- Updated **prettier** to **v0.59.152**
+
 ## [0.0.63](https://github.com/storm-software/storm-ops/releases/tag/eslint-plugin-banner%400.0.63) (07/13/2026)
 
 ### Miscellaneous

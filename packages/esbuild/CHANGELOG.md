@@ -2,6 +2,19 @@
 
 # Changelog for Storm Ops - Esbuild
 
+## [0.53.260](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.53.260) (07/13/2026)
+
+### Miscellaneous
+
+- **bun-tools:** Display full error details during update ([f1c4902a7](https://github.com/storm-software/storm-ops/commit/f1c4902a7))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.259**
+- Updated **config** to **v1.138.36**
+- Updated **config-tools** to **v1.190.99**
+- Updated **tsup** to **v0.2.257**
+
 ## [0.53.259](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.53.259) (07/13/2026)
 
 ### Miscellaneous

@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Tsconfig
 
+## [0.48.166](https://github.com/storm-software/storm-ops/releases/tag/tsconfig%400.48.166) (07/13/2026)
+
+### Miscellaneous
+
+- **bun-tools:** Display full error details during update ([f1c4902a7](https://github.com/storm-software/storm-ops/commit/f1c4902a7))
+
 ## [0.48.165](https://github.com/storm-software/storm-ops/releases/tag/tsconfig%400.48.165) (07/13/2026)
 
 ### Miscellaneous

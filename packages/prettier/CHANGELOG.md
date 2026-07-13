@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Prettier
 
+## [0.59.152](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.59.152) (07/13/2026)
+
+### Miscellaneous
+
+- **bun-tools:** Display full error details during update ([f1c4902a7](https://github.com/storm-software/storm-ops/commit/f1c4902a7))
+
 ## [0.59.150](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.59.150) (07/13/2026)
 
 ### Miscellaneous

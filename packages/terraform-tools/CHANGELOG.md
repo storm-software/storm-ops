@@ -2,6 +2,19 @@
 
 # Changelog for Storm Ops - Terraform Tools
 
+## [0.66.282](https://github.com/storm-software/storm-ops/releases/tag/terraform-tools%400.66.282) (07/13/2026)
+
+### Miscellaneous
+
+- **devenv-modules:** Update devenv modules inputs ([d71083ab0](https://github.com/storm-software/storm-ops/commit/d71083ab0))
+- **bun-tools:** Display full error details during update ([f1c4902a7](https://github.com/storm-software/storm-ops/commit/f1c4902a7))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.36**
+- Updated **config-tools** to **v1.190.99**
+- Updated **workspace-tools** to **v1.296.79**
+
 ## [0.66.281](https://github.com/storm-software/storm-ops/releases/tag/terraform-tools%400.66.281) (07/13/2026)
 
 ### Updated Dependencies

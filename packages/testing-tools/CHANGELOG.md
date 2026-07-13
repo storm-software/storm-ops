@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Testing Tools
 
+## [1.119.252](https://github.com/storm-software/storm-ops/releases/tag/testing-tools%401.119.252) (07/13/2026)
+
+### Miscellaneous
+
+- **devenv-modules:** Update devenv modules inputs ([d71083ab0](https://github.com/storm-software/storm-ops/commit/d71083ab0))
+- **bun-tools:** Display full error details during update ([f1c4902a7](https://github.com/storm-software/storm-ops/commit/f1c4902a7))
+
 ## [1.119.251](https://github.com/storm-software/storm-ops/releases/tag/testing-tools%401.119.251) (07/13/2026)
 
 ### Miscellaneous

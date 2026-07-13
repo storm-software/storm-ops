@@ -2,6 +2,19 @@
 
 # Changelog for Storm Ops - ESLint Plugin Tsdoc
 
+## [0.0.62](https://github.com/storm-software/storm-ops/releases/tag/eslint-plugin-tsdoc%400.0.62) (07/13/2026)
+
+### Miscellaneous
+
+- **devenv-modules:** Update devenv modules inputs ([d71083ab0](https://github.com/storm-software/storm-ops/commit/d71083ab0))
+- **bun-tools:** Display full error details during update ([f1c4902a7](https://github.com/storm-software/storm-ops/commit/f1c4902a7))
+
+### Updated Dependencies
+
+- Updated **package-constants** to **v0.1.112**
+- Updated **prettier** to **v0.59.152**
+- Updated **tsdoc** to **v0.13.252**
+
 ## [0.0.61](https://github.com/storm-software/storm-ops/releases/tag/eslint-plugin-tsdoc%400.0.61) (07/13/2026)
 
 ### Miscellaneous

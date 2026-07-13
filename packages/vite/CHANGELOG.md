@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - Vite
 
+## [0.1.193](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.193) (07/13/2026)
+
+### Miscellaneous
+
+- **bun-tools:** Display full error details during update ([f1c4902a7](https://github.com/storm-software/storm-ops/commit/f1c4902a7))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.259**
+
 ## [0.1.192](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.192) (07/13/2026)
 
 ### Miscellaneous

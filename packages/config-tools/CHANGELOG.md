@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Config Tools
 
+## [1.190.99](https://github.com/storm-software/storm-ops/releases/tag/config-tools%401.190.99) (07/13/2026)
+
+### Miscellaneous
+
+- **devenv-modules:** Update devenv modules inputs ([d71083ab0](https://github.com/storm-software/storm-ops/commit/d71083ab0))
+- **bun-tools:** Display full error details during update ([f1c4902a7](https://github.com/storm-software/storm-ops/commit/f1c4902a7))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.36**
+- Updated **testing-tools** to **v1.119.252**
+
 ## [1.190.98](https://github.com/storm-software/storm-ops/releases/tag/config-tools%401.190.98) (07/13/2026)
 
 ### Miscellaneous

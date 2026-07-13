@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Package Constants
 
+## [0.1.112](https://github.com/storm-software/storm-ops/releases/tag/package-constants%400.1.112) (07/13/2026)
+
+### Miscellaneous
+
+- **devenv-modules:** Update devenv modules inputs ([d71083ab0](https://github.com/storm-software/storm-ops/commit/d71083ab0))
+- **bun-tools:** Display full error details during update ([f1c4902a7](https://github.com/storm-software/storm-ops/commit/f1c4902a7))
+
 ## [0.1.111](https://github.com/storm-software/storm-ops/releases/tag/package-constants%400.1.111) (07/13/2026)
 
 ### Miscellaneous

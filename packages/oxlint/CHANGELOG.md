@@ -2,6 +2,20 @@
 
 # Changelog for Storm Ops - Oxlint
 
+## [0.0.65](https://github.com/storm-software/storm-ops/releases/tag/oxlint%400.0.65) (07/13/2026)
+
+### Miscellaneous
+
+- **bun-tools:** Display full error details during update ([f1c4902a7](https://github.com/storm-software/storm-ops/commit/f1c4902a7))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.36**
+- Updated **config-tools** to **v1.190.99**
+- Updated **eslint-plugin-banner** to **v0.0.64**
+- Updated **eslint-plugin-pnpm** to **v0.0.62**
+- Updated **eslint-plugin-tsdoc** to **v0.0.62**
+
 ## [0.0.64](https://github.com/storm-software/storm-ops/releases/tag/oxlint%400.0.64) (07/13/2026)
 
 ### Miscellaneous

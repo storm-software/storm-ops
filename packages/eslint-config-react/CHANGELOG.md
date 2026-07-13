@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - ESLint Config React
 
+## [0.0.55](https://github.com/storm-software/storm-ops/releases/tag/eslint-config-react%400.0.55) (07/13/2026)
+
+### Miscellaneous
+
+- **devenv-modules:** Update devenv modules inputs ([d71083ab0](https://github.com/storm-software/storm-ops/commit/d71083ab0))
+- **bun-tools:** Display full error details during update ([f1c4902a7](https://github.com/storm-software/storm-ops/commit/f1c4902a7))
+
+### Updated Dependencies
+
+- Updated **eslint** to **v0.170.133**
+
 ## [0.0.54](https://github.com/storm-software/storm-ops/releases/tag/eslint-config-react%400.0.54) (07/13/2026)
 
 ### Miscellaneous

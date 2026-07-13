@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Projen
 
+## [0.21.282](https://github.com/storm-software/storm-ops/releases/tag/projen%400.21.282) (07/13/2026)
+
+### Miscellaneous
+
+- **bun-tools:** Display full error details during update ([f1c4902a7](https://github.com/storm-software/storm-ops/commit/f1c4902a7))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.36**
+- Updated **config-tools** to **v1.190.99**
+- Updated **workspace-tools** to **v1.296.79**
+
 ## [0.21.281](https://github.com/storm-software/storm-ops/releases/tag/projen%400.21.281) (07/13/2026)
 
 ### Updated Dependencies

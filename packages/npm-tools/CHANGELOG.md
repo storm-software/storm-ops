@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Npm Tools
 
+## [0.6.217](https://github.com/storm-software/storm-ops/releases/tag/npm-tools%400.6.217) (07/13/2026)
+
+### Miscellaneous
+
+- **bun-tools:** Display full error details during update ([f1c4902a7](https://github.com/storm-software/storm-ops/commit/f1c4902a7))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.36**
+- Updated **config-tools** to **v1.190.99**
+- Updated **testing-tools** to **v1.119.252**
+
 ## [0.6.216](https://github.com/storm-software/storm-ops/releases/tag/npm-tools%400.6.216) (07/13/2026)
 
 ### Updated Dependencies

@@ -2,6 +2,19 @@
 
 # Changelog for Storm Ops - Git Tools
 
+## [2.131.107](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.131.107) (07/13/2026)
+
+### Miscellaneous
+
+- **bun-tools:** Display full error details during update ([f1c4902a7](https://github.com/storm-software/storm-ops/commit/f1c4902a7))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.36**
+- Updated **config-tools** to **v1.190.99**
+- Updated **conventional-changelog** to **v0.3.260**
+- Updated **package-constants** to **v0.1.112**
+
 ## [2.131.106](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.131.106) (07/13/2026)
 
 ### Miscellaneous

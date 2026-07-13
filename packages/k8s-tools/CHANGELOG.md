@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - K8s Tools
 
+## [0.42.282](https://github.com/storm-software/storm-ops/releases/tag/k8s-tools%400.42.282) (07/13/2026)
+
+### Miscellaneous
+
+- **bun-tools:** Display full error details during update ([f1c4902a7](https://github.com/storm-software/storm-ops/commit/f1c4902a7))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.36**
+- Updated **config-tools** to **v1.190.99**
+- Updated **workspace-tools** to **v1.296.79**
+
 ## [0.42.281](https://github.com/storm-software/storm-ops/releases/tag/k8s-tools%400.42.281) (07/13/2026)
 
 ### Updated Dependencies

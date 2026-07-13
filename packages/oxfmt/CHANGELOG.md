@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Oxfmt
 
+## [0.0.55](https://github.com/storm-software/storm-ops/releases/tag/oxfmt%400.0.55) (07/13/2026)
+
+### Miscellaneous
+
+- **bun-tools:** Display full error details during update ([f1c4902a7](https://github.com/storm-software/storm-ops/commit/f1c4902a7))
+
 ## [0.0.53](https://github.com/storm-software/storm-ops/releases/tag/oxfmt%400.0.53) (07/13/2026)
 
 ### Miscellaneous

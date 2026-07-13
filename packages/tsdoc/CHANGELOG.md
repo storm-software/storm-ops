@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Tsdoc
 
+## [0.13.252](https://github.com/storm-software/storm-ops/releases/tag/tsdoc%400.13.252) (07/13/2026)
+
+### Miscellaneous
+
+- **bun-tools:** Display full error details during update ([f1c4902a7](https://github.com/storm-software/storm-ops/commit/f1c4902a7))
+
 ## [0.13.251](https://github.com/storm-software/storm-ops/releases/tag/tsdoc%400.13.251) (07/13/2026)
 
 ### Miscellaneous

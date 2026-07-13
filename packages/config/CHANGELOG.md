@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - Config
 
+## [1.138.36](https://github.com/storm-software/storm-ops/releases/tag/config%401.138.36) (07/13/2026)
+
+### Miscellaneous
+
+- **bun-tools:** Display full error details during update ([f1c4902a7](https://github.com/storm-software/storm-ops/commit/f1c4902a7))
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.252**
+
 ## [1.138.35](https://github.com/storm-software/storm-ops/releases/tag/config%401.138.35) (07/13/2026)
 
 ### Updated Dependencies
