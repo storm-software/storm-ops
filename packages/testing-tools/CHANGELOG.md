@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Testing Tools
 
+## [1.119.247](https://github.com/storm-software/storm-ops/releases/tag/testing-tools%401.119.247) (07/13/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update `devenv.yaml` to use NixOS package versions ([91e9ced1a](https://github.com/storm-software/storm-ops/commit/91e9ced1a))
+- **monorepo:** Regenerate workspace's devenv modules ([3055cb5fa](https://github.com/storm-software/storm-ops/commit/3055cb5fa))
+
 ## [1.119.245](https://github.com/storm-software/storm-ops/releases/tag/testing-tools%401.119.245) (07/10/2026)
 
 ### Miscellaneous

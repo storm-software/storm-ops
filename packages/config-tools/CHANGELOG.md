@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Config Tools
 
+## [1.190.94](https://github.com/storm-software/storm-ops/releases/tag/config-tools%401.190.94) (07/13/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update `devenv.yaml` to use NixOS package versions ([91e9ced1a](https://github.com/storm-software/storm-ops/commit/91e9ced1a))
+- **monorepo:** Regenerate workspace's devenv modules ([3055cb5fa](https://github.com/storm-software/storm-ops/commit/3055cb5fa))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.31**
+- Updated **testing-tools** to **v1.119.247**
+
 ## [1.190.93](https://github.com/storm-software/storm-ops/releases/tag/config-tools%401.190.93) (07/12/2026)
 
 ### Updated Dependencies

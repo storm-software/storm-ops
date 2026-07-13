@@ -2,6 +2,20 @@
 
 # Changelog for Storm Ops - Git Tools
 
+## [2.131.102](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.131.102) (07/13/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update `devenv.yaml` to use NixOS package versions ([91e9ced1a](https://github.com/storm-software/storm-ops/commit/91e9ced1a))
+- **monorepo:** Regenerate workspace's devenv modules ([3055cb5fa](https://github.com/storm-software/storm-ops/commit/3055cb5fa))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.31**
+- Updated **config-tools** to **v1.190.94**
+- Updated **conventional-changelog** to **v0.3.255**
+- Updated **package-constants** to **v0.1.107**
+
 ## [2.131.101](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.131.101) (07/12/2026)
 
 ### Updated Dependencies

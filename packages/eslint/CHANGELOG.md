@@ -2,6 +2,31 @@
 
 # Changelog for Storm Ops - ESLint
 
+## [0.170.128](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.170.128) (07/13/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update `devenv.yaml` to use NixOS package versions ([91e9ced1a](https://github.com/storm-software/storm-ops/commit/91e9ced1a))
+- **monorepo:** Regenerate workspace's devenv modules ([3055cb5fa](https://github.com/storm-software/storm-ops/commit/3055cb5fa))
+
+### Bug Fixes
+
+- **bun-tools:** Update logic to use `package.json` for reading/writing catalogs ([03620bc01](https://github.com/storm-software/storm-ops/commit/03620bc01))
+
+### Features
+
+- **bun-tools:** Added `bun-tools` package and `bun` devenv module ([714817800](https://github.com/storm-software/storm-ops/commit/714817800))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.31**
+- Updated **config-tools** to **v1.190.94**
+- Updated **eslint-plugin-banner** to **v0.0.59**
+- Updated **eslint-plugin-pnpm** to **v0.0.57**
+- Updated **eslint-plugin-tsdoc** to **v0.0.57**
+- Updated **package-constants** to **v0.1.107**
+- Updated **tsdoc** to **v0.13.247**
+
 ## [0.170.127](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.170.127) (07/12/2026)
 
 ### Bug Fixes

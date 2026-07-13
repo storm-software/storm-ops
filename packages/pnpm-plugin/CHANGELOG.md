@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Pnpm Plugin
 
+## [0.1.205](https://github.com/storm-software/storm-ops/releases/tag/pnpm-plugin%400.1.205) (07/13/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update `devenv.yaml` to use NixOS package versions ([91e9ced1a](https://github.com/storm-software/storm-ops/commit/91e9ced1a))
+- **monorepo:** Regenerate workspace's devenv modules ([3055cb5fa](https://github.com/storm-software/storm-ops/commit/3055cb5fa))
+
+### Updated Dependencies
+
+- Updated **package-constants** to **v0.1.107**
+- Updated **testing-tools** to **v1.119.247**
+
 ## [0.1.204](https://github.com/storm-software/storm-ops/releases/tag/pnpm-plugin%400.1.204) (07/12/2026)
 
 ### Updated Dependencies

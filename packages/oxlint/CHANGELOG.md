@@ -2,6 +2,21 @@
 
 # Changelog for Storm Ops - Oxlint
 
+## [0.0.60](https://github.com/storm-software/storm-ops/releases/tag/oxlint%400.0.60) (07/13/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update `devenv.yaml` to use NixOS package versions ([91e9ced1a](https://github.com/storm-software/storm-ops/commit/91e9ced1a))
+- **monorepo:** Regenerate workspace's devenv modules ([3055cb5fa](https://github.com/storm-software/storm-ops/commit/3055cb5fa))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.31**
+- Updated **config-tools** to **v1.190.94**
+- Updated **eslint-plugin-banner** to **v0.0.59**
+- Updated **eslint-plugin-pnpm** to **v0.0.57**
+- Updated **eslint-plugin-tsdoc** to **v0.0.57**
+
 ## [0.0.59](https://github.com/storm-software/storm-ops/releases/tag/oxlint%400.0.59) (07/12/2026)
 
 ### Updated Dependencies

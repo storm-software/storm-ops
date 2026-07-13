@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Prettier
 
+## [0.59.147](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.59.147) (07/13/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update `devenv.yaml` to use NixOS package versions ([91e9ced1a](https://github.com/storm-software/storm-ops/commit/91e9ced1a))
+- **monorepo:** Regenerate workspace's devenv modules ([3055cb5fa](https://github.com/storm-software/storm-ops/commit/3055cb5fa))
+
 ## [0.59.145](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.59.145) (07/10/2026)
 
 ### Miscellaneous

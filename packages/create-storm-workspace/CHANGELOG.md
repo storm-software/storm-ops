@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Create Storm Workspace
 
+## [1.97.254](https://github.com/storm-software/storm-ops/releases/tag/create-storm-workspace%401.97.254) (07/13/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update `devenv.yaml` to use NixOS package versions ([91e9ced1a](https://github.com/storm-software/storm-ops/commit/91e9ced1a))
+- **monorepo:** Regenerate workspace's devenv modules ([3055cb5fa](https://github.com/storm-software/storm-ops/commit/3055cb5fa))
+
+### Updated Dependencies
+
+- Updated **config-tools** to **v1.190.94**
+
 ## [1.97.253](https://github.com/storm-software/storm-ops/releases/tag/create-storm-workspace%401.97.253) (07/12/2026)
 
 ### Updated Dependencies

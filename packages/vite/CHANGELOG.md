@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Vite
 
+## [0.1.188](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.188) (07/13/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update `devenv.yaml` to use NixOS package versions ([91e9ced1a](https://github.com/storm-software/storm-ops/commit/91e9ced1a))
+- **monorepo:** Regenerate workspace's devenv modules ([3055cb5fa](https://github.com/storm-software/storm-ops/commit/3055cb5fa))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.254**
+
 ## [0.1.187](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.187) (07/12/2026)
 
 ### Updated Dependencies

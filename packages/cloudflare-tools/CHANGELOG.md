@@ -2,6 +2,23 @@
 
 # Changelog for Storm Ops - Cloudflare Tools
 
+## [0.71.237](https://github.com/storm-software/storm-ops/releases/tag/cloudflare-tools%400.71.237) (07/13/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update `devenv.yaml` to use NixOS package versions ([91e9ced1a](https://github.com/storm-software/storm-ops/commit/91e9ced1a))
+- **monorepo:** Regenerate workspace's devenv modules ([3055cb5fa](https://github.com/storm-software/storm-ops/commit/3055cb5fa))
+
+### Features
+
+- **bun-tools:** Added `bun-tools` package and `bun` devenv module ([714817800](https://github.com/storm-software/storm-ops/commit/714817800))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.31**
+- Updated **config-tools** to **v1.190.94**
+- Updated **workspace-tools** to **v1.296.74**
+
 ## [0.71.236](https://github.com/storm-software/storm-ops/releases/tag/cloudflare-tools%400.71.236) (07/12/2026)
 
 ### Features

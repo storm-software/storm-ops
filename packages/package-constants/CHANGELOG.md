@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Package Constants
 
+## [0.1.107](https://github.com/storm-software/storm-ops/releases/tag/package-constants%400.1.107) (07/13/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update `devenv.yaml` to use NixOS package versions ([91e9ced1a](https://github.com/storm-software/storm-ops/commit/91e9ced1a))
+- **monorepo:** Regenerate workspace's devenv modules ([3055cb5fa](https://github.com/storm-software/storm-ops/commit/3055cb5fa))
+
 ## [0.1.105](https://github.com/storm-software/storm-ops/releases/tag/package-constants%400.1.105) (07/10/2026)
 
 ### Miscellaneous

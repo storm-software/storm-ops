@@ -2,6 +2,19 @@
 
 # Changelog for Storm Ops - ESLint Plugin Pnpm
 
+## [0.0.57](https://github.com/storm-software/storm-ops/releases/tag/eslint-plugin-pnpm%400.0.57) (07/13/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update `devenv.yaml` to use NixOS package versions ([91e9ced1a](https://github.com/storm-software/storm-ops/commit/91e9ced1a))
+- **monorepo:** Regenerate workspace's devenv modules ([3055cb5fa](https://github.com/storm-software/storm-ops/commit/3055cb5fa))
+
+### Updated Dependencies
+
+- Updated **package-constants** to **v0.1.107**
+- Updated **prettier** to **v0.59.147**
+- Updated **tsdoc** to **v0.13.247**
+
 ## [0.0.56](https://github.com/storm-software/storm-ops/releases/tag/eslint-plugin-pnpm%400.0.56) (07/12/2026)
 
 ### Updated Dependencies

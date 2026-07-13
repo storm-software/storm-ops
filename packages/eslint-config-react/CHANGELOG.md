@@ -2,6 +2,21 @@
 
 # Changelog for Storm Ops - ESLint Config React
 
+## [0.0.50](https://github.com/storm-software/storm-ops/releases/tag/eslint-config-react%400.0.50) (07/13/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update `devenv.yaml` to use NixOS package versions ([91e9ced1a](https://github.com/storm-software/storm-ops/commit/91e9ced1a))
+- **monorepo:** Regenerate workspace's devenv modules ([3055cb5fa](https://github.com/storm-software/storm-ops/commit/3055cb5fa))
+
+### Features
+
+- **bun-tools:** Added `bun-tools` package and `bun` devenv module ([714817800](https://github.com/storm-software/storm-ops/commit/714817800))
+
+### Updated Dependencies
+
+- Updated **eslint** to **v0.170.128**
+
 ## [0.0.49](https://github.com/storm-software/storm-ops/releases/tag/eslint-config-react%400.0.49) (07/12/2026)
 
 ### Features

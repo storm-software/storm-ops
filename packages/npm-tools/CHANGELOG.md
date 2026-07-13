@@ -2,6 +2,19 @@
 
 # Changelog for Storm Ops - Npm Tools
 
+## [0.6.212](https://github.com/storm-software/storm-ops/releases/tag/npm-tools%400.6.212) (07/13/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update `devenv.yaml` to use NixOS package versions ([91e9ced1a](https://github.com/storm-software/storm-ops/commit/91e9ced1a))
+- **monorepo:** Regenerate workspace's devenv modules ([3055cb5fa](https://github.com/storm-software/storm-ops/commit/3055cb5fa))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.31**
+- Updated **config-tools** to **v1.190.94**
+- Updated **testing-tools** to **v1.119.247**
+
 ## [0.6.211](https://github.com/storm-software/storm-ops/releases/tag/npm-tools%400.6.211) (07/12/2026)
 
 ### Updated Dependencies

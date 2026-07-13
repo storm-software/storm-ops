@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Linting Tools
 
+## [1.134.24](https://github.com/storm-software/storm-ops/releases/tag/linting-tools%401.134.24) (07/13/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update `devenv.yaml` to use NixOS package versions ([91e9ced1a](https://github.com/storm-software/storm-ops/commit/91e9ced1a))
+- **monorepo:** Regenerate workspace's devenv modules ([3055cb5fa](https://github.com/storm-software/storm-ops/commit/3055cb5fa))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.31**
+- Updated **config-tools** to **v1.190.94**
+
 ## [1.134.23](https://github.com/storm-software/storm-ops/releases/tag/linting-tools%401.134.23) (07/12/2026)
 
 ### Updated Dependencies

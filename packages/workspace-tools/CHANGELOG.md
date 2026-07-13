@@ -2,6 +2,26 @@
 
 # Changelog for Storm Ops - Workspace Tools
 
+## [1.296.74](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.296.74) (07/13/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update `devenv.yaml` to use NixOS package versions ([91e9ced1a](https://github.com/storm-software/storm-ops/commit/91e9ced1a))
+- **monorepo:** Regenerate workspace's devenv modules ([3055cb5fa](https://github.com/storm-software/storm-ops/commit/3055cb5fa))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.31**
+- Updated **config-tools** to **v1.190.94**
+- Updated **esbuild** to **v0.53.255**
+- Updated **npm-tools** to **v0.6.212**
+- Updated **package-constants** to **v0.1.107**
+- Updated **pnpm-tools** to **v0.7.105**
+- Updated **prettier** to **v0.59.147**
+- Updated **testing-tools** to **v1.119.247**
+- Updated **tsdown** to **v0.45.255**
+- Updated **unbuild** to **v0.57.255**
+
 ## [1.296.73](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.296.73) (07/12/2026)
 
 ### Updated Dependencies

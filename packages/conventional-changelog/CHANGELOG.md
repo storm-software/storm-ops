@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Conventional Changelog
 
+## [0.3.255](https://github.com/storm-software/storm-ops/releases/tag/conventional-changelog%400.3.255) (07/13/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update `devenv.yaml` to use NixOS package versions ([91e9ced1a](https://github.com/storm-software/storm-ops/commit/91e9ced1a))
+- **monorepo:** Regenerate workspace's devenv modules ([3055cb5fa](https://github.com/storm-software/storm-ops/commit/3055cb5fa))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.31**
+- Updated **config-tools** to **v1.190.94**
+
 ## [0.3.254](https://github.com/storm-software/storm-ops/releases/tag/conventional-changelog%400.3.254) (07/12/2026)
 
 ### Updated Dependencies
