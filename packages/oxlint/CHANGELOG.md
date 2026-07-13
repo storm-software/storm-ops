@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - Oxlint
 
+## [0.0.62](https://github.com/storm-software/storm-ops/releases/tag/oxlint%400.0.62) (07/13/2026)
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.33**
+- Updated **config-tools** to **v1.190.96**
+- Updated **eslint-plugin-banner** to **v0.0.61**
+- Updated **eslint-plugin-pnpm** to **v0.0.59**
+- Updated **eslint-plugin-tsdoc** to **v0.0.59**
+
 ## [0.0.61](https://github.com/storm-software/storm-ops/releases/tag/oxlint%400.0.61) (07/13/2026)
 
 ### Updated Dependencies

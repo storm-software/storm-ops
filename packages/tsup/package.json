@@ -1,6 +1,6 @@
 {
   "name": "@storm-software/tsup",
-  "version": "0.2.253",
+  "version": "0.2.254",
   "private": false,
   "description": "A package containing bundled patches for tsup.",
   "keywords": ["tsup", "storm", "storm-ops", "storm-software"],
