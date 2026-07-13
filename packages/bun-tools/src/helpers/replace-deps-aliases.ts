@@ -33,15 +33,6 @@ export async function replaceDepsAliases(
   const catalog = await getCatalog(workspaceRoot);
   const packageJson = JSON.parse(packageJsonFile);
 
-  const pnpmWorkspacePath = joinPaths(workspaceRoot, "pnpm-workspace.yaml");
-  if (!existsSync(pnpmWorkspacePath)) {
-    console.warn(
-      `No \`pnpm-workspace.yaml\` file found in workspace root (searching in: ${pnpmWorkspacePath}). Skipping workspace catalog read for now.`
-    );
-
-    return packageJson;
-  }
-
   if (!catalog) {
     console.warn(
       `No workspace catalog found. Skipping dependencies replacement for now.`
@@ -63,7 +54,7 @@ export async function replaceDepsAliases(
       if (dependencies[dependencyName] === "catalog:") {
         if (!catalog) {
           throw new Error(
-            `Dependency ${dependencyName} is marked as \`catalog:\`, but no catalog exists in the workspace root's \`pnpm-workspace.yaml\` file.`
+            `Dependency ${dependencyName} is marked as \`catalog:\`, but no catalog exists in the workspace root's \`package.json\` file.`
           );
         }
 

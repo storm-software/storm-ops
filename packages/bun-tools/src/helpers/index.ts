@@ -1,3 +1,4 @@
 export * from "./catalog";
-export * from "./pnpm-workspace";
+export * from "./package-json";
 export * from "./replace-deps-aliases";
+export * from "./workspace";

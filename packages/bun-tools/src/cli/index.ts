@@ -148,7 +148,7 @@ async function updateAction(
       const catalog = (await getCatalog()) as Record<string, string>;
       if (!catalog) {
         throw new Error(
-          "No catalog found in the pnpm-workspace.yaml file of the current workspace."
+          "No catalog found in the workspace root package.json file."
         );
       }
 

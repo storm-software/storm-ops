@@ -10966,6 +10966,7 @@ type MaxLinesPerFunction = []|[({
 type MaxNestedCallbacks = []|[(number | {
   maximum?: number
   max?: number
+  checkConstructorCallCallbacks?: boolean
 })]
 // ----- max-params -----
 type MaxParams = []|[(number | {
@@ -14787,6 +14788,11 @@ type PreferRegexLiterals = []|[{
 type PreserveCaughtError = []|[{
   
   requireCatchParameter?: boolean
+  
+  errorClassNames?: (string | {
+    name: string
+    argumentPosition: number
+  })[]
 }]
 // ----- prettier/prettier -----
 type PrettierPrettier = []|[{
@@ -16489,6 +16495,8 @@ type TestPreferExpectAssertions = []|[{
   onlyFunctionsWithExpectInLoop?: boolean
   
   onlyFunctionsWithExpectInCallback?: boolean
+  
+  disallowHasAssertions?: boolean
 }]
 // ----- test/prefer-import-in-mock -----
 type TestPreferImportInMock = []|[{

@@ -11,85 +11,91 @@ import { getVersion } from "@storm-software/npm-tools/helpers/get-version";
 import { coerce, gt, valid } from "semver";
 import { replacePrefix } from "./format";
 import {
-  readPnpmWorkspaceFile,
-  writePnpmWorkspaceFile
-} from "./pnpm-workspace";
+  getCatalogFromPackageJson,
+  readRootPackageJson,
+  setCatalogInPackageJson,
+  writeRootPackageJson
+} from "./package-json";
 
 /**
- * Safely retrieve the workspace catalog from the workspace's `pnpm-workspace.yaml` file.
+ * Safely retrieve the workspace catalog from the workspace root `package.json` file.
  *
  * @param workspaceRoot - The root directory of the workspace. Defaults to the result of `findWorkspaceRoot(process.cwd())`.
- * @returns A promise that resolves to the catalog object if found, or undefined if no catalog exists or the `pnpm-workspace.yaml` file is not found.
+ * @returns A promise that resolves to the catalog object if found, or undefined if no catalog exists or the `package.json` file is not found.
  */
 export async function getCatalogSafe(
   workspaceRoot = findWorkspaceRoot(process.cwd())
 ): Promise<Record<string, string> | undefined> {
-  const pnpmWorkspaceFile = await readPnpmWorkspaceFile(workspaceRoot);
-  if (!pnpmWorkspaceFile) {
-    throw new Error("No pnpm-workspace.yaml file found");
+  const packageJson = await readRootPackageJson(workspaceRoot);
+  if (!packageJson) {
+    throw new Error("No package.json file found in workspace root");
   }
 
-  if (pnpmWorkspaceFile?.catalog) {
+  const catalog = getCatalogFromPackageJson(packageJson);
+  if (catalog) {
     return Object.fromEntries(
-      Object.entries(pnpmWorkspaceFile.catalog).map(([key, value]) => {
+      Object.entries(catalog).map(([key, value]) => {
         return [key, value.replaceAll('"', "").replaceAll("'", "")];
       })
     );
-  } else {
-    console.warn(
-      `No catalog found in pnpm-workspace.yaml file located in workspace root: ${workspaceRoot} \nFile content: ${JSON.stringify(
-        pnpmWorkspaceFile,
-        null,
-        2
-      )}`
-    );
   }
+
+  console.warn(
+    `No catalog found in package.json file located in workspace root: ${workspaceRoot} \nFile content: ${JSON.stringify(
+      packageJson,
+      null,
+      2
+    )}`
+  );
 
   return undefined;
 }
 
 /**
- * Retrieve the workspace catalog from the workspace's `pnpm-workspace.yaml` file.
+ * Retrieve the workspace catalog from the workspace root `package.json` file.
  *
  * @param workspaceRoot - The root directory of the workspace. Defaults to the result of `findWorkspaceRoot(process.cwd())`.
- * @returns A promise that resolves to the catalog object if found, or throws an error if no catalog exists or the `pnpm-workspace.yaml` file is not found.
- * @throws Will throw an error if the `pnpm-workspace.yaml` file is found but cannot be read.
+ * @returns A promise that resolves to the catalog object if found, or throws an error if no catalog exists or the `package.json` file is not found.
+ * @throws Will throw an error if the `package.json` file is found but cannot be read.
  */
 export async function getCatalog(
   workspaceRoot = findWorkspaceRoot(process.cwd())
 ): Promise<Record<string, string> | undefined> {
   const catalog = await getCatalogSafe(workspaceRoot);
   if (!catalog) {
-    throw new Error("No catalog entries found in pnpm-workspace.yaml file");
+    throw new Error("No catalog entries found in workspace root package.json file");
   }
 
   return catalog;
 }
 
 /**
- * Set the workspace catalog in the workspace's `pnpm-workspace.yaml` file.
+ * Set the workspace catalog in the workspace root `package.json` file.
  *
- * @param catalog - The catalog object to set in the `pnpm-workspace.yaml` file.
+ * @param catalog - The catalog object to set in the `package.json` file.
  * @param workspaceRoot - The root directory of the workspace. Defaults to the result of `findWorkspaceRoot(process.cwd())`.
  */
 export async function setCatalog(
   catalog: Record<string, string>,
   workspaceRoot = findWorkspaceRoot(process.cwd())
 ) {
-  const pnpmWorkspaceFile = await readPnpmWorkspaceFile(workspaceRoot);
-  if (!pnpmWorkspaceFile) {
-    throw new Error("No pnpm-workspace.yaml file found");
+  const packageJson = await readRootPackageJson(workspaceRoot);
+  if (!packageJson) {
+    throw new Error("No package.json file found in workspace root");
   }
 
-  pnpmWorkspaceFile.catalog = Object.fromEntries(
-    Object.entries(catalog)
-      .filter(([, value]) => value && valid(replacePrefix(value), true))
-      .map(([key, value]) => {
-        return [key, value.replaceAll('"', "").replaceAll("'", "")];
-      })
+  setCatalogInPackageJson(
+    packageJson,
+    Object.fromEntries(
+      Object.entries(catalog)
+        .filter(([, value]) => value && valid(replacePrefix(value), true))
+        .map(([key, value]) => {
+          return [key, value.replaceAll('"', "").replaceAll("'", "")];
+        })
+    )
   );
 
-  await writePnpmWorkspaceFile(pnpmWorkspaceFile, workspaceRoot);
+  await writeRootPackageJson(packageJson, workspaceRoot);
 }
 
 export interface UpgradeCatalogPackageOptions {
@@ -117,11 +123,11 @@ export interface UpgradeCatalogPackageOptions {
   /**
    * The version prefix to use when updating the package (e.g., "^", "~", or "1.2.3"). Defaults to "^".
    *
-   * - Caret (^): The default prefix. It allows updates to the latest minor or patch version while staying within the same major version. Example: “^1.2.3" allows updates to 1.3.0 or 1.2.4, but not 2.0.0.
-   * - Tilde (~): Allows updates to the latest patch version while staying within the same minor version. Example: “~1.2.3" allows updates to 1.2.4 but not 1.3.0.
+   * - Caret (^): The default prefix. It allows updates to the latest minor or patch version while staying within the same major version. Example: "^1.2.3" allows updates to 1.3.0 or 1.2.4, but not 2.0.0.
+   * - Tilde (~): Allows updates to the latest patch version while staying within the same minor version. Example: "~1.2.3" allows updates to 1.2.4 but not 1.3.0.
    * - Exact (no prefix): Locks the dependency to a specific version. No updates are allowed. Example: 1.2.3 will only use 1.2.3.
-   * - Greater/Less Than (>, <, >=, <=): Specifies a range of acceptable versions. Example: “>=1.2.3 <2.0.0" allows any version from 1.2.3 to 1.9.x.
-   * - Wildcard (*): Allows the most flexibility by accepting any version. Example: “*2.4.6" allows any version.
+   * - Greater/Less Than (>, <, >=, <=): Specifies a range of acceptable versions. Example: ">=1.2.3 <2.0.0" allows any version from 1.2.3 to 1.9.x.
+   * - Wildcard (*): Allows the most flexibility by accepting any version. Example: "*2.4.6" allows any version.
    *
    * @defaultValue `"^"`
    */
