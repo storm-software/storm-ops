@@ -1,13 +1,13 @@
 {
   "name": "@storm-software/tools-scripts",
   "version": "0.0.1",
-  "type": "module",
   "private": true,
+  "type": "module",
   "dependencies": {
     "consola": "3.3.3",
-    "semver": "catalog:",
     "esbuild": "catalog:",
     "pkg-types": "catalog:",
+    "semver": "catalog:",
     "tslib": "catalog:",
     "yaml": "catalog:",
     "zx": "catalog:"
