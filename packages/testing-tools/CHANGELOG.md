@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Testing Tools
 
+## [1.119.251](https://github.com/storm-software/storm-ops/releases/tag/testing-tools%401.119.251) (07/13/2026)
+
+### Miscellaneous
+
+- **monorepo:** Updated `release` workflow to have correct permissions ([42db452c2](https://github.com/storm-software/storm-ops/commit/42db452c2))
+
 ## [1.119.250](https://github.com/storm-software/storm-ops/releases/tag/testing-tools%401.119.250) (07/13/2026)
 
 ### Miscellaneous

@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Config Tools
 
+## [1.190.98](https://github.com/storm-software/storm-ops/releases/tag/config-tools%401.190.98) (07/13/2026)
+
+### Miscellaneous
+
+- **monorepo:** Updated `release` workflow to have correct permissions ([42db452c2](https://github.com/storm-software/storm-ops/commit/42db452c2))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.35**
+- Updated **testing-tools** to **v1.119.251**
+
 ## [1.190.97](https://github.com/storm-software/storm-ops/releases/tag/config-tools%401.190.97) (07/13/2026)
 
 ### Miscellaneous

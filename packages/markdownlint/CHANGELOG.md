@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - Markdownlint
 
+## [0.30.254](https://github.com/storm-software/storm-ops/releases/tag/markdownlint%400.30.254) (07/13/2026)
+
+### Miscellaneous
+
+- **monorepo:** Updated `release` workflow to have correct permissions ([42db452c2](https://github.com/storm-software/storm-ops/commit/42db452c2))
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.251**
+
 ## [0.30.253](https://github.com/storm-software/storm-ops/releases/tag/markdownlint%400.30.253) (07/13/2026)
 
 ### Miscellaneous

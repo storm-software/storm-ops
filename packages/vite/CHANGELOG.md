@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - Vite
 
+## [0.1.192](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.192) (07/13/2026)
+
+### Miscellaneous
+
+- **monorepo:** Updated `release` workflow to have correct permissions ([42db452c2](https://github.com/storm-software/storm-ops/commit/42db452c2))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.258**
+
 ## [0.1.191](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.191) (07/13/2026)
 
 ### Miscellaneous

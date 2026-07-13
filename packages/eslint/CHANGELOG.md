@@ -2,6 +2,22 @@
 
 # Changelog for Storm Ops - ESLint
 
+## [0.170.132](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.170.132) (07/13/2026)
+
+### Miscellaneous
+
+- **monorepo:** Updated `release` workflow to have correct permissions ([42db452c2](https://github.com/storm-software/storm-ops/commit/42db452c2))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.35**
+- Updated **config-tools** to **v1.190.98**
+- Updated **eslint-plugin-banner** to **v0.0.63**
+- Updated **eslint-plugin-pnpm** to **v0.0.61**
+- Updated **eslint-plugin-tsdoc** to **v0.0.61**
+- Updated **package-constants** to **v0.1.111**
+- Updated **tsdoc** to **v0.13.251**
+
 ## [0.170.131](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.170.131) (07/13/2026)
 
 ### Miscellaneous

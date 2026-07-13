@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Untyped
 
+## [0.24.240](https://github.com/storm-software/storm-ops/releases/tag/untyped%400.24.240) (07/13/2026)
+
+### Miscellaneous
+
+- **monorepo:** Updated `release` workflow to have correct permissions ([42db452c2](https://github.com/storm-software/storm-ops/commit/42db452c2))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.35**
+- Updated **config-tools** to **v1.190.98**
+
 ## [0.24.239](https://github.com/storm-software/storm-ops/releases/tag/untyped%400.24.239) (07/13/2026)
 
 ### Miscellaneous

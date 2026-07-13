@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Tsconfig
 
+## [0.48.165](https://github.com/storm-software/storm-ops/releases/tag/tsconfig%400.48.165) (07/13/2026)
+
+### Miscellaneous
+
+- **monorepo:** Updated `release` workflow to have correct permissions ([42db452c2](https://github.com/storm-software/storm-ops/commit/42db452c2))
+
 ## [0.48.164](https://github.com/storm-software/storm-ops/releases/tag/tsconfig%400.48.164) (07/13/2026)
 
 ### Miscellaneous

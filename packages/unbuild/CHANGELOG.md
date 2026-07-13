@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Unbuild
 
+## [0.57.259](https://github.com/storm-software/storm-ops/releases/tag/unbuild%400.57.259) (07/13/2026)
+
+### Miscellaneous
+
+- **monorepo:** Updated `release` workflow to have correct permissions ([42db452c2](https://github.com/storm-software/storm-ops/commit/42db452c2))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.258**
+- Updated **config** to **v1.138.35**
+- Updated **config-tools** to **v1.190.98**
+
 ## [0.57.258](https://github.com/storm-software/storm-ops/releases/tag/unbuild%400.57.258) (07/13/2026)
 
 ### Miscellaneous

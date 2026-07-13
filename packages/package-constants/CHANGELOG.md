@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Package Constants
 
+## [0.1.111](https://github.com/storm-software/storm-ops/releases/tag/package-constants%400.1.111) (07/13/2026)
+
+### Miscellaneous
+
+- **monorepo:** Updated `release` workflow to have correct permissions ([42db452c2](https://github.com/storm-software/storm-ops/commit/42db452c2))
+
 ## [0.1.110](https://github.com/storm-software/storm-ops/releases/tag/package-constants%400.1.110) (07/13/2026)
 
 ### Miscellaneous

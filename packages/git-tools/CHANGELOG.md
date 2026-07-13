@@ -2,6 +2,19 @@
 
 # Changelog for Storm Ops - Git Tools
 
+## [2.131.106](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.131.106) (07/13/2026)
+
+### Miscellaneous
+
+- **monorepo:** Updated `release` workflow to have correct permissions ([42db452c2](https://github.com/storm-software/storm-ops/commit/42db452c2))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.35**
+- Updated **config-tools** to **v1.190.98**
+- Updated **conventional-changelog** to **v0.3.259**
+- Updated **package-constants** to **v0.1.111**
+
 ## [2.131.105](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.131.105) (07/13/2026)
 
 ### Miscellaneous

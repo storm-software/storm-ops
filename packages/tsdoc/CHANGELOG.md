@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Tsdoc
 
+## [0.13.251](https://github.com/storm-software/storm-ops/releases/tag/tsdoc%400.13.251) (07/13/2026)
+
+### Miscellaneous
+
+- **monorepo:** Updated `release` workflow to have correct permissions ([42db452c2](https://github.com/storm-software/storm-ops/commit/42db452c2))
+
 ## [0.13.250](https://github.com/storm-software/storm-ops/releases/tag/tsdoc%400.13.250) (07/13/2026)
 
 ### Miscellaneous

@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Pnpm Plugin
 
+## [0.1.209](https://github.com/storm-software/storm-ops/releases/tag/pnpm-plugin%400.1.209) (07/13/2026)
+
+### Miscellaneous
+
+- **monorepo:** Updated `release` workflow to have correct permissions ([42db452c2](https://github.com/storm-software/storm-ops/commit/42db452c2))
+
+### Updated Dependencies
+
+- Updated **package-constants** to **v0.1.111**
+- Updated **testing-tools** to **v1.119.251**
+
 ## [0.1.208](https://github.com/storm-software/storm-ops/releases/tag/pnpm-plugin%400.1.208) (07/13/2026)
 
 ### Miscellaneous

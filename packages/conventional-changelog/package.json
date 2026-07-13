@@ -1,6 +1,6 @@
 {
   "name": "conventional-changelog-storm-software",
-  "version": "0.3.258",
+  "version": "0.3.259",
   "private": false,
   "description": "This package contains the shared conventional-changelog configuration used in Storm Software projects.",
   "keywords": [
@@ -224,10 +224,7 @@
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
-  "files": [
-    "dist/**/*",
-    "templates/**/*"
-  ],
+  "files": ["dist/**/*", "templates/**/*"],
   "dependencies": {
     "@storm-software/config": "workspace:*",
     "@storm-software/config-tools": "workspace:*",

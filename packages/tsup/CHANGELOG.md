@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Tsup
 
+## [0.2.256](https://github.com/storm-software/storm-ops/releases/tag/tsup%400.2.256) (07/13/2026)
+
+### Miscellaneous
+
+- **monorepo:** Updated `release` workflow to have correct permissions ([42db452c2](https://github.com/storm-software/storm-ops/commit/42db452c2))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.258**
+- Updated **config-tools** to **v1.190.98**
+
 ## [0.2.255](https://github.com/storm-software/storm-ops/releases/tag/tsup%400.2.255) (07/13/2026)
 
 ### Miscellaneous
