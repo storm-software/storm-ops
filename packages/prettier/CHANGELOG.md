@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Prettier
 
+## [0.59.150](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.59.150) (07/13/2026)
+
+### Miscellaneous
+
+- **tools-scripts:** Resolve linting issue with `package.json` dependencies order ([140a5f835](https://github.com/storm-software/storm-ops/commit/140a5f835))
+
 ## [0.59.147](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.59.147) (07/13/2026)
 
 ### Miscellaneous

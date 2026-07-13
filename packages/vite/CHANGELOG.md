@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - Vite
 
+## [0.1.191](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.191) (07/13/2026)
+
+### Miscellaneous
+
+- **tools-scripts:** Resolve linting issue with `package.json` dependencies order ([140a5f835](https://github.com/storm-software/storm-ops/commit/140a5f835))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.257**
+
 ## [0.1.190](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.190) (07/13/2026)
 
 ### Updated Dependencies

@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - ESLint Plugin Tsdoc
 
+## [0.0.60](https://github.com/storm-software/storm-ops/releases/tag/eslint-plugin-tsdoc%400.0.60) (07/13/2026)
+
+### Miscellaneous
+
+- **tools-scripts:** Resolve linting issue with `package.json` dependencies order ([140a5f835](https://github.com/storm-software/storm-ops/commit/140a5f835))
+
+### Updated Dependencies
+
+- Updated **package-constants** to **v0.1.110**
+- Updated **prettier** to **v0.59.150**
+- Updated **tsdoc** to **v0.13.250**
+
 ## [0.0.59](https://github.com/storm-software/storm-ops/releases/tag/eslint-plugin-tsdoc%400.0.59) (07/13/2026)
 
 ### Updated Dependencies

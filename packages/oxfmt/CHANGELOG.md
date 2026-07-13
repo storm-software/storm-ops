@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Oxfmt
 
+## [0.0.53](https://github.com/storm-software/storm-ops/releases/tag/oxfmt%400.0.53) (07/13/2026)
+
+### Miscellaneous
+
+- **tools-scripts:** Resolve linting issue with `package.json` dependencies order ([140a5f835](https://github.com/storm-software/storm-ops/commit/140a5f835))
+
 ## [0.0.50](https://github.com/storm-software/storm-ops/releases/tag/oxfmt%400.0.50) (07/13/2026)
 
 ### Miscellaneous

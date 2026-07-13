@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Pnpm Plugin
 
+## [0.1.208](https://github.com/storm-software/storm-ops/releases/tag/pnpm-plugin%400.1.208) (07/13/2026)
+
+### Miscellaneous
+
+- **tools-scripts:** Resolve linting issue with `package.json` dependencies order ([140a5f835](https://github.com/storm-software/storm-ops/commit/140a5f835))
+
+### Updated Dependencies
+
+- Updated **package-constants** to **v0.1.110**
+- Updated **testing-tools** to **v1.119.250**
+
 ## [0.1.207](https://github.com/storm-software/storm-ops/releases/tag/pnpm-plugin%400.1.207) (07/13/2026)
 
 ### Updated Dependencies

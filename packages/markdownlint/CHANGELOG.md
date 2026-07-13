@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - Markdownlint
 
+## [0.30.253](https://github.com/storm-software/storm-ops/releases/tag/markdownlint%400.30.253) (07/13/2026)
+
+### Miscellaneous
+
+- **tools-scripts:** Resolve linting issue with `package.json` dependencies order ([140a5f835](https://github.com/storm-software/storm-ops/commit/140a5f835))
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.250**
+
 ## [0.30.252](https://github.com/storm-software/storm-ops/releases/tag/markdownlint%400.30.252) (07/13/2026)
 
 ### Updated Dependencies

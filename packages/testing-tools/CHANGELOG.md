@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Testing Tools
 
+## [1.119.250](https://github.com/storm-software/storm-ops/releases/tag/testing-tools%401.119.250) (07/13/2026)
+
+### Miscellaneous
+
+- **tools-scripts:** Resolve linting issue with `package.json` dependencies order ([140a5f835](https://github.com/storm-software/storm-ops/commit/140a5f835))
+
 ## [1.119.247](https://github.com/storm-software/storm-ops/releases/tag/testing-tools%401.119.247) (07/13/2026)
 
 ### Miscellaneous

@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - CSpell
 
+## [0.46.165](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.46.165) (07/13/2026)
+
+### Miscellaneous
+
+- **tools-scripts:** Resolve linting issue with `package.json` dependencies order ([140a5f835](https://github.com/storm-software/storm-ops/commit/140a5f835))
+
 ## [0.46.162](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.46.162) (07/13/2026)
 
 ### Miscellaneous

@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Terraform Tools
 
+## [0.66.280](https://github.com/storm-software/storm-ops/releases/tag/terraform-tools%400.66.280) (07/13/2026)
+
+### Miscellaneous
+
+- **tools-scripts:** Resolve linting issue with `package.json` dependencies order ([140a5f835](https://github.com/storm-software/storm-ops/commit/140a5f835))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.34**
+- Updated **config-tools** to **v1.190.97**
+- Updated **workspace-tools** to **v1.296.77**
+
 ## [0.66.279](https://github.com/storm-software/storm-ops/releases/tag/terraform-tools%400.66.279) (07/13/2026)
 
 ### Updated Dependencies

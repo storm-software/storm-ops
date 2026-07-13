@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Config Tools
 
+## [1.190.97](https://github.com/storm-software/storm-ops/releases/tag/config-tools%401.190.97) (07/13/2026)
+
+### Miscellaneous
+
+- **tools-scripts:** Resolve linting issue with `package.json` dependencies order ([140a5f835](https://github.com/storm-software/storm-ops/commit/140a5f835))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.34**
+- Updated **testing-tools** to **v1.119.250**
+
 ## [1.190.96](https://github.com/storm-software/storm-ops/releases/tag/config-tools%401.190.96) (07/13/2026)
 
 ### Updated Dependencies

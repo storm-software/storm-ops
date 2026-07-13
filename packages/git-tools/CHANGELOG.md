@@ -2,6 +2,19 @@
 
 # Changelog for Storm Ops - Git Tools
 
+## [2.131.105](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.131.105) (07/13/2026)
+
+### Miscellaneous
+
+- **tools-scripts:** Resolve linting issue with `package.json` dependencies order ([140a5f835](https://github.com/storm-software/storm-ops/commit/140a5f835))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.34**
+- Updated **config-tools** to **v1.190.97**
+- Updated **conventional-changelog** to **v0.3.258**
+- Updated **package-constants** to **v0.1.110**
+
 ## [2.131.104](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.131.104) (07/13/2026)
 
 ### Updated Dependencies

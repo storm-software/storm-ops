@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Tsconfig
 
+## [0.48.164](https://github.com/storm-software/storm-ops/releases/tag/tsconfig%400.48.164) (07/13/2026)
+
+### Miscellaneous
+
+- **tools-scripts:** Resolve linting issue with `package.json` dependencies order ([140a5f835](https://github.com/storm-software/storm-ops/commit/140a5f835))
+
 ## [0.48.161](https://github.com/storm-software/storm-ops/releases/tag/tsconfig%400.48.161) (07/13/2026)
 
 ### Miscellaneous

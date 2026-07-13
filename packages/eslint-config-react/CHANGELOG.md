@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - ESLint Config React
 
+## [0.0.53](https://github.com/storm-software/storm-ops/releases/tag/eslint-config-react%400.0.53) (07/13/2026)
+
+### Miscellaneous
+
+- **tools-scripts:** Resolve linting issue with `package.json` dependencies order ([140a5f835](https://github.com/storm-software/storm-ops/commit/140a5f835))
+
+### Updated Dependencies
+
+- Updated **eslint** to **v0.170.131**
+
 ## [0.0.52](https://github.com/storm-software/storm-ops/releases/tag/eslint-config-react%400.0.52) (07/13/2026)
 
 ### Updated Dependencies

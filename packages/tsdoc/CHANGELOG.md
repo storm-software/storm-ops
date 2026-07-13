@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Tsdoc
 
+## [0.13.250](https://github.com/storm-software/storm-ops/releases/tag/tsdoc%400.13.250) (07/13/2026)
+
+### Miscellaneous
+
+- **tools-scripts:** Resolve linting issue with `package.json` dependencies order ([140a5f835](https://github.com/storm-software/storm-ops/commit/140a5f835))
+
 ## [0.13.247](https://github.com/storm-software/storm-ops/releases/tag/tsdoc%400.13.247) (07/13/2026)
 
 ### Miscellaneous

@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - Create Storm Workspace
 
+## [1.97.257](https://github.com/storm-software/storm-ops/releases/tag/create-storm-workspace%401.97.257) (07/13/2026)
+
+### Miscellaneous
+
+- **tools-scripts:** Resolve linting issue with `package.json` dependencies order ([140a5f835](https://github.com/storm-software/storm-ops/commit/140a5f835))
+
+### Updated Dependencies
+
+- Updated **config-tools** to **v1.190.97**
+
 ## [1.97.256](https://github.com/storm-software/storm-ops/releases/tag/create-storm-workspace%401.97.256) (07/13/2026)
 
 ### Updated Dependencies

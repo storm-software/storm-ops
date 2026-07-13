@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - ESLint Plugin Banner
 
+## [0.0.62](https://github.com/storm-software/storm-ops/releases/tag/eslint-plugin-banner%400.0.62) (07/13/2026)
+
+### Miscellaneous
+
+- **tools-scripts:** Resolve linting issue with `package.json` dependencies order ([140a5f835](https://github.com/storm-software/storm-ops/commit/140a5f835))
+
+### Updated Dependencies
+
+- Updated **package-constants** to **v0.1.110**
+- Updated **prettier** to **v0.59.150**
+
 ## [0.0.61](https://github.com/storm-software/storm-ops/releases/tag/eslint-plugin-banner%400.0.61) (07/13/2026)
 
 ### Updated Dependencies

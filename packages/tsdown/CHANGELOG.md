@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Tsdown
 
+## [0.45.258](https://github.com/storm-software/storm-ops/releases/tag/tsdown%400.45.258) (07/13/2026)
+
+### Miscellaneous
+
+- **tools-scripts:** Resolve linting issue with `package.json` dependencies order ([140a5f835](https://github.com/storm-software/storm-ops/commit/140a5f835))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.257**
+- Updated **config** to **v1.138.34**
+- Updated **config-tools** to **v1.190.97**
+
 ## [0.45.257](https://github.com/storm-software/storm-ops/releases/tag/tsdown%400.45.257) (07/13/2026)
 
 ### Updated Dependencies
