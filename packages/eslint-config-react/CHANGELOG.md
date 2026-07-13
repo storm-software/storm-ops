@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - ESLint Config React
 
+## [0.0.49](https://github.com/storm-software/storm-ops/releases/tag/eslint-config-react%400.0.49) (07/12/2026)
+
+### Features
+
+- **bun-tools:** Added `bun-tools` package and `bun` devenv module ([714817800](https://github.com/storm-software/storm-ops/commit/714817800))
+
+### Updated Dependencies
+
+- Updated **eslint** to **v0.170.127**
+
 ## [0.0.48](https://github.com/storm-software/storm-ops/releases/tag/eslint-config-react%400.0.48) (07/10/2026)
 
 ### Miscellaneous

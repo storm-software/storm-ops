@@ -2,6 +2,26 @@
 
 # Changelog for Storm Ops - ESLint
 
+## [0.170.127](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.170.127) (07/12/2026)
+
+### Bug Fixes
+
+- **bun-tools:** Update logic to use `package.json` for reading/writing catalogs ([03620bc01](https://github.com/storm-software/storm-ops/commit/03620bc01))
+
+### Features
+
+- **bun-tools:** Added `bun-tools` package and `bun` devenv module ([714817800](https://github.com/storm-software/storm-ops/commit/714817800))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.30**
+- Updated **config-tools** to **v1.190.93**
+- Updated **eslint-plugin-banner** to **v0.0.58**
+- Updated **eslint-plugin-pnpm** to **v0.0.56**
+- Updated **eslint-plugin-tsdoc** to **v0.0.56**
+- Updated **package-constants** to **v0.1.106**
+- Updated **tsdoc** to **v0.13.246**
+
 ## [0.170.126](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.170.126) (07/10/2026)
 
 ### Miscellaneous

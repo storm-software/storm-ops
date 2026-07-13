@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - ESLint Plugin Banner
 
+## [0.0.58](https://github.com/storm-software/storm-ops/releases/tag/eslint-plugin-banner%400.0.58) (07/12/2026)
+
+### Updated Dependencies
+
+- Updated **package-constants** to **v0.1.106**
+- Updated **prettier** to **v0.59.146**
+
 ## [0.0.57](https://github.com/storm-software/storm-ops/releases/tag/eslint-plugin-banner%400.0.57) (07/10/2026)
 
 ### Miscellaneous
