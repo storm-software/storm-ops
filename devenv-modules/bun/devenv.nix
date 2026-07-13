@@ -1,7 +1,4 @@
-{ pkgs, inputs, ... }:
-let
-  pkgs-unstable = import inputs.nixpkgs-unstable { system = pkgs.stdenv.system; };
-in
+{ pkgs, ... }:
 {
   dotenv = {
     enable = true;
@@ -35,13 +32,13 @@ in
   languages = {
     javascript = {
       enable = true;
-      package = pkgs-unstable.nodejs-slim_latest;
+      package = pkgs.nodejs-slim_latest;
       nodejs.enable = true;
       lsp.enable = true;
       bun = {
         enable = true;
         install.enable = true;
-        package = pkgs-unstable.bun;
+        package = pkgs.bun;
       };
     };
     typescript = {
