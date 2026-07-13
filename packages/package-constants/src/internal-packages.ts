@@ -7,5 +7,7 @@ export const INTERNAL_PACKAGES = [
   "powerlines",
   "@shell-shock/*",
   "@earthquake/*",
-  "earthquake"
+  "earthquake",
+  "@telepathic/*",
+  "telepathic"
 ] as const;

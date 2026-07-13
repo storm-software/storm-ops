@@ -33,7 +33,9 @@ const rootFiles = [
   "npm-lock.yml",
   "yarn-lock.yml",
   "pnpm-lock.yml",
-  "bun.lockb"
+  "bun.lockb",
+  "bun.lock",
+  "bunfig.toml"
 ];
 
 const rootDirectories = [
