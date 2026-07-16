@@ -174,8 +174,8 @@
       "executor": "nx:run-commands",
       "options": {
         "commands": [
-          "pnpm rimraf --glob {projectRoot}/dist",
-          "pnpm rimraf dist/{projectRoot}"
+          "bunx rimraf --glob {projectRoot}/dist",
+          "bunx rimraf dist/{projectRoot}"
         ]
       }
     },

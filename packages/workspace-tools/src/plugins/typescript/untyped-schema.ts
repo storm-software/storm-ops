@@ -118,7 +118,7 @@ Please add it to your dependencies by running "${packageManagerCommand.addDev} u
             ],
             options: {
               commands: [
-                `storm-untyped generate --entry=\\"${projectRoot}/**/{untyped.ts,*.untyped.ts}\\" `
+                `${packageManagerCommand.exec} storm-untyped generate --entry=\\"${projectRoot}/**/{untyped.ts,*.untyped.ts}\\" `
               ]
             }
           };
