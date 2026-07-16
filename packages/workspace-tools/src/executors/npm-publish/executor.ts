@@ -18,16 +18,14 @@ async function replaceDepsAliases(
   packageManager: string
 ) {
   if (packageManager === "bun") {
-    const { replaceDepsAliases: replaceBunDepsAliases } = await import(
-      "@storm-software/bun-tools"
-    );
+    const { replaceDepsAliases: replaceBunDepsAliases } =
+      await import("@storm-software/bun-tools");
     return replaceBunDepsAliases(packageRoot, workspaceRoot);
   }
 
   if (packageManager === "pnpm") {
-    const { replaceDepsAliases: replacePnpmDepsAliases } = await import(
-      "@storm-software/pnpm-tools"
-    );
+    const { replaceDepsAliases: replacePnpmDepsAliases } =
+      await import("@storm-software/pnpm-tools");
     return replacePnpmDepsAliases(packageRoot, workspaceRoot);
   }
 
