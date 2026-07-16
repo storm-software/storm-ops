@@ -16,4 +16,14 @@ export const semanticReleaseVersion = "22.0.7";
 
 export const nxVersion = "^18.0.4";
 export const nodeVersion = "20.11.0";
-export const pnpmVersion = "8.10.2";
+export const pnpmVersion = "10.3.0";
+export const npmVersion = "10.9.0";
+export const yarnVersion = "4.6.0";
+export const bunVersion = "1.2.0";
+
+export const packageManagerVersions = {
+  npm: npmVersion,
+  yarn: yarnVersion,
+  pnpm: pnpmVersion,
+  bun: bunVersion
+} as const;

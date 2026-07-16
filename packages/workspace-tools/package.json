@@ -267,6 +267,7 @@
   },
   "devDependencies": {
     "@napi-rs/cli": "^3.7.3",
+    "@storm-software/bun-tools": "workspace:*",
     "@storm-software/esbuild": "workspace:*",
     "@storm-software/package-constants": "workspace:*",
     "@storm-software/pnpm-tools": "workspace:*",
@@ -283,7 +284,9 @@
   },
   "peerDependencies": {
     "@napi-rs/cli": "^3.4.1",
+    "@storm-software/bun-tools": "*",
     "@storm-software/esbuild": "*",
+    "@storm-software/pnpm-tools": "*",
     "@storm-software/tsdown": "*",
     "@storm-software/unbuild": "*",
     "markdownlint-cli2": "^0.17.2",
@@ -294,7 +297,13 @@
     "@napi-rs/cli": {
       "optional": true
     },
+    "@storm-software/bun-tools": {
+      "optional": true
+    },
     "@storm-software/esbuild": {
+      "optional": true
+    },
+    "@storm-software/pnpm-tools": {
       "optional": true
     },
     "@storm-software/tsdown": {

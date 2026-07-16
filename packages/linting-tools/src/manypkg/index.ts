@@ -175,7 +175,11 @@ export async function runManypkg(
     if (requiresInstall) {
       console.log(`Running install in ${rootDir}...`);
 
-      await runAsync(config, "pnpm install --no-frozen-lockfile", rootDir);
+      await runAsync(
+        config,
+        `${config.packageManager} install --no-frozen-lockfile`,
+        rootDir
+      );
     }
 
     if (hasErrored) {

@@ -9,7 +9,7 @@ export async function postCommitHook(
   files: string[]
 ) {
   writeInfo("Running post-commit hook...", config);
-  checkPackageVersion(files);
+  checkPackageVersion(files, config);
 
   try {
     run(config, "git-lfs version");

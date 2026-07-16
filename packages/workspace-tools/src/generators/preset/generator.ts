@@ -3,13 +3,20 @@ import {
   addProjectConfiguration,
   formatFiles,
   generateFiles,
+  getPackageManagerCommand,
   joinPathFragments,
   updateJson,
+  type PackageManager,
   type Tree
 } from "@nx/devkit";
 import * as path from "node:path";
 import { withRunGenerator } from "../../base/base-generator";
-import { nodeVersion, pnpmVersion } from "../../utils/versions";
+import { getLockFileName } from "../../utils/package-manager";
+import {
+  nodeVersion,
+  packageManagerVersions,
+  pnpmVersion
+} from "../../utils/versions";
 import type { PresetGeneratorSchema } from "./schema.d";
 
 export async function presetGeneratorFn(
@@ -17,6 +24,11 @@ export async function presetGeneratorFn(
   options: PresetGeneratorSchema
 ) {
   const projectRoot = ".";
+  const packageManager = (options.packageManager ??
+    "pnpm") as PackageManager;
+  const packageManagerVersion = packageManagerVersions[packageManager];
+  const pmc = getPackageManagerCommand(packageManager);
+  const lockFileName = getLockFileName(packageManager);
 
   options.description ??= `⚡The ${
     options.namespace ? options.namespace : options.name
@@ -94,12 +106,6 @@ export async function presetGeneratorFn(
       url: `${options.repositoryUrl}.git`
     };
 
-    json.packageManager ??= "pnpm@10.3.0";
-    json.engines ??= {
-      node: ">=20.11.0",
-      pnpm: ">=10.3.0"
-    };
-
     json.prettier = "@storm-software/prettier/config.json";
 
     json.nx ??= {
@@ -118,20 +124,19 @@ export async function presetGeneratorFn(
       ]
     };
 
-    // generate a start script into the package.json
-
-    json.scripts.adr = "pnpm log4brains adr new";
-    json.scripts["adr-preview"] = "pnpm log4brains preview";
-    json.scripts.prepare = "pnpm add lefthook -w && pnpm lefthook install";
-    json.scripts.preinstall = "npx -y only-allow pnpm";
+    json.scripts.adr = pmc.run("log4brains", "adr new");
+    json.scripts["adr-preview"] = pmc.run("log4brains", "preview");
+    json.scripts.prepare = `${pmc.addDev} lefthook && ${packageManager} lefthook install`;
+    json.scripts.preinstall = `npx -y only-allow ${packageManager}`;
     json.scripts["install-csb"] =
-      "corepack enable && pnpm install --no-frozen-lockfile";
+      packageManager === "bun"
+        ? "bun install"
+        : `corepack enable && ${pmc.install}`;
 
     json.scripts.clean =
       "rimraf dist && rimraf --glob packages/**/dist && rimraf --glob tools/**/dist && rimraf --glob docs/**/dist && rimraf --glob apps/**/dist && rimraf --glob libs/**/dist";
-    json.scripts.nuke =
-      "nx clear-cache && rimraf .nx/cache && rimraf .nx/workspace-data && pnpm clean && rimraf pnpm-lock.yaml && rimraf --glob packages/**/node_modules && rimraf --glob tools/**/node_modules && rimraf node_modules";
-    json.scripts.prebuild = "pnpm clean";
+    json.scripts.nuke = `nx clear-cache && rimraf .nx/cache && rimraf .nx/workspace-data && ${packageManager} clean && rimraf ${lockFileName} && rimraf --glob packages/**/node_modules && rimraf --glob tools/**/node_modules && rimraf node_modules`;
+    json.scripts.prebuild = `${packageManager} clean`;
 
     json.scripts.build = "nx affected -t build --parallel=5";
     json.scripts["build-all"] = "nx run-many -t build --all --parallel=5";
@@ -155,11 +160,10 @@ export async function presetGeneratorFn(
 
     json.scripts.nx = "nx";
     json.scripts.graph = "nx graph";
-    json.scripts.lint = "pnpm storm-lint all --skip-cspell --skip-alex";
 
     if (options.includeApps) {
       json.scripts.start = "nx serve";
-      json.scripts.storybook = "pnpm storybook dev -p 6006";
+      json.scripts.storybook = pmc.run("storybook", "dev -p 6006");
     }
 
     json.scripts.help = "nx help";
@@ -170,66 +174,55 @@ export async function presetGeneratorFn(
     json.scripts.e2e = "nx e2e";
 
     if (options.includeApps) {
-      json.scripts.test = "nx test && pnpm test-storybook";
-      json.scripts["test-storybook"] = "pnpm test-storybook";
+      json.scripts.test = `nx test && ${packageManager} test-storybook`;
+      json.scripts["test-storybook"] = `${packageManager} test-storybook`;
     } else {
       json.scripts.test = "nx test";
     }
 
-    json.scripts.lint = "pnpm storm-lint all --skip-cspell --skip-alex";
-    json.scripts.commit = "pnpm storm-git commit";
-    json.scripts["api-extractor"] =
-      'pnpm storm-docs api-extractor --outputPath="docs/api-reference" --clean';
-    json.scripts.release = "pnpm storm-git release";
+    json.scripts.commit = pmc.run("storm-git", "commit");
+    json.scripts["api-extractor"] = pmc.run(
+      "storm-docs",
+      'api-extractor --outputPath="docs/api-reference" --clean'
+    );
+    json.scripts.release = pmc.run("storm-git", "release");
 
     json.scripts.format = "nx format:write";
     json.scripts["format-sherif"] =
-      "pnpm exec sherif -f -i typescript -i react -i react-dom";
+      `${pmc.exec} sherif -f -i typescript -i react -i react-dom`;
     json.scripts["format-toml"] =
-      'pnpm exec taplo format --config="./node_modules/@storm-software/linting-tools/taplo/config.toml" --cache-path="./node_modules/.cache/storm/taplo"';
-    json.scripts["format-readme"] =
-      'pnpm storm-git readme --templates="tools/readme-templates"';
+      `${pmc.exec} taplo format --config="./node_modules/@storm-software/linting-tools/taplo/config.toml" --cache-path="./node_modules/.cache/storm/taplo"`;
+    json.scripts["format-readme"] = pmc.run(
+      "storm-git",
+      'readme --templates="tools/readme-templates"'
+    );
     json.scripts["format-prettier"] =
-      "pnpm exec prettier --write --ignore-unknown --no-error-on-unmatched-pattern --cache && git update-index";
+      `${pmc.exec} prettier --write --ignore-unknown --no-error-on-unmatched-pattern --cache && git update-index`;
 
-    json.scripts.lint = "pnpm storm-lint all --skip-cspell";
-    json.scripts["lint-knip"] = "pnpm exec knip";
+    json.scripts.lint = pmc.run("storm-lint", "all --skip-cspell");
+    json.scripts["lint-knip"] = `${pmc.exec} knip`;
     json.scripts["lint-sherif"] =
-      "pnpm exec sherif -i typescript -i react -i react-dom";
+      `${pmc.exec} sherif -i typescript -i react -i react-dom`;
     json.scripts["lint-ls"] =
-      'pnpm exec ls-lint --config="./node_modules/@storm-software/linting-tools/ls-lint/ls-lint.yml"';
+      `${pmc.exec} ls-lint --config="./node_modules/@storm-software/linting-tools/ls-lint/ls-lint.yml"`;
 
-    json.packageManager ??= `pnpm@${pnpmVersion}`;
+    json.packageManager ??= `${packageManager}@${packageManagerVersion}`;
     json.engines = {
       node: `>=${nodeVersion}`,
-      pnpm: `>=${pnpmVersion}`
+      [packageManager]: `>=${packageManagerVersion}`
     };
-
-    // if (options.includeApps) {
-    //   json.bundlewatch = {
-    //     files: [
-    //       {
-    //         path: "dist/*/*.js",
-    //         maxSize: "200kB"
-    //       }
-    //     ],
-    //     ci: {
-    //       trackBranches: ["main", "alpha", "beta"]
-    //     }
-    //   };
-
-    //   json.nextBundleAnalysis = {
-    //     buildOutputDirectory: "dist/apps/web/app/.next"
-    //   };
-    // }
 
     return json;
   });
 
   generateFiles(tree, path.join(__dirname, "files"), projectRoot, {
     ...options,
+    packageManager,
+    packageManagerVersion,
     pnpmVersion,
-    nodeVersion
+    nodeVersion,
+    lockFileName,
+    exec: pmc.exec
   });
   await formatFiles(tree);
 

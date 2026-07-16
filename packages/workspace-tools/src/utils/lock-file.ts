@@ -26,11 +26,18 @@ import {
 export const YARN_LOCK_FILE = "yarn.lock";
 export const NPM_LOCK_FILE = "package-lock.json";
 export const PNPM_LOCK_FILE = "pnpm-lock.yaml";
-export const LOCK_FILES = [YARN_LOCK_FILE, NPM_LOCK_FILE, PNPM_LOCK_FILE];
+export const BUN_LOCK_FILE = "bun.lock";
+export const LOCK_FILES = [
+  YARN_LOCK_FILE,
+  NPM_LOCK_FILE,
+  PNPM_LOCK_FILE,
+  BUN_LOCK_FILE
+];
 
 export const YARN_LOCK_PATH = join(workspaceRoot, YARN_LOCK_FILE);
 export const NPM_LOCK_PATH = join(workspaceRoot, NPM_LOCK_FILE);
 export const PNPM_LOCK_PATH = join(workspaceRoot, PNPM_LOCK_FILE);
+export const BUN_LOCK_PATH = join(workspaceRoot, BUN_LOCK_FILE);
 
 /**
  * Parses lock file and maps dependencies and metadata to {@link LockFileGraph}
@@ -130,6 +137,9 @@ export function lockFileExists(packageManager: PackageManager): boolean {
   if (packageManager === "npm") {
     return existsSync(NPM_LOCK_PATH);
   }
+  if (packageManager === "bun") {
+    return existsSync(BUN_LOCK_PATH) || existsSync(join(workspaceRoot, "bun.lockb"));
+  }
   throw new Error(
     `Unknown package manager ${packageManager} or lock file missing`
   );
@@ -149,6 +159,9 @@ export function getLockFileName(packageManager: PackageManager): string {
   }
   if (packageManager === "npm") {
     return NPM_LOCK_FILE;
+  }
+  if (packageManager === "bun") {
+    return BUN_LOCK_FILE;
   }
   throw new Error(`Unknown package manager: ${packageManager}`);
 }

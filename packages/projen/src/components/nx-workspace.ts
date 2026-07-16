@@ -120,6 +120,7 @@ export class StormNxWorkspace extends NxWorkspace {
       "{workspaceRoot}/package.json",
       "{workspaceRoot}/{pnpm-workspace,pnpm-lock,package-lock,yarn-lock}.@(yaml|yml)",
       "{workspaceRoot}/bun.lockb",
+      "{workspaceRoot}/bun.lock",
       "{workspaceRoot}/LICENSE",
       "{workspaceRoot}/.git@(attributes|ignore)",
       "{workspaceRoot}/{nx.json,.nxignore}",

@@ -89,6 +89,8 @@ bun.lockb
 **/output
 **/package-lock.*
 **/pnpm-lock.*
+**/bun.lockb
+**/bun.lock
 **/rollup.config.*.timestamp-*
 **/service-worker.js
 **/sw*.js

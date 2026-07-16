@@ -1,22 +1,48 @@
 import { type ExecutorContext } from "@nx/devkit";
 import { getConfig } from "@storm-software/config-tools/get-config";
 import { joinPaths } from "@storm-software/config-tools/utilities/correct-paths";
-import { replaceDepsAliases } from "@storm-software/pnpm-tools";
 import { createJiti } from "jiti";
 import { execSync } from "node:child_process";
 import { readFile, writeFile } from "node:fs/promises";
 import { format } from "prettier";
 import { getGitHubTools } from "../../utils/github";
 import { addPackageJsonGitHead } from "../../utils/package-helpers";
+import { getWorkspacePackageManager } from "../../utils/package-manager";
 import type { NpmPublishExecutorSchema } from "./schema.d";
 
 export const LARGE_BUFFER = 1024 * 1000000;
+
+async function replaceDepsAliases(
+  packageRoot: string,
+  workspaceRoot: string,
+  packageManager: string
+) {
+  if (packageManager === "bun") {
+    const { replaceDepsAliases: replaceBunDepsAliases } = await import(
+      "@storm-software/bun-tools"
+    );
+    return replaceBunDepsAliases(packageRoot, workspaceRoot);
+  }
+
+  if (packageManager === "pnpm") {
+    const { replaceDepsAliases: replacePnpmDepsAliases } = await import(
+      "@storm-software/pnpm-tools"
+    );
+    return replacePnpmDepsAliases(packageRoot, workspaceRoot);
+  }
+
+  // npm/yarn: skip catalog resolution; workspace protocol handled at publish time by the registry tooling
+}
 
 export default async function npmPublishExecutorFn(
   options: NpmPublishExecutorSchema,
   context: ExecutorContext
 ) {
   const workspaceConfig = await getConfig(context.root);
+  const packageManager = await getWorkspacePackageManager(
+    context.root,
+    workspaceConfig
+  );
   const github = await getGitHubTools(workspaceConfig);
 
   const isDryRun = process.env.NX_DRY_RUN === "true" || options.dryRun || false;
@@ -134,7 +160,7 @@ export default async function npmPublishExecutorFn(
     return { success: true };
   }
 
-  await replaceDepsAliases(packageRoot, context.root);
+  await replaceDepsAliases(packageRoot, context.root, packageManager);
   await addPackageJsonGitHead(packageRoot);
 
   const npmPublishCommandSegments = [`npm publish --json`];

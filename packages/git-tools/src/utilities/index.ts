@@ -4,4 +4,5 @@ export * from "./file-utils";
 export * from "./git-utils";
 export * from "./is-ci";
 export * from "./omit";
+export * from "./package-manager";
 export * from "./title-case";

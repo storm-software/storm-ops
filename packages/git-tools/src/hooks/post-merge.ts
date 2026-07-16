@@ -9,7 +9,7 @@ export async function postMergeHook(
   files: string[]
 ) {
   writeInfo("Running post-merge hook...", config);
-  checkPackageVersion(files);
+  checkPackageVersion(files, config);
 
   try {
     run(config, "git-lfs version");

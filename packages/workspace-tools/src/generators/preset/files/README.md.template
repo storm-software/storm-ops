@@ -91,17 +91,17 @@ The following are some of the features/publishable code that are included in thi
 
 # Getting Started
 
-Once the code is pulled locally, open a command prompt and run `pnpm install` in the root repo directory (/storm-ops).
+Once the code is pulled locally, open a command prompt and run `<%= packageManager %> install` in the root repo directory (/storm-ops).
 
 More information can be found in the [Open System documentation](https://storm-software.github.io/storm-ops/docs/getting-started/installation).
 
 ## Build
 
-Run `pnpm build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+Run `<%= packageManager %> build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
 
 ## Development Server
 
-Run `pnpm serve` for a dev server. Navigate to <http://localhost:4200/>. The app will automatically reload if you change any of the source files.
+Run `<%= packageManager %> serve` for a dev server. Navigate to <http://localhost:4200/>. The app will automatically reload if you change any of the source files.
 <br /><br />
 
 # Acidic - Model-Driven Development
@@ -164,19 +164,19 @@ Open System uses [Jest](https://jestjs.io/) for unit testing and [Cypress](https
 
 ## Running Unit Tests
 
-Run `pnpm test` to execute the unit tests via [Jest](https://jestjs.io).
+Run `<%= packageManager %> test` to execute the unit tests via [Jest](https://jestjs.io).
 
-Run `pnpm affected:test` to execute the unit tests affected by a change.
+Run `<%= packageManager %> affected:test` to execute the unit tests affected by a change.
 
 ## Running End-to-End Tests
 
-Run `pnpm e2e` to execute the end-to-end tests via [Cypress](https://www.cypress.io).
+Run `<%= packageManager %> e2e` to execute the end-to-end tests via [Cypress](https://www.cypress.io).
 
-Run `pnpm affected:e2e` to execute the end-to-end tests affected by a change.
+Run `<%= packageManager %> affected:e2e` to execute the end-to-end tests affected by a change.
 
 ## Understand your workspace
 
-Run `pnpm graph` to see a diagram of the dependencies of the Open System projects.
+Run `<%= packageManager %> graph` to see a diagram of the dependencies of the Open System projects.
 <br /><br />
 
 # ☁ Nx Cloud

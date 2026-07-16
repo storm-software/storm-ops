@@ -104,7 +104,6 @@
     "yaml": "catalog:"
   },
   "devDependencies": {
-    "@pnpm/types": "catalog:",
     "@types/node": "catalog:",
     "tsup": "catalog:"
   },

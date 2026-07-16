@@ -7,6 +7,6 @@ export async function prepareHook(config: StormWorkspaceConfig) {
   writeInfo("Running prepare hook...", config);
 
   if (!process.env.CI && !process.env.STORM_CI) {
-    run(config, "pnpm lefthook install");
+    run(config, `${config.packageManager} lefthook install`);
   }
 }

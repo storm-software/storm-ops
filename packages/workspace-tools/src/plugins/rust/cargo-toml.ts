@@ -19,6 +19,7 @@ import {
   type ProjectGraphExternalNode
 } from "nx/src/config/project-graph";
 import { cargoMetadata, isExternal } from "../../utils/cargo";
+import { getWorkspacePackageManagerCommand } from "../../utils/package-manager";
 import { getRoot } from "../../utils/plugin-helpers";
 import {
   addProjectTag,
@@ -69,6 +70,10 @@ export interface CargoPluginOptions {
 export const createNodesV2: CreateNodes<CargoPluginOptions | undefined> = [
   "*/**/Cargo.toml",
   async (configFiles, options, context): Promise<CreateNodesResultArray> => {
+    const { exec } = await getWorkspacePackageManagerCommand(
+      context.workspaceRoot
+    );
+
     return await createNodesFromFiles(
       (configFile, options, context) => {
         try {
@@ -147,7 +152,7 @@ export const createNodesV2: CreateNodes<CargoPluginOptions | undefined> = [
                   executor: "nx:run-commands",
                   options: {
                     command:
-                      'pnpm exec markdownlint-cli2 "{projectRoot}/*.{md,mdx}" "{projectRoot}/**/*.{md,mdx}" --config "node_modules/@storm-software/markdownlint/config/recommended.markdownlint-cli2.jsonc" --fix'
+                      `${exec} markdownlint-cli2 "{projectRoot}/*.{md,mdx}" "{projectRoot}/**/*.{md,mdx}" --config "node_modules/@storm-software/markdownlint/config/recommended.markdownlint-cli2.jsonc" --fix`
                   }
                 },
                 "lint-ls": {
@@ -156,7 +161,7 @@ export const createNodesV2: CreateNodes<CargoPluginOptions | undefined> = [
                   dependsOn: ["^lint-ls"],
                   options: {
                     command:
-                      'pnpm exec ls-lint --config="./node_modules/@storm-software/linting-tools/ls-lint/.ls-lint.yml" ',
+                      `${exec} ls-lint --config="./node_modules/@storm-software/linting-tools/ls-lint/.ls-lint.yml" `,
                     color: true
                   }
                 },
@@ -195,7 +200,7 @@ export const createNodesV2: CreateNodes<CargoPluginOptions | undefined> = [
                   executor: "nx:run-commands",
                   options: {
                     command:
-                      'pnpm exec storm-git readme --templates="tools/readme-templates" --project="{projectName}"'
+                      `${exec} storm-git readme --templates="tools/readme-templates" --project="{projectName}"`
                   }
                 },
                 "format-toml": {
@@ -206,7 +211,7 @@ export const createNodesV2: CreateNodes<CargoPluginOptions | undefined> = [
                   executor: "nx:run-commands",
                   options: {
                     command:
-                      'pnpm exec taplo format --config="node_modules/@storm-software/linting-tools/taplo/config.toml" --cache-path="node_modules/.cache/taplo/{projectRoot}" --colors="always" "{projectRoot}/*.toml" "{projectRoot}/**/*.toml" '
+                      `${exec} taplo format --config="node_modules/@storm-software/linting-tools/taplo/config.toml" --cache-path="node_modules/.cache/taplo/{projectRoot}" --colors="always" "{projectRoot}/*.toml" "{projectRoot}/**/*.toml" `
                   }
                 },
                 "format-clippy": {
@@ -244,7 +249,7 @@ export const createNodesV2: CreateNodes<CargoPluginOptions | undefined> = [
                   outputs: [`{workspaceRoot}/dist/{projectRoot}/target`],
                   executor: "nx:run-commands",
                   options: {
-                    command: `pnpm exec rimraf dist/{projectRoot}/target`,
+                    command: `${exec} rimraf dist/{projectRoot}/target`,
                     color: true,
                     cwd: "{workspaceRoot}"
                   }

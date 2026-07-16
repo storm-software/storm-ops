@@ -2,8 +2,6 @@ import {
   CreateNodes,
   createNodesFromFiles,
   CreateNodesResultArray,
-  detectPackageManager,
-  getPackageManagerCommand,
   readJsonFile
 } from "@nx/devkit";
 import defu from "defu";
@@ -20,6 +18,7 @@ import {
   BaseTypescriptPluginOptions,
   TypescriptProjectLinkingType
 } from "../../types";
+import { getWorkspacePackageManagerCommand } from "../../utils/package-manager";
 import { getRoot } from "../../utils/plugin-helpers";
 import {
   addProjectTag,
@@ -34,6 +33,11 @@ export type TsupPluginOptions = BaseTypescriptPluginOptions;
 export const createNodesV2: CreateNodes<TsupPluginOptions> = [
   "**/tsup.config.ts",
   async (configFiles, options, context): Promise<CreateNodesResultArray> => {
+    const packageManagerCommand = await getWorkspacePackageManagerCommand(
+      context.workspaceRoot
+    );
+    const { exec } = packageManagerCommand;
+
     return await createNodesFromFiles(
       (configFile, options, context) => {
         try {
@@ -62,10 +66,6 @@ export const createNodesV2: CreateNodes<TsupPluginOptions> = [
           );
 
           const nxJson = readNxJson(context.workspaceRoot);
-          const packageManagerCommand = getPackageManagerCommand(
-            detectPackageManager(context.workspaceRoot),
-            context.workspaceRoot
-          );
 
           const targets: ProjectConfiguration["targets"] =
             readTargetsFromPackageJson(
@@ -120,11 +120,11 @@ export const createNodesV2: CreateNodes<TsupPluginOptions> = [
               dependsOn: ["build-base", "build-untyped", "^build"],
               options: {
                 commands: [
-                  `pnpm copyfiles LICENSE dist/${root}`,
-                  `pnpm copyfiles --up=2 ./${root}/*.md ./${
+                  `${exec} copyfiles LICENSE dist/${root}`,
+                  `${exec} copyfiles --up=2 ./${root}/*.md ./${
                     root
                   }/package.json dist/${root}`,
-                  `pnpm copyfiles --up=3 "./${root}/dist/**/*" dist/${
+                  `${exec} copyfiles --up=3 "./${root}/dist/**/*" dist/${
                     root
                   }/dist`
                 ]
@@ -141,8 +141,8 @@ export const createNodesV2: CreateNodes<TsupPluginOptions> = [
             ],
             options: {
               commands: [
-                `pnpm exec rimraf dist/${root}`,
-                `pnpm exec rimraf ${root}/dist`
+                `${exec} rimraf dist/${root}`,
+                `${exec} rimraf ${root}/dist`
               ]
             }
           };

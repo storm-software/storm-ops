@@ -1,6 +1,6 @@
 {
   "$schema": "https://cdn.jsdelivr.net/npm/@storm-software/config/schemas/storm.schema.json",
-  "extends": "./node_modules/@storm-software/config/presets/pnpm.json",
+  "extends": "./node_modules/@storm-software/config/presets/storm-software.json",
   "organization": "<%= organization %>",
   "name": "<%= name %>",
   "namespace": "<%= namespace %>",

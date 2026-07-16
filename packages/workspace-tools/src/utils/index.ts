@@ -6,6 +6,7 @@ export * from "./github";
 export * from "./lock-file";
 export * from "./nx-json";
 export * from "./package-helpers";
+export * from "./package-manager";
 export * from "./plugin-helpers";
 export * from "./project-tags";
 export * from "./typia-transform";

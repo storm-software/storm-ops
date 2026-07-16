@@ -9,7 +9,7 @@ export async function postCheckoutHook(
   files: string[]
 ) {
   writeInfo("Running post-checkout hook...", config);
-  checkPackageVersion(files);
+  checkPackageVersion(files, config);
 
   try {
     run(config, "git-lfs version");

@@ -213,16 +213,48 @@ export async function typeScriptLibraryGeneratorFn(
   }
 
   if (tree.exists("package.json") && normalized.importPath) {
-    updateJson(tree, "package.json", json => ({
-      ...json,
-      pnpm: {
-        ...json?.pnpm,
-        overrides: {
-          ...json?.pnpm?.overrides,
-          [normalized.importPath ?? ""]: "workspace:*"
-        }
+    updateJson(tree, "package.json", json => {
+      if (config?.packageManager === "yarn") {
+        return {
+          ...json,
+          resolutions: {
+            ...json?.resolutions,
+            [normalized.importPath ?? ""]: "workspace:*"
+          }
+        };
       }
-    }));
+
+      if (config?.packageManager === "npm") {
+        return {
+          ...json,
+          overrides: {
+            ...json?.overrides,
+            [normalized.importPath ?? ""]: "workspace:*"
+          }
+        };
+      }
+
+      if (config?.packageManager === "bun") {
+        return {
+          ...json,
+          overrides: {
+            ...json?.overrides,
+            [normalized.importPath ?? ""]: "workspace:*"
+          }
+        };
+      }
+
+      return {
+        ...json,
+        pnpm: {
+          ...json?.pnpm,
+          overrides: {
+            ...json?.pnpm?.overrides,
+            [normalized.importPath ?? ""]: "workspace:*"
+          }
+        }
+      };
+    });
   }
 
   addTsConfigPath(tree, normalized.importPath, [

@@ -1,9 +1,7 @@
 import {
   CreateNodes,
   createNodesFromFiles,
-  CreateNodesResultArray,
-  detectPackageManager,
-  getPackageManagerCommand
+  CreateNodesResultArray
 } from "@nx/devkit";
 import defu from "defu";
 import { existsSync } from "node:fs";
@@ -22,6 +20,7 @@ import {
   BaseTypescriptPluginOptions,
   TypescriptProjectLinkingType
 } from "../../types";
+import { getWorkspacePackageManagerCommand } from "../../utils/package-manager";
 import { getProjectPlatform, getRoot } from "../../utils/plugin-helpers";
 import {
   addProjectTag,
@@ -109,6 +108,10 @@ export const createNodesV2: CreateNodes<TypeScriptPluginOptions> = [
     context
   ): Promise<CreateNodesResultArray> => {
     const nxJson = readNxJson(context.workspaceRoot);
+    const packageManagerCommand = await getWorkspacePackageManagerCommand(
+      context.workspaceRoot
+    );
+    const { exec } = packageManagerCommand;
 
     return createNodesFromFiles(
       async (file, options = { includeApps: true }, context) => {
@@ -143,11 +146,6 @@ export const createNodesV2: CreateNodes<TypeScriptPluginOptions> = [
           const enableTypecheck = !!options?.enableTypecheck;
           const enableTest = !!options?.enableTest;
 
-          const packageManagerCommand = getPackageManagerCommand(
-            detectPackageManager(context.workspaceRoot),
-            context.workspaceRoot
-          );
-
           const targets: ProjectConfiguration["targets"] =
             readTargetsFromPackageJson(
               packageJson as NxPackageJson,
@@ -179,7 +177,7 @@ export const createNodesV2: CreateNodes<TypeScriptPluginOptions> = [
               executor: "nx:run-commands",
               options: {
                 command:
-                  'pnpm exec ls-lint --config="node_modules/@storm-software/linting-tools/ls-lint/.ls-lint.yml" '
+                  `${exec} ls-lint --config="node_modules/@storm-software/linting-tools/ls-lint/.ls-lint.yml" `
               }
             };
 
@@ -208,7 +206,7 @@ export const createNodesV2: CreateNodes<TypeScriptPluginOptions> = [
                 executor: "nx:run-commands",
                 options: {
                   command:
-                    'pnpm exec markdownlint-cli2 "{projectRoot}/*.{md,mdx}" "{projectRoot}/**/*.{md,mdx}" --config "node_modules/@storm-software/markdownlint/config/recommended.markdownlint-cli2.jsonc" --fix'
+                    `${exec} markdownlint-cli2 "{projectRoot}/*.{md,mdx}" "{projectRoot}/**/*.{md,mdx}" --config "node_modules/@storm-software/markdownlint/config/recommended.markdownlint-cli2.jsonc" --fix`
                 }
               };
             }
@@ -234,7 +232,7 @@ export const createNodesV2: CreateNodes<TypeScriptPluginOptions> = [
                   }`
                 ],
                 options: {
-                  command: `pnpm exec ${options?.useTsGo ? "tsgo" : "tsc"} --noEmit --skipLibCheck --pretty --project ./${join(
+                  command: `${exec} ${options?.useTsGo ? "tsgo" : "tsc"} --noEmit --skipLibCheck --pretty --project ./${join(
                     project.root,
                     "tsconfig.json"
                   )}`
@@ -303,7 +301,7 @@ export const createNodesV2: CreateNodes<TypeScriptPluginOptions> = [
             executor: "nx:run-commands",
             options: {
               command:
-                'pnpm exec taplo format --config="node_modules/@storm-software/linting-tools/taplo/config.toml" --cache-path="node_modules/.cache/taplo/{projectRoot}" --colors="always" "{projectRoot}/*.toml" "{projectRoot}/**/*.toml" '
+                `${exec} taplo format --config="node_modules/@storm-software/linting-tools/taplo/config.toml" --cache-path="node_modules/.cache/taplo/{projectRoot}" --colors="always" "{projectRoot}/*.toml" "{projectRoot}/**/*.toml" `
             }
           };
 
@@ -319,7 +317,7 @@ export const createNodesV2: CreateNodes<TypeScriptPluginOptions> = [
             executor: "nx:run-commands",
             options: {
               command:
-                'pnpm exec storm-git readme --templates="tools/readme-templates" --project="{projectName}"'
+                `${exec} storm-git readme --templates="tools/readme-templates" --project="{projectName}"`
             }
           };
 
@@ -331,7 +329,7 @@ export const createNodesV2: CreateNodes<TypeScriptPluginOptions> = [
             executor: "nx:run-commands",
             options: {
               command:
-                'pnpm exec prettier "{projectRoot}/**/*" --write --ignore-unknown --no-error-on-unmatched-pattern --config="node_modules/@storm-software/prettier/exclude-packagejson.json" --ignore-path="node_modules/@storm-software/prettier/.prettierignore-exclude-packagejson" --cache --cache-location="node_modules/.cache/prettier/{projectRoot}" '
+                `${exec} prettier "{projectRoot}/**/*" --write --ignore-unknown --no-error-on-unmatched-pattern --config="node_modules/@storm-software/prettier/exclude-packagejson.json" --ignore-path="node_modules/@storm-software/prettier/.prettierignore-exclude-packagejson" --cache --cache-location="node_modules/.cache/prettier/{projectRoot}" `
             }
           };
 
@@ -358,7 +356,7 @@ export const createNodesV2: CreateNodes<TypeScriptPluginOptions> = [
             inputs: ["typescript", "^production"],
             outputs: [`{workspaceRoot}/dist/${root}`],
             options: {
-              command: "pnpm exec rimraf dist/{projectRoot}",
+              command: `${exec} rimraf dist/{projectRoot}`,
               color: true,
               cwd: "{workspaceRoot}"
             }
@@ -371,7 +369,7 @@ export const createNodesV2: CreateNodes<TypeScriptPluginOptions> = [
             inputs: ["typescript", "^production"],
             outputs: [`{workspaceRoot}/dist/${root}`],
             options: {
-              command: `pnpm exec nx run ${project.name}:build`
+              command: `${exec} nx run ${project.name}:build`
             }
           };
 

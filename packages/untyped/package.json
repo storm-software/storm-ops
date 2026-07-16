@@ -1,15 +1,30 @@
 {
   "name": "@storm-software/untyped",
   "version": "0.24.243",
-  "type": "module",
+  "private": false,
   "description": "A package containing `untyped` utilities for building Storm Software libraries and applications",
+  "keywords": [
+    "acidic",
+    "cyclone-ui",
+    "untyped",
+    "monorepo",
+    "storm",
+    "storm-ops",
+    "storm-stack",
+    "sullivanpj"
+  ],
+  "homepage": "https://stormsoftware.com",
+  "bugs": "https://github.com/storm-software/storm-ops/issues",
   "repository": {
     "type": "github",
     "url": "https://github.com/storm-software/storm-ops.git",
     "directory": "packages/untyped"
   },
-  "homepage": "https://stormsoftware.com",
-  "bugs": "https://github.com/storm-software/storm-ops/issues",
+  "funding": {
+    "type": "github",
+    "url": "https://github.com/sponsors/storm-software"
+  },
+  "license": "Apache-2.0",
   "author": {
     "name": "Storm Software",
     "email": "contact@stormsoftware.com",
@@ -34,24 +49,8 @@
       "url": "https://stormsoftware.com"
     }
   ],
-  "funding": {
-    "type": "github",
-    "url": "https://github.com/sponsors/storm-software"
-  },
-  "license": "Apache-2.0",
-  "private": false,
-  "packageManager": "pnpm@10.3.0",
-  "engines": {
-    "node": ">=22.4.0",
-    "pnpm": ">=10.3.0"
-  },
-  "bin": {
-    "storm-untyped": "./bin/untyped.cjs",
-    "storm-untyped-cjs": "./bin/untyped.cjs",
-    "storm-untyped-esm": "./bin/untyped.js"
-  },
-  "main": "./dist/index.js",
-  "module": "./dist/index.js",
+  "sideEffects": false,
+  "type": "module",
   "exports": {
     "./package.json": "./package.json",
     "./index": {
@@ -181,17 +180,11 @@
       }
     }
   },
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
   "types": "./dist/index.d.cts",
-  "files": ["dist/**/*"],
-  "keywords": [
-    "acidic",
-    "cyclone-ui",
-    "untyped",
-    "monorepo",
-    "storm",
-    "storm-ops",
-    "storm-stack",
-    "sullivanpj"
+  "files": [
+    "dist/**/*"
   ],
   "dependencies": {
     "@storm-software/config-tools": "workspace:*",
@@ -207,6 +200,5 @@
   },
   "publishConfig": {
     "access": "public"
-  },
-  "sideEffects": false
+  }
 }

@@ -6,49 +6,53 @@ import fs from "node:fs";
 import { readFile } from "node:fs/promises";
 import path from "node:path";
 import { checkPackageVersion } from "../utilities/check-package-version";
+import {
+  getInstallCommand,
+  getLockFileName,
+  getOtherLockFileNames
+} from "../utilities/package-manager";
 
 export async function prePushHook(
   config: StormWorkspaceConfig,
   files: string[]
 ) {
   writeInfo("Running pre-push hook...", config);
-  checkPackageVersion(files);
+  checkPackageVersion(files, config);
 
   writeInfo("🔒🔒🔒 Validating lock files 🔒🔒🔒", config);
 
+  const workspaceRoot = config.workspaceRoot ?? "./";
+  const lockFileName = getLockFileName(config.packageManager);
+  const installCommand = getInstallCommand(config.packageManager);
   const errors = [] as string[];
-  if (
-    fs.existsSync(path.join(config.workspaceRoot ?? "./", "package-lock.json"))
-  ) {
-    errors.push(
-      'Invalid occurrence of "package-lock.json" file. Please remove it and use only "pnpm-lock.yaml"'
-    );
-  }
-  if (fs.existsSync(path.join(config.workspaceRoot ?? "./", "yarn.lock"))) {
-    errors.push(
-      'Invalid occurrence of "yarn.lock" file. Please remove it and use only "pnpm-lock.yaml"'
-    );
+
+  for (const otherLockFile of getOtherLockFileNames(config.packageManager)) {
+    if (fs.existsSync(path.join(workspaceRoot, otherLockFile))) {
+      errors.push(
+        `Invalid occurrence of "${otherLockFile}" file. Please remove it and use only "${lockFileName}"`
+      );
+    }
   }
 
   try {
-    const content = await readFile(
-      path.join(config.workspaceRoot ?? "./", "pnpm-lock.yaml"),
-      {
-        encoding: "utf8"
+    const content = await readFile(path.join(workspaceRoot, lockFileName), {
+      encoding: "utf8"
+    });
+
+    if (config.packageManager === "pnpm") {
+      if (content?.match(/localhost:487/)) {
+        errors.push(
+          `The "${lockFileName}" has reference to local repository ("localhost:4873"). Please ensure you disable local registry before running "${installCommand}"`
+        );
       }
-    );
-    if (content?.match(/localhost:487/)) {
-      errors.push(
-        'The "pnpm-lock.yaml" has reference to local repository ("localhost:4873"). Please use ensure you disable local registry before running "pnpm i"'
-      );
-    }
-    if (content?.match(/resolution: \{tarball/)) {
-      errors.push(
-        'The "pnpm-lock.yaml" has reference to tarball package. Please use npm registry only'
-      );
+      if (content?.match(/resolution: \{tarball/)) {
+        errors.push(
+          `The "${lockFileName}" has reference to tarball package. Please use npm registry only`
+        );
+      }
     }
   } catch {
-    errors.push('The "pnpm-lock.yaml" does not exist or cannot be read');
+    errors.push(`The "${lockFileName}" does not exist or cannot be read`);
   }
 
   if (errors.length > 0) {

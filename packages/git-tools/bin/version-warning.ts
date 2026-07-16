@@ -13,7 +13,7 @@ void (async () => {
   try {
     handleProcess(config);
 
-    checkPackageVersion(process.argv.slice(1));
+    checkPackageVersion(process.argv.slice(1), config);
   } catch (error) {
     writeFatal(
       `A fatal error occurred while running the program: ${error.message}`,

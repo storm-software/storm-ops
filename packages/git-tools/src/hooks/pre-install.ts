@@ -11,5 +11,5 @@ export async function preInstallHook(config: StormWorkspaceConfig) {
     return;
   }
 
-  run(config, "npx -y only-allow pnpm");
+  run(config, `npx -y only-allow ${config.packageManager}`);
 }

@@ -94,7 +94,6 @@
         };
         "bun:setup:install" = {
           exec = ''
-            bunx storm-git pre-install
             bun install --no-frozen-lockfile
             update-storm
             bootstrap

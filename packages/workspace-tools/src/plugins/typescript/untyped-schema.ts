@@ -2,8 +2,6 @@ import {
   CreateNodes,
   createNodesFromFiles,
   CreateNodesResultArray,
-  detectPackageManager,
-  getPackageManagerCommand,
   readJsonFile
 } from "@nx/devkit";
 import { defu } from "defu";
@@ -16,6 +14,10 @@ import {
   readTargetsFromPackageJson,
   type PackageJson
 } from "nx/src/utils/package-json";
+import {
+  getWorkspacePackageManager,
+  getWorkspacePackageManagerCommand
+} from "../../utils/package-manager";
 import { getRoot } from "../../utils/plugin-helpers";
 import { addProjectTag, ProjectTagConstants } from "../../utils/project-tags";
 
@@ -27,6 +29,13 @@ export type UntypedPluginOptions = {};
 export const createNodesV2: CreateNodes<UntypedPluginOptions> = [
   "**/*untyped.ts",
   async (configFiles, options, context): Promise<CreateNodesResultArray> => {
+    const packageManager = await getWorkspacePackageManager(
+      context.workspaceRoot
+    );
+    const packageManagerCommand = await getWorkspacePackageManagerCommand(
+      context.workspaceRoot
+    );
+
     return await createNodesFromFiles(
       (configFile, options, context) => {
         try {
@@ -57,7 +66,11 @@ export const createNodesV2: CreateNodes<UntypedPluginOptions> = [
           ) {
             console.warn(
               `[storm-software/typescript/untyped]: No "untyped" dependency or devDependency found in package.json: ${configFile}
-Please add it to your dependencies by running "pnpm add untyped -D --filter="${packageJson.name}"`
+Please add it to your dependencies by running "${packageManagerCommand.addDev} untyped"${
+                packageManager === "pnpm"
+                  ? ` --filter="${packageJson.name}"`
+                  : ""
+              }`
             );
           }
 
@@ -67,10 +80,6 @@ Please add it to your dependencies by running "pnpm add untyped -D --filter="${p
           );
 
           const nxJson = readNxJson(context.workspaceRoot);
-          const packageManagerCommand = getPackageManagerCommand(
-            detectPackageManager(context.workspaceRoot),
-            context.workspaceRoot
-          );
 
           const targets: ProjectConfiguration["targets"] =
             readTargetsFromPackageJson(

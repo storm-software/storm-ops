@@ -12,7 +12,7 @@
       "{workspaceRoot}/.npm@(rc|ignore)",
       "{workspaceRoot}/package.json",
       "{workspaceRoot}/{pnpm-workspace,pnpm-lock,package-lock,yarn-lock}.@(yaml|yml)",
-      "{workspaceRoot}/bun.lockb",
+      "{workspaceRoot}/bun.lock{,b}",
       "{workspaceRoot}/LICENSE",
       "{workspaceRoot}/.git@(attributes|ignore)",
       "{workspaceRoot}/{nx.json,.nxignore}",
@@ -172,8 +172,8 @@
       "executor": "nx:run-commands",
       "options": {
         "commands": [
-          "pnpm exec rimraf --glob {projectRoot}/dist",
-          "pnpm exec rimraf dist/{projectRoot}"
+          "rimraf --glob {projectRoot}/dist",
+          "rimraf dist/{projectRoot}"
         ]
       }
     },
@@ -193,7 +193,7 @@
         "version": {
           "currentVersionResolver": "git-tag",
           "specifierSource": "conventional-commits",
-          "groupPreVersionCommand": "pnpm build",
+          "groupPreVersionCommand": "build",
           "manifestRootsToUpdate": [
             "{projectRoot}",
             {

@@ -41,7 +41,7 @@
       "matchPackageNames": ["@nx"],
       "postUpgradeTasks": {
         "commands": [
-          "pnpm nx migrate latest --run-migrations --create-commits --commit-message='chore(<%= name %>): update @nx dependencies [skip ci]'"
+          "<%= packageManager %> nx migrate latest --run-migrations --create-commits --commit-message='chore(<%= name %>): update @nx dependencies [skip ci]'"
         ]
       }
     },
