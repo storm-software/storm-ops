@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Testing Tools
 
+## [1.119.259](https://github.com/storm-software/storm-ops/releases/tag/testing-tools%401.119.259) (07/16/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace packages' `README.md` files ([85e8622c2](https://github.com/storm-software/storm-ops/commit/85e8622c2))
+- **workspace-tools:** Ensure exec command is run via package manager ([7e2a93628](https://github.com/storm-software/storm-ops/commit/7e2a93628))
+
 ## [1.119.258](https://github.com/storm-software/storm-ops/releases/tag/testing-tools%401.119.258) (07/16/2026)
 
 ### Miscellaneous

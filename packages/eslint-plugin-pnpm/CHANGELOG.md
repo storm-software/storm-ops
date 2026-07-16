@@ -2,6 +2,19 @@
 
 # Changelog for Storm Ops - ESLint Plugin Pnpm
 
+## [0.0.69](https://github.com/storm-software/storm-ops/releases/tag/eslint-plugin-pnpm%400.0.69) (07/16/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace packages' `README.md` files ([85e8622c2](https://github.com/storm-software/storm-ops/commit/85e8622c2))
+- **workspace-tools:** Ensure exec command is run via package manager ([7e2a93628](https://github.com/storm-software/storm-ops/commit/7e2a93628))
+
+### Updated Dependencies
+
+- Updated **package-constants** to **v0.1.119**
+- Updated **prettier** to **v0.59.159**
+- Updated **tsdoc** to **v0.13.259**
+
 ## [0.0.68](https://github.com/storm-software/storm-ops/releases/tag/eslint-plugin-pnpm%400.0.68) (07/16/2026)
 
 ### Miscellaneous

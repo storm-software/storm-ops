@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - ESLint Plugin Banner
 
+## [0.0.71](https://github.com/storm-software/storm-ops/releases/tag/eslint-plugin-banner%400.0.71) (07/16/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace packages' `README.md` files ([85e8622c2](https://github.com/storm-software/storm-ops/commit/85e8622c2))
+- **workspace-tools:** Ensure exec command is run via package manager ([7e2a93628](https://github.com/storm-software/storm-ops/commit/7e2a93628))
+
+### Updated Dependencies
+
+- Updated **package-constants** to **v0.1.119**
+- Updated **prettier** to **v0.59.159**
+
 ## [0.0.70](https://github.com/storm-software/storm-ops/releases/tag/eslint-plugin-banner%400.0.70) (07/16/2026)
 
 ### Miscellaneous

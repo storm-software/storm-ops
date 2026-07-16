@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Tsconfig
 
+## [0.48.173](https://github.com/storm-software/storm-ops/releases/tag/tsconfig%400.48.173) (07/16/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace packages' `README.md` files ([85e8622c2](https://github.com/storm-software/storm-ops/commit/85e8622c2))
+- **workspace-tools:** Ensure exec command is run via package manager ([7e2a93628](https://github.com/storm-software/storm-ops/commit/7e2a93628))
+
 ## [0.48.172](https://github.com/storm-software/storm-ops/releases/tag/tsconfig%400.48.172) (07/16/2026)
 
 ### Miscellaneous
