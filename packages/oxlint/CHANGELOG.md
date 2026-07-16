@@ -2,6 +2,20 @@
 
 # Changelog for Storm Ops - Oxlint
 
+## [0.0.69](https://github.com/storm-software/storm-ops/releases/tag/oxlint%400.0.69) (07/16/2026)
+
+### Bug Fixes
+
+- **workspace-tools:** Resolve issue with missing dependencies ([ef24243af](https://github.com/storm-software/storm-ops/commit/ef24243af))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.40**
+- Updated **config-tools** to **v1.190.103**
+- Updated **eslint-plugin-banner** to **v0.0.68**
+- Updated **eslint-plugin-pnpm** to **v0.0.66**
+- Updated **eslint-plugin-tsdoc** to **v0.0.66**
+
 ## [0.0.68](https://github.com/storm-software/storm-ops/releases/tag/oxlint%400.0.68) (07/16/2026)
 
 ### Features

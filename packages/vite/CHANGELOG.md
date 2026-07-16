@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - Vite
 
+## [0.1.197](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.197) (07/16/2026)
+
+### Bug Fixes
+
+- **workspace-tools:** Resolve issue with missing dependencies ([ef24243af](https://github.com/storm-software/storm-ops/commit/ef24243af))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.263**
+
 ## [0.1.196](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.196) (07/16/2026)
 
 ### Features

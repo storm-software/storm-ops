@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Testing Tools
 
+## [1.119.256](https://github.com/storm-software/storm-ops/releases/tag/testing-tools%401.119.256) (07/16/2026)
+
+### Bug Fixes
+
+- **workspace-tools:** Resolve issue with missing dependencies ([ef24243af](https://github.com/storm-software/storm-ops/commit/ef24243af))
+
 ## [1.119.255](https://github.com/storm-software/storm-ops/releases/tag/testing-tools%401.119.255) (07/16/2026)
 
 ### Features

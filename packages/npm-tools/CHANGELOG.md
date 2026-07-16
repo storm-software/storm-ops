@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Npm Tools
 
+## [0.6.221](https://github.com/storm-software/storm-ops/releases/tag/npm-tools%400.6.221) (07/16/2026)
+
+### Bug Fixes
+
+- **workspace-tools:** Resolve issue with missing dependencies ([ef24243af](https://github.com/storm-software/storm-ops/commit/ef24243af))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.40**
+- Updated **config-tools** to **v1.190.103**
+- Updated **testing-tools** to **v1.119.256**
+
 ## [0.6.220](https://github.com/storm-software/storm-ops/releases/tag/npm-tools%400.6.220) (07/16/2026)
 
 ### Features

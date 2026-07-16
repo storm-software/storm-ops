@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Tsdown
 
+## [0.45.264](https://github.com/storm-software/storm-ops/releases/tag/tsdown%400.45.264) (07/16/2026)
+
+### Bug Fixes
+
+- **workspace-tools:** Resolve issue with missing dependencies ([ef24243af](https://github.com/storm-software/storm-ops/commit/ef24243af))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.263**
+- Updated **config** to **v1.138.40**
+- Updated **config-tools** to **v1.190.103**
+
 ## [0.45.263](https://github.com/storm-software/storm-ops/releases/tag/tsdown%400.45.263) (07/16/2026)
 
 ### Features

@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Tsconfig
 
+## [0.48.170](https://github.com/storm-software/storm-ops/releases/tag/tsconfig%400.48.170) (07/16/2026)
+
+### Bug Fixes
+
+- **workspace-tools:** Resolve issue with missing dependencies ([ef24243af](https://github.com/storm-software/storm-ops/commit/ef24243af))
+
 ## [0.48.169](https://github.com/storm-software/storm-ops/releases/tag/tsconfig%400.48.169) (07/16/2026)
 
 ### Features

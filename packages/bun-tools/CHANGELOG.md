@@ -2,6 +2,20 @@
 
 # Changelog for Storm Ops - Bun Tools
 
+## [0.0.12](https://github.com/storm-software/storm-ops/releases/tag/bun-tools%400.0.12) (07/16/2026)
+
+### Bug Fixes
+
+- **workspace-tools:** Resolve issue with missing dependencies ([ef24243af](https://github.com/storm-software/storm-ops/commit/ef24243af))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.40**
+- Updated **config-tools** to **v1.190.103**
+- Updated **npm-tools** to **v0.6.221**
+- Updated **package-constants** to **v0.1.116**
+- Updated **testing-tools** to **v1.119.256**
+
 ## [0.0.11](https://github.com/storm-software/storm-ops/releases/tag/bun-tools%400.0.11) (07/16/2026)
 
 ### Features

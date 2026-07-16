@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Pnpm Plugin
 
+## [0.1.214](https://github.com/storm-software/storm-ops/releases/tag/pnpm-plugin%400.1.214) (07/16/2026)
+
+### Bug Fixes
+
+- **workspace-tools:** Resolve issue with missing dependencies ([ef24243af](https://github.com/storm-software/storm-ops/commit/ef24243af))
+
+### Updated Dependencies
+
+- Updated **package-constants** to **v0.1.116**
+- Updated **testing-tools** to **v1.119.256**
+
 ## [0.1.213](https://github.com/storm-software/storm-ops/releases/tag/pnpm-plugin%400.1.213) (07/16/2026)
 
 ### Features

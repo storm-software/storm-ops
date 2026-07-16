@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Oxfmt
 
+## [0.0.59](https://github.com/storm-software/storm-ops/releases/tag/oxfmt%400.0.59) (07/16/2026)
+
+### Bug Fixes
+
+- **workspace-tools:** Resolve issue with missing dependencies ([ef24243af](https://github.com/storm-software/storm-ops/commit/ef24243af))
+
 ## [0.0.58](https://github.com/storm-software/storm-ops/releases/tag/oxfmt%400.0.58) (07/16/2026)
 
 ### Features

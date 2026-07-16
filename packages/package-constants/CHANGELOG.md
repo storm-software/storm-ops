@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Package Constants
 
+## [0.1.116](https://github.com/storm-software/storm-ops/releases/tag/package-constants%400.1.116) (07/16/2026)
+
+### Bug Fixes
+
+- **workspace-tools:** Resolve issue with missing dependencies ([ef24243af](https://github.com/storm-software/storm-ops/commit/ef24243af))
+
 ## [0.1.115](https://github.com/storm-software/storm-ops/releases/tag/package-constants%400.1.115) (07/16/2026)
 
 ### Features

@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - ESLint Config React
 
+## [0.0.59](https://github.com/storm-software/storm-ops/releases/tag/eslint-config-react%400.0.59) (07/16/2026)
+
+### Bug Fixes
+
+- **workspace-tools:** Resolve issue with missing dependencies ([ef24243af](https://github.com/storm-software/storm-ops/commit/ef24243af))
+
+### Updated Dependencies
+
+- Updated **eslint** to **v0.170.137**
+
 ## [0.0.58](https://github.com/storm-software/storm-ops/releases/tag/eslint-config-react%400.0.58) (07/16/2026)
 
 ### Features

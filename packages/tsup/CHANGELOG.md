@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Tsup
 
+## [0.2.261](https://github.com/storm-software/storm-ops/releases/tag/tsup%400.2.261) (07/16/2026)
+
+### Bug Fixes
+
+- **workspace-tools:** Resolve issue with missing dependencies ([ef24243af](https://github.com/storm-software/storm-ops/commit/ef24243af))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.263**
+- Updated **config-tools** to **v1.190.103**
+
 ## [0.2.260](https://github.com/storm-software/storm-ops/releases/tag/tsup%400.2.260) (07/16/2026)
 
 ### Features

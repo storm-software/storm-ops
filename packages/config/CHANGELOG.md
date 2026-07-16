@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - Config
 
+## [1.138.40](https://github.com/storm-software/storm-ops/releases/tag/config%401.138.40) (07/16/2026)
+
+### Bug Fixes
+
+- **workspace-tools:** Resolve issue with missing dependencies ([ef24243af](https://github.com/storm-software/storm-ops/commit/ef24243af))
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.256**
+
 ## [1.138.39](https://github.com/storm-software/storm-ops/releases/tag/config%401.138.39) (07/16/2026)
 
 ### Features
