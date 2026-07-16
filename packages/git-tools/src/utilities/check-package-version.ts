@@ -1,8 +1,5 @@
 import type { StormWorkspaceConfig } from "@storm-software/config";
-import {
-  getInstallCommand,
-  getLockFileName
-} from "./package-manager";
+import { getInstallCommand, getLockFileName } from "./package-manager";
 
 /**
  * Checks if the package version has changed by looking for changes in lock files.

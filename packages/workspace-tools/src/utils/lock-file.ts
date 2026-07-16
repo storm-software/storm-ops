@@ -138,32 +138,49 @@ export function lockFileExists(packageManager: PackageManager): boolean {
     return existsSync(NPM_LOCK_PATH);
   }
   if (packageManager === "bun") {
-    return existsSync(BUN_LOCK_PATH) || existsSync(join(workspaceRoot, "bun.lockb"));
+    return (
+      existsSync(BUN_LOCK_PATH) || existsSync(join(workspaceRoot, "bun.lockb"))
+    );
   }
   throw new Error(
     `Unknown package manager ${packageManager} or lock file missing`
   );
 }
 
+export const LOCK_FILE_BY_PACKAGE_MANAGER: Record<PackageManager, string> = {
+  npm: "package-lock.json",
+  yarn: "yarn.lock",
+  pnpm: "pnpm-lock.yaml",
+  bun: "bun.lock"
+};
+
+export const OTHER_LOCK_FILES: Record<PackageManager, string[]> = {
+  npm: ["yarn.lock", "pnpm-lock.yaml", "bun.lock", "bun.lockb"],
+  yarn: ["package-lock.json", "pnpm-lock.yaml", "bun.lock", "bun.lockb"],
+  pnpm: ["package-lock.json", "yarn.lock", "bun.lock", "bun.lockb"],
+  bun: ["package-lock.json", "yarn.lock", "pnpm-lock.yaml", "bun.lockb"]
+};
+
 /**
- * Returns lock file name based on the detected package manager in the root
- * @param packageManager
- * @returns
+ * Returns the lock file name for the given package manager
+ *
+ * @param packageManager - The package manager to get the lock file name for
+ * @returns The lock file name for the given package manager
  */
 export function getLockFileName(packageManager: PackageManager): string {
-  if (packageManager === "yarn") {
-    return YARN_LOCK_FILE;
-  }
-  if (packageManager === "pnpm") {
-    return PNPM_LOCK_FILE;
-  }
-  if (packageManager === "npm") {
-    return NPM_LOCK_FILE;
-  }
-  if (packageManager === "bun") {
-    return BUN_LOCK_FILE;
-  }
-  throw new Error(`Unknown package manager: ${packageManager}`);
+  return LOCK_FILE_BY_PACKAGE_MANAGER[packageManager];
+}
+
+/**
+ * Returns the other lock file names for the given package manager
+ *
+ * @param packageManager - The package manager to get the other lock file names for
+ * @returns The other lock file names for the given package manager
+ */
+export function getOtherLockFileNames(
+  packageManager: PackageManager
+): string[] {
+  return OTHER_LOCK_FILES[packageManager];
 }
 
 // generate body lines for error message

@@ -11,7 +11,7 @@ import {
 } from "@nx/devkit";
 import * as path from "node:path";
 import { withRunGenerator } from "../../base/base-generator";
-import { getLockFileName } from "../../utils/package-manager";
+import { getLockFileName } from "../../utils/lock-file";
 import {
   nodeVersion,
   packageManagerVersions,
@@ -24,8 +24,7 @@ export async function presetGeneratorFn(
   options: PresetGeneratorSchema
 ) {
   const projectRoot = ".";
-  const packageManager = (options.packageManager ??
-    "pnpm") as PackageManager;
+  const packageManager = (options.packageManager ?? "pnpm") as PackageManager;
   const packageManagerVersion = packageManagerVersions[packageManager];
   const pmc = getPackageManagerCommand(packageManager);
   const lockFileName = getLockFileName(packageManager);
