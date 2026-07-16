@@ -6609,6 +6609,7 @@ Backward pagination arguments
   /**
    * Disallow function declarations that contain unsafe references inside loop statements
    * @see https://typescript-eslint.io/rules/no-loop-func
+   * @deprecated
    */
   'ts/no-loop-func'?: Linter.RuleEntry<[]>
   /**

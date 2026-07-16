@@ -1,0 +1,61 @@
+#                                                                                #
+#                          Lefthook configuration file:                          #
+#   This file is used to configure Lefthook, a tool for managing Git hooks.      #
+#                                                                                #
+#   https://github.com/evilmartians/lefthook/blob/master/docs/configuration.md   #
+
+$schema: https://raw.githubusercontent.com/evilmartians/lefthook/refs/heads/master/schema.json
+
+pre-commit:
+  parallel: true
+  commands:
+    prepare:
+      glob: "**/*"
+      run: bunx storm-git prepare
+      stage_fixed: true
+    pre-commit:
+      glob: "**/*"
+      run: bunx storm-git pre-commit --files {staged_files}
+      stage_fixed: true
+    codeowners:
+      glob: "**/CODEOWNERS"
+      run: bunx storm-lint codeowners
+      stage_fixed: true
+    storm-lint:
+      glob: "**/*"
+      run: bun run lint --files {staged_files}
+      stage_fixed: true
+
+commit-msg:
+  commands:
+    validate:
+      run: bunx storm-git commitlint --message {1}
+
+pre-push:
+  parallel: true
+  commands:
+    build:
+      glob: "**/*"
+      run: bun run build-dev
+      stage_fixed: true
+    pre-push:
+      files: git diff --name-only HEAD @{push}
+      glob: "**/*"
+      run: bunx storm-git pre-push --files {files}
+      stage_fixed: true
+
+post-merge:
+  commands:
+    validate:
+      files: git diff --name-only HEAD @{push}
+      glob: "**/*"
+      run: bunx storm-git post-merge --files {files}
+      stage_fixed: true
+
+post-commit:
+  commands:
+    validate:
+      files: git diff --name-only HEAD @{push}
+      glob: "**/*"
+      run: bunx storm-git post-commit --files {files}
+      stage_fixed: true
