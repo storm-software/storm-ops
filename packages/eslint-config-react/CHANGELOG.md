@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - ESLint Config React
 
+## [0.0.60](https://github.com/storm-software/storm-ops/releases/tag/eslint-config-react%400.0.60) (07/16/2026)
+
+### Bug Fixes
+
+- **workspace-tools:** Resolve issue importing `pnpm-tools` and `bun-tools` in release executor ([86856d0bd](https://github.com/storm-software/storm-ops/commit/86856d0bd))
+
+### Updated Dependencies
+
+- Updated **eslint** to **v0.170.138**
+
 ## [0.0.59](https://github.com/storm-software/storm-ops/releases/tag/eslint-config-react%400.0.59) (07/16/2026)
 
 ### Bug Fixes

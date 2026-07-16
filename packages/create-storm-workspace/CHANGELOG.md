@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - Create Storm Workspace
 
+## [1.97.264](https://github.com/storm-software/storm-ops/releases/tag/create-storm-workspace%401.97.264) (07/16/2026)
+
+### Bug Fixes
+
+- **workspace-tools:** Resolve issue importing `pnpm-tools` and `bun-tools` in release executor ([86856d0bd](https://github.com/storm-software/storm-ops/commit/86856d0bd))
+
+### Updated Dependencies
+
+- Updated **config-tools** to **v1.190.104**
+
 ## [1.97.263](https://github.com/storm-software/storm-ops/releases/tag/create-storm-workspace%401.97.263) (07/16/2026)
 
 ### Bug Fixes

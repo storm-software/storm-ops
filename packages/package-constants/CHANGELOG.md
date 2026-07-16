@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Package Constants
 
+## [0.1.117](https://github.com/storm-software/storm-ops/releases/tag/package-constants%400.1.117) (07/16/2026)
+
+### Bug Fixes
+
+- **workspace-tools:** Resolve issue importing `pnpm-tools` and `bun-tools` in release executor ([86856d0bd](https://github.com/storm-software/storm-ops/commit/86856d0bd))
+
 ## [0.1.116](https://github.com/storm-software/storm-ops/releases/tag/package-constants%400.1.116) (07/16/2026)
 
 ### Bug Fixes

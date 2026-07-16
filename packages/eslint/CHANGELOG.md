@@ -2,6 +2,22 @@
 
 # Changelog for Storm Ops - ESLint
 
+## [0.170.138](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.170.138) (07/16/2026)
+
+### Bug Fixes
+
+- **workspace-tools:** Resolve issue importing `pnpm-tools` and `bun-tools` in release executor ([86856d0bd](https://github.com/storm-software/storm-ops/commit/86856d0bd))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.41**
+- Updated **config-tools** to **v1.190.104**
+- Updated **eslint-plugin-banner** to **v0.0.69**
+- Updated **eslint-plugin-pnpm** to **v0.0.67**
+- Updated **eslint-plugin-tsdoc** to **v0.0.67**
+- Updated **package-constants** to **v0.1.117**
+- Updated **tsdoc** to **v0.13.257**
+
 ## [0.170.137](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.170.137) (07/16/2026)
 
 ### Bug Fixes

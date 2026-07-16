@@ -2,6 +2,20 @@
 
 # Changelog for Storm Ops - Bun Tools
 
+## [0.0.13](https://github.com/storm-software/storm-ops/releases/tag/bun-tools%400.0.13) (07/16/2026)
+
+### Bug Fixes
+
+- **workspace-tools:** Resolve issue importing `pnpm-tools` and `bun-tools` in release executor ([86856d0bd](https://github.com/storm-software/storm-ops/commit/86856d0bd))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.41**
+- Updated **config-tools** to **v1.190.104**
+- Updated **npm-tools** to **v0.6.222**
+- Updated **package-constants** to **v0.1.117**
+- Updated **testing-tools** to **v1.119.257**
+
 ## [0.0.12](https://github.com/storm-software/storm-ops/releases/tag/bun-tools%400.0.12) (07/16/2026)
 
 ### Bug Fixes

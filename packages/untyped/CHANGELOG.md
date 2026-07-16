@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Untyped
 
+## [0.24.246](https://github.com/storm-software/storm-ops/releases/tag/untyped%400.24.246) (07/16/2026)
+
+### Bug Fixes
+
+- **workspace-tools:** Resolve issue importing `pnpm-tools` and `bun-tools` in release executor ([86856d0bd](https://github.com/storm-software/storm-ops/commit/86856d0bd))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.41**
+- Updated **config-tools** to **v1.190.104**
+
 ## [0.24.245](https://github.com/storm-software/storm-ops/releases/tag/untyped%400.24.245) (07/16/2026)
 
 ### Bug Fixes

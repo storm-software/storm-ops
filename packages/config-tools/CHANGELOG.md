@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Config Tools
 
+## [1.190.104](https://github.com/storm-software/storm-ops/releases/tag/config-tools%401.190.104) (07/16/2026)
+
+### Bug Fixes
+
+- **workspace-tools:** Resolve issue importing `pnpm-tools` and `bun-tools` in release executor ([86856d0bd](https://github.com/storm-software/storm-ops/commit/86856d0bd))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.41**
+- Updated **testing-tools** to **v1.119.257**
+
 ## [1.190.103](https://github.com/storm-software/storm-ops/releases/tag/config-tools%401.190.103) (07/16/2026)
 
 ### Bug Fixes

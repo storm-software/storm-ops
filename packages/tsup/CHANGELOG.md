@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Tsup
 
+## [0.2.262](https://github.com/storm-software/storm-ops/releases/tag/tsup%400.2.262) (07/16/2026)
+
+### Bug Fixes
+
+- **workspace-tools:** Resolve issue importing `pnpm-tools` and `bun-tools` in release executor ([86856d0bd](https://github.com/storm-software/storm-ops/commit/86856d0bd))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.264**
+- Updated **config-tools** to **v1.190.104**
+
 ## [0.2.261](https://github.com/storm-software/storm-ops/releases/tag/tsup%400.2.261) (07/16/2026)
 
 ### Bug Fixes

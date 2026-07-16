@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Prettier
 
+## [0.59.157](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.59.157) (07/16/2026)
+
+### Bug Fixes
+
+- **workspace-tools:** Resolve issue importing `pnpm-tools` and `bun-tools` in release executor ([86856d0bd](https://github.com/storm-software/storm-ops/commit/86856d0bd))
+
 ## [0.59.156](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.59.156) (07/16/2026)
 
 ### Bug Fixes

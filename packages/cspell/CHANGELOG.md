@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - CSpell
 
+## [0.46.172](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.46.172) (07/16/2026)
+
+### Bug Fixes
+
+- **workspace-tools:** Resolve issue importing `pnpm-tools` and `bun-tools` in release executor ([86856d0bd](https://github.com/storm-software/storm-ops/commit/86856d0bd))
+
 ## [0.46.171](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.46.171) (07/16/2026)
 
 ### Bug Fixes

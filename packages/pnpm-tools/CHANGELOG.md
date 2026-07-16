@@ -2,6 +2,20 @@
 
 # Changelog for Storm Ops - Pnpm Tools
 
+## [0.7.115](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.7.115) (07/16/2026)
+
+### Bug Fixes
+
+- **workspace-tools:** Resolve issue importing `pnpm-tools` and `bun-tools` in release executor ([86856d0bd](https://github.com/storm-software/storm-ops/commit/86856d0bd))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.41**
+- Updated **config-tools** to **v1.190.104**
+- Updated **npm-tools** to **v0.6.222**
+- Updated **package-constants** to **v0.1.117**
+- Updated **testing-tools** to **v1.119.257**
+
 ## [0.7.114](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.7.114) (07/16/2026)
 
 ### Bug Fixes

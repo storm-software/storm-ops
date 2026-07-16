@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Npm Tools
 
+## [0.6.222](https://github.com/storm-software/storm-ops/releases/tag/npm-tools%400.6.222) (07/16/2026)
+
+### Bug Fixes
+
+- **workspace-tools:** Resolve issue importing `pnpm-tools` and `bun-tools` in release executor ([86856d0bd](https://github.com/storm-software/storm-ops/commit/86856d0bd))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.41**
+- Updated **config-tools** to **v1.190.104**
+- Updated **testing-tools** to **v1.119.257**
+
 ## [0.6.221](https://github.com/storm-software/storm-ops/releases/tag/npm-tools%400.6.221) (07/16/2026)
 
 ### Bug Fixes

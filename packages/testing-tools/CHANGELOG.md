@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Testing Tools
 
+## [1.119.257](https://github.com/storm-software/storm-ops/releases/tag/testing-tools%401.119.257) (07/16/2026)
+
+### Bug Fixes
+
+- **workspace-tools:** Resolve issue importing `pnpm-tools` and `bun-tools` in release executor ([86856d0bd](https://github.com/storm-software/storm-ops/commit/86856d0bd))
+
 ## [1.119.256](https://github.com/storm-software/storm-ops/releases/tag/testing-tools%401.119.256) (07/16/2026)
 
 ### Bug Fixes

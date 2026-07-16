@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - Vite
 
+## [0.1.198](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.198) (07/16/2026)
+
+### Bug Fixes
+
+- **workspace-tools:** Resolve issue importing `pnpm-tools` and `bun-tools` in release executor ([86856d0bd](https://github.com/storm-software/storm-ops/commit/86856d0bd))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.264**
+
 ## [0.1.197](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.197) (07/16/2026)
 
 ### Bug Fixes

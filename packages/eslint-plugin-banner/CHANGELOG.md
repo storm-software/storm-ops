@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - ESLint Plugin Banner
 
+## [0.0.69](https://github.com/storm-software/storm-ops/releases/tag/eslint-plugin-banner%400.0.69) (07/16/2026)
+
+### Bug Fixes
+
+- **workspace-tools:** Resolve issue importing `pnpm-tools` and `bun-tools` in release executor ([86856d0bd](https://github.com/storm-software/storm-ops/commit/86856d0bd))
+
+### Updated Dependencies
+
+- Updated **package-constants** to **v0.1.117**
+- Updated **prettier** to **v0.59.157**
+
 ## [0.0.68](https://github.com/storm-software/storm-ops/releases/tag/eslint-plugin-banner%400.0.68) (07/16/2026)
 
 ### Bug Fixes

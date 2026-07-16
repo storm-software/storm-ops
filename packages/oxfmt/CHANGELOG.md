@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Oxfmt
 
+## [0.0.60](https://github.com/storm-software/storm-ops/releases/tag/oxfmt%400.0.60) (07/16/2026)
+
+### Bug Fixes
+
+- **workspace-tools:** Resolve issue importing `pnpm-tools` and `bun-tools` in release executor ([86856d0bd](https://github.com/storm-software/storm-ops/commit/86856d0bd))
+
 ## [0.0.59](https://github.com/storm-software/storm-ops/releases/tag/oxfmt%400.0.59) (07/16/2026)
 
 ### Bug Fixes
