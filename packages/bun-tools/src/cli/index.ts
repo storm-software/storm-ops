@@ -270,10 +270,8 @@ ${changed
     }
   } catch (error) {
     writeFatal(
-      `A fatal error occurred while running storm-bun update: ${
-        typeof error === "object"
-          ? `\n${JSON.stringify(error, null, 2)}`
-          : error
+      `A fatal error occurred while running storm-bun update: \n${
+        typeof error === "object" ? JSON.stringify(error, null, 2) : error
       }`,
       _config
     );

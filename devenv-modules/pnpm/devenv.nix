@@ -74,7 +74,7 @@
       };
 
       tasks = {
-        "storm:setup:git" = {
+        "pnpm:setup:git" = {
           exec = ''
             git config commit.gpgsign true
             git config tag.gpgSign true
@@ -92,7 +92,7 @@
             "devenv:files:cleanup"
           ];
         };
-        "storm:setup:install" = {
+        "pnpm:setup:install" = {
           exec = ''
             pnpm exec storm-git pre-install
             pnpm install --no-frozen-lockfile
@@ -108,7 +108,7 @@
           after = [
             "devenv:files"
             "devenv:files:cleanup"
-            "storm:setup:git"
+            "pnpm:setup:git"
           ];
         };
       };
@@ -121,7 +121,7 @@
       env.DEVENV_TUI = false;
 
       tasks = {
-        "storm:setup:git" = {
+        "pnpm:setup:git" = {
           exec = ''
             git config commit.gpgsign true
             git config tag.gpgSign true
@@ -133,14 +133,14 @@
           before = [
             "devenv:enterShell"
             "devenv:enterTest"
-            "storm:setup:install"
+            "pnpm:setup:install"
           ];
           after = [
             "devenv:files"
             "devenv:files:cleanup"
           ];
         };
-        "storm:setup:install" = {
+        "pnpm:setup:install" = {
           exec = ''
             pnpm install --frozen-lockfile
             bootstrap
@@ -152,7 +152,7 @@
           after = [
             "devenv:files"
             "devenv:files:cleanup"
-            "storm:setup:git"
+            "pnpm:setup:git"
           ];
         };
       };

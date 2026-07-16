@@ -74,7 +74,7 @@
       };
 
       tasks = {
-        "storm:setup:git" = {
+        "bun:setup:git" = {
           exec = ''
             git config commit.gpgsign true
             git config tag.gpgSign true
@@ -92,7 +92,7 @@
             "devenv:files:cleanup"
           ];
         };
-        "storm:setup:install" = {
+        "bun:setup:install" = {
           exec = ''
             bunx storm-git pre-install
             bun install --no-frozen-lockfile
@@ -108,7 +108,7 @@
           after = [
             "devenv:files"
             "devenv:files:cleanup"
-            "storm:setup:git"
+            "bun:setup:git"
           ];
         };
       };
@@ -121,7 +121,7 @@
       env.DEVENV_TUI = false;
 
       tasks = {
-        "storm:setup:git" = {
+        "bun:setup:git" = {
           exec = ''
             git config commit.gpgsign true
             git config tag.gpgSign true
@@ -133,14 +133,14 @@
           before = [
             "devenv:enterShell"
             "devenv:enterTest"
-            "storm:setup:install"
+            "bun:setup:install"
           ];
           after = [
             "devenv:files"
             "devenv:files:cleanup"
           ];
         };
-        "storm:setup:install" = {
+        "bun:setup:install" = {
           exec = ''
             bun install --frozen-lockfile
             bootstrap
@@ -152,7 +152,7 @@
           after = [
             "devenv:files"
             "devenv:files:cleanup"
-            "storm:setup:git"
+            "bun:setup:git"
           ];
         };
       };
