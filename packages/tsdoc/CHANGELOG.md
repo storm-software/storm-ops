@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Tsdoc
 
+## [0.13.254](https://github.com/storm-software/storm-ops/releases/tag/tsdoc%400.13.254) (07/16/2026)
+
+### Miscellaneous
+
+- **git-tools:** Added nested `bun` and `pnpm` modules for `lefthook` ([1a543f7f5](https://github.com/storm-software/storm-ops/commit/1a543f7f5))
+
 ## [0.13.253](https://github.com/storm-software/storm-ops/releases/tag/tsdoc%400.13.253) (07/16/2026)
 
 ### Miscellaneous

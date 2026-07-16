@@ -2,6 +2,20 @@
 
 # Changelog for Storm Ops - Oxlint
 
+## [0.0.67](https://github.com/storm-software/storm-ops/releases/tag/oxlint%400.0.67) (07/16/2026)
+
+### Miscellaneous
+
+- **git-tools:** Added nested `bun` and `pnpm` modules for `lefthook` ([1a543f7f5](https://github.com/storm-software/storm-ops/commit/1a543f7f5))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.38**
+- Updated **config-tools** to **v1.190.101**
+- Updated **eslint-plugin-banner** to **v0.0.66**
+- Updated **eslint-plugin-pnpm** to **v0.0.64**
+- Updated **eslint-plugin-tsdoc** to **v0.0.64**
+
 ## [0.0.66](https://github.com/storm-software/storm-ops/releases/tag/oxlint%400.0.66) (07/16/2026)
 
 ### Miscellaneous

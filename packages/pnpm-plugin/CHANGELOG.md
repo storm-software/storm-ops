@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Pnpm Plugin
 
+## [0.1.212](https://github.com/storm-software/storm-ops/releases/tag/pnpm-plugin%400.1.212) (07/16/2026)
+
+### Miscellaneous
+
+- **git-tools:** Added nested `bun` and `pnpm` modules for `lefthook` ([1a543f7f5](https://github.com/storm-software/storm-ops/commit/1a543f7f5))
+
+### Updated Dependencies
+
+- Updated **package-constants** to **v0.1.114**
+- Updated **testing-tools** to **v1.119.254**
+
 ## [0.1.211](https://github.com/storm-software/storm-ops/releases/tag/pnpm-plugin%400.1.211) (07/16/2026)
 
 ### Updated Dependencies

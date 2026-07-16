@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - Create Storm Workspace
 
+## [1.97.261](https://github.com/storm-software/storm-ops/releases/tag/create-storm-workspace%401.97.261) (07/16/2026)
+
+### Miscellaneous
+
+- **git-tools:** Added nested `bun` and `pnpm` modules for `lefthook` ([1a543f7f5](https://github.com/storm-software/storm-ops/commit/1a543f7f5))
+
+### Updated Dependencies
+
+- Updated **config-tools** to **v1.190.101**
+
 ## [1.97.260](https://github.com/storm-software/storm-ops/releases/tag/create-storm-workspace%401.97.260) (07/16/2026)
 
 ### Updated Dependencies

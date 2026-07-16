@@ -2,6 +2,19 @@
 
 # Changelog for Storm Ops - Git Tools
 
+## [2.131.109](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.131.109) (07/16/2026)
+
+### Miscellaneous
+
+- **git-tools:** Added nested `bun` and `pnpm` modules for `lefthook` ([1a543f7f5](https://github.com/storm-software/storm-ops/commit/1a543f7f5))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.38**
+- Updated **config-tools** to **v1.190.101**
+- Updated **conventional-changelog** to **v0.3.262**
+- Updated **package-constants** to **v0.1.114**
+
 ## [2.131.108](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.131.108) (07/16/2026)
 
 ### Miscellaneous

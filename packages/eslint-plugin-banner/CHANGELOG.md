@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - ESLint Plugin Banner
 
+## [0.0.66](https://github.com/storm-software/storm-ops/releases/tag/eslint-plugin-banner%400.0.66) (07/16/2026)
+
+### Miscellaneous
+
+- **git-tools:** Added nested `bun` and `pnpm` modules for `lefthook` ([1a543f7f5](https://github.com/storm-software/storm-ops/commit/1a543f7f5))
+
+### Updated Dependencies
+
+- Updated **package-constants** to **v0.1.114**
+- Updated **prettier** to **v0.59.154**
+
 ## [0.0.65](https://github.com/storm-software/storm-ops/releases/tag/eslint-plugin-banner%400.0.65) (07/16/2026)
 
 ### Updated Dependencies

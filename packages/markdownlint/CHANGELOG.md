@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - Markdownlint
 
+## [0.30.257](https://github.com/storm-software/storm-ops/releases/tag/markdownlint%400.30.257) (07/16/2026)
+
+### Miscellaneous
+
+- **git-tools:** Added nested `bun` and `pnpm` modules for `lefthook` ([1a543f7f5](https://github.com/storm-software/storm-ops/commit/1a543f7f5))
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.254**
+
 ## [0.30.256](https://github.com/storm-software/storm-ops/releases/tag/markdownlint%400.30.256) (07/16/2026)
 
 ### Updated Dependencies

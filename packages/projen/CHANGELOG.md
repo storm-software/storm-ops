@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Projen
 
+## [0.21.284](https://github.com/storm-software/storm-ops/releases/tag/projen%400.21.284) (07/16/2026)
+
+### Miscellaneous
+
+- **git-tools:** Added nested `bun` and `pnpm` modules for `lefthook` ([1a543f7f5](https://github.com/storm-software/storm-ops/commit/1a543f7f5))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.38**
+- Updated **config-tools** to **v1.190.101**
+- Updated **workspace-tools** to **v1.296.81**
+
 ## [0.21.283](https://github.com/storm-software/storm-ops/releases/tag/projen%400.21.283) (07/16/2026)
 
 ### Miscellaneous

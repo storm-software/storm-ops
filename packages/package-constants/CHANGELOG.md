@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Package Constants
 
+## [0.1.114](https://github.com/storm-software/storm-ops/releases/tag/package-constants%400.1.114) (07/16/2026)
+
+### Miscellaneous
+
+- **git-tools:** Added nested `bun` and `pnpm` modules for `lefthook` ([1a543f7f5](https://github.com/storm-software/storm-ops/commit/1a543f7f5))
+
 ## [0.1.112](https://github.com/storm-software/storm-ops/releases/tag/package-constants%400.1.112) (07/13/2026)
 
 ### Miscellaneous

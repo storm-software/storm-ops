@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Tsconfig
 
+## [0.48.168](https://github.com/storm-software/storm-ops/releases/tag/tsconfig%400.48.168) (07/16/2026)
+
+### Miscellaneous
+
+- **git-tools:** Added nested `bun` and `pnpm` modules for `lefthook` ([1a543f7f5](https://github.com/storm-software/storm-ops/commit/1a543f7f5))
+
 ## [0.48.167](https://github.com/storm-software/storm-ops/releases/tag/tsconfig%400.48.167) (07/16/2026)
 
 ### Miscellaneous

@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Prettier
 
+## [0.59.154](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.59.154) (07/16/2026)
+
+### Miscellaneous
+
+- **git-tools:** Added nested `bun` and `pnpm` modules for `lefthook` ([1a543f7f5](https://github.com/storm-software/storm-ops/commit/1a543f7f5))
+
 ## [0.59.153](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.59.153) (07/16/2026)
 
 ### Miscellaneous

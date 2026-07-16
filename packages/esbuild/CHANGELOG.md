@@ -2,6 +2,19 @@
 
 # Changelog for Storm Ops - Esbuild
 
+## [0.53.262](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.53.262) (07/16/2026)
+
+### Miscellaneous
+
+- **git-tools:** Added nested `bun` and `pnpm` modules for `lefthook` ([1a543f7f5](https://github.com/storm-software/storm-ops/commit/1a543f7f5))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.261**
+- Updated **config** to **v1.138.38**
+- Updated **config-tools** to **v1.190.101**
+- Updated **tsup** to **v0.2.259**
+
 ## [0.53.261](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.53.261) (07/16/2026)
 
 ### Miscellaneous

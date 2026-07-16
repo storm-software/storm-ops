@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Unbuild
 
+## [0.57.262](https://github.com/storm-software/storm-ops/releases/tag/unbuild%400.57.262) (07/16/2026)
+
+### Miscellaneous
+
+- **git-tools:** Added nested `bun` and `pnpm` modules for `lefthook` ([1a543f7f5](https://github.com/storm-software/storm-ops/commit/1a543f7f5))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.261**
+- Updated **config** to **v1.138.38**
+- Updated **config-tools** to **v1.190.101**
+
 ## [0.57.261](https://github.com/storm-software/storm-ops/releases/tag/unbuild%400.57.261) (07/16/2026)
 
 ### Miscellaneous

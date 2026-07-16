@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Npm Tools
 
+## [0.6.219](https://github.com/storm-software/storm-ops/releases/tag/npm-tools%400.6.219) (07/16/2026)
+
+### Miscellaneous
+
+- **git-tools:** Added nested `bun` and `pnpm` modules for `lefthook` ([1a543f7f5](https://github.com/storm-software/storm-ops/commit/1a543f7f5))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.38**
+- Updated **config-tools** to **v1.190.101**
+- Updated **testing-tools** to **v1.119.254**
+
 ## [0.6.218](https://github.com/storm-software/storm-ops/releases/tag/npm-tools%400.6.218) (07/16/2026)
 
 ### Miscellaneous

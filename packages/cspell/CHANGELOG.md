@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - CSpell
 
+## [0.46.169](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.46.169) (07/16/2026)
+
+### Miscellaneous
+
+- **git-tools:** Added nested `bun` and `pnpm` modules for `lefthook` ([1a543f7f5](https://github.com/storm-software/storm-ops/commit/1a543f7f5))
+
 ## [0.46.168](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.46.168) (07/16/2026)
 
 ### Miscellaneous

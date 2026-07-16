@@ -2,6 +2,25 @@
 
 # Changelog for Storm Ops - Workspace Tools
 
+## [1.296.81](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.296.81) (07/16/2026)
+
+### Miscellaneous
+
+- **git-tools:** Added nested `bun` and `pnpm` modules for `lefthook` ([1a543f7f5](https://github.com/storm-software/storm-ops/commit/1a543f7f5))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.38**
+- Updated **config-tools** to **v1.190.101**
+- Updated **esbuild** to **v0.53.262**
+- Updated **npm-tools** to **v0.6.219**
+- Updated **package-constants** to **v0.1.114**
+- Updated **pnpm-tools** to **v0.7.112**
+- Updated **prettier** to **v0.59.154**
+- Updated **testing-tools** to **v1.119.254**
+- Updated **tsdown** to **v0.45.262**
+- Updated **unbuild** to **v0.57.262**
+
 ## [1.296.80](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.296.80) (07/16/2026)
 
 ### Miscellaneous

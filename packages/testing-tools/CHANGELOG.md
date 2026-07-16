@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Testing Tools
 
+## [1.119.254](https://github.com/storm-software/storm-ops/releases/tag/testing-tools%401.119.254) (07/16/2026)
+
+### Miscellaneous
+
+- **git-tools:** Added nested `bun` and `pnpm` modules for `lefthook` ([1a543f7f5](https://github.com/storm-software/storm-ops/commit/1a543f7f5))
+
 ## [1.119.252](https://github.com/storm-software/storm-ops/releases/tag/testing-tools%401.119.252) (07/13/2026)
 
 ### Miscellaneous

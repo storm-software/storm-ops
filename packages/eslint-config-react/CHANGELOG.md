@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - ESLint Config React
 
+## [0.0.57](https://github.com/storm-software/storm-ops/releases/tag/eslint-config-react%400.0.57) (07/16/2026)
+
+### Miscellaneous
+
+- **git-tools:** Added nested `bun` and `pnpm` modules for `lefthook` ([1a543f7f5](https://github.com/storm-software/storm-ops/commit/1a543f7f5))
+
+### Updated Dependencies
+
+- Updated **eslint** to **v0.170.135**
+
 ## [0.0.56](https://github.com/storm-software/storm-ops/releases/tag/eslint-config-react%400.0.56) (07/16/2026)
 
 ### Miscellaneous

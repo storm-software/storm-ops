@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - ESLint Plugin Pnpm
 
+## [0.0.64](https://github.com/storm-software/storm-ops/releases/tag/eslint-plugin-pnpm%400.0.64) (07/16/2026)
+
+### Miscellaneous
+
+- **git-tools:** Added nested `bun` and `pnpm` modules for `lefthook` ([1a543f7f5](https://github.com/storm-software/storm-ops/commit/1a543f7f5))
+
+### Updated Dependencies
+
+- Updated **package-constants** to **v0.1.114**
+- Updated **prettier** to **v0.59.154**
+- Updated **tsdoc** to **v0.13.254**
+
 ## [0.0.63](https://github.com/storm-software/storm-ops/releases/tag/eslint-plugin-pnpm%400.0.63) (07/16/2026)
 
 ### Updated Dependencies

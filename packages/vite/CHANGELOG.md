@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - Vite
 
+## [0.1.195](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.195) (07/16/2026)
+
+### Miscellaneous
+
+- **git-tools:** Added nested `bun` and `pnpm` modules for `lefthook` ([1a543f7f5](https://github.com/storm-software/storm-ops/commit/1a543f7f5))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.261**
+
 ## [0.1.194](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.194) (07/16/2026)
 
 ### Miscellaneous
