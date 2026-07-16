@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - CSpell
 
+## [0.46.170](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.46.170) (07/16/2026)
+
+### Features
+
+- **monorepo:** Update workspace packages to allow a dynamic package manager ([bef2435ad](https://github.com/storm-software/storm-ops/commit/bef2435ad))
+
 ## [0.46.169](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.46.169) (07/16/2026)
 
 ### Miscellaneous

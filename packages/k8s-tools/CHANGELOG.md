@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - K8s Tools
 
+## [0.42.285](https://github.com/storm-software/storm-ops/releases/tag/k8s-tools%400.42.285) (07/16/2026)
+
+### Features
+
+- **monorepo:** Update workspace packages to allow a dynamic package manager ([bef2435ad](https://github.com/storm-software/storm-ops/commit/bef2435ad))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.39**
+- Updated **config-tools** to **v1.190.102**
+- Updated **workspace-tools** to **v1.296.82**
+
 ## [0.42.284](https://github.com/storm-software/storm-ops/releases/tag/k8s-tools%400.42.284) (07/16/2026)
 
 ### Miscellaneous

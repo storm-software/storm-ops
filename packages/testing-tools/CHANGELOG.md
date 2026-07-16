@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Testing Tools
 
+## [1.119.255](https://github.com/storm-software/storm-ops/releases/tag/testing-tools%401.119.255) (07/16/2026)
+
+### Features
+
+- **monorepo:** Update workspace packages to allow a dynamic package manager ([bef2435ad](https://github.com/storm-software/storm-ops/commit/bef2435ad))
+
 ## [1.119.254](https://github.com/storm-software/storm-ops/releases/tag/testing-tools%401.119.254) (07/16/2026)
 
 ### Miscellaneous

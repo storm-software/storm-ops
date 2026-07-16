@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Tsconfig
 
+## [0.48.169](https://github.com/storm-software/storm-ops/releases/tag/tsconfig%400.48.169) (07/16/2026)
+
+### Features
+
+- **monorepo:** Update workspace packages to allow a dynamic package manager ([bef2435ad](https://github.com/storm-software/storm-ops/commit/bef2435ad))
+
 ## [0.48.168](https://github.com/storm-software/storm-ops/releases/tag/tsconfig%400.48.168) (07/16/2026)
 
 ### Miscellaneous

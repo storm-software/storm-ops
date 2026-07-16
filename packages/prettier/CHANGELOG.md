@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Prettier
 
+## [0.59.155](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.59.155) (07/16/2026)
+
+### Features
+
+- **monorepo:** Update workspace packages to allow a dynamic package manager ([bef2435ad](https://github.com/storm-software/storm-ops/commit/bef2435ad))
+
 ## [0.59.154](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.59.154) (07/16/2026)
 
 ### Miscellaneous

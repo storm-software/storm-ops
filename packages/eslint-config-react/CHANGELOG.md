@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - ESLint Config React
 
+## [0.0.58](https://github.com/storm-software/storm-ops/releases/tag/eslint-config-react%400.0.58) (07/16/2026)
+
+### Features
+
+- **monorepo:** Update workspace packages to allow a dynamic package manager ([bef2435ad](https://github.com/storm-software/storm-ops/commit/bef2435ad))
+
+### Updated Dependencies
+
+- Updated **eslint** to **v0.170.136**
+
 ## [0.0.57](https://github.com/storm-software/storm-ops/releases/tag/eslint-config-react%400.0.57) (07/16/2026)
 
 ### Miscellaneous

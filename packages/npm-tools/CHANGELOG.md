@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Npm Tools
 
+## [0.6.220](https://github.com/storm-software/storm-ops/releases/tag/npm-tools%400.6.220) (07/16/2026)
+
+### Features
+
+- **monorepo:** Update workspace packages to allow a dynamic package manager ([bef2435ad](https://github.com/storm-software/storm-ops/commit/bef2435ad))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.39**
+- Updated **config-tools** to **v1.190.102**
+- Updated **testing-tools** to **v1.119.255**
+
 ## [0.6.219](https://github.com/storm-software/storm-ops/releases/tag/npm-tools%400.6.219) (07/16/2026)
 
 ### Miscellaneous

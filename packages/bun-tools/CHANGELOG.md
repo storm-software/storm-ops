@@ -2,6 +2,20 @@
 
 # Changelog for Storm Ops - Bun Tools
 
+## [0.0.11](https://github.com/storm-software/storm-ops/releases/tag/bun-tools%400.0.11) (07/16/2026)
+
+### Features
+
+- **monorepo:** Update workspace packages to allow a dynamic package manager ([bef2435ad](https://github.com/storm-software/storm-ops/commit/bef2435ad))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.39**
+- Updated **config-tools** to **v1.190.102**
+- Updated **npm-tools** to **v0.6.220**
+- Updated **package-constants** to **v0.1.115**
+- Updated **testing-tools** to **v1.119.255**
+
 ## [0.0.10](https://github.com/storm-software/storm-ops/releases/tag/bun-tools%400.0.10) (07/16/2026)
 
 ### Miscellaneous

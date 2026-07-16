@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Package Constants
 
+## [0.1.115](https://github.com/storm-software/storm-ops/releases/tag/package-constants%400.1.115) (07/16/2026)
+
+### Features
+
+- **monorepo:** Update workspace packages to allow a dynamic package manager ([bef2435ad](https://github.com/storm-software/storm-ops/commit/bef2435ad))
+
 ## [0.1.114](https://github.com/storm-software/storm-ops/releases/tag/package-constants%400.1.114) (07/16/2026)
 
 ### Miscellaneous

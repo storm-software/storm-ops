@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - Create Storm Workspace
 
+## [1.97.262](https://github.com/storm-software/storm-ops/releases/tag/create-storm-workspace%401.97.262) (07/16/2026)
+
+### Features
+
+- **monorepo:** Update workspace packages to allow a dynamic package manager ([bef2435ad](https://github.com/storm-software/storm-ops/commit/bef2435ad))
+
+### Updated Dependencies
+
+- Updated **config-tools** to **v1.190.102**
+
 ## [1.97.261](https://github.com/storm-software/storm-ops/releases/tag/create-storm-workspace%401.97.261) (07/16/2026)
 
 ### Miscellaneous

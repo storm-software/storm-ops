@@ -2,6 +2,30 @@
 
 # Changelog for Storm Ops - Workspace Tools
 
+## [1.296.82](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.296.82) (07/16/2026)
+
+### Miscellaneous
+
+- **workspace-tools:** Fixed build issue and reduced inputs that trigger rebuild ([d55e44bf6](https://github.com/storm-software/storm-ops/commit/d55e44bf6))
+
+### Features
+
+- **monorepo:** Update workspace packages to allow a dynamic package manager ([bef2435ad](https://github.com/storm-software/storm-ops/commit/bef2435ad))
+
+### Updated Dependencies
+
+- Updated **bun-tools** to **v0.0.11**
+- Updated **config** to **v1.138.39**
+- Updated **config-tools** to **v1.190.102**
+- Updated **esbuild** to **v0.53.263**
+- Updated **npm-tools** to **v0.6.220**
+- Updated **package-constants** to **v0.1.115**
+- Updated **pnpm-tools** to **v0.7.113**
+- Updated **prettier** to **v0.59.155**
+- Updated **testing-tools** to **v1.119.255**
+- Updated **tsdown** to **v0.45.263**
+- Updated **unbuild** to **v0.57.263**
+
 ## [1.296.81](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.296.81) (07/16/2026)
 
 ### Miscellaneous

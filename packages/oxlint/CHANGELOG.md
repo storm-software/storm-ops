@@ -2,6 +2,20 @@
 
 # Changelog for Storm Ops - Oxlint
 
+## [0.0.68](https://github.com/storm-software/storm-ops/releases/tag/oxlint%400.0.68) (07/16/2026)
+
+### Features
+
+- **monorepo:** Update workspace packages to allow a dynamic package manager ([bef2435ad](https://github.com/storm-software/storm-ops/commit/bef2435ad))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.39**
+- Updated **config-tools** to **v1.190.102**
+- Updated **eslint-plugin-banner** to **v0.0.67**
+- Updated **eslint-plugin-pnpm** to **v0.0.65**
+- Updated **eslint-plugin-tsdoc** to **v0.0.65**
+
 ## [0.0.67](https://github.com/storm-software/storm-ops/releases/tag/oxlint%400.0.67) (07/16/2026)
 
 ### Miscellaneous

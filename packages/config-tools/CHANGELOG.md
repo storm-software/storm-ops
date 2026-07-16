@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Config Tools
 
+## [1.190.102](https://github.com/storm-software/storm-ops/releases/tag/config-tools%401.190.102) (07/16/2026)
+
+### Features
+
+- **monorepo:** Update workspace packages to allow a dynamic package manager ([bef2435ad](https://github.com/storm-software/storm-ops/commit/bef2435ad))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.39**
+- Updated **testing-tools** to **v1.119.255**
+
 ## [1.190.101](https://github.com/storm-software/storm-ops/releases/tag/config-tools%401.190.101) (07/16/2026)
 
 ### Miscellaneous

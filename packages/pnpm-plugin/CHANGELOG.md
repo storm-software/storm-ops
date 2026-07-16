@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Pnpm Plugin
 
+## [0.1.213](https://github.com/storm-software/storm-ops/releases/tag/pnpm-plugin%400.1.213) (07/16/2026)
+
+### Features
+
+- **monorepo:** Update workspace packages to allow a dynamic package manager ([bef2435ad](https://github.com/storm-software/storm-ops/commit/bef2435ad))
+
+### Updated Dependencies
+
+- Updated **package-constants** to **v0.1.115**
+- Updated **testing-tools** to **v1.119.255**
+
 ## [0.1.212](https://github.com/storm-software/storm-ops/releases/tag/pnpm-plugin%400.1.212) (07/16/2026)
 
 ### Miscellaneous

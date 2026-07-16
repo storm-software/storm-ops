@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Tsup
 
+## [0.2.260](https://github.com/storm-software/storm-ops/releases/tag/tsup%400.2.260) (07/16/2026)
+
+### Features
+
+- **monorepo:** Update workspace packages to allow a dynamic package manager ([bef2435ad](https://github.com/storm-software/storm-ops/commit/bef2435ad))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.262**
+- Updated **config-tools** to **v1.190.102**
+
 ## [0.2.259](https://github.com/storm-software/storm-ops/releases/tag/tsup%400.2.259) (07/16/2026)
 
 ### Miscellaneous

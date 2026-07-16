@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Unbuild
 
+## [0.57.263](https://github.com/storm-software/storm-ops/releases/tag/unbuild%400.57.263) (07/16/2026)
+
+### Features
+
+- **monorepo:** Update workspace packages to allow a dynamic package manager ([bef2435ad](https://github.com/storm-software/storm-ops/commit/bef2435ad))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.262**
+- Updated **config** to **v1.138.39**
+- Updated **config-tools** to **v1.190.102**
+
 ## [0.57.262](https://github.com/storm-software/storm-ops/releases/tag/unbuild%400.57.262) (07/16/2026)
 
 ### Miscellaneous

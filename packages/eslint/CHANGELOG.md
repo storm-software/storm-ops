@@ -2,6 +2,22 @@
 
 # Changelog for Storm Ops - ESLint
 
+## [0.170.136](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.170.136) (07/16/2026)
+
+### Features
+
+- **monorepo:** Update workspace packages to allow a dynamic package manager ([bef2435ad](https://github.com/storm-software/storm-ops/commit/bef2435ad))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.39**
+- Updated **config-tools** to **v1.190.102**
+- Updated **eslint-plugin-banner** to **v0.0.67**
+- Updated **eslint-plugin-pnpm** to **v0.0.65**
+- Updated **eslint-plugin-tsdoc** to **v0.0.65**
+- Updated **package-constants** to **v0.1.115**
+- Updated **tsdoc** to **v0.13.255**
+
 ## [0.170.135](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.170.135) (07/16/2026)
 
 ### Miscellaneous

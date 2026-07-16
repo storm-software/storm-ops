@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - Vite
 
+## [0.1.196](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.196) (07/16/2026)
+
+### Features
+
+- **monorepo:** Update workspace packages to allow a dynamic package manager ([bef2435ad](https://github.com/storm-software/storm-ops/commit/bef2435ad))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.262**
+
 ## [0.1.195](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.195) (07/16/2026)
 
 ### Miscellaneous
