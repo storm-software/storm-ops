@@ -2338,6 +2338,9 @@ importers:
       '@napi-rs/cli':
         specifier: ^3.7.3
         version: 3.7.3(@emnapi/core@1.11.2)(@emnapi/runtime@1.11.2)(@types/node@25.9.5)(node-addon-api@7.1.1)
+      '@storm-software/bun-tools':
+        specifier: workspace:*
+        version: link:../bun-tools
       '@storm-software/esbuild':
         specifier: workspace:*
         version: link:../esbuild
