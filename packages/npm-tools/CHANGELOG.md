@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Npm Tools
 
+## [0.6.218](https://github.com/storm-software/storm-ops/releases/tag/npm-tools%400.6.218) (07/16/2026)
+
+### Miscellaneous
+
+- **devenv-modules:** Update task hooks to have different unique names ([396f82931](https://github.com/storm-software/storm-ops/commit/396f82931))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.37**
+- Updated **config-tools** to **v1.190.100**
+- Updated **testing-tools** to **v1.119.253**
+
 ## [0.6.217](https://github.com/storm-software/storm-ops/releases/tag/npm-tools%400.6.217) (07/13/2026)
 
 ### Miscellaneous

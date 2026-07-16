@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - ESLint Config React
 
+## [0.0.56](https://github.com/storm-software/storm-ops/releases/tag/eslint-config-react%400.0.56) (07/16/2026)
+
+### Miscellaneous
+
+- **devenv-modules:** Update task hooks to have different unique names ([396f82931](https://github.com/storm-software/storm-ops/commit/396f82931))
+
+### Updated Dependencies
+
+- Updated **eslint** to **v0.170.134**
+
 ## [0.0.55](https://github.com/storm-software/storm-ops/releases/tag/eslint-config-react%400.0.55) (07/13/2026)
 
 ### Miscellaneous

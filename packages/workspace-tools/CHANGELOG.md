@@ -2,6 +2,25 @@
 
 # Changelog for Storm Ops - Workspace Tools
 
+## [1.296.80](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.296.80) (07/16/2026)
+
+### Miscellaneous
+
+- **devenv-modules:** Update task hooks to have different unique names ([396f82931](https://github.com/storm-software/storm-ops/commit/396f82931))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.37**
+- Updated **config-tools** to **v1.190.100**
+- Updated **esbuild** to **v0.53.261**
+- Updated **npm-tools** to **v0.6.218**
+- Updated **package-constants** to **v0.1.113**
+- Updated **pnpm-tools** to **v0.7.111**
+- Updated **prettier** to **v0.59.153**
+- Updated **testing-tools** to **v1.119.253**
+- Updated **tsdown** to **v0.45.261**
+- Updated **unbuild** to **v0.57.261**
+
 ## [1.296.79](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.296.79) (07/13/2026)
 
 ### Miscellaneous

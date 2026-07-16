@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Prettier
 
+## [0.59.153](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.59.153) (07/16/2026)
+
+### Miscellaneous
+
+- **devenv-modules:** Update task hooks to have different unique names ([396f82931](https://github.com/storm-software/storm-ops/commit/396f82931))
+
 ## [0.59.152](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.59.152) (07/13/2026)
 
 ### Miscellaneous

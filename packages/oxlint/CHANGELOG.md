@@ -2,6 +2,20 @@
 
 # Changelog for Storm Ops - Oxlint
 
+## [0.0.66](https://github.com/storm-software/storm-ops/releases/tag/oxlint%400.0.66) (07/16/2026)
+
+### Miscellaneous
+
+- **devenv-modules:** Update task hooks to have different unique names ([396f82931](https://github.com/storm-software/storm-ops/commit/396f82931))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.37**
+- Updated **config-tools** to **v1.190.100**
+- Updated **eslint-plugin-banner** to **v0.0.65**
+- Updated **eslint-plugin-pnpm** to **v0.0.63**
+- Updated **eslint-plugin-tsdoc** to **v0.0.63**
+
 ## [0.0.65](https://github.com/storm-software/storm-ops/releases/tag/oxlint%400.0.65) (07/13/2026)
 
 ### Miscellaneous

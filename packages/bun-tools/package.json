@@ -1,6 +1,6 @@
 {
   "name": "@storm-software/bun-tools",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "private": false,
   "description": "A set of [Bun](https://bun.sh/) plugins and utilities for managing workspace packages/dependencies.",
   "repository": {

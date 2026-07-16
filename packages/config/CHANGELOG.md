@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - Config
 
+## [1.138.37](https://github.com/storm-software/storm-ops/releases/tag/config%401.138.37) (07/16/2026)
+
+### Miscellaneous
+
+- **devenv-modules:** Update task hooks to have different unique names ([396f82931](https://github.com/storm-software/storm-ops/commit/396f82931))
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.253**
+
 ## [1.138.36](https://github.com/storm-software/storm-ops/releases/tag/config%401.138.36) (07/13/2026)
 
 ### Miscellaneous

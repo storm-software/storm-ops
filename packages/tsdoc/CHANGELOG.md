@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Tsdoc
 
+## [0.13.253](https://github.com/storm-software/storm-ops/releases/tag/tsdoc%400.13.253) (07/16/2026)
+
+### Miscellaneous
+
+- **devenv-modules:** Update task hooks to have different unique names ([396f82931](https://github.com/storm-software/storm-ops/commit/396f82931))
+
 ## [0.13.252](https://github.com/storm-software/storm-ops/releases/tag/tsdoc%400.13.252) (07/13/2026)
 
 ### Miscellaneous

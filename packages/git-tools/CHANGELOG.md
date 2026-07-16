@@ -2,6 +2,19 @@
 
 # Changelog for Storm Ops - Git Tools
 
+## [2.131.108](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.131.108) (07/16/2026)
+
+### Miscellaneous
+
+- **devenv-modules:** Update task hooks to have different unique names ([396f82931](https://github.com/storm-software/storm-ops/commit/396f82931))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.37**
+- Updated **config-tools** to **v1.190.100**
+- Updated **conventional-changelog** to **v0.3.261**
+- Updated **package-constants** to **v0.1.113**
+
 ## [2.131.107](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.131.107) (07/13/2026)
 
 ### Miscellaneous

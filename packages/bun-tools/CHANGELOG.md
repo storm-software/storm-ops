@@ -2,6 +2,20 @@
 
 # Changelog for Storm Ops - Bun Tools
 
+## [0.0.9](https://github.com/storm-software/storm-ops/releases/tag/bun-tools%400.0.9) (07/16/2026)
+
+### Miscellaneous
+
+- **devenv-modules:** Update task hooks to have different unique names ([396f82931](https://github.com/storm-software/storm-ops/commit/396f82931))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.37**
+- Updated **config-tools** to **v1.190.100**
+- Updated **npm-tools** to **v0.6.218**
+- Updated **package-constants** to **v0.1.113**
+- Updated **testing-tools** to **v1.119.253**
+
 ## [0.0.8](https://github.com/storm-software/storm-ops/releases/tag/bun-tools%400.0.8) (07/13/2026)
 
 ### Miscellaneous

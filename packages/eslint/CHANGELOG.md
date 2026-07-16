@@ -2,6 +2,22 @@
 
 # Changelog for Storm Ops - ESLint
 
+## [0.170.134](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.170.134) (07/16/2026)
+
+### Miscellaneous
+
+- **devenv-modules:** Update task hooks to have different unique names ([396f82931](https://github.com/storm-software/storm-ops/commit/396f82931))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.37**
+- Updated **config-tools** to **v1.190.100**
+- Updated **eslint-plugin-banner** to **v0.0.65**
+- Updated **eslint-plugin-pnpm** to **v0.0.63**
+- Updated **eslint-plugin-tsdoc** to **v0.0.63**
+- Updated **package-constants** to **v0.1.113**
+- Updated **tsdoc** to **v0.13.253**
+
 ## [0.170.133](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.170.133) (07/13/2026)
 
 ### Miscellaneous

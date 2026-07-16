@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Tsconfig
 
+## [0.48.167](https://github.com/storm-software/storm-ops/releases/tag/tsconfig%400.48.167) (07/16/2026)
+
+### Miscellaneous
+
+- **devenv-modules:** Update task hooks to have different unique names ([396f82931](https://github.com/storm-software/storm-ops/commit/396f82931))
+
 ## [0.48.166](https://github.com/storm-software/storm-ops/releases/tag/tsconfig%400.48.166) (07/13/2026)
 
 ### Miscellaneous

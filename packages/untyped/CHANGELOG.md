@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Untyped
 
+## [0.24.242](https://github.com/storm-software/storm-ops/releases/tag/untyped%400.24.242) (07/16/2026)
+
+### Miscellaneous
+
+- **devenv-modules:** Update task hooks to have different unique names ([396f82931](https://github.com/storm-software/storm-ops/commit/396f82931))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.37**
+- Updated **config-tools** to **v1.190.100**
+
 ## [0.24.241](https://github.com/storm-software/storm-ops/releases/tag/untyped%400.24.241) (07/13/2026)
 
 ### Miscellaneous

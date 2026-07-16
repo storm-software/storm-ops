@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - Vite
 
+## [0.1.194](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.194) (07/16/2026)
+
+### Miscellaneous
+
+- **devenv-modules:** Update task hooks to have different unique names ([396f82931](https://github.com/storm-software/storm-ops/commit/396f82931))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.260**
+
 ## [0.1.193](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.193) (07/13/2026)
 
 ### Miscellaneous

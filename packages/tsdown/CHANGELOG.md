@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Tsdown
 
+## [0.45.261](https://github.com/storm-software/storm-ops/releases/tag/tsdown%400.45.261) (07/16/2026)
+
+### Miscellaneous
+
+- **devenv-modules:** Update task hooks to have different unique names ([396f82931](https://github.com/storm-software/storm-ops/commit/396f82931))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.260**
+- Updated **config** to **v1.138.37**
+- Updated **config-tools** to **v1.190.100**
+
 ## [0.45.260](https://github.com/storm-software/storm-ops/releases/tag/tsdown%400.45.260) (07/13/2026)
 
 ### Miscellaneous

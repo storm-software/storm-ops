@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Tsup
 
+## [0.2.258](https://github.com/storm-software/storm-ops/releases/tag/tsup%400.2.258) (07/16/2026)
+
+### Miscellaneous
+
+- **devenv-modules:** Update task hooks to have different unique names ([396f82931](https://github.com/storm-software/storm-ops/commit/396f82931))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.260**
+- Updated **config-tools** to **v1.190.100**
+
 ## [0.2.257](https://github.com/storm-software/storm-ops/releases/tag/tsup%400.2.257) (07/13/2026)
 
 ### Miscellaneous
