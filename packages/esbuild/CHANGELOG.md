@@ -2,6 +2,19 @@
 
 # Changelog for Storm Ops - Esbuild
 
+## [0.53.266](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.53.266) (07/16/2026)
+
+### Miscellaneous
+
+- **workspace-tools:** Ensure exec command is run via package manager ([7e2a93628](https://github.com/storm-software/storm-ops/commit/7e2a93628))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.265**
+- Updated **config** to **v1.138.42**
+- Updated **config-tools** to **v1.190.105**
+- Updated **tsup** to **v0.2.263**
+
 ## [0.53.265](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.53.265) (07/16/2026)
 
 ### Bug Fixes

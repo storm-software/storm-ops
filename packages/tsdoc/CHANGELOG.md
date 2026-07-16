@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Tsdoc
 
+## [0.13.258](https://github.com/storm-software/storm-ops/releases/tag/tsdoc%400.13.258) (07/16/2026)
+
+### Miscellaneous
+
+- **workspace-tools:** Ensure exec command is run via package manager ([7e2a93628](https://github.com/storm-software/storm-ops/commit/7e2a93628))
+
 ## [0.13.257](https://github.com/storm-software/storm-ops/releases/tag/tsdoc%400.13.257) (07/16/2026)
 
 ### Bug Fixes

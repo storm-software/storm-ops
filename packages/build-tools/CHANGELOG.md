@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Build Tools
 
+## [0.158.265](https://github.com/storm-software/storm-ops/releases/tag/build-tools%400.158.265) (07/16/2026)
+
+### Miscellaneous
+
+- **workspace-tools:** Ensure exec command is run via package manager ([7e2a93628](https://github.com/storm-software/storm-ops/commit/7e2a93628))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.42**
+- Updated **config-tools** to **v1.190.105**
+
 ## [0.158.264](https://github.com/storm-software/storm-ops/releases/tag/build-tools%400.158.264) (07/16/2026)
 
 ### Bug Fixes

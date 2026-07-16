@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Tsconfig
 
+## [0.48.172](https://github.com/storm-software/storm-ops/releases/tag/tsconfig%400.48.172) (07/16/2026)
+
+### Miscellaneous
+
+- **workspace-tools:** Ensure exec command is run via package manager ([7e2a93628](https://github.com/storm-software/storm-ops/commit/7e2a93628))
+
 ## [0.48.171](https://github.com/storm-software/storm-ops/releases/tag/tsconfig%400.48.171) (07/16/2026)
 
 ### Bug Fixes

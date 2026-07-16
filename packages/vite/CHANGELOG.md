@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - Vite
 
+## [0.1.199](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.199) (07/16/2026)
+
+### Miscellaneous
+
+- **workspace-tools:** Ensure exec command is run via package manager ([7e2a93628](https://github.com/storm-software/storm-ops/commit/7e2a93628))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.265**
+
 ## [0.1.198](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.198) (07/16/2026)
 
 ### Bug Fixes

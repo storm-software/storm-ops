@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - ESLint Config React
 
+## [0.0.61](https://github.com/storm-software/storm-ops/releases/tag/eslint-config-react%400.0.61) (07/16/2026)
+
+### Miscellaneous
+
+- **workspace-tools:** Ensure exec command is run via package manager ([7e2a93628](https://github.com/storm-software/storm-ops/commit/7e2a93628))
+
+### Updated Dependencies
+
+- Updated **eslint** to **v0.170.139**
+
 ## [0.0.60](https://github.com/storm-software/storm-ops/releases/tag/eslint-config-react%400.0.60) (07/16/2026)
 
 ### Bug Fixes

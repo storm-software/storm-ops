@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Pnpm Plugin
 
+## [0.1.216](https://github.com/storm-software/storm-ops/releases/tag/pnpm-plugin%400.1.216) (07/16/2026)
+
+### Miscellaneous
+
+- **workspace-tools:** Ensure exec command is run via package manager ([7e2a93628](https://github.com/storm-software/storm-ops/commit/7e2a93628))
+
+### Updated Dependencies
+
+- Updated **package-constants** to **v0.1.118**
+- Updated **testing-tools** to **v1.119.258**
+
 ## [0.1.215](https://github.com/storm-software/storm-ops/releases/tag/pnpm-plugin%400.1.215) (07/16/2026)
 
 ### Bug Fixes

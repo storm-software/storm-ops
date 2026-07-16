@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Package Constants
 
+## [0.1.118](https://github.com/storm-software/storm-ops/releases/tag/package-constants%400.1.118) (07/16/2026)
+
+### Miscellaneous
+
+- **workspace-tools:** Ensure exec command is run via package manager ([7e2a93628](https://github.com/storm-software/storm-ops/commit/7e2a93628))
+
 ## [0.1.117](https://github.com/storm-software/storm-ops/releases/tag/package-constants%400.1.117) (07/16/2026)
 
 ### Bug Fixes

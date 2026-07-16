@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Terraform Tools
 
+## [0.66.288](https://github.com/storm-software/storm-ops/releases/tag/terraform-tools%400.66.288) (07/16/2026)
+
+### Miscellaneous
+
+- **workspace-tools:** Ensure exec command is run via package manager ([7e2a93628](https://github.com/storm-software/storm-ops/commit/7e2a93628))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.42**
+- Updated **config-tools** to **v1.190.105**
+- Updated **workspace-tools** to **v1.296.85**
+
 ## [0.66.287](https://github.com/storm-software/storm-ops/releases/tag/terraform-tools%400.66.287) (07/16/2026)
 
 ### Bug Fixes

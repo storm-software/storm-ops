@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Config Tools
 
+## [1.190.105](https://github.com/storm-software/storm-ops/releases/tag/config-tools%401.190.105) (07/16/2026)
+
+### Miscellaneous
+
+- **workspace-tools:** Ensure exec command is run via package manager ([7e2a93628](https://github.com/storm-software/storm-ops/commit/7e2a93628))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.42**
+- Updated **testing-tools** to **v1.119.258**
+
 ## [1.190.104](https://github.com/storm-software/storm-ops/releases/tag/config-tools%401.190.104) (07/16/2026)
 
 ### Bug Fixes

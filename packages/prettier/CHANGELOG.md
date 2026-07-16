@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Prettier
 
+## [0.59.158](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.59.158) (07/16/2026)
+
+### Miscellaneous
+
+- **workspace-tools:** Ensure exec command is run via package manager ([7e2a93628](https://github.com/storm-software/storm-ops/commit/7e2a93628))
+
 ## [0.59.157](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.59.157) (07/16/2026)
 
 ### Bug Fixes

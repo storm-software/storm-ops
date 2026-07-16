@@ -2,6 +2,26 @@
 
 # Changelog for Storm Ops - Workspace Tools
 
+## [1.296.85](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.296.85) (07/16/2026)
+
+### Miscellaneous
+
+- **workspace-tools:** Ensure exec command is run via package manager ([7e2a93628](https://github.com/storm-software/storm-ops/commit/7e2a93628))
+
+### Updated Dependencies
+
+- Updated **bun-tools** to **v0.0.14**
+- Updated **config** to **v1.138.42**
+- Updated **config-tools** to **v1.190.105**
+- Updated **esbuild** to **v0.53.266**
+- Updated **npm-tools** to **v0.6.223**
+- Updated **package-constants** to **v0.1.118**
+- Updated **pnpm-tools** to **v0.7.116**
+- Updated **prettier** to **v0.59.158**
+- Updated **testing-tools** to **v1.119.258**
+- Updated **tsdown** to **v0.45.266**
+- Updated **unbuild** to **v0.57.266**
+
 ## [1.296.84](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.296.84) (07/16/2026)
 
 ### Bug Fixes

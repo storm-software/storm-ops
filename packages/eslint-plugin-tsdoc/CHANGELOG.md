@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - ESLint Plugin Tsdoc
 
+## [0.0.68](https://github.com/storm-software/storm-ops/releases/tag/eslint-plugin-tsdoc%400.0.68) (07/16/2026)
+
+### Miscellaneous
+
+- **workspace-tools:** Ensure exec command is run via package manager ([7e2a93628](https://github.com/storm-software/storm-ops/commit/7e2a93628))
+
+### Updated Dependencies
+
+- Updated **package-constants** to **v0.1.118**
+- Updated **prettier** to **v0.59.158**
+- Updated **tsdoc** to **v0.13.258**
+
 ## [0.0.67](https://github.com/storm-software/storm-ops/releases/tag/eslint-plugin-tsdoc%400.0.67) (07/16/2026)
 
 ### Bug Fixes

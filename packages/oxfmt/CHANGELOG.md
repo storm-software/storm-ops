@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Oxfmt
 
+## [0.0.61](https://github.com/storm-software/storm-ops/releases/tag/oxfmt%400.0.61) (07/16/2026)
+
+### Miscellaneous
+
+- **workspace-tools:** Ensure exec command is run via package manager ([7e2a93628](https://github.com/storm-software/storm-ops/commit/7e2a93628))
+
 ## [0.0.60](https://github.com/storm-software/storm-ops/releases/tag/oxfmt%400.0.60) (07/16/2026)
 
 ### Bug Fixes

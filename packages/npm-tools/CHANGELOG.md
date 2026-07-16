@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Npm Tools
 
+## [0.6.223](https://github.com/storm-software/storm-ops/releases/tag/npm-tools%400.6.223) (07/16/2026)
+
+### Miscellaneous
+
+- **workspace-tools:** Ensure exec command is run via package manager ([7e2a93628](https://github.com/storm-software/storm-ops/commit/7e2a93628))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.42**
+- Updated **config-tools** to **v1.190.105**
+- Updated **testing-tools** to **v1.119.258**
+
 ## [0.6.222](https://github.com/storm-software/storm-ops/releases/tag/npm-tools%400.6.222) (07/16/2026)
 
 ### Bug Fixes

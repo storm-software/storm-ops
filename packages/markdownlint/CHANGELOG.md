@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - Markdownlint
 
+## [0.30.261](https://github.com/storm-software/storm-ops/releases/tag/markdownlint%400.30.261) (07/16/2026)
+
+### Miscellaneous
+
+- **workspace-tools:** Ensure exec command is run via package manager ([7e2a93628](https://github.com/storm-software/storm-ops/commit/7e2a93628))
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.258**
+
 ## [0.30.260](https://github.com/storm-software/storm-ops/releases/tag/markdownlint%400.30.260) (07/16/2026)
 
 ### Bug Fixes

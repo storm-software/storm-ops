@@ -2,6 +2,22 @@
 
 # Changelog for Storm Ops - ESLint
 
+## [0.170.139](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.170.139) (07/16/2026)
+
+### Miscellaneous
+
+- **workspace-tools:** Ensure exec command is run via package manager ([7e2a93628](https://github.com/storm-software/storm-ops/commit/7e2a93628))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.42**
+- Updated **config-tools** to **v1.190.105**
+- Updated **eslint-plugin-banner** to **v0.0.70**
+- Updated **eslint-plugin-pnpm** to **v0.0.68**
+- Updated **eslint-plugin-tsdoc** to **v0.0.68**
+- Updated **package-constants** to **v0.1.118**
+- Updated **tsdoc** to **v0.13.258**
+
 ## [0.170.138](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.170.138) (07/16/2026)
 
 ### Bug Fixes
