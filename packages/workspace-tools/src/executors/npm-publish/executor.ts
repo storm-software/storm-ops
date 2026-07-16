@@ -1,7 +1,7 @@
 import { type ExecutorContext } from "@nx/devkit";
 import { getConfig } from "@storm-software/config-tools/get-config";
 import { joinPaths } from "@storm-software/config-tools/utilities/correct-paths";
-import { createJiti } from "jiti";
+import { createJiti, type Jiti } from "jiti";
 import { execSync } from "node:child_process";
 import { readFile, writeFile } from "node:fs/promises";
 import { format } from "prettier";
@@ -13,19 +13,28 @@ import type { NpmPublishExecutorSchema } from "./schema.d";
 export const LARGE_BUFFER = 1024 * 1000000;
 
 async function replaceDepsAliases(
+  jiti: Jiti,
   packageRoot: string,
   workspaceRoot: string,
   packageManager: string
 ) {
   if (packageManager === "bun") {
-    const { replaceDepsAliases: replaceBunDepsAliases } =
-      await import("@storm-software/bun-tools");
+    const { replaceDepsAliases: replaceBunDepsAliases } = await jiti.import<{
+      replaceDepsAliases: (
+        packageRoot: string,
+        workspaceRoot: string
+      ) => Promise<void>;
+    }>(jiti.esmResolve("@storm-software/bun-tools"));
     return replaceBunDepsAliases(packageRoot, workspaceRoot);
   }
 
   if (packageManager === "pnpm") {
-    const { replaceDepsAliases: replacePnpmDepsAliases } =
-      await import("@storm-software/pnpm-tools");
+    const { replaceDepsAliases: replacePnpmDepsAliases } = await jiti.import<{
+      replaceDepsAliases: (
+        packageRoot: string,
+        workspaceRoot: string
+      ) => Promise<void>;
+    }>(jiti.esmResolve("@storm-software/pnpm-tools"));
     return replacePnpmDepsAliases(packageRoot, workspaceRoot);
   }
 
@@ -158,7 +167,7 @@ export default async function npmPublishExecutorFn(
     return { success: true };
   }
 
-  await replaceDepsAliases(packageRoot, context.root, packageManager);
+  await replaceDepsAliases(jiti, packageRoot, context.root, packageManager);
   await addPackageJsonGitHead(packageRoot);
 
   const npmPublishCommandSegments = [`npm publish --json`];
