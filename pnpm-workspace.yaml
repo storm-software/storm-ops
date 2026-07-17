@@ -23,7 +23,7 @@ catalog:
   "@ltd/j-toml": "1.38.0"
   "@eslint/compat": "^2.1.0"
   "@eslint/config-inspector": "^1.5.0"
-  "@microsoft/api-extractor": "^7.58.9"
+  "@microsoft/api-extractor": "^7.58.10"
   "@microsoft/tsdoc": "^0.16.0"
   "@microsoft/tsdoc-config": "^0.18.1"
   "@nx/devkit": "23.0.1"

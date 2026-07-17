@@ -183,7 +183,14 @@
   "main": "./dist/index.js",
   "module": "./dist/index.js",
   "types": "./dist/index.d.cts",
-  "files": ["dist/**/*"],
+  "bin": {
+    "storm-untyped": "./bin/untyped.cjs",
+    "storm-untyped-cjs": "./bin/untyped.cjs",
+    "storm-untyped-esm": "./bin/untyped.js"
+  },
+  "files": [
+    "dist/**/*"
+  ],
   "dependencies": {
     "@storm-software/config-tools": "workspace:*",
     "commander": "catalog:",
