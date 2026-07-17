@@ -2,6 +2,26 @@
 
 # Changelog for Storm Ops - Workspace Tools
 
+## [1.296.87](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.296.87) (07/16/2026)
+
+### Miscellaneous
+
+- **monorepo:** Added back the missing `bin` property from `package.json` files ([338c62167](https://github.com/storm-software/storm-ops/commit/338c62167))
+
+### Updated Dependencies
+
+- Updated **bun-tools** to **v0.0.16**
+- Updated **config** to **v1.138.44**
+- Updated **config-tools** to **v1.190.107**
+- Updated **esbuild** to **v0.53.268**
+- Updated **npm-tools** to **v0.6.225**
+- Updated **package-constants** to **v0.1.120**
+- Updated **pnpm-tools** to **v0.7.118**
+- Updated **prettier** to **v0.59.160**
+- Updated **testing-tools** to **v1.119.260**
+- Updated **tsdown** to **v0.45.268**
+- Updated **unbuild** to **v0.57.268**
+
 ## [1.296.86](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.296.86) (07/16/2026)
 
 ### Miscellaneous

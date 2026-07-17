@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - ESLint Plugin Banner
 
+## [0.0.72](https://github.com/storm-software/storm-ops/releases/tag/eslint-plugin-banner%400.0.72) (07/16/2026)
+
+### Miscellaneous
+
+- **monorepo:** Added back the missing `bin` property from `package.json` files ([338c62167](https://github.com/storm-software/storm-ops/commit/338c62167))
+
+### Updated Dependencies
+
+- Updated **package-constants** to **v0.1.120**
+- Updated **prettier** to **v0.59.160**
+
 ## [0.0.71](https://github.com/storm-software/storm-ops/releases/tag/eslint-plugin-banner%400.0.71) (07/16/2026)
 
 ### Miscellaneous

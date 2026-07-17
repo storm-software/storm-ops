@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Tsconfig
 
+## [0.48.174](https://github.com/storm-software/storm-ops/releases/tag/tsconfig%400.48.174) (07/16/2026)
+
+### Miscellaneous
+
+- **monorepo:** Added back the missing `bin` property from `package.json` files ([338c62167](https://github.com/storm-software/storm-ops/commit/338c62167))
+
 ## [0.48.173](https://github.com/storm-software/storm-ops/releases/tag/tsconfig%400.48.173) (07/16/2026)
 
 ### Miscellaneous

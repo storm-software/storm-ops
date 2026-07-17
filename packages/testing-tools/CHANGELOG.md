@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Testing Tools
 
+## [1.119.260](https://github.com/storm-software/storm-ops/releases/tag/testing-tools%401.119.260) (07/16/2026)
+
+### Miscellaneous
+
+- **monorepo:** Added back the missing `bin` property from `package.json` files ([338c62167](https://github.com/storm-software/storm-ops/commit/338c62167))
+
 ## [1.119.259](https://github.com/storm-software/storm-ops/releases/tag/testing-tools%401.119.259) (07/16/2026)
 
 ### Miscellaneous

@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Prettier
 
+## [0.59.160](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.59.160) (07/16/2026)
+
+### Miscellaneous
+
+- **monorepo:** Added back the missing `bin` property from `package.json` files ([338c62167](https://github.com/storm-software/storm-ops/commit/338c62167))
+
 ## [0.59.159](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.59.159) (07/16/2026)
 
 ### Miscellaneous

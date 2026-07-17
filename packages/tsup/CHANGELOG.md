@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Tsup
 
+## [0.2.265](https://github.com/storm-software/storm-ops/releases/tag/tsup%400.2.265) (07/16/2026)
+
+### Miscellaneous
+
+- **monorepo:** Added back the missing `bin` property from `package.json` files ([338c62167](https://github.com/storm-software/storm-ops/commit/338c62167))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.267**
+- Updated **config-tools** to **v1.190.107**
+
 ## [0.2.264](https://github.com/storm-software/storm-ops/releases/tag/tsup%400.2.264) (07/16/2026)
 
 ### Miscellaneous

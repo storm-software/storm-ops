@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - Config
 
+## [1.138.44](https://github.com/storm-software/storm-ops/releases/tag/config%401.138.44) (07/16/2026)
+
+### Miscellaneous
+
+- **monorepo:** Added back the missing `bin` property from `package.json` files ([338c62167](https://github.com/storm-software/storm-ops/commit/338c62167))
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.260**
+
 ## [1.138.43](https://github.com/storm-software/storm-ops/releases/tag/config%401.138.43) (07/16/2026)
 
 ### Miscellaneous

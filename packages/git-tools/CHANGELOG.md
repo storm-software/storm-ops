@@ -2,6 +2,19 @@
 
 # Changelog for Storm Ops - Git Tools
 
+## [2.131.115](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.131.115) (07/16/2026)
+
+### Miscellaneous
+
+- **monorepo:** Added back the missing `bin` property from `package.json` files ([338c62167](https://github.com/storm-software/storm-ops/commit/338c62167))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.44**
+- Updated **config-tools** to **v1.190.107**
+- Updated **conventional-changelog** to **v0.3.268**
+- Updated **package-constants** to **v0.1.120**
+
 ## [2.131.114](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.131.114) (07/16/2026)
 
 ### Miscellaneous

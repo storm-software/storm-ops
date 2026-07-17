@@ -2,6 +2,19 @@
 
 # Changelog for Storm Ops - Esbuild
 
+## [0.53.268](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.53.268) (07/16/2026)
+
+### Miscellaneous
+
+- **monorepo:** Added back the missing `bin` property from `package.json` files ([338c62167](https://github.com/storm-software/storm-ops/commit/338c62167))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.267**
+- Updated **config** to **v1.138.44**
+- Updated **config-tools** to **v1.190.107**
+- Updated **tsup** to **v0.2.265**
+
 ## [0.53.267](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.53.267) (07/16/2026)
 
 ### Miscellaneous

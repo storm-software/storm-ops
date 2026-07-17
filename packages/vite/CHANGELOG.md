@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - Vite
 
+## [0.1.201](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.201) (07/16/2026)
+
+### Miscellaneous
+
+- **monorepo:** Added back the missing `bin` property from `package.json` files ([338c62167](https://github.com/storm-software/storm-ops/commit/338c62167))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.267**
+
 ## [0.1.200](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.200) (07/16/2026)
 
 ### Miscellaneous

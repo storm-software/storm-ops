@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Package Constants
 
+## [0.1.120](https://github.com/storm-software/storm-ops/releases/tag/package-constants%400.1.120) (07/16/2026)
+
+### Miscellaneous
+
+- **monorepo:** Added back the missing `bin` property from `package.json` files ([338c62167](https://github.com/storm-software/storm-ops/commit/338c62167))
+
 ## [0.1.119](https://github.com/storm-software/storm-ops/releases/tag/package-constants%400.1.119) (07/16/2026)
 
 ### Miscellaneous

@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Projen
 
+## [0.21.290](https://github.com/storm-software/storm-ops/releases/tag/projen%400.21.290) (07/16/2026)
+
+### Miscellaneous
+
+- **monorepo:** Added back the missing `bin` property from `package.json` files ([338c62167](https://github.com/storm-software/storm-ops/commit/338c62167))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.44**
+- Updated **config-tools** to **v1.190.107**
+- Updated **workspace-tools** to **v1.296.87**
+
 ## [0.21.289](https://github.com/storm-software/storm-ops/releases/tag/projen%400.21.289) (07/16/2026)
 
 ### Miscellaneous

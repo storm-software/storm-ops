@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Conventional Changelog
 
+## [0.3.268](https://github.com/storm-software/storm-ops/releases/tag/conventional-changelog%400.3.268) (07/16/2026)
+
+### Miscellaneous
+
+- **monorepo:** Added back the missing `bin` property from `package.json` files ([338c62167](https://github.com/storm-software/storm-ops/commit/338c62167))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.44**
+- Updated **config-tools** to **v1.190.107**
+
 ## [0.3.267](https://github.com/storm-software/storm-ops/releases/tag/conventional-changelog%400.3.267) (07/16/2026)
 
 ### Miscellaneous

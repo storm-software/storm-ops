@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - Markdownlint
 
+## [0.30.263](https://github.com/storm-software/storm-ops/releases/tag/markdownlint%400.30.263) (07/16/2026)
+
+### Miscellaneous
+
+- **monorepo:** Added back the missing `bin` property from `package.json` files ([338c62167](https://github.com/storm-software/storm-ops/commit/338c62167))
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.260**
+
 ## [0.30.262](https://github.com/storm-software/storm-ops/releases/tag/markdownlint%400.30.262) (07/16/2026)
 
 ### Miscellaneous

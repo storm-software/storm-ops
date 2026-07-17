@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Oxfmt
 
+## [0.0.63](https://github.com/storm-software/storm-ops/releases/tag/oxfmt%400.0.63) (07/16/2026)
+
+### Miscellaneous
+
+- **monorepo:** Added back the missing `bin` property from `package.json` files ([338c62167](https://github.com/storm-software/storm-ops/commit/338c62167))
+
 ## [0.0.62](https://github.com/storm-software/storm-ops/releases/tag/oxfmt%400.0.62) (07/16/2026)
 
 ### Miscellaneous

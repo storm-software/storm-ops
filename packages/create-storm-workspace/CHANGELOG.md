@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - Create Storm Workspace
 
+## [1.97.267](https://github.com/storm-software/storm-ops/releases/tag/create-storm-workspace%401.97.267) (07/16/2026)
+
+### Miscellaneous
+
+- **monorepo:** Added back the missing `bin` property from `package.json` files ([338c62167](https://github.com/storm-software/storm-ops/commit/338c62167))
+
+### Updated Dependencies
+
+- Updated **config-tools** to **v1.190.107**
+
 ## [1.97.266](https://github.com/storm-software/storm-ops/releases/tag/create-storm-workspace%401.97.266) (07/16/2026)
 
 ### Miscellaneous

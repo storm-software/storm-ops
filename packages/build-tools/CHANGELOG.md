@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Build Tools
 
+## [0.158.267](https://github.com/storm-software/storm-ops/releases/tag/build-tools%400.158.267) (07/16/2026)
+
+### Miscellaneous
+
+- **monorepo:** Added back the missing `bin` property from `package.json` files ([338c62167](https://github.com/storm-software/storm-ops/commit/338c62167))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.44**
+- Updated **config-tools** to **v1.190.107**
+
 ## [0.158.266](https://github.com/storm-software/storm-ops/releases/tag/build-tools%400.158.266) (07/16/2026)
 
 ### Miscellaneous
