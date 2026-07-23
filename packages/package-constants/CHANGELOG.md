@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Package Constants
 
+## [0.1.122](https://github.com/storm-software/storm-ops/releases/tag/package-constants%400.1.122) (07/23/2026)
+
+### Bug Fixes
+
+- **package-constants:** Resolve issue with incorrect package prefix ([24eb88022](https://github.com/storm-software/storm-ops/commit/24eb88022))
+
 ## [0.1.121](https://github.com/storm-software/storm-ops/releases/tag/package-constants%400.1.121) (07/23/2026)
 
 ### Miscellaneous

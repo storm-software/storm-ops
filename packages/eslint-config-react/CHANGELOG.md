@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - ESLint Config React
 
+## [0.0.65](https://github.com/storm-software/storm-ops/releases/tag/eslint-config-react%400.0.65) (07/23/2026)
+
+### Bug Fixes
+
+- **package-constants:** Resolve issue with incorrect package prefix ([24eb88022](https://github.com/storm-software/storm-ops/commit/24eb88022))
+
+### Updated Dependencies
+
+- Updated **eslint** to **v0.170.143**
+
 ## [0.0.64](https://github.com/storm-software/storm-ops/releases/tag/eslint-config-react%400.0.64) (07/23/2026)
 
 ### Miscellaneous

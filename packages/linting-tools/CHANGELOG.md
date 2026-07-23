@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Linting Tools
 
+## [1.134.39](https://github.com/storm-software/storm-ops/releases/tag/linting-tools%401.134.39) (07/23/2026)
+
+### Bug Fixes
+
+- **package-constants:** Resolve issue with incorrect package prefix ([24eb88022](https://github.com/storm-software/storm-ops/commit/24eb88022))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.46**
+- Updated **config-tools** to **v1.190.109**
+
 ## [1.134.38](https://github.com/storm-software/storm-ops/releases/tag/linting-tools%401.134.38) (07/23/2026)
 
 ### Miscellaneous

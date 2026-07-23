@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - ESLint Plugin Pnpm
 
+## [0.0.72](https://github.com/storm-software/storm-ops/releases/tag/eslint-plugin-pnpm%400.0.72) (07/23/2026)
+
+### Bug Fixes
+
+- **package-constants:** Resolve issue with incorrect package prefix ([24eb88022](https://github.com/storm-software/storm-ops/commit/24eb88022))
+
+### Updated Dependencies
+
+- Updated **package-constants** to **v0.1.122**
+- Updated **prettier** to **v0.59.162**
+- Updated **tsdoc** to **v0.13.262**
+
 ## [0.0.71](https://github.com/storm-software/storm-ops/releases/tag/eslint-plugin-pnpm%400.0.71) (07/23/2026)
 
 ### Miscellaneous

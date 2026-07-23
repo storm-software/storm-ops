@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Tsup
 
+## [0.2.267](https://github.com/storm-software/storm-ops/releases/tag/tsup%400.2.267) (07/23/2026)
+
+### Bug Fixes
+
+- **package-constants:** Resolve issue with incorrect package prefix ([24eb88022](https://github.com/storm-software/storm-ops/commit/24eb88022))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.269**
+- Updated **config-tools** to **v1.190.109**
+
 ## [0.2.266](https://github.com/storm-software/storm-ops/releases/tag/tsup%400.2.266) (07/23/2026)
 
 ### Miscellaneous

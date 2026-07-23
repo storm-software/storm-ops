@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - ESLint Plugin Banner
 
+## [0.0.74](https://github.com/storm-software/storm-ops/releases/tag/eslint-plugin-banner%400.0.74) (07/23/2026)
+
+### Bug Fixes
+
+- **package-constants:** Resolve issue with incorrect package prefix ([24eb88022](https://github.com/storm-software/storm-ops/commit/24eb88022))
+
+### Updated Dependencies
+
+- Updated **package-constants** to **v0.1.122**
+- Updated **prettier** to **v0.59.162**
+
 ## [0.0.73](https://github.com/storm-software/storm-ops/releases/tag/eslint-plugin-banner%400.0.73) (07/23/2026)
 
 ### Miscellaneous

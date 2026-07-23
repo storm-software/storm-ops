@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Prettier
 
+## [0.59.162](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.59.162) (07/23/2026)
+
+### Bug Fixes
+
+- **package-constants:** Resolve issue with incorrect package prefix ([24eb88022](https://github.com/storm-software/storm-ops/commit/24eb88022))
+
 ## [0.59.161](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.59.161) (07/23/2026)
 
 ### Miscellaneous

@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - Config
 
+## [1.138.46](https://github.com/storm-software/storm-ops/releases/tag/config%401.138.46) (07/23/2026)
+
+### Bug Fixes
+
+- **package-constants:** Resolve issue with incorrect package prefix ([24eb88022](https://github.com/storm-software/storm-ops/commit/24eb88022))
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.262**
+
 ## [1.138.45](https://github.com/storm-software/storm-ops/releases/tag/config%401.138.45) (07/23/2026)
 
 ### Miscellaneous

@@ -2,6 +2,19 @@
 
 # Changelog for Storm Ops - Git Tools
 
+## [2.131.117](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.131.117) (07/23/2026)
+
+### Bug Fixes
+
+- **package-constants:** Resolve issue with incorrect package prefix ([24eb88022](https://github.com/storm-software/storm-ops/commit/24eb88022))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.46**
+- Updated **config-tools** to **v1.190.109**
+- Updated **conventional-changelog** to **v0.3.270**
+- Updated **package-constants** to **v0.1.122**
+
 ## [2.131.116](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.131.116) (07/23/2026)
 
 ### Miscellaneous

@@ -2,6 +2,26 @@
 
 # Changelog for Storm Ops - Workspace Tools
 
+## [1.296.89](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.296.89) (07/23/2026)
+
+### Bug Fixes
+
+- **package-constants:** Resolve issue with incorrect package prefix ([24eb88022](https://github.com/storm-software/storm-ops/commit/24eb88022))
+
+### Updated Dependencies
+
+- Updated **bun-tools** to **v0.0.18**
+- Updated **config** to **v1.138.46**
+- Updated **config-tools** to **v1.190.109**
+- Updated **esbuild** to **v0.53.270**
+- Updated **npm-tools** to **v0.6.227**
+- Updated **package-constants** to **v0.1.122**
+- Updated **pnpm-tools** to **v0.7.120**
+- Updated **prettier** to **v0.59.162**
+- Updated **testing-tools** to **v1.119.262**
+- Updated **tsdown** to **v0.45.270**
+- Updated **unbuild** to **v0.57.270**
+
 ## [1.296.88](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.296.88) (07/23/2026)
 
 ### Miscellaneous

@@ -2,6 +2,20 @@
 
 # Changelog for Storm Ops - Pnpm Tools
 
+## [0.7.120](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.7.120) (07/23/2026)
+
+### Bug Fixes
+
+- **package-constants:** Resolve issue with incorrect package prefix ([24eb88022](https://github.com/storm-software/storm-ops/commit/24eb88022))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.46**
+- Updated **config-tools** to **v1.190.109**
+- Updated **npm-tools** to **v0.6.227**
+- Updated **package-constants** to **v0.1.122**
+- Updated **testing-tools** to **v1.119.262**
+
 ## [0.7.119](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.7.119) (07/23/2026)
 
 ### Miscellaneous

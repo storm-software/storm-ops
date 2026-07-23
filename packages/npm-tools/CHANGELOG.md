@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Npm Tools
 
+## [0.6.227](https://github.com/storm-software/storm-ops/releases/tag/npm-tools%400.6.227) (07/23/2026)
+
+### Bug Fixes
+
+- **package-constants:** Resolve issue with incorrect package prefix ([24eb88022](https://github.com/storm-software/storm-ops/commit/24eb88022))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.46**
+- Updated **config-tools** to **v1.190.109**
+- Updated **testing-tools** to **v1.119.262**
+
 ## [0.6.226](https://github.com/storm-software/storm-ops/releases/tag/npm-tools%400.6.226) (07/23/2026)
 
 ### Miscellaneous

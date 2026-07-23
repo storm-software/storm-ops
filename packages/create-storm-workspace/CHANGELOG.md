@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - Create Storm Workspace
 
+## [1.97.269](https://github.com/storm-software/storm-ops/releases/tag/create-storm-workspace%401.97.269) (07/23/2026)
+
+### Bug Fixes
+
+- **package-constants:** Resolve issue with incorrect package prefix ([24eb88022](https://github.com/storm-software/storm-ops/commit/24eb88022))
+
+### Updated Dependencies
+
+- Updated **config-tools** to **v1.190.109**
+
 ## [1.97.268](https://github.com/storm-software/storm-ops/releases/tag/create-storm-workspace%401.97.268) (07/23/2026)
 
 ### Miscellaneous

@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Cloudflare Tools
 
+## [0.71.252](https://github.com/storm-software/storm-ops/releases/tag/cloudflare-tools%400.71.252) (07/23/2026)
+
+### Bug Fixes
+
+- **package-constants:** Resolve issue with incorrect package prefix ([24eb88022](https://github.com/storm-software/storm-ops/commit/24eb88022))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.46**
+- Updated **config-tools** to **v1.190.109**
+- Updated **workspace-tools** to **v1.296.89**
+
 ## [0.71.251](https://github.com/storm-software/storm-ops/releases/tag/cloudflare-tools%400.71.251) (07/23/2026)
 
 ### Miscellaneous

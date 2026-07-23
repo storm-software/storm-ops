@@ -2,6 +2,22 @@
 
 # Changelog for Storm Ops - ESLint
 
+## [0.170.143](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.170.143) (07/23/2026)
+
+### Bug Fixes
+
+- **package-constants:** Resolve issue with incorrect package prefix ([24eb88022](https://github.com/storm-software/storm-ops/commit/24eb88022))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.46**
+- Updated **config-tools** to **v1.190.109**
+- Updated **eslint-plugin-banner** to **v0.0.74**
+- Updated **eslint-plugin-pnpm** to **v0.0.72**
+- Updated **eslint-plugin-tsdoc** to **v0.0.72**
+- Updated **package-constants** to **v0.1.122**
+- Updated **tsdoc** to **v0.13.262**
+
 ## [0.170.142](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.170.142) (07/23/2026)
 
 ### Miscellaneous

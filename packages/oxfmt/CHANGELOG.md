@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Oxfmt
 
+## [0.0.65](https://github.com/storm-software/storm-ops/releases/tag/oxfmt%400.0.65) (07/23/2026)
+
+### Bug Fixes
+
+- **package-constants:** Resolve issue with incorrect package prefix ([24eb88022](https://github.com/storm-software/storm-ops/commit/24eb88022))
+
 ## [0.0.64](https://github.com/storm-software/storm-ops/releases/tag/oxfmt%400.0.64) (07/23/2026)
 
 ### Miscellaneous

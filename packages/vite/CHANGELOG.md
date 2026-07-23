@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - Vite
 
+## [0.1.203](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.203) (07/23/2026)
+
+### Bug Fixes
+
+- **package-constants:** Resolve issue with incorrect package prefix ([24eb88022](https://github.com/storm-software/storm-ops/commit/24eb88022))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.269**
+
 ## [0.1.202](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.202) (07/23/2026)
 
 ### Miscellaneous

@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Tsdown
 
+## [0.45.270](https://github.com/storm-software/storm-ops/releases/tag/tsdown%400.45.270) (07/23/2026)
+
+### Bug Fixes
+
+- **package-constants:** Resolve issue with incorrect package prefix ([24eb88022](https://github.com/storm-software/storm-ops/commit/24eb88022))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.269**
+- Updated **config** to **v1.138.46**
+- Updated **config-tools** to **v1.190.109**
+
 ## [0.45.269](https://github.com/storm-software/storm-ops/releases/tag/tsdown%400.45.269) (07/23/2026)
 
 ### Miscellaneous

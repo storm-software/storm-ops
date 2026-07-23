@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - CSpell
 
+## [0.46.177](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.46.177) (07/23/2026)
+
+### Bug Fixes
+
+- **package-constants:** Resolve issue with incorrect package prefix ([24eb88022](https://github.com/storm-software/storm-ops/commit/24eb88022))
+
 ## [0.46.176](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.46.176) (07/23/2026)
 
 ### Miscellaneous
