@@ -2,6 +2,20 @@
 
 # Changelog for Storm Ops - Vite
 
+## [0.1.202](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.202) (07/23/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace packages' dependencies ([c5d409dab](https://github.com/storm-software/storm-ops/commit/c5d409dab))
+
+### Continuous Integration
+
+- **monorepo:** Update SHA hashes for workflow versions ([76f60f359](https://github.com/storm-software/storm-ops/commit/76f60f359))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.268**
+
 ## [0.1.201](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.201) (07/16/2026)
 
 ### Miscellaneous

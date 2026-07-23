@@ -2,6 +2,21 @@
 
 # Changelog for Storm Ops - Pnpm Plugin
 
+## [0.1.219](https://github.com/storm-software/storm-ops/releases/tag/pnpm-plugin%400.1.219) (07/23/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace packages' dependencies ([c5d409dab](https://github.com/storm-software/storm-ops/commit/c5d409dab))
+
+### Continuous Integration
+
+- **monorepo:** Update SHA hashes for workflow versions ([76f60f359](https://github.com/storm-software/storm-ops/commit/76f60f359))
+
+### Updated Dependencies
+
+- Updated **package-constants** to **v0.1.121**
+- Updated **testing-tools** to **v1.119.261**
+
 ## [0.1.218](https://github.com/storm-software/storm-ops/releases/tag/pnpm-plugin%400.1.218) (07/16/2026)
 
 ### Miscellaneous

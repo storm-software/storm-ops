@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - CSpell
 
+## [0.46.176](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.46.176) (07/23/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace packages' dependencies ([c5d409dab](https://github.com/storm-software/storm-ops/commit/c5d409dab))
+
 ## [0.46.175](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.46.175) (07/16/2026)
 
 ### Miscellaneous

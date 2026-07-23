@@ -2,6 +2,21 @@
 
 # Changelog for Storm Ops - Conventional Changelog
 
+## [0.3.269](https://github.com/storm-software/storm-ops/releases/tag/conventional-changelog%400.3.269) (07/23/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace packages' dependencies ([c5d409dab](https://github.com/storm-software/storm-ops/commit/c5d409dab))
+
+### Continuous Integration
+
+- **monorepo:** Update SHA hashes for workflow versions ([76f60f359](https://github.com/storm-software/storm-ops/commit/76f60f359))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.45**
+- Updated **config-tools** to **v1.190.108**
+
 ## [0.3.268](https://github.com/storm-software/storm-ops/releases/tag/conventional-changelog%400.3.268) (07/16/2026)
 
 ### Miscellaneous

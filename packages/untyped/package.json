@@ -1,6 +1,6 @@
 {
   "name": "@storm-software/untyped",
-  "version": "0.24.249",
+  "version": "0.24.250",
   "private": false,
   "description": "A package containing `untyped` utilities for building Storm Software libraries and applications",
   "keywords": [
@@ -188,9 +188,7 @@
     "storm-untyped-cjs": "./bin/untyped.cjs",
     "storm-untyped-esm": "./bin/untyped.js"
   },
-  "files": [
-    "dist/**/*"
-  ],
+  "files": ["dist/**/*"],
   "dependencies": {
     "@storm-software/config-tools": "workspace:*",
     "commander": "catalog:",

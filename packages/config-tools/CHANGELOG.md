@@ -2,6 +2,21 @@
 
 # Changelog for Storm Ops - Config Tools
 
+## [1.190.108](https://github.com/storm-software/storm-ops/releases/tag/config-tools%401.190.108) (07/23/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace packages' dependencies ([c5d409dab](https://github.com/storm-software/storm-ops/commit/c5d409dab))
+
+### Continuous Integration
+
+- **monorepo:** Update SHA hashes for workflow versions ([76f60f359](https://github.com/storm-software/storm-ops/commit/76f60f359))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.45**
+- Updated **testing-tools** to **v1.119.261**
+
 ## [1.190.107](https://github.com/storm-software/storm-ops/releases/tag/config-tools%401.190.107) (07/16/2026)
 
 ### Miscellaneous

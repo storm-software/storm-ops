@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Package Constants
 
+## [0.1.121](https://github.com/storm-software/storm-ops/releases/tag/package-constants%400.1.121) (07/23/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace packages' dependencies ([c5d409dab](https://github.com/storm-software/storm-ops/commit/c5d409dab))
+- **package-constants:** Added npm organizations to internal packages list ([6f58f3455](https://github.com/storm-software/storm-ops/commit/6f58f3455))
+
+### Continuous Integration
+
+- **monorepo:** Update SHA hashes for workflow versions ([76f60f359](https://github.com/storm-software/storm-ops/commit/76f60f359))
+
 ## [0.1.120](https://github.com/storm-software/storm-ops/releases/tag/package-constants%400.1.120) (07/16/2026)
 
 ### Miscellaneous

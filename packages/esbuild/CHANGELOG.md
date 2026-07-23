@@ -2,6 +2,23 @@
 
 # Changelog for Storm Ops - Esbuild
 
+## [0.53.269](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.53.269) (07/23/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace packages' dependencies ([c5d409dab](https://github.com/storm-software/storm-ops/commit/c5d409dab))
+
+### Continuous Integration
+
+- **monorepo:** Update SHA hashes for workflow versions ([76f60f359](https://github.com/storm-software/storm-ops/commit/76f60f359))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.268**
+- Updated **config** to **v1.138.45**
+- Updated **config-tools** to **v1.190.108**
+- Updated **tsup** to **v0.2.266**
+
 ## [0.53.268](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.53.268) (07/16/2026)
 
 ### Miscellaneous

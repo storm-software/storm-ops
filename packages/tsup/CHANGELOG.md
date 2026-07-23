@@ -2,6 +2,21 @@
 
 # Changelog for Storm Ops - Tsup
 
+## [0.2.266](https://github.com/storm-software/storm-ops/releases/tag/tsup%400.2.266) (07/23/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace packages' dependencies ([c5d409dab](https://github.com/storm-software/storm-ops/commit/c5d409dab))
+
+### Continuous Integration
+
+- **monorepo:** Update SHA hashes for workflow versions ([76f60f359](https://github.com/storm-software/storm-ops/commit/76f60f359))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.268**
+- Updated **config-tools** to **v1.190.108**
+
 ## [0.2.265](https://github.com/storm-software/storm-ops/releases/tag/tsup%400.2.265) (07/16/2026)
 
 ### Miscellaneous
