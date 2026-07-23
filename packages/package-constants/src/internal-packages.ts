@@ -12,7 +12,7 @@ export const INTERNAL_PACKAGES = [
   "aftershock",
   "@telepathic/*",
   "telepathic",
-  "@power-plant",
+  "@power-plant/*",
   "power-plant",
   "@razorwind/*",
   "razorwind",

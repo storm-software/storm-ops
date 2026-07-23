@@ -6686,6 +6686,7 @@ Backward pagination arguments
   /**
    * Disallow specified modules when loaded by `import`
    * @see https://typescript-eslint.io/rules/no-restricted-imports
+   * @deprecated
    */
   'ts/no-restricted-imports'?: Linter.RuleEntry<TsNoRestrictedImports>
   /**
