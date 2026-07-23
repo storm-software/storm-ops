@@ -8,6 +8,22 @@ export const INTERNAL_PACKAGES = [
   "@shell-shock/*",
   "@earthquake/*",
   "earthquake",
+  "@aftershock/*",
+  "aftershock",
   "@telepathic/*",
-  "telepathic"
+  "telepathic",
+  "@power-plant",
+  "power-plant",
+  "@razorwind/*",
+  "razorwind",
+  "@sourcebook/*",
+  "sourcebook",
+  "@frostbite/*",
+  "frostbite",
+  "@tidalwave/*",
+  "tidalwave",
+  "@downpour/*",
+  "downpour",
+  "@acid-rain/*",
+  "acid-rain"
 ] as const;
