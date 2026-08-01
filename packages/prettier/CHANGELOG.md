@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Prettier
 
+## [0.59.163](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.59.163) (08/01/2026)
+
+### Bug Fixes
+
+- **prettier:** Resolve issue causing exclude files from being part of release ([137627bfa](https://github.com/storm-software/storm-ops/commit/137627bfa))
+
 ## [0.59.162](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.59.162) (07/23/2026)
 
 ### Bug Fixes

@@ -2,6 +2,26 @@
 
 # Changelog for Storm Ops - Workspace Tools
 
+## [1.296.90](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.296.90) (08/01/2026)
+
+### Bug Fixes
+
+- **prettier:** Resolve issue causing exclude files from being part of release ([137627bfa](https://github.com/storm-software/storm-ops/commit/137627bfa))
+
+### Updated Dependencies
+
+- Updated **bun-tools** to **v0.0.19**
+- Updated **config** to **v1.138.47**
+- Updated **config-tools** to **v1.190.110**
+- Updated **esbuild** to **v0.53.271**
+- Updated **npm-tools** to **v0.6.228**
+- Updated **package-constants** to **v0.1.123**
+- Updated **pnpm-tools** to **v0.7.121**
+- Updated **prettier** to **v0.59.163**
+- Updated **testing-tools** to **v1.119.263**
+- Updated **tsdown** to **v0.45.271**
+- Updated **unbuild** to **v0.57.271**
+
 ## [1.296.89](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.296.89) (07/23/2026)
 
 ### Bug Fixes

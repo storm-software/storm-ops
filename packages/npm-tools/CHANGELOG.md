@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Npm Tools
 
+## [0.6.228](https://github.com/storm-software/storm-ops/releases/tag/npm-tools%400.6.228) (08/01/2026)
+
+### Bug Fixes
+
+- **prettier:** Resolve issue causing exclude files from being part of release ([137627bfa](https://github.com/storm-software/storm-ops/commit/137627bfa))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.47**
+- Updated **config-tools** to **v1.190.110**
+- Updated **testing-tools** to **v1.119.263**
+
 ## [0.6.227](https://github.com/storm-software/storm-ops/releases/tag/npm-tools%400.6.227) (07/23/2026)
 
 ### Bug Fixes

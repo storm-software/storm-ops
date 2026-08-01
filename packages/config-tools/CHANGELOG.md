@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Config Tools
 
+## [1.190.110](https://github.com/storm-software/storm-ops/releases/tag/config-tools%401.190.110) (08/01/2026)
+
+### Bug Fixes
+
+- **prettier:** Resolve issue causing exclude files from being part of release ([137627bfa](https://github.com/storm-software/storm-ops/commit/137627bfa))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.47**
+- Updated **testing-tools** to **v1.119.263**
+
 ## [1.190.109](https://github.com/storm-software/storm-ops/releases/tag/config-tools%401.190.109) (07/23/2026)
 
 ### Bug Fixes

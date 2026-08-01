@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - Vite
 
+## [0.1.204](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.204) (08/01/2026)
+
+### Bug Fixes
+
+- **prettier:** Resolve issue causing exclude files from being part of release ([137627bfa](https://github.com/storm-software/storm-ops/commit/137627bfa))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.270**
+
 ## [0.1.203](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.203) (07/23/2026)
 
 ### Bug Fixes

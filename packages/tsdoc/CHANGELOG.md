@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Tsdoc
 
+## [0.13.263](https://github.com/storm-software/storm-ops/releases/tag/tsdoc%400.13.263) (08/01/2026)
+
+### Bug Fixes
+
+- **prettier:** Resolve issue causing exclude files from being part of release ([137627bfa](https://github.com/storm-software/storm-ops/commit/137627bfa))
+
 ## [0.13.262](https://github.com/storm-software/storm-ops/releases/tag/tsdoc%400.13.262) (07/23/2026)
 
 ### Bug Fixes

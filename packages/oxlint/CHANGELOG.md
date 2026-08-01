@@ -2,6 +2,20 @@
 
 # Changelog for Storm Ops - Oxlint
 
+## [0.0.76](https://github.com/storm-software/storm-ops/releases/tag/oxlint%400.0.76) (08/01/2026)
+
+### Bug Fixes
+
+- **prettier:** Resolve issue causing exclude files from being part of release ([137627bfa](https://github.com/storm-software/storm-ops/commit/137627bfa))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.47**
+- Updated **config-tools** to **v1.190.110**
+- Updated **eslint-plugin-banner** to **v0.0.75**
+- Updated **eslint-plugin-pnpm** to **v0.0.73**
+- Updated **eslint-plugin-tsdoc** to **v0.0.73**
+
 ## [0.0.75](https://github.com/storm-software/storm-ops/releases/tag/oxlint%400.0.75) (07/23/2026)
 
 ### Bug Fixes

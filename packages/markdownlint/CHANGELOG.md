@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - Markdownlint
 
+## [0.30.266](https://github.com/storm-software/storm-ops/releases/tag/markdownlint%400.30.266) (08/01/2026)
+
+### Bug Fixes
+
+- **prettier:** Resolve issue causing exclude files from being part of release ([137627bfa](https://github.com/storm-software/storm-ops/commit/137627bfa))
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.263**
+
 ## [0.30.265](https://github.com/storm-software/storm-ops/releases/tag/markdownlint%400.30.265) (07/23/2026)
 
 ### Bug Fixes

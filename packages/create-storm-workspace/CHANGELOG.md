@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - Create Storm Workspace
 
+## [1.97.270](https://github.com/storm-software/storm-ops/releases/tag/create-storm-workspace%401.97.270) (08/01/2026)
+
+### Bug Fixes
+
+- **prettier:** Resolve issue causing exclude files from being part of release ([137627bfa](https://github.com/storm-software/storm-ops/commit/137627bfa))
+
+### Updated Dependencies
+
+- Updated **config-tools** to **v1.190.110**
+
 ## [1.97.269](https://github.com/storm-software/storm-ops/releases/tag/create-storm-workspace%401.97.269) (07/23/2026)
 
 ### Bug Fixes

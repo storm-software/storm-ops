@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Oxfmt
 
+## [0.0.66](https://github.com/storm-software/storm-ops/releases/tag/oxfmt%400.0.66) (08/01/2026)
+
+### Bug Fixes
+
+- **prettier:** Resolve issue causing exclude files from being part of release ([137627bfa](https://github.com/storm-software/storm-ops/commit/137627bfa))
+
 ## [0.0.65](https://github.com/storm-software/storm-ops/releases/tag/oxfmt%400.0.65) (07/23/2026)
 
 ### Bug Fixes

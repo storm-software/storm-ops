@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - ESLint Plugin Banner
 
+## [0.0.75](https://github.com/storm-software/storm-ops/releases/tag/eslint-plugin-banner%400.0.75) (08/01/2026)
+
+### Bug Fixes
+
+- **prettier:** Resolve issue causing exclude files from being part of release ([137627bfa](https://github.com/storm-software/storm-ops/commit/137627bfa))
+
+### Updated Dependencies
+
+- Updated **package-constants** to **v0.1.123**
+- Updated **prettier** to **v0.59.163**
+
 ## [0.0.74](https://github.com/storm-software/storm-ops/releases/tag/eslint-plugin-banner%400.0.74) (07/23/2026)
 
 ### Bug Fixes

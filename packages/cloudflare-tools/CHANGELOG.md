@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Cloudflare Tools
 
+## [0.71.253](https://github.com/storm-software/storm-ops/releases/tag/cloudflare-tools%400.71.253) (08/01/2026)
+
+### Bug Fixes
+
+- **prettier:** Resolve issue causing exclude files from being part of release ([137627bfa](https://github.com/storm-software/storm-ops/commit/137627bfa))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.47**
+- Updated **config-tools** to **v1.190.110**
+- Updated **workspace-tools** to **v1.296.90**
+
 ## [0.71.252](https://github.com/storm-software/storm-ops/releases/tag/cloudflare-tools%400.71.252) (07/23/2026)
 
 ### Bug Fixes

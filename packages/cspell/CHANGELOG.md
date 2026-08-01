@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - CSpell
 
+## [0.46.178](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.46.178) (08/01/2026)
+
+### Bug Fixes
+
+- **prettier:** Resolve issue causing exclude files from being part of release ([137627bfa](https://github.com/storm-software/storm-ops/commit/137627bfa))
+
 ## [0.46.177](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.46.177) (07/23/2026)
 
 ### Bug Fixes

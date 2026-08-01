@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Linting Tools
 
+## [1.134.40](https://github.com/storm-software/storm-ops/releases/tag/linting-tools%401.134.40) (08/01/2026)
+
+### Bug Fixes
+
+- **prettier:** Resolve issue causing exclude files from being part of release ([137627bfa](https://github.com/storm-software/storm-ops/commit/137627bfa))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.47**
+- Updated **config-tools** to **v1.190.110**
+
 ## [1.134.39](https://github.com/storm-software/storm-ops/releases/tag/linting-tools%401.134.39) (07/23/2026)
 
 ### Bug Fixes

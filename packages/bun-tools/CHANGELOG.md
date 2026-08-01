@@ -2,6 +2,21 @@
 
 # Changelog for Storm Ops - Bun Tools
 
+## [0.0.19](https://github.com/storm-software/storm-ops/releases/tag/bun-tools%400.0.19) (08/01/2026)
+
+### Bug Fixes
+
+- **pnpm-tools:** Update update tool to better handle `npm:` prefixes ([e36d870e8](https://github.com/storm-software/storm-ops/commit/e36d870e8))
+- **prettier:** Resolve issue causing exclude files from being part of release ([137627bfa](https://github.com/storm-software/storm-ops/commit/137627bfa))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.47**
+- Updated **config-tools** to **v1.190.110**
+- Updated **npm-tools** to **v0.6.228**
+- Updated **package-constants** to **v0.1.123**
+- Updated **testing-tools** to **v1.119.263**
+
 ## [0.0.18](https://github.com/storm-software/storm-ops/releases/tag/bun-tools%400.0.18) (07/23/2026)
 
 ### Bug Fixes

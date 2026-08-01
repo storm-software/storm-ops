@@ -2,6 +2,22 @@
 
 # Changelog for Storm Ops - ESLint
 
+## [0.170.144](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.170.144) (08/01/2026)
+
+### Bug Fixes
+
+- **prettier:** Resolve issue causing exclude files from being part of release ([137627bfa](https://github.com/storm-software/storm-ops/commit/137627bfa))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.47**
+- Updated **config-tools** to **v1.190.110**
+- Updated **eslint-plugin-banner** to **v0.0.75**
+- Updated **eslint-plugin-pnpm** to **v0.0.73**
+- Updated **eslint-plugin-tsdoc** to **v0.0.73**
+- Updated **package-constants** to **v0.1.123**
+- Updated **tsdoc** to **v0.13.263**
+
 ## [0.170.143](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.170.143) (07/23/2026)
 
 ### Bug Fixes

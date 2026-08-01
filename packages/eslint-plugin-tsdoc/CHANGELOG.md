@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - ESLint Plugin Tsdoc
 
+## [0.0.73](https://github.com/storm-software/storm-ops/releases/tag/eslint-plugin-tsdoc%400.0.73) (08/01/2026)
+
+### Bug Fixes
+
+- **prettier:** Resolve issue causing exclude files from being part of release ([137627bfa](https://github.com/storm-software/storm-ops/commit/137627bfa))
+
+### Updated Dependencies
+
+- Updated **package-constants** to **v0.1.123**
+- Updated **prettier** to **v0.59.163**
+- Updated **tsdoc** to **v0.13.263**
+
 ## [0.0.72](https://github.com/storm-software/storm-ops/releases/tag/eslint-plugin-tsdoc%400.0.72) (07/23/2026)
 
 ### Bug Fixes

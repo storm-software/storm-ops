@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Terraform Tools
 
+## [0.66.293](https://github.com/storm-software/storm-ops/releases/tag/terraform-tools%400.66.293) (08/01/2026)
+
+### Bug Fixes
+
+- **prettier:** Resolve issue causing exclude files from being part of release ([137627bfa](https://github.com/storm-software/storm-ops/commit/137627bfa))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.47**
+- Updated **config-tools** to **v1.190.110**
+- Updated **workspace-tools** to **v1.296.90**
+
 ## [0.66.292](https://github.com/storm-software/storm-ops/releases/tag/terraform-tools%400.66.292) (07/23/2026)
 
 ### Bug Fixes

@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Pnpm Plugin
 
+## [0.1.221](https://github.com/storm-software/storm-ops/releases/tag/pnpm-plugin%400.1.221) (08/01/2026)
+
+### Bug Fixes
+
+- **prettier:** Resolve issue causing exclude files from being part of release ([137627bfa](https://github.com/storm-software/storm-ops/commit/137627bfa))
+
+### Updated Dependencies
+
+- Updated **package-constants** to **v0.1.123**
+- Updated **testing-tools** to **v1.119.263**
+
 ## [0.1.220](https://github.com/storm-software/storm-ops/releases/tag/pnpm-plugin%400.1.220) (07/23/2026)
 
 ### Bug Fixes

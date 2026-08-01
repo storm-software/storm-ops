@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Package Constants
 
+## [0.1.123](https://github.com/storm-software/storm-ops/releases/tag/package-constants%400.1.123) (08/01/2026)
+
+### Bug Fixes
+
+- **prettier:** Resolve issue causing exclude files from being part of release ([137627bfa](https://github.com/storm-software/storm-ops/commit/137627bfa))
+
 ## [0.1.122](https://github.com/storm-software/storm-ops/releases/tag/package-constants%400.1.122) (07/23/2026)
 
 ### Bug Fixes

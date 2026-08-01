@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - ESLint Config React
 
+## [0.0.66](https://github.com/storm-software/storm-ops/releases/tag/eslint-config-react%400.0.66) (08/01/2026)
+
+### Bug Fixes
+
+- **prettier:** Resolve issue causing exclude files from being part of release ([137627bfa](https://github.com/storm-software/storm-ops/commit/137627bfa))
+
+### Updated Dependencies
+
+- Updated **eslint** to **v0.170.144**
+
 ## [0.0.65](https://github.com/storm-software/storm-ops/releases/tag/eslint-config-react%400.0.65) (07/23/2026)
 
 ### Bug Fixes

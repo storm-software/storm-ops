@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Build Tools
 
+## [0.158.270](https://github.com/storm-software/storm-ops/releases/tag/build-tools%400.158.270) (08/01/2026)
+
+### Bug Fixes
+
+- **prettier:** Resolve issue causing exclude files from being part of release ([137627bfa](https://github.com/storm-software/storm-ops/commit/137627bfa))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.47**
+- Updated **config-tools** to **v1.190.110**
+
 ## [0.158.269](https://github.com/storm-software/storm-ops/releases/tag/build-tools%400.158.269) (07/23/2026)
 
 ### Bug Fixes

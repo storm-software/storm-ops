@@ -2,6 +2,19 @@
 
 # Changelog for Storm Ops - Esbuild
 
+## [0.53.271](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.53.271) (08/01/2026)
+
+### Bug Fixes
+
+- **prettier:** Resolve issue causing exclude files from being part of release ([137627bfa](https://github.com/storm-software/storm-ops/commit/137627bfa))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.270**
+- Updated **config** to **v1.138.47**
+- Updated **config-tools** to **v1.190.110**
+- Updated **tsup** to **v0.2.268**
+
 ## [0.53.270](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.53.270) (07/23/2026)
 
 ### Bug Fixes

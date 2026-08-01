@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Tsconfig
 
+## [0.48.177](https://github.com/storm-software/storm-ops/releases/tag/tsconfig%400.48.177) (08/01/2026)
+
+### Bug Fixes
+
+- **prettier:** Resolve issue causing exclude files from being part of release ([137627bfa](https://github.com/storm-software/storm-ops/commit/137627bfa))
+
 ## [0.48.176](https://github.com/storm-software/storm-ops/releases/tag/tsconfig%400.48.176) (07/23/2026)
 
 ### Bug Fixes
