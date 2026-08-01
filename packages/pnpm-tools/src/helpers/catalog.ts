@@ -82,7 +82,11 @@ export async function setCatalog(
 
   pnpmWorkspaceFile.catalog = Object.fromEntries(
     Object.entries(catalog)
-      .filter(([, value]) => value && valid(replacePrefix(value), true))
+      .filter(
+        ([, value]) =>
+          value &&
+          (value.startsWith("npm:") || valid(replacePrefix(value), true))
+      )
       .map(([key, value]) => {
         return [key, value.replaceAll('"', "").replaceAll("'", "")];
       })
@@ -185,7 +189,16 @@ export async function upgradeCatalog(
   const version = `${prefix || ""}${replacePrefix(origVersion)}`;
 
   let updated = false;
-  if (
+  if (catalog[packageName]?.startsWith("npm:")) {
+    catalog[packageName] = version;
+
+    writeDebug(
+      `Writing version ${catalog[packageName]} to catalog for "${
+        packageName
+      }" package`,
+      workspaceConfig
+    );
+  } else if (
     !valid(coerce(catalog[packageName])) ||
     (coerce(catalog[packageName]) &&
       coerce(version) &&

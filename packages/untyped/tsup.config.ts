@@ -33,6 +33,7 @@ export default defineConfig([
     dts: false,
     sourcemap: false,
     shims: true,
-    silent: true
+    silent: true,
+    noExternal: ["untyped"]
   }
 ]);
