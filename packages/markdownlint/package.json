@@ -106,7 +106,10 @@
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
-  "files": ["config/**/*", "dist/**/*"],
+  "files": [
+    "config/**/*",
+    "dist/**/*"
+  ],
   "dependencies": {
     "defu": "catalog:",
     "markdownlint-cli2": "^0.17.2"

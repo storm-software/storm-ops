@@ -1,8 +1,5 @@
 import type { NxJsonConfiguration, ProjectGraph, TaskGraph } from "@nx/devkit";
-import {
-  createTaskGraph,
-  mapTargetDefaultsToDependencies
-} from "nx/src/tasks-runner/create-task-graph";
+import { createTaskGraph } from "nx/src/tasks-runner/create-task-graph";
 
 export function getAllWorkspaceTaskGraphs(
   nxJson: NxJsonConfiguration,
@@ -11,10 +8,6 @@ export function getAllWorkspaceTaskGraphs(
   taskGraphs: Record<string, TaskGraph>;
   errors: Record<string, string>;
 } {
-  const defaultDependencyConfigs = mapTargetDefaultsToDependencies(
-    nxJson.targetDefaults
-  );
-
   const taskGraphs: Record<string, TaskGraph> = {};
   const taskGraphErrors: Record<string, string> = {};
 
@@ -27,7 +20,7 @@ export function getAllWorkspaceTaskGraphs(
       try {
         taskGraphs[taskId] = createTaskGraph(
           projectGraph,
-          defaultDependencyConfigs,
+          {},
           [projectName],
           [target],
           undefined,
@@ -53,7 +46,7 @@ export function getAllWorkspaceTaskGraphs(
           try {
             taskGraphs[taskId] = createTaskGraph(
               projectGraph,
-              defaultDependencyConfigs,
+              {},
               [projectName],
               [target],
               configuration,
