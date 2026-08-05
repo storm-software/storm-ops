@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - CSpell
 
+## [0.46.180](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.46.180) (08/05/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace packages' peer dependencies ([8826d672f](https://github.com/storm-software/storm-ops/commit/8826d672f))
+
 ## [0.46.179](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.46.179) (08/05/2026)
 
 ### Bug Fixes

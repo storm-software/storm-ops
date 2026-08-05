@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Tsup
 
+## [0.2.270](https://github.com/storm-software/storm-ops/releases/tag/tsup%400.2.270) (08/05/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace packages' peer dependencies ([8826d672f](https://github.com/storm-software/storm-ops/commit/8826d672f))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.272**
+- Updated **config-tools** to **v1.190.112**
+
 ## [0.2.269](https://github.com/storm-software/storm-ops/releases/tag/tsup%400.2.269) (08/05/2026)
 
 ### Bug Fixes

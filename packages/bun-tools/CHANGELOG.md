@@ -2,6 +2,20 @@
 
 # Changelog for Storm Ops - Bun Tools
 
+## [0.0.21](https://github.com/storm-software/storm-ops/releases/tag/bun-tools%400.0.21) (08/05/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace packages' peer dependencies ([8826d672f](https://github.com/storm-software/storm-ops/commit/8826d672f))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.49**
+- Updated **config-tools** to **v1.190.112**
+- Updated **npm-tools** to **v0.6.230**
+- Updated **package-constants** to **v0.1.125**
+- Updated **testing-tools** to **v1.119.265**
+
 ## [0.0.20](https://github.com/storm-software/storm-ops/releases/tag/bun-tools%400.0.20) (08/05/2026)
 
 ### Bug Fixes

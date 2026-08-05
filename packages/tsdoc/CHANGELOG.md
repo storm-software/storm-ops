@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Tsdoc
 
+## [0.13.265](https://github.com/storm-software/storm-ops/releases/tag/tsdoc%400.13.265) (08/05/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace packages' peer dependencies ([8826d672f](https://github.com/storm-software/storm-ops/commit/8826d672f))
+
 ## [0.13.264](https://github.com/storm-software/storm-ops/releases/tag/tsdoc%400.13.264) (08/05/2026)
 
 ### Bug Fixes
