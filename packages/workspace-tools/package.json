@@ -254,19 +254,24 @@
     "@storm-software/npm-tools": "workspace:*",
     "@storm-software/prettier": "workspace:*",
     "@storm-software/tsdown": "workspace:*",
+    "defu": "catalog:",
+    "esbuild": "catalog:",
     "fs-extra": "11.2.0",
     "glob": "catalog:",
     "jiti": "catalog:",
     "markdownlint-cli2": "^0.17.2",
     "micromatch": "^4.0.8",
+    "pkg-types": "catalog:",
+    "prettier": "catalog:",
     "semver": "catalog:",
     "size-limit": "^11.2.0",
+    "tsx": "catalog:",
     "typia": "catalog:",
     "untyped": "catalog:",
     "zod": "catalog:"
   },
   "devDependencies": {
-    "@napi-rs/cli": "^3.8.1",
+    "@napi-rs/cli": "^3.8.2",
     "@storm-software/bun-tools": "workspace:*",
     "@storm-software/esbuild": "workspace:*",
     "@storm-software/package-constants": "workspace:*",
@@ -274,11 +279,8 @@
     "@storm-software/unbuild": "workspace:*",
     "@types/micromatch": "^4.0.10",
     "@types/node": "catalog:",
-    "@types/semver": "^7.7.1",
-    "defu": "catalog:",
+    "@types/semver": "^7.8.0",
     "nx": "catalog:",
-    "pkg-types": "catalog:",
-    "prettier": "catalog:",
     "tsup": "catalog:",
     "typescript": "^6.0.3"
   },
@@ -289,9 +291,7 @@
     "@storm-software/pnpm-tools": "*",
     "@storm-software/tsdown": "*",
     "@storm-software/unbuild": "*",
-    "markdownlint-cli2": "^0.17.2",
-    "nx": ">=22.7.1",
-    "prettier": ">=3.8.3"
+    "nx": ">=22.7.1"
   },
   "peerDependenciesMeta": {
     "@napi-rs/cli": {
@@ -312,13 +312,7 @@
     "@storm-software/unbuild": {
       "optional": true
     },
-    "markdownlint-cli2": {
-      "optional": false
-    },
     "nx": {
-      "optional": false
-    },
-    "prettier": {
       "optional": false
     }
   },
