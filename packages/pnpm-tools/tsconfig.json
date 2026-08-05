@@ -10,7 +10,8 @@
     "skipDefaultLibCheck": true,
     "moduleResolution": "Bundler",
     "moduleDetection": "force",
-    "types": ["node"]
+    "types": ["node"],
+    "ignoreDeprecations": "6.0"
   },
   "include": ["src/**/*.ts", "tsup.config.ts"],
   "exclude": ["jest.config.ts", "src/**/*.spec.ts", "src/**/*.test.ts"]

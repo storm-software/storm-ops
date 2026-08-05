@@ -3,7 +3,8 @@
   "compilerOptions": {
     "rootDir": "../..",
     "types": ["node"],
-    "outDir": "dist"
+    "outDir": "dist",
+    "ignoreDeprecations": "6.0"
   },
   "include": ["src/**/*.ts", "src/*.mjs"],
   "exclude": ["jest.config.ts", "src/**/*.spec.ts", "src/**/*.test.ts"]

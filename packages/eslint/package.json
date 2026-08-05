@@ -139,7 +139,9 @@
   },
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "dependencies": {
     "@antfu/install-pkg": "^1.1.0",
     "@clack/prompts": "^0.10.1",
@@ -155,7 +157,10 @@
     "@typescript-eslint/parser": "catalog:",
     "@typescript-eslint/utils": "catalog:",
     "@vitest/eslint-plugin": "^1.6.26",
+    "ajv": "^6.15.0",
     "chalk": "catalog:",
+    "cross-spawn": "^7.0.6",
+    "debug": "^4.4.3",
     "defu": "catalog:",
     "eslint": "catalog:",
     "eslint-config-flat-gitignore": "^2.3.0",
@@ -225,6 +230,7 @@
     "eslint-plugin-storybook": "^0.11.6",
     "eslint-typegen": "catalog:",
     "graphql": "^16.14.2",
+    "minimatch": "^10.2.6",
     "prettier-plugin-astro": "^0.14.1",
     "tsup": "catalog:",
     "tsx": "catalog:",

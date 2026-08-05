@@ -2,7 +2,8 @@
   "extends": "../../tsconfig.json",
   "compilerOptions": {
     "rootDir": "../..",
-    "outDir": "../../dist/out-tsc"
+    "outDir": "../../dist/out-tsc",
+    "ignoreDeprecations": "6.0"
   },
   "include": ["src/**/*.ts", "src/**/*.json", "src/**/.prettierignore"],
   "exclude": ["src/**/*.spec.ts", "src/**/*.test.ts"]

@@ -13,7 +13,8 @@
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "types": ["node"],
-    "strict": true
+    "strict": true,
+    "ignoreDeprecations": "6.0"
   },
   "include": [
     "src/**/*.ts",
