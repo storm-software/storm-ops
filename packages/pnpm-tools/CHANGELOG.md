@@ -2,6 +2,20 @@
 
 # Changelog for Storm Ops - Pnpm Tools
 
+## [0.7.122](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.7.122) (08/05/2026)
+
+### Bug Fixes
+
+- **workspace-tools:** Resolve issue with missing package dependencies ([8183837f8](https://github.com/storm-software/storm-ops/commit/8183837f8))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.48**
+- Updated **config-tools** to **v1.190.111**
+- Updated **npm-tools** to **v0.6.229**
+- Updated **package-constants** to **v0.1.124**
+- Updated **testing-tools** to **v1.119.264**
+
 ## [0.7.121](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.7.121) (08/01/2026)
 
 ### Bug Fixes

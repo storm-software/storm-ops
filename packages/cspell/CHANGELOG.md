@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - CSpell
 
+## [0.46.179](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.46.179) (08/05/2026)
+
+### Bug Fixes
+
+- **workspace-tools:** Resolve issue with missing package dependencies ([8183837f8](https://github.com/storm-software/storm-ops/commit/8183837f8))
+
 ## [0.46.178](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.46.178) (08/01/2026)
 
 ### Bug Fixes

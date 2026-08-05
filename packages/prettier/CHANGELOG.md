@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Prettier
 
+## [0.59.164](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.59.164) (08/05/2026)
+
+### Bug Fixes
+
+- **workspace-tools:** Resolve issue with missing package dependencies ([8183837f8](https://github.com/storm-software/storm-ops/commit/8183837f8))
+
 ## [0.59.163](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.59.163) (08/01/2026)
 
 ### Bug Fixes

@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Tsdoc
 
+## [0.13.264](https://github.com/storm-software/storm-ops/releases/tag/tsdoc%400.13.264) (08/05/2026)
+
+### Bug Fixes
+
+- **workspace-tools:** Resolve issue with missing package dependencies ([8183837f8](https://github.com/storm-software/storm-ops/commit/8183837f8))
+
 ## [0.13.263](https://github.com/storm-software/storm-ops/releases/tag/tsdoc%400.13.263) (08/01/2026)
 
 ### Bug Fixes
