@@ -108,6 +108,7 @@
     "./*.d.mts"
   ],
   "dependencies": {
+    "prettier": "catalog:",
     "prettier-plugin-jsdoc": "^1.8.1",
     "prettier-plugin-organize-imports": "^4.3.0",
     "prettier-plugin-packagejson": "catalog:",
@@ -116,50 +117,29 @@
   },
   "devDependencies": {
     "@types/node": "catalog:",
-    "prettier": "catalog:",
     "prettier-plugin-astro": "^0.14.1",
     "prettier-plugin-prisma": "^5.0.0",
     "prettier-plugin-solidity": "^1.4.3",
     "prettier-plugin-tailwindcss": "^0.6.14"
   },
   "peerDependencies": {
-    "prettier": "catalog:",
     "prettier-plugin-astro": ">=0.14.1",
-    "prettier-plugin-organize-imports": ">=4.3.0",
-    "prettier-plugin-packagejson": ">=3.0.2",
     "prettier-plugin-prisma": ">=5.0.0",
-    "prettier-plugin-sh": ">=0.15.0",
     "prettier-plugin-solidity": ">=1.4.3",
-    "prettier-plugin-tailwindcss": ">=0.6.14",
-    "prettier-plugin-toml": ">=2.0.6"
+    "prettier-plugin-tailwindcss": ">=0.6.14"
   },
   "peerDependenciesMeta": {
-    "prettier": {
-      "optional": false
-    },
     "prettier-plugin-astro": {
       "optional": true
     },
-    "prettier-plugin-organize-imports": {
-      "optional": false
-    },
-    "prettier-plugin-packagejson": {
-      "optional": false
-    },
     "prettier-plugin-prisma": {
       "optional": true
-    },
-    "prettier-plugin-sh": {
-      "optional": false
     },
     "prettier-plugin-solidity": {
       "optional": true
     },
     "prettier-plugin-tailwindcss": {
       "optional": true
-    },
-    "prettier-plugin-toml": {
-      "optional": false
     }
   },
   "publishConfig": {
