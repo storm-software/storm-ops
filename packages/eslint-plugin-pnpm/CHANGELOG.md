@@ -2,6 +2,22 @@
 
 # Changelog for Storm Ops - ESLint Plugin Pnpm
 
+## [0.0.77](https://github.com/storm-software/storm-ops/releases/tag/eslint-plugin-pnpm%400.0.77) (08/06/2026)
+
+### Bug Fixes
+
+- **git-tools:** Resolve issue with overriden `mdast-util-to-string` dependency ([3d577cc7f](https://github.com/storm-software/storm-ops/commit/3d577cc7f))
+
+### Features
+
+- **eslint:** Added `bun` option and preset config ([b8beb3b25](https://github.com/storm-software/storm-ops/commit/b8beb3b25))
+
+### Updated Dependencies
+
+- Updated **package-constants** to **v0.1.127**
+- Updated **prettier** to **v0.59.167**
+- Updated **tsdoc** to **v0.13.267**
+
 ## [0.0.76](https://github.com/storm-software/storm-ops/releases/tag/eslint-plugin-pnpm%400.0.76) (08/05/2026)
 
 ### Miscellaneous

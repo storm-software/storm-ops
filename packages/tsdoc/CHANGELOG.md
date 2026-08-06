@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Tsdoc
 
+## [0.13.267](https://github.com/storm-software/storm-ops/releases/tag/tsdoc%400.13.267) (08/06/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update `pnpm-lock.yaml` file ([e351f3d97](https://github.com/storm-software/storm-ops/commit/e351f3d97))
+
 ## [0.13.266](https://github.com/storm-software/storm-ops/releases/tag/tsdoc%400.13.266) (08/05/2026)
 
 ### Miscellaneous

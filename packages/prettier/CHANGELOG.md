@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Prettier
 
+## [0.59.167](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.59.167) (08/06/2026)
+
+### Features
+
+- **eslint-plugin-bun:** Initial check-in of the Bun ESLint plugin ([f73e42e72](https://github.com/storm-software/storm-ops/commit/f73e42e72))
+
 ## [0.59.166](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.59.166) (08/05/2026)
 
 ### Miscellaneous

@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Tsdown
 
+## [0.45.275](https://github.com/storm-software/storm-ops/releases/tag/tsdown%400.45.275) (08/06/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update `pnpm-lock.yaml` file ([e351f3d97](https://github.com/storm-software/storm-ops/commit/e351f3d97))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.274**
+- Updated **config** to **v1.138.51**
+- Updated **config-tools** to **v1.190.114**
+
 ## [0.45.274](https://github.com/storm-software/storm-ops/releases/tag/tsdown%400.45.274) (08/05/2026)
 
 ### Miscellaneous

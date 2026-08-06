@@ -2,6 +2,20 @@
 
 # Changelog for Storm Ops - Markdownlint
 
+## [0.30.270](https://github.com/storm-software/storm-ops/releases/tag/markdownlint%400.30.270) (08/06/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update `pnpm-lock.yaml` file ([e351f3d97](https://github.com/storm-software/storm-ops/commit/e351f3d97))
+
+### Bug Fixes
+
+- **git-tools:** Resolve issue with overriden `mdast-util-to-string` dependency ([3d577cc7f](https://github.com/storm-software/storm-ops/commit/3d577cc7f))
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.267**
+
 ## [0.30.269](https://github.com/storm-software/storm-ops/releases/tag/markdownlint%400.30.269) (08/05/2026)
 
 ### Miscellaneous

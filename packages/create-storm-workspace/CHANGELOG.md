@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - Create Storm Workspace
 
+## [1.97.274](https://github.com/storm-software/storm-ops/releases/tag/create-storm-workspace%401.97.274) (08/06/2026)
+
+### Bug Fixes
+
+- **git-tools:** Resolve issue with overriden `mdast-util-to-string` dependency ([3d577cc7f](https://github.com/storm-software/storm-ops/commit/3d577cc7f))
+
+### Updated Dependencies
+
+- Updated **config-tools** to **v1.190.114**
+
 ## [1.97.273](https://github.com/storm-software/storm-ops/releases/tag/create-storm-workspace%401.97.273) (08/05/2026)
 
 ### Miscellaneous

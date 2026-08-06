@@ -2,6 +2,23 @@
 
 # Changelog for Storm Ops - ESLint
 
+## [0.170.148](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.170.148) (08/06/2026)
+
+### Features
+
+- **eslint:** Added `bun` option and preset config ([b8beb3b25](https://github.com/storm-software/storm-ops/commit/b8beb3b25))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.51**
+- Updated **config-tools** to **v1.190.114**
+- Updated **eslint-plugin-banner** to **v0.0.79**
+- Updated **eslint-plugin-bun** to **v0.0.2**
+- Updated **eslint-plugin-pnpm** to **v0.0.77**
+- Updated **eslint-plugin-tsdoc** to **v0.0.77**
+- Updated **package-constants** to **v0.1.127**
+- Updated **tsdoc** to **v0.13.267**
+
 ## [0.170.147](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.170.147) (08/05/2026)
 
 ### Miscellaneous

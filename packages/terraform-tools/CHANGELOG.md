@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Terraform Tools
 
+## [0.66.297](https://github.com/storm-software/storm-ops/releases/tag/terraform-tools%400.66.297) (08/06/2026)
+
+### Bug Fixes
+
+- **git-tools:** Resolve issue with overriden `mdast-util-to-string` dependency ([3d577cc7f](https://github.com/storm-software/storm-ops/commit/3d577cc7f))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.51**
+- Updated **config-tools** to **v1.190.114**
+- Updated **workspace-tools** to **v1.296.94**
+
 ## [0.66.296](https://github.com/storm-software/storm-ops/releases/tag/terraform-tools%400.66.296) (08/05/2026)
 
 ### Miscellaneous

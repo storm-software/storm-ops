@@ -2,6 +2,19 @@
 
 # Changelog for Storm Ops - Esbuild
 
+## [0.53.275](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.53.275) (08/06/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update `pnpm-lock.yaml` file ([e351f3d97](https://github.com/storm-software/storm-ops/commit/e351f3d97))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.274**
+- Updated **config** to **v1.138.51**
+- Updated **config-tools** to **v1.190.114**
+- Updated **tsup** to **v0.2.272**
+
 ## [0.53.274](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.53.274) (08/05/2026)
 
 ### Miscellaneous

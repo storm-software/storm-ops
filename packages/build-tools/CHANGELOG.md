@@ -2,6 +2,21 @@
 
 # Changelog for Storm Ops - Build Tools
 
+## [0.158.274](https://github.com/storm-software/storm-ops/releases/tag/build-tools%400.158.274) (08/06/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update `pnpm-lock.yaml` file ([e351f3d97](https://github.com/storm-software/storm-ops/commit/e351f3d97))
+
+### Bug Fixes
+
+- **git-tools:** Resolve issue with overriden `mdast-util-to-string` dependency ([3d577cc7f](https://github.com/storm-software/storm-ops/commit/3d577cc7f))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.51**
+- Updated **config-tools** to **v1.190.114**
+
 ## [0.158.273](https://github.com/storm-software/storm-ops/releases/tag/build-tools%400.158.273) (08/05/2026)
 
 ### Miscellaneous

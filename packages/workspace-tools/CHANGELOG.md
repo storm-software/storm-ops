@@ -2,6 +2,26 @@
 
 # Changelog for Storm Ops - Workspace Tools
 
+## [1.296.94](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.296.94) (08/06/2026)
+
+### Bug Fixes
+
+- **git-tools:** Resolve issue with overriden `mdast-util-to-string` dependency ([3d577cc7f](https://github.com/storm-software/storm-ops/commit/3d577cc7f))
+
+### Updated Dependencies
+
+- Updated **bun-tools** to **v0.0.23**
+- Updated **config** to **v1.138.51**
+- Updated **config-tools** to **v1.190.114**
+- Updated **esbuild** to **v0.53.275**
+- Updated **npm-tools** to **v0.6.232**
+- Updated **package-constants** to **v0.1.127**
+- Updated **pnpm-tools** to **v0.7.125**
+- Updated **prettier** to **v0.59.167**
+- Updated **testing-tools** to **v1.119.267**
+- Updated **tsdown** to **v0.45.275**
+- Updated **unbuild** to **v0.57.275**
+
 ## [1.296.93](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.296.93) (08/05/2026)
 
 ### Miscellaneous

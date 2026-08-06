@@ -2,6 +2,20 @@
 
 # Changelog for Storm Ops - ESLint Config React
 
+## [0.0.70](https://github.com/storm-software/storm-ops/releases/tag/eslint-config-react%400.0.70) (08/06/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update `pnpm-lock.yaml` file ([e351f3d97](https://github.com/storm-software/storm-ops/commit/e351f3d97))
+
+### Bug Fixes
+
+- **git-tools:** Resolve issue with overriden `mdast-util-to-string` dependency ([3d577cc7f](https://github.com/storm-software/storm-ops/commit/3d577cc7f))
+
+### Updated Dependencies
+
+- Updated **eslint** to **v0.170.148**
+
 ## [0.0.69](https://github.com/storm-software/storm-ops/releases/tag/eslint-config-react%400.0.69) (08/05/2026)
 
 ### Miscellaneous

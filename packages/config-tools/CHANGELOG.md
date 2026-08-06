@@ -2,6 +2,21 @@
 
 # Changelog for Storm Ops - Config Tools
 
+## [1.190.114](https://github.com/storm-software/storm-ops/releases/tag/config-tools%401.190.114) (08/06/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update `pnpm-lock.yaml` file ([e351f3d97](https://github.com/storm-software/storm-ops/commit/e351f3d97))
+
+### Bug Fixes
+
+- **git-tools:** Resolve issue with overriden `mdast-util-to-string` dependency ([3d577cc7f](https://github.com/storm-software/storm-ops/commit/3d577cc7f))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.51**
+- Updated **testing-tools** to **v1.119.267**
+
 ## [1.190.113](https://github.com/storm-software/storm-ops/releases/tag/config-tools%401.190.113) (08/05/2026)
 
 ### Miscellaneous

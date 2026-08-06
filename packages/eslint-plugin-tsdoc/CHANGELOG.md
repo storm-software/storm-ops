@@ -2,6 +2,26 @@
 
 # Changelog for Storm Ops - ESLint Plugin Tsdoc
 
+## [0.0.77](https://github.com/storm-software/storm-ops/releases/tag/eslint-plugin-tsdoc%400.0.77) (08/06/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update `pnpm-lock.yaml` file ([e351f3d97](https://github.com/storm-software/storm-ops/commit/e351f3d97))
+
+### Bug Fixes
+
+- **git-tools:** Resolve issue with overriden `mdast-util-to-string` dependency ([3d577cc7f](https://github.com/storm-software/storm-ops/commit/3d577cc7f))
+
+### Features
+
+- **eslint-plugin-bun:** Initial check-in of the Bun ESLint plugin ([f73e42e72](https://github.com/storm-software/storm-ops/commit/f73e42e72))
+
+### Updated Dependencies
+
+- Updated **package-constants** to **v0.1.127**
+- Updated **prettier** to **v0.59.167**
+- Updated **tsdoc** to **v0.13.267**
+
 ## [0.0.76](https://github.com/storm-software/storm-ops/releases/tag/eslint-plugin-tsdoc%400.0.76) (08/05/2026)
 
 ### Miscellaneous

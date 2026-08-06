@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Tsup
 
+## [0.2.272](https://github.com/storm-software/storm-ops/releases/tag/tsup%400.2.272) (08/06/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update `pnpm-lock.yaml` file ([e351f3d97](https://github.com/storm-software/storm-ops/commit/e351f3d97))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.274**
+- Updated **config-tools** to **v1.190.114**
+
 ## [0.2.271](https://github.com/storm-software/storm-ops/releases/tag/tsup%400.2.271) (08/05/2026)
 
 ### Miscellaneous

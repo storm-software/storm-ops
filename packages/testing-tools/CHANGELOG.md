@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - Testing Tools
 
+## [1.119.267](https://github.com/storm-software/storm-ops/releases/tag/testing-tools%401.119.267) (08/06/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update `pnpm-lock.yaml` file ([e351f3d97](https://github.com/storm-software/storm-ops/commit/e351f3d97))
+
+### Bug Fixes
+
+- **git-tools:** Resolve issue with overriden `mdast-util-to-string` dependency ([3d577cc7f](https://github.com/storm-software/storm-ops/commit/3d577cc7f))
+
 ## [1.119.266](https://github.com/storm-software/storm-ops/releases/tag/testing-tools%401.119.266) (08/05/2026)
 
 ### Miscellaneous

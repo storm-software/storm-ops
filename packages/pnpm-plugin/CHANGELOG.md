@@ -2,6 +2,21 @@
 
 # Changelog for Storm Ops - Pnpm Plugin
 
+## [0.1.225](https://github.com/storm-software/storm-ops/releases/tag/pnpm-plugin%400.1.225) (08/06/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update `pnpm-lock.yaml` file ([e351f3d97](https://github.com/storm-software/storm-ops/commit/e351f3d97))
+
+### Bug Fixes
+
+- **git-tools:** Resolve issue with overriden `mdast-util-to-string` dependency ([3d577cc7f](https://github.com/storm-software/storm-ops/commit/3d577cc7f))
+
+### Updated Dependencies
+
+- Updated **package-constants** to **v0.1.127**
+- Updated **testing-tools** to **v1.119.267**
+
 ## [0.1.224](https://github.com/storm-software/storm-ops/releases/tag/pnpm-plugin%400.1.224) (08/05/2026)
 
 ### Miscellaneous

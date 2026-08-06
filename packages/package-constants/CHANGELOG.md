@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - Package Constants
 
+## [0.1.127](https://github.com/storm-software/storm-ops/releases/tag/package-constants%400.1.127) (08/06/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update `pnpm-lock.yaml` file ([e351f3d97](https://github.com/storm-software/storm-ops/commit/e351f3d97))
+
+### Bug Fixes
+
+- **git-tools:** Resolve issue with overriden `mdast-util-to-string` dependency ([3d577cc7f](https://github.com/storm-software/storm-ops/commit/3d577cc7f))
+
 ## [0.1.126](https://github.com/storm-software/storm-ops/releases/tag/package-constants%400.1.126) (08/05/2026)
 
 ### Miscellaneous
