@@ -190,7 +190,7 @@ export async function readmeAction(options: ReadMeOptions) {
     );
   } catch (error) {
     writeFatal(
-      `A fatal error occurred while running README format action: \n\n${error.message}`
+      `A fatal error occurred while running README format action: \n\n${error.message}\n\n${error.stack ? `\n\nStacktrace: ${error.stack}` : ""}`
     );
     throw new Error(error.message, { cause: error });
   }

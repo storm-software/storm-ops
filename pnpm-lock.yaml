@@ -165,6 +165,9 @@ catalogs:
     knip:
       specifier: ^5.88.1
       version: 5.88.1
+    mdast-util-to-string:
+      specifier: ^3.0.2
+      version: 3.2.0
     mlly:
       specifier: ^1.8.2
       version: 1.8.2
@@ -270,7 +273,6 @@ overrides:
   pnpm-plugin-storm-software: workspace:*
   request: '>=2.88.2'
   tough-cookie: 4.1.4
-  mdast-util-to-string: '>=4.0.0'
 
 patchedDependencies:
   actions-up: 32dd3e797cb77f0406d81b94e597936599efa23c9bcf8f982de295457d4be41e
@@ -383,6 +385,9 @@ importers:
       lefthook:
         specifier: 1.6.18
         version: 1.6.18
+      mdast-util-to-string:
+        specifier: 'catalog:'
+        version: 3.2.0
       nx:
         specifier: 'catalog:'
         version: 23.1.1(@swc-node/register@1.10.9(@swc/core@1.7.26(@swc/helpers@0.5.13))(@swc/types@0.1.28)(typescript@6.0.3))(@swc/core@1.7.26(@swc/helpers@0.5.13))
@@ -13164,6 +13169,12 @@ packages:
 
   mdast-util-to-nlcst@7.0.1:
     resolution: {integrity: sha512-iMucBmaHxOpreaPPR87U9NrfGqzyoKXFY1zdbtFVsckLWOi/iIshu6bFLsax0mIm9fQI+MpYpu8pBhyN7rkIGA==}
+
+  mdast-util-to-string@2.0.0:
+    resolution: {integrity: sha512-AW4DRS3QbBayY/jJmD8437V1Gombjf8RSOUCMFBuo5iHi58AGEgVCKQ+ezHkZZDpAQS75hcBMpLqjpJTjtUL7w==}
+
+  mdast-util-to-string@3.2.0:
+    resolution: {integrity: sha512-V4Zn/ncyN1QNSqSBxTrMOLpjr+IKdHl2v3KVLoWmDPscP4r9GcCi71gjgvUV1SFSKh92AjAG4peFuBl2/YgCJg==}
 
   mdast-util-to-string@4.0.0:
     resolution: {integrity: sha512-0H44vDimn51F0YwvxSJSm0eCDOJTRlmN0R1yBh4HLj9wiV1Dn0QoXGbvFAWj2hSItVTlCmBF1hqKlIyUBVFLPg==}
@@ -29587,7 +29598,7 @@ snapshots:
   mdast-util-from-markdown@0.8.5:
     dependencies:
       '@types/mdast': 3.0.15
-      mdast-util-to-string: 4.0.0
+      mdast-util-to-string: 2.0.0
       micromark: 2.11.4
       parse-entities: 2.0.0
       unist-util-stringify-position: 2.0.3
@@ -29599,7 +29610,7 @@ snapshots:
       '@types/mdast': 3.0.15
       '@types/unist': 2.0.11
       decode-named-character-reference: 1.3.0
-      mdast-util-to-string: 4.0.0
+      mdast-util-to-string: 3.2.0
       micromark: 3.2.0
       micromark-util-decode-numeric-character-reference: 1.1.0
       micromark-util-decode-string: 1.1.0
@@ -29891,7 +29902,7 @@ snapshots:
     dependencies:
       '@types/unist': 2.0.11
       longest-streak: 2.0.4
-      mdast-util-to-string: 4.0.0
+      mdast-util-to-string: 2.0.0
       parse-entities: 2.0.0
       repeat-string: 1.6.1
       zwitch: 1.0.5
@@ -29902,7 +29913,7 @@ snapshots:
       '@types/unist': 2.0.11
       longest-streak: 3.1.0
       mdast-util-phrasing: 3.0.1
-      mdast-util-to-string: 4.0.0
+      mdast-util-to-string: 3.2.0
       micromark-util-decode-string: 1.1.0
       unist-util-visit: 4.1.2
       zwitch: 2.0.4
@@ -29938,6 +29949,12 @@ snapshots:
       unist-util-position: 5.0.0
       vfile: 6.0.3
       vfile-location: 5.0.3
+
+  mdast-util-to-string@2.0.0: {}
+
+  mdast-util-to-string@3.2.0:
+    dependencies:
+      '@types/mdast': 3.0.15
 
   mdast-util-to-string@4.0.0:
     dependencies:

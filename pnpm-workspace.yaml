@@ -74,6 +74,7 @@ catalog:
   jiti: "^2.7.0"
   knip: "^5.88.1"
   mlly: "^1.8.2"
+  mdast-util-to-string: "^3.0.2"
   nx: "23.1.1"
   pkg-types: "^1.3.1"
   prettier: "^3.9.6"
@@ -157,7 +158,6 @@ overrides:
   pnpm-plugin-storm-software: "workspace:*"
   request: ">=2.88.2"
   tough-cookie: "4.1.4"
-  mdast-util-to-string: ">=4.0.0"
 patchedDependencies:
   actions-up: "patches/actions-up.patch"
   eslint-plugin-import-x: "patches/eslint-plugin-import-x.patch"

@@ -24,14 +24,40 @@ export const handleProcess = (config?: Partial<StormWorkspaceConfig>) => {
 
   process.on("unhandledRejection", error => {
     writeError(
-      `An Unhandled Rejection occurred while running the program: ${error}`,
+      `An Unhandled Rejection occurred while running the program: ${
+        error &&
+        typeof error === "object" &&
+        "message" in error &&
+        error?.message
+          ? error.message
+          : typeof error === "string"
+            ? error
+            : "Unknown error"
+      } \nStacktrace: ${
+        error && typeof error === "object" && "stack" in error && error?.stack
+          ? error.stack
+          : ""
+      }`,
       config
     );
     exitWithError(config);
   });
   process.on("uncaughtException", error => {
     writeError(
-      `An Uncaught Exception occurred while running the program: ${error.message} \nStacktrace: ${error.stack}`,
+      `An Uncaught Exception occurred while running the program: ${
+        error &&
+        typeof error === "object" &&
+        "message" in error &&
+        error?.message
+          ? error.message
+          : typeof error === "string"
+            ? error
+            : "Unknown error"
+      } \nStacktrace: ${
+        error && typeof error === "object" && "stack" in error && error?.stack
+          ? error.stack
+          : ""
+      }`,
       config
     );
     exitWithError(config);
