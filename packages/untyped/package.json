@@ -188,7 +188,9 @@
     "storm-untyped-cjs": "./bin/untyped.cjs",
     "storm-untyped-esm": "./bin/untyped.js"
   },
-  "files": ["dist/**/*"],
+  "files": [
+    "dist/**/*"
+  ],
   "dependencies": {
     "@storm-software/config-tools": "workspace:*",
     "commander": "catalog:",
