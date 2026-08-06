@@ -2,6 +2,24 @@
 
 # Changelog for Storm Ops - Bun Tools
 
+## [0.0.22](https://github.com/storm-software/storm-ops/releases/tag/bun-tools%400.0.22) (08/05/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace's lockfile ([8d9825be1](https://github.com/storm-software/storm-ops/commit/8d9825be1))
+
+### Bug Fixes
+
+- **eslint:** Resolve issue with invalid dependency versions ([9813a20e4](https://github.com/storm-software/storm-ops/commit/9813a20e4))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.50**
+- Updated **config-tools** to **v1.190.113**
+- Updated **npm-tools** to **v0.6.231**
+- Updated **package-constants** to **v0.1.126**
+- Updated **testing-tools** to **v1.119.266**
+
 ## [0.0.21](https://github.com/storm-software/storm-ops/releases/tag/bun-tools%400.0.21) (08/05/2026)
 
 ### Miscellaneous

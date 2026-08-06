@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Package Constants
 
+## [0.1.126](https://github.com/storm-software/storm-ops/releases/tag/package-constants%400.1.126) (08/05/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace's lockfile ([8d9825be1](https://github.com/storm-software/storm-ops/commit/8d9825be1))
+
+### Bug Fixes
+
+- **build-tools:** Resolve issue with deprecated Nx package APIs ([897964540](https://github.com/storm-software/storm-ops/commit/897964540))
+- **eslint:** Resolve issue with invalid dependency versions ([9813a20e4](https://github.com/storm-software/storm-ops/commit/9813a20e4))
+
 ## [0.1.125](https://github.com/storm-software/storm-ops/releases/tag/package-constants%400.1.125) (08/05/2026)
 
 ### Miscellaneous

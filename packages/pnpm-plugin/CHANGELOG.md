@@ -2,6 +2,22 @@
 
 # Changelog for Storm Ops - Pnpm Plugin
 
+## [0.1.224](https://github.com/storm-software/storm-ops/releases/tag/pnpm-plugin%400.1.224) (08/05/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace's lockfile ([8d9825be1](https://github.com/storm-software/storm-ops/commit/8d9825be1))
+
+### Bug Fixes
+
+- **build-tools:** Resolve issue with deprecated Nx package APIs ([897964540](https://github.com/storm-software/storm-ops/commit/897964540))
+- **eslint:** Resolve issue with invalid dependency versions ([9813a20e4](https://github.com/storm-software/storm-ops/commit/9813a20e4))
+
+### Updated Dependencies
+
+- Updated **package-constants** to **v0.1.126**
+- Updated **testing-tools** to **v1.119.266**
+
 ## [0.1.223](https://github.com/storm-software/storm-ops/releases/tag/pnpm-plugin%400.1.223) (08/05/2026)
 
 ### Miscellaneous

@@ -2,6 +2,24 @@
 
 # Changelog for Storm Ops - Pnpm Tools
 
+## [0.7.124](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.7.124) (08/05/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace's lockfile ([8d9825be1](https://github.com/storm-software/storm-ops/commit/8d9825be1))
+
+### Bug Fixes
+
+- **eslint:** Resolve issue with invalid dependency versions ([9813a20e4](https://github.com/storm-software/storm-ops/commit/9813a20e4))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.50**
+- Updated **config-tools** to **v1.190.113**
+- Updated **npm-tools** to **v0.6.231**
+- Updated **package-constants** to **v0.1.126**
+- Updated **testing-tools** to **v1.119.266**
+
 ## [0.7.123](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.7.123) (08/05/2026)
 
 ### Miscellaneous

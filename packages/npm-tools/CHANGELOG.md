@@ -2,6 +2,22 @@
 
 # Changelog for Storm Ops - Npm Tools
 
+## [0.6.231](https://github.com/storm-software/storm-ops/releases/tag/npm-tools%400.6.231) (08/05/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace's lockfile ([8d9825be1](https://github.com/storm-software/storm-ops/commit/8d9825be1))
+
+### Bug Fixes
+
+- **eslint:** Resolve issue with invalid dependency versions ([9813a20e4](https://github.com/storm-software/storm-ops/commit/9813a20e4))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.50**
+- Updated **config-tools** to **v1.190.113**
+- Updated **testing-tools** to **v1.119.266**
+
 ## [0.6.230](https://github.com/storm-software/storm-ops/releases/tag/npm-tools%400.6.230) (08/05/2026)
 
 ### Miscellaneous

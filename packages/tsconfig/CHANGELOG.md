@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Tsconfig
 
+## [0.48.180](https://github.com/storm-software/storm-ops/releases/tag/tsconfig%400.48.180) (08/05/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace's lockfile ([8d9825be1](https://github.com/storm-software/storm-ops/commit/8d9825be1))
+
+### Bug Fixes
+
+- **build-tools:** Resolve issue with deprecated Nx package APIs ([897964540](https://github.com/storm-software/storm-ops/commit/897964540))
+- **eslint:** Resolve issue with invalid dependency versions ([9813a20e4](https://github.com/storm-software/storm-ops/commit/9813a20e4))
+
 ## [0.48.179](https://github.com/storm-software/storm-ops/releases/tag/tsconfig%400.48.179) (08/05/2026)
 
 ### Miscellaneous

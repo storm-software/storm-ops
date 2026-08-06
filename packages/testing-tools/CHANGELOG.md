@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Testing Tools
 
+## [1.119.266](https://github.com/storm-software/storm-ops/releases/tag/testing-tools%401.119.266) (08/05/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace's lockfile ([8d9825be1](https://github.com/storm-software/storm-ops/commit/8d9825be1))
+
+### Bug Fixes
+
+- **build-tools:** Resolve issue with deprecated Nx package APIs ([897964540](https://github.com/storm-software/storm-ops/commit/897964540))
+- **eslint:** Resolve issue with invalid dependency versions ([9813a20e4](https://github.com/storm-software/storm-ops/commit/9813a20e4))
+
 ## [1.119.265](https://github.com/storm-software/storm-ops/releases/tag/testing-tools%401.119.265) (08/05/2026)
 
 ### Miscellaneous

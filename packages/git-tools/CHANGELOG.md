@@ -2,6 +2,24 @@
 
 # Changelog for Storm Ops - Git Tools
 
+## [2.131.121](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.131.121) (08/05/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace's lockfile ([8d9825be1](https://github.com/storm-software/storm-ops/commit/8d9825be1))
+
+### Bug Fixes
+
+- **build-tools:** Resolve issue with deprecated Nx package APIs ([897964540](https://github.com/storm-software/storm-ops/commit/897964540))
+- **eslint:** Resolve issue with invalid dependency versions ([9813a20e4](https://github.com/storm-software/storm-ops/commit/9813a20e4))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.50**
+- Updated **config-tools** to **v1.190.113**
+- Updated **conventional-changelog** to **v0.3.274**
+- Updated **package-constants** to **v0.1.126**
+
 ## [2.131.120](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.131.120) (08/05/2026)
 
 ### Miscellaneous

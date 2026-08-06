@@ -2,6 +2,22 @@
 
 # Changelog for Storm Ops - Projen
 
+## [0.21.296](https://github.com/storm-software/storm-ops/releases/tag/projen%400.21.296) (08/05/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace's lockfile ([8d9825be1](https://github.com/storm-software/storm-ops/commit/8d9825be1))
+
+### Bug Fixes
+
+- **eslint:** Resolve issue with invalid dependency versions ([9813a20e4](https://github.com/storm-software/storm-ops/commit/9813a20e4))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.50**
+- Updated **config-tools** to **v1.190.113**
+- Updated **workspace-tools** to **v1.296.93**
+
 ## [0.21.295](https://github.com/storm-software/storm-ops/releases/tag/projen%400.21.295) (08/05/2026)
 
 ### Miscellaneous

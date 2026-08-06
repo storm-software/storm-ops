@@ -2,6 +2,20 @@
 
 # Changelog for Storm Ops - Config
 
+## [1.138.50](https://github.com/storm-software/storm-ops/releases/tag/config%401.138.50) (08/05/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace's lockfile ([8d9825be1](https://github.com/storm-software/storm-ops/commit/8d9825be1))
+
+### Bug Fixes
+
+- **eslint:** Resolve issue with invalid dependency versions ([9813a20e4](https://github.com/storm-software/storm-ops/commit/9813a20e4))
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.266**
+
 ## [1.138.49](https://github.com/storm-software/storm-ops/releases/tag/config%401.138.49) (08/05/2026)
 
 ### Miscellaneous

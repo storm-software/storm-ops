@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - Prettier
 
+## [0.59.166](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.59.166) (08/05/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace's lockfile ([8d9825be1](https://github.com/storm-software/storm-ops/commit/8d9825be1))
+
+### Bug Fixes
+
+- **eslint:** Resolve issue with invalid dependency versions ([9813a20e4](https://github.com/storm-software/storm-ops/commit/9813a20e4))
+
 ## [0.59.165](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.59.165) (08/05/2026)
 
 ### Miscellaneous

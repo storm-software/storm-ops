@@ -2,6 +2,20 @@
 
 # Changelog for Storm Ops - Create Storm Workspace
 
+## [1.97.273](https://github.com/storm-software/storm-ops/releases/tag/create-storm-workspace%401.97.273) (08/05/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace's lockfile ([8d9825be1](https://github.com/storm-software/storm-ops/commit/8d9825be1))
+
+### Bug Fixes
+
+- **eslint:** Resolve issue with invalid dependency versions ([9813a20e4](https://github.com/storm-software/storm-ops/commit/9813a20e4))
+
+### Updated Dependencies
+
+- Updated **config-tools** to **v1.190.113**
+
 ## [1.97.272](https://github.com/storm-software/storm-ops/releases/tag/create-storm-workspace%401.97.272) (08/05/2026)
 
 ### Miscellaneous

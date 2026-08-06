@@ -2,6 +2,21 @@
 
 # Changelog for Storm Ops - ESLint Config React
 
+## [0.0.69](https://github.com/storm-software/storm-ops/releases/tag/eslint-config-react%400.0.69) (08/05/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace's lockfile ([8d9825be1](https://github.com/storm-software/storm-ops/commit/8d9825be1))
+
+### Bug Fixes
+
+- **build-tools:** Resolve issue with deprecated Nx package APIs ([897964540](https://github.com/storm-software/storm-ops/commit/897964540))
+- **eslint:** Resolve issue with invalid dependency versions ([9813a20e4](https://github.com/storm-software/storm-ops/commit/9813a20e4))
+
+### Updated Dependencies
+
+- Updated **eslint** to **v0.170.147**
+
 ## [0.0.68](https://github.com/storm-software/storm-ops/releases/tag/eslint-config-react%400.0.68) (08/05/2026)
 
 ### Miscellaneous

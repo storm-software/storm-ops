@@ -2,6 +2,23 @@
 
 # Changelog for Storm Ops - ESLint Plugin Tsdoc
 
+## [0.0.76](https://github.com/storm-software/storm-ops/releases/tag/eslint-plugin-tsdoc%400.0.76) (08/05/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace's lockfile ([8d9825be1](https://github.com/storm-software/storm-ops/commit/8d9825be1))
+
+### Bug Fixes
+
+- **build-tools:** Resolve issue with deprecated Nx package APIs ([897964540](https://github.com/storm-software/storm-ops/commit/897964540))
+- **eslint:** Resolve issue with invalid dependency versions ([9813a20e4](https://github.com/storm-software/storm-ops/commit/9813a20e4))
+
+### Updated Dependencies
+
+- Updated **package-constants** to **v0.1.126**
+- Updated **prettier** to **v0.59.166**
+- Updated **tsdoc** to **v0.13.266**
+
 ## [0.0.75](https://github.com/storm-software/storm-ops/releases/tag/eslint-plugin-tsdoc%400.0.75) (08/05/2026)
 
 ### Miscellaneous

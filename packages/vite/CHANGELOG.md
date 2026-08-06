@@ -2,6 +2,21 @@
 
 # Changelog for Storm Ops - Vite
 
+## [0.1.207](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.207) (08/05/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace's lockfile ([8d9825be1](https://github.com/storm-software/storm-ops/commit/8d9825be1))
+
+### Bug Fixes
+
+- **build-tools:** Resolve issue with deprecated Nx package APIs ([897964540](https://github.com/storm-software/storm-ops/commit/897964540))
+- **eslint:** Resolve issue with invalid dependency versions ([9813a20e4](https://github.com/storm-software/storm-ops/commit/9813a20e4))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.273**
+
 ## [0.1.206](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.206) (08/05/2026)
 
 ### Miscellaneous
