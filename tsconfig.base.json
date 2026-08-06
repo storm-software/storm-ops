@@ -105,6 +105,12 @@
       "@storm-software/eslint-plugin-banner/*": [
         "./packages/eslint-plugin-banner/src/*"
       ],
+      "@storm-software/eslint-plugin-bun": [
+        "./packages/eslint-plugin-bun/src/index.ts"
+      ],
+      "@storm-software/eslint-plugin-bun/*": [
+        "./packages/eslint-plugin-bun/src/*"
+      ],
       "@storm-software/eslint-plugin-pnpm": [
         "./packages/eslint-plugin-pnpm/src/index.ts"
       ],

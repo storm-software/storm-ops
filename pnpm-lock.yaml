@@ -199,8 +199,8 @@ catalogs:
       specifier: 8.4.0
       version: 8.4.0
     tsx:
-      specifier: ^4.23.5
-      version: 4.23.5
+      specifier: ^4.23.7
+      version: 4.23.7
     typia:
       specifier: ^7.6.4
       version: 7.6.4
@@ -235,6 +235,7 @@ overrides:
   '@storm-software/eslint-config-react': workspace:*
   '@storm-software/eslint-plugin-banner': workspace:*
   '@storm-software/eslint-plugin-pnpm': workspace:*
+  '@storm-software/eslint-plugin-bun': workspace:*
   '@storm-software/eslint-plugin-tsdoc': workspace:*
   '@storm-software/oxlint': workspace:*
   '@storm-software/oxfmt': workspace:*
@@ -419,10 +420,10 @@ importers:
         version: 2.8.1
       tsup:
         specifier: 'catalog:'
-        version: 8.4.0(patch_hash=a9def7e06ce25c19654987ab91979289197bf4d3e7e124c514a4487c3e8d68c6)(@microsoft/api-extractor@7.58.12(@types/node@25.9.5))(@swc/core@1.7.26(@swc/helpers@0.5.13))(jiti@2.7.0)(postcss@8.5.25)(tsx@4.23.5)(typescript@6.0.3)(yaml@2.9.0)
+        version: 8.4.0(patch_hash=a9def7e06ce25c19654987ab91979289197bf4d3e7e124c514a4487c3e8d68c6)(@microsoft/api-extractor@7.58.12(@types/node@25.9.5))(@swc/core@1.7.26(@swc/helpers@0.5.13))(jiti@2.7.0)(postcss@8.5.25)(tsx@4.23.7)(typescript@6.0.3)(yaml@2.9.0)
       tsx:
         specifier: 'catalog:'
-        version: 4.23.5
+        version: 4.23.7
       typescript:
         specifier: ^6.0.3
         version: 6.0.3
@@ -475,7 +476,7 @@ importers:
         version: 23.1.1(@swc-node/register@1.10.9(@swc/core@1.7.26(@swc/helpers@0.5.13))(@swc/types@0.1.28)(typescript@6.0.3))(@swc/core@1.7.26(@swc/helpers@0.5.13))
       tsup:
         specifier: 'catalog:'
-        version: 8.4.0(patch_hash=a9def7e06ce25c19654987ab91979289197bf4d3e7e124c514a4487c3e8d68c6)(@microsoft/api-extractor@7.58.12(@types/node@25.9.5))(@swc/core@1.7.26(@swc/helpers@0.5.13))(jiti@2.7.0)(postcss@8.5.25)(tsx@4.23.5)(typescript@6.0.3)(yaml@2.9.0)
+        version: 8.4.0(patch_hash=a9def7e06ce25c19654987ab91979289197bf4d3e7e124c514a4487c3e8d68c6)(@microsoft/api-extractor@7.58.12(@types/node@25.9.5))(@swc/core@1.7.26(@swc/helpers@0.5.13))(jiti@2.7.0)(postcss@8.5.25)(tsx@4.23.7)(typescript@6.0.3)(yaml@2.9.0)
       typescript:
         specifier: ^6.0.3
         version: 6.0.3
@@ -521,7 +522,7 @@ importers:
         version: 25.9.5
       tsup:
         specifier: 'catalog:'
-        version: 8.4.0(patch_hash=a9def7e06ce25c19654987ab91979289197bf4d3e7e124c514a4487c3e8d68c6)(@microsoft/api-extractor@7.58.12(@types/node@25.9.5))(@swc/core@1.7.26(@swc/helpers@0.5.13))(jiti@2.7.0)(postcss@8.5.25)(tsx@4.23.5)(typescript@6.0.3)(yaml@2.9.0)
+        version: 8.4.0(patch_hash=a9def7e06ce25c19654987ab91979289197bf4d3e7e124c514a4487c3e8d68c6)(@microsoft/api-extractor@7.58.12(@types/node@25.9.5))(@swc/core@1.7.26(@swc/helpers@0.5.13))(jiti@2.7.0)(postcss@8.5.25)(tsx@4.23.7)(typescript@6.0.3)(yaml@2.9.0)
 
   packages/cloudflare-tools:
     dependencies:
@@ -576,7 +577,7 @@ importers:
         version: 23.1.1(@swc-node/register@1.10.9(@swc/core@1.7.26(@swc/helpers@0.5.13))(@swc/types@0.1.28)(typescript@6.0.3))(@swc/core@1.7.26(@swc/helpers@0.5.13))
       tsup:
         specifier: 'catalog:'
-        version: 8.4.0(patch_hash=a9def7e06ce25c19654987ab91979289197bf4d3e7e124c514a4487c3e8d68c6)(@microsoft/api-extractor@7.58.12(@types/node@26.1.2))(@swc/core@1.7.26(@swc/helpers@0.5.13))(jiti@2.7.0)(postcss@8.5.25)(tsx@4.23.5)(typescript@6.0.3)(yaml@2.9.0)
+        version: 8.4.0(patch_hash=a9def7e06ce25c19654987ab91979289197bf4d3e7e124c514a4487c3e8d68c6)(@microsoft/api-extractor@7.58.12(@types/node@26.1.2))(@swc/core@1.7.26(@swc/helpers@0.5.13))(jiti@2.7.0)(postcss@8.5.25)(tsx@4.23.7)(typescript@6.0.3)(yaml@2.9.0)
       untyped:
         specifier: 'catalog:'
         version: 2.0.0
@@ -588,7 +589,7 @@ importers:
     devDependencies:
       tsup:
         specifier: 'catalog:'
-        version: 8.4.0(patch_hash=a9def7e06ce25c19654987ab91979289197bf4d3e7e124c514a4487c3e8d68c6)(@microsoft/api-extractor@7.58.12(@types/node@26.1.2))(@swc/core@1.7.26(@swc/helpers@0.5.13))(jiti@2.7.0)(postcss@8.5.25)(tsx@4.23.5)(typescript@6.0.3)(yaml@2.9.0)
+        version: 8.4.0(patch_hash=a9def7e06ce25c19654987ab91979289197bf4d3e7e124c514a4487c3e8d68c6)(@microsoft/api-extractor@7.58.12(@types/node@26.1.2))(@swc/core@1.7.26(@swc/helpers@0.5.13))(jiti@2.7.0)(postcss@8.5.25)(tsx@4.23.7)(typescript@6.0.3)(yaml@2.9.0)
       zod:
         specifier: 'catalog:'
         version: 4.4.3
@@ -631,7 +632,7 @@ importers:
         version: 25.9.5
       tsup:
         specifier: 'catalog:'
-        version: 8.4.0(patch_hash=a9def7e06ce25c19654987ab91979289197bf4d3e7e124c514a4487c3e8d68c6)(@microsoft/api-extractor@7.58.12(@types/node@25.9.5))(@swc/core@1.7.26(@swc/helpers@0.5.13))(jiti@2.7.0)(postcss@8.5.25)(tsx@4.23.5)(typescript@6.0.3)(yaml@2.9.0)
+        version: 8.4.0(patch_hash=a9def7e06ce25c19654987ab91979289197bf4d3e7e124c514a4487c3e8d68c6)(@microsoft/api-extractor@7.58.12(@types/node@25.9.5))(@swc/core@1.7.26(@swc/helpers@0.5.13))(jiti@2.7.0)(postcss@8.5.25)(tsx@4.23.7)(typescript@6.0.3)(yaml@2.9.0)
       zod:
         specifier: 'catalog:'
         version: 4.4.3
@@ -665,7 +666,7 @@ importers:
         version: 25.9.5
       tsup:
         specifier: 'catalog:'
-        version: 8.4.0(patch_hash=a9def7e06ce25c19654987ab91979289197bf4d3e7e124c514a4487c3e8d68c6)(@microsoft/api-extractor@7.58.12(@types/node@25.9.5))(@swc/core@1.7.26(@swc/helpers@0.5.13))(jiti@2.7.0)(postcss@8.5.25)(tsx@4.23.5)(typescript@6.0.3)(yaml@2.9.0)
+        version: 8.4.0(patch_hash=a9def7e06ce25c19654987ab91979289197bf4d3e7e124c514a4487c3e8d68c6)(@microsoft/api-extractor@7.58.12(@types/node@25.9.5))(@swc/core@1.7.26(@swc/helpers@0.5.13))(jiti@2.7.0)(postcss@8.5.25)(tsx@4.23.7)(typescript@6.0.3)(yaml@2.9.0)
       typescript:
         specifier: ^6.0.3
         version: 6.0.3
@@ -823,7 +824,7 @@ importers:
         version: 3.0.5
       tsup:
         specifier: 'catalog:'
-        version: 8.4.0(patch_hash=a9def7e06ce25c19654987ab91979289197bf4d3e7e124c514a4487c3e8d68c6)(@microsoft/api-extractor@7.58.12(@types/node@26.1.2))(@swc/core@1.7.26(@swc/helpers@0.5.13))(jiti@2.7.0)(postcss@8.5.25)(tsx@4.23.5)(typescript@6.0.3)(yaml@2.9.0)
+        version: 8.4.0(patch_hash=a9def7e06ce25c19654987ab91979289197bf4d3e7e124c514a4487c3e8d68c6)(@microsoft/api-extractor@7.58.12(@types/node@26.1.2))(@swc/core@1.7.26(@swc/helpers@0.5.13))(jiti@2.7.0)(postcss@8.5.25)(tsx@4.23.7)(typescript@6.0.3)(yaml@2.9.0)
 
   packages/esbuild:
     dependencies:
@@ -1137,10 +1138,10 @@ importers:
         version: 0.14.1
       tsup:
         specifier: 'catalog:'
-        version: 8.4.0(patch_hash=a9def7e06ce25c19654987ab91979289197bf4d3e7e124c514a4487c3e8d68c6)(@microsoft/api-extractor@7.58.12(@types/node@25.9.5))(@swc/core@1.7.26(@swc/helpers@0.5.13))(jiti@2.7.0)(postcss@8.5.25)(tsx@4.23.5)(typescript@6.0.3)(yaml@2.9.0)
+        version: 8.4.0(patch_hash=a9def7e06ce25c19654987ab91979289197bf4d3e7e124c514a4487c3e8d68c6)(@microsoft/api-extractor@7.58.12(@types/node@25.9.5))(@swc/core@1.7.26(@swc/helpers@0.5.13))(jiti@2.7.0)(postcss@8.5.25)(tsx@4.23.7)(typescript@6.0.3)(yaml@2.9.0)
       tsx:
         specifier: 'catalog:'
-        version: 4.23.5
+        version: 4.23.7
       typescript:
         specifier: ^6.0.3
         version: 6.0.3
@@ -1192,7 +1193,7 @@ importers:
     devDependencies:
       tsup:
         specifier: 'catalog:'
-        version: 8.4.0(patch_hash=a9def7e06ce25c19654987ab91979289197bf4d3e7e124c514a4487c3e8d68c6)(@microsoft/api-extractor@7.58.12(@types/node@26.1.2))(@swc/core@1.7.26(@swc/helpers@0.5.13))(jiti@2.7.0)(postcss@8.5.25)(tsx@4.23.5)(typescript@6.0.3)(yaml@2.9.0)
+        version: 8.4.0(patch_hash=a9def7e06ce25c19654987ab91979289197bf4d3e7e124c514a4487c3e8d68c6)(@microsoft/api-extractor@7.58.12(@types/node@26.1.2))(@swc/core@1.7.26(@swc/helpers@0.5.13))(jiti@2.7.0)(postcss@8.5.25)(tsx@4.23.7)(typescript@6.0.3)(yaml@2.9.0)
       typescript:
         specifier: ^6.0.3
         version: 6.0.3
@@ -1250,7 +1251,68 @@ importers:
         version: 2.3.1(eslint@10.8.0(jiti@2.7.0))
       tsdown:
         specifier: 'catalog:'
-        version: 0.22.14(@typescript/native-preview@7.0.0-dev.20250908.1)(@volar/typescript@2.4.28)(oxc-resolver@11.24.2)(tsx@4.23.5)(typescript@6.0.3)
+        version: 0.22.14(@typescript/native-preview@7.0.0-dev.20250908.1)(@volar/typescript@2.4.28)(oxc-resolver@11.24.2)(tsx@4.23.7)(typescript@6.0.3)
+
+  packages/eslint-plugin-bun:
+    dependencies:
+      '@storm-software/package-constants':
+        specifier: workspace:*
+        version: link:../package-constants
+      '@typescript-eslint/utils':
+        specifier: 'catalog:'
+        version: 8.66.0(eslint@10.8.0(jiti@2.7.0))(typescript@6.0.3)
+      defu:
+        specifier: 'catalog:'
+        version: 6.1.7
+      find-up-simple:
+        specifier: ^1.0.1
+        version: 1.0.1
+      jsonc-eslint-parser:
+        specifier: 'catalog:'
+        version: 2.4.2
+      pathe:
+        specifier: ^2.0.3
+        version: 2.0.3
+      tinyglobby:
+        specifier: ^0.2.17
+        version: 0.2.17
+    devDependencies:
+      '@eslint/compat':
+        specifier: 'catalog:'
+        version: 2.1.0(eslint@10.8.0(jiti@2.7.0))
+      '@eslint/config-inspector':
+        specifier: 'catalog:'
+        version: 1.5.0(eslint@10.8.0(jiti@2.7.0))
+      '@storm-software/prettier':
+        specifier: workspace:*
+        version: link:../prettier
+      '@types/eslint':
+        specifier: 'catalog:'
+        version: 9.6.1
+      '@types/eslint__js':
+        specifier: 'catalog:'
+        version: 8.42.3
+      '@types/node':
+        specifier: 'catalog:'
+        version: 25.9.5
+      eslint:
+        specifier: 'catalog:'
+        version: 10.8.0(jiti@2.7.0)
+      eslint-flat-config-utils:
+        specifier: 'catalog:'
+        version: 2.1.4
+      eslint-plugin-eslint-plugin:
+        specifier: 'catalog:'
+        version: 7.6.0(eslint@10.8.0(jiti@2.7.0))
+      eslint-plugin-i18n-text:
+        specifier: 'catalog:'
+        version: 1.0.1(eslint@10.8.0(jiti@2.7.0))
+      eslint-typegen:
+        specifier: 'catalog:'
+        version: 2.3.1(eslint@10.8.0(jiti@2.7.0))
+      tsup:
+        specifier: 'catalog:'
+        version: 8.4.0(patch_hash=a9def7e06ce25c19654987ab91979289197bf4d3e7e124c514a4487c3e8d68c6)(@microsoft/api-extractor@7.58.12(@types/node@25.9.5))(@swc/core@1.7.26(@swc/helpers@0.5.13))(jiti@2.7.0)(postcss@8.5.25)(tsx@4.23.7)(typescript@6.0.3)(yaml@2.9.0)
 
   packages/eslint-plugin-pnpm:
     dependencies:
@@ -1335,7 +1397,7 @@ importers:
         version: 2.3.1(eslint@10.8.0(jiti@2.7.0))
       tsdown:
         specifier: 'catalog:'
-        version: 0.22.14(@typescript/native-preview@7.0.0-dev.20250908.1)(@volar/typescript@2.4.28)(oxc-resolver@11.24.2)(tsx@4.23.5)(typescript@6.0.3)
+        version: 0.22.14(@typescript/native-preview@7.0.0-dev.20250908.1)(@volar/typescript@2.4.28)(oxc-resolver@11.24.2)(tsx@4.23.7)(typescript@6.0.3)
 
   packages/eslint-plugin-tsdoc:
     dependencies:
@@ -1429,7 +1491,7 @@ importers:
         version: 2.3.1(eslint@10.8.0(jiti@2.7.0))
       tsdown:
         specifier: 'catalog:'
-        version: 0.22.14(@typescript/native-preview@7.0.0-dev.20250908.1)(@volar/typescript@2.4.28)(oxc-resolver@11.24.2)(tsx@4.23.5)(typescript@6.0.3)
+        version: 0.22.14(@typescript/native-preview@7.0.0-dev.20250908.1)(@volar/typescript@2.4.28)(oxc-resolver@11.24.2)(tsx@4.23.7)(typescript@6.0.3)
 
   packages/git-tools:
     dependencies:
@@ -1538,7 +1600,7 @@ importers:
         version: 6.1.7
       tsup:
         specifier: 'catalog:'
-        version: 8.4.0(patch_hash=a9def7e06ce25c19654987ab91979289197bf4d3e7e124c514a4487c3e8d68c6)(@microsoft/api-extractor@7.58.12(@types/node@25.9.5))(@swc/core@1.7.26(@swc/helpers@0.5.13))(jiti@2.7.0)(postcss@8.5.25)(tsx@4.23.5)(typescript@6.0.3)(yaml@2.9.0)
+        version: 8.4.0(patch_hash=a9def7e06ce25c19654987ab91979289197bf4d3e7e124c514a4487c3e8d68c6)(@microsoft/api-extractor@7.58.12(@types/node@25.9.5))(@swc/core@1.7.26(@swc/helpers@0.5.13))(jiti@2.7.0)(postcss@8.5.25)(tsx@4.23.7)(typescript@6.0.3)(yaml@2.9.0)
 
   packages/k8s-tools:
     dependencies:
@@ -1581,7 +1643,7 @@ importers:
         version: 3.9.6
       tsup:
         specifier: 'catalog:'
-        version: 8.4.0(patch_hash=a9def7e06ce25c19654987ab91979289197bf4d3e7e124c514a4487c3e8d68c6)(@microsoft/api-extractor@7.58.12(@types/node@25.9.5))(@swc/core@1.7.26(@swc/helpers@0.5.13))(jiti@2.7.0)(postcss@8.5.25)(tsx@4.23.5)(typescript@6.0.3)(yaml@2.9.0)
+        version: 8.4.0(patch_hash=a9def7e06ce25c19654987ab91979289197bf4d3e7e124c514a4487c3e8d68c6)(@microsoft/api-extractor@7.58.12(@types/node@25.9.5))(@swc/core@1.7.26(@swc/helpers@0.5.13))(jiti@2.7.0)(postcss@8.5.25)(tsx@4.23.7)(typescript@6.0.3)(yaml@2.9.0)
       typescript:
         specifier: ^6.0.3
         version: 6.0.3
@@ -1672,7 +1734,7 @@ importers:
         version: 2.0.0
       tsup:
         specifier: 'catalog:'
-        version: 8.4.0(patch_hash=a9def7e06ce25c19654987ab91979289197bf4d3e7e124c514a4487c3e8d68c6)(@microsoft/api-extractor@7.58.12(@types/node@25.9.5))(@swc/core@1.7.26(@swc/helpers@0.5.13))(jiti@2.7.0)(postcss@8.5.25)(tsx@4.23.5)(typescript@6.0.3)(yaml@2.9.0)
+        version: 8.4.0(patch_hash=a9def7e06ce25c19654987ab91979289197bf4d3e7e124c514a4487c3e8d68c6)(@microsoft/api-extractor@7.58.12(@types/node@25.9.5))(@swc/core@1.7.26(@swc/helpers@0.5.13))(jiti@2.7.0)(postcss@8.5.25)(tsx@4.23.7)(typescript@6.0.3)(yaml@2.9.0)
       unified:
         specifier: 11.0.5
         version: 11.0.5
@@ -1697,7 +1759,7 @@ importers:
         version: 25.9.5
       tsup:
         specifier: 'catalog:'
-        version: 8.4.0(patch_hash=a9def7e06ce25c19654987ab91979289197bf4d3e7e124c514a4487c3e8d68c6)(@microsoft/api-extractor@7.58.12(@types/node@25.9.5))(@swc/core@1.7.26(@swc/helpers@0.5.13))(jiti@2.7.0)(postcss@8.5.25)(tsx@4.23.5)(typescript@6.0.3)(yaml@2.9.0)
+        version: 8.4.0(patch_hash=a9def7e06ce25c19654987ab91979289197bf4d3e7e124c514a4487c3e8d68c6)(@microsoft/api-extractor@7.58.12(@types/node@25.9.5))(@swc/core@1.7.26(@swc/helpers@0.5.13))(jiti@2.7.0)(postcss@8.5.25)(tsx@4.23.7)(typescript@6.0.3)(yaml@2.9.0)
 
   packages/npm-tools:
     dependencies:
@@ -1719,7 +1781,7 @@ importers:
         version: 25.9.5
       tsup:
         specifier: 'catalog:'
-        version: 8.4.0(patch_hash=a9def7e06ce25c19654987ab91979289197bf4d3e7e124c514a4487c3e8d68c6)(@microsoft/api-extractor@7.58.12(@types/node@25.9.5))(@swc/core@1.7.26(@swc/helpers@0.5.13))(jiti@2.7.0)(postcss@8.5.25)(tsx@4.23.5)(typescript@6.0.3)(yaml@2.9.0)
+        version: 8.4.0(patch_hash=a9def7e06ce25c19654987ab91979289197bf4d3e7e124c514a4487c3e8d68c6)(@microsoft/api-extractor@7.58.12(@types/node@25.9.5))(@swc/core@1.7.26(@swc/helpers@0.5.13))(jiti@2.7.0)(postcss@8.5.25)(tsx@4.23.7)(typescript@6.0.3)(yaml@2.9.0)
 
   packages/oxfmt:
     devDependencies:
@@ -1777,10 +1839,10 @@ importers:
         version: 25.9.5
       tsup:
         specifier: 'catalog:'
-        version: 8.4.0(patch_hash=a9def7e06ce25c19654987ab91979289197bf4d3e7e124c514a4487c3e8d68c6)(@microsoft/api-extractor@7.58.12(@types/node@25.9.5))(@swc/core@1.7.26(@swc/helpers@0.5.13))(jiti@2.7.0)(postcss@8.5.25)(tsx@4.23.5)(typescript@6.0.3)(yaml@2.9.0)
+        version: 8.4.0(patch_hash=a9def7e06ce25c19654987ab91979289197bf4d3e7e124c514a4487c3e8d68c6)(@microsoft/api-extractor@7.58.12(@types/node@25.9.5))(@swc/core@1.7.26(@swc/helpers@0.5.13))(jiti@2.7.0)(postcss@8.5.25)(tsx@4.23.7)(typescript@6.0.3)(yaml@2.9.0)
       tsx:
         specifier: 'catalog:'
-        version: 4.23.5
+        version: 4.23.7
       typescript:
         specifier: ^6.0.3
         version: 6.0.3
@@ -1792,7 +1854,7 @@ importers:
     devDependencies:
       tsup:
         specifier: 'catalog:'
-        version: 8.4.0(patch_hash=a9def7e06ce25c19654987ab91979289197bf4d3e7e124c514a4487c3e8d68c6)(@microsoft/api-extractor@7.58.12(@types/node@26.1.2))(@swc/core@1.7.26(@swc/helpers@0.5.13))(jiti@2.7.0)(postcss@8.5.25)(tsx@4.23.5)(typescript@6.0.3)(yaml@2.9.0)
+        version: 8.4.0(patch_hash=a9def7e06ce25c19654987ab91979289197bf4d3e7e124c514a4487c3e8d68c6)(@microsoft/api-extractor@7.58.12(@types/node@26.1.2))(@swc/core@1.7.26(@swc/helpers@0.5.13))(jiti@2.7.0)(postcss@8.5.25)(tsx@4.23.7)(typescript@6.0.3)(yaml@2.9.0)
 
   packages/pnpm-plugin:
     devDependencies:
@@ -1810,7 +1872,7 @@ importers:
         version: 6.1.7
       tsup:
         specifier: 'catalog:'
-        version: 8.4.0(patch_hash=a9def7e06ce25c19654987ab91979289197bf4d3e7e124c514a4487c3e8d68c6)(@microsoft/api-extractor@7.58.12(@types/node@25.9.5))(@swc/core@1.7.26(@swc/helpers@0.5.13))(jiti@2.7.0)(postcss@8.5.25)(tsx@4.23.5)(typescript@6.0.3)(yaml@2.9.0)
+        version: 8.4.0(patch_hash=a9def7e06ce25c19654987ab91979289197bf4d3e7e124c514a4487c3e8d68c6)(@microsoft/api-extractor@7.58.12(@types/node@25.9.5))(@swc/core@1.7.26(@swc/helpers@0.5.13))(jiti@2.7.0)(postcss@8.5.25)(tsx@4.23.7)(typescript@6.0.3)(yaml@2.9.0)
 
   packages/pnpm-tools:
     dependencies:
@@ -1856,7 +1918,7 @@ importers:
         version: 25.9.5
       tsup:
         specifier: 'catalog:'
-        version: 8.4.0(patch_hash=a9def7e06ce25c19654987ab91979289197bf4d3e7e124c514a4487c3e8d68c6)(@microsoft/api-extractor@7.58.12(@types/node@25.9.5))(@swc/core@1.7.26(@swc/helpers@0.5.13))(jiti@2.7.0)(postcss@8.5.25)(tsx@4.23.5)(typescript@6.0.3)(yaml@2.9.0)
+        version: 8.4.0(patch_hash=a9def7e06ce25c19654987ab91979289197bf4d3e7e124c514a4487c3e8d68c6)(@microsoft/api-extractor@7.58.12(@types/node@25.9.5))(@swc/core@1.7.26(@swc/helpers@0.5.13))(jiti@2.7.0)(postcss@8.5.25)(tsx@4.23.7)(typescript@6.0.3)(yaml@2.9.0)
 
   packages/prettier:
     dependencies:
@@ -1924,7 +1986,7 @@ importers:
         version: 0.91.31(constructs@10.6.0)
       tsup:
         specifier: 'catalog:'
-        version: 8.4.0(patch_hash=a9def7e06ce25c19654987ab91979289197bf4d3e7e124c514a4487c3e8d68c6)(@microsoft/api-extractor@7.58.12(@types/node@25.9.5))(@swc/core@1.7.26(@swc/helpers@0.5.13))(jiti@2.7.0)(postcss@8.5.25)(tsx@4.23.5)(typescript@6.0.3)(yaml@2.9.0)
+        version: 8.4.0(patch_hash=a9def7e06ce25c19654987ab91979289197bf4d3e7e124c514a4487c3e8d68c6)(@microsoft/api-extractor@7.58.12(@types/node@25.9.5))(@swc/core@1.7.26(@swc/helpers@0.5.13))(jiti@2.7.0)(postcss@8.5.25)(tsx@4.23.7)(typescript@6.0.3)(yaml@2.9.0)
       untyped:
         specifier: 'catalog:'
         version: 2.0.0
@@ -1967,7 +2029,7 @@ importers:
         version: 23.1.1(@swc-node/register@1.10.9(@swc/core@1.7.26(@swc/helpers@0.5.13))(@swc/types@0.1.28)(typescript@6.0.3))(@swc/core@1.7.26(@swc/helpers@0.5.13))
       tsup:
         specifier: 'catalog:'
-        version: 8.4.0(patch_hash=a9def7e06ce25c19654987ab91979289197bf4d3e7e124c514a4487c3e8d68c6)(@microsoft/api-extractor@7.58.12(@types/node@25.9.5))(@swc/core@1.7.26(@swc/helpers@0.5.13))(jiti@2.7.0)(postcss@8.5.25)(tsx@4.23.5)(typescript@6.0.3)(yaml@2.9.0)
+        version: 8.4.0(patch_hash=a9def7e06ce25c19654987ab91979289197bf4d3e7e124c514a4487c3e8d68c6)(@microsoft/api-extractor@7.58.12(@types/node@25.9.5))(@swc/core@1.7.26(@swc/helpers@0.5.13))(jiti@2.7.0)(postcss@8.5.25)(tsx@4.23.7)(typescript@6.0.3)(yaml@2.9.0)
       untyped:
         specifier: 'catalog:'
         version: 2.0.0
@@ -1998,7 +2060,7 @@ importers:
         version: 23.1.1(@swc-node/register@1.10.9(@swc/core@1.7.26(@swc/helpers@0.5.13))(@swc/types@0.1.28)(typescript@6.0.3))(@swc/core@1.7.26(@swc/helpers@0.5.13))
       tsup:
         specifier: 'catalog:'
-        version: 8.4.0(patch_hash=a9def7e06ce25c19654987ab91979289197bf4d3e7e124c514a4487c3e8d68c6)(@microsoft/api-extractor@7.58.12(@types/node@25.9.5))(@swc/core@1.7.26(@swc/helpers@0.5.13))(jiti@2.7.0)(postcss@8.5.25)(tsx@4.23.5)(typescript@6.0.3)(yaml@2.9.0)
+        version: 8.4.0(patch_hash=a9def7e06ce25c19654987ab91979289197bf4d3e7e124c514a4487c3e8d68c6)(@microsoft/api-extractor@7.58.12(@types/node@25.9.5))(@swc/core@1.7.26(@swc/helpers@0.5.13))(jiti@2.7.0)(postcss@8.5.25)(tsx@4.23.7)(typescript@6.0.3)(yaml@2.9.0)
       untyped:
         specifier: 'catalog:'
         version: 2.0.0
@@ -2052,7 +2114,7 @@ importers:
         version: 25.9.5
       tsup:
         specifier: 'catalog:'
-        version: 8.4.0(patch_hash=a9def7e06ce25c19654987ab91979289197bf4d3e7e124c514a4487c3e8d68c6)(@microsoft/api-extractor@7.58.12(@types/node@25.9.5))(@swc/core@1.7.26(@swc/helpers@0.5.13))(jiti@2.7.0)(postcss@8.5.25)(tsx@4.23.5)(typescript@6.0.3)(yaml@2.9.0)
+        version: 8.4.0(patch_hash=a9def7e06ce25c19654987ab91979289197bf4d3e7e124c514a4487c3e8d68c6)(@microsoft/api-extractor@7.58.12(@types/node@25.9.5))(@swc/core@1.7.26(@swc/helpers@0.5.13))(jiti@2.7.0)(postcss@8.5.25)(tsx@4.23.7)(typescript@6.0.3)(yaml@2.9.0)
       typescript:
         specifier: ^6.0.3
         version: 6.0.3
@@ -2094,7 +2156,7 @@ importers:
         version: 0.7.4
       tsup:
         specifier: 'catalog:'
-        version: 8.4.0(patch_hash=a9def7e06ce25c19654987ab91979289197bf4d3e7e124c514a4487c3e8d68c6)(@microsoft/api-extractor@7.58.12(@types/node@25.9.5))(@swc/core@1.7.26(@swc/helpers@0.5.13))(jiti@2.7.0)(postcss@8.5.25)(tsx@4.23.5)(typescript@6.0.3)(yaml@2.9.0)
+        version: 8.4.0(patch_hash=a9def7e06ce25c19654987ab91979289197bf4d3e7e124c514a4487c3e8d68c6)(@microsoft/api-extractor@7.58.12(@types/node@25.9.5))(@swc/core@1.7.26(@swc/helpers@0.5.13))(jiti@2.7.0)(postcss@8.5.25)(tsx@4.23.7)(typescript@6.0.3)(yaml@2.9.0)
     devDependencies:
       '@microsoft/api-extractor':
         specifier: 'catalog:'
@@ -2119,7 +2181,7 @@ importers:
         version: 3.0.23
       tsdown:
         specifier: 'catalog:'
-        version: 0.22.14(@typescript/native-preview@7.0.0-dev.20250908.1)(@volar/typescript@2.4.28)(oxc-resolver@11.24.2)(tsx@4.23.5)(typescript@6.0.3)
+        version: 0.22.14(@typescript/native-preview@7.0.0-dev.20250908.1)(@volar/typescript@2.4.28)(oxc-resolver@11.24.2)(tsx@4.23.7)(typescript@6.0.3)
 
   packages/tsup:
     dependencies:
@@ -2138,7 +2200,7 @@ importers:
         version: 0.25.12
       tsup:
         specifier: 'catalog:'
-        version: 8.4.0(patch_hash=a9def7e06ce25c19654987ab91979289197bf4d3e7e124c514a4487c3e8d68c6)(@microsoft/api-extractor@7.58.12(@types/node@25.9.5))(@swc/core@1.7.26(@swc/helpers@0.5.13))(jiti@2.7.0)(postcss@8.5.25)(tsx@4.23.5)(typescript@6.0.3)(yaml@2.9.0)
+        version: 8.4.0(patch_hash=a9def7e06ce25c19654987ab91979289197bf4d3e7e124c514a4487c3e8d68c6)(@microsoft/api-extractor@7.58.12(@types/node@25.9.5))(@swc/core@1.7.26(@swc/helpers@0.5.13))(jiti@2.7.0)(postcss@8.5.25)(tsx@4.23.7)(typescript@6.0.3)(yaml@2.9.0)
       typescript:
         specifier: ^6.0.3
         version: 6.0.3
@@ -2202,7 +2264,7 @@ importers:
         version: 23.1.1(@swc-node/register@1.10.9(@swc/core@1.7.26(@swc/helpers@0.5.13))(@swc/types@0.1.28)(typescript@6.0.3))(@swc/core@1.7.26(@swc/helpers@0.5.13))
       tsup:
         specifier: 'catalog:'
-        version: 8.4.0(patch_hash=a9def7e06ce25c19654987ab91979289197bf4d3e7e124c514a4487c3e8d68c6)(@microsoft/api-extractor@7.58.12(@types/node@25.9.5))(@swc/core@1.7.26(@swc/helpers@0.5.13))(jiti@2.7.0)(postcss@8.5.25)(tsx@4.23.5)(typescript@6.0.3)(yaml@2.9.0)
+        version: 8.4.0(patch_hash=a9def7e06ce25c19654987ab91979289197bf4d3e7e124c514a4487c3e8d68c6)(@microsoft/api-extractor@7.58.12(@types/node@25.9.5))(@swc/core@1.7.26(@swc/helpers@0.5.13))(jiti@2.7.0)(postcss@8.5.25)(tsx@4.23.7)(typescript@6.0.3)(yaml@2.9.0)
       typescript:
         specifier: ^6.0.3
         version: 6.0.3
@@ -2230,7 +2292,7 @@ importers:
         version: 25.9.5
       tsup:
         specifier: 'catalog:'
-        version: 8.4.0(patch_hash=a9def7e06ce25c19654987ab91979289197bf4d3e7e124c514a4487c3e8d68c6)(@microsoft/api-extractor@7.58.12(@types/node@25.9.5))(@swc/core@1.7.26(@swc/helpers@0.5.13))(jiti@2.7.0)(postcss@8.5.25)(tsx@4.23.5)(typescript@6.0.3)(yaml@2.9.0)
+        version: 8.4.0(patch_hash=a9def7e06ce25c19654987ab91979289197bf4d3e7e124c514a4487c3e8d68c6)(@microsoft/api-extractor@7.58.12(@types/node@25.9.5))(@swc/core@1.7.26(@swc/helpers@0.5.13))(jiti@2.7.0)(postcss@8.5.25)(tsx@4.23.7)(typescript@6.0.3)(yaml@2.9.0)
       untyped:
         specifier: 'catalog:'
         version: 2.0.0
@@ -2242,26 +2304,26 @@ importers:
         version: 0.4.0(rollup@4.62.4)
       vite-plugin-dts:
         specifier: ^4.5.4
-        version: 4.5.4(@types/node@25.9.5)(rollup@4.62.4)(typescript@6.0.3)(vite@8.0.0-beta.2(@emnapi/core@2.0.0-alpha.3)(@emnapi/runtime@2.0.0-alpha.3)(@types/node@25.9.5)(esbuild@0.25.12)(jiti@2.7.0)(less@4.5.1)(sass-embedded@1.100.0)(sass@1.102.0)(terser@5.49.1)(tsx@4.23.5)(yaml@2.9.0))
+        version: 4.5.4(@types/node@25.9.5)(rollup@4.62.4)(typescript@6.0.3)(vite@8.0.0-beta.2(@emnapi/core@2.0.0-alpha.3)(@emnapi/runtime@2.0.0-alpha.3)(@types/node@25.9.5)(esbuild@0.25.12)(jiti@2.7.0)(less@4.5.1)(sass-embedded@1.100.0)(sass@1.102.0)(terser@5.49.1)(tsx@4.23.7)(yaml@2.9.0))
       vite-plugin-externalize-deps:
         specifier: ^0.10.0
-        version: 0.10.0(vite@8.0.0-beta.2(@emnapi/core@2.0.0-alpha.3)(@emnapi/runtime@2.0.0-alpha.3)(@types/node@25.9.5)(esbuild@0.25.12)(jiti@2.7.0)(less@4.5.1)(sass-embedded@1.100.0)(sass@1.102.0)(terser@5.49.1)(tsx@4.23.5)(yaml@2.9.0))
+        version: 0.10.0(vite@8.0.0-beta.2(@emnapi/core@2.0.0-alpha.3)(@emnapi/runtime@2.0.0-alpha.3)(@types/node@25.9.5)(esbuild@0.25.12)(jiti@2.7.0)(less@4.5.1)(sass-embedded@1.100.0)(sass@1.102.0)(terser@5.49.1)(tsx@4.23.7)(yaml@2.9.0))
       vite-tsconfig-paths:
         specifier: ^5.1.4
-        version: 5.1.4(typescript@6.0.3)(vite@8.0.0-beta.2(@emnapi/core@2.0.0-alpha.3)(@emnapi/runtime@2.0.0-alpha.3)(@types/node@25.9.5)(esbuild@0.25.12)(jiti@2.7.0)(less@4.5.1)(sass-embedded@1.100.0)(sass@1.102.0)(terser@5.49.1)(tsx@4.23.5)(yaml@2.9.0))
+        version: 5.1.4(typescript@6.0.3)(vite@8.0.0-beta.2(@emnapi/core@2.0.0-alpha.3)(@emnapi/runtime@2.0.0-alpha.3)(@types/node@25.9.5)(esbuild@0.25.12)(jiti@2.7.0)(less@4.5.1)(sass-embedded@1.100.0)(sass@1.102.0)(terser@5.49.1)(tsx@4.23.7)(yaml@2.9.0))
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
         version: 25.9.5
       tsup:
         specifier: 'catalog:'
-        version: 8.4.0(patch_hash=a9def7e06ce25c19654987ab91979289197bf4d3e7e124c514a4487c3e8d68c6)(@microsoft/api-extractor@7.58.12(@types/node@25.9.5))(@swc/core@1.7.26(@swc/helpers@0.5.13))(jiti@2.7.0)(postcss@8.5.25)(tsx@4.23.5)(typescript@6.0.3)(yaml@2.9.0)
+        version: 8.4.0(patch_hash=a9def7e06ce25c19654987ab91979289197bf4d3e7e124c514a4487c3e8d68c6)(@microsoft/api-extractor@7.58.12(@types/node@25.9.5))(@swc/core@1.7.26(@swc/helpers@0.5.13))(jiti@2.7.0)(postcss@8.5.25)(tsx@4.23.7)(typescript@6.0.3)(yaml@2.9.0)
       typescript:
         specifier: ^6.0.3
         version: 6.0.3
       vite:
         specifier: 8.0.0-beta.2
-        version: 8.0.0-beta.2(@emnapi/core@2.0.0-alpha.3)(@emnapi/runtime@2.0.0-alpha.3)(@types/node@25.9.5)(esbuild@0.25.12)(jiti@2.7.0)(less@4.5.1)(sass-embedded@1.100.0)(sass@1.102.0)(terser@5.49.1)(tsx@4.23.5)(yaml@2.9.0)
+        version: 8.0.0-beta.2(@emnapi/core@2.0.0-alpha.3)(@emnapi/runtime@2.0.0-alpha.3)(@types/node@25.9.5)(esbuild@0.25.12)(jiti@2.7.0)(less@4.5.1)(sass-embedded@1.100.0)(sass@1.102.0)(terser@5.49.1)(tsx@4.23.7)(yaml@2.9.0)
 
   packages/workspace-tools:
     dependencies:
@@ -2339,7 +2401,7 @@ importers:
         version: 11.2.0
       tsx:
         specifier: 'catalog:'
-        version: 4.23.5
+        version: 4.23.7
       typia:
         specifier: 'catalog:'
         version: 7.6.4(@samchon/openapi@2.5.3)(@types/node@25.9.5)(typescript@6.0.3)
@@ -2382,7 +2444,7 @@ importers:
         version: 23.1.1(@swc-node/register@1.10.9(@swc/core@1.7.26(@swc/helpers@0.5.13))(@swc/types@0.1.28)(typescript@6.0.3))(@swc/core@1.7.26(@swc/helpers@0.5.13))
       tsup:
         specifier: 'catalog:'
-        version: 8.4.0(patch_hash=a9def7e06ce25c19654987ab91979289197bf4d3e7e124c514a4487c3e8d68c6)(@microsoft/api-extractor@7.58.12(@types/node@25.9.5))(@swc/core@1.7.26(@swc/helpers@0.5.13))(jiti@2.7.0)(postcss@8.5.25)(tsx@4.23.5)(typescript@6.0.3)(yaml@2.9.0)
+        version: 8.4.0(patch_hash=a9def7e06ce25c19654987ab91979289197bf4d3e7e124c514a4487c3e8d68c6)(@microsoft/api-extractor@7.58.12(@types/node@25.9.5))(@swc/core@1.7.26(@swc/helpers@0.5.13))(jiti@2.7.0)(postcss@8.5.25)(tsx@4.23.7)(typescript@6.0.3)(yaml@2.9.0)
       typescript:
         specifier: ^6.0.3
         version: 6.0.3
@@ -2405,7 +2467,7 @@ importers:
         version: 25.9.5
       tsup:
         specifier: 'catalog:'
-        version: 8.4.0(patch_hash=a9def7e06ce25c19654987ab91979289197bf4d3e7e124c514a4487c3e8d68c6)(@microsoft/api-extractor@7.58.12(@types/node@25.9.5))(@swc/core@1.7.26(@swc/helpers@0.5.13))(jiti@2.7.0)(postcss@8.5.25)(tsx@4.23.5)(typescript@6.0.3)(yaml@2.9.0)
+        version: 8.4.0(patch_hash=a9def7e06ce25c19654987ab91979289197bf4d3e7e124c514a4487c3e8d68c6)(@microsoft/api-extractor@7.58.12(@types/node@25.9.5))(@swc/core@1.7.26(@swc/helpers@0.5.13))(jiti@2.7.0)(postcss@8.5.25)(tsx@4.23.7)(typescript@6.0.3)(yaml@2.9.0)
 
   tools/scripts:
     dependencies:
@@ -2442,7 +2504,7 @@ importers:
         version: 6.0.1
       tsup:
         specifier: 'catalog:'
-        version: 8.4.0(patch_hash=a9def7e06ce25c19654987ab91979289197bf4d3e7e124c514a4487c3e8d68c6)(@microsoft/api-extractor@7.58.12(@types/node@25.9.5))(@swc/core@1.7.26(@swc/helpers@0.5.13))(jiti@2.7.0)(postcss@8.5.25)(tsx@4.23.5)(typescript@6.0.3)(yaml@2.9.0)
+        version: 8.4.0(patch_hash=a9def7e06ce25c19654987ab91979289197bf4d3e7e124c514a4487c3e8d68c6)(@microsoft/api-extractor@7.58.12(@types/node@25.9.5))(@swc/core@1.7.26(@swc/helpers@0.5.13))(jiti@2.7.0)(postcss@8.5.25)(tsx@4.23.7)(typescript@6.0.3)(yaml@2.9.0)
 
 packages:
 
@@ -8436,11 +8498,11 @@ packages:
   '@volar/typescript@2.4.28':
     resolution: {integrity: sha512-Ja6yvWrbis2QtN4ClAKreeUZPVYMARDYZl9LMEv1iQ1QdepB6wn0jTRxA9MftYmYa4DQ4k/DaSZpFPUfxl8giw==}
 
-  '@vue/compiler-core@3.5.40':
-    resolution: {integrity: sha512-39E8IgOhTbVDnoJFMKc2DvYnypcZwUqgUhQkccva/0m6FUwtIKSGV7n1hpVmYcFaoRAwf9pBcwnKlCEsN63ZEQ==}
+  '@vue/compiler-core@3.5.41':
+    resolution: {integrity: sha512-q0Xtv/F9w2YO/7htQhtiL+Ev2WCJbe5N2hc+XfgyKkEKqWpSxknmT8QOuGdEKNdjPq0c3F7rNpFkTo3Kfrm7pg==}
 
-  '@vue/compiler-dom@3.5.40':
-    resolution: {integrity: sha512-pwkx4vqlqOspFstrcmzwkKLePVMD3PT65imRzLhanU2V1Fj4K13g6OXjanOyzw3aTAuRk84BOmY8f3rEHqPaVA==}
+  '@vue/compiler-dom@3.5.41':
+    resolution: {integrity: sha512-oKacVfNglLvGjnS6BXOlGL7EyG2h8X03pqXCjzotRZUaXGjbrTJUnVAQjrCqUnS+lyu31nwQjZY/d817GmCnfw==}
 
   '@vue/compiler-vue2@2.7.16':
     resolution: {integrity: sha512-qYC3Psj9S/mfu9uVi5WvNZIzq+xnXMhOwbTFKKDD7b1lhpnn71jXSFdTQ+WsIEk0ONCd7VV2IMm7ONl6tbQ86A==}
@@ -8453,8 +8515,8 @@ packages:
       typescript:
         optional: true
 
-  '@vue/shared@3.5.40':
-    resolution: {integrity: sha512-WxnBtruIqOoV3rA4jeKDWzrYI5h7Cp4+pjwDi8kWGHz+IslhiN+wguLVVhtv2l8VoU02rzDCVfDjgCl1lNpZVg==}
+  '@vue/shared@3.5.41':
+    resolution: {integrity: sha512-IOnwSCma8j+9xJT6b8H0dEYidC80NsYmNMlZxRsukYcSoGaDBohog5hDxzeUXdFeGWFA++vWvxqOmrr96VlqMA==}
 
   '@webassemblyjs/ast@1.14.1':
     resolution: {integrity: sha512-nuBEDgQfm1ccRp/8bCQrx1frohyufl4JlbMMZ4P1wpeOfDhF6FQkxZJ1b/e+PLwr6X1Nhw6OLme5usuBWYBvuQ==}
@@ -16463,8 +16525,8 @@ packages:
       typescript:
         optional: true
 
-  tsx@4.23.5:
-    resolution: {integrity: sha512-rw55FUaqOoI7RvlQwLbhO4nSDApnQ4/CykPuiQ/EPvtrX3WA9Ig55jIt9VvbBJbzJuj12ueRu4PMZ2SxPVbihg==}
+  tsx@4.23.7:
+    resolution: {integrity: sha512-3f/u/+UDCNQ7iwUZW9FCMnNGIHzElGJYh0S/yy8IvWSsn5O7fEO/897FaG7FA2W8yryiRyuwXZ1PYLAKYaqSuQ==}
     engines: {node: '>=18.0.0'}
     hasBin: true
 
@@ -19906,7 +19968,7 @@ snapshots:
   '@jest/console@30.0.5':
     dependencies:
       '@jest/types': 30.0.5
-      '@types/node': 25.9.5
+      '@types/node': 26.1.2
       chalk: 4.1.2
       jest-message-util: 30.0.5
       jest-util: 30.0.5
@@ -19915,7 +19977,7 @@ snapshots:
   '@jest/console@30.4.1':
     dependencies:
       '@jest/types': 30.4.1
-      '@types/node': 25.9.5
+      '@types/node': 26.1.2
       chalk: 4.1.2
       jest-message-util: 30.4.1
       jest-util: 30.4.1
@@ -19929,14 +19991,14 @@ snapshots:
       '@jest/test-result': 30.0.5
       '@jest/transform': 30.0.5
       '@jest/types': 30.0.5
-      '@types/node': 25.9.5
+      '@types/node': 26.1.2
       ansi-escapes: 4.3.2
       chalk: 4.1.2
       ci-info: 4.4.0
       exit-x: 0.2.2
       graceful-fs: 4.2.11
       jest-changed-files: 30.0.5
-      jest-config: 30.0.5(@types/node@25.9.5)(babel-plugin-macros@3.1.0)(ts-node@10.9.2(@swc/core@1.7.26(@swc/helpers@0.5.13))(@swc/wasm@1.6.5)(@types/node@25.9.5)(typescript@6.0.3))
+      jest-config: 30.0.5(@types/node@26.1.2)(babel-plugin-macros@3.1.0)(ts-node@10.9.2(@swc/core@1.7.26(@swc/helpers@0.5.13))(@swc/wasm@1.6.5)(@types/node@25.9.5)(typescript@6.0.3))
       jest-haste-map: 30.0.5
       jest-message-util: 30.0.5
       jest-regex-util: 30.0.1
@@ -19967,7 +20029,7 @@ snapshots:
       '@jest/fake-timers': 30.0.5
       '@jest/types': 30.0.5
       '@types/jsdom': 21.1.7
-      '@types/node': 25.9.5
+      '@types/node': 26.1.2
       jest-mock: 30.0.5
       jest-util: 30.0.5
       jsdom: 26.1.0
@@ -19976,14 +20038,14 @@ snapshots:
     dependencies:
       '@jest/fake-timers': 30.0.5
       '@jest/types': 30.0.5
-      '@types/node': 25.9.5
+      '@types/node': 26.1.2
       jest-mock: 30.0.5
 
   '@jest/environment@30.4.1':
     dependencies:
       '@jest/fake-timers': 30.4.1
       '@jest/types': 30.4.1
-      '@types/node': 25.9.5
+      '@types/node': 26.1.2
       jest-mock: 30.4.1
 
   '@jest/expect-utils@30.0.5':
@@ -20012,7 +20074,7 @@ snapshots:
     dependencies:
       '@jest/types': 30.0.5
       '@sinonjs/fake-timers': 13.0.5
-      '@types/node': 25.9.5
+      '@types/node': 26.1.2
       jest-message-util: 30.0.5
       jest-mock: 30.0.5
       jest-util: 30.0.5
@@ -20021,7 +20083,7 @@ snapshots:
     dependencies:
       '@jest/types': 30.4.1
       '@sinonjs/fake-timers': 15.4.0
-      '@types/node': 25.9.5
+      '@types/node': 26.1.2
       jest-message-util: 30.4.1
       jest-mock: 30.4.1
       jest-util: 30.4.1
@@ -20050,12 +20112,12 @@ snapshots:
 
   '@jest/pattern@30.0.1':
     dependencies:
-      '@types/node': 25.9.5
+      '@types/node': 26.1.2
       jest-regex-util: 30.0.1
 
   '@jest/pattern@30.4.0':
     dependencies:
-      '@types/node': 25.9.5
+      '@types/node': 26.1.2
       jest-regex-util: 30.4.0
 
   '@jest/reporters@30.0.5':
@@ -20066,7 +20128,7 @@ snapshots:
       '@jest/transform': 30.0.5
       '@jest/types': 30.0.5
       '@jridgewell/trace-mapping': 0.3.31
-      '@types/node': 25.9.5
+      '@types/node': 26.1.2
       chalk: 4.1.2
       collect-v8-coverage: 1.0.3
       exit-x: 0.2.2
@@ -20094,7 +20156,7 @@ snapshots:
       '@jest/transform': 30.4.1
       '@jest/types': 30.4.1
       '@jridgewell/trace-mapping': 0.3.31
-      '@types/node': 25.9.5
+      '@types/node': 26.1.2
       chalk: 4.1.2
       collect-v8-coverage: 1.0.3
       exit-x: 0.2.2
@@ -20219,7 +20281,7 @@ snapshots:
       '@jest/schemas': 30.0.5
       '@types/istanbul-lib-coverage': 2.0.6
       '@types/istanbul-reports': 3.0.4
-      '@types/node': 25.9.5
+      '@types/node': 26.1.2
       '@types/yargs': 17.0.35
       chalk: 4.1.2
 
@@ -20229,7 +20291,7 @@ snapshots:
       '@jest/schemas': 30.4.1
       '@types/istanbul-lib-coverage': 2.0.6
       '@types/istanbul-reports': 3.0.4
-      '@types/node': 25.9.5
+      '@types/node': 26.1.2
       '@types/yargs': 17.0.35
       chalk: 4.1.2
 
@@ -21066,7 +21128,7 @@ snapshots:
       enquirer: 2.3.6
       ignore: 5.3.2
       nx: 18.1.0-beta.2(@swc-node/register@1.10.9(@swc/core@1.7.26(@swc/helpers@0.5.13))(@swc/types@0.1.28)(typescript@6.0.3))(@swc/core@1.7.26(@swc/helpers@0.5.13))
-      semver: 7.5.4
+      semver: 7.8.5
       tmp: 0.2.7
       tslib: 2.8.1
       yargs-parser: 21.1.1
@@ -23347,7 +23409,7 @@ snapshots:
 
   '@types/concat-stream@2.0.3':
     dependencies:
-      '@types/node': 25.9.5
+      '@types/node': 26.1.2
 
   '@types/connect-history-api-fallback@1.5.4':
     dependencies:
@@ -23360,7 +23422,7 @@ snapshots:
 
   '@types/conventional-commits-parser@5.0.2':
     dependencies:
-      '@types/node': 25.9.5
+      '@types/node': 26.1.2
 
   '@types/debug@4.1.13':
     dependencies:
@@ -23435,7 +23497,7 @@ snapshots:
 
   '@types/jsdom@21.1.7':
     dependencies:
-      '@types/node': 25.9.5
+      '@types/node': 26.1.2
       '@types/tough-cookie': 4.0.5
       parse5: 7.3.0
 
@@ -23501,7 +23563,7 @@ snapshots:
 
   '@types/responselike@1.0.0':
     dependencies:
-      '@types/node': 25.9.5
+      '@types/node': 26.1.2
 
   '@types/retry@0.12.2': {}
 
@@ -23962,18 +24024,18 @@ snapshots:
       path-browserify: 1.0.1
       vscode-uri: 3.1.0
 
-  '@vue/compiler-core@3.5.40':
+  '@vue/compiler-core@3.5.41':
     dependencies:
       '@babel/parser': 7.29.8
-      '@vue/shared': 3.5.40
+      '@vue/shared': 3.5.41
       entities: 7.0.1
       estree-walker: 2.0.2
       source-map-js: 1.2.1
 
-  '@vue/compiler-dom@3.5.40':
+  '@vue/compiler-dom@3.5.41':
     dependencies:
-      '@vue/compiler-core': 3.5.40
-      '@vue/shared': 3.5.40
+      '@vue/compiler-core': 3.5.41
+      '@vue/shared': 3.5.41
 
   '@vue/compiler-vue2@2.7.16':
     dependencies:
@@ -23983,9 +24045,9 @@ snapshots:
   '@vue/language-core@2.2.0(typescript@6.0.3)':
     dependencies:
       '@volar/language-core': 2.4.28
-      '@vue/compiler-dom': 3.5.40
+      '@vue/compiler-dom': 3.5.41
       '@vue/compiler-vue2': 2.7.16
-      '@vue/shared': 3.5.40
+      '@vue/shared': 3.5.41
       alien-signals: 0.4.14
       minimatch: 9.0.9
       muggle-string: 0.4.1
@@ -23993,7 +24055,7 @@ snapshots:
     optionalDependencies:
       typescript: 6.0.3
 
-  '@vue/shared@3.5.40': {}
+  '@vue/shared@3.5.41': {}
 
   '@webassemblyjs/ast@1.14.1':
     dependencies:
@@ -26123,7 +26185,7 @@ snapshots:
   eslint-doc-generator@3.7.0(eslint@10.8.0(jiti@2.7.0))(typescript@6.0.3):
     dependencies:
       '@typescript-eslint/utils': 8.66.0(eslint@10.8.0(jiti@2.7.0))(typescript@6.0.3)
-      ajv: 8.12.0
+      ajv: 8.20.0
       change-case: 5.4.4
       commander: 14.0.3
       cosmiconfig: 9.0.2(typescript@6.0.3)
@@ -28261,7 +28323,7 @@ snapshots:
       '@jest/expect': 30.0.5
       '@jest/test-result': 30.0.5
       '@jest/types': 30.0.5
-      '@types/node': 25.9.5
+      '@types/node': 26.1.2
       chalk: 4.1.2
       co: 4.6.0
       dedent: 1.7.2(babel-plugin-macros@3.1.0)
@@ -28287,7 +28349,7 @@ snapshots:
       '@jest/expect': 30.4.1
       '@jest/test-result': 30.4.1
       '@jest/types': 30.4.1
-      '@types/node': 25.9.5
+      '@types/node': 26.1.2
       chalk: 4.1.2
       co: 4.6.0
       dedent: 1.7.2(babel-plugin-macros@3.1.0)
@@ -28354,6 +28416,39 @@ snapshots:
       strip-json-comments: 3.1.1
     optionalDependencies:
       '@types/node': 25.9.5
+      ts-node: 10.9.2(@swc/core@1.7.26(@swc/helpers@0.5.13))(@swc/wasm@1.6.5)(@types/node@25.9.5)(typescript@6.0.3)
+    transitivePeerDependencies:
+      - babel-plugin-macros
+      - supports-color
+
+  jest-config@30.0.5(@types/node@26.1.2)(babel-plugin-macros@3.1.0)(ts-node@10.9.2(@swc/core@1.7.26(@swc/helpers@0.5.13))(@swc/wasm@1.6.5)(@types/node@25.9.5)(typescript@6.0.3)):
+    dependencies:
+      '@babel/core': 7.29.7
+      '@jest/get-type': 30.0.1
+      '@jest/pattern': 30.0.1
+      '@jest/test-sequencer': 30.0.5
+      '@jest/types': 30.0.5
+      babel-jest: 30.0.5(@babel/core@7.29.7)
+      chalk: 4.1.2
+      ci-info: 4.4.0
+      deepmerge: 4.3.1
+      glob: 10.5.0
+      graceful-fs: 4.2.11
+      jest-circus: 30.0.5(babel-plugin-macros@3.1.0)
+      jest-docblock: 30.0.1
+      jest-environment-node: 30.0.5
+      jest-regex-util: 30.0.1
+      jest-resolve: 30.0.5
+      jest-runner: 30.0.5
+      jest-util: 30.0.5
+      jest-validate: 30.0.5
+      micromatch: 4.0.8
+      parse-json: 5.2.0
+      pretty-format: 30.0.5
+      slash: 3.0.0
+      strip-json-comments: 3.1.1
+    optionalDependencies:
+      '@types/node': 26.1.2
       ts-node: 10.9.2(@swc/core@1.7.26(@swc/helpers@0.5.13))(@swc/wasm@1.6.5)(@types/node@25.9.5)(typescript@6.0.3)
     transitivePeerDependencies:
       - babel-plugin-macros
@@ -28473,7 +28568,7 @@ snapshots:
       '@jest/environment': 30.0.5
       '@jest/environment-jsdom-abstract': 30.0.5(jsdom@26.1.0)
       '@types/jsdom': 21.1.7
-      '@types/node': 25.9.5
+      '@types/node': 26.1.2
       jsdom: 26.1.0
     transitivePeerDependencies:
       - bufferutil
@@ -28485,7 +28580,7 @@ snapshots:
       '@jest/environment': 30.0.5
       '@jest/fake-timers': 30.0.5
       '@jest/types': 30.0.5
-      '@types/node': 25.9.5
+      '@types/node': 26.1.2
       jest-mock: 30.0.5
       jest-util: 30.0.5
       jest-validate: 30.0.5
@@ -28495,7 +28590,7 @@ snapshots:
       '@jest/environment': 30.4.1
       '@jest/fake-timers': 30.4.1
       '@jest/types': 30.4.1
-      '@types/node': 25.9.5
+      '@types/node': 26.1.2
       jest-mock: 30.4.1
       jest-util: 30.4.1
       jest-validate: 30.4.1
@@ -28505,7 +28600,7 @@ snapshots:
   jest-haste-map@30.0.5:
     dependencies:
       '@jest/types': 30.0.5
-      '@types/node': 25.9.5
+      '@types/node': 26.1.2
       anymatch: 3.1.3
       fb-watchman: 2.0.2
       graceful-fs: 4.2.11
@@ -28520,7 +28615,7 @@ snapshots:
   jest-haste-map@30.4.1:
     dependencies:
       '@jest/types': 30.4.1
-      '@types/node': 25.9.5
+      '@types/node': 26.1.2
       anymatch: 3.1.3
       fb-watchman: 2.0.2
       graceful-fs: 4.2.11
@@ -28584,13 +28679,13 @@ snapshots:
   jest-mock@30.0.5:
     dependencies:
       '@jest/types': 30.0.5
-      '@types/node': 25.9.5
+      '@types/node': 26.1.2
       jest-util: 30.0.5
 
   jest-mock@30.4.1:
     dependencies:
       '@jest/types': 30.4.1
-      '@types/node': 25.9.5
+      '@types/node': 26.1.2
       jest-util: 30.4.1
 
   jest-pnp-resolver@1.2.3(jest-resolve@30.0.5):
@@ -28641,7 +28736,7 @@ snapshots:
       '@jest/test-result': 30.0.5
       '@jest/transform': 30.0.5
       '@jest/types': 30.0.5
-      '@types/node': 25.9.5
+      '@types/node': 26.1.2
       chalk: 4.1.2
       emittery: 0.13.1
       exit-x: 0.2.2
@@ -28668,7 +28763,7 @@ snapshots:
       '@jest/test-result': 30.4.1
       '@jest/transform': 30.4.1
       '@jest/types': 30.4.1
-      '@types/node': 25.9.5
+      '@types/node': 26.1.2
       chalk: 4.1.2
       emittery: 0.13.1
       exit-x: 0.2.2
@@ -28697,7 +28792,7 @@ snapshots:
       '@jest/test-result': 30.0.5
       '@jest/transform': 30.0.5
       '@jest/types': 30.0.5
-      '@types/node': 25.9.5
+      '@types/node': 26.1.2
       chalk: 4.1.2
       cjs-module-lexer: 2.2.0
       collect-v8-coverage: 1.0.3
@@ -28724,7 +28819,7 @@ snapshots:
       '@jest/test-result': 30.4.1
       '@jest/transform': 30.4.1
       '@jest/types': 30.4.1
-      '@types/node': 25.9.5
+      '@types/node': 26.1.2
       chalk: 4.1.2
       cjs-module-lexer: 2.2.0
       collect-v8-coverage: 1.0.3
@@ -28797,7 +28892,7 @@ snapshots:
   jest-util@30.0.5:
     dependencies:
       '@jest/types': 30.0.5
-      '@types/node': 25.9.5
+      '@types/node': 26.1.2
       chalk: 4.1.2
       ci-info: 4.4.0
       graceful-fs: 4.2.11
@@ -28806,7 +28901,7 @@ snapshots:
   jest-util@30.4.1:
     dependencies:
       '@jest/types': 30.4.1
-      '@types/node': 25.9.5
+      '@types/node': 26.1.2
       chalk: 4.1.2
       ci-info: 4.4.0
       graceful-fs: 4.2.11
@@ -28834,7 +28929,7 @@ snapshots:
     dependencies:
       '@jest/test-result': 30.0.5
       '@jest/types': 30.0.5
-      '@types/node': 25.9.5
+      '@types/node': 26.1.2
       ansi-escapes: 4.3.2
       chalk: 4.1.2
       emittery: 0.13.1
@@ -28845,7 +28940,7 @@ snapshots:
     dependencies:
       '@jest/test-result': 30.4.1
       '@jest/types': 30.4.1
-      '@types/node': 25.9.5
+      '@types/node': 26.1.2
       ansi-escapes: 4.3.2
       chalk: 4.1.2
       emittery: 0.13.1
@@ -28860,7 +28955,7 @@ snapshots:
 
   jest-worker@30.0.5:
     dependencies:
-      '@types/node': 25.9.5
+      '@types/node': 26.1.2
       '@ungap/structured-clone': 1.3.3
       jest-util: 30.0.5
       merge-stream: 2.0.0
@@ -28868,7 +28963,7 @@ snapshots:
 
   jest-worker@30.4.1:
     dependencies:
-      '@types/node': 25.9.5
+      '@types/node': 26.1.2
       '@ungap/structured-clone': 1.3.3
       jest-util: 30.4.1
       merge-stream: 2.0.0
@@ -29015,7 +29110,7 @@ snapshots:
       lodash.isstring: 4.0.1
       lodash.once: 4.1.1
       ms: 2.1.3
-      semver: 7.8.0
+      semver: 7.8.5
 
   jsprim@2.0.2:
     dependencies:
@@ -31069,7 +31164,7 @@ snapshots:
       npm-run-path: 4.0.1
       open: 8.4.2
       ora: 5.3.0
-      semver: 7.5.4
+      semver: 7.8.5
       string-width: 4.2.3
       strong-log-transformer: 2.1.0
       tar-stream: 2.2.0
@@ -31993,13 +32088,13 @@ snapshots:
       read-cache: 1.0.0
       resolve: 1.22.12
 
-  postcss-load-config@6.0.1(jiti@2.7.0)(postcss@8.5.25)(tsx@4.23.5)(yaml@2.9.0):
+  postcss-load-config@6.0.1(jiti@2.7.0)(postcss@8.5.25)(tsx@4.23.7)(yaml@2.9.0):
     dependencies:
       lilconfig: 3.1.3
     optionalDependencies:
       jiti: 2.7.0
       postcss: 8.5.25
-      tsx: 4.23.5
+      tsx: 4.23.7
       yaml: 2.9.0
 
   postcss-loader@8.2.1(postcss@8.5.25)(typescript@6.0.3)(webpack@5.109.2(@swc/core@1.7.26(@swc/helpers@0.5.13))(esbuild@0.25.12)(postcss@8.5.25)):
@@ -32301,7 +32396,7 @@ snapshots:
       '@protobufjs/path': 1.1.2
       '@protobufjs/pool': 1.1.0
       '@protobufjs/utf8': 1.1.2
-      '@types/node': 25.9.5
+      '@types/node': 26.1.2
       long: 5.3.2
 
   proxy-addr@2.0.7:
@@ -34179,7 +34274,7 @@ snapshots:
       minimist: 1.2.8
       strip-bom: 3.0.0
 
-  tsdown@0.22.14(@typescript/native-preview@7.0.0-dev.20250908.1)(@volar/typescript@2.4.28)(oxc-resolver@11.24.2)(tsx@4.23.5)(typescript@6.0.3):
+  tsdown@0.22.14(@typescript/native-preview@7.0.0-dev.20250908.1)(@volar/typescript@2.4.28)(oxc-resolver@11.24.2)(tsx@4.23.7)(typescript@6.0.3):
     dependencies:
       ansis: 4.3.1
       cac: 7.0.0
@@ -34197,7 +34292,7 @@ snapshots:
       unconfig-core: 7.5.0
       verkit: 0.3.2
     optionalDependencies:
-      tsx: 4.23.5
+      tsx: 4.23.7
       typescript: 6.0.3
     transitivePeerDependencies:
       - '@typescript/native-preview'
@@ -34209,7 +34304,7 @@ snapshots:
 
   tslib@2.8.1: {}
 
-  tsup@8.4.0(patch_hash=a9def7e06ce25c19654987ab91979289197bf4d3e7e124c514a4487c3e8d68c6)(@microsoft/api-extractor@7.58.12(@types/node@25.9.5))(@swc/core@1.7.26(@swc/helpers@0.5.13))(jiti@2.7.0)(postcss@8.5.25)(tsx@4.23.5)(typescript@6.0.3)(yaml@2.9.0):
+  tsup@8.4.0(patch_hash=a9def7e06ce25c19654987ab91979289197bf4d3e7e124c514a4487c3e8d68c6)(@microsoft/api-extractor@7.58.12(@types/node@25.9.5))(@swc/core@1.7.26(@swc/helpers@0.5.13))(jiti@2.7.0)(postcss@8.5.25)(tsx@4.23.7)(typescript@6.0.3)(yaml@2.9.0):
     dependencies:
       bundle-require: 5.1.0(esbuild@0.25.12)
       cac: 6.7.14
@@ -34219,7 +34314,7 @@ snapshots:
       esbuild: 0.25.12
       joycon: 3.1.1
       picocolors: 1.1.1
-      postcss-load-config: 6.0.1(jiti@2.7.0)(postcss@8.5.25)(tsx@4.23.5)(yaml@2.9.0)
+      postcss-load-config: 6.0.1(jiti@2.7.0)(postcss@8.5.25)(tsx@4.23.7)(yaml@2.9.0)
       resolve-from: 5.0.0
       rollup: 4.62.4
       source-map: 0.8.0-beta.0
@@ -34238,7 +34333,7 @@ snapshots:
       - tsx
       - yaml
 
-  tsup@8.4.0(patch_hash=a9def7e06ce25c19654987ab91979289197bf4d3e7e124c514a4487c3e8d68c6)(@microsoft/api-extractor@7.58.12(@types/node@26.1.2))(@swc/core@1.7.26(@swc/helpers@0.5.13))(jiti@2.7.0)(postcss@8.5.25)(tsx@4.23.5)(typescript@6.0.3)(yaml@2.9.0):
+  tsup@8.4.0(patch_hash=a9def7e06ce25c19654987ab91979289197bf4d3e7e124c514a4487c3e8d68c6)(@microsoft/api-extractor@7.58.12(@types/node@26.1.2))(@swc/core@1.7.26(@swc/helpers@0.5.13))(jiti@2.7.0)(postcss@8.5.25)(tsx@4.23.7)(typescript@6.0.3)(yaml@2.9.0):
     dependencies:
       bundle-require: 5.1.0(esbuild@0.25.12)
       cac: 6.7.14
@@ -34248,7 +34343,7 @@ snapshots:
       esbuild: 0.25.12
       joycon: 3.1.1
       picocolors: 1.1.1
-      postcss-load-config: 6.0.1(jiti@2.7.0)(postcss@8.5.25)(tsx@4.23.5)(yaml@2.9.0)
+      postcss-load-config: 6.0.1(jiti@2.7.0)(postcss@8.5.25)(tsx@4.23.7)(yaml@2.9.0)
       resolve-from: 5.0.0
       rollup: 4.62.4
       source-map: 0.8.0-beta.0
@@ -34267,7 +34362,7 @@ snapshots:
       - tsx
       - yaml
 
-  tsx@4.23.5:
+  tsx@4.23.7:
     dependencies:
       esbuild: 0.28.1
     optionalDependencies:
@@ -35037,7 +35132,7 @@ snapshots:
       '@types/unist': 3.0.3
       vfile-message: 4.0.3
 
-  vite-plugin-dts@4.5.4(@types/node@25.9.5)(rollup@4.62.4)(typescript@6.0.3)(vite@8.0.0-beta.2(@emnapi/core@2.0.0-alpha.3)(@emnapi/runtime@2.0.0-alpha.3)(@types/node@25.9.5)(esbuild@0.25.12)(jiti@2.7.0)(less@4.5.1)(sass-embedded@1.100.0)(sass@1.102.0)(terser@5.49.1)(tsx@4.23.5)(yaml@2.9.0)):
+  vite-plugin-dts@4.5.4(@types/node@25.9.5)(rollup@4.62.4)(typescript@6.0.3)(vite@8.0.0-beta.2(@emnapi/core@2.0.0-alpha.3)(@emnapi/runtime@2.0.0-alpha.3)(@types/node@25.9.5)(esbuild@0.25.12)(jiti@2.7.0)(less@4.5.1)(sass-embedded@1.100.0)(sass@1.102.0)(terser@5.49.1)(tsx@4.23.7)(yaml@2.9.0)):
     dependencies:
       '@microsoft/api-extractor': 7.58.12(@types/node@25.9.5)
       '@rollup/pluginutils': 5.4.0(rollup@4.62.4)
@@ -35050,28 +35145,28 @@ snapshots:
       magic-string: 0.30.21
       typescript: 6.0.3
     optionalDependencies:
-      vite: 8.0.0-beta.2(@emnapi/core@2.0.0-alpha.3)(@emnapi/runtime@2.0.0-alpha.3)(@types/node@25.9.5)(esbuild@0.25.12)(jiti@2.7.0)(less@4.5.1)(sass-embedded@1.100.0)(sass@1.102.0)(terser@5.49.1)(tsx@4.23.5)(yaml@2.9.0)
+      vite: 8.0.0-beta.2(@emnapi/core@2.0.0-alpha.3)(@emnapi/runtime@2.0.0-alpha.3)(@types/node@25.9.5)(esbuild@0.25.12)(jiti@2.7.0)(less@4.5.1)(sass-embedded@1.100.0)(sass@1.102.0)(terser@5.49.1)(tsx@4.23.7)(yaml@2.9.0)
     transitivePeerDependencies:
       - '@types/node'
       - rollup
       - supports-color
 
-  vite-plugin-externalize-deps@0.10.0(vite@8.0.0-beta.2(@emnapi/core@2.0.0-alpha.3)(@emnapi/runtime@2.0.0-alpha.3)(@types/node@25.9.5)(esbuild@0.25.12)(jiti@2.7.0)(less@4.5.1)(sass-embedded@1.100.0)(sass@1.102.0)(terser@5.49.1)(tsx@4.23.5)(yaml@2.9.0)):
+  vite-plugin-externalize-deps@0.10.0(vite@8.0.0-beta.2(@emnapi/core@2.0.0-alpha.3)(@emnapi/runtime@2.0.0-alpha.3)(@types/node@25.9.5)(esbuild@0.25.12)(jiti@2.7.0)(less@4.5.1)(sass-embedded@1.100.0)(sass@1.102.0)(terser@5.49.1)(tsx@4.23.7)(yaml@2.9.0)):
     dependencies:
-      vite: 8.0.0-beta.2(@emnapi/core@2.0.0-alpha.3)(@emnapi/runtime@2.0.0-alpha.3)(@types/node@25.9.5)(esbuild@0.25.12)(jiti@2.7.0)(less@4.5.1)(sass-embedded@1.100.0)(sass@1.102.0)(terser@5.49.1)(tsx@4.23.5)(yaml@2.9.0)
+      vite: 8.0.0-beta.2(@emnapi/core@2.0.0-alpha.3)(@emnapi/runtime@2.0.0-alpha.3)(@types/node@25.9.5)(esbuild@0.25.12)(jiti@2.7.0)(less@4.5.1)(sass-embedded@1.100.0)(sass@1.102.0)(terser@5.49.1)(tsx@4.23.7)(yaml@2.9.0)
 
-  vite-tsconfig-paths@5.1.4(typescript@6.0.3)(vite@8.0.0-beta.2(@emnapi/core@2.0.0-alpha.3)(@emnapi/runtime@2.0.0-alpha.3)(@types/node@25.9.5)(esbuild@0.25.12)(jiti@2.7.0)(less@4.5.1)(sass-embedded@1.100.0)(sass@1.102.0)(terser@5.49.1)(tsx@4.23.5)(yaml@2.9.0)):
+  vite-tsconfig-paths@5.1.4(typescript@6.0.3)(vite@8.0.0-beta.2(@emnapi/core@2.0.0-alpha.3)(@emnapi/runtime@2.0.0-alpha.3)(@types/node@25.9.5)(esbuild@0.25.12)(jiti@2.7.0)(less@4.5.1)(sass-embedded@1.100.0)(sass@1.102.0)(terser@5.49.1)(tsx@4.23.7)(yaml@2.9.0)):
     dependencies:
       debug: 4.4.3(supports-color@7.2.0)
       globrex: 0.1.2
       tsconfck: 3.1.6(typescript@6.0.3)
     optionalDependencies:
-      vite: 8.0.0-beta.2(@emnapi/core@2.0.0-alpha.3)(@emnapi/runtime@2.0.0-alpha.3)(@types/node@25.9.5)(esbuild@0.25.12)(jiti@2.7.0)(less@4.5.1)(sass-embedded@1.100.0)(sass@1.102.0)(terser@5.49.1)(tsx@4.23.5)(yaml@2.9.0)
+      vite: 8.0.0-beta.2(@emnapi/core@2.0.0-alpha.3)(@emnapi/runtime@2.0.0-alpha.3)(@types/node@25.9.5)(esbuild@0.25.12)(jiti@2.7.0)(less@4.5.1)(sass-embedded@1.100.0)(sass@1.102.0)(terser@5.49.1)(tsx@4.23.7)(yaml@2.9.0)
     transitivePeerDependencies:
       - supports-color
       - typescript
 
-  vite@8.0.0-beta.2(@emnapi/core@2.0.0-alpha.3)(@emnapi/runtime@2.0.0-alpha.3)(@types/node@25.9.5)(esbuild@0.25.12)(jiti@2.7.0)(less@4.5.1)(sass-embedded@1.100.0)(sass@1.102.0)(terser@5.49.1)(tsx@4.23.5)(yaml@2.9.0):
+  vite@8.0.0-beta.2(@emnapi/core@2.0.0-alpha.3)(@emnapi/runtime@2.0.0-alpha.3)(@types/node@25.9.5)(esbuild@0.25.12)(jiti@2.7.0)(less@4.5.1)(sass-embedded@1.100.0)(sass@1.102.0)(terser@5.49.1)(tsx@4.23.7)(yaml@2.9.0):
     dependencies:
       '@oxc-project/runtime': 0.102.0
       fdir: 6.5.0(picomatch@4.0.5)
@@ -35089,7 +35184,7 @@ snapshots:
       sass: 1.102.0
       sass-embedded: 1.100.0
       terser: 5.49.1
-      tsx: 4.23.5
+      tsx: 4.23.7
       yaml: 2.9.0
     transitivePeerDependencies:
       - '@emnapi/core'

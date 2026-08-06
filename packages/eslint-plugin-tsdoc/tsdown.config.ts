@@ -30,7 +30,7 @@ const config = defineConfig({
   sourcemap: false,
   treeshake: true,
   deps: {
-    skipNodeModulesBundle: false,
+    neverBundle: true,
     alwaysBundle: ["eslint-plugin-tsdoc"]
   }
 });

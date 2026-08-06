@@ -32,7 +32,7 @@ const config = defineConfig({
   fixedExtension: true,
   treeshake: true,
   deps: {
-    skipNodeModulesBundle: false
+    neverBundle: true
   }
 });
 

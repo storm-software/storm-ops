@@ -1,0 +1,31 @@
+{
+  "name": "eslint-plugin-bun",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "packages/eslint-plugin-bun/src",
+  "targets": {
+    "build-base": {
+      "executor": "nx:run-commands",
+      "dependsOn": ["clean", "^build"],
+      "options": {
+        "command": "tsup --config=tsup.config.ts",
+        "cwd": "{projectRoot}"
+      }
+    },
+    "build": {
+      "executor": "nx:run-commands",
+      "dependsOn": ["build-base"],
+      "options": {
+        "commands": [
+          "pnpm copyfiles LICENSE dist/packages/eslint-plugin-bun",
+          "pnpm copyfiles --up=2 ./packages/eslint-plugin-bun/*.md ./packages/eslint-plugin-bun/package.json dist/packages/eslint-plugin-bun",
+          "pnpm copyfiles --up=3 \"./packages/eslint-plugin-bun/dist/**/*\" dist/packages/eslint-plugin-bun/dist"
+        ]
+      }
+    },
+    "nx-release-publish": {
+      "executor": "@storm-software/workspace-tools:npm-publish"
+    }
+  },
+  "tags": ["platform:node"]
+}
