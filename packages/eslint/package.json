@@ -139,7 +139,9 @@
   },
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "dependencies": {
     "@antfu/install-pkg": "^1.1.0",
     "@clack/prompts": "^0.10.1",
@@ -204,6 +206,7 @@
     "@nx/eslint": "catalog:",
     "@prettier/plugin-xml": "^3.4.2",
     "@storm-software/eslint-plugin-banner": "workspace:*",
+    "@storm-software/eslint-plugin-bun": "workspace:*",
     "@storm-software/eslint-plugin-pnpm": "workspace:*",
     "@storm-software/eslint-plugin-tsdoc": "workspace:*",
     "@storm-software/tsdoc": "workspace:*",
@@ -228,7 +231,7 @@
     "eslint-plugin-storybook": "^0.11.6",
     "eslint-typegen": "catalog:",
     "graphql": "^16.14.2",
-    "minimatch": "^10.2.6",
+    "minimatch": "^10.2.5",
     "prettier-plugin-astro": "^0.14.1",
     "tsup": "catalog:",
     "tsx": "catalog:",
@@ -241,6 +244,8 @@
     "@next/eslint-plugin-next": "^15.2.0-canary.67",
     "@nx/eslint": ">=23.0.0",
     "@prettier/plugin-xml": "^3.4.1",
+    "@storm-software/eslint-plugin-bun": "*",
+    "@storm-software/eslint-plugin-pnpm": "*",
     "@storm-software/tsdoc": "*",
     "@unocss/eslint-plugin": ">=0.50.0",
     "astro-eslint-parser": "^1.0.2",
@@ -252,6 +257,7 @@
     "eslint-plugin-relay": "^1.8.3",
     "eslint-plugin-storybook": "^0.11.0",
     "graphql": "^14.0.0 || ^15.0.0 || ^16.0.0",
+    "minimatch": "^10.2.5",
     "prettier-plugin-astro": "^0.14.0",
     "zod": "^3.25.0 || ^4.0.0"
   },
@@ -270,6 +276,12 @@
     },
     "@prettier/plugin-xml": {
       "optional": false
+    },
+    "@storm-software/eslint-plugin-bun": {
+      "optional": true
+    },
+    "@storm-software/eslint-plugin-pnpm": {
+      "optional": true
     },
     "@storm-software/tsdoc": {
       "optional": true

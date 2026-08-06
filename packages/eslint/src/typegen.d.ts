@@ -851,6 +851,26 @@ Backward pagination arguments
    */
   'brace-style'?: Linter.RuleEntry<BraceStyle>
   /**
+   * Enforce using "catalog:" in `package.json` and write versions to the Bun workspace root catalog
+   * @see https://docs.stormsoftware.com/projects/storm-ops/eslint-plugin-bun/rules/json-enforce-catalog.md
+   */
+  'bun/json-enforce-catalog'?: Linter.RuleEntry<BunJsonEnforceCatalog>
+  /**
+   * Disallow duplicate catalog items in the Bun workspace root `package.json`
+   * @see https://docs.stormsoftware.com/projects/storm-ops/eslint-plugin-bun/rules/json-no-duplicate-catalog-item.md
+   */
+  'bun/json-no-duplicate-catalog-item'?: Linter.RuleEntry<BunJsonNoDuplicateCatalogItem>
+  /**
+   * Disallow unused catalog items in the Bun workspace root `package.json`
+   * @see https://docs.stormsoftware.com/projects/storm-ops/eslint-plugin-bun/rules/json-no-unused-catalog-item.md
+   */
+  'bun/json-no-unused-catalog-item'?: Linter.RuleEntry<[]>
+  /**
+   * Enforce using valid Bun catalog references in `package.json`
+   * @see https://docs.stormsoftware.com/projects/storm-ops/eslint-plugin-bun/rules/json-valid-catalog.md
+   */
+  'bun/json-valid-catalog'?: Linter.RuleEntry<BunJsonValidCatalog>
+  /**
    * Require `return` statements after callbacks
    * @see https://eslint.org/docs/latest/rules/callback-return
    * @deprecated
@@ -8677,6 +8697,38 @@ type BlockSpacing = []|[("always" | "never")]
 // ----- brace-style -----
 type BraceStyle = []|[("1tbs" | "stroustrup" | "allman")]|[("1tbs" | "stroustrup" | "allman"), {
   allowSingleLine?: boolean
+}]
+// ----- bun/json-enforce-catalog -----
+type BunJsonEnforceCatalog = []|[{
+  
+  allowedProtocols?: string[]
+  
+  autofix?: boolean
+  
+  defaultCatalog?: string
+  
+  reuseExistingCatalog?: boolean
+  
+  conflicts?: ("new-catalog" | "overrides" | "error")
+  
+  fields?: string[]
+  
+  ignore?: string[]
+}]
+// ----- bun/json-no-duplicate-catalog-item -----
+type BunJsonNoDuplicateCatalogItem = []|[{
+  allow?: string[]
+}]
+// ----- bun/json-valid-catalog -----
+type BunJsonValidCatalog = []|[{
+  
+  autoInsert?: boolean
+  
+  autoInsertDefaultSpecifier?: string
+  
+  autofix?: boolean
+  
+  fields?: unknown[]
 }]
 // ----- callback-return -----
 type CallbackReturn = []|[string[]]
@@ -18630,4 +18682,4 @@ type Yoda = []|[("always" | "never")]|[("always" | "never"), {
 }]
 
 // Names of all the configs
-export type ConfigNames = "storm/banner" | "storm/cspell/rules" | "storm/astro/setup" | "storm/astro/rules" | "storm/formatter/setup" | "storm/imports/rules" | "storm/graphql/setup" | "storm/graphql/rules" | "storm/graphql/relay" | "storm/javascript/setup" | "storm/javascript/rules" | "storm/jsx/rules" | "storm/jsdoc/rules" | "storm/jsonc/setup" | "storm/jsonc/rules" | "storm/markdown/setup" | "storm/markdown/rules" | "mdx/flat" | "storm/node/rules" | "storm/nx/setup" | "storm/nx/schema" | "storm/nx/dependency-check" | "storm/nx/module-boundaries" | "storm/next/rules" | "storm/prettier" | "storm/perfectionist/rules" | "storm/pnpm/setup" | "storm/pnpm/package-json" | "storm/pnpm/pnpm-workspace-yaml" | "storm/react/setup" | "storm/react/rules" | "storm/react-native/rules" | "storm/sort/package-json" | "storm/stylistic/rules" | "storm/secrets/rules" | "storm/storybook/setup" | "storm/storybook/rules" | "storm/storybook/main" | "storm/test/setup" | "storm/test/rules" | "storm/tsdoc/rules" | "storm/toml/setup" | "storm/toml/rules" | "storm/typescript/setup" | "storm/typescript/parser" | "storm/typescript/type-aware-parser" | "storm/typescript/rules" | "storm/typescript/rules-type-aware" | "storm/regexp/rules" | "storm/unicorn/rules" | "storm/unocss" | "storm/yaml/setup" | "storm/yaml/rules" | "storm/zod/rules"
+export type ConfigNames = "storm/banner" | "storm/bun/setup" | "bun/recommended/package-json" | "bun/recommended/package-json" | "storm/cspell/rules" | "storm/astro/setup" | "storm/astro/rules" | "storm/formatter/setup" | "storm/imports/rules" | "storm/graphql/setup" | "storm/graphql/rules" | "storm/graphql/relay" | "storm/javascript/setup" | "storm/javascript/rules" | "storm/jsx/rules" | "storm/jsdoc/rules" | "storm/jsonc/setup" | "storm/jsonc/rules" | "storm/markdown/setup" | "storm/markdown/rules" | "mdx/flat" | "storm/node/rules" | "storm/nx/setup" | "storm/nx/schema" | "storm/nx/dependency-check" | "storm/nx/module-boundaries" | "storm/next/rules" | "storm/prettier" | "storm/perfectionist/rules" | "storm/pnpm/setup" | "storm/pnpm/package-json" | "storm/pnpm/pnpm-workspace-yaml" | "storm/react/setup" | "storm/react/rules" | "storm/react-native/rules" | "storm/sort/package-json" | "storm/stylistic/rules" | "storm/secrets/rules" | "storm/storybook/setup" | "storm/storybook/rules" | "storm/storybook/main" | "storm/test/setup" | "storm/test/rules" | "storm/tsdoc/rules" | "storm/toml/setup" | "storm/toml/rules" | "storm/typescript/setup" | "storm/typescript/parser" | "storm/typescript/type-aware-parser" | "storm/typescript/rules" | "storm/typescript/rules-type-aware" | "storm/regexp/rules" | "storm/unicorn/rules" | "storm/unocss" | "storm/yaml/setup" | "storm/yaml/rules" | "storm/zod/rules"

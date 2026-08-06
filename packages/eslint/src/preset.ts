@@ -52,6 +52,8 @@ import type {
 } from "./types";
 import { interopDefault, isInEditorEnv } from "./utils/helpers";
 import { getTsConfigPath } from "./utils/tsconfig";
+import { detectPackageManager } from "./utils/package-manager";
+import { bun } from "./configs/bun";
 
 const flatConfigProps = [
   "name",
@@ -131,8 +133,12 @@ export function preset(
     tsdoc: enableTSDoc = true,
     test: enableTest = true,
     unocss: enableUnoCSS = false,
-    zod: enableZod = false
+    zod: enableZod = false,
+    bun: enableBun,
+    pnpm: enablePnpm
   } = options;
+
+  const packageManager = detectPackageManager();
 
   let isInEditor = options.isInEditor;
   if (!isInEditor) {
@@ -351,14 +357,21 @@ export function preset(
     );
   }
 
-  if (options.pnpm ?? true) {
+  if (enablePnpm ?? packageManager !== "bun") {
     configs.push(
       pnpm({
         overrides: getOverrides(options, "pnpm"),
         ignore:
-          typeof options.pnpm !== "boolean" ? options.pnpm?.ignore : undefined
+          typeof enablePnpm !== "boolean" ? enablePnpm?.ignore : undefined
       })
     );
+  }
+
+  if (enableBun ?? packageManager === "bun") {
+    configs.push(bun({
+      overrides: getOverrides(options, "bun"),
+      ignore: typeof enableBun !== "boolean" ? enableBun?.ignore : undefined
+    }));
   }
 
   if (options.jsonc ?? true) {

@@ -58,5 +58,6 @@
     "nx-release-publish": {
       "executor": "@storm-software/workspace-tools:npm-publish"
     }
-  }
+  },
+  "implicitDependencies": ["eslint-plugin-bun", "eslint-plugin-pnpm"]
 }

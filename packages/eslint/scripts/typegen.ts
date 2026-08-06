@@ -4,6 +4,7 @@ import fs from "node:fs/promises";
 import {
   astro,
   banner,
+  bun,
   cspell,
   formatters,
   graphql,
@@ -47,6 +48,7 @@ const configs = await combine(
     }
   },
   banner(),
+  bun(),
   cspell(),
   astro(),
   formatters(),

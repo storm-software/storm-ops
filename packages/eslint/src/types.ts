@@ -533,6 +533,22 @@ export interface OptionsPnpm extends OptionsOverrides {
   ignoreWorkspaceDeps?: boolean;
 }
 
+export interface OptionsBun extends OptionsOverrides {
+  /**
+   * A list of dependencies to ignore for the `bun/json-enforce-catalog` rule.
+   *
+   * @defaultValue ["typescript"]
+   */
+  ignore?: string[];
+
+  /**
+   * Should local workspace dependencies be ignored by the `bun/json-enforce-catalog` rule.
+   *
+   * @defaultValue true
+   */
+  ignoreWorkspaceDeps?: boolean;
+}
+
 export interface OptionsCSpell extends OptionsOverrides {
   /**
    * A path to a CSpell configuration file
@@ -616,11 +632,32 @@ export interface OptionsConfig
   /**
    * Enable PNPM related rules.
    *
+   * Requires installing:
+   * - `@storm-software/eslint-plugin-pnpm`
+   *
+   * @remarks
+   * If the package manager is detected to be Bun, this option will be disabled.
+   *
    * @see https://github.com/antfu/pnpm-workspace-utils/tree/main/packages/eslint-plugin-pnpm
    *
    * @defaultValue true
    */
   pnpm?: boolean | OptionsPnpm;
+
+  /**
+   * Enable Bun related rules.
+   *
+   * Requires installing:
+   * - `@storm-software/eslint-plugin-bun`
+   *
+   * @remarks
+   * If the package manager is detected to be PNPM, this option will be disabled.
+   *
+   * @see https://github.com/oven-sh/bun-plugin-eslint
+   *
+   * @defaultValue false
+   */
+  bun?: boolean | OptionsBun;
 
   /**
    * Enable JSX related rules.

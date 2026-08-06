@@ -10,7 +10,7 @@ import { joinPaths } from "../utils/correct-paths";
 import { findWorkspaceRoot } from "../utils/find-workspace-root";
 import { ensurePackages, interopDefault } from "../utils/helpers";
 
-export async function pnpm(
+export async function bun(
   options: OptionsPnpm = {}
 ): Promise<TypedFlatConfigItem[]> {
   const {
@@ -20,12 +20,14 @@ export async function pnpm(
   } = options;
   const workspaceRoot = findWorkspaceRoot();
 
-  await ensurePackages(["@storm-software/eslint-plugin-pnpm", "jsonc-eslint-parser", "yaml-eslint-parser"]);
+  await ensurePackages([
+    "@storm-software/eslint-plugin-bun",
+    "jsonc-eslint-parser"
+  ]);
 
-  const [plugin, parserJsonc, parserYaml] = await Promise.all([
-    interopDefault(import("@storm-software/eslint-plugin-pnpm")),
-    interopDefault(import("jsonc-eslint-parser")),
-    interopDefault(import("yaml-eslint-parser"))
+  const [plugin, parserJsonc] = await Promise.all([
+    interopDefault(import("@storm-software/eslint-plugin-bun")),
+    interopDefault(import("jsonc-eslint-parser"))
   ] as const);
 
   if (ignoreWorkspaceDeps !== false) {
@@ -71,50 +73,41 @@ export async function pnpm(
     });
   }
 
+  const configs = (
+    Array.isArray(plugin.configs?.recommended)
+      ? plugin.configs.recommended
+      : [plugin.configs?.recommended]
+  ).filter(
+    config =>
+      config &&
+      typeof config === "object" &&
+      "name" in config &&
+      !config.name?.endsWith("setup")
+  ) as TypedFlatConfigItem[];
+  const packageJsonConfig = configs.find(
+    config => config.name?.endsWith("package-json") ?? false
+  );
+
   return [
     {
-      name: "storm/pnpm/setup",
+      name: "storm/bun/setup",
       plugins: {
-        pnpm: plugin
+        bun: plugin
       }
     },
+    ...configs.map(config => ({
+      name: config.name,
+      ...config
+    })),
     {
-      name: "storm/pnpm/package-json",
-      ignores: ["**/node_modules/**", "**/dist/**"],
-      files: ["package.json", "**/package.json"],
+      name: "storm/bun/package-json",
+      ...packageJsonConfig,
       languageOptions: {
+        ...packageJsonConfig?.languageOptions,
         parser: parserJsonc
       },
       rules: {
-        "pnpm/json-enforce-catalog": [
-          "error",
-          {
-            ignore,
-            autofix: true,
-            allowedProtocols: ["workspace", "link", "file"],
-            defaultCatalog: "default",
-            reuseExistingCatalog: true,
-            conflicts: "overrides",
-            fields: ["dependencies", "devDependencies"]
-          }
-        ],
-        "pnpm/json-valid-catalog": "error",
-        "pnpm/json-prefer-workspace-settings": "error",
-
-        ...overrides
-      }
-    },
-    {
-      name: "storm/pnpm/pnpm-workspace-yaml",
-      ignores: ["**/node_modules/**", "**/dist/**"],
-      files: ["pnpm-workspace.yaml", "**/pnpm-workspace.yaml"],
-      languageOptions: {
-        parser: parserYaml
-      },
-      rules: {
-        "pnpm/yaml-no-unused-catalog-item": "error",
-        "pnpm/yaml-no-duplicate-catalog-item": "error",
-
+        ...packageJsonConfig?.rules,
         ...overrides
       }
     }

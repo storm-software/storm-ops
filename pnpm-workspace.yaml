@@ -157,6 +157,7 @@ overrides:
   pnpm-plugin-storm-software: "workspace:*"
   request: ">=2.88.2"
   tough-cookie: "4.1.4"
+  mdast-util-to-string: ">=4.0.0"
 patchedDependencies:
   actions-up: "patches/actions-up.patch"
   eslint-plugin-import-x: "patches/eslint-plugin-import-x.patch"

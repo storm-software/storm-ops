@@ -3,7 +3,13 @@
   "version": "0.0.1",
   "private": false,
   "description": "An ESLint Plugin that enforces Bun catalog rules in Storm Software projects.",
-  "keywords": ["eslint", "eslint-plugin", "storm-software", "bun", "catalog"],
+  "keywords": [
+    "eslint",
+    "eslint-plugin",
+    "storm-software",
+    "bun",
+    "catalog"
+  ],
   "homepage": "https://stormsoftware.com",
   "bugs": {
     "url": "https://stormsoftware.com/support",
@@ -40,15 +46,35 @@
   ],
   "type": "module",
   "exports": {
-    ".": "./dist/index.mjs",
-    "./configs": "./dist/configs/index.mjs",
-    "./configs/recommended": "./dist/configs/recommended.mjs",
-    "./plugin": "./dist/plugin.mjs",
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.mjs"
+    },
+    "./index": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.mjs"
+    },
+    "./configs": {
+      "types": "./dist/configs/index.d.ts",
+      "default": "./dist/configs/index.mjs"
+    },
+    "./configs/recommended": {
+      "types": "./dist/configs/recommended.d.ts",
+      "default": "./dist/configs/recommended.mjs"
+    },
+    "./helpers/create-rule": {
+      "types": "./dist/helpers/create-rule.d.ts",
+      "default": "./dist/helpers/create-rule.mjs"
+    },
+    "./plugin": {
+      "types": "./dist/plugin.d.ts",
+      "default": "./dist/plugin.mjs"
+    },
     "./package.json": "./package.json"
   },
-  "types": "./dist/index.d.ts",
-  "typings": "dist/index.d.ts",
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "dependencies": {
     "@storm-software/package-constants": "workspace:*",
     "@typescript-eslint/utils": "catalog:",
