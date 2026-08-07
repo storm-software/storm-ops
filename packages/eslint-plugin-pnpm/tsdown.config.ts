@@ -34,7 +34,7 @@ const config = defineConfig({
   treeshake: true,
   deps: {
     neverBundle: true,
-    alwaysBundle: ["eslint-plugin-tsdoc"],
+    alwaysBundle: ["eslint-plugin-pnpm"],
     onlyBundle: false
   }
 });

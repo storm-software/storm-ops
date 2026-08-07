@@ -19,23 +19,32 @@
 import { defineConfig } from "tsdown";
 
 const config = defineConfig({
-  entry: ["src/*.ts", "src/configs/*.ts"],
+  entry: {
+    index: "src/index.ts",
+    plugin: "src/plugin.ts",
+    "configs/index": "src/configs/index.ts",
+    "configs/recommended": "src/configs/recommended.ts",
+    "helpers/create-rule": "src/helpers/create-rule.ts",
+    "helpers/bun-workspace": "src/helpers/bun-workspace.ts",
+    "helpers/iterate-dependencies": "src/helpers/iterate-dependencies.ts",
+    "rules/json-enforce-catalog": "src/rules/json-enforce-catalog.ts",
+    "rules/json-valid-catalog": "src/rules/json-valid-catalog.ts",
+    "rules/json-no-unused-catalog-item":
+      "src/rules/json-no-unused-catalog-item.ts",
+    "rules/json-no-duplicate-catalog-item":
+      "src/rules/json-no-duplicate-catalog-item.ts"
+  },
   platform: "node",
   target: "es2022",
   outDir: "dist",
-  exports: {
-    all: true,
-    inlinedDependencies: false
-  },
+  exports: true,
   shims: true,
   clean: true,
   dts: true,
   sourcemap: false,
   treeshake: true,
   deps: {
-    neverBundle: true,
-    alwaysBundle: ["eslint-plugin-tsdoc"],
-    onlyBundle: false
+    neverBundle: true
   }
 });
 

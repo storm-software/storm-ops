@@ -3,7 +3,13 @@
   "version": "0.0.6",
   "private": false,
   "description": "An ESLint Plugin that enforces Bun catalog rules in Storm Software projects.",
-  "keywords": ["eslint", "eslint-plugin", "storm-software", "bun", "catalog"],
+  "keywords": [
+    "eslint",
+    "eslint-plugin",
+    "storm-software",
+    "bun",
+    "catalog"
+  ],
   "homepage": "https://stormsoftware.com",
   "bugs": {
     "url": "https://stormsoftware.com/support",
@@ -40,33 +46,22 @@
   ],
   "type": "module",
   "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "default": "./dist/index.mjs"
-    },
-    "./index": {
-      "types": "./dist/index.d.ts",
-      "default": "./dist/index.mjs"
-    },
-    "./configs": {
-      "types": "./dist/configs/index.d.ts",
-      "default": "./dist/configs/index.mjs"
-    },
-    "./configs/recommended": {
-      "types": "./dist/configs/recommended.d.ts",
-      "default": "./dist/configs/recommended.mjs"
-    },
-    "./helpers/create-rule": {
-      "types": "./dist/helpers/create-rule.d.ts",
-      "default": "./dist/helpers/create-rule.mjs"
-    },
-    "./plugin": {
-      "types": "./dist/plugin.d.ts",
-      "default": "./dist/plugin.mjs"
-    },
+    ".": "./dist/index.mjs",
+    "./configs": "./dist/configs/index.mjs",
+    "./configs/recommended": "./dist/configs/recommended.mjs",
+    "./helpers/bun-workspace": "./dist/helpers/bun-workspace.mjs",
+    "./helpers/create-rule": "./dist/helpers/create-rule.mjs",
+    "./helpers/iterate-dependencies": "./dist/helpers/iterate-dependencies.mjs",
+    "./plugin": "./dist/plugin.mjs",
+    "./rules/json-enforce-catalog": "./dist/rules/json-enforce-catalog.mjs",
+    "./rules/json-no-duplicate-catalog-item": "./dist/rules/json-no-duplicate-catalog-item.mjs",
+    "./rules/json-no-unused-catalog-item": "./dist/rules/json-no-unused-catalog-item.mjs",
+    "./rules/json-valid-catalog": "./dist/rules/json-valid-catalog.mjs",
     "./package.json": "./package.json"
   },
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "dependencies": {
     "@storm-software/package-constants": "workspace:*",
     "@typescript-eslint/utils": "catalog:",

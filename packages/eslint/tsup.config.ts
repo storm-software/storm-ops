@@ -24,13 +24,13 @@ export default defineConfig([
     bundle: true,
     skipNodeModulesBundle: true,
     noExternal: [
+      "zod",
+      "date-fns",
+      "minimatch",
       "eslint-plugin-import-x",
       "eslint-plugin-import-zod",
       "eslint-plugin-react-native",
       "eslint-plugin-react-native-globals",
-      "minimatch",
-      "zod",
-      "date-fns",
       "@storm-software/eslint-plugin-pnpm",
       "@storm-software/eslint-plugin-tsdoc",
       "@storm-software/eslint-plugin-banner"
