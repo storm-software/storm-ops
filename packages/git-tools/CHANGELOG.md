@@ -2,6 +2,19 @@
 
 # Changelog for Storm Ops - Git Tools
 
+## [2.131.126](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.131.126) (08/07/2026)
+
+### Bug Fixes
+
+- **eslint:** Resolve issue with invalid `mdast-util-to-string` version ([9eed4dff9](https://github.com/storm-software/storm-ops/commit/9eed4dff9))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.55**
+- Updated **config-tools** to **v1.190.118**
+- Updated **conventional-changelog** to **v0.3.279**
+- Updated **package-constants** to **v0.1.131**
+
 ## [2.131.125](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.131.125) (08/07/2026)
 
 ### Bug Fixes

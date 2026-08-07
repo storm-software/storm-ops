@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Tsconfig
 
+## [0.48.185](https://github.com/storm-software/storm-ops/releases/tag/tsconfig%400.48.185) (08/07/2026)
+
+### Bug Fixes
+
+- **eslint:** Resolve issue with invalid `mdast-util-to-string` version ([9eed4dff9](https://github.com/storm-software/storm-ops/commit/9eed4dff9))
+
 ## [0.48.184](https://github.com/storm-software/storm-ops/releases/tag/tsconfig%400.48.184) (08/07/2026)
 
 ### Bug Fixes

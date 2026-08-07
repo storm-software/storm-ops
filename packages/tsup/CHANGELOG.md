@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Tsup
 
+## [0.2.276](https://github.com/storm-software/storm-ops/releases/tag/tsup%400.2.276) (08/07/2026)
+
+### Bug Fixes
+
+- **eslint:** Resolve issue with invalid `mdast-util-to-string` version ([9eed4dff9](https://github.com/storm-software/storm-ops/commit/9eed4dff9))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.278**
+- Updated **config-tools** to **v1.190.118**
+
 ## [0.2.275](https://github.com/storm-software/storm-ops/releases/tag/tsup%400.2.275) (08/07/2026)
 
 ### Bug Fixes

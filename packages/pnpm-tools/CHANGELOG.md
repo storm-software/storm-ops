@@ -2,6 +2,20 @@
 
 # Changelog for Storm Ops - Pnpm Tools
 
+## [0.7.129](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.7.129) (08/07/2026)
+
+### Bug Fixes
+
+- **eslint:** Resolve issue with invalid `mdast-util-to-string` version ([9eed4dff9](https://github.com/storm-software/storm-ops/commit/9eed4dff9))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.55**
+- Updated **config-tools** to **v1.190.118**
+- Updated **npm-tools** to **v0.6.236**
+- Updated **package-constants** to **v0.1.131**
+- Updated **testing-tools** to **v1.119.271**
+
 ## [0.7.128](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.7.128) (08/07/2026)
 
 ### Updated Dependencies

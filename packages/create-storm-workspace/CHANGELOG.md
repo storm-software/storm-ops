@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - Create Storm Workspace
 
+## [1.97.278](https://github.com/storm-software/storm-ops/releases/tag/create-storm-workspace%401.97.278) (08/07/2026)
+
+### Bug Fixes
+
+- **eslint:** Resolve issue with invalid `mdast-util-to-string` version ([9eed4dff9](https://github.com/storm-software/storm-ops/commit/9eed4dff9))
+
+### Updated Dependencies
+
+- Updated **config-tools** to **v1.190.118**
+
 ## [1.97.277](https://github.com/storm-software/storm-ops/releases/tag/create-storm-workspace%401.97.277) (08/07/2026)
 
 ### Updated Dependencies

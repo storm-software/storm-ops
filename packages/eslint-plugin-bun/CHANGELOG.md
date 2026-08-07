@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - ESLint Plugin Bun
 
+## [0.0.6](https://github.com/storm-software/storm-ops/releases/tag/eslint-plugin-bun%400.0.6) (08/07/2026)
+
+### Bug Fixes
+
+- **eslint:** Resolve issue with invalid `mdast-util-to-string` version ([9eed4dff9](https://github.com/storm-software/storm-ops/commit/9eed4dff9))
+
+### Updated Dependencies
+
+- Updated **package-constants** to **v0.1.131**
+- Updated **prettier** to **v0.59.171**
+
 ## [0.0.5](https://github.com/storm-software/storm-ops/releases/tag/eslint-plugin-bun%400.0.5) (08/07/2026)
 
 ### Bug Fixes

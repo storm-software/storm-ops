@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Terraform Tools
 
+## [0.66.302](https://github.com/storm-software/storm-ops/releases/tag/terraform-tools%400.66.302) (08/07/2026)
+
+### Bug Fixes
+
+- **eslint:** Resolve issue with invalid `mdast-util-to-string` version ([9eed4dff9](https://github.com/storm-software/storm-ops/commit/9eed4dff9))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.55**
+- Updated **config-tools** to **v1.190.118**
+- Updated **workspace-tools** to **v1.296.99**
+
 ## [0.66.301](https://github.com/storm-software/storm-ops/releases/tag/terraform-tools%400.66.301) (08/07/2026)
 
 ### Updated Dependencies

@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Config Tools
 
+## [1.190.118](https://github.com/storm-software/storm-ops/releases/tag/config-tools%401.190.118) (08/07/2026)
+
+### Bug Fixes
+
+- **eslint:** Resolve issue with invalid `mdast-util-to-string` version ([9eed4dff9](https://github.com/storm-software/storm-ops/commit/9eed4dff9))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.55**
+- Updated **testing-tools** to **v1.119.271**
+
 ## [1.190.117](https://github.com/storm-software/storm-ops/releases/tag/config-tools%401.190.117) (08/07/2026)
 
 ### Bug Fixes

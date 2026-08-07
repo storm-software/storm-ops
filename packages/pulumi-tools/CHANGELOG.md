@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Pulumi Tools
 
+## [0.22.302](https://github.com/storm-software/storm-ops/releases/tag/pulumi-tools%400.22.302) (08/07/2026)
+
+### Bug Fixes
+
+- **eslint:** Resolve issue with invalid `mdast-util-to-string` version ([9eed4dff9](https://github.com/storm-software/storm-ops/commit/9eed4dff9))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.55**
+- Updated **config-tools** to **v1.190.118**
+- Updated **workspace-tools** to **v1.296.99**
+
 ## [0.22.301](https://github.com/storm-software/storm-ops/releases/tag/pulumi-tools%400.22.301) (08/07/2026)
 
 ### Updated Dependencies

@@ -2,6 +2,20 @@
 
 # Changelog for Storm Ops - Oxlint
 
+## [0.0.84](https://github.com/storm-software/storm-ops/releases/tag/oxlint%400.0.84) (08/07/2026)
+
+### Bug Fixes
+
+- **eslint:** Resolve issue with invalid `mdast-util-to-string` version ([9eed4dff9](https://github.com/storm-software/storm-ops/commit/9eed4dff9))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.55**
+- Updated **config-tools** to **v1.190.118**
+- Updated **eslint-plugin-banner** to **v0.0.83**
+- Updated **eslint-plugin-pnpm** to **v0.0.81**
+- Updated **eslint-plugin-tsdoc** to **v0.0.81**
+
 ## [0.0.83](https://github.com/storm-software/storm-ops/releases/tag/oxlint%400.0.83) (08/07/2026)
 
 ### Bug Fixes

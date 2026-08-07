@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Untyped
 
+## [0.24.260](https://github.com/storm-software/storm-ops/releases/tag/untyped%400.24.260) (08/07/2026)
+
+### Bug Fixes
+
+- **eslint:** Resolve issue with invalid `mdast-util-to-string` version ([9eed4dff9](https://github.com/storm-software/storm-ops/commit/9eed4dff9))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.55**
+- Updated **config-tools** to **v1.190.118**
+
 ## [0.24.259](https://github.com/storm-software/storm-ops/releases/tag/untyped%400.24.259) (08/07/2026)
 
 ### Bug Fixes

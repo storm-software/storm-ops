@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Prettier
 
+## [0.59.171](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.59.171) (08/07/2026)
+
+### Bug Fixes
+
+- **eslint:** Resolve issue with invalid `mdast-util-to-string` version ([9eed4dff9](https://github.com/storm-software/storm-ops/commit/9eed4dff9))
+
 ## [0.59.168](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.59.168) (08/07/2026)
 
 ### Bug Fixes

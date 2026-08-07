@@ -2,6 +2,23 @@
 
 # Changelog for Storm Ops - ESLint
 
+## [0.170.152](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.170.152) (08/07/2026)
+
+### Bug Fixes
+
+- **eslint:** Resolve issue with invalid `mdast-util-to-string` version ([9eed4dff9](https://github.com/storm-software/storm-ops/commit/9eed4dff9))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.55**
+- Updated **config-tools** to **v1.190.118**
+- Updated **eslint-plugin-banner** to **v0.0.83**
+- Updated **eslint-plugin-bun** to **v0.0.6**
+- Updated **eslint-plugin-pnpm** to **v0.0.81**
+- Updated **eslint-plugin-tsdoc** to **v0.0.81**
+- Updated **package-constants** to **v0.1.131**
+- Updated **tsdoc** to **v0.13.271**
+
 ## [0.170.151](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.170.151) (08/07/2026)
 
 ### Bug Fixes

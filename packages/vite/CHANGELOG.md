@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - Vite
 
+## [0.1.212](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.212) (08/07/2026)
+
+### Bug Fixes
+
+- **eslint:** Resolve issue with invalid `mdast-util-to-string` version ([9eed4dff9](https://github.com/storm-software/storm-ops/commit/9eed4dff9))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.278**
+
 ## [0.1.211](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.211) (08/07/2026)
 
 ### Bug Fixes

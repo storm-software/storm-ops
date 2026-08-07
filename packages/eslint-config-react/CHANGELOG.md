@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - ESLint Config React
 
+## [0.0.74](https://github.com/storm-software/storm-ops/releases/tag/eslint-config-react%400.0.74) (08/07/2026)
+
+### Bug Fixes
+
+- **eslint:** Resolve issue with invalid `mdast-util-to-string` version ([9eed4dff9](https://github.com/storm-software/storm-ops/commit/9eed4dff9))
+
+### Updated Dependencies
+
+- Updated **eslint** to **v0.170.152**
+
 ## [0.0.73](https://github.com/storm-software/storm-ops/releases/tag/eslint-config-react%400.0.73) (08/07/2026)
 
 ### Bug Fixes

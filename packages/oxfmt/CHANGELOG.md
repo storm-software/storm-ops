@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Oxfmt
 
+## [0.0.74](https://github.com/storm-software/storm-ops/releases/tag/oxfmt%400.0.74) (08/07/2026)
+
+### Bug Fixes
+
+- **eslint:** Resolve issue with invalid `mdast-util-to-string` version ([9eed4dff9](https://github.com/storm-software/storm-ops/commit/9eed4dff9))
+
 ## [0.0.71](https://github.com/storm-software/storm-ops/releases/tag/oxfmt%400.0.71) (08/07/2026)
 
 ### Bug Fixes

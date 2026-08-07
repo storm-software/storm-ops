@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - Config
 
+## [1.138.55](https://github.com/storm-software/storm-ops/releases/tag/config%401.138.55) (08/07/2026)
+
+### Bug Fixes
+
+- **eslint:** Resolve issue with invalid `mdast-util-to-string` version ([9eed4dff9](https://github.com/storm-software/storm-ops/commit/9eed4dff9))
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.271**
+
 ## [1.138.54](https://github.com/storm-software/storm-ops/releases/tag/config%401.138.54) (08/07/2026)
 
 ### Updated Dependencies

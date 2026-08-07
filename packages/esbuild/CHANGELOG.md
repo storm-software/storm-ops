@@ -2,6 +2,19 @@
 
 # Changelog for Storm Ops - Esbuild
 
+## [0.53.279](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.53.279) (08/07/2026)
+
+### Bug Fixes
+
+- **eslint:** Resolve issue with invalid `mdast-util-to-string` version ([9eed4dff9](https://github.com/storm-software/storm-ops/commit/9eed4dff9))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.278**
+- Updated **config** to **v1.138.55**
+- Updated **config-tools** to **v1.190.118**
+- Updated **tsup** to **v0.2.276**
+
 ## [0.53.278](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.53.278) (08/07/2026)
 
 ### Bug Fixes

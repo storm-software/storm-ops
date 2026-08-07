@@ -1,6 +1,6 @@
 {
   "name": "@storm-software/tsdoc",
-  "version": "0.13.270",
+  "version": "0.13.271",
   "private": false,
   "description": "This package contains shared TSDoc configurations used in Storm Software projects.",
   "keywords": ["tsdoc", "typedoc", "storm", "storm-ops", "storm-software"],

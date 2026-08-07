@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - ESLint Plugin Banner
 
+## [0.0.83](https://github.com/storm-software/storm-ops/releases/tag/eslint-plugin-banner%400.0.83) (08/07/2026)
+
+### Bug Fixes
+
+- **eslint:** Resolve issue with invalid `mdast-util-to-string` version ([9eed4dff9](https://github.com/storm-software/storm-ops/commit/9eed4dff9))
+
+### Updated Dependencies
+
+- Updated **package-constants** to **v0.1.131**
+- Updated **prettier** to **v0.59.171**
+
 ## [0.0.82](https://github.com/storm-software/storm-ops/releases/tag/eslint-plugin-banner%400.0.82) (08/07/2026)
 
 ### Bug Fixes

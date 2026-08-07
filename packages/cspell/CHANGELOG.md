@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - CSpell
 
+## [0.46.186](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.46.186) (08/07/2026)
+
+### Bug Fixes
+
+- **eslint:** Resolve issue with invalid `mdast-util-to-string` version ([9eed4dff9](https://github.com/storm-software/storm-ops/commit/9eed4dff9))
+
 ## [0.46.183](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.46.183) (08/07/2026)
 
 ### Bug Fixes

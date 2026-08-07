@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Package Constants
 
+## [0.1.131](https://github.com/storm-software/storm-ops/releases/tag/package-constants%400.1.131) (08/07/2026)
+
+### Bug Fixes
+
+- **eslint:** Resolve issue with invalid `mdast-util-to-string` version ([9eed4dff9](https://github.com/storm-software/storm-ops/commit/9eed4dff9))
+
 ## [0.1.130](https://github.com/storm-software/storm-ops/releases/tag/package-constants%400.1.130) (08/07/2026)
 
 ### Bug Fixes
