@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Bun Tools
 
+## [0.0.26](https://github.com/storm-software/storm-ops/releases/tag/bun-tools%400.0.26) (08/07/2026)
+
+### Miscellaneous
+
+- **bun-tools:** Ensure error is thrown during upgrades ([8ea3bec9f](https://github.com/storm-software/storm-ops/commit/8ea3bec9f))
+- **bun-tools:** Improve error handling in CLI ([9a2eb5256](https://github.com/storm-software/storm-ops/commit/9a2eb5256))
+
 ## [0.0.25](https://github.com/storm-software/storm-ops/releases/tag/bun-tools%400.0.25) (08/07/2026)
 
 ### Miscellaneous
