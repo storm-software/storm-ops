@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Config Tools
 
+## [1.190.117](https://github.com/storm-software/storm-ops/releases/tag/config-tools%401.190.117) (08/07/2026)
+
+### Bug Fixes
+
+- **eslint:** Resolve issue with invalid `ajv` dependency version ([bac188714](https://github.com/storm-software/storm-ops/commit/bac188714))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.54**
+- Updated **testing-tools** to **v1.119.270**
+
 ## [1.190.116](https://github.com/storm-software/storm-ops/releases/tag/config-tools%401.190.116) (08/07/2026)
 
 ### Updated Dependencies

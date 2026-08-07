@@ -2,6 +2,19 @@
 
 # Changelog for Storm Ops - Esbuild
 
+## [0.53.278](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.53.278) (08/07/2026)
+
+### Bug Fixes
+
+- **eslint:** Resolve issue with invalid `ajv` dependency version ([bac188714](https://github.com/storm-software/storm-ops/commit/bac188714))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.277**
+- Updated **config** to **v1.138.54**
+- Updated **config-tools** to **v1.190.117**
+- Updated **tsup** to **v0.2.275**
+
 ## [0.53.277](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.53.277) (08/07/2026)
 
 ### Updated Dependencies

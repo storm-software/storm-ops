@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Untyped
 
+## [0.24.259](https://github.com/storm-software/storm-ops/releases/tag/untyped%400.24.259) (08/07/2026)
+
+### Bug Fixes
+
+- **eslint:** Resolve issue with invalid `ajv` dependency version ([bac188714](https://github.com/storm-software/storm-ops/commit/bac188714))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.54**
+- Updated **config-tools** to **v1.190.117**
+
 ## [0.24.258](https://github.com/storm-software/storm-ops/releases/tag/untyped%400.24.258) (08/07/2026)
 
 ### Updated Dependencies

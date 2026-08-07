@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - Vite
 
+## [0.1.211](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.211) (08/07/2026)
+
+### Bug Fixes
+
+- **eslint:** Resolve issue with invalid `ajv` dependency version ([bac188714](https://github.com/storm-software/storm-ops/commit/bac188714))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.277**
+
 ## [0.1.210](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.210) (08/07/2026)
 
 ### Updated Dependencies

@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Build Tools
 
+## [0.158.277](https://github.com/storm-software/storm-ops/releases/tag/build-tools%400.158.277) (08/07/2026)
+
+### Bug Fixes
+
+- **eslint:** Resolve issue with invalid `ajv` dependency version ([bac188714](https://github.com/storm-software/storm-ops/commit/bac188714))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.54**
+- Updated **config-tools** to **v1.190.117**
+
 ## [0.158.276](https://github.com/storm-software/storm-ops/releases/tag/build-tools%400.158.276) (08/07/2026)
 
 ### Updated Dependencies

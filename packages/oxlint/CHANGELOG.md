@@ -2,6 +2,20 @@
 
 # Changelog for Storm Ops - Oxlint
 
+## [0.0.83](https://github.com/storm-software/storm-ops/releases/tag/oxlint%400.0.83) (08/07/2026)
+
+### Bug Fixes
+
+- **eslint:** Resolve issue with invalid `ajv` dependency version ([bac188714](https://github.com/storm-software/storm-ops/commit/bac188714))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.54**
+- Updated **config-tools** to **v1.190.117**
+- Updated **eslint-plugin-banner** to **v0.0.82**
+- Updated **eslint-plugin-pnpm** to **v0.0.80**
+- Updated **eslint-plugin-tsdoc** to **v0.0.80**
+
 ## [0.0.82](https://github.com/storm-software/storm-ops/releases/tag/oxlint%400.0.82) (08/07/2026)
 
 ### Updated Dependencies

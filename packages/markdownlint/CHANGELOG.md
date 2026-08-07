@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - Markdownlint
 
+## [0.30.273](https://github.com/storm-software/storm-ops/releases/tag/markdownlint%400.30.273) (08/07/2026)
+
+### Bug Fixes
+
+- **eslint:** Resolve issue with invalid `ajv` dependency version ([bac188714](https://github.com/storm-software/storm-ops/commit/bac188714))
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.270**
+
 ## [0.30.272](https://github.com/storm-software/storm-ops/releases/tag/markdownlint%400.30.272) (08/07/2026)
 
 ### Updated Dependencies

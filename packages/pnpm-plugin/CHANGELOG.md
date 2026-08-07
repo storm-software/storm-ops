@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Pnpm Plugin
 
+## [0.1.228](https://github.com/storm-software/storm-ops/releases/tag/pnpm-plugin%400.1.228) (08/07/2026)
+
+### Bug Fixes
+
+- **eslint:** Resolve issue with invalid `ajv` dependency version ([bac188714](https://github.com/storm-software/storm-ops/commit/bac188714))
+
+### Updated Dependencies
+
+- Updated **package-constants** to **v0.1.130**
+- Updated **testing-tools** to **v1.119.270**
+
 ## [0.1.227](https://github.com/storm-software/storm-ops/releases/tag/pnpm-plugin%400.1.227) (08/07/2026)
 
 ### Updated Dependencies

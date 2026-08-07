@@ -2,6 +2,23 @@
 
 # Changelog for Storm Ops - ESLint
 
+## [0.170.151](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.170.151) (08/07/2026)
+
+### Bug Fixes
+
+- **eslint:** Resolve issue with invalid `ajv` dependency version ([bac188714](https://github.com/storm-software/storm-ops/commit/bac188714))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.54**
+- Updated **config-tools** to **v1.190.117**
+- Updated **eslint-plugin-banner** to **v0.0.82**
+- Updated **eslint-plugin-bun** to **v0.0.5**
+- Updated **eslint-plugin-pnpm** to **v0.0.80**
+- Updated **eslint-plugin-tsdoc** to **v0.0.80**
+- Updated **package-constants** to **v0.1.130**
+- Updated **tsdoc** to **v0.13.270**
+
 ## [0.170.150](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.170.150) (08/07/2026)
 
 ### Updated Dependencies

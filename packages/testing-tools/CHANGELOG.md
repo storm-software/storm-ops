@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Testing Tools
 
+## [1.119.270](https://github.com/storm-software/storm-ops/releases/tag/testing-tools%401.119.270) (08/07/2026)
+
+### Bug Fixes
+
+- **eslint:** Resolve issue with invalid `ajv` dependency version ([bac188714](https://github.com/storm-software/storm-ops/commit/bac188714))
+
 ## [1.119.268](https://github.com/storm-software/storm-ops/releases/tag/testing-tools%401.119.268) (08/07/2026)
 
 ### Miscellaneous

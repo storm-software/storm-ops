@@ -2,6 +2,20 @@
 
 # Changelog for Storm Ops - Bun Tools
 
+## [0.0.27](https://github.com/storm-software/storm-ops/releases/tag/bun-tools%400.0.27) (08/07/2026)
+
+### Bug Fixes
+
+- **eslint:** Resolve issue with invalid `ajv` dependency version ([bac188714](https://github.com/storm-software/storm-ops/commit/bac188714))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.54**
+- Updated **config-tools** to **v1.190.117**
+- Updated **npm-tools** to **v0.6.235**
+- Updated **package-constants** to **v0.1.130**
+- Updated **testing-tools** to **v1.119.270**
+
 ## [0.0.26](https://github.com/storm-software/storm-ops/releases/tag/bun-tools%400.0.26) (08/07/2026)
 
 ### Miscellaneous

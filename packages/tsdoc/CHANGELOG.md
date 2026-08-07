@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Tsdoc
 
+## [0.13.270](https://github.com/storm-software/storm-ops/releases/tag/tsdoc%400.13.270) (08/07/2026)
+
+### Bug Fixes
+
+- **eslint:** Resolve issue with invalid `ajv` dependency version ([bac188714](https://github.com/storm-software/storm-ops/commit/bac188714))
+
 ## [0.13.268](https://github.com/storm-software/storm-ops/releases/tag/tsdoc%400.13.268) (08/07/2026)
 
 ### Miscellaneous

@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - ESLint Plugin Bun
 
+## [0.0.5](https://github.com/storm-software/storm-ops/releases/tag/eslint-plugin-bun%400.0.5) (08/07/2026)
+
+### Bug Fixes
+
+- **eslint:** Resolve issue with invalid `ajv` dependency version ([bac188714](https://github.com/storm-software/storm-ops/commit/bac188714))
+
+### Updated Dependencies
+
+- Updated **package-constants** to **v0.1.130**
+- Updated **prettier** to **v0.59.170**
+
 ## [0.0.4](https://github.com/storm-software/storm-ops/releases/tag/eslint-plugin-bun%400.0.4) (08/07/2026)
 
 ### Updated Dependencies

@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Tsup
 
+## [0.2.275](https://github.com/storm-software/storm-ops/releases/tag/tsup%400.2.275) (08/07/2026)
+
+### Bug Fixes
+
+- **eslint:** Resolve issue with invalid `ajv` dependency version ([bac188714](https://github.com/storm-software/storm-ops/commit/bac188714))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.277**
+- Updated **config-tools** to **v1.190.117**
+
 ## [0.2.274](https://github.com/storm-software/storm-ops/releases/tag/tsup%400.2.274) (08/07/2026)
 
 ### Updated Dependencies

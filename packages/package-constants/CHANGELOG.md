@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Package Constants
 
+## [0.1.130](https://github.com/storm-software/storm-ops/releases/tag/package-constants%400.1.130) (08/07/2026)
+
+### Bug Fixes
+
+- **eslint:** Resolve issue with invalid `ajv` dependency version ([bac188714](https://github.com/storm-software/storm-ops/commit/bac188714))
+
 ## [0.1.128](https://github.com/storm-software/storm-ops/releases/tag/package-constants%400.1.128) (08/07/2026)
 
 ### Miscellaneous

@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - ESLint Config React
 
+## [0.0.73](https://github.com/storm-software/storm-ops/releases/tag/eslint-config-react%400.0.73) (08/07/2026)
+
+### Bug Fixes
+
+- **eslint:** Resolve issue with invalid `ajv` dependency version ([bac188714](https://github.com/storm-software/storm-ops/commit/bac188714))
+
+### Updated Dependencies
+
+- Updated **eslint** to **v0.170.151**
+
 ## [0.0.72](https://github.com/storm-software/storm-ops/releases/tag/eslint-config-react%400.0.72) (08/07/2026)
 
 ### Updated Dependencies
