@@ -199,6 +199,8 @@ async function updateAction(
                     }`,
                     _config
                   );
+
+                  throw error;
                 }
               })
             );
