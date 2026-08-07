@@ -2,6 +2,20 @@
 
 # Changelog for Storm Ops - Pnpm Tools
 
+## [0.7.127](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.7.127) (08/07/2026)
+
+### Miscellaneous
+
+- **bun-tools:** Update logging during `storm-bun` CLI ([05977ab77](https://github.com/storm-software/storm-ops/commit/05977ab77))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.53**
+- Updated **config-tools** to **v1.190.116**
+- Updated **npm-tools** to **v0.6.234**
+- Updated **package-constants** to **v0.1.129**
+- Updated **testing-tools** to **v1.119.269**
+
 ## [0.7.126](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.7.126) (08/07/2026)
 
 ### Miscellaneous
