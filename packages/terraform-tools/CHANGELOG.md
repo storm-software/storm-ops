@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Terraform Tools
 
+## [0.66.303](https://github.com/storm-software/storm-ops/releases/tag/terraform-tools%400.66.303) (08/07/2026)
+
+### Bug Fixes
+
+- **monorepo:** Further updates to resolve inlined dependency issues ([53d8e155d](https://github.com/storm-software/storm-ops/commit/53d8e155d))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.56**
+- Updated **config-tools** to **v1.190.119**
+- Updated **workspace-tools** to **v1.296.100**
+
 ## [0.66.302](https://github.com/storm-software/storm-ops/releases/tag/terraform-tools%400.66.302) (08/07/2026)
 
 ### Bug Fixes

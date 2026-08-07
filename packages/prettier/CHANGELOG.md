@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Prettier
 
+## [0.59.172](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.59.172) (08/07/2026)
+
+### Bug Fixes
+
+- **monorepo:** Further updates to resolve inlined dependency issues ([53d8e155d](https://github.com/storm-software/storm-ops/commit/53d8e155d))
+
 ## [0.59.171](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.59.171) (08/07/2026)
 
 ### Bug Fixes

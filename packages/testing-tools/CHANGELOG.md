@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Testing Tools
 
+## [1.119.272](https://github.com/storm-software/storm-ops/releases/tag/testing-tools%401.119.272) (08/07/2026)
+
+### Bug Fixes
+
+- **monorepo:** Further updates to resolve inlined dependency issues ([53d8e155d](https://github.com/storm-software/storm-ops/commit/53d8e155d))
+
 ## [1.119.271](https://github.com/storm-software/storm-ops/releases/tag/testing-tools%401.119.271) (08/07/2026)
 
 ### Bug Fixes

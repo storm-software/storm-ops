@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - Config
 
+## [1.138.56](https://github.com/storm-software/storm-ops/releases/tag/config%401.138.56) (08/07/2026)
+
+### Bug Fixes
+
+- **monorepo:** Further updates to resolve inlined dependency issues ([53d8e155d](https://github.com/storm-software/storm-ops/commit/53d8e155d))
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.272**
+
 ## [1.138.55](https://github.com/storm-software/storm-ops/releases/tag/config%401.138.55) (08/07/2026)
 
 ### Bug Fixes

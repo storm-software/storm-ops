@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Tsdoc
 
+## [0.13.272](https://github.com/storm-software/storm-ops/releases/tag/tsdoc%400.13.272) (08/07/2026)
+
+### Bug Fixes
+
+- **monorepo:** Further updates to resolve inlined dependency issues ([53d8e155d](https://github.com/storm-software/storm-ops/commit/53d8e155d))
+
 ## [0.13.271](https://github.com/storm-software/storm-ops/releases/tag/tsdoc%400.13.271) (08/07/2026)
 
 ### Bug Fixes

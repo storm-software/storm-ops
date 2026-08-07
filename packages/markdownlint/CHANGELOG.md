@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - Markdownlint
 
+## [0.30.275](https://github.com/storm-software/storm-ops/releases/tag/markdownlint%400.30.275) (08/07/2026)
+
+### Bug Fixes
+
+- **monorepo:** Further updates to resolve inlined dependency issues ([53d8e155d](https://github.com/storm-software/storm-ops/commit/53d8e155d))
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.272**
+
 ## [0.30.274](https://github.com/storm-software/storm-ops/releases/tag/markdownlint%400.30.274) (08/07/2026)
 
 ### Bug Fixes

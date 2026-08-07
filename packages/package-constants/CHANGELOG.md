@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Package Constants
 
+## [0.1.132](https://github.com/storm-software/storm-ops/releases/tag/package-constants%400.1.132) (08/07/2026)
+
+### Bug Fixes
+
+- **monorepo:** Further updates to resolve inlined dependency issues ([53d8e155d](https://github.com/storm-software/storm-ops/commit/53d8e155d))
+
 ## [0.1.131](https://github.com/storm-software/storm-ops/releases/tag/package-constants%400.1.131) (08/07/2026)
 
 ### Bug Fixes
