@@ -134,7 +134,7 @@ async function updateAction(
     let packagesFound = false;
 
     let pkgs = packages && Array.isArray(packages) ? packages : [];
-    if (internal) {
+    if (internal || pkgs.length === 0 || all) {
       pkgs.push(...INTERNAL_PACKAGES);
     }
 
@@ -169,7 +169,7 @@ async function updateAction(
             pkg.endsWith("/") ? p.startsWith(pkg) : p === pkg
           );
           if (matchedPackages.length === 0) {
-            if (!all) {
+            if (!all && (!packages || packages.length > 0)) {
               writeInfo(
                 `No packages found in the catalog matching the name/pattern "${pkg}".`,
                 _config
