@@ -91,7 +91,7 @@ catalogs:
       specifier: ^8.66.0
       version: 8.66.0
     ajv:
-      specifier: 6.15.0
+      specifier: ^6.14.0
       version: 6.15.0
     c12:
       specifier: ^2.0.4
@@ -536,11 +536,11 @@ importers:
   packages/cloudflare-tools:
     dependencies:
       '@aws-sdk/client-s3':
-        specifier: ^3.1104.0
-        version: 3.1104.0
+        specifier: ^3.1105.0
+        version: 3.1105.0
       '@aws-sdk/lib-storage':
-        specifier: ^3.1104.0
-        version: 3.1104.0(@aws-sdk/client-s3@3.1104.0)
+        specifier: ^3.1105.0
+        version: 3.1105.0(@aws-sdk/client-s3@3.1105.0)
       '@smithy/node-http-handler':
         specifier: ^4.9.13
         version: 4.9.13
@@ -910,6 +910,9 @@ importers:
       '@storm-software/package-constants':
         specifier: workspace:*
         version: link:../package-constants
+      '@storm-software/tsdoc':
+        specifier: workspace:*
+        version: link:../tsdoc
       '@stylistic/eslint-plugin':
         specifier: ^4.4.1
         version: 4.4.1(eslint@10.8.0(jiti@2.7.0))(typescript@6.0.3)
@@ -1076,9 +1079,6 @@ importers:
       '@storm-software/eslint-plugin-tsdoc':
         specifier: workspace:*
         version: link:../eslint-plugin-tsdoc
-      '@storm-software/tsdoc':
-        specifier: workspace:*
-        version: link:../tsdoc
       '@stylistic/eslint-plugin-migrate':
         specifier: ^4.4.1
         version: 4.4.1(eslint@10.8.0(jiti@2.7.0))(typescript@6.0.3)
@@ -1425,9 +1425,6 @@ importers:
       '@typescript-eslint/utils':
         specifier: 'catalog:'
         version: 8.66.0(eslint@10.8.0(jiti@2.7.0))(typescript@6.0.3)
-      ajv:
-        specifier: 'catalog:'
-        version: 6.15.0
       defu:
         specifier: 'catalog:'
         version: 6.1.7
@@ -2594,8 +2591,8 @@ packages:
     resolution: {integrity: sha512-abPXiillRzQtD1vH+ijgFOcX+MsRTyE54fmO58D3avTPRvCAf2XQ5O0GzqCwl3eF0yPrcrV67qsTTHQ6OaxSGg==}
     engines: {node: '>=20.0.0'}
 
-  '@aws-sdk/client-s3@3.1104.0':
-    resolution: {integrity: sha512-YCAVqUokR7KwpU8EZaciZhM7M3f2SirT8NJ/BgAy5qfycIuqRTXGXVbeJEdMg+Zk8BZscOHaiDoED2s/4SO8mA==}
+  '@aws-sdk/client-s3@3.1105.0':
+    resolution: {integrity: sha512-eiR289CNgH2atIh2zOSDSpXOmDVGCxFEk0S8jMHo599oTCjcnjmlNOVsFCWXx5jMPP83+c47Wl/1R7xgUVBzZw==}
     engines: {node: '>=20.0.0'}
 
   '@aws-sdk/core@3.977.6':
@@ -2634,11 +2631,11 @@ packages:
     resolution: {integrity: sha512-SnlEmQa6SjOgs6iOPLUQl1Eyq4AKiAdPQlkOhFhqNfDtDCwibMGvL6QlkSmf3o6vAUSImzdPCxowT5dfQUZP1A==}
     engines: {node: '>=20.0.0'}
 
-  '@aws-sdk/lib-storage@3.1104.0':
-    resolution: {integrity: sha512-pseDO+9Dx8e8JXZPcrtmrwXqZjZpCmnALknKoHx8kFRXjlPtiJkoMtUNTLq2bnUsvGxQ7fST2EfD8zvGfK8hng==}
+  '@aws-sdk/lib-storage@3.1105.0':
+    resolution: {integrity: sha512-7BJjY9D9aAxwBIh0UIB5ghBkX+RRJu8pKpoHcMA1GSC3hEEh9OGKk1Fj863uow9QtU7XYCYI7SEK0b2n/STpnA==}
     engines: {node: '>=20.0.0'}
     peerDependencies:
-      '@aws-sdk/client-s3': ^3.1104.0
+      '@aws-sdk/client-s3': ^3.1105.0
 
   '@aws-sdk/middleware-sdk-s3@3.972.72':
     resolution: {integrity: sha512-lSAoVPvQxX1d8TOM6waKDBQrvvZcm4w6pCldFAsRUffEaXq6lYY0pPyew3KlLu6Xqb74DXI42hGvSsbGBLljlw==}
@@ -17593,7 +17590,7 @@ snapshots:
       '@smithy/types': 4.16.1
       tslib: 2.8.1
 
-  '@aws-sdk/client-s3@3.1104.0':
+  '@aws-sdk/client-s3@3.1105.0':
     dependencies:
       '@aws-sdk/checksums': 3.1000.26
       '@aws-sdk/core': 3.977.6
@@ -17702,9 +17699,9 @@ snapshots:
       '@smithy/types': 4.16.1
       tslib: 2.8.1
 
-  '@aws-sdk/lib-storage@3.1104.0(@aws-sdk/client-s3@3.1104.0)':
+  '@aws-sdk/lib-storage@3.1105.0(@aws-sdk/client-s3@3.1105.0)':
     dependencies:
-      '@aws-sdk/client-s3': 3.1104.0
+      '@aws-sdk/client-s3': 3.1105.0
       '@smithy/core': 3.31.1
       '@smithy/types': 4.16.1
       buffer: 5.6.0

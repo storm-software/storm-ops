@@ -26,8 +26,6 @@ export default defineConfig([
     noExternal: [
       "eslint-plugin-import-x",
       "eslint-plugin-import-zod",
-      "eslint-plugin-pnpm",
-      "eslint-plugin-tsdoc",
       "eslint-plugin-react-native",
       "eslint-plugin-react-native-globals",
       "minimatch",

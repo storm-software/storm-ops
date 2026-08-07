@@ -28,7 +28,12 @@ export async function getCatalogSafe(
 ): Promise<Record<string, string> | undefined> {
   const packageJson = await readRootPackageJson(workspaceRoot);
   if (!packageJson) {
-    throw new Error("No package.json file found in workspace root");
+    writeWarning(
+      `No package.json file found in workspace root: ${workspaceRoot}`,
+      { logLevel: "all" }
+    );
+
+    return undefined;
   }
 
   const catalog = getCatalogFromPackageJson(packageJson);
