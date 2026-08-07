@@ -169,10 +169,12 @@ async function updateAction(
             pkg.endsWith("/") ? p.startsWith(pkg) : p === pkg
           );
           if (matchedPackages.length === 0) {
-            writeInfo(
-              `No packages found in the catalog matching the name/pattern "${pkg}".`,
-              _config
-            );
+            if (!all) {
+              writeInfo(
+                `No packages found in the catalog matching the name/pattern "${pkg}".`,
+                _config
+              );
+            }
           } else {
             writeDebug(
               `${brandIcon(_config)}  Found ${matchedPackages.length} packages matching "${pkg}" in the pnpm catalog file: \n\n- ${matchedPackages
