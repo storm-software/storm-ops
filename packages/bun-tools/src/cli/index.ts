@@ -178,16 +178,27 @@ async function updateAction(
 
             await Promise.all(
               matchedPackages.map(async matchedPackage => {
-                writeTrace(`- Upgrading ${matchedPackage}...`, _config);
+                try {
+                  writeTrace(`- Upgrading ${matchedPackage}...`, _config);
 
-                const result = await upgradeCatalog(catalog, matchedPackage, {
-                  tag,
-                  prefix: prefix as UpgradeCatalogPackageOptions["prefix"],
-                  workspaceRoot: _config.workspaceRoot,
-                  verbose
-                });
-                if (result.updated && result.catalog[matchedPackage]) {
-                  catalog[matchedPackage] = result.catalog[matchedPackage];
+                  const result = await upgradeCatalog(catalog, matchedPackage, {
+                    tag,
+                    prefix: prefix as UpgradeCatalogPackageOptions["prefix"],
+                    workspaceRoot: _config.workspaceRoot,
+                    verbose
+                  });
+                  if (result.updated && result.catalog[matchedPackage]) {
+                    catalog[matchedPackage] = result.catalog[matchedPackage];
+                  }
+                } catch (error) {
+                  writeFatal(
+                    `A fatal error occurred while upgrading ${matchedPackage}: \n${
+                      typeof error === "object"
+                        ? JSON.stringify(error, null, 2)
+                        : error
+                    }`,
+                    _config
+                  );
                 }
               })
             );
