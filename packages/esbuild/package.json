@@ -228,7 +228,11 @@
   "bin": {
     "storm-esbuild": "./bin/esbuild.cjs"
   },
-  "files": ["assets/**/*", "bin/**/*", "dist/**/*"],
+  "files": [
+    "assets/**/*",
+    "bin/**/*",
+    "dist/**/*"
+  ],
   "dependencies": {
     "@nx/devkit": "catalog:",
     "@nx/js": "catalog:",

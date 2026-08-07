@@ -9,11 +9,6 @@
   ];
   dotenv.disableHint = true;
 
-  env = {
-    DEFAULT_LOCALE = "en_US";
-    DEFAULT_TIMEZONE = "America/New_York";
-  };
-
   # https://devenv.sh/packages/
   packages = with pkgs; [
     cargo-deny
