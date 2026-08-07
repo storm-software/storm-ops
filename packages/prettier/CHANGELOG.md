@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Prettier
 
+## [0.59.168](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.59.168) (08/07/2026)
+
+### Bug Fixes
+
+- **monorepo:** Resolve issue with multiple `ajv` versions ([8b585981b](https://github.com/storm-software/storm-ops/commit/8b585981b))
+- **eslint:** Resolve issue with invalid `ajv` dependency version ([123da824b](https://github.com/storm-software/storm-ops/commit/123da824b))
+
 ## [0.59.167](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.59.167) (08/06/2026)
 
 ### Features

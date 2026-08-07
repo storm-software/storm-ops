@@ -2,6 +2,21 @@
 
 # Changelog for Storm Ops - Config Tools
 
+## [1.190.115](https://github.com/storm-software/storm-ops/releases/tag/config-tools%401.190.115) (08/07/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace's devenv modules ([15dc34c13](https://github.com/storm-software/storm-ops/commit/15dc34c13))
+
+### Bug Fixes
+
+- **monorepo:** Resolve issue with multiple `ajv` versions ([8b585981b](https://github.com/storm-software/storm-ops/commit/8b585981b))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.52**
+- Updated **testing-tools** to **v1.119.268**
+
 ## [1.190.114](https://github.com/storm-software/storm-ops/releases/tag/config-tools%401.190.114) (08/06/2026)
 
 ### Miscellaneous

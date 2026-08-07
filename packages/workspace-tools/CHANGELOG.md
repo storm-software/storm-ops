@@ -2,6 +2,26 @@
 
 # Changelog for Storm Ops - Workspace Tools
 
+## [1.296.95](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.296.95) (08/07/2026)
+
+### Bug Fixes
+
+- **monorepo:** Resolve issue with multiple `ajv` versions ([8b585981b](https://github.com/storm-software/storm-ops/commit/8b585981b))
+
+### Updated Dependencies
+
+- Updated **bun-tools** to **v0.0.24**
+- Updated **config** to **v1.138.52**
+- Updated **config-tools** to **v1.190.115**
+- Updated **esbuild** to **v0.53.276**
+- Updated **npm-tools** to **v0.6.233**
+- Updated **package-constants** to **v0.1.128**
+- Updated **pnpm-tools** to **v0.7.126**
+- Updated **prettier** to **v0.59.168**
+- Updated **testing-tools** to **v1.119.268**
+- Updated **tsdown** to **v0.45.276**
+- Updated **unbuild** to **v0.57.276**
+
 ## [1.296.94](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.296.94) (08/06/2026)
 
 ### Bug Fixes

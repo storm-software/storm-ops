@@ -2,6 +2,19 @@
 
 # Changelog for Storm Ops - Npm Tools
 
+## [0.6.233](https://github.com/storm-software/storm-ops/releases/tag/npm-tools%400.6.233) (08/07/2026)
+
+### Bug Fixes
+
+- **monorepo:** Resolve issue with multiple `ajv` versions ([8b585981b](https://github.com/storm-software/storm-ops/commit/8b585981b))
+- **eslint:** Resolve issue with invalid `ajv` dependency version ([123da824b](https://github.com/storm-software/storm-ops/commit/123da824b))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.52**
+- Updated **config-tools** to **v1.190.115**
+- Updated **testing-tools** to **v1.119.268**
+
 ## [0.6.232](https://github.com/storm-software/storm-ops/releases/tag/npm-tools%400.6.232) (08/06/2026)
 
 ### Updated Dependencies

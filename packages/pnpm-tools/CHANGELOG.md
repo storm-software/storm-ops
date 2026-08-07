@@ -2,6 +2,25 @@
 
 # Changelog for Storm Ops - Pnpm Tools
 
+## [0.7.126](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.7.126) (08/07/2026)
+
+### Miscellaneous
+
+- **bun-tools:** Update `storm-pnpm` and `storm-bun` to no longer mention missing packages if `--all` was used ([52b86d3af](https://github.com/storm-software/storm-ops/commit/52b86d3af))
+
+### Bug Fixes
+
+- **monorepo:** Resolve issue with multiple `ajv` versions ([8b585981b](https://github.com/storm-software/storm-ops/commit/8b585981b))
+- **eslint:** Resolve issue with invalid `ajv` dependency version ([123da824b](https://github.com/storm-software/storm-ops/commit/123da824b))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.52**
+- Updated **config-tools** to **v1.190.115**
+- Updated **npm-tools** to **v0.6.233**
+- Updated **package-constants** to **v0.1.128**
+- Updated **testing-tools** to **v1.119.268**
+
 ## [0.7.125](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.7.125) (08/06/2026)
 
 ### Updated Dependencies

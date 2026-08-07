@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Config
 
+## [1.138.52](https://github.com/storm-software/storm-ops/releases/tag/config%401.138.52) (08/07/2026)
+
+### Bug Fixes
+
+- **monorepo:** Resolve issue with multiple `ajv` versions ([8b585981b](https://github.com/storm-software/storm-ops/commit/8b585981b))
+- **eslint:** Resolve issue with invalid `ajv` dependency version ([123da824b](https://github.com/storm-software/storm-ops/commit/123da824b))
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.268**
+
 ## [1.138.51](https://github.com/storm-software/storm-ops/releases/tag/config%401.138.51) (08/06/2026)
 
 ### Updated Dependencies

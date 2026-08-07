@@ -2,6 +2,22 @@
 
 # Changelog for Storm Ops - Untyped
 
+## [0.24.257](https://github.com/storm-software/storm-ops/releases/tag/untyped%400.24.257) (08/07/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace's devenv modules ([15dc34c13](https://github.com/storm-software/storm-ops/commit/15dc34c13))
+
+### Bug Fixes
+
+- **monorepo:** Resolve issue with multiple `ajv` versions ([8b585981b](https://github.com/storm-software/storm-ops/commit/8b585981b))
+- **eslint:** Resolve issue with invalid `ajv` dependency version ([123da824b](https://github.com/storm-software/storm-ops/commit/123da824b))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.52**
+- Updated **config-tools** to **v1.190.115**
+
 ## [0.24.256](https://github.com/storm-software/storm-ops/releases/tag/untyped%400.24.256) (08/06/2026)
 
 ### Miscellaneous

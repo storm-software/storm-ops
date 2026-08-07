@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - Create Storm Workspace
 
+## [1.97.275](https://github.com/storm-software/storm-ops/releases/tag/create-storm-workspace%401.97.275) (08/07/2026)
+
+### Bug Fixes
+
+- **monorepo:** Resolve issue with multiple `ajv` versions ([8b585981b](https://github.com/storm-software/storm-ops/commit/8b585981b))
+
+### Updated Dependencies
+
+- Updated **config-tools** to **v1.190.115**
+
 ## [1.97.274](https://github.com/storm-software/storm-ops/releases/tag/create-storm-workspace%401.97.274) (08/06/2026)
 
 ### Bug Fixes

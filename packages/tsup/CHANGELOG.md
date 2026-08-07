@@ -2,6 +2,22 @@
 
 # Changelog for Storm Ops - Tsup
 
+## [0.2.273](https://github.com/storm-software/storm-ops/releases/tag/tsup%400.2.273) (08/07/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace's devenv modules ([15dc34c13](https://github.com/storm-software/storm-ops/commit/15dc34c13))
+
+### Bug Fixes
+
+- **monorepo:** Resolve issue with multiple `ajv` versions ([8b585981b](https://github.com/storm-software/storm-ops/commit/8b585981b))
+- **eslint:** Resolve issue with invalid `ajv` dependency version ([123da824b](https://github.com/storm-software/storm-ops/commit/123da824b))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.275**
+- Updated **config-tools** to **v1.190.115**
+
 ## [0.2.272](https://github.com/storm-software/storm-ops/releases/tag/tsup%400.2.272) (08/06/2026)
 
 ### Miscellaneous

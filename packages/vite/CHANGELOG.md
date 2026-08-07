@@ -2,6 +2,21 @@
 
 # Changelog for Storm Ops - Vite
 
+## [0.1.209](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.209) (08/07/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace's devenv modules ([15dc34c13](https://github.com/storm-software/storm-ops/commit/15dc34c13))
+
+### Bug Fixes
+
+- **monorepo:** Resolve issue with multiple `ajv` versions ([8b585981b](https://github.com/storm-software/storm-ops/commit/8b585981b))
+- **eslint:** Resolve issue with invalid `ajv` dependency version ([123da824b](https://github.com/storm-software/storm-ops/commit/123da824b))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.275**
+
 ## [0.1.208](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.208) (08/06/2026)
 
 ### Miscellaneous

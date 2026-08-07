@@ -2,6 +2,21 @@
 
 # Changelog for Storm Ops - Build Tools
 
+## [0.158.275](https://github.com/storm-software/storm-ops/releases/tag/build-tools%400.158.275) (08/07/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace's devenv modules ([15dc34c13](https://github.com/storm-software/storm-ops/commit/15dc34c13))
+
+### Bug Fixes
+
+- **monorepo:** Resolve issue with multiple `ajv` versions ([8b585981b](https://github.com/storm-software/storm-ops/commit/8b585981b))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.52**
+- Updated **config-tools** to **v1.190.115**
+
 ## [0.158.274](https://github.com/storm-software/storm-ops/releases/tag/build-tools%400.158.274) (08/06/2026)
 
 ### Miscellaneous

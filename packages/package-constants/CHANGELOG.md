@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - Package Constants
 
+## [0.1.128](https://github.com/storm-software/storm-ops/releases/tag/package-constants%400.1.128) (08/07/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace's devenv modules ([15dc34c13](https://github.com/storm-software/storm-ops/commit/15dc34c13))
+
+### Bug Fixes
+
+- **monorepo:** Resolve issue with multiple `ajv` versions ([8b585981b](https://github.com/storm-software/storm-ops/commit/8b585981b))
+
 ## [0.1.127](https://github.com/storm-software/storm-ops/releases/tag/package-constants%400.1.127) (08/06/2026)
 
 ### Miscellaneous

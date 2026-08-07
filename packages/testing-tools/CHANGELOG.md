@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - Testing Tools
 
+## [1.119.268](https://github.com/storm-software/storm-ops/releases/tag/testing-tools%401.119.268) (08/07/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace's devenv modules ([15dc34c13](https://github.com/storm-software/storm-ops/commit/15dc34c13))
+
+### Bug Fixes
+
+- **monorepo:** Resolve issue with multiple `ajv` versions ([8b585981b](https://github.com/storm-software/storm-ops/commit/8b585981b))
+
 ## [1.119.267](https://github.com/storm-software/storm-ops/releases/tag/testing-tools%401.119.267) (08/06/2026)
 
 ### Miscellaneous

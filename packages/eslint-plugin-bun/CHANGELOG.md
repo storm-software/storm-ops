@@ -2,6 +2,21 @@
 
 # Changelog for Storm Ops - ESLint Plugin Bun
 
+## [0.0.3](https://github.com/storm-software/storm-ops/releases/tag/eslint-plugin-bun%400.0.3) (08/07/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace's devenv modules ([15dc34c13](https://github.com/storm-software/storm-ops/commit/15dc34c13))
+
+### Bug Fixes
+
+- **monorepo:** Resolve issue with multiple `ajv` versions ([8b585981b](https://github.com/storm-software/storm-ops/commit/8b585981b))
+
+### Updated Dependencies
+
+- Updated **package-constants** to **v0.1.128**
+- Updated **prettier** to **v0.59.168**
+
 ## [0.0.2](https://github.com/storm-software/storm-ops/releases/tag/eslint-plugin-bun%400.0.2) (08/06/2026)
 
 ### Bug Fixes

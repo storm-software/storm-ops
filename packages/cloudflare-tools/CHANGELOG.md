@@ -2,6 +2,19 @@
 
 # Changelog for Storm Ops - Cloudflare Tools
 
+## [0.71.258](https://github.com/storm-software/storm-ops/releases/tag/cloudflare-tools%400.71.258) (08/07/2026)
+
+### Bug Fixes
+
+- **monorepo:** Resolve issue with multiple `ajv` versions ([8b585981b](https://github.com/storm-software/storm-ops/commit/8b585981b))
+- **eslint:** Resolve issue with invalid `ajv` dependency version ([123da824b](https://github.com/storm-software/storm-ops/commit/123da824b))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.52**
+- Updated **config-tools** to **v1.190.115**
+- Updated **workspace-tools** to **v1.296.95**
+
 ## [0.71.257](https://github.com/storm-software/storm-ops/releases/tag/cloudflare-tools%400.71.257) (08/06/2026)
 
 ### Bug Fixes

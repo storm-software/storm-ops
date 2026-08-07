@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Linting Tools
 
+## [1.134.45](https://github.com/storm-software/storm-ops/releases/tag/linting-tools%401.134.45) (08/07/2026)
+
+### Bug Fixes
+
+- **monorepo:** Resolve issue with multiple `ajv` versions ([8b585981b](https://github.com/storm-software/storm-ops/commit/8b585981b))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.52**
+- Updated **config-tools** to **v1.190.115**
+
 ## [1.134.44](https://github.com/storm-software/storm-ops/releases/tag/linting-tools%401.134.44) (08/06/2026)
 
 ### Bug Fixes

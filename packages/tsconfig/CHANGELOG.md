@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Tsconfig
 
+## [0.48.182](https://github.com/storm-software/storm-ops/releases/tag/tsconfig%400.48.182) (08/07/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace's devenv modules ([15dc34c13](https://github.com/storm-software/storm-ops/commit/15dc34c13))
+
+### Bug Fixes
+
+- **monorepo:** Resolve issue with multiple `ajv` versions ([8b585981b](https://github.com/storm-software/storm-ops/commit/8b585981b))
+- **eslint:** Resolve issue with invalid `ajv` dependency version ([123da824b](https://github.com/storm-software/storm-ops/commit/123da824b))
+
 ## [0.48.181](https://github.com/storm-software/storm-ops/releases/tag/tsconfig%400.48.181) (08/06/2026)
 
 ### Miscellaneous

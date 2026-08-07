@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Oxfmt
 
+## [0.0.71](https://github.com/storm-software/storm-ops/releases/tag/oxfmt%400.0.71) (08/07/2026)
+
+### Bug Fixes
+
+- **monorepo:** Resolve issue with multiple `ajv` versions ([8b585981b](https://github.com/storm-software/storm-ops/commit/8b585981b))
+- **eslint:** Resolve issue with invalid `ajv` dependency version ([123da824b](https://github.com/storm-software/storm-ops/commit/123da824b))
+
 ## [0.0.69](https://github.com/storm-software/storm-ops/releases/tag/oxfmt%400.0.69) (08/05/2026)
 
 ### Miscellaneous

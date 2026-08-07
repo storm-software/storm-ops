@@ -2,6 +2,21 @@
 
 # Changelog for Storm Ops - Pnpm Plugin
 
+## [0.1.226](https://github.com/storm-software/storm-ops/releases/tag/pnpm-plugin%400.1.226) (08/07/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace's devenv modules ([15dc34c13](https://github.com/storm-software/storm-ops/commit/15dc34c13))
+
+### Bug Fixes
+
+- **monorepo:** Resolve issue with multiple `ajv` versions ([8b585981b](https://github.com/storm-software/storm-ops/commit/8b585981b))
+
+### Updated Dependencies
+
+- Updated **package-constants** to **v0.1.128**
+- Updated **testing-tools** to **v1.119.268**
+
 ## [0.1.225](https://github.com/storm-software/storm-ops/releases/tag/pnpm-plugin%400.1.225) (08/06/2026)
 
 ### Miscellaneous

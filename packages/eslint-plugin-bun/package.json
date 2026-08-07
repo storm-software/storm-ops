@@ -1,15 +1,9 @@
 {
   "name": "@storm-software/eslint-plugin-bun",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "private": false,
   "description": "An ESLint Plugin that enforces Bun catalog rules in Storm Software projects.",
-  "keywords": [
-    "eslint",
-    "eslint-plugin",
-    "storm-software",
-    "bun",
-    "catalog"
-  ],
+  "keywords": ["eslint", "eslint-plugin", "storm-software", "bun", "catalog"],
   "homepage": "https://stormsoftware.com",
   "bugs": {
     "url": "https://stormsoftware.com/support",
@@ -72,9 +66,7 @@
     },
     "./package.json": "./package.json"
   },
-  "files": [
-    "dist"
-  ],
+  "files": ["dist"],
   "dependencies": {
     "@storm-software/package-constants": "workspace:*",
     "@typescript-eslint/utils": "catalog:",
