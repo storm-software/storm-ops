@@ -116,7 +116,6 @@
     "jest-util": "catalog:",
     "knip": "catalog:",
     "lefthook": "1.6.18",
-    "mdast-util-to-string": "catalog:",
     "nx": "catalog:",
     "pkg-types": "catalog:",
     "prettier": "catalog:",
