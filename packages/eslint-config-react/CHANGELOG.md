@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - ESLint Config React
 
+## [0.0.79](https://github.com/storm-software/storm-ops/releases/tag/eslint-config-react%400.0.79) (08/08/2026)
+
+### Miscellaneous
+
+- **eslint:** Update build process to use `tsdown` package ([e714f6822](https://github.com/storm-software/storm-ops/commit/e714f6822))
+
+### Updated Dependencies
+
+- Updated **eslint** to **v0.170.157**
+
 ## [0.0.78](https://github.com/storm-software/storm-ops/releases/tag/eslint-config-react%400.0.78) (08/08/2026)
 
 ### Bug Fixes

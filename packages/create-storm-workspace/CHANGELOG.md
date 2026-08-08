@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - Create Storm Workspace
 
+## [1.97.283](https://github.com/storm-software/storm-ops/releases/tag/create-storm-workspace%401.97.283) (08/08/2026)
+
+### Miscellaneous
+
+- **eslint:** Update build process to use `tsdown` package ([e714f6822](https://github.com/storm-software/storm-ops/commit/e714f6822))
+
+### Updated Dependencies
+
+- Updated **config-tools** to **v1.190.123**
+
 ## [1.97.282](https://github.com/storm-software/storm-ops/releases/tag/create-storm-workspace%401.97.282) (08/08/2026)
 
 ### Bug Fixes

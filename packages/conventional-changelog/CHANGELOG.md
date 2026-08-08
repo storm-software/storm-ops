@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Conventional Changelog
 
+## [0.3.284](https://github.com/storm-software/storm-ops/releases/tag/conventional-changelog%400.3.284) (08/08/2026)
+
+### Miscellaneous
+
+- **eslint:** Update build process to use `tsdown` package ([e714f6822](https://github.com/storm-software/storm-ops/commit/e714f6822))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.60**
+- Updated **config-tools** to **v1.190.123**
+
 ## [0.3.283](https://github.com/storm-software/storm-ops/releases/tag/conventional-changelog%400.3.283) (08/08/2026)
 
 ### Bug Fixes

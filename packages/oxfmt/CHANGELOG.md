@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Oxfmt
 
+## [0.0.79](https://github.com/storm-software/storm-ops/releases/tag/oxfmt%400.0.79) (08/08/2026)
+
+### Miscellaneous
+
+- **eslint:** Update build process to use `tsdown` package ([e714f6822](https://github.com/storm-software/storm-ops/commit/e714f6822))
+
 ## [0.0.78](https://github.com/storm-software/storm-ops/releases/tag/oxfmt%400.0.78) (08/08/2026)
 
 ### Bug Fixes

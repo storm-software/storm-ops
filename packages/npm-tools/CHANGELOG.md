@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Npm Tools
 
+## [0.6.241](https://github.com/storm-software/storm-ops/releases/tag/npm-tools%400.6.241) (08/08/2026)
+
+### Miscellaneous
+
+- **eslint:** Update build process to use `tsdown` package ([e714f6822](https://github.com/storm-software/storm-ops/commit/e714f6822))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.60**
+- Updated **config-tools** to **v1.190.123**
+- Updated **testing-tools** to **v1.119.276**
+
 ## [0.6.240](https://github.com/storm-software/storm-ops/releases/tag/npm-tools%400.6.240) (08/08/2026)
 
 ### Bug Fixes

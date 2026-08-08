@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Tsdoc
 
+## [0.13.276](https://github.com/storm-software/storm-ops/releases/tag/tsdoc%400.13.276) (08/08/2026)
+
+### Miscellaneous
+
+- **eslint:** Update build process to use `tsdown` package ([e714f6822](https://github.com/storm-software/storm-ops/commit/e714f6822))
+
 ## [0.13.275](https://github.com/storm-software/storm-ops/releases/tag/tsdoc%400.13.275) (08/08/2026)
 
 ### Bug Fixes

@@ -2,6 +2,19 @@
 
 # Changelog for Storm Ops - Esbuild
 
+## [0.53.284](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.53.284) (08/08/2026)
+
+### Miscellaneous
+
+- **eslint:** Update build process to use `tsdown` package ([e714f6822](https://github.com/storm-software/storm-ops/commit/e714f6822))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.283**
+- Updated **config** to **v1.138.60**
+- Updated **config-tools** to **v1.190.123**
+- Updated **tsup** to **v0.2.281**
+
 ## [0.53.283](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.53.283) (08/08/2026)
 
 ### Bug Fixes

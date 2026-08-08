@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Package Constants
 
+## [0.1.136](https://github.com/storm-software/storm-ops/releases/tag/package-constants%400.1.136) (08/08/2026)
+
+### Miscellaneous
+
+- **eslint:** Update build process to use `tsdown` package ([e714f6822](https://github.com/storm-software/storm-ops/commit/e714f6822))
+
 ## [0.1.135](https://github.com/storm-software/storm-ops/releases/tag/package-constants%400.1.135) (08/08/2026)
 
 ### Bug Fixes

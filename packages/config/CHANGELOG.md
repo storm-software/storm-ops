@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - Config
 
+## [1.138.60](https://github.com/storm-software/storm-ops/releases/tag/config%401.138.60) (08/08/2026)
+
+### Miscellaneous
+
+- **eslint:** Update build process to use `tsdown` package ([e714f6822](https://github.com/storm-software/storm-ops/commit/e714f6822))
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.276**
+
 ## [1.138.59](https://github.com/storm-software/storm-ops/releases/tag/config%401.138.59) (08/08/2026)
 
 ### Bug Fixes

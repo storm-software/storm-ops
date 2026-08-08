@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Pnpm Plugin
 
+## [0.1.234](https://github.com/storm-software/storm-ops/releases/tag/pnpm-plugin%400.1.234) (08/08/2026)
+
+### Miscellaneous
+
+- **eslint:** Update build process to use `tsdown` package ([e714f6822](https://github.com/storm-software/storm-ops/commit/e714f6822))
+
+### Updated Dependencies
+
+- Updated **package-constants** to **v0.1.136**
+- Updated **testing-tools** to **v1.119.276**
+
 ## [0.1.233](https://github.com/storm-software/storm-ops/releases/tag/pnpm-plugin%400.1.233) (08/08/2026)
 
 ### Bug Fixes

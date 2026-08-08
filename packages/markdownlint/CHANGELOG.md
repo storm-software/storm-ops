@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - Markdownlint
 
+## [0.30.279](https://github.com/storm-software/storm-ops/releases/tag/markdownlint%400.30.279) (08/08/2026)
+
+### Miscellaneous
+
+- **eslint:** Update build process to use `tsdown` package ([e714f6822](https://github.com/storm-software/storm-ops/commit/e714f6822))
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.276**
+
 ## [0.30.278](https://github.com/storm-software/storm-ops/releases/tag/markdownlint%400.30.278) (08/08/2026)
 
 ### Bug Fixes

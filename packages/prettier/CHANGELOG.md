@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Prettier
 
+## [0.59.176](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.59.176) (08/08/2026)
+
+### Miscellaneous
+
+- **eslint:** Update build process to use `tsdown` package ([e714f6822](https://github.com/storm-software/storm-ops/commit/e714f6822))
+
 ## [0.59.175](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.59.175) (08/08/2026)
 
 ### Bug Fixes

@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Projen
 
+## [0.21.307](https://github.com/storm-software/storm-ops/releases/tag/projen%400.21.307) (08/08/2026)
+
+### Miscellaneous
+
+- **eslint:** Update build process to use `tsdown` package ([e714f6822](https://github.com/storm-software/storm-ops/commit/e714f6822))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.60**
+- Updated **config-tools** to **v1.190.123**
+- Updated **workspace-tools** to **v1.296.104**
+
 ## [0.21.306](https://github.com/storm-software/storm-ops/releases/tag/projen%400.21.306) (08/08/2026)
 
 ### Bug Fixes

@@ -2,6 +2,26 @@
 
 # Changelog for Storm Ops - Workspace Tools
 
+## [1.296.104](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.296.104) (08/08/2026)
+
+### Miscellaneous
+
+- **eslint:** Update build process to use `tsdown` package ([e714f6822](https://github.com/storm-software/storm-ops/commit/e714f6822))
+
+### Updated Dependencies
+
+- Updated **bun-tools** to **v0.0.33**
+- Updated **config** to **v1.138.60**
+- Updated **config-tools** to **v1.190.123**
+- Updated **esbuild** to **v0.53.284**
+- Updated **npm-tools** to **v0.6.241**
+- Updated **package-constants** to **v0.1.136**
+- Updated **pnpm-tools** to **v0.7.134**
+- Updated **prettier** to **v0.59.176**
+- Updated **testing-tools** to **v1.119.276**
+- Updated **tsdown** to **v0.45.284**
+- Updated **unbuild** to **v0.57.284**
+
 ## [1.296.103](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.296.103) (08/08/2026)
 
 ### Bug Fixes

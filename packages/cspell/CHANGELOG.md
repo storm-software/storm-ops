@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - CSpell
 
+## [0.46.191](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.46.191) (08/08/2026)
+
+### Miscellaneous
+
+- **eslint:** Update build process to use `tsdown` package ([e714f6822](https://github.com/storm-software/storm-ops/commit/e714f6822))
+
 ## [0.46.190](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.46.190) (08/08/2026)
 
 ### Bug Fixes

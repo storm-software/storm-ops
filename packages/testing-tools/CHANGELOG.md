@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Testing Tools
 
+## [1.119.276](https://github.com/storm-software/storm-ops/releases/tag/testing-tools%401.119.276) (08/08/2026)
+
+### Miscellaneous
+
+- **eslint:** Update build process to use `tsdown` package ([e714f6822](https://github.com/storm-software/storm-ops/commit/e714f6822))
+
 ## [1.119.275](https://github.com/storm-software/storm-ops/releases/tag/testing-tools%401.119.275) (08/08/2026)
 
 ### Bug Fixes

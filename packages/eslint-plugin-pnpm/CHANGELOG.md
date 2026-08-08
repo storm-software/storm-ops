@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - ESLint Plugin Pnpm
 
+## [0.0.86](https://github.com/storm-software/storm-ops/releases/tag/eslint-plugin-pnpm%400.0.86) (08/08/2026)
+
+### Miscellaneous
+
+- **eslint:** Update build process to use `tsdown` package ([e714f6822](https://github.com/storm-software/storm-ops/commit/e714f6822))
+
+### Updated Dependencies
+
+- Updated **package-constants** to **v0.1.136**
+- Updated **prettier** to **v0.59.176**
+- Updated **tsdoc** to **v0.13.276**
+
 ## [0.0.85](https://github.com/storm-software/storm-ops/releases/tag/eslint-plugin-pnpm%400.0.85) (08/08/2026)
 
 ### Bug Fixes

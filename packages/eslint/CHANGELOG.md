@@ -2,6 +2,23 @@
 
 # Changelog for Storm Ops - ESLint
 
+## [0.170.157](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.170.157) (08/08/2026)
+
+### Miscellaneous
+
+- **eslint:** Update build process to use `tsdown` package ([e714f6822](https://github.com/storm-software/storm-ops/commit/e714f6822))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.60**
+- Updated **config-tools** to **v1.190.123**
+- Updated **eslint-plugin-banner** to **v0.0.88**
+- Updated **eslint-plugin-bun** to **v0.0.11**
+- Updated **eslint-plugin-pnpm** to **v0.0.86**
+- Updated **eslint-plugin-tsdoc** to **v0.0.86**
+- Updated **package-constants** to **v0.1.136**
+- Updated **tsdoc** to **v0.13.276**
+
 ## [0.170.156](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.170.156) (08/08/2026)
 
 ### Bug Fixes

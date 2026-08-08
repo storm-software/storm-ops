@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Vite
 
+## [0.1.217](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.217) (08/08/2026)
+
+### Miscellaneous
+
+- **eslint:** Update build process to use `tsdown` package ([e714f6822](https://github.com/storm-software/storm-ops/commit/e714f6822))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.283**
+- Updated **config** to **v1.138.60**
+- Updated **config-tools** to **v1.190.123**
+
 ## [0.1.216](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.216) (08/08/2026)
 
 ### Bug Fixes

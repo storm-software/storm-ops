@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - ESLint Plugin Bun
 
+## [0.0.11](https://github.com/storm-software/storm-ops/releases/tag/eslint-plugin-bun%400.0.11) (08/08/2026)
+
+### Miscellaneous
+
+- **eslint:** Update build process to use `tsdown` package ([e714f6822](https://github.com/storm-software/storm-ops/commit/e714f6822))
+
+### Updated Dependencies
+
+- Updated **package-constants** to **v0.1.136**
+- Updated **prettier** to **v0.59.176**
+
 ## [0.0.10](https://github.com/storm-software/storm-ops/releases/tag/eslint-plugin-bun%400.0.10) (08/08/2026)
 
 ### Bug Fixes
