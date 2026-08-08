@@ -208,7 +208,7 @@
     "@storm-software/eslint-plugin-bun": "workspace:*",
     "@storm-software/eslint-plugin-pnpm": "workspace:*",
     "@storm-software/eslint-plugin-tsdoc": "workspace:*",
-    "@storm-software/tsdoc": "workspace:^",
+    "@storm-software/tsdoc": "workspace:*",
     "@stylistic/eslint-plugin-migrate": "^4.4.1",
     "@types/eslint": "catalog:",
     "@types/eslint__js": "catalog:",
