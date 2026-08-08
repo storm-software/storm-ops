@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - CSpell
 
+## [0.46.190](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.46.190) (08/08/2026)
+
+### Bug Fixes
+
+- **eslint:** Remove incorrectly bundled dependency ([7619f2dfe](https://github.com/storm-software/storm-ops/commit/7619f2dfe))
+
 ## [0.46.188](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.46.188) (08/07/2026)
 
 ### Bug Fixes

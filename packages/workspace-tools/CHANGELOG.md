@@ -2,6 +2,26 @@
 
 # Changelog for Storm Ops - Workspace Tools
 
+## [1.296.103](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.296.103) (08/08/2026)
+
+### Bug Fixes
+
+- **eslint:** Remove incorrectly bundled dependency ([7619f2dfe](https://github.com/storm-software/storm-ops/commit/7619f2dfe))
+
+### Updated Dependencies
+
+- Updated **bun-tools** to **v0.0.32**
+- Updated **config** to **v1.138.59**
+- Updated **config-tools** to **v1.190.122**
+- Updated **esbuild** to **v0.53.283**
+- Updated **npm-tools** to **v0.6.240**
+- Updated **package-constants** to **v0.1.135**
+- Updated **pnpm-tools** to **v0.7.133**
+- Updated **prettier** to **v0.59.175**
+- Updated **testing-tools** to **v1.119.275**
+- Updated **tsdown** to **v0.45.283**
+- Updated **unbuild** to **v0.57.283**
+
 ## [1.296.102](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.296.102) (08/08/2026)
 
 ### Updated Dependencies

@@ -2,6 +2,23 @@
 
 # Changelog for Storm Ops - ESLint
 
+## [0.170.156](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.170.156) (08/08/2026)
+
+### Bug Fixes
+
+- **eslint:** Remove incorrectly bundled dependency ([7619f2dfe](https://github.com/storm-software/storm-ops/commit/7619f2dfe))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.59**
+- Updated **config-tools** to **v1.190.122**
+- Updated **eslint-plugin-banner** to **v0.0.87**
+- Updated **eslint-plugin-bun** to **v0.0.10**
+- Updated **eslint-plugin-pnpm** to **v0.0.85**
+- Updated **eslint-plugin-tsdoc** to **v0.0.85**
+- Updated **package-constants** to **v0.1.135**
+- Updated **tsdoc** to **v0.13.275**
+
 ## [0.170.155](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.170.155) (08/08/2026)
 
 ### Bug Fixes

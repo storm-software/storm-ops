@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Build Tools
 
+## [0.158.282](https://github.com/storm-software/storm-ops/releases/tag/build-tools%400.158.282) (08/08/2026)
+
+### Bug Fixes
+
+- **eslint:** Remove incorrectly bundled dependency ([7619f2dfe](https://github.com/storm-software/storm-ops/commit/7619f2dfe))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.59**
+- Updated **config-tools** to **v1.190.122**
+
 ## [0.158.281](https://github.com/storm-software/storm-ops/releases/tag/build-tools%400.158.281) (08/08/2026)
 
 ### Bug Fixes

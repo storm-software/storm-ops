@@ -2,6 +2,20 @@
 
 # Changelog for Storm Ops - Oxlint
 
+## [0.0.88](https://github.com/storm-software/storm-ops/releases/tag/oxlint%400.0.88) (08/08/2026)
+
+### Bug Fixes
+
+- **eslint:** Remove incorrectly bundled dependency ([7619f2dfe](https://github.com/storm-software/storm-ops/commit/7619f2dfe))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.59**
+- Updated **config-tools** to **v1.190.122**
+- Updated **eslint-plugin-banner** to **v0.0.87**
+- Updated **eslint-plugin-pnpm** to **v0.0.85**
+- Updated **eslint-plugin-tsdoc** to **v0.0.85**
+
 ## [0.0.87](https://github.com/storm-software/storm-ops/releases/tag/oxlint%400.0.87) (08/08/2026)
 
 ### Bug Fixes

@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Package Constants
 
+## [0.1.135](https://github.com/storm-software/storm-ops/releases/tag/package-constants%400.1.135) (08/08/2026)
+
+### Bug Fixes
+
+- **eslint:** Remove incorrectly bundled dependency ([7619f2dfe](https://github.com/storm-software/storm-ops/commit/7619f2dfe))
+
 ## [0.1.134](https://github.com/storm-software/storm-ops/releases/tag/package-constants%400.1.134) (08/08/2026)
 
 ### Bug Fixes

@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Oxfmt
 
+## [0.0.78](https://github.com/storm-software/storm-ops/releases/tag/oxfmt%400.0.78) (08/08/2026)
+
+### Bug Fixes
+
+- **eslint:** Remove incorrectly bundled dependency ([7619f2dfe](https://github.com/storm-software/storm-ops/commit/7619f2dfe))
+
 ## [0.0.76](https://github.com/storm-software/storm-ops/releases/tag/oxfmt%400.0.76) (08/07/2026)
 
 ### Bug Fixes

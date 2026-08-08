@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - ESLint Plugin Bun
 
+## [0.0.10](https://github.com/storm-software/storm-ops/releases/tag/eslint-plugin-bun%400.0.10) (08/08/2026)
+
+### Bug Fixes
+
+- **eslint:** Remove incorrectly bundled dependency ([7619f2dfe](https://github.com/storm-software/storm-ops/commit/7619f2dfe))
+
+### Updated Dependencies
+
+- Updated **package-constants** to **v0.1.135**
+- Updated **prettier** to **v0.59.175**
+
 ## [0.0.9](https://github.com/storm-software/storm-ops/releases/tag/eslint-plugin-bun%400.0.9) (08/08/2026)
 
 ### Bug Fixes

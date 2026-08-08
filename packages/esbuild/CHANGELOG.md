@@ -2,6 +2,19 @@
 
 # Changelog for Storm Ops - Esbuild
 
+## [0.53.283](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.53.283) (08/08/2026)
+
+### Bug Fixes
+
+- **eslint:** Remove incorrectly bundled dependency ([7619f2dfe](https://github.com/storm-software/storm-ops/commit/7619f2dfe))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.282**
+- Updated **config** to **v1.138.59**
+- Updated **config-tools** to **v1.190.122**
+- Updated **tsup** to **v0.2.280**
+
 ## [0.53.282](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.53.282) (08/08/2026)
 
 ### Bug Fixes

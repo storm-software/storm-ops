@@ -2,6 +2,19 @@
 
 # Changelog for Storm Ops - Git Tools
 
+## [2.131.130](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.131.130) (08/08/2026)
+
+### Bug Fixes
+
+- **eslint:** Remove incorrectly bundled dependency ([7619f2dfe](https://github.com/storm-software/storm-ops/commit/7619f2dfe))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.59**
+- Updated **config-tools** to **v1.190.122**
+- Updated **conventional-changelog** to **v0.3.283**
+- Updated **package-constants** to **v0.1.135**
+
 ## [2.131.129](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.131.129) (08/08/2026)
 
 ### Bug Fixes

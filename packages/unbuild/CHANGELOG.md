@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Unbuild
 
+## [0.57.283](https://github.com/storm-software/storm-ops/releases/tag/unbuild%400.57.283) (08/08/2026)
+
+### Bug Fixes
+
+- **eslint:** Remove incorrectly bundled dependency ([7619f2dfe](https://github.com/storm-software/storm-ops/commit/7619f2dfe))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.282**
+- Updated **config** to **v1.138.59**
+- Updated **config-tools** to **v1.190.122**
+
 ## [0.57.282](https://github.com/storm-software/storm-ops/releases/tag/unbuild%400.57.282) (08/08/2026)
 
 ### Bug Fixes

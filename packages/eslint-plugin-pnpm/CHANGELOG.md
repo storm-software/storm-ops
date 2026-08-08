@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - ESLint Plugin Pnpm
 
+## [0.0.85](https://github.com/storm-software/storm-ops/releases/tag/eslint-plugin-pnpm%400.0.85) (08/08/2026)
+
+### Bug Fixes
+
+- **eslint:** Remove incorrectly bundled dependency ([7619f2dfe](https://github.com/storm-software/storm-ops/commit/7619f2dfe))
+
+### Updated Dependencies
+
+- Updated **package-constants** to **v0.1.135**
+- Updated **prettier** to **v0.59.175**
+- Updated **tsdoc** to **v0.13.275**
+
 ## [0.0.84](https://github.com/storm-software/storm-ops/releases/tag/eslint-plugin-pnpm%400.0.84) (08/08/2026)
 
 ### Bug Fixes

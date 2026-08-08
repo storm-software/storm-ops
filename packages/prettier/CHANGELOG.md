@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Prettier
 
+## [0.59.175](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.59.175) (08/08/2026)
+
+### Bug Fixes
+
+- **eslint:** Remove incorrectly bundled dependency ([7619f2dfe](https://github.com/storm-software/storm-ops/commit/7619f2dfe))
+
 ## [0.59.173](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.59.173) (08/07/2026)
 
 ### Bug Fixes

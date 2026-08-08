@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - ESLint Config React
 
+## [0.0.78](https://github.com/storm-software/storm-ops/releases/tag/eslint-config-react%400.0.78) (08/08/2026)
+
+### Bug Fixes
+
+- **eslint:** Remove incorrectly bundled dependency ([7619f2dfe](https://github.com/storm-software/storm-ops/commit/7619f2dfe))
+
+### Updated Dependencies
+
+- Updated **eslint** to **v0.170.156**
+
 ## [0.0.77](https://github.com/storm-software/storm-ops/releases/tag/eslint-config-react%400.0.77) (08/08/2026)
 
 ### Bug Fixes

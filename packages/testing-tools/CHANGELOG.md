@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Testing Tools
 
+## [1.119.275](https://github.com/storm-software/storm-ops/releases/tag/testing-tools%401.119.275) (08/08/2026)
+
+### Bug Fixes
+
+- **eslint:** Remove incorrectly bundled dependency ([7619f2dfe](https://github.com/storm-software/storm-ops/commit/7619f2dfe))
+
 ## [1.119.274](https://github.com/storm-software/storm-ops/releases/tag/testing-tools%401.119.274) (08/08/2026)
 
 ### Bug Fixes

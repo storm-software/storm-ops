@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Npm Tools
 
+## [0.6.240](https://github.com/storm-software/storm-ops/releases/tag/npm-tools%400.6.240) (08/08/2026)
+
+### Bug Fixes
+
+- **eslint:** Remove incorrectly bundled dependency ([7619f2dfe](https://github.com/storm-software/storm-ops/commit/7619f2dfe))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.59**
+- Updated **config-tools** to **v1.190.122**
+- Updated **testing-tools** to **v1.119.275**
+
 ## [0.6.239](https://github.com/storm-software/storm-ops/releases/tag/npm-tools%400.6.239) (08/08/2026)
 
 ### Updated Dependencies

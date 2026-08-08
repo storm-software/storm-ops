@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Tsconfig
 
+## [0.48.189](https://github.com/storm-software/storm-ops/releases/tag/tsconfig%400.48.189) (08/08/2026)
+
+### Bug Fixes
+
+- **eslint:** Remove incorrectly bundled dependency ([7619f2dfe](https://github.com/storm-software/storm-ops/commit/7619f2dfe))
+
 ## [0.48.188](https://github.com/storm-software/storm-ops/releases/tag/tsconfig%400.48.188) (08/08/2026)
 
 ### Bug Fixes

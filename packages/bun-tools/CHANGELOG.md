@@ -2,6 +2,20 @@
 
 # Changelog for Storm Ops - Bun Tools
 
+## [0.0.32](https://github.com/storm-software/storm-ops/releases/tag/bun-tools%400.0.32) (08/08/2026)
+
+### Bug Fixes
+
+- **eslint:** Remove incorrectly bundled dependency ([7619f2dfe](https://github.com/storm-software/storm-ops/commit/7619f2dfe))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.59**
+- Updated **config-tools** to **v1.190.122**
+- Updated **npm-tools** to **v0.6.240**
+- Updated **package-constants** to **v0.1.135**
+- Updated **testing-tools** to **v1.119.275**
+
 ## [0.0.31](https://github.com/storm-software/storm-ops/releases/tag/bun-tools%400.0.31) (08/08/2026)
 
 ### Updated Dependencies

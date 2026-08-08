@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - K8s Tools
 
+## [0.42.306](https://github.com/storm-software/storm-ops/releases/tag/k8s-tools%400.42.306) (08/08/2026)
+
+### Bug Fixes
+
+- **eslint:** Remove incorrectly bundled dependency ([7619f2dfe](https://github.com/storm-software/storm-ops/commit/7619f2dfe))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.59**
+- Updated **config-tools** to **v1.190.122**
+- Updated **workspace-tools** to **v1.296.103**
+
 ## [0.42.305](https://github.com/storm-software/storm-ops/releases/tag/k8s-tools%400.42.305) (08/08/2026)
 
 ### Updated Dependencies

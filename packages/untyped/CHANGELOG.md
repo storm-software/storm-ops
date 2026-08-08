@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Untyped
 
+## [0.24.264](https://github.com/storm-software/storm-ops/releases/tag/untyped%400.24.264) (08/08/2026)
+
+### Bug Fixes
+
+- **eslint:** Remove incorrectly bundled dependency ([7619f2dfe](https://github.com/storm-software/storm-ops/commit/7619f2dfe))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.59**
+- Updated **config-tools** to **v1.190.122**
+
 ## [0.24.263](https://github.com/storm-software/storm-ops/releases/tag/untyped%400.24.263) (08/08/2026)
 
 ### Bug Fixes

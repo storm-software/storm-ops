@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Tsdown
 
+## [0.45.283](https://github.com/storm-software/storm-ops/releases/tag/tsdown%400.45.283) (08/08/2026)
+
+### Bug Fixes
+
+- **eslint:** Remove incorrectly bundled dependency ([7619f2dfe](https://github.com/storm-software/storm-ops/commit/7619f2dfe))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.282**
+- Updated **config** to **v1.138.59**
+- Updated **config-tools** to **v1.190.122**
+
 ## [0.45.282](https://github.com/storm-software/storm-ops/releases/tag/tsdown%400.45.282) (08/08/2026)
 
 ### Bug Fixes

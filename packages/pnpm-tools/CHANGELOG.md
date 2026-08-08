@@ -2,6 +2,20 @@
 
 # Changelog for Storm Ops - Pnpm Tools
 
+## [0.7.133](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.7.133) (08/08/2026)
+
+### Bug Fixes
+
+- **eslint:** Remove incorrectly bundled dependency ([7619f2dfe](https://github.com/storm-software/storm-ops/commit/7619f2dfe))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.59**
+- Updated **config-tools** to **v1.190.122**
+- Updated **npm-tools** to **v0.6.240**
+- Updated **package-constants** to **v0.1.135**
+- Updated **testing-tools** to **v1.119.275**
+
 ## [0.7.132](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.7.132) (08/08/2026)
 
 ### Updated Dependencies

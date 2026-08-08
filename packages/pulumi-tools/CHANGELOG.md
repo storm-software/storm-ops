@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Pulumi Tools
 
+## [0.22.306](https://github.com/storm-software/storm-ops/releases/tag/pulumi-tools%400.22.306) (08/08/2026)
+
+### Bug Fixes
+
+- **eslint:** Remove incorrectly bundled dependency ([7619f2dfe](https://github.com/storm-software/storm-ops/commit/7619f2dfe))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.59**
+- Updated **config-tools** to **v1.190.122**
+- Updated **workspace-tools** to **v1.296.103**
+
 ## [0.22.305](https://github.com/storm-software/storm-ops/releases/tag/pulumi-tools%400.22.305) (08/08/2026)
 
 ### Updated Dependencies

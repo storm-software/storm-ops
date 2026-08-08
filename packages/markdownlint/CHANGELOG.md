@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - Markdownlint
 
+## [0.30.278](https://github.com/storm-software/storm-ops/releases/tag/markdownlint%400.30.278) (08/08/2026)
+
+### Bug Fixes
+
+- **eslint:** Remove incorrectly bundled dependency ([7619f2dfe](https://github.com/storm-software/storm-ops/commit/7619f2dfe))
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.275**
+
 ## [0.30.277](https://github.com/storm-software/storm-ops/releases/tag/markdownlint%400.30.277) (08/08/2026)
 
 ### Bug Fixes
