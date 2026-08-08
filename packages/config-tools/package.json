@@ -41,197 +41,127 @@
   "sideEffects": false,
   "type": "module",
   "exports": {
-    "./package.json": "./package.json",
-    "./types": {
-      "import": {
-        "types": "./dist/types.d.ts",
-        "default": "./dist/types.js"
-      },
-      "require": {
-        "types": "./dist/types.d.cts",
-        "default": "./dist/types.cjs"
-      },
-      "default": {
-        "types": "./dist/types.d.ts",
-        "default": "./dist/types.js"
-      }
-    },
-    "./index": {
-      "import": {
-        "types": "./dist/index.d.ts",
-        "default": "./dist/index.js"
-      },
-      "require": {
-        "types": "./dist/index.d.cts",
-        "default": "./dist/index.cjs"
-      },
-      "default": {
-        "types": "./dist/index.d.ts",
-        "default": "./dist/index.js"
-      }
-    },
     ".": {
-      "import": {
-        "types": "./dist/index.d.ts",
-        "default": "./dist/index.js"
-      },
-      "require": {
-        "types": "./dist/index.d.cts",
-        "default": "./dist/index.cjs"
-      },
-      "default": {
-        "types": "./dist/index.d.ts",
-        "default": "./dist/index.js"
-      }
-    },
-    "./create-storm-config": {
-      "import": {
-        "types": "./dist/create-storm-config.d.ts",
-        "default": "./dist/create-storm-config.js"
-      },
-      "require": {
-        "types": "./dist/create-storm-config.d.cts",
-        "default": "./dist/create-storm-config.cjs"
-      },
-      "default": {
-        "types": "./dist/create-storm-config.d.ts",
-        "default": "./dist/create-storm-config.js"
-      }
-    },
-    "./get-config": {
-      "import": {
-        "types": "./dist/get-config.d.ts",
-        "default": "./dist/get-config.js"
-      },
-      "require": {
-        "types": "./dist/get-config.d.cts",
-        "default": "./dist/get-config.cjs"
-      },
-      "default": {
-        "types": "./dist/get-config.d.ts",
-        "default": "./dist/get-config.js"
-      }
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
     },
     "./config-file": {
-      "import": {
-        "types": "./dist/config-file/index.d.ts",
-        "default": "./dist/config-file/index.js"
-      },
-      "require": {
-        "types": "./dist/config-file/index.d.cts",
-        "default": "./dist/config-file/index.cjs"
-      },
-      "default": {
-        "types": "./dist/config-file/index.d.ts",
-        "default": "./dist/config-file/index.js"
-      }
+      "import": "./dist/config-file/index.mjs",
+      "require": "./dist/config-file/index.cjs"
     },
-    "./config-file/*": {
-      "import": {
-        "types": "./dist/config-file/*.d.ts",
-        "default": "./dist/config-file/*.js"
-      },
-      "require": {
-        "types": "./dist/config-file/*.d.cts",
-        "default": "./dist/config-file/*.cjs"
-      },
-      "default": {
-        "types": "./dist/config-file/*.d.ts",
-        "default": "./dist/config-file/*.js"
-      }
+    "./config-file/get-config-file": {
+      "import": "./dist/config-file/get-config-file.mjs",
+      "require": "./dist/config-file/get-config-file.cjs"
+    },
+    "./create-storm-config": {
+      "import": "./dist/create-storm-config.mjs",
+      "require": "./dist/create-storm-config.cjs"
     },
     "./env": {
-      "import": {
-        "types": "./dist/env/index.d.ts",
-        "default": "./dist/env/index.js"
-      },
-      "require": {
-        "types": "./dist/env/index.d.cts",
-        "default": "./dist/env/index.cjs"
-      },
-      "default": {
-        "types": "./dist/env/index.d.ts",
-        "default": "./dist/env/index.js"
-      }
+      "import": "./dist/env/index.mjs",
+      "require": "./dist/env/index.cjs"
     },
-    "./env/*": {
-      "import": {
-        "types": "./dist/env/*.d.ts",
-        "default": "./dist/env/*.js"
-      },
-      "require": {
-        "types": "./dist/env/*.d.cts",
-        "default": "./dist/env/*.cjs"
-      },
-      "default": {
-        "types": "./dist/env/*.d.ts",
-        "default": "./dist/env/*.js"
-      }
+    "./env/get-env": {
+      "import": "./dist/env/get-env.mjs",
+      "require": "./dist/env/get-env.cjs"
+    },
+    "./env/set-env": {
+      "import": "./dist/env/set-env.mjs",
+      "require": "./dist/env/set-env.cjs"
+    },
+    "./get-config": {
+      "import": "./dist/get-config.mjs",
+      "require": "./dist/get-config.cjs"
     },
     "./logger": {
-      "import": {
-        "types": "./dist/logger/index.d.ts",
-        "default": "./dist/logger/index.js"
-      },
-      "require": {
-        "types": "./dist/logger/index.d.cts",
-        "default": "./dist/logger/index.cjs"
-      },
-      "default": {
-        "types": "./dist/logger/index.d.ts",
-        "default": "./dist/logger/index.js"
-      }
+      "import": "./dist/logger/index.mjs",
+      "require": "./dist/logger/index.cjs"
     },
-    "./logger/*": {
-      "import": {
-        "types": "./dist/logger/*.d.ts",
-        "default": "./dist/logger/*.js"
-      },
-      "require": {
-        "types": "./dist/logger/*.d.cts",
-        "default": "./dist/logger/*.cjs"
-      },
-      "default": {
-        "types": "./dist/logger/*.d.ts",
-        "default": "./dist/logger/*.js"
-      }
+    "./logger/chalk": {
+      "import": "./dist/logger/chalk.mjs",
+      "require": "./dist/logger/chalk.cjs"
+    },
+    "./logger/console": {
+      "import": "./dist/logger/console.mjs",
+      "require": "./dist/logger/console.cjs"
+    },
+    "./logger/console-icons": {
+      "import": "./dist/logger/console-icons.mjs",
+      "require": "./dist/logger/console-icons.cjs"
+    },
+    "./logger/create-logger": {
+      "import": "./dist/logger/create-logger.mjs",
+      "require": "./dist/logger/create-logger.cjs"
+    },
+    "./logger/format-timestamp": {
+      "import": "./dist/logger/format-timestamp.mjs",
+      "require": "./dist/logger/format-timestamp.cjs"
+    },
+    "./logger/get-log-level": {
+      "import": "./dist/logger/get-log-level.mjs",
+      "require": "./dist/logger/get-log-level.cjs"
+    },
+    "./logger/is-unicode-supported": {
+      "import": "./dist/logger/is-unicode-supported.mjs",
+      "require": "./dist/logger/is-unicode-supported.cjs"
+    },
+    "./types": {
+      "import": "./dist/types.mjs",
+      "require": "./dist/types.cjs"
     },
     "./utilities": {
-      "import": {
-        "types": "./dist/utilities/index.d.ts",
-        "default": "./dist/utilities/index.js"
-      },
-      "require": {
-        "types": "./dist/utilities/index.d.cts",
-        "default": "./dist/utilities/index.cjs"
-      },
-      "default": {
-        "types": "./dist/utilities/index.d.ts",
-        "default": "./dist/utilities/index.js"
-      }
+      "import": "./dist/utilities/index.mjs",
+      "require": "./dist/utilities/index.cjs"
     },
-    "./utilities/*": {
-      "import": {
-        "types": "./dist/utilities/*.d.ts",
-        "default": "./dist/utilities/*.js"
-      },
-      "require": {
-        "types": "./dist/utilities/*.d.cts",
-        "default": "./dist/utilities/*.cjs"
-      },
-      "default": {
-        "types": "./dist/utilities/*.d.ts",
-        "default": "./dist/utilities/*.js"
-      }
-    }
+    "./utilities/apply-workspace-tokens": {
+      "import": "./dist/utilities/apply-workspace-tokens.mjs",
+      "require": "./dist/utilities/apply-workspace-tokens.cjs"
+    },
+    "./utilities/colors": {
+      "import": "./dist/utilities/colors.mjs",
+      "require": "./dist/utilities/colors.cjs"
+    },
+    "./utilities/correct-paths": {
+      "import": "./dist/utilities/correct-paths.mjs",
+      "require": "./dist/utilities/correct-paths.cjs"
+    },
+    "./utilities/file-path-utils": {
+      "import": "./dist/utilities/file-path-utils.mjs",
+      "require": "./dist/utilities/file-path-utils.cjs"
+    },
+    "./utilities/find-up": {
+      "import": "./dist/utilities/find-up.mjs",
+      "require": "./dist/utilities/find-up.cjs"
+    },
+    "./utilities/find-workspace-root": {
+      "import": "./dist/utilities/find-workspace-root.mjs",
+      "require": "./dist/utilities/find-workspace-root.cjs"
+    },
+    "./utilities/get-default-config": {
+      "import": "./dist/utilities/get-default-config.mjs",
+      "require": "./dist/utilities/get-default-config.cjs"
+    },
+    "./utilities/process-handler": {
+      "import": "./dist/utilities/process-handler.mjs",
+      "require": "./dist/utilities/process-handler.cjs"
+    },
+    "./utilities/run": {
+      "import": "./dist/utilities/run.mjs",
+      "require": "./dist/utilities/run.cjs"
+    },
+    "./utilities/toml": {
+      "import": "./dist/utilities/toml.mjs",
+      "require": "./dist/utilities/toml.cjs"
+    },
+    "./*": "./*"
   },
   "main": "./dist/index.cjs",
-  "module": "./dist/index.js",
-  "types": "./dist/index.d.ts",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.cts",
   "bin": {
     "storm-config": "./bin/config.cjs",
     "storm-config-cjs": "./bin/config.cjs",
-    "storm-config-esm": "./bin/config.js"
+    "storm-config-esm": "./bin/config.mjs"
   },
   "files": ["dist"],
   "dependencies": {
@@ -248,7 +178,7 @@
   },
   "devDependencies": {
     "@types/node": "catalog:",
-    "tsup": "catalog:",
+    "tsdown": "catalog:",
     "zod": "catalog:"
   },
   "peerDependencies": {

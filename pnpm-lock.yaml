@@ -673,9 +673,9 @@ importers:
       '@types/node':
         specifier: 'catalog:'
         version: 25.9.5
-      tsup:
+      tsdown:
         specifier: 'catalog:'
-        version: 8.4.0(patch_hash=a9def7e06ce25c19654987ab91979289197bf4d3e7e124c514a4487c3e8d68c6)(@microsoft/api-extractor@7.58.12(@types/node@25.9.5))(@swc/core@1.7.26(@swc/helpers@0.5.13))(jiti@2.7.0)(postcss@8.5.26)(tsx@4.23.9)(typescript@6.0.3)(yaml@2.9.0)
+        version: 0.22.14(@typescript/native-preview@7.0.0-dev.20250908.1)(@volar/typescript@2.4.28)(oxc-resolver@11.24.2)(tsx@4.23.9)(typescript@6.0.3)
       zod:
         specifier: 'catalog:'
         version: 4.4.3

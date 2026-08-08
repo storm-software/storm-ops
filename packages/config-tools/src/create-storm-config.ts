@@ -10,7 +10,7 @@ import { getConfigFile } from "./config-file/get-config-file";
 import { getConfigEnv, getExtensionEnv } from "./env/get-env";
 import { setConfigEnv } from "./env/set-env";
 import { formatLogMessage, writeTrace, writeWarning } from "./logger/console";
-import { joinPaths } from "./utilities";
+import { joinPaths } from "./utilities/correct-paths";
 import { findWorkspaceRoot } from "./utilities/find-workspace-root";
 import {
   applyDefaultConfig,

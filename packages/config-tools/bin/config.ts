@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 
-import {
+import type {
   MultiThemeColors,
   SingleThemeColors
-} from "@storm-software/config/types";
+} from "@storm-software/config";
 import chalk from "chalk";
 import { Command } from "commander";
 import { getConfig } from "../src/get-config";
@@ -18,9 +18,9 @@ import {
 import {
   exitWithError,
   exitWithSuccess,
-  findWorkspaceRootSafe,
   handleProcess
-} from "../src/utilities";
+} from "../src/utilities/process-handler";
+import { findWorkspaceRootSafe } from "../src/utilities/find-workspace-root";
 
 export function createProgram() {
   writeInfo(`${brandIcon()} Running Storm Configuration Tools`, {

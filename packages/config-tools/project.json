@@ -11,7 +11,7 @@
       "dependsOn": ["clean", "^build"],
       "executor": "nx:run-commands",
       "options": {
-        "command": "tsup --config=tsup.config.ts",
+        "command": "tsdown --config=tsdown.config.ts",
         "cwd": "{projectRoot}"
       }
     },
@@ -26,7 +26,7 @@
           "pnpm copyfiles LICENSE dist/packages/config-tools",
           "pnpm copyfiles --up=2 ./packages/config-tools/*.md ./packages/config-tools/package.json dist/packages/config-tools",
           "pnpm copyfiles --up=3 \"./packages/config-tools/dist/**/*\" dist/packages/config-tools/dist",
-          "pnpm copyfiles --up=3 \"./packages/config-tools/bin/*.js\" \"./packages/config-tools/bin/*.cjs\" dist/packages/config-tools/bin"
+          "pnpm copyfiles --up=3 \"./packages/config-tools/bin/*.cjs\" \"./packages/config-tools/bin/*.d.cts\" \"./packages/config-tools/bin/*.mjs\" \"./packages/config-tools/bin/*.d.mts\" dist/packages/config-tools/bin"
         ]
       }
     },
