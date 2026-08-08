@@ -2,6 +2,19 @@
 
 # Changelog for Storm Ops - Esbuild
 
+## [0.53.282](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.53.282) (08/08/2026)
+
+### Bug Fixes
+
+- **monorepo:** Resolve issue with invalid dependency versions ([e4206a676](https://github.com/storm-software/storm-ops/commit/e4206a676))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.281**
+- Updated **config** to **v1.138.58**
+- Updated **config-tools** to **v1.190.121**
+- Updated **tsup** to **v0.2.279**
+
 ## [0.53.281](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.53.281) (08/07/2026)
 
 ### Bug Fixes

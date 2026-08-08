@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Tsup
 
+## [0.2.279](https://github.com/storm-software/storm-ops/releases/tag/tsup%400.2.279) (08/08/2026)
+
+### Bug Fixes
+
+- **monorepo:** Resolve issue with invalid dependency versions ([e4206a676](https://github.com/storm-software/storm-ops/commit/e4206a676))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.281**
+- Updated **config** to **v1.138.58**
+- Updated **config-tools** to **v1.190.121**
+
 ## [0.2.278](https://github.com/storm-software/storm-ops/releases/tag/tsup%400.2.278) (08/07/2026)
 
 ### Bug Fixes

@@ -1,6 +1,6 @@
 {
   "name": "@storm-software/git-tools",
-  "version": "2.131.128",
+  "version": "2.131.129",
   "private": false,
   "description": "Tools for managing Git repositories within a Nx workspace.",
   "keywords": [
@@ -202,10 +202,7 @@
     "storm-version-warning-cjs": "./bin/version-warning.cjs",
     "storm-version-warning-esm": "./bin/version-warning.js"
   },
-  "files": [
-    "bin",
-    "dist"
-  ],
+  "files": ["bin", "dist"],
   "dependencies": {
     "@commitlint/ensure": "^19.8.1",
     "@commitlint/rules": "^19.8.1",
@@ -219,7 +216,7 @@
     "@textlint/markdown-to-ast": "^14.8.4",
     "anchor-markdown-header": "^0.7.0",
     "any-shell-escape": "^0.1.1",
-    "axios": "^1.8.2",
+    "axios": "1.8.2",
     "chalk": "catalog:",
     "commander": "catalog:",
     "conventional-changelog-conventionalcommits": "^9.3.1",

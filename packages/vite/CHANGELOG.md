@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Vite
 
+## [0.1.215](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.215) (08/08/2026)
+
+### Bug Fixes
+
+- **monorepo:** Resolve issue with invalid dependency versions ([e4206a676](https://github.com/storm-software/storm-ops/commit/e4206a676))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.281**
+- Updated **config** to **v1.138.58**
+- Updated **config-tools** to **v1.190.121**
+
 ## [0.1.214](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.214) (08/07/2026)
 
 ### Bug Fixes

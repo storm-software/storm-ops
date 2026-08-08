@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Tsdoc
 
+## [0.13.274](https://github.com/storm-software/storm-ops/releases/tag/tsdoc%400.13.274) (08/08/2026)
+
+### Bug Fixes
+
+- **monorepo:** Resolve issue with invalid dependency versions ([e4206a676](https://github.com/storm-software/storm-ops/commit/e4206a676))
+
 ## [0.13.273](https://github.com/storm-software/storm-ops/releases/tag/tsdoc%400.13.273) (08/07/2026)
 
 ### Bug Fixes

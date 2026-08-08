@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Tsconfig
 
+## [0.48.188](https://github.com/storm-software/storm-ops/releases/tag/tsconfig%400.48.188) (08/08/2026)
+
+### Bug Fixes
+
+- **monorepo:** Resolve issue with invalid dependency versions ([e4206a676](https://github.com/storm-software/storm-ops/commit/e4206a676))
+
 ## [0.48.187](https://github.com/storm-software/storm-ops/releases/tag/tsconfig%400.48.187) (08/07/2026)
 
 ### Bug Fixes

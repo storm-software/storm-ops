@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Pnpm Plugin
 
+## [0.1.232](https://github.com/storm-software/storm-ops/releases/tag/pnpm-plugin%400.1.232) (08/08/2026)
+
+### Bug Fixes
+
+- **monorepo:** Resolve issue with invalid dependency versions ([e4206a676](https://github.com/storm-software/storm-ops/commit/e4206a676))
+
+### Updated Dependencies
+
+- Updated **package-constants** to **v0.1.134**
+- Updated **testing-tools** to **v1.119.274**
+
 ## [0.1.231](https://github.com/storm-software/storm-ops/releases/tag/pnpm-plugin%400.1.231) (08/07/2026)
 
 ### Bug Fixes
