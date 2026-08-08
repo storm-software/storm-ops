@@ -2,6 +2,19 @@
 
 # Changelog for Storm Ops - Pnpm Plugin
 
+## [0.1.231](https://github.com/storm-software/storm-ops/releases/tag/pnpm-plugin%400.1.231) (08/07/2026)
+
+### Bug Fixes
+
+- **monorepo:** Update `pnpm-lock.yaml` file ([db778ebb6](https://github.com/storm-software/storm-ops/commit/db778ebb6))
+- **monorepo:** Resolved issues around duplicate dependency versions ([64ab34d45](https://github.com/storm-software/storm-ops/commit/64ab34d45))
+- **monorepo:** Update all repository packages to resolve hoisting issues ([8dca67b78](https://github.com/storm-software/storm-ops/commit/8dca67b78))
+
+### Updated Dependencies
+
+- Updated **package-constants** to **v0.1.133**
+- Updated **testing-tools** to **v1.119.273**
+
 ## [0.1.230](https://github.com/storm-software/storm-ops/releases/tag/pnpm-plugin%400.1.230) (08/07/2026)
 
 ### Bug Fixes

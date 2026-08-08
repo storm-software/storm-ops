@@ -1,6 +1,6 @@
 {
   "name": "@storm-software/eslint-config-react",
-  "version": "0.0.75",
+  "version": "0.0.76",
   "private": false,
   "description": "A package containing a shared ESLint configuration for React projects used by Storm Software across many projects.",
   "keywords": [
@@ -111,9 +111,7 @@
   },
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
-  "files": [
-    "dist"
-  ],
+  "files": ["dist"],
   "dependencies": {
     "@eslint-react/eslint-plugin": "^5.18.3",
     "@next/eslint-plugin-next": "^15.5.23",
@@ -140,8 +138,8 @@
     "@types/eslint__js": "catalog:",
     "@types/estree": "catalog:",
     "@types/node": "catalog:",
-    "react": ">=18.0.0",
-    "react-dom": ">=18.0.0",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8",
     "tsdown": "catalog:",
     "typescript": "^6.0.3"
   },

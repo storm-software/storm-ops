@@ -2,6 +2,21 @@
 
 # Changelog for Storm Ops - Oxlint
 
+## [0.0.86](https://github.com/storm-software/storm-ops/releases/tag/oxlint%400.0.86) (08/07/2026)
+
+### Bug Fixes
+
+- **monorepo:** Resolved issues around duplicate dependency versions ([64ab34d45](https://github.com/storm-software/storm-ops/commit/64ab34d45))
+- **monorepo:** Update all repository packages to resolve hoisting issues ([8dca67b78](https://github.com/storm-software/storm-ops/commit/8dca67b78))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.57**
+- Updated **config-tools** to **v1.190.120**
+- Updated **eslint-plugin-banner** to **v0.0.85**
+- Updated **eslint-plugin-pnpm** to **v0.0.83**
+- Updated **eslint-plugin-tsdoc** to **v0.0.83**
+
 ## [0.0.85](https://github.com/storm-software/storm-ops/releases/tag/oxlint%400.0.85) (08/07/2026)
 
 ### Bug Fixes

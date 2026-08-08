@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - ESLint Config React
 
+## [0.0.76](https://github.com/storm-software/storm-ops/releases/tag/eslint-config-react%400.0.76) (08/07/2026)
+
+### Bug Fixes
+
+- **monorepo:** Resolved issues around duplicate dependency versions ([64ab34d45](https://github.com/storm-software/storm-ops/commit/64ab34d45))
+- **monorepo:** Update all repository packages to resolve hoisting issues ([8dca67b78](https://github.com/storm-software/storm-ops/commit/8dca67b78))
+
+### Updated Dependencies
+
+- Updated **eslint** to **v0.170.154**
+
 ## [0.0.75](https://github.com/storm-software/storm-ops/releases/tag/eslint-config-react%400.0.75) (08/07/2026)
 
 ### Bug Fixes

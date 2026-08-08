@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - ESLint Plugin Bun
 
+## [0.0.8](https://github.com/storm-software/storm-ops/releases/tag/eslint-plugin-bun%400.0.8) (08/07/2026)
+
+### Bug Fixes
+
+- **monorepo:** Resolved issues around duplicate dependency versions ([64ab34d45](https://github.com/storm-software/storm-ops/commit/64ab34d45))
+- **monorepo:** Update all repository packages to resolve hoisting issues ([8dca67b78](https://github.com/storm-software/storm-ops/commit/8dca67b78))
+
+### Updated Dependencies
+
+- Updated **package-constants** to **v0.1.133**
+- Updated **prettier** to **v0.59.173**
+
 ## [0.0.7](https://github.com/storm-software/storm-ops/releases/tag/eslint-plugin-bun%400.0.7) (08/07/2026)
 
 ### Bug Fixes

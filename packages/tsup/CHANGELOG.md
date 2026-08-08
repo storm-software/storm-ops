@@ -2,6 +2,19 @@
 
 # Changelog for Storm Ops - Tsup
 
+## [0.2.278](https://github.com/storm-software/storm-ops/releases/tag/tsup%400.2.278) (08/07/2026)
+
+### Bug Fixes
+
+- **monorepo:** Resolved issues around duplicate dependency versions ([64ab34d45](https://github.com/storm-software/storm-ops/commit/64ab34d45))
+- **monorepo:** Update all repository packages to resolve hoisting issues ([8dca67b78](https://github.com/storm-software/storm-ops/commit/8dca67b78))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.280**
+- Updated **config** to **v1.138.57**
+- Updated **config-tools** to **v1.190.120**
+
 ## [0.2.277](https://github.com/storm-software/storm-ops/releases/tag/tsup%400.2.277) (08/07/2026)
 
 ### Bug Fixes

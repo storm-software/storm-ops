@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Markdownlint
 
+## [0.30.276](https://github.com/storm-software/storm-ops/releases/tag/markdownlint%400.30.276) (08/07/2026)
+
+### Bug Fixes
+
+- **monorepo:** Update `pnpm-lock.yaml` file ([db778ebb6](https://github.com/storm-software/storm-ops/commit/db778ebb6))
+- **monorepo:** Resolved issues around duplicate dependency versions ([64ab34d45](https://github.com/storm-software/storm-ops/commit/64ab34d45))
+- **monorepo:** Update all repository packages to resolve hoisting issues ([8dca67b78](https://github.com/storm-software/storm-ops/commit/8dca67b78))
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.273**
+
 ## [0.30.275](https://github.com/storm-software/storm-ops/releases/tag/markdownlint%400.30.275) (08/07/2026)
 
 ### Bug Fixes

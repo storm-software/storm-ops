@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Config
 
+## [1.138.57](https://github.com/storm-software/storm-ops/releases/tag/config%401.138.57) (08/07/2026)
+
+### Bug Fixes
+
+- **monorepo:** Resolved issues around duplicate dependency versions ([64ab34d45](https://github.com/storm-software/storm-ops/commit/64ab34d45))
+- **monorepo:** Update all repository packages to resolve hoisting issues ([8dca67b78](https://github.com/storm-software/storm-ops/commit/8dca67b78))
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.273**
+
 ## [1.138.56](https://github.com/storm-software/storm-ops/releases/tag/config%401.138.56) (08/07/2026)
 
 ### Bug Fixes

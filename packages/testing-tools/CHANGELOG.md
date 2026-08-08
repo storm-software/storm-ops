@@ -2,6 +2,14 @@
 
 # Changelog for Storm Ops - Testing Tools
 
+## [1.119.273](https://github.com/storm-software/storm-ops/releases/tag/testing-tools%401.119.273) (08/07/2026)
+
+### Bug Fixes
+
+- **monorepo:** Update `pnpm-lock.yaml` file ([db778ebb6](https://github.com/storm-software/storm-ops/commit/db778ebb6))
+- **monorepo:** Resolved issues around duplicate dependency versions ([64ab34d45](https://github.com/storm-software/storm-ops/commit/64ab34d45))
+- **monorepo:** Update all repository packages to resolve hoisting issues ([8dca67b78](https://github.com/storm-software/storm-ops/commit/8dca67b78))
+
 ## [1.119.272](https://github.com/storm-software/storm-ops/releases/tag/testing-tools%401.119.272) (08/07/2026)
 
 ### Bug Fixes

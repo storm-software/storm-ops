@@ -2,6 +2,21 @@
 
 # Changelog for Storm Ops - Bun Tools
 
+## [0.0.30](https://github.com/storm-software/storm-ops/releases/tag/bun-tools%400.0.30) (08/07/2026)
+
+### Bug Fixes
+
+- **monorepo:** Resolved issues around duplicate dependency versions ([64ab34d45](https://github.com/storm-software/storm-ops/commit/64ab34d45))
+- **monorepo:** Update all repository packages to resolve hoisting issues ([8dca67b78](https://github.com/storm-software/storm-ops/commit/8dca67b78))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.57**
+- Updated **config-tools** to **v1.190.120**
+- Updated **npm-tools** to **v0.6.238**
+- Updated **package-constants** to **v0.1.133**
+- Updated **testing-tools** to **v1.119.273**
+
 ## [0.0.29](https://github.com/storm-software/storm-ops/releases/tag/bun-tools%400.0.29) (08/07/2026)
 
 ### Bug Fixes

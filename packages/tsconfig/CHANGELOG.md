@@ -2,6 +2,14 @@
 
 # Changelog for Storm Ops - Tsconfig
 
+## [0.48.187](https://github.com/storm-software/storm-ops/releases/tag/tsconfig%400.48.187) (08/07/2026)
+
+### Bug Fixes
+
+- **monorepo:** Update `pnpm-lock.yaml` file ([db778ebb6](https://github.com/storm-software/storm-ops/commit/db778ebb6))
+- **monorepo:** Resolved issues around duplicate dependency versions ([64ab34d45](https://github.com/storm-software/storm-ops/commit/64ab34d45))
+- **monorepo:** Update all repository packages to resolve hoisting issues ([8dca67b78](https://github.com/storm-software/storm-ops/commit/8dca67b78))
+
 ## [0.48.186](https://github.com/storm-software/storm-ops/releases/tag/tsconfig%400.48.186) (08/07/2026)
 
 ### Bug Fixes

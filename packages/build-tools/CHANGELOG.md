@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Build Tools
 
+## [0.158.280](https://github.com/storm-software/storm-ops/releases/tag/build-tools%400.158.280) (08/07/2026)
+
+### Bug Fixes
+
+- **monorepo:** Resolved issues around duplicate dependency versions ([64ab34d45](https://github.com/storm-software/storm-ops/commit/64ab34d45))
+- **monorepo:** Update all repository packages to resolve hoisting issues ([8dca67b78](https://github.com/storm-software/storm-ops/commit/8dca67b78))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.57**
+- Updated **config-tools** to **v1.190.120**
+
 ## [0.158.279](https://github.com/storm-software/storm-ops/releases/tag/build-tools%400.158.279) (08/07/2026)
 
 ### Bug Fixes

@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Linting Tools
 
+## [1.134.50](https://github.com/storm-software/storm-ops/releases/tag/linting-tools%401.134.50) (08/07/2026)
+
+### Bug Fixes
+
+- **monorepo:** Resolved issues around duplicate dependency versions ([64ab34d45](https://github.com/storm-software/storm-ops/commit/64ab34d45))
+- **monorepo:** Update all repository packages to resolve hoisting issues ([8dca67b78](https://github.com/storm-software/storm-ops/commit/8dca67b78))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.57**
+- Updated **config-tools** to **v1.190.120**
+
 ## [1.134.49](https://github.com/storm-software/storm-ops/releases/tag/linting-tools%401.134.49) (08/07/2026)
 
 ### Bug Fixes

@@ -2,6 +2,14 @@
 
 # Changelog for Storm Ops - Package Constants
 
+## [0.1.133](https://github.com/storm-software/storm-ops/releases/tag/package-constants%400.1.133) (08/07/2026)
+
+### Bug Fixes
+
+- **monorepo:** Update `pnpm-lock.yaml` file ([db778ebb6](https://github.com/storm-software/storm-ops/commit/db778ebb6))
+- **monorepo:** Resolved issues around duplicate dependency versions ([64ab34d45](https://github.com/storm-software/storm-ops/commit/64ab34d45))
+- **monorepo:** Update all repository packages to resolve hoisting issues ([8dca67b78](https://github.com/storm-software/storm-ops/commit/8dca67b78))
+
 ## [0.1.132](https://github.com/storm-software/storm-ops/releases/tag/package-constants%400.1.132) (08/07/2026)
 
 ### Bug Fixes
