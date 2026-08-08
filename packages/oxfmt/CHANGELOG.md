@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Oxfmt
 
+## [0.0.83](https://github.com/storm-software/storm-ops/releases/tag/oxfmt%400.0.83) (08/08/2026)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace package dependencies ([23b021d2c](https://github.com/storm-software/storm-ops/commit/23b021d2c))
+
 ## [0.0.82](https://github.com/storm-software/storm-ops/releases/tag/oxfmt%400.0.82) (08/08/2026)
 
 ### Bug Fixes
