@@ -15,7 +15,6 @@ export default defineConfig([
     shims: true,
     silent: true,
     bundle: false,
-    skipNodeModulesBundle: true,
-    external: ["@storm-software/eslint"]
+    skipNodeModulesBundle: true
   }
 ]);

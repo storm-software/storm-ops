@@ -941,6 +941,12 @@ importers:
       '@storm-software/config-tools':
         specifier: workspace:*
         version: link:../config-tools
+      '@storm-software/eslint-plugin-banner':
+        specifier: workspace:*
+        version: link:../eslint-plugin-banner
+      '@storm-software/eslint-plugin-tsdoc':
+        specifier: workspace:*
+        version: link:../eslint-plugin-tsdoc
       '@storm-software/package-constants':
         specifier: workspace:*
         version: link:../package-constants
@@ -1104,18 +1110,12 @@ importers:
       '@prettier/plugin-xml':
         specifier: ^3.4.2
         version: 3.4.2(prettier@3.9.6)
-      '@storm-software/eslint-plugin-banner':
-        specifier: workspace:*
-        version: link:../eslint-plugin-banner
       '@storm-software/eslint-plugin-bun':
         specifier: workspace:*
         version: link:../eslint-plugin-bun
       '@storm-software/eslint-plugin-pnpm':
         specifier: workspace:*
         version: link:../eslint-plugin-pnpm
-      '@storm-software/eslint-plugin-tsdoc':
-        specifier: workspace:*
-        version: link:../eslint-plugin-tsdoc
       '@storm-software/tsdoc':
         specifier: workspace:*
         version: link:../tsdoc

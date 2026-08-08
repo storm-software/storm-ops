@@ -21,7 +21,7 @@ export default defineConfig([
     cjsInterop: true,
     shims: true,
     silent: true,
-    bundle: true,
+    bundle: false,
     skipNodeModulesBundle: true,
     noExternal: [
       "zod",
@@ -30,10 +30,7 @@ export default defineConfig([
       "eslint-plugin-import-x",
       "eslint-plugin-import-zod",
       "eslint-plugin-react-native",
-      "eslint-plugin-react-native-globals",
-      "@storm-software/eslint-plugin-pnpm",
-      "@storm-software/eslint-plugin-tsdoc",
-      "@storm-software/eslint-plugin-banner"
+      "eslint-plugin-react-native-globals"
     ]
   }
 ]);
