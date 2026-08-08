@@ -9,7 +9,7 @@ export default defineConfig([
     outDir: "dist",
     platform: "node",
     splitting: true,
-    bundle: true,
+    bundle: false,
     clean: false,
     dts: false,
     sourcemap: false,
@@ -17,6 +17,6 @@ export default defineConfig([
     shims: true,
     silent: true,
     skipNodeModulesBundle: true,
-    noExternal: ["actions-up"]
+    noExternal: ["actions-up", "@manypkg/cli"]
   }
 ]);

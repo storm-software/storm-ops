@@ -17,6 +17,6 @@ export default defineConfig([
     shims: true,
     silent: true,
     skipNodeModulesBundle: true,
-    noExternal: ["actions-up"]
+    noExternal: ["actions-up", "@manypkg/cli"]
   }
 ]);

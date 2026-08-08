@@ -140,7 +140,8 @@
     "@types/eslint__js": "catalog:",
     "@types/estree": "catalog:",
     "@types/node": "catalog:",
-    "eslint": "catalog:",
+    "react": ">=18.0.0",
+    "react-dom": ">=18.0.0",
     "tsdown": "catalog:",
     "typescript": "^6.0.3"
   },

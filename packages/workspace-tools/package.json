@@ -257,7 +257,7 @@
     "@storm-software/tsdown": "workspace:*",
     "defu": "catalog:",
     "esbuild": "catalog:",
-    "fs-extra": "11.2.0",
+    "fs-extra": "catalog:",
     "glob": "catalog:",
     "jiti": "catalog:",
     "markdownlint-cli2": "^0.17.2",

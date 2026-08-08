@@ -1,0 +1,221 @@
+diff --git a/dist/declarations/src/index.d.ts b/dist/declarations/src/index.d.ts
+index cb0ff5c3b541f646105198ee23ac0fc3d805023e..79d28dc360f507c5f4d3ecd0bd619869465af0fa 100644
+--- a/dist/declarations/src/index.d.ts
++++ b/dist/declarations/src/index.d.ts
+@@ -1 +1,26 @@
+ export {};
++
++export const checks: {
++  EXTERNAL_MISMATCH: any;
++  INTERNAL_MISMATCH: any;
++  INVALID_DEV_AND_PEER_DEPENDENCY_RELATIONSHIP: any;
++  INVALID_PACKAGE_NAME: any;
++  MULTIPLE_DEPENDENCY_TYPES: any;
++  ROOT_HAS_PROD_DEPENDENCIES: any;
++  UNSORTED_DEPENDENCIES: any;
++  INCORRECT_REPOSITORY_FIELD: any;
++  WORKSPACE_REQUIRED: any;
++};
++
++export function npmTagAll([tag, _, otp]: [string, string, string]): Promise<void>;
++export function runCmd(args: string[], cwd: string): Promise<void>;
++export function upgradeDependency([name, tag]: [string, string]): Promise<void>;
++export function getPackageInfo(pkgName: string): Promise<any>;
++export function getCorrectRegistry(): string | undefined;
++export function writePackage(pkg: any): Promise<void>;
++
++export interface Options {
++  ignoredRules?: string[];
++  defaultBranch?: string;
++  workspaceProtocol?: "allow" | "require";
++}
+diff --git a/dist/manypkg-cli.js b/dist/manypkg-cli.js
+index efdbfee8ea17d25b1ff767d0f44c86b3415ac9a5..890d079969099112d48a0f8f74837be70a6ca077 100644
+--- a/dist/manypkg-cli.js
++++ b/dist/manypkg-cli.js
+@@ -462,7 +462,7 @@ var WORKSPACE_REQUIRED = makeCheck({
+   type: "all"
+ });
+ 
+-let checks = {
++export let checks = {
+   EXTERNAL_MISMATCH,
+   INTERNAL_MISMATCH,
+   INVALID_DEV_AND_PEER_DEPENDENCY_RELATIONSHIP,
+@@ -481,7 +481,7 @@ class ExitError extends Error {
+   }
+ }
+ 
+-async function writePackage(pkg) {
++export async function writePackage(pkg) {
+   let pkgRaw = await fs.readFile(path.join(pkg.dir, "package.json"), "utf-8");
+   let indent = detectIndent(pkgRaw).indent || "  ";
+   // Determine original EOL style and whether there was a trailing newline
+@@ -512,7 +512,7 @@ async function install(toolType, cwd) {
+   });
+ }
+ 
+-async function runCmd(args, cwd) {
++export async function runCmd(args, cwd) {
+   let {
+     packages
+   } = await getPackages(cwd);
+@@ -552,7 +552,7 @@ async function runCmd(args, cwd) {
+   }
+ }
+ 
+-async function upgradeDependency([name, tag = "latest"]) {
++export async function upgradeDependency([name, tag = "latest"]) {
+   // handle no name is missing
+   let {
+     packages,
+@@ -638,7 +638,7 @@ async function upgradeDependency([name, tag = "latest"]) {
+   await install(tool.type, rootDir);
+ }
+ const npmRequestLimit = pLimit(40);
+-function getPackageInfo(pkgName) {
++export function getPackageInfo(pkgName) {
+   return npmRequestLimit(async () => {
+     const getPackageJson = (await import('package-json')).default;
+     return getPackageJson(pkgName, {
+@@ -648,7 +648,7 @@ function getPackageInfo(pkgName) {
+ }
+ 
+ let npmLimit = pLimit(40);
+-function getCorrectRegistry() {
++export function getCorrectRegistry() {
+   let registry = process.env.npm_config_registry === "https://registry.yarnpkg.com" ? undefined : process.env.npm_config_registry;
+   return registry;
+ }
+@@ -669,7 +669,7 @@ async function tagApackage(packageJson, tag, otpCode) {
+     }
+   });
+ }
+-async function npmTagAll([tag, _, otp]) {
++export async function npmTagAll([tag, _, otp]) {
+   let {
+     packages
+   } = await getPackages(process.cwd());
+@@ -756,62 +756,63 @@ async function execCmd(args) {
+   }));
+   throw new ExitError(highestExitCode);
+ }
+-(async () => {
+-  let things = process.argv.slice(2);
+-  if (things[0] === "exec") {
+-    return execCmd(things.slice(1));
+-  }
+-  if (things[0] === "run") {
+-    return runCmd(things.slice(1), process.cwd());
+-  }
+-  if (things[0] === "upgrade") {
+-    return upgradeDependency(things.slice(1));
+-  }
+-  if (things[0] === "npm-tag") {
+-    return npmTagAll(things.slice(1));
+-  }
+-  if (things[0] !== "check" && things[0] !== "fix") {
+-    error(`command ${things[0]} not found, only check, exec, run, upgrade, npm-tag and fix exist`);
+-    throw new ExitError(1);
+-  }
+-  let shouldFix = things[0] === "fix";
+-  let {
+-    tool,
+-    packages,
+-    rootPackage,
+-    rootDir
+-  } = await getPackages(process.cwd());
+-  let options = {
+-    ...defaultOptions,
+-    ...rootPackage?.packageJson.manypkg
+-  };
+-  let packagesByName = new Map(packages.map(x => [x.packageJson.name, x]));
+-  if (rootPackage) {
+-    packagesByName.set(rootPackage.packageJson.name, rootPackage);
+-  }
+-  let {
+-    hasErrored,
+-    requiresInstall
+-  } = runChecks(packagesByName, rootPackage, shouldFix, options);
+-  if (shouldFix) {
+-    await Promise.all([...packagesByName].map(async ([pkgName, workspace]) => {
+-      writePackage(workspace);
+-    }));
+-    if (requiresInstall) {
+-      await install(tool.type, rootDir);
+-    }
+-    success(`fixed workspaces!`);
+-  } else if (hasErrored) {
+-    info(`the above errors may be fixable with yarn manypkg fix`);
+-    throw new ExitError(1);
+-  } else {
+-    success(`workspaces valid!`);
+-  }
+-})().catch(err => {
+-  if (err instanceof ExitError) {
+-    process.exit(err.code);
+-  } else {
+-    error(err);
+-    process.exit(1);
+-  }
+-});
++
++// (async () => {
++//   let things = process.argv.slice(2);
++//   if (things[0] === "exec") {
++//     return execCmd(things.slice(1));
++//   }
++//   if (things[0] === "run") {
++//     return runCmd(things.slice(1), process.cwd());
++//   }
++//   if (things[0] === "upgrade") {
++//     return upgradeDependency(things.slice(1));
++//   }
++//   if (things[0] === "npm-tag") {
++//     return npmTagAll(things.slice(1));
++//   }
++//   if (things[0] !== "check" && things[0] !== "fix") {
++//     error(`command ${things[0]} not found, only check, exec, run, upgrade, npm-tag and fix exist`);
++//     throw new ExitError(1);
++//   }
++//   let shouldFix = things[0] === "fix";
++//   let {
++//     tool,
++//     packages,
++//     rootPackage,
++//     rootDir
++//   } = await getPackages(process.cwd());
++//   let options = {
++//     ...defaultOptions,
++//     ...rootPackage?.packageJson.manypkg
++//   };
++//   let packagesByName = new Map(packages.map(x => [x.packageJson.name, x]));
++//   if (rootPackage) {
++//     packagesByName.set(rootPackage.packageJson.name, rootPackage);
++//   }
++//   let {
++//     hasErrored,
++//     requiresInstall
++//   } = runChecks(packagesByName, rootPackage, shouldFix, options);
++//   if (shouldFix) {
++//     await Promise.all([...packagesByName].map(async ([pkgName, workspace]) => {
++//       writePackage(workspace);
++//     }));
++//     if (requiresInstall) {
++//       await install(tool.type, rootDir);
++//     }
++//     success(`fixed workspaces!`);
++//   } else if (hasErrored) {
++//     info(`the above errors may be fixable with yarn manypkg fix`);
++//     throw new ExitError(1);
++//   } else {
++//     success(`workspaces valid!`);
++//   }
++// })().catch(err => {
++//   if (err instanceof ExitError) {
++//     process.exit(err.code);
++//   } else {
++//     error(err);
++//     process.exit(1);
++//   }
++// });

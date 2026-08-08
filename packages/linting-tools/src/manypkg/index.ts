@@ -1,11 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { checks } from "@manypkg/cli/src/checks";
-import type { Options } from "@manypkg/cli/src/checks/utils";
-import { ExitError } from "@manypkg/cli/src/errors";
-import { npmTagAll } from "@manypkg/cli/src/npm-tag";
-import { runCmd } from "@manypkg/cli/src/run";
-import { upgradeDependency } from "@manypkg/cli/src/upgrade";
-import { writePackage } from "@manypkg/cli/src/utils";
+import { checks, runCmd, npmTagAll, upgradeDependency, writePackage, type Options } from "@manypkg/cli";
 import { getPackages, type Package } from "@manypkg/get-packages";
 import { StormWorkspaceConfig } from "@storm-software/config";
 import { runAsync } from "@storm-software/config-tools/utilities/run";
@@ -18,14 +12,10 @@ type RootPackage = Package & {
   };
 };
 
-// type PackagesWithConfig = Packages & {
-//   rootPackage?: RootPackage;
-// };
-
 const runChecks = (
   allWorkspaces: Map<string, Package>,
   rootWorkspace: RootPackage | undefined,
-  shouldFix: boolean,
+  shouldFix = true,
   options: Options
 ) => {
   let hasErrored = false;
@@ -102,7 +92,7 @@ async function execCmd(args: string[]) {
       });
     })
   );
-  throw new ExitError(highestExitCode);
+  throw new Error(`Command ${args[0]} failed with exit code ${highestExitCode}`);
 }
 
 export const MANY_PKG_TYPE_OPTIONS = [
