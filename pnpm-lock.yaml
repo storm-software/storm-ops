@@ -9839,8 +9839,8 @@ packages:
     resolution: {integrity: sha512-buhp5kePrmda3vhc5B9t7pUQXAb2Tnd0qgpkIhPhkHXxJpiPJ11H0ZEU0oBpJ2QztSbzG/ZxMj/CHsYJqRHmyg==}
     engines: {node: '>= 12.0.0'}
 
-  comment-parser@1.4.7:
-    resolution: {integrity: sha512-0h+uSNtQGW3D98eQt3jJ8L06Fves8hncB4V/PKdw/Qb8Hnk19VaKuTr55UNRYiSoVa7WwrFls+rh3ux9agmkeQ==}
+  comment-parser@1.4.8:
+    resolution: {integrity: sha512-rKZTGo4fzKYna8UcL0isTg5wkBNla7bxTypLwZQXjIdi++IdP1OJ41rI5Mti3/jltkPujbu4i9LIARYA+zpotQ==}
     engines: {node: '>= 12.0.0'}
 
   common-ancestor-path@2.0.0:
@@ -26845,7 +26845,7 @@ snapshots:
 
   comment-parser@1.4.1: {}
 
-  comment-parser@1.4.7: {}
+  comment-parser@1.4.8: {}
 
   common-ancestor-path@2.0.0: {}
 
@@ -28070,7 +28070,7 @@ snapshots:
   eslint-plugin-import-x@4.17.1(patch_hash=2fde63e367ada6ae348459ff5a2b0bbc53a12189dad6a555a76978c9150bce32)(@typescript-eslint/utils@8.66.0(eslint@10.8.1(jiti@2.7.0)(supports-color@11.0.0))(supports-color@11.0.0)(typescript@6.0.3))(eslint@10.8.1(jiti@2.7.0)(supports-color@11.0.0))(supports-color@11.0.0):
     dependencies:
       '@typescript-eslint/types': 8.66.0
-      comment-parser: 1.4.7
+      comment-parser: 1.4.8
       debug: 4.4.3(supports-color@11.0.0)
       eslint: 10.8.1(jiti@2.7.0)(supports-color@11.0.0)
       eslint-import-context: 0.1.9(unrs-resolver@1.12.2)
@@ -28515,7 +28515,7 @@ snapshots:
     dependencies:
       '@eslint-community/eslint-utils': 4.10.1(eslint@10.8.1(jiti@2.7.0)(supports-color@11.0.0))
       '@eslint-community/regexpp': 4.12.2
-      comment-parser: 1.4.7
+      comment-parser: 1.4.8
       eslint: 10.8.1(jiti@2.7.0)(supports-color@11.0.0)
       jsdoc-type-pratt-parser: 4.8.0
       refa: 0.12.1
@@ -28526,7 +28526,7 @@ snapshots:
     dependencies:
       '@eslint-community/eslint-utils': 4.10.1(eslint@10.8.1(jiti@2.7.0))
       '@eslint-community/regexpp': 4.12.2
-      comment-parser: 1.4.7
+      comment-parser: 1.4.8
       eslint: 10.8.1(jiti@2.7.0)
       jsdoc-type-pratt-parser: 4.8.0
       refa: 0.12.1
@@ -34569,7 +34569,7 @@ snapshots:
   prettier-plugin-jsdoc@1.8.1(prettier@3.9.6):
     dependencies:
       binary-searching: 2.0.5
-      comment-parser: 1.4.7
+      comment-parser: 1.4.8
       mdast-util-from-markdown: 2.0.3(supports-color@11.0.0)
       prettier: 3.9.6
     transitivePeerDependencies:
