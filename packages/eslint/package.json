@@ -89,18 +89,20 @@
     "./configs/unocss": "./dist/configs/unocss.mjs",
     "./configs/yaml": "./dist/configs/yaml.mjs",
     "./configs/zod": "./dist/configs/zod.mjs",
-    "./find-workspace-root-D3UHWbgn": "./dist/find-workspace-root-D3UHWbgn.mjs",
-    "./helpers-mce_MNwt": "./dist/helpers-mce_MNwt.mjs",
     "./plugins": "./dist/plugins.mjs",
-    "./plugins-CZWNS7l4": "./dist/plugins-CZWNS7l4.mjs",
     "./preset": "./dist/preset.mjs",
-    "./preset-x6MId9-7": "./dist/preset-x6MId9-7.mjs",
-    "./rolldown-runtime-CMFfr-1z": "./dist/rolldown-runtime-CMFfr-1z.mjs",
     "./types": "./dist/types.mjs",
+    "./utils/correct-paths": "./dist/utils/correct-paths.mjs",
+    "./utils/find-workspace-root": "./dist/utils/find-workspace-root.mjs",
+    "./utils/helpers": "./dist/utils/helpers.mjs",
+    "./utils/package-manager": "./dist/utils/package-manager.mjs",
+    "./utils/tsconfig": "./dist/utils/tsconfig.mjs",
     "./*": "./*"
   },
   "types": "./dist/index.d.ts",
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "dependencies": {
     "@antfu/install-pkg": "^1.1.0",
     "@clack/prompts": "^0.10.1",

@@ -30,6 +30,7 @@ const config = defineConfig({
   shims: true,
   clean: true,
   dts: true,
+  unbundle: true,
   sourcemap: false,
   treeshake: true,
   deps: {
