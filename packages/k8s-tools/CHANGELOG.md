@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - K8s Tools
 
+## [0.42.309](https://github.com/storm-software/storm-ops/releases/tag/k8s-tools%400.42.309) (08/08/2026)
+
+### Bug Fixes
+
+- **eslint:** Resolve issues with built eslint configuration packages ([38a4294c6](https://github.com/storm-software/storm-ops/commit/38a4294c6))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.62**
+- Updated **config-tools** to **v1.190.125**
+- Updated **workspace-tools** to **v1.296.106**
+
 ## [0.42.308](https://github.com/storm-software/storm-ops/releases/tag/k8s-tools%400.42.308) (08/08/2026)
 
 ### Bug Fixes

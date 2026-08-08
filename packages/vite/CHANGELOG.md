@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Vite
 
+## [0.1.219](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.219) (08/08/2026)
+
+### Bug Fixes
+
+- **eslint:** Resolve issues with built eslint configuration packages ([38a4294c6](https://github.com/storm-software/storm-ops/commit/38a4294c6))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.285**
+- Updated **config** to **v1.138.62**
+- Updated **config-tools** to **v1.190.125**
+
 ## [0.1.218](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.218) (08/08/2026)
 
 ### Bug Fixes

@@ -2,6 +2,19 @@
 
 # Changelog for Storm Ops - Esbuild
 
+## [0.53.286](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.53.286) (08/08/2026)
+
+### Bug Fixes
+
+- **eslint:** Resolve issues with built eslint configuration packages ([38a4294c6](https://github.com/storm-software/storm-ops/commit/38a4294c6))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.285**
+- Updated **config** to **v1.138.62**
+- Updated **config-tools** to **v1.190.125**
+- Updated **tsup** to **v0.2.283**
+
 ## [0.53.285](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.53.285) (08/08/2026)
 
 ### Bug Fixes

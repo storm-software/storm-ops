@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Conventional Changelog
 
+## [0.3.286](https://github.com/storm-software/storm-ops/releases/tag/conventional-changelog%400.3.286) (08/08/2026)
+
+### Bug Fixes
+
+- **eslint:** Resolve issues with built eslint configuration packages ([38a4294c6](https://github.com/storm-software/storm-ops/commit/38a4294c6))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.62**
+- Updated **config-tools** to **v1.190.125**
+
 ## [0.3.285](https://github.com/storm-software/storm-ops/releases/tag/conventional-changelog%400.3.285) (08/08/2026)
 
 ### Bug Fixes

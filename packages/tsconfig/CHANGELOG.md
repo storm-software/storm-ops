@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Tsconfig
 
+## [0.48.192](https://github.com/storm-software/storm-ops/releases/tag/tsconfig%400.48.192) (08/08/2026)
+
+### Bug Fixes
+
+- **eslint:** Resolve issues with built eslint configuration packages ([38a4294c6](https://github.com/storm-software/storm-ops/commit/38a4294c6))
+
 ## [0.48.191](https://github.com/storm-software/storm-ops/releases/tag/tsconfig%400.48.191) (08/08/2026)
 
 ### Bug Fixes

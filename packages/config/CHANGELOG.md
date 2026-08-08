@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - Config
 
+## [1.138.62](https://github.com/storm-software/storm-ops/releases/tag/config%401.138.62) (08/08/2026)
+
+### Bug Fixes
+
+- **eslint:** Resolve issues with built eslint configuration packages ([38a4294c6](https://github.com/storm-software/storm-ops/commit/38a4294c6))
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.278**
+
 ## [1.138.61](https://github.com/storm-software/storm-ops/releases/tag/config%401.138.61) (08/08/2026)
 
 ### Bug Fixes

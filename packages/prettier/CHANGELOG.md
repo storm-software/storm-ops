@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Prettier
 
+## [0.59.178](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.59.178) (08/08/2026)
+
+### Bug Fixes
+
+- **eslint:** Resolve issues with built eslint configuration packages ([38a4294c6](https://github.com/storm-software/storm-ops/commit/38a4294c6))
+
 ## [0.59.177](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.59.177) (08/08/2026)
 
 ### Bug Fixes

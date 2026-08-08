@@ -2,6 +2,20 @@
 
 # Changelog for Storm Ops - Bun Tools
 
+## [0.0.35](https://github.com/storm-software/storm-ops/releases/tag/bun-tools%400.0.35) (08/08/2026)
+
+### Bug Fixes
+
+- **eslint:** Resolve issues with built eslint configuration packages ([38a4294c6](https://github.com/storm-software/storm-ops/commit/38a4294c6))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.62**
+- Updated **config-tools** to **v1.190.125**
+- Updated **npm-tools** to **v0.6.243**
+- Updated **package-constants** to **v0.1.138**
+- Updated **testing-tools** to **v1.119.278**
+
 ## [0.0.34](https://github.com/storm-software/storm-ops/releases/tag/bun-tools%400.0.34) (08/08/2026)
 
 ### Bug Fixes

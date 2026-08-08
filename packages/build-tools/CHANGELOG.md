@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Build Tools
 
+## [0.158.285](https://github.com/storm-software/storm-ops/releases/tag/build-tools%400.158.285) (08/08/2026)
+
+### Bug Fixes
+
+- **eslint:** Resolve issues with built eslint configuration packages ([38a4294c6](https://github.com/storm-software/storm-ops/commit/38a4294c6))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.62**
+- Updated **config-tools** to **v1.190.125**
+
 ## [0.158.284](https://github.com/storm-software/storm-ops/releases/tag/build-tools%400.158.284) (08/08/2026)
 
 ### Bug Fixes

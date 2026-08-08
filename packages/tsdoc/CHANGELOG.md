@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Tsdoc
 
+## [0.13.278](https://github.com/storm-software/storm-ops/releases/tag/tsdoc%400.13.278) (08/08/2026)
+
+### Bug Fixes
+
+- **eslint:** Resolve issues with built eslint configuration packages ([38a4294c6](https://github.com/storm-software/storm-ops/commit/38a4294c6))
+
 ## [0.13.277](https://github.com/storm-software/storm-ops/releases/tag/tsdoc%400.13.277) (08/08/2026)
 
 ### Bug Fixes

@@ -2,6 +2,19 @@
 
 # Changelog for Storm Ops - Git Tools
 
+## [2.131.133](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.131.133) (08/08/2026)
+
+### Bug Fixes
+
+- **eslint:** Resolve issues with built eslint configuration packages ([38a4294c6](https://github.com/storm-software/storm-ops/commit/38a4294c6))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.62**
+- Updated **config-tools** to **v1.190.125**
+- Updated **conventional-changelog** to **v0.3.286**
+- Updated **package-constants** to **v0.1.138**
+
 ## [2.131.132](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.131.132) (08/08/2026)
 
 ### Bug Fixes

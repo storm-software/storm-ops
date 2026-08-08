@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Testing Tools
 
+## [1.119.278](https://github.com/storm-software/storm-ops/releases/tag/testing-tools%401.119.278) (08/08/2026)
+
+### Bug Fixes
+
+- **eslint:** Resolve issues with built eslint configuration packages ([38a4294c6](https://github.com/storm-software/storm-ops/commit/38a4294c6))
+
 ## [1.119.277](https://github.com/storm-software/storm-ops/releases/tag/testing-tools%401.119.277) (08/08/2026)
 
 ### Bug Fixes

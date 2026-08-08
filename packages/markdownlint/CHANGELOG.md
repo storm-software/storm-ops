@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - Markdownlint
 
+## [0.30.281](https://github.com/storm-software/storm-ops/releases/tag/markdownlint%400.30.281) (08/08/2026)
+
+### Bug Fixes
+
+- **eslint:** Resolve issues with built eslint configuration packages ([38a4294c6](https://github.com/storm-software/storm-ops/commit/38a4294c6))
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.278**
+
 ## [0.30.280](https://github.com/storm-software/storm-ops/releases/tag/markdownlint%400.30.280) (08/08/2026)
 
 ### Bug Fixes
