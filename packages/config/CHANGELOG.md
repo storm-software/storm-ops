@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - Config
 
+## [1.138.61](https://github.com/storm-software/storm-ops/releases/tag/config%401.138.61) (08/08/2026)
+
+### Bug Fixes
+
+- **esbuild:** Resolve issue with bundled package import paths ([b1efcaf7e](https://github.com/storm-software/storm-ops/commit/b1efcaf7e))
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.277**
+
 ## [1.138.60](https://github.com/storm-software/storm-ops/releases/tag/config%401.138.60) (08/08/2026)
 
 ### Miscellaneous

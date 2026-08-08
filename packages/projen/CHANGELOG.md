@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Projen
 
+## [0.21.308](https://github.com/storm-software/storm-ops/releases/tag/projen%400.21.308) (08/08/2026)
+
+### Bug Fixes
+
+- **esbuild:** Resolve issue with bundled package import paths ([b1efcaf7e](https://github.com/storm-software/storm-ops/commit/b1efcaf7e))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.61**
+- Updated **config-tools** to **v1.190.124**
+- Updated **workspace-tools** to **v1.296.105**
+
 ## [0.21.307](https://github.com/storm-software/storm-ops/releases/tag/projen%400.21.307) (08/08/2026)
 
 ### Miscellaneous

@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - ESLint Config React
 
+## [0.0.80](https://github.com/storm-software/storm-ops/releases/tag/eslint-config-react%400.0.80) (08/08/2026)
+
+### Bug Fixes
+
+- **esbuild:** Resolve issue with bundled package import paths ([b1efcaf7e](https://github.com/storm-software/storm-ops/commit/b1efcaf7e))
+
+### Updated Dependencies
+
+- Updated **eslint** to **v0.170.158**
+
 ## [0.0.79](https://github.com/storm-software/storm-ops/releases/tag/eslint-config-react%400.0.79) (08/08/2026)
 
 ### Miscellaneous

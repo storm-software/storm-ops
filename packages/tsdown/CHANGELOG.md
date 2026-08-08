@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Tsdown
 
+## [0.45.285](https://github.com/storm-software/storm-ops/releases/tag/tsdown%400.45.285) (08/08/2026)
+
+### Bug Fixes
+
+- **esbuild:** Resolve issue with bundled package import paths ([b1efcaf7e](https://github.com/storm-software/storm-ops/commit/b1efcaf7e))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.284**
+- Updated **config** to **v1.138.61**
+- Updated **config-tools** to **v1.190.124**
+
 ## [0.45.284](https://github.com/storm-software/storm-ops/releases/tag/tsdown%400.45.284) (08/08/2026)
 
 ### Miscellaneous

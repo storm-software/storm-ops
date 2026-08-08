@@ -2,6 +2,20 @@
 
 # Changelog for Storm Ops - Bun Tools
 
+## [0.0.34](https://github.com/storm-software/storm-ops/releases/tag/bun-tools%400.0.34) (08/08/2026)
+
+### Bug Fixes
+
+- **esbuild:** Resolve issue with bundled package import paths ([b1efcaf7e](https://github.com/storm-software/storm-ops/commit/b1efcaf7e))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.61**
+- Updated **config-tools** to **v1.190.124**
+- Updated **npm-tools** to **v0.6.242**
+- Updated **package-constants** to **v0.1.137**
+- Updated **testing-tools** to **v1.119.277**
+
 ## [0.0.33](https://github.com/storm-software/storm-ops/releases/tag/bun-tools%400.0.33) (08/08/2026)
 
 ### Miscellaneous

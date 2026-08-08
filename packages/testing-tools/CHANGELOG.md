@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Testing Tools
 
+## [1.119.277](https://github.com/storm-software/storm-ops/releases/tag/testing-tools%401.119.277) (08/08/2026)
+
+### Bug Fixes
+
+- **esbuild:** Resolve issue with bundled package import paths ([b1efcaf7e](https://github.com/storm-software/storm-ops/commit/b1efcaf7e))
+
 ## [1.119.276](https://github.com/storm-software/storm-ops/releases/tag/testing-tools%401.119.276) (08/08/2026)
 
 ### Miscellaneous

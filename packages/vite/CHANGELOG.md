@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Vite
 
+## [0.1.218](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.218) (08/08/2026)
+
+### Bug Fixes
+
+- **esbuild:** Resolve issue with bundled package import paths ([b1efcaf7e](https://github.com/storm-software/storm-ops/commit/b1efcaf7e))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.284**
+- Updated **config** to **v1.138.61**
+- Updated **config-tools** to **v1.190.124**
+
 ## [0.1.217](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.217) (08/08/2026)
 
 ### Miscellaneous

@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Cloudflare Tools
 
+## [0.71.268](https://github.com/storm-software/storm-ops/releases/tag/cloudflare-tools%400.71.268) (08/08/2026)
+
+### Bug Fixes
+
+- **esbuild:** Resolve issue with bundled package import paths ([b1efcaf7e](https://github.com/storm-software/storm-ops/commit/b1efcaf7e))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.61**
+- Updated **config-tools** to **v1.190.124**
+- Updated **workspace-tools** to **v1.296.105**
+
 ## [0.71.267](https://github.com/storm-software/storm-ops/releases/tag/cloudflare-tools%400.71.267) (08/08/2026)
 
 ### Miscellaneous

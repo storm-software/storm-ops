@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - K8s Tools
 
+## [0.42.308](https://github.com/storm-software/storm-ops/releases/tag/k8s-tools%400.42.308) (08/08/2026)
+
+### Bug Fixes
+
+- **esbuild:** Resolve issue with bundled package import paths ([b1efcaf7e](https://github.com/storm-software/storm-ops/commit/b1efcaf7e))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.61**
+- Updated **config-tools** to **v1.190.124**
+- Updated **workspace-tools** to **v1.296.105**
+
 ## [0.42.307](https://github.com/storm-software/storm-ops/releases/tag/k8s-tools%400.42.307) (08/08/2026)
 
 ### Miscellaneous

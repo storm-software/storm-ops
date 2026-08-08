@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Npm Tools
 
+## [0.6.242](https://github.com/storm-software/storm-ops/releases/tag/npm-tools%400.6.242) (08/08/2026)
+
+### Bug Fixes
+
+- **esbuild:** Resolve issue with bundled package import paths ([b1efcaf7e](https://github.com/storm-software/storm-ops/commit/b1efcaf7e))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.61**
+- Updated **config-tools** to **v1.190.124**
+- Updated **testing-tools** to **v1.119.277**
+
 ## [0.6.241](https://github.com/storm-software/storm-ops/releases/tag/npm-tools%400.6.241) (08/08/2026)
 
 ### Miscellaneous

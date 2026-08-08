@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Build Tools
 
+## [0.158.284](https://github.com/storm-software/storm-ops/releases/tag/build-tools%400.158.284) (08/08/2026)
+
+### Bug Fixes
+
+- **esbuild:** Resolve issue with bundled package import paths ([b1efcaf7e](https://github.com/storm-software/storm-ops/commit/b1efcaf7e))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.61**
+- Updated **config-tools** to **v1.190.124**
+
 ## [0.158.283](https://github.com/storm-software/storm-ops/releases/tag/build-tools%400.158.283) (08/08/2026)
 
 ### Miscellaneous

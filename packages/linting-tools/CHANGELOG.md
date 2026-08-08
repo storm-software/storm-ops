@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Linting Tools
 
+## [1.134.54](https://github.com/storm-software/storm-ops/releases/tag/linting-tools%401.134.54) (08/08/2026)
+
+### Bug Fixes
+
+- **esbuild:** Resolve issue with bundled package import paths ([b1efcaf7e](https://github.com/storm-software/storm-ops/commit/b1efcaf7e))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.61**
+- Updated **config-tools** to **v1.190.124**
+
 ## [1.134.53](https://github.com/storm-software/storm-ops/releases/tag/linting-tools%401.134.53) (08/08/2026)
 
 ### Miscellaneous

@@ -2,6 +2,19 @@
 
 # Changelog for Storm Ops - Git Tools
 
+## [2.131.132](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.131.132) (08/08/2026)
+
+### Bug Fixes
+
+- **esbuild:** Resolve issue with bundled package import paths ([b1efcaf7e](https://github.com/storm-software/storm-ops/commit/b1efcaf7e))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.61**
+- Updated **config-tools** to **v1.190.124**
+- Updated **conventional-changelog** to **v0.3.285**
+- Updated **package-constants** to **v0.1.137**
+
 ## [2.131.131](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.131.131) (08/08/2026)
 
 ### Miscellaneous

@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - CSpell
 
+## [0.46.192](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.46.192) (08/08/2026)
+
+### Bug Fixes
+
+- **esbuild:** Resolve issue with bundled package import paths ([b1efcaf7e](https://github.com/storm-software/storm-ops/commit/b1efcaf7e))
+
 ## [0.46.191](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.46.191) (08/08/2026)
 
 ### Miscellaneous

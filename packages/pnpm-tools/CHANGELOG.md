@@ -2,6 +2,20 @@
 
 # Changelog for Storm Ops - Pnpm Tools
 
+## [0.7.135](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.7.135) (08/08/2026)
+
+### Bug Fixes
+
+- **esbuild:** Resolve issue with bundled package import paths ([b1efcaf7e](https://github.com/storm-software/storm-ops/commit/b1efcaf7e))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.61**
+- Updated **config-tools** to **v1.190.124**
+- Updated **npm-tools** to **v0.6.242**
+- Updated **package-constants** to **v0.1.137**
+- Updated **testing-tools** to **v1.119.277**
+
 ## [0.7.134](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.7.134) (08/08/2026)
 
 ### Miscellaneous

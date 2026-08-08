@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Tsconfig
 
+## [0.48.191](https://github.com/storm-software/storm-ops/releases/tag/tsconfig%400.48.191) (08/08/2026)
+
+### Bug Fixes
+
+- **esbuild:** Resolve issue with bundled package import paths ([b1efcaf7e](https://github.com/storm-software/storm-ops/commit/b1efcaf7e))
+
 ## [0.48.190](https://github.com/storm-software/storm-ops/releases/tag/tsconfig%400.48.190) (08/08/2026)
 
 ### Miscellaneous

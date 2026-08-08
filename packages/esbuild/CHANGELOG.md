@@ -2,6 +2,19 @@
 
 # Changelog for Storm Ops - Esbuild
 
+## [0.53.285](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.53.285) (08/08/2026)
+
+### Bug Fixes
+
+- **esbuild:** Resolve issue with bundled package import paths ([b1efcaf7e](https://github.com/storm-software/storm-ops/commit/b1efcaf7e))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.284**
+- Updated **config** to **v1.138.61**
+- Updated **config-tools** to **v1.190.124**
+- Updated **tsup** to **v0.2.282**
+
 ## [0.53.284](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.53.284) (08/08/2026)
 
 ### Miscellaneous

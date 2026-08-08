@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Package Constants
 
+## [0.1.137](https://github.com/storm-software/storm-ops/releases/tag/package-constants%400.1.137) (08/08/2026)
+
+### Bug Fixes
+
+- **esbuild:** Resolve issue with bundled package import paths ([b1efcaf7e](https://github.com/storm-software/storm-ops/commit/b1efcaf7e))
+
 ## [0.1.136](https://github.com/storm-software/storm-ops/releases/tag/package-constants%400.1.136) (08/08/2026)
 
 ### Miscellaneous

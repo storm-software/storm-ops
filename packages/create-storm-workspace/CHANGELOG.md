@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - Create Storm Workspace
 
+## [1.97.284](https://github.com/storm-software/storm-ops/releases/tag/create-storm-workspace%401.97.284) (08/08/2026)
+
+### Bug Fixes
+
+- **esbuild:** Resolve issue with bundled package import paths ([b1efcaf7e](https://github.com/storm-software/storm-ops/commit/b1efcaf7e))
+
+### Updated Dependencies
+
+- Updated **config-tools** to **v1.190.124**
+
 ## [1.97.283](https://github.com/storm-software/storm-ops/releases/tag/create-storm-workspace%401.97.283) (08/08/2026)
 
 ### Miscellaneous

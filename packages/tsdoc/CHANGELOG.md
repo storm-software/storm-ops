@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Tsdoc
 
+## [0.13.277](https://github.com/storm-software/storm-ops/releases/tag/tsdoc%400.13.277) (08/08/2026)
+
+### Bug Fixes
+
+- **esbuild:** Resolve issue with bundled package import paths ([b1efcaf7e](https://github.com/storm-software/storm-ops/commit/b1efcaf7e))
+
 ## [0.13.276](https://github.com/storm-software/storm-ops/releases/tag/tsdoc%400.13.276) (08/08/2026)
 
 ### Miscellaneous

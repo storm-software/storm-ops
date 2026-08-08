@@ -2,6 +2,26 @@
 
 # Changelog for Storm Ops - Workspace Tools
 
+## [1.296.105](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.296.105) (08/08/2026)
+
+### Bug Fixes
+
+- **esbuild:** Resolve issue with bundled package import paths ([b1efcaf7e](https://github.com/storm-software/storm-ops/commit/b1efcaf7e))
+
+### Updated Dependencies
+
+- Updated **bun-tools** to **v0.0.34**
+- Updated **config** to **v1.138.61**
+- Updated **config-tools** to **v1.190.124**
+- Updated **esbuild** to **v0.53.285**
+- Updated **npm-tools** to **v0.6.242**
+- Updated **package-constants** to **v0.1.137**
+- Updated **pnpm-tools** to **v0.7.135**
+- Updated **prettier** to **v0.59.177**
+- Updated **testing-tools** to **v1.119.277**
+- Updated **tsdown** to **v0.45.285**
+- Updated **unbuild** to **v0.57.285**
+
 ## [1.296.104](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.296.104) (08/08/2026)
 
 ### Miscellaneous

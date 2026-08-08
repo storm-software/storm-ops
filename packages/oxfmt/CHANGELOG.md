@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Oxfmt
 
+## [0.0.80](https://github.com/storm-software/storm-ops/releases/tag/oxfmt%400.0.80) (08/08/2026)
+
+### Bug Fixes
+
+- **esbuild:** Resolve issue with bundled package import paths ([b1efcaf7e](https://github.com/storm-software/storm-ops/commit/b1efcaf7e))
+
 ## [0.0.79](https://github.com/storm-software/storm-ops/releases/tag/oxfmt%400.0.79) (08/08/2026)
 
 ### Miscellaneous
