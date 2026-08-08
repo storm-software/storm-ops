@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - Config
 
+## [1.138.63](https://github.com/storm-software/storm-ops/releases/tag/config%401.138.63) (08/08/2026)
+
+### Bug Fixes
+
+- **git-tools:** Added `prettier-plugin-sh` dependency to package ([618da22c4](https://github.com/storm-software/storm-ops/commit/618da22c4))
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.279**
+
 ## [1.138.62](https://github.com/storm-software/storm-ops/releases/tag/config%401.138.62) (08/08/2026)
 
 ### Bug Fixes

@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - ESLint Config React
 
+## [0.0.82](https://github.com/storm-software/storm-ops/releases/tag/eslint-config-react%400.0.82) (08/08/2026)
+
+### Bug Fixes
+
+- **git-tools:** Added `prettier-plugin-sh` dependency to package ([618da22c4](https://github.com/storm-software/storm-ops/commit/618da22c4))
+
+### Updated Dependencies
+
+- Updated **eslint** to **v0.170.160**
+
 ## [0.0.81](https://github.com/storm-software/storm-ops/releases/tag/eslint-config-react%400.0.81) (08/08/2026)
 
 ### Bug Fixes

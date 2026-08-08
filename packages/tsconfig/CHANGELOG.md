@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Tsconfig
 
+## [0.48.193](https://github.com/storm-software/storm-ops/releases/tag/tsconfig%400.48.193) (08/08/2026)
+
+### Bug Fixes
+
+- **git-tools:** Added `prettier-plugin-sh` dependency to package ([618da22c4](https://github.com/storm-software/storm-ops/commit/618da22c4))
+
 ## [0.48.192](https://github.com/storm-software/storm-ops/releases/tag/tsconfig%400.48.192) (08/08/2026)
 
 ### Bug Fixes

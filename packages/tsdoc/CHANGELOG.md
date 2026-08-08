@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Tsdoc
 
+## [0.13.279](https://github.com/storm-software/storm-ops/releases/tag/tsdoc%400.13.279) (08/08/2026)
+
+### Bug Fixes
+
+- **git-tools:** Added `prettier-plugin-sh` dependency to package ([618da22c4](https://github.com/storm-software/storm-ops/commit/618da22c4))
+
 ## [0.13.278](https://github.com/storm-software/storm-ops/releases/tag/tsdoc%400.13.278) (08/08/2026)
 
 ### Bug Fixes

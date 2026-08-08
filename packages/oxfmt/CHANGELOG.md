@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Oxfmt
 
+## [0.0.82](https://github.com/storm-software/storm-ops/releases/tag/oxfmt%400.0.82) (08/08/2026)
+
+### Bug Fixes
+
+- **git-tools:** Added `prettier-plugin-sh` dependency to package ([618da22c4](https://github.com/storm-software/storm-ops/commit/618da22c4))
+
 ## [0.0.81](https://github.com/storm-software/storm-ops/releases/tag/oxfmt%400.0.81) (08/08/2026)
 
 ### Bug Fixes

@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - CSpell
 
+## [0.46.194](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.46.194) (08/08/2026)
+
+### Bug Fixes
+
+- **git-tools:** Added `prettier-plugin-sh` dependency to package ([618da22c4](https://github.com/storm-software/storm-ops/commit/618da22c4))
+
 ## [0.46.193](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.46.193) (08/08/2026)
 
 ### Bug Fixes

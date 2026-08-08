@@ -2,6 +2,19 @@
 
 # Changelog for Storm Ops - Esbuild
 
+## [0.53.287](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.53.287) (08/08/2026)
+
+### Bug Fixes
+
+- **git-tools:** Added `prettier-plugin-sh` dependency to package ([618da22c4](https://github.com/storm-software/storm-ops/commit/618da22c4))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.286**
+- Updated **config** to **v1.138.63**
+- Updated **config-tools** to **v1.190.126**
+- Updated **tsup** to **v0.2.284**
+
 ## [0.53.286](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.53.286) (08/08/2026)
 
 ### Bug Fixes

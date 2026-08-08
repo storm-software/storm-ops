@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Pnpm Plugin
 
+## [0.1.237](https://github.com/storm-software/storm-ops/releases/tag/pnpm-plugin%400.1.237) (08/08/2026)
+
+### Bug Fixes
+
+- **git-tools:** Added `prettier-plugin-sh` dependency to package ([618da22c4](https://github.com/storm-software/storm-ops/commit/618da22c4))
+
+### Updated Dependencies
+
+- Updated **package-constants** to **v0.1.139**
+- Updated **testing-tools** to **v1.119.279**
+
 ## [0.1.236](https://github.com/storm-software/storm-ops/releases/tag/pnpm-plugin%400.1.236) (08/08/2026)
 
 ### Bug Fixes

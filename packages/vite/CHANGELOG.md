@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Vite
 
+## [0.1.220](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.220) (08/08/2026)
+
+### Bug Fixes
+
+- **git-tools:** Added `prettier-plugin-sh` dependency to package ([618da22c4](https://github.com/storm-software/storm-ops/commit/618da22c4))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.286**
+- Updated **config** to **v1.138.63**
+- Updated **config-tools** to **v1.190.126**
+
 ## [0.1.219](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.219) (08/08/2026)
 
 ### Bug Fixes

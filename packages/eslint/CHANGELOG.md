@@ -2,6 +2,23 @@
 
 # Changelog for Storm Ops - ESLint
 
+## [0.170.160](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.170.160) (08/08/2026)
+
+### Bug Fixes
+
+- **git-tools:** Added `prettier-plugin-sh` dependency to package ([618da22c4](https://github.com/storm-software/storm-ops/commit/618da22c4))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.63**
+- Updated **config-tools** to **v1.190.126**
+- Updated **eslint-plugin-banner** to **v0.0.91**
+- Updated **eslint-plugin-bun** to **v0.0.14**
+- Updated **eslint-plugin-pnpm** to **v0.0.89**
+- Updated **eslint-plugin-tsdoc** to **v0.0.89**
+- Updated **package-constants** to **v0.1.139**
+- Updated **tsdoc** to **v0.13.279**
+
 ## [0.170.159](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.170.159) (08/08/2026)
 
 ### Bug Fixes

@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Untyped
 
+## [0.24.268](https://github.com/storm-software/storm-ops/releases/tag/untyped%400.24.268) (08/08/2026)
+
+### Bug Fixes
+
+- **git-tools:** Added `prettier-plugin-sh` dependency to package ([618da22c4](https://github.com/storm-software/storm-ops/commit/618da22c4))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.63**
+- Updated **config-tools** to **v1.190.126**
+
 ## [0.24.267](https://github.com/storm-software/storm-ops/releases/tag/untyped%400.24.267) (08/08/2026)
 
 ### Bug Fixes

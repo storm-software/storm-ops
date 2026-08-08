@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Testing Tools
 
+## [1.119.279](https://github.com/storm-software/storm-ops/releases/tag/testing-tools%401.119.279) (08/08/2026)
+
+### Bug Fixes
+
+- **git-tools:** Added `prettier-plugin-sh` dependency to package ([618da22c4](https://github.com/storm-software/storm-ops/commit/618da22c4))
+
 ## [1.119.278](https://github.com/storm-software/storm-ops/releases/tag/testing-tools%401.119.278) (08/08/2026)
 
 ### Bug Fixes

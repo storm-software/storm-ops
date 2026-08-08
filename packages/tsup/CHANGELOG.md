@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Tsup
 
+## [0.2.284](https://github.com/storm-software/storm-ops/releases/tag/tsup%400.2.284) (08/08/2026)
+
+### Bug Fixes
+
+- **git-tools:** Added `prettier-plugin-sh` dependency to package ([618da22c4](https://github.com/storm-software/storm-ops/commit/618da22c4))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.286**
+- Updated **config** to **v1.138.63**
+- Updated **config-tools** to **v1.190.126**
+
 ## [0.2.283](https://github.com/storm-software/storm-ops/releases/tag/tsup%400.2.283) (08/08/2026)
 
 ### Bug Fixes
