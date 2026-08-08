@@ -51,95 +51,58 @@
   "sideEffects": false,
   "type": "module",
   "exports": {
-    "./package.json": "./package.json",
-    ".": {
-      "import": {
-        "types": "./dist/index.d.ts",
-        "default": "./dist/index.js"
-      },
-      "require": {
-        "types": "./dist/index.d.cts",
-        "default": "./dist/index.cjs"
-      },
-      "default": {
-        "types": "./dist/index.d.ts",
-        "default": "./dist/index.js"
-      }
-    },
-    "./index": {
-      "import": {
-        "types": "./dist/index.d.ts",
-        "default": "./dist/index.js"
-      },
-      "require": {
-        "types": "./dist/index.d.cts",
-        "default": "./dist/index.cjs"
-      },
-      "default": {
-        "types": "./dist/index.d.ts",
-        "default": "./dist/index.js"
-      }
-    },
-    "./preset": {
-      "import": {
-        "types": "./dist/preset.d.ts",
-        "default": "./dist/preset.js"
-      },
-      "require": {
-        "types": "./dist/preset.d.cts",
-        "default": "./dist/preset.cjs"
-      },
-      "default": {
-        "types": "./dist/preset.d.ts",
-        "default": "./dist/preset.js"
-      }
-    },
-    "./types": {
-      "import": {
-        "types": "./dist/types.d.ts",
-        "default": "./dist/types.js"
-      },
-      "require": {
-        "types": "./dist/types.d.cts",
-        "default": "./dist/types.cjs"
-      },
-      "default": {
-        "types": "./dist/types.d.ts",
-        "default": "./dist/types.js"
-      }
-    },
-    "./rules/*": {
-      "import": {
-        "types": "./dist/rules/*.d.ts",
-        "default": "./dist/rules/*.js"
-      },
-      "require": {
-        "types": "./dist/rules/*.d.cts",
-        "default": "./dist/rules/*.cjs"
-      },
-      "default": {
-        "types": "./dist/rules/*.d.ts",
-        "default": "./dist/rules/*.js"
-      }
-    },
-    "./utils/*": {
-      "import": {
-        "types": "./dist/utils/*.d.ts",
-        "default": "./dist/utils/*.js"
-      },
-      "require": {
-        "types": "./dist/utils/*.d.cts",
-        "default": "./dist/utils/*.cjs"
-      },
-      "default": {
-        "types": "./dist/utils/*.d.ts",
-        "default": "./dist/utils/*.js"
-      }
-    }
+    ".": "./dist/index.mjs",
+    "./configs": "./dist/configs/index.mjs",
+    "./configs/astro": "./dist/configs/astro.mjs",
+    "./configs/banner": "./dist/configs/banner.mjs",
+    "./configs/bun": "./dist/configs/bun.mjs",
+    "./configs/cspell": "./dist/configs/cspell.mjs",
+    "./configs/disables": "./dist/configs/disables.mjs",
+    "./configs/formatters": "./dist/configs/formatters.mjs",
+    "./configs/graphql": "./dist/configs/graphql.mjs",
+    "./configs/ignores": "./dist/configs/ignores.mjs",
+    "./configs/imports": "./dist/configs/imports.mjs",
+    "./configs/javascript": "./dist/configs/javascript.mjs",
+    "./configs/jsdoc": "./dist/configs/jsdoc.mjs",
+    "./configs/jsonc": "./dist/configs/jsonc.mjs",
+    "./configs/jsx": "./dist/configs/jsx.mjs",
+    "./configs/markdown": "./dist/configs/markdown.mjs",
+    "./configs/mdx": "./dist/configs/mdx.mjs",
+    "./configs/next": "./dist/configs/next.mjs",
+    "./configs/node": "./dist/configs/node.mjs",
+    "./configs/nx": "./dist/configs/nx.mjs",
+    "./configs/perfectionist": "./dist/configs/perfectionist.mjs",
+    "./configs/pnpm": "./dist/configs/pnpm.mjs",
+    "./configs/prettier": "./dist/configs/prettier.mjs",
+    "./configs/react": "./dist/configs/react.mjs",
+    "./configs/react-native": "./dist/configs/react-native.mjs",
+    "./configs/regexp": "./dist/configs/regexp.mjs",
+    "./configs/secrets": "./dist/configs/secrets.mjs",
+    "./configs/sort": "./dist/configs/sort.mjs",
+    "./configs/storybook": "./dist/configs/storybook.mjs",
+    "./configs/stylistic": "./dist/configs/stylistic.mjs",
+    "./configs/test": "./dist/configs/test.mjs",
+    "./configs/toml": "./dist/configs/toml.mjs",
+    "./configs/tsdoc": "./dist/configs/tsdoc.mjs",
+    "./configs/typescript": "./dist/configs/typescript.mjs",
+    "./configs/unicorn": "./dist/configs/unicorn.mjs",
+    "./configs/unocss": "./dist/configs/unocss.mjs",
+    "./configs/yaml": "./dist/configs/yaml.mjs",
+    "./configs/zod": "./dist/configs/zod.mjs",
+    "./find-workspace-root-D3UHWbgn": "./dist/find-workspace-root-D3UHWbgn.mjs",
+    "./helpers-mce_MNwt": "./dist/helpers-mce_MNwt.mjs",
+    "./plugins": "./dist/plugins.mjs",
+    "./plugins-CZWNS7l4": "./dist/plugins-CZWNS7l4.mjs",
+    "./preset": "./dist/preset.mjs",
+    "./preset-x6MId9-7": "./dist/preset-x6MId9-7.mjs",
+    "./rolldown-runtime-CMFfr-1z": "./dist/rolldown-runtime-CMFfr-1z.mjs",
+    "./types": "./dist/types.mjs",
+    "./*": "./*"
   },
-  "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "dependencies": {
     "@antfu/install-pkg": "^1.1.0",
     "@clack/prompts": "^0.10.1",
@@ -240,7 +203,7 @@
     "graphql": "^16.14.2",
     "minimatch": "^10.2.6",
     "prettier-plugin-astro": "^0.14.1",
-    "tsup": "catalog:",
+    "tsdown": "catalog:",
     "tsx": "catalog:",
     "typescript": "^6.0.3",
     "zod": "catalog:"

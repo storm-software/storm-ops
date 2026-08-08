@@ -457,7 +457,7 @@ importers:
         version: 2.8.1
       tsup:
         specifier: 'catalog:'
-        version: 8.4.0(patch_hash=a9def7e06ce25c19654987ab91979289197bf4d3e7e124c514a4487c3e8d68c6)(@microsoft/api-extractor@7.58.12(@types/node@25.9.5))(@swc/core@1.7.26(@swc/helpers@0.5.13))(jiti@2.7.0)(postcss@8.5.26)(supports-color@11.0.0)(tsx@4.23.10)(typescript@6.0.3)(yaml@2.9.0)
+        version: 8.4.0(patch_hash=a9def7e06ce25c19654987ab91979289197bf4d3e7e124c514a4487c3e8d68c6)(@microsoft/api-extractor@7.58.12(@types/node@25.9.5))(@swc/core@1.7.26(@swc/helpers@0.5.13))(jiti@2.7.0)(postcss@8.5.26)(tsx@4.23.10)(typescript@6.0.3)(yaml@2.9.0)
       tsx:
         specifier: 'catalog:'
         version: 4.23.10
@@ -519,7 +519,7 @@ importers:
         version: 23.1.1(@swc-node/register@1.10.9(@swc/core@1.7.26(@swc/helpers@0.5.13))(@swc/types@0.1.28)(typescript@6.0.3))(@swc/core@1.7.26(@swc/helpers@0.5.13))
       tsup:
         specifier: 'catalog:'
-        version: 8.4.0(patch_hash=a9def7e06ce25c19654987ab91979289197bf4d3e7e124c514a4487c3e8d68c6)(@microsoft/api-extractor@7.58.12(@types/node@25.9.5))(@swc/core@1.7.26(@swc/helpers@0.5.13))(jiti@2.7.0)(postcss@8.5.26)(supports-color@11.0.0)(tsx@4.23.10)(typescript@6.0.3)(yaml@2.9.0)
+        version: 8.4.0(patch_hash=a9def7e06ce25c19654987ab91979289197bf4d3e7e124c514a4487c3e8d68c6)(@microsoft/api-extractor@7.58.12(@types/node@25.9.5))(@swc/core@1.7.26(@swc/helpers@0.5.13))(jiti@2.7.0)(postcss@8.5.26)(tsx@4.23.10)(typescript@6.0.3)(yaml@2.9.0)
       typescript:
         specifier: ^6.0.3
         version: 6.0.3
@@ -565,7 +565,7 @@ importers:
         version: 25.9.5
       tsup:
         specifier: 'catalog:'
-        version: 8.4.0(patch_hash=a9def7e06ce25c19654987ab91979289197bf4d3e7e124c514a4487c3e8d68c6)(@microsoft/api-extractor@7.58.12(@types/node@25.9.5))(@swc/core@1.7.26(@swc/helpers@0.5.13))(jiti@2.7.0)(postcss@8.5.26)(supports-color@11.0.0)(tsx@4.23.10)(typescript@6.0.3)(yaml@2.9.0)
+        version: 8.4.0(patch_hash=a9def7e06ce25c19654987ab91979289197bf4d3e7e124c514a4487c3e8d68c6)(@microsoft/api-extractor@7.58.12(@types/node@25.9.5))(@swc/core@1.7.26(@swc/helpers@0.5.13))(jiti@2.7.0)(postcss@8.5.26)(tsx@4.23.10)(typescript@6.0.3)(yaml@2.9.0)
 
   packages/cloudflare-tools:
     dependencies:
@@ -709,7 +709,7 @@ importers:
         version: 25.9.5
       tsup:
         specifier: 'catalog:'
-        version: 8.4.0(patch_hash=a9def7e06ce25c19654987ab91979289197bf4d3e7e124c514a4487c3e8d68c6)(@microsoft/api-extractor@7.58.12(@types/node@25.9.5))(@swc/core@1.7.26(@swc/helpers@0.5.13))(jiti@2.7.0)(postcss@8.5.26)(supports-color@11.0.0)(tsx@4.23.10)(typescript@6.0.3)(yaml@2.9.0)
+        version: 8.4.0(patch_hash=a9def7e06ce25c19654987ab91979289197bf4d3e7e124c514a4487c3e8d68c6)(@microsoft/api-extractor@7.58.12(@types/node@25.9.5))(@swc/core@1.7.26(@swc/helpers@0.5.13))(jiti@2.7.0)(postcss@8.5.26)(tsx@4.23.10)(typescript@6.0.3)(yaml@2.9.0)
       typescript:
         specifier: ^6.0.3
         version: 6.0.3
@@ -1209,9 +1209,9 @@ importers:
       prettier-plugin-astro:
         specifier: ^0.14.1
         version: 0.14.1
-      tsup:
+      tsdown:
         specifier: 'catalog:'
-        version: 8.4.0(patch_hash=a9def7e06ce25c19654987ab91979289197bf4d3e7e124c514a4487c3e8d68c6)(@microsoft/api-extractor@7.58.12(@types/node@25.9.5))(@swc/core@1.7.26(@swc/helpers@0.5.13))(jiti@2.7.0)(postcss@8.5.26)(supports-color@11.0.0)(tsx@4.23.10)(typescript@6.0.3)(yaml@2.9.0)
+        version: 0.22.14(@typescript/native-preview@7.0.0-dev.20250908.1)(@volar/typescript@2.4.28)(oxc-resolver@11.24.2)(tsx@4.23.10)(typescript@6.0.3)
       tsx:
         specifier: 'catalog:'
         version: 4.23.10
@@ -1718,7 +1718,7 @@ importers:
         version: 25.9.5
       tsup:
         specifier: 'catalog:'
-        version: 8.4.0(patch_hash=a9def7e06ce25c19654987ab91979289197bf4d3e7e124c514a4487c3e8d68c6)(@microsoft/api-extractor@7.58.12(@types/node@25.9.5))(@swc/core@1.7.26(@swc/helpers@0.5.13))(jiti@2.7.0)(postcss@8.5.26)(supports-color@11.0.0)(tsx@4.23.10)(typescript@6.0.3)(yaml@2.9.0)
+        version: 8.4.0(patch_hash=a9def7e06ce25c19654987ab91979289197bf4d3e7e124c514a4487c3e8d68c6)(@microsoft/api-extractor@7.58.12(@types/node@25.9.5))(@swc/core@1.7.26(@swc/helpers@0.5.13))(jiti@2.7.0)(postcss@8.5.26)(tsx@4.23.10)(typescript@6.0.3)(yaml@2.9.0)
 
   packages/k8s-tools:
     dependencies:
@@ -1761,7 +1761,7 @@ importers:
         version: 3.9.6
       tsup:
         specifier: 'catalog:'
-        version: 8.4.0(patch_hash=a9def7e06ce25c19654987ab91979289197bf4d3e7e124c514a4487c3e8d68c6)(@microsoft/api-extractor@7.58.12(@types/node@25.9.5))(@swc/core@1.7.26(@swc/helpers@0.5.13))(jiti@2.7.0)(postcss@8.5.26)(supports-color@11.0.0)(tsx@4.23.10)(typescript@6.0.3)(yaml@2.9.0)
+        version: 8.4.0(patch_hash=a9def7e06ce25c19654987ab91979289197bf4d3e7e124c514a4487c3e8d68c6)(@microsoft/api-extractor@7.58.12(@types/node@25.9.5))(@swc/core@1.7.26(@swc/helpers@0.5.13))(jiti@2.7.0)(postcss@8.5.26)(tsx@4.23.10)(typescript@6.0.3)(yaml@2.9.0)
       typescript:
         specifier: ^6.0.3
         version: 6.0.3
@@ -1861,7 +1861,7 @@ importers:
         version: 1.14.3(patch_hash=32dd3e797cb77f0406d81b94e597936599efa23c9bcf8f982de295457d4be41e)
       tsup:
         specifier: 'catalog:'
-        version: 8.4.0(patch_hash=a9def7e06ce25c19654987ab91979289197bf4d3e7e124c514a4487c3e8d68c6)(@microsoft/api-extractor@7.58.12(@types/node@25.9.5))(@swc/core@1.7.26(@swc/helpers@0.5.13))(jiti@2.7.0)(postcss@8.5.26)(supports-color@11.0.0)(tsx@4.23.10)(typescript@6.0.3)(yaml@2.9.0)
+        version: 8.4.0(patch_hash=a9def7e06ce25c19654987ab91979289197bf4d3e7e124c514a4487c3e8d68c6)(@microsoft/api-extractor@7.58.12(@types/node@25.9.5))(@swc/core@1.7.26(@swc/helpers@0.5.13))(jiti@2.7.0)(postcss@8.5.26)(tsx@4.23.10)(typescript@6.0.3)(yaml@2.9.0)
 
   packages/markdownlint:
     dependencies:
@@ -1877,7 +1877,7 @@ importers:
         version: 25.9.5
       tsup:
         specifier: 'catalog:'
-        version: 8.4.0(patch_hash=a9def7e06ce25c19654987ab91979289197bf4d3e7e124c514a4487c3e8d68c6)(@microsoft/api-extractor@7.58.12(@types/node@25.9.5))(@swc/core@1.7.26(@swc/helpers@0.5.13))(jiti@2.7.0)(postcss@8.5.26)(supports-color@11.0.0)(tsx@4.23.10)(typescript@6.0.3)(yaml@2.9.0)
+        version: 8.4.0(patch_hash=a9def7e06ce25c19654987ab91979289197bf4d3e7e124c514a4487c3e8d68c6)(@microsoft/api-extractor@7.58.12(@types/node@25.9.5))(@swc/core@1.7.26(@swc/helpers@0.5.13))(jiti@2.7.0)(postcss@8.5.26)(tsx@4.23.10)(typescript@6.0.3)(yaml@2.9.0)
 
   packages/npm-tools:
     dependencies:
@@ -1899,7 +1899,7 @@ importers:
         version: 25.9.5
       tsup:
         specifier: 'catalog:'
-        version: 8.4.0(patch_hash=a9def7e06ce25c19654987ab91979289197bf4d3e7e124c514a4487c3e8d68c6)(@microsoft/api-extractor@7.58.12(@types/node@25.9.5))(@swc/core@1.7.26(@swc/helpers@0.5.13))(jiti@2.7.0)(postcss@8.5.26)(supports-color@11.0.0)(tsx@4.23.10)(typescript@6.0.3)(yaml@2.9.0)
+        version: 8.4.0(patch_hash=a9def7e06ce25c19654987ab91979289197bf4d3e7e124c514a4487c3e8d68c6)(@microsoft/api-extractor@7.58.12(@types/node@25.9.5))(@swc/core@1.7.26(@swc/helpers@0.5.13))(jiti@2.7.0)(postcss@8.5.26)(tsx@4.23.10)(typescript@6.0.3)(yaml@2.9.0)
 
   packages/oxfmt:
     devDependencies:
@@ -1963,7 +1963,7 @@ importers:
         version: 25.9.5
       tsup:
         specifier: 'catalog:'
-        version: 8.4.0(patch_hash=a9def7e06ce25c19654987ab91979289197bf4d3e7e124c514a4487c3e8d68c6)(@microsoft/api-extractor@7.58.12(@types/node@25.9.5))(@swc/core@1.7.26(@swc/helpers@0.5.13))(jiti@2.7.0)(postcss@8.5.26)(supports-color@11.0.0)(tsx@4.23.10)(typescript@6.0.3)(yaml@2.9.0)
+        version: 8.4.0(patch_hash=a9def7e06ce25c19654987ab91979289197bf4d3e7e124c514a4487c3e8d68c6)(@microsoft/api-extractor@7.58.12(@types/node@25.9.5))(@swc/core@1.7.26(@swc/helpers@0.5.13))(jiti@2.7.0)(postcss@8.5.26)(tsx@4.23.10)(typescript@6.0.3)(yaml@2.9.0)
       tsx:
         specifier: 'catalog:'
         version: 4.23.10
@@ -1996,7 +1996,7 @@ importers:
         version: 6.1.7
       tsup:
         specifier: 'catalog:'
-        version: 8.4.0(patch_hash=a9def7e06ce25c19654987ab91979289197bf4d3e7e124c514a4487c3e8d68c6)(@microsoft/api-extractor@7.58.12(@types/node@25.9.5))(@swc/core@1.7.26(@swc/helpers@0.5.13))(jiti@2.7.0)(postcss@8.5.26)(supports-color@11.0.0)(tsx@4.23.10)(typescript@6.0.3)(yaml@2.9.0)
+        version: 8.4.0(patch_hash=a9def7e06ce25c19654987ab91979289197bf4d3e7e124c514a4487c3e8d68c6)(@microsoft/api-extractor@7.58.12(@types/node@25.9.5))(@swc/core@1.7.26(@swc/helpers@0.5.13))(jiti@2.7.0)(postcss@8.5.26)(tsx@4.23.10)(typescript@6.0.3)(yaml@2.9.0)
 
   packages/pnpm-tools:
     dependencies:
@@ -2042,7 +2042,7 @@ importers:
         version: 25.9.5
       tsup:
         specifier: 'catalog:'
-        version: 8.4.0(patch_hash=a9def7e06ce25c19654987ab91979289197bf4d3e7e124c514a4487c3e8d68c6)(@microsoft/api-extractor@7.58.12(@types/node@25.9.5))(@swc/core@1.7.26(@swc/helpers@0.5.13))(jiti@2.7.0)(postcss@8.5.26)(supports-color@11.0.0)(tsx@4.23.10)(typescript@6.0.3)(yaml@2.9.0)
+        version: 8.4.0(patch_hash=a9def7e06ce25c19654987ab91979289197bf4d3e7e124c514a4487c3e8d68c6)(@microsoft/api-extractor@7.58.12(@types/node@25.9.5))(@swc/core@1.7.26(@swc/helpers@0.5.13))(jiti@2.7.0)(postcss@8.5.26)(tsx@4.23.10)(typescript@6.0.3)(yaml@2.9.0)
 
   packages/prettier:
     dependencies:
@@ -2113,7 +2113,7 @@ importers:
         version: 0.91.31(constructs@10.6.0)
       tsup:
         specifier: 'catalog:'
-        version: 8.4.0(patch_hash=a9def7e06ce25c19654987ab91979289197bf4d3e7e124c514a4487c3e8d68c6)(@microsoft/api-extractor@7.58.12(@types/node@25.9.5))(@swc/core@1.7.26(@swc/helpers@0.5.13))(jiti@2.7.0)(postcss@8.5.26)(supports-color@11.0.0)(tsx@4.23.10)(typescript@6.0.3)(yaml@2.9.0)
+        version: 8.4.0(patch_hash=a9def7e06ce25c19654987ab91979289197bf4d3e7e124c514a4487c3e8d68c6)(@microsoft/api-extractor@7.58.12(@types/node@25.9.5))(@swc/core@1.7.26(@swc/helpers@0.5.13))(jiti@2.7.0)(postcss@8.5.26)(tsx@4.23.10)(typescript@6.0.3)(yaml@2.9.0)
       untyped:
         specifier: 'catalog:'
         version: 2.0.0
@@ -2156,7 +2156,7 @@ importers:
         version: 23.1.1(@swc-node/register@1.10.9(@swc/core@1.7.26(@swc/helpers@0.5.13))(@swc/types@0.1.28)(typescript@6.0.3))(@swc/core@1.7.26(@swc/helpers@0.5.13))
       tsup:
         specifier: 'catalog:'
-        version: 8.4.0(patch_hash=a9def7e06ce25c19654987ab91979289197bf4d3e7e124c514a4487c3e8d68c6)(@microsoft/api-extractor@7.58.12(@types/node@25.9.5))(@swc/core@1.7.26(@swc/helpers@0.5.13))(jiti@2.7.0)(postcss@8.5.26)(supports-color@11.0.0)(tsx@4.23.10)(typescript@6.0.3)(yaml@2.9.0)
+        version: 8.4.0(patch_hash=a9def7e06ce25c19654987ab91979289197bf4d3e7e124c514a4487c3e8d68c6)(@microsoft/api-extractor@7.58.12(@types/node@25.9.5))(@swc/core@1.7.26(@swc/helpers@0.5.13))(jiti@2.7.0)(postcss@8.5.26)(tsx@4.23.10)(typescript@6.0.3)(yaml@2.9.0)
       untyped:
         specifier: 'catalog:'
         version: 2.0.0
@@ -2187,7 +2187,7 @@ importers:
         version: 23.1.1(@swc-node/register@1.10.9(@swc/core@1.7.26(@swc/helpers@0.5.13))(@swc/types@0.1.28)(typescript@6.0.3))(@swc/core@1.7.26(@swc/helpers@0.5.13))
       tsup:
         specifier: 'catalog:'
-        version: 8.4.0(patch_hash=a9def7e06ce25c19654987ab91979289197bf4d3e7e124c514a4487c3e8d68c6)(@microsoft/api-extractor@7.58.12(@types/node@25.9.5))(@swc/core@1.7.26(@swc/helpers@0.5.13))(jiti@2.7.0)(postcss@8.5.26)(supports-color@11.0.0)(tsx@4.23.10)(typescript@6.0.3)(yaml@2.9.0)
+        version: 8.4.0(patch_hash=a9def7e06ce25c19654987ab91979289197bf4d3e7e124c514a4487c3e8d68c6)(@microsoft/api-extractor@7.58.12(@types/node@25.9.5))(@swc/core@1.7.26(@swc/helpers@0.5.13))(jiti@2.7.0)(postcss@8.5.26)(tsx@4.23.10)(typescript@6.0.3)(yaml@2.9.0)
       untyped:
         specifier: 'catalog:'
         version: 2.0.0
@@ -2241,7 +2241,7 @@ importers:
         version: 25.9.5
       tsup:
         specifier: 'catalog:'
-        version: 8.4.0(patch_hash=a9def7e06ce25c19654987ab91979289197bf4d3e7e124c514a4487c3e8d68c6)(@microsoft/api-extractor@7.58.12(@types/node@25.9.5))(@swc/core@1.7.26(@swc/helpers@0.5.13))(jiti@2.7.0)(postcss@8.5.26)(supports-color@11.0.0)(tsx@4.23.10)(typescript@6.0.3)(yaml@2.9.0)
+        version: 8.4.0(patch_hash=a9def7e06ce25c19654987ab91979289197bf4d3e7e124c514a4487c3e8d68c6)(@microsoft/api-extractor@7.58.12(@types/node@25.9.5))(@swc/core@1.7.26(@swc/helpers@0.5.13))(jiti@2.7.0)(postcss@8.5.26)(tsx@4.23.10)(typescript@6.0.3)(yaml@2.9.0)
       typescript:
         specifier: ^6.0.3
         version: 6.0.3
@@ -2283,7 +2283,7 @@ importers:
         version: 0.7.4
       tsup:
         specifier: 'catalog:'
-        version: 8.4.0(patch_hash=a9def7e06ce25c19654987ab91979289197bf4d3e7e124c514a4487c3e8d68c6)(@microsoft/api-extractor@7.58.12(@types/node@25.9.5))(@swc/core@1.7.26(@swc/helpers@0.5.13))(jiti@2.7.0)(postcss@8.5.26)(supports-color@11.0.0)(tsx@4.23.10)(typescript@6.0.3)(yaml@2.9.0)
+        version: 8.4.0(patch_hash=a9def7e06ce25c19654987ab91979289197bf4d3e7e124c514a4487c3e8d68c6)(@microsoft/api-extractor@7.58.12(@types/node@25.9.5))(@swc/core@1.7.26(@swc/helpers@0.5.13))(jiti@2.7.0)(postcss@8.5.26)(tsx@4.23.10)(typescript@6.0.3)(yaml@2.9.0)
     devDependencies:
       '@microsoft/api-extractor':
         specifier: 'catalog:'
@@ -2330,7 +2330,7 @@ importers:
         version: 0.25.12
       tsup:
         specifier: 'catalog:'
-        version: 8.4.0(patch_hash=a9def7e06ce25c19654987ab91979289197bf4d3e7e124c514a4487c3e8d68c6)(@microsoft/api-extractor@7.58.12(@types/node@25.9.5))(@swc/core@1.7.26(@swc/helpers@0.5.13))(jiti@2.7.0)(postcss@8.5.26)(supports-color@11.0.0)(tsx@4.23.10)(typescript@6.0.3)(yaml@2.9.0)
+        version: 8.4.0(patch_hash=a9def7e06ce25c19654987ab91979289197bf4d3e7e124c514a4487c3e8d68c6)(@microsoft/api-extractor@7.58.12(@types/node@25.9.5))(@swc/core@1.7.26(@swc/helpers@0.5.13))(jiti@2.7.0)(postcss@8.5.26)(tsx@4.23.10)(typescript@6.0.3)(yaml@2.9.0)
       typescript:
         specifier: ^6.0.3
         version: 6.0.3
@@ -2394,7 +2394,7 @@ importers:
         version: 23.1.1(@swc-node/register@1.10.9(@swc/core@1.7.26(@swc/helpers@0.5.13))(@swc/types@0.1.28)(typescript@6.0.3))(@swc/core@1.7.26(@swc/helpers@0.5.13))
       tsup:
         specifier: 'catalog:'
-        version: 8.4.0(patch_hash=a9def7e06ce25c19654987ab91979289197bf4d3e7e124c514a4487c3e8d68c6)(@microsoft/api-extractor@7.58.12(@types/node@25.9.5))(@swc/core@1.7.26(@swc/helpers@0.5.13))(jiti@2.7.0)(postcss@8.5.26)(supports-color@11.0.0)(tsx@4.23.10)(typescript@6.0.3)(yaml@2.9.0)
+        version: 8.4.0(patch_hash=a9def7e06ce25c19654987ab91979289197bf4d3e7e124c514a4487c3e8d68c6)(@microsoft/api-extractor@7.58.12(@types/node@25.9.5))(@swc/core@1.7.26(@swc/helpers@0.5.13))(jiti@2.7.0)(postcss@8.5.26)(tsx@4.23.10)(typescript@6.0.3)(yaml@2.9.0)
       typescript:
         specifier: ^6.0.3
         version: 6.0.3
@@ -2428,7 +2428,7 @@ importers:
         version: 25.9.5
       tsup:
         specifier: 'catalog:'
-        version: 8.4.0(patch_hash=a9def7e06ce25c19654987ab91979289197bf4d3e7e124c514a4487c3e8d68c6)(@microsoft/api-extractor@7.58.12(@types/node@25.9.5))(@swc/core@1.7.26(@swc/helpers@0.5.13))(jiti@2.7.0)(postcss@8.5.26)(supports-color@11.0.0)(tsx@4.23.10)(typescript@6.0.3)(yaml@2.9.0)
+        version: 8.4.0(patch_hash=a9def7e06ce25c19654987ab91979289197bf4d3e7e124c514a4487c3e8d68c6)(@microsoft/api-extractor@7.58.12(@types/node@25.9.5))(@swc/core@1.7.26(@swc/helpers@0.5.13))(jiti@2.7.0)(postcss@8.5.26)(tsx@4.23.10)(typescript@6.0.3)(yaml@2.9.0)
 
   packages/vite:
     dependencies:
@@ -2459,7 +2459,7 @@ importers:
         version: 25.9.5
       tsup:
         specifier: 'catalog:'
-        version: 8.4.0(patch_hash=a9def7e06ce25c19654987ab91979289197bf4d3e7e124c514a4487c3e8d68c6)(@microsoft/api-extractor@7.58.12(@types/node@25.9.5))(@swc/core@1.7.26(@swc/helpers@0.5.13))(jiti@2.7.0)(postcss@8.5.26)(supports-color@11.0.0)(tsx@4.23.10)(typescript@6.0.3)(yaml@2.9.0)
+        version: 8.4.0(patch_hash=a9def7e06ce25c19654987ab91979289197bf4d3e7e124c514a4487c3e8d68c6)(@microsoft/api-extractor@7.58.12(@types/node@25.9.5))(@swc/core@1.7.26(@swc/helpers@0.5.13))(jiti@2.7.0)(postcss@8.5.26)(tsx@4.23.10)(typescript@6.0.3)(yaml@2.9.0)
       typescript:
         specifier: ^6.0.3
         version: 6.0.3
@@ -2589,7 +2589,7 @@ importers:
         version: 23.1.1(@swc-node/register@1.10.9(@swc/core@1.7.26(@swc/helpers@0.5.13))(@swc/types@0.1.28)(typescript@6.0.3))(@swc/core@1.7.26(@swc/helpers@0.5.13))
       tsup:
         specifier: 'catalog:'
-        version: 8.4.0(patch_hash=a9def7e06ce25c19654987ab91979289197bf4d3e7e124c514a4487c3e8d68c6)(@microsoft/api-extractor@7.58.12(@types/node@25.9.5))(@swc/core@1.7.26(@swc/helpers@0.5.13))(jiti@2.7.0)(postcss@8.5.26)(supports-color@11.0.0)(tsx@4.23.10)(typescript@6.0.3)(yaml@2.9.0)
+        version: 8.4.0(patch_hash=a9def7e06ce25c19654987ab91979289197bf4d3e7e124c514a4487c3e8d68c6)(@microsoft/api-extractor@7.58.12(@types/node@25.9.5))(@swc/core@1.7.26(@swc/helpers@0.5.13))(jiti@2.7.0)(postcss@8.5.26)(tsx@4.23.10)(typescript@6.0.3)(yaml@2.9.0)
       typescript:
         specifier: ^6.0.3
         version: 6.0.3
@@ -2612,7 +2612,7 @@ importers:
         version: 25.9.5
       tsup:
         specifier: 'catalog:'
-        version: 8.4.0(patch_hash=a9def7e06ce25c19654987ab91979289197bf4d3e7e124c514a4487c3e8d68c6)(@microsoft/api-extractor@7.58.12(@types/node@25.9.5))(@swc/core@1.7.26(@swc/helpers@0.5.13))(jiti@2.7.0)(postcss@8.5.26)(supports-color@11.0.0)(tsx@4.23.10)(typescript@6.0.3)(yaml@2.9.0)
+        version: 8.4.0(patch_hash=a9def7e06ce25c19654987ab91979289197bf4d3e7e124c514a4487c3e8d68c6)(@microsoft/api-extractor@7.58.12(@types/node@25.9.5))(@swc/core@1.7.26(@swc/helpers@0.5.13))(jiti@2.7.0)(postcss@8.5.26)(tsx@4.23.10)(typescript@6.0.3)(yaml@2.9.0)
 
   tools/scripts:
     dependencies:
@@ -2649,7 +2649,7 @@ importers:
         version: 6.0.1
       tsup:
         specifier: 'catalog:'
-        version: 8.4.0(patch_hash=a9def7e06ce25c19654987ab91979289197bf4d3e7e124c514a4487c3e8d68c6)(@microsoft/api-extractor@7.58.12(@types/node@25.9.5))(@swc/core@1.7.26(@swc/helpers@0.5.13))(jiti@2.7.0)(postcss@8.5.26)(supports-color@11.0.0)(tsx@4.23.10)(typescript@6.0.3)(yaml@2.9.0)
+        version: 8.4.0(patch_hash=a9def7e06ce25c19654987ab91979289197bf4d3e7e124c514a4487c3e8d68c6)(@microsoft/api-extractor@7.58.12(@types/node@25.9.5))(@swc/core@1.7.26(@swc/helpers@0.5.13))(jiti@2.7.0)(postcss@8.5.26)(tsx@4.23.10)(typescript@6.0.3)(yaml@2.9.0)
 
 packages:
 
@@ -36624,7 +36624,7 @@ snapshots:
 
   tslib@2.8.1: {}
 
-  tsup@8.4.0(patch_hash=a9def7e06ce25c19654987ab91979289197bf4d3e7e124c514a4487c3e8d68c6)(@microsoft/api-extractor@7.58.12(@types/node@25.9.5))(@swc/core@1.7.26(@swc/helpers@0.5.13))(jiti@2.7.0)(postcss@8.5.26)(supports-color@11.0.0)(tsx@4.23.10)(typescript@6.0.3)(yaml@2.9.0):
+  tsup@8.4.0(patch_hash=a9def7e06ce25c19654987ab91979289197bf4d3e7e124c514a4487c3e8d68c6)(@microsoft/api-extractor@7.58.12(@types/node@25.9.5))(@swc/core@1.7.26(@swc/helpers@0.5.13))(jiti@2.7.0)(postcss@8.5.26)(tsx@4.23.10)(typescript@6.0.3)(yaml@2.9.0):
     dependencies:
       bundle-require: 5.1.0(esbuild@0.25.12)
       cac: 6.7.14

@@ -19,7 +19,7 @@
   "include": [
     "src/**/*.ts",
     "scripts/**/*.ts",
-    "tsup.config.ts",
+    "tsdown.config.ts",
     "declarations.d.ts"
   ],
   "exclude": ["jest.config.ts", "src/**/*.spec.ts", "src/**/*.test.ts"]
