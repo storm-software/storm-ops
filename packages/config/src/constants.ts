@@ -25,3 +25,22 @@ If this sounds interesting, and you would like to help us in creating the next g
 export const STORM_DEFAULT_ERROR_CODES_FILE = "tools/errors/codes.json";
 
 export const STORM_DEFAULT_BANNER_ALT = "The workspace's banner image";
+
+export const COLOR_KEYS = [
+  "dark",
+  "light",
+  "base",
+  "brand",
+  "alternate",
+  "accent",
+  "link",
+  "success",
+  "discovery",
+  "info",
+  "warning",
+  "danger",
+  "fatal",
+  "performance",
+  "positive",
+  "negative"
+];

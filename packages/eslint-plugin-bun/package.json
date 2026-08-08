@@ -3,7 +3,13 @@
   "version": "0.0.7",
   "private": false,
   "description": "An ESLint Plugin that enforces Bun catalog rules in Storm Software projects.",
-  "keywords": ["eslint", "eslint-plugin", "storm-software", "bun", "catalog"],
+  "keywords": [
+    "eslint",
+    "eslint-plugin",
+    "storm-software",
+    "bun",
+    "catalog"
+  ],
   "homepage": "https://stormsoftware.com",
   "bugs": {
     "url": "https://stormsoftware.com/support",
@@ -53,7 +59,9 @@
     "./rules/json-valid-catalog": "./dist/rules/json-valid-catalog.mjs",
     "./package.json": "./package.json"
   },
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "dependencies": {
     "@storm-software/package-constants": "workspace:*",
     "@typescript-eslint/utils": "catalog:",
@@ -69,13 +77,14 @@
     "@storm-software/prettier": "workspace:*",
     "@types/eslint": "catalog:",
     "@types/eslint__js": "catalog:",
+    "@types/estree": "catalog:",
     "@types/node": "catalog:",
     "eslint": "catalog:",
     "eslint-flat-config-utils": "catalog:",
     "eslint-plugin-eslint-plugin": "catalog:",
     "eslint-plugin-i18n-text": "catalog:",
     "eslint-typegen": "catalog:",
-    "tsup": "catalog:"
+    "tsdown": "catalog:"
   },
   "peerDependencies": {
     "eslint": ">=9.39.3"

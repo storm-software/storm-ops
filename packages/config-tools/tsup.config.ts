@@ -8,15 +8,14 @@ export default defineConfig([
     format: ["cjs", "esm"],
     outDir: "dist",
     platform: "node",
-    bundle: true,
+    bundle: false,
     splitting: true,
     clean: false,
     dts: true,
     sourcemap: false,
     tsconfig: "./tsconfig.json",
     shims: true,
-    external: ["zod"],
-    noExternal: ["date-fns"]
+    skipNodeModulesBundle: true
   },
   {
     name: "config-tools-bin",
@@ -26,11 +25,11 @@ export default defineConfig([
     outDir: "bin",
     platform: "node",
     splitting: false,
-    bundle: true,
+    bundle: false,
     clean: false,
     dts: false,
     sourcemap: false,
     tsconfig: "./tsconfig.json",
-    noExternal: ["date-fns"]
+    skipNodeModulesBundle: true
   }
 ]);

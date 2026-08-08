@@ -15,9 +15,7 @@ export default defineConfig([
     sourcemap: false,
     shims: true,
     silent: true,
-    skipNodeModulesBundle: true,
-    external: ["@storm-software/config-tools", "chalk"],
-    noExternal: ["untyped"]
+    skipNodeModulesBundle: true
   },
   {
     name: "untyped-bin",
@@ -27,13 +25,12 @@ export default defineConfig([
     outDir: "dist/bin",
     format: ["cjs", "esm"],
     platform: "node",
-    bundle: true,
     splitting: false,
     clean: true,
     dts: false,
     sourcemap: false,
     shims: true,
     silent: true,
-    noExternal: ["untyped"]
+    skipNodeModulesBundle: true
   }
 ]);

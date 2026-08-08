@@ -139,7 +139,9 @@
   },
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "dependencies": {
     "@antfu/install-pkg": "^1.1.0",
     "@clack/prompts": "^0.10.1",
@@ -158,7 +160,6 @@
     "ajv": "catalog:",
     "chalk": "catalog:",
     "cross-spawn": "^7.0.6",
-    "debug": "^4.4.3",
     "defu": "catalog:",
     "eslint": "catalog:",
     "eslint-config-flat-gitignore": "^2.3.0",
@@ -210,6 +211,7 @@
     "@stylistic/eslint-plugin-migrate": "^4.4.1",
     "@types/eslint": "catalog:",
     "@types/eslint__js": "catalog:",
+    "@types/estree": "catalog:",
     "@types/node": "catalog:",
     "@unocss/eslint-plugin": "^65.5.0",
     "astro-eslint-parser": "^1.4.0",
@@ -219,11 +221,17 @@
     "eslint-plugin-import-x": "^4.17.1",
     "eslint-plugin-import-zod": "^1.2.1",
     "eslint-plugin-mdx": "^3.8.1",
-    "eslint-plugin-react-compiler": "19.1.0-rc.2",
-    "eslint-plugin-react-hooks": "^7.1.1",
+    "eslint-plugin-react-compiler": "catalog:",
+    "eslint-plugin-react-dom": "catalog:",
+    "eslint-plugin-react-hooks": "catalog:",
+    "eslint-plugin-react-jsx": "catalog:",
+    "eslint-plugin-react-naming-convention": "catalog:",
     "eslint-plugin-react-native": "^5.0.0",
     "eslint-plugin-react-native-globals": "^0.1.2",
-    "eslint-plugin-react-refresh": "^0.5.3",
+    "eslint-plugin-react-refresh": "catalog:",
+    "eslint-plugin-react-rsc": "catalog:",
+    "eslint-plugin-react-web-api": "catalog:",
+    "eslint-plugin-react-x": "catalog:",
     "eslint-plugin-relay": "^1.8.3",
     "eslint-plugin-storybook": "^0.11.6",
     "eslint-typegen": "catalog:",
@@ -246,11 +254,19 @@
     "@storm-software/tsdoc": "*",
     "@unocss/eslint-plugin": ">=0.50.0",
     "astro-eslint-parser": "^1.0.2",
+    "debug": "^4.3.2",
     "eslint-plugin-astro": "^1.2.0",
     "eslint-plugin-format": ">=0.1.0",
     "eslint-plugin-mdx": "^3.8.1",
     "eslint-plugin-react-compiler": "19.1.0-rc.2",
+    "eslint-plugin-react-dom": "^5.18.3",
     "eslint-plugin-react-hooks": "^7.1.1",
+    "eslint-plugin-react-jsx": "^5.18.3",
+    "eslint-plugin-react-naming-convention": "^5.18.3",
+    "eslint-plugin-react-refresh": "^0.5.3",
+    "eslint-plugin-react-rsc": "^5.18.3",
+    "eslint-plugin-react-web-api": "^5.18.3",
+    "eslint-plugin-react-x": "^5.18.3",
     "eslint-plugin-relay": "^1.8.3",
     "eslint-plugin-storybook": "^0.11.0",
     "graphql": "^14.0.0 || ^15.0.0 || ^16.0.0",
@@ -288,6 +304,9 @@
     "astro-eslint-parser": {
       "optional": true
     },
+    "debug": {
+      "optional": false
+    },
     "eslint": {
       "optional": false
     },
@@ -303,7 +322,28 @@
     "eslint-plugin-react-compiler": {
       "optional": true
     },
+    "eslint-plugin-react-dom": {
+      "optional": true
+    },
     "eslint-plugin-react-hooks": {
+      "optional": true
+    },
+    "eslint-plugin-react-jsx": {
+      "optional": true
+    },
+    "eslint-plugin-react-naming-convention": {
+      "optional": true
+    },
+    "eslint-plugin-react-refresh": {
+      "optional": true
+    },
+    "eslint-plugin-react-rsc": {
+      "optional": true
+    },
+    "eslint-plugin-react-web-api": {
+      "optional": true
+    },
+    "eslint-plugin-react-x": {
       "optional": true
     },
     "eslint-plugin-relay": {

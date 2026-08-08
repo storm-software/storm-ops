@@ -73,22 +73,3 @@ export type StormWorkspaceConfig<
   TExtensionConfig extends TStormWorkspaceConfig["extensions"][TExtensionName] =
     TStormWorkspaceConfig["extensions"][TExtensionName]
 > = StormConfig<TExtensionName, TExtensionConfig>;
-
-export const COLOR_KEYS = [
-  "dark",
-  "light",
-  "base",
-  "brand",
-  "alternate",
-  "accent",
-  "link",
-  "success",
-  "discovery",
-  "info",
-  "warning",
-  "danger",
-  "fatal",
-  "performance",
-  "positive",
-  "negative"
-];

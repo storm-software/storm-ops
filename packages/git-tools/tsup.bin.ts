@@ -10,28 +10,13 @@ export default defineConfig([
     platform: "node",
     treeshake: true,
     splitting: true,
-    bundle: true,
     clean: false,
     dts: false,
     sourcemap: true,
     tsconfig: "./tsconfig.json",
     shims: true,
     silent: true,
-    external: [
-      "oxc-parser",
-      "@oxc-parser/*",
-      "nx",
-      "@nx/*",
-      "@storm-software/*"
-    ],
-    noExternal: [
-      "conventional-commits-parser",
-      "@inquirer/prompts",
-      "defu",
-      "zod",
-      "zod/mini",
-      "@storm-software/package-constants"
-    ],
-    skipNodeModulesBundle: true
+    skipNodeModulesBundle: true,
+    noExternal: ["conventional-commits-parser"]
   }
 ]);

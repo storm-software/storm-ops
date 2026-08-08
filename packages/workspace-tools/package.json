@@ -250,6 +250,7 @@
     "@size-limit/esbuild": "^11.2.0",
     "@size-limit/esbuild-why": "^11.2.0",
     "@size-limit/file": "^11.2.0",
+    "@storm-software/config": "workspace:*",
     "@storm-software/config-tools": "workspace:*",
     "@storm-software/npm-tools": "workspace:*",
     "@storm-software/prettier": "workspace:*",

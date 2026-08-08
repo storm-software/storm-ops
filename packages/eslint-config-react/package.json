@@ -111,7 +111,9 @@
   },
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "dependencies": {
     "@eslint-react/eslint-plugin": "^5.18.3",
     "@next/eslint-plugin-next": "^15.5.23",
@@ -121,15 +123,42 @@
     "eslint": "catalog:",
     "eslint-plugin-astro": "^1.7.0",
     "eslint-plugin-mdx": "^3.8.1",
-    "eslint-plugin-react-compiler": "19.1.0-rc.2",
-    "eslint-plugin-react-hooks": "^7.1.1",
-    "eslint-plugin-react-refresh": "^0.5.3",
+    "eslint-plugin-react-compiler": "catalog:",
+    "eslint-plugin-react-dom": "catalog:",
+    "eslint-plugin-react-hooks": "catalog:",
+    "eslint-plugin-react-jsx": "catalog:",
+    "eslint-plugin-react-naming-convention": "catalog:",
+    "eslint-plugin-react-refresh": "catalog:",
+    "eslint-plugin-react-rsc": "catalog:",
+    "eslint-plugin-react-web-api": "catalog:",
+    "eslint-plugin-react-x": "catalog:",
     "eslint-plugin-storybook": "^0.11.6",
     "prettier-plugin-astro": "^0.14.1"
   },
   "devDependencies": {
-    "tsup": "catalog:",
+    "@types/eslint": "catalog:",
+    "@types/eslint__js": "catalog:",
+    "@types/estree": "catalog:",
+    "@types/node": "catalog:",
+    "eslint": "catalog:",
+    "tsdown": "catalog:",
     "typescript": "^6.0.3"
+  },
+  "peerDependencies": {
+    "eslint": ">=9.39.3",
+    "react": ">=18.0.0",
+    "react-dom": ">=18.0.0"
+  },
+  "peerDependenciesMeta": {
+    "eslint": {
+      "optional": false
+    },
+    "react": {
+      "optional": false
+    },
+    "react-dom": {
+      "optional": false
+    }
   },
   "publishConfig": {
     "access": "public"

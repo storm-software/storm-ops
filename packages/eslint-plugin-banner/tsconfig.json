@@ -12,7 +12,7 @@
     "moduleDetection": "force",
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
-    "types": ["node"],
+    "types": ["node", "@types/eslint", "@types/estree"],
     "strict": true,
     "ignoreDeprecations": "6.0"
   },

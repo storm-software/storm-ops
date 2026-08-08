@@ -10,14 +10,12 @@ export default defineConfig([
     platform: "node",
     treeshake: true,
     splitting: false,
-    bundle: true,
     shims: true,
     clean: false,
     dts: false,
     sourcemap: true,
     silent: true,
     tsconfig: "./tsconfig.json",
-    external: ["nx", "@nx/*"],
-    noExternal: ["zod", "zod/mini", "@storm-software/package-constants"]
+    skipNodeModulesBundle: true
   }
 ]);

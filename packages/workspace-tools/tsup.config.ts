@@ -32,7 +32,7 @@ const config = defineConfig([
     sourcemap: false,
     shims: true,
     tsconfig: "./tsconfig.json",
-    external: ["@nx/devkit", "jiti", "typescript", "@napi-rs/cli"],
+    skipNodeModulesBundle: true,
     noExternal: [
       "@storm-software/package-constants",
       "@storm-software/pnpm-tools"

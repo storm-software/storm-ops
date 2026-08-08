@@ -120,7 +120,8 @@
     "prettier-plugin-astro": "^0.14.1",
     "prettier-plugin-prisma": "^5.0.0",
     "prettier-plugin-solidity": "^1.4.3",
-    "prettier-plugin-tailwindcss": "^0.6.14"
+    "prettier-plugin-tailwindcss": "^0.6.14",
+    "tsdown": "catalog:"
   },
   "peerDependencies": {
     "prettier-plugin-astro": ">=0.14.1",

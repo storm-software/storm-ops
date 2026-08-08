@@ -185,8 +185,12 @@
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
-  "files": ["dist/**/*"],
+  "files": [
+    "dist"
+  ],
   "dependencies": {
+    "@storm-software/config": "workspace:*",
+    "@storm-software/config-tools": "workspace:*",
     "@swc/core": "catalog:",
     "glob": "catalog:",
     "resolve": "1.22.12",
