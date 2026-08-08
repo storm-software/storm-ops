@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Prettier
 
+## [0.59.181](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.59.181) (08/08/2026)
+
+### Bug Fixes
+
+- **prettier:** Added missing peer dependencies to package ([217519ab3](https://github.com/storm-software/storm-ops/commit/217519ab3))
+
 ## [0.59.180](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.59.180) (08/08/2026)
 
 ### Miscellaneous
