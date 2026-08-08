@@ -51,67 +51,18 @@
   "sideEffects": false,
   "type": "module",
   "exports": {
-    "./package.json": "./package.json",
     ".": {
-      "import": {
-        "types": "./dist/preset.d.ts",
-        "default": "./dist/preset.js"
-      },
-      "require": {
-        "types": "./dist/preset.d.cts",
-        "default": "./dist/preset.cjs"
-      },
-      "default": {
-        "types": "./dist/preset.d.ts",
-        "default": "./dist/preset.js"
-      }
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
     },
-    "./index": {
-      "import": {
-        "types": "./dist/preset.d.ts",
-        "default": "./dist/preset.js"
-      },
-      "require": {
-        "types": "./dist/preset.d.cts",
-        "default": "./dist/preset.cjs"
-      },
-      "default": {
-        "types": "./dist/preset.d.ts",
-        "default": "./dist/preset.js"
-      }
-    },
-    "./preset": {
-      "import": {
-        "types": "./dist/preset.d.ts",
-        "default": "./dist/preset.js"
-      },
-      "require": {
-        "types": "./dist/preset.d.cts",
-        "default": "./dist/preset.cjs"
-      },
-      "default": {
-        "types": "./dist/preset.d.ts",
-        "default": "./dist/preset.js"
-      }
-    },
-    "./types": {
-      "import": {
-        "types": "./dist/types.d.ts",
-        "default": "./dist/types.js"
-      },
-      "require": {
-        "types": "./dist/types.d.cts",
-        "default": "./dist/types.cjs"
-      },
-      "default": {
-        "types": "./dist/types.d.ts",
-        "default": "./dist/types.js"
-      }
-    }
+    "./*": "./*"
   },
-  "main": "./dist/index.js",
-  "types": "./dist/index.d.ts",
-  "files": ["dist"],
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.cts",
+  "files": [
+    "dist"
+  ],
   "dependencies": {
     "@eslint-react/eslint-plugin": "^5.18.3",
     "@next/eslint-plugin-next": "^15.5.23",

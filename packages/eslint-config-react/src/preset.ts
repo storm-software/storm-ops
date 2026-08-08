@@ -20,7 +20,7 @@ export function preset(
     strict = false,
     mdx: enableMdx = true,
     react = true,
-    "react-native": enableReactNative = true,
+    "react-native": enableReactNative = false,
     storybook: enableStorybook = true,
     ...rest
   } = options;

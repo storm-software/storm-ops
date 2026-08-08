@@ -19,9 +19,10 @@
 import { defineConfig } from "tsdown";
 
 const config = defineConfig({
+  name: "eslint-config-react",
   entry: ["src/index.ts"],
-  platform: "node",
   format: ["esm", "cjs"],
+  platform: "node",
   target: "es2022",
   outDir: "dist",
   exports: {
@@ -35,17 +36,7 @@ const config = defineConfig({
   sourcemap: false,
   treeshake: true,
   deps: {
-    neverBundle: true,
-    alwaysBundle: [
-      "zod",
-      "date-fns",
-      "minimatch",
-      "eslint-plugin-import-x",
-      "eslint-plugin-import-zod",
-      "eslint-plugin-react-native",
-      "eslint-plugin-react-native-globals"
-    ],
-    onlyBundle: false
+    neverBundle: true
   }
 });
 
