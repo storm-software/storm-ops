@@ -163,7 +163,9 @@
     "storm-config-cjs": "./bin/config.cjs",
     "storm-config-esm": "./bin/config.mjs"
   },
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "dependencies": {
     "@ltd/j-toml": "catalog:",
     "@storm-software/config": "workspace:*",
