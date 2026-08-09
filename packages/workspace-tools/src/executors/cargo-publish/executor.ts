@@ -5,8 +5,6 @@ import { readFileSync } from "node:fs";
 import https from "node:https";
 import type { CargoPublishExecutorSchema } from "./schema.d";
 
-const LARGE_BUFFER = 1024 * 1000000;
-
 export default async function runExecutor(
   options: CargoPublishExecutorSchema,
   context: ExecutorContext
@@ -86,7 +84,7 @@ export default async function runExecutor(
     console.log("");
 
     execSync(cargoPublishCommand, {
-      maxBuffer: LARGE_BUFFER,
+      maxBuffer: 1024 * 1000000,
       env: {
         ...process.env,
         FORCE_COLOR: "true"

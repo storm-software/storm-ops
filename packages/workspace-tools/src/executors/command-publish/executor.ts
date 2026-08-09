@@ -4,8 +4,6 @@ import { execSync } from "node:child_process";
 import { isAbsolute } from "node:path";
 import type { CommandPublishExecutorSchema } from "./schema.d";
 
-export const LARGE_BUFFER = 1024 * 1000000;
-
 export default async function commandPublishExecutorFn(
   options: CommandPublishExecutorSchema,
   context: ExecutorContext
@@ -59,7 +57,7 @@ export default async function commandPublishExecutorFn(
           ...process.env,
           FORCE_COLOR: "true"
         },
-        maxBuffer: LARGE_BUFFER,
+        maxBuffer: 1024 * 1000000,
         killSignal: "SIGTERM"
       });
 

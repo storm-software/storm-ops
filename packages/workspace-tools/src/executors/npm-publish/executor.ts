@@ -14,7 +14,7 @@ import {
 import { getWorkspacePackageManager } from "../../utils/package-manager";
 import type { NpmPublishExecutorSchema } from "./schema.d";
 
-export const LARGE_BUFFER = 1024 * 1000000;
+const LARGE_BUFFER = 1024 * 1000000;
 
 async function replaceDepsAliases(
   jiti: Jiti,
