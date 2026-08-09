@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Config Tools
 
+## [1.190.129](https://github.com/storm-software/storm-ops/releases/tag/config-tools%401.190.129) (08/08/2026)
+
+### Miscellaneous
+
+- **bun-tools:** Update `storm-bun` to include improved error logging ([97d65d1d3](https://github.com/storm-software/storm-ops/commit/97d65d1d3))
+
 ## [1.190.128](https://github.com/storm-software/storm-ops/releases/tag/config-tools%401.190.128) (08/08/2026)
 
 ### Updated Dependencies

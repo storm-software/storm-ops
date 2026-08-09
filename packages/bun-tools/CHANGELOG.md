@@ -2,6 +2,21 @@
 
 # Changelog for Storm Ops - Bun Tools
 
+## [0.0.40](https://github.com/storm-software/storm-ops/releases/tag/bun-tools%400.0.40) (08/08/2026)
+
+### Miscellaneous
+
+- **bun-tools:** Update `storm-bun` to include improved error logging ([97d65d1d3](https://github.com/storm-software/storm-ops/commit/97d65d1d3))
+
+### Bug Fixes
+
+- **workspace-tools:** Resolve issue with `prettier-plugin-packagejson` imports ([b2f5d7b87](https://github.com/storm-software/storm-ops/commit/b2f5d7b87))
+
+### Updated Dependencies
+
+- Updated **config-tools** to **v1.190.129**
+- Updated **npm-tools** to **v0.6.247**
+
 ## [0.0.39](https://github.com/storm-software/storm-ops/releases/tag/bun-tools%400.0.39) (08/08/2026)
 
 ### Bug Fixes

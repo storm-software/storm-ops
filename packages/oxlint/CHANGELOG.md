@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Oxlint
 
+## [0.0.96](https://github.com/storm-software/storm-ops/releases/tag/oxlint%400.0.96) (08/08/2026)
+
+### Updated Dependencies
+
+- Updated **config-tools** to **v1.190.129**
+
 ## [0.0.95](https://github.com/storm-software/storm-ops/releases/tag/oxlint%400.0.95) (08/08/2026)
 
 ### Updated Dependencies
