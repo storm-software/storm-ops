@@ -30,9 +30,9 @@ export async function getGitHubTools(
       interopDefault: true
     });
 
-    const core = await jiti.import<GitHubTools>(
-      jiti.esmResolve("@actions/core")
-    );
+    const core = await jiti.import<GitHubTools>("@actions/core", {
+      default: true
+    });
 
     return {
       error: core.error,
@@ -40,13 +40,20 @@ export async function getGitHubTools(
       info: core.info,
       getIDToken: core.getIDToken
     } as GitHubTools;
-  } catch {
+  } catch (error) {
+    console.error(
+      `Error importing @actions/core: ${
+        (error as Error)?.message ? (error as Error).message : "Unknown error"
+      }`
+    );
+
     return {
       error: (message: string) => console.error(message),
       warning: (message: string) => console.warn(message),
       info: (message: string) => console.log(message),
       getIDToken: async () => {
-        throw new Error("getIDToken is not supported in this environment");
+        console.error("getIDToken is not supported in this environment");
+        return "";
       }
     } as GitHubTools;
   }

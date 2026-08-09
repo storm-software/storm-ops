@@ -214,7 +214,7 @@ export default async function npmPublishExecutorFn(
     execSync("npm config get tag", {
       cwd: packageRoot,
       env: {
-        NPM_ID_TOKEN: token,
+        NPM_ID_TOKEN: token ? token : undefined,
         ...process.env,
         FORCE_COLOR: "true"
       },
