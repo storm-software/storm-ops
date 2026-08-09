@@ -1,0 +1,52 @@
+{
+  "id": "#",
+  "title": "Command Publish Executor",
+  "description": "A type definition for a Command Publish executor schema that runs a user-provided publish command",
+  "oneOf": [
+    {
+      "required": [
+        "commands"
+      ]
+    },
+    {
+      "required": [
+        "command"
+      ]
+    }
+  ],
+  "properties": {
+    "command": {
+      "title": "Command",
+      "type": "string",
+      "description": "The shell command to run to publish the package",
+      "id": "#command"
+    },
+    "commands": {
+      "title": "Commands",
+      "type": "array",
+      "description": "Shell commands to run to publish the package",
+      "items": {
+        "type": "string"
+      },
+      "id": "#commands"
+    },
+    "cwd": {
+      "title": "Working Directory",
+      "type": "string",
+      "format": "path",
+      "description": "The working directory to run the publish command in. Defaults to the project root.",
+      "id": "#cwd"
+    },
+    "dryRun": {
+      "title": "Dry Run",
+      "type": "boolean",
+      "description": "When true, log the commands that would be run without executing them",
+      "id": "#dryRun",
+      "default": false
+    }
+  },
+  "type": "object",
+  "default": {
+    "dryRun": false
+  }
+}

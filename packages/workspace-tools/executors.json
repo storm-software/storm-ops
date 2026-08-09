@@ -35,6 +35,11 @@
       "schema": "./dist/src/executors/cargo-publish/schema.json",
       "description": "Publish a Rust crate to the crates.io registry"
     },
+    "command-publish": {
+      "implementation": "./dist/src/executors/command-publish/executor",
+      "schema": "./dist/src/executors/command-publish/schema.json",
+      "description": "Publish a package by running a user-provided shell command"
+    },
     "cargo-build": {
       "implementation": "./dist/src/executors/cargo-build/executor",
       "schema": "./dist/src/executors/cargo-build/schema.json",

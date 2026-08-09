@@ -10,6 +10,8 @@ export * from "./src/executors/cargo-format/executor";
 export { type CargoFormatExecutorSchema } from "./src/executors/cargo-format/schema.d";
 export * from "./src/executors/cargo-publish/executor";
 export { type CargoPublishExecutorSchema } from "./src/executors/cargo-publish/schema.d";
+export * from "./src/executors/command-publish/executor";
+export { type CommandPublishExecutorSchema } from "./src/executors/command-publish/schema.d";
 export { type CleanPackageExecutorSchema } from "./src/executors/clean-package/schema.d";
 export * from "./src/executors/esbuild/executor";
 export { type ESBuildExecutorSchema } from "./src/executors/esbuild/schema.d";
