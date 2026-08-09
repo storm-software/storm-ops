@@ -2,6 +2,26 @@
 
 # Changelog for Storm Ops - Workspace Tools
 
+## [1.296.113](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.296.113) (08/08/2026)
+
+### Bug Fixes
+
+- **workspace-tools:** Resolve issue causing errors retreiving GitHub tokens ([d8ce9a9ca](https://github.com/storm-software/storm-ops/commit/d8ce9a9ca))
+
+### Updated Dependencies
+
+- Updated **bun-tools** to **v0.0.41**
+- Updated **config** to **v1.138.66**
+- Updated **config-tools** to **v1.190.130**
+- Updated **esbuild** to **v0.53.291**
+- Updated **npm-tools** to **v0.6.248**
+- Updated **package-constants** to **v0.1.142**
+- Updated **pnpm-tools** to **v0.7.142**
+- Updated **prettier** to **v0.59.183**
+- Updated **testing-tools** to **v1.119.282**
+- Updated **tsdown** to **v0.45.291**
+- Updated **unbuild** to **v0.57.291**
+
 ## [1.296.112](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.296.112) (08/08/2026)
 
 ### Bug Fixes
