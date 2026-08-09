@@ -2,6 +2,30 @@
 
 # Changelog for Storm Ops - Workspace Tools
 
+## [1.297.0](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.297.0) (08/09/2026)
+
+### Bug Fixes
+
+- **workspace-tools:** Resolve issue with duplicate exports ([a8c1a45fe](https://github.com/storm-software/storm-ops/commit/a8c1a45fe))
+
+### Features
+
+- **workspace-tools:** Added `command-publish` executor to plugin ([8820117ae](https://github.com/storm-software/storm-ops/commit/8820117ae))
+
+### Updated Dependencies
+
+- Updated **bun-tools** to **v0.0.44**
+- Updated **config** to **v1.138.67**
+- Updated **config-tools** to **v1.190.131**
+- Updated **esbuild** to **v0.53.292**
+- Updated **npm-tools** to **v0.6.251**
+- Updated **package-constants** to **v0.1.143**
+- Updated **pnpm-tools** to **v0.7.145**
+- Updated **prettier** to **v0.59.184**
+- Updated **testing-tools** to **v1.119.283**
+- Updated **tsdown** to **v0.45.292**
+- Updated **unbuild** to **v0.57.292**
+
 ## [1.296.115](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.296.115) (08/09/2026)
 
 ### Bug Fixes
