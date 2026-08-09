@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Workspace Tools
 
+## [1.296.111](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.296.111) (08/08/2026)
+
+### Bug Fixes
+
+- **workspace-tools:** Resolve issue with `prettier-plugin-packagejson` imports ([b2f5d7b87](https://github.com/storm-software/storm-ops/commit/b2f5d7b87))
+
+### Updated Dependencies
+
+- Updated **bun-tools** to **v0.0.39**
+- Updated **pnpm-tools** to **v0.7.140**
+
 ## [1.296.110](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.296.110) (08/08/2026)
 
 ### Updated Dependencies
