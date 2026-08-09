@@ -9,6 +9,47 @@ import {
 } from "../constants";
 import { getRegistry } from "./get-registry";
 
+const BENIGN_PACKAGE_MANAGER_STDERR_LINE =
+  /^(npm warn|\[[\d.]+ms\]|\[sys\]|\[warn\] request took)/i;
+
+/**
+ * Remove known package manager diagnostic output from stderr.
+ *
+ * @param stderr - The stderr output from a package manager command.
+ * @returns The remaining stderr content, if any.
+ */
+export function filterBenignPackageManagerStderr(stderr: string): string {
+  return stderr
+    .split(/\r?\n/)
+    .map(line => line.trim())
+    .filter(line => line.length > 0)
+    .filter(line => !BENIGN_PACKAGE_MANAGER_STDERR_LINE.test(line))
+    .join("\n")
+    .trim();
+}
+
+/**
+ * Extract a semver version from package manager stdout.
+ *
+ * @param stdout - The stdout output from a package manager command.
+ * @returns The extracted version string.
+ */
+export function extractPackageVersion(stdout: string): string {
+  const lines = stripAnsi(stdout)
+    .split(/\r?\n/)
+    .map(line => line.trim())
+    .filter(Boolean);
+
+  for (let index = lines.length - 1; index >= 0; index -= 1) {
+    const line = lines[index];
+    if (line && valid(line, true)) {
+      return line;
+    }
+  }
+
+  return stripAnsi(stdout).trim();
+}
+
 export interface GetVersionOptions {
   /**
    * The registry URL to use.
@@ -74,20 +115,26 @@ export async function getVersion(
               maxBuffer: 1024 * 1024 * 10 // 10 MB
             },
             (error, stdout, stderr) => {
+              const filteredStderr = stderr
+                ? filterBenignPackageManagerStderr(stderr)
+                : "";
+
               if (
                 error &&
                 !error.message.toLowerCase().trim().startsWith("npm warn")
               ) {
-                return reject(error);
-              }
-              if (
-                stderr &&
-                !stderr.toLowerCase().trim().startsWith("npm warn")
-              ) {
-                return reject(stderr);
+                return reject(
+                  filteredStderr
+                    ? new Error(filteredStderr, { cause: error })
+                    : error
+                );
               }
 
-              return resolve(stdout.trim());
+              if (filteredStderr) {
+                return reject(new Error(filteredStderr));
+              }
+
+              return resolve(extractPackageVersion(stdout));
             }
           );
         })

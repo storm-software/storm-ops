@@ -137,6 +137,10 @@
       "import": "./dist/utilities/find-workspace-root.mjs",
       "require": "./dist/utilities/find-workspace-root.cjs"
     },
+    "./utilities/format-error-message": {
+      "import": "./dist/utilities/format-error-message.mjs",
+      "require": "./dist/utilities/format-error-message.cjs"
+    },
     "./utilities/get-default-config": {
       "import": "./dist/utilities/get-default-config.mjs",
       "require": "./dist/utilities/get-default-config.cjs"
@@ -163,7 +167,9 @@
     "storm-config-cjs": "./bin/config.cjs",
     "storm-config-esm": "./bin/config.mjs"
   },
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "dependencies": {
     "@ltd/j-toml": "catalog:",
     "@storm-software/config": "workspace:*",

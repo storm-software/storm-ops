@@ -2,6 +2,7 @@ import type { StormWorkspaceConfig } from "@storm-software/config";
 import {
   brandIcon,
   findWorkspaceRootSafe,
+  formatErrorMessage,
   runAsync,
   writeDebug,
   writeFatal,
@@ -91,11 +92,11 @@ export function createProgram(config: StormWorkspaceConfig) {
     return program;
   } catch (error) {
     writeFatal(
-      `A fatal error occurred while running the Storm bun CLI program: \n\n${error?.message}`,
+      `A fatal error occurred while running the Storm bun CLI program: \n\n${formatErrorMessage(error)}`,
       _config
     );
 
-    throw new Error(error?.message, { cause: error });
+    throw new Error(formatErrorMessage(error), { cause: error });
   }
 }
 
@@ -192,11 +193,7 @@ async function updateAction(
                   }
                 } catch (error) {
                   writeFatal(
-                    `A fatal error occurred while upgrading ${matchedPackage}: \n${
-                      typeof error === "object"
-                        ? JSON.stringify(error, null, 2)
-                        : error
-                    }`,
+                    `A fatal error occurred while upgrading ${matchedPackage}: \n${formatErrorMessage(error)}`,
                     _config
                   );
 
@@ -285,9 +282,7 @@ ${changed
     }
   } catch (error) {
     writeFatal(
-      `A fatal error occurred while running storm-bun update: \n${
-        typeof error === "object" ? JSON.stringify(error, null, 2) : error
-      }`,
+      `A fatal error occurred while running storm-bun update: \n${formatErrorMessage(error)}`,
       _config
     );
 

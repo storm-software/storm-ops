@@ -3,6 +3,7 @@ export * from "./colors";
 export * from "./correct-paths";
 export * from "./file-path-utils";
 export * from "./find-workspace-root";
+export * from "./format-error-message";
 export * from "./get-default-config";
 export * from "./process-handler";
 export * from "./run";

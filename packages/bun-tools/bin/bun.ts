@@ -1,7 +1,11 @@
 #!/usr/bin/env node
 
 import { getWorkspaceConfig } from "@storm-software/config-tools/get-config";
-import { writeSuccess } from "@storm-software/config-tools/logger/console";
+import {
+  writeFatal,
+  writeSuccess
+} from "@storm-software/config-tools/logger/console";
+import { formatErrorMessage } from "@storm-software/config-tools/utilities/format-error-message";
 import {
   exitWithError,
   exitWithSuccess,
@@ -22,8 +26,11 @@ void (async () => {
       config
     );
     exitWithSuccess(config);
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
   } catch (error) {
+    writeFatal(
+      `A fatal error occurred while running storm-bun: \n${formatErrorMessage(error)}`,
+      config
+    );
     exitWithError(config);
     process.exit(1);
   }
