@@ -13,7 +13,7 @@ const BENIGN_PACKAGE_MANAGER_STDERR_LINE =
   /^(npm warn|\[[\d.]+ms\]|\[sys\]|\[warn\] request took)/i;
 
 const BENIGN_PACKAGE_MANAGER_ENV_LINE =
-  /^\[[\d.]+ms\].*(?:\.env(?:\.local)?|\"\.env)/i;
+  /^\[[\d.]+ms\].*(?:\.env(?:\.local)?|"\.env)/i;
 
 /**
  * Determine whether stderr or error output is benign package manager noise.

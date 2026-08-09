@@ -1,6 +1,9 @@
 import {
+  createProjectGraphAsync,
   joinPathFragments,
   ProjectConfiguration,
+  ProjectGraph,
+  readCachedProjectGraph,
   readJsonFile
 } from "@nx/devkit";
 import { joinPaths } from "@storm-software/config-tools/utilities/correct-paths";
@@ -16,6 +19,30 @@ import { dirname, resolve } from "path";
 import { format } from "prettier";
 import prettierPlugin from "prettier-plugin-packagejson";
 import { isEqualProjectTag, ProjectTagConstants } from "./project-tags";
+
+const PACKAGE_JSON_DEP_FIELDS = [
+  "dependencies",
+  "devDependencies",
+  "optionalDependencies",
+  "peerDependencies"
+] as const;
+
+const PACKAGE_JSON_FORMAT_OPTIONS = {
+  parser: "json" as const,
+  proseWrap: "preserve" as const,
+  trailingComma: "none" as const,
+  tabWidth: 2,
+  semi: true,
+  singleQuote: false,
+  quoteProps: "as-needed" as const,
+  insertPragma: false,
+  bracketSameLine: true,
+  printWidth: 80,
+  bracketSpacing: true,
+  arrowParens: "avoid" as const,
+  endOfLine: "lf" as const,
+  plugins: [prettierPlugin]
+};
 
 export type PackageManagerType = "package.json" | "Cargo.toml";
 export const PackageManagerTypes = {
@@ -62,6 +89,110 @@ export const getPackageInfo = (
   return null;
 };
 
+async function getPrivateWorkspacePackageNames(
+  workspaceRoot: string
+): Promise<Set<string>> {
+  let projectGraph: ProjectGraph;
+  try {
+    projectGraph = readCachedProjectGraph();
+  } catch {
+    await createProjectGraphAsync();
+    projectGraph = readCachedProjectGraph();
+  }
+
+  const privatePackages = new Set<string>();
+  await Promise.all(
+    Object.keys(projectGraph.nodes).map(async node => {
+      const projectNode = projectGraph.nodes[node];
+      if (!projectNode?.data.root) {
+        return;
+      }
+
+      const projectPackageJsonPath = joinPaths(
+        workspaceRoot,
+        projectNode.data.root,
+        "package.json"
+      );
+      if (!existsSync(projectPackageJsonPath)) {
+        return;
+      }
+
+      const projectPackageJson = JSON.parse(
+        await readFile(projectPackageJsonPath, "utf8")
+      );
+      if (projectPackageJson.private === true && projectPackageJson.name) {
+        privatePackages.add(projectPackageJson.name);
+      }
+    })
+  );
+
+  return privatePackages;
+}
+
+function stripPrivateWorkspaceDepsFromPackageJson(
+  packageJson: PackageJson,
+  privatePackages: Set<string>
+): string[] {
+  const removed: string[] = [];
+
+  for (const field of PACKAGE_JSON_DEP_FIELDS) {
+    const deps = packageJson[field];
+    if (!deps || typeof deps !== "object") {
+      continue;
+    }
+
+    for (const [name, version] of Object.entries(deps)) {
+      if (
+        typeof version === "string" &&
+        version.startsWith("workspace:") &&
+        privatePackages.has(name)
+      ) {
+        delete deps[name];
+        removed.push(`${field}.${name}`);
+      }
+    }
+
+    if (Object.keys(deps).length === 0) {
+      delete packageJson[field];
+    }
+  }
+
+  return removed;
+}
+
+/**
+ * Remove private workspace package references from a package.json file before publish.
+ *
+ * @param packageRoot - The root directory of the package to update.
+ * @param workspaceRoot - The root directory of the workspace.
+ * @returns A list of removed dependency keys in `field.name` form.
+ */
+export async function stripPrivateWorkspaceDeps(
+  packageRoot: string,
+  workspaceRoot: string
+): Promise<string[]> {
+  const packageJsonPath = joinPaths(packageRoot, "package.json");
+  const packageJson = JSON.parse(
+    await readFile(packageJsonPath, "utf8")
+  ) as PackageJson;
+  const privatePackages = await getPrivateWorkspacePackageNames(workspaceRoot);
+  const removed = stripPrivateWorkspaceDepsFromPackageJson(
+    packageJson,
+    privatePackages
+  );
+
+  if (removed.length === 0) {
+    return removed;
+  }
+
+  await writeFile(
+    packageJsonPath,
+    await format(JSON.stringify(packageJson), PACKAGE_JSON_FORMAT_OPTIONS)
+  );
+
+  return removed;
+}
+
 /**
  * Adds the current git HEAD commit hash to the package.json file at the specified path.
  *
@@ -92,21 +223,6 @@ export async function addPackageJsonGitHead(packageRoot: string) {
 
   return writeFile(
     packageJsonPath,
-    await format(JSON.stringify(packageJsonValue), {
-      parser: "json",
-      proseWrap: "preserve",
-      trailingComma: "none",
-      tabWidth: 2,
-      semi: true,
-      singleQuote: false,
-      quoteProps: "as-needed",
-      insertPragma: false,
-      bracketSameLine: true,
-      printWidth: 80,
-      bracketSpacing: true,
-      arrowParens: "avoid",
-      endOfLine: "lf",
-      plugins: [prettierPlugin]
-    })
+    await format(JSON.stringify(packageJsonValue), PACKAGE_JSON_FORMAT_OPTIONS)
   );
 }

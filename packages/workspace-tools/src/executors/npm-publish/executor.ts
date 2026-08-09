@@ -7,7 +7,10 @@ import { readFile, writeFile } from "node:fs/promises";
 import { format } from "prettier";
 import prettierPlugin from "prettier-plugin-packagejson";
 import { getGitHubTools } from "../../utils/github";
-import { addPackageJsonGitHead } from "../../utils/package-helpers";
+import {
+  addPackageJsonGitHead,
+  stripPrivateWorkspaceDeps
+} from "../../utils/package-helpers";
 import { getWorkspacePackageManager } from "../../utils/package-manager";
 import type { NpmPublishExecutorSchema } from "./schema.d";
 
@@ -166,6 +169,16 @@ export default async function npmPublishExecutorFn(
       `Skipped ${packageTxt}, because it has \`"private": true\` in ${packageJsonPath}`
     );
     return { success: true };
+  }
+
+  const removedPrivateWorkspaceDeps = await stripPrivateWorkspaceDeps(
+    packageRoot,
+    context.root
+  );
+  if (removedPrivateWorkspaceDeps.length > 0) {
+    console.info(
+      `Removed private workspace dependencies from ${packageJsonPath}: ${removedPrivateWorkspaceDeps.join(", ")}`
+    );
   }
 
   await replaceDepsAliases(jiti, packageRoot, context.root, packageManager);
