@@ -56,30 +56,128 @@
     },
     "./config": {
       "require": {
-        "types": "./index.d.cts",
-        "default": "./index.cjs"
+        "types": "./config.d.cts",
+        "default": "./config.cjs"
       },
       "import": {
-        "types": "./index.d.mts",
-        "default": "./index.mjs"
+        "types": "./config.d.mts",
+        "default": "./config.mjs"
       },
       "default": {
-        "types": "./index.d.mts",
-        "default": "./index.mjs"
+        "types": "./config.d.mts",
+        "default": "./config.mjs"
       }
     },
     "./recommended": {
       "require": {
-        "types": "./index.d.cts",
-        "default": "./index.cjs"
+        "types": "./recommended.d.cts",
+        "default": "./recommended.cjs"
       },
       "import": {
-        "types": "./index.d.mts",
-        "default": "./index.mjs"
+        "types": "./recommended.d.mts",
+        "default": "./recommended.mjs"
       },
       "default": {
-        "types": "./index.d.mts",
-        "default": "./index.mjs"
+        "types": "./recommended.d.mts",
+        "default": "./recommended.mjs"
+      }
+    },
+    "./all": {
+      "require": {
+        "types": "./all.d.cts",
+        "default": "./all.cjs"
+      },
+      "import": {
+        "types": "./all.d.mts",
+        "default": "./all.mjs"
+      },
+      "default": {
+        "types": "./all.d.mts",
+        "default": "./all.mjs"
+      }
+    },
+    "./base": {
+      "require": {
+        "types": "./base.d.cts",
+        "default": "./base.cjs"
+      },
+      "import": {
+        "types": "./base.d.mts",
+        "default": "./base.mjs"
+      },
+      "default": {
+        "types": "./base.d.mts",
+        "default": "./base.mjs"
+      }
+    },
+    "./exclude-packagejson": {
+      "require": {
+        "types": "./exclude-packagejson.d.cts",
+        "default": "./exclude-packagejson.cjs"
+      },
+      "import": {
+        "types": "./exclude-packagejson.d.mts",
+        "default": "./exclude-packagejson.mjs"
+      },
+      "default": {
+        "types": "./exclude-packagejson.d.mts",
+        "default": "./exclude-packagejson.mjs"
+      }
+    },
+    "./jsdoc": {
+      "require": {
+        "types": "./jsdoc.d.cts",
+        "default": "./jsdoc.cjs"
+      },
+      "import": {
+        "types": "./jsdoc.d.mts",
+        "default": "./jsdoc.mjs"
+      },
+      "default": {
+        "types": "./jsdoc.d.mts",
+        "default": "./jsdoc.mjs"
+      }
+    },
+    "./prisma": {
+      "require": {
+        "types": "./prisma.d.cts",
+        "default": "./prisma.cjs"
+      },
+      "import": {
+        "types": "./prisma.d.mts",
+        "default": "./prisma.mjs"
+      },
+      "default": {
+        "types": "./prisma.d.mts",
+        "default": "./prisma.mjs"
+      }
+    },
+    "./solidity": {
+      "require": {
+        "types": "./solidity.d.cts",
+        "default": "./solidity.cjs"
+      },
+      "import": {
+        "types": "./solidity.d.mts",
+        "default": "./solidity.mjs"
+      },
+      "default": {
+        "types": "./solidity.d.mts",
+        "default": "./solidity.mjs"
+      }
+    },
+    "./tailwindcss": {
+      "require": {
+        "types": "./tailwindcss.d.cts",
+        "default": "./tailwindcss.cjs"
+      },
+      "import": {
+        "types": "./tailwindcss.d.mts",
+        "default": "./tailwindcss.mjs"
+      },
+      "default": {
+        "types": "./tailwindcss.d.mts",
+        "default": "./tailwindcss.mjs"
       }
     },
     "./.prettierignore": "./.prettierignore",

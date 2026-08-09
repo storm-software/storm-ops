@@ -19,7 +19,18 @@
 import { defineConfig } from "tsdown";
 
 const config = defineConfig({
-  entry: ["src/*.ts"],
+  entry: [
+    "src/index.ts",
+    "src/recommended.ts",
+    "src/all.ts",
+    "src/base.ts",
+    "src/config.ts",
+    "src/exclude-packagejson.ts",
+    "src/jsdoc.ts",
+    "src/prisma.ts",
+    "src/solidity.ts",
+    "src/tailwindcss.ts"
+  ],
   format: ["cjs", "esm"],
   platform: "node",
   target: "es2022",
