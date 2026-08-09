@@ -2,6 +2,15 @@
 
 # Changelog for Storm Ops - Esbuild
 
+## [0.53.293](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.53.293) (08/09/2026)
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.292**
+- Updated **config** to **v1.138.68**
+- Updated **config-tools** to **v1.190.132**
+- Updated **tsup** to **v0.2.290**
+
 ## [0.53.292](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.53.292) (08/09/2026)
 
 ### Updated Dependencies
