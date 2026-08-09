@@ -105,7 +105,7 @@ export async function presetGeneratorFn(
       url: `${options.repositoryUrl}.git`
     };
 
-    json.prettier = "@storm-software/prettier/config.json";
+    json.prettier = "@storm-software/prettier";
 
     json.nx ??= {
       includedScripts: [

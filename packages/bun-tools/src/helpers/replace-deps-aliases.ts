@@ -8,6 +8,7 @@ import { findWorkspaceRoot } from "@storm-software/config-tools/utilities/find-w
 import { existsSync } from "node:fs";
 import { readFile, writeFile } from "node:fs/promises";
 import { format } from "prettier";
+import prettierPlugin from "prettier-plugin-packagejson";
 import { getCatalog } from "./catalog";
 
 /**
@@ -60,7 +61,9 @@ export async function replaceDepsAliases(
 
         const catalogVersion = catalog[dependencyName];
         if (!catalogVersion) {
-          throw new Error("Missing workspace catalog version for " + dependencyName);
+          throw new Error(
+            "Missing workspace catalog version for " + dependencyName
+          );
         }
 
         dependencies[dependencyName] = catalogVersion;
@@ -146,7 +149,7 @@ export async function replaceDepsAliases(
       bracketSpacing: true,
       arrowParens: "avoid",
       endOfLine: "lf",
-      plugins: ["prettier-plugin-packagejson"]
+      plugins: [prettierPlugin]
     })
   );
 }

@@ -5,6 +5,7 @@ import { createJiti, type Jiti } from "jiti";
 import { execSync } from "node:child_process";
 import { readFile, writeFile } from "node:fs/promises";
 import { format } from "prettier";
+import prettierPlugin from "prettier-plugin-packagejson";
 import { getGitHubTools } from "../../utils/github";
 import { addPackageJsonGitHead } from "../../utils/package-helpers";
 import { getWorkspacePackageManager } from "../../utils/package-manager";
@@ -144,7 +145,7 @@ export default async function npmPublishExecutorFn(
           bracketSpacing: true,
           arrowParens: "avoid",
           endOfLine: "lf",
-          plugins: ["prettier-plugin-packagejson"]
+          plugins: [prettierPlugin]
         })
       );
     }

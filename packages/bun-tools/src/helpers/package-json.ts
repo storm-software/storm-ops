@@ -4,6 +4,7 @@ import { findWorkspaceRoot } from "@storm-software/config-tools/utilities/find-w
 import { existsSync } from "node:fs";
 import { readFile, writeFile } from "node:fs/promises";
 import { format } from "prettier";
+import prettierPlugin from "prettier-plugin-packagejson";
 import { WorkspacePackageJson } from "../types";
 
 const PACKAGE_JSON_PRETTIER_OPTIONS = {
@@ -20,7 +21,7 @@ const PACKAGE_JSON_PRETTIER_OPTIONS = {
   bracketSpacing: true,
   arrowParens: "avoid" as const,
   endOfLine: "lf" as const,
-  plugins: ["prettier-plugin-packagejson"]
+  plugins: [prettierPlugin]
 };
 
 /**

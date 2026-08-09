@@ -14,6 +14,7 @@ import { readFile, writeFile } from "node:fs/promises";
 import type { PackageJson } from "nx/src/utils/package-json";
 import { dirname, resolve } from "path";
 import { format } from "prettier";
+import prettierPlugin from "prettier-plugin-packagejson";
 import { isEqualProjectTag, ProjectTagConstants } from "./project-tags";
 
 export type PackageManagerType = "package.json" | "Cargo.toml";
@@ -105,7 +106,7 @@ export async function addPackageJsonGitHead(packageRoot: string) {
       bracketSpacing: true,
       arrowParens: "avoid",
       endOfLine: "lf",
-      plugins: ["prettier-plugin-packagejson"]
+      plugins: [prettierPlugin]
     })
   );
 }
