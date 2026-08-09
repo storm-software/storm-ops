@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Npm Tools
 
+## [0.6.250](https://github.com/storm-software/storm-ops/releases/tag/npm-tools%400.6.250) (08/09/2026)
+
+### Bug Fixes
+
+- **workspace-tools:** Ensure internal workspace packages are not included in `package.json` file ([65a7c17a6](https://github.com/storm-software/storm-ops/commit/65a7c17a6))
+
 ## [0.6.249](https://github.com/storm-software/storm-ops/releases/tag/npm-tools%400.6.249) (08/08/2026)
 
 ### Bug Fixes

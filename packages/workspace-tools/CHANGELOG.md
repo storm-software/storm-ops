@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Workspace Tools
 
+## [1.296.115](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.296.115) (08/09/2026)
+
+### Bug Fixes
+
+- **workspace-tools:** Ensure internal workspace packages are not included in `package.json` file ([65a7c17a6](https://github.com/storm-software/storm-ops/commit/65a7c17a6))
+
+### Updated Dependencies
+
+- Updated **bun-tools** to **v0.0.43**
+- Updated **npm-tools** to **v0.6.250**
+- Updated **pnpm-tools** to **v0.7.144**
+
 ## [1.296.114](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.296.114) (08/08/2026)
 
 ### Updated Dependencies
