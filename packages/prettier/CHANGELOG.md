@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Prettier
 
+## [0.59.182](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.59.182) (08/08/2026)
+
+### Features
+
+- **prettier:** Added exports for each configuration option ([09cd57099](https://github.com/storm-software/storm-ops/commit/09cd57099))
+
 ## [0.59.181](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.59.181) (08/08/2026)
 
 ### Bug Fixes
