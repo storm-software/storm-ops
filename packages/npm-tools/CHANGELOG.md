@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Npm Tools
 
+## [0.6.249](https://github.com/storm-software/storm-ops/releases/tag/npm-tools%400.6.249) (08/08/2026)
+
+### Bug Fixes
+
+- **bun-tools:** Resolve issue with incorrect package managers error reporting ([e62e108e3](https://github.com/storm-software/storm-ops/commit/e62e108e3))
+
 ## [0.6.248](https://github.com/storm-software/storm-ops/releases/tag/npm-tools%400.6.248) (08/08/2026)
 
 ### Updated Dependencies

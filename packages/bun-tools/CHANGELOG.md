@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Bun Tools
 
+## [0.0.42](https://github.com/storm-software/storm-ops/releases/tag/bun-tools%400.0.42) (08/08/2026)
+
+### Updated Dependencies
+
+- Updated **npm-tools** to **v0.6.249**
+
 ## [0.0.41](https://github.com/storm-software/storm-ops/releases/tag/bun-tools%400.0.41) (08/08/2026)
 
 ### Updated Dependencies
