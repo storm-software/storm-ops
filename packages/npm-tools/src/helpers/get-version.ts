@@ -12,6 +12,45 @@ import { getRegistry } from "./get-registry";
 const BENIGN_PACKAGE_MANAGER_STDERR_LINE =
   /^(npm warn|\[[\d.]+ms\]|\[sys\]|\[warn\] request took)/i;
 
+const BENIGN_PACKAGE_MANAGER_ENV_LINE =
+  /^\[[\d.]+ms\].*(?:\.env(?:\.local)?|\"\.env)/i;
+
+/**
+ * Determine whether stderr or error output is benign package manager noise.
+ *
+ * @param line - A single line of stderr or error output.
+ * @returns Whether the line can be ignored.
+ */
+export function isBenignPackageManagerOutput(line: string): boolean {
+  const trimmed = line.trim();
+  if (!trimmed) {
+    return true;
+  }
+
+  const candidates = [trimmed, stripAnsi(trimmed)];
+  return candidates.some(normalized => {
+    if (!normalized) {
+      return true;
+    }
+
+    if (BENIGN_PACKAGE_MANAGER_STDERR_LINE.test(normalized)) {
+      return true;
+    }
+
+    if (BENIGN_PACKAGE_MANAGER_ENV_LINE.test(normalized)) {
+      return true;
+    }
+
+    // Bun may emit malformed ANSI where strip-ansi eats `[0` from `[0.06ms]`.
+    if (/ms\].*\.env/i.test(normalized)) {
+      return true;
+    }
+
+    // Match timing/env output even when ANSI bytes remain in the raw line.
+    return /\[[\d.]+ms\].*\.env/i.test(trimmed);
+  });
+}
+
 /**
  * Remove known package manager diagnostic output from stderr.
  *
@@ -21,9 +60,9 @@ const BENIGN_PACKAGE_MANAGER_STDERR_LINE =
 export function filterBenignPackageManagerStderr(stderr: string): string {
   return stderr
     .split(/\r?\n/)
-    .map(line => line.trim())
+    .map(line => stripAnsi(line).trim())
     .filter(line => line.length > 0)
-    .filter(line => !BENIGN_PACKAGE_MANAGER_STDERR_LINE.test(line))
+    .filter(line => !isBenignPackageManagerOutput(line))
     .join("\n")
     .trim();
 }
@@ -118,10 +157,22 @@ export async function getVersion(
               const filteredStderr = stderr
                 ? filterBenignPackageManagerStderr(stderr)
                 : "";
+              const version = extractPackageVersion(stdout);
+              const hasValidVersion = valid(version, true);
+
+              if (hasValidVersion) {
+                return resolve(version);
+              }
+
+              const errorMessage = error?.message
+                ? stripAnsi(error.message).trim()
+                : "";
 
               if (
                 error &&
-                !error.message.toLowerCase().trim().startsWith("npm warn")
+                errorMessage &&
+                !errorMessage.toLowerCase().startsWith("npm warn") &&
+                !isBenignPackageManagerOutput(errorMessage)
               ) {
                 return reject(
                   filteredStderr
@@ -134,7 +185,11 @@ export async function getVersion(
                 return reject(new Error(filteredStderr));
               }
 
-              return resolve(extractPackageVersion(stdout));
+              if (error) {
+                return reject(error);
+              }
+
+              return resolve(version);
             }
           );
         })
