@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - CSpell
 
+## [0.46.200](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.46.200) (08/10/2026)
+
+### Miscellaneous
+
+- **prettier:** Update method of importing plugins ([21b27c0cd](https://github.com/storm-software/storm-ops/commit/21b27c0cd))
+
 ## [0.46.195](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.46.195) (08/08/2026)
 
 ### Miscellaneous

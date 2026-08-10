@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Prettier
 
+## [0.59.186](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.59.186) (08/10/2026)
+
+### Miscellaneous
+
+- **prettier:** Update method of importing plugins ([21b27c0cd](https://github.com/storm-software/storm-ops/commit/21b27c0cd))
+
 ## [0.59.182](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.59.182) (08/08/2026)
 
 ### Features

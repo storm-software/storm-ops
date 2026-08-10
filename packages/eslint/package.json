@@ -1,6 +1,6 @@
 {
   "name": "@storm-software/eslint",
-  "version": "0.170.167",
+  "version": "0.170.168",
   "private": false,
   "description": "A package containing the base ESLint configuration used by Storm Software across many projects.",
   "keywords": [
@@ -60,9 +60,7 @@
   "main": "./dist/index.cjs",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.cts",
-  "files": [
-    "dist"
-  ],
+  "files": ["dist"],
   "dependencies": {
     "@antfu/install-pkg": "^1.1.0",
     "@clack/prompts": "^0.10.1",

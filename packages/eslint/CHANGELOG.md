@@ -2,6 +2,23 @@
 
 # Changelog for Storm Ops - ESLint
 
+## [0.170.168](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.170.168) (08/10/2026)
+
+### Features
+
+- **eslint:** Added `react-query` eslint configuration ([93aec6725](https://github.com/storm-software/storm-ops/commit/93aec6725))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.69**
+- Updated **config-tools** to **v1.190.133**
+- Updated **eslint-plugin-banner** to **v0.0.98**
+- Updated **eslint-plugin-bun** to **v0.0.21**
+- Updated **eslint-plugin-pnpm** to **v0.0.96**
+- Updated **eslint-plugin-tsdoc** to **v0.0.96**
+- Updated **package-constants** to **v0.1.145**
+- Updated **tsdoc** to **v0.13.285**
+
 ## [0.170.167](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.170.167) (08/09/2026)
 
 ### Updated Dependencies

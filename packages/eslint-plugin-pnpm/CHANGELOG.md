@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - ESLint Plugin Pnpm
 
+## [0.0.96](https://github.com/storm-software/storm-ops/releases/tag/eslint-plugin-pnpm%400.0.96) (08/10/2026)
+
+### Features
+
+- **eslint:** Added `react-query` eslint configuration ([93aec6725](https://github.com/storm-software/storm-ops/commit/93aec6725))
+
+### Updated Dependencies
+
+- Updated **package-constants** to **v0.1.145**
+- Updated **prettier** to **v0.59.186**
+- Updated **tsdoc** to **v0.13.285**
+
 ## [0.0.95](https://github.com/storm-software/storm-ops/releases/tag/eslint-plugin-pnpm%400.0.95) (08/09/2026)
 
 ### Updated Dependencies
