@@ -21,6 +21,7 @@ export * from "./pnpm";
 export * from "./prettier";
 export * from "./react";
 export * from "./react-native";
+export * from "./react-query";
 export * from "./regexp";
 export * from "./secrets";
 export * from "./sort";

@@ -346,6 +346,17 @@ export interface OptionsStorybook extends OptionsOverrides {
   csf?: "none" | "loose" | "strict";
 }
 
+export interface OptionsReactQuery extends OptionsOverrides {
+  /**
+   * Use the strict recommended config, which enables additional opinionated rules.
+   *
+   * @see https://tanstack.com/query/latest/docs/eslint/eslint-plugin-query
+   *
+   * @defaultValue false
+   */
+  strict?: boolean;
+}
+
 export interface OptionsReact extends OptionsOverrides {
   /**
    * Use a strict mode for React rules, which will enable more strict rules that may cause more false positives but can catch more potential issues.
@@ -783,6 +794,18 @@ export interface OptionsConfig
    * @defaultValue false
    */
   storybook?: boolean | OptionsStorybook;
+
+  /**
+   * Enable TanStack Query rules.
+   *
+   * Requires installing:
+   * - `@tanstack/eslint-plugin-query`
+   *
+   * @see https://tanstack.com/query/latest/docs/eslint/eslint-plugin-query
+   *
+   * @defaultValue false
+   */
+  "react-query"?: boolean | OptionsReactQuery;
 
   /**
    * Enable react rules.

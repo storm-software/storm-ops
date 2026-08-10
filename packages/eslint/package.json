@@ -60,7 +60,9 @@
   "main": "./dist/index.cjs",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.cts",
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "dependencies": {
     "@antfu/install-pkg": "^1.1.0",
     "@clack/prompts": "^0.10.1",
@@ -132,6 +134,7 @@
     "@storm-software/eslint-plugin-pnpm": "workspace:*",
     "@storm-software/tsdoc": "workspace:*",
     "@stylistic/eslint-plugin-migrate": "^4.4.1",
+    "@tanstack/eslint-plugin-query": "^5.101.4",
     "@types/eslint": "catalog:",
     "@types/eslint__js": "catalog:",
     "@types/estree": "catalog:",
@@ -175,6 +178,7 @@
     "@storm-software/eslint-plugin-bun": "*",
     "@storm-software/eslint-plugin-pnpm": "*",
     "@storm-software/tsdoc": "*",
+    "@tanstack/eslint-plugin-query": "^5.0.0",
     "@unocss/eslint-plugin": ">=0.50.0",
     "astro-eslint-parser": "^1.0.2",
     "debug": "^4.3.2",
@@ -219,6 +223,9 @@
       "optional": true
     },
     "@storm-software/tsdoc": {
+      "optional": true
+    },
+    "@tanstack/eslint-plugin-query": {
       "optional": true
     },
     "@unocss/eslint-plugin": {

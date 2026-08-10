@@ -509,6 +509,46 @@ Backward pagination arguments
    */
   '@nx/nx-plugin-checks'?: Linter.RuleEntry<NxNxPluginChecks>
   /**
+   * Exhaustive deps rule for useQuery
+   * @see https://tanstack.com/query/latest/docs/eslint/exhaustive-deps
+   */
+  '@tanstack/query/exhaustive-deps'?: Linter.RuleEntry<TanstackQueryExhaustiveDeps>
+  /**
+   * Ensure correct order of inference sensitive properties for infinite queries
+   * @see https://tanstack.com/query/latest/docs/eslint/infinite-query-property-order
+   */
+  '@tanstack/query/infinite-query-property-order'?: Linter.RuleEntry<[]>
+  /**
+   * Ensure correct order of inference-sensitive properties in useMutation()
+   * @see https://tanstack.com/query/latest/docs/eslint/mutation-property-order
+   */
+  '@tanstack/query/mutation-property-order'?: Linter.RuleEntry<[]>
+  /**
+   * Disallows rest destructuring in queries
+   * @see https://tanstack.com/query/latest/docs/eslint/no-rest-destructuring
+   */
+  '@tanstack/query/no-rest-destructuring'?: Linter.RuleEntry<[]>
+  /**
+   * Disallow putting the result of query hooks directly in a React hook dependency array
+   * @see https://tanstack.com/query/latest/docs/eslint/no-unstable-deps
+   */
+  '@tanstack/query/no-unstable-deps'?: Linter.RuleEntry<[]>
+  /**
+   * Ensures queryFn returns a non-undefined value
+   * @see https://tanstack.com/query/latest/docs/eslint/no-void-query-fn
+   */
+  '@tanstack/query/no-void-query-fn'?: Linter.RuleEntry<[]>
+  /**
+   * Prefer using queryOptions() to co-locate queryKey and queryFn
+   * @see https://tanstack.com/query/latest/docs/eslint/prefer-query-options
+   */
+  '@tanstack/query/prefer-query-options'?: Linter.RuleEntry<[]>
+  /**
+   * Makes sure that QueryClient is stable
+   * @see https://tanstack.com/query/latest/docs/eslint/stable-query-client
+   */
+  '@tanstack/query/stable-query-client'?: Linter.RuleEntry<[]>
+  /**
    * Enforce getter and setter pairs in objects and classes
    * @see https://eslint.org/docs/latest/rules/accessor-pairs
    */
@@ -8406,6 +8446,13 @@ type NxNxPluginChecks = []|[{
   allowedVersionStrings?: string[]
   
   tsConfig?: string
+}]
+// ----- @tanstack/query/exhaustive-deps -----
+type TanstackQueryExhaustiveDeps = []|[{
+  allowlist?: {
+    variables?: string[]
+    types?: string[]
+  }
 }]
 // ----- accessor-pairs -----
 type AccessorPairs = []|[{
@@ -18682,4 +18729,4 @@ type Yoda = []|[("always" | "never")]|[("always" | "never"), {
 }]
 
 // Names of all the configs
-export type ConfigNames = "storm/banner" | "storm/bun/setup" | "bun/recommended/package-json" | "bun/recommended/package-json" | "storm/cspell/rules" | "storm/astro/setup" | "storm/astro/rules" | "storm/formatter/setup" | "storm/imports/rules" | "storm/graphql/setup" | "storm/graphql/rules" | "storm/graphql/relay" | "storm/javascript/setup" | "storm/javascript/rules" | "storm/jsx/rules" | "storm/jsdoc/rules" | "storm/jsonc/setup" | "storm/jsonc/rules" | "storm/markdown/setup" | "storm/markdown/rules" | "mdx/flat" | "storm/node/rules" | "storm/nx/setup" | "storm/nx/schema" | "storm/nx/dependency-check" | "storm/nx/module-boundaries" | "storm/next/rules" | "storm/prettier" | "storm/perfectionist/rules" | "storm/pnpm/setup" | "storm/pnpm/package-json" | "storm/pnpm/pnpm-workspace-yaml" | "storm/react/setup" | "storm/react/rules" | "storm/react-native/rules" | "storm/sort/package-json" | "storm/stylistic/rules" | "storm/secrets/rules" | "storm/storybook/setup" | "storm/storybook/rules" | "storm/storybook/main" | "storm/test/setup" | "storm/test/rules" | "storm/tsdoc/rules" | "storm/toml/setup" | "storm/toml/rules" | "storm/typescript/setup" | "storm/typescript/parser" | "storm/typescript/type-aware-parser" | "storm/typescript/rules" | "storm/typescript/rules-type-aware" | "storm/regexp/rules" | "storm/unicorn/rules" | "storm/unocss" | "storm/yaml/setup" | "storm/yaml/rules" | "storm/zod/rules"
+export type ConfigNames = "storm/banner" | "storm/bun/setup" | "bun/recommended/package-json" | "bun/recommended/package-json" | "storm/cspell/rules" | "storm/astro/setup" | "storm/astro/rules" | "storm/formatter/setup" | "storm/imports/rules" | "storm/graphql/setup" | "storm/graphql/rules" | "storm/graphql/relay" | "storm/javascript/setup" | "storm/javascript/rules" | "storm/jsx/rules" | "storm/jsdoc/rules" | "storm/jsonc/setup" | "storm/jsonc/rules" | "storm/markdown/setup" | "storm/markdown/rules" | "mdx/flat" | "storm/node/rules" | "storm/nx/setup" | "storm/nx/schema" | "storm/nx/dependency-check" | "storm/nx/module-boundaries" | "storm/next/rules" | "storm/prettier" | "storm/perfectionist/rules" | "storm/pnpm/setup" | "storm/pnpm/package-json" | "storm/pnpm/pnpm-workspace-yaml" | "storm/react/setup" | "storm/react/rules" | "storm/react-native/rules" | "storm/react-query/rules" | "storm/sort/package-json" | "storm/stylistic/rules" | "storm/secrets/rules" | "storm/storybook/setup" | "storm/storybook/rules" | "storm/storybook/main" | "storm/test/setup" | "storm/test/rules" | "storm/tsdoc/rules" | "storm/toml/setup" | "storm/toml/rules" | "storm/typescript/setup" | "storm/typescript/parser" | "storm/typescript/type-aware-parser" | "storm/typescript/rules" | "storm/typescript/rules-type-aware" | "storm/regexp/rules" | "storm/unicorn/rules" | "storm/unocss" | "storm/yaml/setup" | "storm/yaml/rules" | "storm/zod/rules"

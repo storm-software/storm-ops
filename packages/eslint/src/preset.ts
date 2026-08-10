@@ -24,6 +24,7 @@ import {
   prettier,
   react,
   reactNative,
+  reactQuery,
   regexp,
   secrets,
   sortPackageJson,
@@ -127,6 +128,7 @@ export function preset(
     next: enableNext = false,
     graphql: enableGraphQL = false,
     storybook: enableStorybook = false,
+    "react-query": enableReactQuery = false,
     typescript: enableTypeScript = isPackageExists("typescript"),
     unicorn: enableUnicorn = true,
     jsdoc: enableJSDoc = false,
@@ -337,6 +339,10 @@ export function preset(
 
   if (enableStorybook) {
     configs.push(storybook(resolveSubOptions(options, "storybook")));
+  }
+
+  if (enableReactQuery) {
+    configs.push(reactQuery(resolveSubOptions(options, "react-query")));
   }
 
   if (enableUnoCSS) {
