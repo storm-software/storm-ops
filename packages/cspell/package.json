@@ -137,7 +137,7 @@
     "@cspell/dict-makefile": "^1.0.5",
     "@cspell/dict-markdown": "^2.0.17",
     "@cspell/dict-node": "^5.0.9",
-    "@cspell/dict-npm": "^5.2.43",
+    "@cspell/dict-npm": "^5.2.44",
     "@cspell/dict-php": "^4.1.1",
     "@cspell/dict-powershell": "^5.0.15",
     "@cspell/dict-public-licenses": "^2.0.16",

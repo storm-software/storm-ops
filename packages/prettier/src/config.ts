@@ -1,4 +1,19 @@
-import config from "./config.json" with { type: "json" };
-import { createConfig } from "./create-config";
+import * as prettierPluginJsdoc from "prettier-plugin-jsdoc";
+import prettierPluginOrganizeImports from "prettier-plugin-organize-imports";
+import prettierPluginPackagejson from "prettier-plugin-packagejson";
+import prettierPluginSh from "prettier-plugin-sh";
+import prettierPluginToml from "prettier-plugin-toml";
+import configJson from "./config.json" with { type: "json" };
 
-export default createConfig(config);
+const { plugins: _, ...config } = configJson;
+
+export default {
+  ...config,
+  plugins: [
+    prettierPluginSh,
+    prettierPluginPackagejson,
+    prettierPluginToml,
+    prettierPluginJsdoc,
+    prettierPluginOrganizeImports
+  ]
+};
