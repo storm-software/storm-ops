@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Cloudflare Tools
 
+## [0.71.282](https://github.com/storm-software/storm-ops/releases/tag/cloudflare-tools%400.71.282) (08/22/2026)
+
+### Bug Fixes
+
+- **linting-tools:** Resolve issues with missing dependencies ([77fd9b9e6](https://github.com/storm-software/storm-ops/commit/77fd9b9e6))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.70**
+- Updated **config-tools** to **v1.190.134**
+- Updated **workspace-tools** to **v1.297.3**
+
 ## [0.71.281](https://github.com/storm-software/storm-ops/releases/tag/cloudflare-tools%400.71.281) (08/10/2026)
 
 ### Updated Dependencies

@@ -2,6 +2,19 @@
 
 # Changelog for Storm Ops - Esbuild
 
+## [0.53.295](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.53.295) (08/22/2026)
+
+### Bug Fixes
+
+- **linting-tools:** Resolve issues with missing dependencies ([77fd9b9e6](https://github.com/storm-software/storm-ops/commit/77fd9b9e6))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.294**
+- Updated **config** to **v1.138.70**
+- Updated **config-tools** to **v1.190.134**
+- Updated **tsup** to **v0.2.292**
+
 ## [0.53.294](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.53.294) (08/10/2026)
 
 ### Updated Dependencies

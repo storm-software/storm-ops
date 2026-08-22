@@ -2,6 +2,20 @@
 
 # Changelog for Storm Ops - Git Tools
 
+## [2.131.142](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.131.142) (08/22/2026)
+
+### Bug Fixes
+
+- **monorepo:** Resolve issue with missing devenv profile in `release` workflow ([d97387a7a](https://github.com/storm-software/storm-ops/commit/d97387a7a))
+- **linting-tools:** Resolve issues with missing dependencies ([77fd9b9e6](https://github.com/storm-software/storm-ops/commit/77fd9b9e6))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.70**
+- Updated **config-tools** to **v1.190.134**
+- Updated **conventional-changelog** to **v0.3.295**
+- Updated **package-constants** to **v0.1.146**
+
 ## [2.131.141](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.131.141) (08/10/2026)
 
 ### Updated Dependencies
