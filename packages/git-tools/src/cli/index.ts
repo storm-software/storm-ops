@@ -149,7 +149,7 @@ export async function commitAction({
     writeSuccess(
       `✔ Storm Commit processing completed successfully!
 
-Note: Please run "pnpm push" to upload these changes to the remote ${
+Note: Please run "${_config.packageManager ?? "pnpm"} push" to upload these changes to the remote ${
         _config.name
           ? _config.name
           : _config.namespace
