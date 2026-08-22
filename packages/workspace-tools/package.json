@@ -272,7 +272,7 @@
     "zod": "catalog:"
   },
   "devDependencies": {
-    "@napi-rs/cli": "^3.8.3",
+    "@napi-rs/cli": "^3.8.6",
     "@storm-software/bun-tools": "workspace:*",
     "@storm-software/esbuild": "workspace:*",
     "@storm-software/package-constants": "workspace:*",

@@ -77,7 +77,7 @@
     "@typescript-eslint/eslint-plugin": "catalog:",
     "@typescript-eslint/parser": "catalog:",
     "@typescript-eslint/utils": "catalog:",
-    "@vitest/eslint-plugin": "^1.6.26",
+    "@vitest/eslint-plugin": "^1.6.27",
     "ajv": "catalog:",
     "chalk": "catalog:",
     "cross-spawn": "^7.0.6",
@@ -121,7 +121,7 @@
   },
   "devDependencies": {
     "@eslint-community/eslint-utils": "^4.10.1",
-    "@eslint-react/eslint-plugin": "^5.18.3",
+    "@eslint-react/eslint-plugin": "^5.18.6",
     "@eslint-types/typescript-eslint": "^7.5.0",
     "@eslint/config-inspector": "catalog:",
     "@graphql-eslint/eslint-plugin": "^4.4.1",

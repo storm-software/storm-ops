@@ -27,7 +27,7 @@ env:
 
 jobs:
   start:
-    name: "Send in process notification"
+    name: "Send in progress notification"
     runs-on: ubuntu-latest
     environment: production
     if: github.repository == 'storm-software/storm-ops' && (github.ref ==
@@ -41,7 +41,7 @@ jobs:
           subtitle: "Deployment for ${{ github.repository }} has started - #${{
             github.run_number }}"
           description:
-            "Deployment for ${{ github.repository }} is currently in process -
+            "Deployment for ${{ github.repository }} is currently in progress -
             #${{ github.run_number }}. Click here to see the full workflow
             details: ${{ github.event.pull_request.html_url ||
             github.event.head_commit.url }}."
@@ -52,7 +52,7 @@ jobs:
           telegram-chat: ${{ secrets.STORM_BOT_TELEGRAM_NOTIFICATION_CHAT }}
           discord-webhook: ${{ secrets.STORM_BOT_DISCORD_WEBHOOK}}
 
-  process:
+  release:
     name: "Continuous Integration"
     if: always() && !cancelled() && !contains(needs.*.result, 'failure') &&
       github.event.pull_request.draft == false
@@ -72,38 +72,26 @@ jobs:
           gpg-passphrase: ${{ secrets.STORM_BOT_GPG_PASSPHRASE }}
           storm-bot-github-token: ${{ secrets.STORM_BOT_GITHUB_TOKEN }}
 
-      - name: Derive appropriate SHAs for base and head for `nx affected` commands
-        id: setSHAs
-        uses: nrwl/nx-set-shas@3e9ad7370203c1e93d109be57f3b72eb0eb511b1 # v4.4.0
-        with:
-          main-branch-name: main
-          workflow-id: release.yml
-          set-environment-variables-for-job: true
-          error-on-no-successful-workflow: true
-
       - name: Release repository updates
-        run: devenv shell release ${STEPS_SETSHAS_OUTPUTS_BASE}
-          ${STEPS_SETSHAS_OUTPUTS_HEAD}
-        env:
-          NX_BASE: ${{ steps.setSHAs.outputs.base }}
-          NX_HEAD: ${{ steps.setSHAs.outputs.head }}
-          GITHUB_ACTOR: ${{ github.actor }}
-          GITHUB_TOKEN: ${{ github.token }}
-          GH_TOKEN: ${{ github.token }}
-          STORM_BOT_GITHUB_TOKEN: ${{ secrets.STORM_BOT_GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.STORM_BOT_NPM_TOKEN }}
-          CARGO_REGISTRY_TOKEN: ${{ secrets.STORM_BOT_CARGO_TOKEN }}
-          CLOUDFLARE_API_TOKEN: ${{ secrets.STORM_BOT_CLOUDFLARE_TOKEN }}
-          STORM_BOT: stormie-bot
-          STORM_WORKSPACE_ROOT: ${{ github.workspace }}
-          STORM_REPOSITORY: ${{ github.repositoryUrl }}
-          TAG: ${{ inputs.tag }}
-          STEPS_SETSHAS_OUTPUTS_BASE: ${{ steps.setSHAs.outputs.base }}
-          STEPS_SETSHAS_OUTPUTS_HEAD: ${{ steps.setSHAs.outputs.head }}
+        uses: storm-software/action-release@main
+        with:
+          tag: ${{ inputs.tag }}
+          env: |
+            {
+              "GITHUB_ACTOR": "${{ github.actor }}",
+              "GITHUB_REPOSITORY": "${{ github.repository }}",
+              "GITHUB_TOKEN": "${{ github.token }}",
+              "STORM_BOT_GITHUB_TOKEN": "${{ secrets.STORM_BOT_GITHUB_TOKEN }}",
+              "STORM_WORKSPACE_ROOT": "${{ github.workspace }}",
+              "STORM_REPOSITORY": "${{ github.repositoryUrl }}",
+              "NPM_TOKEN": "${{ secrets.STORM_BOT_NPM_TOKEN }}",
+              CARGO_REGISTRY_TOKEN: ${{ secrets.STORM_BOT_CARGO_TOKEN }}",
+              "CLOUDFLARE_API_TOKEN": "${{ secrets.STORM_BOT_CLOUDFLARE_TOKEN }}"
+            }
 
   success:
     needs:
-      - process
+      - release
     if: ${{ success() }}
     name: Send success notification
     runs-on: ubuntu-latest
@@ -130,7 +118,7 @@ jobs:
 
   failure:
     needs:
-      - process
+      - release
     if: ${{ failure() }}
     name: Send failure notification
     runs-on: ubuntu-latest
@@ -157,7 +145,7 @@ jobs:
 
   cancelled:
     needs:
-      - process
+      - release
     if: ${{ cancelled() }}
     name: Send cancelled notification
     runs-on: ubuntu-latest

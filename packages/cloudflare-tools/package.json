@@ -153,9 +153,9 @@
   "module": "dist/index.mjs",
   "typings": "dist/index.d.ts",
   "dependencies": {
-    "@aws-sdk/client-s3": "^3.1106.0",
-    "@aws-sdk/lib-storage": "^3.1106.0",
-    "@smithy/node-http-handler": "^4.9.13",
+    "@aws-sdk/client-s3": "^3.1115.0",
+    "@aws-sdk/lib-storage": "^3.1115.0",
+    "@smithy/node-http-handler": "^4.11.3",
     "@storm-software/config": "workspace:*",
     "@storm-software/config-tools": "workspace:*",
     "@storm-software/workspace-tools": "workspace:*",
@@ -169,11 +169,11 @@
     "@nx/node": "catalog:",
     "@nx/web": "catalog:",
     "@nx/webpack": "catalog:",
-    "@smithy/protocol-http": "^5.5.16",
+    "@smithy/protocol-http": "^5.6.2",
     "nx": "catalog:",
     "tsup": "catalog:",
     "untyped": "catalog:",
-    "wrangler": "^4.120.0"
+    "wrangler": "^4.125.0"
   },
   "peerDependencies": {
     "nx": ">=22.7.1",

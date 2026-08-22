@@ -47,7 +47,6 @@
     agents = {
       code-reviewer = {
         description = "Expert code review specialist that checks for quality, security, and best practices";
-        proactive = true;
         tools = [
           "Read"
           "Grep"
@@ -81,7 +80,6 @@
 
       architecture-designer = {
         description = "System architecture and API design specialist. Creates scalable designs, API contracts, database schemas, and security patterns. Use when planning new features or refactoring existing systems.";
-        proactive = true;
         tools = [
           "Read"
           "Write"
@@ -106,7 +104,6 @@
 
       documentation-writer = {
         description = "Technical documentation expert. Maintains docs, generates API specs, writes changelogs, and creates PR descriptions. Use proactively when code changes affect documentation.";
-        proactive = true;
         tools = [
           "Read"
           "Write"
@@ -131,7 +128,6 @@
 
       devops-specialist = {
         description = "CI/CD and infrastructure automation expert. Optimizes pipelines, manages deployments, configures monitoring, and writes infrastructure-as-code. Use for deployment issues and DevOps improvements.";
-        proactive = true;
         tools = [
           "Read"
           "Write"
@@ -156,7 +152,6 @@
 
       fullstack-developer = {
         description = "Full-stack implementation specialist. Handles frontend frameworks, backend services, mobile apps, and data pipelines. Use when implementing features across the entire stack.";
-        proactive = true;
         tools = [
           "Read"
           "Write"
