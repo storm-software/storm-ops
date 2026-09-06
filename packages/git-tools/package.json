@@ -206,7 +206,7 @@
   "dependencies": {
     "@commitlint/ensure": "^19.8.1",
     "@commitlint/rules": "^19.8.1",
-    "@inquirer/prompts": "^8.6.0",
+    "@inquirer/prompts": "^8.7.1",
     "@nx/devkit": "catalog:",
     "@nx/js": "catalog:",
     "@storm-software/config": "workspace:*",

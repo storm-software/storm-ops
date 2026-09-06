@@ -114,7 +114,7 @@ export interface GetVersionOptions {
   /**
    * The timeout in milliseconds for the command execution.
    *
-   * @defaultValue `10000` (10 seconds)
+   * @defaultValue `120000` (2 minutes)
    */
   timeout?: number;
 }
@@ -134,7 +134,7 @@ export async function getVersion(
 ): Promise<string> {
   const executable = options.executable || "npm";
   const retries = options.retries ?? 3;
-  const timeout = options.timeout ?? 10000;
+  const timeout = options.timeout ?? 120000;
   const registry = options.registry || (await getRegistry(executable));
 
   let lastError: Error | string | undefined;

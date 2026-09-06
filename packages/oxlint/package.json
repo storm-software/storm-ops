@@ -145,7 +145,7 @@
     "eslint-plugin-react-hooks": "catalog:",
     "eslint-plugin-regexp": "^2.10.0",
     "eslint-plugin-storybook": "^0.11.6",
-    "oxlint": "^1.79.0",
+    "oxlint": "^1.81.0",
     "oxlint-tsgolint": "^0.14.2",
     "parse-gitignore": "^2.0.0"
   },
