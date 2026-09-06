@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Tsdown
 
+## [0.45.296](https://github.com/storm-software/storm-ops/releases/tag/tsdown%400.45.296) (09/06/2026)
+
+### Bug Fixes
+
+- **npm-tools:** Update default timeout on npm registry calls to 2 minutes ([65883829a](https://github.com/storm-software/storm-ops/commit/65883829a))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.295**
+- Updated **config** to **v1.138.71**
+- Updated **config-tools** to **v1.190.135**
+
 ## [0.45.295](https://github.com/storm-software/storm-ops/releases/tag/tsdown%400.45.295) (08/22/2026)
 
 ### Bug Fixes

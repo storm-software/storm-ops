@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Cloudflare Tools
 
+## [0.71.283](https://github.com/storm-software/storm-ops/releases/tag/cloudflare-tools%400.71.283) (09/06/2026)
+
+### Bug Fixes
+
+- **npm-tools:** Update default timeout on npm registry calls to 2 minutes ([65883829a](https://github.com/storm-software/storm-ops/commit/65883829a))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.71**
+- Updated **config-tools** to **v1.190.135**
+- Updated **workspace-tools** to **v1.297.4**
+
 ## [0.71.282](https://github.com/storm-software/storm-ops/releases/tag/cloudflare-tools%400.71.282) (08/22/2026)
 
 ### Bug Fixes

@@ -2,6 +2,20 @@
 
 # Changelog for Storm Ops - Oxlint
 
+## [0.0.102](https://github.com/storm-software/storm-ops/releases/tag/oxlint%400.0.102) (09/06/2026)
+
+### Bug Fixes
+
+- **npm-tools:** Update default timeout on npm registry calls to 2 minutes ([65883829a](https://github.com/storm-software/storm-ops/commit/65883829a))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.71**
+- Updated **config-tools** to **v1.190.135**
+- Updated **eslint-plugin-banner** to **v0.0.100**
+- Updated **eslint-plugin-pnpm** to **v0.0.98**
+- Updated **eslint-plugin-tsdoc** to **v0.0.98**
+
 ## [0.0.101](https://github.com/storm-software/storm-ops/releases/tag/oxlint%400.0.101) (08/22/2026)
 
 ### Bug Fixes

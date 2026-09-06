@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - ESLint Config React
 
+## [0.0.92](https://github.com/storm-software/storm-ops/releases/tag/eslint-config-react%400.0.92) (09/06/2026)
+
+### Bug Fixes
+
+- **npm-tools:** Update default timeout on npm registry calls to 2 minutes ([65883829a](https://github.com/storm-software/storm-ops/commit/65883829a))
+
+### Updated Dependencies
+
+- Updated **eslint** to **v0.170.170**
+
 ## [0.0.91](https://github.com/storm-software/storm-ops/releases/tag/eslint-config-react%400.0.91) (08/22/2026)
 
 ### Bug Fixes

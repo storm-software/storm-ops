@@ -2,6 +2,26 @@
 
 # Changelog for Storm Ops - Workspace Tools
 
+## [1.297.4](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.297.4) (09/06/2026)
+
+### Bug Fixes
+
+- **npm-tools:** Update default timeout on npm registry calls to 2 minutes ([65883829a](https://github.com/storm-software/storm-ops/commit/65883829a))
+
+### Updated Dependencies
+
+- Updated **bun-tools** to **v0.0.48**
+- Updated **config** to **v1.138.71**
+- Updated **config-tools** to **v1.190.135**
+- Updated **esbuild** to **v0.53.296**
+- Updated **npm-tools** to **v0.6.255**
+- Updated **package-constants** to **v0.1.147**
+- Updated **pnpm-tools** to **v0.7.149**
+- Updated **prettier** to **v0.59.188**
+- Updated **testing-tools** to **v1.119.287**
+- Updated **tsdown** to **v0.45.296**
+- Updated **unbuild** to **v0.57.296**
+
 ## [1.297.3](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.297.3) (08/22/2026)
 
 ### Bug Fixes

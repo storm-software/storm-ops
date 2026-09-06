@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - CSpell
 
+## [0.46.202](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.46.202) (09/06/2026)
+
+### Bug Fixes
+
+- **npm-tools:** Update default timeout on npm registry calls to 2 minutes ([65883829a](https://github.com/storm-software/storm-ops/commit/65883829a))
+
 ## [0.46.201](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.46.201) (08/22/2026)
 
 ### Bug Fixes

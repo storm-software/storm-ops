@@ -2,6 +2,19 @@
 
 # Changelog for Storm Ops - Esbuild
 
+## [0.53.296](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.53.296) (09/06/2026)
+
+### Bug Fixes
+
+- **npm-tools:** Update default timeout on npm registry calls to 2 minutes ([65883829a](https://github.com/storm-software/storm-ops/commit/65883829a))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.295**
+- Updated **config** to **v1.138.71**
+- Updated **config-tools** to **v1.190.135**
+- Updated **tsup** to **v0.2.293**
+
 ## [0.53.295](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.53.295) (08/22/2026)
 
 ### Bug Fixes

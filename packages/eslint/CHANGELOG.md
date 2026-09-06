@@ -2,6 +2,23 @@
 
 # Changelog for Storm Ops - ESLint
 
+## [0.170.170](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.170.170) (09/06/2026)
+
+### Bug Fixes
+
+- **npm-tools:** Update default timeout on npm registry calls to 2 minutes ([65883829a](https://github.com/storm-software/storm-ops/commit/65883829a))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.71**
+- Updated **config-tools** to **v1.190.135**
+- Updated **eslint-plugin-banner** to **v0.0.100**
+- Updated **eslint-plugin-bun** to **v0.0.23**
+- Updated **eslint-plugin-pnpm** to **v0.0.98**
+- Updated **eslint-plugin-tsdoc** to **v0.0.98**
+- Updated **package-constants** to **v0.1.147**
+- Updated **tsdoc** to **v0.13.287**
+
 ## [0.170.169](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.170.169) (08/22/2026)
 
 ### Bug Fixes

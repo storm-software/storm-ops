@@ -2,6 +2,19 @@
 
 # Changelog for Storm Ops - Git Tools
 
+## [2.131.143](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.131.143) (09/06/2026)
+
+### Bug Fixes
+
+- **npm-tools:** Update default timeout on npm registry calls to 2 minutes ([65883829a](https://github.com/storm-software/storm-ops/commit/65883829a))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.71**
+- Updated **config-tools** to **v1.190.135**
+- Updated **conventional-changelog** to **v0.3.296**
+- Updated **package-constants** to **v0.1.147**
+
 ## [2.131.142](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.131.142) (08/22/2026)
 
 ### Bug Fixes
