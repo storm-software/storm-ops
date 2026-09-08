@@ -2,6 +2,20 @@
 
 # Changelog for Storm Ops - Pnpm Tools
 
+## [0.7.150](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.7.150) (09/08/2026)
+
+### Features
+
+- **pnpm-tools:** Updaters now use local cache to reduce network calls ([f468bf4b4](https://github.com/storm-software/storm-ops/commit/f468bf4b4))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.72**
+- Updated **config-tools** to **v1.190.136**
+- Updated **npm-tools** to **v0.6.256**
+- Updated **package-constants** to **v0.1.148**
+- Updated **testing-tools** to **v1.119.288**
+
 ## [0.7.149](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.7.149) (09/06/2026)
 
 ### Updated Dependencies

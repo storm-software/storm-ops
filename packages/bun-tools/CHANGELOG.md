@@ -2,6 +2,20 @@
 
 # Changelog for Storm Ops - Bun Tools
 
+## [0.0.49](https://github.com/storm-software/storm-ops/releases/tag/bun-tools%400.0.49) (09/08/2026)
+
+### Features
+
+- **pnpm-tools:** Updaters now use local cache to reduce network calls ([f468bf4b4](https://github.com/storm-software/storm-ops/commit/f468bf4b4))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.72**
+- Updated **config-tools** to **v1.190.136**
+- Updated **npm-tools** to **v0.6.256**
+- Updated **package-constants** to **v0.1.148**
+- Updated **testing-tools** to **v1.119.288**
+
 ## [0.0.48](https://github.com/storm-software/storm-ops/releases/tag/bun-tools%400.0.48) (09/06/2026)
 
 ### Updated Dependencies

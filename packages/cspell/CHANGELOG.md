@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - CSpell
 
+## [0.46.203](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.46.203) (09/08/2026)
+
+### Features
+
+- **pnpm-tools:** Updaters now use local cache to reduce network calls ([f468bf4b4](https://github.com/storm-software/storm-ops/commit/f468bf4b4))
+
 ## [0.46.202](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.46.202) (09/06/2026)
 
 ### Bug Fixes

@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Package Constants
 
+## [0.1.148](https://github.com/storm-software/storm-ops/releases/tag/package-constants%400.1.148) (09/08/2026)
+
+### Features
+
+- **pnpm-tools:** Updaters now use local cache to reduce network calls ([f468bf4b4](https://github.com/storm-software/storm-ops/commit/f468bf4b4))
+
 ## [0.1.140](https://github.com/storm-software/storm-ops/releases/tag/package-constants%400.1.140) (08/08/2026)
 
 ### Miscellaneous
