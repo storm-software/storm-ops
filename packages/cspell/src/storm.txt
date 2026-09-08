@@ -9,6 +9,7 @@ stormie
 stormiebot
 stormie
 powerlines
+mindctl
 
 # Misc
 treeshake

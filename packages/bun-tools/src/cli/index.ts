@@ -22,6 +22,7 @@ import {
   UpgradeCatalogPackageOptions
 } from "../helpers/catalog";
 import { replacePrefix } from "../helpers/format";
+import { getCachedVersion } from "../helpers/version-cache";
 
 let _config: Partial<StormWorkspaceConfig> = {};
 
@@ -125,12 +126,19 @@ async function updateAction(
 
     let packagesFound = false;
 
-    let pkgs = packages && Array.isArray(packages) ? packages : [];
+    const requestedPackages = Array.isArray(packages)
+      ? packages.filter(Boolean).map(pkg => pkg.trim().replaceAll("*", ""))
+      : [];
+    let pkgs = [...requestedPackages];
     if (internal || pkgs.length === 0 || all) {
       pkgs.push(...INTERNAL_PACKAGES);
     }
 
     pkgs = pkgs.filter(Boolean).map(pkg => pkg.trim().replaceAll("*", ""));
+    const isExplicitlyRequested = (packageName: string) =>
+      requestedPackages.some(pkg =>
+        pkg.endsWith("/") ? packageName.startsWith(pkg) : packageName === pkg
+      );
 
     let changed: {
       packageName: string;
@@ -186,6 +194,9 @@ async function updateAction(
                     tag,
                     prefix: prefix as UpgradeCatalogPackageOptions["prefix"],
                     workspaceRoot: _config.workspaceRoot,
+                    versionResolver: isExplicitlyRequested(matchedPackage)
+                      ? getCachedVersion
+                      : undefined,
                     verbose
                   });
                   if (result.updated && result.catalog[matchedPackage]) {

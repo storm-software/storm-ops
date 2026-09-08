@@ -111,6 +111,13 @@ export async function setCatalog(
 
 export interface UpgradeCatalogPackageOptions {
   /**
+   * Resolve the npm version to use for the package.
+   *
+   * @defaultValue `getVersion(packageName, tag, { executable: "bun pm" })`
+   */
+  versionResolver?: (packageName: string, tag: string) => Promise<string>;
+
+  /**
    * The npm tag to use when fetching the latest version of the package.
    *
    * @defaultValue `"latest"`
@@ -186,11 +193,14 @@ export async function upgradeCatalog(
     );
   }
 
-  const registry = await getNpmRegistry();
-  const origVersion = await getVersion(packageName, tag, {
-    executable: "bun pm",
-    registry
-  });
+  const origVersion = await (
+    options.versionResolver ??
+    (async (name, versionTag) =>
+      getVersion(name, versionTag, {
+        executable: "bun pm",
+        registry: await getNpmRegistry()
+      }))
+  )(packageName, tag);
   if (!origVersion) {
     throw new Error(
       `Failed to fetch version for package "${packageName}" with tag "${tag}"`

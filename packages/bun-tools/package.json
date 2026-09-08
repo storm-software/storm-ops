@@ -100,7 +100,9 @@
     "defu": "catalog:",
     "prettier": "catalog:",
     "prettier-plugin-packagejson": "catalog:",
+    "env-paths": "^4.0.0",
     "semver": "catalog:",
+    "unstorage": "^1.17.5",
     "yaml": "catalog:"
   },
   "devDependencies": {

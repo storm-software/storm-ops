@@ -97,6 +97,13 @@ export async function setCatalog(
 
 export interface UpgradeCatalogPackageOptions {
   /**
+   * Resolve the npm version to use for the package.
+   *
+   * @defaultValue `getVersion(packageName, tag, { executable: "pnpm" })`
+   */
+  versionResolver?: (packageName: string, tag: string) => Promise<string>;
+
+  /**
    * The npm tag to use when fetching the latest version of the package.
    *
    * @defaultValue `"latest"`
@@ -172,9 +179,10 @@ export async function upgradeCatalog(
     );
   }
 
-  const origVersion = await getVersion(packageName, tag, {
-    executable: "pnpm"
-  });
+  const origVersion = await (
+    options.versionResolver ??
+    ((name, versionTag) => getVersion(name, versionTag, { executable: "pnpm" }))
+  )(packageName, tag);
   if (!origVersion) {
     throw new Error(
       `Failed to fetch version for package "${packageName}" with tag "${tag}"`
