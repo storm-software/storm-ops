@@ -2,6 +2,19 @@
 
 # Changelog for Storm Ops - CSpell
 
+## [0.46.208](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.46.208) (09/17/2026)
+
+### Bug Fixes
+
+- **devenv-modules:** Resolve issue with agents devenv module ([dff58e908](https://github.com/storm-software/storm-ops/commit/dff58e908))
+- **npm-tools:** Update default timeout on npm registry calls to 2 minutes ([65883829a](https://github.com/storm-software/storm-ops/commit/65883829a))
+- **linting-tools:** Resolve issues with missing dependencies ([77fd9b9e6](https://github.com/storm-software/storm-ops/commit/77fd9b9e6))
+
+### Features
+
+- **devenv-modules:** Added `agents` and `graphify` devenv modules ([0c9cddbf9](https://github.com/storm-software/storm-ops/commit/0c9cddbf9))
+- **pnpm-tools:** Updaters now use local cache to reduce network calls ([f468bf4b4](https://github.com/storm-software/storm-ops/commit/f468bf4b4))
+
 ## [0.46.205](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.46.205) (09/17/2026)
 
 ### Bug Fixes

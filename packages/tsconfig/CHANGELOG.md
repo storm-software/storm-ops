@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Tsconfig
 
+## [0.48.207](https://github.com/storm-software/storm-ops/releases/tag/tsconfig%400.48.207) (09/17/2026)
+
+### Bug Fixes
+
+- **devenv-modules:** Resolve issue with agents devenv module ([dff58e908](https://github.com/storm-software/storm-ops/commit/dff58e908))
+
 ## [0.48.204](https://github.com/storm-software/storm-ops/releases/tag/tsconfig%400.48.204) (09/17/2026)
 
 ### Bug Fixes

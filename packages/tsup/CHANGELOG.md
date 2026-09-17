@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Tsup
 
+## [0.2.299](https://github.com/storm-software/storm-ops/releases/tag/tsup%400.2.299) (09/17/2026)
+
+### Bug Fixes
+
+- **devenv-modules:** Resolve issue with agents devenv module ([dff58e908](https://github.com/storm-software/storm-ops/commit/dff58e908))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.301**
+- Updated **config** to **v1.138.77**
+- Updated **config-tools** to **v1.190.141**
+
 ## [0.2.298](https://github.com/storm-software/storm-ops/releases/tag/tsup%400.2.298) (09/17/2026)
 
 ### Updated Dependencies

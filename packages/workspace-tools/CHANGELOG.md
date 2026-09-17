@@ -2,6 +2,33 @@
 
 # Changelog for Storm Ops - Workspace Tools
 
+## [1.297.10](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.297.10) (09/17/2026)
+
+### Bug Fixes
+
+- **devenv-modules:** Improve `AGENTS.md` updater to create files if missing ([9b4fdc643](https://github.com/storm-software/storm-ops/commit/9b4fdc643))
+- **devenv-modules:** Resolve issue with agents devenv module ([dff58e908](https://github.com/storm-software/storm-ops/commit/dff58e908))
+- **npm-tools:** Update default timeout on npm registry calls to 2 minutes ([65883829a](https://github.com/storm-software/storm-ops/commit/65883829a))
+- **linting-tools:** Resolve issues with missing dependencies ([77fd9b9e6](https://github.com/storm-software/storm-ops/commit/77fd9b9e6))
+
+### Features
+
+- **devenv-modules:** Added `agents` and `graphify` devenv modules ([0c9cddbf9](https://github.com/storm-software/storm-ops/commit/0c9cddbf9))
+
+### Updated Dependencies
+
+- Updated **bun-tools** to **v0.0.54**
+- Updated **config** to **v1.138.77**
+- Updated **config-tools** to **v1.190.141**
+- Updated **esbuild** to **v0.53.302**
+- Updated **npm-tools** to **v0.6.261**
+- Updated **package-constants** to **v0.1.153**
+- Updated **pnpm-tools** to **v0.7.155**
+- Updated **prettier** to **v0.59.194**
+- Updated **testing-tools** to **v1.119.293**
+- Updated **tsdown** to **v0.45.302**
+- Updated **unbuild** to **v0.57.302**
+
 ## [1.297.9](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.297.9) (09/17/2026)
 
 ### Updated Dependencies

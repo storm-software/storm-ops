@@ -2,6 +2,20 @@
 
 # Changelog for Storm Ops - Tsdown
 
+## [0.45.302](https://github.com/storm-software/storm-ops/releases/tag/tsdown%400.45.302) (09/17/2026)
+
+### Bug Fixes
+
+- **devenv-modules:** Resolve issue with agents devenv module ([dff58e908](https://github.com/storm-software/storm-ops/commit/dff58e908))
+- **npm-tools:** Update default timeout on npm registry calls to 2 minutes ([65883829a](https://github.com/storm-software/storm-ops/commit/65883829a))
+- **linting-tools:** Resolve issues with missing dependencies ([77fd9b9e6](https://github.com/storm-software/storm-ops/commit/77fd9b9e6))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.301**
+- Updated **config** to **v1.138.77**
+- Updated **config-tools** to **v1.190.141**
+
 ## [0.45.301](https://github.com/storm-software/storm-ops/releases/tag/tsdown%400.45.301) (09/17/2026)
 
 ### Updated Dependencies

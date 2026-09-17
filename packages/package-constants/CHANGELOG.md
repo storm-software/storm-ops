@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - Package Constants
 
+## [0.1.153](https://github.com/storm-software/storm-ops/releases/tag/package-constants%400.1.153) (09/17/2026)
+
+### Bug Fixes
+
+- **devenv-modules:** Resolve issue with agents devenv module ([dff58e908](https://github.com/storm-software/storm-ops/commit/dff58e908))
+
+### Features
+
+- **pnpm-tools:** Updaters now use local cache to reduce network calls ([f468bf4b4](https://github.com/storm-software/storm-ops/commit/f468bf4b4))
+
 ## [0.1.150](https://github.com/storm-software/storm-ops/releases/tag/package-constants%400.1.150) (09/17/2026)
 
 ### Bug Fixes

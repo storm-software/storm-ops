@@ -2,6 +2,26 @@
 
 # Changelog for Storm Ops - Oxlint
 
+## [0.0.108](https://github.com/storm-software/storm-ops/releases/tag/oxlint%400.0.108) (09/17/2026)
+
+### Bug Fixes
+
+- **devenv-modules:** Resolve issue with agents devenv module ([dff58e908](https://github.com/storm-software/storm-ops/commit/dff58e908))
+- **npm-tools:** Update default timeout on npm registry calls to 2 minutes ([65883829a](https://github.com/storm-software/storm-ops/commit/65883829a))
+- **linting-tools:** Resolve issues with missing dependencies ([77fd9b9e6](https://github.com/storm-software/storm-ops/commit/77fd9b9e6))
+
+### Features
+
+- **devenv-modules:** Added `agents` and `graphify` devenv modules ([0c9cddbf9](https://github.com/storm-software/storm-ops/commit/0c9cddbf9))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.77**
+- Updated **config-tools** to **v1.190.141**
+- Updated **eslint-plugin-banner** to **v0.0.106**
+- Updated **eslint-plugin-pnpm** to **v0.0.104**
+- Updated **eslint-plugin-tsdoc** to **v0.0.104**
+
 ## [0.0.107](https://github.com/storm-software/storm-ops/releases/tag/oxlint%400.0.107) (09/17/2026)
 
 ### Updated Dependencies

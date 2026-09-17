@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - Markdownlint
 
+## [0.30.296](https://github.com/storm-software/storm-ops/releases/tag/markdownlint%400.30.296) (09/17/2026)
+
+### Bug Fixes
+
+- **devenv-modules:** Resolve issue with agents devenv module ([dff58e908](https://github.com/storm-software/storm-ops/commit/dff58e908))
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.293**
+
 ## [0.30.295](https://github.com/storm-software/storm-ops/releases/tag/markdownlint%400.30.295) (09/17/2026)
 
 ### Updated Dependencies

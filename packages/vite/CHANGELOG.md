@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Vite
 
+## [0.1.235](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.235) (09/17/2026)
+
+### Bug Fixes
+
+- **devenv-modules:** Resolve issue with agents devenv module ([dff58e908](https://github.com/storm-software/storm-ops/commit/dff58e908))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.301**
+- Updated **config** to **v1.138.77**
+- Updated **config-tools** to **v1.190.141**
+
 ## [0.1.234](https://github.com/storm-software/storm-ops/releases/tag/vite%400.1.234) (09/17/2026)
 
 ### Updated Dependencies

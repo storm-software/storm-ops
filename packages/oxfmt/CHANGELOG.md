@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Oxfmt
 
+## [0.0.96](https://github.com/storm-software/storm-ops/releases/tag/oxfmt%400.0.96) (09/17/2026)
+
+### Bug Fixes
+
+- **devenv-modules:** Resolve issue with agents devenv module ([dff58e908](https://github.com/storm-software/storm-ops/commit/dff58e908))
+
 ## [0.0.93](https://github.com/storm-software/storm-ops/releases/tag/oxfmt%400.0.93) (09/17/2026)
 
 ### Bug Fixes

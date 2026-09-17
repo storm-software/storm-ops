@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - Create Storm Workspace
 
+## [1.97.301](https://github.com/storm-software/storm-ops/releases/tag/create-storm-workspace%401.97.301) (09/17/2026)
+
+### Bug Fixes
+
+- **devenv-modules:** Resolve issue with agents devenv module ([dff58e908](https://github.com/storm-software/storm-ops/commit/dff58e908))
+
+### Updated Dependencies
+
+- Updated **config-tools** to **v1.190.141**
+
 ## [1.97.300](https://github.com/storm-software/storm-ops/releases/tag/create-storm-workspace%401.97.300) (09/17/2026)
 
 ### Updated Dependencies

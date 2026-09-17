@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Testing Tools
 
+## [1.119.293](https://github.com/storm-software/storm-ops/releases/tag/testing-tools%401.119.293) (09/17/2026)
+
+### Bug Fixes
+
+- **devenv-modules:** Resolve issue with agents devenv module ([dff58e908](https://github.com/storm-software/storm-ops/commit/dff58e908))
+
 ## [1.119.290](https://github.com/storm-software/storm-ops/releases/tag/testing-tools%401.119.290) (09/17/2026)
 
 ### Bug Fixes
