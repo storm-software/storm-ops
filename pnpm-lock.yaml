@@ -1129,8 +1129,8 @@ importers:
         specifier: ^4.4.1
         version: 4.4.1(eslint@10.10.0(jiti@2.7.0)(supports-color@11.0.0))(supports-color@11.0.0)(typescript@6.0.3)
       '@tanstack/eslint-plugin-query':
-        specifier: ^5.102.8
-        version: 5.102.8(eslint@10.10.0(jiti@2.7.0)(supports-color@11.0.0))(supports-color@11.0.0)(typescript@6.0.3)
+        specifier: ^5.103.0
+        version: 5.103.0(eslint@10.10.0(jiti@2.7.0)(supports-color@11.0.0))(supports-color@11.0.0)(typescript@6.0.3)
       '@types/eslint':
         specifier: 'catalog:'
         version: 9.6.1
@@ -2583,7 +2583,7 @@ importers:
     devDependencies:
       '@napi-rs/cli':
         specifier: ^3.10.1
-        version: 3.10.1(@emnapi/core@1.9.2)(@emnapi/runtime@1.9.2)(@types/node@25.9.7)
+        version: 3.10.1(@emnapi/core@1.11.2)(@emnapi/runtime@1.11.2)(@types/node@25.9.7)
       '@storm-software/bun-tools':
         specifier: workspace:*
         version: link:../bun-tools
@@ -8324,8 +8324,8 @@ packages:
     resolution: {integrity: sha512-+PmQX0PiAYPMeVYe237LJAYvOMYW1j2rH5YROyS3b4CTVJum34HfRvKvAzozHAQG0TnHNdUfY9nCeUyRAs//cw==}
     engines: {node: '>=14.16'}
 
-  '@tanstack/eslint-plugin-query@5.102.8':
-    resolution: {integrity: sha512-zRjG2PL3zvoqnsSNJFyfX5Mo+OwRwTbLERwZVO3oNQQn82V949INwaLrprzsOW/ivuow7gASeAUUC24xH7kwSQ==}
+  '@tanstack/eslint-plugin-query@5.103.0':
+    resolution: {integrity: sha512-p8g0pjOffZWOtvwPDrTrBRX9jCVD+bvdZWLufBaSk5nZQkaEbe039eVwusAm4Y6kQsOjugScjwWyOtJzVDd0mA==}
     peerDependencies:
       eslint: ^8.57.0 || ^9.0.0 || ^10.0.0
       typescript: ^5.6.0 || ^6.0.0 || ^7.0.0
@@ -22377,7 +22377,7 @@ snapshots:
       - '@swc/core'
       - debug
 
-  '@napi-rs/cli@3.10.1(@emnapi/core@1.9.2)(@emnapi/runtime@1.9.2)(@types/node@25.9.7)':
+  '@napi-rs/cli@3.10.1(@emnapi/core@1.11.2)(@emnapi/runtime@1.11.2)(@types/node@25.9.7)':
     dependencies:
       '@inquirer/prompts': 8.7.2(@types/node@25.9.7)
       '@napi-rs/cross-toolchain': 1.0.3
@@ -22392,8 +22392,8 @@ snapshots:
       typanion: 3.14.0
       typescript: 6.0.3
     optionalDependencies:
-      '@emnapi/core': 1.9.2
-      '@emnapi/runtime': 1.9.2
+      '@emnapi/core': 1.11.2
+      '@emnapi/runtime': 1.11.2
     transitivePeerDependencies:
       - '@napi-rs/cross-toolchain-arm64-target-aarch64'
       - '@napi-rs/cross-toolchain-arm64-target-armv7'
@@ -25175,7 +25175,7 @@ snapshots:
     dependencies:
       defer-to-connect: 2.0.1
 
-  '@tanstack/eslint-plugin-query@5.102.8(eslint@10.10.0(jiti@2.7.0)(supports-color@11.0.0))(supports-color@11.0.0)(typescript@6.0.3)':
+  '@tanstack/eslint-plugin-query@5.103.0(eslint@10.10.0(jiti@2.7.0)(supports-color@11.0.0))(supports-color@11.0.0)(typescript@6.0.3)':
     dependencies:
       '@typescript-eslint/utils': 8.70.0(eslint@10.10.0(jiti@2.7.0)(supports-color@11.0.0))(supports-color@11.0.0)(typescript@6.0.3)
       eslint: 10.10.0(jiti@2.7.0)(supports-color@11.0.0)

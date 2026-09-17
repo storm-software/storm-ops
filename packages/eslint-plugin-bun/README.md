@@ -5,9 +5,9 @@
 
 <div align="center">
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://public.storm-cdn.com/storm-software/media/banner-1280x640-dark.gif">
-  <source media="(prefers-color-scheme: light)" srcset="https://public.storm-cdn.com/storm-software/media/banner-1280x640-light.gif">
-<img src="https://public.storm-cdn.com/storm-software/media/banner-1280x640-dark.gif" width="100%" alt="Storm Software" />
+  <source media="(prefers-color-scheme: dark)" srcset="https://public.storm-cdn.com/storm-software/media/banner-1280x427-dark.gif">
+  <source media="(prefers-color-scheme: light)" srcset="https://public.storm-cdn.com/storm-software/media/banner-1280x427-light.gif">
+<img src="https://public.storm-cdn.com/storm-software/media/banner-1280x427-dark.gif" width="100%" alt="Storm Software" />
 </picture>
 </div>
 <br />
@@ -93,9 +93,9 @@ pnpm add -D @storm-software/eslint-plugin-bun
 ## Usage
 
 ```js
-import bun from "@storm-software/eslint-plugin-bun"
+import bun from "@storm-software/eslint-plugin-bun";
 
-export default [...bun.configs.recommended]
+export default [...bun.configs.recommended];
 ```
 
 ## Building
