@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Pulumi Tools
 
+## [0.22.326](https://github.com/storm-software/storm-ops/releases/tag/pulumi-tools%400.22.326) (09/17/2026)
+
+### Bug Fixes
+
+- **devenv-modules:** Resolve issue with agents devenv module ([dff58e908](https://github.com/storm-software/storm-ops/commit/dff58e908))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.74**
+- Updated **config-tools** to **v1.190.138**
+- Updated **workspace-tools** to **v1.297.7**
+
 ## [0.22.325](https://github.com/storm-software/storm-ops/releases/tag/pulumi-tools%400.22.325) (09/17/2026)
 
 ### Features

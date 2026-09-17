@@ -2,6 +2,26 @@
 
 # Changelog for Storm Ops - Workspace Tools
 
+## [1.297.7](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.297.7) (09/17/2026)
+
+### Bug Fixes
+
+- **devenv-modules:** Resolve issue with agents devenv module ([dff58e908](https://github.com/storm-software/storm-ops/commit/dff58e908))
+
+### Updated Dependencies
+
+- Updated **bun-tools** to **v0.0.51**
+- Updated **config** to **v1.138.74**
+- Updated **config-tools** to **v1.190.138**
+- Updated **esbuild** to **v0.53.299**
+- Updated **npm-tools** to **v0.6.258**
+- Updated **package-constants** to **v0.1.150**
+- Updated **pnpm-tools** to **v0.7.152**
+- Updated **prettier** to **v0.59.191**
+- Updated **testing-tools** to **v1.119.290**
+- Updated **tsdown** to **v0.45.299**
+- Updated **unbuild** to **v0.57.299**
+
 ## [1.297.6](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.297.6) (09/17/2026)
 
 ### Features

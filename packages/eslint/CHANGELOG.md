@@ -2,6 +2,23 @@
 
 # Changelog for Storm Ops - ESLint
 
+## [0.170.173](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.170.173) (09/17/2026)
+
+### Bug Fixes
+
+- **devenv-modules:** Resolve issue with agents devenv module ([dff58e908](https://github.com/storm-software/storm-ops/commit/dff58e908))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.74**
+- Updated **config-tools** to **v1.190.138**
+- Updated **eslint-plugin-banner** to **v0.0.103**
+- Updated **eslint-plugin-bun** to **v0.0.26**
+- Updated **eslint-plugin-pnpm** to **v0.0.101**
+- Updated **eslint-plugin-tsdoc** to **v0.0.101**
+- Updated **package-constants** to **v0.1.150**
+- Updated **tsdoc** to **v0.13.290**
+
 ## [0.170.172](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.170.172) (09/17/2026)
 
 ### Features

@@ -2,6 +2,20 @@
 
 # Changelog for Storm Ops - Pnpm Tools
 
+## [0.7.152](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.7.152) (09/17/2026)
+
+### Bug Fixes
+
+- **devenv-modules:** Resolve issue with agents devenv module ([dff58e908](https://github.com/storm-software/storm-ops/commit/dff58e908))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.74**
+- Updated **config-tools** to **v1.190.138**
+- Updated **npm-tools** to **v0.6.258**
+- Updated **package-constants** to **v0.1.150**
+- Updated **testing-tools** to **v1.119.290**
+
 ## [0.7.151](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.7.151) (09/17/2026)
 
 ### Updated Dependencies

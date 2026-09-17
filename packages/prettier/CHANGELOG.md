@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Prettier
 
+## [0.59.191](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.59.191) (09/17/2026)
+
+### Bug Fixes
+
+- **devenv-modules:** Resolve issue with agents devenv module ([dff58e908](https://github.com/storm-software/storm-ops/commit/dff58e908))
+
 ## [0.59.186](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.59.186) (08/10/2026)
 
 ### Miscellaneous

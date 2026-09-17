@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - ESLint Plugin Bun
 
+## [0.0.26](https://github.com/storm-software/storm-ops/releases/tag/eslint-plugin-bun%400.0.26) (09/17/2026)
+
+### Bug Fixes
+
+- **devenv-modules:** Resolve issue with agents devenv module ([dff58e908](https://github.com/storm-software/storm-ops/commit/dff58e908))
+
+### Updated Dependencies
+
+- Updated **package-constants** to **v0.1.150**
+- Updated **prettier** to **v0.59.191**
+
 ## [0.0.25](https://github.com/storm-software/storm-ops/releases/tag/eslint-plugin-bun%400.0.25) (09/17/2026)
 
 ### Updated Dependencies

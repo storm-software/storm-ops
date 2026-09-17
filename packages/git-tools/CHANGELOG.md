@@ -2,6 +2,19 @@
 
 # Changelog for Storm Ops - Git Tools
 
+## [2.131.146](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.131.146) (09/17/2026)
+
+### Bug Fixes
+
+- **devenv-modules:** Resolve issue with agents devenv module ([dff58e908](https://github.com/storm-software/storm-ops/commit/dff58e908))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.74**
+- Updated **config-tools** to **v1.190.138**
+- Updated **conventional-changelog** to **v0.3.299**
+- Updated **package-constants** to **v0.1.150**
+
 ## [2.131.145](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.131.145) (09/17/2026)
 
 ### Features

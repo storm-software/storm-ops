@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - CSpell
 
+## [0.46.205](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.46.205) (09/17/2026)
+
+### Bug Fixes
+
+- **devenv-modules:** Resolve issue with agents devenv module ([dff58e908](https://github.com/storm-software/storm-ops/commit/dff58e908))
+
 ## [0.46.204](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.46.204) (09/17/2026)
 
 ### Features

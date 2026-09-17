@@ -2,6 +2,19 @@
 
 # Changelog for Storm Ops - Esbuild
 
+## [0.53.299](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.53.299) (09/17/2026)
+
+### Bug Fixes
+
+- **devenv-modules:** Resolve issue with agents devenv module ([dff58e908](https://github.com/storm-software/storm-ops/commit/dff58e908))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.298**
+- Updated **config** to **v1.138.74**
+- Updated **config-tools** to **v1.190.138**
+- Updated **tsup** to **v0.2.296**
+
 ## [0.53.298](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.53.298) (09/17/2026)
 
 ### Updated Dependencies

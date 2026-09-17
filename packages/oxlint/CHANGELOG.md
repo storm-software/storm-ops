@@ -2,6 +2,20 @@
 
 # Changelog for Storm Ops - Oxlint
 
+## [0.0.105](https://github.com/storm-software/storm-ops/releases/tag/oxlint%400.0.105) (09/17/2026)
+
+### Bug Fixes
+
+- **devenv-modules:** Resolve issue with agents devenv module ([dff58e908](https://github.com/storm-software/storm-ops/commit/dff58e908))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.74**
+- Updated **config-tools** to **v1.190.138**
+- Updated **eslint-plugin-banner** to **v0.0.103**
+- Updated **eslint-plugin-pnpm** to **v0.0.101**
+- Updated **eslint-plugin-tsdoc** to **v0.0.101**
+
 ## [0.0.104](https://github.com/storm-software/storm-ops/releases/tag/oxlint%400.0.104) (09/17/2026)
 
 ### Features

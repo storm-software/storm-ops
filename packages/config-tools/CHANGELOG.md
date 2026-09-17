@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Config Tools
 
+## [1.190.138](https://github.com/storm-software/storm-ops/releases/tag/config-tools%401.190.138) (09/17/2026)
+
+### Bug Fixes
+
+- **devenv-modules:** Resolve issue with agents devenv module ([dff58e908](https://github.com/storm-software/storm-ops/commit/dff58e908))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.74**
+- Updated **testing-tools** to **v1.119.290**
+
 ## [1.190.137](https://github.com/storm-software/storm-ops/releases/tag/config-tools%401.190.137) (09/17/2026)
 
 ### Updated Dependencies

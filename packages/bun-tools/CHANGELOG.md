@@ -2,6 +2,20 @@
 
 # Changelog for Storm Ops - Bun Tools
 
+## [0.0.51](https://github.com/storm-software/storm-ops/releases/tag/bun-tools%400.0.51) (09/17/2026)
+
+### Bug Fixes
+
+- **devenv-modules:** Resolve issue with agents devenv module ([dff58e908](https://github.com/storm-software/storm-ops/commit/dff58e908))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.74**
+- Updated **config-tools** to **v1.190.138**
+- Updated **npm-tools** to **v0.6.258**
+- Updated **package-constants** to **v0.1.150**
+- Updated **testing-tools** to **v1.119.290**
+
 ## [0.0.50](https://github.com/storm-software/storm-ops/releases/tag/bun-tools%400.0.50) (09/17/2026)
 
 ### Updated Dependencies

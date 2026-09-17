@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Terraform Tools
 
+## [0.66.326](https://github.com/storm-software/storm-ops/releases/tag/terraform-tools%400.66.326) (09/17/2026)
+
+### Bug Fixes
+
+- **devenv-modules:** Resolve issue with agents devenv module ([dff58e908](https://github.com/storm-software/storm-ops/commit/dff58e908))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.74**
+- Updated **config-tools** to **v1.190.138**
+- Updated **workspace-tools** to **v1.297.7**
+
 ## [0.66.325](https://github.com/storm-software/storm-ops/releases/tag/terraform-tools%400.66.325) (09/17/2026)
 
 ### Updated Dependencies

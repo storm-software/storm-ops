@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - ESLint Config React
 
+## [0.0.95](https://github.com/storm-software/storm-ops/releases/tag/eslint-config-react%400.0.95) (09/17/2026)
+
+### Bug Fixes
+
+- **devenv-modules:** Resolve issue with agents devenv module ([dff58e908](https://github.com/storm-software/storm-ops/commit/dff58e908))
+
+### Updated Dependencies
+
+- Updated **eslint** to **v0.170.173**
+
 ## [0.0.94](https://github.com/storm-software/storm-ops/releases/tag/eslint-config-react%400.0.94) (09/17/2026)
 
 ### Features
