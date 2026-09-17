@@ -10,11 +10,11 @@ in
 
   scripts = {
     graphify-build.exec = ''
-      uv tool run --from graphifyy graphify "${config.devenv.root}" --update
+      uv tool run --from graphify graphify "${config.devenv.root}" --update
     '';
 
     graphify-query.exec = ''
-      uv tool run --from graphifyy graphify query "$@" --graph "${graphifyGraph}"
+      uv tool run --from graphify graphify query "$@" --graph "${graphifyGraph}"
     '';
   };
 
@@ -22,7 +22,7 @@ in
   # preserve it, while `graphify-build` performs an incremental refresh.
   enterShell = ''
     if [ ! -f "${graphifyGraph}" ]; then
-      echo "Building Graphify knowledge graph at ${graphifyOutput}"
+      echo "Building Graphify knowledge graph cache at ${graphifyOutput}"
       graphify-build
     fi
   '';

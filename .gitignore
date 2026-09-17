@@ -439,7 +439,7 @@ MigrationBackup/
 
 # Devenv
 .devenv*
-graphify-out/
+.graphify/
 devenv.local.nix
 
 # direnv
