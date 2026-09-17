@@ -79,7 +79,7 @@ jobs:
           main-branch-name: main
           workflow-id: release.yml
           set-environment-variables-for-job: true
-          error-on-no-successful-workflow: true
+          error-on-no-successful-workflow: false
 
       - name: Release repository updates
         run: devenv shell release ${STEPS_SETSHAS_OUTPUTS_BASE}
