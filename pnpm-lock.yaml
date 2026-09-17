@@ -2582,8 +2582,8 @@ importers:
         version: 4.6.5
     devDependencies:
       '@napi-rs/cli':
-        specifier: ^3.10.1
-        version: 3.10.1(@emnapi/core@1.11.2)(@emnapi/runtime@1.11.2)(@types/node@25.9.7)
+        specifier: ^3.10.2
+        version: 3.10.2(@emnapi/core@1.11.2)(@emnapi/runtime@1.11.2)(@types/node@25.9.7)
       '@storm-software/bun-tools':
         specifier: workspace:*
         version: link:../bun-tools
@@ -5646,8 +5646,8 @@ packages:
   '@monodon/rust@1.4.0':
     resolution: {integrity: sha512-MqUOErLfAK6SH/OqLEGFM5Jf+JMiLkSs3Hs13Jk+Hdnw5zuen8zp2FHXgkI2HIYzhCInDbGHTyjuHduFr9GMiQ==}
 
-  '@napi-rs/cli@3.10.1':
-    resolution: {integrity: sha512-9w66AHq2U3vIfj7G0UlVUOENbt6M7XHlHxa+rSbxkVhmCXKY2GIvLGLyYfWz8wBMjwC7dJojNInQhhUJU4hJUw==}
+  '@napi-rs/cli@3.10.2':
+    resolution: {integrity: sha512-5iSFDRh9YdSAhWEk4EvBt0Ld/SVfvZSrjBkggWhdAW6aQfKN4H98+4dOWRbGPt6TDXgRLd5RpbABYJXkuyTGpw==}
     engines: {node: ^20.17.0 || ^22.13.0 || >= 23.5.0}
     hasBin: true
     peerDependencies:
@@ -22377,7 +22377,7 @@ snapshots:
       - '@swc/core'
       - debug
 
-  '@napi-rs/cli@3.10.1(@emnapi/core@1.11.2)(@emnapi/runtime@1.11.2)(@types/node@25.9.7)':
+  '@napi-rs/cli@3.10.2(@emnapi/core@1.11.2)(@emnapi/runtime@1.11.2)(@types/node@25.9.7)':
     dependencies:
       '@inquirer/prompts': 8.7.2(@types/node@25.9.7)
       '@napi-rs/cross-toolchain': 1.0.3

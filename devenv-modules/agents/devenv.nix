@@ -87,6 +87,7 @@ in
         !in_storm_configuration { print }
         END {
           if (found_start == 0 && found_end == 0) {
+            print
             print start_marker
             while ((getline configuration_line < configuration_file) > 0) {
               print configuration_line
@@ -149,7 +150,7 @@ in
             "python"
             "-m"
             "graphify.serve"
-            "${config.devenv.root}/.graphify/graph.json"
+            "${config.devenv.root}/graphify-out/graph.json"
           ];
         };
       };

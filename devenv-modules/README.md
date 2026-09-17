@@ -91,7 +91,7 @@ The following Devenv modules are included in this package:
   - [Claude](https://claude.ai/).
   - [Cursor](https://www.cursor.so/).
 - `storm-ops/devenv-modules/graphify`: Builds a repository-local
-  [Graphify](https://graphify.net/) knowledge graph at `.graphify/graph.json`.
+  [Graphify](https://graphify.net/) knowledge graph at `graphify-out/graph.json`.
   Import it with the Claude module to expose the graph through the Graphify MCP server.
 - `storm-ops/devenv-modules/rust`: Devenv module to support development with
   [Rust](https://www.rust-lang.org/).
@@ -135,7 +135,7 @@ imports:
   - storm-ops/devenv-modules/claude
 ```
 
-The Graphify module creates `.graphify/graph.json` the first time the shell
+The Graphify module creates `graphify-out/graph.json` the first time the shell
 is entered. Run `graphify-build` to refresh it incrementally, or
 `graphify-query "<question>"` to query it from the terminal. The Claude module
 registers this generated graph as a stdio MCP server.

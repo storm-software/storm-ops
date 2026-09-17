@@ -1,6 +1,6 @@
 { config, pkgs, ... }:
 let
-  graphifyOutput = "${config.devenv.root}/.graphify";
+  graphifyOutput = "${config.devenv.root}/graphify-out";
   graphifyGraph = "${graphifyOutput}/graph.json";
 in
 {
@@ -10,11 +10,11 @@ in
 
   scripts = {
     graphify-build.exec = ''
-      uv tool run --from graphify graphify "${config.devenv.root}" --update
+      uv tool run --from graphifyy graphify update "${config.devenv.root}"
     '';
 
     graphify-query.exec = ''
-      uv tool run --from graphify graphify query "$@" --graph "${graphifyGraph}"
+      uv tool run --from graphifyy graphify query "$@" --graph "${graphifyGraph}"
     '';
   };
 
