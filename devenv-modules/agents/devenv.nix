@@ -36,120 +36,122 @@ in
     '';
   };
 
-  # The Graphify MCP server uses uv's isolated tool environment.
-  packages = [
-    pkgs.gawk
-    pkgs.uv
-  ];
+  config = {
+    # The Graphify MCP server uses uv's isolated tool environment.
+    packages = [
+      pkgs.gawk
+      pkgs.uv
+    ];
 
-  # `files."AGENTS.md"` would replace the whole document with a generated
-  # symlink. Update only the Storm-owned block instead, so workspace-specific
-  # instructions outside these markers remain editable and intact.
-  enterShell = ''
-    if [ ! -f "${agentsFile}" ]; then
-      echo "Expected workspace instructions at ${agentsFile}" >&2
-      exit 1
-    fi
+    # `files."AGENTS.md"` would replace the whole document with a generated
+    # symlink. Update only the Storm-owned block instead, so workspace-specific
+    # instructions outside these markers remain editable and intact.
+    enterShell = ''
+      if [ ! -f "${agentsFile}" ]; then
+        echo "Expected workspace instructions at ${agentsFile}" >&2
+        exit 1
+      fi
 
-    temporary_agents_file=$(mktemp "${agentsFile}.tmp.XXXXXX")
-    trap 'rm -f "$temporary_agents_file"' EXIT
+      temporary_agents_file=$(mktemp "${agentsFile}.tmp.XXXXXX")
+      trap 'rm -f "$temporary_agents_file"' EXIT
 
-    if ! ${pkgs.gawk}/bin/awk -v configuration_file="${stormConfiguration}" '
-      BEGIN {
-        start_marker = "<!-- storm configuration start-->"
-        end_marker = "<!-- storm configuration end-->"
-      }
-      $0 == start_marker {
-        if (found_start++) {
-          print "AGENTS.md contains more than one Storm configuration start marker" > "/dev/stderr"
-          exit 1
+      if ! ${pkgs.gawk}/bin/awk -v configuration_file="${stormConfiguration}" '
+        BEGIN {
+          start_marker = "<!-- storm configuration start-->"
+          end_marker = "<!-- storm configuration end-->"
         }
+        $0 == start_marker {
+          if (found_start++) {
+            print "AGENTS.md contains more than one Storm configuration start marker" > "/dev/stderr"
+            exit 1
+          }
 
-        print
-        while ((getline configuration_line < configuration_file) > 0) {
-          print configuration_line
-        }
-        close(configuration_file)
-        in_storm_configuration = 1
-        next
-      }
-      $0 == end_marker {
-        if (!in_storm_configuration || found_end++) {
-          print "AGENTS.md contains an unmatched Storm configuration end marker" > "/dev/stderr"
-          exit 1
-        }
-
-        print
-        in_storm_configuration = 0
-        next
-      }
-      !in_storm_configuration { print }
-      END {
-        if (found_start == 0 && found_end == 0) {
-          print start_marker
+          print
           while ((getline configuration_line < configuration_file) > 0) {
             print configuration_line
           }
           close(configuration_file)
-          print end_marker
-        } else if (found_start != 1 || found_end != 1 || in_storm_configuration) {
-          print "AGENTS.md must contain exactly one complete Storm configuration marker block" > "/dev/stderr"
-          exit 1
+          in_storm_configuration = 1
+          next
         }
-      }
-    ' "${agentsFile}" > "$temporary_agents_file"; then
-      exit 1
-    fi
-
-    mv "$temporary_agents_file" "${agentsFile}"
-    trap - EXIT
-  '';
-
-  claude.code = {
-    enable = true;
-
-    hooks = {
-      # Protect sensitive files (PreToolUse hook)
-      protect-secrets = {
-        enable = true;
-        name = "Protect sensitive files";
-        hookType = "PreToolUse";
-        matcher = "^(Edit|MultiEdit|Write)$";
-        command = ''
-          # Read the JSON input from stdin
-          json=$(cat)
-          file_path=$(echo "$json" | jq -r '.file_path // empty')
-
-          if [[ "$file_path" =~ \.(env|secret)$ ]]; then
-            echo "Error: Cannot edit sensitive files"
+        $0 == end_marker {
+          if (!in_storm_configuration || found_end++) {
+            print "AGENTS.md contains an unmatched Storm configuration end marker" > "/dev/stderr"
             exit 1
-          fi
-        '';
-      };
-    };
+          }
 
-    mcpServers = {
-      devenv = {
-        type = "stdio";
-        command = "devenv";
-        args = [ "mcp" ];
-        env = {
-          DEVENV_ROOT = config.devenv.root;
+          print
+          in_storm_configuration = 0
+          next
+        }
+        !in_storm_configuration { print }
+        END {
+          if (found_start == 0 && found_end == 0) {
+            print start_marker
+            while ((getline configuration_line < configuration_file) > 0) {
+              print configuration_line
+            }
+            close(configuration_file)
+            print end_marker
+          } else if (found_start != 1 || found_end != 1 || in_storm_configuration) {
+            print "AGENTS.md must contain exactly one complete Storm configuration marker block" > "/dev/stderr"
+            exit 1
+          }
+        }
+      ' "${agentsFile}" > "$temporary_agents_file"; then
+        exit 1
+      fi
+
+      mv "$temporary_agents_file" "${agentsFile}"
+      trap - EXIT
+    '';
+
+    claude.code = {
+      enable = true;
+
+      hooks = {
+        # Protect sensitive files (PreToolUse hook)
+        protect-secrets = {
+          enable = true;
+          name = "Protect sensitive files";
+          hookType = "PreToolUse";
+          matcher = "^(Edit|MultiEdit|Write)$";
+          command = ''
+            # Read the JSON input from stdin
+            json=$(cat)
+            file_path=$(echo "$json" | jq -r '.file_path // empty')
+
+            if [[ "$file_path" =~ \.(env|secret)$ ]]; then
+              echo "Error: Cannot edit sensitive files"
+              exit 1
+            fi
+          '';
         };
       };
 
-      graphify = {
-        type = "stdio";
-        command = "uv";
-        args = [
-          "run"
-          "--with"
-          "graphifyy"
-          "python"
-          "-m"
-          "graphify.serve"
-          "${config.devenv.root}/.graphify/graph.json"
-        ];
+      mcpServers = {
+        devenv = {
+          type = "stdio";
+          command = "devenv";
+          args = [ "mcp" ];
+          env = {
+            DEVENV_ROOT = config.devenv.root;
+          };
+        };
+
+        graphify = {
+          type = "stdio";
+          command = "uv";
+          args = [
+            "run"
+            "--with"
+            "graphifyy"
+            "python"
+            "-m"
+            "graphify.serve"
+            "${config.devenv.root}/.graphify/graph.json"
+          ];
+        };
       };
     };
   };
