@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Cloudflare Tools
 
+## [0.71.285](https://github.com/storm-software/storm-ops/releases/tag/cloudflare-tools%400.71.285) (09/17/2026)
+
+### Features
+
+- **devenv-modules:** Added `agents` and `graphify` devenv modules ([0c9cddbf9](https://github.com/storm-software/storm-ops/commit/0c9cddbf9))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.73**
+- Updated **config-tools** to **v1.190.137**
+- Updated **workspace-tools** to **v1.297.6**
+
 ## [0.71.284](https://github.com/storm-software/storm-ops/releases/tag/cloudflare-tools%400.71.284) (09/08/2026)
 
 ### Updated Dependencies

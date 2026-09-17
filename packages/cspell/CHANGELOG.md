@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - CSpell
 
+## [0.46.204](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.46.204) (09/17/2026)
+
+### Features
+
+- **devenv-modules:** Added `agents` and `graphify` devenv modules ([0c9cddbf9](https://github.com/storm-software/storm-ops/commit/0c9cddbf9))
+
 ## [0.46.203](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.46.203) (09/08/2026)
 
 ### Features

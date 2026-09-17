@@ -2,6 +2,20 @@
 
 # Changelog for Storm Ops - Oxlint
 
+## [0.0.104](https://github.com/storm-software/storm-ops/releases/tag/oxlint%400.0.104) (09/17/2026)
+
+### Features
+
+- **devenv-modules:** Added `agents` and `graphify` devenv modules ([0c9cddbf9](https://github.com/storm-software/storm-ops/commit/0c9cddbf9))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.73**
+- Updated **config-tools** to **v1.190.137**
+- Updated **eslint-plugin-banner** to **v0.0.102**
+- Updated **eslint-plugin-pnpm** to **v0.0.100**
+- Updated **eslint-plugin-tsdoc** to **v0.0.100**
+
 ## [0.0.103](https://github.com/storm-software/storm-ops/releases/tag/oxlint%400.0.103) (09/08/2026)
 
 ### Updated Dependencies

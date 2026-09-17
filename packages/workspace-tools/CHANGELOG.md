@@ -2,6 +2,26 @@
 
 # Changelog for Storm Ops - Workspace Tools
 
+## [1.297.6](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.297.6) (09/17/2026)
+
+### Features
+
+- **devenv-modules:** Added `agents` and `graphify` devenv modules ([0c9cddbf9](https://github.com/storm-software/storm-ops/commit/0c9cddbf9))
+
+### Updated Dependencies
+
+- Updated **bun-tools** to **v0.0.50**
+- Updated **config** to **v1.138.73**
+- Updated **config-tools** to **v1.190.137**
+- Updated **esbuild** to **v0.53.298**
+- Updated **npm-tools** to **v0.6.257**
+- Updated **package-constants** to **v0.1.149**
+- Updated **pnpm-tools** to **v0.7.151**
+- Updated **prettier** to **v0.59.190**
+- Updated **testing-tools** to **v1.119.289**
+- Updated **tsdown** to **v0.45.298**
+- Updated **unbuild** to **v0.57.298**
+
 ## [1.297.5](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.297.5) (09/08/2026)
 
 ### Updated Dependencies

@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - ESLint Config React
 
+## [0.0.94](https://github.com/storm-software/storm-ops/releases/tag/eslint-config-react%400.0.94) (09/17/2026)
+
+### Features
+
+- **devenv-modules:** Added `agents` and `graphify` devenv modules ([0c9cddbf9](https://github.com/storm-software/storm-ops/commit/0c9cddbf9))
+
+### Updated Dependencies
+
+- Updated **eslint** to **v0.170.172**
+
 ## [0.0.93](https://github.com/storm-software/storm-ops/releases/tag/eslint-config-react%400.0.93) (09/08/2026)
 
 ### Updated Dependencies

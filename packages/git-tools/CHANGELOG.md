@@ -2,6 +2,19 @@
 
 # Changelog for Storm Ops - Git Tools
 
+## [2.131.145](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.131.145) (09/17/2026)
+
+### Features
+
+- **devenv-modules:** Added `agents` and `graphify` devenv modules ([0c9cddbf9](https://github.com/storm-software/storm-ops/commit/0c9cddbf9))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.73**
+- Updated **config-tools** to **v1.190.137**
+- Updated **conventional-changelog** to **v0.3.298**
+- Updated **package-constants** to **v0.1.149**
+
 ## [2.131.144](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.131.144) (09/08/2026)
 
 ### Updated Dependencies

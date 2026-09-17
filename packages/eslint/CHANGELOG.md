@@ -2,6 +2,23 @@
 
 # Changelog for Storm Ops - ESLint
 
+## [0.170.172](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.170.172) (09/17/2026)
+
+### Features
+
+- **devenv-modules:** Added `agents` and `graphify` devenv modules ([0c9cddbf9](https://github.com/storm-software/storm-ops/commit/0c9cddbf9))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.73**
+- Updated **config-tools** to **v1.190.137**
+- Updated **eslint-plugin-banner** to **v0.0.102**
+- Updated **eslint-plugin-bun** to **v0.0.25**
+- Updated **eslint-plugin-pnpm** to **v0.0.100**
+- Updated **eslint-plugin-tsdoc** to **v0.0.100**
+- Updated **package-constants** to **v0.1.149**
+- Updated **tsdoc** to **v0.13.289**
+
 ## [0.170.171](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.170.171) (09/08/2026)
 
 ### Updated Dependencies
