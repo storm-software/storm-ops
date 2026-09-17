@@ -11,9 +11,8 @@ in
 {
   options.storm.agents.configuration = lib.mkOption {
     type = lib.types.lines;
-    default = "";
-    description = ''
-      ## External packages — DO NOT PATCH
+    default = ''
+       ## External packages — DO NOT PATCH
 
       The following Storm Software ecosystems are maintained in **separate repositories**. Do **not** modify their package code, vendored scaffolding, or `node_modules` contents in this repo — including via `patch-package`, manual edits under `node_modules`, or direct changes to generated integration layers.
 
@@ -34,6 +33,7 @@ in
       2. **Produce a descriptive upstream fix outline** so a human or agent can apply the change in the correct external repository.
       3. **Optionally** implement only this repository's workaround or configuration change if one exists and is explicitly requested.
     '';
+    description = "Configuration to add to the AGENTS.md file.";
   };
 
   config = {
@@ -47,7 +47,9 @@ in
     # symlink. Update only the Storm-owned block instead, so workspace-specific
     # instructions outside these markers remain editable and intact.
     enterShell = ''
-      if [ ! -f "${agentsFile}" ]; then
+      if [ ! -e "${agentsFile}" ]; then
+        touch "${agentsFile}"
+      elif [ ! -f "${agentsFile}" ]; then
         echo "Expected workspace instructions at ${agentsFile}" >&2
         exit 1
       fi
