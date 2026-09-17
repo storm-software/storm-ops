@@ -86,10 +86,13 @@ The following Devenv modules are included in this package:
   repositories. This module builds off the `storm-ops/devenv-modules/base` module to include additional tools and infrastructure.
 - `storm-ops/devenv-modules/minimal`: Minimal Devenv module for Storm Software
   repositories. This module should be used in Storm Software's repositories with the `variant` type of `minimal`.
-- `storm-ops/devenv-modules/claude`: Devenv module to support development with AI tools, such as:
+- `storm-ops/devenv-modules/agents`: Devenv module to support development with AI tools, such as:
   - [OpenAI's GPT models](https://openai.com/api/).
   - [Claude](https://claude.ai/).
   - [Cursor](https://www.cursor.so/).
+- `storm-ops/devenv-modules/graphify`: Builds a repository-local
+  [Graphify](https://graphify.net/) knowledge graph at `graphify-out/graph.json`.
+  Import it with the Claude module to expose the graph through the Graphify MCP server.
 - `storm-ops/devenv-modules/rust`: Devenv module to support development with
   [Rust](https://www.rust-lang.org/).
 - `storm-ops/devenv-modules/python`: Devenv module to support development with
@@ -126,7 +129,14 @@ inputs:
 imports:
   - storm-ops/devenv-modules/base
   - storm-ops/devenv-modules/core
+  - storm-ops/devenv-modules/graphify
+  - storm-ops/devenv-modules/claude
 ```
+
+The Graphify module creates `graphify-out/graph.json` the first time the shell
+is entered. Run `graphify-build` to refresh it incrementally, or
+`graphify-query "<question>"` to query it from the terminal. The Claude module
+registers this generated graph as a stdio MCP server.
 
 <!-- START footer -->
 <!-- prettier-ignore-start -->
