@@ -97,6 +97,8 @@ The following Devenv modules are included in this package:
   [Rust](https://www.rust-lang.org/).
 - `storm-ops/devenv-modules/python`: Devenv module to support development with
   [Python](https://www.python.org/).
+- `storm-ops/devenv-modules/go`: Devenv module to support development with
+  [Go](https://go.dev/), including the Go language server and Delve debugger.
 - `storm-ops/devenv-modules/cpp`: Devenv module to support development with
   [C++](https://cplusplus.com/).
 - `storm-ops/devenv-modules/atuin`: Devenv module to include
