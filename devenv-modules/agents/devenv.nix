@@ -13,7 +13,7 @@ in
     type = lib.types.lines;
     default = "";
     description = ''
-      ## External packages — do not patch
+      ## External packages — DO NOT PATCH
 
       The following Storm Software ecosystems are maintained in **separate repositories**. Do **not** modify their package code, vendored scaffolding, or `node_modules` contents in this repo — including via `patch-package`, manual edits under `node_modules`, or direct changes to generated integration layers.
 
@@ -86,7 +86,14 @@ in
         }
         !in_storm_configuration { print }
         END {
-          if (found_start != 1 || found_end != 1 || in_storm_configuration) {
+          if (found_start == 0 && found_end == 0) {
+            print start_marker
+            while ((getline configuration_line < configuration_file) > 0) {
+              print configuration_line
+            }
+            close(configuration_file)
+            print end_marker
+          } else if (found_start != 1 || found_end != 1 || in_storm_configuration) {
             print "AGENTS.md must contain exactly one complete Storm configuration marker block" > "/dev/stderr"
             exit 1
           }
