@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Untyped
 
+## [0.24.282](https://github.com/storm-software/storm-ops/releases/tag/untyped%400.24.282) (09/17/2026)
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.76**
+- Updated **config-tools** to **v1.190.140**
+
 ## [0.24.281](https://github.com/storm-software/storm-ops/releases/tag/untyped%400.24.281) (09/17/2026)
 
 ### Updated Dependencies

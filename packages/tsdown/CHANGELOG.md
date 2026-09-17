@@ -2,6 +2,14 @@
 
 # Changelog for Storm Ops - Tsdown
 
+## [0.45.301](https://github.com/storm-software/storm-ops/releases/tag/tsdown%400.45.301) (09/17/2026)
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.300**
+- Updated **config** to **v1.138.76**
+- Updated **config-tools** to **v1.190.140**
+
 ## [0.45.300](https://github.com/storm-software/storm-ops/releases/tag/tsdown%400.45.300) (09/17/2026)
 
 ### Updated Dependencies
