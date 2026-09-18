@@ -3563,7 +3563,7 @@ Backward pagination arguments
    * Disallow unmodified loop conditions
    * @see https://eslint.org/docs/latest/rules/no-unmodified-loop-condition
    */
-  'no-unmodified-loop-condition'?: Linter.RuleEntry<[]>
+  'no-unmodified-loop-condition'?: Linter.RuleEntry<NoUnmodifiedLoopCondition>
   /**
    * Disallow ternary operators when simpler alternatives exist
    * @see https://eslint.org/docs/latest/rules/no-unneeded-ternary
@@ -4543,7 +4543,7 @@ Backward pagination arguments
    */
   'react/globals'?: Linter.RuleEntry<[]>
   /**
-   * Validates against passing functions that mutate captured local variables into frozen contexts such as JSX props, hook arguments, and hook return values.
+   * Validates against mutating props, state, and other immutable values, including through functions passed into frozen contexts such as JSX props, hook arguments, and hook return values.
    * @see https://eslint-react.xyz/docs/rules/immutability
    */
   'react/immutability'?: Linter.RuleEntry<[]>
@@ -6641,6 +6641,11 @@ Backward pagination arguments
    * @see https://typescript-eslint.io/rules/no-for-in-array
    */
   'ts/no-for-in-array'?: Linter.RuleEntry<[]>
+  /**
+   * Disallow type operations that resolve to the "empty object" type
+   * @see https://typescript-eslint.io/rules/no-generated-empty-object-type
+   */
+  'ts/no-generated-empty-object-type'?: Linter.RuleEntry<[]>
   /**
    * Disallow the use of `eval()`-like functions
    * @see https://typescript-eslint.io/rules/no-implied-eval
@@ -11463,6 +11468,10 @@ type NoUnderscoreDangle = []|[{
   allowInArrayDestructuring?: boolean
   allowInObjectDestructuring?: boolean
 }]
+// ----- no-unmodified-loop-condition -----
+type NoUnmodifiedLoopCondition = []|[{
+  checkConditionalExpressions?: boolean
+}]
 // ----- no-unneeded-ternary -----
 type NoUnneededTernary = []|[{
   defaultAssignment?: boolean
@@ -15092,6 +15101,7 @@ type ReactRefreshOnlyExportComponents = []|[{
   extraHOCs?: string[]
   allowExportNames?: string[]
   allowConstantExport?: boolean
+  allowCompoundComponents?: boolean
   checkJS?: boolean
 }]
 // ----- react/exhaustive-deps -----
@@ -17449,7 +17459,10 @@ type TsNoMeaninglessVoidOperator = []|[{
 // ----- ts/no-misused-promises -----
 type TsNoMisusedPromises = []|[{
   
-  checksConditionals?: boolean
+  checksConditionals?: (boolean | {
+    
+    flagUnions?: ("all" | "strict" | "none")
+  })
   
   checksSpreads?: boolean
   
