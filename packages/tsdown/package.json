@@ -158,7 +158,9 @@
   "bin": {
     "storm-tsdown": "./bin/tsdown.cjs"
   },
-  "files": ["dist/**/*"],
+  "files": [
+    "dist/**/*"
+  ],
   "dependencies": {
     "@nx/devkit": "catalog:",
     "@storm-software/build-tools": "workspace:*",
@@ -180,7 +182,7 @@
     "defu": "catalog:",
     "rollup": "catalog:",
     "spdx-exceptions": "^2.5.0",
-    "spdx-license-ids": "^3.0.23",
+    "spdx-license-ids": "^3.0.24",
     "tsdown": "catalog:"
   },
   "peerDependencies": {

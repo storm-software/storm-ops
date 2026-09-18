@@ -30,9 +30,9 @@ export async function getGitHubTools(
       interopDefault: true
     });
 
-    const core = await jiti.import<GitHubTools>("@actions/core", {
-      default: true
-    });
+    const core = await jiti.import<GitHubTools>(
+      jiti.esmResolve("@actions/core")
+    );
 
     return {
       error: core.error,
