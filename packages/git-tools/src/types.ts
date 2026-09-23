@@ -151,6 +151,11 @@ export interface ReadMeOptions {
 
 export interface ReleaseGroupConfig {
   /**
+   * Whether to skip formatting changed files after this release group is processed.
+   */
+  skipFormatting?: boolean;
+
+  /**
    * Whether to version and release projects within the group independently, or together in lock step ("fixed").
    * If not set on the group, this will be informed by the projectsRelationship config at the top level.
    */

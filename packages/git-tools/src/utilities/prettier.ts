@@ -45,12 +45,16 @@ export async function format(path: string, data: string): Promise<string> {
  * Formats the changed files in the given Tree using Prettier, based on the configuration resolved for each file path.
  *
  * @param tree - The Tree containing the changed files to format.
+ * @param skipFormatting - Whether formatting should be skipped for this operation.
  * @returns A promise that resolves when all changed files have been formatted.
- * @remarks If the environment variable NX_SKIP_FORMAT is set to "true", this function will skip formatting.
+ * @remarks If the environment variable NX_SKIP_FORMAT is set to "true", this function will skip formatting regardless of this option.
  * @throws An error if Prettier fails to format any of the changed files, including details about the file path and the original error message.
  */
-export async function formatChangedFiles(tree: Tree): Promise<void> {
-  if (process.env.NX_SKIP_FORMAT === "true") {
+export async function formatChangedFiles(
+  tree: Tree,
+  skipFormatting = false
+): Promise<void> {
+  if (skipFormatting || process.env.NX_SKIP_FORMAT === "true") {
     return;
   }
 

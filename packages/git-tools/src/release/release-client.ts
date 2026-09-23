@@ -817,7 +817,14 @@ ${Object.keys(allProjectChangelogs)
      * Ensure that formatting is applied so that version bump diffs are as minimal as possible
      * within the context of the user's workspace.
      */
-    await formatChangedFiles(this.tree);
+    await formatChangedFiles(
+      this.tree,
+      releaseGraph.releaseGroups.some(
+        releaseGroup =>
+          "skipFormatting" in releaseGroup &&
+          releaseGroup.skipFormatting === true
+      )
+    );
 
     printAndFlushChanges(this.tree, !!options.dryRun);
 
