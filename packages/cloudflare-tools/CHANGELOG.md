@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Cloudflare Tools
 
+## [0.71.291](https://github.com/storm-software/storm-ops/releases/tag/cloudflare-tools%400.71.291) (09/23/2026)
+
+### Features
+
+- **git-tools:** Added `skipFormatting` release option ([a492aff07](https://github.com/storm-software/storm-ops/commit/a492aff07))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.79**
+- Updated **config-tools** to **v1.190.143**
+- Updated **workspace-tools** to **v1.297.12**
+
 ## [0.71.290](https://github.com/storm-software/storm-ops/releases/tag/cloudflare-tools%400.71.290) (09/18/2026)
 
 ### Bug Fixes

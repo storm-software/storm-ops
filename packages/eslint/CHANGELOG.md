@@ -2,6 +2,23 @@
 
 # Changelog for Storm Ops - ESLint
 
+## [0.170.178](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.170.178) (09/23/2026)
+
+### Features
+
+- **git-tools:** Added `skipFormatting` release option ([a492aff07](https://github.com/storm-software/storm-ops/commit/a492aff07))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.79**
+- Updated **config-tools** to **v1.190.143**
+- Updated **eslint-plugin-banner** to **v0.0.108**
+- Updated **eslint-plugin-bun** to **v0.0.31**
+- Updated **eslint-plugin-pnpm** to **v0.0.106**
+- Updated **eslint-plugin-tsdoc** to **v0.0.106**
+- Updated **package-constants** to **v0.1.155**
+- Updated **tsdoc** to **v0.13.295**
+
 ## [0.170.177](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.170.177) (09/18/2026)
 
 ### Bug Fixes

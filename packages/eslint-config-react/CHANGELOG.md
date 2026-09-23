@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - ESLint Config React
 
+## [0.0.100](https://github.com/storm-software/storm-ops/releases/tag/eslint-config-react%400.0.100) (09/23/2026)
+
+### Features
+
+- **git-tools:** Added `skipFormatting` release option ([a492aff07](https://github.com/storm-software/storm-ops/commit/a492aff07))
+
+### Updated Dependencies
+
+- Updated **eslint** to **v0.170.178**
+
 ## [0.0.99](https://github.com/storm-software/storm-ops/releases/tag/eslint-config-react%400.0.99) (09/18/2026)
 
 ### Updated Dependencies

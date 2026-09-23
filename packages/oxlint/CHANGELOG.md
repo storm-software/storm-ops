@@ -2,6 +2,20 @@
 
 # Changelog for Storm Ops - Oxlint
 
+## [0.0.110](https://github.com/storm-software/storm-ops/releases/tag/oxlint%400.0.110) (09/23/2026)
+
+### Features
+
+- **git-tools:** Added `skipFormatting` release option ([a492aff07](https://github.com/storm-software/storm-ops/commit/a492aff07))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.79**
+- Updated **config-tools** to **v1.190.143**
+- Updated **eslint-plugin-banner** to **v0.0.108**
+- Updated **eslint-plugin-pnpm** to **v0.0.106**
+- Updated **eslint-plugin-tsdoc** to **v0.0.106**
+
 ## [0.0.109](https://github.com/storm-software/storm-ops/releases/tag/oxlint%400.0.109) (09/18/2026)
 
 ### Updated Dependencies
