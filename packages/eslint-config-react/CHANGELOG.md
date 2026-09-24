@@ -2,6 +2,20 @@
 
 # Changelog for Storm Ops - ESLint Config React
 
+## [0.0.101](https://github.com/storm-software/storm-ops/releases/tag/eslint-config-react%400.0.101) (09/24/2026)
+
+### Bug Fixes
+
+- **devenv-modules:** Added package to `python` and `go` devenv modules ([0299855ad](https://github.com/storm-software/storm-ops/commit/0299855ad))
+
+### Features
+
+- **git-tools:** Added `skipFormatting` release option ([a492aff07](https://github.com/storm-software/storm-ops/commit/a492aff07))
+
+### Updated Dependencies
+
+- Updated **eslint** to **v0.170.179**
+
 ## [0.0.100](https://github.com/storm-software/storm-ops/releases/tag/eslint-config-react%400.0.100) (09/23/2026)
 
 ### Features

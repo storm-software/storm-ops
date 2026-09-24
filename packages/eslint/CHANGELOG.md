@@ -2,6 +2,28 @@
 
 # Changelog for Storm Ops - ESLint
 
+## [0.170.179](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.170.179) (09/24/2026)
+
+### Bug Fixes
+
+- **devenv-modules:** Added package to `python` and `go` devenv modules ([0299855ad](https://github.com/storm-software/storm-ops/commit/0299855ad))
+- **workspace-tools:** Resolve build issue ([37bf5d174](https://github.com/storm-software/storm-ops/commit/37bf5d174))
+
+### Features
+
+- **git-tools:** Added `skipFormatting` release option ([a492aff07](https://github.com/storm-software/storm-ops/commit/a492aff07))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.80**
+- Updated **config-tools** to **v1.190.144**
+- Updated **eslint-plugin-banner** to **v0.0.109**
+- Updated **eslint-plugin-bun** to **v0.0.32**
+- Updated **eslint-plugin-pnpm** to **v0.0.107**
+- Updated **eslint-plugin-tsdoc** to **v0.0.107**
+- Updated **package-constants** to **v0.1.156**
+- Updated **tsdoc** to **v0.13.296**
+
 ## [0.170.178](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.170.178) (09/23/2026)
 
 ### Features

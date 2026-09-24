@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - CSpell
 
+## [0.46.211](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.46.211) (09/24/2026)
+
+### Bug Fixes
+
+- **workspace-tools:** Update to handle workspace release import ([873f3bb0b](https://github.com/storm-software/storm-ops/commit/873f3bb0b))
+
 ## [0.46.209](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.46.209) (09/18/2026)
 
 ### Bug Fixes

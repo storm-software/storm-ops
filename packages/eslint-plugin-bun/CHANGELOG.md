@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - ESLint Plugin Bun
 
+## [0.0.32](https://github.com/storm-software/storm-ops/releases/tag/eslint-plugin-bun%400.0.32) (09/24/2026)
+
+### Updated Dependencies
+
+- Updated **package-constants** to **v0.1.156**
+- Updated **prettier** to **v0.59.197**
+
 ## [0.0.31](https://github.com/storm-software/storm-ops/releases/tag/eslint-plugin-bun%400.0.31) (09/23/2026)
 
 ### Updated Dependencies
