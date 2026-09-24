@@ -125,7 +125,7 @@
     "@eslint-types/typescript-eslint": "^7.5.0",
     "@eslint/config-inspector": "catalog:",
     "@graphql-eslint/eslint-plugin": "^4.4.1",
-    "@next/eslint-plugin-next": "^15.5.25",
+    "@next/eslint-plugin-next": "^15.5.26",
     "@nx/eslint": "catalog:",
     "@prettier/plugin-xml": "^3.4.2",
     "@storm-software/eslint-plugin-bun": "workspace:*",

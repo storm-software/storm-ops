@@ -13,4 +13,6 @@
       package = pkgs.delve;
     };
   };
+
+  packages = [ pkgs.goreleaser ];
 }

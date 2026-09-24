@@ -3,7 +3,7 @@
   # https://devenv.sh/languages/
   languages.python = {
     enable = true;
-    package = pkgs.python3;
+    package = pkgs.python312;
     lsp = {
       enable = true;
       package = pkgs.pyright;
