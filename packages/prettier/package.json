@@ -1,6 +1,6 @@
 {
   "name": "@storm-software/prettier",
-  "version": "0.59.197",
+  "version": "0.59.198",
   "private": false,
   "description": "⚡ A package containing the base Prettier configuration used by Storm Software across many projects.",
   "keywords": [

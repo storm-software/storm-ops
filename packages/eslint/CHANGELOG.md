@@ -2,6 +2,23 @@
 
 # Changelog for Storm Ops - ESLint
 
+## [0.170.180](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.170.180) (09/26/2026)
+
+### Bug Fixes
+
+- **devenv-modules:** Resolve issue with EXIT in devenv module ([845e79186](https://github.com/storm-software/storm-ops/commit/845e79186))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.81**
+- Updated **config-tools** to **v1.190.145**
+- Updated **eslint-plugin-banner** to **v0.0.110**
+- Updated **eslint-plugin-bun** to **v0.0.33**
+- Updated **eslint-plugin-pnpm** to **v0.0.108**
+- Updated **eslint-plugin-tsdoc** to **v0.0.108**
+- Updated **package-constants** to **v0.1.157**
+- Updated **tsdoc** to **v0.13.297**
+
 ## [0.170.179](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.170.179) (09/24/2026)
 
 ### Bug Fixes

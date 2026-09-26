@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - ESLint Config React
 
+## [0.0.102](https://github.com/storm-software/storm-ops/releases/tag/eslint-config-react%400.0.102) (09/26/2026)
+
+### Bug Fixes
+
+- **devenv-modules:** Resolve issue with EXIT in devenv module ([845e79186](https://github.com/storm-software/storm-ops/commit/845e79186))
+
+### Updated Dependencies
+
+- Updated **eslint** to **v0.170.180**
+
 ## [0.0.101](https://github.com/storm-software/storm-ops/releases/tag/eslint-config-react%400.0.101) (09/24/2026)
 
 ### Bug Fixes
