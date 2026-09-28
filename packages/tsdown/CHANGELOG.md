@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Tsdown
 
+## [0.45.307](https://github.com/storm-software/storm-ops/releases/tag/tsdown%400.45.307) (09/28/2026)
+
+### Bug Fixes
+
+- **workspace-tools:** Update to handle workspace release import ([873f3bb0b](https://github.com/storm-software/storm-ops/commit/873f3bb0b))
+
+### Updated Dependencies
+
+- Updated **build-tools** to **v0.158.306**
+- Updated **config** to **v1.138.82**
+- Updated **config-tools** to **v1.190.146**
+
 ## [0.45.306](https://github.com/storm-software/storm-ops/releases/tag/tsdown%400.45.306) (09/26/2026)
 
 ### Updated Dependencies

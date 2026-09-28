@@ -2,6 +2,25 @@
 
 # Changelog for Storm Ops - Cloudflare Tools
 
+## [0.71.294](https://github.com/storm-software/storm-ops/releases/tag/cloudflare-tools%400.71.294) (09/28/2026)
+
+### Bug Fixes
+
+- **devenv-modules:** Resolve issue with invalid python devenv ([1ee252a30](https://github.com/storm-software/storm-ops/commit/1ee252a30))
+- **devenv-modules:** Resolve issue with EXIT in devenv module ([845e79186](https://github.com/storm-software/storm-ops/commit/845e79186))
+- **devenv-modules:** Added package to `python` and `go` devenv modules ([0299855ad](https://github.com/storm-software/storm-ops/commit/0299855ad))
+- **workspace-tools:** Update to handle workspace release import ([873f3bb0b](https://github.com/storm-software/storm-ops/commit/873f3bb0b))
+
+### Features
+
+- **git-tools:** Added `skipFormatting` release option ([a492aff07](https://github.com/storm-software/storm-ops/commit/a492aff07))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.82**
+- Updated **config-tools** to **v1.190.146**
+- Updated **workspace-tools** to **v1.297.15**
+
 ## [0.71.293](https://github.com/storm-software/storm-ops/releases/tag/cloudflare-tools%400.71.293) (09/26/2026)
 
 ### Bug Fixes

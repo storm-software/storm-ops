@@ -2,6 +2,27 @@
 
 # Changelog for Storm Ops - Workspace Tools
 
+## [1.297.15](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.297.15) (09/28/2026)
+
+### Bug Fixes
+
+- **devenv-modules:** Added package to `python` and `go` devenv modules ([0299855ad](https://github.com/storm-software/storm-ops/commit/0299855ad))
+- **workspace-tools:** Update to handle workspace release import ([873f3bb0b](https://github.com/storm-software/storm-ops/commit/873f3bb0b))
+
+### Updated Dependencies
+
+- Updated **bun-tools** to **v0.0.59**
+- Updated **config** to **v1.138.82**
+- Updated **config-tools** to **v1.190.146**
+- Updated **esbuild** to **v0.53.307**
+- Updated **npm-tools** to **v0.6.266**
+- Updated **package-constants** to **v0.1.158**
+- Updated **pnpm-tools** to **v0.7.160**
+- Updated **prettier** to **v0.59.199**
+- Updated **testing-tools** to **v1.119.298**
+- Updated **tsdown** to **v0.45.307**
+- Updated **unbuild** to **v0.57.307**
+
 ## [1.297.14](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.297.14) (09/26/2026)
 
 ### Updated Dependencies

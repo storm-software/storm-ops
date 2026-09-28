@@ -2,6 +2,19 @@
 
 # Changelog for Storm Ops - Pulumi Tools
 
+## [0.22.334](https://github.com/storm-software/storm-ops/releases/tag/pulumi-tools%400.22.334) (09/28/2026)
+
+### Bug Fixes
+
+- **devenv-modules:** Resolve issue with invalid python devenv ([1ee252a30](https://github.com/storm-software/storm-ops/commit/1ee252a30))
+- **devenv-modules:** Added package to `python` and `go` devenv modules ([0299855ad](https://github.com/storm-software/storm-ops/commit/0299855ad))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.82**
+- Updated **config-tools** to **v1.190.146**
+- Updated **workspace-tools** to **v1.297.15**
+
 ## [0.22.333](https://github.com/storm-software/storm-ops/releases/tag/pulumi-tools%400.22.333) (09/26/2026)
 
 ### Updated Dependencies

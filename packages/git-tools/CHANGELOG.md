@@ -2,6 +2,19 @@
 
 # Changelog for Storm Ops - Git Tools
 
+## [2.132.3](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.132.3) (09/28/2026)
+
+### Features
+
+- **git-tools:** Added `skipFormatting` release option ([a492aff07](https://github.com/storm-software/storm-ops/commit/a492aff07))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.82**
+- Updated **config-tools** to **v1.190.146**
+- Updated **conventional-changelog** to **v0.3.307**
+- Updated **package-constants** to **v0.1.158**
+
 ## [2.132.2](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.132.2) (09/26/2026)
 
 ### Updated Dependencies
