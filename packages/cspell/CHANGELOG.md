@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - CSpell
 
+## [0.46.214](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.46.214) (10/05/2026)
+
+### Bug Fixes
+
+- **devenv-modules:** Update `AGENTS.md` logic in devenv module ([7ec4abc06](https://github.com/storm-software/storm-ops/commit/7ec4abc06))
+
 ## [0.46.213](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.46.213) (09/28/2026)
 
 ### Bug Fixes

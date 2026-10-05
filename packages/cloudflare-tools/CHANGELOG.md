@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Cloudflare Tools
 
+## [0.71.295](https://github.com/storm-software/storm-ops/releases/tag/cloudflare-tools%400.71.295) (10/05/2026)
+
+### Bug Fixes
+
+- **devenv-modules:** Update `AGENTS.md` logic in devenv module ([7ec4abc06](https://github.com/storm-software/storm-ops/commit/7ec4abc06))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.83**
+- Updated **config-tools** to **v1.190.147**
+- Updated **workspace-tools** to **v1.297.16**
+
 ## [0.71.294](https://github.com/storm-software/storm-ops/releases/tag/cloudflare-tools%400.71.294) (09/28/2026)
 
 ### Bug Fixes
