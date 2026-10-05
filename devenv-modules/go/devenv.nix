@@ -14,5 +14,8 @@
     };
   };
 
-  packages = [ pkgs.goreleaser ];
+  packages = with pkgs; [
+    goreleaser
+    golint
+  ];
 }
