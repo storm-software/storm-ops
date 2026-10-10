@@ -92,24 +92,6 @@
             "devenv:files:cleanup"
           ];
         };
-        "bun:setup:install" = {
-          exec = ''
-            bun install --no-frozen-lockfile
-            update-storm
-            bootstrap
-
-            bunx storm-git prepare
-          '';
-          before = [
-            "devenv:enterShell"
-            "devenv:enterTest"
-          ];
-          after = [
-            "devenv:files"
-            "devenv:files:cleanup"
-            "bun:setup:git"
-          ];
-        };
       };
     };
 

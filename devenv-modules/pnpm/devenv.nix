@@ -92,25 +92,6 @@
             "devenv:files:cleanup"
           ];
         };
-        "pnpm:setup:install" = {
-          exec = ''
-            pnpm exec storm-git pre-install
-            pnpm install --no-frozen-lockfile
-            update-storm
-            bootstrap
-
-            pnpm exec storm-git prepare
-          '';
-          before = [
-            "devenv:enterShell"
-            "devenv:enterTest"
-          ];
-          after = [
-            "devenv:files"
-            "devenv:files:cleanup"
-            "pnpm:setup:git"
-          ];
-        };
       };
     };
 

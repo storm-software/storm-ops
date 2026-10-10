@@ -33,6 +33,7 @@ import {
 } from "nx/src/command-line/release/utils/shared";
 import { interpolate } from "nx/src/tasks-runner/utils";
 import { format, resolveConfig } from "prettier";
+import { z } from "zod";
 import StormChangelogRenderer from "../release/changelog-renderer";
 import {
   getGitHubRepoData,
@@ -42,6 +43,60 @@ import {
 import { ChangelogOptions } from "../release/release-client";
 import { ReleaseConfig } from "../types";
 import { titleCase } from "./title-case";
+
+export const ChangelogItemType = z.enum([
+  "chore",
+  "fix",
+  "feat",
+  "refactor",
+  "style",
+  "perf",
+  "deps"
+]);
+
+export const ChangelogBaseItemSchema = z.object({
+  type: ChangelogItemType,
+  scope: z.string(),
+  description: z.string()
+});
+
+export const ChangelogMinimalItemSchema = ChangelogBaseItemSchema.extend({
+  type: z.enum(["chore", "refactor", "style", "perf"])
+});
+
+export const ChangelogFixItemSchema = ChangelogBaseItemSchema.extend({
+  type: z.enum(["fix"]),
+  issue: z.string()
+});
+
+export const ChangelogDepsUpdateItemSchema = ChangelogBaseItemSchema.extend({
+  package: z.string(),
+  version: z.string()
+});
+
+export const ChangelogDepsItemSchema = ChangelogBaseItemSchema.extend({
+  type: z.enum(["deps"]),
+  updates: z.array(ChangelogDepsUpdateItemSchema)
+});
+
+export const ChangelogFeatItemSchema = ChangelogBaseItemSchema.extend({
+  type: z.enum(["feat"]),
+  feature: z.string()
+});
+
+export const ChangelogItemSchema = z.union([
+  ChangelogMinimalItemSchema,
+  ChangelogFixItemSchema,
+  ChangelogDepsItemSchema,
+  ChangelogFeatItemSchema
+]);
+
+export const ChangelogSchema = z.object({
+  version: z.string(),
+  project: z.string(),
+  date: z.date(),
+  changes: z.array(ChangelogItemSchema).default([])
+});
 
 export async function generateChangelogContent(
   releaseVersion: ReleaseVersion,
@@ -267,6 +322,7 @@ export async function generateChangelogForProjects({
     const preferDockerVersion =
       shouldPreferDockerVersionForReleaseGroup(releaseGroup);
     const releaseVersion = new ReleaseVersion({
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       version: ((preferDockerVersion === true ||
         preferDockerVersion === "both") &&
       projectsVersionData[project.name]?.dockerVersion
