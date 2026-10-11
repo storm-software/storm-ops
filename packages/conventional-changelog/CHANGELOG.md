@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Conventional Changelog
 
+## [0.3.309](https://github.com/storm-software/storm-ops/releases/tag/conventional-changelog%400.3.309) (10/11/2026)
+
+### Bug Fixes
+
+- **conventional-changelog:** Resolve issue with commit type values ([e68e5a3e5](https://github.com/storm-software/storm-ops/commit/e68e5a3e5))
+- **devenv-modules:** Remove `storm:install` process from start up for development ([9ce8b4a32](https://github.com/storm-software/storm-ops/commit/9ce8b4a32))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.84**
+- Updated **config-tools** to **v1.190.148**
+
 ## [0.3.308](https://github.com/storm-software/storm-ops/releases/tag/conventional-changelog%400.3.308) (10/05/2026)
 
 ### Updated Dependencies

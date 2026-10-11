@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - CSpell
 
+## [0.46.215](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.46.215) (10/11/2026)
+
+### Bug Fixes
+
+- **devenv-modules:** Remove `storm:install` process from start up for development ([9ce8b4a32](https://github.com/storm-software/storm-ops/commit/9ce8b4a32))
+
 ## [0.46.214](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.46.214) (10/05/2026)
 
 ### Bug Fixes

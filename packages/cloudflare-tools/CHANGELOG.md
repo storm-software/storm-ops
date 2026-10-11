@@ -2,6 +2,19 @@
 
 # Changelog for Storm Ops - Cloudflare Tools
 
+## [0.71.296](https://github.com/storm-software/storm-ops/releases/tag/cloudflare-tools%400.71.296) (10/11/2026)
+
+### Bug Fixes
+
+- **workspace-tools:** Resolve issue with importing GitHub tools ([cb019f936](https://github.com/storm-software/storm-ops/commit/cb019f936))
+- **devenv-modules:** Remove `storm:install` process from start up for development ([9ce8b4a32](https://github.com/storm-software/storm-ops/commit/9ce8b4a32))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.84**
+- Updated **config-tools** to **v1.190.148**
+- Updated **workspace-tools** to **v1.297.17**
+
 ## [0.71.295](https://github.com/storm-software/storm-ops/releases/tag/cloudflare-tools%400.71.295) (10/05/2026)
 
 ### Bug Fixes

@@ -2,6 +2,19 @@
 
 # Changelog for Storm Ops - Git Tools
 
+## [2.132.5](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.132.5) (10/11/2026)
+
+### Bug Fixes
+
+- **devenv-modules:** Remove `storm:install` process from start up for development ([9ce8b4a32](https://github.com/storm-software/storm-ops/commit/9ce8b4a32))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.84**
+- Updated **config-tools** to **v1.190.148**
+- Updated **conventional-changelog** to **v0.3.309**
+- Updated **package-constants** to **v0.1.160**
+
 ## [2.132.4](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.132.4) (10/05/2026)
 
 ### Updated Dependencies

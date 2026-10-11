@@ -2,6 +2,24 @@
 
 # Changelog for Storm Ops - ESLint
 
+## [0.170.183](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.170.183) (10/11/2026)
+
+### Bug Fixes
+
+- **workspace-tools:** Resolve issue with importing GitHub tools ([cb019f936](https://github.com/storm-software/storm-ops/commit/cb019f936))
+- **devenv-modules:** Remove `storm:install` process from start up for development ([9ce8b4a32](https://github.com/storm-software/storm-ops/commit/9ce8b4a32))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.84**
+- Updated **config-tools** to **v1.190.148**
+- Updated **eslint-plugin-banner** to **v0.0.113**
+- Updated **eslint-plugin-bun** to **v0.0.36**
+- Updated **eslint-plugin-pnpm** to **v0.0.111**
+- Updated **eslint-plugin-tsdoc** to **v0.0.111**
+- Updated **package-constants** to **v0.1.160**
+- Updated **tsdoc** to **v0.13.300**
+
 ## [0.170.182](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.170.182) (10/05/2026)
 
 ### Bug Fixes

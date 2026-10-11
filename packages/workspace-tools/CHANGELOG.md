@@ -2,6 +2,27 @@
 
 # Changelog for Storm Ops - Workspace Tools
 
+## [1.297.17](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.297.17) (10/11/2026)
+
+### Bug Fixes
+
+- **workspace-tools:** Resolve issue with importing GitHub tools ([cb019f936](https://github.com/storm-software/storm-ops/commit/cb019f936))
+- **devenv-modules:** Remove `storm:install` process from start up for development ([9ce8b4a32](https://github.com/storm-software/storm-ops/commit/9ce8b4a32))
+
+### Updated Dependencies
+
+- Updated **bun-tools** to **v0.0.61**
+- Updated **config** to **v1.138.84**
+- Updated **config-tools** to **v1.190.148**
+- Updated **esbuild** to **v0.53.309**
+- Updated **npm-tools** to **v0.6.268**
+- Updated **package-constants** to **v0.1.160**
+- Updated **pnpm-tools** to **v0.7.162**
+- Updated **prettier** to **v0.59.201**
+- Updated **testing-tools** to **v1.119.300**
+- Updated **tsdown** to **v0.45.309**
+- Updated **unbuild** to **v0.57.309**
+
 ## [1.297.16](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.297.16) (10/05/2026)
 
 ### Bug Fixes

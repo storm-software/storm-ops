@@ -2,6 +2,20 @@
 
 # Changelog for Storm Ops - Oxlint
 
+## [0.0.115](https://github.com/storm-software/storm-ops/releases/tag/oxlint%400.0.115) (10/11/2026)
+
+### Bug Fixes
+
+- **devenv-modules:** Remove `storm:install` process from start up for development ([9ce8b4a32](https://github.com/storm-software/storm-ops/commit/9ce8b4a32))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.84**
+- Updated **config-tools** to **v1.190.148**
+- Updated **eslint-plugin-banner** to **v0.0.113**
+- Updated **eslint-plugin-pnpm** to **v0.0.111**
+- Updated **eslint-plugin-tsdoc** to **v0.0.111**
+
 ## [0.0.114](https://github.com/storm-software/storm-ops/releases/tag/oxlint%400.0.114) (10/05/2026)
 
 ### Bug Fixes

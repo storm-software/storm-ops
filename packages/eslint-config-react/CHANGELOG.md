@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - ESLint Config React
 
+## [0.0.105](https://github.com/storm-software/storm-ops/releases/tag/eslint-config-react%400.0.105) (10/11/2026)
+
+### Bug Fixes
+
+- **workspace-tools:** Resolve issue with importing GitHub tools ([cb019f936](https://github.com/storm-software/storm-ops/commit/cb019f936))
+- **devenv-modules:** Remove `storm:install` process from start up for development ([9ce8b4a32](https://github.com/storm-software/storm-ops/commit/9ce8b4a32))
+
+### Updated Dependencies
+
+- Updated **eslint** to **v0.170.183**
+
 ## [0.0.104](https://github.com/storm-software/storm-ops/releases/tag/eslint-config-react%400.0.104) (10/05/2026)
 
 ### Bug Fixes
