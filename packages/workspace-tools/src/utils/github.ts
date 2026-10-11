@@ -1,6 +1,7 @@
 import { StormWorkspaceConfig } from "@storm-software/config";
 import { joinPaths } from "@storm-software/config-tools/utilities/correct-paths";
 import { createJiti } from "jiti";
+import { pathToFileURL } from "node:url";
 
 export interface GitHubTools {
   error(message: string): void;
@@ -31,7 +32,11 @@ export async function getGitHubTools(
     });
 
     const core = await jiti.import<GitHubTools>(
-      jiti.esmResolve("@actions/core")
+      // Resolve from this package (where `@actions/core` is a dependency) rather than the workspace root - otherwise
+      // pnpm's `NODE_PATH` fallback is used, which ignores ESM conditions and fails on the ESM-only `@actions/core` v3+
+      jiti.esmResolve("@actions/core", {
+        parentURL: pathToFileURL(__filename)
+      })
     );
 
     return {
