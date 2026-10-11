@@ -118,6 +118,18 @@ export const DEFAULT_COMMIT_TYPES = {
 
   /* --- Not included in commitlint or changelog --- */
 
+  build: {
+    description:
+      "Changes that affect the build system or external dependencies (example scopes: gulp, broccoli, npm)",
+    title: "Build",
+    emoji: "🛠 ",
+    hidden: true,
+    semverBump: "none",
+    changelog: {
+      title: "Build",
+      hidden: true
+    }
+  },
   release: {
     description: "Publishing a commit containing a newly released version",
     title: "Publish Release",
