@@ -93,6 +93,10 @@ The following Devenv modules are included in this package:
 - `storm-ops/devenv-modules/graphify`: Builds a repository-local
   [Graphify](https://graphify.net/) knowledge graph at `graphify-out/graph.json`.
   Import it with the Claude module to expose the graph through the Graphify MCP server.
+- `storm-ops/devenv-modules/sourcebook`: Installs the
+  [Sourcebook](https://github.com/storm-software/sourcebook) agent skills
+  (`sourcebook-adr`, `sourcebook-editor`, `sourcebook-docs`, `sourcebook-readme`)
+  into `.agents/skills` the first time the shell is entered.
 - `storm-ops/devenv-modules/rust`: Devenv module to support development with
   [Rust](https://www.rust-lang.org/).
 - `storm-ops/devenv-modules/python`: Devenv module to support development with
