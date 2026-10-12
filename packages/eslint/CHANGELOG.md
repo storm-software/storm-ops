@@ -2,6 +2,23 @@
 
 # Changelog for Storm Ops - ESLint
 
+## [0.170.185](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.170.185) (10/12/2026)
+
+### Features
+
+- **devenv-modules:** Added `sourcebook` devenv modules ([46780c17c](https://github.com/storm-software/storm-ops/commit/46780c17c))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.86**
+- Updated **config-tools** to **v1.190.150**
+- Updated **eslint-plugin-banner** to **v0.0.115**
+- Updated **eslint-plugin-bun** to **v0.0.38**
+- Updated **eslint-plugin-pnpm** to **v0.0.113**
+- Updated **eslint-plugin-tsdoc** to **v0.0.113**
+- Updated **package-constants** to **v0.1.162**
+- Updated **tsdoc** to **v0.13.302**
+
 ## [0.170.184](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.170.184) (10/11/2026)
 
 ### Updated Dependencies
