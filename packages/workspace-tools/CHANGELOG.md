@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Workspace Tools
 
+## [1.297.21](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.297.21) (10/20/2026)
+
+### Bug Fixes
+
+- **workspace-tools:** Resolve issue where timeout occured waiting for package visibility change ([adfe219c3](https://github.com/storm-software/storm-ops/commit/adfe219c3))
+
 ## [1.297.20](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.297.20) (10/19/2026)
 
 ### Bug Fixes
