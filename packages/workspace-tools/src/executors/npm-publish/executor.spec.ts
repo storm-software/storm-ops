@@ -34,6 +34,32 @@ describe("NpmPublish Executor", () => {
   });
 
   describe("waitForPublishedVersion", () => {
+    it("keeps checking when npm processing takes longer than five minutes", async () => {
+      let attempts = 0;
+      const wait = jest.fn().mockResolvedValue(undefined);
+
+      await expect(
+        waitForPublishedVersion({
+          version: "0.0.73",
+          tag: "latest",
+          gitHead: "release-commit",
+          getMetadata: () => {
+            attempts++;
+            if (attempts <= 60) {
+              throw new Error("E404: npm is still processing the version");
+            }
+            return {
+              version: "0.0.73",
+              "dist-tags": { latest: "0.0.73" },
+              gitHead: "release-commit"
+            };
+          },
+          wait
+        })
+      ).resolves.toBe(true);
+      expect(attempts).toBe(61);
+    });
+
     it("waits until the expected version, tag, and git head are visible", async () => {
       const getMetadata = jest
         .fn()

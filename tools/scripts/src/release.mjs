@@ -30,10 +30,7 @@ try {
     );
   }
 
-  proc =
-    $`node ./dist/packages/git-tools/bin/git.cjs release --base=${base} --head=${head}`.timeout(
-      `${30 * 60}s`
-    );
+  proc = $`node ./dist/packages/git-tools/bin/git.cjs release --base=${base} --head=${head}`;
   proc.stdout.on("data", data => {
     echo`${data}`;
   });

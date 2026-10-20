@@ -1,4 +1,4 @@
-const PUBLISH_VISIBILITY_ATTEMPTS = 60;
+const PUBLISH_VISIBILITY_ATTEMPTS = 360;
 const PUBLISH_VISIBILITY_INTERVAL_MS = 5000;
 
 export interface NpmPublishedVersionMetadata {
