@@ -2,6 +2,20 @@
 
 # Changelog for Storm Ops - Pnpm Tools
 
+## [0.7.165](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.7.165) (10/19/2026)
+
+### Bug Fixes
+
+- **workspace-tools:** Resolve issue where publish executor selected incorrect version ([de2f934b6](https://github.com/storm-software/storm-ops/commit/de2f934b6))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.87**
+- Updated **config-tools** to **v1.190.151**
+- Updated **npm-tools** to **v0.6.271**
+- Updated **package-constants** to **v0.1.163**
+- Updated **testing-tools** to **v1.119.303**
+
 ## [0.7.164](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.7.164) (10/12/2026)
 
 ### Updated Dependencies

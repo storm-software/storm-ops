@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - ESLint Config React
 
+## [0.0.108](https://github.com/storm-software/storm-ops/releases/tag/eslint-config-react%400.0.108) (10/19/2026)
+
+### Bug Fixes
+
+- **workspace-tools:** Resolve issue where publish executor selected incorrect version ([de2f934b6](https://github.com/storm-software/storm-ops/commit/de2f934b6))
+
+### Updated Dependencies
+
+- Updated **eslint** to **v0.170.186**
+
 ## [0.0.107](https://github.com/storm-software/storm-ops/releases/tag/eslint-config-react%400.0.107) (10/12/2026)
 
 ### Features

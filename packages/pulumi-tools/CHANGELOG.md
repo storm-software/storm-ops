@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Pulumi Tools
 
+## [0.22.339](https://github.com/storm-software/storm-ops/releases/tag/pulumi-tools%400.22.339) (10/19/2026)
+
+### Bug Fixes
+
+- **workspace-tools:** Resolve issue where publish executor selected incorrect version ([de2f934b6](https://github.com/storm-software/storm-ops/commit/de2f934b6))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.87**
+- Updated **config-tools** to **v1.190.151**
+- Updated **workspace-tools** to **v1.297.20**
+
 ## [0.22.338](https://github.com/storm-software/storm-ops/releases/tag/pulumi-tools%400.22.338) (10/12/2026)
 
 ### Updated Dependencies

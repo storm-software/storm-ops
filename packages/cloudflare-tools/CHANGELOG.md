@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Cloudflare Tools
 
+## [0.71.299](https://github.com/storm-software/storm-ops/releases/tag/cloudflare-tools%400.71.299) (10/19/2026)
+
+### Bug Fixes
+
+- **workspace-tools:** Resolve issue where publish executor selected incorrect version ([de2f934b6](https://github.com/storm-software/storm-ops/commit/de2f934b6))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.87**
+- Updated **config-tools** to **v1.190.151**
+- Updated **workspace-tools** to **v1.297.20**
+
 ## [0.71.298](https://github.com/storm-software/storm-ops/releases/tag/cloudflare-tools%400.71.298) (10/12/2026)
 
 ### Updated Dependencies

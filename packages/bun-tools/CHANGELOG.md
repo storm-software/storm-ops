@@ -2,6 +2,20 @@
 
 # Changelog for Storm Ops - Bun Tools
 
+## [0.0.64](https://github.com/storm-software/storm-ops/releases/tag/bun-tools%400.0.64) (10/19/2026)
+
+### Bug Fixes
+
+- **workspace-tools:** Resolve issue where publish executor selected incorrect version ([de2f934b6](https://github.com/storm-software/storm-ops/commit/de2f934b6))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.87**
+- Updated **config-tools** to **v1.190.151**
+- Updated **npm-tools** to **v0.6.271**
+- Updated **package-constants** to **v0.1.163**
+- Updated **testing-tools** to **v1.119.303**
+
 ## [0.0.63](https://github.com/storm-software/storm-ops/releases/tag/bun-tools%400.0.63) (10/12/2026)
 
 ### Updated Dependencies

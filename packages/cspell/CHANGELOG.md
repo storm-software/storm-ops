@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - CSpell
 
+## [0.46.218](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.46.218) (10/19/2026)
+
+### Bug Fixes
+
+- **workspace-tools:** Resolve issue where publish executor selected incorrect version ([de2f934b6](https://github.com/storm-software/storm-ops/commit/de2f934b6))
+
 ## [0.46.215](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.46.215) (10/11/2026)
 
 ### Bug Fixes

@@ -1,6 +1,6 @@
 {
   "name": "@storm-software/eslint-plugin-pnpm",
-  "version": "0.0.113",
+  "version": "0.0.114",
   "private": false,
   "description": "An ESLint Plugin that enforces PNPM-related rules in Storm Software projects.",
   "keywords": ["eslint", "eslint-plugin", "storm-software"],
@@ -44,7 +44,7 @@
     "./configs": "./dist/configs/index.mjs",
     "./configs/recommended": "./dist/configs/recommended.mjs",
     "./plugin": "./dist/plugin.mjs",
-    "./plugin-LQG6Jrux": "./dist/plugin-LQG6Jrux.mjs",
+    "./plugin-Dy04YB8J": "./dist/plugin-Dy04YB8J.mjs",
     "./*": "./*"
   },
   "types": "./dist/index.d.ts",
