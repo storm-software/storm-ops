@@ -98,11 +98,11 @@
     "chalk": "catalog:",
     "commander": "catalog:",
     "defu": "catalog:",
+    "env-paths": "^4.0.0",
     "prettier": "catalog:",
     "prettier-plugin-packagejson": "catalog:",
-    "env-paths": "^4.0.0",
     "semver": "catalog:",
-    "unstorage": "^1.17.5",
+    "unstorage": "^1.17.6",
     "yaml": "catalog:"
   },
   "devDependencies": {

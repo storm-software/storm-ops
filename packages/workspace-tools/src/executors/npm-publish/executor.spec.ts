@@ -1,11 +1,81 @@
-// import type { NpmPublishExecutorSchema } from "./schema.d";
-// import executor from "./executor";
+import {
+  isPreviouslyStagedVersionError,
+  waitForPublishedVersion
+} from "./publish-status";
 
-// const options: NpmPublishExecutorSchema = {};
+describe("NpmPublish Executor", () => {
+  describe("isPreviouslyStagedVersionError", () => {
+    it("matches the npm deferred-processing conflict for the expected version", () => {
+      const error = {
+        stdout: Buffer.from(
+          JSON.stringify({
+            error: {
+              code: "E409",
+              summary:
+                '409 Conflict - Cannot publish over previously staged version "0.0.73".'
+            }
+          })
+        ),
+        stderr: Buffer.from("")
+      };
 
-// describe("NpmPublish Executor", () => {
-//   it("can run", async () => {
-//     const output = await executor(options);
-//     expect(output.success).toBe(true);
-//   });
-// });
+      expect(isPreviouslyStagedVersionError(error, "0.0.73")).toBe(true);
+      expect(isPreviouslyStagedVersionError(error, "0.0.74")).toBe(false);
+      expect(
+        isPreviouslyStagedVersionError(
+          {
+            stderr:
+              'npm error code E409\nnpm error Cannot publish over previously staged version "0.0.73".'
+          },
+          "0.0.73"
+        )
+      ).toBe(true);
+    });
+  });
+
+  describe("waitForPublishedVersion", () => {
+    it("waits until the expected version, tag, and git head are visible", async () => {
+      const getMetadata = jest
+        .fn()
+        .mockRejectedValueOnce(new Error("not visible"))
+        .mockReturnValueOnce({
+          version: "0.0.73",
+          "dist-tags": { latest: "0.0.73" },
+          gitHead: "release-commit"
+        });
+      const wait = jest.fn().mockResolvedValue(undefined);
+
+      await expect(
+        waitForPublishedVersion({
+          version: "0.0.73",
+          tag: "latest",
+          gitHead: "release-commit",
+          attempts: 2,
+          intervalMs: 1,
+          getMetadata,
+          wait
+        })
+      ).resolves.toBe(true);
+      expect(getMetadata).toHaveBeenCalledTimes(2);
+      expect(wait).toHaveBeenCalledWith(1);
+    });
+
+    it("does not accept a different artifact at the same version and tag", async () => {
+      await expect(
+        waitForPublishedVersion({
+          version: "0.0.73",
+          tag: "latest",
+          gitHead: "release-commit",
+          attempts: 1,
+          intervalMs: 1,
+          getMetadata: () => ({
+            version: "0.0.73",
+            "dist-tags": { latest: "0.0.73" },
+            gitHead: "different-commit"
+          }),
+          wait: jest.fn()
+        })
+      ).resolves.toBe(false);
+    });
+  });
+});

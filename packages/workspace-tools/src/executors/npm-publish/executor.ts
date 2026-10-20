@@ -12,6 +12,11 @@ import {
   stripPrivateWorkspaceDeps
 } from "../../utils/package-helpers";
 import { getWorkspacePackageManager } from "../../utils/package-manager";
+import {
+  isPreviouslyStagedVersionError,
+  type NpmPublishedVersionMetadata,
+  waitForPublishedVersion
+} from "./publish-status";
 import type { NpmPublishExecutorSchema } from "./schema.d";
 
 const LARGE_BUFFER = 1024 * 1000000;
@@ -184,6 +189,11 @@ export default async function npmPublishExecutorFn(
   await replaceDepsAliases(jiti, packageRoot, context.root, packageManager);
   await addPackageJsonGitHead(packageRoot);
 
+  const publishPackageJson = JSON.parse(
+    await readFile(packageJsonPath, "utf8")
+  );
+  const currentVersion = options.version || packageJson.version;
+
   const npmPublishCommandSegments = [`npm publish --json`];
   const npmViewCommandSegments = [
     `npm view ${packageName} versions dist-tags --json`
@@ -241,6 +251,39 @@ export default async function npmPublishExecutorFn(
     npmPublishCommandSegments.push(`--tag="${tag}" `);
   }
 
+  const npmViewPublishedVersionCommandSegments = [
+    `npm view ${packageName}@${currentVersion} version dist-tags gitHead --json`
+  ];
+  if (registry) {
+    npmViewPublishedVersionCommandSegments.push(`--registry="${registry}" `);
+  }
+
+  const waitForRegistryVisibility = () =>
+    waitForPublishedVersion({
+      version: currentVersion,
+      tag,
+      gitHead: publishPackageJson.gitHead,
+      getMetadata: () => {
+        const result = execSync(
+          npmViewPublishedVersionCommandSegments.join(" "),
+          {
+            cwd: packageRoot,
+            env: {
+              NPM_ID_TOKEN: token,
+              ...process.env,
+              FORCE_COLOR: "true"
+            },
+            maxBuffer: LARGE_BUFFER,
+            killSignal: "SIGTERM"
+          }
+        );
+        const parsed = JSON.parse(result.toString()) as
+          NpmPublishedVersionMetadata | NpmPublishedVersionMetadata[];
+
+        return Array.isArray(parsed) ? parsed[parsed.length - 1] || {} : parsed;
+      }
+    });
+
   /**
    * In a dry-run scenario, it is most likely that all commands are being run with dry-run, therefore
    * the most up to date/relevant version might not exist on disk for us to read and make the npm view
@@ -250,7 +293,6 @@ export default async function npmPublishExecutorFn(
    * perform the npm view step, and just show npm publish's dry-run output.
    */
   if (!isDryRun) {
-    const currentVersion = options.version || packageJson.version;
     try {
       try {
         const result = execSync(npmViewCommandSegments.join(" "), {
@@ -423,10 +465,32 @@ export default async function npmPublishExecutorFn(
           result ? `\n\nExecution response: ${result.toString()}` : ""
         }`
       );
+
+      if (!(await waitForRegistryVisibility())) {
+        github.error(
+          `npm publish completed, but ${packageName}@${currentVersion} did not become visible in ${registry} with tag "${tag}" before the processing timeout.`
+        );
+
+        return { success: false };
+      }
     }
 
     return { success: true };
   } catch (err) {
+    if (!isDryRun && isPreviouslyStagedVersionError(err, currentVersion)) {
+      console.warn(
+        `npm reported that ${packageName}@${currentVersion} was previously staged. Waiting for npm to finish processing the package.`
+      );
+
+      if (await waitForRegistryVisibility()) {
+        console.info(
+          `Confirmed ${packageName}@${currentVersion} is available in ${registry} with tag "${tag}" and the expected gitHead.`
+        );
+
+        return { success: true };
+      }
+    }
+
     try {
       const stdoutData = JSON.parse(err.stdout?.toString() || "{}");
       const errorMessage = `An error occurred while publishing the npm package: \n\n${
