@@ -1,9 +1,27 @@
+import type { GrammarSourceConfig } from "@tamagui/style-grammar/tooling";
 import type {
   OptionsConfig as BaseOptionsConfig,
+  OptionsTamagui as BaseOptionsTamagui,
   OptionsOverrides,
   OptionsReact,
   OptionsStorybook
 } from "@storm-software/eslint";
+
+export interface OptionsTamagui extends Omit<BaseOptionsTamagui, "config"> {
+  /**
+   * Tamagui config passed to `createGrammarConfigView`.
+   *
+   * Used instead of `configPath` when both are set.
+   */
+  config?: GrammarSourceConfig;
+
+  /**
+   * Path to a Tamagui config module.
+   *
+   * The default export is passed to `createGrammarConfigView`.
+   */
+  configPath?: string;
+}
 
 export interface OptionsConfig extends Omit<
   BaseOptionsConfig,
@@ -55,6 +73,13 @@ export interface OptionsConfig extends Omit<
    * @defaultValue false
    */
   next?: true | OptionsOverrides;
+
+  /**
+   * Enable Tamagui rules.
+   *
+   * @defaultValue false
+   */
+  tamagui?: false | OptionsTamagui;
 
   /**
    * Enable UnoCSS rules.

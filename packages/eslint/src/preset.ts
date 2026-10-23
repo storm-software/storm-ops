@@ -31,6 +31,7 @@ import {
   sortTsconfig,
   storybook,
   stylistic,
+  tamagui,
   test,
   toml,
   tsdoc,
@@ -136,6 +137,7 @@ export function preset(
     test: enableTest = true,
     unocss: enableUnoCSS = false,
     zod: enableZod = false,
+    tamagui: enableTamagui = false,
     bun: enableBun,
     pnpm: enablePnpm
   } = options;
@@ -278,6 +280,15 @@ export function preset(
     configs.push(
       zod({
         overrides: getOverrides(options, "zod")
+      })
+    );
+  }
+
+  if (enableTamagui) {
+    configs.push(
+      tamagui({
+        ...resolveSubOptions(options, "tamagui"),
+        overrides: getOverrides(options, "tamagui")
       })
     );
   }

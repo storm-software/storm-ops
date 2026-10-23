@@ -27,6 +27,7 @@ export * from "./secrets";
 export * from "./sort";
 export * from "./storybook";
 export * from "./stylistic";
+export * from "./tamagui";
 export * from "./test";
 export * from "./toml";
 export * from "./tsdoc";

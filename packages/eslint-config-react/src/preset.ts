@@ -1,10 +1,46 @@
 import {
-  PresetConfig,
-  PresetResult,
-  UserConfig,
-  preset as base
+  createGrammarConfigView,
+  type GrammarSourceConfig
+} from "@tamagui/style-grammar/tooling";
+import {
+  preset as base,
+  type PresetConfig,
+  type PresetResult,
+  type UserConfig
 } from "@storm-software/eslint";
-import type { OptionsConfig } from "./types";
+import { resolve } from "node:path";
+import { pathToFileURL } from "node:url";
+import type { OptionsConfig, OptionsTamagui } from "./types";
+
+async function loadTamaguiConfig(
+  configPath: string
+): Promise<GrammarSourceConfig> {
+  const loaded = (await import(pathToFileURL(resolve(configPath)).href)) as {
+    default?: GrammarSourceConfig;
+  };
+
+  return loaded.default ?? (loaded as GrammarSourceConfig);
+}
+
+async function resolveTamagui(option: false | OptionsTamagui) {
+  if (!option) return false;
+
+  const { config, configPath, ...rest } = option;
+  const source =
+    config ?? (configPath ? await loadTamaguiConfig(configPath) : undefined);
+
+  if (!source) return false;
+
+  return {
+    ...rest,
+    config: createGrammarConfigView({
+      tokensParsed: {},
+      themes: {},
+      fontsParsed: {},
+      ...source
+    })
+  };
+}
 
 /**
  * Get the ESLint React configuration for a Storm workspace.
@@ -12,16 +48,17 @@ import type { OptionsConfig } from "./types";
  * @param options - The preset options.
  * @param userConfigs - Additional ESLint configurations.
  */
-export function preset(
+export async function preset(
   options: PresetConfig<OptionsConfig>,
   ...userConfigs: UserConfig[]
-): PresetResult {
+): Promise<PresetResult> {
   const {
     strict = false,
     mdx: enableMdx = true,
     react = true,
     "react-native": enableReactNative = false,
     storybook: enableStorybook = true,
+    tamagui: enableTamagui = false,
     ...rest
   } = options;
 
@@ -32,7 +69,8 @@ export function preset(
       mdx: enableMdx,
       react: typeof react === "object" ? { ...react, strict } : { strict },
       "react-native": enableReactNative,
-      storybook: enableStorybook
+      storybook: enableStorybook,
+      tamagui: await resolveTamagui(enableTamagui)
     },
     ...userConfigs
   );

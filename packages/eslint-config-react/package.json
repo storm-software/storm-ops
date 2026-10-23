@@ -67,6 +67,8 @@
     "@eslint-react/eslint-plugin": "^5.28.5",
     "@next/eslint-plugin-next": "^15.5.28",
     "@storm-software/eslint": "workspace:*",
+    "@tamagui/eslint-plugin": "catalog:",
+    "@tamagui/style-grammar": "catalog:",
     "@unocss/eslint-plugin": "^65.5.0",
     "astro-eslint-parser": "^1.4.0",
     "eslint": "catalog:",

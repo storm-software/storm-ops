@@ -5892,6 +5892,10 @@ Backward pagination arguments
    */
   'symbol-description'?: Linter.RuleEntry<[]>
   /**
+   * validate static Tamagui flat values with @tamagui/style-grammar
+   */
+  'tamagui/valid-flat-values'?: Linter.RuleEntry<TamaguiValidFlatValues>
+  /**
    * Require or disallow spacing around embedded expressions of template strings
    * @see https://eslint.org/docs/latest/rules/template-curly-spacing
    * @deprecated
@@ -16506,6 +16510,13 @@ type SwitchColonSpacing = []|[{
   before?: boolean
   after?: boolean
 }]
+// ----- tamagui/valid-flat-values -----
+type TamaguiValidFlatValues = []|[{
+  config: {
+    [k: string]: unknown | undefined
+  }
+  strictPayloads?: boolean
+}]
 // ----- template-curly-spacing -----
 type TemplateCurlySpacing = []|[("always" | "never")]
 // ----- template-tag-spacing -----
@@ -18747,4 +18758,4 @@ type Yoda = []|[("always" | "never")]|[("always" | "never"), {
 }]
 
 // Names of all the configs
-export type ConfigNames = "storm/banner" | "storm/bun/setup" | "bun/recommended/package-json" | "bun/recommended/package-json" | "storm/cspell/rules" | "storm/astro/setup" | "storm/astro/rules" | "storm/formatter/setup" | "storm/imports/rules" | "storm/graphql/setup" | "storm/graphql/rules" | "storm/graphql/relay" | "storm/javascript/setup" | "storm/javascript/rules" | "storm/jsx/rules" | "storm/jsdoc/rules" | "storm/jsonc/setup" | "storm/jsonc/rules" | "storm/markdown/setup" | "storm/markdown/rules" | "mdx/flat" | "storm/node/rules" | "storm/nx/setup" | "storm/nx/schema" | "storm/nx/dependency-check" | "storm/nx/module-boundaries" | "storm/next/rules" | "storm/prettier" | "storm/perfectionist/rules" | "storm/pnpm/setup" | "storm/pnpm/package-json" | "storm/pnpm/pnpm-workspace-yaml" | "storm/react/setup" | "storm/react/rules" | "storm/react-native/rules" | "storm/react-query/rules" | "storm/sort/package-json" | "storm/stylistic/rules" | "storm/secrets/rules" | "storm/storybook/setup" | "storm/storybook/rules" | "storm/storybook/main" | "storm/test/setup" | "storm/test/rules" | "storm/tsdoc/rules" | "storm/toml/setup" | "storm/toml/rules" | "storm/typescript/setup" | "storm/typescript/parser" | "storm/typescript/type-aware-parser" | "storm/typescript/rules" | "storm/typescript/rules-type-aware" | "storm/regexp/rules" | "storm/unicorn/rules" | "storm/unocss" | "storm/yaml/setup" | "storm/yaml/rules" | "storm/zod/rules"
+export type ConfigNames = "storm/banner" | "storm/bun/setup" | "bun/recommended/package-json" | "bun/recommended/package-json" | "storm/cspell/rules" | "storm/astro/setup" | "storm/astro/rules" | "storm/formatter/setup" | "storm/imports/rules" | "storm/graphql/setup" | "storm/graphql/rules" | "storm/graphql/relay" | "storm/javascript/setup" | "storm/javascript/rules" | "storm/jsx/rules" | "storm/jsdoc/rules" | "storm/jsonc/setup" | "storm/jsonc/rules" | "storm/markdown/setup" | "storm/markdown/rules" | "mdx/flat" | "storm/node/rules" | "storm/nx/setup" | "storm/nx/schema" | "storm/nx/dependency-check" | "storm/nx/module-boundaries" | "storm/next/rules" | "storm/prettier" | "storm/perfectionist/rules" | "storm/pnpm/setup" | "storm/pnpm/package-json" | "storm/pnpm/pnpm-workspace-yaml" | "storm/react/setup" | "storm/react/rules" | "storm/react-native/rules" | "storm/react-query/rules" | "storm/sort/package-json" | "storm/stylistic/rules" | "storm/tamagui/rules" | "storm/secrets/rules" | "storm/storybook/setup" | "storm/storybook/rules" | "storm/storybook/main" | "storm/test/setup" | "storm/test/rules" | "storm/tsdoc/rules" | "storm/toml/setup" | "storm/toml/rules" | "storm/typescript/setup" | "storm/typescript/parser" | "storm/typescript/type-aware-parser" | "storm/typescript/rules" | "storm/typescript/rules-type-aware" | "storm/regexp/rules" | "storm/unicorn/rules" | "storm/unocss" | "storm/yaml/setup" | "storm/yaml/rules" | "storm/zod/rules"

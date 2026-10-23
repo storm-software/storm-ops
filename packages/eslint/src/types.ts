@@ -346,6 +346,22 @@ export interface OptionsStorybook extends OptionsOverrides {
   csf?: "none" | "loose" | "strict";
 }
 
+export interface OptionsTamagui extends OptionsOverrides {
+  /**
+   * Grammar config from `createGrammarConfigView` (`@tamagui/style-grammar/tooling`).
+   *
+   * @see https://github.com/tamagui/tamagui/tree/main/code/core/eslint-plugin
+   */
+  config?: object;
+
+  /**
+   * Validate single-token clause payloads against configured tokens, theme values, and CSS keywords.
+   *
+   * @defaultValue false
+   */
+  strictPayloads?: boolean;
+}
+
 export interface OptionsReactQuery extends OptionsOverrides {
   /**
    * Use the strict recommended config, which enables additional opinionated rules.
@@ -848,6 +864,20 @@ export interface OptionsConfig
    * @defaultValue false
    */
   unocss?: boolean | OptionsUnoCSS;
+
+  /**
+   * Enable Tamagui flat style value rules.
+   *
+   * Requires installing:
+   * - `@tamagui/eslint-plugin`
+   *
+   * Pass `config` from `createGrammarConfigView`.
+   *
+   * @see https://github.com/tamagui/tamagui/tree/main/code/core/eslint-plugin
+   *
+   * @defaultValue false
+   */
+  tamagui?: boolean | OptionsTamagui;
 
   /**
    * Use external formatters to format files.
