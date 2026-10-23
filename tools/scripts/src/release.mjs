@@ -19,7 +19,7 @@ try {
 
   await echo`${chalk.whiteBright(`📦  Releasing Storm-Ops packages (Base tag: "${base}", Head tag: "${head}")`)}`;
 
-  let proc = $`pnpm build`.timeout(`${30 * 60}s`);
+  let proc = $`pnpm nx run git-tools:build`.timeout(`${30 * 60}s`);
   proc.stdout.on("data", data => {
     echo`${data}`;
   });

@@ -67,14 +67,14 @@ catalog:
   eslint-plugin-i18n-text: "^1.0.1"
   eslint-rule-documentation: "^1.0.23"
   eslint-plugin-react-compiler: "19.1.0-rc.2"
-  eslint-plugin-react-dom: "^5.28.5"
+  eslint-plugin-react-dom: "^5.28.6"
   eslint-plugin-react-hooks: "^7.1.1"
-  eslint-plugin-react-jsx: "^5.28.5"
-  eslint-plugin-react-naming-convention: "^5.28.5"
+  eslint-plugin-react-jsx: "^5.28.6"
+  eslint-plugin-react-naming-convention: "^5.28.6"
   eslint-plugin-react-refresh: "^0.5.7"
-  eslint-plugin-react-rsc: "^5.28.5"
-  eslint-plugin-react-web-api: "^5.28.5"
-  eslint-plugin-react-x: "^5.28.5"
+  eslint-plugin-react-rsc: "^5.28.6"
+  eslint-plugin-react-web-api: "^5.28.6"
+  eslint-plugin-react-x: "^5.28.6"
   eslint-typegen: "^2.3.1"
   fs-extra: "^11.4.1"
   jsonc-eslint-parser: "^2.4.2"
@@ -182,6 +182,6 @@ patchedDependencies:
 shamefullyHoist: true
 shellEmulator: true
 supportedArchitectures:
-  cpu: ["current"]
+  cpu: [ "current" ]
 nodeVersion: "26.2.0"
 verifyDepsBeforeRun: "install"

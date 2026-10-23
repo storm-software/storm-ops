@@ -12,11 +12,7 @@ import {
   stripPrivateWorkspaceDeps
 } from "../../utils/package-helpers";
 import { getWorkspacePackageManager } from "../../utils/package-manager";
-import {
-  isPreviouslyStagedVersionError,
-  type NpmPublishedVersionMetadata,
-  waitForPublishedVersion
-} from "./publish-status";
+import { isPreviouslyStagedVersionError } from "./publish-status";
 import type { NpmPublishExecutorSchema } from "./schema.d";
 
 const LARGE_BUFFER = 1024 * 1000000;
@@ -189,9 +185,6 @@ export default async function npmPublishExecutorFn(
   await replaceDepsAliases(jiti, packageRoot, context.root, packageManager);
   await addPackageJsonGitHead(packageRoot);
 
-  const publishPackageJson = JSON.parse(
-    await readFile(packageJsonPath, "utf8")
-  );
   const currentVersion = options.version || packageJson.version;
 
   const npmPublishCommandSegments = [`npm publish --json`];
@@ -251,184 +244,39 @@ export default async function npmPublishExecutorFn(
     npmPublishCommandSegments.push(`--tag="${tag}" `);
   }
 
-  const npmViewPublishedVersionCommandSegments = [
-    `npm view ${packageName}@${currentVersion} version dist-tags gitHead --json`
-  ];
-  if (registry) {
-    npmViewPublishedVersionCommandSegments.push(`--registry="${registry}" `);
-  }
-
-  const waitForRegistryVisibility = () =>
-    waitForPublishedVersion({
-      version: currentVersion,
-      tag,
-      gitHead: publishPackageJson.gitHead,
-      getMetadata: () => {
-        const result = execSync(
-          npmViewPublishedVersionCommandSegments.join(" "),
-          {
-            cwd: packageRoot,
-            env: {
-              NPM_ID_TOKEN: token,
-              ...process.env,
-              FORCE_COLOR: "true"
-            },
-            maxBuffer: LARGE_BUFFER,
-            killSignal: "SIGTERM"
-          }
-        );
-        const parsed = JSON.parse(result.toString()) as
-          NpmPublishedVersionMetadata | NpmPublishedVersionMetadata[];
-
-        return Array.isArray(parsed) ? parsed[parsed.length - 1] || {} : parsed;
-      }
-    });
-
-  /**
-   * In a dry-run scenario, it is most likely that all commands are being run with dry-run, therefore
-   * the most up to date/relevant version might not exist on disk for us to read and make the npm view
-   * request with.
-   *
-   * Therefore, so as to not produce misleading output in dry around dist-tags being altered, we do not
-   * perform the npm view step, and just show npm publish's dry-run output.
-   */
+  // One lookup. Skip when this version is already the dist-tag. A 404 means the package is new.
   if (!isDryRun) {
     try {
-      try {
-        const result = execSync(npmViewCommandSegments.join(" "), {
-          cwd: packageRoot,
-          env: {
-            NPM_ID_TOKEN: token,
-            ...process.env,
-            FORCE_COLOR: "true"
-          },
-          maxBuffer: LARGE_BUFFER,
-          killSignal: "SIGTERM"
-        });
+      const result = execSync(npmViewCommandSegments.join(" "), {
+        cwd: packageRoot,
+        env: {
+          NPM_ID_TOKEN: token,
+          ...process.env,
+          FORCE_COLOR: "true"
+        },
+        maxBuffer: LARGE_BUFFER,
+        killSignal: "SIGTERM"
+      });
 
-        const resultJson = JSON.parse(result.toString());
-        const distTags = resultJson["dist-tags"] || {};
-        if (distTags[tag] === currentVersion) {
-          console.warn(
-            `Skipped ${packageTxt} because v${
-              currentVersion
-            } already exists in ${registry} with tag "${tag}"`
-          );
-
-          return { success: true };
-        }
-      } catch (err) {
-        console.debug(
-          `An error occurred while checking for existing dist-tags. Please note: if this is the first time this package has been published to npm, this can be ignored. \n\nError: ${JSON.stringify(
-            err,
-            null,
-            2
-          )}`
+      const resultJson = JSON.parse(result.toString());
+      const distTags = resultJson["dist-tags"] || {};
+      if (distTags[tag] === currentVersion) {
+        console.warn(
+          `Skipped ${packageTxt} because v${
+            currentVersion
+          } already exists in ${registry} with tag "${tag}"`
         );
-      }
-
-      try {
-        if (!isDryRun) {
-          const command = `npm dist-tag add ${packageName}@${currentVersion} ${tag} --registry="${registry}" `;
-
-          console.debug(
-            `Adding the dist-tag ${tag} - preparing to run the following: ${command}`
-          );
-
-          const result = execSync(command, {
-            cwd: packageRoot,
-            env: {
-              NPM_ID_TOKEN: token,
-              ...process.env,
-              FORCE_COLOR: "true"
-            },
-            maxBuffer: LARGE_BUFFER,
-            killSignal: "SIGTERM"
-          });
-
-          console.info(
-            `Added the dist-tag ${tag} to v${currentVersion} for registry "${
-              registry
-            }". \n\nExecution response: ${result.toString()}`
-          );
-        } else {
-          console.info(
-            `Would have added the dist-tag ${tag} to v${
-              currentVersion
-            } for registry "${registry}", but [dry-run] was set.\n`
-          );
-        }
 
         return { success: true };
-      } catch (err) {
-        try {
-          const stdoutData = JSON.parse(err.stdout?.toString() || "{}");
-
-          // If the error is that the package doesn't exist, then we can ignore it because we will be publishing it for the first time in the next step
-          if (
-            stdoutData?.error &&
-            !(
-              stdoutData.error?.code?.includes("E404") &&
-              stdoutData.error?.summary?.includes("no such package available")
-            ) &&
-            !(
-              err.stderr?.toString().includes("E404") &&
-              err.stderr?.toString().includes("no such package available")
-            )
-          ) {
-            const errorMessage = `An unexpected error occured while running the npm dist-tag add command: \n\n${
-              stdoutData?.error?.summary
-                ? `Summary: ${stdoutData?.error?.summary}${
-                    stdoutData?.error?.code
-                      ? ` (${stdoutData?.error?.code})`
-                      : ""
-                  }\n`
-                : ""
-            }${stdoutData?.error?.detail ? `Detail: ${stdoutData?.error?.detail}\n` : ""}`;
-            github.error(errorMessage);
-
-            return { success: false };
-          }
-        } catch (err) {
-          const stdoutData = JSON.parse(err.stdout?.toString() || "{}");
-
-          const errorMessage = `An unexpected error occured while processing the npm dist-tag add output: \n\n${
-            stdoutData?.error?.summary
-              ? `Summary: ${stdoutData?.error?.summary}${
-                  stdoutData?.error?.code ? ` (${stdoutData?.error?.code})` : ""
-                }\n`
-              : ""
-          }${stdoutData?.error?.detail ? `Detail: ${stdoutData?.error?.detail}\n` : ""}`;
-          github.error(errorMessage);
-
-          return { success: false };
-        }
       }
     } catch (err) {
-      const stdoutData = JSON.parse(err.stdout?.toString() || "{}");
-
-      // If the error is that the package doesn't exist, then we can ignore it because we will be publishing it for the first time in the next step
-      if (
-        !(
-          stdoutData.error?.code?.includes("E404") &&
-          stdoutData.error?.summary?.toLowerCase().includes("not found")
-        ) &&
-        !(
-          err.stderr?.toString().includes("E404") &&
-          err.stderr?.toString().toLowerCase().includes("not found")
-        )
-      ) {
-        const errorMessage = `An unexpected error occured while checking for existing dist-tags: \n\n${
-          stdoutData?.error?.summary
-            ? `Summary: ${stdoutData?.error?.summary}${
-                stdoutData?.error?.code ? ` (${stdoutData?.error?.code})` : ""
-              }\n`
-            : ""
-        }${stdoutData?.error?.detail ? `Detail: ${stdoutData?.error?.detail}\n` : ""}`;
-        github.error(errorMessage);
-
-        return { success: false };
-      }
+      console.debug(
+        `An error occurred while checking for existing dist-tags. Please note: if this is the first time this package has been published to npm, this can be ignored. \n\nError: ${JSON.stringify(
+          err,
+          null,
+          2
+        )}`
+      );
     }
   }
 
@@ -465,30 +313,16 @@ export default async function npmPublishExecutorFn(
           result ? `\n\nExecution response: ${result.toString()}` : ""
         }`
       );
-
-      if (!(await waitForRegistryVisibility())) {
-        github.error(
-          `npm publish completed, but ${packageName}@${currentVersion} did not become visible in ${registry} with tag "${tag}" before the processing timeout.`
-        );
-
-        return { success: false };
-      }
     }
 
     return { success: true };
   } catch (err) {
     if (!isDryRun && isPreviouslyStagedVersionError(err, currentVersion)) {
       console.warn(
-        `npm reported that ${packageName}@${currentVersion} was previously staged. Waiting for npm to finish processing the package.`
+        `npm reported that ${packageName}@${currentVersion} was previously staged. Treating it as published.`
       );
 
-      if (await waitForRegistryVisibility()) {
-        console.info(
-          `Confirmed ${packageName}@${currentVersion} is available in ${registry} with tag "${tag}" and the expected gitHead.`
-        );
-
-        return { success: true };
-      }
+      return { success: true };
     }
 
     try {
