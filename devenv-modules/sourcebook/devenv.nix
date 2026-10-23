@@ -8,7 +8,7 @@ in
   # Install each Sourcebook skill once. Skills already present are left alone,
   # so entering the shell stays fast and works offline after the first run.
   enterShell = ''
-    for skill in sourcebook-adr sourcebook-editor sourcebook-docs sourcebook-readme; do
+    for skill in sourcebook sourcebook-adr sourcebook-editor sourcebook-docs sourcebook-readme sourcebook-guide sourcebook-blog sourcebook-openapi; do
       if [ ! -d "${skillsDirectory}/$skill" ]; then
         echo "Installing Sourcebook skill $skill"
         (cd "${config.devenv.root}" && npx --yes skills add https://github.com/storm-software/sourcebook --skill "$skill" --yes) ||
