@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - CSpell
 
+## [0.46.219](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.46.219) (10/23/2026)
+
+### Bug Fixes
+
+- **devenv-modules:** Added new Sourcebook skills to the `sourcebook` devenv module ([f33dd55a6](https://github.com/storm-software/storm-ops/commit/f33dd55a6))
+
 ## [0.46.218](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.46.218) (10/19/2026)
 
 ### Bug Fixes

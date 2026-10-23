@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Pulumi Tools
 
+## [0.22.341](https://github.com/storm-software/storm-ops/releases/tag/pulumi-tools%400.22.341) (10/23/2026)
+
+### Bug Fixes
+
+- **devenv-modules:** Added new Sourcebook skills to the `sourcebook` devenv module ([f33dd55a6](https://github.com/storm-software/storm-ops/commit/f33dd55a6))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.88**
+- Updated **config-tools** to **v1.190.152**
+- Updated **workspace-tools** to **v1.297.22**
+
 ## [0.22.340](https://github.com/storm-software/storm-ops/releases/tag/pulumi-tools%400.22.340) (10/20/2026)
 
 ### Updated Dependencies

@@ -2,6 +2,14 @@
 
 # Changelog for Storm Ops - ESLint Plugin Tsdoc
 
+## [0.0.115](https://github.com/storm-software/storm-ops/releases/tag/eslint-plugin-tsdoc%400.0.115) (10/23/2026)
+
+### Updated Dependencies
+
+- Updated **package-constants** to **v0.1.164**
+- Updated **prettier** to **v0.59.205**
+- Updated **tsdoc** to **v0.13.304**
+
 ## [0.0.114](https://github.com/storm-software/storm-ops/releases/tag/eslint-plugin-tsdoc%400.0.114) (10/19/2026)
 
 ### Updated Dependencies

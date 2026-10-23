@@ -2,6 +2,20 @@
 
 # Changelog for Storm Ops - ESLint Config React
 
+## [0.0.109](https://github.com/storm-software/storm-ops/releases/tag/eslint-config-react%400.0.109) (10/23/2026)
+
+### Bug Fixes
+
+- **devenv-modules:** Added new Sourcebook skills to the `sourcebook` devenv module ([f33dd55a6](https://github.com/storm-software/storm-ops/commit/f33dd55a6))
+
+### Features
+
+- **eslint:** Added `@tamagui/eslint-plugin` to the ESLint preset ([4b032ecf3](https://github.com/storm-software/storm-ops/commit/4b032ecf3))
+
+### Updated Dependencies
+
+- Updated **eslint** to **v0.170.187**
+
 ## [0.0.108](https://github.com/storm-software/storm-ops/releases/tag/eslint-config-react%400.0.108) (10/19/2026)
 
 ### Bug Fixes

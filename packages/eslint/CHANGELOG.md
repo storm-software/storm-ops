@@ -2,6 +2,27 @@
 
 # Changelog for Storm Ops - ESLint
 
+## [0.170.187](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.170.187) (10/23/2026)
+
+### Bug Fixes
+
+- **devenv-modules:** Added new Sourcebook skills to the `sourcebook` devenv module ([f33dd55a6](https://github.com/storm-software/storm-ops/commit/f33dd55a6))
+
+### Features
+
+- **eslint:** Added `@tamagui/eslint-plugin` to the ESLint preset ([4b032ecf3](https://github.com/storm-software/storm-ops/commit/4b032ecf3))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.88**
+- Updated **config-tools** to **v1.190.152**
+- Updated **eslint-plugin-banner** to **v0.0.117**
+- Updated **eslint-plugin-bun** to **v0.0.40**
+- Updated **eslint-plugin-pnpm** to **v0.0.115**
+- Updated **eslint-plugin-tsdoc** to **v0.0.115**
+- Updated **package-constants** to **v0.1.164**
+- Updated **tsdoc** to **v0.13.304**
+
 ## [0.170.186](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.170.186) (10/19/2026)
 
 ### Bug Fixes

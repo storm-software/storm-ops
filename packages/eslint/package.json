@@ -1,6 +1,6 @@
 {
   "name": "@storm-software/eslint",
-  "version": "0.170.186",
+  "version": "0.170.187",
   "private": false,
   "description": "A package containing the base ESLint configuration used by Storm Software across many projects.",
   "keywords": [
@@ -60,9 +60,7 @@
   "main": "./dist/index.cjs",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.cts",
-  "files": [
-    "dist"
-  ],
+  "files": ["dist"],
   "dependencies": {
     "@antfu/install-pkg": "^1.1.0",
     "@clack/prompts": "^0.10.1",
@@ -123,7 +121,7 @@
   },
   "devDependencies": {
     "@eslint-community/eslint-utils": "^4.10.1",
-    "@eslint-react/eslint-plugin": "^5.28.5",
+    "@eslint-react/eslint-plugin": "^5.28.6",
     "@eslint-types/typescript-eslint": "^7.5.0",
     "@eslint/config-inspector": "catalog:",
     "@graphql-eslint/eslint-plugin": "^4.4.2",

@@ -2,6 +2,19 @@
 
 # Changelog for Storm Ops - Git Tools
 
+## [2.132.9](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.132.9) (10/23/2026)
+
+### Bug Fixes
+
+- **devenv-modules:** Added new Sourcebook skills to the `sourcebook` devenv module ([f33dd55a6](https://github.com/storm-software/storm-ops/commit/f33dd55a6))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.88**
+- Updated **config-tools** to **v1.190.152**
+- Updated **conventional-changelog** to **v0.3.313**
+- Updated **package-constants** to **v0.1.164**
+
 ## [2.132.8](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.132.8) (10/19/2026)
 
 ### Updated Dependencies

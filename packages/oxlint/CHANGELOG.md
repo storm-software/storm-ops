@@ -2,6 +2,20 @@
 
 # Changelog for Storm Ops - Oxlint
 
+## [0.0.119](https://github.com/storm-software/storm-ops/releases/tag/oxlint%400.0.119) (10/23/2026)
+
+### Bug Fixes
+
+- **devenv-modules:** Added new Sourcebook skills to the `sourcebook` devenv module ([f33dd55a6](https://github.com/storm-software/storm-ops/commit/f33dd55a6))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.88**
+- Updated **config-tools** to **v1.190.152**
+- Updated **eslint-plugin-banner** to **v0.0.117**
+- Updated **eslint-plugin-pnpm** to **v0.0.115**
+- Updated **eslint-plugin-tsdoc** to **v0.0.115**
+
 ## [0.0.118](https://github.com/storm-software/storm-ops/releases/tag/oxlint%400.0.118) (10/19/2026)
 
 ### Bug Fixes

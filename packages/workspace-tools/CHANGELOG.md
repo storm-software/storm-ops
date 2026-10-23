@@ -2,6 +2,26 @@
 
 # Changelog for Storm Ops - Workspace Tools
 
+## [1.297.22](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.297.22) (10/23/2026)
+
+### Bug Fixes
+
+- **devenv-modules:** Added new Sourcebook skills to the `sourcebook` devenv module ([f33dd55a6](https://github.com/storm-software/storm-ops/commit/f33dd55a6))
+
+### Updated Dependencies
+
+- Updated **bun-tools** to **v0.0.65**
+- Updated **config** to **v1.138.88**
+- Updated **config-tools** to **v1.190.152**
+- Updated **esbuild** to **v0.53.313**
+- Updated **npm-tools** to **v0.6.272**
+- Updated **package-constants** to **v0.1.164**
+- Updated **pnpm-tools** to **v0.7.166**
+- Updated **prettier** to **v0.59.205**
+- Updated **testing-tools** to **v1.119.304**
+- Updated **tsdown** to **v0.45.313**
+- Updated **unbuild** to **v0.57.313**
+
 ## [1.297.21](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.297.21) (10/20/2026)
 
 ### Bug Fixes
