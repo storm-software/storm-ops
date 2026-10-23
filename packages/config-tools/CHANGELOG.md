@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Config Tools
 
+## [1.190.154](https://github.com/storm-software/storm-ops/releases/tag/config-tools%401.190.154) (10/23/2026)
+
+### Bug Fixes
+
+- **git-tools:** Resolve issue where release CLI did not wait for pre-version command ([88528f144](https://github.com/storm-software/storm-ops/commit/88528f144))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.90**
+- Updated **testing-tools** to **v1.119.306**
+
 ## [1.190.153](https://github.com/storm-software/storm-ops/releases/tag/config-tools%401.190.153) (10/23/2026)
 
 ### Updated Dependencies

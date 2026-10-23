@@ -2,6 +2,19 @@
 
 # Changelog for Storm Ops - Git Tools
 
+## [2.132.11](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.132.11) (10/23/2026)
+
+### Bug Fixes
+
+- **git-tools:** Resolve issue where release CLI did not wait for pre-version command ([88528f144](https://github.com/storm-software/storm-ops/commit/88528f144))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.90**
+- Updated **config-tools** to **v1.190.154**
+- Updated **conventional-changelog** to **v0.3.315**
+- Updated **package-constants** to **v0.1.166**
+
 ## [2.132.10](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.132.10) (10/23/2026)
 
 ### Updated Dependencies

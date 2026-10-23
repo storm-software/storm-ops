@@ -1,6 +1,6 @@
 {
   "name": "@storm-software/config-tools",
-  "version": "1.190.153",
+  "version": "1.190.154",
   "private": false,
   "description": "A package containing various utilities to support custom workspace configurations and environment management for Storm Software projects, including configuration file handling, environment variable management, and logging utilities.",
   "keywords": [
@@ -152,6 +152,10 @@
     "./utilities/run": {
       "import": "./dist/utilities/run.mjs",
       "require": "./dist/utilities/run.cjs"
+    },
+    "./utilities/run.spec": {
+      "import": "./dist/utilities/run.spec.mjs",
+      "require": "./dist/utilities/run.spec.cjs"
     },
     "./utilities/toml": {
       "import": "./dist/utilities/toml.mjs",
