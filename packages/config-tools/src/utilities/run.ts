@@ -1,5 +1,5 @@
 import type { StormWorkspaceConfig } from "@storm-software/config";
-import { exec, execSync } from "node:child_process";
+import { exec, execSync, type ChildProcess } from "node:child_process";
 
 export const LARGE_BUFFER = 1024 * 1000000;
 export type IOType = "overlapped" | "pipe" | "ignore" | "inherit";
@@ -53,7 +53,7 @@ export const run = (
  * @param command - The command to run
  * @param cwd - The current working directory
  * @param env - The environment variables
- * @returns A promise with the result of the command
+ * @returns The child process. It is thenable and settles when the process exits.
  */
 export const runAsync = (
   config: Partial<StormWorkspaceConfig>,
@@ -61,7 +61,7 @@ export const runAsync = (
   cwd: string = config.workspaceRoot ?? process.cwd(),
   env: NodeJS.ProcessEnv = process.env
 ) => {
-  return exec(command, {
+  const child = exec(command, {
     cwd,
     env: {
       ...process.env,
@@ -74,4 +74,26 @@ export const runAsync = (
     killSignal: "SIGTERM",
     encoding: "utf8"
   });
+  child.stdout?.pipe(process.stdout);
+  child.stderr?.pipe(process.stderr);
+
+  const done = new Promise<void>((resolve, reject) => {
+    child.once("error", reject);
+    child.once("close", code => {
+      if (code === 0) {
+        resolve();
+        return;
+      }
+      reject(
+        new Error(`Command failed with exit code ${code ?? "null"}: ${command}`)
+      );
+    });
+  });
+
+  // ponytail: ChildProcess is not thenable, so await returned at spawn. Callers wait for exit.
+  return Object.assign(child, {
+    then: done.then.bind(done),
+    catch: done.catch.bind(done),
+    finally: done.finally.bind(done)
+  }) as ChildProcess & PromiseLike<void>;
 };

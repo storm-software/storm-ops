@@ -710,11 +710,6 @@ ${Object.keys(allProjectChangelogs)
             NX_DRY_RUN: options.dryRun ? "true" : "false"
           }
         );
-        if (options.verbose) {
-          childProcess.stdout?.pipe(process.stdout);
-          childProcess.stderr?.pipe(process.stderr);
-        }
-
         await childProcess;
       } catch (e) {
         throw new Error(
@@ -756,11 +751,6 @@ ${Object.keys(allProjectChangelogs)
               NX_DRY_RUN: options.dryRun ? "true" : "false"
             }
           );
-          if (options.verbose) {
-            childProcess.stdout?.pipe(process.stdout);
-            childProcess.stderr?.pipe(process.stderr);
-          }
-
           await childProcess;
         } catch (e) {
           throw new Error(
@@ -862,11 +852,6 @@ ${Object.keys(allProjectChangelogs)
             NX_DRY_RUN: options.dryRun ? "true" : "false"
           }
         );
-        if (options.verbose) {
-          childProcess.stdout?.pipe(process.stdout);
-          childProcess.stderr?.pipe(process.stderr);
-        }
-
         await childProcess;
       } catch (e) {
         throw new Error(
@@ -907,11 +892,6 @@ ${Object.keys(allProjectChangelogs)
               NX_DRY_RUN: options.dryRun ? "true" : "false"
             }
           );
-          if (options.verbose) {
-            childProcess.stdout?.pipe(process.stdout);
-            childProcess.stderr?.pipe(process.stderr);
-          }
-
           await childProcess;
         } catch (e) {
           throw new Error(
