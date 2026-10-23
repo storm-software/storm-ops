@@ -72,6 +72,12 @@ catalogs:
     '@swc/helpers':
       specifier: 0.5.13
       version: 0.5.13
+    '@tamagui/eslint-plugin':
+      specifier: ^3.1.3
+      version: 3.1.3
+    '@tamagui/style-grammar':
+      specifier: ^3.1.3
+      version: 3.1.3
     '@types/eslint':
       specifier: ^9.6.1
       version: 9.6.1
@@ -1129,7 +1135,7 @@ importers:
         specifier: ^4.4.1
         version: 4.4.1(eslint@10.13.0(jiti@2.7.0)(supports-color@11.0.0))(supports-color@11.0.0)(typescript@6.0.3)
       '@tamagui/eslint-plugin':
-        specifier: ^3.1.3
+        specifier: 'catalog:'
         version: 3.1.3(eslint@10.13.0(jiti@2.7.0)(supports-color@11.0.0))
       '@tanstack/eslint-plugin-query':
         specifier: ^5.104.5
@@ -1245,6 +1251,12 @@ importers:
       '@storm-software/eslint':
         specifier: workspace:*
         version: link:../eslint
+      '@tamagui/eslint-plugin':
+        specifier: 'catalog:'
+        version: 3.1.3(eslint@10.13.0(jiti@2.7.0))
+      '@tamagui/style-grammar':
+        specifier: 'catalog:'
+        version: 3.1.3
       '@unocss/eslint-plugin':
         specifier: ^65.5.0
         version: 65.5.0(eslint@10.13.0(jiti@2.7.0))(typescript@6.0.3)
@@ -25175,6 +25187,12 @@ snapshots:
       '@tamagui/language-service': 3.1.3
       '@tamagui/style-grammar': 3.1.3
       eslint: 10.13.0(jiti@2.7.0)(supports-color@11.0.0)
+
+  '@tamagui/eslint-plugin@3.1.3(eslint@10.13.0(jiti@2.7.0))':
+    dependencies:
+      '@tamagui/language-service': 3.1.3
+      '@tamagui/style-grammar': 3.1.3
+      eslint: 10.13.0(jiti@2.7.0)
 
   '@tamagui/language-service@3.1.3':
     dependencies:
