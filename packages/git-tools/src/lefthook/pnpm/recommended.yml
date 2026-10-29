@@ -10,6 +10,8 @@ extends:
 
 pre-commit:
   commands:
+    gitleaks:
+      run: gitleaks git --pre-commit --staged --redact --verbose
     zizmor:
       glob: .github/workflows/*.{yml,yaml}
       run: "zizmor --offline --config='./tools/config/zizmor.yml' .github/workflows/"

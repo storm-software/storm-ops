@@ -20,6 +20,7 @@
     gnupg
     git-crypt
     zizmor
+    gitleaks
     taplo
     typos
     rustfmt
