@@ -62,8 +62,8 @@
     };
     "storm:setup:updates" = {
       exec = ''
-        pnpm update --recursive --workspace
-        update-storm
+        # pnpm update --recursive --workspace
+        # update-storm
       '';
       before = [
         "devenv:enterShell"
