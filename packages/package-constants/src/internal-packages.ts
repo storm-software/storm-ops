@@ -6,6 +6,8 @@ export const INTERNAL_PACKAGES = [
   "@powerlines/*",
   "powerlines",
   "@shell-shock/*",
+  "@cyclone-ui/*",
+  "cyclone-ui",
   "@earthquake/*",
   "earthquake",
   "@aftershock/*",
