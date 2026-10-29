@@ -1,6 +1,6 @@
 {
   "name": "conventional-changelog-storm-software",
-  "version": "0.3.315",
+  "version": "0.3.316",
   "private": false,
   "description": "This package contains the shared conventional-changelog configuration used in Storm Software projects.",
   "keywords": [

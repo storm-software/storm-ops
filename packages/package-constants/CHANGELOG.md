@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Package Constants
 
+## [0.1.167](https://github.com/storm-software/storm-ops/releases/tag/package-constants%400.1.167) (10/29/2026)
+
+### Bug Fixes
+
+- **package-constants:** Added `cyclone-ui` to internal packages list ([19fd7b2a0](https://github.com/storm-software/storm-ops/commit/19fd7b2a0))
+
 ## [0.1.153](https://github.com/storm-software/storm-ops/releases/tag/package-constants%400.1.153) (09/17/2026)
 
 ### Bug Fixes
