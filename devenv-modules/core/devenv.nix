@@ -119,7 +119,6 @@
     clean.exec = "pnpm clean";
     lint.exec = "pnpm lint";
     format.exec = "pnpm format";
-    test.exec = "pnpm test";
     test-ci.exec = "pnpm test-ci";
     docs.exec = "pnpm docs";
     release.exec = "pnpm release --base=$1 --head=$2";

@@ -55,7 +55,6 @@
     clean.exec = "bun clean";
     lint.exec = "bun lint";
     format.exec = "bun format";
-    test.exec = "bun test";
     test-ci.exec = "bun test-ci";
     docs.exec = "bun docs";
     release.exec = "bun release --base=$1 --head=$2";
