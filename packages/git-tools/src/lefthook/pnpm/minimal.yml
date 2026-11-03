@@ -32,12 +32,7 @@ commit-msg:
       run: pnpm exec storm-git commitlint --message {1}
 
 pre-push:
-  parallel: true
   commands:
-    build:
-      glob: "**/*"
-      run: pnpm build-dev
-      stage_fixed: true
     pre-push:
       files: git diff --name-only HEAD @{push}
       glob: "**/*"

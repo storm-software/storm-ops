@@ -16,8 +16,13 @@ extends:
 #       stage_fixed: true
 
 pre-push:
+  parallel: true
   commands:
     sherif:
       files: git diff --name-only HEAD @{push}
       glob: "**/*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc}"
       run: pnpm exec sherif -i typescript react react-dom --files {files} --cache
+    build:
+      glob: "**/*"
+      run: pnpm build-dev
+      stage_fixed: true
