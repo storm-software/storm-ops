@@ -77,6 +77,12 @@ Software organization and in the organizations's ESLint Plugin package. This
 configuration is used to enforce code quality and style standards across all
 Storm Software projects.
 
+For faster lint tasks, the preset leaves Prettier formatting to a separate
+Prettier task. It still disables ESLint rules that conflict with Prettier. Set
+`prettier: true` in the preset options if formatting diagnostics must be
+reported by ESLint. Setting `typescript: { tsconfigPath: false }` also skips
+type-aware rules and the TypeScript project service.
+
 ## Installing
 
 Using [pnpm](http://pnpm.io):

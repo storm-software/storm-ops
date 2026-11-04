@@ -151,8 +151,8 @@ options = [
     "--write",
     "--ignore-unknown",
     "--no-error-on-unmatched-pattern",
-    "--config=node_modules/@storm-software/prettier/exclude-packagejson.json",
-    "--ignore-path=node_modules/@storm-software/prettier/.prettierignore-exclude-packagejson",
+    "--config=node_modules/@storm-software/prettier/recommended.json",
+    "--ignore-path=node_modules/@storm-software/prettier/.prettierignore",
     "--cache",
     "--cache-location=node_modules/.cache/prettier/workspace.cache"
 ]

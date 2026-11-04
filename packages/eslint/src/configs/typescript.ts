@@ -62,6 +62,14 @@ export async function typescript(
     "ts/no-unsafe-member-access": "off",
     "ts/no-unsafe-call": "error",
     "ts/no-unsafe-return": "off",
+    "ts/prefer-nullish-coalescing": [
+      "error",
+      {
+        ignorePrimitives: {
+          string: true
+        }
+      }
+    ],
     "ts/promise-function-async": "error",
     "ts/restrict-plus-operands": "error",
     "ts/restrict-template-expressions": "error",
@@ -89,7 +97,7 @@ export async function typescript(
         parserOptions: {
           extraFileExtensions: componentExts.map(ext => `.${ext}`),
           sourceType: "module",
-          projectService: true,
+          projectService: false,
           ...(typeAware
             ? {
                 projectService: {
@@ -115,10 +123,10 @@ export async function typescript(
       }
     },
     // assign type-aware parser for type-aware files and type-unaware parser for the rest
-    ...[
-      makeParser(false, files),
-      makeParser(true, filesTypeAware, ignoresTypeAware)
-    ],
+    makeParser(false, files),
+    ...(tsconfigPath
+      ? [makeParser(true, filesTypeAware, ignoresTypeAware)]
+      : []),
     {
       files,
       name: "storm/typescript/rules",
@@ -211,14 +219,6 @@ export async function typescript(
           "error",
           { args: "none", varsIgnorePattern: "^_" }
         ],
-        "ts/prefer-nullish-coalescing": [
-          "error",
-          {
-            ignorePrimitives: {
-              string: true
-            }
-          }
-        ],
         "ts/no-restricted-imports": [
           "error",
           {
@@ -306,16 +306,18 @@ export async function typescript(
         ...overrides
       }
     },
-    ...[
-      {
-        files: filesTypeAware,
-        ignores: ignoresTypeAware,
-        name: "storm/typescript/rules-type-aware",
-        rules: {
-          ...typeAwareRules,
-          ...overridesTypeAware
-        }
-      }
-    ]
+    ...(tsconfigPath
+      ? [
+          {
+            files: filesTypeAware,
+            ignores: ignoresTypeAware,
+            name: "storm/typescript/rules-type-aware",
+            rules: {
+              ...typeAwareRules,
+              ...overridesTypeAware
+            }
+          }
+        ]
+      : [])
   ].filter(Boolean) as TypedFlatConfigItem[];
 }

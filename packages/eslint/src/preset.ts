@@ -41,6 +41,7 @@ import {
   yaml,
   zod
 } from "./configs";
+import { bun } from "./configs/bun";
 import { RuleOptions } from "./typegen";
 import type {
   Awaitable,
@@ -53,9 +54,8 @@ import type {
   UserConfig
 } from "./types";
 import { interopDefault, isInEditorEnv } from "./utils/helpers";
-import { getTsConfigPath } from "./utils/tsconfig";
 import { detectPackageManager } from "./utils/package-manager";
-import { bun } from "./configs/bun";
+import { getTsConfigPath } from "./utils/tsconfig";
 
 const flatConfigProps = [
   "name",
@@ -123,6 +123,7 @@ export function preset(
     jsx: enableJsx = true,
     mdx: enableMdx = false,
     cspell: enableCSpell = true,
+    prettier: enablePrettier = false,
     react: enableReact = false,
     "react-native": enableReactNative = false,
     regexp: enableRegexp = true,
@@ -243,7 +244,7 @@ export function preset(
   }
 
   if (!stylisticOptions) {
-    configs.push(prettier());
+    configs.push(prettier(enablePrettier));
   }
 
   if (enableCSpell) {
@@ -378,17 +379,18 @@ export function preset(
     configs.push(
       pnpm({
         overrides: getOverrides(options, "pnpm"),
-        ignore:
-          typeof enablePnpm !== "boolean" ? enablePnpm?.ignore : undefined
+        ignore: typeof enablePnpm !== "boolean" ? enablePnpm?.ignore : undefined
       })
     );
   }
 
   if (enableBun ?? packageManager === "bun") {
-    configs.push(bun({
-      overrides: getOverrides(options, "bun"),
-      ignore: typeof enableBun !== "boolean" ? enableBun?.ignore : undefined
-    }));
+    configs.push(
+      bun({
+        overrides: getOverrides(options, "bun"),
+        ignore: typeof enableBun !== "boolean" ? enableBun?.ignore : undefined
+      })
+    );
   }
 
   if (options.jsonc ?? true) {

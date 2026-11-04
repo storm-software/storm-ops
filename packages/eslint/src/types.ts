@@ -643,6 +643,14 @@ export interface OptionsConfig
   cspell?: boolean | OptionsCSpell;
 
   /**
+   * Run Prettier as an ESLint rule. Use a separate Prettier task for faster linting.
+   * Only applies when `stylistic` is disabled.
+   *
+   * @defaultValue false
+   */
+  prettier?: boolean;
+
+  /**
    * Enable TypeScript support.
    *
    * Passing an object to enable TypeScript Language Server support.
