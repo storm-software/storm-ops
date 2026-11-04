@@ -22,7 +22,7 @@ import {
   UpgradeCatalogPackageOptions
 } from "../helpers/catalog";
 import { replacePrefix } from "../helpers/format";
-import { getCachedVersion } from "../helpers/version-cache";
+import { clearVersionCache, getCachedVersion } from "../helpers/version-cache";
 
 let _config: Partial<StormWorkspaceConfig> = {};
 
@@ -89,6 +89,19 @@ export function createProgram(config: StormWorkspaceConfig) {
       )
       .option("--all", "Whether to update all packages.")
       .action(updateAction);
+
+    program
+      .command("clear-cache")
+      .description(
+        "Clear the cached npm package versions used by the update command."
+      )
+      .action(async () => {
+        await clearVersionCache();
+        writeSuccess(
+          `${brandIcon(_config)}  Successfully cleared the storm-bun version cache.`,
+          _config
+        );
+      });
 
     return program;
   } catch (error) {

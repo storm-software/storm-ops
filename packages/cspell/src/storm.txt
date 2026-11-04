@@ -361,6 +361,38 @@ polyfilling
 xchacha
 oxfmtrc
 mkdist
+PMTILES
+dexscreener
+smol
+libc
+kustomization
+xwin
+systemverilog
+cuda
+dmabuf
+ldflags
+rlemon
+bunx
+scim
+geoapify
+locationiq
+
+# File Extensions
+haml
+adoc
+avsc
+avdl
+
+# Semantics
+jaccard
+tfidf
+nnze
+nomic
+pvec
+
+# Terraform
+tfvars
+tfstate
 
 # Acronyms
 dpdm
@@ -462,6 +494,7 @@ bbenoist
 justinvdm
 numtide
 oxalica
+dtolnay
 
 # TSDoc Tags
 preapproved

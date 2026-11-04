@@ -56,3 +56,10 @@ export async function getCachedVersion(packageName: string, tag: string) {
 
   return version;
 }
+
+/**
+ * Remove all cached npm package versions from the user cache.
+ */
+export async function clearVersionCache() {
+  await storage.clear();
+}

@@ -21,7 +21,7 @@ import {
   UpgradeCatalogPackageOptions
 } from "../helpers/catalog";
 import { replacePrefix } from "../helpers/format";
-import { getCachedVersion } from "../helpers/version-cache";
+import { clearVersionCache, getCachedVersion } from "../helpers/version-cache";
 
 let _config: Partial<StormWorkspaceConfig> = {};
 
@@ -95,6 +95,19 @@ export function createProgram(config: StormWorkspaceConfig) {
         "Whether to update all packages (with the exception of the pnpm plugin)."
       )
       .action(updateAction);
+
+    program
+      .command("clear-cache")
+      .description(
+        "Clear the cached npm package versions used by the update command."
+      )
+      .action(async () => {
+        await clearVersionCache();
+        writeSuccess(
+          `${brandIcon(_config)}  Successfully cleared the storm-pnpm version cache.`,
+          _config
+        );
+      });
 
     return program;
   } catch (error) {
@@ -247,7 +260,7 @@ async function updateAction(
       );
 
       const proc = await runAsync(_config, "pnpm nx migrate latest");
-      proc.stdout?.on("data", data => {
+      (proc as any).stdout?.on("data", data => {
         console.log(data.toString());
       });
 
@@ -264,7 +277,7 @@ async function updateAction(
         _config,
         "pnpm add --config pnpm-plugin-storm-software"
       );
-      proc.stdout?.on("data", data => {
+      (proc as any).stdout?.on("data", data => {
         console.log(data.toString());
       });
 
@@ -290,7 +303,7 @@ async function updateAction(
           _config,
           "pnpm install --no-frozen-lockfile"
         );
-        proc.stdout?.on("data", data => {
+        (proc as any).stdout?.on("data", data => {
           console.log(data.toString());
         });
       }
