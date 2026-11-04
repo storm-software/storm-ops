@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Workspace Tools
 
+## [1.297.28](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.297.28) (11/04/2026)
+
+### Bug Fixes
+
+- **workspace-tools:** Disable eslint executor by default ([ea78de4ad](https://github.com/storm-software/storm-ops/commit/ea78de4ad))
+
 ## [1.297.27](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.297.27) (11/04/2026)
 
 ### Updated Dependencies
