@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Storm Config
 
+## [0.28.367](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.28.367) (11/04/2026)
+
+### Updated Dependencies
+
+- Updated **storm-workspace** to **v0.19.396**
+
 ## [0.28.366](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.28.366) (11/04/2026)
 
 ### Updated Dependencies

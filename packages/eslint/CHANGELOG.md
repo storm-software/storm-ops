@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - ESLint
 
+## [0.170.193](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.170.193) (11/04/2026)
+
+### Bug Fixes
+
+- **eslint:** Improve ESLint process performance ([1b78e6e84](https://github.com/storm-software/storm-ops/commit/1b78e6e84))
+
 ## [0.170.192](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.170.192) (11/04/2026)
 
 ### Updated Dependencies

@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Workspace Tools
 
+## [1.297.29](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.297.29) (11/04/2026)
+
+### Bug Fixes
+
+- **eslint:** Improve ESLint process performance ([1b78e6e84](https://github.com/storm-software/storm-ops/commit/1b78e6e84))
+
 ## [1.297.28](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.297.28) (11/04/2026)
 
 ### Bug Fixes

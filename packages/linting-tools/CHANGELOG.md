@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Linting Tools
 
+## [1.134.88](https://github.com/storm-software/storm-ops/releases/tag/linting-tools%401.134.88) (11/04/2026)
+
+### Bug Fixes
+
+- **eslint:** Improve ESLint process performance ([1b78e6e84](https://github.com/storm-software/storm-ops/commit/1b78e6e84))
+
 ## [1.134.87](https://github.com/storm-software/storm-ops/releases/tag/linting-tools%401.134.87) (11/04/2026)
 
 ### Bug Fixes
