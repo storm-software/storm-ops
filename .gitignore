@@ -15,8 +15,7 @@ out
 **/cspell/dict
 **/cspell/checksum.txt
 
-packages/config-tools/bin/*.js
-packages/config-tools/bin/*.cjs
+packages/config-tools/bin/*.[mc]js
 
 # local env
 .env.local
