@@ -1,3 +1,4 @@
+import { getPackagesSync } from "@manypkg/get-packages";
 import type { StormWorkspaceConfig } from "@storm-software/config";
 import {
   brandIcon,
@@ -12,10 +13,15 @@ import { CDVC } from "check-dependency-version-consistency";
 import { Command } from "commander";
 import { lint } from "cspell";
 import { parseCircular, parseDependencyTree, prettyCircular } from "dpdm";
+import { readFileSync } from "node:fs";
 import { runActionsUp } from "../actions-up";
 import { runAlex } from "../alex";
 import { runCodeowners } from "../codeowners";
-import { MANY_PKG_TYPE_OPTIONS, runManypkg } from "../manypkg";
+import {
+  formatPackageJsonFiles,
+  MANY_PKG_TYPE_OPTIONS,
+  runManypkg
+} from "../manypkg";
 
 let _config: Partial<StormWorkspaceConfig> = {};
 
@@ -458,6 +464,15 @@ async function depsVersionAction({
       _config
     );
 
+    // Snapshot synchronously so this runs before the concurrent manypkg step reads the files
+    const { packages, rootPackage, rootDir } = getPackagesSync(".");
+    const original = new Map(
+      [...packages, ...(rootPackage ? [rootPackage] : [])].map(x => {
+        const file = `${x.dir}/package.json`;
+        return [file, readFileSync(file, "utf8")];
+      })
+    );
+
     const cdvc = new CDVC(".", {
       fix: true,
       ignoreDep: ignoreDepsVersion,
@@ -468,6 +483,15 @@ async function depsVersionAction({
     // Show output for dependencies we fixed.
     if (cdvc.hasMismatchingDependenciesFixable) {
       writeDebug(cdvc.toFixedSummary(), _config);
+
+      // CDVC rewrites the files with `JSON.stringify`, which undoes Prettier's formatting
+      await formatPackageJsonFiles(
+        _config,
+        [...original]
+          .filter(([file, content]) => readFileSync(file, "utf8") !== content)
+          .map(([file]) => file),
+        rootDir
+      );
     }
 
     // Show output for dependencies that still have mismatches.

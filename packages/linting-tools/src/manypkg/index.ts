@@ -1,5 +1,12 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { checks, runCmd, npmTagAll, upgradeDependency, writePackage, type Options } from "@manypkg/cli";
+import {
+  checks,
+  npmTagAll,
+  runCmd,
+  upgradeDependency,
+  writePackage,
+  type Options
+} from "@manypkg/cli";
 import { getPackages, type Package } from "@manypkg/get-packages";
 import { StormWorkspaceConfig } from "@storm-software/config";
 import { runAsync } from "@storm-software/config-tools/utilities/run";
@@ -92,7 +99,36 @@ async function execCmd(args: string[]) {
       });
     })
   );
-  throw new Error(`Command ${args[0]} failed with exit code ${highestExitCode}`);
+  throw new Error(
+    `Command ${args[0]} failed with exit code ${highestExitCode}`
+  );
+}
+
+/**
+ * Run the workspace's Prettier over package.json files rewritten by a lint fix, so its formatting is preserved.
+ */
+export async function formatPackageJsonFiles(
+  config: Partial<StormWorkspaceConfig>,
+  files: string[],
+  cwd: string
+) {
+  if (files.length === 0) {
+    return;
+  }
+
+  try {
+    await runAsync(
+      config,
+      `${config.packageManager ?? "pnpm"} exec prettier --write --ignore-unknown ${files
+        .map(file => JSON.stringify(file))
+        .join(" ")}`,
+      cwd
+    );
+  } catch (e) {
+    console.warn(
+      `⚠️ Unable to format the fixed package.json files with Prettier: ${(e as Error)?.message}`
+    );
+  }
 }
 
 export const MANY_PKG_TYPE_OPTIONS = [
@@ -116,10 +152,10 @@ export async function runManypkg(
     return runCmd(manypkgArgs.slice(0), process.cwd());
   }
   if (manypkgType === "upgrade") {
-    return upgradeDependency(manypkgArgs.slice(0));
+    return upgradeDependency(manypkgArgs.slice(0) as [string, string]);
   }
   if (manypkgType === "npm-tag") {
-    return npmTagAll(manypkgArgs.slice(0));
+    return npmTagAll(manypkgArgs.slice(0) as [string, string, string]);
   }
 
   if (manypkgType !== "check" && manypkgType !== "fix") {
@@ -149,6 +185,12 @@ export async function runManypkg(
   if (rootPackage) {
     packagesByName.set(rootPackage.packageJson.name, rootPackage);
   }
+  const original = new Map(
+    [...packagesByName].map(([name, x]) => [
+      name,
+      JSON.stringify(x.packageJson)
+    ])
+  );
   const { hasErrored, requiresInstall } = runChecks(
     packagesByName,
     rootPackage,
@@ -157,10 +199,17 @@ export async function runManypkg(
   );
 
   if (manypkgType === "fix") {
-    await Promise.all(
-      [...packagesByName].map(([_, workspace]) => {
-        writePackage(workspace);
-      })
+    // Only rewrite files a fix actually changed - `writePackage` uses `JSON.stringify`, which undoes Prettier's formatting
+    const changed = [...packagesByName]
+      .filter(
+        ([name, x]) => original.get(name) !== JSON.stringify(x.packageJson)
+      )
+      .map(([, x]) => x);
+    await Promise.all(changed.map(async x => writePackage(x)));
+    await formatPackageJsonFiles(
+      config,
+      changed.map(x => `${x.dir}/package.json`),
+      rootDir
     );
     if (requiresInstall) {
       console.log(`Running install in ${rootDir}...`);
