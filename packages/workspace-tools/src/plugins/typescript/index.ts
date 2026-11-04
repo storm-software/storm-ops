@@ -58,7 +58,7 @@ export interface TypeScriptPluginOptions extends BaseTypescriptPluginOptions {
    * @remarks
    * If set to a string, it will be used as the target name instead of the default "lint".
    *
-   * @defaultValue "lint"
+   * @defaultValue false
    */
   enableEslint?: string | false;
 
@@ -142,7 +142,7 @@ export const createNodesV2: CreateNodes<TypeScriptPluginOptions> = [
           const root = getRoot(project.root, context);
 
           const enableMarkdownlint = options?.enableMarkdownlint !== false;
-          const enableEslint = options?.enableEslint !== false;
+          const enableEslint = !!options?.enableEslint;
           const enableTypecheck = !!options?.enableTypecheck;
           const enableTest = !!options?.enableTest;
 
@@ -176,8 +176,7 @@ export const createNodesV2: CreateNodes<TypeScriptPluginOptions> = [
               dependsOn: ["^lint-ls"],
               executor: "nx:run-commands",
               options: {
-                command:
-                  `${exec} ls-lint --config="node_modules/@storm-software/linting-tools/ls-lint/.ls-lint.yml" `
+                command: `${exec} ls-lint --config="node_modules/@storm-software/linting-tools/ls-lint/.ls-lint.yml" `
               }
             };
 
@@ -205,8 +204,7 @@ export const createNodesV2: CreateNodes<TypeScriptPluginOptions> = [
                 ],
                 executor: "nx:run-commands",
                 options: {
-                  command:
-                    `${exec} markdownlint-cli2 "{projectRoot}/*.{md,mdx}" "{projectRoot}/**/*.{md,mdx}" --config "node_modules/@storm-software/markdownlint/config/recommended.markdownlint-cli2.jsonc" --fix`
+                  command: `${exec} markdownlint-cli2 "{projectRoot}/*.{md,mdx}" "{projectRoot}/**/*.{md,mdx}" --config "node_modules/@storm-software/markdownlint/config/recommended.markdownlint-cli2.jsonc" --fix`
                 }
               };
             }
@@ -300,8 +298,7 @@ export const createNodesV2: CreateNodes<TypeScriptPluginOptions> = [
             dependsOn: ["^format-toml"],
             executor: "nx:run-commands",
             options: {
-              command:
-                `${exec} taplo format --config="node_modules/@storm-software/linting-tools/taplo/config.toml" --cache-path="node_modules/.cache/taplo/{projectRoot}" --colors="always" "{projectRoot}/*.toml" "{projectRoot}/**/*.toml" `
+              command: `${exec} taplo format --config="node_modules/@storm-software/linting-tools/taplo/config.toml" --cache-path="node_modules/.cache/taplo/{projectRoot}" --colors="always" "{projectRoot}/*.toml" "{projectRoot}/**/*.toml" `
             }
           };
 
@@ -316,8 +313,7 @@ export const createNodesV2: CreateNodes<TypeScriptPluginOptions> = [
             dependsOn: ["^format-readme"],
             executor: "nx:run-commands",
             options: {
-              command:
-                `${exec} storm-git readme --templates="tools/readme-templates" --project="{projectName}"`
+              command: `${exec} storm-git readme --templates="tools/readme-templates" --project="{projectName}"`
             }
           };
 
@@ -328,8 +324,7 @@ export const createNodesV2: CreateNodes<TypeScriptPluginOptions> = [
             dependsOn: ["^format-prettier"],
             executor: "nx:run-commands",
             options: {
-              command:
-                `${exec} prettier "{projectRoot}/**/*" --write --ignore-unknown --no-error-on-unmatched-pattern --config="node_modules/@storm-software/prettier/exclude-packagejson.json" --ignore-path="node_modules/@storm-software/prettier/.prettierignore-exclude-packagejson" --cache --cache-location="node_modules/.cache/prettier/{projectRoot}" `
+              command: `${exec} prettier "{projectRoot}/**/*" --write --ignore-unknown --no-error-on-unmatched-pattern --config="node_modules/@storm-software/prettier/exclude-packagejson.json" --ignore-path="node_modules/@storm-software/prettier/.prettierignore-exclude-packagejson" --cache --cache-location="node_modules/.cache/prettier/{projectRoot}" `
             }
           };
 
