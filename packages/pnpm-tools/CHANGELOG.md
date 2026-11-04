@@ -2,6 +2,20 @@
 
 # Changelog for Storm Ops - Pnpm Tools
 
+## [0.7.171](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.7.171) (11/04/2026)
+
+### Features
+
+- **pnpm-tools:** Added a command to clear cache in pnpm and bun tools CLI ([0687e8d4e](https://github.com/storm-software/storm-ops/commit/0687e8d4e))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.93**
+- Updated **config-tools** to **v1.190.157**
+- Updated **npm-tools** to **v0.6.277**
+- Updated **package-constants** to **v0.1.169**
+- Updated **testing-tools** to **v1.119.309**
+
 ## [0.7.170](https://github.com/storm-software/storm-ops/releases/tag/pnpm-tools%400.7.170) (11/03/2026)
 
 ### Updated Dependencies

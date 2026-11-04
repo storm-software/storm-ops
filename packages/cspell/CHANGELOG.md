@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - CSpell
 
+## [0.46.224](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.46.224) (11/04/2026)
+
+### Features
+
+- **pnpm-tools:** Added a command to clear cache in pnpm and bun tools CLI ([0687e8d4e](https://github.com/storm-software/storm-ops/commit/0687e8d4e))
+
 ## [0.46.219](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.46.219) (10/23/2026)
 
 ### Bug Fixes

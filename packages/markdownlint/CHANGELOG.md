@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Markdownlint
 
+## [0.30.312](https://github.com/storm-software/storm-ops/releases/tag/markdownlint%400.30.312) (11/04/2026)
+
+### Updated Dependencies
+
+- Updated **testing-tools** to **v1.119.309**
+
 ## [0.30.311](https://github.com/storm-software/storm-ops/releases/tag/markdownlint%400.30.311) (11/03/2026)
 
 ### Updated Dependencies
