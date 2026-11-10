@@ -163,7 +163,7 @@ overrides:
   "@storm-software/untyped": "workspace:*"
   "@storm-software/vite": "workspace:*"
   "@storm-software/workspace-tools": "workspace:*"
-  axios: "1.8.2"
+  axios: "1.20.0"
   conventional-changelog-storm-software: "workspace:*"
   create-storm-workspace: "workspace:*"
   got: "14.3.0"
