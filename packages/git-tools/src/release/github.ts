@@ -4,7 +4,7 @@
 import { joinPathFragments, output } from "@nx/devkit";
 import { getWorkspaceConfig } from "@storm-software/config-tools/get-config";
 import { StormWorkspaceConfig } from "@storm-software/config/types";
-import type { AxiosRequestConfig } from "axios";
+import type { AxiosRequestConfig, AxiosResponse } from "axios";
 import axios from "axios";
 import { execSync } from "node:child_process";
 import { existsSync, promises as fsp } from "node:fs";
@@ -461,46 +461,91 @@ function githubNewReleaseURL(
   return url;
 }
 
+/**
+ * Confirms organization membership. API failures (including an ambiguous 404)
+ * throw a diagnostic error rather than being treated as non-membership.
+ */
 export async function isUserAnOrganizationMember(
   userId: string,
   config: StormWorkspaceConfig,
   remoteName = "origin"
 ): Promise<boolean> {
+  const organization =
+    typeof config.organization === "string"
+      ? config.organization
+      : config.organization?.name;
+  if (!organization) {
+    throw new Error(
+      "Unable to validate GitHub actor: no organization is configured."
+    );
+  }
+
+  const repoData = getGitHubRepoData(remoteName, "github");
+  if (!repoData) {
+    throw new Error(
+      "Unable to validate GitHub actor because the GitHub repo slug could not be determined. Please ensure you have a valid GitHub remote configured."
+    );
+  }
+
+  const tokenData = await resolveTokenData(repoData.hostname);
+  if (!tokenData.token) {
+    throw new Error(
+      "Unable to validate GitHub actor because no token was provided. Set STORM_BOT_GITHUB_TOKEN, GITHUB_TOKEN, or GH_TOKEN, or authenticate with the gh CLI."
+    );
+  }
+
+  const tokenSource =
+    ["STORM_BOT_GITHUB_TOKEN", "GITHUB_TOKEN", "GH_TOKEN"].find(
+      name => process.env[name]
+    ) || "gh CLI";
+  const endpoint = `/orgs/${encodeURIComponent(organization)}/members/${encodeURIComponent(userId)}`;
+  const context = `Unable to verify GitHub organization membership for "${userId}" in "${organization}" (GET ${endpoint}; token source: ${tokenSource}).`;
+  const redact = (message: string) =>
+    message.replaceAll(tokenData.token, "[REDACTED]");
+
+  let result: AxiosResponse;
   try {
-    const repoData = getGitHubRepoData(remoteName, "github");
-    if (!repoData) {
-      throw new Error(
-        `Unable to validate GitHub actor because the GitHub repo slug could not be determined. Please ensure you have a valid GitHub remote configured.`
-      );
-    }
-
-    const tokenData = await resolveTokenData(repoData.hostname);
-    if (!tokenData.token) {
-      throw new Error(
-        `Unable to validate GitHub actor because no token was provided. Please set the GITHUB_TOKEN or GH_TOKEN environment variable, or ensure you have an active session via the official gh CLI tool (https://cli.github.com).`
-      );
-    }
-
-    const result = await makeGithubRequest(
+    result = await makeGithubRequest(
       {
         repo: repoData.slug,
         hostname: repoData.hostname,
         apiBaseUrl: repoData.apiBaseUrl,
         token: tokenData?.token || null
       },
-      `/orgs/${
-        typeof config.organization === "string"
-          ? config.organization
-          : config.organization?.name
-      }/members/${userId}`,
-      {}
+      endpoint,
+      { validateStatus: () => true }
     );
-    if (result.status !== 204) {
-      return false;
-    }
-
-    return true;
-  } catch {
-    return false;
+  } catch (error) {
+    const detail = axios.isAxiosError(error)
+      ? `${error.code || "Request failed"}: ${error.message}`
+      : error instanceof Error
+        ? error.message
+        : "Unknown request error";
+    // Do not attach the original error: Axios includes authorization headers
+    // in its request/config properties.
+    throw new Error(redact(`${context} ${detail}`));
   }
+
+  if (result.status !== 204) {
+    const message =
+      typeof result.data?.message === "string"
+        ? result.data.message
+        : "Unexpected response from GitHub";
+    const requestId = result.headers["x-github-request-id"];
+    const hint =
+      result.status === 401
+        ? "GitHub rejected the credential. Check whether the selected token is expired, revoked, or invalid."
+        : result.status === 403
+          ? "Check the selected token's permissions, organization approval/SSO authorization, and API rate limits."
+          : result.status === 404
+            ? "GitHub could not confirm membership: the user may not be a member, or the selected token may lack access to the organization."
+            : "";
+    throw new Error(
+      redact(
+        `${context} HTTP ${result.status}: ${message}.${requestId ? ` GitHub request ID: ${requestId}.` : ""}${hint ? ` ${hint}` : ""}`
+      )
+    );
+  }
+
+  return true;
 }
