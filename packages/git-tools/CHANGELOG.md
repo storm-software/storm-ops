@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Git Tools
 
+## [2.133.3](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.133.3) (11/10/2026)
+
+### Bug Fixes
+
+- **git-tools:** Ensure error messages are correctly displayed in GitHub API response ([a533dfd00](https://github.com/storm-software/storm-ops/commit/a533dfd00))
+
 ## [2.133.2](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.133.2) (11/04/2026)
 
 ### Updated Dependencies
