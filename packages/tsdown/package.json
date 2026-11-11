@@ -166,11 +166,11 @@
     "@storm-software/config-tools": "workspace:*",
     "chokidar": "^4.0.3",
     "commander": "catalog:",
-    "es-toolkit": "^1.53.0",
+    "es-toolkit": "^1.53.2",
     "globby": "^14.1.0",
     "nx": "catalog:",
-    "rolldown": "1.0.0-beta.1",
-    "source-map": "0.7.4",
+    "rolldown": "1.3.1",
+    "source-map": "0.8.0",
     "tsup": "catalog:"
   },
   "devDependencies": {
@@ -185,8 +185,8 @@
   },
   "peerDependencies": {
     "spdx-exceptions": "^2.5.0",
-    "spdx-license-ids": "^3.0.20",
-    "tsdown": ">=0.15.4"
+    "spdx-license-ids": "^3.0.24",
+    "tsdown": ">=0.23.7"
   },
   "peerDependenciesMeta": {
     "spdx-exceptions": {

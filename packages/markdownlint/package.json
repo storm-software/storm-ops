@@ -109,7 +109,7 @@
   "files": ["config", "dist"],
   "dependencies": {
     "defu": "catalog:",
-    "markdownlint-cli2": "^0.17.2"
+    "markdownlint-cli2": "^0.24.0"
   },
   "devDependencies": {
     "@types/node": "catalog:",

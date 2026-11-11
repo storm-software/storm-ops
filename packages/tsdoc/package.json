@@ -93,7 +93,7 @@
     "typescript": "^6.0.3"
   },
   "peerDependencies": {
-    "@microsoft/api-extractor": ">=7.58.0"
+    "@microsoft/api-extractor": ">=7.60.1"
   },
   "peerDependenciesMeta": {
     "@microsoft/api-extractor": {

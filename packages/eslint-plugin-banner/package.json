@@ -75,7 +75,7 @@
     "tsdown": "catalog:"
   },
   "peerDependencies": {
-    "eslint": ">=9.39.3"
+    "eslint": ">=10.14.0"
   },
   "peerDependenciesMeta": {
     "eslint": {

@@ -170,7 +170,7 @@
   "devDependencies": {
     "@manypkg/cli": "^0.25.1",
     "@types/node": "catalog:",
-    "actions-up": "1.14.3",
+    "actions-up": "1.21.0",
     "tsup": "catalog:"
   },
   "publishConfig": {

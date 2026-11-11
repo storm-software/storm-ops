@@ -260,7 +260,7 @@
     "fs-extra": "catalog:",
     "glob": "catalog:",
     "jiti": "catalog:",
-    "markdownlint-cli2": "^0.17.2",
+    "markdownlint-cli2": "^0.24.0",
     "micromatch": "^4.0.8",
     "pkg-types": "catalog:",
     "prettier": "catalog:",
@@ -272,7 +272,7 @@
     "zod": "catalog:"
   },
   "devDependencies": {
-    "@napi-rs/cli": "^3.10.9",
+    "@napi-rs/cli": "^3.10.12",
     "@storm-software/bun-tools": "workspace:*",
     "@storm-software/esbuild": "workspace:*",
     "@storm-software/package-constants": "workspace:*",
@@ -286,7 +286,7 @@
     "typescript": "^6.0.3"
   },
   "peerDependencies": {
-    "@napi-rs/cli": "^3.4.1",
+    "@napi-rs/cli": "^3.10.12",
     "@storm-software/bun-tools": "*",
     "@storm-software/esbuild": "*",
     "@storm-software/pnpm-tools": "*",
