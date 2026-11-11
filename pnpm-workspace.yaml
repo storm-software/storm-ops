@@ -59,7 +59,7 @@ catalog:
   cspell: "^10.4.0"
   date-fns: "^4.4.0"
   defu: "^6.1.7"
-  esbuild: "^0.25.12"
+  esbuild: "^0.28.0"
   eslint: "^10.13.0"
   eslint-doc-generator: "^3.7.1"
   eslint-flat-config-utils: "^2.1.4"
