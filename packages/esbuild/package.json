@@ -239,7 +239,7 @@
     "chokidar": "^4.0.3",
     "commander": "catalog:",
     "defu": "catalog:",
-    "es-toolkit": "^1.53.0",
+    "es-toolkit": "^1.53.2",
     "esbuild": "catalog:",
     "globby": "^14.1.0"
   },

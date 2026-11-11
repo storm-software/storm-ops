@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "dependencies": {
-    "consola": "3.3.3",
+    "consola": "3.4.2",
     "esbuild": "catalog:",
     "pkg-types": "catalog:",
     "semver": "catalog:",

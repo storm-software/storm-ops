@@ -60,11 +60,11 @@
     "fast-deep-equal": "3.1.3",
     "function-bind": "1.1.2",
     "hasown": "2.0.4",
-    "is-core-module": "2.16.2",
+    "is-core-module": "2.18.0",
     "jju": "1.4.0",
     "json-schema-traverse": "1.0.0",
     "path-parse": "1.0.7",
-    "resolve": "1.22.12",
+    "resolve": "1.22.14",
     "uri-js": "4.4.1"
   },
   "devDependencies": {
@@ -80,13 +80,13 @@
     "eslint-flat-config-utils": "catalog:",
     "eslint-plugin-eslint-plugin": "catalog:",
     "eslint-plugin-i18n-text": "catalog:",
-    "eslint-plugin-tsdoc": "0.4.0",
+    "eslint-plugin-tsdoc": "0.5.4",
     "eslint-typegen": "catalog:",
     "tsdown": "catalog:"
   },
   "peerDependencies": {
     "@storm-software/tsdoc": "*",
-    "eslint": ">=9.39.3"
+    "eslint": ">=10.14.0"
   },
   "peerDependenciesMeta": {
     "@storm-software/tsdoc": {

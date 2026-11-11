@@ -78,13 +78,13 @@
     "eslint-flat-config-utils": "catalog:",
     "eslint-plugin-eslint-plugin": "catalog:",
     "eslint-plugin-i18n-text": "catalog:",
-    "eslint-plugin-pnpm": "0.3.0",
+    "eslint-plugin-pnpm": "0.3.1",
     "eslint-typegen": "catalog:",
     "tsdown": "catalog:"
   },
   "peerDependencies": {
     "@storm-software/tsdoc": "*",
-    "eslint": ">=9.39.3"
+    "eslint": ">=10.14.0"
   },
   "peerDependenciesMeta": {
     "@storm-software/tsdoc": {

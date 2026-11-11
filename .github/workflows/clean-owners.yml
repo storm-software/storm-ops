@@ -17,7 +17,7 @@ jobs:
 
     steps:
       - name: Run clean-owners action
-        uses: github-community-projects/cleanowners@45f292ce59392482f81f03e5ef3c27daaf06183e # v2.1.13
+        uses: github-community-projects/cleanowners@aea8fb15baf34300ef137f29eddbf19fe704bd74 # v2.1.15
         env:
           GH_TOKEN: ${{ secrets.STORM_BOT_GITHUB_TOKEN }}
           ORGANIZATION: storm-software

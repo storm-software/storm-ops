@@ -125,7 +125,7 @@
   "module": "dist/index.mjs",
   "typings": "dist/index.d.ts",
   "dependencies": {
-    "@aws/pdk": "^0.25.17",
+    "@aws/pdk": "^0.26.15",
     "@nx/devkit": "catalog:",
     "@storm-software/config": "workspace:*",
     "@storm-software/config-tools": "workspace:*",
@@ -134,13 +134,13 @@
   "devDependencies": {
     "@types/node": "catalog:",
     "nx": "catalog:",
-    "projen": "^0.91.31",
+    "projen": "^0.104.27",
     "tsup": "catalog:",
     "untyped": "catalog:"
   },
   "peerDependencies": {
     "nx": ">=22.7.1",
-    "projen": ">=0.91.20"
+    "projen": ">=0.104.27"
   },
   "peerDependenciesMeta": {
     "nx": {
