@@ -2,6 +2,14 @@
 
 # Changelog for Storm Ops - ESLint Plugin Pnpm
 
+## [0.0.122](https://github.com/storm-software/storm-ops/releases/tag/eslint-plugin-pnpm%400.0.122) (11/19/2026)
+
+### Updated Dependencies
+
+- Updated **package-constants** to **v0.1.171**
+- Updated **prettier** to **v0.59.212**
+- Updated **tsdoc** to **v0.13.311**
+
 ## [0.0.121](https://github.com/storm-software/storm-ops/releases/tag/eslint-plugin-pnpm%400.0.121) (11/19/2026)
 
 ### Updated Dependencies

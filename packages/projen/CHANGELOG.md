@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Projen
 
+## [0.21.350](https://github.com/storm-software/storm-ops/releases/tag/projen%400.21.350) (11/19/2026)
+
+### Continuous Integration
+
+- **monorepo:** Improve the performance of the release process ([fd11d06bf](https://github.com/storm-software/storm-ops/commit/fd11d06bf))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.95**
+- Updated **config-tools** to **v1.190.159**
+- Updated **workspace-tools** to **v1.297.31**
+
 ## [0.21.349](https://github.com/storm-software/storm-ops/releases/tag/projen%400.21.349) (11/19/2026)
 
 ### Updated Dependencies

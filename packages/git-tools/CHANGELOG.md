@@ -2,6 +2,19 @@
 
 # Changelog for Storm Ops - Git Tools
 
+## [2.133.5](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.133.5) (11/19/2026)
+
+### Continuous Integration
+
+- **monorepo:** Improve the performance of the release process ([fd11d06bf](https://github.com/storm-software/storm-ops/commit/fd11d06bf))
+
+### Updated Dependencies
+
+- Updated **config** to **v1.138.95**
+- Updated **config-tools** to **v1.190.159**
+- Updated **conventional-changelog** to **v0.3.320**
+- Updated **package-constants** to **v0.1.171**
+
 ## [2.133.4](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.133.4) (11/19/2026)
 
 ### Updated Dependencies
