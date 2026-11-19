@@ -11,7 +11,7 @@ try {
   if (!head) {
     head = process.env.NX_HEAD;
   }
-  if (!base && !head) {
+  if (!base || !head) {
     throw new Error(
       `Base and head arguments are required. Please provide them using the --base and --head flags.`
     );
@@ -19,7 +19,26 @@ try {
 
   await echo`${chalk.whiteBright(`📦  Releasing Storm-Ops packages (Base tag: "${base}", Head tag: "${head}")`)}`;
 
-  let proc = $`pnpm build`.timeout(`${30 * 60}s`);
+  // Graph construction needs the local Nx plugins, including on a clean checkout.
+  await $`pnpm bootstrap`;
+  const check =
+    await $`pnpm exec tsx tools/scripts/src/release-check.cts`.nothrow();
+  if (check.exitCode === 10) {
+    echo`${chalk.green("No release changes detected; skipping builds and publishing.")}`;
+    process.exit(0);
+  }
+  if (!check.ok) {
+    throw new Error(
+      "Failed to determine release changes; refusing to skip the release."
+    );
+  }
+
+  // One graph builds the JS artifacts and release tooling. Cargo publish checks
+  // the packaged Rust sources itself, so no optimized Rust build is needed here.
+  let proc =
+    $`pnpm nx run-many --target=build --projects=packages/* --configuration=production --parallel=5 --outputStyle=static`.timeout(
+      `${30 * 60}s`
+    );
   proc.stdout.on("data", data => {
     echo`${data}`;
   });

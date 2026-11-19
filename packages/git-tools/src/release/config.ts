@@ -53,7 +53,6 @@ export const DEFAULT_VERSION_RELEASE_CONFIG = {
   currentVersionResolver: "git-tag",
   fallbackCurrentVersionResolver: "disk",
   specifierSource: "conventional-commits",
-  groupPreVersionCommand: "pnpm build",
   preserveLocalDependencyProtocols: true,
   preserveMatchingDependencyRanges: true,
   logUnchangedProjects: true,

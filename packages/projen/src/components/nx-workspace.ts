@@ -494,7 +494,7 @@ export class StormNxWorkspace extends NxWorkspace {
     projects: string[] | string,
     projectsRelationship: "fixed" | "independent" = "independent",
     releaseTagPattern = "{projectName}@{version}",
-    groupPreVersionCommand = "pnpm build"
+    groupPreVersionCommand
   ) {
     this.release ??= {
       groups: {},

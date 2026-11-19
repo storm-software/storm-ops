@@ -322,7 +322,7 @@ export const createNodesV2: CreateNodes<CargoPluginOptions | undefined> = [
                 );
 
                 targets["nx-release-publish"] = {
-                  cache: true,
+                  cache: false,
                   inputs: [
                     "linting",
                     "testing",
@@ -330,7 +330,9 @@ export const createNodesV2: CreateNodes<CargoPluginOptions | undefined> = [
                     "rust",
                     "^production"
                   ],
-                  dependsOn: ["build", "^nx-release-publish"],
+                  // cargo publish verifies the packaged sources. A preceding
+                  // build duplicates compilation in a different target directory.
+                  dependsOn: ["^nx-release-publish"],
                   executor: "@storm-software/workspace-tools:cargo-publish",
                   options: {
                     packageRoot: root

@@ -180,7 +180,7 @@
       }
     },
     "nx-release-publish": {
-      "dependsOn": ["build", "^nx-release-publish"]
+      "dependsOn": ["^nx-release-publish"]
     }
   },
   "release": {
@@ -195,7 +195,7 @@
         "version": {
           "currentVersionResolver": "git-tag",
           "specifierSource": "conventional-commits",
-          "groupPreVersionCommand": "build",
+          "groupPreVersionCommand": "",
           "manifestRootsToUpdate": [
             "{projectRoot}",
             {

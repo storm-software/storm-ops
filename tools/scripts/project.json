@@ -4,6 +4,12 @@
   "sourceRoot": "tools/scripts/src",
   "projectType": "library",
   "targets": {
+    "test-release": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "pnpm exec tsx --test tools/scripts/src/release-check.spec.ts tools/scripts/src/release.spec.ts"
+      }
+    }
     // "build": {
     //   "cache": true,
     //   "inputs": [

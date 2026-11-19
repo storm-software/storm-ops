@@ -131,7 +131,7 @@ jobs:
         if: ${{ inputs.recover-rust }}
         run: |
           devenv shell -- bash -euo pipefail -c '
-            pnpm build
+            pnpm exec nx run workspace-tools:build:production
             pnpm exec nx run-many -t nx-release-publish \
               -p storm-workspace storm-config --configuration=production \
               --parallel=1 --skipNxCache

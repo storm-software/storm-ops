@@ -872,7 +872,7 @@ export class ReleaseGraph {
    * All default values should have been applied by this point by config.ts but the types can't know
    * that for sure at this point.
    */
-  private static resolveFinalConfigForProject(
+  public static resolveFinalConfigForProject(
     releaseGroup: ReleaseGroupWithName,
     projectGraphNode: ProjectGraphProjectNode,
     firstRelease: boolean,

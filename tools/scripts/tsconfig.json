@@ -6,6 +6,6 @@
     "outDir": "dist",
     "ignoreDeprecations": "6.0"
   },
-  "include": ["src/**/*.ts", "src/*.mjs"],
+  "include": ["src/**/*.ts", "src/**/*.cts", "src/*.mjs"],
   "exclude": ["jest.config.ts", "src/**/*.spec.ts", "src/**/*.test.ts"]
 }

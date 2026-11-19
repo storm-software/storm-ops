@@ -78,14 +78,12 @@ export const buildCargoCommand = (
     context.projectName &&
     context.projectsConfigurations?.projects &&
     context.projectsConfigurations?.projects[context.projectName] &&
-    context.projectsConfigurations?.projects[context.projectName]?.root &&
-    context.projectsConfigurations?.projects[
-      context.projectName
-    ]?.root.includes("Cargo.toml")
+    context.projectsConfigurations?.projects[context.projectName]?.root
   ) {
     const cargoToml = parseCargoToml(
       readFileSync(
         joinPathFragments(
+          context.root,
           context.projectsConfigurations.projects[context.projectName]!
             .root as string,
           "Cargo.toml"

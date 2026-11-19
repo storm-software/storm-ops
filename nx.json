@@ -57,7 +57,7 @@
         "projectsRelationship": "independent",
         "version": {
           "versionActions": "./dist/packages/workspace-tools/dist/src/release/js-version-actions.js",
-          "groupPreVersionCommand": "pnpm nx run workspace-tools:build",
+          "groupPreVersionCommand": "",
           "currentVersionResolver": "git-tag",
           "specifierSource": "conventional-commits",
           "manifestRootsToUpdate": [
@@ -74,7 +74,7 @@
         "projectsRelationship": "independent",
         "version": {
           "versionActions": "./dist/packages/workspace-tools/dist/src/release/rust-version-actions.js",
-          "groupPreVersionCommand": "pnpm nx run workspace-tools:build",
+          "groupPreVersionCommand": "",
           "currentVersionResolver": "git-tag",
           "specifierSource": "conventional-commits"
         }
