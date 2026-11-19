@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Cloudflare Tools
 
+## [0.71.310](https://github.com/storm-software/storm-ops/releases/tag/cloudflare-tools%400.71.310) (11/19/2026)
+
+### Bug Fixes
+
+- **cloudflare-tools:** Resolve issue with error handling in R2 upload executor ([a7530909a](https://github.com/storm-software/storm-ops/commit/a7530909a))
+
 ## [0.71.309](https://github.com/storm-software/storm-ops/releases/tag/cloudflare-tools%400.71.309) (11/19/2026)
 
 ### Updated Dependencies
