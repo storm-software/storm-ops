@@ -39,6 +39,10 @@ in
     description = "Configuration to add to the AGENTS.md file.";
   };
 
+  # Orca confines MCP config reads to the workspace. The default Nix-store
+  # symlink escapes that boundary; copy on each shell entry to keep it current.
+  files.".mcp.json".copyMode = "copy";
+
   config = {
     # The Graphify MCP server uses uv's isolated tool environment.
     packages = [
@@ -124,14 +128,20 @@ in
           hookType = "PreToolUse";
           matcher = "^(Edit|MultiEdit|Write)$";
           command = ''
-            # Read the JSON input from stdin
-            json=$(cat)
-            file_path=$(echo "$json" | jq -r '.file_path // empty')
-
-            if [[ "$file_path" =~ \.(env|secret)$ ]]; then
-              echo "Error: Cannot edit sensitive files"
-              exit 1
+            # Read stdin directly: echo can interpret escapes in tool content.
+            if ! file_path=$(${pkgs.jq}/bin/jq -r '.tool_input.file_path // empty'); then
+              printf '%s\n' 'Error: Cannot parse Claude hook input' >&2
+              exit 2
             fi
+
+            # Hook commands may run under sh rather than Bash.
+            case "$file_path" in
+              *.env|*.secret)
+                printf '%s\n' 'Error: Cannot edit sensitive files' >&2
+                exit 2
+                ;;
+            esac
+            exit 0
           '';
         };
       };

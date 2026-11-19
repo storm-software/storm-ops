@@ -20,6 +20,9 @@ devenv --no-tui shell --quiet -- bash -c '
   test "$(cat AGENTS.md)" = "$(printf "\\n<!-- storm configuration start-->\\nfixture instructions\\n<!-- storm configuration end-->")"
 '
 
+HOOK_TEST_SETTINGS="$temporary_workspace/.claude/settings.json" \
+  python3 "$repository_root/devenv-modules/agents/tests/protect-secrets.py"
+
 cat > .envrc <<'EOF'
 eval "$(devenv direnvrc)"
 use devenv
