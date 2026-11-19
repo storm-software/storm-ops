@@ -11,7 +11,6 @@ import {
 } from "@nx/devkit";
 import { createHttpHandler } from "@storm-software/cloudflare-tools/utils/http-handler";
 import {
-  correctPaths,
   getConfig,
   joinPaths,
   writeDebug,
@@ -23,14 +22,11 @@ import { findWorkspaceRoot } from "@storm-software/config-tools/utilities/find-w
 import { createCliOptions } from "@storm-software/workspace-tools/utils/create-cli-options";
 import { getPackageInfo } from "@storm-software/workspace-tools/utils/package-helpers";
 import { glob } from "glob";
-import mime from "mime-types";
 import { execSync } from "node:child_process";
-import { statSync } from "node:fs";
-import { readFile } from "node:fs/promises";
 import {
-  getEncoding,
   getInternalDependencies,
-  uploadFile
+  uploadFile,
+  uploadFiles
 } from "../../utils/r2-bucket-helpers";
 import type { R2UploadPublishExecutorSchema } from "./schema";
 
@@ -259,28 +255,14 @@ export default async function runExecutor(
       );
     }
 
-    await Promise.all(
-      files.map(async file => {
-        if (
-          statSync(file, {
-            throwIfNoEntry: false
-          })?.isFile()
-        ) {
-          const name = correctPaths(file).replace(correctPaths(basePath), "");
-          const type = mime.lookup(name) || "application/octet-stream";
-
-          await uploadFile(
-            client,
-            bucketId,
-            bucketPath,
-            name,
-            version,
-            await readFile(file, getEncoding(type)),
-            type,
-            isDryRun
-          );
-        }
-      })
+    await uploadFiles(
+      client,
+      bucketId,
+      bucketPath,
+      basePath,
+      files,
+      version,
+      isDryRun
     );
 
     writeSuccess(

@@ -4,6 +4,12 @@
   "sourceRoot": "packages/cloudflare-tools/src",
   "projectType": "library",
   "targets": {
+    "test-r2-upload": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "node --import tsx --test packages/cloudflare-tools/tests/r2-upload.test.ts"
+      }
+    },
     "build-untyped": {
       "executor": "nx:run-commands",
       "dependsOn": ["clean", "^build"],
