@@ -39,11 +39,11 @@ in
     description = "Configuration to add to the AGENTS.md file.";
   };
 
-  # Orca confines MCP config reads to the workspace. The default Nix-store
-  # symlink escapes that boundary; copy on each shell entry to keep it current.
-  files.".mcp.json".copyMode = "copy";
-
   config = {
+    # Orca confines MCP config reads to the workspace. The default Nix-store
+    # symlink escapes that boundary; copy on each shell entry to keep it current.
+    files.".mcp.json".copyMode = "copy";
+
     # The Graphify MCP server uses uv's isolated tool environment.
     packages = [
       pkgs.gawk
