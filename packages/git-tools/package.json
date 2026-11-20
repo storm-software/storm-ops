@@ -231,7 +231,7 @@
     "prettier-plugin-organize-imports": "^4.3.0",
     "prettier-plugin-sh": "^0.15.0",
     "semver": "catalog:",
-    "simple-git": "^3.36.0",
+    "simple-git": "^4.0.0",
     "tsconfig-paths": "^4.2.0",
     "underscore": "^1.13.8",
     "update-section": "^0.3.3",
